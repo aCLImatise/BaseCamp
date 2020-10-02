@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_generate_consensus_from_alignment.cwl
+id: o_generate_consensus_from_alignment.cwl
 inputs: []
 outputs:
 - id: out_stdout

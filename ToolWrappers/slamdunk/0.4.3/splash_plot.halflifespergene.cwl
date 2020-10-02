@@ -1,45 +1,25 @@
 class: CommandLineTool
-id: ../../../splash_plot.halflifespergene.cwl
+id: splash_plot.halflifespergene.cwl
 inputs:
-- id: in_sim_dir
+- id: in_t
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -t
+- id: in_slam
   doc: ''
   type: string
   inputBinding:
-    prefix: --simDir
-- id: in_slam_dunk_dir
+    prefix: -slam
+- id: in_sim
   doc: ''
   type: string
   inputBinding:
-    prefix: --slamdunkDir
-- id: in_time_points
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --timepoints
-- id: in_output_file
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --outputFile
-- id: in_tc_rate
-  doc: T->C conversion rate
-  type: string
-  inputBinding:
-    prefix: --tc-rate
-- id: in_bed
-  doc: BED file
-  type: File
-  inputBinding:
-    prefix: --bed
+    prefix: -sim
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_output_file
-  doc: ''
-  type: File
-  outputBinding:
-    glob: $(inputs.in_output_file)
 cwlVersion: v1.1
 baseCommand:
 - splash

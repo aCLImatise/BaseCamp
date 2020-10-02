@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enrichm_pathway.cwl
+id: enrichm_pathway.cwl
 inputs:
 - id: in_matrix
   doc: KO matrix. REQUIRED.

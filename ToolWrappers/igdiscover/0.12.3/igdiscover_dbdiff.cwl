@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_dbdiff.cwl
+id: igdiscover_dbdiff.cwl
 inputs:
 - id: in_color
   doc: "Whether to colorize output\n"

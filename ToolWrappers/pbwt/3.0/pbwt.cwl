@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbwt.cwl
+id: pbwt.cwl
 inputs:
 - id: in_log
   doc: log file; '-' for stderr

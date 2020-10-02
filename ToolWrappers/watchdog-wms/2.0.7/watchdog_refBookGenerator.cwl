@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../watchdog_refBookGenerator.cwl
+id: watchdog_refBookGenerator.cwl
 inputs: []
 outputs:
 - id: out_stdout

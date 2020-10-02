@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phenix.py_vcf2json.cwl
+id: phenix.py_vcf2json.cwl
 inputs:
 - id: in_input
   doc: path to a VCF file

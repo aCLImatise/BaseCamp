@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../callKrakenOnConvertedDB.pl.cwl
+id: callKrakenOnConvertedDB.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../edd_chrom_size.cwl
+id: edd_chrom_size.cwl
 inputs:
 - id: in_fdr
   doc: ''

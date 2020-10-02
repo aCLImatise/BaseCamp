@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmfetch_keyfile.cwl
+id: hmmfetch_keyfile.cwl
 inputs:
 - id: in_index
   doc: ''

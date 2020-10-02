@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_cutseq.cwl
+id: _cutseq.cwl
 inputs:
 - id: in_from
   doc: "integer    [Start of sequence (0)] This is the start\nposition (inclusive)\

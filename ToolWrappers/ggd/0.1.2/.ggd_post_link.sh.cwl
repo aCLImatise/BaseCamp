@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.ggd_post_link.sh.cwl
+id: .ggd_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

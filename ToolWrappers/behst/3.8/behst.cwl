@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../behst.cwl
+id: behst.cwl
 inputs:
 - id: in_target_extension
   doc: extend target regions by BP base pairs (default 9400)

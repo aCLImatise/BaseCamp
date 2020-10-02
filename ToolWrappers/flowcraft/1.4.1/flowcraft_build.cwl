@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flowcraft_build.cwl
+id: flowcraft_build.cwl
 inputs:
 - id: in_tasks
   doc: Space separated tasks of the pipeline

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../expand_links.pl.cwl
+id: expand_links.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

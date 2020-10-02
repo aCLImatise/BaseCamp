@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../write_results.py.cwl
+id: write_results.py.cwl
 inputs:
 - id: in_include_ssm_names
   doc: "Include SSM names in output (which may be sensitive\ndata) (default: False)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairToPair.cwl
+id: pairToPair.cwl
 inputs:
 - id: in_minimum_overlap_required
   doc: "Minimum overlap required as fraction of A (e.g. 0.05).\nDefault is 1E-9 (effectively\

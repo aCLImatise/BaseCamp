@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cromshell.cwl
+id: cromshell.cwl
 inputs:
 - id: in_set_curl_connect
   doc: "Set the curl connect timeout to TIMEOUT seconds.\nAlso sets the curl max timeout\

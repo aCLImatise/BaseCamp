@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconc_falcon_read2ctg_augment.cwl
+id: falconc_falcon_read2ctg_augment.cwl
 inputs:
 - id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'

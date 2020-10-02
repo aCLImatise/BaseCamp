@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lusstr.cwl
+id: lusstr.cwl
 inputs:
 - id: in_v
   doc: ''

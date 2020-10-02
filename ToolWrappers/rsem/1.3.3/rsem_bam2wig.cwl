@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_bam2wig.cwl
+id: rsem_bam2wig.cwl
 inputs:
 - id: in_no_fractional_weight
   doc: ': If this is set, RSEM will not look for "ZW" tag and each alignment appeared

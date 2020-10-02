@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msp_simulate_history_file.cwl
+id: msp_simulate_history_file.cwl
 inputs:
 - id: in_length
   doc: ''

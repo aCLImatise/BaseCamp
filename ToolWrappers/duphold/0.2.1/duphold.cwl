@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../duphold.cwl
+id: duphold.cwl
 inputs:
 - id: in_vcf
   doc: path to sorted SV VCF/BCF

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crimson_fusioncatcher.cwl
+id: crimson_fusioncatcher.cwl
 inputs:
 - id: in_input
   doc: ''

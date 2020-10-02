@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanggolin_align.cwl
+id: ppanggolin_align.cwl
 inputs:
 - id: in_p
   doc: '[--defrag]'

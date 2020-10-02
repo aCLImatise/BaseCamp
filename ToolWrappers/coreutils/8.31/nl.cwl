@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nl.cwl
+id: nl.cwl
 inputs:
 - id: in_body_numbering
   doc: use STYLE for numbering body lines

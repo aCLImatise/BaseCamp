@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cook_coding_for_blast.py.cwl
+id: cook_coding_for_blast.py.cwl
 inputs:
 - id: in_fast_a_files
   doc: ''

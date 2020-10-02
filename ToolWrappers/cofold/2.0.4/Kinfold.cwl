@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Kinfold.cwl
+id: Kinfold.cwl
 inputs:
 - id: in_full_help
   doc: Print help, including hidden options, and exit

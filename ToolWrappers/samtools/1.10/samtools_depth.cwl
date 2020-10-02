@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_depth.cwl
+id: samtools_depth.cwl
 inputs:
 - id: in_list_positions_regions
   doc: list of positions or regions

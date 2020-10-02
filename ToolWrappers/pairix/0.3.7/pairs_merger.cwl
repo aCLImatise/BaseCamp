@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairs_merger.cwl
+id: pairs_merger.cwl
 inputs:
 - id: in_in_three_dot_pairs_do_tgz
   doc: ''

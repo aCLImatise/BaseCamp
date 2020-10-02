@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../emma.cwl
+id: emma.cwl
 inputs:
 - id: in_only_d_end
   doc: toggle     [N] Only produce dendrogram file

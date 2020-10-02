@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinInference.py.cwl
+id: proteinInference.py.cwl
 inputs:
 - id: in_threads_to_run
   doc: Threads to run

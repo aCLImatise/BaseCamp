@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_fish.cwl
+id: seqkit_fish.cwl
 inputs:
 - id: in_all
   doc: search all

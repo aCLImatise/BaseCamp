@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LogolExec.sh.cwl
+id: LogolExec.sh.cwl
 inputs:
 - id: in_g
   doc: ''

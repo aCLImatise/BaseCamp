@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jpredapi.cwl
+id: jpredapi.cwl
 inputs:
 - id: in_silent
   doc: Do not print messages.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../numfmt.cwl
+id: numfmt.cwl
 inputs:
 - id: in_debug
   doc: print warnings about invalid input

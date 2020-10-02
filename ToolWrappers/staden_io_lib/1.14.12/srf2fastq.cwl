@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../srf2fastq.cwl
+id: srf2fastq.cwl
 inputs:
 - id: in_use_calibrated_cnf
   doc: Use calibrated quality values (CNF1)

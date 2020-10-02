@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../conus_compare_UYN.cwl
+id: conus_compare_UYN.cwl
 inputs:
 - id: in_options
   doc: ''

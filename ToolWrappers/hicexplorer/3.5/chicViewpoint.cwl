@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chicViewpoint.cwl
+id: chicViewpoint.cwl
 inputs:
 - id: in_background_model_file
   doc: "path to the background file computed by\nchicViewpointBackgroundModel"

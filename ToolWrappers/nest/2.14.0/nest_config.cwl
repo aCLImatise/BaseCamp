@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nest_config.cwl
+id: nest_config.cwl
 inputs:
 - id: in_prefix
   doc: NEST install prefix for architecture-independent files

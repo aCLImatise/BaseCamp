@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_migrate.cwl
+id: anvi_migrate.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxatortk.py.cwl
+id: taxatortk.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

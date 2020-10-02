@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../histogram2.pl.cwl
+id: histogram2.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

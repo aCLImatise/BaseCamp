@@ -1,21 +1,11 @@
 class: CommandLineTool
-id: ../../../swiftlink.cwl
+id: swiftlink.cwl
 inputs:
 - id: in_pedigree
-  doc: ''
+  doc: "-m mapfile, --map=mapfile\n-d datfile, --dat=datfile"
   type: File
   inputBinding:
     prefix: --pedigree
-- id: in_map
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --map
-- id: in_dat
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --dat
 - id: in_output
   doc: (default = 'swiftlink.out')
   type: string
@@ -101,31 +91,23 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -g
-- id: in___sexlinked
-  doc: ',         --sexlinked'
+- id: in__sexlinkeda_affectedonlyq
+  doc: ",         --sexlinked\n-a,         --affectedonly\n-q NUM,     --peelseqiter=NUM\
+    \           (default = 1000000)\n-r seedfile,--randomseeds=seedfile\n-v,     \
+    \    --verbose\n-h,         --help\n"
   type: boolean
   inputBinding:
     prefix: -X
-- id: in___affectedonly
-  doc: ',         --affectedonly'
-  type: boolean
-  inputBinding:
-    prefix: -a
-- id: in__peelseqiternum_default
-  doc: ',     --peelseqiter=NUM           (default = 1000000)'
-  type: long
-  inputBinding:
-    prefix: -q
-- id: in_random_seeds
+- id: in_d
   doc: ''
   type: File
   inputBinding:
-    prefix: --randomseeds
-- id: in___verbose
-  doc: ',         --verbose'
-  type: boolean
+    prefix: -d
+- id: in_m
+  doc: ''
+  type: File
   inputBinding:
-    prefix: -v
+    prefix: -m
 outputs:
 - id: out_stdout
   doc: Standard output stream

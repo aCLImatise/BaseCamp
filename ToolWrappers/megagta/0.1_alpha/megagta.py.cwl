@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megagta.py.cwl
+id: megagta.py.cwl
 inputs:
 - id: in_one
   doc: '<pe1>          comma-separated list of fasta/q paired-end #1 files, paired

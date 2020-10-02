@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hash_extract.cwl
+id: hash_extract.cwl
 inputs:
 - id: in_i
   doc: ''

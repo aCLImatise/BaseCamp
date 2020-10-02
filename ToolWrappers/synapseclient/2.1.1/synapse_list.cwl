@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_list.cwl
+id: synapse_list.cwl
 inputs:
 - id: in_recursive
   doc: "recursively list contents of the subtree descending from\nthe given Synapse\

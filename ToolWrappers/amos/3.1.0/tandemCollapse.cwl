@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tandemCollapse.cwl
+id: tandemCollapse.cwl
 inputs:
 - id: in_location_bank_directory
   doc: '- location of bank directory'

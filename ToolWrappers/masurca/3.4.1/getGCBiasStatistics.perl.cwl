@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getGCBiasStatistics.perl.cwl
+id: getGCBiasStatistics.perl.cwl
 inputs: []
 outputs:
 - id: out_stdout

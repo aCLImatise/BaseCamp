@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uniprobe2meme.cwl
+id: uniprobe2meme.cwl
 inputs:
 - id: in_rna
   doc: output an RNA database instead of a DNA database.

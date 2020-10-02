@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconc_help.cwl
+id: falconc_help.cwl
 inputs:
 - id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'

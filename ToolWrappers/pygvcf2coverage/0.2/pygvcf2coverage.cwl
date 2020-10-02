@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pygvcf2coverage.cwl
+id: pygvcf2coverage.cwl
 inputs:
 - id: in_threshold
   doc: DP threshold

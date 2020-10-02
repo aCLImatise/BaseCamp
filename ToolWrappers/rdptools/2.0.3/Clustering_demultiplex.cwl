@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clustering_demultiplex.cwl
+id: Clustering_demultiplex.cwl
 inputs:
 - id: in_demultiplex
   doc: ''

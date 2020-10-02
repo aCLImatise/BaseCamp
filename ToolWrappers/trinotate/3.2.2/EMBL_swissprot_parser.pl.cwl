@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EMBL_swissprot_parser.pl.cwl
+id: EMBL_swissprot_parser.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

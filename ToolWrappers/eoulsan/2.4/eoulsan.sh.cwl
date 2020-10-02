@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eoulsan.sh.cwl
+id: eoulsan.sh.cwl
 inputs:
 - id: in_about
   doc: display information about this software

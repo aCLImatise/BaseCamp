@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segment_juncs.cwl
+id: segment_juncs.cwl
 inputs:
 - id: in_ref_dot_fa
   doc: ''

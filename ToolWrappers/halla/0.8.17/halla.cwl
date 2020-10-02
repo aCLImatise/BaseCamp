@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halla.cwl
+id: halla.cwl
 inputs:
 - id: in_first_file_tabdelimited
   doc: "first file: Tab-delimited text input file, one row per feature, one column\

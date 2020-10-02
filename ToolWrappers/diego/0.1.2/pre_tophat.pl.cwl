@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pre_tophat.pl.cwl
+id: pre_tophat.pl.cwl
 inputs:
 - id: in_file_containing_files
   doc: "file containing input files and ids\nid [tab] path.to/file"

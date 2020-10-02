@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nighthawk_phase.cwl
+id: nighthawk_phase.cwl
 inputs:
 - id: in_alias
   doc: "The read names (column 1&2) in the M4 file are\nzero based numerical indices,\

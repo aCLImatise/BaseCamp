@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertTDFtoMzML.py.cwl
+id: convertTDFtoMzML.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

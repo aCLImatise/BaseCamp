@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../impala.cwl
+id: impala.cwl
 inputs:
 - id: in_database_default_nr
   doc: "Database [String]\ndefault = nr"

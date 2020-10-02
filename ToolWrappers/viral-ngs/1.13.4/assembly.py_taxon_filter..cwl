@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assembly.py_taxon_filter..cwl
+id: assembly.py_taxon_filter..cwl
 inputs:
 - id: in_assembly_do_tpy
   doc: ''

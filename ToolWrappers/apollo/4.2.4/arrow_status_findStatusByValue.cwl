@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_status_findStatusByValue.cwl
+id: arrow_status_findStatusByValue.cwl
 inputs:
 - id: in_value
   doc: ''

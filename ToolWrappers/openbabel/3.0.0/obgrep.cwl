@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obgrep.cwl
+id: obgrep.cwl
 inputs:
 - id: in_invert_matching_print
   doc: Invert the matching, print non-matching molecules

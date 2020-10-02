@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cargo_init.cwl
+id: cargo_init.cwl
 inputs:
 - id: in_vcs
   doc: "Initialize a new repository for the given version\ncontrol system (git or\

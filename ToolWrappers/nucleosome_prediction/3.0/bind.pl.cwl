@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bind.pl.cwl
+id: bind.pl.cwl
 inputs:
 - id: in_def
   doc: ": Unbound variables in the template will be filled in by the values in\nthe\

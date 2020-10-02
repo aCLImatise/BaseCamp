@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../groupBy.cwl
+id: groupBy.cwl
 inputs:
 - id: in_input_file_assumes
   doc: Input file. Assumes "stdin" if omitted.

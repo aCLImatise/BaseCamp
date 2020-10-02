@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_rcorrector.pl.cwl
+id: run_rcorrector.pl.cwl
 inputs:
 - id: in_comma_separated_files
   doc: ': comma separated files for single-end data sets'
@@ -21,21 +21,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -i
-- id: in__default
-  doc: '(<=32, default: 23)'
-  type: long
-  inputBinding:
-    prefix: -k
-- id: in_od
-  doc: '(default: ./)'
-  type: File
-  inputBinding:
-    prefix: -od
-- id: in_default
-  doc: '(default: 1)'
-  type: long
-  inputBinding:
-    prefix: -t
 - id: in_max_cork
   doc: ': the maximum number of correction within k-bp window (default: 4)'
   type: long
@@ -79,11 +64,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_od
-  doc: '(default: ./)'
-  type: File
-  outputBinding:
-    glob: $(inputs.in_od)
 cwlVersion: v1.1
 baseCommand:
 - run_rcorrector.pl

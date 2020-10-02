@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sraX.cwl
+id: sraX.cwl
 inputs:
 - id: in_input_input_directory
   doc: "|input      Input directory [/path/to/input_dir] containing the input file(s),\
@@ -82,11 +82,186 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -d
-- id: in_files_dot
-  doc: '--------------------'
+- id: in_synopsis
+  doc: ''
   type: string
   inputBinding:
     position: 0
+- id: in_accomplished
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_enclosing
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_is
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_presence
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_repositories
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_by
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_designed
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_of
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_the
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_antimicrobial
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: in_running
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: in_selected
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: in_to
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: in_var_26
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: in_genome
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: in_read
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: in_resistance
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: in_assembled
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: in_genes
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: in_single
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: in_command_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
+- id: in_sequence
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
+- id: in_under
+  doc: ''
+  type: string
+  inputBinding:
+    position: 6
+- id: in_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 6
+- id: in_default
+  doc: ''
+  type: string
+  inputBinding:
+    position: 7
+- id: in_var_38
+  doc: ''
+  type: string
+  inputBinding:
+    position: 7
+- id: in_required_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 7
+- id: in_fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 8
+- id: in_var_41
+  doc: ''
+  type: string
+  inputBinding:
+    position: 8
+- id: in_parameters
+  doc: ''
+  type: string
+  inputBinding:
+    position: 8
+- id: in_addition
+  doc: ''
+  type: string
+  inputBinding:
+    position: 9
+- id: in_format
+  doc: ''
+  type: string
+  inputBinding:
+    position: 9
+- id: in_and
+  doc: ''
+  type: string
+  inputBinding:
+    position: 10
+- id: in_systematically
+  doc: ''
+  type: string
+  inputBinding:
+    position: 11
+- id: in_detect
+  doc: ''
+  type: string
+  inputBinding:
+    position: 12
 outputs:
 - id: out_stdout
   doc: Standard output stream

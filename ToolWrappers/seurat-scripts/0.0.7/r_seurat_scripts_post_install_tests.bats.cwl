@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../r_seurat_scripts_post_install_tests.bats.cwl
+id: r_seurat_scripts_post_install_tests.bats.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pwatcher_pypeflow_example.cwl
+id: pwatcher_pypeflow_example.cwl
 inputs: []
 outputs:
 - id: out_stdout

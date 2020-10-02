@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: ../../../shigatyper_read1.cwl
+id: shigatyper_read1.cwl
 inputs:
-- id: in_name
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --name
 - id: in_verbose
   doc: ''
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: in_n
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -n
 - id: in_read_one
   doc: read2
   type: long

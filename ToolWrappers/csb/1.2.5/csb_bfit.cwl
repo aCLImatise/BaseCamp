@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csb_bfit.cwl
+id: csb_bfit.cwl
 inputs:
 - id: in_chain_one
   doc: Chain of the first structure (default=A)

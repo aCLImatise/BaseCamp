@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dimspy_sample_filter.cwl
+id: dimspy_sample_filter.cwl
 inputs:
 - id: in_input
   doc: "HDF5 file or tab-delimited file that contains a peak\nmatrix."

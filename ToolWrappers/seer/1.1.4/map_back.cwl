@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map_back.cwl
+id: map_back.cwl
 inputs:
 - id: in_arg_seer_kmer
   doc: '[ --kmers ] arg       seer kmer output file'

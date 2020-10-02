@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_vm.py_aws_ansible.cwl
+id: bcbio_vm.py_aws_ansible.cwl
 inputs:
 - id: in_key_pair
   doc: 'Create new keypair for access (default: False)'

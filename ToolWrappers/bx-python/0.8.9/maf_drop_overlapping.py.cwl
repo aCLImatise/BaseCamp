@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_drop_overlapping.py.cwl
+id: maf_drop_overlapping.py.cwl
 inputs:
 - id: in_interval
   doc: ''

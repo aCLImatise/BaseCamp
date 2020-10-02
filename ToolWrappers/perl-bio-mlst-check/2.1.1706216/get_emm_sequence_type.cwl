@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_emm_sequence_type.cwl
+id: get_emm_sequence_type.cwl
 inputs:
 - id: in_species_mlst_scheme
   doc: Species of MLST scheme (0 or more comma separated)

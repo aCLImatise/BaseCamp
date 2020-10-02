@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_unoise3.cwl
+id: amptk_unoise3.cwl
 inputs:
 - id: in_fast_q
   doc: Input FASTQ file (Required)

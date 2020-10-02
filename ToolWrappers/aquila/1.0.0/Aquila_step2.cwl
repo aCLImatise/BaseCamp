@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Aquila_step2.cwl
+id: Aquila_step2.cwl
 inputs:
 - id: in_chr_start
   doc: chromosome start from, default = 1

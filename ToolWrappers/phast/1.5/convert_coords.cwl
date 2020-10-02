@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_coords.cwl
+id: convert_coords.cwl
 inputs:
 - id: in_required_name_alignment
   doc: (required) Name of file in which alignment is defined.

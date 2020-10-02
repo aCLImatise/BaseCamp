@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../build_fixed.cwl
+id: build_fixed.cwl
 inputs:
 - id: in_set_depth_model
   doc: Set depth of model to <num>

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rmsk2bed.cwl
+id: rmsk2bed.cwl
 inputs:
 - id: in_input
   doc: "=[bam|gff|gtf|gvf|psl|rmsk|sam|vcf|wig] (-i <fmt>)\nGenomic format of input\

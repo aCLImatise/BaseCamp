@@ -41,14 +41,10 @@ task MapDamage {
     File? rescale_out
     Int? rescale_length_five_p
     Int? rescale_length_three_p
-    String optimization
-    String iterations
     Directory _nostats_disabled
   }
   command <<<
     mapDamage \
-      ~{optimization} \
-      ~{iterations} \
       ~{_nostats_disabled} \
       ~{if defined(sambam_file_must) then ("--input " +  '"' + sambam_file_must + '"') else ""} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
@@ -130,8 +126,6 @@ task MapDamage {
     rescale_out: "Write the rescaled BAM to this file"
     rescale_length_five_p: "How many bases to rescale at the 5' termini; defaults\\nto --seq-length."
     rescale_length_three_p: "How many bases to rescale at the 5' termini; defaults\\nto --seq-length."
-    optimization: "[30]"
-    iterations: "[10]"
     _nostats_disabled: "--no-stats          Disabled statistical estimation, active by default"
   }
   output {

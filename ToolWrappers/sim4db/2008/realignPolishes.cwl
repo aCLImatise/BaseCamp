@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../realignPolishes.cwl
+id: realignPolishes.cwl
 inputs:
 - id: in_actually_work_just
   doc: ": Don't actually do the work, just count the statistics"

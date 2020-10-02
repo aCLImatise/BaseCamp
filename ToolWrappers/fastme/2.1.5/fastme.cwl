@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastme.cwl
+id: fastme.cwl
 inputs:
 - id: in_minput_data_filem
   doc: "\e[00;04minput data file\e[00;01m, --input_data=\e[00;04minput data file\e\

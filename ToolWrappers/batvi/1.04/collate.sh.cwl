@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../collate.sh.cwl
+id: collate.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedPileUps.cwl
+id: bedPileUps.cwl
 inputs: []
 outputs:
 - id: out_stdout

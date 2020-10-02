@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sparse_query.cwl
+id: sparse_query.cwl
 inputs:
 - id: in_dbname
   doc: Name for the database. REQUIRED.

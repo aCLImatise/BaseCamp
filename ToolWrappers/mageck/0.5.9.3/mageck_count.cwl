@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mageck_count.cwl
+id: mageck_count.cwl
 inputs:
 - id: in_list_seq
   doc: "A file containing the list of sgRNA names, their\nsequences and associated\

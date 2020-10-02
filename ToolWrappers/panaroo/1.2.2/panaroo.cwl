@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../panaroo.cwl
+id: panaroo.cwl
 inputs:
 - id: in_clean_mode
   doc: '[-c ID]'

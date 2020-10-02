@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MSTS.xsd.cwl
+id: MSTS.xsd.cwl
 inputs: []
 outputs:
 - id: out_stdout

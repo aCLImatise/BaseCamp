@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varlociraptor_filter_calls_help.cwl
+id: varlociraptor_filter_calls_help.cwl
 inputs:
 - id: in_for
   doc: ''

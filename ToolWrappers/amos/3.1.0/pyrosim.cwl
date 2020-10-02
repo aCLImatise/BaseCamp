@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyrosim.cwl
+id: pyrosim.cwl
 inputs:
 - id: in_nucleotide_flow_order
   doc: Nucleotide flow order for one round, default acgt

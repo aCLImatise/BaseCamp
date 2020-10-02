@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pfmake.cwl
+id: pfmake.cwl
 inputs:
 - id: in_global_alignment_mode
   doc: ': global alignment mode.'

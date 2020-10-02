@@ -1,21 +1,16 @@
 class: CommandLineTool
-id: ../../../snp_based_classifier.py.cwl
+id: snp_based_classifier.py.cwl
 inputs:
-- id: in_defining_snps
+- id: in_q
   doc: ''
   type: string
   inputBinding:
-    prefix: --defining-snps
-- id: in_query_snps
-  doc: A fasta file containing the query sequences
-  type: File
-  inputBinding:
-    prefix: --query-snps
-- id: in_outfile
+    prefix: -q
+- id: in_snps
   doc: ''
   type: string
   inputBinding:
-    prefix: --outfile
+    prefix: -snps
 outputs:
 - id: out_stdout
   doc: Standard output stream

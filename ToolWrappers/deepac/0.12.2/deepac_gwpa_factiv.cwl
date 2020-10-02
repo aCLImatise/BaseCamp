@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_gwpa_factiv.cwl
+id: deepac_gwpa_factiv.cwl
 inputs:
 - id: in_model
   doc: Model file (.h5)

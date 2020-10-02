@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agg_anno.cwl
+id: agg_anno.cwl
 inputs:
 - id: in_include
   doc: filters to apply eg. -i 'QUAL>=10 && DP<100000 && HWE<10'

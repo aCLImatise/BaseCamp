@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi2_interleave.cwl
+id: fermi2_interleave.cwl
 inputs:
 - id: in_fermi
   doc: ''

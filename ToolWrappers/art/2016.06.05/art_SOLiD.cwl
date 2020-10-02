@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../art_SOLiD.cwl
+id: art_SOLiD.cwl
 inputs:
 - id: in_read_type_amplicon
   doc: 'the read type for amplicon sequencing simulation (s:single-end, m: matepair,

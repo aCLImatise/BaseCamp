@@ -27,7 +27,7 @@ task FcOvlpFilterWithPhasepy {
       ~{if defined(strictness) then ("--strictness " +  '"' + strictness + '"') else ""}
   >>>
   parameter_meta {
-    rid_phase_map: ""
+    rid_phase_map: "[--strictness STRICTNESS]"
     n_core: "number of processes used for generating consensus\\n(default: 4)"
     fof_n: "file contains the path of all LAS file to be processed\\nin parallel (default: None)"
     db: "read db file path (default: None)"

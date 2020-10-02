@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blastn.cwl
+id: blastn.cwl
 inputs: []
 outputs:
 - id: out_stdout

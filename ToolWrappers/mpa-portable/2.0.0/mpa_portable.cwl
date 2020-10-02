@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mpa_portable.cwl
+id: mpa_portable.cwl
 inputs: []
 outputs:
 - id: out_stdout

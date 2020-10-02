@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hts_QWindowTrim.cwl
+id: hts_QWindowTrim.cwl
 inputs:
 - id: in__version_print
   doc: '[ --version ]                      Version print'

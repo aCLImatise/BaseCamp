@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../writedb_entry.cwl
+id: writedb_entry.cwl
 inputs:
 - id: in_flatten_gene_y
   doc: '[y|n] flatten the gene model, default is y'

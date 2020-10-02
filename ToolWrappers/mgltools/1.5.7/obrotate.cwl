@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obrotate.cwl
+id: obrotate.cwl
 inputs: []
 outputs:
 - id: out_stdout

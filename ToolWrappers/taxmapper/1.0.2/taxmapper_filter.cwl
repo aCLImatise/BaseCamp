@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxmapper_filter.cwl
+id: taxmapper_filter.cwl
 inputs:
 - id: in_tax
   doc: "Taxonomy mapping file (taxa.tsv if not specified\notherwise)."

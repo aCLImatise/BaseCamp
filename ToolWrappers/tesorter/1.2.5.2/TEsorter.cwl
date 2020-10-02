@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TEsorter.cwl
+id: TEsorter.cwl
 inputs:
 - id: in_hmm_database
   doc: the database used [default=rexdb]

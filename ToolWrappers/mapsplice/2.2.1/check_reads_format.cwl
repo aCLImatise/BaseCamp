@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../check_reads_format.cwl
+id: check_reads_format.cwl
 inputs: []
 outputs:
 - id: out_stdout

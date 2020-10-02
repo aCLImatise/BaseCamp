@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_subtractdbs.cwl
+id: mmseqs_subtractdbs.cwl
 inputs:
 - id: in_e_profile
   doc: 0.001           includes sequences matches with < e-value thr. into the profile

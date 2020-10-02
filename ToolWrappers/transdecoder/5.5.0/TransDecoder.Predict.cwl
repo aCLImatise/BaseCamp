@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TransDecoder.Predict.cwl
+id: TransDecoder.Predict.cwl
 inputs: []
 outputs:
 - id: out_stdout

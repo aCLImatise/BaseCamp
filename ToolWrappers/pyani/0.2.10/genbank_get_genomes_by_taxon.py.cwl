@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genbank_get_genomes_by_taxon.py.cwl
+id: genbank_get_genomes_by_taxon.py.cwl
 inputs:
 - id: in_outdir
   doc: Output directory (required)

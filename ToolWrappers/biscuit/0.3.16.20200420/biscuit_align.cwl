@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biscuit_align.cwl
+id: biscuit_align.cwl
 inputs:
 - id: in_number_of_threads
   doc: number of threads [1]

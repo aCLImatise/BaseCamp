@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_strip_identifier.cwl
+id: fasta_strip_identifier.cwl
 inputs: []
 outputs:
 - id: out_stdout

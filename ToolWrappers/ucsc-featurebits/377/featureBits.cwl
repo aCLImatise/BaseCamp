@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../featureBits.cwl
+id: featureBits.cwl
 inputs:
 - id: in_bed
   doc: Put intersection into bed format. Can use stdout.

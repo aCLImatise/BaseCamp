@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addVariants.py_output.cwl
+id: addVariants.py_output.cwl
 inputs:
 - id: in_v
   doc: ''

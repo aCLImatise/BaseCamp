@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../subChar.cwl
+id: subChar.cwl
 inputs:
 - id: in_old_char
   doc: ''

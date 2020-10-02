@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pauda_build.cwl
+id: pauda_build.cwl
 inputs:
 - id: in_references_fast_a
   doc: ''

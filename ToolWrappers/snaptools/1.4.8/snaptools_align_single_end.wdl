@@ -29,7 +29,7 @@ task SnaptoolsAlignsingleend {
       ~{if defined(overwrite) then ("--overwrite " +  '"' + overwrite + '"') else ""}
   >>>
   parameter_meta {
-    input_fast_q_one: ""
+    input_fast_q_one: "OUTPUT_BAM [--aligner ALIGNER]\\n[--path-to-aligner PATH_TO_ALIGNER]\\n[--aligner-options ALIGNER_OPTIONS [ALIGNER_OPTIONS ...]]\\n[--read-fastq-command READ_FASTQ_COMMAND]\\n[--num-threads NUM_THREADS]\\n[--min-cov MIN_COV] [--if-sort IF_SORT]\\n[--tmp-folder TMP_FOLDER]\\n[--overwrite OVERWRITE]"
     input_reference: "reference genome file contains the reference genome\\nthat reads are mapped against, the genome index must\\nbe under the same folder (default: None)"
     aligner: "aligner to use. Currently, snaptools supports bwa,\\nbowtie, bowtie2 and minimap2. (default: bwa)"
     path_to_aligner: "path to fold that contains bwa (default: None)"

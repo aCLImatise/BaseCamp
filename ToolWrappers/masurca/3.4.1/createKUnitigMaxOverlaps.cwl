@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../createKUnitigMaxOverlaps.cwl
+id: createKUnitigMaxOverlaps.cwl
 inputs:
 - id: in_km_er_value
   doc: to specify the k-mer size used when generating the k-unitigs.
@@ -12,7 +12,7 @@ inputs:
   inputBinding:
     prefix: -create-coords-file
 - id: in_largest_kuni_tig_number
-  doc: "(in this case the\nk-unitigs don't have to be in numeric order in the files.)\n"
+  doc: (in this case the
   type: long
   inputBinding:
     prefix: -largest-kunitig-number

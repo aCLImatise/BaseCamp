@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novobarcode.cwl
+id: novobarcode.cwl
 inputs:
 - id: in_specifies_tag_file
   doc: Specifies the bar code tag file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SelectSequencesFromMSA.cwl
+id: SelectSequencesFromMSA.cwl
 inputs:
 - id: in_input_clustal_path
   doc: Path to input clustal file

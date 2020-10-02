@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megagta_filterbylen.cwl
+id: megagta_filterbylen.cwl
 inputs:
 - id: in_cat
   doc: ''

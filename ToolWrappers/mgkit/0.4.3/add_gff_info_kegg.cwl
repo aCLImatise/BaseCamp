@@ -1,31 +1,14 @@
 class: CommandLineTool
-id: ../../../add_gff_info_kegg.cwl
+id: add_gff_info_kegg.cwl
 inputs:
 - id: in_verbose
-  doc: ''
+  doc: "-c, --email TEXT    Contact email  [required]\n-d, --description   Add Kegg\
+    \ description\n-p, --pathways      Add pathways ID involved\n-m, --kegg-id TEXT\
+    \  In which attribute the Kegg ID is stored (defaults to\n*gene_id*)\n--help \
+    \             Show this message and exit.\n"
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: in_email
-  doc: Contact email  [required]
-  type: string
-  inputBinding:
-    prefix: --email
-- id: in_description
-  doc: Add Kegg description
-  type: boolean
-  inputBinding:
-    prefix: --description
-- id: in_pathways
-  doc: Add pathways ID involved
-  type: boolean
-  inputBinding:
-    prefix: --pathways
-- id: in_kegg_id
-  doc: "In which attribute the Kegg ID is stored (defaults to\n*gene_id*)"
-  type: string
-  inputBinding:
-    prefix: --kegg-id
 - id: in_input_file
   doc: ''
   type: string

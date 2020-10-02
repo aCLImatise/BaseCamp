@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../protpars.cwl
+id: protpars.cwl
 inputs: []
 outputs:
 - id: out_stdout

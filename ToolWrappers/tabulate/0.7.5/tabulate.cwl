@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tabulate.cwl
+id: tabulate.cwl
 inputs:
 - id: in_header
   doc: use the first row of data as a table header

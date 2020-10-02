@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqtk_mergefa.cwl
+id: seqtk_mergefa.cwl
 inputs:
 - id: in_quality_threshold
   doc: quality threshold [0]

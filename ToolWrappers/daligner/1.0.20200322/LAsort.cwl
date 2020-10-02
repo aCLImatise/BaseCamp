@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LAsort.cwl
+id: LAsort.cwl
 inputs:
 - id: in_verbose_mode_output
   doc: ': Verbose mode, output statistics as proceed.'

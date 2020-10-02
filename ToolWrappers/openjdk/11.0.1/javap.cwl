@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../javap.cwl
+id: javap.cwl
 inputs:
 - id: in_version
   doc: Version information

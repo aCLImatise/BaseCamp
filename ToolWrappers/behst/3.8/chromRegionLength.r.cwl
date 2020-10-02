@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chromRegionLength.r.cwl
+id: chromRegionLength.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_propagation_preprocessing.py.cwl
+id: prophyle_propagation_preprocessing.py.cwl
 inputs:
 - id: in_rate_sampling_tree
   doc: rate of sampling the tree [no sampling]

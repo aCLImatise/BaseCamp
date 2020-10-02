@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wellington_footprints.py.cwl
+id: wellington_footprints.py.cwl
 inputs:
 - id: in_bonferroni
   doc: 'Performs a bonferroni correction (default: False)'

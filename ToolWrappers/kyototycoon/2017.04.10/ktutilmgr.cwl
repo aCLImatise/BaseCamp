@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktutilmgr.cwl
+id: ktutilmgr.cwl
 inputs:
 - id: in_uf
   doc: ''

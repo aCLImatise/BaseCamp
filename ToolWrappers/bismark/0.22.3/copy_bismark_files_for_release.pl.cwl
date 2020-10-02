@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../copy_bismark_files_for_release.pl.cwl
+id: copy_bismark_files_for_release.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

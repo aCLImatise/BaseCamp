@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../indelstat_sam_bam.cwl
+id: indelstat_sam_bam.cwl
 inputs: []
 outputs:
 - id: out_stdout

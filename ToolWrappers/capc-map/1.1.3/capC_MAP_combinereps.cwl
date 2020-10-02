@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../capC_MAP_combinereps.cwl
+id: capC_MAP_combinereps.cwl
 inputs:
 - id: in_configuration_file
   doc: configuration file

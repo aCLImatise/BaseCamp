@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kaiju2table.cwl
+id: kaiju2table.cwl
 inputs:
 - id: in_name_output_file
   doc: Name of output file.

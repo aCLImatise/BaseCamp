@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randomFQ.cwl
+id: randomFQ.cwl
 inputs: []
 outputs:
 - id: out_stdout

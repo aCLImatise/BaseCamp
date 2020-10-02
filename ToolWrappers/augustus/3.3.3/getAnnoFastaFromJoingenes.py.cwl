@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getAnnoFastaFromJoingenes.py.cwl
+id: getAnnoFastaFromJoingenes.py.cwl
 inputs:
 - id: in_genome
   doc: genome sequence file (FASTA-format)

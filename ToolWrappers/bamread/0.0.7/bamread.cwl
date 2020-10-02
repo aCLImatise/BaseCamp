@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamread.cwl
+id: bamread.cwl
 inputs: []
 outputs:
 - id: out_stdout

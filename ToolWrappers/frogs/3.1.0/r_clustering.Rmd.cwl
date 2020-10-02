@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../r_clustering.Rmd.cwl
+id: r_clustering.Rmd.cwl
 inputs: []
 outputs:
 - id: out_stdout

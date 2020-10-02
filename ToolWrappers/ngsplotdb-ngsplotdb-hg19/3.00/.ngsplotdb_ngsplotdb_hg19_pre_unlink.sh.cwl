@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.ngsplotdb_ngsplotdb_hg19_pre_unlink.sh.cwl
+id: .ngsplotdb_ngsplotdb_hg19_pre_unlink.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

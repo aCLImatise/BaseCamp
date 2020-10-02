@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scanMotifGenomeWide.pl.cwl
+id: scanMotifGenomeWide.pl.cwl
 inputs:
 - id: in_five_p
   doc: (report positions centered on the 5' start of the motif)

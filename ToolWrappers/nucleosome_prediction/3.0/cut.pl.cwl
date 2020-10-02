@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cut.pl.cwl
+id: cut.pl.cwl
 inputs:
 - id: in_quiet_mode_turn
   doc: ': Quiet mode: turn verbosity off (default verbose)'

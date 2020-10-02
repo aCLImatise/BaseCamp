@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gwh.cwl
+id: gwh.cwl
 inputs:
 - id: in_unit
   doc: '1 Error on OPEN: prmtop'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tadbit_map.cwl
+id: tadbit_map.cwl
 inputs:
 - id: in_skip_mapping
   doc: generate a Hi-C specific quality plot from FASTQ and exits

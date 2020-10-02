@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_store_table.cwl
+id: synapse_store_table.cwl
 inputs:
 - id: in_name
   doc: Name of Table

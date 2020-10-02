@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAcode.cwl
+id: RNAcode.cwl
 inputs:
 - id: in_outfile
   doc: '-o  Output file  (default: stdout)'

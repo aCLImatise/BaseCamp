@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getSequenceForClosedGaps.perl.cwl
+id: getSequenceForClosedGaps.perl.cwl
 inputs: []
 outputs:
 - id: out_stdout

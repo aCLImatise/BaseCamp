@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tximport.R.cwl
+id: tximport.R.cwl
 inputs:
 - id: in_files
   doc: Text file containing a list of filenames for the transcript-level abundances

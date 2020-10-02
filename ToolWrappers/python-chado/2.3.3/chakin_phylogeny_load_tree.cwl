@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_phylogeny_load_tree.cwl
+id: chakin_phylogeny_load_tree.cwl
 inputs:
 - id: in_name
   doc: "The name given to the phylotree entry in the database\n(default=<filename>)"

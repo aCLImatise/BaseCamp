@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mkarv.cwl
+id: mkarv.cwl
 inputs:
 - id: in_concurrency
   doc: "The number of concurrent processes to use (default:\n1). (default: 1)"

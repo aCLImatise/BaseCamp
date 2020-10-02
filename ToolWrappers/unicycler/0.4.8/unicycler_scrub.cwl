@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unicycler_scrub.cwl
+id: unicycler_scrub.cwl
 inputs:
 - id: in_input
   doc: "These are the reads or assembly to be scrubbed (can\nbe FASTA or FASTQ format"

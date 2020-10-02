@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicMergeMatrixBins.cwl
+id: hicMergeMatrixBins.cwl
 inputs:
 - id: in_num_bins
   doc: 'Number of bins to merge. (default: None)'

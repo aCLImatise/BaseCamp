@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_conservation_metrics.py.cwl
+id: extract_conservation_metrics.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

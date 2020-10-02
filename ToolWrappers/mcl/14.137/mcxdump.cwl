@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcxdump.cwl
+id: mcxdump.cwl
 inputs:
 - id: in_imx
   doc: read matrix from file <fname>

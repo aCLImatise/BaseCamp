@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_convert2fasta.cwl
+id: mmseqs_convert2fasta.cwl
 inputs:
 - id: in_use_header_file
   doc: false           use the ffindex header file instead of the body to map the

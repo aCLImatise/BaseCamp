@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_primersearch.cwl
+id: _primersearch.cwl
 inputs: []
 outputs:
 - id: out_stdout

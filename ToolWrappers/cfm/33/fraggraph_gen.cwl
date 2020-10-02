@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fraggraph_gen.cwl
+id: fraggraph_gen.cwl
 inputs:
 - id: in_smiles_or_inch_i_string
   doc: ''

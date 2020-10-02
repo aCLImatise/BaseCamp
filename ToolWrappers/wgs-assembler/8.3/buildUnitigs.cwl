@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../buildUnitigs.cwl
+id: buildUnitigs.cwl
 inputs:
 - id: in_mandatory_path_ovlstore
   doc: Mandatory path to an ovlStore.
@@ -96,16 +96,11 @@ inputs:
   type: string
   inputBinding:
     position: 6
-- id: in_mate_split_discontinuous
-  doc: mateSplitUnhappyContains
-  type: string
-  inputBinding:
-    position: 7
 - id: in_mate_split_coverage_plot
   doc: stderr
   type: string
   inputBinding:
-    position: 8
+    position: 7
 outputs:
 - id: out_stdout
   doc: Standard output stream

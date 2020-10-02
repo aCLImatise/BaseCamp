@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../count_table_fields.pl.cwl
+id: count_table_fields.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

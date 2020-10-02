@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scmap_index_cluster.R.cwl
+id: scmap_index_cluster.R.cwl
 inputs:
 - id: in_input_object_file
   doc: singleCellExperiment object containing expression values and experimental information.

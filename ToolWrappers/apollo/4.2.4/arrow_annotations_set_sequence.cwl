@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_annotations_set_sequence.cwl
+id: arrow_annotations_set_sequence.cwl
 inputs:
 - id: in_organism
   doc: ''

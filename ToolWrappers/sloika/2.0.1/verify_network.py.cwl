@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../verify_network.py.cwl
+id: verify_network.py.cwl
 inputs:
 - id: in_km_er
   doc: 'Length of kmer (default: 5)'

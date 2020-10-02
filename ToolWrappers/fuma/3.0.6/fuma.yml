@@ -1,108 +1,23 @@
 !Command
 command:
 - fuma
-positional:
-- !Positional
-  description: -g LONG_GENE_SIZE, --long-gene-size LONG_GENE_SIZE
-  position: 0
-  name: Output-format
-  optional: false
+positional: []
 named:
 - !Flag
-  description: show accepted dataset formats
-  synonyms:
-  - --formats
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "The used method to match two gene sets. Overlap\nmatches when two\
-    \ gene set have one or more genes\noverlapping. Subset matches when one gene set\
-    \ is a\nsubset of the other. EGM is exact gene matching; all\ngenes in both sets\
-    \ need to be identical to match."
+  description: ''
   synonyms:
   - -m
-  - --matching-method
   args: !ChoiceFlagArg
     choices: !!set
-      ? overlap
-      ? subset
-      ? egm
-  optional: true
-- !Flag
-  description: "Consider fusion genes distinct when the breakpoints\nhave different\
-    \ strands: (A<-,B<-) != (->A,B<-);\ndefault"
-  synonyms:
-  - --strand-specific-matching
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Consider fusion genes identical when the breakpoints\nhave different\
-    \ strands: (A<-,B<-) == (->A,B<-)"
-  synonyms:
-  - --no-strand-specific-matching
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Consider fusion genes distinct when the donor and\nacceptor sites\
-    \ are swapped: (A,B) != (B,A)"
-  synonyms:
-  - --acceptor-donor-order-specific-matching
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Consider fusion genes identical when the donor and\nacceptor sites\
-    \ are swapped: (A,B) == (B,A); default"
-  synonyms:
-  - --no-acceptor-donor-order-specific-matching
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: increase output verbosity
-  synonyms:
-  - --verbose
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "[ADD_GENE_ANNOTATION [ADD_GENE_ANNOTATION ...]], --add-gene-annotation\
-    \ [ADD_GENE_ANNOTATION [ADD_GENE_ANNOTATION ...]]\nannotation_alias:filename *\
-    \ file in BED format"
-  synonyms:
-  - -a
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "sample_alias:format:filename (available formats: fuma\n--formats)"
-  synonyms:
-  - -s
-  - --add-sample
-  args: !RepeatFlagArg
-    name: ADD_SAMPLE
-  optional: true
-- !Flag
-  description: "[LINK_SAMPLE_TO_ANNOTATION [LINK_SAMPLE_TO_ANNOTATION ...]], --link-sample-to-annotation\
-    \ [LINK_SAMPLE_TO_ANNOTATION [LINK_SAMPLE_TO_ANNOTATION ...]]\nsample_alias:annotation_alias"
-  synonyms:
-  - -l
-  args: !EmptyFlagArg {}
+      egm:
+      subset:
+      overlap:
   optional: true
 - !Flag
   description: ''
   synonyms:
-  - -f
-  - --format
-  args: !ChoiceFlagArg
-    choices: !!set
-      ? summary
-      ? list
-      ? extensive
-  optional: true
-- !Flag
-  description: output filename; '-' for stdout
-  synonyms:
-  - -o
-  - --output
-  args: !SimpleFlagArg
-    name: OUTPUT
+  - --formats
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: ''
@@ -114,20 +29,38 @@ parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  description: "show this help message and exit\n-V, --version         show program's\
+    \ version number and exit\n--formats             show accepted dataset formats\n\
+    -m {overlap,subset,egm}, --matching-method {overlap,subset,egm}\nThe used method\
+    \ to match two gene sets. Overlap\nmatches when two gene set have one or more\
+    \ genes\noverlapping. Subset matches when one gene set is a\nsubset of the other.\
+    \ EGM is exact gene matching; all\ngenes in both sets need to be identical to\
+    \ match.\n--strand-specific-matching\nConsider fusion genes distinct when the\
+    \ breakpoints\nhave different strands: (A<-,B<-) != (->A,B<-);\ndefault\n--no-strand-specific-matching\n\
+    Consider fusion genes identical when the breakpoints\nhave different strands:\
+    \ (A<-,B<-) == (->A,B<-)\n--acceptor-donor-order-specific-matching\nConsider fusion\
+    \ genes distinct when the donor and\nacceptor sites are swapped: (A,B) != (B,A)\n\
+    --no-acceptor-donor-order-specific-matching\nConsider fusion genes identical when\
+    \ the donor and\nacceptor sites are swapped: (A,B) == (B,A); default\n--verbose\
+    \             increase output verbosity\n-a [ADD_GENE_ANNOTATION [ADD_GENE_ANNOTATION\
+    \ ...]], --add-gene-annotation [ADD_GENE_ANNOTATION [ADD_GENE_ANNOTATION ...]]\n\
+    annotation_alias:filename * file in BED format\n-s ADD_SAMPLE [ADD_SAMPLE ...],\
+    \ --add-sample ADD_SAMPLE [ADD_SAMPLE ...]\nsample_alias:format:filename (available\
+    \ formats: fuma\n--formats)\n-l [LINK_SAMPLE_TO_ANNOTATION [LINK_SAMPLE_TO_ANNOTATION\
+    \ ...]], --link-sample-to-annotation [LINK_SAMPLE_TO_ANNOTATION [LINK_SAMPLE_TO_ANNOTATION\
+    \ ...]]\nsample_alias:annotation_alias\n-f {summary,list,extensive}, --format\
+    \ {summary,list,extensive}\nOutput-format\n-g LONG_GENE_SIZE, --long-gene-size\
+    \ LONG_GENE_SIZE\nGene-name based matching is more sensitive to long\ngenes. This\
+    \ is the gene size used to mark fusion genes\nspanning a 'long gene' as reported\
+    \ the output. Use 0\nto disable this feature.\n-o OUTPUT, --output OUTPUT\noutput\
+    \ filename; '-' for stdout"
   synonyms:
   - -h
   - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag: !Flag
-  description: show program's version number and exit
-  synonyms:
-  - -V
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "usage: fuma [-h] [-V] [--formats] [-m {overlap,subset,egm}]\n        \
   \    [--strand-specific-matching] [--no-strand-specific-matching]\n            [--acceptor-donor-order-specific-matching]\n\
   \            [--no-acceptor-donor-order-specific-matching] [--verbose]\n       \

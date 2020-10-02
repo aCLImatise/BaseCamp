@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkUTR.cwl
+id: checkUTR.cwl
 inputs: []
 outputs:
 - id: out_stdout

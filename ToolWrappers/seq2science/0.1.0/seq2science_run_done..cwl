@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq2science_run_done..cwl
+id: seq2science_run_done..cwl
 inputs:
 - id: in_unlock
   doc: ''

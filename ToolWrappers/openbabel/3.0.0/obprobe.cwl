@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obprobe.cwl
+id: obprobe.cwl
 inputs:
 - id: in_step_size
   doc: step size

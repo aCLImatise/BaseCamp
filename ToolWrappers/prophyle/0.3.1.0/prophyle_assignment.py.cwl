@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_assignment.py.cwl
+id: prophyle_assignment.py.cwl
 inputs:
 - id: in_format_of_output
   doc: format of output [sam]

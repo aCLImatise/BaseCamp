@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xml2tbl.cwl
+id: xml2tbl.cwl
 inputs: []
 outputs:
 - id: out_stdout

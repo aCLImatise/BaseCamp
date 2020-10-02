@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AssayGeneratorMetabo.cwl
+id: AssayGeneratorMetabo.cwl
 inputs:
 - id: in_executable
   doc: SIRIUS executable e.g. sirius

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_filter_by_locus_distance.pl.cwl
+id: agat_sp_filter_by_locus_distance.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GTF/GFF file.

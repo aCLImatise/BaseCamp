@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_ClusterMotifs.cwl
+id: TOBIAS_ClusterMotifs.cwl
 inputs:
 - id: in_one_more_motif
   doc: '[ [ ...]], --motifs [ [ ...]]      One or more motif files to compare and

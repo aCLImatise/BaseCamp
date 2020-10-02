@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halLiftover.cwl
+id: halLiftover.cwl
 inputs:
 - id: in_append
   doc: ':                     append results to tgtBed [default = 0]'

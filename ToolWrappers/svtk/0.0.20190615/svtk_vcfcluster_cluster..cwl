@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtk_vcfcluster_cluster..cwl
+id: svtk_vcfcluster_cluster..cwl
 inputs:
 - id: in_x
   doc: ''

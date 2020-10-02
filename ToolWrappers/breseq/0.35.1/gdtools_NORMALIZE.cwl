@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_NORMALIZE.cwl
+id: gdtools_NORMALIZE.cwl
 inputs:
 - id: in_verbose
   doc: verbose mode (flag)

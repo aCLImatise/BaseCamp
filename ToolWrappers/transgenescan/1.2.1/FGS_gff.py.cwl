@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FGS_gff.py.cwl
+id: FGS_gff.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

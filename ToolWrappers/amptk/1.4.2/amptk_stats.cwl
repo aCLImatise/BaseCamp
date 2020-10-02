@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_stats.cwl
+id: amptk_stats.cwl
 inputs:
 - id: in_biom
   doc: Input BIOM file with taxonomy and metadata (Required)

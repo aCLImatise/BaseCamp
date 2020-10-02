@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chartex.cwl
+id: chartex.cwl
 inputs:
 - id: in_man
   doc: "Prints the manual page and exits.\n"

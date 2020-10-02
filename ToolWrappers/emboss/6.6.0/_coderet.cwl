@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_coderet.cwl
+id: _coderet.cwl
 inputs: []
 outputs:
 - id: out_stdout

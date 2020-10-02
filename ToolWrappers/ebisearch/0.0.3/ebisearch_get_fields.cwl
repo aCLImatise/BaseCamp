@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ebisearch_get_fields.cwl
+id: ebisearch_get_fields.cwl
 inputs:
 - id: in_domain
   doc: "Domain id in EBI (accessible with\nget_domains)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kc_align.cwl
+id: kc_align.cwl
 inputs:
 - id: in_reference
   doc: Reference sequence

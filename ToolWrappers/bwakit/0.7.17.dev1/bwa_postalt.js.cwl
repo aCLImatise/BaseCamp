@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwa_postalt.js.cwl
+id: bwa_postalt.js.cwl
 inputs:
 - id: in_use_strict
   doc: "(enforce strict mode)\ntype: bool  default: false"

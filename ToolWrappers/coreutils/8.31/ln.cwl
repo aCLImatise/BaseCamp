@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ln.cwl
+id: ln.cwl
 inputs:
 - id: in_backup
   doc: '[=CONTROL]      make a backup of each existing destination file'

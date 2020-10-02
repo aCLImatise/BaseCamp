@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../echoscu.cwl
+id: echoscu.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments

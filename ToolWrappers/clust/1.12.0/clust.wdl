@@ -23,11 +23,11 @@ task Clust {
     Boolean? no_optimisation
     Boolean? deterministic
     Int? np
-    Int? file_or_int
+    String data_path
   }
   command <<<
     clust \
-      ~{file_or_int} \
+      ~{data_path} \
       ~{if defined(normalisation_file_list) then ("-n " +  '"' + normalisation_file_list + '"') else ""} \
       ~{if defined(replicates_structure_file) then ("-r " +  '"' + replicates_structure_file + '"') else ""} \
       ~{if defined(orthogroups_ogs_mapping) then ("-m " +  '"' + orthogroups_ogs_mapping + '"') else ""} \
@@ -72,7 +72,7 @@ task Clust {
     no_optimisation: "Skip cluster optimsation & completion"
     deterministic: "Obsolete. All steps are already deterministic (v1.7.4+)"
     np: "Obsolete. Number of parallel processes (default: 1)"
-    file_or_int: ""
+    data_path: "Data file path or directory with data file(s)."
   }
   output {
     File out_stdout = stdout()

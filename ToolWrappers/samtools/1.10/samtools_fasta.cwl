@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_fasta.cwl
+id: samtools_fasta.cwl
 inputs:
 - id: in_write_reads_designated_readother
   doc: write reads designated READ_OTHER to FILE

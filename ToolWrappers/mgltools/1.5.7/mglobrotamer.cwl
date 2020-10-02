@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglobrotamer.cwl
+id: mglobrotamer.cwl
 inputs: []
 outputs:
 - id: out_stdout

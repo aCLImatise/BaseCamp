@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_gtf_add_transcripts.cwl
+id: rgt_tools.py_gtf_add_transcripts.cwl
 inputs:
 - id: in_input_gtf_file
   doc: Input GTF file

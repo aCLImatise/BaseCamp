@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BaseDataAccess.dll.config.cwl
+id: BaseDataAccess.dll.config.cwl
 inputs: []
 outputs:
 - id: out_stdout

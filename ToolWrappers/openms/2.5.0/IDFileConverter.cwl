@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IDFileConverter.cwl
+id: IDFileConverter.cwl
 inputs:
 - id: in_in
   doc: "*           Input file or directory containing the data to convert. This may\

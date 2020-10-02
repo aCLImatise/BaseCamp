@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../banner_subcommand.cwl
+id: banner_subcommand.cwl
 inputs:
 - id: in_train
   doc: Train takes a banner-matrix file from hulk and uses it to train a Random Forest

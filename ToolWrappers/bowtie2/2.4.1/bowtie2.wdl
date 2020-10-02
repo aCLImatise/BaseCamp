@@ -18,14 +18,9 @@ task Bowtie2 {
     Boolean? phred_three_three
     Boolean? phred_six_four
     Boolean? int_quals
-    Boolean? very_fast
-    Boolean? fast
-    Boolean? sensitive
-    Boolean? very_sensitive
-    Boolean? very_fast_local
-    Boolean? fast_local
-    Boolean? sensitive_local
-    Int? very_sensitive_local
+    Int? max_mismatches_seed
+    Int? length_seed_substrings
+    Float? interval_seed_substrings
     Int? n_ceil
     Int? d_pad
     Int? g_bar
@@ -40,6 +35,8 @@ task Bowtie2 {
     Int? rdg
     Int? rfg
     Int? score_min
+    Int? give_extending_failed
+    Int? reads_repetitive_seeds
     Int? i_slash_mini_ns
     Int? x_slash_max_ins
     Boolean? fr_slash_rf_slash_ff
@@ -77,13 +74,13 @@ task Bowtie2 {
     Boolean? h_slash_help
     String could
     String note
-    String var_75
+    String var_72
     Int bt_two_idx
-    String i
+    String var_74
     Int m_one
     Int m_two
-    String var_80
-    String var_81
+    String var_77
+    String var_78
     String specified
     File file
     String files
@@ -97,12 +94,12 @@ task Bowtie2 {
     String times_dot
     String with
     String e_dot_gdot
-    String var_95
+    String var_92
     String interleaved
     String prefix
     String unaligned
     String unpaired
-    String var_100
+    String var_97
     String var_output
     String paired_end
     String reads_dot
@@ -116,13 +113,13 @@ task Bowtie2 {
     bowtie2 \
       ~{could} \
       ~{note} \
-      ~{var_75} \
+      ~{var_72} \
       ~{bt_two_idx} \
-      ~{i} \
+      ~{var_74} \
       ~{m_one} \
       ~{m_two} \
-      ~{var_80} \
-      ~{var_81} \
+      ~{var_77} \
+      ~{var_78} \
       ~{specified} \
       ~{file} \
       ~{files} \
@@ -136,12 +133,12 @@ task Bowtie2 {
       ~{times_dot} \
       ~{with} \
       ~{e_dot_gdot} \
-      ~{var_95} \
+      ~{var_92} \
       ~{interleaved} \
       ~{prefix} \
       ~{unaligned} \
       ~{unpaired} \
-      ~{var_100} \
+      ~{var_97} \
       ~{var_output} \
       ~{paired_end} \
       ~{reads_dot} \
@@ -166,14 +163,9 @@ task Bowtie2 {
       ~{if (phred_three_three) then "--phred33" else ""} \
       ~{if (phred_six_four) then "--phred64" else ""} \
       ~{if (int_quals) then "--int-quals" else ""} \
-      ~{if (very_fast) then "--very-fast" else ""} \
-      ~{if (fast) then "--fast" else ""} \
-      ~{if (sensitive) then "--sensitive" else ""} \
-      ~{if (very_sensitive) then "--very-sensitive" else ""} \
-      ~{if (very_fast_local) then "--very-fast-local" else ""} \
-      ~{if (fast_local) then "--fast-local" else ""} \
-      ~{if (sensitive_local) then "--sensitive-local" else ""} \
-      ~{if defined(very_sensitive_local) then ("--very-sensitive-local " +  '"' + very_sensitive_local + '"') else ""} \
+      ~{if defined(max_mismatches_seed) then ("-N " +  '"' + max_mismatches_seed + '"') else ""} \
+      ~{if defined(length_seed_substrings) then ("-L " +  '"' + length_seed_substrings + '"') else ""} \
+      ~{if defined(interval_seed_substrings) then ("-i " +  '"' + interval_seed_substrings + '"') else ""} \
       ~{if defined(n_ceil) then ("--n-ceil " +  '"' + n_ceil + '"') else ""} \
       ~{if defined(d_pad) then ("--dpad " +  '"' + d_pad + '"') else ""} \
       ~{if defined(g_bar) then ("--gbar " +  '"' + g_bar + '"') else ""} \
@@ -188,6 +180,8 @@ task Bowtie2 {
       ~{if defined(rdg) then ("--rdg " +  '"' + rdg + '"') else ""} \
       ~{if defined(rfg) then ("--rfg " +  '"' + rfg + '"') else ""} \
       ~{if defined(score_min) then ("--score-min " +  '"' + score_min + '"') else ""} \
+      ~{if defined(give_extending_failed) then ("-D " +  '"' + give_extending_failed + '"') else ""} \
+      ~{if defined(reads_repetitive_seeds) then ("-R " +  '"' + reads_repetitive_seeds + '"') else ""} \
       ~{if defined(i_slash_mini_ns) then ("-I/--minins " +  '"' + i_slash_mini_ns + '"') else ""} \
       ~{if defined(x_slash_max_ins) then ("-X/--maxins " +  '"' + x_slash_max_ins + '"') else ""} \
       ~{if (fr_slash_rf_slash_ff) then "--fr/--rf/--ff" else ""} \
@@ -241,14 +235,9 @@ task Bowtie2 {
     phred_three_three: "qualities are Phred+33 (default)"
     phred_six_four: "qualities are Phred+64"
     int_quals: "qualities encoded as space-delimited integers"
-    very_fast: "-D 5 -R 1 -N 0 -L 22 -i S,0,2.50"
-    fast: "-D 10 -R 2 -N 0 -L 22 -i S,0,2.50"
-    sensitive: "-D 15 -R 2 -N 0 -L 22 -i S,1,1.15 (default)"
-    very_sensitive: "-D 20 -R 3 -N 0 -L 20 -i S,1,0.50"
-    very_fast_local: "-D 5 -R 1 -N 0 -L 25 -i S,1,2.00"
-    fast_local: "-D 10 -R 2 -N 0 -L 22 -i S,1,1.75"
-    sensitive_local: "-D 15 -R 2 -N 0 -L 20 -i S,1,0.75 (default)"
-    very_sensitive_local: ",1,0.50"
+    max_mismatches_seed: "max # mismatches in seed alignment; can be 0 or 1 (0)"
+    length_seed_substrings: "length of seed substrings; must be >3, <32 (22)"
+    interval_seed_substrings: "interval between seed substrings w/r/t read len (S,1,1.15)"
     n_ceil: "func for max # non-A/C/G/Ts permitted in aln (L,0,0.15)"
     d_pad: "include <int> extra ref chars on sides of DP table (15)"
     g_bar: "disallow gaps within <int> nucs of read extremes (4)"
@@ -263,6 +252,8 @@ task Bowtie2 {
     rdg: ",<int>  read gap open, extend penalties (5,3)"
     rfg: ",<int>  reference gap open, extend penalties (5,3)"
     score_min: "min acceptable alignment score w/r/t read length\\n(G,20,8 for local, L,-0.6,-0.6 for end-to-end)"
+    give_extending_failed: "give up extending after <int> failed extends in a row (15)"
+    reads_repetitive_seeds: "for reads w/ repetitive seeds, try <int> sets of seeds (2)"
     i_slash_mini_ns: "minimum fragment length (0)"
     x_slash_max_ins: "maximum fragment length (500)"
     fr_slash_rf_slash_ff: "-1, -2 mates align fw/rev, rev/fw, fw/fw (--fr)"
@@ -300,13 +291,13 @@ task Bowtie2 {
     h_slash_help: "print this usage message"
     could: ""
     note: ""
-    var_75: ""
+    var_72: ""
     bt_two_idx: ""
-    i: ""
+    var_74: ""
     m_one: ""
     m_two: ""
-    var_80: ""
-    var_81: ""
+    var_77: ""
+    var_78: ""
     specified: ""
     file: ""
     files: ""
@@ -320,12 +311,12 @@ task Bowtie2 {
     times_dot: ""
     with: ""
     e_dot_gdot: ""
-    var_95: ""
+    var_92: ""
     interleaved: ""
     prefix: ""
     unaligned: ""
     unpaired: ""
-    var_100: ""
+    var_97: ""
     var_output: ""
     paired_end: ""
     reads_dot: ""

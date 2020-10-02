@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hapmapConverter.cwl
+id: hapmapConverter.cwl
 inputs: []
 outputs:
 - id: out_stdout

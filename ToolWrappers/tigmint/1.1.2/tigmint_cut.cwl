@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tigmint_cut.cwl
+id: tigmint_cut.cwl
 inputs:
 - id: in_fast_a_out
   doc: The output FASTA file.

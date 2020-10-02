@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../align.cwl
+id: align.cwl
 inputs:
 - id: in_m
   doc: ''

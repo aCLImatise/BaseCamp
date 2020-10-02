@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_feature_load_fasta.cwl
+id: chakin_feature_load_fasta.cwl
 inputs:
 - id: in_sequence_type
   doc: 'Sequence type  [default: contig]'

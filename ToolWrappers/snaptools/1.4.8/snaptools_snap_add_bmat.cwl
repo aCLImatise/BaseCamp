@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snaptools_snap_add_bmat.cwl
+id: snaptools_snap_add_bmat.cwl
 inputs:
 - id: in_snap_file
   doc: 'snap file. (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../asmToAGP.pl.cwl
+id: asmToAGP.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

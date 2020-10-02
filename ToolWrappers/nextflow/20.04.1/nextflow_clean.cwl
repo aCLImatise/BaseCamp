@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nextflow_clean.cwl
+id: nextflow_clean.cwl
 inputs:
 - id: in_after
   doc: Clean up runs executed after the specified one

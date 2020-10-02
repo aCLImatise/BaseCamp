@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../primer3_core.cwl
+id: primer3_core.cwl
 inputs:
 - id: in_format_output
   doc: ''

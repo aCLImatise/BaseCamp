@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_organism_delete_all_organisms.cwl
+id: chakin_organism_delete_all_organisms.cwl
 inputs:
 - id: in_confirm
   doc: Confirm that you really do want to delete ALL of the organisms.

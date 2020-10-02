@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtools_bedpetobed12.cwl
+id: svtools_bedpetobed12.cwl
 inputs:
 - id: in_input
   doc: BEDPE input file

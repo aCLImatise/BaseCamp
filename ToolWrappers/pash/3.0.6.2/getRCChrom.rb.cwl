@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getRCChrom.rb.cwl
+id: getRCChrom.rb.cwl
 inputs: []
 outputs:
 - id: out_stdout

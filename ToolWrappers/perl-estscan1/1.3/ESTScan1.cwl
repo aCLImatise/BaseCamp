@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ESTScan1.cwl
+id: ESTScan1.cwl
 inputs: []
 outputs:
 - id: out_stdout

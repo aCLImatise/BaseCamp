@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf_strip_extra_headers.cwl
+id: vcf_strip_extra_headers.cwl
 inputs: []
 outputs:
 - id: out_stdout

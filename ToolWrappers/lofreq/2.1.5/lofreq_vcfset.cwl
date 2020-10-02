@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lofreq_vcfset.cwl
+id: lofreq_vcfset.cwl
 inputs:
 - id: in__vcf_file_st
   doc: '| --vcf1 FILE      1st VCF input file (bgzip supported)'

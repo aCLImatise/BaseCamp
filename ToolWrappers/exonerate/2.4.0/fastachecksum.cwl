@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../fastachecksum.cwl
-inputs:
-- id: in_help
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --help
-- id: in_fast_a
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --fasta
+id: fastachecksum.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

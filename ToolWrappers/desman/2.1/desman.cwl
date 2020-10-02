@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../desman.cwl
+id: desman.cwl
 inputs:
 - id: in_genomes
   doc: specify the haplotype number

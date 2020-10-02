@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_fasta.py.cwl
+id: split_fasta.py.cwl
 inputs:
 - id: in_script
   doc: ''

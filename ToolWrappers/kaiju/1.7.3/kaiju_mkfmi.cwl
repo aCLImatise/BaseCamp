@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kaiju_mkfmi.cwl
+id: kaiju_mkfmi.cwl
 inputs:
 - id: in_remove_cmd
   doc: "(string)\nCommand for deleting .bwt and .sa files (e.g. rm)\nValue:  NULL\

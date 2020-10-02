@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergePolishes.cwl
+id: mergePolishes.cwl
 inputs:
 - id: in_m
   doc: ''

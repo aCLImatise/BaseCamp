@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mendelscan_sibd.cwl
+id: mendelscan_sibd.cwl
 inputs:
 - id: in_ped_file
   doc: Pedigree file in 6-column tab-delimited format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cent_adjust.cwl
+id: cent_adjust.cwl
 inputs:
 - id: in_input_center
   doc: ''

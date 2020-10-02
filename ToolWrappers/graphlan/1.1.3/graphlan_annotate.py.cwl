@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graphlan_annotate.py.cwl
+id: graphlan_annotate.py.cwl
 inputs:
 - id: in_an_not
   doc: specify the annotation file

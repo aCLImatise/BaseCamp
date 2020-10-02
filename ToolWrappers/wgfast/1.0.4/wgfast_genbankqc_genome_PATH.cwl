@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wgfast_genbankqc_genome_PATH.cwl
+id: wgfast_genbankqc_genome_PATH.cwl
 inputs:
 - id: in_metadata
   doc: Get metadata for genome at PATH

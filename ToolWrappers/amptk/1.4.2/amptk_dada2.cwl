@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_dada2.cwl
+id: amptk_dada2.cwl
 inputs:
 - id: in_fast_q
   doc: Input FASTQ file (Required)

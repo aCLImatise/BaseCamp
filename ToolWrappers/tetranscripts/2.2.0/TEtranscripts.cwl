@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TEtranscripts.cwl
+id: TEtranscripts.cwl
 inputs:
 - id: in_te
   doc: '[--format [input file format]]'
@@ -99,11 +99,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: in_sort_by_pos
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --sortByPos
 - id: in_analysis_dot
   doc: -n [normalization], --norm [normalization]
   type: string

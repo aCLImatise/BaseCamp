@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.group_humann2_uniref_abundances_to_go_post_link.sh.cwl
+id: .group_humann2_uniref_abundances_to_go_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

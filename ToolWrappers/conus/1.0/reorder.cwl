@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reorder.cwl
+id: reorder.cwl
 inputs:
 - id: in_req_number_reorder
   doc: ': (req) number of suboptimals to reorder'

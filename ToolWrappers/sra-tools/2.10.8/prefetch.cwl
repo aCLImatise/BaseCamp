@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prefetch.cwl
+id: prefetch.cwl
 inputs:
 - id: in_type
   doc: 'Specify file type to download. Default: sra'

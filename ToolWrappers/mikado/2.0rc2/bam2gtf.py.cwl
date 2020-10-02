@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2gtf.py.cwl
+id: bam2gtf.py.cwl
 inputs:
 - id: in_script
   doc: ''

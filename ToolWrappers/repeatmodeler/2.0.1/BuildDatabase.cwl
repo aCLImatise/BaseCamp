@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: ../../../BuildDatabase.cwl
+id: BuildDatabase.cwl
 inputs:
-- id: in_dir
-  doc: "<dir containing fasta files *.fa, *.fasta,\n*.fast, *.FA, *.FASTA, *.FAST,\
-    \ *.dna,\nand  *.DNA >"
-  type: boolean
-  inputBinding:
-    prefix: -dir
-- id: in_batch
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -batch
 - id: in_name
   doc: The name of the database to create.
   type: string
@@ -22,6 +11,18 @@ inputs:
   type: string
   inputBinding:
     prefix: -engine
+- id: in_dir
+  doc: "The name of a directory containing fasta files to be processed. The\nfiles\
+    \ are recognized by their suffix. Only *.fa and *.fasta files\nare processed."
+  type: Directory
+  inputBinding:
+    prefix: -dir
+- id: in_batch
+  doc: "The name of a file which contains the names of fasta files to\nprocess. The\
+    \ files names are listed one per line and should be fully\nqualified."
+  type: File
+  inputBinding:
+    prefix: -batch
 - id: in_line_dot
   doc: '- Providing the name of a directory containing FASTA files '
   type: string

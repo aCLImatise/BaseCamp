@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mpi_evaluator.cwl
+id: mpi_evaluator.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_adapter_clipper_input_fastq.cwl
+id: mb_adapter_clipper_input_fastq.cwl
 inputs:
 - id: in_min_len
   doc: ''

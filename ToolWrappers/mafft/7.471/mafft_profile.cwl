@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafft_profile.cwl
+id: mafft_profile.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../diamond.cwl
+id: diamond.cwl
 inputs:
 - id: in_threads
   doc: (-p)           number of CPU threads

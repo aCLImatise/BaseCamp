@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_alirev_msafile.cwl
+id: esl_alirev_msafile.cwl
 inputs:
 - id: in_options
   doc: ''

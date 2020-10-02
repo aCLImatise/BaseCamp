@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mimodd_varcall.cwl
+id: mimodd_varcall.cwl
 inputs:
 - id: in_index_files
   doc: "FILE [INDEX FILE ...]\npre-computed index files for all input files"

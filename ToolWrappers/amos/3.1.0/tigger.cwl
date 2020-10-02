@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tigger.cwl
+id: tigger.cwl
 inputs:
 - id: in_write_contig_graphs
   doc: Write contig graphs as dot files (fullgraph.dot and Contig-*.dot)

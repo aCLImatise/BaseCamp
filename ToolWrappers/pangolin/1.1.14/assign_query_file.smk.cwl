@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assign_query_file.smk.cwl
+id: assign_query_file.smk.cwl
 inputs: []
 outputs:
 - id: out_stdout

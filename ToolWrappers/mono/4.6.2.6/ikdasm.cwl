@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ikdasm.cwl
+id: ikdasm.cwl
 inputs:
 - id: in_out
   doc: Direct output to file rather than stdout

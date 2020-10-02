@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_condense.cwl
+id: nw_condense.cwl
 inputs:
 - id: in_uses_group_map
   doc: ": uses a group map. This is a text file that lists one\nlabel and one group\

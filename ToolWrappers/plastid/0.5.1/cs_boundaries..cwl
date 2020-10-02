@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cs_boundaries..cwl
+id: cs_boundaries..cwl
 inputs:
 - id: in_cs
   doc: ''

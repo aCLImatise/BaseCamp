@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kssd_dist.cwl
+id: kssd_dist.cwl
 inputs:
 - id: in_by_read
   doc: sketch the file by read[false].

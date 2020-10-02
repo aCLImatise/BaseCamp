@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_analysis.py_genome.cwl
+id: read_analysis.py_genome.cwl
 inputs:
 - id: in_read
   doc: Input read for training

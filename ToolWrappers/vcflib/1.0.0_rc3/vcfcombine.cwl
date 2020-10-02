@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfcombine.cwl
+id: vcfcombine.cwl
 inputs:
 - id: in_region
   doc: A region specifier of the form chrN:x-y to bound the merge

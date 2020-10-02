@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treeass.cwl
+id: treeass.cwl
 inputs: []
 outputs:
 - id: out_stdout

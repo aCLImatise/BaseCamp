@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bel_resources.cwl
+id: bel_resources.cwl
 inputs: []
 outputs:
 - id: out_stdout

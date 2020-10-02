@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getFCSheaders.py.cwl
+id: getFCSheaders.py.cwl
 inputs:
 - id: in_file_location_text
   doc: File location for the text files.

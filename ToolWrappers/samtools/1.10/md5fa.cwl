@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../md5fa.cwl
+id: md5fa.cwl
 inputs: []
 outputs:
 - id: out_stdout

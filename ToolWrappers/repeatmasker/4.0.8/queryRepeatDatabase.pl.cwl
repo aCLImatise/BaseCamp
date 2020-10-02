@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../queryRepeatDatabase.pl.cwl
+id: queryRepeatDatabase.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

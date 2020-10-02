@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ebi_metagenomics_download_run_data.cwl
+id: ebi_metagenomics_download_run_data.cwl
 inputs:
 - id: in_run
   doc: Id of a run in EBI metagenomics

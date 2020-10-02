@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../random_forest_regressor.cwl
+id: random_forest_regressor.cwl
 inputs:
 - id: in_config
   doc: Configuration file

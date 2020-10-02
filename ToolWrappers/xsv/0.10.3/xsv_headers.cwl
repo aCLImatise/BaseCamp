@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_headers.cwl
+id: xsv_headers.cwl
 inputs:
 - id: in_just_names
   doc: "Only show the header names (hide column index).\nThis is automatically enabled\

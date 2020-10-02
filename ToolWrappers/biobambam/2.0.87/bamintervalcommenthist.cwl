@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamintervalcommenthist.cwl
+id: bamintervalcommenthist.cwl
 inputs: []
 outputs:
 - id: out_stdout

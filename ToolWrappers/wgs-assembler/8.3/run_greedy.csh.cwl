@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_greedy.csh.cwl
+id: run_greedy.csh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbsTrain.cwl
+id: pbsTrain.cwl
 inputs:
 - id: in_suff_stats
   doc: Output is a code file that can be used with
@@ -48,31 +48,21 @@ inputs:
   type: long
   inputBinding:
     position: 0
-- id: in_one_seven_zero_zero_eight_five
-  doc: 0.043485        0.797886        0.029534        0.129096
-  type: long
-  inputBinding:
-    position: 0
 - id: in_one_five_eight_zero_zero_six
   doc: 0.191119        0.046081        0.695205        0.067595
   type: long
   inputBinding:
-    position: 1
+    position: 0
 - id: in_two_two_one_nine_three_seven
   doc: 0.047309        0.122834        0.043852        0.786004
   type: long
   inputBinding:
-    position: 2
-- id: in_two_two_one_five_eight_five
-  doc: 0.781156        0.044520        0.126179        0.048146
-  type: long
-  inputBinding:
-    position: 3
+    position: 1
 - id: in_one_five_nine_four_seven_two
   doc: 0.067254        0.697947        0.045959        0.188840
   type: long
   inputBinding:
-    position: 4
+    position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream

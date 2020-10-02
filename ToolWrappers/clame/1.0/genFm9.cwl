@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genFm9.cwl
+id: genFm9.cwl
 inputs:
 - id: in_fast_q
   doc: file is in a fastq format

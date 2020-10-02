@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqtk_cutN.cwl
+id: seqtk_cutN.cwl
 inputs:
 - id: in_min_size_n
   doc: min size of N tract [1000]

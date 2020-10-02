@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ttest_single_group.py.cwl
+id: ttest_single_group.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

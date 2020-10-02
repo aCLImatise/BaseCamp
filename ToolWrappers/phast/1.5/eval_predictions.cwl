@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eval_predictions.cwl
+id: eval_predictions.cwl
 inputs:
 - id: in_l
   doc: '[OPTIONS]'

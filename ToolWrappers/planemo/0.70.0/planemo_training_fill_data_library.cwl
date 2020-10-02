@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_training_fill_data_library.cwl
+id: planemo_training_fill_data_library.cwl
 inputs:
 - id: in_topic_name
   doc: "Name (directory name) of the topic to create or in\nwhich a tutorial should\

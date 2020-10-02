@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_add_exon_nb.cwl
+id: gtftk_add_exon_nb.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the GTF file. Default to STDIN (default: <stdin>)'

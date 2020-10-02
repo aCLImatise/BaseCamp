@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jgoslin.cwl
+id: jgoslin.cwl
 inputs:
 - id: in_grammar
   doc: "Use the provided grammar explicitly instead of all\ngrammars. Options are:\

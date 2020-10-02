@@ -13,7 +13,7 @@ task FastqutilsConvert {
       ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    verbose: ""
+    verbose: "--help         Show this message and exit.\\n"
     fast_q_file: ""
     fast_a_file: ""
   }

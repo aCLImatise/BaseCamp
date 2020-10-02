@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../protein_prophet.rb.cwl
+id: protein_prophet.rb.cwl
 inputs:
 - id: in_output_prefix
   doc: A string to prepend to the name of output files

@@ -1,46 +1,16 @@
 class: CommandLineTool
-id: ../../../pybel_compile.cwl
+id: pybel_compile.cwl
 inputs:
 - id: in_allow_naked_names
-  doc: Enable lenient parsing for naked names
+  doc: "Enable lenient parsing for naked names\n--allow-nested                  Enable\
+    \ lenient parsing for nested statements\n--disallow-unqualified-translocations\n\
+    Disallow unqualified translocations\n--no-identifier-validation      Turn off\
+    \ identifier validation\n--no-citation-clearing          Turn off citation clearing\n\
+    -r, --required-annotations TEXT\nSpecify multiple required annotations\n--skip-tqdm\n\
+    -v, --verbose\n--help                          Show this message and exit.\n"
   type: boolean
   inputBinding:
     prefix: --allow-naked-names
-- id: in_allow_nested
-  doc: Enable lenient parsing for nested statements
-  type: boolean
-  inputBinding:
-    prefix: --allow-nested
-- id: in_disallow_unqualified_translocations
-  doc: Disallow unqualified translocations
-  type: boolean
-  inputBinding:
-    prefix: --disallow-unqualified-translocations
-- id: in_no_identifier_validation
-  doc: Turn off identifier validation
-  type: boolean
-  inputBinding:
-    prefix: --no-identifier-validation
-- id: in_no_citation_clearing
-  doc: Turn off citation clearing
-  type: boolean
-  inputBinding:
-    prefix: --no-citation-clearing
-- id: in_required_annotations
-  doc: Specify multiple required annotations
-  type: string
-  inputBinding:
-    prefix: --required-annotations
-- id: in_skip_t_qdm
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --skip-tqdm
-- id: in_verbose
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --verbose
 - id: in_path
   doc: ''
   type: File

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2_rna_dna_norm.cwl
+id: humann2_rna_dna_norm.cwl
 inputs:
 - id: in_input_dna
   doc: Original DNA output table (tsv or biom format)

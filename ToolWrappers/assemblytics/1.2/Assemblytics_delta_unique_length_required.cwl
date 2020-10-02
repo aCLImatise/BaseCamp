@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Assemblytics_delta_unique_length_required.cwl
+id: Assemblytics_delta_unique_length_required.cwl
 inputs:
 - id: in_assembly_tics
   doc: ''

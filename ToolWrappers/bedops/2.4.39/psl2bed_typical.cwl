@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psl2bed_typical.cwl
+id: psl2bed_typical.cwl
 inputs:
 - id: in_keep_header
   doc: "(-k)\nPreserve header section as pseudo-BED elements (requires --headered)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makelogo.cwl
+id: makelogo.cwl
 inputs: []
 outputs:
 - id: out_stdout

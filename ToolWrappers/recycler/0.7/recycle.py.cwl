@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../recycle.py.cwl
+id: recycle.py.cwl
 inputs:
 - id: in_graph
   doc: "(spades 3.50+) assembly graph FASTG file to process;\nrecommended for spades\

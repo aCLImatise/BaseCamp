@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tn93_cluster_FASTA.cwl
+id: tn93_cluster_FASTA.cwl
 inputs:
 - id: in_q
   doc: ''

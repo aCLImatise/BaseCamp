@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ASCIIGenome.jar.cwl
+id: ASCIIGenome.jar.cwl
 inputs: []
 outputs:
 - id: out_stdout

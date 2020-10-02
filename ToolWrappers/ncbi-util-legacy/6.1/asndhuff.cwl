@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../asndhuff.cwl
+id: asndhuff.cwl
 inputs:
 - id: in_input_file
   doc: Input file [File In]

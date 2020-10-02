@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_rotate.cwl
+id: gotree_rotate.cwl
 inputs:
 - id: in_input
   doc: Input tree (default "stdin")

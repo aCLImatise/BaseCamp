@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../efilter.cwl
+id: efilter.cwl
 inputs:
 - id: in_query
   doc: Query string

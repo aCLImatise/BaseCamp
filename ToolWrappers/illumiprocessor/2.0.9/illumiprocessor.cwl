@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../illumiprocessor.cwl
+id: illumiprocessor.cwl
 inputs:
 - id: in_input
   doc: "The input directory of raw reads to trim. (default:\nNone)"

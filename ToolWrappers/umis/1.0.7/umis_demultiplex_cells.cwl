@@ -1,31 +1,12 @@
 class: CommandLineTool
-id: ../../../umis_demultiplex_cells.cwl
+id: umis_demultiplex_cells.cwl
 inputs:
 - id: in_out_dir
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --out_dir
-- id: in_read_number
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --readnumber
-- id: in_prefix
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --prefix
-- id: in_cb_histogram
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --cb_histogram
-- id: in_cb_cut_off
-  doc: ''
+  doc: "--readnumber TEXT\n--prefix TEXT\n--cb_histogram TEXT\n--cb_cutoff INTEGER\n\
+    --help               Show this message and exit.\n"
   type: long
   inputBinding:
-    prefix: --cb_cutoff
+    prefix: --out_dir
 - id: in_fast_q
   doc: ''
   type: string

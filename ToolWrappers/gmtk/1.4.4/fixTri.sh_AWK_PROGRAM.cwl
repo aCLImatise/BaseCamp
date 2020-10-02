@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fixTri.sh_AWK_PROGRAM.cwl
+id: fixTri.sh_AWK_PROGRAM.cwl
 inputs:
 - id: in_awk_program
   doc: ''

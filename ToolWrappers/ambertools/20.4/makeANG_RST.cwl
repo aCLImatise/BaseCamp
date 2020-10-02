@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeANG_RST.cwl
+id: makeANG_RST.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,17 +1,23 @@
 class: CommandLineTool
-id: ../../../tombo_detect_modifications_level_sample_compare.cwl
+id: tombo_detect_modifications_level_sample_compare.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_statistics_file_basename
+  doc: "STATISTICS_FILE_BASENAME\n--alternate-fast5-basedirs\nALTERNATE_FAST5_BASEDIRS\n\
+    [ALTERNATE_FAST5_BASEDIRS ...]\n[--fishers-method-context FISHERS_METHOD_CONTEXT]\n\
+    [--minimum-test-reads MINIMUM_TEST_READS]\n[--statistic-type {ks,u,t}]\n[--store-p-value]\n\
+    [--num-most-significant-stored NUM_MOST_SIGNIFICANT_STORED]\n[--multiprocess-region-size\
+    \ MULTIPROCESS_REGION_SIZE]\n[--processes PROCESSES]\n[--corrected-group CORRECTED_GROUP]\n\
+    [--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\n[--quiet]\
+    \ [--help]"
   type: boolean
   inputBinding:
     prefix: --statistics-file-basename
-- id: in_directories_containing_files
+- id: in_fast_five_based_irs
   doc: Directories containing fast5 files.
   type: long[]
   inputBinding:
     prefix: --fast5-basedirs
-- id: in_set_directories_containing
+- id: in_alternate_fast_five_based_irs
   doc: "Set of directories containing fast5 files for\nalternate set of reads."
   type: long[]
   inputBinding:
@@ -77,21 +83,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: in_var_13
-  doc: '[FAST5_BASEDIRS ...]'
-  type: long
-  inputBinding:
-    position: 0
-- id: in__alternatefastbasedirs
-  doc: --alternate-fast5-basedirs
-  type: string
-  inputBinding:
-    position: 1
-- id: in_var_15
-  doc: '[ALTERNATE_FAST5_BASEDIRS ...]'
-  type: long
-  inputBinding:
-    position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream

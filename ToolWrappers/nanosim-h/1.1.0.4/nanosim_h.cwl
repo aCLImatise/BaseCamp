@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanosim_h.cwl
+id: nanosim_h.cwl
 inputs:
 - id: in_profile
   doc: "error profile - one of precomputed profiles\n('ecoli_UCSC1b', 'ecoli_R7.3',\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pispino_seqprep.cwl
+id: pispino_seqprep.cwl
 inputs:
 - id: in_directory_raw_sequences
   doc: '[REQUIRED] Directory with raw sequences in gzipped'

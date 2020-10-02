@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phasescreen.pl.cwl
+id: phasescreen.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

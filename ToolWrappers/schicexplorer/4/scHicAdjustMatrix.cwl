@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scHicAdjustMatrix.cwl
+id: scHicAdjustMatrix.cwl
 inputs:
 - id: in_matrix
   doc: "The matrix to adjust in the scool format. (default:\nNone)"

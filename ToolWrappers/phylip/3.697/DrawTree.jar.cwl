@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DrawTree.jar.cwl
+id: DrawTree.jar.cwl
 inputs: []
 outputs:
 - id: out_stdout

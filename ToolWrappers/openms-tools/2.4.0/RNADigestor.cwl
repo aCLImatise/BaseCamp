@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNADigestor.cwl
+id: RNADigestor.cwl
 inputs:
 - id: in_in
   doc: "*                 Input file containing RNA sequences (valid formats: 'fasta')"

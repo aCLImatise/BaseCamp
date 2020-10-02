@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../countbarcodes.sh.cwl
+id: countbarcodes.sh.cwl
 inputs:
 - id: in_x_mx
   doc: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g will\

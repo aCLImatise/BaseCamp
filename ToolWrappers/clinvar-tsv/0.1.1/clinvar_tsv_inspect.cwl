@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clinvar_tsv_inspect.cwl
+id: clinvar_tsv_inspect.cwl
 inputs:
 - id: in_work_dir
   doc: Path to working directory

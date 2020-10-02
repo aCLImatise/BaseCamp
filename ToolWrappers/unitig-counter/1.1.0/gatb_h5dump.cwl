@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gatb_h5dump.cwl
+id: gatb_h5dump.cwl
 inputs:
 - id: in__version_print
   doc: ',   --version      Print version number and exit'

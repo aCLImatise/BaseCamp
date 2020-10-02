@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ConfigViReMa.py.cwl
+id: ConfigViReMa.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AlignmentTools_compare_error_type.cwl
+id: AlignmentTools_compare_error_type.cwl
 inputs:
 - id: in_stem
   doc: Output stem (default <query_nucl.fasta>)

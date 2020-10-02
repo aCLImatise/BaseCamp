@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sparse.cwl
+id: sparse.cwl
 inputs:
 - id: in_galaxy_xml
   doc: Print galaxy xml wrapper.

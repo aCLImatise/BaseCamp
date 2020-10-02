@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../edd_input_bam.cwl
+id: edd_input_bam.cwl
 inputs:
 - id: in_fdr
   doc: ''

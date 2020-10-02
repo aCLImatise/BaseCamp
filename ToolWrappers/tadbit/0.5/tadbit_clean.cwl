@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tadbit_clean.cwl
+id: tadbit_clean.cwl
 inputs:
 - id: in_change_workdir
   doc: In case folder was moved, input the new path

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AccessFold.cwl
+id: AccessFold.cwl
 inputs:
 - id: in_dna
   doc: "Specify that the sequence is DNA, and DNA parameters are to be used.\nDefault\

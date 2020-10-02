@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../neural_network_decode.cwl
+id: neural_network_decode.cwl
 inputs: []
 outputs:
 - id: out_stdout

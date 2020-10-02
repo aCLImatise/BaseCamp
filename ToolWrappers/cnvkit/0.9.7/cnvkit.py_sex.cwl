@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_sex.cwl
+id: cnvkit.py_sex.cwl
 inputs:
 - id: in_haploid_x_reference
   doc: "Assume inputs were normalized to a male reference\n(i.e. female samples will\

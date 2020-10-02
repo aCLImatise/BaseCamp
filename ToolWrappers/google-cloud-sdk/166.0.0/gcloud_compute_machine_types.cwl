@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_machine_types.cwl
+id: gcloud_compute_machine_types.cwl
 inputs:
 - id: in_types
   doc: SYNOPSIS

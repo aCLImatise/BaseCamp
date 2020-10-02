@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dimspy_hdf5_pm_to_txt.cwl
+id: dimspy_hdf5_pm_to_txt.cwl
 inputs:
 - id: in_input
   doc: "HDF5 file that contains a peak matrix object from one\nof the processing steps."

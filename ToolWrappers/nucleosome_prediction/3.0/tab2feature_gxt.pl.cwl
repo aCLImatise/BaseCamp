@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tab2feature_gxt.pl.cwl
+id: tab2feature_gxt.pl.cwl
 inputs:
 - id: in_name_chromosome_track
   doc: ':          Name of the chromosome track (default: Features )'

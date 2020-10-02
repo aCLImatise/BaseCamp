@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parallel_delta_filter.sh.cwl
+id: parallel_delta_filter.sh.cwl
 inputs:
 - id: in_print_first_n
   doc: '[-]N[kbm]    Print first N bytes'

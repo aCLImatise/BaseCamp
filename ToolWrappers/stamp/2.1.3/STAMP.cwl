@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../STAMP.cwl
+id: STAMP.cwl
 inputs: []
 outputs:
 - id: out_stdout

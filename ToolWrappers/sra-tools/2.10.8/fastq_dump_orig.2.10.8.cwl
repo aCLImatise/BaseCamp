@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_dump_orig.2.10.8.cwl
+id: fastq_dump_orig.2.10.8.cwl
 inputs:
 - id: in_accession
   doc: "Replaces accession derived from <path> in\nfilename(s) and deflines (only\

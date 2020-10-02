@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pout2mzid.cwl
+id: pout2mzid.cwl
 inputs:
 - id: in_percolator_xml_result
   doc: '[ --percolatorfile ] [Value] Percolator Out XML result file'

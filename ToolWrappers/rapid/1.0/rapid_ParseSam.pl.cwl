@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rapid_ParseSam.pl.cwl
+id: rapid_ParseSam.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

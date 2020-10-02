@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blastdbcp.cwl
+id: blastdbcp.cwl
 inputs:
 - id: in_gi_list
   doc: '[-title database_title] [-membership_bits]'

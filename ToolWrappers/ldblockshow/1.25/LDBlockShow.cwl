@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LDBlockShow.cwl
+id: LDBlockShow.cwl
 inputs:
 - id: in_in_vcf
   doc: <str>      Input SNP VCF Format

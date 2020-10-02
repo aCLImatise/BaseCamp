@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../socru_create.cwl
+id: socru_create.cwl
 inputs:
 - id: in_max_bases_from_ends
   doc: "Only look at this number of bases from start and end\nof fragment (default:\

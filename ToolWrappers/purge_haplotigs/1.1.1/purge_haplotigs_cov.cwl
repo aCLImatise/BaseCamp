@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../purge_haplotigs_cov.cwl
+id: purge_haplotigs_cov.cwl
 inputs:
 - id: in_bedtools_genomecov_output
   doc: / -in        The bedtools genomecov output that was produced from 'purge_haplotigs

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kraken2.cwl
+id: kraken2.cwl
 inputs:
 - id: in_db
   doc: "Name for Kraken 2 DB\n(default: none)"

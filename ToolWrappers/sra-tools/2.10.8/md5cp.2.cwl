@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../md5cp.2.cwl
+id: md5cp.2.cwl
 inputs:
 - id: in_force
   doc: overwrite existing columns
@@ -16,11 +16,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --recursive
-- id: in_test
-  doc: '?'
-  type: boolean
-  inputBinding:
-    prefix: --test
 - id: in_verbose
   doc: "Increase the verbosity of the program\nstatus messages. Use multiple times\
     \ for more\nverbosity. Negates quiet."
@@ -40,11 +35,6 @@ inputs:
 - id: in_quit_dot
   doc: '-L|--log-level <level>           Logging level as number or enum string. One '
   type: string
-  inputBinding:
-    position: 0
-- id: in_file_dot
-  doc: 'md5cp.2 : 2.10.8'
-  type: File
   inputBinding:
     position: 0
 outputs:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cwltest_args.cwl
+id: cwltest_args.cwl
 inputs:
 - id: in_s
   doc: ''

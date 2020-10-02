@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_setup_pdb_database.cwl
+id: anvi_setup_pdb_database.cwl
 inputs:
 - id: in_pdb_database_path
   doc: "The path for the PDB database to be stored. If you\nleave it as is without\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../draw_tree.cwl
+id: draw_tree.cwl
 inputs:
 - id: in_print_opposed_option
   doc: "Print \"diagonal\" branches, instead of \"right-angle\" or\n\"square\" ones\

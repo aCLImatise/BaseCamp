@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runSRCA.pl.cwl
+id: runSRCA.pl.cwl
 inputs:
 - id: in_output
   doc: Assembly script (assemble.sh)

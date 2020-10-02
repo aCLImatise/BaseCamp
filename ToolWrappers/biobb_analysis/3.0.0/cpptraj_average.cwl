@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpptraj_average.cwl
+id: cpptraj_average.cwl
 inputs:
 - id: in_config
   doc: Configuration file

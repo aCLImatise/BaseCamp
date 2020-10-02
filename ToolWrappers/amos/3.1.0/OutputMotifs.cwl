@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OutputMotifs.cwl
+id: OutputMotifs.cwl
 inputs:
 - id: in_version
   doc: ''

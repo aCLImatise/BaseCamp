@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtcns.cwl
+id: wtcns.cwl
 inputs:
 - id: in_number_of_threads
   doc: Number of threads, [16]
@@ -37,11 +37,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -H
-- id: in_zmer_size_z
-  doc: Zmer size, 5 <= <-z> <= 16, [10]
-  type: long
-  inputBinding:
-    prefix: -z
 - id: in_zmer_window
   doc: Zmer window, [800]
   type: long

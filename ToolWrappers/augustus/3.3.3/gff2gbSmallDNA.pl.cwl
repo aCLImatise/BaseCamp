@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff2gbSmallDNA.pl.cwl
+id: gff2gbSmallDNA.pl.cwl
 inputs:
 - id: in_bad
   doc: Specify a file with gene names. All except these are included in the output.

@@ -15,7 +15,7 @@ task PhyluceProbeQueryMultiFastaTable {
       ~{if defined(specific_counts) then ("--specific-counts " +  '"' + specific_counts + '"') else ""}
   >>>
   parameter_meta {
-    base_tax_on: ""
+    base_tax_on: "[--specific-counts SPECIFIC_COUNTS]"
     db: "The database to query"
     when_using_specificcounts: "When using --specific-counts, output a BED file of\\nthose loci"
     specific_counts: "Return data for a specific minimum number of taxa.\\n"

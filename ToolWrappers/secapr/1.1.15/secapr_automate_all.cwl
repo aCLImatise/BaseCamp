@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../secapr_automate_all.cwl
+id: secapr_automate_all.cwl
 inputs:
 - id: in_input
   doc: The directory containing cleaned fastq files

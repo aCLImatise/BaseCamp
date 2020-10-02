@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastx_trimmer.cwl
+id: fastx_trimmer.cwl
 inputs:
 - id: in_o
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ldhelmet_convert_table.cwl
+id: ldhelmet_convert_table.cwl
 inputs:
 - id: in__display_version
   doc: '[ --version ]       Display version.'

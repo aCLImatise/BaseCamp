@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_propagation_postprocessing.py.cwl
+id: prophyle_propagation_postprocessing.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

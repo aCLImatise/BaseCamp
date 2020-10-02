@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2starch_typical.cwl
+id: vcf2starch_typical.cwl
 inputs:
 - id: in_keep_header
   doc: ', which munges these data into pseudo-elements'

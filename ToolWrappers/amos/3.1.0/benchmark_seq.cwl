@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../benchmark_seq.cwl
+id: benchmark_seq.cwl
 inputs: []
 outputs:
 - id: out_stdout

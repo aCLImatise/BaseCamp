@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ipcontroller.cwl
+id: ipcontroller.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../acdtable.cwl
+id: acdtable.cwl
 inputs: []
 outputs:
 - id: out_stdout

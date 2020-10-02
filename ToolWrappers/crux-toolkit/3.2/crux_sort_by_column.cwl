@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_sort_by_column.cwl
+id: crux_sort_by_column.cwl
 inputs:
 - id: in_tsv_file
   doc: ''

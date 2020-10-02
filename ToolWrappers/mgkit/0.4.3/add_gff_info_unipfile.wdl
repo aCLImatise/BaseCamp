@@ -3,10 +3,6 @@ version 1.0
 task AddgffinfoUnipfile {
   input {
     Boolean? verbose
-    File? mapping_file
-    Boolean? force_tax_on_id
-    Boolean? mapping
-    Boolean? progress
     String? input_file
     String? output_file
   }
@@ -14,18 +10,10 @@ task AddgffinfoUnipfile {
     add_gff_info unipfile \
       ~{input_file} \
       ~{output_file} \
-      ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(mapping_file) then ("--mapping-file " +  '"' + mapping_file + '"') else ""} \
-      ~{if (force_tax_on_id) then "--force-taxon-id" else ""} \
-      ~{if (mapping) then "--mapping" else ""} \
-      ~{if (progress) then "--progress" else ""}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    verbose: ""
-    mapping_file: "Uniprot mapping file  [required]"
-    force_tax_on_id: "Overwrite taxon_id if already present"
-    mapping: "[NCBI_TaxID|eggNOG|KO|KEGG|BioCyc|UniPathway|EMBL|EMBL-CDS|GI|STRING]\\nMappings to add  [required]"
-    progress: "Shows Progress Bar"
+    verbose: "-i, --mapping-file TEXT         Uniprot mapping file  [required]\\n-f, --force-taxon-id            Overwrite taxon_id if already present\\n-m, --mapping [NCBI_TaxID|eggNOG|KO|KEGG|BioCyc|UniPathway|EMBL|EMBL-CDS|GI|STRING]\\nMappings to add  [required]\\n--progress                      Shows Progress Bar\\n--help                          Show this message and exit.\\n"
     input_file: ""
     output_file: ""
   }

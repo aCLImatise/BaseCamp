@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ct2db.cwl
+id: ct2db.cwl
 inputs:
 - id: in_remove_pk
   doc: "Remove pseudoknots from structure\n(default=off)"

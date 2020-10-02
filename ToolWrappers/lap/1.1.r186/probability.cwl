@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../probability.cwl
+id: probability.cwl
 inputs:
 - id: in_assembly
   doc: "The reference sequence from which the reads are\nsupposed to have been generated"

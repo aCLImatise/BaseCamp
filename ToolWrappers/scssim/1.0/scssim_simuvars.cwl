@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scssim_simuvars.cwl
+id: scssim_simuvars.cwl
 inputs:
 - id: in_ref
   doc: reference file (.fasta)

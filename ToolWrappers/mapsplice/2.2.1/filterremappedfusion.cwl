@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterremappedfusion.cwl
+id: filterremappedfusion.cwl
 inputs: []
 outputs:
 - id: out_stdout

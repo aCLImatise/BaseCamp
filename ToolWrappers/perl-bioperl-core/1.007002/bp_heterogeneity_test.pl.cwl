@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_heterogeneity_test.pl.cwl
+id: bp_heterogeneity_test.pl.cwl
 inputs:
 - id: in_sample_size
   doc: mutation count

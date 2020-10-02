@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_gapfill.cwl
+id: abyss_gapfill.cwl
 inputs:
 - id: in_min_align
   doc: the minimal alignment size [1]

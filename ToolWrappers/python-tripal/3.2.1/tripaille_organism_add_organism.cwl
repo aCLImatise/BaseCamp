@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_organism_add_organism.cwl
+id: tripaille_organism_add_organism.cwl
 inputs:
 - id: in_common
   doc: The common name of the organism

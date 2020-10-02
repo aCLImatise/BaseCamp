@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hs_blastn.cwl
+id: hs_blastn.cwl
 inputs:
 - id: in_or
   doc: hs-blastn align -help

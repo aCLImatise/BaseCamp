@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bs_call.cwl
+id: bs_call.cwl
 inputs:
 - id: in_no_split
   doc: Do not split output on contig
@@ -67,40 +67,12 @@ inputs:
   inputBinding:
     prefix: --realign-tolerance
 - id: in_no_compress
-  doc: ''
+  doc: "--output|-o <output prefix>\n--sample|-n <sample name> SAMPLE\n--reference|-r\
+    \ <file> (MultiFASTA/FASTA)\n--contig-bed|-C <file> (BED)\n--dbsnp|-D <file> (dbSNP\
+    \ processed file)\n--all-positions|-A"
   type: File
   inputBinding:
     prefix: --no-compress
-- id: in_output
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --output
-- id: in_sample
-  doc: SAMPLE
-  type: string
-  inputBinding:
-    prefix: --sample
-- id: in_reference
-  doc: (MultiFASTA/FASTA)
-  type: File
-  inputBinding:
-    prefix: --reference
-- id: in_contig_bed
-  doc: (BED)
-  type: File
-  inputBinding:
-    prefix: --contig-bed
-- id: in_dbsnp
-  doc: (dbSNP processed file)
-  type: File
-  inputBinding:
-    prefix: --dbsnp
-- id: in_all_positions
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --all-positions
 - id: in_conversion
   doc: ',<float> Set under and over conversion rates (default 0.01,0.05)'
   type: double
@@ -116,7 +88,9 @@ outputs:
   doc: Standard output stream
   type: stdout
 - id: out_no_compress
-  doc: ''
+  doc: "--output|-o <output prefix>\n--sample|-n <sample name> SAMPLE\n--reference|-r\
+    \ <file> (MultiFASTA/FASTA)\n--contig-bed|-C <file> (BED)\n--dbsnp|-D <file> (dbSNP\
+    \ processed file)\n--all-positions|-A"
   type: File
   outputBinding:
     glob: $(inputs.in_no_compress)

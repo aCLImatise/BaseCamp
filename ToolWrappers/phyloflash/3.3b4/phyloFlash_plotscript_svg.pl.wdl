@@ -12,11 +12,6 @@ task PhyloFlashPlotscriptSvgpl {
     File? pipe
     Boolean? title
     Int? height
-    Int? width
-    Boolean? color
-    Int? breakpoints
-    Boolean? decimal_comma
-    Boolean? man
   }
   command <<<
     phyloFlash_plotscript_svg_pl \
@@ -29,12 +24,7 @@ task PhyloFlashPlotscriptSvgpl {
       ~{if defined(pie) then ("-pie " +  '"' + pie + '"') else ""} \
       ~{if defined(pipe) then ("-pipe " +  '"' + pipe + '"') else ""} \
       ~{if (title) then "-title" else ""} \
-      ~{if defined(height) then ("-height " +  '"' + height + '"') else ""} \
-      ~{if defined(width) then ("-width " +  '"' + width + '"') else ""} \
-      ~{if (color) then "-color" else ""} \
-      ~{if defined(breakpoints) then ("-breakpoints " +  '"' + breakpoints + '"') else ""} \
-      ~{if (decimal_comma) then "-decimalcomma" else ""} \
-      ~{if (man) then "-man" else ""}
+      ~{if defined(height) then ("-height " +  '"' + height + '"') else ""}
   >>>
   parameter_meta {
     tree: "Phylogenetic tree plot from Newick-formatted tree. Does\\nnot support node or branch labels, branch lengths\\nrequired. Tree is oriented with root on left and leaf\\nlabels on right. Height of plot scales with number of\\nleaves.\\nCan be modified with -treefasta, -assemcov, and\\n-unassemcount"
@@ -46,12 +36,7 @@ task PhyloFlashPlotscriptSvgpl {
     pie: "Pie chart from CSV file. Column 1: Label, column 2:\\ncounts/percentage/ratio. Will automatically take total of\\nthe numbers provided. I.e. if using percentages, ensure\\nthat they add up to 100%."
     pipe: "TYPE\\nUse \\\"pipe\\\" mode. Input is read from STDIN and written to\\nSTDOUT. Use this option to specify type of plot to\\nproduce: \\\"tree\\\", \\\"hist\\\", \\\"bar\\\", or \\\"pie\\\". Naturally this\\ncan only read and write one file at a time."
     title: "=\\\"STRING\\\"\\nOptional title for plot. Enclose string in quotation\\nmarks if title has spaces. Default: (empty)"
-    height: ""
-    width: "Optional width and height of plot in pixels. Defaults:\\nBuilt-in defaults for each plot type."
-    color: "=\\\"STRING\\\"\\nOptional fill color for plot. Currently implemented only\\nfor histogram. Default: Built-in defaults for each plot\\ntype"
-    breakpoints: "Specify number of breakpoints in histogram. Default:\\nSturges algorithm to calculate optimal breakpoints"
-    decimal_comma: "Use comma as decimal separator (only used for histogram\\ninput). BBMap is locale- aware and uses decimal comma in\\ncertain locales (e.g. Germany and France). However, Perl\\ndoes not unless explicitly requested. This option will\\nreplace decimal commas with decimal periods in histogram\\ninput files only."
-    man: "Manual page (identical to this help message)"
+    height: "-width INT     Optional width and height of plot in pixels. Defaults:\\nBuilt-in defaults for each plot type.\\n-color=\\\"STRING\\\"\\nOptional fill color for plot. Currently implemented only\\nfor histogram. Default: Built-in defaults for each plot\\ntype\\n-breakpoints INT\\nSpecify number of breakpoints in histogram. Default:\\nSturges algorithm to calculate optimal breakpoints\\n-decimalcomma  Use comma as decimal separator (only used for histogram\\ninput). BBMap is locale- aware and uses decimal comma in\\ncertain locales (e.g. Germany and France). However, Perl\\ndoes not unless explicitly requested. This option will\\nreplace decimal commas with decimal periods in histogram\\ninput files only.\\n-help          This help message\\n-man           Manual page (identical to this help message)\\n"
   }
   output {
     File out_stdout = stdout()

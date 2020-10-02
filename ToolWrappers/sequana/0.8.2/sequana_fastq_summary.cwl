@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequana_fastq_summary.cwl
+id: sequana_fastq_summary.cwl
 inputs:
 - id: in_pattern
   doc: input fastq gzipped or not

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metagene_generate.cwl
+id: metagene_generate.cwl
 inputs:
 - id: in_landmark
   doc: "Landmark around which to build metagene profile\n(Default: cds_start)"
@@ -155,6 +155,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --mask_sorted
+- id: in_out_base
+  doc: Basename for output files
+  type: string
+  inputBinding:
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

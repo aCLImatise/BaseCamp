@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snaptools_index_genome.cwl
+id: snaptools_index_genome.cwl
 inputs:
 - id: in_input_fast_a
   doc: "genome fasta file to build the index from (default:\nNone)"

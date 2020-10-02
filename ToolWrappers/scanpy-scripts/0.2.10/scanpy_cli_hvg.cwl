@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scanpy_cli_hvg.cwl
+id: scanpy_cli_hvg.cwl
 inputs:
 - id: in_input_format
   doc: "[anndata|loom]\nInput object format.  [default: anndata]"
@@ -67,13 +67,13 @@ inputs:
   type: long
   inputBinding:
     prefix: --by-batch
-- id: in_format_dot
-  doc: '[default: 1000]'
+- id: in_input_obj
+  doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_expression_dot
-  doc: '[default: 20]'
+- id: in_output_obj
+  doc: ''
   type: string
   inputBinding:
     position: 1

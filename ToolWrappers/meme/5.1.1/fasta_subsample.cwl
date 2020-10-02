@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_subsample.cwl
+id: fasta_subsample.cwl
 inputs:
 - id: in_len
   doc: ''

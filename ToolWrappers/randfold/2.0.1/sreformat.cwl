@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sreformat.cwl
+id: sreformat.cwl
 inputs:
 - id: in_force_dna_alphabet
   doc: ': force DNA alphabet for nucleic acid sequence'
@@ -96,11 +96,6 @@ inputs:
   type: string
   inputBinding:
     position: 5
-- id: in_raw
-  doc: eps
-  type: string
-  inputBinding:
-    position: 6
 outputs:
 - id: out_stdout
   doc: Standard output stream

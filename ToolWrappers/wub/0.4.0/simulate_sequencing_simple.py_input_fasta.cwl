@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simulate_sequencing_simple.py_input_fasta.cwl
+id: simulate_sequencing_simple.py_input_fasta.cwl
 inputs:
 - id: in_m
   doc: ''

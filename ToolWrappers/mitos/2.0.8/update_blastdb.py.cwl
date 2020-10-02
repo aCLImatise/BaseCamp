@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../update_blastdb.py.cwl
+id: update_blastdb.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

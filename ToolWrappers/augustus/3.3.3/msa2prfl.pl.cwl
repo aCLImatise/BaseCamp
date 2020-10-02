@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msa2prfl.pl.cwl
+id: msa2prfl.pl.cwl
 inputs:
 - id: in_width
   doc: 'minimal block width (default: 6)'

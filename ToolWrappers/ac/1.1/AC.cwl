@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AC.cwl
+id: AC.cwl
 inputs:
 - id: in_show_compression_levels
   doc: show AC compression levels,

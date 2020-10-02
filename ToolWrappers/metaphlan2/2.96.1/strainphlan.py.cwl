@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strainphlan.py.cwl
+id: strainphlan.py.cwl
 inputs:
 - id: in_ifn_samples
   doc: "The list of sample files (space separated).The\nwildcard can also be used."

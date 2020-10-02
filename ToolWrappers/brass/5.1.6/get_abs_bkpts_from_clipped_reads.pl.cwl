@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_abs_bkpts_from_clipped_reads.pl.cwl
+id: get_abs_bkpts_from_clipped_reads.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

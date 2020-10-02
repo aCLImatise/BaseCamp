@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CAT_bins.cwl
+id: CAT_bins.cwl
 inputs:
 - id: in__binfolder_path
   doc: ', --bin_folder     Path to directory containing bins.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylorank_bl_dist.cwl
+id: phylorank_bl_dist.cwl
 inputs:
 - id: in_trusted_tax_a_file
   doc: "file indicating trusted taxonomic groups to use for\ninferring distribution\

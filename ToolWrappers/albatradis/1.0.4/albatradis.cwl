@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../albatradis.cwl
+id: albatradis.cwl
 inputs:
 - id: in_span_gaps
   doc: "Span a gap if it is this multiple of a window size\n(default: 1)"

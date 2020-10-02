@@ -11,29 +11,15 @@ task HR2exe {
     Boolean? apply_rules_dle
     Boolean? maximum_num_dle
     Int? element_x_use
-    String ic
-    String ih
     String in
-    String na
     String si
-    String cl
-    String icl
-    String br
     String ibr
-    String ik
   }
   command <<<
     HR2_exe \
-      ~{ic} \
-      ~{ih} \
       ~{in} \
-      ~{na} \
       ~{si} \
-      ~{cl} \
-      ~{icl} \
-      ~{br} \
       ~{ibr} \
-      ~{ik} \
       ~{if (display_version_information) then "-v" else ""} \
       ~{if defined(set_tolerance_mmu) then ("-t " +  '"' + set_tolerance_mmu + '"') else ""} \
       ~{if defined(set_mass_to) then ("-m " +  '"' + set_mass_to + '"') else ""} \
@@ -54,16 +40,9 @@ task HR2exe {
     apply_rules_dle: "Does not apply 4-7 golden rules (dle)."
     maximum_num_dle: "Maximum num. of adducts.  (dle)"
     element_x_use: "For element X, use atom range a to b. List of valid atoms:\\nX    key   mass (6 decimals shown)"
-    ic: "-1       13.003355\\nH     -H        1.007825"
-    ih: "-D        2.014102\\nN     -N       14.003074"
     in: "-M       15.000109\\nO     -O       15.994915\\nF     -F       18.998403"
-    na: "-A       22.989769"
     si: "-I       27.976927\\nP     -P       30.973762\\nS     -S       31.972071"
-    cl: "-L       34.968853"
-    icl: "-E       36.965903"
-    br: "-B       78.918337"
     ibr: "-G       80.916291\\nK     -K       38.963707"
-    ik: "-J       40.961826"
   }
   output {
     File out_stdout = stdout()

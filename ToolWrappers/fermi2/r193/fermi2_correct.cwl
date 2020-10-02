@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi2_correct.cwl
+id: fermi2_correct.cwl
 inputs:
 - id: in_number_of_threads
   doc: number of threads [1]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gapToLift.cwl
+id: gapToLift.cwl
 inputs:
 - id: in_chr
   doc: '- work only on given chrom'

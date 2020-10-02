@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comparem_classify.cwl
+id: comparem_classify.cwl
 inputs:
 - id: in_num_top_targets
   doc: "number of top scoring target genomes to report per\nquery genome (default:\

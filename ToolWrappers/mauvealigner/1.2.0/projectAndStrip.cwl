@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../projectAndStrip.cwl
+id: projectAndStrip.cwl
 inputs:
 - id: in_seq_n
   doc: ''

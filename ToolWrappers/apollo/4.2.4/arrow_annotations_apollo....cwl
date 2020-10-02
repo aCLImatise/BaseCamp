@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_annotations_apollo....cwl
+id: arrow_annotations_apollo....cwl
 inputs:
 - id: in_arrow
   doc: ''

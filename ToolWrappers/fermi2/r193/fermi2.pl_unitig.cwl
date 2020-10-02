@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi2.pl_unitig.cwl
+id: fermi2.pl_unitig.cwl
 inputs:
 - id: in_output_prefix
   doc: output prefix [fmdef]

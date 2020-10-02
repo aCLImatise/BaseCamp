@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reportOneSample.R.cwl
+id: reportOneSample.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xmlvalid.cwl
+id: xmlvalid.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hotspot3d_visual.cwl
+id: hotspot3d_visual.cwl
 inputs:
 - id: in_clusters_file
   doc: Clusters file

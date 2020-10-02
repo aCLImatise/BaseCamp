@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../configureStrelkaGermlineWorkflow.py.cwl
+id: configureStrelkaGermlineWorkflow.py.cwl
 inputs:
 - id: in_config
   doc: "provide a configuration file to override defaults in\nglobal config file (/usr/local/share/strelka-2.9.10-0/\n\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gthcleanrec.sh.cwl
+id: gthcleanrec.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

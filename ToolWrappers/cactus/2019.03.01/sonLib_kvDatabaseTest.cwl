@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sonLib_kvDatabaseTest.cwl
+id: sonLib_kvDatabaseTest.cwl
 inputs:
 - id: in_type
   doc: "- one of 'KyotoTycoon', 'TokyoCabinet' or 'MySql'.\nValues area case-insensitive,\

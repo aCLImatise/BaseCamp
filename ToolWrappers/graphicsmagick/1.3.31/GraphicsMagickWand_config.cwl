@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GraphicsMagickWand_config.cwl
+id: GraphicsMagickWand_config.cwl
 inputs:
 - id: in_prefix
   doc: ''

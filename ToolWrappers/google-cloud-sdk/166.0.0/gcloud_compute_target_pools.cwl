@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_target_pools.cwl
+id: gcloud_compute_target_pools.cwl
 inputs:
 - id: in_add_health_checks
   doc: Add an HTTP health check to a target pool.

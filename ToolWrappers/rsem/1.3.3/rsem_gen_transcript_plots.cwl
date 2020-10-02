@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_gen_transcript_plots.cwl
+id: rsem_gen_transcript_plots.cwl
 inputs:
 - id: in_sample_name
   doc: ''

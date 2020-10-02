@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tagBam.cwl
+id: tagBam.cwl
 inputs:
 - id: in_require_overlaps_same
   doc: "Require overlaps on the same strand.  That is, only tag alignments that have\

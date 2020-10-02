@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funnel_dashboard.cwl
+id: funnel_dashboard.cwl
 inputs:
 - id: in_server
   doc: (default "http://localhost:8000")

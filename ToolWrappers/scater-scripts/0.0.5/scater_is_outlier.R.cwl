@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scater_is_outlier.R.cwl
+id: scater_is_outlier.R.cwl
 inputs:
 - id: in_metric_file
   doc: Two column table with cell names on the first column and numeric QC metric

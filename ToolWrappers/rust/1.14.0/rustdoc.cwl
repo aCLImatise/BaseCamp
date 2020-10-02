@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rustdoc.cwl
+id: rustdoc.cwl
 inputs:
 - id: in_verbose
   doc: use verbose output

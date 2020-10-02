@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_tree_ete2.py.cwl
+id: plot_tree_ete2.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

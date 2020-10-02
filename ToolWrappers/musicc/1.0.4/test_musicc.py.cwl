@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_musicc.py.cwl
+id: test_musicc.py.cwl
 inputs:
 - id: in_verbose
   doc: Verbose output

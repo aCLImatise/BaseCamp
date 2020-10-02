@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augustus_to_proteindb.rb.cwl
+id: augustus_to_proteindb.rb.cwl
 inputs:
 - id: in_output
   doc: An explicitly named output file. \

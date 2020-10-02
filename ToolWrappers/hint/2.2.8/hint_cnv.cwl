@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hint_cnv.cwl
+id: hint_cnv.cwl
 inputs:
 - id: in_matrix_file
   doc: "The matrix compressed file contains single or multiple\nresolutions Hi-C contact\

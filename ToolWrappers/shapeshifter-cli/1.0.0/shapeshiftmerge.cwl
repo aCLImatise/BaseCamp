@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shapeshiftmerge.cwl
+id: shapeshiftmerge.cwl
 inputs:
 - id: in_input_files
   doc: "List of files that will be merged together. Files must\nhave appropriate extensions\

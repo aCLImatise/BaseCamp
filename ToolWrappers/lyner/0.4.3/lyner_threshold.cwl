@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_threshold.cwl
+id: lyner_threshold.cwl
 inputs:
 - id: in_value
   doc: ''

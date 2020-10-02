@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iit_dump.cwl
+id: iit_dump.cwl
 inputs:
 - id: in_sort
   doc: Sort results by coordinates

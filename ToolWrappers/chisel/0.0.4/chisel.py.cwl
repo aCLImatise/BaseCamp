@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chisel.py.cwl
+id: chisel.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

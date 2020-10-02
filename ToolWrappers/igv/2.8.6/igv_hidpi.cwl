@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igv_hidpi.cwl
+id: igv_hidpi.cwl
 inputs:
 - id: in_preferences
   doc: Path or URL to a preference property file

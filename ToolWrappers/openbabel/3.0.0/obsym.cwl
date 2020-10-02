@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obsym.cwl
+id: obsym.cwl
 inputs: []
 outputs:
 - id: out_stdout

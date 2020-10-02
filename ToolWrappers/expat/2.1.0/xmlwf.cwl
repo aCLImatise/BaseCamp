@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xmlwf.cwl
+id: xmlwf.cwl
 inputs:
 - id: in_e
   doc: ''

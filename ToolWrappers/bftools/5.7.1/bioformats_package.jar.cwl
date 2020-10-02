@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioformats_package.jar.cwl
+id: bioformats_package.jar.cwl
 inputs: []
 outputs:
 - id: out_stdout

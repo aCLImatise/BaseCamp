@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../affiliation_OTU.py.cwl
+id: affiliation_OTU.py.cwl
 inputs:
 - id: in_nb_cpus
   doc: 'The maximum number of CPUs used. [Default: 1]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_col_from_tab.cwl
+id: gtftk_col_from_tab.cwl
 inputs:
 - id: in_input_file
   doc: 'The tabulated file. Default to STDIN (default: <stdin>)'

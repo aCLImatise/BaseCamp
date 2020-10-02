@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tsplit_TIR.cwl
+id: tsplit_TIR.cwl
 inputs:
 - id: in_in_file
   doc: Multifasta containing complete elements.

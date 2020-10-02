@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minimap2.py.cwl
+id: minimap2.py.cwl
 inputs:
 - id: in_preset_sr_mappb
   doc: 'preset: sr, map-pb, map-ont, asm5, asm10 or splice'

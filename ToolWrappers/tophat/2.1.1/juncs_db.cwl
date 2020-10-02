@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../juncs_db.cwl
+id: juncs_db.cwl
 inputs:
 - id: in_min_anchor
   doc: ''

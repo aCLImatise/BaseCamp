@@ -2,20 +2,14 @@ version 1.0
 
 task Linkage2allegro {
   input {
-    File? l
-    File? h
-    File? d
+    File? h_haplofiled_descentfile
   }
   command <<<
     linkage2allegro \
-      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
-      ~{if defined(h) then ("-h " +  '"' + h + '"') else ""} \
-      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
+      ~{if defined(h_haplofiled_descentfile) then ("-l " +  '"' + h_haplofiled_descentfile + '"') else ""}
   >>>
   parameter_meta {
-    l: ""
-    h: ""
-    d: ""
+    h_haplofiled_descentfile: "-h haplofile\\n-d descentfile\\n"
   }
   output {
     File out_stdout = stdout()

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../go2owl.cwl
+id: go2owl.cwl
 inputs: []
 outputs:
 - id: out_stdout

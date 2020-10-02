@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ChBox.cwl
+id: ChBox.cwl
 inputs:
 - id: in_original_coordinate_file
   doc: ': the original coordinate file (.RST format, coordinates only)'

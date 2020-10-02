@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_phase_variants_whatshap_filter.cwl
+id: megalodon_extras_phase_variants_whatshap_filter.cwl
 inputs:
 - id: in_filtered_records
   doc: "File to output filtered records.\n"

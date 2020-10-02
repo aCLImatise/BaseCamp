@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hp_build_tree_NG.cwl
+id: hp_build_tree_NG.cwl
 inputs:
 - id: in_seqs
   doc: Input alignment in FASTA or PHYLIP format

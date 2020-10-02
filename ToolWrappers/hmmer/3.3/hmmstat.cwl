@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmstat.cwl
+id: hmmstat.cwl
 inputs:
 - id: in_options
   doc: ''

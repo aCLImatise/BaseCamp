@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vdir.cwl
+id: vdir.cwl
 inputs:
 - id: in_all
   doc: do not ignore entries starting with .

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotate_vcf_bam.py.cwl
+id: annotate_vcf_bam.py.cwl
 inputs:
 - id: in_bam
   doc: 'BAM file (default: None)'

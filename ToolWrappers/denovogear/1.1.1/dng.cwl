@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dng.cwl
+id: dng.cwl
 inputs:
 - id: in_command
   doc: ''

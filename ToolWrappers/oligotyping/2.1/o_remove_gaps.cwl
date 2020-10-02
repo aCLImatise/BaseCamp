@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_remove_gaps.cwl
+id: o_remove_gaps.cwl
 inputs:
 - id: in_output
   doc: "Path for output.\n"

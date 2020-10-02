@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dialign2_2.cwl
+id: dialign2_2.cwl
 inputs:
 - id: in_dna_sequences_nucleotide
   doc: DNA sequences; similarity calculated at the nucleotide level

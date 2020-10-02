@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DBsplit.cwl
+id: DBsplit.cwl
 inputs:
 - id: in_x
   doc: ''

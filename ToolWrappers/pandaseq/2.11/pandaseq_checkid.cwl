@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pandaseq_checkid.cwl
+id: pandaseq_checkid.cwl
 inputs: []
 outputs:
 - id: out_stdout

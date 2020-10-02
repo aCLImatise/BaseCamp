@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coverage3_html.cwl
+id: coverage3_html.cwl
 inputs:
 - id: in_directory
   doc: Write the output files to DIR.

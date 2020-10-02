@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf_file_to_feature_seqs.pl.cwl
+id: gtf_file_to_feature_seqs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

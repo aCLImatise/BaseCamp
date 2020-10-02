@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyloFlash_heatmap.R.cwl
+id: phyloFlash_heatmap.R.cwl
 inputs:
 - id: in_verbose
   doc: Be more talkative

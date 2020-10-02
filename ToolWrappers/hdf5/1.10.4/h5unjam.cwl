@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5unjam.cwl
+id: h5unjam.cwl
 inputs:
 - id: in_specifies_hdf_input
   doc: "Specifies the HDF5 as input.  If the input HDF5 file\ncontains no user block,\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_sort.cwl
+id: maf_sort.cwl
 inputs:
 - id: in_only_print_duplicate
   doc: only print duplicate alignments

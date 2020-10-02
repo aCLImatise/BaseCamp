@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAcentralHTTPRequest.cwl
+id: RNAcentralHTTPRequest.cwl
 inputs:
 - id: in_input_sequence
   doc: input sequence

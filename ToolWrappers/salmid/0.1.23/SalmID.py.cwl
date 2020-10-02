@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SalmID.py.cwl
+id: SalmID.py.cwl
 inputs:
 - id: in_input_file
   doc: "Single fastq.gz file input, include path to file if\nfile is not in same directory"

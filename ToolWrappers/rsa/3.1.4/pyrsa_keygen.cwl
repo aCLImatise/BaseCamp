@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyrsa_keygen.cwl
+id: pyrsa_keygen.cwl
 inputs:
 - id: in_pub_out
   doc: "Output filename for the public key. The public key is not\nsaved if this option\

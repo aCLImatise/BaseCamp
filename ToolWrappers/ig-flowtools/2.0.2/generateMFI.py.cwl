@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generateMFI.py.cwl
+id: generateMFI.py.cwl
 inputs:
 - id: in_file_location_flow
   doc: File location for the Flow Result file.

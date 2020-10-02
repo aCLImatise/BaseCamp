@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mono_api_info.cwl
+id: mono_api_info.cwl
 inputs:
 - id: in_abi
   doc: "Generate ABI, not API; contains only classes with\ninstance fields which are\

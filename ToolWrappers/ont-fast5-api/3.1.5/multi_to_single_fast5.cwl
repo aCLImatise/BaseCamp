@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multi_to_single_fast5.cwl
+id: multi_to_single_fast5.cwl
 inputs:
 - id: in_input_path
   doc: "MultiRead fast5 file or path to directory of MultiRead\nfiles"

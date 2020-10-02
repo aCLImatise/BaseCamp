@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../build_midas_db.py.cwl
+id: build_midas_db.py.cwl
 inputs:
 - id: in_threads
   doc: Number of threads to use (1)

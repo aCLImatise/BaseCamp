@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_init.cwl
+id: igdiscover_init.cwl
 inputs:
 - id: in_database
   doc: "Directory with V.fasta, D.fasta and J.fasta files. If\nnot given, a dialog\

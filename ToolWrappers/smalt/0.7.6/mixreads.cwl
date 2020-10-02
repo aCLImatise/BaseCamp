@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mixreads.cwl
+id: mixreads.cwl
 inputs:
 - id: in_root_name_fast_q_file_a
   doc: ''

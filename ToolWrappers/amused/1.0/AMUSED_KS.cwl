@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AMUSED_KS.cwl
+id: AMUSED_KS.cwl
 inputs:
 - id: in__query_sequences
   doc: = query sequences

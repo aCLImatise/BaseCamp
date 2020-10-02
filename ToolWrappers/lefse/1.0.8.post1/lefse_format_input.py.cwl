@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lefse_format_input.py.cwl
+id: lefse_format_input.py.cwl
 inputs:
 - id: in_output_table
   doc: the formatted table in txt format

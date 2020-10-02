@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ddrage.cwl
+id: ddrage.cwl
 inputs:
 - id: in_verbose
   doc: "Increase verbosity of output. -v: Show progress of\nsimulation. -vv: Print\

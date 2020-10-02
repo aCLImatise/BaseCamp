@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslPretty.cwl
+id: pslPretty.cwl
 inputs:
 - id: in_axt
   doc: "Save in format like Scott Schwartz's axt format.\nNote gaps in both sequences\

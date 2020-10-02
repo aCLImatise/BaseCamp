@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quantifier.pl.cwl
+id: quantifier.pl.cwl
 inputs:
 - id: in_list_values_allowed
   doc: list all values allowed for the species parameter that have an entry at UCSC

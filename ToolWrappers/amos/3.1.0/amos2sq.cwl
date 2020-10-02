@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amos2sq.cwl
+id: amos2sq.cwl
 inputs: []
 outputs:
 - id: out_stdout

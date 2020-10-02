@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HighResPrecursorMassCorrector.cwl
+id: HighResPrecursorMassCorrector.cwl
 inputs:
 - id: in_in
   doc: "*                                 Input file (centroided data) (valid formats:\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../infer_sv.pl.cwl
+id: infer_sv.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

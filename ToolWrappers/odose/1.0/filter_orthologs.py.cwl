@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_orthologs.py.cwl
+id: filter_orthologs.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

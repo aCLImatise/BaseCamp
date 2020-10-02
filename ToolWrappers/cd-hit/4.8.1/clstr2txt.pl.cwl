@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clstr2txt.pl.cwl
+id: clstr2txt.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

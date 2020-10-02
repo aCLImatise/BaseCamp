@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../out_to_chain.py.cwl
+id: out_to_chain.py.cwl
 inputs:
 - id: in_speciesnames_target_species
   doc: "SPECIES\nNames of target and query species (respectively) in\nthe alignment.\

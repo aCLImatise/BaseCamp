@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../transcov_collapse.cwl
+id: transcov_collapse.cwl
 inputs:
 - id: in_output_file
-  doc: ''
+  doc: "--uint32\n--help                  Show this message and exit.\n"
   type: File
   inputBinding:
     prefix: --output-file
-- id: in_uint_three_two
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --uint32
 - id: in_matrices
   doc: ''
   type: string
@@ -21,7 +16,7 @@ outputs:
   doc: Standard output stream
   type: stdout
 - id: out_output_file
-  doc: ''
+  doc: "--uint32\n--help                  Show this message and exit.\n"
   type: File
   outputBinding:
     glob: $(inputs.in_output_file)

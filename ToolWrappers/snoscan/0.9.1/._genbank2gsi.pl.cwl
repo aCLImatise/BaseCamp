@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../._genbank2gsi.pl.cwl
+id: ._genbank2gsi.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

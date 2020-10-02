@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_sql_users.cwl
+id: gcloud_sql_users.cwl
 inputs:
 - id: in_create
   doc: Creates a user in a given instance.

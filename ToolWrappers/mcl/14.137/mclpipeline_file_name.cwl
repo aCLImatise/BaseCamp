@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mclpipeline_file_name.cwl
+id: mclpipeline_file_name.cwl
 inputs:
 - id: in_parser
   doc: option is required

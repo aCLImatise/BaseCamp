@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tgene.cwl
+id: tgene.cwl
 inputs:
 - id: in_o
   doc: 'output to the specified directory; default: tgene_out'

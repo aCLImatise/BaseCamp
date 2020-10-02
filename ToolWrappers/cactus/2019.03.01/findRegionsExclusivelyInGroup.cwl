@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findRegionsExclusivelyInGroup.cwl
+id: findRegionsExclusivelyInGroup.cwl
 inputs:
 - id: in_cache_bytes
   doc: ":           maximum size in bytes of regular hdf5 cache [default\n= 15728640]"

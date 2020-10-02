@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ExpaRNA.cwl
+id: ExpaRNA.cwl
 inputs:
 - id: in_minmal_size_epm
   doc: "#   : # minmal size of an EPM (gamma)\n2 is default and returns all EPMs with\

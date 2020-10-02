@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../traitar_pfam.cwl
+id: traitar_pfam.cwl
 inputs:
 - id: in_local
   doc: the Pfam HMMs are in the above directory with name 'Pfam-A.hmm'

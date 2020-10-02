@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sawriter.cwl
+id: sawriter.cwl
 inputs:
 - id: in_blt
   doc: "Build a lookup table on prefixes of length 'p'. This speeds\nup lookups considerably\

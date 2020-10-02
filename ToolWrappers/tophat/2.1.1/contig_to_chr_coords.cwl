@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contig_to_chr_coords.cwl
+id: contig_to_chr_coords.cwl
 inputs: []
 outputs:
 - id: out_stdout

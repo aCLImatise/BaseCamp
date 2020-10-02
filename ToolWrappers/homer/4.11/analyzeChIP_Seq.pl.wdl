@@ -14,11 +14,6 @@ task AnalyzeChIPSeqpl {
     Boolean? skip_freq
     Boolean? cpg
     Boolean? tag_go
-    Directory? normally_a_experimentsam
-    String? b
-    String? c
-    Directory? inputdirectory_go_expdirectorygoanalysis
-    Int? len
     Directory exp_tag_directory
     String genome
     String? global
@@ -41,12 +36,7 @@ task AnalyzeChIPSeqpl {
       ~{if (mask) then "-mask" else ""} \
       ~{if (skip_freq) then "-skipFreq" else ""} \
       ~{if (cpg) then "-cpg" else ""} \
-      ~{if (tag_go) then "-tagGO" else ""} \
-      ~{if defined(normally_a_experimentsam) then ("-A " +  '"' + normally_a_experimentsam + '"') else ""} \
-      ~{if defined(b) then ("-B " +  '"' + b + '"') else ""} \
-      ~{if defined(c) then ("-C " +  '"' + c + '"') else ""} \
-      ~{if defined(inputdirectory_go_expdirectorygoanalysis) then ("-D " +  '"' + inputdirectory_go_expdirectorygoanalysis + '"') else ""} \
-      ~{if defined(len) then ("-len " +  '"' + len + '"') else ""}
+      ~{if (tag_go) then "-tagGO" else ""}
   >>>
   parameter_meta {
     or: "(or)"
@@ -61,11 +51,6 @@ task AnalyzeChIPSeqpl {
     skip_freq: "(skips nucleotide frequency and GC quality control calculations)"
     cpg: "(For motif finding, use CpG% sequence bias correction, default: GC%)"
     tag_go: "(perform Genome Ontology Analysis on tags - need ~ 3Gbs of memory)"
-    normally_a_experimentsam: "(normally -A experiment1.sam  ...)"
-    b: ""
-    c: ""
-    inputdirectory_go_expdirectorygoanalysis: "INPUT_DIRECTORY -go EXP_DIRECTORY/GOanalysis"
-    len: ",10,12 -S 25 -size 200"
     exp_tag_directory: ""
     genome: ""
     global: ""

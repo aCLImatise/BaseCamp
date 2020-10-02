@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_sql_flags.cwl
+id: gcloud_sql_flags.cwl
 inputs:
 - id: in_optional
   doc: ''

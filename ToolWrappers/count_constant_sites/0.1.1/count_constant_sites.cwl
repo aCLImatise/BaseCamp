@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../count_constant_sites.cwl
+id: count_constant_sites.cwl
 inputs: []
 outputs:
 - id: out_stdout

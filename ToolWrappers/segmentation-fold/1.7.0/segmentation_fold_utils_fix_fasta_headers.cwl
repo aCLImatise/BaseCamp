@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segmentation_fold_utils_fix_fasta_headers.cwl
+id: segmentation_fold_utils_fix_fasta_headers.cwl
 inputs:
 - id: in_fast_a_output_file
   doc: 'Options:'

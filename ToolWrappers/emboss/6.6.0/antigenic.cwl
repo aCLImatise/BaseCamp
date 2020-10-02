@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../antigenic.cwl
+id: antigenic.cwl
 inputs:
 - id: in_min_len
   doc: "integer    [6] Minimum length of antigenic region\n(Integer from 1 to 50)"

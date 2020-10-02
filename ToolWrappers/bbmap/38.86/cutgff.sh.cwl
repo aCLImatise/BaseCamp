@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cutgff.sh.cwl
+id: cutgff.sh.cwl
 inputs:
 - id: in_in
   doc: ''

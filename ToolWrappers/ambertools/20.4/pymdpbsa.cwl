@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pymdpbsa.cwl
+id: pymdpbsa.cwl
 inputs:
 - id: in_proj
   doc: global project name

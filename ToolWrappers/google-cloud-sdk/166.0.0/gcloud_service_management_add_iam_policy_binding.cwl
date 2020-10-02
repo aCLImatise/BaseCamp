@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_service_management_add_iam_policy_binding.cwl
+id: gcloud_service_management_add_iam_policy_binding.cwl
 inputs:
 - id: in_role
   doc: ''

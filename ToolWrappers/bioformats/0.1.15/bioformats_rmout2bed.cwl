@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioformats_rmout2bed.cwl
+id: bioformats_rmout2bed.cwl
 inputs:
 - id: in_color
   doc: "how to choose colors of BED repeat records (default:\nclass)"

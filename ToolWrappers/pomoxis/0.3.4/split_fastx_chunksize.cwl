@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_fastx_chunksize.cwl
+id: split_fastx_chunksize.cwl
 inputs:
 - id: in_split_fast_x
   doc: ''

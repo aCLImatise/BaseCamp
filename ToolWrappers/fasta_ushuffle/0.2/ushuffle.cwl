@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ushuffle.cwl
+id: ushuffle.cwl
 inputs:
 - id: in_specifies_the_sequence
   doc: specifies the sequence

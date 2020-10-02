@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_consensus_output.R.cwl
+id: get_consensus_output.R.cwl
 inputs:
 - id: in_input_dir
   doc: "Path to the directory with standardised .tsv files from multiple\nmethods"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alignstats.cwl
+id: alignstats.cwl
 inputs:
 - id: in_print_verbose_output
   doc: Print verbose runtime information output to stderr.

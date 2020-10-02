@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_tview.cwl
+id: flye_samtools_tview.cwl
 inputs:
 - id: in_output_html_curses
   doc: output as (H)tml or (C)urses or (T)ext

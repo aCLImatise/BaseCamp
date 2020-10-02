@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scala.cwl
+id: scala.cwl
 inputs:
 - id: in_or
   doc: scala -help

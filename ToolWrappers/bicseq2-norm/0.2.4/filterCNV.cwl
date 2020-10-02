@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterCNV.cwl
+id: filterCNV.cwl
 inputs:
 - id: in_cnv_region_file
   doc: ''

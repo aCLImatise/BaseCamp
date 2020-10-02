@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../abyss_db_txt.cwl
-inputs:
-- id: in_e
-  doc: ':'
-  type: string
-  inputBinding:
-    prefix: -e
+id: abyss_db_txt.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

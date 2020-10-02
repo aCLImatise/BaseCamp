@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bacteria_tradis.cwl
+id: bacteria_tradis.cwl
 inputs:
 - id: in_text_file_listing
   doc: ': text file listing fastq files with tradis tags attached'

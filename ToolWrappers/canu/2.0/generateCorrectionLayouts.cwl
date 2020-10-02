@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generateCorrectionLayouts.cwl
+id: generateCorrectionLayouts.cwl
 inputs:
 - id: in_mandatory_path_to_seqstore
   doc: mandatory path to seqStore

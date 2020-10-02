@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_hiddenDomains_no_control.R.cwl
+id: run_hiddenDomains_no_control.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

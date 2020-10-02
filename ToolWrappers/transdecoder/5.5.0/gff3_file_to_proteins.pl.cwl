@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff3_file_to_proteins.pl.cwl
+id: gff3_file_to_proteins.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

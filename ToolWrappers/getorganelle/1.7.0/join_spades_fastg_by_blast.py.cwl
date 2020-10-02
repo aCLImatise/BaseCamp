@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../join_spades_fastg_by_blast.py.cwl
+id: join_spades_fastg_by_blast.py.cwl
 inputs:
 - id: in_followed_input_fastg
   doc: followed by your input fastg file

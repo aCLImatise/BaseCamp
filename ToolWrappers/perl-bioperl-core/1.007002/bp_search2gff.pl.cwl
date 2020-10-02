@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_search2gff.pl.cwl
+id: bp_search2gff.pl.cwl
 inputs:
 - id: in_optional_inputfilename_will
   doc: "- (optional) inputfilename, will read\neither ARGV files or from STDIN"

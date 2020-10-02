@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../allegro.cwl
+id: allegro.cwl
 inputs:
 - id: in_m
   doc: ''

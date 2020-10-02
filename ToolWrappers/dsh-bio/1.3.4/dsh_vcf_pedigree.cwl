@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_vcf_pedigree.cwl
+id: dsh_vcf_pedigree.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

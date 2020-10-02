@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SemanticValidator.cwl
+id: SemanticValidator.cwl
 inputs:
 - id: in_in
   doc: "*            Input file (any xml file) (valid formats: 'analysisXML', 'mzML',\

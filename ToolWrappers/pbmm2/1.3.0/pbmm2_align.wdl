@@ -42,15 +42,31 @@ task Pbmm2Align {
     Boolean? num_threads
     Boolean? log_level
     Boolean? log_file
-    String sub_read
-    String iso_seq
-    String unrolled
+    String out_dot_aligned_dot_bam_vertical_line_xml
+    String ref_dot_f_a_vertical_line_xml_vertical_line_mmi
+    String str
+    String in_dot_bam_vertical_line_xml_vertical_line_f_a_vertical_line_fq_vertical_line_gz_vertical_line_fof_n
+    String var_input
+    String var_output
+    String reference
+    String bam
+    String fast_a
+    String or
+    String dataset
   }
   command <<<
     pbmm2 align \
-      ~{sub_read} \
-      ~{iso_seq} \
-      ~{unrolled} \
+      ~{out_dot_aligned_dot_bam_vertical_line_xml} \
+      ~{ref_dot_f_a_vertical_line_xml_vertical_line_mmi} \
+      ~{str} \
+      ~{in_dot_bam_vertical_line_xml_vertical_line_f_a_vertical_line_fq_vertical_line_gz_vertical_line_fof_n} \
+      ~{var_input} \
+      ~{var_output} \
+      ~{reference} \
+      ~{bam} \
+      ~{fast_a} \
+      ~{or} \
+      ~{dataset} \
       ~{if (chunk_size) then "--chunk-size" else ""} \
       ~{if (sort) then "--sort" else ""} \
       ~{if (sort_memory) then "--sort-memory" else ""} \
@@ -133,9 +149,17 @@ task Pbmm2Align {
     num_threads: "INT    Number of threads to use, 0 means autodetection. [0]"
     log_level: "STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]"
     log_file: "FILE   Log to a file, instead of stderr."
-    sub_read: ": -k 19 -w 10    -o 5 -O 56 -e 4 -E 1 -A 2 -B 5 -z 400 -Z 50  -r 2000   -L 0.5 -g 5000"
-    iso_seq: ": -k 15 -w 5  -u -o 2 -O 32 -e 1 -E 0 -A 1 -B 2 -z 200 -Z 100 -r 200000 -L 0.5 -g 2000 -C 5 -G 200000"
-    unrolled: ": -k 15 -w 15    -o 2 -O 32 -e 1 -E 0 -A 1 -B 2 -z 200 -Z 100 -r 2000   -L 0.5 -g 10000"
+    out_dot_aligned_dot_bam_vertical_line_xml: ""
+    ref_dot_f_a_vertical_line_xml_vertical_line_mmi: ""
+    str: ""
+    in_dot_bam_vertical_line_xml_vertical_line_f_a_vertical_line_fq_vertical_line_gz_vertical_line_fof_n: ""
+    var_input: ""
+    var_output: ""
+    reference: ""
+    bam: ""
+    fast_a: ""
+    or: ""
+    dataset: ""
   }
   output {
     File out_stdout = stdout()

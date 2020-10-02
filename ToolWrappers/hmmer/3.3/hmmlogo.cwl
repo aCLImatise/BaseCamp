@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmlogo.cwl
+id: hmmlogo.cwl
 inputs:
 - id: in_height_relent_all
   doc: ': total height = relative entropy ; all letters shown (default)'

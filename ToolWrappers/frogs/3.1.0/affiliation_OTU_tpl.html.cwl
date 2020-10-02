@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../affiliation_OTU_tpl.html.cwl
+id: affiliation_OTU_tpl.html.cwl
 inputs: []
 outputs:
 - id: out_stdout

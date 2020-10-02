@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_query.cwl
+id: synapse_query.cwl
 inputs:
 - id: in_p
   doc: ''

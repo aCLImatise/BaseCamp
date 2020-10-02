@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bigPslToPsl.cwl
+id: bigPslToPsl.cwl
 inputs: []
 outputs:
 - id: out_stdout

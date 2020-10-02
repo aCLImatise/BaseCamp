@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PLEK.range.cwl
+id: PLEK.range.cwl
 inputs: []
 outputs:
 - id: out_stdout

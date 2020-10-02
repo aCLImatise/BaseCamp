@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nextflow.bak_info.cwl
+id: nextflow.bak_info.cwl
 inputs:
 - id: in_check_updates
   doc: "Check for remote updates\nDefault: false"

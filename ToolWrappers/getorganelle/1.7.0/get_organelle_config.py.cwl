@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_organelle_config.py.cwl
+id: get_organelle_config.py.cwl
 inputs:
 - id: in_add
   doc: "Add database for organelle type(s). Followed by any of\nall/embplant_pt/embplant_mt/embplant_nr/fungus_mt/anim\n\

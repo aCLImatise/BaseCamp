@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnaseq_peakfinder.pl.cwl
+id: rnaseq_peakfinder.pl.cwl
 inputs:
 - id: in_bgp_os
   doc: BedGraph input file containing coverage of the [+] strand.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../monovar.cwl
+id: monovar.cwl
 inputs: []
 outputs:
 - id: out_stdout

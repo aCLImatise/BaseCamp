@@ -13,14 +13,10 @@ task Prequel {
     String? gibbs
     String independence_dot
     Float __
-    Float __
     Float zero_dot_zero_zero_zero_four_two_seven
-    Float __
     Float zero_dot_zero_two_five_eight_two_six
     Float __
-    Float __
     Float zero_do_tone_two_five_eight_one_one
-    Float zero_dot_zero_zero_four_eight_seven_eight
     Float zero_dot_zero_zero_zero_zero_three_zero
     String data_dot
   }
@@ -28,14 +24,10 @@ task Prequel {
     prequel \
       ~{independence_dot} \
       ~{__} \
-      ~{__} \
       ~{zero_dot_zero_zero_zero_four_two_seven} \
-      ~{__} \
       ~{zero_dot_zero_two_five_eight_two_six} \
       ~{__} \
-      ~{__} \
       ~{zero_do_tone_two_five_eight_one_one} \
-      ~{zero_dot_zero_zero_four_eight_seven_eight} \
       ~{zero_dot_zero_zero_zero_zero_three_zero} \
       ~{data_dot} \
       ~{if defined(seqs) then ("--seqs " +  '"' + seqs + '"') else ""} \
@@ -59,11 +51,10 @@ task Prequel {
     refseq: "(for use with --msa-format MAF) Read the complete text of the\\nreference sequence from <fname> (FASTA format) and combine it\\nwith the contents of the MAF file to produce a complete,\\nordered representation of the alignment.  The reference\\nsequence of the MAF file is assumed to be the one that appears\\nfirst in each block."
     gibbs: "(experimental) Estimate posterior probabilities by Gibbs sampling\\nrather than by the sum-product algorithm.  Sample each sequence\\n<nsamples> times and estimate posterior probabilities as fraction\\nof times each base appeared at each position.  This option is used\\nby default if a dinucleotide or trinucleotide model is given (exact\\ninference not possible).   NOT YET IMPLEMENTED"
     independence_dot: "Specifically, each base is assumed to have been inserted"
-    __: "0.000039        0.998460        0.000052"
+    __: "0.000065        0.001755        0.000030"
     zero_dot_zero_zero_zero_four_two_seven: "0.271307        0.000599        0.727668"
     zero_dot_zero_two_five_eight_two_six: "0.000179        0.973813        0.000182"
     zero_do_tone_two_five_eight_one_one: "0.000393        0.873431        0.000365"
-    zero_dot_zero_zero_four_eight_seven_eight: "0.018097        0.118851        0.858174"
     zero_dot_zero_zero_zero_zero_three_zero: "0.001637        0.000064        0.998269"
     data_dot: "The --suff-stats option produces a more compact output"
   }

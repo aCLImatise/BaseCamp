@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_log_stream.cwl
+id: dx_log_stream.cwl
 inputs:
 - id: in_l
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicAverageRegions.cwl
+id: hicAverageRegions.cwl
 inputs:
 - id: in_out_filename
   doc: File name to save the average regions TADs matrix.

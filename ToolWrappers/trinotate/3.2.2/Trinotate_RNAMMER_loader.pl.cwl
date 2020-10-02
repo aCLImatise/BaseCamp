@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Trinotate_RNAMMER_loader.pl.cwl
+id: Trinotate_RNAMMER_loader.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../br_biofetch.rb.cwl
+id: br_biofetch.rb.cwl
 inputs: []
 outputs:
 - id: out_stdout

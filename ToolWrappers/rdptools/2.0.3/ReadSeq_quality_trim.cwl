@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReadSeq_quality_trim.cwl
+id: ReadSeq_quality_trim.cwl
 inputs:
 - id: in_fast_q_out
   doc: "Write fastq instead of fasta file, offset 33\n(#)"

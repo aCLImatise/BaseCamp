@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Maaslin2.R.cwl
+id: Maaslin2.R.cwl
 inputs:
 - id: in_min_abundance
   doc: 'The minimum abundance for each feature [ Default: 0 ]'

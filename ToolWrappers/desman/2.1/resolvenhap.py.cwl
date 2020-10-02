@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../resolvenhap.py.cwl
+id: resolvenhap.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

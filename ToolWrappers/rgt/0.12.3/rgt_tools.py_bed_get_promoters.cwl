@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_bed_get_promoters.cwl
+id: rgt_tools.py_bed_get_promoters.cwl
 inputs:
 - id: in_input_file_bed
   doc: Input file (BED or gene list)

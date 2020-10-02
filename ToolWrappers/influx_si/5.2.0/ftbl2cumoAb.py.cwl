@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ftbl2cumoAb.py.cwl
+id: ftbl2cumoAb.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

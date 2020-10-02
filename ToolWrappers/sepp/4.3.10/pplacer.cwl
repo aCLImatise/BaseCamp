@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pplacer.cwl
+id: pplacer.cwl
 inputs:
 - id: in_specify_path_reference
   doc: Specify the path to the reference package.

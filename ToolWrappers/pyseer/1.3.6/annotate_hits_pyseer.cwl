@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotate_hits_pyseer.cwl
+id: annotate_hits_pyseer.cwl
 inputs:
 - id: in_bwa
   doc: Location of bwa executable [default=bwa]

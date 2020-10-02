@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../add_bw_track.pl.cwl
+id: add_bw_track.pl.cwl
 inputs:
 - id: in_bicolor_pivot
   doc: "point where to set pivot for color changes - can be \"mean\", \"zero\",\n\

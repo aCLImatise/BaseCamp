@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fix_unmapped.py.cwl
+id: fix_unmapped.py.cwl
 inputs:
 - id: in_input_file
   doc: "Input file containing accession IDs to map. Multi-\ncolumn files accepted.\

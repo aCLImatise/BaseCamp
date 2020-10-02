@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../autoheader.bak.cwl
+id: autoheader.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

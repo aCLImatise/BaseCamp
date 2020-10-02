@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cp.cwl
+id: cp.cwl
 inputs:
 - id: in_archive
   doc: same as -dR --preserve=all

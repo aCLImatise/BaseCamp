@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_rm_dup_tss.cwl
+id: gtftk_rm_dup_tss.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the GTF file. Default to STDIN (default: <stdin>)'

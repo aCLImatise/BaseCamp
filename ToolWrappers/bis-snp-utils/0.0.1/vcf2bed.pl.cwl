@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2bed.pl.cwl
+id: vcf2bed.pl.cwl
 inputs:
 - id: in_input_file_name
   doc: ''

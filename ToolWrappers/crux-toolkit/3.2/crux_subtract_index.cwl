@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_subtract_index.cwl
+id: crux_subtract_index.cwl
 inputs:
 - id: in_tide_index_one
   doc: ''

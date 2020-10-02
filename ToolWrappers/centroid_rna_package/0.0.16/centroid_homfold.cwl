@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centroid_homfold.cwl
+id: centroid_homfold.cwl
 inputs:
 - id: in_arg_fasta_file
   doc: '[ --homologous ] arg fasta file containing homologous sequences (REQUIRED)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MIRfix_GUI.py.cwl
+id: MIRfix_GUI.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaeuk_groupstoacc.cwl
+id: metaeuk_groupstoacc.cwl
 inputs:
 - id: in_threads
   doc: Number of CPU-cores used (all by default) [8]

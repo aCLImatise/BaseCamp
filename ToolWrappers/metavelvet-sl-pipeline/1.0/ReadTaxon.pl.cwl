@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReadTaxon.pl.cwl
+id: ReadTaxon.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SolexaQA++.cwl
+id: SolexaQA++.cwl
 inputs: []
 outputs:
 - id: out_stdout

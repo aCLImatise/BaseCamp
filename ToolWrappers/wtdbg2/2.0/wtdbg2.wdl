@@ -8,7 +8,6 @@ task Wtdbg2 {
     Int? number_threads_cores
     Boolean? force_overwrite_files
     Int? choose_longest_subread
-    Int? kmer_fsize_k
     Int? kmer_psize_p
     Float? filter_high_frequency
     Int? min_kmer_frequency
@@ -60,7 +59,6 @@ task Wtdbg2 {
     Boolean? drop_low_cov_edges
     Int? node_min
     Int? node_max
-    Int? ttr_cut_off_depth
     Float? ttr_cut_off_ratio
     File? dump_kbm
     File? load_kbm
@@ -87,7 +85,6 @@ task Wtdbg2 {
       ~{if defined(number_threads_cores) then ("-t " +  '"' + number_threads_cores + '"') else ""} \
       ~{if (force_overwrite_files) then "-f" else ""} \
       ~{if defined(choose_longest_subread) then ("-L " +  '"' + choose_longest_subread + '"') else ""} \
-      ~{if defined(kmer_fsize_k) then ("-k " +  '"' + kmer_fsize_k + '"') else ""} \
       ~{if defined(kmer_psize_p) then ("-p " +  '"' + kmer_psize_p + '"') else ""} \
       ~{if defined(filter_high_frequency) then ("-K " +  '"' + filter_high_frequency + '"') else ""} \
       ~{if defined(min_kmer_frequency) then ("-E " +  '"' + min_kmer_frequency + '"') else ""} \
@@ -139,7 +136,6 @@ task Wtdbg2 {
       ~{if (drop_low_cov_edges) then "--drop-low-cov-edges" else ""} \
       ~{if defined(node_min) then ("--node-min " +  '"' + node_min + '"') else ""} \
       ~{if defined(node_max) then ("--node-max " +  '"' + node_max + '"') else ""} \
-      ~{if defined(ttr_cut_off_depth) then ("--ttr-cutoff-depth " +  '"' + ttr_cut_off_depth + '"') else ""} \
       ~{if defined(ttr_cut_off_ratio) then ("--ttr-cutoff-ratio " +  '"' + ttr_cut_off_ratio + '"') else ""} \
       ~{if defined(dump_kbm) then ("--dump-kbm " +  '"' + dump_kbm + '"') else ""} \
       ~{if defined(load_kbm) then ("--load-kbm " +  '"' + load_kbm + '"') else ""} \
@@ -165,7 +161,6 @@ task Wtdbg2 {
     number_threads_cores: "Number of threads, 0 for all cores, [4]"
     force_overwrite_files: "Force to overwrite output files"
     choose_longest_subread: "Choose the longest subread and drop reads shorter than <int> (5000 recommended for PacBio) [0]"
-    kmer_fsize_k: "Kmer fsize, 0 <= k <= 25, [0]"
     kmer_psize_p: "Kmer psize, 0 <= p <= 25, [21]\\nk + p <= 25, seed is <k-mer>+<p-homopolymer-compressed>"
     filter_high_frequency: "Filter high frequency kmers, maybe repetitive, [1000]\\nif K >= 1, take the integer value as cutoff, MUST <= 65535\\nelse, mask the top fraction part high frequency kmers"
     min_kmer_frequency: "Min kmer frequency, [2]"
@@ -216,7 +211,6 @@ task Wtdbg2 {
     drop_low_cov_edges: "Don't attempt to rescue low coverage edges"
     node_min: "Min depth of a intreval to be selected as valid node. Defaultly, this value is automaticly the same with --edge-min."
     node_max: "Nodes with too high depth will be regarded as repetitive, and be masked. Default: 200, more than 200 reads contain this node"
-    ttr_cut_off_depth: ", 0"
     ttr_cut_off_ratio: ", 0.5\\nTiny Tandom Repeat. A node located inside ttr will bring noisy in graph, should be masked. The pattern of such nodes is:\\ndepth >= <--ttr-cutoff-depth>, and none of their edges have depth greater than depth * <--ttr-cutoff-ratio 0.5>\\nset --ttr-cutoff-depth 0 to disable ttr masking"
     dump_kbm: "Dump kbm index into file for loaded by `kbm` or `wtdbg`"
     load_kbm: "Instead of reading sequences and building kbm index, which is time-consumed, loading kbm-index from already dumped file.\\nPlease note that, once kbm-index is mmaped by kbm -R <kbm-index> start, will just get the shared memory in minute time.\\nSee `kbm` -R <your_seqs.kbmidx> [start | stop]"

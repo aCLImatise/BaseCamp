@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../illumina_to_fasta.pl.orig.cwl
+id: illumina_to_fasta.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

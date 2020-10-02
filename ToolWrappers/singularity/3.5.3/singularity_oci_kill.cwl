@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singularity_oci_kill.cwl
+id: singularity_oci_kill.cwl
 inputs:
 - id: in_force
   doc: kill container process with SIGKILL

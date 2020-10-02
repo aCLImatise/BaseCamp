@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gfa_to_fasta.py.cwl
+id: gfa_to_fasta.py.cwl
 inputs:
 - id: in_gfa_two_fasta_do_tpy
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oligoscreen_smp.cwl
+id: oligoscreen_smp.cwl
 inputs:
 - id: in_dna
   doc: "This flag only matters if the input file is a sequence file and has been\n\

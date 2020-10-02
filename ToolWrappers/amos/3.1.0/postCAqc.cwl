@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../postCAqc.cwl
+id: postCAqc.cwl
 inputs:
 - id: in_frgfile_asmfile_required
   doc: (frgfile) and -a (asmfile) are required

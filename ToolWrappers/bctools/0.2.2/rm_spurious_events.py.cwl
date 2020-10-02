@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rm_spurious_events.py.cwl
+id: rm_spurious_events.py.cwl
 inputs:
 - id: in_outfile
   doc: 'Write results to this file. (default: None)'

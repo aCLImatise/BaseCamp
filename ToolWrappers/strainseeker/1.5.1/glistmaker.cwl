@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../glistmaker.cwl
+id: glistmaker.cwl
 inputs:
 - id: in_word_length
   doc: '- specify index wordsize (1-32) (default 16)'

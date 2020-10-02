@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_routes.cwl
+id: gcloud_compute_routes.cwl
 inputs:
 - id: in_create
   doc: Create a new route.

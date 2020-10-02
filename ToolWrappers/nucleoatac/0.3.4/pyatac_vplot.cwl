@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyatac_vplot.cwl
+id: pyatac_vplot.cwl
 inputs:
 - id: in_bed
   doc: Positions around which to generate VPlot
@@ -12,15 +12,10 @@ inputs:
   inputBinding:
     prefix: --bam
 - id: in_out
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --out
-- id: in_cores
-  doc: Number of cores to use
+  doc: --cores int     Number of cores to use
   type: long
   inputBinding:
-    prefix: --cores
+    prefix: --out
 - id: in_lower
   doc: lower limit on insert size
   type: long

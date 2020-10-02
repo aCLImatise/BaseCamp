@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_to_mock_fastq.py_input_fasta.cwl
+id: fasta_to_mock_fastq.py_input_fasta.cwl
 inputs:
 - id: in_q
   doc: ''

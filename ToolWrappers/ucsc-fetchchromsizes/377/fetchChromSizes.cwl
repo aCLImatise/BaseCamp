@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fetchChromSizes.cwl
+id: fetchChromSizes.cwl
 inputs:
 - id: in_always_prompt_removing
   doc: Always prompt before removing

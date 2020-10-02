@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SICER.sh.cwl
+id: SICER.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

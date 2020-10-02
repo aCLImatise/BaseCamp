@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_export_nexus_ogt.cwl
+id: cnvkit.py_export_nexus_ogt.cwl
 inputs:
 - id: in_sample_id
   doc: "Specify the name of the sample in the VCF to use to\nextract b-allele frequencies."

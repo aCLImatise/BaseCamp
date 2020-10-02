@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterTADsAndCPs.pl.cwl
+id: filterTADsAndCPs.pl.cwl
 inputs:
 - id: in_def_out
   doc: '(def: out)'
@@ -58,15 +58,10 @@ inputs:
   inputBinding:
     prefix: -minCPcov
 - id: in_tad_score
-  doc: ''
+  doc: -CPscore <CP score file>
   type: File
   inputBinding:
     prefix: -TADscore
-- id: in_cp_score
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -CPscore
 outputs:
 - id: out_stdout
   doc: Standard output stream

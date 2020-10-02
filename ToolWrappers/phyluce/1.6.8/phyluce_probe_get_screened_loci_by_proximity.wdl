@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceProbeGetScreenedLociByProximity {
   input {
-    String? var_output
+    Int? var_output
     File? fasta_file_input
     String? distance
     Int? length
@@ -15,7 +15,7 @@ task PhyluceProbeGetScreenedLociByProximity {
       ~{if defined(length) then ("--length " +  '"' + length + '"') else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    var_output: "[--distance DISTANCE]\\n[--length LENGTH]"
     fasta_file_input: "The FASTA file of input sequences"
     distance: "The minimum distance on which to filter"
     length: "The minimum length of sequences to filter"

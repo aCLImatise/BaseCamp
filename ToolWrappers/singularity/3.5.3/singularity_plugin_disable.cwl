@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singularity_plugin_disable.cwl
+id: singularity_plugin_disable.cwl
 inputs:
 - id: in_singularity
   doc: ''

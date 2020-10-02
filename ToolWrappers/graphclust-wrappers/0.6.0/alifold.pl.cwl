@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alifold.pl.cwl
+id: alifold.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

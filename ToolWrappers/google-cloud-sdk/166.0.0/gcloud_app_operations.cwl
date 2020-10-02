@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_app_operations.cwl
+id: gcloud_app_operations.cwl
 inputs:
 - id: in_describe
   doc: Describes the operation.

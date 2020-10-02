@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phenix.py_filter_vcf.cwl
+id: phenix.py_filter_vcf.cwl
 inputs:
 - id: in_vcf
   doc: VCF file to (re)filter.

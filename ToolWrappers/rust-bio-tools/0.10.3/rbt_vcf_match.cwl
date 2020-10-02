@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbt_vcf_match.cwl
+id: rbt_vcf_match.cwl
 inputs:
 - id: in_max_dist
   doc: 'Maximum distance between centres of two indels considered to match. [default:

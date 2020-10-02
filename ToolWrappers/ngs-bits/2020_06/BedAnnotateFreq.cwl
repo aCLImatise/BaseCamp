@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedAnnotateFreq.cwl
+id: BedAnnotateFreq.cwl
 inputs:
 - id: in_bam
   doc: Input BAM file(s).

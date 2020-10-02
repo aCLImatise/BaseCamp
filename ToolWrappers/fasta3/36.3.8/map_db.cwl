@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map_db.cwl
+id: map_db.cwl
 inputs: []
 outputs:
 - id: out_stdout

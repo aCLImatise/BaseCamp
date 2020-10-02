@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_cluster_functional_enrichment_analysis.pl.cwl
+id: run_cluster_functional_enrichment_analysis.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MetaboliteSpectralMatcher.cwl
+id: MetaboliteSpectralMatcher.cwl
 inputs:
 - id: in_in
   doc: "*        Input spectra. (valid formats: 'mzML')"

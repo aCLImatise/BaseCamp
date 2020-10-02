@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_dbiflat.cwl
+id: _dbiflat.cwl
 inputs:
 - id: in_id_format
   doc: "menu       [SWISS] Entry format (Values: EMBL (EMBL);\nSWISS (Swiss-Prot,\

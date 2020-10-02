@@ -88,7 +88,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: &id006 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -176,7 +176,7 @@ subcommands:
         args: !SimpleFlagArg
           name: arg
         optional: true
-      parent: &id003 !Command
+      parent: &id006 !Command
         command: *id001
         positional: []
         named: []
@@ -264,7 +264,344 @@ subcommands:
             args: !SimpleFlagArg
               name: arg
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional: []
+              named:
+              - !Flag
+                description: '[ --variant-file ] arg             variant file (vcf
+                  format).'
+                synonyms:
+                - -v
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: '[ --samples-file ] arg             samples file (see
+                  github documentation for format specifications).'
+                synonyms:
+                - -s
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: '[ --genome-file ] arg              reference genome
+                  file (fasta format).'
+                synonyms:
+                - -g
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: '[ --decoy-file ] arg               decoy sequences file
+                  (fasta format).'
+                synonyms:
+                - -d
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "[ --output-prefix ] arg (=bayestyper)\noutput prefix."
+                synonyms:
+                - -o
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: '[ --random-seed ] arg (=unix time) seed for pseudo-random
+                  number generator.'
+                synonyms:
+                - -r
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: '[ --threads ] arg (=1)             number of threads
+                  used (+= 2 I/O threads).'
+                synonyms:
+                - -p
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "[ --min-number-of-unit-variants ] arg (=5000000)\nminimum\
+                  \ number of variants per inference unit."
+                synonyms:
+                - -u
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: (=500000)     exclude alleles (reference and alternative)
+                  longer than <length>.
+                synonyms:
+                - --max-allele-length
+                args: !SimpleFlagArg
+                  name: arg
+                optional: true
+              - !Flag
+                description: "(=0.5)\nminimum fraction of identical kmers required\
+                  \ between an allele and the downstream reference sequence in order\
+                  \ for it to\nbe classified as a copy number."
+                synonyms:
+                - --copy-number-variant-threshold
+                args: !SimpleFlagArg
+                  name: arg
+                optional: true
+              - !Flag
+                description: "(=32)\nmaximum number of haplotype candidates per sample.\n"
+                synonyms:
+                - --max-number-of-sample-haplotypes
+                args: !SimpleFlagArg
+                  name: arg
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: '[ --help ]                         produce help message
+                  for options'
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "\n[09/09/2020 17:46:21] You are using BayesTyper (v1.5 )\n\
+                \n## BayesTyper cluster options ##:\n\n  -h [ --help ]           \
+                \              produce help message for options\n\n== Required ==:\n\
+                \  -v [ --variant-file ] arg             variant file (vcf format).\n\
+                \  -s [ --samples-file ] arg             samples file (see github\
+                \ documentation for format specifications).\n  -g [ --genome-file\
+                \ ] arg              reference genome file (fasta format).\n\n== General\
+                \ ==:\n  -d [ --decoy-file ] arg               decoy sequences file\
+                \ (fasta format).\n  -o [ --output-prefix ] arg (=bayestyper)\n  \
+                \                                      output prefix.\n  -r [ --random-seed\
+                \ ] arg (=unix time) seed for pseudo-random number generator.\n  -p\
+                \ [ --threads ] arg (=1)             number of threads used (+= 2\
+                \ I/O threads).\n  -u [ --min-number-of-unit-variants ] arg (=5000000)\n\
+                \                                        minimum number of variants\
+                \ per inference unit.\n\n== Cluster ==:\n  --max-allele-length arg\
+                \ (=500000)     exclude alleles (reference and alternative) longer\
+                \ than <length>.\n  --copy-number-variant-threshold arg (=0.5)\n \
+                \                                       minimum fraction of identical\
+                \ kmers required between an allele and the downstream reference sequence\
+                \ in order for it to\n                                        be classified\
+                \ as a copy number.\n  --max-number-of-sample-haplotypes arg (=32)\n\
+                \                                        maximum number of haplotype\
+                \ candidates per sample.\n\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - bayesTyper
+              - genotype
+              positional: []
+              named:
+              - !Flag
+                description: '[ --variant-clusters-file ] arg    variant_clusters.bin
+                  file (BayesTyper cluster output).'
+                synonyms:
+                - -v
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "[ --cluster-data-dir ] arg         cluster data directory\
+                  \ containing intercluster_regions.txt.gz, multigroup_kmers.bloom[Meta|Data]\
+                  \ &\nparameter_kmers.fa.gz (BayesTyper cluster output)."
+                synonyms:
+                - -c
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: '[ --samples-file ] arg             samples file (see
+                  github documentation for format specifications).'
+                synonyms:
+                - -s
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: '[ --genome-file ] arg              reference genome
+                  file (fasta format).'
+                synonyms:
+                - -g
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: '[ --decoy-file ] arg               decoy sequences file
+                  (fasta format).'
+                synonyms:
+                - -d
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "[ --output-prefix ] arg (=bayestyper)\noutput prefix."
+                synonyms:
+                - -o
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: '[ --gzip-output ] [=arg(=1)] (=0)  compress <output-prefix>.vcf
+                  using gzip.'
+                synonyms:
+                - -z
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: '[ --random-seed ] arg (=unix time) seed for pseudo-random
+                  number generator.'
+                synonyms:
+                - -r
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: '[ --threads ] arg (=1)             number of threads
+                  used (+= 2 I/O threads).'
+                synonyms:
+                - -p
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "[ --chromosome-ploidy-file ] arg   chromosome gender\
+                  \ ploidy file (see github documentation for format specifications).\
+                  \ Human ploidy levels will be assumed\nif no file is given."
+                synonyms:
+                - -y
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: (=100)            number of burn-in iterations.
+                synonyms:
+                - --gibbs-burn-in
+                args: !SimpleFlagArg
+                  name: arg
+                optional: true
+              - !Flag
+                description: (=250)            number of Gibbs iterations.
+                synonyms:
+                - --gibbs-samples
+                args: !SimpleFlagArg
+                  name: arg
+                optional: true
+              - !Flag
+                description: (=20)    number of independent Gibbs sampling chains.
+                synonyms:
+                - --number-of-gibbs-chains
+                args: !SimpleFlagArg
+                  name: arg
+                optional: true
+              - !Flag
+                description: (=0.1)    subsampling rate for subsetting kmers used
+                  for genotype inference.
+                synonyms:
+                - --kmer-subsampling-rate
+                args: !SimpleFlagArg
+                  name: arg
+                optional: true
+              - !Flag
+                description: "(=500)\nmaximum number of kmers used for genotype inference\
+                  \ after subsampling across a haplotype candidate for each variant."
+                synonyms:
+                - --max-haplotype-variant-kmers
+                args: !SimpleFlagArg
+                  name: arg
+                optional: true
+              - !Flag
+                description: '[=arg(=1)] (=0)    estimate noise model parameters and
+                  genotypes jointly (generally slower and uses more memory).'
+                synonyms:
+                - --noise-genotyping
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: (=1,0.01)      parameters for Poisson noise rate gamma
+                  prior (<shape>,<scale>). All samples will use the same parameters.
+                synonyms:
+                - --noise-rate-prior
+                args: !SimpleFlagArg
+                  name: arg
+                optional: true
+              - !Flag
+                description: (=0.99)  filter genotypes with a posterior probability
+                  (GPP) below <value>.
+                synonyms:
+                - --min-genotype-posterior
+                args: !SimpleFlagArg
+                  name: arg
+                optional: true
+              - !Flag
+                description: (=1)        filter sampled alleles with less than <value>
+                  kmers (NAK).
+                synonyms:
+                - --min-number-of-kmers
+                args: !SimpleFlagArg
+                  name: arg
+                optional: true
+              - !Flag
+                description: "[=arg(=1)] (=0)\ndisable filtering of sampled alleles\
+                  \ with a low fraction of observed kmers (FAK).\n"
+                synonyms:
+                - --disable-observed-kmers
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: '[ --help ]                         produce help message
+                  for options'
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "\n[09/09/2020 17:46:22] You are using BayesTyper (v1.5 )\n\
+                \n## BayesTyper genotype options ##:\n\n  -h [ --help ]          \
+                \               produce help message for options\n\n== Required ==:\n\
+                \  -v [ --variant-clusters-file ] arg    variant_clusters.bin file\
+                \ (BayesTyper cluster output).\n  -c [ --cluster-data-dir ] arg  \
+                \       cluster data directory containing intercluster_regions.txt.gz,\
+                \ multigroup_kmers.bloom[Meta|Data] & \n                         \
+                \               parameter_kmers.fa.gz (BayesTyper cluster output).\n\
+                \  -s [ --samples-file ] arg             samples file (see github\
+                \ documentation for format specifications).\n  -g [ --genome-file\
+                \ ] arg              reference genome file (fasta format).\n\n== General\
+                \ ==:\n  -d [ --decoy-file ] arg               decoy sequences file\
+                \ (fasta format).\n  -o [ --output-prefix ] arg (=bayestyper)\n  \
+                \                                      output prefix.\n  -z [ --gzip-output\
+                \ ] [=arg(=1)] (=0)  compress <output-prefix>.vcf using gzip.\n  -r\
+                \ [ --random-seed ] arg (=unix time) seed for pseudo-random number\
+                \ generator.\n  -p [ --threads ] arg (=1)             number of threads\
+                \ used (+= 2 I/O threads).\n  -y [ --chromosome-ploidy-file ] arg\
+                \   chromosome gender ploidy file (see github documentation for format\
+                \ specifications). Human ploidy levels will be assumed\n         \
+                \                               if no file is given.\n\n== Genotyping\
+                \ ==:\n  --gibbs-burn-in arg (=100)            number of burn-in iterations.\n\
+                \  --gibbs-samples arg (=250)            number of Gibbs iterations.\n\
+                \  --number-of-gibbs-chains arg (=20)    number of independent Gibbs\
+                \ sampling chains.\n  --kmer-subsampling-rate arg (=0.1)    subsampling\
+                \ rate for subsetting kmers used for genotype inference.\n  --max-haplotype-variant-kmers\
+                \ arg (=500)\n                                        maximum number\
+                \ of kmers used for genotype inference after subsampling across a\
+                \ haplotype candidate for each variant.\n  --noise-genotyping [=arg(=1)]\
+                \ (=0)    estimate noise model parameters and genotypes jointly (generally\
+                \ slower and uses more memory).\n  --noise-rate-prior arg (=1,0.01)\
+                \      parameters for Poisson noise rate gamma prior (<shape>,<scale>).\
+                \ All samples will use the same parameters.\n\n== Filter ==:\n  --min-genotype-posterior\
+                \ arg (=0.99)  filter genotypes with a posterior probability (GPP)\
+                \ below <value>.\n  --min-number-of-kmers arg (=1)        filter sampled\
+                \ alleles with less than <value> kmers (NAK).\n  --disable-observed-kmers\
+                \ [=arg(=1)] (=0)\n                                        disable\
+                \ filtering of sampled alleles with a low fraction of observed kmers\
+                \ (FAK).\n\n"
+              generated_using: *id004
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "\n[09/09/2020 17:46:19] You are using BayesTyper (v1.5 )\n\
+              \nUsage: bayesTyper <command> [options]\n\nCommands:\n\n\tcluster\t\t\
+              create variant clusters\n\tgenotype\tgenotype variant clusters\n\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -298,12 +635,9 @@ subcommands:
             \ as a copy number.\n  --max-number-of-sample-haplotypes arg (=32)\n \
             \                                       maximum number of haplotype candidates\
             \ per sample.\n\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - bayesTyper
-          - genotype
+          command: *id005
           positional: []
           named:
           - !Flag
@@ -692,7 +1026,7 @@ subcommands:
         - --disable-observed-kmers
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -925,7 +1259,7 @@ subcommands:
     - --disable-observed-kmers
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id006
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

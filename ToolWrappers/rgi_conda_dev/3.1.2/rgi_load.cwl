@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_load.cwl
+id: rgi_load.cwl
 inputs:
 - id: in_a_file
   doc: "must be a card database json file\n"

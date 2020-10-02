@@ -1,4 +1,4 @@
-&id001 !Command
+!Command
 command:
 - interhost.py
 - snpEff
@@ -52,38 +52,14 @@ named:
   - --loglevel
   args: !ChoiceFlagArg
     choices: !!set
-      ? ERROR
-      ? EXCEPTION
-      ? INFO
-      ? DEBUG
-      ? WARNING
-      ? CRITICAL
+      WARNING:
+      CRITICAL:
+      ERROR:
+      DEBUG:
+      INFO:
+      EXCEPTION:
   optional: true
-parent: !Command
-  command:
-  - interhost.py
-  positional: []
-  named: []
-  parent:
-  subcommands:
-  - *id001
-  usage: []
-  help_flag:
-  usage_flag:
-  version_flag:
-  help_text: "\nEnter a subcommand to view additional information:\n\n     interhost.py\
-    \ \e[1msnpEff\e[0m [...]\n          Annotate variants in VCF file with translation\
-    \ consequences\n          using snpEff.\n\n     interhost.py \e[1malign_mafft\e\
-    [0m [...]\n          Run the mafft alignment on the input FASTA file.\n\n    \
-    \ interhost.py \e[1mmultichr_mafft\e[0m [...]\n          Run the mafft alignment\
-    \ on a series of chromosomes provided\n          in sample-partitioned FASTA files.\
-    \ Output as FASTA. (i.e.\n          file1.fasta would contain chr1, chr2, chr3;\
-    \ file2.fasta\n          would also contain chr1, chr2, chr3)\n\nusage: interhost.py\
-    \ subcommand\n\nThis script contains a number of utilities for SNP calling, multi-alignment,\n\
-    phylogenetics, etc.\n\nsubcommands:\n  \e[F\n    snpEff\n    align_mafft\n   \
-    \ multichr_mafft\n"
-  generated_using: &id002
-  - --help
+parent:
 subcommands: []
 usage: []
 help_flag: !Flag
@@ -121,4 +97,5 @@ help_text: "usage: interhost.py subcommand snpEff [-h] [--tmp_dir TMP_DIR] [--tm
   \  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n                  \
   \      Verboseness of output. [default: DEBUG]\n  --version, -V         show program's\
   \ version number and exit\n"
-generated_using: *id002
+generated_using:
+- --help

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_service_management_delete.cwl
+id: gcloud_service_management_delete.cwl
 inputs:
 - id: in_service
   doc: ''

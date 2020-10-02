@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_wiggle.cwl
+id: make_wiggle.cwl
 inputs:
 - id: in_out
   doc: Base name for output files

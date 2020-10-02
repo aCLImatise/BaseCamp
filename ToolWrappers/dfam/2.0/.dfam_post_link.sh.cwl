@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.dfam_post_link.sh.cwl
+id: .dfam_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

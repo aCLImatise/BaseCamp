@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyprophet_score_targets..cwl
+id: pyprophet_score_targets..cwl
 inputs:
 - id: in_py_prophet
   doc: ''

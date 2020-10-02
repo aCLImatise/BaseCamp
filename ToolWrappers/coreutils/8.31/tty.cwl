@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tty.cwl
+id: tty.cwl
 inputs:
 - id: in_silent
   doc: print nothing, only return an exit status

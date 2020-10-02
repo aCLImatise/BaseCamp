@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcftools_reheader.cwl
+id: bcftools_reheader.cwl
 inputs:
 - id: in_fai
   doc: update sequences and their lengths from the .fai file

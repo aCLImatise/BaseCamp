@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chado2gff3.cwl
+id: chado2gff3.cwl
 inputs: []
 outputs:
 - id: out_stdout

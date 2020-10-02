@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scanpy_run_pca.cwl
+id: scanpy_run_pca.cwl
 inputs:
 - id: in_input_format
   doc: "[anndata|loom]\nInput object format.  [default: anndata]"
@@ -64,16 +64,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --chunk-size
-- id: in_format_dot
-  doc: '[default: 1000]'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_table_dot
   doc: '--n-comps INTEGER               Number of components to compute  [default:'
   type: string
   inputBinding:
-    position: 1
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

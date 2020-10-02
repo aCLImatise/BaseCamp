@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../noncoding_trainer.pl.cwl
+id: noncoding_trainer.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

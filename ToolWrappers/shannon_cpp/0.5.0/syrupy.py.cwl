@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../syrupy.py.cwl
+id: syrupy.py.cwl
 inputs:
 - id: in_quiet
   doc: do not report miscellaneous run information to stderr

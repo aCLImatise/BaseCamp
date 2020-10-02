@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbiprof.cwl
+id: dbiprof.cwl
 inputs:
 - id: in_number
   doc: show top N, defaults to 10

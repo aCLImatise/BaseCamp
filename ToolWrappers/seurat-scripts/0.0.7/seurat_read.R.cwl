@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seurat_read.R.cwl
+id: seurat_read.R.cwl
 inputs:
 - id: in_data_file
   doc: A tab-separated file containing expression data.

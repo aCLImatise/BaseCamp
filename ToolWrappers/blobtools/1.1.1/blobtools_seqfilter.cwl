@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blobtools_seqfilter.cwl
+id: blobtools_seqfilter.cwl
 inputs:
 - id: in_in_file
   doc: FASTA file of sequences (Headers are split at whitespaces)

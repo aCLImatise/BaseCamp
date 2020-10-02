@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_accelerator_types.cwl
+id: gcloud_compute_accelerator_types.cwl
 inputs:
 - id: in_types
   doc: SYNOPSIS

@@ -31,7 +31,7 @@ task RaSqlQuery {
       ~{if defined(db) then ("-db " +  '"' + db + '"') else ""}
   >>>
   parameter_meta {
-    query_file: ""
+    query_file: "\\\"-query=select list,of,fields from file where field='this'\\\""
     add_file: "- Add 'file' field to say where record is defined"
     add_db: "- Add 'db' field to say where record is defined"
     strict: "- Used only with db option.  Only report tracks that exist in db"

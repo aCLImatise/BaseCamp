@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combine_tradis_plots.cwl
+id: combine_tradis_plots.cwl
 inputs:
 - id: in_plotfile_file_plots
   doc: '|plotfile   : file with plots to be combined'

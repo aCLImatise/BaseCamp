@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../moods_dna.py.cwl
+id: moods_dna.py.cwl
 inputs:
 - id: in_verbosity
   doc: verbose (-vv, -vvv for more)

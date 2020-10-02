@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combineKinship.cwl
+id: combineKinship.cwl
 inputs:
 - id: in_out
   doc: ': Output prefix for autosomal kinship calculation'

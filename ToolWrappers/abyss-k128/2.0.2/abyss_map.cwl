@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_map.cwl
+id: abyss_map.cwl
 inputs:
 - id: in_min_align
   doc: find matches at least N bp [1]

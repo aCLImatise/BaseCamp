@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../conus_fold_UYN.cwl
+id: conus_fold_UYN.cwl
 inputs:
 - id: in_options
   doc: ''

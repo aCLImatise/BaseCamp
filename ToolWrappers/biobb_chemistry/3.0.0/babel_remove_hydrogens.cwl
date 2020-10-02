@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../babel_remove_hydrogens.cwl
+id: babel_remove_hydrogens.cwl
 inputs:
 - id: in_config
   doc: Configuration file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_calc_cutoff_genome_size.cwl
+id: fc_calc_cutoff_genome_size.cwl
 inputs:
 - id: in_coverage
   doc: ''

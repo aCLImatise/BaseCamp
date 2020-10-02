@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta2stab.pl.bak.cwl
+id: fasta2stab.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

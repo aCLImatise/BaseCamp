@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wig2barwig.cwl
+id: wig2barwig.cwl
 inputs: []
 outputs:
 - id: out_stdout

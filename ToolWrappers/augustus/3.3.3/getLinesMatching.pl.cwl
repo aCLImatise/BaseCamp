@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getLinesMatching.pl.cwl
+id: getLinesMatching.pl.cwl
 inputs:
 - id: in_use_complement_print
   doc: Use complement. Print all lines NOT matching.

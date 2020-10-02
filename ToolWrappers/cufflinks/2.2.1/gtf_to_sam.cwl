@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf_to_sam.cwl
+id: gtf_to_sam.cwl
 inputs:
 - id: in_r_slash_reference_seq
   doc: 'reference fasta file                     [ default:   NULL ]'

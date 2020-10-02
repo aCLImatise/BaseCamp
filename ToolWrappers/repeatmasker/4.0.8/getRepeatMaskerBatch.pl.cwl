@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getRepeatMaskerBatch.pl.cwl
+id: getRepeatMaskerBatch.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

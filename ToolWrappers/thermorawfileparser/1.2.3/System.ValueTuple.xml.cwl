@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../System.ValueTuple.xml.cwl
+id: System.ValueTuple.xml.cwl
 inputs: []
 outputs:
 - id: out_stdout

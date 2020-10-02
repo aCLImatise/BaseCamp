@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fqlen.pl.cwl
+id: fqlen.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

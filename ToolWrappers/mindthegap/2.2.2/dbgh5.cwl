@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbgh5.cwl
+id: dbgh5.cwl
 inputs:
 - id: in_no_mph_f
   doc: "(0 arg) :    don't construct the MPHF"
@@ -229,36 +229,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -nb-glue-partitions
-- id: in_version
-  doc: ': 1.4.2'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_git_sha_one
   doc: ': notset'
   type: long
   inputBinding:
-    position: 1
-- id: in_build_date
-  doc: ': 2020-06-22/10:21:26'
-  type: string
-  inputBinding:
-    position: 2
+    position: 0
 - id: in_build_system
   doc: ': Linux-4.4.0-96-generic'
   type: string
   inputBinding:
-    position: 3
+    position: 1
 - id: in_build_compiler
   doc: ': /opt/conda/conda-bld/mindthegap_1592821143845/_build_env/bin/x86_64-conda_cos6-linux-gnu-cc  (7.5.0)'
   type: string
   inputBinding:
-    position: 4
-- id: in_build_km_er_size
-  doc: ': 32 64 96 128'
-  type: string
-  inputBinding:
-    position: 5
+    position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream

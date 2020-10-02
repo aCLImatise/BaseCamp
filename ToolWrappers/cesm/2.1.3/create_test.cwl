@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_test.cwl
+id: create_test.cwl
 inputs:
 - id: in_debug
   doc: Print debug information (very verbose) to file /create_test.log

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../updateBankPositions.cwl
+id: updateBankPositions.cwl
 inputs:
 - id: in_bank_name
   doc: ''

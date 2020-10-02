@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RepeatClassifier.cwl
+id: RepeatClassifier.cwl
 inputs:
 - id: in_maff_t_dir
   doc: "The path to the installation of the MAFFT multiple alignment\nprogram."

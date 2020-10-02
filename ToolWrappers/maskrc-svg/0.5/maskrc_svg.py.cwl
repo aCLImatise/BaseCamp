@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maskrc_svg.py.cwl
+id: maskrc_svg.py.cwl
 inputs:
 - id: in_gubbins
   doc: parse as Gubbins instead of ClonalFrameML

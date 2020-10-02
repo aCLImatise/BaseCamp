@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wdl2dot.cwl
+id: wdl2dot.cwl
 inputs:
 - id: in_input_file
   doc: Input wdl file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../concat.cwl
+id: concat.cwl
 inputs:
 - id: in_file_wildcard
   doc: "wildcard specifying where files should be found (make\nsure to surround in\

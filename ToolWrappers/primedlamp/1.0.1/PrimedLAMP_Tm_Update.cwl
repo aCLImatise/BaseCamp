@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PrimedLAMP_Tm_Update.cwl
+id: PrimedLAMP_Tm_Update.cwl
 inputs:
 - id: in_run_id
   doc: Desired Run ID

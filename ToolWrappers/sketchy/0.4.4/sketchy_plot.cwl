@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_plot.cwl
+id: sketchy_plot.cwl
 inputs:
 - id: in_index
   doc: 'Path to genotype feature index used in: sketchy'

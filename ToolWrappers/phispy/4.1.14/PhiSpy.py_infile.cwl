@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PhiSpy.py_infile.cwl
+id: PhiSpy.py_infile.cwl
 inputs:
 - id: in_m
   doc: ''

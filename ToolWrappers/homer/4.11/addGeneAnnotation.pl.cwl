@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addGeneAnnotation.pl.cwl
+id: addGeneAnnotation.pl.cwl
 inputs:
 - id: in_data_file
   doc: ''

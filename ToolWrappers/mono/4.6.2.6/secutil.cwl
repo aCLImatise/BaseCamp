@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../secutil.cwl
+id: secutil.cwl
 inputs:
 - id: in_filename
   doc: ''

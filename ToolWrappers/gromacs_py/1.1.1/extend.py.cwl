@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extend.py.cwl
+id: extend.py.cwl
 inputs:
 - id: in_input_tpr
   doc: Input tpr

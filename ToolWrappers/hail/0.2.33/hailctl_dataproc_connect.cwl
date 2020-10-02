@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hailctl_dataproc_connect.cwl
+id: hailctl_dataproc_connect.cwl
 inputs:
 - id: in_dry_run
   doc: ''

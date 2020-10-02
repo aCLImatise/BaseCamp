@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tb_profiler_profile.cwl
+id: tb_profiler_profile.cwl
 inputs:
 - id: in_platform
   doc: 'NGS Platform used to generate data (default: illumina)'

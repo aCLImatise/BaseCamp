@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dimspy_mv_sample_filter.cwl
+id: dimspy_mv_sample_filter.cwl
 inputs:
 - id: in_input
   doc: HDF5 file file that contains a peak matrix object.

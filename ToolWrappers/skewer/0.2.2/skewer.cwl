@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../skewer.cwl
+id: skewer.cwl
 inputs:
 - id: in_adapter_sequencefile_agatcggaagagcacacgtctgaactccagtcac
   doc: Adapter sequence/file (AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC)

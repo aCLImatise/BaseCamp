@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../digestiflow_demux.cwl
+id: digestiflow_demux.cwl
 inputs:
 - id: in_config
   doc: Path to configuration TOML file to load.

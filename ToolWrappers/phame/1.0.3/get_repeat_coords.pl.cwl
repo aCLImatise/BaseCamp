@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_repeat_coords.pl.cwl
+id: get_repeat_coords.pl.cwl
 inputs:
 - id: in_identity_cutoff_default
   doc: 'the identity cutoff 0 to 100 (default: 95)'

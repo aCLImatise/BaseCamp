@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlap2dot.cwl
+id: overlap2dot.cwl
 inputs:
 - id: in_reads
   doc: reads file (string [=])

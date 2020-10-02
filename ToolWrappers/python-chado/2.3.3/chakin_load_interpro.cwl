@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_load_interpro.cwl
+id: chakin_load_interpro.cwl
 inputs:
 - id: in_parse_go
   doc: Load GO annotation to the database

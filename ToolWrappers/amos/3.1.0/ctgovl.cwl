@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ctgovl.cwl
+id: ctgovl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tRNAscan_SE.cwl
+id: tRNAscan_SE.cwl
 inputs:
 - id: in_search_eukaryotic_trnas
   doc: ': search for eukaryotic tRNAs (default)'

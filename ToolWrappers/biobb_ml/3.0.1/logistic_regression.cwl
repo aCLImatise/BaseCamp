@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../logistic_regression.cwl
+id: logistic_regression.cwl
 inputs:
 - id: in_config
   doc: Configuration file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrive2.cwl
+id: arrive2.cwl
 inputs:
 - id: in_ignore_overlap_degrees
   doc: Ignore 3' overlap degrees > <n>

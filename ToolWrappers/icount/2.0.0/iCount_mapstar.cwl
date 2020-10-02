@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_mapstar.cwl
+id: iCount_mapstar.cwl
 inputs:
 - id: in__annotation_gtf
   doc: ', --annotation     GTF annotation needed for mapping to splice-junctions (default:

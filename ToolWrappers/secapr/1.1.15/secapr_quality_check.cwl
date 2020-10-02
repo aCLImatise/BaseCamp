@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../secapr_quality_check.cwl
+id: secapr_quality_check.cwl
 inputs:
 - id: in_input
   doc: The directory containing fastq files

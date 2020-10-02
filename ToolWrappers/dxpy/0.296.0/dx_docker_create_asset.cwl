@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_docker_create_asset.cwl
+id: dx_docker_create_asset.cwl
 inputs:
 - id: in_output_path
   doc: "Project ID and path in project to upload image to\n(defaults to project root)"

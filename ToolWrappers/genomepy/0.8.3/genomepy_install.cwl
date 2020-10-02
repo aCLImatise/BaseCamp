@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomepy_install.cwl
+id: genomepy_install.cwl
 inputs:
 - id: in_genomes_dir
   doc: genomes directory

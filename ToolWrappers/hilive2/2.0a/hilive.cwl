@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hilive.cwl
+id: hilive.cwl
 inputs:
 - id: in_illuminas_basecalls_directory
   doc: "[--bcl-dir]        Illumina's BaseCalls directory which contains the sequence\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ipengine2.cwl
+id: ipengine2.cwl
 inputs: []
 outputs:
 - id: out_stdout

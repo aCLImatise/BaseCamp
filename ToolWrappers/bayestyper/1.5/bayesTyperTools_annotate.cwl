@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bayesTyperTools_annotate.cwl
+id: bayesTyperTools_annotate.cwl
 inputs:
 - id: in_arg_variant_format
   doc: '[ --variant-file ] arg             variant file (vcf format).'

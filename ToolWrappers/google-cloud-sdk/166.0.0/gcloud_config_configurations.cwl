@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_configurations.cwl
+id: gcloud_config_configurations.cwl
 inputs:
 - id: in_configurations
   doc: SYNOPSIS

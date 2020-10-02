@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kssd_set.cwl
+id: kssd_set.cwl
 inputs:
 - id: in_union
   doc: get union set of the sketches.

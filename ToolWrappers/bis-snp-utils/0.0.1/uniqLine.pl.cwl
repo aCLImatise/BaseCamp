@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uniqLine.pl.cwl
+id: uniqLine.pl.cwl
 inputs:
 - id: in_give_column_number
   doc: ': give the column number that are used to check duplication. could be multiple.

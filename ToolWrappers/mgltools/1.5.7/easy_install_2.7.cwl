@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../easy_install_2.7.cwl
+id: easy_install_2.7.cwl
 inputs: []
 outputs:
 - id: out_stdout

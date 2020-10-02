@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clipcontext_int.cwl
+id: clipcontext_int.cwl
 inputs:
 - id: in_min_intron_ol
   doc: "Minimum intron overlap of a site to be reported as\nintron overlapping (intersectBed\

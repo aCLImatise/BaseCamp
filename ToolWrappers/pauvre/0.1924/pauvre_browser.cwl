@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pauvre_browser.cwl
+id: pauvre_browser.cwl
 inputs:
 - id: in_quiet
   doc: Do not output warnings to stderr

@@ -20,12 +20,6 @@ task Mhcflurryclass1trainpanallelemodels {
     Int? max_workers_per_gpu
     Int? max_tasks_per_worker
     Directory? worker_log_dir
-    Boolean? cluster_parallelism
-    String? cluster_submit_command
-    String? cluster_results_workdir
-    File? additional_complete_file
-    File? cluster_script_prefix_path
-    Int? cluster_max_retries
     String measurement_value
     String train_dot
   }
@@ -50,13 +44,7 @@ task Mhcflurryclass1trainpanallelemodels {
       ~{if defined(gpus) then ("--gpus " +  '"' + gpus + '"') else ""} \
       ~{if defined(max_workers_per_gpu) then ("--max-workers-per-gpu " +  '"' + max_workers_per_gpu + '"') else ""} \
       ~{if defined(max_tasks_per_worker) then ("--max-tasks-per-worker " +  '"' + max_tasks_per_worker + '"') else ""} \
-      ~{if defined(worker_log_dir) then ("--worker-log-dir " +  '"' + worker_log_dir + '"') else ""} \
-      ~{if (cluster_parallelism) then "--cluster-parallelism" else ""} \
-      ~{if defined(cluster_submit_command) then ("--cluster-submit-command " +  '"' + cluster_submit_command + '"') else ""} \
-      ~{if defined(cluster_results_workdir) then ("--cluster-results-workdir " +  '"' + cluster_results_workdir + '"') else ""} \
-      ~{if defined(additional_complete_file) then ("--additional-complete-file " +  '"' + additional_complete_file + '"') else ""} \
-      ~{if defined(cluster_script_prefix_path) then ("--cluster-script-prefix-path " +  '"' + cluster_script_prefix_path + '"') else ""} \
-      ~{if defined(cluster_max_retries) then ("--cluster-max-retries " +  '"' + cluster_max_retries + '"') else ""}
+      ~{if defined(worker_log_dir) then ("--worker-log-dir " +  '"' + worker_log_dir + '"') else ""}
   >>>
   parameter_meta {
     data: "Training data CSV. Expected columns: allele, peptide,"
@@ -77,12 +65,6 @@ task Mhcflurryclass1trainpanallelemodels {
     max_workers_per_gpu: "Maximum number of workers to assign to a GPU.\\nAdditional tasks will run on CPU."
     max_tasks_per_worker: "Restart workers after N tasks. Workaround for\\ntensorflow memory leaks. Requires Python >=3.2."
     worker_log_dir: "Write worker stdout and stderr logs to given\\ndirectory."
-    cluster_parallelism: ""
-    cluster_submit_command: "Default: sh"
-    cluster_results_workdir: "Default: ./cluster-workdir"
-    additional_complete_file: "Additional file to monitor for job completion.\\nDefault: STDERR"
-    cluster_script_prefix_path: ""
-    cluster_max_retries: "How many times to rerun failing jobs. Default: 3\\n"
     measurement_value: "--pretrain-data FILE.csv"
     train_dot: "--max-epochs N        Max training epochs. If specified here it overrides"
   }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TaxonomicSummary.py.cwl
+id: TaxonomicSummary.py.cwl
 inputs:
 - id: in_query_file
   doc: ''

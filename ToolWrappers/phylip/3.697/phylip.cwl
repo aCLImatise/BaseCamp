@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylip.cwl
+id: phylip.cwl
 inputs:
 - id: in_not_exist_phylip
   doc: not exist in Phylip

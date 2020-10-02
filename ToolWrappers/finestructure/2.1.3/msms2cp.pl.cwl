@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msms2cp.pl.cwl
+id: msms2cp.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stats.cwl
+id: stats.cwl
 inputs:
 - id: in_prefix_output_stats
   doc: 'Prefix for output stats files [default: stats]'

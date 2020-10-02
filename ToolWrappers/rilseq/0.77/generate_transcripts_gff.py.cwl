@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generate_transcripts_gff.py.cwl
+id: generate_transcripts_gff.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

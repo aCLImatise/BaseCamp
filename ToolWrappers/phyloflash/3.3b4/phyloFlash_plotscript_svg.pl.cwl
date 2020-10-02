@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyloFlash_plotscript_svg.pl.cwl
+id: phyloFlash_plotscript_svg.pl.cwl
 inputs:
 - id: in_tree
   doc: "Phylogenetic tree plot from Newick-formatted tree. Does\nnot support node\
@@ -73,41 +73,19 @@ inputs:
   inputBinding:
     prefix: -title
 - id: in_height
-  doc: ''
+  doc: "-width INT     Optional width and height of plot in pixels. Defaults:\nBuilt-in\
+    \ defaults for each plot type.\n-color=\"STRING\"\nOptional fill color for plot.\
+    \ Currently implemented only\nfor histogram. Default: Built-in defaults for each\
+    \ plot\ntype\n-breakpoints INT\nSpecify number of breakpoints in histogram. Default:\n\
+    Sturges algorithm to calculate optimal breakpoints\n-decimalcomma  Use comma as\
+    \ decimal separator (only used for histogram\ninput). BBMap is locale- aware and\
+    \ uses decimal comma in\ncertain locales (e.g. Germany and France). However, Perl\n\
+    does not unless explicitly requested. This option will\nreplace decimal commas\
+    \ with decimal periods in histogram\ninput files only.\n-help          This help\
+    \ message\n-man           Manual page (identical to this help message)\n"
   type: long
   inputBinding:
     prefix: -height
-- id: in_width
-  doc: "Optional width and height of plot in pixels. Defaults:\nBuilt-in defaults\
-    \ for each plot type."
-  type: long
-  inputBinding:
-    prefix: -width
-- id: in_color
-  doc: "=\"STRING\"\nOptional fill color for plot. Currently implemented only\nfor\
-    \ histogram. Default: Built-in defaults for each plot\ntype"
-  type: boolean
-  inputBinding:
-    prefix: -color
-- id: in_breakpoints
-  doc: "Specify number of breakpoints in histogram. Default:\nSturges algorithm to\
-    \ calculate optimal breakpoints"
-  type: long
-  inputBinding:
-    prefix: -breakpoints
-- id: in_decimal_comma
-  doc: "Use comma as decimal separator (only used for histogram\ninput). BBMap is\
-    \ locale- aware and uses decimal comma in\ncertain locales (e.g. Germany and France).\
-    \ However, Perl\ndoes not unless explicitly requested. This option will\nreplace\
-    \ decimal commas with decimal periods in histogram\ninput files only."
-  type: boolean
-  inputBinding:
-    prefix: -decimalcomma
-- id: in_man
-  doc: Manual page (identical to this help message)
-  type: boolean
-  inputBinding:
-    prefix: -man
 outputs:
 - id: out_stdout
   doc: Standard output stream

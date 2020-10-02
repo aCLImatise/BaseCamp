@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../readlink.cwl
+id: readlink.cwl
 inputs:
 - id: in_canonicalize
   doc: "canonicalize by following every symlink in\nevery component of the given name\
@@ -20,30 +20,14 @@ inputs:
   inputBinding:
     prefix: --canonicalize-missing
 - id: in_no_new_line
-  doc: do not output the trailing delimiter
+  doc: "do not output the trailing delimiter\n-q, --quiet\n-s, --silent          \
+    \        suppress most error messages (on by default)\n-v, --verbose         \
+    \        report error messages\n-z, --zero                    end each output\
+    \ line with NUL, not newline\n--help     display this help and exit\n--version\
+    \  output version information and exit"
   type: boolean
   inputBinding:
     prefix: --no-newline
-- id: in_quiet
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --quiet
-- id: in_silent
-  doc: suppress most error messages (on by default)
-  type: boolean
-  inputBinding:
-    prefix: --silent
-- id: in_verbose
-  doc: report error messages
-  type: boolean
-  inputBinding:
-    prefix: --verbose
-- id: in_end_output_line
-  doc: end each output line with NUL, not newline
-  type: boolean
-  inputBinding:
-    prefix: --zero
 outputs:
 - id: out_stdout
   doc: Standard output stream

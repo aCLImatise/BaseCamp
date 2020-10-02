@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_seqconvert.pl.cwl
+id: bp_seqconvert.pl.cwl
 inputs:
 - id: in_to
   doc: ''

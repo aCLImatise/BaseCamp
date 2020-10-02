@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../closeGapsLocally.perl.cwl
+id: closeGapsLocally.perl.cwl
 inputs:
 - id: in_celera_terminator_directory
   doc: ": specify the Celera terminator directory\nwhere the assembly whose gaps must\

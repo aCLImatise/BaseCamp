@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gerpcol.cwl
+id: gerpcol.cwl
 inputs:
 - id: in_verbose_mode
   doc: verbose mode

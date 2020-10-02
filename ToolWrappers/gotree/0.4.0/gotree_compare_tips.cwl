@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_compare_tips.cwl
+id: gotree_compare_tips.cwl
 inputs:
 - id: in_priority_over_f
   doc: priority over -f

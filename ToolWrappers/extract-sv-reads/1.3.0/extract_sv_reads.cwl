@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../extract_sv_reads.cwl
+id: extract_sv_reads.cwl
 inputs:
-- id: in_i
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -i
 - id: in_only_useful_when
   doc: only useful when the input file is a CRAM.
   type: File
@@ -16,6 +11,24 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -v
+- id: in_arg_input_bamcramsam
+  doc: "[ --input ] arg (=-)        input BAM/CRAM/SAM. Use '-' for stdin if using\n\
+    positional arguments"
+  type: boolean
+  inputBinding:
+    prefix: -i
+- id: in_arg_output_split
+  doc: "[ --splitter ] arg          output split reads to this file in BAM format\n\
+    (Required)"
+  type: File
+  inputBinding:
+    prefix: -s
+- id: in_arg_output_discordant
+  doc: "[ --discordant ] arg        output discordant reads to this file in BAM\n\
+    format (Required)"
+  type: File
+  inputBinding:
+    prefix: -d
 - id: in_exclude_duplicate_reads
   doc: '[ --exclude-dups ]          exclude duplicate reads from output'
   type: boolean
@@ -58,6 +71,18 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+- id: out_arg_output_split
+  doc: "[ --splitter ] arg          output split reads to this file in BAM format\n\
+    (Required)"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_output_split)
+- id: out_arg_output_discordant
+  doc: "[ --discordant ] arg        output discordant reads to this file in BAM\n\
+    format (Required)"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_arg_output_discordant)
 cwlVersion: v1.1
 baseCommand:
 - extract-sv-reads

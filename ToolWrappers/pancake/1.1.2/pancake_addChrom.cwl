@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pancake_addChrom.cwl
+id: pancake_addChrom.cwl
 inputs:
 - id: in_pan_file
   doc: Name of PanCake Data Object File (required)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncrf_summary.cwl
+id: ncrf_summary.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lsg.cwl
+id: lsg.cwl
 inputs:
 - id: in_basename
   doc: '<basename>     # (required)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho_extract_from_graph.pl.cwl
+id: proteinortho_extract_from_graph.pl.cwl
 inputs:
 - id: in_protein_ortho_table
   doc: ''

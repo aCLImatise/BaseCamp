@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augur_measurements..cwl
+id: augur_measurements..cwl
 inputs:
 - id: in_augur
   doc: ''

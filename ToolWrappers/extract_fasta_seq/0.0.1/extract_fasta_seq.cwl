@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_fasta_seq.cwl
+id: extract_fasta_seq.cwl
 inputs:
 - id: in_query_list_effect
   doc: '[<str> ...]  query list. "-s1" and "-d1" have no effect on this'

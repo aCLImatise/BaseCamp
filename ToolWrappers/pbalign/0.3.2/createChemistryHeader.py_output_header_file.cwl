@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../createChemistryHeader.py_output_header_file.cwl
+id: createChemistryHeader.py_output_header_file.cwl
 inputs:
 - id: in_bas_files
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_diffseq.cwl
+id: _diffseq.cwl
 inputs:
 - id: in_word_size
   doc: "integer    [10] The similar regions between the two\nsequences are found by\
@@ -12,11 +12,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -wordsize
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 - id: in_global_differences
   doc: "boolean    [N] Normally this program will find regions\nof identity that are\
     \ the length of the\nspecified word-size or greater and will then\nreport the\

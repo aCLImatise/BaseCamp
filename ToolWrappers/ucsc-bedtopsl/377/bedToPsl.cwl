@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedToPsl.cwl
+id: bedToPsl.cwl
 inputs: []
 outputs:
 - id: out_stdout

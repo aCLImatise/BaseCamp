@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_biofetch_genbank_proxy.pl.cwl
+id: bp_biofetch_genbank_proxy.pl.cwl
 inputs:
 - id: in_db
   doc: 'Option  : db'

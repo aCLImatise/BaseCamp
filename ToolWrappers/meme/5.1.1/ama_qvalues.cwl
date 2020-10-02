@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ama_qvalues.cwl
+id: ama_qvalues.cwl
 inputs:
 - id: in_copyright
   doc: (2010) The University of Queensland

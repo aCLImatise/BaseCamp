@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runTA.cwl
+id: runTA.cwl
 inputs: []
 outputs:
 - id: out_stdout

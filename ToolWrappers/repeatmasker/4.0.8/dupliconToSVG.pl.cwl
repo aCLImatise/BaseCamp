@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dupliconToSVG.pl.cwl
+id: dupliconToSVG.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

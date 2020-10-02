@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prokka_hamap_to_hmm.cwl
+id: prokka_hamap_to_hmm.cwl
 inputs:
 - id: in_verbose
   doc: "!      Verbose progress (default '0')."

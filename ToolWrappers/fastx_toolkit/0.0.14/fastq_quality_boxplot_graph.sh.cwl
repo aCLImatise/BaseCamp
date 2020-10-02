@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_quality_boxplot_graph.sh.cwl
+id: fastq_quality_boxplot_graph.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

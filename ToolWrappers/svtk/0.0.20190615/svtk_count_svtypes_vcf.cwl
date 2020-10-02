@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtk_count_svtypes_vcf.cwl
+id: svtk_count_svtypes_vcf.cwl
 inputs:
 - id: in_total_variants
   doc: ''

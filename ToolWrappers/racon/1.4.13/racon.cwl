@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../racon.cwl
+id: racon.cwl
 inputs:
 - id: in_include_unpolished
   doc: output unpolished target sequences

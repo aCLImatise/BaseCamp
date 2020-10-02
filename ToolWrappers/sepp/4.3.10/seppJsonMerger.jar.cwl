@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seppJsonMerger.jar.cwl
+id: seppJsonMerger.jar.cwl
 inputs: []
 outputs:
 - id: out_stdout

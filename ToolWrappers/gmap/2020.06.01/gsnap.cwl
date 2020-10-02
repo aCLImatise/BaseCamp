@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsnap.cwl
+id: gsnap.cwl
 inputs:
 - id: in_dir
   doc: "Genome directory.  Default (as specified by --with-gmapdb to the configure\

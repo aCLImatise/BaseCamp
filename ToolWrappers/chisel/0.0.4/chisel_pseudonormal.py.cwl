@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chisel_pseudonormal.py.cwl
+id: chisel_pseudonormal.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

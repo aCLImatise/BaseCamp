@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../biom_add_metadata.cwl
+id: biom_add_metadata.cwl
 inputs:
-- id: in_m
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -m
 - id: in_input_fp
   doc: The input BIOM table  [required]
   type: File

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_auth_get_v1_group.cwl
+id: hca_auth_get_v1_group.cwl
 inputs:
 - id: in_group_id
   doc: The name of the group.

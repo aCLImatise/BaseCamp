@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../dimspy_replicate_filter.cwl
+id: dimspy_replicate_filter.cwl
 inputs:
-- id: in_m
-  doc: '[-d RSD_THRESHOLD]'
-  type: long
-  inputBinding:
-    prefix: -m
 - id: in_input
   doc: "HDF5 file (Peaklist objects) from step 'process-scans'\nor directory path\
     \ that contains tab-delimited\npeaklists."

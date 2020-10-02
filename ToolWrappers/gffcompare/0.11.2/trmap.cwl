@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trmap.cwl
+id: trmap.cwl
 inputs:
 - id: in_write_output_outfile
   doc: write output to <outfile> instead of stdout

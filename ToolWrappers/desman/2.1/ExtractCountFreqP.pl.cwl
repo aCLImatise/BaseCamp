@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ExtractCountFreqP.pl.cwl
+id: ExtractCountFreqP.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

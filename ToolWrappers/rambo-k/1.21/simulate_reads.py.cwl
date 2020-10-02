@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simulate_reads.py.cwl
+id: simulate_reads.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

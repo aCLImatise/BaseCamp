@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qvoronoi.cwl
+id: qvoronoi.cwl
 inputs: []
 outputs:
 - id: out_stdout

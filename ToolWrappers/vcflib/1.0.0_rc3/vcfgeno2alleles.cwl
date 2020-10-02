@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfgeno2alleles.cwl
+id: vcfgeno2alleles.cwl
 inputs: []
 outputs:
 - id: out_stdout

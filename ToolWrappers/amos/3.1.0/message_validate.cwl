@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../message_validate.cwl
+id: message_validate.cwl
 inputs:
 - id: in_message
   doc: ''

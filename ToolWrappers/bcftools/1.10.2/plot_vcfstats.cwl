@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_vcfstats.cwl
+id: plot_vcfstats.cwl
 inputs:
 - id: in_merge
   doc: Merge vcfstats files to STDOUT, skip plotting.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../align_info.cwl
+id: align_info.cwl
 inputs:
 - id: in_all
   doc: print all information

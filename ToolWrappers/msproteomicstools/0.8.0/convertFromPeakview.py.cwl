@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertFromPeakview.py.cwl
+id: convertFromPeakview.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

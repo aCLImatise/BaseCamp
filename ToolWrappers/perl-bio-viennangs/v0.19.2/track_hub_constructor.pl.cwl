@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../track_hub_constructor.pl.cwl
+id: track_hub_constructor.pl.cwl
 inputs:
 - id: in_gi
   doc: "Genome id as used in UCSC assembly hub. Must be correct, otherwise\nthe annotation\

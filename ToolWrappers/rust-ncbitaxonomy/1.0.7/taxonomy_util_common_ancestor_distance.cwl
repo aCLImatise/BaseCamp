@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxonomy_util_common_ancestor_distance.cwl
+id: taxonomy_util_common_ancestor_distance.cwl
 inputs:
 - id: in_only_canonical
   doc: Only consider canonical taxonomic ranks

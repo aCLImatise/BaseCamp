@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2_split_stratified_table.cwl
+id: humann2_split_stratified_table.cwl
 inputs:
 - id: in_input
   doc: the stratified input table (tsv, tsv.gzip, tsv.bzip2, or biom format)

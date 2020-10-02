@@ -18,11 +18,9 @@ task DeepacExplainFcontribs {
     Boolean? partial
     Boolean? easy_partial
     String? t
-    String centered
   }
   command <<<
     deepac explain fcontribs \
-      ~{centered} \
       ~{if defined(model) then ("--model " +  '"' + model + '"') else ""} \
       ~{if (w_norm) then "--w-norm" else ""} \
       ~{if defined(non_patho_test) then ("--nonpatho-test " +  '"' + non_patho_test + '"') else ""} \
@@ -57,7 +55,6 @@ task DeepacExplainFcontribs {
     partial: "Calculate partial nucleotide contributions per filter."
     easy_partial: "Calculate easy partial nucleotide contributions per\\nfilter. Works for the first convolutional layer only;\\ndisables all-occurences mode.\\n"
     t: ""
-    centered: "-t TEST_DATA, --test_data TEST_DATA"
   }
   output {
     File out_stdout = stdout()

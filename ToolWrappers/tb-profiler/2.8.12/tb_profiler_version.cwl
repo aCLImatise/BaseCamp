@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tb_profiler_version.cwl
+id: tb_profiler_version.cwl
 inputs:
 - id: in_tb_profiler
   doc: ''

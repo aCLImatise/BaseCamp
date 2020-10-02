@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../COBALT.cwl
+id: COBALT.cwl
 inputs:
 - id: in_min_quality
   doc: Min quality [10]

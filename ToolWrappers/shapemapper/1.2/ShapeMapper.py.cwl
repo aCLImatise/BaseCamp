@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ShapeMapper.py.cwl
+id: ShapeMapper.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

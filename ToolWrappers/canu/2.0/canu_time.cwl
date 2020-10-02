@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../canu_time.cwl
+id: canu_time.cwl
 inputs:
 - id: in_zero_dot_zero_zero
   doc: 0.00      0.00     0.000     0.000 -2777777.78   Sat Nov 20 17:46:39 2286   Thu

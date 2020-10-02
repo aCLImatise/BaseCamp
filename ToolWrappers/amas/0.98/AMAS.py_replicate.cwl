@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../AMAS.py_replicate.cwl
+id: AMAS.py_replicate.cwl
 inputs:
 - id: in_i
-  doc: ''
+  doc: '{fasta,phylip,nexus,phylip-int,nexus-int} -d {aa,dna}'
   type: string[]
   inputBinding:
     prefix: -i

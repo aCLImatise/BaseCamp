@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_get_aligns_partitioned_by_cluster.cwl
+id: phyluce_align_get_aligns_partitioned_by_cluster.cwl
 inputs:
 - id: in_directory_containing_files
   doc: The directory containing the alignment files

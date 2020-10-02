@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hash_overlap.cwl
+id: hash_overlap.cwl
 inputs:
 - id: in_output_amosformat_messages
   doc: Output AMOS-format messages instead of default

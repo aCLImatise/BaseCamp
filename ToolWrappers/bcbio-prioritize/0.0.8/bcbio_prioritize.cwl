@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_prioritize.cwl
+id: bcbio_prioritize.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../starch_diff.cwl
+id: starch_diff.cwl
 inputs: []
 outputs:
 - id: out_stdout

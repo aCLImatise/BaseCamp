@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2kinship.cwl
+id: vcf2kinship.cwl
 inputs:
 - id: in_in_vcf
   doc: ': Input VCF File'

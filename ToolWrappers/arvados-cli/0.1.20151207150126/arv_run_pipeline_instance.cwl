@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arv_run_pipeline_instance.cwl
+id: arv_run_pipeline_instance.cwl
 inputs:
 - id: in_dry_run
   doc: "Do not start any new jobs or wait for existing jobs to\nfinish. Just find\

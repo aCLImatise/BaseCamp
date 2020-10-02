@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ixIxx.cwl
+id: ixIxx.cwl
 inputs:
 - id: in_prefix_size
   doc: Size of prefix to index on in ixx.  Default is 5.

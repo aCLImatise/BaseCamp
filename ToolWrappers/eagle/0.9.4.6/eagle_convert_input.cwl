@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eagle_convert_input.cwl
+id: eagle_convert_input.cwl
 inputs:
 - id: in_ref
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../repeatoire.cwl
+id: repeatoire.cwl
 inputs:
 - id: in_allow_redundant
   doc: (=1)        allow redundant alignments?

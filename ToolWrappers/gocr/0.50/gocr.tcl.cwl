@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gocr.tcl.cwl
+id: gocr.tcl.cwl
 inputs: []
 outputs:
 - id: out_stdout

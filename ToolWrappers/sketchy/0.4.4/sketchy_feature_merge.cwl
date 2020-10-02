@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_feature_merge.cwl
+id: sketchy_feature_merge.cwl
 inputs:
 - id: in_path_sketch_file
   doc: "Path to sketch file to parse indices from\n[required]"

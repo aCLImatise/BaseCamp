@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlap_align.cwl
+id: overlap_align.cwl
 inputs:
 - id: in_fast_a_one
   doc: ''

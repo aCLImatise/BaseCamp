@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prokka_uniprot_to_fasta_db.cwl
+id: prokka_uniprot_to_fasta_db.cwl
 inputs: []
 outputs:
 - id: out_stdout

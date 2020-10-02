@@ -11,7 +11,7 @@ task PlanemoProjectInit {
       ~{if defined(template) then ("--template " +  '"' + template + '"') else ""}
   >>>
   parameter_meta {
-    template: ""
+    template: "--help           Show this message and exit.\\n"
     project: ""
   }
   output {

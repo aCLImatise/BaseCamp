@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_extractorfs.cwl
+id: mmseqs_extractorfs.cwl
 inputs:
 - id: in_min_length
   doc: 1               minimum codon number in open reading frames

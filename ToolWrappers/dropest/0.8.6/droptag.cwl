@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../droptag.cwl
+id: droptag.cwl
 inputs:
 - id: in_config
   doc: ': xml file with droptag parameters'

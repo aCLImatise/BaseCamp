@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_regions_interactions.py.cwl
+id: plot_regions_interactions.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

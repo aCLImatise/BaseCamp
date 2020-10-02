@@ -3,7 +3,6 @@ version 1.0
 task ParallelRnaBlat {
   input {
     Int? num_threads
-    Float? similar
     String parallel_blat
     String ref_dot_fa
     String query_dot_fa
@@ -13,12 +12,10 @@ task ParallelRnaBlat {
       ~{parallel_blat} \
       ~{ref_dot_fa} \
       ~{query_dot_fa} \
-      ~{if defined(num_threads) then ("--num_threads " +  '"' + num_threads + '"') else ""} \
-      ~{if defined(similar) then ("--similar " +  '"' + similar + '"') else ""}
+      ~{if defined(num_threads) then ("--num_threads " +  '"' + num_threads + '"') else ""}
   >>>
   parameter_meta {
     num_threads: "(=8)             number of threads"
-    similar: "(=0.95)              similarity"
     parallel_blat: ""
     ref_dot_fa: ""
     query_dot_fa: ""

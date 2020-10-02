@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getDistalPeaks.pl.cwl
+id: getDistalPeaks.pl.cwl
 inputs:
 - id: in_absolute_distance_keep
   doc: '<#> (Absolute Distance from TSS to keep, default: 3000)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refinem_outliers.cwl
+id: refinem_outliers.cwl
 inputs:
 - id: in_gc_perc
   doc: "percentile for identify scaffolds with divergent GC\ncontent (default: 98)"

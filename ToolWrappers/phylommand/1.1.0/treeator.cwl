@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treeator.cwl
+id: treeator.cwl
 inputs:
 - id: in_alphabet_file
   doc: "/ -a [file/type] give file with character alphabet, or dna,\nprotein, or binary\

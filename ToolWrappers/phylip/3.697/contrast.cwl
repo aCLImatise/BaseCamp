@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contrast.cwl
+id: contrast.cwl
 inputs: []
 outputs:
 - id: out_stdout

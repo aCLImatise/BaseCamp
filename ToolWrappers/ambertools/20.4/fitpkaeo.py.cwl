@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fitpkaeo.py.cwl
+id: fitpkaeo.py.cwl
 inputs:
 - id: in_author
   doc: show the program's author name and exit

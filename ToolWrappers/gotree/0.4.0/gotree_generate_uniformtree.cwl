@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_generate_uniformtree.cwl
+id: gotree_generate_uniformtree.cwl
 inputs:
 - id: in_nb_tips
   doc: Number of tips/leaves of the tree to generate (default 10)

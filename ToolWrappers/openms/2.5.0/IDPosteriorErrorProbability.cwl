@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IDPosteriorErrorProbability.cwl
+id: IDPosteriorErrorProbability.cwl
 inputs:
 - id: in_in
   doc: "*        Input file  (valid formats: 'idXML')"

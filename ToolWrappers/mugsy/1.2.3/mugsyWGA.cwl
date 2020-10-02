@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mugsyWGA.cwl
+id: mugsyWGA.cwl
 inputs: []
 outputs:
 - id: out_stdout

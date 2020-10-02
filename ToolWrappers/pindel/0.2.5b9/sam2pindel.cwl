@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam2pindel.cwl
+id: sam2pindel.cwl
 inputs: []
 outputs:
 - id: out_stdout

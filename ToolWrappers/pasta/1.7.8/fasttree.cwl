@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasttree.cwl
+id: fasttree.cwl
 inputs:
 - id: in_quiet
   doc: suppress reporting information

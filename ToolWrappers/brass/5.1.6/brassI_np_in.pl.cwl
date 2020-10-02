@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../brassI_np_in.pl.cwl
+id: brassI_np_in.pl.cwl
 inputs:
 - id: in_at
   doc: ''

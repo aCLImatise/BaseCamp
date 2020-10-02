@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmx.cwl
+id: gmx.cwl
 inputs:
 - id: in_nice
   doc: "<int>              (19)\nSet the nicelevel (default depends on command)"

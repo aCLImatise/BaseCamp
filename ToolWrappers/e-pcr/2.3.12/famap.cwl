@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../famap.cwl
+id: famap.cwl
 inputs:
 - id: in_t
   doc: ''

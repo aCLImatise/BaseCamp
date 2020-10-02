@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../knock_knock_design_primers.cwl
+id: knock_knock_design_primers.cwl
 inputs:
 - id: in_project_directory
   doc: "the base directory to store input data, reference\nannotations, and analysis\

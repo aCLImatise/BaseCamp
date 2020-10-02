@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vmatchselect.cwl
+id: vmatchselect.cwl
 inputs:
 - id: in_index_name
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../beauti.cwl
+id: beauti.cwl
 inputs: []
 outputs:
 - id: out_stdout

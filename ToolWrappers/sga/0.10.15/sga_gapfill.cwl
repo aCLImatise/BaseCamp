@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_gapfill.cwl
+id: sga_gapfill.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

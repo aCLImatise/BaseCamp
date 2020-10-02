@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Morpheus (mzML Mono).exe.cwl
+id: Morpheus (mzML Mono).exe.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_permute.cwl
+id: smof_permute.cwl
 inputs:
 - id: in_word_size
   doc: size of each word (default=1)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../peakzilla.py.cwl
+id: peakzilla.py.cwl
 inputs:
 - id: in_model_peaks
   doc: "number of most highly enriched regions used to\nestimate peak size: default\

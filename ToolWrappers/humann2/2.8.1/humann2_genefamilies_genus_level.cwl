@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2_genefamilies_genus_level.cwl
+id: humann2_genefamilies_genus_level.cwl
 inputs:
 - id: in_input
   doc: the gene families input table

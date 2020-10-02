@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_app_browse.cwl
+id: gcloud_app_browse.cwl
 inputs:
 - id: in_launch_browser
   doc: "Launch a browser if possible. When disabled, only displays the URL.\nEnabled\

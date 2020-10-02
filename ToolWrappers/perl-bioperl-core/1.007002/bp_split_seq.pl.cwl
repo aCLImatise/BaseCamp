@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_split_seq.pl.cwl
+id: bp_split_seq.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

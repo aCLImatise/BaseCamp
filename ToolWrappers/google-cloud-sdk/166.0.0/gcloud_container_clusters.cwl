@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_container_clusters.cwl
+id: gcloud_container_clusters.cwl
 inputs:
 - id: in_zone
   doc: "The compute zone (e.g. us-central1-a) for the cluster. Overrides the\ndefault\

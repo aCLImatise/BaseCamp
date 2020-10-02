@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BamFilter.cwl
+id: BamFilter.cwl
 inputs:
 - id: in_in
   doc: Input BAM file.

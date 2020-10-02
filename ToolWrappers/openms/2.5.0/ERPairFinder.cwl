@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ERPairFinder.cwl
+id: ERPairFinder.cwl
 inputs:
 - id: in_in
   doc: "*                            Input mzML file containing the ER spectra. (valid\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_extract.cwl
+id: rtg_extract.cwl
 inputs:
 - id: in_header
   doc: print out header also

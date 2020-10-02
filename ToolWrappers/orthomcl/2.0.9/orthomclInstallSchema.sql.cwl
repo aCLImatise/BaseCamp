@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclInstallSchema.sql.cwl
+id: orthomclInstallSchema.sql.cwl
 inputs: []
 outputs:
 - id: out_stdout

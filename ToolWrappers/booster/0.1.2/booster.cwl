@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../booster.cwl
+id: booster.cwl
 inputs:
 - id: in_input
   doc: ': Input tree file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jstack.cwl
+id: jstack.cwl
 inputs:
 - id: in_long_listing_information
   doc: long listing. Prints additional information about locks

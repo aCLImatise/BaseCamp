@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multi_length_hist.py.cwl
+id: multi_length_hist.py.cwl
 inputs:
 - id: in_report_pdf
   doc: Report PDF.

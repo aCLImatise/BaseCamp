@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_cmscore.cwl
+id: ssu_cmscore.cwl
 inputs:
 - id: in_generate_n_sequences
   doc: ': generate <n> sequences  [10]'

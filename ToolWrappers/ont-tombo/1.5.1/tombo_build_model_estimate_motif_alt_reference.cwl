@@ -1,14 +1,14 @@
 class: CommandLineTool
-id: ../../../tombo_build_model_estimate_motif_alt_reference.cwl
+id: tombo_build_model_estimate_motif_alt_reference.cwl
 inputs:
-- id: in_short_name_associate
+- id: in_alternate_model_name
   doc: "A short name to associate with this alternate model\n(e.g. 5mC, 6mA, etc.).\
     \ This text will be included in\noutput filenames when this model is used for\
     \ testing."
   type: long
   inputBinding:
     prefix: --alternate-model-name
-- id: in_motif_containing_alternatebase
+- id: in_motif_description
   doc: "Motif containing alternate-base. All positions with\nthis motif should be\
     \ modified (or filtered with\n[--valid-locations-filename]). Format descriptions\
     \ as:\n\"motif:mod_pos\". mod_pos indicates the alternate-base\nwithin the motif\
@@ -16,7 +16,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --motif-description
-- id: in_directories_containing_files
+- id: in_fast_five_based_irs
   doc: Directories containing fast5 files.
   type: long[]
   inputBinding:
@@ -85,26 +85,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: in_alternate_model_filename
-  doc: --alternate-model-name
-  type: string
-  inputBinding:
-    position: 0
-- id: in__motifdescription
-  doc: --motif-description
-  type: string
-  inputBinding:
-    position: 1
-- id: in__fastbasedirs
-  doc: --fast5-basedirs
-  type: string
-  inputBinding:
-    position: 2
-- id: in_var_17
-  doc: '[FAST5_BASEDIRS ...]'
-  type: long
-  inputBinding:
-    position: 3
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../surpyvor_purge2d.cwl
+id: surpyvor_purge2d.cwl
 inputs:
 - id: in_verbose
   doc: Print out more information while running.

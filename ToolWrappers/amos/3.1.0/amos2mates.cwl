@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amos2mates.cwl
+id: amos2mates.cwl
 inputs:
 - id: in_extension
   doc: "otherwise -i and -o are those specified in the command line\nif -i is provided\

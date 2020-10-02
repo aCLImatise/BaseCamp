@@ -1,9 +1,13 @@
 class: CommandLineTool
-id: ../../../planemo_shed_diff.cwl
+id: planemo_shed_diff.cwl
 inputs:
 - id: in_shed_target_source
-  doc: ''
-  type: string
+  doc: "This command will return an exit code of:\n- 0 if there are no detected differences.\
+    \ - 1 if there are differences. -\n2 if the target repository doesn't exist. -\
+    \ >200 if there are errors\nattempting to perform a diff.\n**Warning:** ``shed_diff``\
+    \ doesn't inspect repository metadata, this\ndifference applies only to the file\
+    \ contents of files that would actually\nbe uploaded to the repository."
+  type: File
   inputBinding:
     prefix: --shed_target_source
 - id: in_recursive

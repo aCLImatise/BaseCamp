@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../terminus_group.cwl
+id: terminus_group.cwl
 inputs:
 - id: in_dir
   doc: directory to read input from

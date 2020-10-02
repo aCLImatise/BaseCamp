@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fixPolishesIID.cwl
+id: fixPolishesIID.cwl
 inputs: []
 outputs:
 - id: out_stdout

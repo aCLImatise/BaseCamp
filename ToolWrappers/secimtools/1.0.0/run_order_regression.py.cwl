@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_order_regression.py.cwl
+id: run_order_regression.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

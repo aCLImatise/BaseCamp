@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unzip.sh.cwl
+id: unzip.sh.cwl
 inputs:
 - id: in_in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SAMMPileUpReader.py.cwl
+id: SAMMPileUpReader.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

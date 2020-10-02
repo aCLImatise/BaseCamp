@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goa2rdf.pl.cwl
+id: goa2rdf.pl.cwl
 inputs:
 - id: in_goa_input_file
   doc: GOA input file
@@ -11,11 +11,6 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_options
-  doc: ':'
-  type: string
-  inputBinding:
-    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

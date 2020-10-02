@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obminimize.cwl
+id: obminimize.cwl
 inputs: []
 outputs:
 - id: out_stdout

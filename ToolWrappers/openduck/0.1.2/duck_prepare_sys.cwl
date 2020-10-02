@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../duck_prepare_sys.cwl
+id: duck_prepare_sys.cwl
 inputs:
 - id: in_protein
   doc: Apoprotein in PDB format

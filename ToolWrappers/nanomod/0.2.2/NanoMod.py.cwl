@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NanoMod.py.cwl
+id: NanoMod.py.cwl
 inputs:
 - id: in_detect
   doc: Detect nucleotide modifications from nanopore signal data

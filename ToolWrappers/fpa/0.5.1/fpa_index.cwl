@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fpa_index.cwl
+id: fpa_index.cwl
 inputs:
 - id: in_filename
   doc: Write index of mapping passing filter in path passed as parameter

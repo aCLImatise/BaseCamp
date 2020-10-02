@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kcdirmgr.cwl
+id: kcdirmgr.cwl
 inputs:
 - id: in_otr
   doc: ''

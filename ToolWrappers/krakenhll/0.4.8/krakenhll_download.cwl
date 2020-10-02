@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../krakenhll_download.cwl
+id: krakenhll_download.cwl
 inputs:
 - id: in_folder_files_downloaded
   doc: "Folder to which the files are downloaded. Default: '.'"

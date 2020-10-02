@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Aquila_stLFR_step1.cwl
+id: Aquila_stLFR_step1.cwl
 inputs:
 - id: in_fast_q_file
   doc: Required parameter; stLFR FASTQ file with paired reads

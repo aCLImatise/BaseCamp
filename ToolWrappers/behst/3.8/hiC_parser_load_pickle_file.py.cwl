@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hiC_parser_load_pickle_file.py.cwl
+id: hiC_parser_load_pickle_file.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

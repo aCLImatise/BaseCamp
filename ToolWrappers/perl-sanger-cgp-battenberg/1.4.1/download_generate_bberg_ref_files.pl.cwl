@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../download_generate_bberg_ref_files.pl.cwl
+id: download_generate_bberg_ref_files.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

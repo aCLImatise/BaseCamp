@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_bamshuf.cwl
+id: samtools_bamshuf.cwl
 inputs:
 - id: in_output_to_stdout
   doc: output to stdout

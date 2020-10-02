@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chooseLines.cwl
+id: chooseLines.cwl
 inputs:
 - id: in_number_choose_default
   doc: Number of lines to choose (default is all lines).

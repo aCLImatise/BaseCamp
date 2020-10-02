@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bt_save.cwl
+id: bt_save.cwl
 inputs: []
 outputs:
 - id: out_stdout

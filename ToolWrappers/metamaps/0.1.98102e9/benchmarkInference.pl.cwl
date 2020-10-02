@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../benchmarkInference.pl.cwl
+id: benchmarkInference.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csb_hhfrag.cwl
+id: csb_hhfrag.cwl
 inputs:
 - id: in_hh_search
   doc: path to the HHsearch executable (default=hhsearch)

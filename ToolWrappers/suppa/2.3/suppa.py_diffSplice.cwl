@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../suppa.py_diffSplice.cwl
+id: suppa.py_diffSplice.cwl
 inputs:
 - id: in_method
   doc: Method to test significance. Required.

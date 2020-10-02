@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_control_fdr.cwl
+id: rsem_control_fdr.cwl
 inputs:
 - id: in_hard_threshold
   doc: "Use hard threshold method to control FDR. If this option is set,\nonly those\

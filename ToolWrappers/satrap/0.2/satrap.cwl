@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../satrap.cwl
+id: satrap.cwl
 inputs:
-- id: in_fast_a
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -fasta
 - id: in_step
   doc: "(vector<int>)     PLEASE SELECT THE DESIRED STEP OF THE ANALYSIS USING \"\
     -step\" parameter:\n\"1\" for STEP 1, \"2\" for STEP 2 etc. For instance the Oases\

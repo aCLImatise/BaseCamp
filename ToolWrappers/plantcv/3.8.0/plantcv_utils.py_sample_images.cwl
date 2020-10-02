@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plantcv_utils.py_sample_images.cwl
+id: plantcv_utils.py_sample_images.cwl
 inputs:
 - id: in_source
   doc: Source directory of images

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hubward_liftover.cwl
+id: hubward_liftover.cwl
 inputs:
 - id: in_from_assembly
   doc: 'Source assembly (default: -)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MapAlignerTreeGuided.cwl
+id: MapAlignerTreeGuided.cwl
 inputs:
 - id: in_in
   doc: "*        Input files to align (all must have the same file type) (valid formats:\

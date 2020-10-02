@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedGraphPack.cwl
+id: bedGraphPack.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wkhtmltopdf.cwl
+id: wkhtmltopdf.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterqc.sh.cwl
+id: filterqc.sh.cwl
 inputs:
 - id: in_in
   doc: ''

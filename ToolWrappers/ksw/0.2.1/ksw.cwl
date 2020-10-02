@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ksw.cwl
+id: ksw.cwl
 inputs:
 - id: in_alignment_mode_extend
   doc: 'The alignment mode: 0 - local, 1 - glocal, 2 - extend, 3 - global [0 - local]'

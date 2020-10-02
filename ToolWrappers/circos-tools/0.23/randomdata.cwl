@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randomdata.cwl
+id: randomdata.cwl
 inputs: []
 outputs:
 - id: out_stdout

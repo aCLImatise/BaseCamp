@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedChunk.cwl
+id: BedChunk.cwl
 inputs:
 - id: in_desired_chunk_size
   doc: 'The desired chunk size. Note: Not all chunks will have this size. Regions

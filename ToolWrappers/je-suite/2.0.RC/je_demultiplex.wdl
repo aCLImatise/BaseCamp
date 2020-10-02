@@ -3,8 +3,6 @@ version 1.0
 task JeDemultiplex {
   input {
     Boolean? displays_options_specific
-    Boolean? std_help
-    Boolean? displays_options_and
     String data_dot
     String or
     String while
@@ -26,14 +24,10 @@ task JeDemultiplex {
       ~{detected_dot} \
       ~{barcoded_dot} \
       ~{null_dot} \
-      ~{if (displays_options_specific) then "-h" else ""} \
-      ~{if (std_help) then "--stdhelp" else ""} \
-      ~{if (displays_options_and) then "-H" else ""}
+      ~{if (displays_options_specific) then "-H" else ""}
   >>>
   parameter_meta {
-    displays_options_specific: "Displays options specific to this tool."
-    std_help: ""
-    displays_options_and: "Displays options specific to this tool AND options common to all Picard command line\\ntools."
+    displays_options_specific: "Displays options specific to this tool AND options common to all Picard command line\\ntools."
     data_dot: "Required. "
     or: "sample1          ATAT|GAGG:CCAA|TGTG     spl1_1.txt.gz   spl1_2.txt.gz"
     while: "the second barcode might be a random barcode (UMI) to tell apart PCR artefacts from real "

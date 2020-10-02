@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnal.cwl
+id: dnal.cwl
 inputs:
 - id: in_match
   doc: '[4]  Match score'

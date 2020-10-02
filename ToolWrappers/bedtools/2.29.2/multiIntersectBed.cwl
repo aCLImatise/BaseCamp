@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multiIntersectBed.cwl
+id: multiIntersectBed.cwl
 inputs:
 - id: in_cluster
   doc: Invoke Ryan Layers's clustering algorithm.

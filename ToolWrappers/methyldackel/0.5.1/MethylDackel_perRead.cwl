@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MethylDackel_perRead.cwl
+id: MethylDackel_perRead.cwl
 inputs:
 - id: in_minimum_mapq_threshold
   doc: Minimum MAPQ threshold to include an alignment (default 10)

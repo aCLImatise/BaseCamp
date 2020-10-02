@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bseqc2.cwl
+id: bseqc2.cwl
 inputs:
 - id: in_arg_input_bam
   doc: '[ --infile ] arg               Input BAM file.'

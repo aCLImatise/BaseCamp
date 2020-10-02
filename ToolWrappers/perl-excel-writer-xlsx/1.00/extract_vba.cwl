@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_vba.cwl
+id: extract_vba.cwl
 inputs: []
 outputs:
 - id: out_stdout

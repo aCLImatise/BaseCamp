@@ -21,7 +21,7 @@ task PhyluceGenetreesRunRaxmlBootstraps {
       ~{if (quiet) then "--quiet" else ""}
   >>>
   parameter_meta {
-    best_trees: ""
+    best_trees: "OUTPUT [--bootreps BOOTREPS]\\n[--outgroup OUTGROUP]\\n[--threads THREADS]\\n[--cores CORES] [--quiet]"
     alignments: "The directory containing alignments to be summarized."
     boot_reps: "The number of bootstrap replicates to run"
     out_group: "The outgroup to use"

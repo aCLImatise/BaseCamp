@@ -1,8 +1,9 @@
 class: CommandLineTool
-id: ../../../msstitch_merge.cwl
+id: msstitch_merge.cwl
 inputs:
 - id: in_fdr_col_pattern
-  doc: ''
+  doc: "[--featcol FEATCOL] --dbfile LOOKUPFN\n[--mergecutoff MERGECUTOFF] [--no-group-annotation]\n\
+    [--genecentric]"
   type: string
   inputBinding:
     prefix: --fdrcolpattern

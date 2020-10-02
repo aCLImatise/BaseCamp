@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bft.cwl
+id: bft.cwl
 inputs:
 - id: in_build
   doc: ''

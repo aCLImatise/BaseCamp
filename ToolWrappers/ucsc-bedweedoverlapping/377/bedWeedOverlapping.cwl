@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedWeedOverlapping.cwl
+id: bedWeedOverlapping.cwl
 inputs: []
 outputs:
 - id: out_stdout

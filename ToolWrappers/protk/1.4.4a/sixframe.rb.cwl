@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sixframe.rb.cwl
+id: sixframe.rb.cwl
 inputs:
 - id: in_output
   doc: An explicitly named output file.

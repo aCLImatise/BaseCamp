@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_454.cwl
+id: amptk_454.cwl
 inputs:
 - id: in_fast_a
   doc: Input file (SFF, FASTA, or FASTQ) (Required)

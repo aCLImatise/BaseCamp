@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fu_grep.cwl
+id: fu_grep.cwl
 inputs:
 - id: in_annotate
   doc: Add comments to the sequence when match is found

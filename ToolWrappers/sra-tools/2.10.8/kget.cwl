@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kget.cwl
+id: kget.cwl
 inputs:
 - id: in_verbose
   doc: "Increase the verbosity of the program\nstatus messages. Use multiple times\

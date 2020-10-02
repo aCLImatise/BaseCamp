@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nextflow_run.cwl
+id: nextflow_run.cwl
 inputs:
 - id: in_exports_current_system
   doc: "Exports all current system environment\nDefault: false"

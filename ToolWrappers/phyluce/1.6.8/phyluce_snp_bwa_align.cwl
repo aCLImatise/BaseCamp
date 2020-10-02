@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_snp_bwa_align.cwl
+id: phyluce_snp_bwa_align.cwl
 inputs:
 - id: in_config
   doc: A configuration file containing

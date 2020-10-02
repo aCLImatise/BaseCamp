@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dEploid_dbg.cwl
+id: dEploid_dbg.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -15,14 +15,11 @@ task GsutilConfig {
     String aws_access_key_id
     String gs_access_key_id
     String gs_json_host
-    Int gs_o_auth_two_refresh_token
-    String gs_secret_access_key
     Int s_three_port
     String proxy
     String proxy_user
     String proxy_rdns
     String https_validate_certificates
-    String max_retry_delay
     String service_account
     String check_hashes
     String default_api_version
@@ -32,13 +29,9 @@ task GsutilConfig {
     String sliced_object_download_max_components
     String parallel_process_count
     String prefer_api
-    String rsync_buffer_lines
-    String state_dir
-    String tab_completion_timeout
     String use_magic_file
     String client_id
     Int o_auth_two_refresh_retries
-    String provider_label
     String token_cache
   }
   command <<<
@@ -47,14 +40,11 @@ task GsutilConfig {
       ~{aws_access_key_id} \
       ~{gs_access_key_id} \
       ~{gs_json_host} \
-      ~{gs_o_auth_two_refresh_token} \
-      ~{gs_secret_access_key} \
       ~{s_three_port} \
       ~{proxy} \
       ~{proxy_user} \
       ~{proxy_rdns} \
       ~{https_validate_certificates} \
-      ~{max_retry_delay} \
       ~{service_account} \
       ~{check_hashes} \
       ~{default_api_version} \
@@ -64,13 +54,9 @@ task GsutilConfig {
       ~{sliced_object_download_max_components} \
       ~{parallel_process_count} \
       ~{prefer_api} \
-      ~{rsync_buffer_lines} \
-      ~{state_dir} \
-      ~{tab_completion_timeout} \
       ~{use_magic_file} \
       ~{client_id} \
       ~{o_auth_two_refresh_retries} \
-      ~{provider_label} \
       ~{token_cache} \
       ~{if defined(see_options_cause) then ("-f " +  '"' + see_options_cause + '"') else ""} \
       ~{if (prompt_google_cloud) then "-a" else ""} \
@@ -96,14 +82,11 @@ task GsutilConfig {
     aws_access_key_id: "aws_secret_access_key"
     gs_access_key_id: "gs_host"
     gs_json_host: "gs_json_port"
-    gs_o_auth_two_refresh_token: "gs_port"
-    gs_secret_access_key: "s3_host"
     s_three_port: "[Boto]"
     proxy: "proxy_port"
     proxy_user: "proxy_pass"
     proxy_rdns: "http_socket_timeout"
     https_validate_certificates: "debug"
-    max_retry_delay: "num_retries"
     service_account: "[GSUtil]"
     check_hashes: "content_language"
     default_api_version: "default_project_id"
@@ -113,13 +96,9 @@ task GsutilConfig {
     sliced_object_download_max_components: "sliced_object_download_threshold"
     parallel_process_count: "parallel_thread_count"
     prefer_api: "resumable_threshold"
-    rsync_buffer_lines: "software_update_check_period"
-    state_dir: "tab_completion_time_logs"
-    tab_completion_timeout: "task_estimation_threshold"
     use_magic_file: "[OAuth2]"
     client_id: "client_secret"
     o_auth_two_refresh_retries: "provider_authorization_uri"
-    provider_label: "provider_token_uri"
     token_cache: "UPDATING TO THE LATEST CONFIGURATION FILE"
   }
   output {

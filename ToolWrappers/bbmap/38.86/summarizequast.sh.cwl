@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summarizequast.sh.cwl
+id: summarizequast.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

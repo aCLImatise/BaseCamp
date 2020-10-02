@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DRAM_v.py_distill.cwl
+id: DRAM_v.py_distill.cwl
 inputs:
 - id: in_input_file
   doc: 'Annotations path (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_distribution.py.cwl
+id: read_distribution.py.cwl
 inputs:
 - id: in_input_file
   doc: Alignment file in BAM or SAM format.

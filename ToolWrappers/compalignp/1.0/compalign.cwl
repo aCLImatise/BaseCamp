@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compalign.cwl
+id: compalign.cwl
 inputs:
 - id: in_only_compare_marked
   doc: ': only compare under marked #=CS consensus structure'

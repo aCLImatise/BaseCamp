@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_PlotChanges.cwl
+id: TOBIAS_PlotChanges.cwl
 inputs:
 - id: in_bin_detect
   doc: Bindetect_results.txt file from BINDetect run

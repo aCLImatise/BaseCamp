@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_apropos.cwl
+id: gtftk_apropos.cwl
 inputs:
 - id: in_keyword
   doc: 'The keyword (default: None)'

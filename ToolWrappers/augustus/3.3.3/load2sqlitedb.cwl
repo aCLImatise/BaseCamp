@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../load2sqlitedb.cwl
+id: load2sqlitedb.cwl
 inputs:
 - id: in_chunksize
   doc: "this option is only relevant when loading a sequence file\nthe sequences in\

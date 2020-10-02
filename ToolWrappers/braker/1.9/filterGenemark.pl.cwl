@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterGenemark.pl.cwl
+id: filterGenemark.pl.cwl
 inputs:
 - id: in_introns
   doc: Corresponding intron file in gff format

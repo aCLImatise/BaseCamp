@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jellyfish_cmd.cwl
+id: jellyfish_cmd.cwl
 inputs:
 - id: in_arg_dot_dot_dot
   doc: ''

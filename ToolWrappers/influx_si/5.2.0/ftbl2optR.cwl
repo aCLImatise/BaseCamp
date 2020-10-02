@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ftbl2optR.cwl
+id: ftbl2optR.cwl
 inputs: []
 outputs:
 - id: out_stdout

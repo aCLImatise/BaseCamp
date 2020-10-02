@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../erate_estimate.cwl
+id: erate_estimate.cwl
 inputs: []
 outputs:
 - id: out_stdout

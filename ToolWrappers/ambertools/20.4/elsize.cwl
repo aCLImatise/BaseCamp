@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../elsize.cwl
+id: elsize.cwl
 inputs:
 - id: in_det
   doc: (default) gives A_det,

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centrifuge_build_bin.cwl
+id: centrifuge_build_bin.cwl
 inputs:
 - id: in_reference_sequences_given
   doc: "reference sequences given on cmd line (as\n<reference_in>)"

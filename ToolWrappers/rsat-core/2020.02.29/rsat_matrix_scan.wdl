@@ -12,7 +12,6 @@ task RsatMatrixscan {
     String pseudo_counts
     String papers_dot
     Int eight_one_nine_two_dot
-    Int five_six_three_seven_seven_dot
     String distributed_dot
     Float ma_zero_two_two_one_dot_one
     Int m_zero_zero_two_seven_one
@@ -34,7 +33,6 @@ task RsatMatrixscan {
       ~{pseudo_counts} \
       ~{papers_dot} \
       ~{eight_one_nine_two_dot} \
-      ~{five_six_three_seven_seven_dot} \
       ~{distributed_dot} \
       ~{ma_zero_two_two_one_dot_one} \
       ~{m_zero_zero_two_seven_one} \
@@ -61,7 +59,6 @@ task RsatMatrixscan {
     pseudo_counts: "Relative frequencies can be corrected by a pseudo-count (b) to reduce\\nthe bias due to the small number of observations.\\nThe pseudo-count can be shared either in an equiprobable way,\\nS<F''ij=(Nij + b/A)/[SUMi(Nij)+b]>\\nor according to residue prior frequencies.\\nS<F''ij=(Nij + b*Pi)/[SUMi(Nij)+b]>\\nwhere\\nPi  is the prior frequency for residue i\\nA   is the size of the alphabet (A=4 for DNA).\\nb   is the pseudo-count, which is \\\"shared\\\" between residues according to\\ntheir prior frequencies."
     papers_dot: "Aerts, S., Thijs, G., Coessens, B., Staes, M., Moreau, Y. & De Moor, B."
     eight_one_nine_two_dot: "Hertz, G.Z. and G.D. Stormo (1999)."
-    five_six_three_seven_seven_dot: "Staden (1989)."
     distributed_dot: "[1m-m matrixfile[0m"
     ma_zero_two_two_one_dot_one: "[1m-matrix_name matrix_name1[,matrix_name2,...][0m"
     m_zero_zero_two_seven_one: "[1m-first_seq N[0m"

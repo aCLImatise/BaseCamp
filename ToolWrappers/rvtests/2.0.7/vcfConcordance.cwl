@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfConcordance.cwl
+id: vcfConcordance.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -21,7 +21,7 @@ task CompareVcfs {
       ~{if defined(chrom) then ("--chrom " +  '"' + chrom + '"') else ""}
   >>>
   parameter_meta {
-    output_file: ""
+    output_file: "[--variant_site_quality VARIANT_SITE_QUALITY]\\n[--variant_genotype_quality VARIANT_GENOTYPE_QUALITY]\\n[--variant_depth VARIANT_DEPTH] --chrom CHROM"
     vcf_before: "Full path to first Platypus VCF output from\\nBAM_ANALYSIS module. This will be treated as the\\n'before' condition for comparisons."
     vcf_after: "Full path to second Platypus VCF output from\\nBAM_ANALYSIS module. This will be treated as the\\n'after' condition for comparisons."
     variant_site_quality: "Consider all SNPs with a site quality (QUAL) greater\\nthan or equal to this value. Default is 30."

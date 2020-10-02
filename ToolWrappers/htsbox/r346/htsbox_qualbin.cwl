@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsbox_qualbin.cwl
+id: htsbox_qualbin.cwl
 inputs:
 - id: in_number_of_threads
   doc: number of threads [1]

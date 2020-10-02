@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_topic_escaping.cwl
+id: gcloud_topic_escaping.cwl
 inputs:
 - id: in_list_flag
   doc: ',value2,value3'
@@ -12,20 +12,10 @@ inputs:
   inputBinding:
     prefix: --dict-flag
 - id: in_addresses
-  doc: ^:^123.456.789.198:22.333.146.189:789.312.645      \
+  doc: "^:^123.456.789.198:22.333.146.189:789.312.645      \\\n--region us-central1"
   type: boolean
   inputBinding:
     prefix: --addresses
-- id: in_region
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: --region
-- id: in_metadata
-  doc: \
-  type: boolean
-  inputBinding:
-    prefix: --metadata
 outputs:
 - id: out_stdout
   doc: Standard output stream

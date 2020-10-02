@@ -2,7 +2,7 @@ version 1.0
 
 task MsstitchProteins {
   input {
-    String? score_col_pattern
+    Int? score_col_pattern
     File? input_file_format
     Directory? directory_to_output
     File? output_file
@@ -29,7 +29,7 @@ task MsstitchProteins {
       ~{if defined(psm_table) then ("--psmtable " +  '"' + psm_table + '"') else ""}
   >>>
   parameter_meta {
-    score_col_pattern: ""
+    score_col_pattern: "[--logscore] [--isobquantcolpattern QUANTCOLPATTERN]\\n[--minint MININT]\\n[--denomcols DENOMCOLS [DENOMCOLS ...]]\\n[--denompatterns DENOMPATTERNS [DENOMPATTERNS ...]]\\n[--ms1quant] [--psmtable PSMFILE]"
     input_file_format: "Input file of {} format"
     directory_to_output: "Directory to output in"
     output_file: "Output file"

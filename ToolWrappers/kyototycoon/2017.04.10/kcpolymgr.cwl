@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kcpolymgr.cwl
+id: kcpolymgr.cwl
 inputs:
 - id: in_otr
   doc: ''

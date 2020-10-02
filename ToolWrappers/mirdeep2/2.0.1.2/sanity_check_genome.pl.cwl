@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sanity_check_genome.pl.cwl
+id: sanity_check_genome.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

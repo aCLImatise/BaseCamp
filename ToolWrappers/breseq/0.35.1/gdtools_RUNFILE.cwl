@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_RUNFILE.cwl
+id: gdtools_RUNFILE.cwl
 inputs:
 - id: in_mode
   doc: 'Type of command file to generate. Valid options are: breseq, breseq-apply,

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../recallConsensus.cwl
+id: recallConsensus.cwl
 inputs:
 - id: in_bank
   doc: Bank where assembly is stored

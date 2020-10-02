@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylorank_outliers.cwl
+id: phylorank_outliers.cwl
 inputs:
 - id: in_viral
   doc: indicates a viral input tree and taxonomy

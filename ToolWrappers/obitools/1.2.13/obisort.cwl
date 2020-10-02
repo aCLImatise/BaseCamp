@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obisort.cwl
+id: obisort.cwl
 inputs:
 - id: in_debug
   doc: Set logging in debug mode

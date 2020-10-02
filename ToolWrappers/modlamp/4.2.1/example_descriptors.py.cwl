@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../example_descriptors.py.cwl
+id: example_descriptors.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

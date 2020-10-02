@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gffjunc_to_bed12.py_gff.cwl
+id: gffjunc_to_bed12.py_gff.cwl
 inputs:
 - id: in_gff
   doc: ''

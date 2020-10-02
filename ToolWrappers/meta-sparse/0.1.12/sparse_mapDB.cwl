@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sparse_mapDB.cwl
+id: sparse_mapDB.cwl
 inputs:
 - id: in_dbname
   doc: Name for the database folder. REQUIRED.

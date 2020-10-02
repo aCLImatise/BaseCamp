@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clearcore2.Utility.dll.cwl
+id: Clearcore2.Utility.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../surpyvor_haplomerge.cwl
+id: surpyvor_haplomerge.cwl
 inputs:
 - id: in_verbose
   doc: "Print out more information while running. (default:\nFalse)"

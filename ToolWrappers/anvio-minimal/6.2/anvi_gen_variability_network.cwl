@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_gen_variability_network.cwl
+id: anvi_gen_variability_network.cwl
 inputs:
 - id: in_input_file
   doc: "The anvi'o variability profile. Please see `anvi-gen-\nvariability-profile`\

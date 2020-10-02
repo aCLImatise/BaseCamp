@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RefMapOpt.sh.cwl
+id: RefMapOpt.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

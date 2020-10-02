@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_install.bak.cwl
+id: test_install.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

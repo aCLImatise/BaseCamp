@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centrifuge_simulate_reads.py.cwl
+id: centrifuge_simulate_reads.py.cwl
 inputs:
 - id: in_rna
   doc: 'RNA-seq reads (default: DNA-seq reads)'

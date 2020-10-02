@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmfinder04.pl.cwl
+id: cmfinder04.pl.cwl
 inputs:
 - id: in_maximum_number_default
   doc: The maximum number of candidates in each sequence. Default 40. No bigger than

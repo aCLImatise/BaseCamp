@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafft_homologs.rb.cwl
+id: mafft_homologs.rb.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho_formatUsearch.pl.cwl
+id: proteinortho_formatUsearch.pl.cwl
 inputs:
 - id: in_format_udot_pl
   doc: ''

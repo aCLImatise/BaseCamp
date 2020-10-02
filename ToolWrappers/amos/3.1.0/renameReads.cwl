@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../renameReads.cwl
+id: renameReads.cwl
 inputs:
 - id: in_bank_name
   doc: ''

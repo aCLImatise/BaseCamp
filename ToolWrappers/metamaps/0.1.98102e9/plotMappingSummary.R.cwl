@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plotMappingSummary.R.cwl
+id: plotMappingSummary.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

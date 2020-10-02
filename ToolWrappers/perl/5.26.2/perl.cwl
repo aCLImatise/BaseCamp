@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../perl.cwl
+id: perl.cwl
 inputs:
 - id: in_specify_record_separator
   doc: '[octal]         specify record separator (\0, if no argument)'

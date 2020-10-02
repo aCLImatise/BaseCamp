@@ -2,40 +2,17 @@ version 1.0
 
 task BuildKaryotypesh {
   input {
-    File? file
-    File? directory_optional_default
-    File? f
-    String? g
-    String? r
-    String? value_display_summary
-    String? value_display_individual
-    String? v
-    String? usage_message
+    File? output_directory_optional
   }
   command <<<
     build_karyotype_sh \
-      ~{if defined(file) then ("-i " +  '"' + file + '"') else ""} \
-      ~{if defined(directory_optional_default) then ("-o " +  '"' + directory_optional_default + '"') else ""} \
-      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
-      ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
-      ~{if defined(r) then ("-R " +  '"' + r + '"') else ""} \
-      ~{if defined(value_display_summary) then ("-K " +  '"' + value_display_summary + '"') else ""} \
-      ~{if defined(value_display_individual) then ("-k " +  '"' + value_display_individual + '"') else ""} \
-      ~{if defined(v) then ("-v " +  '"' + v + '"') else ""} \
-      ~{if defined(usage_message) then ("-h " +  '"' + usage_message + '"') else ""}
+      ~{if defined(output_directory_optional) then ("-i " +  '"' + output_directory_optional + '"') else ""}
   >>>
   parameter_meta {
-    file: "file"
-    directory_optional_default: "directory (optional). By default the file is replaced in the same location"
-    f: "name for identification"
-    g: "name for identification"
-    r: ""
-    value_display_summary: "value to display plasmids covered >= in summary image"
-    value_display_individual: "value to display plasmids covered >= in individual image"
-    v: ""
-    usage_message: "usage message"
+    output_directory_optional: "file\\n-o output directory (optional). By default the file is replaced in the same location\\n-f file name for identification\\n-g group name for identification\\n-R Reconstruct\\n-K percentage value to display plasmids covered >= in summary image\\n-k percentage value to display plasmids covered >= in individual image\\n-v version\\n-h display usage message"
   }
   output {
     File out_stdout = stdout()
+    File out_output_directory_optional = "${in_output_directory_optional}"
   }
 }

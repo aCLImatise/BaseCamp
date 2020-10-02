@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../traitar_phenotype.cwl
+id: traitar_phenotype.cwl
 inputs:
 - id: in_gene_gff_type
   doc: "if the input is amino acids the type of gene\nprediction GFF file can be specified\

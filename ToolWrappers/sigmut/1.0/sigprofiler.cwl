@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sigprofiler.cwl
+id: sigprofiler.cwl
 inputs:
 - id: in_install_genome
   doc: "Install de novo any of the following reference\ngenomes: 'GRCh37', 'GRCh38',\

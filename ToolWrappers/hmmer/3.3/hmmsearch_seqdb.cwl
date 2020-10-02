@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmsearch_seqdb.cwl
+id: hmmsearch_seqdb.cwl
 inputs:
 - id: in_hmm_search
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MassTraceExtractor.cwl
+id: MassTraceExtractor.cwl
 inputs:
 - id: in_in
   doc: "*        Input centroided mzML file (valid formats: 'mzML')"

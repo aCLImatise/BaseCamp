@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mobster.cwl
+id: mobster.cwl
 inputs:
 - id: in_properties
   doc: '[properties]'

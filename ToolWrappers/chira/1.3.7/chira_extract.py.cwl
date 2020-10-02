@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chira_extract.py.cwl
+id: chira_extract.py.cwl
 inputs:
 - id: in__loci_file
   doc: ', --loci           Input BED file with alignments (default: None)'

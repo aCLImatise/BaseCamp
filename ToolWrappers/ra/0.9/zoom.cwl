@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../zoom.cwl
+id: zoom.cwl
 inputs:
 - id: in_root
   doc: root read (int)

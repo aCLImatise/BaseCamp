@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TrinotateSeqLoader.pl.cwl
+id: TrinotateSeqLoader.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

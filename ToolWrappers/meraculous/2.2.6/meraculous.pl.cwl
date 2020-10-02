@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meraculous.pl.cwl
+id: meraculous.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

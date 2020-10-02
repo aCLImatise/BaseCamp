@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../krakenuniq_report.cwl
+id: krakenuniq_report.cwl
 inputs:
 - id: in_show_zeros
   doc: Show full taxonomy table.

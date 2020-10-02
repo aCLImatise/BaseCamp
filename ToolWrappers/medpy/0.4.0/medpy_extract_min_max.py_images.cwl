@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_extract_min_max.py_images.cwl
+id: medpy_extract_min_max.py_images.cwl
 inputs:
 - id: in_f
   doc: ''

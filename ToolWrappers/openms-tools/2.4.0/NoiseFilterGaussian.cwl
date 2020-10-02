@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NoiseFilterGaussian.cwl
+id: NoiseFilterGaussian.cwl
 inputs:
 - id: in_in
   doc: "*        Input raw data file  (valid formats: 'mzML')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_control_list.cwl
+id: gtftk_control_list.cwl
 inputs:
 - id: in_in_file
   doc: 'A two columns tab-file. See notes. (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plastome_arch_info.py.cwl
+id: plastome_arch_info.py.cwl
 inputs:
 - id: in_output_file
   doc: output file.

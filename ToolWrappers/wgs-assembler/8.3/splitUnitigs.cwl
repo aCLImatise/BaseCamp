@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitUnitigs.cwl
+id: splitUnitigs.cwl
 inputs:
 - id: in_mandatory_path_gkpstore
   doc: Mandatory path to a gkpStore.

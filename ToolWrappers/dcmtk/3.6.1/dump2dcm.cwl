@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dump2dcm.cwl
+id: dump2dcm.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments

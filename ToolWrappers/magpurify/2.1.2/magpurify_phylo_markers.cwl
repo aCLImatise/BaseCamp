@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../magpurify_phylo_markers.cwl
+id: magpurify_phylo_markers.cwl
 inputs:
 - id: in_db
   doc: "Path to reference database. By default, the\nMAGPURIFYDB environmental variable\

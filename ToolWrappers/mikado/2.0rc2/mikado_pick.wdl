@@ -28,11 +28,7 @@ task MikadoPick {
     Boolean? single
     String? mode
     Int? seed
-    String? subloc_i_out
-    String? mono_loci_out
-    File? loci_out
-    String? prefix
-    String? source
+    File? subloc_i_out
     File? log
     Boolean? verbose
     Boolean? no_verbose
@@ -69,10 +65,6 @@ task MikadoPick {
       ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if defined(subloc_i_out) then ("--subloci-out " +  '"' + subloc_i_out + '"') else ""} \
-      ~{if defined(mono_loci_out) then ("--monoloci-out " +  '"' + mono_loci_out + '"') else ""} \
-      ~{if defined(loci_out) then ("--loci-out " +  '"' + loci_out + '"') else ""} \
-      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
-      ~{if defined(source) then ("--source " +  '"' + source + '"') else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (no_verbose) then "--noverbose" else ""} \
@@ -105,11 +97,7 @@ task MikadoPick {
     single: "Flag. If set, Creator will be launched with a single\\nprocess, without involving the multithreading\\napparatus. Useful for debugging purposes only.\\n(default: False)"
     mode: "Mode in which Mikado will treat transcripts with\\nmultiple ORFs. - nosplit: keep the transcripts whole.\\n- stringent: split multi-orf transcripts if two\\nconsecutive ORFs have both BLAST hits and none of\\nthose hits is against the same target. - lenient:\\nsplit multi-orf transcripts as in stringent, and\\nadditionally, also when either of the ORFs lacks a\\nBLAST hit (but not both). - permissive: like lenient,\\nbut also split when both ORFs lack BLAST hits - split:\\nsplit multi-orf transcripts regardless of what BLAST\\ndata is available. (default: None)"
     seed: "Random seed number. (default: None)"
-    subloc_i_out: ""
-    mono_loci_out: ""
-    loci_out: "This output file is mandatory. If it is not specified\\nin the configuration file, it must be provided here.\\n(default: None)"
-    prefix: "Prefix for the genes. Default: Mikado (default: None)"
-    source: "Source field to use for the output files. (default:\\nNone)"
+    subloc_i_out: "--monoloci-out MONOLOCI_OUT\\n--loci-out LOCI_OUT   This output file is mandatory. If it is not specified\\nin the configuration file, it must be provided here.\\n(default: None)\\n--prefix PREFIX       Prefix for the genes. Default: Mikado (default: None)\\n--source SOURCE       Source field to use for the output files. (default:\\nNone)"
     log: "File to write the log to. Default: decided by the\\nconfiguration file. (default: None)"
     verbose: "Flag. If set, the debug mode will be activated.\\n(default: False)"
     no_verbose: "Flag. If set, the log will report only errors and\\ncritical events. (default: False)"
@@ -119,6 +107,6 @@ task MikadoPick {
   output {
     File out_stdout = stdout()
     Directory out_output_dir = "${in_output_dir}"
-    File out_loci_out = "${in_loci_out}"
+    File out_subloc_i_out = "${in_subloc_i_out}"
   }
 }

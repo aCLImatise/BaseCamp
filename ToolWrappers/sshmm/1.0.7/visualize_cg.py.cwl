@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../visualize_cg.py.cwl
+id: visualize_cg.py.cwl
 inputs:
 - id: in_highlight
   doc: Highlight some elements
@@ -77,7 +77,7 @@ inputs:
   inputBinding:
     prefix: --batch
 - id: in_side_chain_atoms
-  doc: Include the sidechain atoms. Automatically enables
+  doc: "Include the sidechain atoms. Automatically enables\n--virtual-atoms"
   type: boolean
   inputBinding:
     prefix: --sidechain-atoms

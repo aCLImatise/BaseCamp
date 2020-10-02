@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../process_shortreads.cwl
+id: process_shortreads.cwl
 inputs:
 - id: in_inline_null
   doc: ':   barcode is inline with sequence, occurs only on single-end read (default).'

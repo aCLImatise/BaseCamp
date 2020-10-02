@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../junctools.cwl
+id: junctools.cwl
 inputs:
 - id: in_this
   doc: ''

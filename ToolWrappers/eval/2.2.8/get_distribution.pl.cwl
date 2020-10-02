@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_distribution.pl.cwl
+id: get_distribution.pl.cwl
 inputs:
 - id: in_specify_distribution_mode
   doc: ": Specify distribution mode.  Must be a number selected from the\nlist below.\

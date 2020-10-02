@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucmerAnnotate.cwl
+id: nucmerAnnotate.cwl
 inputs:
 - id: in_ignore
   doc: '- Maximum length of the end sequence unaligned (Default: 20 bp)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VcfAnnotateFromBed.cwl
+id: VcfAnnotateFromBed.cwl
 inputs:
 - id: in_bed
   doc: BED file used for annotation.

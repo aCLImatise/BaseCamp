@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove.bad.hap.loci.sh.cwl
+id: remove.bad.hap.loci.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

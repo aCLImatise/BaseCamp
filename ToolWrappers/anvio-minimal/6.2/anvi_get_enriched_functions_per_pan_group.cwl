@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_get_enriched_functions_per_pan_group.cwl
+id: anvi_get_enriched_functions_per_pan_group.cwl
 inputs:
 - id: in_o
   doc: '[-F FILE]'

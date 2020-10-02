@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_findkm.cwl
+id: _findkm.cwl
 inputs:
 - id: in_graph_lb
   doc: "xygraph    [$EMBOSS_GRAPHICS value, or png] Graph type\n(ps, hpgl, hp7470,\

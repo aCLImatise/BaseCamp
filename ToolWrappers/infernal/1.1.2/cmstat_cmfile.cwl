@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmstat_cmfile.cwl
+id: cmstat_cmfile.cwl
 inputs:
 - id: in_options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeuniformrecfile.pl.cwl
+id: makeuniformrecfile.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

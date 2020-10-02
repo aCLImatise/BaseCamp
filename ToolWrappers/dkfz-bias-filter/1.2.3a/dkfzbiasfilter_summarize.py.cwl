@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dkfzbiasfilter_summarize.py.cwl
+id: dkfzbiasfilter_summarize.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

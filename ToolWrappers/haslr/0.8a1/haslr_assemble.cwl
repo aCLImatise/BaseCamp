@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haslr_assemble.cwl
+id: haslr_assemble.cwl
 inputs:
 - id: in_path_contigs_file
   doc: Path to contigs file (also --contig)

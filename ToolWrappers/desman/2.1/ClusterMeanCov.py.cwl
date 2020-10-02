@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ClusterMeanCov.py.cwl
+id: ClusterMeanCov.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

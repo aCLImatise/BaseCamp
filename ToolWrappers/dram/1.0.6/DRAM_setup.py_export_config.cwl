@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DRAM_setup.py_export_config.cwl
+id: DRAM_setup.py_export_config.cwl
 inputs:
 - id: in_output_file
   doc: "File to save exported CONFIG file to, by default\nwillprint CONFIG (default:\

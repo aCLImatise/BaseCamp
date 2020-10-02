@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_readcount_file.py.cwl
+id: convert_readcount_file.py.cwl
 inputs:
 - id: in_rcn
   doc: ''

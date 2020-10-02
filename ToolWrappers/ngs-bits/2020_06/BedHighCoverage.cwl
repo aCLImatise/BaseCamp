@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedHighCoverage.cwl
+id: BedHighCoverage.cwl
 inputs:
 - id: in_bam
   doc: Input BAM file.

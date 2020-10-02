@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../indelHistory.cwl
+id: indelHistory.cwl
 inputs:
 - id: in_msa_format
   doc: "|MAF|SS|....\nRead alignment in specified file format (default FASTA)."

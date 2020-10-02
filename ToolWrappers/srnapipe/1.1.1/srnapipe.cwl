@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../srnapipe.cwl
+id: srnapipe.cwl
 inputs:
 - id: in_fast_q
   doc: Fastq file to process

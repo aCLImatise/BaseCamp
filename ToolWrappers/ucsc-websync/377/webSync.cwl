@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../webSync.cwl
+id: webSync.cwl
 inputs:
 - id: in_debug
   doc: show debug messages

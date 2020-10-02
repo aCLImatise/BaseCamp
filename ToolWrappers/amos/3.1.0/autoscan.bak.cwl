@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../autoscan.bak.cwl
+id: autoscan.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

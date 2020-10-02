@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_remove_duplicates.cwl
+id: rgi_remove_duplicates.cwl
 inputs:
 - id: in_input
   doc: input fasta file

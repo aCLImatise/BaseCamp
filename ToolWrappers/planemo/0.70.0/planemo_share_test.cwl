@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_share_test.cwl
+id: planemo_share_test.cwl
 inputs:
 - id: in_file_path
   doc: ''

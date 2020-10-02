@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktImportGalaxy.cwl
+id: ktImportGalaxy.cwl
 inputs:
 - id: in_tax_rep
   doc: "Results from the \"Fetch taxonomic representation\" or \"Find lowest\ndiagnostic\

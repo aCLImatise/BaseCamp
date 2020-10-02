@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../buildMetaphyler.pl.cwl
+id: buildMetaphyler.pl.cwl
 inputs:
 - id: in_norm_vertical_line_un_norm
   doc: ''

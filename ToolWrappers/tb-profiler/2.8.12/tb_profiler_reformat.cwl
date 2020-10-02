@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tb_profiler_reformat.cwl
+id: tb_profiler_reformat.cwl
 inputs:
 - id: in_txt
   doc: 'Add text output (default: False)'

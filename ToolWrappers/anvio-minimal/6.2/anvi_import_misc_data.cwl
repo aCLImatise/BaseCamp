@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_import_misc_data.cwl
+id: anvi_import_misc_data.cwl
 inputs:
 - id: in_pan_or_profile_db
   doc: "Anvi'o pan or profile database (and even genes\ndatabase in appropriate contexts)."

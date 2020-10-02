@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamtools_sort.cwl
+id: bamtools_sort.cwl
 inputs:
 - id: in_in
   doc: the input BAM file [stdin]

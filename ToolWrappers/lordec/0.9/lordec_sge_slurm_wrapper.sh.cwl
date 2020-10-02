@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lordec_sge_slurm_wrapper.sh.cwl
+id: lordec_sge_slurm_wrapper.sh.cwl
 inputs:
 - id: in_slur_m
   doc: '[-J nb_jobs | -N nb_reads_per_job] -P parallel_env_name -B lordec-build-SR-graph_PATH

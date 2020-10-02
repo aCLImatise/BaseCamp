@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_gubbins.py.cwl
+id: run_gubbins.py.cwl
 inputs:
 - id: in_out_group
   doc: "Outgroup name for rerooting. A list of comma separated\nnames can be used\

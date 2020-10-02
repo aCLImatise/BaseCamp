@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequana_compressor.cwl
+id: sequana_compressor.cwl
 inputs:
 - id: in_source
   doc: be provided but no analysis will be performed

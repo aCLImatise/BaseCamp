@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spectrast_filter.rb.cwl
+id: spectrast_filter.rb.cwl
 inputs:
 - id: in_output
   doc: An explicitly named output file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicHyperoptDetectLoops.cwl
+id: hicHyperoptDetectLoops.cwl
 inputs:
 - id: in_maximum_number_of_loops
   doc: "The maximum number of loops that should be used for\noptimization computation."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../transMap2hints.pl.cwl
+id: transMap2hints.pl.cwl
 inputs:
 - id: in_keep_ids
   doc: If idfile is given, then only those genes are used.

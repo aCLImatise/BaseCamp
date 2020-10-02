@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqxref.cwl
+id: seqxref.cwl
 inputs: []
 outputs:
 - id: out_stdout

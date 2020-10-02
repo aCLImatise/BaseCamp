@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chroot.cwl
+id: chroot.cwl
 inputs:
 - id: in_groups
   doc: specify supplementary groups as g1,g2,..,gN

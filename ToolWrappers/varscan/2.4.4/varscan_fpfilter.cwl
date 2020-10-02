@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varscan_fpfilter.cwl
+id: varscan_fpfilter.cwl
 inputs:
 - id: in_output_file
   doc: Optional output file for filter-pass variants

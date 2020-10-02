@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_duration.cwl
+id: nw_duration.cwl
 inputs:
 - id: in_bh_il
   doc: ''

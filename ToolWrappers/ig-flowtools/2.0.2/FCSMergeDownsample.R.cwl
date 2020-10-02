@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FCSMergeDownsample.R.cwl
+id: FCSMergeDownsample.R.cwl
 inputs:
 - id: in_union
   doc: "Attaching package: 'flowCore'"

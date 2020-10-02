@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_quickcheck.cwl
+id: flye_samtools_quickcheck.cwl
 inputs:
 - id: in_verbose_output_repeat
   doc: verbose output (repeat for more verbosity)

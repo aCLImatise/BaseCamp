@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_seqcut.pl.cwl
+id: bp_seqcut.pl.cwl
 inputs:
 - id: in_help_message
   doc: help message

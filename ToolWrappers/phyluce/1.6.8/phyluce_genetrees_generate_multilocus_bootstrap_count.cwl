@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_genetrees_generate_multilocus_bootstrap_count.cwl
+id: phyluce_genetrees_generate_multilocus_bootstrap_count.cwl
 inputs:
 - id: in_alignments
   doc: "The input directory containing alignments in phylip\nformat"

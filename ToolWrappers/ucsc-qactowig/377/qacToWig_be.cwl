@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qacToWig_be.cwl
+id: qacToWig_be.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

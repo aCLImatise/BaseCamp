@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clearcore2.Domain.Acquisition.Methods.MassSpec.dll.cwl
+id: Clearcore2.Domain.Acquisition.Methods.MassSpec.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

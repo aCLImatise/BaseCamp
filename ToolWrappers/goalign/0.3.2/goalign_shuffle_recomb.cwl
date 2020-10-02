@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_shuffle_recomb.cwl
+id: goalign_shuffle_recomb.cwl
 inputs:
 - id: in_prop_length
   doc: Proportion of length of sequences to recombine (default 0.5)

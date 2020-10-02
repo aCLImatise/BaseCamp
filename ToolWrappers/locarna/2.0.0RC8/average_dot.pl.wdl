@@ -2,11 +2,11 @@ version 1.0
 
 task Averagedotpl {
   input {
-    Int? sequences
     Boolean? man
     Boolean? verbose
     Boolean? quiet
     File? alignment
+    File? sequences
     File? outfile
     Float? given_threshold_option
     String a
@@ -72,20 +72,20 @@ task Averagedotpl {
       ~{where} \
       ~{above} \
       ~{dots} \
-      ~{if defined(sequences) then ("--sequences " +  '"' + sequences + '"') else ""} \
       ~{if (man) then "--man" else ""} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(alignment) then ("--alignment " +  '"' + alignment + '"') else ""} \
+      ~{if defined(sequences) then ("--sequences " +  '"' + sequences + '"') else ""} \
       ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(given_threshold_option) then ("--threshold " +  '"' + given_threshold_option + '"') else ""}
   >>>
   parameter_meta {
-    sequences: "..."
     man: "full documentation"
     verbose: "be verbose"
     quiet: "be quiet"
     alignment: "pp file representing the (Lo)Carna alignment"
+    sequences: "pp files for the input sequences"
     outfile: "output file (DEFAULT: averagedot)"
     given_threshold_option: "for each given threshold (this option can be specified more than once)\\na copy of the orginal dotplots is created where the dots are\\nhighlighted that have in the average plot a probability above the\\nthreshold.\\n"
     a: ""

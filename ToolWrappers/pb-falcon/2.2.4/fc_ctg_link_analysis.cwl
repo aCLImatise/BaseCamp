@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_ctg_link_analysis.cwl
+id: fc_ctg_link_analysis.cwl
 inputs: []
 outputs:
 - id: out_stdout

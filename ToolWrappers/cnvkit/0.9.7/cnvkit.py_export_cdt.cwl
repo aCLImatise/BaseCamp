@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_export_cdt.cwl
+id: cnvkit.py_export_cdt.cwl
 inputs:
 - id: in_output
   doc: "Output file name.\n"

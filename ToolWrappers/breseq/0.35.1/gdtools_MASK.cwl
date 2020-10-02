@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_MASK.cwl
+id: gdtools_MASK.cwl
 inputs:
 - id: in_small
   doc: "Mask only 'small' mutations defined as: all SNP mutations; INS, DEL, and SUB\

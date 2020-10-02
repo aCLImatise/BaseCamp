@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../color_palette.py.cwl
+id: color_palette.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

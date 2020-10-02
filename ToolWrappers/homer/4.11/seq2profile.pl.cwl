@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq2profile.pl.cwl
+id: seq2profile.pl.cwl
 inputs:
 - id: in_consensus_sequence
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clstr_reps_faa_rev.pl.cwl
+id: clstr_reps_faa_rev.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

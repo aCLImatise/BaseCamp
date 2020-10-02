@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Pre_Alignment.cwl
+id: Pre_Alignment.cwl
 inputs: []
 outputs:
 - id: out_stdout

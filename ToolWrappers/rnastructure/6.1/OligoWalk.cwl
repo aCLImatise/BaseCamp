@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OligoWalk.cwl
+id: OligoWalk.cwl
 inputs:
 - id: in_dna
   doc: Indicate that the oligomers are DNA (as opposed to RNA).

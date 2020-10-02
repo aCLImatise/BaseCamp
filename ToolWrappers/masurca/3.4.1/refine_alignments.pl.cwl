@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refine_alignments.pl.cwl
+id: refine_alignments.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

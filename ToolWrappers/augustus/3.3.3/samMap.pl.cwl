@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samMap.pl.cwl
+id: samMap.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

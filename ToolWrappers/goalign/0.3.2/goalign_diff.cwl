@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_diff.cwl
+id: goalign_diff.cwl
 inputs:
 - id: in_counts
   doc: Count differences instead of writting only identical characters

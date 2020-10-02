@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SNAP.pl.cwl
+id: SNAP.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

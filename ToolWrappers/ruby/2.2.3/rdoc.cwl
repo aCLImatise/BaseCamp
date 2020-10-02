@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rdoc.cwl
+id: rdoc.cwl
 inputs:
 - id: in_access_or
   doc: support discontinued

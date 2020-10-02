@@ -14,13 +14,13 @@ task ScanpycliHvg {
     Boolean? flavor
     Boolean? subset
     Int? by_batch
-    String format_dot
-    String expression_dot
+    String input_obj
+    String output_obj
   }
   command <<<
     scanpy_cli hvg \
-      ~{format_dot} \
-      ~{expression_dot} \
+      ~{input_obj} \
+      ~{output_obj} \
       ~{if (input_format) then "--input-format" else ""} \
       ~{if (output_format) then "--output-format" else ""} \
       ~{if defined(zarr_chunk_size) then ("--zarr-chunk-size " +  '"' + zarr_chunk_size + '"') else ""} \
@@ -47,8 +47,8 @@ task ScanpycliHvg {
     flavor: "[seurat|cellranger]\\nChoose the flavor for computing normalized\\ndispersion.  [default: seurat]"
     subset: "When set, inplace subset to highly-variable\\ngenes, otherwise only flag highly-variable\\ngenes."
     by_batch: "...\\nFind highly variable genes within each batch\\ndefined by <TEXT> then pool and keep those\\nfound in at least <INTEGER> batches.\\n[default: None, None]"
-    format_dot: "[default: 1000]"
-    expression_dot: "[default: 20]"
+    input_obj: ""
+    output_obj: ""
   }
   output {
     File out_stdout = stdout()

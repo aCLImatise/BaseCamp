@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_phase.cwl
+id: goalign_phase.cwl
 inputs:
 - id: in_aa_output
   doc: Output Met "phased" aa FASTA file (default "none")

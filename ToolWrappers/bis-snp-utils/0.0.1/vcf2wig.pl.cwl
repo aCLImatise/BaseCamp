@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2wig.pl.cwl
+id: vcf2wig.pl.cwl
 inputs:
 - id: in_min_ct
   doc: ": minimum number of CT reads, otherwise, methy column will be '.' (default:\

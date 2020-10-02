@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shark.cwl
+id: shark.cwl
 inputs:
 - id: in_reference
   doc: reference sequences in FASTA format (can be gzipped)

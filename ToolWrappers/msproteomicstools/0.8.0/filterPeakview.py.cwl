@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterPeakview.py.cwl
+id: filterPeakview.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

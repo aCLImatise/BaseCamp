@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_annotation.cwl
+id: remove_annotation.cwl
 inputs:
 - id: in_fast_q
   doc: One or more fastq files from which the annotation is to be

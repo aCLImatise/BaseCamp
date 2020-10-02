@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_fatoagp.cwl
+id: abyss_fatoagp.cwl
 inputs: []
 outputs:
 - id: out_stdout

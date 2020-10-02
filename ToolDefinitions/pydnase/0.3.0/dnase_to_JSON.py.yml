@@ -50,7 +50,7 @@ subcommands:
     args: !SimpleFlagArg
       name: WINDOW_SIZE
     optional: true
-  parent: &id007 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -99,30 +99,10 @@ subcommands:
         args: !SimpleFlagArg
           name: WINDOW_SIZE
         optional: true
-      parent: &id003 !Command
+      parent: &id007 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: Resize all regions to a specific length
-          synonyms:
-          - -w
-          - --window_size
-          args: !SimpleFlagArg
-            name: WINDOW_SIZE
-          optional: true
-        - !Flag
-          description: Ignores strand information in BED file
-          synonyms:
-          - -i
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: 'ATAC-seq mode (default: False)'
-          synonyms:
-          - -A
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -168,7 +148,172 @@ subcommands:
             args: !SimpleFlagArg
               name: WINDOW_SIZE
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: Resize all regions to a specific length
+              synonyms:
+              - -w
+              - --window_size
+              args: !SimpleFlagArg
+                name: WINDOW_SIZE
+              optional: true
+            - !Flag
+              description: Ignores strand information in BED file
+              synonyms:
+              - -i
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: 'ATAC-seq mode (default: False)'
+              synonyms:
+              - -A
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: dnase_to_JSON.py
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: regions
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: reads
+                optional: false
+              - !Positional
+                description: ''
+                position: 3
+                name: output
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -A
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -i
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -w
+                args: !SimpleFlagArg
+                  name: WINDOW_SIZE
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: dnase_to_JSON.py [-h] [-w WINDOW_SIZE] [-i] [-A]\
+                \ regions reads output\ndnase_to_JSON.py: error: the following arguments\
+                \ are required: reads, output\n"
+              generated_using: &id004 []
+            - !Command
+              command: &id005
+              - dnase_to_JSON.py
+              - reads
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: dnase_to_JSON.py
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: regions
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: reads
+                optional: false
+              - !Positional
+                description: ''
+                position: 3
+                name: output
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -A
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -i
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -w
+                args: !SimpleFlagArg
+                  name: WINDOW_SIZE
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: dnase_to_JSON.py [-h] [-w WINDOW_SIZE] [-i] [-A]\
+                \ regions reads output\ndnase_to_JSON.py: error: the following arguments\
+                \ are required: reads, output\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: dnase_to_JSON.py [-h] [-w WINDOW_SIZE] [-i] [-A] regions\
+              \ reads output\n\nWrites a JSON file of DNase I cuts for regions from\
+              \ a BED file\n\npositional arguments:\n  regions               BED file\
+              \ of the regions\n  reads                 BAM file containing the read\
+              \ data\n  output                filename to write the JSON output to\n\
+              \noptional arguments:\n  -h, --help            show this help message\
+              \ and exit\n  -w WINDOW_SIZE, --window_size WINDOW_SIZE\n          \
+              \              Resize all regions to a specific length\n  -i       \
+              \             Ignores strand information in BED file\n  -A         \
+              \           ATAC-seq mode (default: False)\n"
+            generated_using: &id006
+            - --help
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -182,11 +327,9 @@ subcommands:
           help_text: "usage: dnase_to_JSON.py [-h] [-w WINDOW_SIZE] [-i] [-A] regions\
             \ reads output\ndnase_to_JSON.py: error: the following arguments are required:\
             \ reads, output\n"
-          generated_using: &id004 []
+          generated_using: *id004
         - !Command
-          command: &id005
-          - dnase_to_JSON.py
-          - reads
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -244,13 +387,7 @@ subcommands:
             \ reads, output\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: dnase_to_JSON.py [-h] [-w WINDOW_SIZE] [-i] [-A] regions\
@@ -263,8 +400,7 @@ subcommands:
           \ all regions to a specific length\n  -i                    Ignores strand\
           \ information in BED file\n  -A                    ATAC-seq mode (default:\
           \ False)\n"
-        generated_using: &id006
-        - --help
+        generated_using: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -322,7 +458,7 @@ subcommands:
         args: !SimpleFlagArg
           name: WINDOW_SIZE
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -408,7 +544,7 @@ subcommands:
     args: !SimpleFlagArg
       name: WINDOW_SIZE
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

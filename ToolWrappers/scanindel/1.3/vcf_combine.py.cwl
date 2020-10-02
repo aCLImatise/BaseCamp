@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf_combine.py.cwl
+id: vcf_combine.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

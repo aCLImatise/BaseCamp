@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../resis_parser.py.cwl
+id: resis_parser.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

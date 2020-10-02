@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scmap_cli_post_install_tests.sh.cwl
+id: scmap_cli_post_install_tests.sh.cwl
 inputs:
 - id: in_sc_map_scripts_post_install_tests_dots_h
   doc: ''

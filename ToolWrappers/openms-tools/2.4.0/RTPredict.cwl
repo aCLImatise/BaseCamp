@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RTPredict.cwl
+id: RTPredict.cwl
 inputs:
 - id: in_in_id
   doc: "Peptides with precursor information (valid formats: 'idXML')"

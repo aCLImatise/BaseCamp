@@ -13,12 +13,10 @@ task GcloudComputeSsh {
     String? strict_host_key_checking
     String? zone
     String address_dot
-    String into_dot
   }
   command <<<
     gcloud compute ssh \
       ~{address_dot} \
-      ~{into_dot} \
       ~{if defined(instance) then ("-L " +  '"' + instance + '"') else ""} \
       ~{if defined(command_run_command) then ("--command " +  '"' + command_run_command + '"') else ""} \
       ~{if defined(container) then ("--container " +  '"' + container + '"') else ""} \
@@ -42,7 +40,6 @@ task GcloudComputeSsh {
     strict_host_key_checking: "Override the default behavior of StrictHostKeyChecking. By default,\\nStrictHostKeyChecking is set to 'no' the first time you connect to an\\ninstance and will be set to 'yes' for all subsequent connections. Use\\nthis flag to specify a value for the connection.\\nSTRICT_HOST_KEY_CHECKING must be one of: yes, no, ask."
     zone: "The zone of the instance to connect to. If not specified, you may be\\nprompted to select a zone.\\nTo avoid prompting when this flag is omitted, you can set the\\ncompute/zone property:\\n$ gcloud config set compute/zone ZONE\\nA list of zones can be fetched by running:\\n$ gcloud compute zones list\\nTo unset the property, run:\\n$ gcloud config unset compute/zone\\nAlternatively, the zone can be stored in the environment variable\\nCLOUDSDK_COMPUTE_ZONE."
     address_dot: "This command ensures that the user's public SSH key is present in the"
-    into_dot: "[-- SSH_ARGS ...]"
   }
   output {
     File out_stdout = stdout()

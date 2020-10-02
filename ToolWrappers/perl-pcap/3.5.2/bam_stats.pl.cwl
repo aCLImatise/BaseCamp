@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_stats.pl.cwl
+id: bam_stats.pl.cwl
 inputs:
 - id: in_input
   doc: -i   File path to read in.

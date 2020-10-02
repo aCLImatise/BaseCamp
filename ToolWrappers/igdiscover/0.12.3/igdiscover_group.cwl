@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_group.cwl
+id: igdiscover_group.cwl
 inputs:
 - id: in_real_cdr_three
   doc: "In addition to barcode, group sequences by real CDR3\n(detected with regex)."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../benchmark_plot.R.cwl
+id: benchmark_plot.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

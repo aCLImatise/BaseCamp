@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_sdfstats.cwl
+id: rtg_sdfstats.cwl
 inputs:
 - id: in_lengths
   doc: "print out the name and length of each sequence. (Not\nrecommended for read\

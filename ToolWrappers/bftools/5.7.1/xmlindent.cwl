@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xmlindent.cwl
+id: xmlindent.cwl
 inputs: []
 outputs:
 - id: out_stdout

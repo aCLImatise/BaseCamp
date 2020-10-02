@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sift_bam_max_cov.pl.cwl
+id: sift_bam_max_cov.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

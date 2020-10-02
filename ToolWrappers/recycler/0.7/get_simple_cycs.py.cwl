@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_simple_cycs.py.cwl
+id: get_simple_cycs.py.cwl
 inputs:
 - id: in_input
   doc: Input (SPAdes 3.50+) FASTG to process

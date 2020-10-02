@@ -9,15 +9,15 @@ task WindowMaker {
     Int? divide_input_fixed
     Boolean? reverse
     Int? winnumsrcwinnumthe_default_output
-    Int chr_one
-    Int chr_two
-    Int chr_one_eight_gl_zero_zero_zero_two_zero_seven_random
+    String bed_tools
+    String make_windows
+    String? or
   }
   command <<<
     windowMaker \
-      ~{chr_one} \
-      ~{chr_two} \
-      ~{chr_one_eight_gl_zero_zero_zero_two_zero_seven_random} \
+      ~{bed_tools} \
+      ~{make_windows} \
+      ~{or} \
       ~{if defined(genome_file_size) then ("-g " +  '"' + genome_file_size + '"') else ""} \
       ~{if defined(bed_file_chromstartend) then ("-b " +  '"' + bed_file_chromstartend + '"') else ""} \
       ~{if defined(divide_fixedsized_windows) then ("-w " +  '"' + divide_fixedsized_windows + '"') else ""} \
@@ -34,9 +34,9 @@ task WindowMaker {
     divide_input_fixed: "Divide each input interval (either a chromosome or a BED interval)\\nto fixed number of windows (i.e. same number of windows, with\\nvarying window sizes)."
     reverse: "Reverse numbering of windows in the output, i.e. report\\nwindows in decreasing order"
     winnumsrcwinnumthe_default_output: "|winnum|srcwinnum\\nThe default output is 3 columns: chrom, start, end .\\nWith this option, a name column will be added.\\n\\\"-i src\\\" - use the source interval's name.\\n\\\"-i winnum\\\" - use the window number as the ID (e.g. 1,2,3,4...).\\n\\\"-i srcwinnum\\\" - use the source interval's name with the window number.\\nSee below for usage examples."
-    chr_one: "249250621"
-    chr_two: "243199373"
-    chr_one_eight_gl_zero_zero_zero_two_zero_seven_random: "4262"
+    bed_tools: ""
+    make_windows: ""
+    or: ""
   }
   output {
     File out_stdout = stdout()

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../normalize_multicov.pl.cwl
+id: normalize_multicov.pl.cwl
 inputs:
 - id: in_input_file_ie
   doc: "Input file in 'bedtools multicov' output format, i.e. an extended\nBED12 file\

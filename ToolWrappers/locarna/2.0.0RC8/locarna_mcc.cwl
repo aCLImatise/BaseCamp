@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../locarna_mcc.cwl
+id: locarna_mcc.cwl
 inputs: []
 outputs:
 - id: out_stdout

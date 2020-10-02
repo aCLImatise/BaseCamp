@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../closeGaps.oneDirectory.fromMinKmerLen.perl.cwl
+id: closeGaps.oneDirectory.fromMinKmerLen.perl.cwl
 inputs: []
 outputs:
 - id: out_stdout

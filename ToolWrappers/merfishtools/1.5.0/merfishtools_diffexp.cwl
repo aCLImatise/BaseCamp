@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merfishtools_diffexp.cwl
+id: merfishtools_diffexp.cwl
 inputs:
 - id: in_max_null_log_two_fc
   doc: Maximum absolute log2 fold change considered as no differential expression

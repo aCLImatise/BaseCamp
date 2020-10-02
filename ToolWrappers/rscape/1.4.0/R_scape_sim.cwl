@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../R_scape_sim.cwl
+id: R_scape_sim.cwl
 inputs:
 - id: in__be_verbose
   doc: ': be verbose'

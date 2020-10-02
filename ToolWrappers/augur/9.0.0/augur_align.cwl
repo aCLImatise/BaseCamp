@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augur_align.cwl
+id: augur_align.cwl
 inputs:
 - id: in_sequences
   doc: 'sequences to align (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../infer_bp.pl.cwl
+id: infer_bp.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

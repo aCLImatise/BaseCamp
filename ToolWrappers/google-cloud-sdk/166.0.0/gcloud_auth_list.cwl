@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_auth_list.cwl
+id: gcloud_auth_list.cwl
 inputs:
 - id: in_filter_account
   doc: "List only credentials for one account. Use --filter=\"account~PATTERN\"\n\
@@ -39,11 +39,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --sort-by
-- id: in_format
-  doc: ="value(account)"
-  type: boolean
-  inputBinding:
-    prefix: --format
 outputs:
 - id: out_stdout
   doc: Standard output stream

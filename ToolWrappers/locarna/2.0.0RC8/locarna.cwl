@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../locarna.cwl
+id: locarna.cwl
 inputs:
 - id: in_galaxy_xml
   doc: Print galaxy xml wrapper.

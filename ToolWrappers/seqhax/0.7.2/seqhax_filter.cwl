@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqhax_filter.cwl
+id: seqhax_filter.cwl
 inputs:
 - id: in_minimum_length_read
   doc: Minimum length of each read. [default 1]

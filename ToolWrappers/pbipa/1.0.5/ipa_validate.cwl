@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ipa_validate.cwl
+id: ipa_validate.cwl
 inputs:
 - id: in_ipa
   doc: ''

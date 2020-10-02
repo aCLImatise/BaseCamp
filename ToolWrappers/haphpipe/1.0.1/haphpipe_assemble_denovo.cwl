@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haphpipe_assemble_denovo.cwl
+id: haphpipe_assemble_denovo.cwl
 inputs:
 - id: in_fq_one
   doc: Fastq file with read 1

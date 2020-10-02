@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../env_parallel.pdksh.cwl
+id: env_parallel.pdksh.cwl
 inputs: []
 outputs:
 - id: out_stdout

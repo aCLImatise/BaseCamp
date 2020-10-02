@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../moose_outdated.cwl
+id: moose_outdated.cwl
 inputs: []
 outputs:
 - id: out_stdout

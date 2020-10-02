@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf2bed.pl.cwl
+id: gtf2bed.pl.cwl
 inputs:
 - id: in_item_rgb
   doc: a string s encoding the RGB value of the form R,G,B (default 0,0,225).

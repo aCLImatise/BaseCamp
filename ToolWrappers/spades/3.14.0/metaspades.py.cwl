@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaspades.py.cwl
+id: metaspades.py.cwl
 inputs:
 - id: in_directory_store_files
   doc: directory to store all the resulting files (required)

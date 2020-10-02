@@ -11,7 +11,7 @@ task StarfishValidateFov {
       ~{if (fuzz) then "--fuzz" else ""}
   >>>
   parameter_meta {
-    fuzz: ""
+    fuzz: "--help  Show this message and exit.\\n"
     json_file_or_url: ""
   }
   output {

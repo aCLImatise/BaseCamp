@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lib_test.pl.cwl
+id: lib_test.pl.cwl
 inputs:
 - id: in_genome
   doc: '[file]  FASTA format genome sequence'

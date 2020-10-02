@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biom_normalize_table.cwl
+id: biom_normalize_table.cwl
 inputs:
 - id: in_input_fp
   doc: The input BIOM table  [required]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../drawgram.cwl
+id: drawgram.cwl
 inputs: []
 outputs:
 - id: out_stdout

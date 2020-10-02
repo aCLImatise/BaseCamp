@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../karect.cwl
+id: karect.cwl
 inputs:
 - id: in_please
   doc: 'the tool you want to run: (correct-align-eval-merge).'
@@ -15,11 +15,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -Run
-- id: in_example
-  doc: ': "./karect -correct"'
-  type: boolean
-  inputBinding:
-    prefix: -Example
 outputs:
 - id: out_stdout
   doc: Standard output stream

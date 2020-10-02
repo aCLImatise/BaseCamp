@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_fixmate.cwl
+id: abyss_fixmate.cwl
 inputs:
 - id: in_no_qname
   doc: set the qname to * [default]

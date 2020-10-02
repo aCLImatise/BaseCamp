@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_graph_to_contig.cwl
+id: fc_graph_to_contig.cwl
 inputs:
 - id: in_improper_p_ctg
   doc: "Skip the initial read in each p_ctg path. (default:\nFalse)"

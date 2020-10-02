@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../errhdr.cwl
+id: errhdr.cwl
 inputs:
 - id: in_codesubcode_tuples
   doc: code,subcode tuples

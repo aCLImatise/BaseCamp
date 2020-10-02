@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_grep.cwl
+id: smof_grep.cwl
 inputs:
 - id: in_match_sequence
   doc: match sequence rather than header

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MascotAdapter.cwl
+id: MascotAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                      Input file in mzData format.\nNote: In mode 'mascot_out'\
@@ -88,11 +88,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -variable_modifications
-- id: in_charges
-  doc: "[1+ 2+ ...]             The different charge states (default: '[1+ 2+ 3+]')"
-  type: boolean
-  inputBinding:
-    prefix: -charges
 - id: in_db
   doc: "The database to search in (default: 'MSDB')"
   type: string

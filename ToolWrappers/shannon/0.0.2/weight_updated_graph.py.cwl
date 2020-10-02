@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../weight_updated_graph.py.cwl
+id: weight_updated_graph.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

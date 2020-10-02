@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_exact.cwl
+id: fermi_exact.cwl
 inputs:
 - id: in_ms
   doc: ''

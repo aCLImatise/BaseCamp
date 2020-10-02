@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_gc_content.py.cwl
+id: maf_gc_content.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

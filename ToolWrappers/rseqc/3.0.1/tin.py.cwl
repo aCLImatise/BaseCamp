@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tin.py.cwl
+id: tin.py.cwl
 inputs:
 - id: in_input
   doc: "Input BAM file(s). \"-i\" takes these input: 1) a single\nBAM file. 2) \"\

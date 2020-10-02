@@ -7,7 +7,7 @@ task Fuextract {
     Boolean? maxlen
     Boolean? list
     Boolean? column
-    String? separator
+    Boolean? s
     String input_file_dot_fa
     String note
     String example
@@ -24,7 +24,7 @@ task Fuextract {
       ~{if (maxlen) then "--maxlen" else ""} \
       ~{if (list) then "--list" else ""} \
       ~{if (column) then "--column" else ""} \
-      ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""}
+      ~{if (s) then "-s" else ""}
   >>>
   parameter_meta {
     pattern: "STRING"
@@ -32,7 +32,7 @@ task Fuextract {
     maxlen: "INT"
     list: "FILE"
     column: "INT (default: 1)"
-    separator: "(default: \\\"\\t\\\")"
+    s: ""
     input_file_dot_fa: ""
     note: ""
     example: ""

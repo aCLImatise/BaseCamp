@@ -1,9 +1,14 @@
 class: CommandLineTool
-id: ../../../nanoraw_plot_motif_centered.cwl
+id: nanoraw_plot_motif_centered.cwl
 inputs:
 - id: in_genome_fast_a
-  doc: ''
-  type: string
+  doc: "[--fast5-basedirs2 FAST5_BASEDIRS2 [FAST5_BASEDIRS2 ...]]\n[--corrected-group\
+    \ CORRECTED_GROUP]\n[--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS\
+    \ ...]\n| --2d]\n[--overplot-threshold OVERPLOT_THRESHOLD]\n[--overplot-type {Downsample,Boxplot,Quantile,Violin}]\n\
+    [--obs-per-base-filter OBS_PER_BASE_FILTER [OBS_PER_BASE_FILTER ...]]\n[--deepest-coverage]\n\
+    [--pdf-filename PDF_FILENAME]\n[--num-regions NUM_REGIONS]\n[--num-bases NUM_BASES]\
+    \ [--quiet] [--help]"
+  type: long
   inputBinding:
     prefix: --genome-fasta
 - id: in_base_call_subgroups

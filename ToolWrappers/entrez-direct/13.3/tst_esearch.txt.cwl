@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tst_esearch.txt.cwl
+id: tst_esearch.txt.cwl
 inputs: []
 outputs:
 - id: out_stdout

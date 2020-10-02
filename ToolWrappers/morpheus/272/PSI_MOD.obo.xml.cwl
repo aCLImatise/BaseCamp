@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PSI_MOD.obo.xml.cwl
+id: PSI_MOD.obo.xml.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fragScaff.sh.cwl
+id: fragScaff.sh.cwl
 inputs:
 - id: in_b
   doc: ''

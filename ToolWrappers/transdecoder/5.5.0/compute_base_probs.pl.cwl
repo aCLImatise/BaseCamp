@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compute_base_probs.pl.cwl
+id: compute_base_probs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FCSstats.R.cwl
+id: FCSstats.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../network_plots_gephi.py.cwl
+id: network_plots_gephi.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

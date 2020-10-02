@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_dendrogram.cwl
+id: igdiscover_dendrogram.cwl
 inputs:
 - id: in_mark
   doc: "Path to a FASTA file with a set of \"known\" sequences.\nSequences in the\

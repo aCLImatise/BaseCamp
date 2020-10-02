@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGSDExportAnnotationData.cwl
+id: NGSDExportAnnotationData.cwl
 inputs:
 - id: in_variants
   doc: Output variant list as VCF.

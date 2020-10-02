@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deinterleave_fastq.sh.cwl
+id: deinterleave_fastq.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

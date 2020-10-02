@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pe_cat.cwl
+id: pe_cat.cwl
 inputs: []
 outputs:
 - id: out_stdout

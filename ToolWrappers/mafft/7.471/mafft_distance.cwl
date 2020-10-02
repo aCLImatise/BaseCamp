@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafft_distance.cwl
+id: mafft_distance.cwl
 inputs:
 - id: in_i
   doc: ''

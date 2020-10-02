@@ -43,7 +43,6 @@ task Egrep {
     Int? after_context
     Int? context
     Boolean? num
-    Boolean? color
     Boolean? colour
     Boolean? binary
     String grep
@@ -92,7 +91,6 @@ task Egrep {
       ~{if defined(after_context) then ("--after-context " +  '"' + after_context + '"') else ""} \
       ~{if defined(context) then ("--context " +  '"' + context + '"') else ""} \
       ~{if (num) then "-NUM" else ""} \
-      ~{if (color) then "--color" else ""} \
       ~{if (colour) then "--colour" else ""} \
       ~{if (binary) then "--binary" else ""}
   >>>
@@ -138,7 +136,6 @@ task Egrep {
     after_context: "print NUM lines of trailing context"
     context: "print NUM lines of output context"
     num: "same as --context=NUM"
-    color: "[=WHEN],"
     colour: "[=WHEN]       use markers to highlight the matching strings;\\nWHEN is 'always', 'never', or 'auto'"
     binary: "do not strip CR characters at EOL (MSDOS/Windows)"
     grep: ""

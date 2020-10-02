@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nef_to_RST.cwl
+id: nef_to_RST.cwl
 inputs:
 - id: in_nef
   doc: ': NEF file'

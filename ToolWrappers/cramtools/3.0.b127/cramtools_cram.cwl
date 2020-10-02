@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cramtools_cram.cwl
+id: cramtools_cram.cwl
 inputs:
 - id: in_capture_all_tags
   doc: 'Capture all tags. (default: false)'

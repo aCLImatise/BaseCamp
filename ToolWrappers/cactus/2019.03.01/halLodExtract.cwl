@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halLodExtract.cwl
+id: halLodExtract.cwl
 inputs:
 - id: in_all_sequences
   doc: ":            Sample all sequences (chromsomes / contigs / etc.) no\nmatter\

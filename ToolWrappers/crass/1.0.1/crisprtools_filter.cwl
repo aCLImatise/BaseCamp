@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crisprtools_filter.cwl
+id: crisprtools_filter.cwl
 inputs:
 - id: in_output_file_name
   doc: 'Output file name, creates a filtered copy of the input file  [default: modify

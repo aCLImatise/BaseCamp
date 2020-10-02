@@ -31,7 +31,6 @@ task AnnotatePeakspl {
     Directory? go
     Directory? genome_ontology
     Boolean? g_size
-    Int? hist
     Boolean? nuc
     Boolean? di
     Boolean? hist_norm
@@ -102,7 +101,6 @@ task AnnotatePeakspl {
       ~{if defined(go) then ("-go " +  '"' + go + '"') else ""} \
       ~{if defined(genome_ontology) then ("-genomeOntology " +  '"' + genome_ontology + '"') else ""} \
       ~{if (g_size) then "-gsize" else ""} \
-      ~{if defined(hist) then ("-hist " +  '"' + hist + '"') else ""} \
       ~{if (nuc) then "-nuc" else ""} \
       ~{if (di) then "-di" else ""} \
       ~{if (hist_norm) then "-histNorm" else ""} \
@@ -164,7 +162,6 @@ task AnnotatePeakspl {
     go: "(perform GO analysis using genes near peaks)"
     genome_ontology: "(perform genomeOntology analysis on peaks)"
     g_size: "<#> (Genome size for genomeOntology analysis, default: 2e9)"
-    hist: "(i.e 1, 2, 5, 10, 20, 50, 100 etc.)"
     nuc: "(calculated mononucleotide frequencies at each position,\\nWill report by default if extracting sequence for other purposes like motifs)"
     di: "(calculated dinucleotide frequencies at each position)"
     hist_norm: "<#> (normalize the total tag count for each region to 1, where <#> is the\\nminimum tag total per region - use to avoid tag spikes from low coverage"

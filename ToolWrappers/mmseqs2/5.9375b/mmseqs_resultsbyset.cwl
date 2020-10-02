@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_resultsbyset.cwl
+id: mmseqs_resultsbyset.cwl
 inputs:
 - id: in_alpha
   doc: 0.001           Set alpha for combining p-values during aggregation

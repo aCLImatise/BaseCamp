@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_xlsx2csv.cwl
+id: csvtk_xlsx2csv.cwl
 inputs:
 - id: in_list_sheets
   doc: list all sheets

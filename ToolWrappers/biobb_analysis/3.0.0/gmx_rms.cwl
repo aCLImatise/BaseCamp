@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmx_rms.cwl
+id: gmx_rms.cwl
 inputs:
 - id: in_config
   doc: Configuration file

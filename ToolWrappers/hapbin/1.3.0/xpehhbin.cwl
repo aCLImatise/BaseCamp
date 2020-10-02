@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xpehhbin.cwl
+id: xpehhbin.cwl
 inputs:
 - id: in_hapa
   doc: Hap file for population A

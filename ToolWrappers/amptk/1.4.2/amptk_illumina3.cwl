@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_illumina3.cwl
+id: amptk_illumina3.cwl
 inputs:
 - id: in_forward
   doc: FASTQ R1 (forward) file (Required)

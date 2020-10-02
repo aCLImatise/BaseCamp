@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graphtyper.cwl
+id: graphtyper.cwl
 inputs:
 - id: in_log
   doc: "or -lvalue\nSet path to log file."

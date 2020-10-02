@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samPileupConsensus.cwl
+id: samPileupConsensus.cwl
 inputs: []
 outputs:
 - id: out_stdout

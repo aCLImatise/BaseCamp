@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simkaMin_utils.py.cwl
+id: simkaMin_utils.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

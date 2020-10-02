@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconvert_sniffer.cwl
+id: bioconvert_sniffer.cwl
 inputs:
 - id: in_verbosity
   doc: Set the outpout verbosity.

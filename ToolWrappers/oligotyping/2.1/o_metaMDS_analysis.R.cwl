@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_metaMDS_analysis.R.cwl
+id: o_metaMDS_analysis.R.cwl
 inputs:
 - id: in_permute
   doc: 'Error in file(file, "rt") : cannot open the connection'

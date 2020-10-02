@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanopolish_call_methylation.cwl
+id: nanopolish_call_methylation.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

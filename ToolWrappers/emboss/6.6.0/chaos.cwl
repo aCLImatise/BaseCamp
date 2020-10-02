@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chaos.cwl
+id: chaos.cwl
 inputs:
 - id: in_graph
   doc: "graph      [$EMBOSS_GRAPHICS value, or png] Graph type\n(ps, hpgl, hp7470,\

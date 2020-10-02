@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../variant_annotation.py.cwl
+id: variant_annotation.py.cwl
 inputs:
 - id: in_in_file
   doc: 'input vcf file (default: None)'

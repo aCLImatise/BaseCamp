@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../index_and_search.cwl
+id: index_and_search.cwl
 inputs:
 - id: in_file_index_mandatory
   doc: ': A file containing the list of files to index - MANDATORY'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pipits_rereplicate.cwl
+id: pipits_rereplicate.cwl
 inputs:
 - id: in_i
   doc: '[REQUIRED]'

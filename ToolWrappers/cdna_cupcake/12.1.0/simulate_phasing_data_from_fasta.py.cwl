@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simulate_phasing_data_from_fasta.py.cwl
+id: simulate_phasing_data_from_fasta.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

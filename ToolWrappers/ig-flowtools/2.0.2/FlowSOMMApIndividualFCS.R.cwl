@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FlowSOMMApIndividualFCS.R.cwl
+id: FlowSOMMApIndividualFCS.R.cwl
 inputs:
 - id: in_union
   doc: "Attaching package: 'flowCore'"

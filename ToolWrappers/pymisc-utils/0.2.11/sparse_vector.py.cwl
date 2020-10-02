@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sparse_vector.py.cwl
+id: sparse_vector.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

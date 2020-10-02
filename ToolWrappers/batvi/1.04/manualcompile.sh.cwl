@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../manualcompile.sh.cwl
+id: manualcompile.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -25,7 +25,7 @@ task MsstitchIsosummarize {
       ~{if defined(feat_col) then ("--featcol " +  '"' + feat_col + '"') else ""}
   >>>
   parameter_meta {
-    is_ob_quant_col_pattern: ""
+    is_ob_quant_col_pattern: "[--denompatterns DENOMPATTERNS [DENOMPATTERNS ...]]\\n[--denomcols DENOMCOLS [DENOMCOLS ...]]\\n[--minint MININT] [--targettable TARGETTABLE]\\n[--featcol FEATCOL]"
     input_file_format: "Input file of {} format"
     directory_to_output: "Directory to output in"
     output_file: "Output file"

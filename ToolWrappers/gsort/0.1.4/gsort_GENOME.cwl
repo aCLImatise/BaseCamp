@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsort_GENOME.cwl
+id: gsort_GENOME.cwl
 inputs:
 - id: in_parent
   doc: ''

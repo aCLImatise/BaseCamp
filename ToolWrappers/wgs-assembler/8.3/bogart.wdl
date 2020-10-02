@@ -36,7 +36,6 @@ task Bogart {
     String intersection_joining
     String contained_placement
     String intermediate_unit_igs
-    String mate_split_discontinuous
     String mate_split_coverage_plot
     String stderr
   }
@@ -49,7 +48,6 @@ task Bogart {
       ~{intersection_joining} \
       ~{contained_placement} \
       ~{intermediate_unit_igs} \
-      ~{mate_split_discontinuous} \
       ~{mate_split_coverage_plot} \
       ~{stderr} \
       ~{if (mandatory_path_ovlstore) then "-O" else ""} \
@@ -115,7 +113,6 @@ task Bogart {
     intersection_joining: "intersectionJoiningDebug"
     contained_placement: "happiness"
     intermediate_unit_igs: "mateSplitAnalysis"
-    mate_split_discontinuous: "mateSplitUnhappyContains"
     mate_split_coverage_plot: "setParentAndHang"
     stderr: "No output prefix name (-o option) supplied."
   }

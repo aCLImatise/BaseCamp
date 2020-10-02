@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../do_partition.py.cwl
+id: do_partition.py.cwl
 inputs:
 - id: in_info
   doc: print citation information

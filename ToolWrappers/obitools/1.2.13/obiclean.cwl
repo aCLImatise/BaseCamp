@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obiclean.cwl
+id: obiclean.cwl
 inputs:
 - id: in_debug
   doc: Set logging in debug mode

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_compare_patterns.cwl
+id: rsat_compare_patterns.cwl
 inputs:
 - id: in_help
   doc: (must be first argument) display options
@@ -227,11 +227,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_thresholds
-  doc: '----------'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

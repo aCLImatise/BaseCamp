@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastx_len_filter.py.cwl
+id: fastx_len_filter.py.cwl
 inputs:
 - id: in_min_len
   doc: ''

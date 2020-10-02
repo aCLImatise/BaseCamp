@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TIDDIT.cwl
+id: TIDDIT.cwl
 inputs: []
 outputs:
 - id: out_stdout

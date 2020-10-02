@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gapPlacer.pl.cwl
+id: gapPlacer.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

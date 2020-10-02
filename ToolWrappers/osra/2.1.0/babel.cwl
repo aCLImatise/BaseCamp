@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../babel.cwl
+id: babel.cwl
 inputs:
 - id: in_o
   doc: ''

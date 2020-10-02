@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../removeAccVersion.pl.cwl
+id: removeAccVersion.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

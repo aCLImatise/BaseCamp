@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_sort.cwl
+id: xsv_sort.cwl
 inputs:
 - id: in_select
   doc: "Select a subset of columns to sort.\nSee 'xsv select --help' for the format\

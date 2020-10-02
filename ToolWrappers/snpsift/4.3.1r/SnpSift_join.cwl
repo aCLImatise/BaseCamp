@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_join.cwl
+id: SnpSift_join.cwl
 inputs:
 - id: in_if_one
   doc: ': Offset for file1 (e.g. 1 if coordinates are one-based. Default: 1'

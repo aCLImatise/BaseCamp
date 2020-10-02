@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rMETL_calling.cwl
+id: rMETL_calling.cwl
 inputs:
 - id: in_homozygous
   doc: "The mininum score of a genotyping reported as a\nhomozygous.[0.8]"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_kms_keyrings.cwl
+id: gcloud_kms_keyrings.cwl
 inputs:
 - id: in_location
   doc: The location of the requested resource.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kar.2.cwl
+id: kar.2.cwl
 inputs:
 - id: in_create
   doc: Create new archive.

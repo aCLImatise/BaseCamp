@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tabix.cwl
+id: tabix.cwl
 inputs:
 - id: in_zero_based
   doc: coordinates are zero-based

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_analysis_add_analysis.cwl
+id: chakin_analysis_add_analysis.cwl
 inputs:
 - id: in_algorithm
   doc: analysis algorithm

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mea.cwl
+id: mea.cwl
 inputs:
 - id: in_alpha
   doc: "slope of base pair distance penalty\n(default=`0.012')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combig.pl.cwl
+id: combig.pl.cwl
 inputs:
 - id: in_bigram
   doc: ''

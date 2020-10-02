@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../lyner_mmr.cwl
+id: lyner_mmr.cwl
 inputs:
 - id: in_order
-  doc: ''
+  doc: "--help               Show this message and exit.\n"
   type: long
   inputBinding:
     prefix: --order

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scalap.cwl
+id: scalap.cwl
 inputs:
 - id: in_private
   doc: print private definitions

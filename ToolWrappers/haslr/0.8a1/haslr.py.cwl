@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haslr.py.cwl
+id: haslr.py.cwl
 inputs:
 - id: in_out
   doc: output directory

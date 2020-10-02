@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../illumina.py_miseq_fastq_to_bam.cwl
+id: illumina.py_miseq_fastq_to_bam.cwl
 inputs:
 - id: in_in_fast_q_two
   doc: Input fastq file; 2nd end of paired-end reads.

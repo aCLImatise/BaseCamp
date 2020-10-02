@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sfld_preprocess.py.cwl
+id: sfld_preprocess.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

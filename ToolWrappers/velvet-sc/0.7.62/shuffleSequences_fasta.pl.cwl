@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shuffleSequences_fasta.pl.cwl
+id: shuffleSequences_fasta.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

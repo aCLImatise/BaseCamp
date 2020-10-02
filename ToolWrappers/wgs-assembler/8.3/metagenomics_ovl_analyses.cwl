@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metagenomics_ovl_analyses.cwl
+id: metagenomics_ovl_analyses.cwl
 inputs:
 - id: in_var_0
   doc: ''

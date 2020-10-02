@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../equicktandem.cwl
+id: equicktandem.cwl
 inputs:
 - id: in_max_repeat
   doc: "integer    [600] Maximum repeat size (Any integer\nvalue)"

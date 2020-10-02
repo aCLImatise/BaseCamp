@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_import_seg.cwl
+id: cnvkit.py_import_seg.cwl
 inputs:
 - id: in_chromosomes
   doc: "Mapping of chromosome indexes to names. Syntax:\n\"from1:to1,from2:to2\".\

@@ -1,14 +1,18 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_validate_compare_modified_bases.cwl
+id: megalodon_extras_validate_compare_modified_bases.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_sample_one_bed_methyl_files
+  doc: "SAMPLE1_BED_METHYL_FILES\n[SAMPLE1_BED_METHYL_FILES ...]\n--sample2-bed-methyl-files\n\
+    SAMPLE2_BED_METHYL_FILES\n[SAMPLE2_BED_METHYL_FILES ...]\n[--sample-names SAMPLE_NAMES\
+    \ SAMPLE_NAMES]\n[--valid-positions VALID_POSITIONS]\n[--coverage-threshold COVERAGE_THRESHOLD]\n\
+    [--heatmap-num-bins HEATMAP_NUM_BINS]\n[--strand-offset STRAND_OFFSET]\n[--out-pdf\
+    \ OUT_PDF]\n[--out-filename OUT_FILENAME]"
   type: boolean
   inputBinding:
     prefix: --sample1-bed-methyl-files
-- id: in_var_1
-  doc: ''
-  type: boolean
+- id: in_sample_two_bed_methyl_files
+  doc: Bed methyl files from second set of sample(s).
+  type: long[]
   inputBinding:
     prefix: --sample2-bed-methyl-files
 - id: in_sample_names
@@ -42,16 +46,6 @@ inputs:
   type: File
   inputBinding:
     prefix: --out-pdf
-- id: in_var_8
-  doc: '[SAMPLE1_BED_METHYL_FILES ...]'
-  type: long
-  inputBinding:
-    position: 0
-- id: in_var_9
-  doc: '[SAMPLE2_BED_METHYL_FILES ...]'
-  type: long
-  inputBinding:
-    position: 1
 - id: in_megalodon_mod_coma_paris_on_dot_pdf
   doc: --out-filename OUT_FILENAME
   type: string

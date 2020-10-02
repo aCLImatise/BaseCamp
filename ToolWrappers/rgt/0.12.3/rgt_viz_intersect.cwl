@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_viz_intersect.cwl
+id: rgt_viz_intersect.cwl
 inputs:
 - id: in_file_name_reference
   doc: "The file name of the reference Experimental Matrix. Multiple\nreferences are\

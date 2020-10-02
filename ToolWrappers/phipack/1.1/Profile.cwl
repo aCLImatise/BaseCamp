@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Profile.cwl
+id: Profile.cwl
 inputs:
 - id: in_filename_fasta_format
   doc: ': Filename = FASTA format'

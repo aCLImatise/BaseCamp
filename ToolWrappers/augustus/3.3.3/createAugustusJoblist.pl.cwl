@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../createAugustusJoblist.pl.cwl
+id: createAugustusJoblist.pl.cwl
 inputs:
 - id: in_sequences
   doc: "input sequences, format: each line contains one sequence including the full\

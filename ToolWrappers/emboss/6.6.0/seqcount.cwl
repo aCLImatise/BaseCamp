@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqcount.cwl
+id: seqcount.cwl
 inputs: []
 outputs:
 - id: out_stdout

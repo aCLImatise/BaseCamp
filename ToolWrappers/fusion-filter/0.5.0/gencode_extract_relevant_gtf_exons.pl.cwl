@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gencode_extract_relevant_gtf_exons.pl.cwl
+id: gencode_extract_relevant_gtf_exons.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../batchFindMotifsGenome.pl.cwl
+id: batchFindMotifsGenome.pl.cwl
 inputs:
 - id: in_dist
   doc: <#> (Will only analyze promoter-distal regions ># away from TSS)

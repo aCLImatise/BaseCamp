@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterGenemark.pl.cwl
+id: filterGenemark.pl.cwl
 inputs:
 - id: in_hints
   doc: "Corresponding hints file in gff format;\nit is vital that this file contains\

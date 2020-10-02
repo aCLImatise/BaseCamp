@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_replace.cwl
+id: arb_replace.cwl
 inputs:
 - id: in_linemode_parse_line
   doc: linemode, parse each line separately

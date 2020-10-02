@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sparse_mash.cwl
+id: sparse_mash.cwl
 inputs:
 - id: in_dbname
   doc: Name for the database folder. REQUIRED.

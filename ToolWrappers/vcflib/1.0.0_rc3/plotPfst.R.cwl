@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plotPfst.R.cwl
+id: plotPfst.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

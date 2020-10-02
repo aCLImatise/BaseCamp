@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kodoja_retrieve.py.cwl
+id: kodoja_retrieve.py.cwl
 inputs:
 - id: in_file_dir
   doc: Path to directory of kodoja_search results, required

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ob2fps.cwl
+id: ob2fps.cwl
 inputs:
 - id: in_fp_two
   doc: linear fragments up to 7 atoms

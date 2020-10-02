@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xatlas.cwl
+id: xatlas.cwl
 inputs:
 - id: in_ref
   doc: Reference genome in FASTA format

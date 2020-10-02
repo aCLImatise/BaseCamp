@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DAStrim.cwl
+id: DAStrim.cwl
 inputs:
 - id: in_b
   doc: ''

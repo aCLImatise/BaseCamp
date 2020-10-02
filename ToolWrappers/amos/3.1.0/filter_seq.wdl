@@ -3,16 +3,16 @@ version 1.0
 task FilterSeq {
   input {
     File? index
-    String options
+    String good_dot
   }
   command <<<
     filter_seq \
-      ~{options} \
+      ~{good_dot} \
       ~{if defined(index) then ("-index " +  '"' + index + '"') else ""}
   >>>
   parameter_meta {
     index: "an index file of the copy file"
-    options: "-------"
+    good_dot: ""
   }
   output {
     File out_stdout = stdout()

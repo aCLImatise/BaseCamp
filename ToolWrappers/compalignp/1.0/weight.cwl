@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../weight.cwl
+id: weight.cwl
 inputs:
 - id: in_use_blosum_scheme
   doc: ': use BLOSUM weighting scheme at <f> fractional identity'

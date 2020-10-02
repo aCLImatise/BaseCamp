@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_install.cwl
+id: amptk_install.cwl
 inputs:
 - id: in_install_databases_choices
   doc: 'Install Databases. Choices: ITS, 16S, LSU, COI'

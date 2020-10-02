@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snakefmt.cwl
+id: snakefmt.cwl
 inputs:
 - id: in_line_length
   doc: 'Lines longer than INT will be wrapped.  [default: 88]'

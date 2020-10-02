@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cooler_balance.cwl
+id: cooler_balance.cwl
 inputs:
 - id: in_nproc
   doc: Number of processes to split the work
@@ -97,16 +97,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --convergence-policy
-- id: in_between_dot
-  doc: '[default: 8]'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_exists_dot
   doc: --stdout                        Print weight column to stdout instead of
   type: string
   inputBinding:
-    position: 1
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

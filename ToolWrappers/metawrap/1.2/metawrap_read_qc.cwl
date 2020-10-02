@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metawrap_read_qc.cwl
+id: metawrap_read_qc.cwl
 inputs:
 - id: in_forward_fastq_reads
   doc: forward fastq reads

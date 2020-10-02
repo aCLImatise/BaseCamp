@@ -2,8 +2,7 @@ version 1.0
 
 task DataNormalizationAndRescalingpy {
   input {
-    Boolean? m
-    String? o
+    Boolean? o_out
     String? input_dataset_wide
     File? design
     String? uniqid
@@ -12,8 +11,7 @@ task DataNormalizationAndRescalingpy {
   }
   command <<<
     data_normalization_and_rescaling_py \
-      ~{if (m) then "-m" else ""} \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if (o_out) then "-m" else ""} \
       ~{if defined(input_dataset_wide) then ("--input " +  '"' + input_dataset_wide + '"') else ""} \
       ~{if defined(design) then ("--design " +  '"' + design + '"') else ""} \
       ~{if defined(uniqid) then ("--uniqID " +  '"' + uniqid + '"') else ""} \
@@ -21,8 +19,7 @@ task DataNormalizationAndRescalingpy {
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
   parameter_meta {
-    m: ""
-    o: ""
+    o_out: "{mean,sum,median,centering,auto,range,pareto,level,vast}\\n-o OUT"
     input_dataset_wide: "Input dataset in wide format."
     design: "Design file."
     uniqid: "Name of the column with unique.identifiers."

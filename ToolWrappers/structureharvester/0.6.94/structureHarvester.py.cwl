@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../structureHarvester.py.cwl
+id: structureHarvester.py.cwl
 inputs:
 - id: in_dir
   doc: The structure Results/ directory.

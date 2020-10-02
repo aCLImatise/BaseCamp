@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quantifier.pl.orig.cwl
+id: quantifier.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

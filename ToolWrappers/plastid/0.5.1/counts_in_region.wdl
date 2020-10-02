@@ -36,15 +36,13 @@ task CountsInRegion {
     Boolean? mask_add_three
     Boolean? mask_tab_ix
     Boolean? mask_sorted
-    String __
     String plastid_dot_genomics_do_troi_tools_dot_segment_chain_dot_from_str
-    String output_filename
+    String outfile
   }
   command <<<
     counts_in_region \
-      ~{__} \
       ~{plastid_dot_genomics_do_troi_tools_dot_segment_chain_dot_from_str} \
-      ~{output_filename} \
+      ~{outfile} \
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(count_files) then ("--count_files " +  '"' + count_files + '"') else ""} \
@@ -115,9 +113,8 @@ task CountsInRegion {
     mask_add_three: "If supplied, coding regions will be extended by 3\\nnucleotides at their 3' ends (except for GTF2 files\\nthat explicitly include `stop_codon` features). Use if\\nyour annotation file excludes stop codons from CDS."
     mask_tab_ix: "mask_annotation_files are tabix-compressed and indexed\\n(Default: False). Ignored for BigBed files."
     mask_sorted: "mask_annotation_files are sorted by chromosomal\\nposition (Default: False)\\n"
-    __: "------------------------------------------------------------------------------"
     plastid_dot_genomics_do_troi_tools_dot_segment_chain_dot_from_str: "`counts`                  Number of reads mapping to region"
-    output_filename: "Output filename"
+    outfile: "Output filename"
   }
   output {
     File out_stdout = stdout()

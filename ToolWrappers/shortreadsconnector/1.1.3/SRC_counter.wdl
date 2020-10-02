@@ -8,7 +8,6 @@ task SRCCounter {
     Boolean? graph
     Boolean? bank
     Boolean? query
-    Boolean? out
     Boolean? keep_low_complexity
     Boolean? gamma
     Boolean? fingerprint_size
@@ -24,7 +23,6 @@ task SRCCounter {
       ~{if (graph) then "-graph" else ""} \
       ~{if (bank) then "-bank" else ""} \
       ~{if (query) then "-query" else ""} \
-      ~{if (out) then "-out" else ""} \
       ~{if (keep_low_complexity) then "-keep_low_complexity" else ""} \
       ~{if (gamma) then "-gamma" else ""} \
       ~{if (fingerprint_size) then "-fingerprint_size" else ""} \
@@ -39,7 +37,6 @@ task SRCCounter {
     graph: "(1 arg) :    graph input"
     bank: "(1 arg) :    bank input"
     query: "(1 arg) :    query input"
-    out: "(1 arg) :    output_file"
     keep_low_complexity: "(0 arg) :    Conserve low complexity sequences during indexing and querying"
     gamma: "(1 arg) :    gamma value  [default '2']"
     fingerprint_size: "(1 arg) :    fingerprint size  [default '8']"

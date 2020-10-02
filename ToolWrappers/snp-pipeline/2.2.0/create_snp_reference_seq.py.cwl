@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_snp_reference_seq.py.cwl
+id: create_snp_reference_seq.py.cwl
 inputs:
 - id: in_force
   doc: "Force processing even when result file already exists\nand is newer than inputs\

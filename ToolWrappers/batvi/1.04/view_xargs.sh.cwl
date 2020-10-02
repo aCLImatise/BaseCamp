@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../view_xargs.sh.cwl
+id: view_xargs.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

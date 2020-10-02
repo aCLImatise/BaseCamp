@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepbinner.cwl
+id: deepbinner.cwl
 inputs: []
 outputs:
 - id: out_stdout

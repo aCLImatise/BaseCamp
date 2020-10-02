@@ -37,7 +37,7 @@ task AssemblePairspyJoin {
       ~{if defined(gap) then ("--gap " +  '"' + gap + '"') else ""}
   >>>
   parameter_meta {
-    two: ""
+    two: "[-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\\n[--outname OUT_NAME] [--log LOG_FILE] [--failed]\\n[--fasta] [--delim DELIMITER DELIMITER DELIMITER]\\n[--nproc NPROC]\\n[--coord {illumina,solexa,sra,454,presto}]\\n[--rc {tail,head,both,none}]\\n[--1f HEAD_FIELDS [HEAD_FIELDS ...]]\\n[--2f TAIL_FIELDS [TAIL_FIELDS ...]] [--gap GAP]"
     ordered_list_fastafastq: "An ordered list of FASTA/FASTQ files containing\\nhead/primary sequences. (default: None)"
     explicit_output_file: "Explicit output file name(s). Note, this argument\\ncannot be used with the --failed, --outdir, or\\n--outname arguments. If unspecified, then the output\\nfilename will be based on the input filename(s).\\n(default: None)"
     outdir: "Specify to changes the output directory to the\\nlocation specified. The input file directory is used\\nif this is not specified. (default: None)"

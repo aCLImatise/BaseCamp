@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_seqfeature_delete.pl.cwl
+id: bp_seqfeature_delete.pl.cwl
 inputs:
 - id: in_dsn
   doc: The database name (dbi:mysql:test)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mirtop.cwl
+id: mirtop.cwl
 inputs: []
 outputs:
 - id: out_stdout

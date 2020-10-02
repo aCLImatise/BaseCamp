@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_graphcut_voxel.py_badditional.cwl
+id: medpy_graphcut_voxel.py_badditional.cwl
 inputs:
 - id: in_me_dpy_graph_cut_voxel_do_tpy
   doc: ''

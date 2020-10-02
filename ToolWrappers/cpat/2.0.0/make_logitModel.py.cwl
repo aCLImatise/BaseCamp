@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_logitModel.py.cwl
+id: make_logitModel.py.cwl
 inputs:
 - id: in_c_gene
   doc: "Protein coding transcripts (used to build logit model)\neither in BED format\

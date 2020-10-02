@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clustering_rep_seqs.cwl
+id: Clustering_rep_seqs.cwl
 inputs:
 - id: in_use_cluster_id
   doc: Use the cluster id as the seq id.

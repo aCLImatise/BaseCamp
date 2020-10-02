@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamadapterclip.cwl
+id: bamadapterclip.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bgt_bcfidx.cwl
+id: bgt_bcfidx.cwl
 inputs:
 - id: in_s
   doc: ''

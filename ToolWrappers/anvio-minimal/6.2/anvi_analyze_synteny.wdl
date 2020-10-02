@@ -19,7 +19,7 @@ task Anvianalyzesynteny {
       ~{if (analyze_unknown_functions) then "--analyze-unknown-functions" else ""}
   >>>
   parameter_meta {
-    n_gram_window_range: ""
+    n_gram_window_range: "FILE_PATH [--analyze-unknown-functions]"
     external_genomes: "A two-column TAB-delimited flat text file that lists\\nanvi'o contigs databases. The first item in the header\\nline should read 'name', and the second should read\\n'contigs_db_path'. Each line in the file should\\ndescribe a single entry, where the first column is the\\nname of the genome (or MAG), and the second column is\\nthe anvi'o contigs database generated for this genome."
     annotation_source: "NAME\\nGet functional annotations for a specific annotation\\nsource. You can use the flag '--list-annotation-\\nsources' to learn about what sources are available."
     output_file: "File path to store results."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../search_fusion_gene.cwl
+id: search_fusion_gene.cwl
 inputs:
 - id: in_gene_annotation_file
   doc: ':          gene annotation file name'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qortsGenMultiQC.R.cwl
+id: qortsGenMultiQC.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

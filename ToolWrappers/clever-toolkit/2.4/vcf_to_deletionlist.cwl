@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf_to_deletionlist.cwl
+id: vcf_to_deletionlist.cwl
 inputs:
 - id: in_maximal_length_considered
   doc: Maximal length to be considered.

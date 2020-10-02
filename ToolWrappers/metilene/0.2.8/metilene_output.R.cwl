@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metilene_output.R.cwl
+id: metilene_output.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

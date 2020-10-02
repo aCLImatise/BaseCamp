@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preprocesser.py.cwl
+id: preprocesser.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

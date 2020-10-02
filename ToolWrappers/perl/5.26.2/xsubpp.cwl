@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsubpp.cwl
+id: xsubpp.cwl
 inputs:
 - id: in_no_arg_types
   doc: ''

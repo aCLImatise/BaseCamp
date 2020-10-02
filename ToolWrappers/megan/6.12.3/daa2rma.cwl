@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../daa2rma.cwl
+id: daa2rma.cwl
 inputs:
 - id: in_metadata_file
   doc: '[string(s)]     Files containing metadata to be included in RMA6 files.'

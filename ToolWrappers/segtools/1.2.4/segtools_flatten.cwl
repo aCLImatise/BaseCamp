@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segtools_flatten.cwl
+id: segtools_flatten.cwl
 inputs:
 - id: in_quiet
   doc: Do not print diagnostic messages.

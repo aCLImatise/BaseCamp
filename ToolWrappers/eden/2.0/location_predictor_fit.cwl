@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../location_predictor_fit.cwl
+id: location_predictor_fit.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to file containing input. (default: None)'
@@ -26,41 +26,6 @@ inputs:
   type: string[]
   inputBinding:
     prefix: --selected-column-names
-- id: in_window_size
-  doc: '... (default: 2)'
-  type: long
-  inputBinding:
-    prefix: --window-size
-- id: in_complexity
-  doc: '... (default: 4)'
-  type: long
-  inputBinding:
-    prefix: --complexity
-- id: in_nbits
-  doc: '... (default: 20)'
-  type: long
-  inputBinding:
-    prefix: --nbits
-- id: in_n_discretization_levels
-  doc: '... (default: 100)'
-  type: long
-  inputBinding:
-    prefix: --n_discretization-levels
-- id: in_label_size
-  doc: '... (default: 5)'
-  type: long
-  inputBinding:
-    prefix: --label-size
-- id: in_min_subarray_size
-  doc: '... (default: 3)'
-  type: long
-  inputBinding:
-    prefix: --min-subarray-size
-- id: in_max_subarray_size
-  doc: "... (default: 15)\n"
-  type: long
-  inputBinding:
-    prefix: --max-subarray-size
 outputs:
 - id: out_stdout
   doc: Standard output stream

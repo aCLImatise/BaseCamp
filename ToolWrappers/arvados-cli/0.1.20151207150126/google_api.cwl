@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../google_api.cwl
+id: google_api.cwl
 inputs:
 - id: in_scope
   doc: Set the OAuth scope

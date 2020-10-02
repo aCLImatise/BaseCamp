@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../index_blast_pairs.remove_overlapping_genes.pl.cwl
+id: index_blast_pairs.remove_overlapping_genes.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

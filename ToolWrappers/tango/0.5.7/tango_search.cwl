@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tango_search.cwl
+id: tango_search.cwl
 inputs:
 - id: in_mode
   doc: "Choice of search mode for diamond: 'blastx' (default)\nfor DNA query sequences\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_stats.cwl
+id: vtools_stats.cwl
 inputs:
 - id: in_input
   doc: Input VCF file  [required]

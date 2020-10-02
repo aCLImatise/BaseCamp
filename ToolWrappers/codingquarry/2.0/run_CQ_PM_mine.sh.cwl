@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_CQ_PM_mine.sh.cwl
+id: run_CQ_PM_mine.sh.cwl
 inputs:
 - id: in_file_name_genome
   doc: by file name of genome sequence

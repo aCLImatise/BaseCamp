@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../kmds.cwl
+id: kmds.cwl
 inputs:
 - id: in_arg_dsm_kmer
   doc: '[ --kmers ] arg       dsm kmer output file (not needed if using'
   type: File
   inputBinding:
     prefix: -k
-- id: in_mds_concat
-  doc: )
-  type: boolean
-  inputBinding:
-    prefix: --mds_concat
 - id: in_arg_pheno_metadata
   doc: '[ --pheno ] arg       .pheno metadata'
   type: boolean
@@ -31,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --write_distances
+- id: in_mds_concat
+  doc: "list of subsampled matrices to use in MDS. Performs\nonly MDS; implies --no_filtering"
+  type: string
+  inputBinding:
+    prefix: --mds_concat
 - id: in_pc
   doc: (=10)           number of principal coordinates to output
   type: long

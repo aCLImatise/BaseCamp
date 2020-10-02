@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clustering_filter_seqs.cwl
+id: Clustering_filter_seqs.cwl
 inputs:
 - id: in_ids_file
   doc: ''

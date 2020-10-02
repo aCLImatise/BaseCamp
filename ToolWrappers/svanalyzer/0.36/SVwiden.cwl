@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SVwiden.cwl
+id: SVwiden.cwl
 inputs:
 - id: in_ref
   doc: "Specify the path to the multi-fasta file that serves as a reference\nfor the\

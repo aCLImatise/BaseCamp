@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclSortGroupsFile.cwl
+id: orthomclSortGroupsFile.cwl
 inputs:
 - id: in_groups_dot_txt
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_list_repositories.cwl
+id: nebulizer_list_repositories.cwl
 inputs:
 - id: in_name
   doc: "only list tool repositories matching NAME. Can include\nglob-style wild-cards."

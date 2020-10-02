@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../WisecondorX.cwl
+id: WisecondorX.cwl
 inputs:
 - id: in_loglevel
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_taxonomy.cwl
+id: amptk_taxonomy.cwl
 inputs:
 - id: in_fast_a
   doc: Input FASTA file (i.e. OTUs from amptk cluster) (Required)

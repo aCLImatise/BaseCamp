@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getUnitigTypeFromAsmFile.perl.cwl
+id: getUnitigTypeFromAsmFile.perl.cwl
 inputs:
 - id: in_grep
   doc: ''

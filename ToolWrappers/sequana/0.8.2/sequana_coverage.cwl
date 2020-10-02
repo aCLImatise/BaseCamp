@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequana_coverage.cwl
+id: sequana_coverage.cwl
 inputs:
 - id: in_input
   doc: "Input file in BED or BAM format. If a BAM file is\nprovided, it will be converted\
@@ -28,31 +28,14 @@ inputs:
   inputBinding:
     prefix: --output-directory
 - id: in_quiet
-  doc: ''
+  doc: "--no-html             Do not create any HTML reports. Save ROIs and\nstatistics\
+    \ only. (default: False)\n--no-multiqc          Do not create any multiqc HTML\
+    \ page. (default: False)\n--debug-level LOGGING_LEVEL\nset to DEBUG, INFO, WARNING,\
+    \ CRITICAL, ERROR (default:\nINFO)\n--level LOGGING_LEVEL\nset to DEBUG, INFO,\
+    \ WARNING, CRITICAL, ERROR (default:\nINFO)"
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: in_no_html
-  doc: "Do not create any HTML reports. Save ROIs and\nstatistics only. (default:\
-    \ False)"
-  type: boolean
-  inputBinding:
-    prefix: --no-html
-- id: in_no_multi_qc
-  doc: 'Do not create any multiqc HTML page. (default: False)'
-  type: boolean
-  inputBinding:
-    prefix: --no-multiqc
-- id: in_debug_level
-  doc: "set to DEBUG, INFO, WARNING, CRITICAL, ERROR (default:\nINFO)"
-  type: string
-  inputBinding:
-    prefix: --debug-level
-- id: in_level
-  doc: "set to DEBUG, INFO, WARNING, CRITICAL, ERROR (default:\nINFO)"
-  type: string
-  inputBinding:
-    prefix: --level
 - id: in_genbank
   doc: 'a valid genbank annotation (default: None)'
   type: string
@@ -135,21 +118,11 @@ inputs:
   inputBinding:
     prefix: --cnv-clustering
 - id: in_download_reference
-  doc: ''
+  doc: "--download-genbank DOWNLOAD_GENBANK\n--database {ENA,EUtils}\nDownload the\
+    \ reference from one of these database\n(default ENA) (default: ENA)"
   type: string
   inputBinding:
     prefix: --download-reference
-- id: in_download_genbank
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --download-genbank
-- id: in_database
-  doc: "Download the reference from one of these database\n(default ENA) (default:\
-    \ ENA)"
-  type: string
-  inputBinding:
-    prefix: --database
 - id: in_welcome
   doc: ''
   type: string

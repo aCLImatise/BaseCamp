@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_regex.pl.cwl
+id: fasta_regex.pl.cwl
 inputs:
 - id: in_name
   doc: ''

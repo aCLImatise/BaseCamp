@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ANARCI.cwl
+id: ANARCI.cwl
 inputs:
 - id: in_sequence
   doc: A sequence or an input fasta file

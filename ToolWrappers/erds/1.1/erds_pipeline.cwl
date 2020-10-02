@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../erds_pipeline.cwl
+id: erds_pipeline.cwl
 inputs: []
 outputs:
 - id: out_stdout

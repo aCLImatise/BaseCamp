@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_components_reinstall.cwl
+id: gcloud_components_reinstall.cwl
 inputs:
 - id: in_optional
   doc: ''

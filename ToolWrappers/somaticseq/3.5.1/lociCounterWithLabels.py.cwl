@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lociCounterWithLabels.py.cwl
+id: lociCounterWithLabels.py.cwl
 inputs:
 - id: in_fai_file
   doc: '.fa.fai file (default: None)'

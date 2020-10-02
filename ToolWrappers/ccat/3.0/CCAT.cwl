@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CCAT.cwl
+id: CCAT.cwl
 inputs:
 - id: in_library_one_tag_file_name
   doc: ''

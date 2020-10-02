@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flowclrstats.py.cwl
+id: flowclrstats.py.cwl
 inputs:
 - id: in_file_locations_flow
   doc: File locations for flow clr file.

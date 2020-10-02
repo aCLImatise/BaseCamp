@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lavToAxt.cwl
+id: lavToAxt.cwl
 inputs:
 - id: in_fa
   doc: qNibDir is interpreted as a fasta file of multiple dna seq instead of directory

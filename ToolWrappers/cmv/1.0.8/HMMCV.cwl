@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HMMCV.cwl
+id: HMMCV.cwl
 inputs:
 - id: in_hmm_compare_result_file
   doc: Path to HMMCompare result file

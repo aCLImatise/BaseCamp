@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vphaser2.cwl
+id: vphaser2.cwl
 inputs:
 - id: in__output_directory
   doc: '[output DIR] -- output directory'

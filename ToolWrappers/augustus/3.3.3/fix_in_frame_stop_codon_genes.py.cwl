@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fix_in_frame_stop_codon_genes.py.cwl
+id: fix_in_frame_stop_codon_genes.py.cwl
 inputs:
 - id: in_genome
   doc: genome sequence file (FASTA format)

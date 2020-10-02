@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_by_count.py.cwl
+id: filter_by_count.py.cwl
 inputs:
 - id: in_min_count
   doc: 'Minimum FL count (default: 2)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abruijn.cwl
+id: abruijn.cwl
 inputs:
 - id: in_debug
   doc: enable debug output

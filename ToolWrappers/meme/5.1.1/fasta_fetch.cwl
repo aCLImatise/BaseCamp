@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_fetch.cwl
+id: fasta_fetch.cwl
 inputs: []
 outputs:
 - id: out_stdout

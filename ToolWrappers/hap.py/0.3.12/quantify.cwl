@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quantify.cwl
+id: quantify.cwl
 inputs:
 - id: in_input_file
   doc: The input file

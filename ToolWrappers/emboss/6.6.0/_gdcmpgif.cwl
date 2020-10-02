@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_gdcmpgif.cwl
+id: _gdcmpgif.cwl
 inputs:
 - id: in_gdc_mpg_if
   doc: ''

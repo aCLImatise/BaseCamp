@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Chorus2.cwl
+id: Chorus2.cwl
 inputs:
 - id: in_jellyfish
   doc: The path where Jellyfish software installed

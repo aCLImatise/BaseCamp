@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SeqPurge.cwl
+id: SeqPurge.cwl
 inputs:
 - id: in_in_one
   doc: Forward input gzipped FASTQ file(s).

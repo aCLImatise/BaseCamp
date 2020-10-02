@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmeralign_seqfile.cwl
+id: hmmeralign_seqfile.cwl
 inputs:
 - id: in_options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_bwamem.cwl
+id: abyss_bwamem.cwl
 inputs: []
 outputs:
 - id: out_stdout

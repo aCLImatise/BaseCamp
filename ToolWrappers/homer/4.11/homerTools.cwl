@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../homerTools.cwl
+id: homerTools.cwl
 inputs:
 - id: in_command
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ml_utils.py.cwl
+id: ml_utils.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

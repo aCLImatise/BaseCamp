@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../import_igenome.cwl
+id: import_igenome.cwl
 inputs:
 - id: in_path
   doc: path to the desired genome tarball or directory to

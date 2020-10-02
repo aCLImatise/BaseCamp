@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ant.bat.cwl
+id: ant.bat.cwl
 inputs: []
 outputs:
 - id: out_stdout

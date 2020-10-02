@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafGene.cwl
+id: mafGene.cwl
 inputs:
 - id: in_use_file
   doc: genePredTable argument is a genePred file name

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_splice_sites.py_gtf_file.cwl
+id: extract_splice_sites.py_gtf_file.cwl
 inputs:
 - id: in_v
   doc: ''

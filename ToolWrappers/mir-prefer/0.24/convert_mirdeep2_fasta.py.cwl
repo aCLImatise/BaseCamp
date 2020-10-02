@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_mirdeep2_fasta.py.cwl
+id: convert_mirdeep2_fasta.py.cwl
 inputs:
 - id: in_fast_an
   doc: ''

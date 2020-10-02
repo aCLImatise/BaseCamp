@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../avro.cwl
+id: avro.cwl
 inputs:
 - id: in_count
   doc: number of records to print

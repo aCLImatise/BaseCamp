@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucmer.cwl
+id: nucmer.cwl
 inputs:
 - id: in_mum
   doc: "Use anchor matches that are unique in both the reference\nand query"
@@ -50,63 +50,23 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -d
-- id: in_f
-  doc: ''
+- id: in__forward_use
+  doc: "--forward       Use only the forward strand of the Query sequences\n-g|maxgap\
+    \       Set the maximum gap between two adjacent matches in a\ncluster (default\
+    \ 90)\n-h\n--help          Display help information and exit\n-l|minmatch    \
+    \ Set the minimum length of a single match (default 20)\n-o\n--coords        Automatically\
+    \ generate the original NUCmer1.1 coords\noutput file using the 'show-coords'\
+    \ program\n--[no]optimize  Toggle alignment score optimization, i.e. if an alignment\n\
+    extension reaches the end of a sequence, it will backtrack\nto optimize the alignment\
+    \ score instead of terminating the\nalignment at the end of the sequence (default\
+    \ --optimize)\n-p|prefix       Set the prefix of the output files (default \"\
+    out\")\n-r\n--reverse       Use only the reverse complement of the Query sequences\n\
+    --[no]simplify  Simplify alignments by removing shadowed clusters. Turn\nthis\
+    \ option off if aligning a sequence to itself to look\nfor repeats (default --simplify)\n\
+    -V\n--version       Display the version information and exit\n"
   type: boolean
   inputBinding:
     prefix: -f
-- id: in_forward
-  doc: Use only the forward strand of the Query sequences
-  type: boolean
-  inputBinding:
-    prefix: --forward
-- id: in_maxgap_set_gap
-  doc: "|maxgap       Set the maximum gap between two adjacent matches in a\ncluster\
-    \ (default 90)"
-  type: boolean
-  inputBinding:
-    prefix: -g
-- id: in_help
-  doc: Display help information and exit
-  type: boolean
-  inputBinding:
-    prefix: --help
-- id: in_minmatch_set_length
-  doc: '|minmatch     Set the minimum length of a single match (default 20)'
-  type: boolean
-  inputBinding:
-    prefix: -l
-- id: in_o
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -o
-- id: in_coords
-  doc: "Automatically generate the original NUCmer1.1 coords\noutput file using the\
-    \ 'show-coords' program"
-  type: File
-  inputBinding:
-    prefix: --coords
-- id: in_prefix_set_prefix
-  doc: '|prefix       Set the prefix of the output files (default "out")'
-  type: boolean
-  inputBinding:
-    prefix: -p
-- id: in_r
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -r
-- id: in_reverse
-  doc: Use only the reverse complement of the Query sequences
-  type: boolean
-  inputBinding:
-    prefix: --reverse
-- id: in_v
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -V
 - id: in_reference
   doc: Set the input reference multi-FASTA filename
   type: string
@@ -121,12 +81,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_coords
-  doc: "Automatically generate the original NUCmer1.1 coords\noutput file using the\
-    \ 'show-coords' program"
-  type: File
-  outputBinding:
-    glob: $(inputs.in_coords)
 cwlVersion: v1.1
 baseCommand:
 - nucmer

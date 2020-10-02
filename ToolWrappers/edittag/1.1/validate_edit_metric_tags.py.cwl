@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validate_edit_metric_tags.py.cwl
+id: validate_edit_metric_tags.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

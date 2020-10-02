@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../potrace.cwl
+id: potrace.cwl
 inputs:
 - id: in_license
   doc: '- print license info and exit'

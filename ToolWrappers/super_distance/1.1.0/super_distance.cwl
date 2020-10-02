@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../super_distance.cwl
+id: super_distance.cwl
 inputs:
 - id: in_fast
   doc: for too many leaves, estimates only two species trees
@@ -23,12 +23,6 @@ inputs:
   type: File
   inputBinding:
     prefix: --output
-- id: in_super_distance
-  doc: '[-h|--help] [-v|--version] [-F|--fast] [-e|--epsilon=<double>] [-s|--species=<species
-    names>] [-o|--output=<newick>] <file> [<file>]...'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

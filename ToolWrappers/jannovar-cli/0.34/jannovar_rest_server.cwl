@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jannovar_rest_server.cwl
+id: jannovar_rest_server.cwl
 inputs:
 - id: in_d
   doc: '[--show-all] [--no-3-prime-shifting]'

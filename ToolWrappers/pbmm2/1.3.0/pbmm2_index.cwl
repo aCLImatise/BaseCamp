@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbmm2_index.cwl
+id: pbmm2_index.cwl
 inputs:
 - id: in_preset
   doc: "STR   Set alignment mode. See below for preset parameter details. Valid choices:\
@@ -43,21 +43,6 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_sub_read
-  doc: ': -k 19 -w 10'
-  type: string
-  inputBinding:
-    position: 0
-- id: in_ccs
-  doc: ': -k 19 -w 10 -u'
-  type: string
-  inputBinding:
-    position: 1
-- id: in_iso_seq
-  doc: ': -k 15 -w 5 -u'
-  type: string
-  inputBinding:
-    position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream

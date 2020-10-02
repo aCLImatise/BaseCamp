@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../md5sum_lite.cwl
+id: md5sum_lite.cwl
 inputs: []
 outputs:
 - id: out_stdout

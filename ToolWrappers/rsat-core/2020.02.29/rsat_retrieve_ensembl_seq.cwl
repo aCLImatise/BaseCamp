@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_retrieve_ensembl_seq.cwl
+id: rsat_retrieve_ensembl_seq.cwl
 inputs:
 - id: in_org
   doc: "underscore between words (eg 'homo_sapiens')\nIf this option is not used,\

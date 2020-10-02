@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bold2utax.py.cwl
+id: bold2utax.py.cwl
 inputs:
 - id: in_input
   doc: 'Bold data dump TSV format (default: None)'

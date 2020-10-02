@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqmagick_help.cwl
+id: seqmagick_help.cwl
 inputs:
 - id: in_action
   doc: 'optional arguments:'

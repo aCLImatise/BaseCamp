@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapping_to_ref.py.cwl
+id: mapping_to_ref.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

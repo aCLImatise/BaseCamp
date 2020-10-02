@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varlociraptor_call_variants.cwl
+id: varlociraptor_call_variants.cwl
 inputs:
 - id: in_output
   doc: "Output variant calls to given path (in BCF format). If omitted, prints\ncalls\

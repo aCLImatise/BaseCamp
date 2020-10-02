@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_spp.R.cwl
+id: run_spp.R.cwl
 inputs:
 - id: in_c
   doc: ', full path and name (or URL) of tagAlign/BAM file (can be gzipped) (FILE

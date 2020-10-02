@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kma_index.cwl
+id: kma_index.cwl
 inputs: []
 outputs:
 - id: out_stdout

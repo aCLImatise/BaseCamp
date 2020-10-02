@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_summary.cwl
+id: read_summary.cwl
 inputs: []
 outputs:
 - id: out_stdout

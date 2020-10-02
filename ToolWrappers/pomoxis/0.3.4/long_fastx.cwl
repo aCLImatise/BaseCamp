@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../long_fastx.cwl
+id: long_fastx.cwl
 inputs:
 - id: in_longest
   doc: Percentage of longest reads to partition.

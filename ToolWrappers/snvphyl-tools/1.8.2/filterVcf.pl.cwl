@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterVcf.pl.cwl
+id: filterVcf.pl.cwl
 inputs:
 - id: in_no_indels
   doc: remove indels

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trimFastqByQVWindow.cwl
+id: trimFastqByQVWindow.cwl
 inputs:
 - id: in_fast_a_file
   doc: ''

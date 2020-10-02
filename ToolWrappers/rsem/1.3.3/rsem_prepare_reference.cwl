@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_prepare_reference.cwl
+id: rsem_prepare_reference.cwl
 inputs:
 - id: in_gtf
   doc: "If this option is on, RSEM assumes that 'reference_fasta_file(s)'\ncontains\
@@ -173,11 +173,6 @@ inputs:
   type: File
   inputBinding:
     prefix: --mappability-bigwig-file
-- id: in_p
-  doc: \
-  type: long
-  inputBinding:
-    prefix: -p
 outputs:
 - id: out_stdout
   doc: Standard output stream

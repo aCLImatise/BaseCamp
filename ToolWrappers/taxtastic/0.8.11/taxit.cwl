@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxit.cwl
+id: taxit.cwl
 inputs:
 - id: in_at_call_aside
   doc: File "/usr/local/lib/python3.7/site-packages/pkg_resources/__init__.py", line

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_fix.cwl
+id: cnvkit.py_fix.cwl
 inputs:
 - id: in_cluster
   doc: "Compare and use cluster-specific values present in the\nreference profile.\

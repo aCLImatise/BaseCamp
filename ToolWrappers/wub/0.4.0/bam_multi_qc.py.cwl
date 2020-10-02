@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_multi_qc.py.cwl
+id: bam_multi_qc.py.cwl
 inputs:
 - id: in_report_pdf_bammultiqcpdf
   doc: Report PDF (bam_multi_qc.pdf).

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hgGoldGapGl.cwl
+id: hgGoldGapGl.cwl
 inputs:
 - id: in_no_gl
   doc: "- don't do gl bits"

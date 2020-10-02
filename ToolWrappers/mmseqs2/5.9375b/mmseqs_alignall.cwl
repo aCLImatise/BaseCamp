@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_alignall.cwl
+id: mmseqs_alignall.cwl
 inputs:
 - id: in_comp_bias_corr
   doc: 1               correct for locally biased amino acid composition [0,1]

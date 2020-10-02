@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funannotate_fix.cwl
+id: funannotate_fix.cwl
 inputs:
 - id: in_input
   doc: Annotated genome in GenBank format.

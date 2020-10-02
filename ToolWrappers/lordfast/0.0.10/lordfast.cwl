@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lordfast.cwl
+id: lordfast.cwl
 inputs:
 - id: in_ddeessccrriippttiioonn
   doc: "D\bDE\bES\bSC\bCR\bRI\bIP\bPT\bTI\bIO\bON\bN"

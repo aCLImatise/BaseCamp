@@ -60,7 +60,7 @@ task VisualizeCgpy {
     stem_color: "The default color in coarse-grain drawings"
     multi_loop_color: "The default color in coarse-grain drawings"
     batch: "Start pymol in batch mode"
-    side_chain_atoms: "Include the sidechain atoms. Automatically enables"
+    side_chain_atoms: "Include the sidechain atoms. Automatically enables\\n--virtual-atoms"
     rainbow: "Color each of the nucleotide positions (i.e. average\\natoms) according to the colors of\\nthe rainbow and their position"
     only_elements: "Display only these elements element names should be\\nseparated by commas"
     color_gradual: "Color the specified elementsgradually from one to the\\nother, example (i1,i4,m1)\\n"

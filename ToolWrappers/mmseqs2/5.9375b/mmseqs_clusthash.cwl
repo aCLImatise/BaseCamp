@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_clusthash.cwl
+id: mmseqs_clusthash.cwl
 inputs:
 - id: in_alph_size
   doc: 3               alphabet size [2,21]

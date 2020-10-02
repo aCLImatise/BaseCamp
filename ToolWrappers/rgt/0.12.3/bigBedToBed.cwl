@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bigBedToBed.cwl
+id: bigBedToBed.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csb_precision.cwl
+id: csb_precision.cwl
 inputs:
 - id: in_pdb
   doc: "the PDB database (a directory containing all PDB\nfiles)"

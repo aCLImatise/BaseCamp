@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singularity_cache_list.cwl
+id: singularity_cache_list.cwl
 inputs:
 - id: in_type
   doc: "a list of cache types to display, possible entries:\nlibrary, oci, shub, blob(s),\

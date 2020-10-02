@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.kggseq_post_link.sh.cwl
+id: .kggseq_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedextract.cwl
+id: bedextract.cwl
 inputs:
 - id: in_zero
   doc: ''

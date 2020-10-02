@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5diff.cwl
+id: h5diff.cwl
 inputs:
 - id: in_report
   doc: Report mode. Print differences.

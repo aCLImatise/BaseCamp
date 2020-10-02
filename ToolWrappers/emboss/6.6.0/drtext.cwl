@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../drtext.cwl
+id: drtext.cwl
 inputs:
 - id: in_resources
   doc: ': enter resource value: Error: Unable to get reply from user - end of standard

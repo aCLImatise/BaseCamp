@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_halGenerator.cwl
+id: cactus_halGenerator.cwl
 inputs:
 - id: in_loglevel
   doc: ': Set the log level'

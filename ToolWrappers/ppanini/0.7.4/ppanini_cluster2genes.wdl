@@ -2,20 +2,20 @@ version 1.0
 
 task PpaniniCluster2genes {
   input {
-    String? cd_hit
-    String? var_output
     Boolean? json
+    String? o
+    String? i
   }
   command <<<
     ppanini_cluster2genes \
-      ~{if defined(cd_hit) then ("--cd-hit " +  '"' + cd_hit + '"') else ""} \
-      ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""} \
-      ~{if (json) then "--json" else ""}
+      ~{if (json) then "--json" else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
   parameter_meta {
-    cd_hit: "CD-HIT clusters output"
-    var_output: ""
     json: ""
+    o: ""
+    i: ""
   }
   output {
     File out_stdout = stdout()

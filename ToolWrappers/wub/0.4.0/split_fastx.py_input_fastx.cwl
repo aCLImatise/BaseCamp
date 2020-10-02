@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_fastx.py_input_fastx.cwl
+id: split_fastx.py_input_fastx.cwl
 inputs:
 - id: in_b
   doc: ''

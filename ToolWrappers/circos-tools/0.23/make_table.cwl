@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_table.cwl
+id: make_table.cwl
 inputs:
 - id: in_cols
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obrotamer.cwl
+id: obrotamer.cwl
 inputs: []
 outputs:
 - id: out_stdout

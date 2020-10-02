@@ -3,43 +3,19 @@ version 1.0
 task AddgffinfoAddtaxa {
   input {
     Boolean? verbose
-    File? gene_tax_on_table
-    String? gene_attr
-    Int? hdf_table
-    File? taxonomy
-    File? dictionary
-    Boolean? skip_no_tax_on
-    Boolean? cache_table
-    Boolean? progress
-    File file
-    String outputted
+    String? input_file
+    String? output_file
   }
   command <<<
     add_gff_info addtaxa \
-      ~{file} \
-      ~{outputted} \
-      ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(gene_tax_on_table) then ("--gene-taxon-table " +  '"' + gene_tax_on_table + '"') else ""} \
-      ~{if defined(gene_attr) then ("--gene-attr " +  '"' + gene_attr + '"') else ""} \
-      ~{if defined(hdf_table) then ("--hdf-table " +  '"' + hdf_table + '"') else ""} \
-      ~{if defined(taxonomy) then ("--taxonomy " +  '"' + taxonomy + '"') else ""} \
-      ~{if defined(dictionary) then ("--dictionary " +  '"' + dictionary + '"') else ""} \
-      ~{if (skip_no_tax_on) then "--skip-no-taxon" else ""} \
-      ~{if (cache_table) then "--cache-table" else ""} \
-      ~{if (progress) then "--progress" else ""}
+      ~{input_file} \
+      ~{output_file} \
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    verbose: ""
-    gene_tax_on_table: "GIDs taxonomy table (e.g. gi_taxid_nucl.dmp.gz)\\nor a similar file where GENE/TAXON are tab\\nseparated and one per line"
-    gene_attr: "In which attribute the GENEID in the table is\\nstored (defaults to *gene_id*)"
-    hdf_table: "HDF5 file and table name to use for taxon_id\\nlookups. The format to pass is the file name,\\ncolon and the table file hf5:taxa-table. The\\nindex in the table is the accession_id, while\\nthe column `taxon_id` stores the taxon_id as\\nint"
-    taxonomy: "Taxonomy file - If given, both *taxon_name* and\\n*lineage* attributes will be set"
-    dictionary: "A serialised dictionary, where the key is the\\nGENEID and the value is TAXONID. It can be in\\njson or msgpack format (can be a compressed\\nfile) *Note*: the dictionary values takes\\nprecedence over the table files"
-    skip_no_tax_on: "If used, annotations with no taxon_id won't be"
-    cache_table: "If used, annotations are not preloaded, but the\\ntaxa table is cached, instead"
-    progress: "Shows Progress Bar"
-    file: "Options:"
-    outputted: "-db, --taxon-db TEXT         DB used to add the taxonomic information"
+    verbose: "-t, --gene-taxon-table TEXT  GIDs taxonomy table (e.g. gi_taxid_nucl.dmp.gz)\\nor a similar file where GENE/TAXON are tab\\nseparated and one per line\\n-a, --gene-attr TEXT         In which attribute the GENEID in the table is\\nstored (defaults to *gene_id*)\\n-f, --hdf-table TEXT         HDF5 file and table name to use for taxon_id\\nlookups. The format to pass is the file name,\\ncolon and the table file hf5:taxa-table. The\\nindex in the table is the accession_id, while\\nthe column `taxon_id` stores the taxon_id as\\nint\\n-x, --taxonomy TEXT          Taxonomy file - If given, both *taxon_name* and\\n*lineage* attributes will be set\\n-d, --dictionary TEXT        A serialised dictionary, where the key is the\\nGENEID and the value is TAXONID. It can be in\\njson or msgpack format (can be a compressed\\nfile) *Note*: the dictionary values takes\\nprecedence over the table files\\n-e, --skip-no-taxon          If used, annotations with no taxon_id won't be\\noutputted\\n-db, --taxon-db TEXT         DB used to add the taxonomic information\\n-c, --cache-table            If used, annotations are not preloaded, but the\\ntaxa table is cached, instead\\n--progress                   Shows Progress Bar\\n--help                       Show this message and exit.\\n"
+    input_file: ""
+    output_file: ""
   }
   output {
     File out_stdout = stdout()

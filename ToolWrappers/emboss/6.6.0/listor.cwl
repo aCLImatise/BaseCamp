@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../listor.cwl
+id: listor.cwl
 inputs:
 - id: in_operator
   doc: "menu       [OR] The following logical operators combine\nthe sequences in\

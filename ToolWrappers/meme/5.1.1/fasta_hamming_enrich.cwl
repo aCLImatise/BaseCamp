@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_hamming_enrich.cwl
+id: fasta_hamming_enrich.cwl
 inputs:
 - id: in_word_required
   doc: word (required)

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../gqt_gst.cwl
+id: gqt_gst.cwl
 inputs:
-- id: in_d
-  doc: \
-  type: File
-  inputBinding:
-    prefix: -d
 - id: in_direcory_name_remote
   doc: direcory name for remote files (default ./)
   type: string

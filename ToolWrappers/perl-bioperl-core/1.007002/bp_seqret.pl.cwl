@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_seqret.pl.cwl
+id: bp_seqret.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

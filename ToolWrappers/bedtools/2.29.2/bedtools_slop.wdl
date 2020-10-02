@@ -10,15 +10,9 @@ task BedtoolsSlop {
     File? header
     String? g
     String? i
-    Int chr_one
-    Int chr_two
-    Int chr_one_eight_gl_zero_zero_zero_two_zero_seven_random
   }
   command <<<
     bedtools slop \
-      ~{chr_one} \
-      ~{chr_two} \
-      ~{chr_one_eight_gl_zero_zero_zero_two_zero_seven_random} \
       ~{if (increase_bedgffvcf_pairs) then "-b" else ""} \
       ~{if (number_subtract_subtract) then "-l" else ""} \
       ~{if (number_add_add) then "-r" else ""} \
@@ -37,9 +31,6 @@ task BedtoolsSlop {
     header: "the header from the input file prior to results."
     g: ""
     i: ""
-    chr_one: "249250621"
-    chr_two: "243199373"
-    chr_one_eight_gl_zero_zero_zero_two_zero_seven_random: "4262"
   }
   output {
     File out_stdout = stdout()

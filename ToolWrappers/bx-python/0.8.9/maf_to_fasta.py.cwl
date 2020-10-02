@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_to_fasta.py.cwl
+id: maf_to_fasta.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

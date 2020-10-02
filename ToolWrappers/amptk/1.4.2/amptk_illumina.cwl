@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_illumina.cwl
+id: amptk_illumina.cwl
 inputs:
 - id: in_fast_q
   doc: Input folder of FASTQ files (Required)

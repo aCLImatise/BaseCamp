@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_adam_home.py.cwl
+id: find_adam_home.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

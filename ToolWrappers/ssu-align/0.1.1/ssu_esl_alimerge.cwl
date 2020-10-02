@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_esl_alimerge.cwl
+id: ssu_esl_alimerge.cwl
 inputs:
 - id: in_output_final_alignment
   doc: ': output the final alignment to file <f>, not stdout'

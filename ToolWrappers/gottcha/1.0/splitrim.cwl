@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitrim.cwl
+id: splitrim.cwl
 inputs:
 - id: in_in_file
   doc: =        string   Name of the FASTQ file containing all the single-end reads

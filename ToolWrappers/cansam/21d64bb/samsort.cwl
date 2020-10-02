@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samsort.cwl
+id: samsort.cwl
 inputs:
 - id: in_write_output_bam
   doc: Write output in BAM format

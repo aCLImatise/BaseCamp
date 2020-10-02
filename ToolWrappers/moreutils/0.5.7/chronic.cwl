@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chronic.cwl
+id: chronic.cwl
 inputs: []
 outputs:
 - id: out_stdout

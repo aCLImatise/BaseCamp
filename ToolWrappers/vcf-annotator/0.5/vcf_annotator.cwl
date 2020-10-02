@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf_annotator.cwl
+id: vcf_annotator.cwl
 inputs:
 - id: in_output
   doc: File to write VCF output to (Default STDOUT).

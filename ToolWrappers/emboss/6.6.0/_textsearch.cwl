@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_textsearch.cwl
+id: _textsearch.cwl
 inputs:
 - id: in_case_sensitive
   doc: boolean    [N] Do a case-sensitive search

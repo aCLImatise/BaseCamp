@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kinSimRibo_mergeRateMats.cwl
+id: kinSimRibo_mergeRateMats.cwl
 inputs:
 - id: in_factors_multiply_matrix
   doc: ":\nFactors to multiply the output matrix with, e.g. to account for\nthe pre-exponential\

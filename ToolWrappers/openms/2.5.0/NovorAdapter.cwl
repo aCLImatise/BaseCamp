@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NovorAdapter.cwl
+id: NovorAdapter.cwl
 inputs:
 - id: in_executable
   doc: Novor.jar

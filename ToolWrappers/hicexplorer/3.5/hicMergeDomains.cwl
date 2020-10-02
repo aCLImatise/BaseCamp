@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicMergeDomains.cwl
+id: hicMergeDomains.cwl
 inputs:
 - id: in_domain_files
   doc: "The domain files of the different resolutions is\nrequired"

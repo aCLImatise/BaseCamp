@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../postprocess_predictions.cwl
+id: postprocess_predictions.cwl
 inputs:
 - id: in_minimum_expected_support_deletion
   doc: "Minimum expected support for deletion cliques (cliques\nwith lower support\

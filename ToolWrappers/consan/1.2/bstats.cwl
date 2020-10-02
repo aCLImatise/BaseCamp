@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bstats.cwl
+id: bstats.cwl
 inputs:
 - id: in__verbose
   doc: ': verbose'

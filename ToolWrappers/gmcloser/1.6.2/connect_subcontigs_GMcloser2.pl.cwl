@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../connect_subcontigs_GMcloser2.pl.cwl
+id: connect_subcontigs_GMcloser2.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

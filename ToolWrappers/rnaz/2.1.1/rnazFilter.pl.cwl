@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazFilter.pl.cwl
+id: rnazFilter.pl.cwl
 inputs:
 - id: in_count
   doc: Count the windows/loci instead of printing them.

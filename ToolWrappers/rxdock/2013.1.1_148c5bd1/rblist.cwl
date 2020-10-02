@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rblist.cwl
+id: rblist.cwl
 inputs:
 - id: in_input_ligand_sd
   doc: <InputSDFile> - input ligand SD file

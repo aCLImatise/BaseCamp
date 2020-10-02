@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../expfit.sh.cwl
+id: expfit.sh.cwl
 inputs:
 - id: in_par_file
   doc: ''

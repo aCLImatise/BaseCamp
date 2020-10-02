@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_randomly_sample_and_concatenate.cwl
+id: phyluce_align_randomly_sample_and_concatenate.cwl
 inputs:
 - id: in_alignments
   doc: "The directory containing NEXUS alignments to sample\nand concatenate"

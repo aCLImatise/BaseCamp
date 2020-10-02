@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Sibelia.cwl
+id: Sibelia.cwl
 inputs:
 - id: in__parameters_parameters
   doc: ",  --parameters <loose|fine|far>\n(OR required)  Parameters set, used for\

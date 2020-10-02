@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uniqueFilter.cwl
+id: uniqueFilter.cwl
 inputs: []
 outputs:
 - id: out_stdout

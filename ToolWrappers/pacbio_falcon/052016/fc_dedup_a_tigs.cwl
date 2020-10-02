@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_dedup_a_tigs.cwl
+id: fc_dedup_a_tigs.cwl
 inputs:
 - id: in_max_aln_cov
   doc: ''

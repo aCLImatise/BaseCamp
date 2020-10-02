@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FCSGateTrans.R.cwl
+id: FCSGateTrans.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

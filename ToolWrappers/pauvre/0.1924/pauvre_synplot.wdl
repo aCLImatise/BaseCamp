@@ -4,7 +4,6 @@ task PauvreSynplot {
   input {
     Boolean? quiet
     Directory? aln_dir
-    String? center_on
     Int? dpi
     Array[String] gff_paths
     Array[String] gff_labels
@@ -16,6 +15,7 @@ task PauvreSynplot {
     Boolean? start_with_aligned_genes
     Boolean? stop_codons
     Boolean? transparent
+    String? center_on
     String contained_dot
     String higher
   }
@@ -25,7 +25,6 @@ task PauvreSynplot {
       ~{higher} \
       ~{if (quiet) then "--quiet" else ""} \
       ~{if defined(aln_dir) then ("--aln_dir " +  '"' + aln_dir + '"') else ""} \
-      ~{if defined(center_on) then ("--center_on " +  '"' + center_on + '"') else ""} \
       ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
       ~{if defined(gff_paths) then ("--gff_paths " +  '"' + gff_paths + '"') else ""} \
       ~{if defined(gff_labels) then ("--gff_labels " +  '"' + gff_labels + '"') else ""} \
@@ -36,12 +35,12 @@ task PauvreSynplot {
       ~{if (sandwich) then "--sandwich" else ""} \
       ~{if (start_with_aligned_genes) then "--start_with_aligned_genes" else ""} \
       ~{if (stop_codons) then "--stop_codons" else ""} \
-      ~{if (transparent) then "--transparent" else ""}
+      ~{if (transparent) then "--transparent" else ""} \
+      ~{if defined(center_on) then ("--center_on " +  '"' + center_on + '"') else ""}
   >>>
   parameter_meta {
     quiet: "Do not output warnings to stderr"
     aln_dir: "The directory where all the fasta alignments are"
-    center_on: ""
     dpi: "Change the dpi from the default 600 if you need it"
     gff_paths: "The input filepath. for the gff annotation to plot.\\nIndividual filepaths separated by spaces. For example,\\n--gff_paths sp1.gff sp2.gff sp3.gff"
     gff_labels: "In case the gff names and sequence names don't match,\\nchange the labels that will appear over the text."
@@ -53,6 +52,7 @@ task PauvreSynplot {
     start_with_aligned_genes: "Minimizes the number of intersections but only selects\\ncombos where the first gene in each sequence is\\naligned."
     stop_codons: "Performs some internal corrections if the gff\\nannotation includes the stop codons in the coding\\nsequences."
     transparent: "Specify this option if you DON'T want a transparent\\nbackground. Default is on.\\n"
+    center_on: ""
     contained_dot: "--center_on CENTER_ON"
     higher: "--fileform {png,pdf,eps,jpeg,jpg,pdf,pgf,ps,raw,rgba,svg,svgz,tif,tiff} [{png,pdf,eps,jpeg,jpg,pdf,pgf,ps,raw,rgba,svg,svgz,tif,tiff} ...]"
   }

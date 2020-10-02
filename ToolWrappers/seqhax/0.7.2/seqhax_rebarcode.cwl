@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqhax_rebarcode.cwl
+id: seqhax_rebarcode.cwl
 inputs:
 - id: in_output_interleaved_reads
   doc: 'Output interleaved reads to FILE. Use - for stdout. (default: no output)'

@@ -3,26 +3,6 @@ command:
 - phastCons
 positional:
 - !Positional
-  description: To specify them at the command line, use either the
-  position: 0
-  name: algorithm.
-  optional: false
-- !Positional
-  description: They can be suppressed with the --no-post-probs
-  position: 0
-  name: alignment.
-  optional: false
-- !Positional
-  description: The secondary type of output, activated with the
-  position: 1
-  name: option.
-  optional: false
-- !Positional
-  description: For example, it is possible to produce conservation scores
-  position: 0
-  name: here.
-  optional: false
-- !Positional
   description: Also predict conserved elements as well as
   position: 0
   name: parameter.
@@ -57,17 +37,10 @@ named:
     name: fname_root
   optional: true
 - !Flag
-  description: "[~]<mu>,<nu>\nFix the transition probabilities of the two-state HMM\
-    \ as\nspecified, rather than estimating them by maximum likelihood.\nAlternatively,\
-    \ if first character of argument is '~', estimate\nparameters, but initialize\
-    \ to specified values.  The argument\n<mu> is the probability of transitioning\
-    \ from the conserved to\nthe non-conserved state, and <nu> is the probability\
-    \ of the\nreverse transition.  The probabilities of self transitions are\nthus\
-    \ 1-<mu> and 1-<nu> and the expected lengths of conserved\nand nonconserved elements\
-    \ are 1/<mu> and 1/<nu>, respectively."
+  description: "(Optionally use with --viterbi) Assign a log-odds score to\neach prediction."
   synonyms:
-  - --transitions
-  - -t
+  - --score
+  - -s
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -82,52 +55,6 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "(Alternative to --transitions) Constrain transition parameters\nsuch\
-    \ that the expected fraction of sites in conserved elements\nis <gamma> (0 < <gamma>\
-    \ < 1).  This is a *prior* rather than\n*posterior* expectation and assumes stationarity\
-    \ of the\nstate-transition process.  Adding this constraint causes the\nratio\
-    \ mu/nu to be fixed at (1-<gamma>)/<gamma>.  If used with\n--expected-length,\
-    \ the transition probabilities will be\ncompletely fixed; otherwise the expected-length\
-    \ parameter\n<omega> will be estimated by maximum likelihood."
-  synonyms:
-  - --target-coverage
-  - -C
-  args: !SimpleFlagArg
-    name: gamma
-  optional: true
-- !Flag
-  description: "Use coordinate frame of specified sequence in output.  Default\nvalue\
-    \ is 1, first sequence in alignment; 0 indicates\ncoordinate frame of entire multiple\
-    \ alignment."
-  synonyms:
-  - --refidx
-  - -r
-  args: !SimpleFlagArg
-    name: refseq_idx
-  optional: true
-- !Flag
-  description: (aka --viterbi) option, is a set of discrete
-  synonyms:
-  - --most-conserved
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "(Optionally use with --viterbi) Assign a log-odds score to\neach prediction."
-  synonyms:
-  - --score
-  - -s
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Estimate free parameters of tree models and write new models\nto <fname_root>.cons.mod\
-    \ and <fname_root>.noncons.mod."
-  synonyms:
-  - --estimate-trees
-  - -T
-  args: !SimpleFlagArg
-    name: fname_root
-  optional: true
-- !Flag
   description: "Set the *scale* (overall evolutionary rate) of the model for\nthe\
     \ conserved state to be <rho> times that of the model for\nthe non-conserved state\
     \ (0 < <rho> < 1; default 0.3).  If used\nwith --estimate-trees or --estimate-rho,\
@@ -138,6 +65,15 @@ named:
   - -R
   args: !SimpleFlagArg
     name: rho
+  optional: true
+- !Flag
+  description: "Estimate free parameters of tree models and write new models\nto <fname_root>.cons.mod\
+    \ and <fname_root>.noncons.mod."
+  synonyms:
+  - --estimate-trees
+  - -T
+  args: !SimpleFlagArg
+    name: fname_root
   optional: true
 - !Flag
   description: "(Optionally use with --estimate-trees or --estimate-rho)\nAssume a\
@@ -165,6 +101,34 @@ named:
   - -k
   args: !SimpleFlagArg
     name: nrates
+  optional: true
+- !Flag
+  description: "[~]<mu>,<nu>\nFix the transition probabilities of the two-state HMM\
+    \ as\nspecified, rather than estimating them by maximum likelihood.\nAlternatively,\
+    \ if first character of argument is '~', estimate\nparameters, but initialize\
+    \ to specified values.  The argument\n<mu> is the probability of transitioning\
+    \ from the conserved to\nthe non-conserved state, and <nu> is the probability\
+    \ of the\nreverse transition.  The probabilities of self transitions are\nthus\
+    \ 1-<mu> and 1-<nu> and the expected lengths of conserved\nand nonconserved elements\
+    \ are 1/<mu> and 1/<nu>, respectively."
+  synonyms:
+  - --transitions
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(Alternative to --transitions) Constrain transition parameters\nsuch\
+    \ that the expected fraction of sites in conserved elements\nis <gamma> (0 < <gamma>\
+    \ < 1).  This is a *prior* rather than\n*posterior* expectation and assumes stationarity\
+    \ of the\nstate-transition process.  Adding this constraint causes the\nratio\
+    \ mu/nu to be fixed at (1-<gamma>)/<gamma>.  If used with\n--expected-length,\
+    \ the transition probabilities will be\ncompletely fixed; otherwise the expected-length\
+    \ parameter\n<omega> will be estimated by maximum likelihood."
+  synonyms:
+  - --target-coverage
+  - -C
+  args: !SimpleFlagArg
+    name: gamma
   optional: true
 - !Flag
   description: "[alternatively --most-conserved], -V <fname>\nPredict discrete elements\
@@ -199,6 +163,16 @@ named:
   - -g
   args: !SimpleFlagArg
     name: log_fname
+  optional: true
+- !Flag
+  description: "Use coordinate frame of specified sequence in output.  Default\nvalue\
+    \ is 1, first sequence in alignment; 0 indicates\ncoordinate frame of entire multiple\
+    \ alignment."
+  synonyms:
+  - --refidx
+  - -r
+  args: !SimpleFlagArg
+    name: refseq_idx
   optional: true
 - !Flag
   description: "(Optionally use with --viterbi) Use specified string\nfor 'seqname'\

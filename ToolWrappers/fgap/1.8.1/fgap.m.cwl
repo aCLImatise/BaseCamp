@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fgap.m.cwl
+id: fgap.m.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spades_convert_bin_to_fasta.cwl
+id: spades_convert_bin_to_fasta.cwl
 inputs:
 - id: in_prefix
   doc: Prefix of .off and .seq file for contigs in binary format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ceinutil.py.cwl
+id: ceinutil.py.cwl
 inputs:
 - id: in_debug
   doc: Enable verbose tracebacks to debug this program

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bgt_view.cwl
+id: bgt_view.cwl
 inputs:
 - id: in_samples_list_samplesample
   doc: samples list (,sample1,sample2 or a file or expr; see Notes below) [all]

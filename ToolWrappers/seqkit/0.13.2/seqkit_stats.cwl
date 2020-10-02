@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_stats.cwl
+id: seqkit_stats.cwl
 inputs:
 - id: in_all
   doc: all statistics, including quartiles of seq length, sum_gap, N50

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graph_gtfs.pl.cwl
+id: graph_gtfs.pl.cwl
 inputs:
 - id: in_display_list_possible
   doc: ': Display list of possible x and y values for graphs'

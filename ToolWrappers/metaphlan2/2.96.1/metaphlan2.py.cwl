@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaphlan2.py.cwl
+id: metaphlan2.py.cwl
 inputs:
 - id: in_input_type_dot
   doc: 'steps: first apply BowTie2 and then feed MetaPhlAn2 with the obtained sam:'

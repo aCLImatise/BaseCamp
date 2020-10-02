@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hts_AdapterTrimmer.cwl
+id: hts_AdapterTrimmer.cwl
 inputs:
 - id: in__version_print
   doc: '[ --version ]                      Version print'

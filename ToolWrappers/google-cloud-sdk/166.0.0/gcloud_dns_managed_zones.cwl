@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../gcloud_dns_managed_zones.cwl
+id: gcloud_dns_managed_zones.cwl
 inputs:
-- id: in_dns_name
-  doc: ="my.zone.com."
-  type: boolean
-  inputBinding:
-    prefix: --dns-name
 - id: in_create
   doc: Create a Cloud DNS managed-zone.
   type: string

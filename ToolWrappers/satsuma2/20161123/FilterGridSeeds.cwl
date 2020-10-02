@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FilterGridSeeds.cwl
+id: FilterGridSeeds.cwl
 inputs:
 - id: in_string_fasta_file
   doc: '<string> : target fasta file'

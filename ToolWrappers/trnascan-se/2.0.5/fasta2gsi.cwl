@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta2gsi.cwl
+id: fasta2gsi.cwl
 inputs:
 - id: in_help_dot_gsi
   doc: 0 sequence names.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncrf_resolve_overlaps.py.cwl
+id: ncrf_resolve_overlaps.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

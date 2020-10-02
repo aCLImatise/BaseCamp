@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../subjunc.cwl
+id: subjunc.cwl
 inputs:
 - id: in_base_name_index
   doc: Base name of the index.

@@ -13,12 +13,10 @@ task CheckTagBiaspl {
     Boolean? skip_freq
     Directory? prefix
     Boolean? mask
-    String tag_freq_dot_txt
     String tag_cpg_content_dot_txt
   }
   command <<<
     checkTagBias_pl \
-      ~{tag_freq_dot_txt} \
       ~{tag_cpg_content_dot_txt} \
       ~{if (start) then "-start" else ""} \
       ~{if (end) then "-end" else ""} \
@@ -44,7 +42,6 @@ task CheckTagBiaspl {
     skip_freq: "(skip nucleotide frequency calculation)"
     prefix: "(output files will start with prefix name, default: directory name)"
     mask: "(use repeat-masked genome)"
-    tag_freq_dot_txt: "tagGCcontent.txt"
     tag_cpg_content_dot_txt: "chr(N).tags.tsv.seq (if -keep is used)"
   }
   output {

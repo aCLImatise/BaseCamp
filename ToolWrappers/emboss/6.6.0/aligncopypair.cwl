@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aligncopypair.cwl
+id: aligncopypair.cwl
 inputs:
 - id: in_name
   doc: string     Name of the alignment (Any string)

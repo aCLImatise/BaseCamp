@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_xml2_config.cwl
+id: _xml2_config.cwl
 inputs:
 - id: in_prefix
   doc: change libxml prefix [default /usr/local]

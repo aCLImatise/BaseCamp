@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gbrowse.conf.cwl
+id: gbrowse.conf.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funannotate_iprscan.cwl
+id: funannotate_iprscan.cwl
 inputs:
 - id: in_input
   doc: Funannotate folder or FASTA protein file. (Required)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../srf_dump_all.cwl
+id: srf_dump_all.cwl
 inputs:
 - id: in_chunk_types_given
   doc: "Chunk types to output given as a comma delimited list of types.\nThe following\

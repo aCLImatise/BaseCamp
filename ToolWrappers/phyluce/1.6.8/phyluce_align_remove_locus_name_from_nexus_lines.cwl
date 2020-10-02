@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_remove_locus_name_from_nexus_lines.cwl
+id: phyluce_align_remove_locus_name_from_nexus_lines.cwl
 inputs:
 - id: in_alignments
   doc: The input directory containing nexus files to filter

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guidescan_guidequery.cwl
+id: guidescan_guidequery.cwl
 inputs:
 - id: in_target
   doc: '[--flankdistance FLANKDISTANCE]'

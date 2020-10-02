@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../yapp.cwl
+id: yapp.cwl
 inputs:
 - id: in_give_parser_module
   doc: "Give your parser module the name <module>\ndefault is <grammar>"

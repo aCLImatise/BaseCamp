@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FCP_install.py.cwl
+id: FCP_install.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_gene_seq.cwl
+id: extract_gene_seq.cwl
 inputs:
 - id: in_log_level
   doc: "Write a log file (--log-level=DEBUG for debug mode,\n--log-level=INFO for\

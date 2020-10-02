@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_groups_update_group_admin.cwl
+id: arrow_groups_update_group_admin.cwl
 inputs:
 - id: in_users
   doc: List of emails

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../to_fasta.py.cwl
+id: to_fasta.py.cwl
 inputs:
 - id: in_three
   doc: 3'adapter sequence

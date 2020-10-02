@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../last_split8.cwl
+id: last_split8.cwl
 inputs:
 - id: in_format
   doc: 'output format: MAF, MAF+ (default=MAF+)'

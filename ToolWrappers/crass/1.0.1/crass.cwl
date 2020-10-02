@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crass.cwl
+id: crass.cwl
 inputs:
 - id: in_loglevel
   doc: <INT>   Output a log file and set a log level [1 - 4]

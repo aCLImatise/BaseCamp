@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../docopt.py.cwl
+id: docopt.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

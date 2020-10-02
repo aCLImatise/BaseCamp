@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../byobu_launcher.cwl
+id: byobu_launcher.cwl
 inputs:
 - id: in_l
   doc: ''

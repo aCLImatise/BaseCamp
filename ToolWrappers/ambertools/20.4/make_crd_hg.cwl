@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../make_crd_hg.cwl
+id: make_crd_hg.cwl
 inputs:
-- id: in_make_crg_hg
-  doc: 'usage: make_crd_hg <  trajectory_file '
-  type: string
-  inputBinding:
-    position: 0
 - id: in_unit
   doc: '10 Error on OPEN: make_crd.in'
   type: string
   inputBinding:
-    position: 1
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

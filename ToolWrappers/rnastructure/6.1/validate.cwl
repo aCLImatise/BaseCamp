@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validate.cwl
+id: validate.cwl
 inputs:
 - id: in_info
   doc: "Display information about the sequence. (This also implies --quiet.)\nCurrently\

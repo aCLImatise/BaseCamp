@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_download_query_genbank.pl.cwl
+id: bp_download_query_genbank.pl.cwl
 inputs:
 - id: in_query
   doc: string OR

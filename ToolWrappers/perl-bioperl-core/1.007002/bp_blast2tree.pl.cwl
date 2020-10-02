@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_blast2tree.pl.cwl
+id: bp_blast2tree.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

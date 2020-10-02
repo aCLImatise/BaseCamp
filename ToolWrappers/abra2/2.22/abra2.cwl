@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abra2.cwl
+id: abra2.cwl
 inputs:
 - id: in_am_q
   doc: "Set mapq for alignments that map\nequally well to reference and an\nABRA generated\

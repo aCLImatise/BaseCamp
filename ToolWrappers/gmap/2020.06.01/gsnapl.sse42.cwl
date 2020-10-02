@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsnapl.sse42.cwl
+id: gsnapl.sse42.cwl
 inputs:
 - id: in_dir
   doc: "Genome directory.  Default (as specified by --with-gmapdb to the configure\

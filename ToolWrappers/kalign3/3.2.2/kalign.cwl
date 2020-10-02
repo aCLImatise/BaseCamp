@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kalign.cwl
+id: kalign.cwl
 inputs:
 - id: in_format
   doc: ': Output format. [Fasta]'

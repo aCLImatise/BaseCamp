@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map_single_fragments.py.cwl
+id: map_single_fragments.py.cwl
 inputs:
 - id: in_fast_q_one
   doc: "A list of the first read of the sequencing. (default:\nNone)"

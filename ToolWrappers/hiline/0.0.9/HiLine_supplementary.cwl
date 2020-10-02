@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HiLine_supplementary.cwl
+id: HiLine_supplementary.cwl
 inputs:
 - id: in_sort
   doc: / --no-sort  Sort and index output. Default=sort

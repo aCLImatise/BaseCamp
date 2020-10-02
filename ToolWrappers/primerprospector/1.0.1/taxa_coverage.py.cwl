@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxa_coverage.py.cwl
+id: taxa_coverage.py.cwl
 inputs:
 - id: in_is_enabled
   doc: is enabled.

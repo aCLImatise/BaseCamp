@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intervene_upset.cwl
+id: intervene_upset.cwl
 inputs:
 - id: in_input_genomic_regions
   doc: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\nInput genomic regions in\

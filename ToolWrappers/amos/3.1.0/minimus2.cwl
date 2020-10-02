@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minimus2.cwl
+id: minimus2.cwl
 inputs: []
 outputs:
 - id: out_stdout

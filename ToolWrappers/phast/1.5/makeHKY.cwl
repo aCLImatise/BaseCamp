@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeHKY.cwl
+id: makeHKY.cwl
 inputs:
 - id: in_gc
   doc: "Define base composition according to specified G+C composition,\nassuming\

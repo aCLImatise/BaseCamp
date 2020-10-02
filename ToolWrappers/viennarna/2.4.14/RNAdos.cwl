@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAdos.cwl
+id: RNAdos.cwl
 inputs:
 - id: in_detailed_help
   doc: "Print help, including all details and hidden\noptions, and exit"

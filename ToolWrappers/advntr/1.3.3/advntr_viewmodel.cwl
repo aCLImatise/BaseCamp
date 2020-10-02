@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../advntr_viewmodel.cwl
+id: advntr_viewmodel.cwl
 inputs:
 - id: in_h_slash_help
   doc: show this help message and exit

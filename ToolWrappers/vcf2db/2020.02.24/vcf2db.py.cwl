@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2db.py.cwl
+id: vcf2db.py.cwl
 inputs:
 - id: in_take
   doc: ''

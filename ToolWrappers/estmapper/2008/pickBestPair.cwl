@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pickBestPair.cwl
+id: pickBestPair.cwl
 inputs:
 - id: in_o
   doc: ''

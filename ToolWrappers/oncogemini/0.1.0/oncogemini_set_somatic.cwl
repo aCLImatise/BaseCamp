@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncogemini_set_somatic.cwl
+id: oncogemini_set_somatic.cwl
 inputs:
 - id: in_mind_p
   doc: Minimum depth required in all samples (default is 0)

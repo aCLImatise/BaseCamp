@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../byobu_disable_prompt.cwl
+id: byobu_disable_prompt.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gthfilestat.cwl
+id: gthfilestat.cwl
 inputs:
 - id: in_min_alignment_score
   doc: "the minimum alignment score for spliced alignments to be\nincluded into the\

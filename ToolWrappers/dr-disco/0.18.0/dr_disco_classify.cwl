@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dr_disco_classify.cwl
+id: dr_disco_classify.cwl
 inputs:
 - id: in_only_valid
   doc: Only return results marked as 'valid'

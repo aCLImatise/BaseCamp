@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biom_from_uc.cwl
+id: biom_from_uc.cwl
 inputs:
 - id: in_input_fp
   doc: The input uc filepath.  [required]

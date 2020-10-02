@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getGammaDensity.cwl
+id: getGammaDensity.cwl
 inputs: []
 outputs:
 - id: out_stdout

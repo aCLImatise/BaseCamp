@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequana_gtf_fixer.cwl
+id: sequana_gtf_fixer.cwl
 inputs:
 - id: in_input_gtf_file
   doc: input GTF file

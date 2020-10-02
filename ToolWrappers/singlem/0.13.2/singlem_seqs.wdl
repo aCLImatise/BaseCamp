@@ -2,7 +2,7 @@ version 1.0
 
 task SinglemSeqs {
   input {
-    String? alignment_type
+    Int? alignment_type
     Boolean? debug
     Boolean? quiet
     Boolean? full_help
@@ -17,7 +17,7 @@ task SinglemSeqs {
       ~{if defined(window_size) then ("--window_size " +  '"' + window_size + '"') else ""}
   >>>
   parameter_meta {
-    alignment_type: ""
+    alignment_type: "[--window_size INT]"
     debug: "output debug information"
     quiet: "only output errors"
     full_help: "display all help options"

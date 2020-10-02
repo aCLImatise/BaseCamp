@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_genbank2gff3.pl.cwl
+id: bp_genbank2gff3.pl.cwl
 inputs:
 - id: in_no_infer
   doc: don't infer exon/mRNA subfeatures

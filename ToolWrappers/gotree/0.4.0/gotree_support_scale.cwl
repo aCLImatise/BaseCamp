@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_support_scale.cwl
+id: gotree_support_scale.cwl
 inputs:
 - id: in_factor
   doc: Branch support scaling factor (default 1)

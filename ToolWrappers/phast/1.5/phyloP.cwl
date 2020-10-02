@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyloP.cwl
+id: phyloP.cwl
 inputs:
 - id: in_base_by_base
   doc: "Like --wig-scores, but outputs multiple values per site, in a\nmethod-dependent\

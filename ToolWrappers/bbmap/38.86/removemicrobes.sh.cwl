@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../removemicrobes.sh.cwl
+id: removemicrobes.sh.cwl
 inputs:
 - id: in_in
   doc: ''

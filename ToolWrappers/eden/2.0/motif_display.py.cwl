@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../motif_display.py.cwl
+id: motif_display.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

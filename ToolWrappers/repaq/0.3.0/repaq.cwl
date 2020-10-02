@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../repaq.cwl
+id: repaq.cwl
 inputs:
 - id: in_in_one
   doc: input file name (string [=])

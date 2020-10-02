@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dedupe2.sh.cwl
+id: dedupe2.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

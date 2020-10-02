@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtk_annotate.cwl
+id: svtk_annotate.cwl
 inputs:
 - id: in_gen_code
   doc: Gencode gene annotations (GTF).

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MicroPITA.py_output.txt.cwl
+id: MicroPITA.py_output.txt.cwl
 inputs:
 - id: in_a
   doc: ''

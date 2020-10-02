@@ -1,16 +1,12 @@
 class: CommandLineTool
-id: ../../../freebayes.cwl
+id: freebayes.cwl
 inputs:
 - id: in_max_complex_gap
-  doc: ''
+  doc: "--haplotype-length N\nAllow haplotype calls with contiguous embedded matches\
+    \ of up\nto this length. Set N=-1 to disable clumping. (default: 3)"
   type: long
   inputBinding:
     prefix: --max-complex-gap
-- id: in_haplotype_length
-  doc: aln.bam
-  type: long
-  inputBinding:
-    prefix: --haplotype-length
 - id: in_min_alternate_fraction
   doc: "Require at least this fraction of observations supporting\nan alternate allele\
     \ within a single individual in the\nin order to evaluate the position.  default:\

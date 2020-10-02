@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebest_phyml.cwl
+id: treebest_phyml.cwl
 inputs:
 - id: in_build_opt_loglk
   doc: build | opt | loglk | dist                          [build]

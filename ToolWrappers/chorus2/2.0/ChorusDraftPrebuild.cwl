@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ChorusDraftPrebuild.cwl
+id: ChorusDraftPrebuild.cwl
 inputs:
 - id: in_input
   doc: Fasta format input file contains short sequences

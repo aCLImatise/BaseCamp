@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_CreateNetwork.cwl
+id: TOBIAS_CreateNetwork.cwl
 inputs:
 - id: in_tfbs
   doc: '[ [ ...]]   File(s) containing TFBS (with annotation) to create network from'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertFromProline.R.cwl
+id: convertFromProline.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

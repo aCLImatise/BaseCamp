@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svm_subset.py.cwl
+id: svm_subset.py.cwl
 inputs:
 - id: in_method_selection_default
   doc: ": method of selection (default 0)\n0 -- stratified selection (classification\

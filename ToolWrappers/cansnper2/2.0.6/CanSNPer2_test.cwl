@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CanSNPer2_test.cwl
+id: CanSNPer2_test.cwl
 inputs: []
 outputs:
 - id: out_stdout

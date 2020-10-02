@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../mafMeFirst.cwl
+id: mafMeFirst.cwl
 inputs:
-- id: in_xxx
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -xxx
 - id: in_in_dot_maf
   doc: ''
   type: string

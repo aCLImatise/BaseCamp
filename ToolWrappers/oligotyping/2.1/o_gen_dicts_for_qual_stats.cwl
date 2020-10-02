@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_gen_dicts_for_qual_stats.cwl
+id: o_gen_dicts_for_qual_stats.cwl
 inputs: []
 outputs:
 - id: out_stdout

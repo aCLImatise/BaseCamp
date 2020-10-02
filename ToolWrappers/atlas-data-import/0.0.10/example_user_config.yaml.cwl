@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../example_user_config.yaml.cwl
+id: example_user_config.yaml.cwl
 inputs: []
 outputs:
 - id: out_stdout

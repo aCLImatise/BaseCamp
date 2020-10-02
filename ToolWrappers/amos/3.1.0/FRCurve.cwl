@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FRCurve.cwl
+id: FRCurve.cwl
 inputs:
 - id: in_d
   doc: ''

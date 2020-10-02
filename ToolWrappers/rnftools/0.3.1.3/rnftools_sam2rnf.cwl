@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnftools_sam2rnf.cwl
+id: rnftools_sam2rnf.cwl
 inputs:
 - id: in_sam
   doc: "Input SAM/BAM with true (expected) alignments of the\nreads (- for standard\

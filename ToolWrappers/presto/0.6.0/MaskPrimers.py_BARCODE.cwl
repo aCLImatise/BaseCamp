@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MaskPrimers.py_BARCODE.cwl
+id: MaskPrimers.py_BARCODE.cwl
 inputs:
 - id: in_mask_primers_do_tpy
   doc: ''

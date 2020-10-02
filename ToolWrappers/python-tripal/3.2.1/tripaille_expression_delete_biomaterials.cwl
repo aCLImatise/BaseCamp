@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_expression_delete_biomaterials.cwl
+id: tripaille_expression_delete_biomaterials.cwl
 inputs:
 - id: in_names
   doc: JSON list of biomaterial names to delete. (optional)

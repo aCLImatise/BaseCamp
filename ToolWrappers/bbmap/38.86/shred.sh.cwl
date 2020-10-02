@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shred.sh.cwl
+id: shred.sh.cwl
 inputs:
 - id: in_in
   doc: ''

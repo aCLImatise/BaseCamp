@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribotish_tisdiff.cwl
+id: ribotish_tisdiff.cwl
 inputs:
 - id: in_one
   doc: Prediction results of group 1 TIS data

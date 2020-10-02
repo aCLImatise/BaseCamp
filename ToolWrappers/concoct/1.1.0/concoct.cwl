@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../concoct.cwl
+id: concoct.cwl
 inputs:
 - id: in_coverage_file
   doc: "specify the coverage file, containing a table where\neach row correspond to\

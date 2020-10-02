@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../glam2.cwl
+id: glam2.cwl
 inputs:
 - id: in_output_directory_will
   doc: ': output directory; will not clobber existing files'

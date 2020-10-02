@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rfmix2tagore.py.cwl
+id: rfmix2tagore.py.cwl
 inputs:
 - id: in_chr_one
   doc: Chromosome 1 RFMix painting

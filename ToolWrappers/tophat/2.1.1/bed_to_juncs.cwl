@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed_to_juncs.cwl
+id: bed_to_juncs.cwl
 inputs:
 - id: in_for
   doc: ''

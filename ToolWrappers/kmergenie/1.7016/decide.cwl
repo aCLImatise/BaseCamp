@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../decide.cwl
+id: decide.cwl
 inputs:
 - id: in_diploid
   doc: use the diploid model

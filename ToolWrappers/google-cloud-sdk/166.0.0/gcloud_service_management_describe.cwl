@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_service_management_describe.cwl
+id: gcloud_service_management_describe.cwl
 inputs:
 - id: in_service
   doc: ''

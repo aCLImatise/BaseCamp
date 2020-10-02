@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../groovy_script.cwl
+id: groovy_script.cwl
 inputs: []
 outputs:
 - id: out_stdout

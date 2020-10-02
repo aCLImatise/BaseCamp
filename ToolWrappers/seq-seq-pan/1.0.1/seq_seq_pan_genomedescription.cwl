@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq_seq_pan_genomedescription.cwl
+id: seq_seq_pan_genomedescription.cwl
 inputs:
 - id: in_input
   doc: File with list of /paths/to/files.fasta

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PLEK_spsn.cwl
+id: PLEK_spsn.cwl
 inputs: []
 outputs:
 - id: out_stdout

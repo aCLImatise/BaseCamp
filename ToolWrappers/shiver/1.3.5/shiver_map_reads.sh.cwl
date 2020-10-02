@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shiver_map_reads.sh.cwl
+id: shiver_map_reads.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sponge.cwl
+id: sponge.cwl
 inputs: []
 outputs:
 - id: out_stdout

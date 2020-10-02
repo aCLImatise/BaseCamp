@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addReadsToUnitigs.cwl
+id: addReadsToUnitigs.cwl
 inputs:
 - id: in_gatekeeper_store
   doc: gatekeeper store

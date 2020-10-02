@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PluginRawSciex.dll.cwl
+id: PluginRawSciex.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

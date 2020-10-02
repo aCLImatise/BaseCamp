@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crimson_picard.cwl
+id: crimson_picard.cwl
 inputs:
 - id: in_input
   doc: ''

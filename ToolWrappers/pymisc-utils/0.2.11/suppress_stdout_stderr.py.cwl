@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../suppress_stdout_stderr.py.cwl
+id: suppress_stdout_stderr.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

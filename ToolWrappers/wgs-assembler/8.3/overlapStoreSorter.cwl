@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlapStoreSorter.cwl
+id: overlapStoreSorter.cwl
 inputs: []
 outputs:
 - id: out_stdout

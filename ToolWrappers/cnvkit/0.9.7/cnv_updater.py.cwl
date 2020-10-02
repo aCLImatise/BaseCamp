@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnv_updater.py.cwl
+id: cnv_updater.py.cwl
 inputs:
 - id: in_output_dir
   doc: Directory to write output .cnn files.

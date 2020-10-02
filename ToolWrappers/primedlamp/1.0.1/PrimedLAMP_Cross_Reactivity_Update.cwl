@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PrimedLAMP_Cross_Reactivity_Update.cwl
+id: PrimedLAMP_Cross_Reactivity_Update.cwl
 inputs:
 - id: in_run_id
   doc: Desired Run ID

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterShortReads.py.cwl
+id: filterShortReads.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

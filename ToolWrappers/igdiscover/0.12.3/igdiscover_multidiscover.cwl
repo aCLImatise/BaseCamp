@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_multidiscover.cwl
+id: igdiscover_multidiscover.cwl
 inputs:
 - id: in_minimum_frequency
   doc: "Minimum number of datasets in which sequence must\noccur (default is no. of\

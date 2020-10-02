@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scpred_eigen_decomp.R.cwl
+id: scpred_eigen_decomp.R.cwl
 inputs:
 - id: in_training_matrix
   doc: Path to the training matrix in .rds format

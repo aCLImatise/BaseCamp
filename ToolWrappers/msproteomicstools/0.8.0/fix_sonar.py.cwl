@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fix_sonar.py.cwl
+id: fix_sonar.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

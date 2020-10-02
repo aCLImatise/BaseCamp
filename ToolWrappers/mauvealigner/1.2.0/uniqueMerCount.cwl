@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uniqueMerCount.cwl
+id: uniqueMerCount.cwl
 inputs:
 - id: in_sorted_mer_list
   doc: ''

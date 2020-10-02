@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmfinder.cwl
+id: cmfinder.cwl
 inputs:
 - id: in__candidate_file
   doc: ': the candidate file'

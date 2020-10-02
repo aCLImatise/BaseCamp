@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitsam.sh.cwl
+id: splitsam.sh.cwl
 inputs:
 - id: in_input
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_away_subset.py.cwl
+id: filter_away_subset.py.cwl
 inputs:
 - id: in_fuzzy_junction
   doc: "Fuzzy junction max dist (default: 5bp)\n"

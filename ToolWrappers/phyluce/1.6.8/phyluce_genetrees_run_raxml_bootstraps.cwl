@@ -1,8 +1,9 @@
 class: CommandLineTool
-id: ../../../phyluce_genetrees_run_raxml_bootstraps.cwl
+id: phyluce_genetrees_run_raxml_bootstraps.cwl
 inputs:
 - id: in_best_trees
-  doc: ''
+  doc: "OUTPUT [--bootreps BOOTREPS]\n[--outgroup OUTGROUP]\n[--threads THREADS]\n\
+    [--cores CORES] [--quiet]"
   type: string
   inputBinding:
     prefix: --best-trees

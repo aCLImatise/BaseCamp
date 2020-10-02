@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_quiver.py.cwl
+id: fc_quiver.py.cwl
 inputs:
 - id: in_target
   doc: 'target pipeline: clr=regular; ccs=only ccs data (default: clr)'

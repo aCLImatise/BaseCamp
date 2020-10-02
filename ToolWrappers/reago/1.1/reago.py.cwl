@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reago.py.cwl
+id: reago.py.cwl
 inputs:
 - id: in_o
   doc: ', default 0.8'

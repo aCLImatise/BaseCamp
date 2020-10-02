@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../freak.cwl
+id: freak.cwl
 inputs:
 - id: in_letters
   doc: string     [gc] Residue letters (Any string)

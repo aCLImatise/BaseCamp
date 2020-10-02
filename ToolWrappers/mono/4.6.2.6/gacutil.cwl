@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gacutil.cwl
+id: gacutil.cwl
 inputs:
 - id: in_installs_assembly_global
   doc: "[-check_refs] [-package NAME] [-root ROOTDIR] [-gacdir GACDIR]\nInstalls an\

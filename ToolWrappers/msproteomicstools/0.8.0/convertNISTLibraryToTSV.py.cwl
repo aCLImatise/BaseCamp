@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertNISTLibraryToTSV.py.cwl
+id: convertNISTLibraryToTSV.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

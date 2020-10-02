@@ -20,8 +20,6 @@ task Slidejuncs {
     Array[String] mask_gff_exon_types
     Array[String] mask_gff_cds_types
     String sequence
-    String position
-    String repeated
     Int one_dot
     Int two_dot
     Int three_dot
@@ -38,8 +36,6 @@ task Slidejuncs {
   command <<<
     slidejuncs \
       ~{sequence} \
-      ~{position} \
-      ~{repeated} \
       ~{one_dot} \
       ~{two_dot} \
       ~{three_dot} \
@@ -89,8 +85,6 @@ task Slidejuncs {
     mask_gff_exon_types: "GFF3 feature types to include as exons (for GFF3 only;\\ndefault: use SO v2.5.3 specification)"
     mask_gff_cds_types: "GFF3 feature types to include as CDS (for GFF3 only;\\ndefault: use SO v2.5.3 specification)\\n"
     sequence: "G   C   T   C   T   A   C   T   A   G   N   N   N   C   T   A   C   T   A   G   A   T   G   G"
-    position: "0   1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18  19  20  21  22  23"
-    repeated: "^^^^^^^^^^^^^^^^^^^^^^^^^^^^            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
     one_dot: "If a mask file from crossmap\\nis provided, junctions in which one or more of the 5' and 3' splice\\nsites appear in a repetitive region of the genome are flagged as\\nnon-informative and written to a separate file."
     two_dot: "For remaining splice junctions, the extent of locally repeated nucleotide\\nsequence, if any, surrounding the query junction's splice donor and\\nacceptor sites, are determined in both the 5' and 3' directions.\\nThis is the maximum window (*equal-support region*) across which the\\nactual splice junction could be moved without reducing sequence support."
     three_dot: "If there is one or more known splice junctions in this region, the\\nquery junction is assumed to match these, and the known junctions are\\nreported rather than the query."

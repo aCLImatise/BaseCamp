@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_trim_seq.cwl
+id: goalign_trim_seq.cwl
 inputs:
 - id: in_from_start
   doc: 'If true: trims n char from the start, else from the end'

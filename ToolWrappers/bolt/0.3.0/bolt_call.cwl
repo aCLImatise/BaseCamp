@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bolt_call.cwl
+id: bolt_call.cwl
 inputs:
 - id: in_sample_file_path
   doc: sample file path (*required)

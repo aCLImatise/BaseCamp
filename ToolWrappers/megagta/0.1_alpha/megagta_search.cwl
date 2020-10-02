@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megagta_search.cwl
+id: megagta_search.cwl
 inputs:
 - id: in_search
   doc: ''

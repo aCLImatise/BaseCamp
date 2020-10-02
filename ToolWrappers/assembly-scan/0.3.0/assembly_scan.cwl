@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assembly_scan.cwl
+id: assembly_scan.cwl
 inputs:
 - id: in_assembly_summary_do_tpy
   doc: ''

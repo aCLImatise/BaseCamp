@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GenericWrapper.cwl
+id: GenericWrapper.cwl
 inputs: []
 outputs:
 - id: out_stdout

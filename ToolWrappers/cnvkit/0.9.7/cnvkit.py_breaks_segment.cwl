@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_breaks_segment.cwl
+id: cnvkit.py_breaks_segment.cwl
 inputs:
 - id: in_o
   doc: ''

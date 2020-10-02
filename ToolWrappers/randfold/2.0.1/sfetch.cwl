@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sfetch.cwl
+id: sfetch.cwl
 inputs:
 - id: in_name_accession_number
   doc: ': name is an accession number, not a key'

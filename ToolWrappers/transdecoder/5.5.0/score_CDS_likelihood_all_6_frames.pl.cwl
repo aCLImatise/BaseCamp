@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../score_CDS_likelihood_all_6_frames.pl.cwl
+id: score_CDS_likelihood_all_6_frames.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

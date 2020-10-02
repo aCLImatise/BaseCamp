@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_metaplots.bash.cwl
+id: create_metaplots.bash.cwl
 inputs:
 - id: in_ribo_dot_bam
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_alimask_msafile.cwl
+id: esl_alimask_msafile.cwl
 inputs:
 - id: in_rf_is_mask
   doc: ''

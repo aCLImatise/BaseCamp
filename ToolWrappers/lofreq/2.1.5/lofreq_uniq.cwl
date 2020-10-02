@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lofreq_uniq.cwl
+id: lofreq_uniq.cwl
 inputs:
 - id: in__vcfin_file
   doc: '| --vcf-in FILE      Input vcf file listing variants [- = stdin; gzip supported]'

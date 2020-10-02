@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bg_bpipe.cwl
+id: bg_bpipe.cwl
 inputs: []
 outputs:
 - id: out_stdout

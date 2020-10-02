@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IDDecoyProbability.cwl
+id: IDDecoyProbability.cwl
 inputs:
 - id: in_in
   doc: "Identification input of combined forward decoy search (reindex with PeptideIndexer\

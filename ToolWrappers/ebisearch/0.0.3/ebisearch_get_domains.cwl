@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ebisearch_get_domains.cwl
+id: ebisearch_get_domains.cwl
 inputs:
 - id: in_file
   doc: File to export the domain information (optional)

@@ -1,15 +1,11 @@
 !Command
 command:
 - phyluce_align_get_indels_from_alignments
-positional:
-- !Positional
-  description: '[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]'
-  position: 0
-  name: OUTGROUP
-  optional: false
+positional: []
 named:
 - !Flag
-  description: ''
+  description: "OUTGROUP\n[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\n\
+    [--trim {absolute,relative,none}]\n[--cores CORES]"
   synonyms:
   - --output
   - --outgroup
@@ -29,12 +25,12 @@ named:
   - --input-format
   args: !ChoiceFlagArg
     choices: !!set
-      ? fasta
-      ? phylip
-      ? stockholm
-      ? nexus
-      ? emboss
-      ? clustal
+      clustal:
+      stockholm:
+      phylip:
+      fasta:
+      emboss:
+      nexus:
   optional: true
 - !Flag
   description: "Count indels only after removing gaps/missing data\nfrom alignment\
@@ -43,9 +39,9 @@ named:
   - --trim
   args: !ChoiceFlagArg
     choices: !!set
-      ? absolute
-      ? relative
-      ? none
+      absolute:
+      none:
+      relative:
   optional: true
 - !Flag
   description: The number of cores to use.

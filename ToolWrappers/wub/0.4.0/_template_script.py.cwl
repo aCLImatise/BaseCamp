@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_template_script.py.cwl
+id: _template_script.py.cwl
 inputs:
 - id: in_input
   doc: Input.

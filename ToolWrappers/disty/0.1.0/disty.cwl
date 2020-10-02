@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../disty.cwl
+id: disty.cwl
 inputs:
 - id: in_float_skip_columns
   doc: FLOAT  skip columns having frequency of N > FLOAT [1.00]

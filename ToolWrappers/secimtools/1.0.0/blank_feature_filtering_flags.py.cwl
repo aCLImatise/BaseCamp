@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blank_feature_filtering_flags.py.cwl
+id: blank_feature_filtering_flags.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

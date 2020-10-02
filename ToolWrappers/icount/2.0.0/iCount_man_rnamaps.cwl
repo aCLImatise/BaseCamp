@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_man_rnamaps.cwl
+id: iCount_man_rnamaps.cwl
 inputs:
 - id: in_mode
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bowtie_inspect.cwl
+id: bowtie_inspect.cwl
 inputs:
 - id: in_a_slash_across
   doc: 'Number of characters across in FASTA output (default: 60)'

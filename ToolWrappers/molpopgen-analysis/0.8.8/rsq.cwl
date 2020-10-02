@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsq.cwl
+id: rsq.cwl
 inputs:
 - id: in_apply_frequency_cutoff
   doc: ': apply a frequency cutoff'

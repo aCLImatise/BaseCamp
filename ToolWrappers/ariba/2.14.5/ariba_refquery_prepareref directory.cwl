@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_refquery_prepareref directory.cwl
+id: ariba_refquery_prepareref directory.cwl
 inputs:
 - id: in_prepare_ref_dir
   doc: Name of directory output by prepareref

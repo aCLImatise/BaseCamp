@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OpenSwathChromatogramExtractor.cwl
+id: OpenSwathChromatogramExtractor.cwl
 inputs:
 - id: in_in
   doc: "*                   Input files separated by blank (valid formats: 'mzML')"

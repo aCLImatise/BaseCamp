@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AMBER.cwl
+id: AMBER.cwl
 inputs:
 - id: in_max_depth_percent
   doc: Min percentage of median depth [1.5]

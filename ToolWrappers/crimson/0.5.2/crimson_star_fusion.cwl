@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crimson_star_fusion.cwl
+id: crimson_star_fusion.cwl
 inputs:
 - id: in_input
   doc: ''

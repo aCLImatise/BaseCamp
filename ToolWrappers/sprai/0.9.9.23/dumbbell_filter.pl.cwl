@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dumbbell_filter.pl.cwl
+id: dumbbell_filter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

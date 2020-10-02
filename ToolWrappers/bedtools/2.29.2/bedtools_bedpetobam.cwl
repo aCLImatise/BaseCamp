@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_bedpetobam.cwl
+id: bedtools_bedpetobam.cwl
 inputs:
 - id: in_mapq
   doc: "Set the mappinq quality for the BAM records.\n(INT) Default: 255"

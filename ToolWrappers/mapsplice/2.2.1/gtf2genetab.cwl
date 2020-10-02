@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf2genetab.cwl
+id: gtf2genetab.cwl
 inputs: []
 outputs:
 - id: out_stdout

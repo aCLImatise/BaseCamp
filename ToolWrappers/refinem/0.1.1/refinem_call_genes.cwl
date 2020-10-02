@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refinem_call_genes.cwl
+id: refinem_call_genes.cwl
 inputs:
 - id: in_unbinned_file
   doc: call genes on unbinned scaffolds

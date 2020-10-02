@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_indexstar.cwl
+id: iCount_indexstar.cwl
 inputs:
 - id: in__annotation_annotation
   doc: ', --annotation     Annotation that defines splice junctions (default: )'

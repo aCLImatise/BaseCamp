@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kitsch.cwl
+id: kitsch.cwl
 inputs: []
 outputs:
 - id: out_stdout

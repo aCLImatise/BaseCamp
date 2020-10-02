@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqhax_convert.cwl
+id: seqhax_convert.cwl
 inputs:
 - id: in_output_fasta
   doc: Output FASTA.

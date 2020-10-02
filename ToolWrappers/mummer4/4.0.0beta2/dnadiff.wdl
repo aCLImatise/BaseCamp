@@ -2,10 +2,7 @@ version 1.0
 
 task Dnadiff {
   input {
-    Boolean? delta_provide_precomputed
-    Boolean? help
-    Boolean? prefix_set_prefix
-    Boolean? v
+    File? delta_provide_precomputed
     String dna_diff
     String dnadiff_d_delta
     String reference
@@ -19,16 +16,10 @@ task Dnadiff {
       ~{reference} \
       ~{query} \
       ~{delta_file_unfiltered} \
-      ~{if (delta_provide_precomputed) then "-d" else ""} \
-      ~{if (help) then "--help" else ""} \
-      ~{if (prefix_set_prefix) then "-p" else ""} \
-      ~{if (v) then "-V" else ""}
+      ~{if (delta_provide_precomputed) then "-d" else ""}
   >>>
   parameter_meta {
-    delta_provide_precomputed: "|delta        Provide precomputed delta file for analysis"
-    help: "Display help information and exit"
-    prefix_set_prefix: "|prefix       Set the prefix of the output files (default \\\"out\\\")"
-    v: ""
+    delta_provide_precomputed: "|delta        Provide precomputed delta file for analysis\\n-h\\n--help          Display help information and exit\\n-p|prefix       Set the prefix of the output files (default \\\"out\\\")\\n-V\\n--version       Display the version information and exit\\n"
     dna_diff: "[options]  <reference>  <query>"
     dnadiff_d_delta: "dnadiff  [options]  -d <delta file>"
     reference: "Set the input reference multi-FASTA filename"
@@ -37,5 +28,6 @@ task Dnadiff {
   }
   output {
     File out_stdout = stdout()
+    File out_delta_provide_precomputed = "${in_delta_provide_precomputed}"
   }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nohup.cwl
+id: nohup.cwl
 inputs:
 - id: in_command
   doc: ''

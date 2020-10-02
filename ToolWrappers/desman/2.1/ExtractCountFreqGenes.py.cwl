@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ExtractCountFreqGenes.py.cwl
+id: ExtractCountFreqGenes.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

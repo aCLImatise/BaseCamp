@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsnp_spoligotype.py.cwl
+id: vsnp_spoligotype.py.cwl
 inputs:
 - id: in_read_one
   doc: 'Required: single read'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qorts.cwl
+id: qorts.cwl
 inputs:
 - id: in_formatting_dot
   doc: 'NOTE: if you run into OutOfMemoryExceptions, '

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyloBoot.cwl
+id: phyloBoot.cwl
 inputs:
 - id: in_tree
   doc: "|<tree_string>\n(Required if non-parametric and more than two species) Name\n\

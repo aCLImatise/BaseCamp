@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unexpand.cwl
+id: unexpand.cwl
 inputs:
 - id: in_all
   doc: convert all blanks, instead of just initial blanks

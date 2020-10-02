@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.semeta_post_link.sh.cwl
+id: .semeta_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../recoder.cwl
+id: recoder.cwl
 inputs:
 - id: in_enzymes
   doc: "string     [all] Comma separated enzyme list (Any\nstring)"
   type: boolean
   inputBinding:
     prefix: -enzymes
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 - id: in_s_show
   doc: boolean    [N] Display untranslated sequence
   type: boolean

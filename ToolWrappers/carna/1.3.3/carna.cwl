@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../carna.cwl
+id: carna.cwl
 inputs:
 - id: in_match
   doc: "(50)\nMatch score"
@@ -138,16 +138,21 @@ inputs:
   type: long
   inputBinding:
     prefix: --time-limit
-- id: in_var_27
-  doc: ''
+- id: in_verbose
+  doc: Verbose
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: in_rna_sequences_pair
-  doc: 'RNA sequences and pair probabilities:'
-  type: string
+- id: in_file_one
+  doc: ''
+  type: File
   inputBinding:
     position: 0
+- id: in_file_two
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

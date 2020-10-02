@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alignKMers.cwl
+id: alignKMers.cwl
 inputs:
 - id: in__unaligned_kmers
   doc: = unaligned k-mers

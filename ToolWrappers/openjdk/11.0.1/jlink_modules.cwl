@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jlink_modules.cwl
+id: jlink_modules.cwl
 inputs:
 - id: in_add_modules
   doc: ''

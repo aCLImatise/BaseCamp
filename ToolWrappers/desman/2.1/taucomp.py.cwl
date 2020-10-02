@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taucomp.py.cwl
+id: taucomp.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

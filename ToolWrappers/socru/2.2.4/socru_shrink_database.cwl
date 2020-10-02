@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../socru_shrink_database.cwl
+id: socru_shrink_database.cwl
 inputs:
 - id: in_min_fragment_size
   doc: 'Minimum fragment size in bases (default: 100000)'

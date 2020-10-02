@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shmlast.cwl
+id: shmlast.cwl
 inputs: []
 outputs:
 - id: out_stdout

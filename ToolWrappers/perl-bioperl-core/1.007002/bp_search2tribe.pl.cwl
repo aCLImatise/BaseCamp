@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_search2tribe.pl.cwl
+id: bp_search2tribe.pl.cwl
 inputs:
 - id: in__output_filename
   doc: '- the output filename [default STDOUT]'

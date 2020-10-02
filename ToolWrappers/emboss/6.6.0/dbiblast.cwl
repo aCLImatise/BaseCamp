@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbiblast.cwl
+id: dbiblast.cwl
 inputs:
 - id: in_directory
   doc: directory  [.] Database directory

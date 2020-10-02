@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aggregateContigOverlapsByBin.pl.cwl
+id: aggregateContigOverlapsByBin.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

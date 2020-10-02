@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agg_ingest2.cwl
+id: agg_ingest2.cwl
 inputs:
 - id: in_output
   doc: agg will output output_prefix.bcf and output_prefix.dpt

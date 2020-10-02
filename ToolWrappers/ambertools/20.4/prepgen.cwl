@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepgen.cwl
+id: prepgen.cwl
 inputs:
 - id: in_rn
   doc: optional

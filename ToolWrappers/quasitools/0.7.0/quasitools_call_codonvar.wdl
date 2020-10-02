@@ -2,8 +2,7 @@ version 1.0
 
 task QuasitoolsCallCodonvar {
   input {
-    Float? error_rate
-    File? var_output
+    File? error_rate
     String bam
     String reference
     String offset
@@ -15,12 +14,10 @@ task QuasitoolsCallCodonvar {
       ~{reference} \
       ~{offset} \
       ~{bed_four_file} \
-      ~{if defined(error_rate) then ("--error_rate " +  '"' + error_rate + '"') else ""} \
-      ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""}
+      ~{if defined(error_rate) then ("--error_rate " +  '"' + error_rate + '"') else ""}
   >>>
   parameter_meta {
-    error_rate: "estimated sequencing error rate."
-    var_output: ""
+    error_rate: "estimated sequencing error rate.\\n-o, --output FILENAME\\n--help                  Show this message and exit.\\n"
     bam: ""
     reference: ""
     offset: ""
@@ -28,5 +25,6 @@ task QuasitoolsCallCodonvar {
   }
   output {
     File out_stdout = stdout()
+    File out_error_rate = "${in_error_rate}"
   }
 }

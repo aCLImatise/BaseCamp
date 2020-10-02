@@ -3,11 +3,11 @@ version 1.0
 task Kmds {
   input {
     File? arg_dsm_kmer
-    Boolean? mds_concat
     Boolean? arg_pheno_metadata
     File? arg_output_prefix
     Boolean? no_mds
     Boolean? write_distances
+    String? mds_concat
     Int? pc
     Int? size
     Int? threads
@@ -20,11 +20,11 @@ task Kmds {
     kmds \
       ~{file} \
       ~{if (arg_dsm_kmer) then "-k" else ""} \
-      ~{if (mds_concat) then "--mds_concat" else ""} \
       ~{if (arg_pheno_metadata) then "-p" else ""} \
       ~{if (arg_output_prefix) then "-o" else ""} \
       ~{if (no_mds) then "--no_mds" else ""} \
       ~{if (write_distances) then "--write_distances" else ""} \
+      ~{if defined(mds_concat) then ("--mds_concat " +  '"' + mds_concat + '"') else ""} \
       ~{if defined(pc) then ("--pc " +  '"' + pc + '"') else ""} \
       ~{if defined(size) then ("--size " +  '"' + size + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
@@ -34,11 +34,11 @@ task Kmds {
   >>>
   parameter_meta {
     arg_dsm_kmer: "[ --kmers ] arg       dsm kmer output file (not needed if using"
-    mds_concat: ")"
     arg_pheno_metadata: "[ --pheno ] arg       .pheno metadata"
     arg_output_prefix: "[ --output ] arg      output prefix for new dsm file"
     no_mds: "do not perform MDS; output subsampled matrix instead"
     write_distances: "write csv of distance matrix"
+    mds_concat: "list of subsampled matrices to use in MDS. Performs\\nonly MDS; implies --no_filtering"
     pc: "(=10)           number of principal coordinates to output"
     size: "(=1000000)    number of kmers to use in MDS"
     threads: "(=1)       number of threads. Suggested: 8"

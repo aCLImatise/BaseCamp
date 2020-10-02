@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_pull_request.cwl
+id: planemo_pull_request.cwl
 inputs:
 - id: in_message
   doc: Message describing the pull request to create.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../junctionalReads.py.cwl
+id: junctionalReads.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnaclustScores2Dist.pl.cwl
+id: rnaclustScores2Dist.pl.cwl
 inputs:
 - id: in_man
   doc: full documentation

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_report_transmission.cwl
+id: vtools_report_transmission.cwl
 inputs:
 - id: in_parentsnames_should_identify
   doc: "PARENTS\nNames of parents, which should uniquely identify two\nsamples."

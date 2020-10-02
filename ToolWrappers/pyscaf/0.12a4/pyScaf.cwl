@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyScaf.cwl
+id: pyScaf.cwl
 inputs:
 - id: in_fast_a
   doc: assembly FASTA file

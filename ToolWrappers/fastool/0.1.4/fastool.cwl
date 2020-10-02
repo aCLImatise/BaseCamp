@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastool.cwl
+id: fastool.cwl
 inputs: []
 outputs:
 - id: out_stdout

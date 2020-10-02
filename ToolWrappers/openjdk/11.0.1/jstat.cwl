@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jstat.cwl
+id: jstat.cwl
 inputs:
 - id: in_flag_pass_flag
   doc: <flag>      Pass <flag> directly to the runtime system.

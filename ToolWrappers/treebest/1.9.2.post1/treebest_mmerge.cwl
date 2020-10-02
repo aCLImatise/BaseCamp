@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebest_mmerge.cwl
+id: treebest_mmerge.cwl
 inputs:
 - id: in_reroot
   doc: reroot

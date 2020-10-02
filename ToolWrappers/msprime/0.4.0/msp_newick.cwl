@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msp_newick.cwl
+id: msp_newick.cwl
 inputs:
 - id: in_precision
   doc: "The number of decimal places in branch lengths\n"

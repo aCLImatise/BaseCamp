@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pair2tb.cwl
+id: pair2tb.cwl
 inputs: []
 outputs:
 - id: out_stdout

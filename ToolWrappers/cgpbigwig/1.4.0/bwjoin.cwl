@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwjoin.cwl
+id: bwjoin.cwl
 inputs:
 - id: in_input_path
   doc: '[dir]                           Path to the input bigwig files named [path]/<contig_name>.bw'

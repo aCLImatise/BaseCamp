@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_variants.cwl
+id: merge_variants.cwl
 inputs:
 - id: in_ref
   doc: samtools reference sequence (required)

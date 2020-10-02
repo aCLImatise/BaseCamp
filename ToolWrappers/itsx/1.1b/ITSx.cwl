@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ITSx.cwl
+id: ITSx.cwl
 inputs:
 - id: in_dna_fasta_input
   doc: ': DNA FASTA input file to investigate'

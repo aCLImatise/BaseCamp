@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_TransGeneScan.pl.cwl
+id: run_TransGeneScan.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

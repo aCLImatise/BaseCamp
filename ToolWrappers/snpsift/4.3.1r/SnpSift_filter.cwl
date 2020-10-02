@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_filter.cwl
+id: SnpSift_filter.cwl
 inputs:
 - id: in_add_filter
   doc: ": Add a string to FILTER VCF field if 'expression' is true. Default: '' (none)"

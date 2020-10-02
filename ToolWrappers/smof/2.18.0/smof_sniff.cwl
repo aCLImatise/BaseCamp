@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_sniff.cwl
+id: smof_sniff.cwl
 inputs:
 - id: in_input
   doc: input fasta sequence (default = stdin)

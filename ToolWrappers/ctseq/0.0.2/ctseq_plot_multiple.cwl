@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ctseq_plot_multiple.cwl
+id: ctseq_plot_multiple.cwl
 inputs:
 - id: in_dir
   doc: "Path to directory where you want your plots to be\ncreated. If no path is\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../build_bithash.cwl
+id: build_bithash.cwl
 inputs: []
 outputs:
 - id: out_stdout

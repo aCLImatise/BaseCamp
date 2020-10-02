@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../close_gaps.sh.cwl
+id: close_gaps.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

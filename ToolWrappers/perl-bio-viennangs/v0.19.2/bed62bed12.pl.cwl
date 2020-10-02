@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed62bed12.pl.cwl
+id: bed62bed12.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

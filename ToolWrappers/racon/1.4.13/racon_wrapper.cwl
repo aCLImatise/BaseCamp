@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../racon_wrapper.cwl
+id: racon_wrapper.cwl
 inputs:
 - id: in_split
   doc: "split target sequences into chunks of desired size in\nbytes (default: None)"

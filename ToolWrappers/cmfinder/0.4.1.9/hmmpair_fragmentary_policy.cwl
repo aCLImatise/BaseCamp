@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmpair_fragmentary_policy.cwl
+id: hmmpair_fragmentary_policy.cwl
 inputs:
 - id: in_hmm_pair
   doc: ''

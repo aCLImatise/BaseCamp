@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../benchmark2mates.cwl
+id: benchmark2mates.cwl
 inputs:
 - id: in_prefix_resulting_mates
   doc: prefix for the resulting .mates file. (required)

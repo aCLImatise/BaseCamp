@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_amplicons_and_reads.py.cwl
+id: get_amplicons_and_reads.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

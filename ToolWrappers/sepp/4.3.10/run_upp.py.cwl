@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_upp.py.cwl
+id: run_upp.py.cwl
 inputs:
 - id: in_fragment_chunksize
   doc: "maximum fragment chunk size of N. Helps controlling\nmemory. [default: 20000]"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../check_index_consistency.cwl
+id: check_index_consistency.cwl
 inputs: []
 outputs:
 - id: out_stdout

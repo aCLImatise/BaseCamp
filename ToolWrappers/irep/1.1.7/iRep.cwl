@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iRep.cwl
+id: iRep.cwl
 inputs:
 - id: in__fastas
   doc: '[F [F ...]]      fasta(s)'
@@ -11,11 +11,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -s
-- id: in_reorder
-  doc: )
-  type: boolean
-  inputBinding:
-    prefix: --reorder
 - id: in_prefix_output_files
   doc: prefix for output files (table and plots)
   type: string

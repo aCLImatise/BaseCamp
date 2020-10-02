@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contigBias.pl.cwl
+id: contigBias.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

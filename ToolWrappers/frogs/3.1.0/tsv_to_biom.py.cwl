@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tsv_to_biom.py.cwl
+id: tsv_to_biom.py.cwl
 inputs:
 - id: in_input_tsv
   doc: "This input file contain the abundance and metadata\n(format: TSV)."

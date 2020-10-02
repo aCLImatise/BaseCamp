@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lz4.cwl
+id: lz4.cwl
 inputs:
 - id: in_fast_compression_default
   doc: ': Fast compression (default)'
@@ -61,11 +61,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -l
-- id: in_block_size_default
-  doc: '#    : Block size [4-7](default : 7)'
-  type: boolean
-  inputBinding:
-    prefix: -B
 - id: in_bd
   doc: ': Block dependency (improve compression ratio)'
   type: boolean

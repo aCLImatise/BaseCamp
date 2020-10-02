@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FileConverter.cwl
+id: FileConverter.cwl
 inputs:
 - id: in_in
   doc: "*        Input file to convert. (valid formats: 'mzML', 'mzXML', 'mgf', 'raw',\

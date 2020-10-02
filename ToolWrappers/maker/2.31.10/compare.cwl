@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compare.cwl
+id: compare.cwl
 inputs: []
 outputs:
 - id: out_stdout

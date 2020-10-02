@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CMVJson.cwl
+id: CMVJson.cwl
 inputs:
 - id: in_input_model_file
   doc: Path to input

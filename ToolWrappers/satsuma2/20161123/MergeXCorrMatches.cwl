@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MergeXCorrMatches.cwl
+id: MergeXCorrMatches.cwl
 inputs:
 - id: in_string_query_sequence
   doc: '<string> : query fasta sequence'

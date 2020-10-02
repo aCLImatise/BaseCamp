@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HG_CoLoR.cwl
+id: HG_CoLoR.cwl
 inputs:
 - id: in_min_order
   doc: ':        Minimum k-mer size of the variable-order de Bruijn graph (default:

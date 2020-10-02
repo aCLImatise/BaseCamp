@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../JAMM.sh.cwl
+id: JAMM.sh.cwl
 inputs:
 - id: in_directory_containing_sample_files
   doc: directory containing Sample files (required)

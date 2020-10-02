@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../populations.cwl
+id: populations.cwl
 inputs:
 - id: in_in_path
   doc: ': path to a directory containing Stacks ouput files.'

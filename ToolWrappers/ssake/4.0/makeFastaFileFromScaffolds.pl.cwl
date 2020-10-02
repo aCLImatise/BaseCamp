@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeFastaFileFromScaffolds.pl.cwl
+id: makeFastaFileFromScaffolds.pl.cwl
 inputs:
 - id: in_t_exists_fatal
   doc: "'t exists -- fatal."

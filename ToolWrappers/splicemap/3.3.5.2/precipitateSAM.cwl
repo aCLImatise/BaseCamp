@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../precipitateSAM.cwl
+id: precipitateSAM.cwl
 inputs: []
 outputs:
 - id: out_stdout

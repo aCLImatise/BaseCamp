@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_grouping.py.cwl
+id: read_grouping.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

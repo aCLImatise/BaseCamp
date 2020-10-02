@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pal_finder.cwl
+id: pal_finder.cwl
 inputs:
 - id: in_perl
   doc: ''

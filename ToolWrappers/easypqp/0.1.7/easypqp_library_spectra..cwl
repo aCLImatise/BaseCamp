@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../easypqp_library_spectra..cwl
+id: easypqp_library_spectra..cwl
 inputs:
 - id: in_easy_pqp
   doc: ''

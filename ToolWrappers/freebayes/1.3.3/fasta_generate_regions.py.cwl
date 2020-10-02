@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_generate_regions.py.cwl
+id: fasta_generate_regions.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

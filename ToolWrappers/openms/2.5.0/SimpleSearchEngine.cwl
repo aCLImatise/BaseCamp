@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SimpleSearchEngine.cwl
+id: SimpleSearchEngine.cwl
 inputs:
 - id: in_in
   doc: "*                                              Input file  (valid formats:\

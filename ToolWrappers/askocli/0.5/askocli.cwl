@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../askocli.cwl
+id: askocli.cwl
 inputs:
 - id: in_command
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tango_build_taxonmap.cwl
+id: tango_build_taxonmap.cwl
 inputs:
 - id: in_p
   doc: ''

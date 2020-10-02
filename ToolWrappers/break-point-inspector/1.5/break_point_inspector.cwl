@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../break_point_inspector.cwl
+id: break_point_inspector.cwl
 inputs:
 - id: in_contamination_fraction
   doc: "fraction of allowable normal support per\ntumor support read"

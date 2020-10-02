@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqdb_demo.cwl
+id: seqdb_demo.cwl
 inputs:
 - id: in_get_sequence
   doc: ":\nGetSequence() provides a basic interface to fetch\na sequence from a SeqDB\

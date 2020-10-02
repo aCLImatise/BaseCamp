@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.gepard_post_link.sh.cwl
+id: .gepard_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_asr.cwl
+id: gotree_asr.cwl
 inputs:
 - id: in_algo
   doc: 'Parsimony algorithm for resolving ambiguities: acctran, deltran, or downpass

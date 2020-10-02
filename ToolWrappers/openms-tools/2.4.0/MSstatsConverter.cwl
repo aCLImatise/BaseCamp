@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MSstatsConverter.cwl
+id: MSstatsConverter.cwl
 inputs:
 - id: in_in
   doc: "*                                     Input consensusXML with peptide intensities\

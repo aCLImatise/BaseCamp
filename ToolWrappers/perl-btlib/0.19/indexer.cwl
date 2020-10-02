@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../indexer.cwl
+id: indexer.cwl
 inputs:
 - id: in_skip_skip_junk
   doc: '|skip      skip junk [1]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_sdfsubseq.cwl
+id: rtg_sdfsubseq.cwl
 inputs:
 - id: in_input
   doc: input SDF

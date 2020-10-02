@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../busco_configurator.py.cwl
+id: busco_configurator.py.cwl
 inputs:
 - id: in_config_dot_in_idot_default
   doc: ''

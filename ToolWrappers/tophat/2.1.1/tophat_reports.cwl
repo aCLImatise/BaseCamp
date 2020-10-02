@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tophat_reports.cwl
+id: tophat_reports.cwl
 inputs:
 - id: in_junctions_dot_bed
   doc: ''

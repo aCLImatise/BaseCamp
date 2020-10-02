@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../transformseq.cwl
+id: transformseq.cwl
 inputs:
 - id: in_fin
   doc: 'Sequence input file (default: stdin)'

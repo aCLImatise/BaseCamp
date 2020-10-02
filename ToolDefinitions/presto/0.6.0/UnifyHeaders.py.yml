@@ -16,7 +16,7 @@ subcommands:
     name: UnifyHeaders.py
     optional: false
   named: []
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -31,7 +31,7 @@ subcommands:
         name: UnifyHeaders.py
         optional: false
       named: []
-      parent: &id003 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -46,7 +46,414 @@ subcommands:
             name: UnifyHeaders.py
             optional: false
           named: []
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: UnifyHeaders.py
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: ''
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: UnifyHeaders.py [--version] [-h]  ...\nUnifyHeaders.py:\
+                \ error: argument : invalid choice: 'unify-fail' (choose from 'consensus',\
+                \ 'delete')\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - UnifyHeaders.py
+              - consensus
+              positional: []
+              named:
+              - !Flag
+                description: "A list of FASTA/FASTQ files containing sequences to\n\
+                  process. (default: None)"
+                synonyms:
+                - -s
+                args: !RepeatFlagArg
+                  name: SEQ_FILES
+                optional: true
+              - !Flag
+                description: "Explicit output file name(s). Note, this argument\n\
+                  cannot be used with the --failed, --outdir, or\n--outname arguments.\
+                  \ If unspecified, then the output\nfilename will be based on the\
+                  \ input filename(s).\n(default: None)"
+                synonyms:
+                - -o
+                args: !RepeatFlagArg
+                  name: OUT_FILES
+                optional: true
+              - !Flag
+                description: "Specify to changes the output directory to the\nlocation\
+                  \ specified. The input file directory is used\nif this is not specified.\
+                  \ (default: None)"
+                synonyms:
+                - --outdir
+                args: !SimpleFlagArg
+                  name: OUT_DIR
+                optional: true
+              - !Flag
+                description: "Changes the prefix of the successfully processed\noutput\
+                  \ file to the string specified. May not be\nspecified with multiple\
+                  \ input files. (default: None)"
+                synonyms:
+                - --outname
+                args: !SimpleFlagArg
+                  name: OUT_NAME
+                optional: true
+              - !Flag
+                description: "Specify to write verbose logging to a file. May not\
+                  \ be\nspecified with multiple input files. (default: None)"
+                synonyms:
+                - --log
+                args: !SimpleFlagArg
+                  name: LOG_FILE
+                optional: true
+              - !Flag
+                description: "If specified create files containing records that fail\n\
+                  processing. (default: False)"
+                synonyms:
+                - --failed
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Specify to force output as FASTA rather than FASTQ.\n\
+                  (default: None)"
+                synonyms:
+                - --fasta
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "DELIMITER DELIMITER\nA list of the three delimiters\
+                  \ that separate\nannotation blocks, field names and values, and\
+                  \ values\nwithin a field, respectively. (default: ('|', '=',\n','))"
+                synonyms:
+                - --delim
+                args: !SimpleFlagArg
+                  name: DELIMITER
+                optional: true
+              - !Flag
+                description: "The number of simultaneous computational processes to\n\
+                  execute (CPU cores to utilized). (default: 8)"
+                synonyms:
+                - --nproc
+                args: !SimpleFlagArg
+                  name: NPROC
+                optional: true
+              - !Flag
+                description: "The annotation field containing annotations, such as\n\
+                  the UMI barcode, for sequence grouping. (default:\nBARCODE)"
+                synonyms:
+                - -f
+                args: !SimpleFlagArg
+                  name: SET_FIELD
+                optional: true
+              - !Flag
+                description: "The name of the annotation field to find a consensus\n\
+                  for per each sequence group. (default: SAMPLE)\n"
+                synonyms:
+                - -k
+                args: !SimpleFlagArg
+                  name: UNIFY_FIELD
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: show program's version number and exit
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: UnifyHeaders.py consensus [--version] [-h] -s SEQ_FILES\
+                \ [SEQ_FILES ...]\n                                 [-o OUT_FILES\
+                \ [OUT_FILES ...]]\n                                 [--outdir OUT_DIR]\
+                \ [--outname OUT_NAME]\n                                 [--log LOG_FILE]\
+                \ [--failed] [--fasta]\n                                 [--delim\
+                \ DELIMITER DELIMITER DELIMITER]\n                               \
+                \  [--nproc NPROC] [-f SET_FIELD]\n                              \
+                \   [-k UNIFY_FIELD]\n\nReassign fields to consensus values.\n\nhelp:\n\
+                \  --version             show program's version number and exit\n\
+                \  -h, --help            show this help message and exit\n\nstandard\
+                \ arguments:\n  -s SEQ_FILES [SEQ_FILES ...]\n                   \
+                \     A list of FASTA/FASTQ files containing sequences to\n      \
+                \                  process. (default: None)\n  -o OUT_FILES [OUT_FILES\
+                \ ...]\n                        Explicit output file name(s). Note,\
+                \ this argument\n                        cannot be used with the --failed,\
+                \ --outdir, or\n                        --outname arguments. If unspecified,\
+                \ then the output\n                        filename will be based\
+                \ on the input filename(s).\n                        (default: None)\n\
+                \  --outdir OUT_DIR      Specify to changes the output directory to\
+                \ the\n                        location specified. The input file\
+                \ directory is used\n                        if this is not specified.\
+                \ (default: None)\n  --outname OUT_NAME    Changes the prefix of the\
+                \ successfully processed\n                        output file to the\
+                \ string specified. May not be\n                        specified\
+                \ with multiple input files. (default: None)\n  --log LOG_FILE   \
+                \     Specify to write verbose logging to a file. May not be\n   \
+                \                     specified with multiple input files. (default:\
+                \ None)\n  --failed              If specified create files containing\
+                \ records that fail\n                        processing. (default:\
+                \ False)\n  --fasta               Specify to force output as FASTA\
+                \ rather than FASTQ.\n                        (default: None)\n  --delim\
+                \ DELIMITER DELIMITER DELIMITER\n                        A list of\
+                \ the three delimiters that separate\n                        annotation\
+                \ blocks, field names and values, and values\n                   \
+                \     within a field, respectively. (default: ('|', '=',\n       \
+                \                 ','))\n  --nproc NPROC         The number of simultaneous\
+                \ computational processes to\n                        execute (CPU\
+                \ cores to utilized). (default: 8)\n\nannotation arguments:\n  -f\
+                \ SET_FIELD          The annotation field containing annotations,\
+                \ such as\n                        the UMI barcode, for sequence grouping.\
+                \ (default:\n                        BARCODE)\n  -k UNIFY_FIELD  \
+                \      The name of the annotation field to find a consensus\n    \
+                \                    for per each sequence group. (default: SAMPLE)\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - UnifyHeaders.py
+              - delete
+              positional: []
+              named:
+              - !Flag
+                description: "A list of FASTA/FASTQ files containing sequences to\n\
+                  process. (default: None)"
+                synonyms:
+                - -s
+                args: !RepeatFlagArg
+                  name: SEQ_FILES
+                optional: true
+              - !Flag
+                description: "Explicit output file name(s). Note, this argument\n\
+                  cannot be used with the --failed, --outdir, or\n--outname arguments.\
+                  \ If unspecified, then the output\nfilename will be based on the\
+                  \ input filename(s).\n(default: None)"
+                synonyms:
+                - -o
+                args: !RepeatFlagArg
+                  name: OUT_FILES
+                optional: true
+              - !Flag
+                description: "Specify to changes the output directory to the\nlocation\
+                  \ specified. The input file directory is used\nif this is not specified.\
+                  \ (default: None)"
+                synonyms:
+                - --outdir
+                args: !SimpleFlagArg
+                  name: OUT_DIR
+                optional: true
+              - !Flag
+                description: "Changes the prefix of the successfully processed\noutput\
+                  \ file to the string specified. May not be\nspecified with multiple\
+                  \ input files. (default: None)"
+                synonyms:
+                - --outname
+                args: !SimpleFlagArg
+                  name: OUT_NAME
+                optional: true
+              - !Flag
+                description: "Specify to write verbose logging to a file. May not\
+                  \ be\nspecified with multiple input files. (default: None)"
+                synonyms:
+                - --log
+                args: !SimpleFlagArg
+                  name: LOG_FILE
+                optional: true
+              - !Flag
+                description: "If specified create files containing records that fail\n\
+                  processing. (default: False)"
+                synonyms:
+                - --failed
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Specify to force output as FASTA rather than FASTQ.\n\
+                  (default: None)"
+                synonyms:
+                - --fasta
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "DELIMITER DELIMITER\nA list of the three delimiters\
+                  \ that separate\nannotation blocks, field names and values, and\
+                  \ values\nwithin a field, respectively. (default: ('|', '=',\n','))"
+                synonyms:
+                - --delim
+                args: !SimpleFlagArg
+                  name: DELIMITER
+                optional: true
+              - !Flag
+                description: "The number of simultaneous computational processes to\n\
+                  execute (CPU cores to utilized). (default: 8)"
+                synonyms:
+                - --nproc
+                args: !SimpleFlagArg
+                  name: NPROC
+                optional: true
+              - !Flag
+                description: "The annotation field containing annotations, such as\n\
+                  the UMI barcode, for sequence grouping. (default:\nBARCODE)"
+                synonyms:
+                - -f
+                args: !SimpleFlagArg
+                  name: SET_FIELD
+                optional: true
+              - !Flag
+                description: "The name of the annotation field to find a consensus\n\
+                  for per each sequence group. (default: SAMPLE)\n"
+                synonyms:
+                - -k
+                args: !SimpleFlagArg
+                  name: UNIFY_FIELD
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: show program's version number and exit
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: UnifyHeaders.py delete [--version] [-h] -s SEQ_FILES\
+                \ [SEQ_FILES ...]\n                              [-o OUT_FILES [OUT_FILES\
+                \ ...]]\n                              [--outdir OUT_DIR] [--outname\
+                \ OUT_NAME]\n                              [--log LOG_FILE] [--failed]\
+                \ [--fasta]\n                              [--delim DELIMITER DELIMITER\
+                \ DELIMITER]\n                              [--nproc NPROC] [-f SET_FIELD]\
+                \ [-k UNIFY_FIELD]\n\nDelete sequences with differing field values.\n\
+                \nhelp:\n  --version             show program's version number and\
+                \ exit\n  -h, --help            show this help message and exit\n\n\
+                standard arguments:\n  -s SEQ_FILES [SEQ_FILES ...]\n            \
+                \            A list of FASTA/FASTQ files containing sequences to\n\
+                \                        process. (default: None)\n  -o OUT_FILES\
+                \ [OUT_FILES ...]\n                        Explicit output file name(s).\
+                \ Note, this argument\n                        cannot be used with\
+                \ the --failed, --outdir, or\n                        --outname arguments.\
+                \ If unspecified, then the output\n                        filename\
+                \ will be based on the input filename(s).\n                      \
+                \  (default: None)\n  --outdir OUT_DIR      Specify to changes the\
+                \ output directory to the\n                        location specified.\
+                \ The input file directory is used\n                        if this\
+                \ is not specified. (default: None)\n  --outname OUT_NAME    Changes\
+                \ the prefix of the successfully processed\n                     \
+                \   output file to the string specified. May not be\n            \
+                \            specified with multiple input files. (default: None)\n\
+                \  --log LOG_FILE        Specify to write verbose logging to a file.\
+                \ May not be\n                        specified with multiple input\
+                \ files. (default: None)\n  --failed              If specified create\
+                \ files containing records that fail\n                        processing.\
+                \ (default: False)\n  --fasta               Specify to force output\
+                \ as FASTA rather than FASTQ.\n                        (default: None)\n\
+                \  --delim DELIMITER DELIMITER DELIMITER\n                       \
+                \ A list of the three delimiters that separate\n                 \
+                \       annotation blocks, field names and values, and values\n  \
+                \                      within a field, respectively. (default: ('|',\
+                \ '=',\n                        ','))\n  --nproc NPROC         The\
+                \ number of simultaneous computational processes to\n            \
+                \            execute (CPU cores to utilized). (default: 8)\n\nannotation\
+                \ arguments:\n  -f SET_FIELD          The annotation field containing\
+                \ annotations, such as\n                        the UMI barcode, for\
+                \ sequence grouping. (default:\n                        BARCODE)\n\
+                \  -k UNIFY_FIELD        The name of the annotation field to find\
+                \ a consensus\n                        for per each sequence group.\
+                \ (default: SAMPLE)\n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - UnifyHeaders.py
+              - unify-pass
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: UnifyHeaders.py
+                optional: false
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag: !Flag
+                description: ''
+                synonyms:
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "usage: UnifyHeaders.py [--version] [-h]  ...\nUnifyHeaders.py:\
+                \ error: argument : invalid choice: 'unify-pass' (choose from 'consensus',\
+                \ 'delete')\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: show program's version number and exit
+              synonyms:
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "usage: UnifyHeaders.py [--version] [-h]  ...\n\nUnifies annotation\
+              \ fields based on grouping scheme\n\nhelp:\n  --version   show program's\
+              \ version number and exit\n  -h, --help  show this help message and\
+              \ exit\n\nsubcommands:\n              Annotation operation\n    consensus\n\
+              \              Reassign fields to consensus values.\n    delete    Delete\
+              \ sequences with differing field values.\n\noutput files:\n    unify-pass\n\
+              \       Reads passing annotation filtering or consensus.\n    unify-fail\n\
+              \       Reading failing filtering.\noutput annotation fields:\n    <user\
+              \ defined>\n        annotation fields specified by the -f and -k arguments.\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -65,12 +472,9 @@ subcommands:
           help_text: "usage: UnifyHeaders.py [--version] [-h]  ...\nUnifyHeaders.py:\
             \ error: argument : invalid choice: 'unify-fail' (choose from 'consensus',\
             \ 'delete')\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - UnifyHeaders.py
-          - consensus
+          command: *id005
           positional: []
           named:
           - !Flag
@@ -223,9 +627,7 @@ subcommands:
             \                        for per each sequence group. (default: SAMPLE)\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - UnifyHeaders.py
-          - delete
+          command: *id006
           positional: []
           named:
           - !Flag
@@ -378,9 +780,7 @@ subcommands:
             \                  for per each sequence group. (default: SAMPLE)\n"
           generated_using: *id004
         - !Command
-          command: &id007
-          - UnifyHeaders.py
-          - unify-pass
+          command: *id007
           positional:
           - !Positional
             description: ''
@@ -409,20 +809,9 @@ subcommands:
             \ 'delete')\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: show program's version number and exit
-          synonyms:
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "usage: UnifyHeaders.py [--version] [-h]  ...\n\nUnifies annotation\
           \ fields based on grouping scheme\n\nhelp:\n  --version   show program's\
           \ version number and exit\n  -h, --help  show this help message and exit\n\
@@ -546,7 +935,7 @@ subcommands:
         args: !SimpleFlagArg
           name: UNIFY_FIELD
         optional: true
-      parent: *id003
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -698,7 +1087,7 @@ subcommands:
         args: !SimpleFlagArg
           name: UNIFY_FIELD
         optional: true
-      parent: *id003
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -763,7 +1152,7 @@ subcommands:
         name: UnifyHeaders.py
         optional: false
       named: []
-      parent: *id003
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -906,7 +1295,7 @@ subcommands:
     args: !SimpleFlagArg
       name: UNIFY_FIELD
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1053,7 +1442,7 @@ subcommands:
     args: !SimpleFlagArg
       name: UNIFY_FIELD
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1116,7 +1505,7 @@ subcommands:
     name: UnifyHeaders.py
     optional: false
   named: []
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag

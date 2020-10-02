@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../omssamerge.cwl
+id: omssamerge.cwl
 inputs: []
 outputs:
 - id: out_stdout

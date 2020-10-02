@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prodigal_sm.cwl
+id: prodigal_sm.cwl
 inputs:
 - id: in_write_protein_translations
   doc: ':  Write protein translations to the selected file.'

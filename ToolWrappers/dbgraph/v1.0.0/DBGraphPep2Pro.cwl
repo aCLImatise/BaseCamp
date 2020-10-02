@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DBGraphPep2Pro.cwl
+id: DBGraphPep2Pro.cwl
 inputs:
 - id: in_input_edge_file
   doc: ': The input edge file name'

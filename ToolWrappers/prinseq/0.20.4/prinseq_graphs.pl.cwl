@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prinseq_graphs.pl.cwl
+id: prinseq_graphs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

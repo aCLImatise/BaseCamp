@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkqc.cwl
+id: checkqc.cwl
 inputs:
 - id: in_config
   doc: Path to the checkQC configuration file

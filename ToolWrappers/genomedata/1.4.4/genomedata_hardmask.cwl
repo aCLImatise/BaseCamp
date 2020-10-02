@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomedata_hardmask.cwl
+id: genomedata_hardmask.cwl
 inputs:
 - id: in_track_name
   doc: 'Track(s) to be filtered (default: all)'

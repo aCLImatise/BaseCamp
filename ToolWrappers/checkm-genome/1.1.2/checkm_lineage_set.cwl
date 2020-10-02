@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_lineage_set.cwl
+id: checkm_lineage_set.cwl
 inputs:
 - id: in_unique
   doc: 'minimum number of unique phylogenetic markers required to use lineage-specific

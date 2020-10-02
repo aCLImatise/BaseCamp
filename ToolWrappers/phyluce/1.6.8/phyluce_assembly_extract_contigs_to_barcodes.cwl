@@ -1,9 +1,9 @@
 class: CommandLineTool
-id: ../../../phyluce_assembly_extract_contigs_to_barcodes.cwl
+id: phyluce_assembly_extract_contigs_to_barcodes.cwl
 inputs:
 - id: in_config
-  doc: ''
-  type: string
+  doc: "OUTPUT\n[--verbosity {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH]"
+  type: File
   inputBinding:
     prefix: --config
 - id: in_contigs
@@ -21,15 +21,15 @@ inputs:
   type: File
   inputBinding:
     prefix: --log-path
-- id: in_output
-  doc: '[--verbosity {INFO,WARN,CRITICAL}]'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+- id: out_config
+  doc: "OUTPUT\n[--verbosity {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH]"
+  type: File
+  outputBinding:
+    glob: $(inputs.in_config)
 cwlVersion: v1.1
 baseCommand:
 - phyluce_assembly_extract_contigs_to_barcodes

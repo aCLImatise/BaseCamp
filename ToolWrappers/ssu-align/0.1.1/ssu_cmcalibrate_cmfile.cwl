@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_cmcalibrate_cmfile.cwl
+id: ssu_cmcalibrate_cmfile.cwl
 inputs:
 - id: in_options
   doc: ''

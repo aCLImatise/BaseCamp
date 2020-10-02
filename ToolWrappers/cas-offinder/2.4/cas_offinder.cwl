@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cas_offinder.cwl
+id: cas_offinder.cwl
 inputs: []
 outputs:
 - id: out_stdout

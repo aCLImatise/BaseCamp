@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../deepac_explain_franking.cwl
+id: deepac_explain_franking.cwl
 inputs:
-- id: in_f
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -f
 - id: in_mode
   doc: "Use original filter scores or normalize scores\nrelative to true or predicted\
     \ classes."
@@ -27,25 +22,20 @@ inputs:
   type: File
   inputBinding:
     prefix: --pred-label
-- id: in_output_directory
+- id: in_out_dir
   doc: "Output directory\n"
   type: Directory
   inputBinding:
     prefix: --out-dir
-- id: in_optional_arguments
-  doc: 'optional arguments:'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_output_directory
+- id: out_out_dir
   doc: "Output directory\n"
   type: Directory
   outputBinding:
-    glob: $(inputs.in_output_directory)
+    glob: $(inputs.in_out_dir)
 cwlVersion: v1.1
 baseCommand:
 - deepac

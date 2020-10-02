@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../index_pepxml.cwl
+id: index_pepxml.cwl
 inputs: []
 outputs:
 - id: out_stdout

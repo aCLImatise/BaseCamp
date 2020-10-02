@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconc_bam_tags_enrich.cwl
+id: falconc_bam_tags_enrich.cwl
 inputs:
 - id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'

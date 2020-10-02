@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AMAS.py_remove.cwl
+id: AMAS.py_remove.cwl
 inputs:
 - id: in_tax_a_to_remove
   doc: Taxon/sequence names to be removed.

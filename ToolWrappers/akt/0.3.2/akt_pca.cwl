@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../akt_pca.cwl
+id: akt_pca.cwl
 inputs:
 - id: in_output
   doc: ':                   output vcf'

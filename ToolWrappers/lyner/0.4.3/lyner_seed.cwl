@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_seed.cwl
+id: lyner_seed.cwl
 inputs:
 - id: in_seed
   doc: ''

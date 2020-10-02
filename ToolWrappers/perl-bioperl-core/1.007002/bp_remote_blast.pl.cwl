@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_remote_blast.pl.cwl
+id: bp_remote_blast.pl.cwl
 inputs:
 - id: in_bioperl_lat_bioperl_dot_org
   doc: '- General discussion'

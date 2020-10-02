@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ParseHeaders.py_delete.cwl
+id: ParseHeaders.py_delete.cwl
 inputs:
 - id: in_list_fastafastq_files
   doc: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default: None)"

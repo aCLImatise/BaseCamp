@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getFRCvalues.cwl
+id: getFRCvalues.cwl
 inputs: []
 outputs:
 - id: out_stdout

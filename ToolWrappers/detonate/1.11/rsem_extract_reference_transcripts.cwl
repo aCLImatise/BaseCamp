@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_extract_reference_transcripts.cwl
+id: rsem_extract_reference_transcripts.cwl
 inputs:
 - id: in_refname
   doc: ''

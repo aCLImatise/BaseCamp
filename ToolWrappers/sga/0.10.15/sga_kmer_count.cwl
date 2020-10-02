@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_kmer_count.cwl
+id: sga_kmer_count.cwl
 inputs:
 - id: in_km_er_size
   doc: 'The length of the kmer to use. (default: 27)'

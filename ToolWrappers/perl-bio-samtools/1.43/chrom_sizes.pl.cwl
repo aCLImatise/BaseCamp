@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chrom_sizes.pl.cwl
+id: chrom_sizes.pl.cwl
 inputs:
 - id: in_exist_usrlocalbinchromsizespl_line
   doc: not exist at /usr/local/bin/chrom_sizes.pl line 8.

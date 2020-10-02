@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_delete_syn123.cwl
+id: synapse_delete_syn123.cwl
 inputs:
 - id: in_p
   doc: ''

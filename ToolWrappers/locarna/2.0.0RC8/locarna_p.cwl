@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../locarna_p.cwl
+id: locarna_p.cwl
 inputs:
 - id: in_verbose
   doc: Be verbose. Prints input parameters, sequences and size information.

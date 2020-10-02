@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blast_self_alignment_filter.pl.cwl
+id: blast_self_alignment_filter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

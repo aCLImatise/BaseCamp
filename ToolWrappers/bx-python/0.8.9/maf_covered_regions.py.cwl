@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_covered_regions.py.cwl
+id: maf_covered_regions.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

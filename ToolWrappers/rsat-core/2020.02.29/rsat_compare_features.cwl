@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_compare_features.cwl
+id: rsat_compare_features.cwl
 inputs:
 - id: in_files
   doc: considered as input files.

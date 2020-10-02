@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_vcfstats.cwl
+id: rtg_vcfstats.cwl
 inputs:
 - id: in_known
   doc: "only calculate statistics for known variants (Default is\nto ignore known/novel\

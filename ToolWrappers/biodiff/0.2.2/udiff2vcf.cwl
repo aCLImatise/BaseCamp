@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../udiff2vcf.cwl
+id: udiff2vcf.cwl
 inputs: []
 outputs:
 - id: out_stdout

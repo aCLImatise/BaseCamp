@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairwise_comparison.cwl
+id: pairwise_comparison.cwl
 inputs:
 - id: in_config
   doc: Configuration file

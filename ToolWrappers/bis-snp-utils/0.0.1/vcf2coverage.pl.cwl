@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2coverage.pl.cwl
+id: vcf2coverage.pl.cwl
 inputs:
 - id: in_perl
   doc: ''

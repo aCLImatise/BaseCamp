@@ -1,8 +1,9 @@
 class: CommandLineTool
-id: ../../../phyluce_align_get_indels_from_alignments.cwl
+id: phyluce_align_get_indels_from_alignments.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_out_group
+  doc: "OUTGROUP\n[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\n\
+    [--trim {absolute,relative,none}]\n[--cores CORES]"
   type: string
   inputBinding:
     prefix: --outgroup
@@ -26,11 +27,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --cores
-- id: in_var_5
-  doc: '[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

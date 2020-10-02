@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dep_status.cwl
+id: dep_status.cwl
 inputs:
 - id: in_detail
   doc: 'include more detail in the chosen format (default: false)'

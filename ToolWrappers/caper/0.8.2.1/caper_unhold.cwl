@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../caper_unhold.cwl
+id: caper_unhold.cwl
 inputs:
 - id: in_dry_run
   doc: Caper does not take any action.

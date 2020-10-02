@@ -1,67 +1,23 @@
 class: CommandLineTool
-id: ../../../blast2gff_blastdb.cwl
+id: blast2gff_blastdb.cwl
 inputs:
 - id: in_verbose
-  doc: ''
+  doc: "-db, --db-used TEXT         blastdb used  [default: NCBI-NT]\n-n, --no-split\
+    \              if used, the script assumes that the sequence\nheader will be used\
+    \ as gene_id\n-s, --header-sep TEXT       The separator for the header, defaults\
+    \ to '|'\n(pipe)  [default: |]\n-i, --gene-index INTEGER    Which of the header\
+    \ columns (0-based) to use as\ngene_id (defaults to 1 - the second column)\n[default:\
+    \ 1]\n-r, --remove-version        if used, the script removes the *version*\n\
+    information from the gene_id\n-a, --fasta-file PATH       Optional FASTA file\
+    \ with the query sequences\n-dbq, --db-quality INTEGER  Quality of the DB used\
+    \  [default: 10]\n-b, --bitscore FLOAT        Minimum bitscore to keep the annotation\n\
+    [default: 0.0]\n-k, --attr-value TEXT       Additional attribute and value to\
+    \ add to each\nannotation, in the form attr:value\n-ft, --feat-type TEXT     \
+    \  Feature type to use in the GFF  [default: CDS]\n--progress                \
+    \  Shows Progress Bar\n--help                      Show this message and exit.\n"
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: in_db_used
-  doc: 'blastdb used  [default: NCBI-NT]'
-  type: string
-  inputBinding:
-    prefix: --db-used
-- id: in_no_split
-  doc: "if used, the script assumes that the sequence\nheader will be used as gene_id"
-  type: boolean
-  inputBinding:
-    prefix: --no-split
-- id: in_header_sep
-  doc: "The separator for the header, defaults to '|'\n(pipe)  [default: |]"
-  type: string
-  inputBinding:
-    prefix: --header-sep
-- id: in_gene_index
-  doc: "Which of the header columns (0-based) to use as\ngene_id (defaults to 1 -\
-    \ the second column)\n[default: 1]"
-  type: long
-  inputBinding:
-    prefix: --gene-index
-- id: in_remove_version
-  doc: "if used, the script removes the *version*\ninformation from the gene_id"
-  type: boolean
-  inputBinding:
-    prefix: --remove-version
-- id: in_fast_a_file
-  doc: Optional FASTA file with the query sequences
-  type: File
-  inputBinding:
-    prefix: --fasta-file
-- id: in_db_quality
-  doc: 'Quality of the DB used  [default: 10]'
-  type: long
-  inputBinding:
-    prefix: --db-quality
-- id: in_bit_score
-  doc: "Minimum bitscore to keep the annotation\n[default: 0.0]"
-  type: double
-  inputBinding:
-    prefix: --bitscore
-- id: in_attr_value
-  doc: "Additional attribute and value to add to each\nannotation, in the form attr:value"
-  type: string
-  inputBinding:
-    prefix: --attr-value
-- id: in_feat_type
-  doc: 'Feature type to use in the GFF  [default: CDS]'
-  type: string
-  inputBinding:
-    prefix: --feat-type
-- id: in_progress
-  doc: Shows Progress Bar
-  type: boolean
-  inputBinding:
-    prefix: --progress
 - id: in_blast_file
   doc: ''
   type: string

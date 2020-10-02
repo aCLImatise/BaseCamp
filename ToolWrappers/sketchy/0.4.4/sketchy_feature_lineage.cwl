@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_feature_lineage.cwl
+id: sketchy_feature_lineage.cwl
 inputs:
 - id: in_data
   doc: "Path to data file to summarize trait data from\n[required]  [required]"

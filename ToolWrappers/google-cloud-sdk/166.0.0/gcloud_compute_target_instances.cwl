@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_target_instances.cwl
+id: gcloud_compute_target_instances.cwl
 inputs:
 - id: in_create
   doc: Create a target instance for handling traffic from a forwarding rule.

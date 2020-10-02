@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../predict_metagenomes.py.cwl
+id: predict_metagenomes.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

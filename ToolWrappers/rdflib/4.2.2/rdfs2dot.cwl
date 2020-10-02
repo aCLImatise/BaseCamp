@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rdfs2dot.cwl
+id: rdfs2dot.cwl
 inputs:
 - id: in_parser_use_given
   doc: parser to use, if not given,

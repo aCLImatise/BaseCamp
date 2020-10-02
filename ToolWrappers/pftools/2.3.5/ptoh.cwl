@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ptoh.cwl
+id: ptoh.cwl
 inputs:
 - id: in_emulate_domain_
   doc: ': emulate domain- or semi-global alignment mode.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_stat.py.cwl
+id: bam_stat.py.cwl
 inputs:
 - id: in_input_file
   doc: Alignment file in BAM or SAM format.

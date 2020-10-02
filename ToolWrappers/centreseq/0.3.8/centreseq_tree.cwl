@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centreseq_tree.cwl
+id: centreseq_tree.cwl
 inputs:
 - id: in_summary_report
   doc: "Path to summary_report.csv file produced by the\ncore pipeline  [required]"

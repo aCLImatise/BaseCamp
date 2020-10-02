@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clever.cwl
+id: clever.cwl
 inputs:
 - id: in_sorted
   doc: "Input BAM file is sorted by position. Note that this\nrequires alternative\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paragraph.cwl
+id: paragraph.cwl
 inputs:
 - id: in_bad_align_frac
   doc: "(=0.800000012)          Fraction of read that needs to\nbe mapped in order\

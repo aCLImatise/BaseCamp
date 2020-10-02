@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haystack_download_genome.cwl
+id: haystack_download_genome.cwl
 inputs:
 - id: in_name
   doc: 'genome name. Example: haystack_download_genome hg19.'

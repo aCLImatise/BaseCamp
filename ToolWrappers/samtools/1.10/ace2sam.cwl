@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ace2sam.cwl
+id: ace2sam.cwl
 inputs:
 - id: in_output_padded_sam
   doc: output padded SAM

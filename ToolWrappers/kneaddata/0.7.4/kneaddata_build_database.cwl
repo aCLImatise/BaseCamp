@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kneaddata_build_database.cwl
+id: kneaddata_build_database.cwl
 inputs:
 - id: in_output_prefix
   doc: prefix for all output files

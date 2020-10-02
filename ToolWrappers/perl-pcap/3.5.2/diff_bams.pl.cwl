@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../diff_bams.pl.cwl
+id: diff_bams.pl.cwl
 inputs:
 - id: in_bam_a
   doc: -a    The first BAM|CRAM file.

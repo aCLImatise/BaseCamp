@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Assemblytics_max_size.cwl
+id: Assemblytics_max_size.cwl
 inputs:
 - id: in_assembly_tics
   doc: ''

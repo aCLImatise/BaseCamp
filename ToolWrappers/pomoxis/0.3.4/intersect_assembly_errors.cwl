@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intersect_assembly_errors.cwl
+id: intersect_assembly_errors.cwl
 inputs:
 - id: in_reference_should_fasta
   doc: "reference, should be a fasta file. If correspondng bwa indices\ndo not exist\

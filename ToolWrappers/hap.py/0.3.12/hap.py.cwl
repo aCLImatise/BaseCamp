@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hap.py.cwl
+id: hap.py.cwl
 inputs:
 - id: in_reference
   doc: Specify a reference file.

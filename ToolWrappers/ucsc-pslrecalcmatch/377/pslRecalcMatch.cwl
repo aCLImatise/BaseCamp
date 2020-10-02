@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslRecalcMatch.cwl
+id: pslRecalcMatch.cwl
 inputs: []
 outputs:
 - id: out_stdout

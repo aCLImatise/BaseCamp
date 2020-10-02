@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_assembly_assemblo_trinity.cwl
+id: phyluce_assembly_assemblo_trinity.cwl
 inputs:
 - id: in_output
   doc: The directory in which to store the assembly data

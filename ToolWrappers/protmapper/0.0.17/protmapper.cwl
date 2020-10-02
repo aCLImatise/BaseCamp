@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../protmapper.cwl
+id: protmapper.cwl
 inputs:
 - id: in_peptide
   doc: "If given, the third element of each row of the input\nfile is a peptide (amino\

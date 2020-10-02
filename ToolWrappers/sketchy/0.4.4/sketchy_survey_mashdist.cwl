@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_survey_mashdist.cwl
+id: sketchy_survey_mashdist.cwl
 inputs:
 - id: in_fast_a
   doc: "Path to list containing path to genomes per line\n[required]  [required]"

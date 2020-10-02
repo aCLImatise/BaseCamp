@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../UtilsWpf.dll.cwl
+id: UtilsWpf.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

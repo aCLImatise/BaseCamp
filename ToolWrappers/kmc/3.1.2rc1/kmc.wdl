@@ -6,7 +6,6 @@ task Kmc {
     Boolean? len_length_k
     Boolean? size_max_amount
     Boolean? sm
-    Boolean? par_signature_length
     Boolean? aqmbam_input_fasta
     Boolean? ci
     Boolean? cs
@@ -33,7 +32,6 @@ task Kmc {
       ~{if (len_length_k) then "-k" else ""} \
       ~{if (size_max_amount) then "-m" else ""} \
       ~{if (sm) then "-sm" else ""} \
-      ~{if (par_signature_length) then "-p" else ""} \
       ~{if (aqmbam_input_fasta) then "-f" else ""} \
       ~{if (ci) then "-ci" else ""} \
       ~{if (cs) then "-cs" else ""} \
@@ -53,7 +51,6 @@ task Kmc {
     len_length_k: "<len> - k-mer length (k from 1 to 256; default: 25)"
     size_max_amount: "<size> - max amount of RAM in GB (from 1 to 1024); default: 12"
     sm: "- use strict memory mode (memory limit from -m<n> switch will not be exceeded)"
-    par_signature_length: "<par> - signature length (5, 6, 7, 8, 9, 10, 11); default: 9"
     aqmbam_input_fasta: "<a/q/m/bam> - input in FASTA format (-fa), FASTQ format (-fq), multi FASTA (-fm) or BAM (-fbam); default: FASTQ"
     ci: "<value> - exclude k-mers occurring less than <value> times (default: 2)"
     cs: "<value> - maximal value of a counter (default: 255)"

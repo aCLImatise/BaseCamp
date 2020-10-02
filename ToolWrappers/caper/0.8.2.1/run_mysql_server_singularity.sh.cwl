@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_mysql_server_singularity.sh.cwl
+id: run_mysql_server_singularity.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

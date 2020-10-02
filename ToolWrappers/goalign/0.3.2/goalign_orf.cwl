@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_orf.cwl
+id: goalign_orf.cwl
 inputs:
 - id: in_output
   doc: ORF Output Fasta File (default "stdout")

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../REPmask.cwl
+id: REPmask.cwl
 inputs:
 - id: in_v
   doc: ''

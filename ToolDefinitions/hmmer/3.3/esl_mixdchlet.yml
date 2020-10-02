@@ -22,7 +22,7 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id009 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
     named: []
@@ -43,7 +43,7 @@ subcommands:
         - -options
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: &id009 !Command
         command: *id001
         positional: []
         named: []
@@ -64,7 +64,209 @@ subcommands:
             - -options
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: mixdchlet_file
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -options
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "Failed to parse command line: No such option \"--help\"\
+                .\nUsage:\n  esl-mixdchlet score [-options] <mixdchlet_file> <counts_file>\n\
+                \nTo see more help on available options, do `esl-mixdchlet score -h`\n\
+                \n"
+              generated_using: &id005
+              - --help
+            - !Command
+              command: &id006
+              - esl-mixdchlet
+              - gen
+              positional: []
+              named:
+              - !Flag
+                description: ': set random number seed  [0]'
+                synonyms:
+                - -s
+                args: !SimpleFlagArg
+                  name: n
+                optional: true
+              - !Flag
+                description: ': number of counts per vector  [100]'
+                synonyms:
+                - -M
+                args: !SimpleFlagArg
+                  name: n
+                optional: true
+              - !Flag
+                description: ': number of countvectors to generate  [1000]'
+                synonyms:
+                - -N
+                args: !SimpleFlagArg
+                  name: n
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -options
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ': show brief help on version and usage'
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "esl-mixdchlet gen :: generate synthetic count data from\
+                \ a mixture Dirichlet\n\nUsage:\n  esl-mixdchlet gen [-options] <mixdchlet_file>\n\
+                \nOptions:\n  -h     : show brief help on version and usage\n  -s\
+                \ <n> : set random number seed  [0]\n  -M <n> : number of counts per\
+                \ vector  [100]\n  -N <n> : number of countvectors to generate  [1000]\n"
+              generated_using: &id004
+              - -h
+            - !Command
+              command: &id007
+              - esl-mixdchlet
+              - sample
+              positional: []
+              named:
+              - !Flag
+                description: ': set random number seed  [0]'
+                synonyms:
+                - -s
+                args: !SimpleFlagArg
+                  name: n
+                optional: true
+              - !Flag
+                description: ': alphabet size  [20]'
+                synonyms:
+                - -K
+                args: !SimpleFlagArg
+                  name: n
+                optional: true
+              - !Flag
+                description: ': number of mixture components  [9]'
+                synonyms:
+                - -Q
+                args: !SimpleFlagArg
+                  name: n
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ': show brief help on version and usage'
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "esl-mixdchlet sample :: sample a random mixture Dirichlet\n\
+                \nUsage:\n  esl-mixdchlet sample [-options]\n\nOptions:\n  -h    \
+                \ : show brief help on version and usage\n  -s <n> : set random number\
+                \ seed  [0]\n  -K <n> : alphabet size  [20]\n  -Q <n> : number of\
+                \ mixture components  [9]\n"
+              generated_using: *id004
+            - !Command
+              command: &id008
+              - esl-mixdchlet
+              - fit
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: Q
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: K
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: in_countfile
+                optional: false
+              named:
+              - !Flag
+                description: ': set random number seed to <n>  [0]'
+                synonyms:
+                - -s
+                args: !SimpleFlagArg
+                  name: n
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -options
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ': show brief help on version and usage'
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "esl-mixdchlet fit :: fit new mixture Dirichlet to count\
+                \ data\n\nUsage:\n  esl-mixdchlet fit [-options] <Q> <K> <in_countfile>\
+                \ <out_mixdchlet>\n\nOptions:\n  -h     : show brief help on version\
+                \ and usage\n  -s <n> : set random number seed to <n>  [0]\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: ''
+              synonyms:
+              - -h
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: ''
+              synonyms:
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "esl-mixdchlet: utilities for estimating new mixture Dirichlet\
+              \ priors\nEasel 0.46 (Nov 2019): http://bioeasel.org/\n\nUsage:\n  esl-mixdchlet\
+              \ -h                 : show overall brief help summary\n  esl-mixdchlet\
+              \ --version          : show version number\n  esl-mixdchlet <cmd> -h\
+              \           : show brief help for a subcommand\n  esl-mixdchlet <cmd>\
+              \ [<args>...]  : run a subcommand\n\nSubcommands:\n  fit          fit\
+              \ new mixture Dirichlet to count data\n  score        score count data\
+              \ with a mixture Dirichlet\n  gen          generate synthetic count\
+              \ data from a mixture Dirichlet\n  sample       sample a random mixture\
+              \ Dirichlet\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag:
@@ -73,12 +275,9 @@ subcommands:
           help_text: "Failed to parse command line: No such option \"--help\".\nUsage:\n\
             \  esl-mixdchlet score [-options] <mixdchlet_file> <counts_file>\n\nTo\
             \ see more help on available options, do `esl-mixdchlet score -h`\n\n"
-          generated_using: &id005
-          - --help
+          generated_using: *id005
         - !Command
-          command: &id006
-          - esl-mixdchlet
-          - gen
+          command: *id006
           positional: []
           named:
           - !Flag
@@ -124,12 +323,9 @@ subcommands:
             \nOptions:\n  -h     : show brief help on version and usage\n  -s <n>\
             \ : set random number seed  [0]\n  -M <n> : number of counts per vector\
             \  [100]\n  -N <n> : number of countvectors to generate  [1000]\n"
-          generated_using: &id004
-          - -h
+          generated_using: *id004
         - !Command
-          command: &id007
-          - esl-mixdchlet
-          - sample
+          command: *id007
           positional: []
           named:
           - !Flag
@@ -171,9 +367,7 @@ subcommands:
             \  [9]\n"
           generated_using: *id004
         - !Command
-          command: &id008
-          - esl-mixdchlet
-          - fit
+          command: *id008
           positional:
           - !Positional
             description: ''
@@ -221,19 +415,9 @@ subcommands:
             \ : set random number seed to <n>  [0]\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: ''
-          synonyms:
-          - -h
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: ''
-          synonyms:
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "esl-mixdchlet: utilities for estimating new mixture Dirichlet\
           \ priors\nEasel 0.46 (Nov 2019): http://bioeasel.org/\n\nUsage:\n  esl-mixdchlet\
           \ -h                 : show overall brief help summary\n  esl-mixdchlet\
@@ -284,7 +468,7 @@ subcommands:
         - -options
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -326,7 +510,7 @@ subcommands:
         args: !SimpleFlagArg
           name: n
         optional: true
-      parent: *id003
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -374,7 +558,7 @@ subcommands:
         - -options
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -444,7 +628,7 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -486,7 +670,7 @@ subcommands:
     args: !SimpleFlagArg
       name: n
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -534,7 +718,7 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag

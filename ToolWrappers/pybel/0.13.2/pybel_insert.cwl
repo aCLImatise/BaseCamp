@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pybel_insert.cwl
+id: pybel_insert.cwl
 inputs:
 - id: in_path
   doc: ''

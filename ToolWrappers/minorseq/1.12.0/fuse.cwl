@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fuse.cwl
+id: fuse.cwl
 inputs:
 - id: in_min_coverage
   doc: Minimal coverage to call a position. [50]

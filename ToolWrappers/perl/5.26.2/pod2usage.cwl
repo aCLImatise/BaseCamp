@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pod2usage.cwl
+id: pod2usage.cwl
 inputs:
 - id: in_man
   doc: Print this command's manual page and exit.

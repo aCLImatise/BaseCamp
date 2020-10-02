@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_classify.cwl
+id: prophyle_classify.cwl
 inputs:
 - id: in_kmer_length
   doc: k-mer length [detect automatically from the index]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ConvertDb.py_sequences.cwl
+id: ConvertDb.py_sequences.cwl
 inputs:
 - id: in_convert_db_do_tpy
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../single_coverage.cwl
+id: single_coverage.cwl
 inputs:
 - id: in_h
   doc: ''

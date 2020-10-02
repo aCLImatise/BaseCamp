@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VIBRANT_annotation.py.cwl
+id: VIBRANT_annotation.py.cwl
 inputs:
 - id: in_input_fasta_file
   doc: input fasta file
@@ -41,11 +41,6 @@ inputs:
   type: File
   inputBinding:
     prefix: -m
-- id: in_outfolder
-  doc: out_folder
-  type: string
-  inputBinding:
-    prefix: -x
 - id: in_base
   doc: base
   type: string

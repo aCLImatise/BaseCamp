@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gffutils_cli_parents.cwl
+id: gffutils_cli_parents.cwl
 inputs:
 - id: in_limit
   doc: "Feature type (string), or level (integer). No parents\nbelow this level will\

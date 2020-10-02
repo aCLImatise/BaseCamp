@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicPlotSVL.cwl
+id: hicPlotSVL.cwl
 inputs:
 - id: in_matrices
   doc: "The matrix (or multiple matrices) to use for the\ncomparison"

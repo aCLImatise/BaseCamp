@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../monodocer.cwl
+id: monodocer.cwl
 inputs:
 - id: in_delete
   doc: Delete removed members from the XML files.

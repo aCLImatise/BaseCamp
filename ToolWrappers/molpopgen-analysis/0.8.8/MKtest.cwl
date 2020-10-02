@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MKtest.cwl
+id: MKtest.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_eval_estimate_transcript_length_distribution.cwl
+id: rsem_eval_estimate_transcript_length_distribution.cwl
 inputs: []
 outputs:
 - id: out_stdout

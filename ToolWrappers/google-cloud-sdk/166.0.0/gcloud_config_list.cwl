@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_list.cwl
+id: gcloud_config_list.cwl
 inputs:
 - id: in_all
   doc: List all set and unset properties that match the arguments.

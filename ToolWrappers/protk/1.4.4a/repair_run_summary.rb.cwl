@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../repair_run_summary.rb.cwl
+id: repair_run_summary.rb.cwl
 inputs:
 - id: in_base_name
   doc: Original MSMS spectrum file used for search

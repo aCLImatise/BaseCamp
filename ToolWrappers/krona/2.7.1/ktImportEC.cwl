@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktImportEC.cwl
+id: ktImportEC.cwl
 inputs:
 - id: in_ec_numbers
   doc: "Tab-delimited files with EC numbers and (optionally) query IDs,\nmagnitudes\

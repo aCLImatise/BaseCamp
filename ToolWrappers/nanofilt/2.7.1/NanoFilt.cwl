@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NanoFilt.cwl
+id: NanoFilt.cwl
 inputs:
 - id: in_log_file
   doc: Specify the path and filename for the log file.

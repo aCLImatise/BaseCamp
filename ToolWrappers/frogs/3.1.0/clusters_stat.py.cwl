@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clusters_stat.py.cwl
+id: clusters_stat.py.cwl
 inputs:
 - id: in_distance_method
   doc: "Used distance method for classify (see http://docs.sci\npy.org/doc/scipy-0.14.0/reference/generated/generated/\n\

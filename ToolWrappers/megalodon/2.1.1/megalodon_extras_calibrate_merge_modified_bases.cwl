@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_calibrate_merge_modified_bases.cwl
+id: megalodon_extras_calibrate_merge_modified_bases.cwl
 inputs:
 - id: in_out_filename
   doc: "Filename to output calibration values. Default:\nmegalodon_mod_calibration.npz"

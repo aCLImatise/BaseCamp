@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mtsv_readprep.cwl
+id: mtsv_readprep.cwl
 inputs:
 - id: in_lcd
   doc: "Enable LCD trim mode (takes first N bases of each read, where N = shortest\

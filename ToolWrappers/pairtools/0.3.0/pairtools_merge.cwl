@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairtools_merge.cwl
+id: pairtools_merge.cwl
 inputs:
 - id: in_output
   doc: "output file. If the path ends with .gz/.lz4, the\noutput is compressed by\

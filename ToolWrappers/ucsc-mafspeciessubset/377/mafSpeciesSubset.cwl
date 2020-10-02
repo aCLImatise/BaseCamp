@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafSpeciesSubset.cwl
+id: mafSpeciesSubset.cwl
 inputs:
 - id: in_keep_first
   doc: "- If set, keep the first 'a' line in a maf no matter what\nUseful for mafFrag\

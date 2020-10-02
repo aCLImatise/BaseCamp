@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scHicCorrectMatrices.cwl
+id: scHicCorrectMatrices.cwl
 inputs:
 - id: in_matrix
   doc: 'Matrix to reduce in h5 format. (default: None)'

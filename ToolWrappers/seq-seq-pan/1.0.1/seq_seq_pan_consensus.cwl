@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq_seq_pan_consensus.cwl
+id: seq_seq_pan_consensus.cwl
 inputs:
 - id: in_input_do_tx_mfa
   doc: ''

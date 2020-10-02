@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../drive_index.cwl
+id: drive_index.cwl
 inputs:
 - id: in_all_ops
   doc: perform all the index related operations
@@ -16,21 +16,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -force
-- id: in_hidden
-  doc: allows fetching of hidden paths (default true)
-  type: boolean
-  inputBinding:
-    prefix: -hidden
-- id: in_id
-  doc: fetch by id instead of path
-  type: boolean
-  inputBinding:
-    prefix: -id
-- id: in_ignore_checksum
-  doc: avoids computation of checksums as a final check.
-  type: boolean
-  inputBinding:
-    prefix: -ignore-checksum
 - id: in_ignore_conflict
   doc: turns off the conflict resolution safety (default true)
   type: boolean

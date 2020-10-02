@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_basil.py.cwl
+id: filter_basil.py.cwl
 inputs:
 - id: in_input_file_name
   doc: Input file name.

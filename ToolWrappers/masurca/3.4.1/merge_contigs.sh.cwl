@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_contigs.sh.cwl
+id: merge_contigs.sh.cwl
 inputs:
 - id: in_basename
   doc: ''

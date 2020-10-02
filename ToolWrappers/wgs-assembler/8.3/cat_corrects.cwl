@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cat_corrects.cwl
+id: cat_corrects.cwl
 inputs:
 - id: in_file_containing_names
   doc: a file containing names of erate files

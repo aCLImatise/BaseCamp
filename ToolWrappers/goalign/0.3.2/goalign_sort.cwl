@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_sort.cwl
+id: goalign_sort.cwl
 inputs:
 - id: in_output
   doc: Sorted alignment output file (default "stdout")

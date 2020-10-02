@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_chips.cwl
+id: _chips.cwl
 inputs: []
 outputs:
 - id: out_stdout

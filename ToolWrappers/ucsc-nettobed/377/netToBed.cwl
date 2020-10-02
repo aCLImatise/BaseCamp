@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../netToBed.cwl
+id: netToBed.cwl
 inputs:
 - id: in_max_gap
   doc: '- break up at gaps of given size or more'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../axt_to_maf.py.cwl
+id: axt_to_maf.py.cwl
 inputs:
 - id: in_silent
   doc: ': prevents stats report'

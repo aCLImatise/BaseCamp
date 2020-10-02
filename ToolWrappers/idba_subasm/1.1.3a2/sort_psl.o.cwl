@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sort_psl.o.cwl
+id: sort_psl.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

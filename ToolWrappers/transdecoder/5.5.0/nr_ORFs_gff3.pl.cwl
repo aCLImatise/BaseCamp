@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nr_ORFs_gff3.pl.cwl
+id: nr_ORFs_gff3.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

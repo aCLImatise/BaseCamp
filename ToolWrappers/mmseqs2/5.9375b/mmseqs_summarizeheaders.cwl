@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_summarizeheaders.cwl
+id: mmseqs_summarizeheaders.cwl
 inputs:
 - id: in_header_type
   doc: '1               Header Type: 1 Uniclust, 2 Metaclust'

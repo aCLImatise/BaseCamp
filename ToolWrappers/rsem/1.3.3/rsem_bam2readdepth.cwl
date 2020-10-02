@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_bam2readdepth.cwl
+id: rsem_bam2readdepth.cwl
 inputs:
 - id: in_sorted_bam_input
   doc: ''

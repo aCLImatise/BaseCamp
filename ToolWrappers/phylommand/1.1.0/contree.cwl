@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contree.cwl
+id: contree.cwl
 inputs:
 - id: in_add_to_support
   doc: "/ -a           add one to the value of the internal node for\neach tree that\

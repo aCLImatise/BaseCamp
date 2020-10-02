@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ProbeMatch.cwl
+id: ProbeMatch.cwl
 inputs:
 - id: in_max_dist
   doc: Give a max distance

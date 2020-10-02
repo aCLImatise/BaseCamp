@@ -1,8 +1,13 @@
 class: CommandLineTool
-id: ../../../tombo_build_model_estimate_reference.cwl
+id: tombo_build_model_estimate_reference.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_tombo_model_filename
+  doc: "TOMBO_MODEL_FILENAME\n[--estimate-mean]\n[--kmer-specific-sd]\n[--upstream-bases\
+    \ {0,1,2,3,4}]\n[--downstream-bases {0,1,2,3,4}]\n[--minimum-test-reads MINIMUM_TEST_READS]\n\
+    [--coverage-threshold COVERAGE_THRESHOLD]\n[--minimum-kmer-observations MINIMUM_KMER_OBSERVATIONS]\n\
+    [--multiprocess-region-size MULTIPROCESS_REGION_SIZE]\n[--processes PROCESSES]\n\
+    [--corrected-group CORRECTED_GROUP]\n[--basecall-subgroups BASECALL_SUBGROUPS\
+    \ [BASECALL_SUBGROUPS ...]]\n[--quiet] [--help]"
   type: boolean
   inputBinding:
     prefix: --tombo-model-filename
@@ -75,11 +80,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: in_var_13
-  doc: '[--estimate-mean]'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_individually_dot
   doc: --upstream-bases {0,1,2,3,4}
   type: string

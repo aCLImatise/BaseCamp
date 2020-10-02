@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../art_454.cwl
+id: art_454.cwl
 inputs:
 - id: in_perform_singleend_simulation
   doc: to perform single-end amplicon sequencing simulation

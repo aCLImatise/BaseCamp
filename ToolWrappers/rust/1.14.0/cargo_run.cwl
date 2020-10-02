@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cargo_run.cwl
+id: cargo_run.cwl
 inputs:
 - id: in_bin
   doc: Name of the bin target to run

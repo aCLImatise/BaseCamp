@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_supported_organisms_ensemblgenomes.cwl
+id: rsat_supported_organisms_ensemblgenomes.cwl
 inputs:
 - id: in_supported_organisms_ensembl_genomes
   doc: "\e[1mVERSION\e[0m"

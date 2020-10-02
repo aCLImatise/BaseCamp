@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pocheck_seqfile in.cwl
+id: pocheck_seqfile in.cwl
 inputs:
 - id: in_options
   doc: ''

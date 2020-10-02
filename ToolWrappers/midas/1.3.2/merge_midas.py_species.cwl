@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_midas.py_species.cwl
+id: merge_midas.py_species.cwl
 inputs:
 - id: in_input_sample_output
   doc: Input to sample directories output by run_midas.py; see '-t' for details

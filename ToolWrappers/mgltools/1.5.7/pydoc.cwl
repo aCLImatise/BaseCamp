@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pydoc.cwl
+id: pydoc.cwl
 inputs: []
 outputs:
 - id: out_stdout

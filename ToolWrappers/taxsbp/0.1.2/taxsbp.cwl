@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxsbp.cwl
+id: taxsbp.cwl
 inputs:
 - id: in_tabseparated_fields_sequence
   doc: "Tab-separated with the fields: sequence id <tab>\nsequence length <tab> taxonomic\

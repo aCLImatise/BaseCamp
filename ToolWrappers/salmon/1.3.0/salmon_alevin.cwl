@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../salmon_alevin.cwl
+id: salmon_alevin.cwl
 inputs:
 - id: in_arg_format_string
   doc: '[ --libType ] arg                  Format string describing the library'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_pepnet.cwl
+id: _pepnet.cwl
 inputs:
 - id: in_graph
   doc: "graph      [$EMBOSS_GRAPHICS value, or png] Graph type\n(ps, hpgl, hp7470,\

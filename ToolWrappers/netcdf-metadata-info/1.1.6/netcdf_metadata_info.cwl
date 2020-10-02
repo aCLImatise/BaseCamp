@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../netcdf_metadata_info.cwl
+id: netcdf_metadata_info.cwl
 inputs: []
 outputs:
 - id: out_stdout

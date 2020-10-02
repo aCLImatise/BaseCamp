@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coval_filter_short.pl.cwl
+id: coval_filter_short.pl.cwl
 inputs:
 - id: in_ref
   doc: reference fasta file used for the alignment

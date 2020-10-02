@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_indels.cwl
+id: find_indels.cwl
 inputs:
 - id: in_min_in_del_length
   doc: "Filter out indels shorter than this length. (default:\n0)"

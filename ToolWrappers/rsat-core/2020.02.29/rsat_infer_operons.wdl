@@ -4,7 +4,6 @@ task RsatInferoperons {
   input {
     String? return
     Int? no_orf
-    String? _return_qinfoupinfooperon
     String infer_operons
     String jacques_dot_van_helden_backslash_at_univ_am_udot_fr
     String genomics
@@ -19,13 +18,11 @@ task RsatInferoperons {
       ~{genes_dot} \
       ~{retrieve_seq} \
       ~{if defined(return) then ("-return " +  '"' + return + '"') else ""} \
-      ~{if defined(no_orf) then ("-noorf " +  '"' + no_orf + '"') else ""} \
-      ~{if defined(_return_qinfoupinfooperon) then ("-q " +  '"' + _return_qinfoupinfooperon + '"') else ""}
+      ~{if defined(no_orf) then ("-noorf " +  '"' + no_orf + '"') else ""}
   >>>
   parameter_meta {
     return: ",leader,operon"
-    no_orf: ""
-    _return_qinfoupinfooperon: "\\ -return q_info,up_info,operon"
+    no_orf: "[1mExample 5[0m\\nNote that operons can contain non-coding genes. For example, the\\nmetT operon contains a series of tRNA genes for methionine, leucine\\nand glutamina, respectively.\\ninfer-operons -org Escherichia_coli_GCF_000005845.2_ASM584v2 -q glnV\\n-q metU -q ileV \\ -return q_info,up_info,operon"
     infer_operons: "[1mDESCRIPTION[0m"
     jacques_dot_van_helden_backslash_at_univ_am_udot_fr: "[1mCATEGORY[0m"
     genomics: "[1mMETHOD[0m"

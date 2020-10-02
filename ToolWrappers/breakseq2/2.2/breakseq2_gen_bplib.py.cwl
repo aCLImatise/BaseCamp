@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../breakseq2_gen_bplib.py.cwl
+id: breakseq2_gen_bplib.py.cwl
 inputs:
 - id: in_reference
   doc: 'Reference FASTA (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_toil_kubernetes_executor.cwl
+id: _toil_kubernetes_executor.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_rm.cwl
+id: gsutil_rm.cwl
 inputs:
 - id: in_continues_silently_printing
   doc: "Continues silently (without printing error messages) despite\nerrors when\

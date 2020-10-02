@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoutil_kmers.cwl
+id: novoutil_kmers.cwl
 inputs:
 - id: in_ref_idx
   doc: ''

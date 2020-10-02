@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NCRF.cwl
+id: NCRF.cwl
 inputs:
 - id: in_min_m_ratio
   doc: "discard alignments with a low frequency of matches;\nratio can be between\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertMetaMapsToCentrifuge.pl.cwl
+id: convertMetaMapsToCentrifuge.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_swap.cwl
+id: maf_swap.cwl
 inputs:
 - id: in_move_nth_sequence
   doc: 'move the Nth sequence to the top (default: 2)'

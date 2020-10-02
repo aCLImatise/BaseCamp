@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vseqinfo.cwl
+id: vseqinfo.cwl
 inputs:
 - id: in_index_name
   doc: ''

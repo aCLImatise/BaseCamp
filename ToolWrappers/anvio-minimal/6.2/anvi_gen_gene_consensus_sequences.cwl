@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_gen_gene_consensus_sequences.cwl
+id: anvi_gen_gene_consensus_sequences.cwl
 inputs:
 - id: in_compress_samples
   doc: "Normally all samples with variation will have their\nown consensus sequence.\

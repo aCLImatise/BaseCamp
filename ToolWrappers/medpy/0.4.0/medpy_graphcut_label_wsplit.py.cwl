@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_graphcut_label_wsplit.py.cwl
+id: medpy_graphcut_label_wsplit.py.cwl
 inputs:
 - id: in_boundary
   doc: Depending on the selected term, an additional

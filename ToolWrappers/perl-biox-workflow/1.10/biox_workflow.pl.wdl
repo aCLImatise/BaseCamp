@@ -24,7 +24,6 @@ task Bioxworkflowpl {
     Boolean? counter_rules
     Boolean? man
     Boolean? config_file
-    Boolean? comment_char
     Boolean? rule_based
     Boolean? sample_based
     Boolean? stash
@@ -60,7 +59,6 @@ task Bioxworkflowpl {
       ~{if (counter_rules) then "--counter_rules" else ""} \
       ~{if (man) then "--man" else ""} \
       ~{if (config_file) then "--configfile" else ""} \
-      ~{if (comment_char) then "--comment_char" else ""} \
       ~{if (rule_based) then "--rule_based" else ""} \
       ~{if (sample_based) then "--sample_based" else ""} \
       ~{if (stash) then "--stash" else ""} \
@@ -89,7 +87,6 @@ task Bioxworkflowpl {
     counter_rules: "- Num. Default=1."
     man: "- Bool. Display man page"
     config_file: "- Path|Undef."
-    comment_char: "- Str. Default=#."
     rule_based: "- Bool. Default=1."
     sample_based: "- Bool. Default=0."
     stash: "- HashRef."

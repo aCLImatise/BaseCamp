@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeset.cwl
+id: makeset.cwl
 inputs:
 - id: in_input_file_names
   doc: "Input File Names [File In]\ndefault = stdin"

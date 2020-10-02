@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_shed_init.cwl
+id: planemo_shed_init.cwl
 inputs:
 - id: in_from_workflow
   doc: "Attempt to generate repository dependencies\nfrom specified workflow."

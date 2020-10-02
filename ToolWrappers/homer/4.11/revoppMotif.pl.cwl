@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../revoppMotif.pl.cwl
+id: revoppMotif.pl.cwl
 inputs:
 - id: in_motif_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxonomy_filter_refseq.cwl
+id: taxonomy_filter_refseq.cwl
 inputs:
 - id: in_no_curated
   doc: Don't accept curated RNAs and proteins (NM_, NR_ and NP_ accessions)

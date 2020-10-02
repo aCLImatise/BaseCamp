@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iss_generate.cwl
+id: iss_generate.cwl
 inputs:
 - id: in_quiet
   doc: 'Disable info logging. (default: False).'

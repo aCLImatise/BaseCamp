@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_op.cwl
+id: SnpSift_op.cwl
 inputs:
 - id: in_fields
   doc: ': Input VCF field names (comma separated list).'

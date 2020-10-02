@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairtools_restrict.cwl
+id: pairtools_restrict.cwl
 inputs:
 - id: in_frags
   doc: "a tab-separated BED file with the positions of\nrestriction fragments (chrom,\

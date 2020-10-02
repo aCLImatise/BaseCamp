@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aln_seqs.pl.cwl
+id: aln_seqs.pl.cwl
 inputs:
 - id: in_man
   doc: documentation

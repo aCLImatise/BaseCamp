@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconc_circ_randomize.cwl
+id: falconc_circ_randomize.cwl
 inputs:
 - id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'

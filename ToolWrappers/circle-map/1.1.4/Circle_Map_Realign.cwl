@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Circle_Map_Realign.cwl
+id: Circle_Map_Realign.cwl
 inputs:
 - id: in_input_bam_file
   doc: 'Input: bam file containing the reads extracted by'

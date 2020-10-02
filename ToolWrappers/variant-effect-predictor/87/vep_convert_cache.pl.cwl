@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vep_convert_cache.pl.cwl
+id: vep_convert_cache.pl.cwl
 inputs:
 - id: in_quiet
   doc: -q   Shhh!

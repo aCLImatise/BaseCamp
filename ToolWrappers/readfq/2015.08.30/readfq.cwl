@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../readfq.cwl
+id: readfq.cwl
 inputs:
 - id: in_in_dot_seq
   doc: ''

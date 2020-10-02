@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../macse.cwl
+id: macse.cwl
 inputs:
 - id: in_prog
   doc: the program to be used among those proposed by MACSE toolkit
@@ -16,31 +16,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -jar
-- id: in_align_sequences
-  doc: alignTwoProfiles
-  type: string
-  inputBinding:
-    position: 0
 - id: in_enrich_alignment
   doc: refineAlignment
   type: string
   inputBinding:
-    position: 1
-- id: in_export_alignment
-  doc: translateNT2AA
-  type: string
-  inputBinding:
-    position: 2
+    position: 0
 - id: in_report_gaps_aat_wont
   doc: splitAlignment
   type: long
   inputBinding:
-    position: 3
+    position: 1
 - id: in_remove_seq_causing_gap_py_sites
   doc: trimSequences
   type: string
   inputBinding:
-    position: 4
+    position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream

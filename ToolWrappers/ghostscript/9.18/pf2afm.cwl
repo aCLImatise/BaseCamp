@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pf2afm.cwl
+id: pf2afm.cwl
 inputs:
 - id: in_d_no_display
   doc: ''

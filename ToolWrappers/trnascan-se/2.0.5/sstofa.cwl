@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sstofa.cwl
+id: sstofa.cwl
 inputs:
 - id: in_sec_struct_file
   doc: ''

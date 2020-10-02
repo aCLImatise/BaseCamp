@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamfiltermc.cwl
+id: bamfiltermc.cwl
 inputs: []
 outputs:
 - id: out_stdout

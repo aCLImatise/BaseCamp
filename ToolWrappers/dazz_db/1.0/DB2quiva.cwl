@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DB2quiva.cwl
+id: DB2quiva.cwl
 inputs:
 - id: in_vu
   doc: ''

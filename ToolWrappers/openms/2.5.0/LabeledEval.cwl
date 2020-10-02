@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LabeledEval.cwl
+id: LabeledEval.cwl
 inputs:
 - id: in_in
   doc: "*        Feature result file (valid formats: 'featureXML')"

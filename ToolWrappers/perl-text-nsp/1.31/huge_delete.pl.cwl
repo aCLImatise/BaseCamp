@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../huge_delete.pl.cwl
+id: huge_delete.pl.cwl
 inputs:
 - id: in_remove
   doc: Bigrams with counts < L will be removed from sample.

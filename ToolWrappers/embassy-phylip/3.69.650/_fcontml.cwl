@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fcontml.cwl
+id: _fcontml.cwl
 inputs:
 - id: in_datatype
   doc: "menu       [g] Input type in infile (Values: g (Gene\nfrequencies); i (Continuous\

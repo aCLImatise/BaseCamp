@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_get_unique.cwl
+id: rsem_get_unique.cwl
 inputs:
 - id: in_number_of_threads
   doc: ''

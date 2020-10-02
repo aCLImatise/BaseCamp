@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flattenGTF.cwl
+id: flattenGTF.cwl
 inputs:
 - id: in_name_annotation_file
   doc: Name of an annotation file in GTF/GFF format.

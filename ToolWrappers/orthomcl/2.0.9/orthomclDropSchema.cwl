@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclDropSchema.cwl
+id: orthomclDropSchema.cwl
 inputs:
 - id: in_config_file
   doc: ''

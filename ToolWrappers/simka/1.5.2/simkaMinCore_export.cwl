@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simkaMinCore_export.cwl
+id: simkaMinCore_export.cwl
 inputs:
 - id: in_in
   doc: '(1 arg) :    input dir containing distance matrices in binary format (-out

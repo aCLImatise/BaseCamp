@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../optimize_augustus.pl.cwl
+id: optimize_augustus.pl.cwl
 inputs:
 - id: in_meta_pars
   doc: "metapars.cfg contains the names and their ranges of the\nmeta parameters that\

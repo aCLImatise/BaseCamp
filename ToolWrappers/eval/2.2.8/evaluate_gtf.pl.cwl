@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../evaluate_gtf.pl.cwl
+id: evaluate_gtf.pl.cwl
 inputs:
 - id: in_input_files_gtf
   doc: ': Input files are gtf not lists'

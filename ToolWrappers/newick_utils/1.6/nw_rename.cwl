@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_rename.cwl
+id: nw_rename.cwl
 inputs:
 - id: in_hl
   doc: ''

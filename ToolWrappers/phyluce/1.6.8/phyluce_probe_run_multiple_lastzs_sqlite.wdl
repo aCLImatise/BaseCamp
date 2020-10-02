@@ -29,7 +29,7 @@ task PhyluceProbeRunMultipleLastzsSqlite {
       ~{if defined(identity) then ("--identity " +  '"' + identity + '"') else ""}
   >>>
   parameter_meta {
-    probe_file: ""
+    probe_file: "[--chromolist CHROMOLIST [CHROMOLIST ...]]\\n[--scaffoldlist SCAFFOLDLIST [SCAFFOLDLIST ...]]\\n[--append] [--no-dir]\\n[--cores CORES]\\n[--genome-base-path BASE_PATH]\\n[--coverage COVERAGE]\\n[--identity IDENTITY]"
     db: "The database in which to store results (also use"
     append: "adding results to an existing database)"
     directory_store_files: "The directory in which to store the LASTZ files"

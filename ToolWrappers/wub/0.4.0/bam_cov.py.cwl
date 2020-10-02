@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_cov.py.cwl
+id: bam_cov.py.cwl
 inputs:
 - id: in_reference_fasta
   doc: Reference fasta.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bmaToLinks.pl.cwl
+id: bmaToLinks.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

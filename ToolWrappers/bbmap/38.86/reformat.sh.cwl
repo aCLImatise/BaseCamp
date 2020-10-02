@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reformat.sh.cwl
+id: reformat.sh.cwl
 inputs:
 - id: in_disabled_filter_reads
   doc: disabled; to filter reads with any of a symbol type, set to 0.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_genetrees_locus_stats.cwl
+id: phyluce_genetrees_locus_stats.cwl
 inputs:
 - id: in_config
   doc: The gene tree configuration file

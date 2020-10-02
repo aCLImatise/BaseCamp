@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fast5_subset.cwl
+id: fast5_subset.cwl
 inputs:
 - id: in_input
   doc: Path to Fast5 file or directory of Fast5 files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_simulate_reads.cwl
+id: rsem_simulate_reads.cwl
 inputs:
 - id: in_seed
   doc: ': Set seed for the random number generator used in simulation. The seed should

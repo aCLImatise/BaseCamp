@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_overlap.cwl
+id: sga_overlap.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

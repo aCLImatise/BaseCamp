@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_psms.rb.cwl
+id: filter_psms.rb.cwl
 inputs:
 - id: in_output
   doc: An explicitly named output file.

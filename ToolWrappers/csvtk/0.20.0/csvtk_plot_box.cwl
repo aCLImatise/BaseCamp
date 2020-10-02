@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_plot_box.cwl
+id: csvtk_plot_box.cwl
 inputs:
 - id: in_box_width
   doc: box width

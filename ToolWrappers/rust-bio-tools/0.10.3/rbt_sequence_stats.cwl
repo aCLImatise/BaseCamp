@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbt_sequence_stats.cwl
+id: rbt_sequence_stats.cwl
 inputs:
 - id: in_fast_q
   doc: Flag to indicate the sequence in stdin is in fastq format

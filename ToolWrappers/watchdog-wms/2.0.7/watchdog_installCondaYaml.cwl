@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../watchdog_installCondaYaml.cwl
+id: watchdog_installCondaYaml.cwl
 inputs: []
 outputs:
 - id: out_stdout

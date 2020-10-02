@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncbi_acc_download.cwl
+id: ncbi_acc_download.cwl
 inputs:
 - id: in_molecule
   doc: 'Molecule type to download. Default: nucleotide'

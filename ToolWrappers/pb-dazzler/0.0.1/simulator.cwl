@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simulator.cwl
+id: simulator.cwl
 inputs: []
 outputs:
 - id: out_stdout

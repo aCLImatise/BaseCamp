@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megahit_core_no_hw_accel_count.cwl
+id: megahit_core_no_hw_accel_count.cwl
 inputs:
 - id: in_km_er_k
   doc: (=21)                 kmer size

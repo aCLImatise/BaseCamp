@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msaboot.cwl
+id: msaboot.cwl
 inputs:
 - id: in_input
   doc: The file name of the FASTA file to be used as input.

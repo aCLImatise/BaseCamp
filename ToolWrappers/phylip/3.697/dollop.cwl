@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dollop.cwl
+id: dollop.cwl
 inputs: []
 outputs:
 - id: out_stdout

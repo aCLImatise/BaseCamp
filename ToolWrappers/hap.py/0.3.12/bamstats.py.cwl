@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamstats.py.cwl
+id: bamstats.py.cwl
 inputs:
 - id: in_o
   doc: ''

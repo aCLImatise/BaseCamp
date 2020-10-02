@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../revFasta.cwl
+id: revFasta.cwl
 inputs:
 - id: in_reverse_complement_specified
   doc: Reverse complement the specified id only

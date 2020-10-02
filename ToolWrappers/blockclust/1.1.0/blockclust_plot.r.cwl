@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blockclust_plot.r.cwl
+id: blockclust_plot.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

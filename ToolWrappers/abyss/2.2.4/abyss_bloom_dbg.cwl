@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_bloom_dbg.cwl
+id: abyss_bloom_dbg.cwl
 inputs:
 - id: in_bloom_size
   doc: "overall memory budget for the assembly in bytes.\nUnit suffixes 'k' (kilobytes),\

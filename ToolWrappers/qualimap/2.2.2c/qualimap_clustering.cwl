@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qualimap_clustering.cwl
+id: qualimap_clustering.cwl
 inputs:
 - id: in_bin_size
   doc: Size of the bin (default is 100)

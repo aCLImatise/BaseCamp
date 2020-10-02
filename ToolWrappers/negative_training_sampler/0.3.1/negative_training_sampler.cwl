@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../negative_training_sampler.cwl
+id: negative_training_sampler.cwl
 inputs:
 - id: in_label_file
   doc: Input bed file with labeled regions  [required]

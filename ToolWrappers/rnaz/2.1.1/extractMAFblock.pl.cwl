@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extractMAFblock.pl.cwl
+id: extractMAFblock.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

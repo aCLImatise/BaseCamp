@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assignGenomeAnnotation.cwl
+id: assignGenomeAnnotation.cwl
 inputs:
 - id: in_tags
   doc: (Use if first argument is a tag directory)

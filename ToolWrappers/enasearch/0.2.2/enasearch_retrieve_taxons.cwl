@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enasearch_retrieve_taxons.cwl
+id: enasearch_retrieve_taxons.cwl
 inputs:
 - id: in_ids
   doc: Ids for taxon to return [multiple]  [required]

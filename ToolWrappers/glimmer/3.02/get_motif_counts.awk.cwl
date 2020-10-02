@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_motif_counts.awk.cwl
+id: get_motif_counts.awk.cwl
 inputs: []
 outputs:
 - id: out_stdout

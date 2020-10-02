@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sample_reads.cwl
+id: sample_reads.cwl
 inputs:
 - id: in_depth
   doc: (=30)                  sequencing depth of the sample
@@ -21,11 +21,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --paired
-- id: in_sd
-  doc: (=-1)                     sd
-  type: long
-  inputBinding:
-    prefix: --sd
 - id: in_insert_distance
   doc: (=500)       insert distance
   type: long

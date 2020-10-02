@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfgtcompare.sh.cwl
+id: vcfgtcompare.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

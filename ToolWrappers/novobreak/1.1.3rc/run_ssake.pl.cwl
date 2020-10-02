@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_ssake.pl.cwl
+id: run_ssake.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varscan_processSomatic.cwl
+id: varscan_processSomatic.cwl
 inputs:
 - id: in_max_normal_freq
   doc: '- Maximum variant allele frequency in normal [0.05]'

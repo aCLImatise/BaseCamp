@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_type_CP.sh.cwl
+id: run_type_CP.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -51,9 +51,9 @@ subcommands:
     args: !ChoiceFlagArg
       choices: !!set
         text:
-        cell-ranger:
         loom:
         auto:
+        cell-ranger:
     optional: true
   - !Flag
     description: Do not normalize expression values (use raw counts)
@@ -87,7 +87,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id006 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -136,10 +136,10 @@ subcommands:
         - --format
         args: !ChoiceFlagArg
           choices: !!set
-            ? auto
             ? text
-            ? loom
             ? cell-ranger
+            ? loom
+            ? auto
         optional: true
       - !Flag
         description: Do not normalize expression values (use raw counts)
@@ -173,16 +173,10 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: &id006 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: Increase verbosity.
-          synonyms:
-          - --verbose
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -230,10 +224,10 @@ subcommands:
             - --format
             args: !ChoiceFlagArg
               choices: !!set
-                ? loom
-                ? cell-ranger
                 ? auto
                 ? text
+                ? loom
+                ? cell-ranger
             optional: true
           - !Flag
             description: Do not normalize expression values (use raw counts)
@@ -267,7 +261,385 @@ subcommands:
             - --verbose
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: Increase verbosity.
+              synonyms:
+              - --verbose
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional: []
+              named:
+              - !Flag
+                description: path to input/pipeline output directory
+                synonyms:
+                - -i
+                - --input-dir
+                args: !SimpleFlagArg
+                  name: INDIR
+                optional: true
+              - !Flag
+                description: "Path to about.md file to embed in the resulting .h5ad\n\
+                  file"
+                synonyms:
+                - -a
+                - --about-md
+                args: !SimpleFlagArg
+                  name: ABOUT_MD
+                optional: true
+              - !Flag
+                description: "Path to markers.tsv file to embed in the resulting\n\
+                  .h5ad file"
+                synonyms:
+                - -m
+                - --markers
+                args: !SimpleFlagArg
+                  name: MARKERS
+                optional: true
+              - !Flag
+                description: Path to the .h5ad file to write to
+                synonyms:
+                - -o
+                - --output
+                args: !SimpleFlagArg
+                  name: OUT_FILE
+                optional: true
+              - !Flag
+                description: input format
+                synonyms:
+                - -f
+                - --format
+                args: !ChoiceFlagArg
+                  choices: !!set
+                    ? loom
+                    ? cell-ranger
+                    ? auto
+                    ? text
+                optional: true
+              - !Flag
+                description: Do not normalize expression values (use raw counts)
+                synonyms:
+                - --use-raw
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Split species
+                synonyms:
+                - --split-species
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "split samples according to summary.json file produced\n\
+                  by cellranger aggr"
+                synonyms:
+                - --split-samples
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Save top n markers per cluster [10]
+                synonyms:
+                - --nmarkers
+                args: !SimpleFlagArg
+                  name: NMARKERS
+                optional: true
+              - !Flag
+                description: Enable verbose output
+                synonyms:
+                - --verbose
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: scelvis convert [-h] -i INDIR [-a ABOUT_MD] [-m MARKERS]\
+                \ -o OUT_FILE\n                       [-f {auto,text,cell-ranger,loom}]\
+                \ [--use-raw]\n                       [--split-species] [--split-samples]\n\
+                \                       [--nmarkers NMARKERS] [--verbose]\n\noptional\
+                \ arguments:\n  -h, --help            show this help message and exit\n\
+                \  -i INDIR, --input-dir INDIR\n                        path to input/pipeline\
+                \ output directory\n  -a ABOUT_MD, --about-md ABOUT_MD\n         \
+                \               Path to about.md file to embed in the resulting .h5ad\n\
+                \                        file\n  -m MARKERS, --markers MARKERS\n \
+                \                       Path to markers.tsv file to embed in the resulting\n\
+                \                        .h5ad file\n  -o OUT_FILE, --output OUT_FILE\n\
+                \                        Path to the .h5ad file to write to\n  -f\
+                \ {auto,text,cell-ranger,loom}, --format {auto,text,cell-ranger,loom}\n\
+                \                        input format\n  --use-raw             Do\
+                \ not normalize expression values (use raw counts)\n  --split-species\
+                \       Split species\n  --split-samples       split samples according\
+                \ to summary.json file produced\n                        by cellranger\
+                \ aggr\n  --nmarkers NMARKERS   Save top n markers per cluster [10]\n\
+                \  --verbose             Enable verbose output\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - scelvis
+              - run
+              positional: []
+              named:
+              - !Flag
+                description: Enable debug mode
+                synonyms:
+                - --debug
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Server host
+                synonyms:
+                - --host
+                args: !SimpleFlagArg
+                  name: HOST
+                optional: true
+              - !Flag
+                description: Server port
+                synonyms:
+                - --port
+                args: !SimpleFlagArg
+                  name: PORT
+                optional: true
+              - !Flag
+                description: Enable display of fake data set (for demo purposes).
+                synonyms:
+                - --fake-data
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Path to data source(s)
+                synonyms:
+                - --data-source
+                args: !SimpleFlagArg
+                  name: DATA_SOURCES
+                optional: true
+              - !Flag
+                description: "The prefix that this app will be served under (e.g.,\n\
+                  if behind a reverse proxy.)"
+                synonyms:
+                - --public-url-prefix
+                args: !SimpleFlagArg
+                  name: PUBLIC_URL_PREFIX
+                optional: true
+              - !Flag
+                description: Path to cache directory, default is to autocreate one.
+                synonyms:
+                - --cache-dir
+                args: !SimpleFlagArg
+                  name: CACHE_DIR
+                optional: true
+              - !Flag
+                description: Redis URL to use for caching, enables Redis cache
+                synonyms:
+                - --cache-redis-url
+                args: !SimpleFlagArg
+                  name: CACHE_REDIS_URL
+                optional: true
+              - !Flag
+                description: Default timeout for cache
+                synonyms:
+                - --cache-default-timeout
+                args: !SimpleFlagArg
+                  name: CACHE_DEFAULT_TIMEOUT
+                optional: true
+              - !Flag
+                description: whether to preload data at startup
+                synonyms:
+                - --cache-preload-data
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Directory for visualization uploads, default is to\n\
+                  create temporary directory"
+                synonyms:
+                - --upload-dir
+                args: !SimpleFlagArg
+                  name: UPLOAD_DIR
+                optional: true
+              - !Flag
+                description: Maximal size for data upload in bytes
+                synonyms:
+                - --max-upload-data-size
+                args: !SimpleFlagArg
+                  name: MAX_UPLOAD_DATA_SIZE
+                optional: true
+              - !Flag
+                description: Whether or not to disable visualization uploads
+                synonyms:
+                - --disable-upload
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Directory for visualization uploads, default is to\n\
+                  create temporary directory"
+                synonyms:
+                - --disable-conversion
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Use custom markdown file for home screen
+                synonyms:
+                - --custom-home-md
+                args: !SimpleFlagArg
+                  name: CUSTOM_HOME_MD
+                optional: true
+              - !Flag
+                description: "Use custom static folder for files included in home\n\
+                  screen markdown file"
+                synonyms:
+                - --custom-static-folder
+                args: !SimpleFlagArg
+                  name: CUSTOM_STATIC_FOLDER
+                optional: true
+              - !Flag
+                description: IRODS setting
+                synonyms:
+                - --irods-client-server-negotiation
+                args: !SimpleFlagArg
+                  name: IRODS_CLIENT_SERVER_NEGOTIATION
+                optional: true
+              - !Flag
+                description: IRODS setting
+                synonyms:
+                - --irods-client-server-policy
+                args: !SimpleFlagArg
+                  name: IRODS_CLIENT_SERVER_POLICY
+                optional: true
+              - !Flag
+                description: IRODS setting
+                synonyms:
+                - --irods-ssl-verify-server
+                args: !SimpleFlagArg
+                  name: IRODS_SSL_VERIFY_SERVER
+                optional: true
+              - !Flag
+                description: IRODS setting
+                synonyms:
+                - --irods-encryption-algorithm
+                args: !SimpleFlagArg
+                  name: IRODS_ENCRYPTION_ALGORITHM
+                optional: true
+              - !Flag
+                description: IRODS setting
+                synonyms:
+                - --irods-encryption-key-size
+                args: !SimpleFlagArg
+                  name: IRODS_ENCRYPTION_KEY_SIZE
+                optional: true
+              - !Flag
+                description: IRODS setting
+                synonyms:
+                - --irods-encryption-num-hash-rounds
+                args: !SimpleFlagArg
+                  name: IRODS_ENCRYPTION_NUM_HASH_ROUNDS
+                optional: true
+              - !Flag
+                description: "IRODS setting\n"
+                synonyms:
+                - --irods-encryption-salt-size
+                args: !SimpleFlagArg
+                  name: IRODS_ENCRYPTION_SALT_SIZE
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: scelvis run [-h] [--debug] [--host HOST] [--port\
+                \ PORT] [--fake-data]\n                   [--data-source DATA_SOURCES]\n\
+                \                   [--public-url-prefix PUBLIC_URL_PREFIX]\n    \
+                \               [--cache-dir CACHE_DIR] [--cache-redis-url CACHE_REDIS_URL]\n\
+                \                   [--cache-default-timeout CACHE_DEFAULT_TIMEOUT]\n\
+                \                   [--cache-preload-data] [--upload-dir UPLOAD_DIR]\n\
+                \                   [--max-upload-data-size MAX_UPLOAD_DATA_SIZE]\n\
+                \                   [--disable-upload] [--disable-conversion]\n  \
+                \                 [--custom-home-md CUSTOM_HOME_MD]\n            \
+                \       [--custom-static-folder CUSTOM_STATIC_FOLDER]\n          \
+                \         [--irods-client-server-negotiation IRODS_CLIENT_SERVER_NEGOTIATION]\n\
+                \                   [--irods-client-server-policy IRODS_CLIENT_SERVER_POLICY]\n\
+                \                   [--irods-ssl-verify-server IRODS_SSL_VERIFY_SERVER]\n\
+                \                   [--irods-encryption-algorithm IRODS_ENCRYPTION_ALGORITHM]\n\
+                \                   [--irods-encryption-key-size IRODS_ENCRYPTION_KEY_SIZE]\n\
+                \                   [--irods-encryption-num-hash-rounds IRODS_ENCRYPTION_NUM_HASH_ROUNDS]\n\
+                \                   [--irods-encryption-salt-size IRODS_ENCRYPTION_SALT_SIZE]\n\
+                \noptional arguments:\n  -h, --help            show this help message\
+                \ and exit\n  --debug               Enable debug mode\n  --host HOST\
+                \           Server host\n  --port PORT           Server port\n  --fake-data\
+                \           Enable display of fake data set (for demo purposes).\n\
+                \  --data-source DATA_SOURCES\n                        Path to data\
+                \ source(s)\n  --public-url-prefix PUBLIC_URL_PREFIX\n           \
+                \             The prefix that this app will be served under (e.g.,\n\
+                \                        if behind a reverse proxy.)\n  --cache-dir\
+                \ CACHE_DIR\n                        Path to cache directory, default\
+                \ is to autocreate one.\n  --cache-redis-url CACHE_REDIS_URL\n   \
+                \                     Redis URL to use for caching, enables Redis\
+                \ cache\n  --cache-default-timeout CACHE_DEFAULT_TIMEOUT\n       \
+                \                 Default timeout for cache\n  --cache-preload-data\
+                \  whether to preload data at startup\n  --upload-dir UPLOAD_DIR\n\
+                \                        Directory for visualization uploads, default\
+                \ is to\n                        create temporary directory\n  --max-upload-data-size\
+                \ MAX_UPLOAD_DATA_SIZE\n                        Maximal size for data\
+                \ upload in bytes\n  --disable-upload      Whether or not to disable\
+                \ visualization uploads\n  --disable-conversion  Directory for visualization\
+                \ uploads, default is to\n                        create temporary\
+                \ directory\n  --custom-home-md CUSTOM_HOME_MD\n                 \
+                \       Use custom markdown file for home screen\n  --custom-static-folder\
+                \ CUSTOM_STATIC_FOLDER\n                        Use custom static\
+                \ folder for files included in home\n                        screen\
+                \ markdown file\n  --irods-client-server-negotiation IRODS_CLIENT_SERVER_NEGOTIATION\n\
+                \                        IRODS setting\n  --irods-client-server-policy\
+                \ IRODS_CLIENT_SERVER_POLICY\n                        IRODS setting\n\
+                \  --irods-ssl-verify-server IRODS_SSL_VERIFY_SERVER\n           \
+                \             IRODS setting\n  --irods-encryption-algorithm IRODS_ENCRYPTION_ALGORITHM\n\
+                \                        IRODS setting\n  --irods-encryption-key-size\
+                \ IRODS_ENCRYPTION_KEY_SIZE\n                        IRODS setting\n\
+                \  --irods-encryption-num-hash-rounds IRODS_ENCRYPTION_NUM_HASH_ROUNDS\n\
+                \                        IRODS setting\n  --irods-encryption-salt-size\
+                \ IRODS_ENCRYPTION_SALT_SIZE\n                        IRODS setting\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: show program's version number and exit
+              synonyms:
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "usage: scelvis [-h] [--verbose] [--version] {convert,run}\
+              \ ...\n\npositional arguments:\n  {convert,run}\n    convert      Convert\
+              \ pipeline output to SCelVis input.\n    run          Run the SCelVis\
+              \ web server.\n\noptional arguments:\n  -h, --help     show this help\
+              \ message and exit\n  --verbose      Increase verbosity.\n  --version\
+              \      show program's version number and exit\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -297,12 +669,9 @@ subcommands:
             \       split samples according to summary.json file produced\n      \
             \                  by cellranger aggr\n  --nmarkers NMARKERS   Save top\
             \ n markers per cluster [10]\n  --verbose             Enable verbose output\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - scelvis
-          - run
+          command: *id005
           positional: []
           named:
           - !Flag
@@ -528,20 +897,9 @@ subcommands:
             \ IRODS_ENCRYPTION_SALT_SIZE\n                        IRODS setting\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: show program's version number and exit
-          synonyms:
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "usage: scelvis [-h] [--verbose] [--version] {convert,run} ...\n\
           \npositional arguments:\n  {convert,run}\n    convert      Convert pipeline\
           \ output to SCelVis input.\n    run          Run the SCelVis web server.\n\
@@ -742,7 +1100,7 @@ subcommands:
         args: !SimpleFlagArg
           name: IRODS_ENCRYPTION_SALT_SIZE
         optional: true
-      parent: *id003
+      parent: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1005,7 +1363,7 @@ subcommands:
     args: !SimpleFlagArg
       name: IRODS_ENCRYPTION_SALT_SIZE
     optional: true
-  parent: *id006
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

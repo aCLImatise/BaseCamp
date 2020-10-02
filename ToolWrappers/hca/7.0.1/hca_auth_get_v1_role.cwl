@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_auth_get_v1_role.cwl
+id: hca_auth_get_v1_role.cwl
 inputs:
 - id: in_role_id
   doc: The name of the role.

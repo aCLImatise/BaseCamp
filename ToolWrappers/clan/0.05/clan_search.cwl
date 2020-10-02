@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clan_search.cwl
+id: clan_search.cwl
 inputs:
 - id: in_d
   doc: ''

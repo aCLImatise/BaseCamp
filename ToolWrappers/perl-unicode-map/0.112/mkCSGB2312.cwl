@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mkCSGB2312.cwl
+id: mkCSGB2312.cwl
 inputs: []
 outputs:
 - id: out_stdout

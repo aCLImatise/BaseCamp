@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ffitch.cwl
+id: ffitch.cwl
 inputs:
 - id: in_matrix_type
   doc: "menu       [s] Type of input data matrix (Values: s\n(Square); u (Upper triangular);\

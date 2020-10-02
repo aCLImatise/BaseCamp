@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_gc_vs_qual.py.cwl
+id: bam_gc_vs_qual.py.cwl
 inputs:
 - id: in_reference_fasta
   doc: Reference fasta.

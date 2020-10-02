@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PathOverlap.cwl
+id: PathOverlap.cwl
 inputs:
 - id: in_km_er
   doc: k-mer size

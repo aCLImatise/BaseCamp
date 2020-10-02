@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../consensus.py.cwl
+id: consensus.py.cwl
 inputs:
 - id: in_alignment
   doc: "The aligned sequences, in FASTA format (but no multi-line\nsequences)."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam12strip.cwl
+id: bam12strip.cwl
 inputs: []
 outputs:
 - id: out_stdout

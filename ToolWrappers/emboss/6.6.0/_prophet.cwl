@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_prophet.cwl
+id: _prophet.cwl
 inputs:
 - id: in_gap_open
   doc: "float      [1.0] Gap opening coefficient (Number from\n0.000 to 100.000)"

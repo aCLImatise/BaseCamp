@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_INTERSECT.cwl
+id: gdtools_INTERSECT.cwl
 inputs:
 - id: in_output
   doc: Output Genome Diff file name (DEFAULT=output.gd)

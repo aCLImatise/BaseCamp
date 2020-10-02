@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_pe.Makefile.cwl
+id: abyss_pe.Makefile.cwl
 inputs: []
 outputs:
 - id: out_stdout

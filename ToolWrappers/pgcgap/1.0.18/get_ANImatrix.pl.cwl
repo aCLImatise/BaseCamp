@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_ANImatrix.pl.cwl
+id: get_ANImatrix.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

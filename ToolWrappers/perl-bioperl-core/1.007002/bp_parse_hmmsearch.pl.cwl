@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_parse_hmmsearch.pl.cwl
+id: bp_parse_hmmsearch.pl.cwl
 inputs:
 - id: in_hmmsearch_file_parse
   doc: HMMSEARCH file to parse.

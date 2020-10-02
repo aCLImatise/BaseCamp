@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedGeneOverlap.cwl
+id: BedGeneOverlap.cwl
 inputs:
 - id: in_source
   doc: "Transcript source database.\nValid: 'ccds,ensembl'"

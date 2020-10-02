@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shrink_db.pl.cwl
+id: shrink_db.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2_config.cwl
+id: humann2_config.cwl
 inputs:
 - id: in_print
   doc: print the configuration

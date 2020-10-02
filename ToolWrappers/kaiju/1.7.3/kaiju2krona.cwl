@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kaiju2krona.cwl
+id: kaiju2krona.cwl
 inputs:
 - id: in_name_input_file
   doc: Name of input file

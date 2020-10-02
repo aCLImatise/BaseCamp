@@ -9,7 +9,6 @@ task Rscapesimnobps {
     Directory? outdir
     File? send_output_file
     Boolean? one_msa
-    Float? to_l
     Int? seed
     Boolean? options
     String msa
@@ -24,7 +23,6 @@ task Rscapesimnobps {
       ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
       ~{if defined(send_output_file) then ("-o " +  '"' + send_output_file + '"') else ""} \
       ~{if (one_msa) then "--onemsa" else ""} \
-      ~{if defined(to_l) then ("--tol " +  '"' + to_l + '"') else ""} \
       ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
       ~{if (options) then "-options" else ""}
   >>>
@@ -36,7 +34,6 @@ task Rscapesimnobps {
     outdir: ": specify a directory for all output files"
     send_output_file: ": send output to file <f>, not stdout"
     one_msa: ": if file has more than one msa, analyze only the first one"
-    to_l: ": tolerance  [1e-3]"
     seed: ": set RNG seed to <n>  [0]"
     options: ""
     msa: ""

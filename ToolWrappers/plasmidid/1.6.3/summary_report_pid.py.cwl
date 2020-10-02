@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summary_report_pid.py.cwl
+id: summary_report_pid.py.cwl
 inputs:
 - id: in_input
   doc: REQUIRED.Input pID folder

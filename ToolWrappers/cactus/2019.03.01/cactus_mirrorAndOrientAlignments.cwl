@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_mirrorAndOrientAlignments.cwl
+id: cactus_mirrorAndOrientAlignments.cwl
 inputs: []
 outputs:
 - id: out_stdout

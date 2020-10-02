@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_pasta_gui.py.cwl
+id: run_pasta_gui.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

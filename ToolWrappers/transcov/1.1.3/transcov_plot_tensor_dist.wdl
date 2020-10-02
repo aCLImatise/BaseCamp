@@ -11,7 +11,7 @@ task TranscovPlottensordist {
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
   parameter_meta {
-    output_file: ""
+    output_file: "--help                  Show this message and exit.\\n"
     input_tensor: ""
   }
   output {

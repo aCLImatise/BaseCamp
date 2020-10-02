@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cdbfasta.cwl
+id: cdbfasta.cwl
 inputs:
 - id: in_index_file_will
   doc: "index file will be named <index_file>; if not given,\nthe index filename is\

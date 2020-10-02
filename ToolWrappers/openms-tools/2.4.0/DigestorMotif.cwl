@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DigestorMotif.cwl
+id: DigestorMotif.cwl
 inputs:
 - id: in_in
   doc: "*                 FASTA input file (valid formats: 'fasta')"

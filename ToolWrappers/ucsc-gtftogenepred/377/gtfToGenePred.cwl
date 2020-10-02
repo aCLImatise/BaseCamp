@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtfToGenePred.cwl
+id: gtfToGenePred.cwl
 inputs:
 - id: in_gene_pred_ext
   doc: "- create a extended genePred, including frame\ninformation and gene name"

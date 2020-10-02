@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../inforesidue.cwl
+id: inforesidue.cwl
 inputs:
 - id: in_aa_data
   doc: datafile   [Eamino.dat] Amino acid properties

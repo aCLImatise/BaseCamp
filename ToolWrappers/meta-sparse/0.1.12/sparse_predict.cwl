@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sparse_predict.cwl
+id: sparse_predict.cwl
 inputs:
 - id: in_dbname
   doc: Name for the database folder. REQUIRED

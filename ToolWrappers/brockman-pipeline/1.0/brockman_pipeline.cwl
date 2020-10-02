@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../brockman_pipeline.cwl
+id: brockman_pipeline.cwl
 inputs: []
 outputs:
 - id: out_stdout

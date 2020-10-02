@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biom_show_install_info_format.org.cwl
+id: biom_show_install_info_format.org.cwl
 inputs:
 - id: in_biom
   doc: ''

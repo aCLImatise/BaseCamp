@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../asmOutputFasta.cwl
+id: asmOutputFasta.cwl
 inputs:
 - id: in_write_files_named
   doc: "write files named 'prefix.XXX.TYPE', etc.\nXXX =  type of object\nutg - unitig\n\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_get_value.cwl
+id: gcloud_config_get_value.cwl
 inputs:
 - id: in_section_slash_property
   doc: "The property to be fetched. Note that SECTION/ is optional while\nreferring\

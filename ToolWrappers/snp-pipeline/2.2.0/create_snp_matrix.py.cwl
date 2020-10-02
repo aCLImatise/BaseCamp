@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_snp_matrix.py.cwl
+id: create_snp_matrix.py.cwl
 inputs:
 - id: in_force
   doc: "Force processing even when result file already exists\nand is newer than inputs\

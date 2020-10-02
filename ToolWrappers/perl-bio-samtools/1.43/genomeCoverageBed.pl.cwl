@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomeCoverageBed.pl.cwl
+id: genomeCoverageBed.pl.cwl
 inputs:
 - id: in_exist_usrlocalbingenomecoveragebedpl_line
   doc: not exist at /usr/local/bin/genomeCoverageBed.pl line 10.

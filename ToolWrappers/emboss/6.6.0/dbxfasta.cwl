@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbxfasta.cwl
+id: dbxfasta.cwl
 inputs:
 - id: in_id_format
   doc: "menu       [idacc] ID line format (Values: simple\n(>ID); idacc (>ID ACC or\

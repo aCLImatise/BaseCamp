@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hubward_process.cwl
+id: hubward_process.cwl
 inputs:
 - id: in_or
   doc: '- a file called metadata-builder.py (in which case it is executed and'

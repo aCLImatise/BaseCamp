@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Ray.cwl
+id: Ray.cwl
 inputs: []
 outputs:
 - id: out_stdout

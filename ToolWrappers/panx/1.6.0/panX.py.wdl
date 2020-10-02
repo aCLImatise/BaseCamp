@@ -53,11 +53,9 @@ task PanXpy {
     Boolean? mtf
     Boolean? rx_m
     Boolean? clean_temporary_files
-    String inference
   }
   command <<<
     panX_py \
-      ~{inference} \
       ~{if (fn) then "-fn" else ""} \
       ~{if (sl) then "-sl" else ""} \
       ~{if (gbk_present) then "--gbk_present" else ""} \
@@ -162,7 +160,6 @@ task PanXpy {
     mtf: ", --meta_data_config\\nfile path for pre-defined metadata structure\\n(discrete/continuous data type, etc.)"
     rx_m: ", --raxml_path   absolute path of raxml"
     clean_temporary_files: "default: keep temporary files\\n"
-    inference: "-dgl, --disable_gain_loss"
   }
   output {
     File out_stdout = stdout()

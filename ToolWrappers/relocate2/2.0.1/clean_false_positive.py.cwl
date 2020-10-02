@@ -1,36 +1,21 @@
 class: CommandLineTool
-id: ../../../clean_false_positive.py.cwl
+id: clean_false_positive.py.cwl
 inputs:
-- id: in_input
+- id: in_d
   doc: ''
   type: string
   inputBinding:
-    prefix: --input
-- id: in_re_fte
+    prefix: -d
+- id: in_r
   doc: ''
   type: string
   inputBinding:
-    prefix: --refte
-- id: in_distance
+    prefix: -r
+- id: in_i
   doc: ''
   type: string
   inputBinding:
-    prefix: --distance
-- id: in_bed_tools
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --bedtools
-- id: in_output
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --output
-- id: in_v
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -v
+    prefix: -i
 outputs:
 - id: out_stdout
   doc: Standard output stream

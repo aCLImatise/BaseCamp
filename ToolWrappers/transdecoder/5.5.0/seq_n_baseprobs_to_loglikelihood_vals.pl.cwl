@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq_n_baseprobs_to_loglikelihood_vals.pl.cwl
+id: seq_n_baseprobs_to_loglikelihood_vals.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

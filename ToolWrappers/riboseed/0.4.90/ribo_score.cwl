@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribo_score.cwl
+id: ribo_score.cwl
 inputs:
 - id: in_output
   doc: directory in which to place the output files

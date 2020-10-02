@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msp_mutations.cwl
+id: msp_mutations.cwl
 inputs:
 - id: in_header
   doc: Print a header line in the output.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../exclude_uid_lists.cwl
+id: exclude_uid_lists.cwl
 inputs:
 - id: in_ignore_leading_blanks
   doc: Ignore leading blanks

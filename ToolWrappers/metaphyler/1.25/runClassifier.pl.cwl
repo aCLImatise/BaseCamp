@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runClassifier.pl.cwl
+id: runClassifier.pl.cwl
 inputs:
 - id: in_perl
   doc: ''

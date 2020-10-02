@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sbpipe.cwl
+id: sbpipe.cwl
 inputs:
 - id: in_create_project
   doc: create a project structure

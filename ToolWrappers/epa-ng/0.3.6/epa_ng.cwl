@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../epa_ng.cwl
+id: epa_ng.cwl
 inputs:
 - id: in_verbose
   doc: Display debug output.

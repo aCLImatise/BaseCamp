@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mlocarna.cwl
+id: mlocarna.cwl
 inputs:
 - id: in_fast_a_file
   doc: ''

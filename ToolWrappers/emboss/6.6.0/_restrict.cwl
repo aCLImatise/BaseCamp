@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_restrict.cwl
+id: _restrict.cwl
 inputs:
 - id: in_site_len
   doc: "integer    [4] This sets the minimum length of the\nrestriction enzyme recognition\

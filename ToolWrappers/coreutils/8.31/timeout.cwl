@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../timeout.cwl
+id: timeout.cwl
 inputs:
 - id: in_preserve_status
   doc: "exit with the same status as COMMAND, even when the\ncommand times out"

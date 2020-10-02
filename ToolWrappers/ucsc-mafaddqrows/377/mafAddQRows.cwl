@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafAddQRows.cwl
+id: mafAddQRows.cwl
 inputs:
 - id: in_divisor
   doc: is value to divide Q value by.  Default is 5.

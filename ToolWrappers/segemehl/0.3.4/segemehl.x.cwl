@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segemehl.x.cwl
+id: segemehl.x.cwl
 inputs:
 - id: in_database
   doc: '[<file>]  list of path/filename(s) of fasta database sequence(s)'

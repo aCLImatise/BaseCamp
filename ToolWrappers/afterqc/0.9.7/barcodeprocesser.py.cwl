@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../barcodeprocesser.py.cwl
+id: barcodeprocesser.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

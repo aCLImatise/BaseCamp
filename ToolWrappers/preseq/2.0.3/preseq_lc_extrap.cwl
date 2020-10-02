@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preseq_lc_extrap.cwl
+id: preseq_lc_extrap.cwl
 inputs:
 - id: in_output
   doc: 'yield output file (default: stdout)'

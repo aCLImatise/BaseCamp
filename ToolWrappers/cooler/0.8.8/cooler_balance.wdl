@@ -18,12 +18,10 @@ task CoolerBalance {
     Boolean? force
     Boolean? check
     Boolean? convergence_policy
-    String between_dot
     String exists_dot
   }
   command <<<
     cooler balance \
-      ~{between_dot} \
       ~{exists_dot} \
       ~{if defined(nproc) then ("--nproc " +  '"' + nproc + '"') else ""} \
       ~{if defined(chunksize) then ("--chunksize " +  '"' + chunksize + '"') else ""} \
@@ -59,7 +57,6 @@ task CoolerBalance {
     force: "Overwrite the target dataset, 'weight', if\\nit already exists."
     check: "Check whether a data column 'weight' already"
     convergence_policy: "[store_final|store_nan|discard|error]\\nWhat to do with weights when balancing\\ndoesn't converge in max_iters.\\n'store_final': Store the final result,\\nregardless of whether the iterations\\nconverge to the specified tolerance;\\n'store_nan': Store a vector of NaN values to\\nindicate that the matrix failed to converge;\\n'discard': Store nothing and exit\\ngracefully; 'error': Abort with non-zero\\nexit status.  [default: store_final]"
-    between_dot: "[default: 8]"
     exists_dot: "--stdout                        Print weight column to stdout instead of"
   }
   output {

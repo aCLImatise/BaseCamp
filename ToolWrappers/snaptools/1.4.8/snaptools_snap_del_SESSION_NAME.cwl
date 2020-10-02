@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snaptools_snap_del_SESSION_NAME.cwl
+id: snaptools_snap_del_SESSION_NAME.cwl
 inputs:
 - id: in_session_name
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../elandexport2bed.cwl
+id: elandexport2bed.cwl
 inputs: []
 outputs:
 - id: out_stdout

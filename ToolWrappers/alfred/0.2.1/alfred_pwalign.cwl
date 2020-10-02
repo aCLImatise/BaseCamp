@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alfred_pwalign.cwl
+id: alfred_pwalign.cwl
 inputs:
 - id: in_arg_gap_open
   doc: '[ --gapopen ] arg (=-10)           gap open'

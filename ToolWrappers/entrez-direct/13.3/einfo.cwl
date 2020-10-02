@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../einfo.cwl
+id: einfo.cwl
 inputs:
 - id: in_db
   doc: Database name

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mikado_pick.cwl
+id: mikado_pick.cwl
 inputs:
 - id: in_json_conf
   doc: '[--scoring-file SCORING_FILE]'
@@ -170,31 +170,14 @@ inputs:
   inputBinding:
     prefix: --seed
 - id: in_subloc_i_out
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --subloci-out
-- id: in_mono_loci_out
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --monoloci-out
-- id: in_loci_out
-  doc: "This output file is mandatory. If it is not specified\nin the configuration\
-    \ file, it must be provided here.\n(default: None)"
+  doc: "--monoloci-out MONOLOCI_OUT\n--loci-out LOCI_OUT   This output file is mandatory.\
+    \ If it is not specified\nin the configuration file, it must be provided here.\n\
+    (default: None)\n--prefix PREFIX       Prefix for the genes. Default: Mikado (default:\
+    \ None)\n--source SOURCE       Source field to use for the output files. (default:\n\
+    None)"
   type: File
   inputBinding:
-    prefix: --loci-out
-- id: in_prefix
-  doc: 'Prefix for the genes. Default: Mikado (default: None)'
-  type: string
-  inputBinding:
-    prefix: --prefix
-- id: in_source
-  doc: "Source field to use for the output files. (default:\nNone)"
-  type: string
-  inputBinding:
-    prefix: --source
+    prefix: --subloci-out
 - id: in_log
   doc: "File to write the log to. Default: decided by the\nconfiguration file. (default:\
     \ None)"
@@ -231,12 +214,15 @@ outputs:
   type: Directory
   outputBinding:
     glob: $(inputs.in_output_dir)
-- id: out_loci_out
-  doc: "This output file is mandatory. If it is not specified\nin the configuration\
-    \ file, it must be provided here.\n(default: None)"
+- id: out_subloc_i_out
+  doc: "--monoloci-out MONOLOCI_OUT\n--loci-out LOCI_OUT   This output file is mandatory.\
+    \ If it is not specified\nin the configuration file, it must be provided here.\n\
+    (default: None)\n--prefix PREFIX       Prefix for the genes. Default: Mikado (default:\
+    \ None)\n--source SOURCE       Source field to use for the output files. (default:\n\
+    None)"
   type: File
   outputBinding:
-    glob: $(inputs.in_loci_out)
+    glob: $(inputs.in_subloc_i_out)
 cwlVersion: v1.1
 baseCommand:
 - mikado

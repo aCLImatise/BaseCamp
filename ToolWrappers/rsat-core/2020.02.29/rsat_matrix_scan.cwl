@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_matrix_scan.cwl
+id: rsat_matrix_scan.cwl
 inputs:
 - id: in_last_seq
   doc: order to select a subset of sequences for quick
@@ -54,11 +54,6 @@ inputs:
     position: 0
 - id: in_eight_one_nine_two_dot
   doc: Hertz, G.Z. and G.D. Stormo (1999).
-  type: long
-  inputBinding:
-    position: 0
-- id: in_five_six_three_seven_seven_dot
-  doc: Staden (1989).
   type: long
   inputBinding:
     position: 0

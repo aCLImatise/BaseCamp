@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../whatshap_split.cwl
+id: whatshap_split.cwl
 inputs:
 - id: in_output_hone
   doc: "Output file to write reads from Haplotype 1 to. Use\nending .gz to create\

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../verify_mapping_quality.pl.cwl
+id: verify_mapping_quality.pl.cwl
 inputs:
-- id: in_min_depth
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: --min-depth
 - id: in_bam
   doc: "[REQUIRED]\nThe location for a specific BAM file in the dataset. Multiple\
     \ BAM\nfiles can be input. Example with 3 BAM files: --bam\nbam1=/path/bam1.bam\
@@ -13,6 +8,19 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --bam
+- id: in_min_depth
+  doc: "[optional]\nThe minimum depth of coverage required at each genome position\
+    \ to be\nconsidered mapped. Default value is 15x."
+  type: boolean
+  inputBinding:
+    prefix: --min-depth
+- id: in_min_map
+  doc: "[optional]\nThe minimum percent mapped to reference for each strain, pipeline\n\
+    will log all strains that do not meet this minimum percentage.\nDefault value\
+    \ is 80%."
+  type: boolean
+  inputBinding:
+    prefix: --min-map
 - id: in_cores
   doc: "[optional]\nThe number of CPU cores that should be used for the calculations."
   type: boolean

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genePredToBigGenePred.cwl
+id: genePredToBigGenePred.cwl
 inputs:
 - id: in_known
   doc: input file is a genePred in knownGene format

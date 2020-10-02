@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../relabelunbugreads.sh.cwl
+id: relabelunbugreads.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

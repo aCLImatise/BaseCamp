@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_0.1.18_flagstat.cwl
+id: samtools_0.1.18_flagstat.cwl
 inputs:
 - id: in_sam_tools
   doc: ''

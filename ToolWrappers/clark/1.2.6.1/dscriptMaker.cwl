@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dscriptMaker.cwl
+id: dscriptMaker.cwl
 inputs: []
 outputs:
 - id: out_stdout

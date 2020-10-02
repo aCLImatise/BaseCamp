@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcftools_roh.cwl
+id: bcftools_roh.cwl
 inputs:
 - id: in_af_dflt
   doc: if AF is not known, use this allele frequency [skip]

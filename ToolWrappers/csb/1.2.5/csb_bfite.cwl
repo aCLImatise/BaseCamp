@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csb_bfite.cwl
+id: csb_bfite.cwl
 inputs:
 - id: in_chain
   doc: Chain (default=A)

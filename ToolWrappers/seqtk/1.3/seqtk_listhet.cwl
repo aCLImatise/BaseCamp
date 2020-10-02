@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqtk_listhet.cwl
+id: seqtk_listhet.cwl
 inputs:
 - id: in_in_dot_fa
   doc: ''

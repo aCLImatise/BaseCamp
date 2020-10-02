@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../restrict_repset.py.cwl
+id: restrict_repset.py.cwl
 inputs:
 - id: in_biom_fp
   doc: "Path to a biom-format file with OTU-Sample abundance\ndata."

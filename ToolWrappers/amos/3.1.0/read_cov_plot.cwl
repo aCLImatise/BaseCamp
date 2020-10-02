@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_cov_plot.cwl
+id: read_cov_plot.cwl
 inputs:
 - id: in_scafold_coordinates_instead
   doc: scafold coordinates instead of contig coordinates

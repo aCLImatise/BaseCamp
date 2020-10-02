@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_variant_matrix.py.cwl
+id: tbprofiler_variant_matrix.py.cwl
 inputs:
 - id: in_samples
   doc: 'NGS Platform (default: None)'

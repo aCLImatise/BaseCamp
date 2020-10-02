@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam2bed.cwl
+id: sam2bed.cwl
 inputs: []
 outputs:
 - id: out_stdout

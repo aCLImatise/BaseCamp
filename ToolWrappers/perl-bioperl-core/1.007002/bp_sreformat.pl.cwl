@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_sreformat.pl.cwl
+id: bp_sreformat.pl.cwl
 inputs:
 - id: in_h_slash_help
   doc: Print this help

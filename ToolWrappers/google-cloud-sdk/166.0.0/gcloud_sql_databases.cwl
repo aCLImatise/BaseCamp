@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_sql_databases.cwl
+id: gcloud_sql_databases.cwl
 inputs:
 - id: in_instances
   doc: SYNOPSIS

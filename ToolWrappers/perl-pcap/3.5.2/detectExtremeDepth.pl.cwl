@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../detectExtremeDepth.pl.cwl
+id: detectExtremeDepth.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

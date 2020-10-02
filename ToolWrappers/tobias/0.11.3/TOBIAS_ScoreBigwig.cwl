@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_ScoreBigwig.cwl
+id: TOBIAS_ScoreBigwig.cwl
 inputs:
 - id: in_signal
   doc: A .bw file of ATAC-seq cutsite signal

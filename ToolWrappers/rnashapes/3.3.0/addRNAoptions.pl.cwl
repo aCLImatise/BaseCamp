@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addRNAoptions.pl.cwl
+id: addRNAoptions.pl.cwl
 inputs:
 - id: in_perl
   doc: ''

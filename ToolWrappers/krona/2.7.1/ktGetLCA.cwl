@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktGetLCA.cwl
+id: ktGetLCA.cwl
 inputs:
 - id: in_streaming_mode_expected
   doc: "Streaming mode. Each line is expected to be a whitespace-separated list\n\

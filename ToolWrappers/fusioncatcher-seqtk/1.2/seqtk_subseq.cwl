@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqtk_subseq.cwl
+id: seqtk_subseq.cwl
 inputs:
 - id: in_tab_delimited_output
   doc: TAB delimited output

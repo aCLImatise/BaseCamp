@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconvert_bz22gz.cwl
+id: bioconvert_bz22gz.cwl
 inputs:
 - id: in_force
   doc: "if outfile exists, it is overwritten with this option\n(default: False)"

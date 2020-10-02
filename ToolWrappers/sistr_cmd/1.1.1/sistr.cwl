@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sistr.cwl
+id: sistr.cwl
 inputs:
 - id: in_genomename__inputfastagenomename
   doc: "genome_name, --input-fasta-genome-name fasta_path genome_name\nfasta file\

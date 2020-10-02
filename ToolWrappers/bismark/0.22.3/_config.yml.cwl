@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_config.yml.cwl
+id: _config.yml.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hotspot3d_calroi.cwl
+id: hotspot3d_calroi.cwl
 inputs:
 - id: in_output_dir
   doc: Output directory of proximity files

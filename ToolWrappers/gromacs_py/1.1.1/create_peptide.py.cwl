@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_peptide.py.cwl
+id: create_peptide.py.cwl
 inputs:
 - id: in_seq
   doc: Peptide sequence

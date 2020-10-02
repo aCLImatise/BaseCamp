@@ -29,7 +29,6 @@ task Fasta2shrepGspanpl {
     Boolean? stdout
     Boolean? ignore_header
     Boolean? debug
-    Boolean? wins
     String help
     String compulsory
     String options
@@ -67,8 +66,7 @@ task Fasta2shrepGspanpl {
       ~{if (group) then "-group" else ""} \
       ~{if (stdout) then "-stdout" else ""} \
       ~{if (ignore_header) then "-ignore-header" else ""} \
-      ~{if (debug) then "-debug" else ""} \
-      ~{if (wins) then "-wins" else ""}
+      ~{if (debug) then "-debug" else ""}
   >>>
   parameter_meta {
     man: "full documentation"
@@ -98,7 +96,6 @@ task Fasta2shrepGspanpl {
     stdout: "send graphs to stdout instead of writing to files"
     ignore_header: "don't write fasta id part after first space to gspan"
     debug: "additional debug output"
-    wins: "\\\"\\\""
     help: "-help   brief help message"
     compulsory: "-fasta  <STRING> e.g. \\\"sequence.fasta\\\"\\nAll sequences in fasta format."
     options: "-wins           [INTEGER] e.g. \\\"50,100,200\\\"\\nA list of window sizes to use.\\nIf none are given (empty string ''), then the entire sequence is\\ntaken with no windows. Each window > 1 required!"

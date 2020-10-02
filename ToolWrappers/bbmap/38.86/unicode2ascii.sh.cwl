@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unicode2ascii.sh.cwl
+id: unicode2ascii.sh.cwl
 inputs:
 - id: in_in
   doc: ''

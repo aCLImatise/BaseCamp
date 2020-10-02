@@ -1,9 +1,11 @@
 class: CommandLineTool
-id: ../../../phyluce_align_extract_taxa_from_alignments.cwl
+id: phyluce_align_extract_taxa_from_alignments.cwl
 inputs:
 - id: in_output
-  doc: ''
-  type: string
+  doc: "[--input-format {nexus,newick,fasta,phylip}]\n[--output-format {fasta,nexus,phylip,phylip-relaxed,phylip-sequential,clustal,emboss,stockholm}]\n\
+    [--verbosity {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH]\n[--cores CORES]\n[--skip-check]\n\
+    [--exclude EXCLUDE [EXCLUDE ...]\n| --include INCLUDE\n[INCLUDE ...]]"
+  type: File
   inputBinding:
     prefix: --output
 - id: in_alignments

@@ -9,7 +9,8 @@ positional:
   optional: false
 named:
 - !Flag
-  description: ''
+  description: "[--cluster-method {simple_greedy}]\n[--representative-method {Qscore,length,centrality}]\n\
+    [-T NUM_THREADS] [--just-do-it]\n[--log-file FILE_PATH]"
   synonyms:
   - --similarity-threshold
   args: !SimpleFlagArg
@@ -103,9 +104,9 @@ named:
   - --program
   args: !ChoiceFlagArg
     choices: !!set
-      ? pyANI
-      ? sourmash
-      ? fastANI
+      fastANI:
+      sourmash:
+      pyANI:
   optional: true
 - !Flag
   description: Choose a kmer. The default is 16.
@@ -142,10 +143,10 @@ named:
   - --method
   args: !ChoiceFlagArg
     choices: !!set
-      ? ANIm
-      ? ANIblastall
-      ? TETRA
-      ? ANIb
+      ANIblastall:
+      TETRA:
+      ANIb:
+      ANIm:
   optional: true
 - !Flag
   description: "In some cases you may get high raw ANI estimates\n(percent identity\
@@ -243,7 +244,7 @@ named:
   - --cluster-method
   args: !ChoiceFlagArg
     choices: !!set
-      ? simple_greedy
+      simple_greedy:
   optional: true
 - !Flag
   description: "After genomes are grouped into redundancy clusters,\nyou can define\
@@ -256,9 +257,9 @@ named:
   - --representative-method
   args: !ChoiceFlagArg
     choices: !!set
-      ? length
-      ? Qscore
-      ? centrality
+      length:
+      centrality:
+      Qscore:
   optional: true
 - !Flag
   description: "Maximum number of threads to use for multithreading\nwhenever possible.\

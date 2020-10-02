@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FCStxtMergeDownsample.py.cwl
+id: FCStxtMergeDownsample.py.cwl
 inputs:
 - id: in_file_location_text
   doc: File location for the text files.

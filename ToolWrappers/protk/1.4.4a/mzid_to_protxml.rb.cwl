@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mzid_to_protxml.rb.cwl
+id: mzid_to_protxml.rb.cwl
 inputs:
 - id: in_output
   doc: An explicitly named output file.

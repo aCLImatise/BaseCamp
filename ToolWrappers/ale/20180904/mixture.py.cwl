@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mixture.py.cwl
+id: mixture.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

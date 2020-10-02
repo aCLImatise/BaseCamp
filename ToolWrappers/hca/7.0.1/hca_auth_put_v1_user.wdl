@@ -11,7 +11,7 @@ task HcaAuthPutv1user {
       ~{if defined(status) then ("--status " +  '"' + status + '"') else ""}
   >>>
   parameter_meta {
-    user_id: "User ID (email)."
+    user_id: "User ID (email).\\n--status STATUS\\n"
     status: ""
   }
   output {

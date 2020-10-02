@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedparse_introns.cwl
+id: bedparse_introns.cwl
 inputs:
 - id: in_bed_file
   doc: Path to the BED file.

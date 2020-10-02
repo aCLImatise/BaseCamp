@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validateFiles_tagAlign.cwl
+id: validateFiles_tagAlign.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

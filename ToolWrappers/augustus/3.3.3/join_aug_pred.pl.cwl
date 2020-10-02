@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../join_aug_pred.pl.cwl
+id: join_aug_pred.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

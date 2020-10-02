@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../calling_functions.jl.cwl
+id: calling_functions.jl.cwl
 inputs: []
 outputs:
 - id: out_stdout

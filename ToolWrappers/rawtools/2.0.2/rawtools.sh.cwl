@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rawtools.sh.cwl
+id: rawtools.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

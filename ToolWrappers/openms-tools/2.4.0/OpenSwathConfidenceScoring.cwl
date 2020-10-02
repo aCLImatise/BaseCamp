@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OpenSwathConfidenceScoring.cwl
+id: OpenSwathConfidenceScoring.cwl
 inputs:
 - id: in_in
   doc: "*            Input file (OpenSwath results) (valid formats: 'featureXML')"

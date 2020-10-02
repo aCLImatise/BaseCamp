@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paladin_align.cwl
+id: paladin_align.cwl
 inputs:
 - id: in_disable_orf_detection
   doc: disable ORF detection and treat input as protein sequence

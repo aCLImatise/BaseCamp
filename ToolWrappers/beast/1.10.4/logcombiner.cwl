@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../logcombiner.cwl
+id: logcombiner.cwl
 inputs:
 - id: in_trees
   doc: this option to combine tree log files

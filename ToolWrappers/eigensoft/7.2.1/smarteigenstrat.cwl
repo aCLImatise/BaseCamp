@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smarteigenstrat.cwl
+id: smarteigenstrat.cwl
 inputs:
 - id: in_bad
   doc: ''

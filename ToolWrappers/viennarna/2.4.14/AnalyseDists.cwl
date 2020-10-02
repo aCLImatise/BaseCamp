@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AnalyseDists.cwl
+id: AnalyseDists.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_ed_filename|_.cwl
+id: nw_ed_filename|_.cwl
 inputs:
 - id: in_print_modified_tree
   doc: ": do not print the (possibly modified) tree at the end of the run\n(modeled\

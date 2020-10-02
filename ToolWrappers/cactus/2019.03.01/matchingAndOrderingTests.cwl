@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../matchingAndOrderingTests.cwl
+id: matchingAndOrderingTests.cwl
 inputs: []
 outputs:
 - id: out_stdout

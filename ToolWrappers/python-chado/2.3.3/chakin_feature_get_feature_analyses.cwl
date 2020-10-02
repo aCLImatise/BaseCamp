@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_feature_get_feature_analyses.cwl
+id: chakin_feature_get_feature_analyses.cwl
 inputs:
 - id: in_feature_id
   doc: ''

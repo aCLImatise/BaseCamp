@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcontact2.cwl
+id: vcontact2.cwl
 inputs:
 - id: in_raw_proteins
   doc: "FASTA-formatted proteins file. If provided alongside\n--proteins-fn, vConTACT\

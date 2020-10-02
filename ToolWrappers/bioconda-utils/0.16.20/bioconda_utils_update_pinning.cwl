@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconda_utils_update_pinning.cwl
+id: bioconda_utils_update_pinning.cwl
 inputs:
 - id: in_packages
   doc: "Glob for package[s] to update, as needed due to a\nchange in pinnings (default:\

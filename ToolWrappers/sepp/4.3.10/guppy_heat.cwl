@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guppy_heat.cwl
+id: guppy_heat.cwl
 inputs:
 - id: in_specify_filename_write
   doc: Specify the filename to write to.

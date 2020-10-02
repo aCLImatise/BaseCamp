@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../running_cmp.cwl
+id: running_cmp.cwl
 inputs:
 - id: in_file_one
   doc: ''

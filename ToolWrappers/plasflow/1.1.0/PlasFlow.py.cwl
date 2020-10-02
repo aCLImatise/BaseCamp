@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PlasFlow.py.cwl
+id: PlasFlow.py.cwl
 inputs:
 - id: in_input
   doc: Input fasta file with sequences to classify (required)

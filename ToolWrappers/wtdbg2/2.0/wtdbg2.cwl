@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtdbg2.cwl
+id: wtdbg2.cwl
 inputs:
 - id: in_long_reads_sequences
   doc: Long reads sequences file (REQUIRED; can be multiple), []
@@ -32,11 +32,6 @@ inputs:
   type: long
   inputBinding:
     prefix: -L
-- id: in_kmer_fsize_k
-  doc: Kmer fsize, 0 <= k <= 25, [0]
-  type: long
-  inputBinding:
-    prefix: -k
 - id: in_kmer_psize_p
   doc: "Kmer psize, 0 <= p <= 25, [21]\nk + p <= 25, seed is <k-mer>+<p-homopolymer-compressed>"
   type: long
@@ -317,11 +312,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --node-max
-- id: in_ttr_cut_off_depth
-  doc: ', 0'
-  type: long
-  inputBinding:
-    prefix: --ttr-cutoff-depth
 - id: in_ttr_cut_off_ratio
   doc: ", 0.5\nTiny Tandom Repeat. A node located inside ttr will bring noisy in graph,\
     \ should be masked. The pattern of such nodes is:\ndepth >= <--ttr-cutoff-depth>,\

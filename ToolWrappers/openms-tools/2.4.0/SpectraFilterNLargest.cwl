@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SpectraFilterNLargest.cwl
+id: SpectraFilterNLargest.cwl
 inputs:
 - id: in_in
   doc: "*        Input file  (valid formats: 'mzML')"

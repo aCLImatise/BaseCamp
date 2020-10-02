@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../modeltest_ng.cwl
+id: modeltest_ng.cwl
 inputs:
 - id: in_datatype
   doc: sets the data type

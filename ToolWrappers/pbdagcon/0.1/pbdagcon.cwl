@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbdagcon.cwl
+id: pbdagcon.cwl
 inputs:
 - id: in__verboseturns_verbose
   doc: ",  --verbose\nTurns on verbose logging"
@@ -31,12 +31,6 @@ inputs:
   type: long
   inputBinding:
     prefix: -j
-- id: in_pbd_agc_on
-  doc: "[-v] [-a] [-t <uint>] [-m <uint>] [-c <uint>] [-j <int>] [--]\n[--version]\
-    \ [-h] <either file path or stdin>"
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

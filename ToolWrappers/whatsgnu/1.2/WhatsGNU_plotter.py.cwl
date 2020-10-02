@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../WhatsGNU_plotter.py.cwl
+id: WhatsGNU_plotter.py.cwl
 inputs:
 - id: in_heat_map
   doc: "heatmap of GNU scores for orthologous genes in\nmultiple isolates"

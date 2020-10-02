@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../omero.cwl
+id: omero.cwl
 inputs: []
 outputs:
 - id: out_stdout

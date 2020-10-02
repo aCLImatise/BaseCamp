@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mob_typer.cwl
+id: mob_typer.cwl
 inputs:
 - id: in_in_file
   doc: Input assembly fasta file to process

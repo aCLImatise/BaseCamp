@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_stats.cwl
+id: fasta_stats.cwl
 inputs:
 - id: in_verbose
   doc: verbose

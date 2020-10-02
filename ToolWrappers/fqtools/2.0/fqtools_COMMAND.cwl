@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fqtools_COMMAND.cwl
+id: fqtools_COMMAND.cwl
 inputs:
 - id: in_var_0
   doc: ''

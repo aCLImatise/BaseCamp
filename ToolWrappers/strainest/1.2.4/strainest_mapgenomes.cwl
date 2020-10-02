@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strainest_mapgenomes.cwl
+id: strainest_mapgenomes.cwl
 inputs:
 - id: in_genomes_dot_dot_dot
   doc: ''

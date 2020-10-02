@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gepard.cwl
+id: gepard.cwl
 inputs: []
 outputs:
 - id: out_stdout

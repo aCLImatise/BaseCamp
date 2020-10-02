@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_variant_table_to_vcf.cwl
+id: dsh_variant_table_to_vcf.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

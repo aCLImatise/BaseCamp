@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dumpmates.cwl
+id: dumpmates.cwl
 inputs:
 - id: in_report_objects_eid
   doc: Report objects by EID instead of IID
@@ -18,11 +18,6 @@ inputs:
     prefix: -v
 - id: in_dump_mates
   doc: '[options]  -b <bank path>'
-  type: string
-  inputBinding:
-    position: 0
-- id: in_stdout
-  doc: .OPTIONS.
   type: string
   inputBinding:
     position: 0

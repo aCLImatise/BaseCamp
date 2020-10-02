@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../conda_build.sh.cwl
+id: conda_build.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

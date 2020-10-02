@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_per_read_text_variants.cwl
+id: megalodon_extras_per_read_text_variants.cwl
 inputs:
 - id: in_out_filename
   doc: "Output filename for text summary. Default: output into\nmegalodon results\

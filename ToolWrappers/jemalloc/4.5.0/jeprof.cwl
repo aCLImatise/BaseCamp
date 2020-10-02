@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jeprof.cwl
+id: jeprof.cwl
 inputs: []
 outputs:
 - id: out_stdout

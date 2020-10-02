@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combineSpec_files.py.cwl
+id: combineSpec_files.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

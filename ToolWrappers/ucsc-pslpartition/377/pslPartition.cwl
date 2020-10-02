@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslPartition.cwl
+id: pslPartition.cwl
 inputs:
 - id: in_out_levels
   doc: "- number of output subdirectory levels.  0 puts all files\ndirectly in outDir,\

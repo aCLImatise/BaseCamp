@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_to_tsv.pl.cwl
+id: fastq_to_tsv.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

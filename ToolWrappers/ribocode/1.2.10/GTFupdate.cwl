@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GTFupdate.cwl
+id: GTFupdate.cwl
 inputs:
 - id: in_gtf_file
   doc: 'optional arguments:'

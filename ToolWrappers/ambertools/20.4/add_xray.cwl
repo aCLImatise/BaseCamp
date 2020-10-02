@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../add_xray.cwl
+id: add_xray.cwl
 inputs:
 - id: in_prm_top
   doc: ': amber topology, input and output files'

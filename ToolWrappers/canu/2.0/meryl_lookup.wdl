@@ -5,7 +5,6 @@ task Meryllookup {
     Int? sequence
     Boolean? output_
     Boolean? mers
-    Boolean? labels
     Boolean? min
     Boolean? max
     Int? threads
@@ -22,7 +21,6 @@ task Meryllookup {
       ~{if defined(sequence) then ("-sequence " +  '"' + sequence + '"') else ""} \
       ~{if (output_) then "-output" else ""} \
       ~{if (mers) then "-mers" else ""} \
-      ~{if (labels) then "-labels" else ""} \
       ~{if (min) then "-min" else ""} \
       ~{if (max) then "-max" else ""} \
       ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
@@ -36,7 +34,6 @@ task Meryllookup {
     sequence: "[<input2.fasta>] \\"
     output_: "<output1>      [<output2>]"
     mers: "<input1.meryl> [<input2.meryl>] [...] \\"
-    labels: "<input1name>   [<input2name>]   [...]"
     min: "m    Ignore kmers with value below m"
     max: "m    Ignore kmers with value above m"
     threads: "Number of threads to use when constructing lookup table."

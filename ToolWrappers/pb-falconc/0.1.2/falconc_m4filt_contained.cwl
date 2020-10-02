@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconc_m4filt_contained.cwl
+id: falconc_m4filt_contained.cwl
 inputs:
 - id: in__infn_string
   doc: =, --in-fn=                    string  REQUIRED  Input m4 overlap file

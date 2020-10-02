@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequence_helpers.pl.bak.cwl
+id: sequence_helpers.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicCorrelate.cwl
+id: hicCorrelate.cwl
 inputs:
 - id: in_out_filename_scatter
   doc: "File name to save the resulting scatter plot.\n(default: None)"

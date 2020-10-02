@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_estimate_genome_taxonomy.cwl
+id: anvi_estimate_genome_taxonomy.cwl
 inputs: []
 outputs:
 - id: out_stdout

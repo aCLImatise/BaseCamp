@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_eval_calculate_score.cwl
+id: rsem_eval_calculate_score.cwl
 inputs:
 - id: in_overlap_size
   doc: "The minimum overlap size required to join two reads together.\n(Default: 0)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_bullseye_crux_output..cwl
+id: crux_bullseye_crux_output..cwl
 inputs:
 - id: in_crux
   doc: ''

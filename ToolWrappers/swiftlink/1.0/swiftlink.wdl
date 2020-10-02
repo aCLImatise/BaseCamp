@@ -3,8 +3,6 @@ version 1.0
 task Swiftlink {
   input {
     File? pedigree
-    File? var_map
-    File? dat
     String? default_
     Int? _iterationsnum_default
     Int? _burninnum_default
@@ -22,17 +20,13 @@ task Swiftlink {
     Int? _replicatesnum_default
     Int? _coresnum_default
     Boolean? __gpu
-    Boolean? __sexlinked
-    Boolean? __affectedonly
-    Int? _peelseqiternum_default
-    File? random_seeds
-    Boolean? __verbose
+    Boolean? _sexlinkeda_affectedonlyq
+    File? d
+    File? m
   }
   command <<<
     swiftlink \
       ~{if defined(pedigree) then ("--pedigree " +  '"' + pedigree + '"') else ""} \
-      ~{if defined(var_map) then ("--map " +  '"' + var_map + '"') else ""} \
-      ~{if defined(dat) then ("--dat " +  '"' + dat + '"') else ""} \
       ~{if defined(default_) then ("--output " +  '"' + default_ + '"') else ""} \
       ~{if defined(_iterationsnum_default) then ("-i " +  '"' + _iterationsnum_default + '"') else ""} \
       ~{if defined(_burninnum_default) then ("-b " +  '"' + _burninnum_default + '"') else ""} \
@@ -50,16 +44,12 @@ task Swiftlink {
       ~{if defined(_replicatesnum_default) then ("-u " +  '"' + _replicatesnum_default + '"') else ""} \
       ~{if defined(_coresnum_default) then ("-c " +  '"' + _coresnum_default + '"') else ""} \
       ~{if (__gpu) then "-g" else ""} \
-      ~{if (__sexlinked) then "-X" else ""} \
-      ~{if (__affectedonly) then "-a" else ""} \
-      ~{if defined(_peelseqiternum_default) then ("-q " +  '"' + _peelseqiternum_default + '"') else ""} \
-      ~{if defined(random_seeds) then ("--randomseeds " +  '"' + random_seeds + '"') else ""} \
-      ~{if (__verbose) then "-v" else ""}
+      ~{if (_sexlinkeda_affectedonlyq) then "-X" else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""}
   >>>
   parameter_meta {
-    pedigree: ""
-    var_map: ""
-    dat: ""
+    pedigree: "-m mapfile, --map=mapfile\\n-d datfile, --dat=datfile"
     default_: "(default = 'swiftlink.out')"
     _iterationsnum_default: ",     --iterations=NUM            (default = 50000)"
     _burninnum_default: ",     --burnin=NUM                (default = 50000)"
@@ -77,11 +67,9 @@ task Swiftlink {
     _replicatesnum_default: "--replicates=NUM            (default = 1000000)"
     _coresnum_default: ",     --cores=NUM                 (default = 1)"
     __gpu: ",         --gpu                       [UNAVAILABLE, COMPILED WITHOUT CUDA]"
-    __sexlinked: ",         --sexlinked"
-    __affectedonly: ",         --affectedonly"
-    _peelseqiternum_default: ",     --peelseqiter=NUM           (default = 1000000)"
-    random_seeds: ""
-    __verbose: ",         --verbose"
+    _sexlinkeda_affectedonlyq: ",         --sexlinked\\n-a,         --affectedonly\\n-q NUM,     --peelseqiter=NUM           (default = 1000000)\\n-r seedfile,--randomseeds=seedfile\\n-v,         --verbose\\n-h,         --help\\n"
+    d: ""
+    m: ""
   }
   output {
     File out_stdout = stdout()

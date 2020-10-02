@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../process_minout.perl.cwl
+id: process_minout.perl.cwl
 inputs: []
 outputs:
 - id: out_stdout

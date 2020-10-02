@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_priors_by_chromosome.cwl
+id: split_priors_by_chromosome.cwl
 inputs:
 - id: in_gzip_output_files
   doc: GZIP output files

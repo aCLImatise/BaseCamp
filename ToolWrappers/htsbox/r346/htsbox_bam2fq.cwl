@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsbox_bam2fq.cwl
+id: htsbox_bam2fq.cwl
 inputs:
 - id: in_append_read_name
   doc: append /1 and /2 to the read name

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgatreport_serve.cwl
+id: cgatreport_serve.cwl
 inputs: []
 outputs:
 - id: out_stdout

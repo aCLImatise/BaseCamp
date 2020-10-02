@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: ../../../biodb_to_json.pl.cwl
+id: biodb_to_json.pl.cwl
 inputs:
-- id: in_conf
-  doc: \
-  type: string
-  inputBinding:
-    prefix: --conf
 - id: in_quiet
   doc: "| -q\nQuiet. Don't print progress messages."
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: in_conf
+  doc: "Required. Path to the configuration file to read. File must be in\nJSON format."
+  type: File
+  inputBinding:
+    prefix: --conf
 - id: in_ref
   doc: "| --refid <ref seq id>\nOptional. Single reference sequence name or id for\
     \ which to process\ndata.\nBy default, processes all data."
@@ -31,11 +31,6 @@ inputs:
 - id: in_file
   doc: DESCRIPTION
   type: File
-  inputBinding:
-    position: 0
-- id: in_bin_slash_bio_db_to_json_do_tpl
-  doc: \
-  type: string
   inputBinding:
     position: 0
 - id: in_options

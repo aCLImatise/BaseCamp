@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_composite_LD.pl.cwl
+id: bp_composite_LD.pl.cwl
 inputs:
 - id: in_format
   doc: format (prettybase or CSV)

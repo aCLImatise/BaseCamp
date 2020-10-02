@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_download_manifest.cwl
+id: hca_dss_download_manifest.cwl
 inputs:
 - id: in_manifest
   doc: "The path to a TSV (tab-separated values) file listing files to download. If\

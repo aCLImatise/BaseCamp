@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EDcalculator_smp.cwl
+id: EDcalculator_smp.cwl
 inputs:
 - id: in_dna
   doc: "Specify that the sequence is DNA, and DNA parameters are to be used. The\n\

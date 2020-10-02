@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sync.cwl
+id: sync.cwl
 inputs:
 - id: in_data
   doc: sync only file data, no unneeded metadata

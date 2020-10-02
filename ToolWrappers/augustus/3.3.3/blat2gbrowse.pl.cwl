@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blat2gbrowse.pl.cwl
+id: blat2gbrowse.pl.cwl
 inputs:
 - id: in_old_format
   doc: output format for old GBrowse (before 2.0)

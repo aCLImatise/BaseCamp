@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequenza_utils_seqz_merge.cwl
+id: sequenza_utils_seqz_merge.cwl
 inputs:
 - id: in_output
   doc: "Output file. For gzip compressed output name the file\nending in .gz. Default\

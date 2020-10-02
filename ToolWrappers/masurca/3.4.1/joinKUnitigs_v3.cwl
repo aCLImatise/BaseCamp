@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../joinKUnitigs_v3.cwl
+id: joinKUnitigs_v3.cwl
 inputs:
 - id: in_min_overlap_length
   doc: '*Minimum length of an overlap between unitigs'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fdrawtree.cwl
+id: _fdrawtree.cwl
 inputs:
 - id: in_plotter
   doc: "menu       [l] Plotter or printer the tree will be\ndrawn on (Values: l (Postscript\

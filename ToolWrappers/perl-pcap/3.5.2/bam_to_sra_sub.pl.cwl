@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_to_sra_sub.pl.cwl
+id: bam_to_sra_sub.pl.cwl
 inputs:
 - id: in_outdir
   doc: -o   Folder to output result to.

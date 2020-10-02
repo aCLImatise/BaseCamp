@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comm.cwl
+id: comm.cwl
 inputs:
 - id: in_one
   doc: suppress column 1 (lines unique to FILE1)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FPKM_count.py.cwl
+id: FPKM_count.py.cwl
 inputs:
 - id: in_input_file
   doc: "Alignment file in BAM format (SAM is not supported).\n[required]"

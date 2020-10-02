@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plink.cwl
+id: plink.cwl
 inputs:
 - id: in_list_duplicate_vars
   doc: ', and --score.'

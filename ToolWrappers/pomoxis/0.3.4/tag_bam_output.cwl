@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tag_bam_output.cwl
+id: tag_bam_output.cwl
 inputs:
 - id: in_tag_bam
   doc: ''

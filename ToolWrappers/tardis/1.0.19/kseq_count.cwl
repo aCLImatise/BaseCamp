@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kseq_count.cwl
+id: kseq_count.cwl
 inputs:
 - id: in_a
   doc: ''

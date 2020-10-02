@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmconvert2.cwl
+id: hmmconvert2.cwl
 inputs:
 - id: in_convert_file_default
   doc: ': convert to HMMER ASCII file (the default)'

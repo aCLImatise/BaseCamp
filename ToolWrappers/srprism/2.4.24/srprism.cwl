@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../srprism.cwl
+id: srprism.cwl
 inputs:
 - id: in_trace_level
   doc: "[default: warning]\nMinimum message level to report to the log stream. Possible\n\

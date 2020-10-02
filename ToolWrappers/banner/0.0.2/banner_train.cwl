@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../banner_train.cwl
+id: banner_train.cwl
 inputs:
 - id: in_matrix
   doc: The matrix from hulk smash

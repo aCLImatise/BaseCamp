@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gbnsr6.cwl
+id: gbnsr6.cwl
 inputs:
 - id: in_r
   doc: ''

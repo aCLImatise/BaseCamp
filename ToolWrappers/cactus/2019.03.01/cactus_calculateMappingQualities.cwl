@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_calculateMappingQualities.cwl
+id: cactus_calculateMappingQualities.cwl
 inputs: []
 outputs:
 - id: out_stdout

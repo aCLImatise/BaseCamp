@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nib_length.py.cwl
+id: nib_length.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../collect_mgf.cwl
+id: collect_mgf.cwl
 inputs:
 - id: in_exp_no_directory
   doc: ''

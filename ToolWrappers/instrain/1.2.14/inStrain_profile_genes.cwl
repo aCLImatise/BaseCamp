@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../inStrain_profile_genes.cwl
+id: inStrain_profile_genes.cwl
 inputs:
 - id: in_gene_file
   doc: "Path to prodigal .fna genes file. If file ends in .gb\nor .gbk, will treat\

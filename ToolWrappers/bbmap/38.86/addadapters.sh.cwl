@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addadapters.sh.cwl
+id: addadapters.sh.cwl
 inputs:
 - id: in_in
   doc: ''

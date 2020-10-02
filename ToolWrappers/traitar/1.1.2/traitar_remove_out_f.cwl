@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../traitar_remove_out_f.cwl
+id: traitar_remove_out_f.cwl
 inputs:
 - id: in_keep
   doc: ''

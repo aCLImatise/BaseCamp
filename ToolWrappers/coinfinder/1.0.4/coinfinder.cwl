@@ -1,26 +1,18 @@
 class: CommandLineTool
-id: ../../../coinfinder.cwl
+id: coinfinder.cwl
 inputs:
 - id: in_input
-  doc: The path to the gene_presence_absence.csv output from Roary
+  doc: "The path to the gene_presence_absence.csv output from Roary\n-or-\nThe path\
+    \ of the Alpha-to-Beta file with (alpha)(TAB)(beta)"
   type: File
   inputBinding:
     prefix: --input
-- id: in_or
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -or-
 - id: in_input_roar_y
-  doc: Set if -i is in the gene_presence_absence.csv format from Roary
+  doc: "Set if -i is in the gene_presence_absence.csv format from Roary\n-p or --phylogeny\
+    \      Phylogeny of Betas in Newick format (required)"
   type: string
   inputBinding:
     prefix: --inputroary
-- id: in_phylogeny
-  doc: Phylogeny of Betas in Newick format (required)
-  type: string
-  inputBinding:
-    prefix: --phylogeny
 - id: in_associate
   doc: Overlap; identify groups that tend to associate/co-occur (default).
   type: string
@@ -118,7 +110,8 @@ outputs:
   doc: Standard output stream
   type: stdout
 - id: out_input
-  doc: The path to the gene_presence_absence.csv output from Roary
+  doc: "The path to the gene_presence_absence.csv output from Roary\n-or-\nThe path\
+    \ of the Alpha-to-Beta file with (alpha)(TAB)(beta)"
   type: File
   outputBinding:
     glob: $(inputs.in_input)

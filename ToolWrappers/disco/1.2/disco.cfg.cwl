@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../disco.cfg.cwl
+id: disco.cfg.cwl
 inputs: []
 outputs:
 - id: out_stdout

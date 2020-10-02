@@ -1,37 +1,16 @@
 class: CommandLineTool
-id: ../../../get_gff_info_sequence.cwl
+id: get_gff_info_sequence.cwl
 inputs:
 - id: in_verbose
-  doc: ''
+  doc: "-r, --reverse             Reverse complement sequences on the - strand\n-w,\
+    \ --no-wrap             Write the sequences on one line\n-s, --split         \
+    \      Split the sequence header of the reference at the\nfirst space, to emulate\
+    \ BLAST behaviour\n-f, --reference FILENAME  Fasta file containing the reference\
+    \ sequences of\nthe GFF file\n--progress                Shows Progress Bar\n--help\
+    \                    Show this message and exit.\n"
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: in_reverse
-  doc: Reverse complement sequences on the - strand
-  type: boolean
-  inputBinding:
-    prefix: --reverse
-- id: in_no_wrap
-  doc: Write the sequences on one line
-  type: boolean
-  inputBinding:
-    prefix: --no-wrap
-- id: in_split
-  doc: "Split the sequence header of the reference at the\nfirst space, to emulate\
-    \ BLAST behaviour"
-  type: boolean
-  inputBinding:
-    prefix: --split
-- id: in_reference
-  doc: "Fasta file containing the reference sequences of\nthe GFF file"
-  type: File
-  inputBinding:
-    prefix: --reference
-- id: in_progress
-  doc: Shows Progress Bar
-  type: boolean
-  inputBinding:
-    prefix: --progress
 - id: in_gff_file
   doc: ''
   type: string

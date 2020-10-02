@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jhsdb_jsnap.cwl
+id: jhsdb_jsnap.cwl
 inputs:
 - id: in_all
   doc: to print all performance counters

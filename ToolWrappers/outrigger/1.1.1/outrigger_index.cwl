@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../outrigger_index.cwl
+id: outrigger_index.cwl
 inputs:
 - id: in_output
   doc: "Name of the folder where you saved the output from\n\"outrigger index\" (default\

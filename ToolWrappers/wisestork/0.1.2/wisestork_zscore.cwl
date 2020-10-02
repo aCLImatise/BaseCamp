@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wisestork_zscore.cwl
+id: wisestork_zscore.cwl
 inputs:
 - id: in_binsize
   doc: RANGE  Bin size to use. Default = 50000

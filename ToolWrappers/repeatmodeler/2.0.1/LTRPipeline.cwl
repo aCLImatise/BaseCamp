@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LTRPipeline.cwl
+id: LTRPipeline.cwl
 inputs:
 - id: in_version
   doc: Displays the version of the program

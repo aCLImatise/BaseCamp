@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shapeit4.cwl
+id: shapeit4.cwl
 inputs:
 - id: in_seed
   doc: (=15052011)                Seed of the random number generator

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_gd2topng.cwl
+id: _gd2topng.cwl
 inputs:
 - id: in_gd_two_to_png
   doc: ''

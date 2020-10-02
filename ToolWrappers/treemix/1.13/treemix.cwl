@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treemix.cwl
+id: treemix.cwl
 inputs:
 - id: in_this_help
   doc: this help

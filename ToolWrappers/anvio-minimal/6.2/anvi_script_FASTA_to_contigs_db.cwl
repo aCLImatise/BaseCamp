@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_FASTA_to_contigs_db.cwl
+id: anvi_script_FASTA_to_contigs_db.cwl
 inputs: []
 outputs:
 - id: out_stdout

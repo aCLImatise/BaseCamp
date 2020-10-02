@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../length_normalise_counts.py_output_count.cwl
+id: length_normalise_counts.py_output_count.cwl
 inputs:
 - id: in_f
   doc: ''

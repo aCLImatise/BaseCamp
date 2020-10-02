@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_cluster.cwl
+id: mmseqs_cluster.cwl
 inputs:
 - id: in_sensitivity_will_automatically
   doc: 4.000           sensitivity will be automatically determined but can be adjusted

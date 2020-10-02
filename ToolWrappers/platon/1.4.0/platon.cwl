@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../platon.cwl
+id: platon.cwl
 inputs:
 - id: in_db
   doc: database path (default = <platon_path>/db)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../art_illumina.cwl
+id: art_illumina.cwl
 inputs:
 - id: in__qprof_firstread
   doc: --qprof1   the first-read quality profile

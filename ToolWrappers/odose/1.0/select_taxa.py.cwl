@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../select_taxa.py.cwl
+id: select_taxa.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

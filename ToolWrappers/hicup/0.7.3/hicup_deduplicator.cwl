@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicup_deduplicator.cwl
+id: hicup_deduplicator.cwl
 inputs:
 - id: in_config
   doc: Specify the configuration file

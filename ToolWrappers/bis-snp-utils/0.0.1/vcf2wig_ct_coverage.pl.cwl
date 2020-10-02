@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2wig_ct_coverage.pl.cwl
+id: vcf2wig_ct_coverage.pl.cwl
 inputs:
 - id: in_input_file_name
   doc: ''

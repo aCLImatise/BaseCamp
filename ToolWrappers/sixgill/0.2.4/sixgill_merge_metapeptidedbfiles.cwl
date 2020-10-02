@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sixgill_merge_metapeptidedbfiles.cwl
+id: sixgill_merge_metapeptidedbfiles.cwl
 inputs:
 - id: in_debug
   doc: ''

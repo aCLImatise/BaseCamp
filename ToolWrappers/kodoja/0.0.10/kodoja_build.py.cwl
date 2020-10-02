@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kodoja_build.py.cwl
+id: kodoja_build.py.cwl
 inputs:
 - id: in_output_dir
   doc: Output directory path, required

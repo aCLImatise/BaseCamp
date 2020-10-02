@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_ssl_certificates.cwl
+id: gcloud_compute_ssl_certificates.cwl
 inputs:
 - id: in_create
   doc: Create a Google Compute Engine SSL certificate.

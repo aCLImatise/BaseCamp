@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../counterr.cwl
+id: counterr.cwl
 inputs:
 - id: in_bam
   doc: 'the input bam file (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pepinfo.cwl
+id: pepinfo.cwl
 inputs:
 - id: in_graph
   doc: "xygraph    [$EMBOSS_GRAPHICS value, or png] Graph type\n(ps, hpgl, hp7470,\

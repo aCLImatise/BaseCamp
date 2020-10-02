@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singlem_get_tree.cwl
+id: singlem_get_tree.cwl
 inputs:
 - id: in_debug
   doc: output debug information

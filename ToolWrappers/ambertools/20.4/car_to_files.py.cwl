@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../car_to_files.py.cwl
+id: car_to_files.py.cwl
 inputs:
 - id: in_input_file_name
   doc: Input file name

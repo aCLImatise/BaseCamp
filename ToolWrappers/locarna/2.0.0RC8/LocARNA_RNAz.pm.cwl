@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LocARNA_RNAz.pm.cwl
+id: LocARNA_RNAz.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../echo.cwl
+id: echo.cwl
 inputs:
 - id: in_output_trailing_newline
   doc: do not output the trailing newline

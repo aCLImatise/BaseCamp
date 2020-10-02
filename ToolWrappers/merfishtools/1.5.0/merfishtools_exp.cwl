@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merfishtools_exp.cwl
+id: merfishtools_exp.cwl
 inputs:
 - id: in_estimate
   doc: "Path to write expected value and standard deviation estimates of expression\

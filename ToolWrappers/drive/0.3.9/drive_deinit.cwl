@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../drive_deinit.cwl
-inputs:
-- id: in_no_prompt
-  doc: "disables the prompt\n"
-  type: boolean
-  inputBinding:
-    prefix: -no-prompt
+id: drive_deinit.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

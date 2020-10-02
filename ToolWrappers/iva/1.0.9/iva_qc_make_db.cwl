@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iva_qc_make_db.cwl
+id: iva_qc_make_db.cwl
 inputs:
 - id: in_add_to_ref
   doc: "Filename of Genbank IDs or GI numbers to be added to\ndatabase. Format is:\

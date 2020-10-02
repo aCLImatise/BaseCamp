@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_matrices.py.cwl
+id: merge_matrices.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

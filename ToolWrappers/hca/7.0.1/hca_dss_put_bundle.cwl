@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_put_bundle.cwl
+id: hca_dss_put_bundle.cwl
 inputs:
 - id: in_creator_uid
   doc: User ID who is creating this bundle.

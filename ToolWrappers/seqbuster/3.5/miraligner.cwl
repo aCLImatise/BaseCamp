@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../miraligner.cwl
+id: miraligner.cwl
 inputs:
 - id: in_add
   doc: "nt allowed for addition processes\nDefault: 3"
@@ -7,10 +7,15 @@ inputs:
   inputBinding:
     prefix: -add
 - id: in_db
-  doc: ''
+  doc: database
   type: boolean
   inputBinding:
     prefix: -db
+- id: in_debug
+  doc: "add verbosity\nDefault: false"
+  type: boolean
+  inputBinding:
+    prefix: -debug
 - id: in_format
   doc: "format input\nDefault: none"
   type: boolean
@@ -21,11 +26,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -freq
-- id: in_i
-  doc: ''
+- id: in_input
+  doc: input
   type: boolean
   inputBinding:
     prefix: -i
+- id: in_min_l
+  doc: "minimum size\nDefault: 16"
+  type: boolean
+  inputBinding:
+    prefix: -minl
+- id: in_output
+  doc: output
+  type: boolean
+  inputBinding:
+    prefix: -o
+- id: in_pre
+  doc: "add reads mapping to precursor\nDefault: false"
+  type: boolean
+  inputBinding:
+    prefix: -pre
 - id: in_three_letter_code
   doc: three letter code for species
   type: boolean
@@ -41,38 +61,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -trim
-- id: in_v
-  doc: ''
+- id: in_versiondefault_false
+  doc: "version\nDefault: false"
   type: boolean
   inputBinding:
     prefix: -v
-- id: in_database
-  doc: -debug
-  type: string
-  inputBinding:
-    position: 0
-- id: in_help
-  doc: 'Default: false'
-  type: string
-  inputBinding:
-    position: 0
-- id: in_input
-  doc: -minl
-  type: string
-  inputBinding:
-    position: 1
-- id: in_one_six
-  doc: -o
-  type: long
-  inputBinding:
-    position: 0
-- id: in_output
-  doc: -pre
-  type: string
-  inputBinding:
-    position: 1
-- id: in_version
-  doc: 'Default: false'
+- id: in_main_class
+  doc: ''
   type: string
   inputBinding:
     position: 0

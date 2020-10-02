@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../2csfastq_1csfastq.cwl
+id: 2csfastq_1csfastq.cwl
 inputs:
 - id: in_cs_fast_q_one
   doc: (string)        first csfastq file.

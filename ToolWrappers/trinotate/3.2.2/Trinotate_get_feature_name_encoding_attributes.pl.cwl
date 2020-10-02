@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Trinotate_get_feature_name_encoding_attributes.pl.cwl
+id: Trinotate_get_feature_name_encoding_attributes.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

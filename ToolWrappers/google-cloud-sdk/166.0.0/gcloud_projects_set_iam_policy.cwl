@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_projects_set_iam_policy.cwl
+id: gcloud_projects_set_iam_policy.cwl
 inputs:
 - id: in_project_id
   doc: ''

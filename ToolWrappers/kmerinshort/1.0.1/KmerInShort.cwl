@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../KmerInShort.cwl
+id: KmerInShort.cwl
 inputs:
 - id: in_nb_cores
   doc: "(1 arg) :    number of cores  [default '0']"

@@ -1,42 +1,15 @@
 class: CommandLineTool
-id: ../../../prank.cwl
+id: prank.cwl
 inputs:
-- id: in_d
-  doc: ''
+- id: in_ttreefile_mmodelfile_ooutputfile
+  doc: "-t=tree_file [default: no tree, generate approximate NJ tree]\n-m=model_file\
+    \ [default: HKY2/WAG]\n-o=output_file [default: 'output']\n-f=output_format [default:\
+    \ Fasta; type '--help' for details]\n-shortnames [truncate names at first space]\n\
+    -quiet"
   type: File
   inputBinding:
     prefix: -d
-- id: in_t
-  doc: '[default: no tree, generate approximate NJ tree]'
-  type: File
-  inputBinding:
-    prefix: -t
-- id: in_m
-  doc: '[default: HKY2/WAG]'
-  type: File
-  inputBinding:
-    prefix: -m
-- id: in_o
-  doc: "[default: 'output']"
-  type: File
-  inputBinding:
-    prefix: -o
-- id: in_var_4
-  doc: "[default: Fasta; type '--help' for details]"
-  type: string
-  inputBinding:
-    prefix: -f
-- id: in_short_names
-  doc: '[truncate names at first space]'
-  type: boolean
-  inputBinding:
-    prefix: -shortnames
-- id: in_quiet
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -quiet
-- id: in_var_7
+- id: in_f
   doc: '[equivalent]'
   type: boolean
   inputBinding:
@@ -120,11 +93,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_o
-  doc: "[default: 'output']"
-  type: File
-  outputBinding:
-    glob: $(inputs.in_o)
 cwlVersion: v1.1
 baseCommand:
 - prank

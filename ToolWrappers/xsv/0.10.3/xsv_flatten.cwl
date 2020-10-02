@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_flatten.cwl
+id: xsv_flatten.cwl
 inputs:
 - id: in_condense
   doc: "Limits the length of each field to the value\nspecified. If the field is UTF-8\

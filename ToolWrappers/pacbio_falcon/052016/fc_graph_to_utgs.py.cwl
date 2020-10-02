@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_graph_to_utgs.py.cwl
+id: fc_graph_to_utgs.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

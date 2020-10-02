@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mateclever_compute_rois.cwl
+id: mateclever_compute_rois.cwl
 inputs:
 - id: in_distance_deletion_breakpoints
   doc: "Distance from deletion breakpoints to be included (default:\n750)."

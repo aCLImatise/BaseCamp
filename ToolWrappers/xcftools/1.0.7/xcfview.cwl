@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xcfview.cwl
+id: xcfview.cwl
 inputs: []
 outputs:
 - id: out_stdout

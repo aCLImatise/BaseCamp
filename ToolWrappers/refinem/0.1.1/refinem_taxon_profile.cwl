@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refinem_taxon_profile.cwl
+id: refinem_taxon_profile.cwl
 inputs:
 - id: in_per_to_classify
   doc: "minimum percentage of genes to assign a scaffold to a\ntaxonomic group (default:\

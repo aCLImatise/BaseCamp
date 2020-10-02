@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_compare.cwl
+id: vtools_compare.cwl
 inputs:
 - id: in_union
   doc: "[TABLE [DESC ...]]\nPrint the number (default) or save variants with TYPE\n\

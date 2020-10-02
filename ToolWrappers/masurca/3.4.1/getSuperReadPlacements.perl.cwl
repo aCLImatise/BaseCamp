@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getSuperReadPlacements.perl.cwl
+id: getSuperReadPlacements.perl.cwl
 inputs: []
 outputs:
 - id: out_stdout

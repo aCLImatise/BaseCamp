@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../methylpy_level.cwl
+id: methylpy_level.cwl
 inputs:
 - id: in_methyl_py
   doc: ''

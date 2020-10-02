@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_dia_windows.py.cwl
+id: get_dia_windows.py.cwl
 inputs:
 - id: in_tims_analysis_directory
   doc: ''

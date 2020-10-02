@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../swalign.py.cwl
+id: swalign.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

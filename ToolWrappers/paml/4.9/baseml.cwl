@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../baseml.cwl
+id: baseml.cwl
 inputs: []
 outputs:
 - id: out_stdout

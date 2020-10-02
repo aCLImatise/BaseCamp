@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_gen_genomes_storage.cwl
+id: anvi_gen_genomes_storage.cwl
 inputs:
 - id: in_external_genomes
   doc: "A two-column TAB-delimited flat text file that lists\nanvi'o contigs databases.\

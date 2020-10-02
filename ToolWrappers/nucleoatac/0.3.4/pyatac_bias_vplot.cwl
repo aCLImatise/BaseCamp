@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyatac_bias_vplot.cwl
+id: pyatac_bias_vplot.cwl
 inputs:
 - id: in_bed
   doc: Positions around which to generate VPlot
@@ -27,45 +27,18 @@ inputs:
   inputBinding:
     prefix: --pwm
 - id: in_out
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --out
-- id: in_cores
-  doc: Number of cores to use
+  doc: --cores int         Number of cores to use
   type: long
   inputBinding:
-    prefix: --cores
+    prefix: --out
 - id: in_lower
-  doc: lower limit on insert size
+  doc: "lower limit on insert size\n--upper int         upper limit on insert size\n\
+    --flank int         how many bases on each side of site (or center of site)\n\
+    to include\n--scale\n--weight int        column in which weight information is\
+    \ included\n--strand int        column in which strand information is included"
   type: long
   inputBinding:
     prefix: --lower
-- id: in_upper
-  doc: upper limit on insert size
-  type: long
-  inputBinding:
-    prefix: --upper
-- id: in_flank
-  doc: "how many bases on each side of site (or center of site)\nto include"
-  type: long
-  inputBinding:
-    prefix: --flank
-- id: in_scale
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --scale
-- id: in_weight
-  doc: column in which weight information is included
-  type: long
-  inputBinding:
-    prefix: --weight
-- id: in_strand
-  doc: column in which strand information is included
-  type: long
-  inputBinding:
-    prefix: --strand
 - id: in_no_plot
   doc: Don't plot output
   type: boolean

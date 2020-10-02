@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../venn_gchart.pyc.cwl
+id: venn_gchart.pyc.cwl
 inputs: []
 outputs:
 - id: out_stdout

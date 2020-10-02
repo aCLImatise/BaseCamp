@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stride_correct.cwl
+id: stride_correct.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

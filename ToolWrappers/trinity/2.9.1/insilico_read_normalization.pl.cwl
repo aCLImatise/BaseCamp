@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../insilico_read_normalization.pl.cwl
+id: insilico_read_normalization.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

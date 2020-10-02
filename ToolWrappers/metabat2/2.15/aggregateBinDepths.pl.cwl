@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aggregateBinDepths.pl.cwl
+id: aggregateBinDepths.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

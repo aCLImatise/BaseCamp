@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../roary_query_pan_genome.cwl
+id: roary_query_pan_genome.cwl
 inputs:
 - id: in_groups_filename
   doc: groups filename [clustered_proteins]

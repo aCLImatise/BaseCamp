@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mz_to_sqlite.cwl
+id: mz_to_sqlite.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../color_chrs.pl.cwl
+id: color_chrs.pl.cwl
 inputs:
 - id: in_colors
   doc: File with list of "chr hap color".

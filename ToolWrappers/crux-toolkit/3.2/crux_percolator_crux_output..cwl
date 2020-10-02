@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_percolator_crux_output..cwl
+id: crux_percolator_crux_output..cwl
 inputs:
 - id: in_crux
   doc: ''

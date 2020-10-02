@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ivar_getmasked.cwl
+id: ivar_getmasked.cwl
 inputs:
 - id: in_required_input_filtered
   doc: (Required) Input filtered variants tsv generated from `ivar filtervariants`

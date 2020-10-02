@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ThermoFisher.CommonCore.BackgroundSubtraction.dll.cwl
+id: ThermoFisher.CommonCore.BackgroundSubtraction.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runCompareTwoGenomesColinear.sh.cwl
+id: runCompareTwoGenomesColinear.sh.cwl
 inputs:
 - id: in_cross_match_slash_minimap_two
   doc: PATH-TO-FONTS

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanini_fasta_select.cwl
+id: ppanini_fasta_select.cwl
 inputs: []
 outputs:
 - id: out_stdout

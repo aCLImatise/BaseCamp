@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmcalibrate.cwl
+id: cmcalibrate.cwl
 inputs:
 - id: in_set_random_length
   doc: ': set random seq length to search in Mb to <x>  [1.6]  (0.01<=x<=160.)'

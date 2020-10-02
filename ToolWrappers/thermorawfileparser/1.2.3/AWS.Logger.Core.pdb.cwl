@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AWS.Logger.Core.pdb.cwl
+id: AWS.Logger.Core.pdb.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getPeakTags.cwl
+id: getPeakTags.cwl
 inputs:
 - id: in_start
   doc: '<#> (position to start counting tags relative to peak center, default: -1000)'

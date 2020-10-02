@@ -1,21 +1,13 @@
 class: CommandLineTool
-id: ../../../hpcrunner.pl_archive.cwl
+id: hpcrunner.pl_archive.cwl
 inputs:
 - id: in_include_paths
-  doc: Include files or directories [Multiple]
+  doc: "Include files or directories [Multiple]\n--exclude_paths --ep  Files or directories\
+    \ to exclude [Multiple]\n--archive\n--help -h --usage -?  Prints this usage information.\
+    \ [Flag]"
   type: boolean
   inputBinding:
     prefix: --include_paths
-- id: in_exclude_paths
-  doc: Files or directories to exclude [Multiple]
-  type: boolean
-  inputBinding:
-    prefix: --exclude_paths
-- id: in_archive
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --archive
 - id: in_help
   doc: Prints this usage information
   type: string

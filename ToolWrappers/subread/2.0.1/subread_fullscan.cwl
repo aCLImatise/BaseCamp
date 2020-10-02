@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../subread_fullscan.cwl
+id: subread_fullscan.cwl
 inputs:
 - id: in_base_name_index
   doc: Base name of the index.

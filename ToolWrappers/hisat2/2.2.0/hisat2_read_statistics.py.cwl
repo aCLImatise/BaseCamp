@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisat2_read_statistics.py.cwl
+id: hisat2_read_statistics.py.cwl
 inputs:
 - id: in_reads_count_default
   doc: 'reads count (default: 10000)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgpVCFSplit.pl.cwl
+id: cgpVCFSplit.pl.cwl
 inputs:
 - id: in_line_count
   doc: (-l)       The number of mutant lines to put in each split file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tally.cwl
+id: tally.cwl
 inputs:
 - id: in_input_stream_gzipped
   doc: input stream (gzipped file allowed) (default STDIN)

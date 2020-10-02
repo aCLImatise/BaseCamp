@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_and_validate_reads.pl.cwl
+id: split_and_validate_reads.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../missing_reads.cwl
+id: missing_reads.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AWSSDK.CloudWatchLogs.dll.cwl
+id: AWSSDK.CloudWatchLogs.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

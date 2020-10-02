@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crispector.cwl
+id: crispector.cwl
 inputs:
 - id: in_tx_in_one
   doc: Tx read 1 input path or Tx merged FASTQ file

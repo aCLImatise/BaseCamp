@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summation.pl.cwl
+id: summation.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

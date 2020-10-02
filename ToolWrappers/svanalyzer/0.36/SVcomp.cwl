@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SVcomp.cwl
+id: SVcomp.cwl
 inputs:
 - id: in_first
   doc: ''

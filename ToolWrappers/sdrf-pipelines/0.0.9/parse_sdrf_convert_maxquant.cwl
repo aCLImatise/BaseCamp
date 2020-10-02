@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parse_sdrf_convert_maxquant.cwl
+id: parse_sdrf_convert_maxquant.cwl
 inputs:
 - id: in_sd_rf
   doc: SDRF file

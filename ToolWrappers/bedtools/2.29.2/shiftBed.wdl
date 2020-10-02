@@ -9,15 +9,13 @@ task ShiftBed {
     File? header
     String? g
     String? i
-    Int chr_one
-    Int chr_two
-    Int chr_one_eight_gl_zero_zero_zero_two_zero_seven_random
+    String bed_tools
+    String shift
   }
   command <<<
     shiftBed \
-      ~{chr_one} \
-      ~{chr_two} \
-      ~{chr_one_eight_gl_zero_zero_zero_two_zero_seven_random} \
+      ~{bed_tools} \
+      ~{shift} \
       ~{if (shift_entry_pairs) then "-s" else ""} \
       ~{if (shift_features_p) then "-p" else ""} \
       ~{if (shift_features_m) then "-m" else ""} \
@@ -34,9 +32,8 @@ task ShiftBed {
     header: "the header from the input file prior to results."
     g: ""
     i: ""
-    chr_one: "249250621"
-    chr_two: "243199373"
-    chr_one_eight_gl_zero_zero_zero_two_zero_seven_random: "4262"
+    bed_tools: ""
+    shift: ""
   }
   output {
     File out_stdout = stdout()

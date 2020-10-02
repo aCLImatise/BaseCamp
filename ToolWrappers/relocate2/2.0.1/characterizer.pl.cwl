@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../characterizer.pl.cwl
+id: characterizer.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qpreroot.cwl
+id: qpreroot.cwl
 inputs:
 - id: in_use_parameters_file
   doc: '... use parameters from <file> .'

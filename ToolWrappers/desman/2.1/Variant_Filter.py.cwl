@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Variant_Filter.py.cwl
+id: Variant_Filter.py.cwl
 inputs:
 - id: in_binomial_loge_likelihood
   doc: "[FILTER_VARIANTS], --filter_variants [FILTER_VARIANTS]\nbinomial loge likelihood\

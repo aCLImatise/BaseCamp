@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sirius.cwl
+id: sirius.cwl
 inputs:
 - id: in_arguments_dot_dot_dot
   doc: ''

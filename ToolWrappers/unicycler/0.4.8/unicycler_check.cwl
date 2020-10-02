@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unicycler_check.cwl
+id: unicycler_check.cwl
 inputs:
 - id: in_sam
   doc: "Input SAM file of alignments (if this file doesn't\nexist, the alignment will\

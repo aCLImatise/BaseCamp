@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lumpyexpress.config.cwl
+id: lumpyexpress.config.cwl
 inputs: []
 outputs:
 - id: out_stdout

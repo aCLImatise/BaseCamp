@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../exonpairs.cwl
+id: exonpairs.cwl
 inputs:
 - id: in_min_intron
   doc: minimum Intron length [30]

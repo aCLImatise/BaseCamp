@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combineGO.pl.cwl
+id: combineGO.pl.cwl
 inputs:
 - id: in_filename_join_values
   doc: (Filename to join enrichment values from)

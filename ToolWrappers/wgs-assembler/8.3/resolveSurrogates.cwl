@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../resolveSurrogates.cwl
+id: resolveSurrogates.cwl
 inputs:
 - id: in_place_frags_ifat
   doc: "place all frags in singly-placed surrogates if\nat least fraction x can be\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../peakachu_consensus_peak.cwl
+id: peakachu_consensus_peak.cwl
 inputs:
 - id: in_consensus_length
   doc: "Length of the region around peak centers for plotting\nconsensus peaks\n"

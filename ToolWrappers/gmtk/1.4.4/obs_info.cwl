@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obs_info.cwl
+id: obs_info.cwl
 inputs: []
 outputs:
 - id: out_stdout

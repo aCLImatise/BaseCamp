@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compute_uniform_priors.cwl
+id: compute_uniform_priors.cwl
 inputs:
 - id: in_compute_uniform_prior
   doc: ''

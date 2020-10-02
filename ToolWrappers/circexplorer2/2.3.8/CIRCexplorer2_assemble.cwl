@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CIRCexplorer2_assemble.cwl
+id: CIRCexplorer2_assemble.cwl
 inputs:
 - id: in_ref
   doc: Gene annotation file.

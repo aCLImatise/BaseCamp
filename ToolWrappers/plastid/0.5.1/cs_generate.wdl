@@ -24,15 +24,13 @@ task CsGenerate {
     Boolean? mask_add_three
     Boolean? mask_tab_ix
     Boolean? mask_sorted
-    String __
     String genes_dot
-    String basename_output_files
+    String out_base
   }
   command <<<
     cs generate \
-      ~{__} \
       ~{genes_dot} \
-      ~{basename_output_files} \
+      ~{out_base} \
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (verbose) then "--verbose" else ""} \
       ~{if defined(annotation_files) then ("--annotation_files " +  '"' + annotation_files + '"') else ""} \
@@ -79,9 +77,8 @@ task CsGenerate {
     mask_add_three: "If supplied, coding regions will be extended by 3\\nnucleotides at their 3' ends (except for GTF2 files\\nthat explicitly include `stop_codon` features). Use if\\nyour annotation file excludes stop codons from CDS."
     mask_tab_ix: "mask_annotation_files are tabix-compressed and indexed\\n(Default: False). Ignored for BigBed files."
     mask_sorted: "mask_annotation_files are sorted by chromosomal\\nposition (Default: False)\\n"
-    __: "------------------------------------------------------------------------------"
     genes_dot: "2. Within merged genes, all positions are classified. All positions are"
-    basename_output_files: "Basename for output files"
+    out_base: "Basename for output files"
   }
   output {
     File out_stdout = stdout()

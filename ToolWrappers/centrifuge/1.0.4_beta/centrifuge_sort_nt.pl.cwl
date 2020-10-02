@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centrifuge_sort_nt.pl.cwl
+id: centrifuge_sort_nt.pl.cwl
 inputs:
 - id: in_output_mappings_present
   doc: Output mappings that are present in sequence file to file str

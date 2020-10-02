@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../cooler_tree.cwl
+id: cooler_tree.cwl
 inputs:
 - id: in_level
-  doc: ''
+  doc: "-h, --help           Show this message and exit.\n"
   type: long
   inputBinding:
     prefix: --level

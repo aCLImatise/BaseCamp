@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genometreetk_jk_taxa.cwl
+id: genometreetk_jk_taxa.cwl
 inputs:
 - id: in_out_group_ids
   doc: file indicating outgroup taxa

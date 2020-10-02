@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Lengths.py.cwl
+id: Lengths.py.cwl
 inputs:
 - id: in_input_file
   doc: "fasta file\n"

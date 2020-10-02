@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafToAxt.cwl
+id: mafToAxt.cwl
 inputs:
 - id: in_strip_db
   doc: '- Strip names from start to first period.'

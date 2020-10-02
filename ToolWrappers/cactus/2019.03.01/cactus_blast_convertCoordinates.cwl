@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_blast_convertCoordinates.cwl
+id: cactus_blast_convertCoordinates.cwl
 inputs: []
 outputs:
 - id: out_stdout

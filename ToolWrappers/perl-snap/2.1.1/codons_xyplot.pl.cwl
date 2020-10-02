@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../codons_xyplot.pl.cwl
+id: codons_xyplot.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

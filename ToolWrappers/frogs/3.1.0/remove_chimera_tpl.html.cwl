@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_chimera_tpl.html.cwl
+id: remove_chimera_tpl.html.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_augustus_gff.pl.cwl
+id: filter_augustus_gff.pl.cwl
 inputs:
 - id: in_in
   doc: AUGUSTUS output file in GFF format

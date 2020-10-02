@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_deployment_manager_resources.cwl
+id: gcloud_deployment_manager_resources.cwl
 inputs:
 - id: in_deployment
   doc: Deployment name

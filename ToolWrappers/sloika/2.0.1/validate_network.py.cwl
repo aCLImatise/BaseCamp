@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validate_network.py.cwl
+id: validate_network.py.cwl
 inputs:
 - id: in_no_bad
   doc: "Use bad events as a separate state (Default: --bad)\n(default: True)"

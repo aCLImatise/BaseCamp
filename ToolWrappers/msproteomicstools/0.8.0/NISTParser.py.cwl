@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NISTParser.py.cwl
+id: NISTParser.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

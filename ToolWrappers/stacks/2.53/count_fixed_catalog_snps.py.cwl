@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../count_fixed_catalog_snps.py.cwl
+id: count_fixed_catalog_snps.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

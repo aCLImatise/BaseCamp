@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smartdenovo.pl.cwl
+id: smartdenovo.pl.cwl
 inputs:
 - id: in_output_prefix
   doc: output prefix [wtasm]

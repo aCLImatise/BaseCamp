@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sfld_preprocess.cwl
+id: sfld_preprocess.cwl
 inputs:
 - id: in_hmm
   doc: '| -m FILE    HMM file (input)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_man_cross_transcript.cwl
+id: iCount_man_cross_transcript.cwl
 inputs:
 - id: in_mode
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scatter_plot_2D.py.cwl
+id: scatter_plot_2D.py.cwl
 inputs:
 - id: in_var_0
   doc: '[-f FIGURE] [-pal PALETTE] [-col COLOR]'

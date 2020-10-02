@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bayesTyperTools_combine.cwl
+id: bayesTyperTools_combine.cwl
 inputs:
 - id: in_arg_commaseparated_list
   doc: '[ --variant-files ] arg            comma-separated list of name and variant

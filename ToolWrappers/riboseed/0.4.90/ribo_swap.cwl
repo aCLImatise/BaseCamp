@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribo_swap.cwl
+id: ribo_swap.cwl
 inputs:
 - id: in_output
   doc: 'output directory; default: /'

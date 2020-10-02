@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smeg_build_species_Genomes.cwl
+id: smeg_build_species_Genomes.cwl
 inputs:
 - id: in__is_required
   doc: '[option] is required'

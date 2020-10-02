@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ubismap.py.cwl
+id: ubismap.py.cwl
 inputs:
 - id: in_terse_dot
   doc: these options do not exist in your cluster,

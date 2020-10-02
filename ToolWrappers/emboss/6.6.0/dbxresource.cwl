@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbxresource.cwl
+id: dbxresource.cwl
 inputs:
 - id: in_directory
   doc: directory  [.] Database directory

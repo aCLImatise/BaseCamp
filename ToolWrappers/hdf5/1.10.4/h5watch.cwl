@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5watch.cwl
+id: h5watch.cwl
 inputs:
 - id: in_label
   doc: Label members of compound typed dataset.

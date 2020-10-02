@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rna2dna.pl.orig.cwl
+id: rna2dna.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

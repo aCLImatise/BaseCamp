@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../finddgref.py.cwl
+id: finddgref.py.cwl
 inputs:
 - id: in_author
   doc: show the program's author information and exit

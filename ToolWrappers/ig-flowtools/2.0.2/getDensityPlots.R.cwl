@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getDensityPlots.R.cwl
+id: getDensityPlots.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

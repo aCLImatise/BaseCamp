@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MummerSNPReader.py.cwl
+id: MummerSNPReader.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

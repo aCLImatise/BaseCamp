@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_seer.cwl
+id: filter_seer.cwl
 inputs:
 - id: in_arg_file_output
   doc: '[ --kmers ] arg     file of output from seer'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aws.cmd.cwl
+id: aws.cmd.cwl
 inputs: []
 outputs:
 - id: out_stdout

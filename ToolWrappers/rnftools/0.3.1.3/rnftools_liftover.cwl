@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnftools_liftover.cwl
+id: rnftools_liftover.cwl
 inputs:
 - id: in_chain
   doc: "Chain liftover file for coordinates transformation.\n[no transformation]"

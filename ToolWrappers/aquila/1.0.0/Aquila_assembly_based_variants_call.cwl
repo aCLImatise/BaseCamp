@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Aquila_assembly_based_variants_call.cwl
+id: Aquila_assembly_based_variants_call.cwl
 inputs:
 - id: in_assembly_dir
   doc: "Required parameter, folder to store Aquila assembly\nresults at Aquila assembly\
@@ -44,17 +44,12 @@ inputs:
   type: Directory
   inputBinding:
     prefix: --out_dir
-- id: in_required_parameter_reference
+- id: in_ref_file
   doc: "Required parameter, reference fasta file, run\n./install.sh to dowload GRCh38\
     \ human reference fasta\n"
   type: File
   inputBinding:
     prefix: --ref_file
-- id: in_run_depth_all
-  doc: 'Run depth all:'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

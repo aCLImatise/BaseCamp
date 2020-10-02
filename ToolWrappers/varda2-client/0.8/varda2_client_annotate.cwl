@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varda2_client_annotate.cwl
+id: varda2_client_annotate.cwl
 inputs:
 - id: in_sample_sheet
   doc: 'Sample sheet file: sample_id, gvcf, vcf, bam'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylophlan.cwl
+id: phylophlan.cwl
 inputs:
 - id: in_input
   doc: "Folder containing your input genomes and/or proteomes\n(default: None)"

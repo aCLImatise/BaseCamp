@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_cluster_from.cwl
+id: lyner_cluster_from.cwl
 inputs:
 - id: in_file
   doc: ''

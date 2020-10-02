@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haphpipe_demo_100.cwl
+id: haphpipe_demo_100.cwl
 inputs:
 - id: in_outdir
   doc: 'Output directory (default: .)'

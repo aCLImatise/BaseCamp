@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../formcon.cwl
+id: formcon.cwl
 inputs:
 - id: in_file_of_reads
   doc: file of DNA reads in FASTA format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xml_to_bas.pl.cwl
+id: xml_to_bas.pl.cwl
 inputs:
 - id: in_uri
   doc: -d    Same URI used by gtdownload

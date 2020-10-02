@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mira_install_sls_rrna.sh.cwl
+id: mira_install_sls_rrna.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

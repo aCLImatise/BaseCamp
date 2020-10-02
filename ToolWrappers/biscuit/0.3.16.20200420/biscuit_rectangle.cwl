@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biscuit_rectangle.cwl
+id: biscuit_rectangle.cwl
 inputs:
 - id: in_output_file
   doc: output file [stdout]

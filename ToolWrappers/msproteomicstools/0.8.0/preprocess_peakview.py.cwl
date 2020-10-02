@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preprocess_peakview.py.cwl
+id: preprocess_peakview.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pytleap.cwl
+id: pytleap.cwl
 inputs:
 - id: in_prot
   doc: protein PDB file                       (no default)

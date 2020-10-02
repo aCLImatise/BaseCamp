@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_post_bundles_checkout.cwl
+id: hca_dss_post_bundles_checkout.cwl
 inputs:
 - id: in_destination
   doc: User-owned destination storage bucket.

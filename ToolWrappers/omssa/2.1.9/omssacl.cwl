@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../omssacl.cwl
+id: omssacl.cwl
 inputs: []
 outputs:
 - id: out_stdout

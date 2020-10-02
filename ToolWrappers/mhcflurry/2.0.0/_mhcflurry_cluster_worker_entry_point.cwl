@@ -1,41 +1,6 @@
 class: CommandLineTool
-id: ../../../_mhcflurry_cluster_worker_entry_point.cwl
+id: _mhcflurry_cluster_worker_entry_point.cwl
 inputs:
-- id: in_constant_data
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --constant-data
-- id: in_worker_data
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --worker-data
-- id: in_result_out
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --result-out
-- id: in_error_out
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --error-out
-- id: in_complete_dir
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --complete-dir
-- id: in_input_serialization_method
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --input-serialization-method
-- id: in_result_serialization_method
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --result-serialization-method
 - id: in_entry
   doc: ''
   type: string

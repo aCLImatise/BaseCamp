@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mlst_download_functions.jl.cwl
+id: mlst_download_functions.jl.cwl
 inputs: []
 outputs:
 - id: out_stdout

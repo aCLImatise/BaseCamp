@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastqStatsAndSubsample.cwl
+id: fastqStatsAndSubsample.cwl
 inputs:
 - id: in_sample_size
   doc: '- default 100000'

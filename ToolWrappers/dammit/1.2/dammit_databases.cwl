@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dammit_databases.cwl
+id: dammit_databases.cwl
 inputs:
 - id: in_install
   doc: "Install missing databases. Downloads and preps where\nnecessary (default:\

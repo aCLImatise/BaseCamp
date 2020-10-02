@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: ../../../gsutil_iam.cwl
+id: gsutil_iam.cwl
 inputs:
+- id: in_i_d
+  doc: ("user"|"serviceAccount"|"domain"|"group"):id
+  type: boolean
+  inputBinding:
+    prefix: -d
 - id: in_performs_recursively_objects
   doc: "Performs \"iam set\" recursively to all objects under the\nspecified bucket."
   type: boolean

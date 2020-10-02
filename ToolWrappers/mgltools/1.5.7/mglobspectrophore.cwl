@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglobspectrophore.cwl
+id: mglobspectrophore.cwl
 inputs: []
 outputs:
 - id: out_stdout

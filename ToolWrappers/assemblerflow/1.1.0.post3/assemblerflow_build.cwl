@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assemblerflow_build.cwl
+id: assemblerflow_build.cwl
 inputs:
 - id: in_tasks
   doc: Space separated tasks of the pipeline

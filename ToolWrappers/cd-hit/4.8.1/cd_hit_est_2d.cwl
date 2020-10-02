@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cd_hit_est_2d.cwl
+id: cd_hit_est_2d.cwl
 inputs:
 - id: in_i
   doc: input filename for db1 in fasta format, required, can be in .gz format

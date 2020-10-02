@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_MergePDF.cwl
+id: TOBIAS_MergePDF.cwl
 inputs:
 - id: in_input
   doc: '[ [ ...]]  PDF files to join'

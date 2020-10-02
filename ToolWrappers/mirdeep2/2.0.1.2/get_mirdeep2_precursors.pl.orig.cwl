@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_mirdeep2_precursors.pl.orig.cwl
+id: get_mirdeep2_precursors.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

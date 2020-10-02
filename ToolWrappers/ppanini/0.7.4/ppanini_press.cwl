@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanini_press.cwl
+id: ppanini_press.cwl
 inputs:
 - id: in_gene_path
   doc: a directory path to ppanini_gene_caller outputs which includes txt, gff, and

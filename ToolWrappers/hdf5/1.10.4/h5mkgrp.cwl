@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5mkgrp.cwl
+id: h5mkgrp.cwl
 inputs:
 - id: in_latest
   doc: Use latest version of file format to create groups

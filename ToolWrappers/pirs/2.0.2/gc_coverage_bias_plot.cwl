@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gc_coverage_bias_plot.cwl
+id: gc_coverage_bias_plot.cwl
 inputs: []
 outputs:
 - id: out_stdout

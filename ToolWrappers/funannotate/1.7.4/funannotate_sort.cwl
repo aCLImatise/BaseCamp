@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funannotate_sort.cwl
+id: funannotate_sort.cwl
 inputs:
 - id: in_input
   doc: Multi-fasta genome file. (Required)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../poretools_yield_plot.cwl
+id: poretools_yield_plot.cwl
 inputs:
 - id: in_quiet
   doc: Do not output warnings to stderr

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyse_metrics.py_metrics.cwl
+id: analyse_metrics.py_metrics.cwl
 inputs:
 - id: in_ref_map
   doc: ''

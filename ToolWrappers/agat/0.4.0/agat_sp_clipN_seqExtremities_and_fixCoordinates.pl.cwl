@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_clipN_seqExtremities_and_fixCoordinates.pl.cwl
+id: agat_sp_clipN_seqExtremities_and_fixCoordinates.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GTF/GFF file.

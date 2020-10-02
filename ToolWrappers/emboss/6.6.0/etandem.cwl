@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../etandem.cwl
+id: etandem.cwl
 inputs:
 - id: in_min_repeat
   doc: "integer    [10] Minimum repeat size (Integer, 2 or\nhigher)"
@@ -12,11 +12,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -maxrepeat
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 - id: in_threshold
   doc: integer    [20] Threshold score (Any integer value)
   type: boolean

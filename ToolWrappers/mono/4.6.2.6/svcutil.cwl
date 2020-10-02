@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svcutil.cwl
+id: svcutil.cwl
 inputs:
 - id: in_async
   doc: Generate async methods.

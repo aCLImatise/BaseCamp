@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dump_file.py.cwl
+id: dump_file.py.cwl
 inputs:
 - id: in_input_file
   doc: ''

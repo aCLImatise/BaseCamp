@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../removeRepeats.pl.cwl
+id: removeRepeats.pl.cwl
 inputs:
 - id: in_reference_sequence_filename
   doc: reference sequence filename

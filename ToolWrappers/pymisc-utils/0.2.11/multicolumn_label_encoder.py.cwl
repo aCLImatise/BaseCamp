@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multicolumn_label_encoder.py.cwl
+id: multicolumn_label_encoder.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

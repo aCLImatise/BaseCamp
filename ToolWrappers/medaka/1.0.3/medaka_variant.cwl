@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medaka_variant.cwl
+id: medaka_variant.cwl
 inputs:
 - id: in_input_bam_reads
   doc: "input bam of reads aligned to ref. Read groups are currently ignored,\nso\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsnp_best_reference.py.cwl
+id: vsnp_best_reference.py.cwl
 inputs:
 - id: in_read_one
   doc: 'Required: single read'

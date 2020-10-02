@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prince.cwl
+id: prince.cwl
 inputs:
 - id: in_boost_output
   doc: "output file for training data / training data used to\npredict copy numbers\

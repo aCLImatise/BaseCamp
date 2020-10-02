@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SortSatsuma.cwl
+id: SortSatsuma.cwl
 inputs:
 - id: in_string_input_file
   doc: '<string> : input file'

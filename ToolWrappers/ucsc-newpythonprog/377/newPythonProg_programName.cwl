@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../newPythonProg_programName.cwl
+id: newPythonProg_programName.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

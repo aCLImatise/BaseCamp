@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtext.cwl
+id: wtext.cwl
 inputs:
 - id: in_number_of_threads
   doc: Number of threads, [1]
@@ -51,11 +51,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -f
-- id: in_bandwidth
-  doc: Bandwidth, [800]
-  type: double
-  inputBinding:
-    prefix: -W
 - id: in_alignment_penalty_match
   doc: 'Alignment penalty: match, [2]'
   type: long

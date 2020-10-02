@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../epic_overlaps.cwl
+id: epic_overlaps.cwl
 inputs: []
 outputs:
 - id: out_stdout

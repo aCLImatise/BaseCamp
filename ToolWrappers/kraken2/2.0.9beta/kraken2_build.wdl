@@ -10,7 +10,6 @@ task Kraken2build {
     Boolean? clean
     Boolean? standard
     Int? db
-    Boolean? help_slash_version
     Boolean? threads
     Int? km_er_len
     Int? minimizer_len
@@ -19,7 +18,6 @@ task Kraken2build {
     Boolean? no_masking
     Int? max_db_size
     Boolean? use_ftp
-    Boolean? download_library_slash_download_taxonomy_slash_standard_dot
     Boolean? skip_maps
     Float? load_factor
     String? var_task
@@ -35,7 +33,6 @@ task Kraken2build {
       ~{if (clean) then "--clean" else ""} \
       ~{if (standard) then "--standard" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
-      ~{if (help_slash_version) then "--help/--version" else ""} \
       ~{if (threads) then "--threads" else ""} \
       ~{if defined(km_er_len) then ("--kmer-len " +  '"' + km_er_len + '"') else ""} \
       ~{if defined(minimizer_len) then ("--minimizer-len " +  '"' + minimizer_len + '"') else ""} \
@@ -44,7 +41,6 @@ task Kraken2build {
       ~{if (no_masking) then "--no-masking" else ""} \
       ~{if defined(max_db_size) then ("--max-db-size " +  '"' + max_db_size + '"') else ""} \
       ~{if (use_ftp) then "--use-ftp" else ""} \
-      ~{if (download_library_slash_download_taxonomy_slash_standard_dot) then "--download-library/--download-taxonomy/--standard." else ""} \
       ~{if (skip_maps) then "--skip-maps" else ""} \
       ~{if defined(load_factor) then ("--load-factor " +  '"' + load_factor + '"') else ""}
   >>>
@@ -57,7 +53,6 @@ task Kraken2build {
     clean: "Remove unneeded files from a built database"
     standard: "Download and build default database"
     db: "Kraken 2 DB name (mandatory except for"
-    help_slash_version: ")"
     threads: "#                Number of threads (def: 1)"
     km_er_len: "K-mer length in bp/aa (build task only;\\ndef: 35 nt, 15 aa)"
     minimizer_len: "Minimizer length in bp/aa (build task only;\\ndef: 31 nt, 12 aa)"
@@ -65,8 +60,7 @@ task Kraken2build {
     protein: "Build a protein database for translated search"
     no_masking: "Used with --standard/--download-library/"
     max_db_size: "Maximum number of bytes for Kraken 2 hash table;\\nif the estimator determines more would normally be\\nneeded, the reference library will be downsampled\\nto fit. (Used with --build/--standard/--special)"
-    use_ftp: "Use FTP for downloading instead of RSYNC; used with"
-    download_library_slash_download_taxonomy_slash_standard_dot: ""
+    use_ftp: "Use FTP for downloading instead of RSYNC; used with\\n--download-library/--download-taxonomy/--standard."
     skip_maps: "Avoids downloading accession number to taxid maps,\\nused with --download-taxonomy."
     load_factor: "Proportion of the hash table to be populated\\n(build task only; def: 0.7, must be\\nbetween 0 and 1).\\n"
     var_task: ""

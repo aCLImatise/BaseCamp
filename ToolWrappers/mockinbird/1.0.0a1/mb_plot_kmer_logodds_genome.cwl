@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_plot_kmer_logodds_genome.cwl
+id: mb_plot_kmer_logodds_genome.cwl
 inputs:
 - id: in_gff
   doc: ''

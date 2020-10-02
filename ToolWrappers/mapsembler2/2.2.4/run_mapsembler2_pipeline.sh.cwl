@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_mapsembler2_pipeline.sh.cwl
+id: run_mapsembler2_pipeline.sh.cwl
 inputs:
 - id: in_file_containing_starters
   doc: ': file containing starters (fasta)'

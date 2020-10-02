@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fdolpenny.cwl
+id: _fdolpenny.cwl
 inputs:
 - id: in_weights
   doc: properties Weights file

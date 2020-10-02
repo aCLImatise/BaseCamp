@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parseFDR_o_peptide.py.cwl
+id: parseFDR_o_peptide.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vina.cwl
+id: vina.cwl
 inputs:
 - id: in_receptor
   doc: rigid part of the receptor (PDBQT)

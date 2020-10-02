@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findHiCDomains.pl.cwl
+id: findHiCDomains.pl.cwl
 inputs:
 - id: in_or
   doc: "<output prefix> <directionality index bedgraph> [options]\n(Use the 2nd usage\

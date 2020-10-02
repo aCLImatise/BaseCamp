@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cands.cwl
+id: cands.cwl
 inputs:
 - id: in_t
   doc: ''

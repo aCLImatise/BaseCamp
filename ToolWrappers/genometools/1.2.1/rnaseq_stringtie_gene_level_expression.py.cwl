@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnaseq_stringtie_gene_level_expression.py.cwl
+id: rnaseq_stringtie_gene_level_expression.py.cwl
 inputs:
 - id: in_string_tie_file
   doc: Path of the StringTie output file .

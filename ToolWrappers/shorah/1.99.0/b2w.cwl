@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../b2w.cwl
+id: b2w.cwl
 inputs:
 - id: in_window_length_int
   doc: ': window length (INT)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_bdftogd.cwl
+id: _bdftogd.cwl
 inputs: []
 outputs:
 - id: out_stdout

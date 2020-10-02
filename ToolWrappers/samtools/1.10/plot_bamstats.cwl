@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_bamstats.cwl
+id: plot_bamstats.cwl
 inputs: []
 outputs:
 - id: out_stdout

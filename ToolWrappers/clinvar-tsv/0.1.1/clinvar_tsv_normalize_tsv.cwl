@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clinvar_tsv_normalize_tsv.cwl
+id: clinvar_tsv_normalize_tsv.cwl
 inputs:
 - id: in_reference
   doc: Path to reference FASTA file

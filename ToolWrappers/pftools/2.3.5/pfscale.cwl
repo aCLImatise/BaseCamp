@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pfscale.cwl
+id: pfscale.cwl
 inputs:
 - id: in_impose_limit_line
   doc: ': do not impose limit on line length.'

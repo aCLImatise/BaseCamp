@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmpress_cmfile.cwl
+id: cmpress_cmfile.cwl
 inputs:
 - id: in_options
   doc: ''

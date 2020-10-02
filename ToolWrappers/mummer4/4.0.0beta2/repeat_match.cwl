@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../repeat_match.cwl
+id: repeat_match.cwl
 inputs:
 - id: in_use_exhaustive_search
   doc: Use exhaustive (slow) search to find matches

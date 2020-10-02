@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam.cwl
+id: bam.cwl
 inputs:
 - id: in_tool
   doc: ''

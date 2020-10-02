@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_lindna.cwl
+id: _lindna.cwl
 inputs:
 - id: in_blocktype
   doc: "menu       [Filled] Type of blocks (Values: Open (Open\nblocks); Filled (Filled\

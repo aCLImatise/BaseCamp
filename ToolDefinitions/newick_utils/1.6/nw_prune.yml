@@ -28,7 +28,7 @@ subcommands:
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id007 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -55,16 +55,10 @@ subcommands:
         - -v
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: &id007 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - -hv
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -89,7 +83,150 @@ subcommands:
             - -v
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: ''
+              synonyms:
+              - -hv
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional: []
+              named:
+              - !Flag
+                description: ": node labels are in a file whose name is the second\
+                  \ argument,\ninstead of being passed  on the command line.\nThere\
+                  \ should be one label per line, and no leading or trailing\nwhitespace."
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ": reverse: prune nodes whose labels are NOT passed on\
+                  \ the command\nline. Inner nodes are not pruned. This allows pruning\
+                  \ of trees\nwith support values, which syntactically are node labels,\
+                  \ withouti\ninner nodes disappearing because their 'label' was not\
+                  \ passed on\nthe command line."
+                synonyms:
+                - -v
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ': print this message and exit'
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Removes nodes by label\n\nSynopsis\n--------\n\nnw_prune\
+                \ [-f:hv] <newick trees filename|-> <label> [label+]\n\nInput\n-----\n\
+                \nArgument is the name of a file that contains Newick trees, or '-'\
+                \ (in which\ncase trees are read from standard input).\n\nOutput\n\
+                ------\n\nRemoves all nodes whose labels are passed on the command\
+                \ line, and prints\nout the modified tree. If removing a node causes\
+                \ its parent to have only\none child (as is always the case in strictly\
+                \ binary trees), the parent is\nspliced out and the remaining child\
+                \ is attached to its grandparent,\npreserving length.\n\nOnly labeled\
+                \ nodes are considered for pruning.\n\nOptions\n-------\n\n    -f:\
+                \ node labels are in a file whose name is the second argument,\n \
+                \       instead of being passed  on the command line.\n        There\
+                \ should be one label per line, and no leading or trailing\n     \
+                \   whitespace.\n    -h: print this message and exit\n    -v: reverse:\
+                \ prune nodes whose labels are NOT passed on the command\n       \
+                \ line. Inner nodes are not pruned. This allows pruning of trees\n\
+                \        with support values, which syntactically are node labels,\
+                \ withouti\n        inner nodes disappearing because their 'label'\
+                \ was not passed on\n        the command line.\n\nAssumptions and\
+                \ Limitations\n---------------------------\n\nLabels are assumed to\
+                \ be unique. \n\nExamples\n--------\n\n# Remove humans and gorilla\n\
+                $ nw_prune data/catarrhini Homo Gorilla\n\n# Remove humans, chimp,\
+                \ and gorilla\n$ nw_prune data/catarrhini Homo Gorilla Pan\n\n# the\
+                \ same, but using the clade's label\n$ nw_prune data/catarrhini Homininae\n\
+                \n# keep great apes and Colobines:\n$ nw_prune -v data/catarrhini\
+                \ Gorilla Pan Homo Pongo Simias Colobus\n\n# same, using clade labels:\n\
+                $ nw_prune -v data/catarrhini Hominidae Colobinae\n"
+              generated_using: &id004
+              - -h
+            - !Command
+              command: &id005
+              - nw_prune
+              - filename|-
+              positional: []
+              named:
+              - !Flag
+                description: ": node labels are in a file whose name is the second\
+                  \ argument,\ninstead of being passed  on the command line.\nThere\
+                  \ should be one label per line, and no leading or trailing\nwhitespace."
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ": reverse: prune nodes whose labels are NOT passed on\
+                  \ the command\nline. Inner nodes are not pruned. This allows pruning\
+                  \ of trees\nwith support values, which syntactically are node labels,\
+                  \ withouti\ninner nodes disappearing because their 'label' was not\
+                  \ passed on\nthe command line."
+                synonyms:
+                - -v
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ': print this message and exit'
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Removes nodes by label\n\nSynopsis\n--------\n\nnw_prune\
+                \ [-f:hv] <newick trees filename|-> <label> [label+]\n\nInput\n-----\n\
+                \nArgument is the name of a file that contains Newick trees, or '-'\
+                \ (in which\ncase trees are read from standard input).\n\nOutput\n\
+                ------\n\nRemoves all nodes whose labels are passed on the command\
+                \ line, and prints\nout the modified tree. If removing a node causes\
+                \ its parent to have only\none child (as is always the case in strictly\
+                \ binary trees), the parent is\nspliced out and the remaining child\
+                \ is attached to its grandparent,\npreserving length.\n\nOnly labeled\
+                \ nodes are considered for pruning.\n\nOptions\n-------\n\n    -f:\
+                \ node labels are in a file whose name is the second argument,\n \
+                \       instead of being passed  on the command line.\n        There\
+                \ should be one label per line, and no leading or trailing\n     \
+                \   whitespace.\n    -h: print this message and exit\n    -v: reverse:\
+                \ prune nodes whose labels are NOT passed on the command\n       \
+                \ line. Inner nodes are not pruned. This allows pruning of trees\n\
+                \        with support values, which syntactically are node labels,\
+                \ withouti\n        inner nodes disappearing because their 'label'\
+                \ was not passed on\n        the command line.\n\nAssumptions and\
+                \ Limitations\n---------------------------\n\nLabels are assumed to\
+                \ be unique. \n\nExamples\n--------\n\n# Remove humans and gorilla\n\
+                $ nw_prune data/catarrhini Homo Gorilla\n\n# Remove humans, chimp,\
+                \ and gorilla\n$ nw_prune data/catarrhini Homo Gorilla Pan\n\n# the\
+                \ same, but using the clade's label\n$ nw_prune data/catarrhini Homininae\n\
+                \n# keep great apes and Colobines:\n$ nw_prune -v data/catarrhini\
+                \ Gorilla Pan Homo Pongo Simias Colobus\n\n# same, using clade labels:\n\
+                $ nw_prune -v data/catarrhini Hominidae Colobinae\n"
+              generated_using: *id004
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "Usage: nw_prune [-hv] <filename|-> <label> [label+]\nor  \
+              \   nw_prune [-hv] -f <filename|-> <label_filename>"
+            generated_using: &id006 []
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -125,12 +262,9 @@ subcommands:
             \ Homininae\n\n# keep great apes and Colobines:\n$ nw_prune -v data/catarrhini\
             \ Gorilla Pan Homo Pongo Simias Colobus\n\n# same, using clade labels:\n\
             $ nw_prune -v data/catarrhini Hominidae Colobinae\n"
-          generated_using: &id004
-          - -h
+          generated_using: *id004
         - !Command
-          command: &id005
-          - nw_prune
-          - filename|-
+          command: *id005
           positional: []
           named:
           - !Flag
@@ -194,7 +328,7 @@ subcommands:
         version_flag:
         help_text: "Usage: nw_prune [-hv] <filename|-> <label> [label+]\nor     nw_prune\
           \ [-hv] -f <filename|-> <label_filename>"
-        generated_using: &id006 []
+        generated_using: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -251,7 +385,7 @@ subcommands:
         - -v
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -349,7 +483,7 @@ subcommands:
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

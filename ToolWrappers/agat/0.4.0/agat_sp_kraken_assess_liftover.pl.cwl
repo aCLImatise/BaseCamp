@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_kraken_assess_liftover.pl.cwl
+id: agat_sp_kraken_assess_liftover.pl.cwl
 inputs:
 - id: in_gff
   doc: Input gtf file produced by Kraken.

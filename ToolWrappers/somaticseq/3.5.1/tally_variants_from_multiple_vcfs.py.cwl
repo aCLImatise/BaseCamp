@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tally_variants_from_multiple_vcfs.py.cwl
+id: tally_variants_from_multiple_vcfs.py.cwl
 inputs:
 - id: in_vcf_files
   doc: 'multiple vcf files (default: None)'

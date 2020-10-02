@@ -6,7 +6,6 @@ task Makmdm {
     Boolean? suppress_output_mdm
     Boolean? output_ludecomposited_matrix
     Boolean? output_power_matrices
-    Boolean? f_seven_eight
     Boolean? _brosum_series
     Boolean? _vt_series
     Boolean? opt_dot_dot_dot
@@ -17,7 +16,6 @@ task Makmdm {
       ~{if (suppress_output_mdm) then "-m-" else ""} \
       ~{if (output_ludecomposited_matrix) then "-l" else ""} \
       ~{if (output_power_matrices) then "-p" else ""} \
-      ~{if (f_seven_eight) then "-f78" else ""} \
       ~{if (_brosum_series) then "-b" else ""} \
       ~{if (_vt_series) then "-v" else ""} \
       ~{if (opt_dot_dot_dot) then "-opt..." else ""}
@@ -27,7 +25,6 @@ task Makmdm {
     suppress_output_mdm: ":    Suppress output of mdm matrix"
     output_ludecomposited_matrix: ":     Output LU-decomposited matrix"
     output_power_matrices: ":     Output power matrices"
-    f_seven_eight: "|91"
     _brosum_series: ":     Brosum series"
     _vt_series: ":     VT series"
     opt_dot_dot_dot: ""

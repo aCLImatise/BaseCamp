@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../joingenes.cwl
+id: joingenes.cwl
 inputs:
 - id: in_gene_sets
   doc: ',file2,...      -g file1,file2,...      where "file1,file2,...,filen" have

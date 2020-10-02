@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../duplicateCol.pl.cwl
+id: duplicateCol.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

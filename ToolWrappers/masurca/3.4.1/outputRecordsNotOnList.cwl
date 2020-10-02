@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../outputRecordsNotOnList.cwl
+id: outputRecordsNotOnList.cwl
 inputs: []
 outputs:
 - id: out_stdout

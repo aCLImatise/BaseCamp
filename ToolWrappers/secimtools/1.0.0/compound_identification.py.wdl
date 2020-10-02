@@ -27,7 +27,7 @@ task CompoundIdentificationpy {
       ~{if defined(output_path_identifiedcompounds) then ("--output " +  '"' + output_path_identifiedcompounds + '"') else ""}
   >>>
   parameter_meta {
-    lm_zi: ""
+    lm_zi: "LIBRT -o OUTPUT"
     an_no: "Out path for first file"
     uniqid: "Name of thecolumn in file that contains the uniqID"
     mz_id: "Name of the column in file that contains MZ"

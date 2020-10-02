@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mreps.cwl
+id: mreps.cwl
 inputs:
 - id: in_specifies_sequence_command
   doc: ': specifies the sequence in command line'

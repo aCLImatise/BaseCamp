@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qual_offset.py.cwl
+id: qual_offset.py.cwl
 inputs:
 - id: in_fast_q
   doc: including stdin or compressed file {zip,gz,tar,bz}

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../npinv.cwl
+id: npinv.cwl
 inputs:
 - id: in_output
   doc: '[String] file to write'

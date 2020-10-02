@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../methylpy_bam_quality_filter.cwl
+id: methylpy_bam_quality_filter.cwl
 inputs:
 - id: in_input_file
   doc: 'BAM file to filter. (default: None)'

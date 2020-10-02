@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../velocyto_run_dropest.cwl
+id: velocyto_run_dropest.cwl
 inputs:
 - id: in_bc_file
   doc: Valid barcodes file, to filter the bam. If --bcfile is not specified the file

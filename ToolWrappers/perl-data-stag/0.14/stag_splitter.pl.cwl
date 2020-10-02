@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stag_splitter.pl.cwl
+id: stag_splitter.pl.cwl
 inputs:
 - id: in_parser_formatformat_one
   doc: "|parser FORMAT\nFORMAT is one of xml, sxpr or itext, or the name of a perl\

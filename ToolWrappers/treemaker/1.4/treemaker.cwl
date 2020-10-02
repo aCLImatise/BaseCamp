@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treemaker.cwl
+id: treemaker.cwl
 inputs:
 - id: in_output
   doc: output file

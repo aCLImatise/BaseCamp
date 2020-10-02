@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SelectSubFamilyFromStockholm.pl.cwl
+id: SelectSubFamilyFromStockholm.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

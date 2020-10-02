@@ -25,7 +25,7 @@ task AMASpyConcat {
       ~{if defined(data_type) then ("--data-type " +  '"' + data_type + '"') else ""}
   >>>
   parameter_meta {
-    i: ""
+    i: "{fasta,phylip,nexus,phylip-int,nexus-int} -d {aa,dna}"
     concat_part: "File name for th0e concatenated alignment partitions.\\nDefault: 'partitions.txt'"
     concat_out: "File name for the concatenated alignment. Default:\\n'concatenated.out'"
     out_format: "File format for the output alignment. Default: fasta"

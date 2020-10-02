@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NanoPlot.cwl
+id: NanoPlot.cwl
 inputs:
 - id: in_threads
   doc: Set the allowed number of threads to be used by the script

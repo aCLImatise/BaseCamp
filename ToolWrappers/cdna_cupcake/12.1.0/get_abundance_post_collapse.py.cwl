@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_abundance_post_collapse.py.cwl
+id: get_abundance_post_collapse.py.cwl
 inputs:
 - id: in_get
   doc: ''

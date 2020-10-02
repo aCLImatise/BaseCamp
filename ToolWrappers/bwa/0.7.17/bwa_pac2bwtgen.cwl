@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwa_pac2bwtgen.cwl
+id: bwa_pac2bwtgen.cwl
 inputs:
 - id: in_bwt_gen
   doc: ''

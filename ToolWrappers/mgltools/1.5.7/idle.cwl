@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idle.cwl
+id: idle.cwl
 inputs: []
 outputs:
 - id: out_stdout

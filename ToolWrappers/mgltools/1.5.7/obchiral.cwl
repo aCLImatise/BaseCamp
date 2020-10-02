@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obchiral.cwl
+id: obchiral.cwl
 inputs: []
 outputs:
 - id: out_stdout

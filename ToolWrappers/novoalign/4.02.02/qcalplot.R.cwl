@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qcalplot.R.cwl
+id: qcalplot.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

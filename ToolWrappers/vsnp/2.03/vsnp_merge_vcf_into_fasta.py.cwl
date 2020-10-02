@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsnp_merge_vcf_into_fasta.py.cwl
+id: vsnp_merge_vcf_into_fasta.py.cwl
 inputs:
 - id: in_fast_a_file
   doc: 'REQUIRED: In file to be processed'

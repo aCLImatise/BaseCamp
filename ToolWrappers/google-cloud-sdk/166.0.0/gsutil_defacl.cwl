@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_defacl.cwl
+id: gsutil_defacl.cwl
 inputs:
 - id: in_remove_roles_associated
   doc: Remove all roles associated with the matching entity.

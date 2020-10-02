@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tag2pos.pl.cwl
+id: tag2pos.pl.cwl
 inputs:
 - id: in_tag_file
   doc: ''

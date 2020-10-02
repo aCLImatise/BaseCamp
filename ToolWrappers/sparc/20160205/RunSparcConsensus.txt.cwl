@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RunSparcConsensus.txt.cwl
+id: RunSparcConsensus.txt.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trf.cwl
+id: trf.cwl
 inputs:
 - id: in_masked_sequence_file
   doc: masked sequence file

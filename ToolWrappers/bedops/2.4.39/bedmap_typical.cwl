@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedmap_typical.cwl
+id: bedmap_typical.cwl
 inputs:
 - id: in_chrom
   doc: Jump to and process data for given <chromosome> only.

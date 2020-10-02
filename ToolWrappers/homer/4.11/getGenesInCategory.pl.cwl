@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getGenesInCategory.pl.cwl
+id: getGenesInCategory.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

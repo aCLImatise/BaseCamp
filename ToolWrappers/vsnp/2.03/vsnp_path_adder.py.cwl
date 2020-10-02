@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsnp_path_adder.py.cwl
+id: vsnp_path_adder.py.cwl
 inputs:
 - id: in_cwd
   doc: "Absolute directory path to be added to find reference\noption files."

@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../hca_auth_put_v1_user.cwl
+id: hca_auth_put_v1_user.cwl
 inputs:
 - id: in_user_id
-  doc: User ID (email).
+  doc: "User ID (email).\n--status STATUS\n"
   type: string
   inputBinding:
     prefix: --user-id

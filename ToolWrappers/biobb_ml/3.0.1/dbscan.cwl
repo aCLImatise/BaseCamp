@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbscan.cwl
+id: dbscan.cwl
 inputs:
 - id: in_config
   doc: Configuration file

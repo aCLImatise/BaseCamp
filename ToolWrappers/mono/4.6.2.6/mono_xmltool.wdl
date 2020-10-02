@@ -2,40 +2,17 @@ version 1.0
 
 task Monoxmltool {
   input {
-    Boolean? validate
-    String? validate_rng
-    File? validate_rnc
-    String? validate_nv_dl
-    String? validate_xsd
-    Int? validate_xsd_two
-    String? validate_dtd
-    String? transform
-    Boolean? pretty_print
+    File? validate
   }
   command <<<
     mono_xmltool \
-      ~{if (validate) then "--validate" else ""} \
-      ~{if defined(validate_rng) then ("--validate-rng " +  '"' + validate_rng + '"') else ""} \
-      ~{if defined(validate_rnc) then ("--validate-rnc " +  '"' + validate_rnc + '"') else ""} \
-      ~{if defined(validate_nv_dl) then ("--validate-nvdl " +  '"' + validate_nv_dl + '"') else ""} \
-      ~{if defined(validate_xsd) then ("--validate-xsd " +  '"' + validate_xsd + '"') else ""} \
-      ~{if defined(validate_xsd_two) then ("--validate-xsd2 " +  '"' + validate_xsd_two + '"') else ""} \
-      ~{if defined(validate_dtd) then ("--validate-dtd " +  '"' + validate_dtd + '"') else ""} \
-      ~{if defined(transform) then ("--transform " +  '"' + transform + '"') else ""} \
-      ~{if (pretty_print) then "--prettyprint" else ""}
+      ~{if (validate) then "--validate" else ""}
   >>>
   parameter_meta {
-    validate: "[*.rng | *.rnc | *.nvdl | *.xsd] [instances]"
-    validate_rng: "[instances]"
-    validate_rnc: "[instances]"
-    validate_nv_dl: "[instances]"
-    validate_xsd: "[instances]"
-    validate_xsd_two: "[instances] (in .NET 2.0 validator)"
-    validate_dtd: ""
-    transform: "instance-xml [output-xml]"
-    pretty_print: "[source] [result]"
+    validate: "[*.rng | *.rnc | *.nvdl | *.xsd] [instances]\\n--validate-rng relax-ng-grammar-xml [instances]\\n--validate-rnc relax-ng-compact-grammar-file [instances]\\n--validate-nvdl nvdl-script-xml [instances]\\n--validate-xsd xml-schema [instances]\\n--validate-xsd2 xml-schema [instances] (in .NET 2.0 validator)\\n--validate-dtd instances\\n--transform stylesheet instance-xml [output-xml]\\n--prettyprint [source] [result]"
   }
   output {
     File out_stdout = stdout()
+    File out_validate = "${in_validate}"
   }
 }

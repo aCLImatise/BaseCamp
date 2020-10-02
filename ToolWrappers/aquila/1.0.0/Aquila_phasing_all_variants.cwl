@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Aquila_phasing_all_variants.cwl
+id: Aquila_phasing_all_variants.cwl
 inputs:
 - id: in_assembly_vcf
   doc: "Required parameter, Aquila assembly based VCF file,\n\"Aquila_final_sorted.vcf\"\

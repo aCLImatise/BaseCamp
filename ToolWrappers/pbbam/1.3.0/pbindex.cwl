@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbindex.cwl
+id: pbindex.cwl
 inputs:
 - id: in_in_dot_bam
   doc: FILE  Input BAM file

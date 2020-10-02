@@ -7,12 +7,10 @@ task Growreadbank {
     Boolean? force_new_bank
     Boolean? compress_reads_bank
     String grow_read_bank
-    String specified_dot
   }
   command <<<
     grow_readbank \
       ~{grow_read_bank} \
-      ~{specified_dot} \
       ~{if (create_new_bank) then "-c" else ""} \
       ~{if (input_celera_msg) then "-C" else ""} \
       ~{if (force_new_bank) then "-f" else ""} \
@@ -24,7 +22,6 @@ task Growreadbank {
     force_new_bank: "Force new read bank by deleting existing one first"
     compress_reads_bank: "Compress reads in the Bank, only allows chars ACGTN"
     grow_read_bank: "<bank-name> <input-file[s]>"
-    specified_dot: ".OPTIONS."
   }
   output {
     File out_stdout = stdout()

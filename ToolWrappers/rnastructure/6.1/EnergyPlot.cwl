@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EnergyPlot.cwl
+id: EnergyPlot.cwl
 inputs:
 - id: in_svg
   doc: "Specify that the output file should be an SVG image file, rather than a\n\

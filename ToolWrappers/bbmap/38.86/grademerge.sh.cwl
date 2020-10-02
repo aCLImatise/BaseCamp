@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../grademerge.sh.cwl
+id: grademerge.sh.cwl
 inputs:
 - id: in_in
   doc: ''

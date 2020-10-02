@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: ../../../cuteSV.cwl
+id: cuteSV.cwl
 inputs:
-- id: in_max_cluster_bias_ins
-  doc: '100'
-  type: boolean
-  inputBinding:
-    prefix: --max_cluster_bias_INS
-- id: in_diff_ratio_merging_ins
-  doc: '0.2'
-  type: boolean
-  inputBinding:
-    prefix: --diff_ratio_merging_INS
-- id: in_diff_ratio_filtering_ins
-  doc: '0.6'
-  type: boolean
-  inputBinding:
-    prefix: --diff_ratio_filtering_INS
-- id: in_diff_ratio_filtering_del
-  doc: '0.7'
-  type: boolean
-  inputBinding:
-    prefix: --diff_ratio_filtering_DEL
 - id: in_threads
   doc: Number of threads to use.[16]
   type: long
@@ -96,6 +76,21 @@ inputs:
   type: long
   inputBinding:
     prefix: --gt_round
+- id: in_max_cluster_bias_ins
+  doc: "Maximum distance to cluster read together for\ninsertion.[100]"
+  type: long
+  inputBinding:
+    prefix: --max_cluster_bias_INS
+- id: in_diff_ratio_merging_ins
+  doc: "Do not merge breakpoints with basepair identity more\nthan [0.2] for insertion."
+  type: double
+  inputBinding:
+    prefix: --diff_ratio_merging_INS
+- id: in_diff_ratio_filtering_ins
+  doc: "Filter breakpoints with basepair identity less than\n[0.6] for insertion."
+  type: double
+  inputBinding:
+    prefix: --diff_ratio_filtering_INS
 - id: in_max_cluster_bias_del
   doc: "Maximum distance to cluster read together for\ndeletion.[200]"
   type: long
@@ -106,6 +101,11 @@ inputs:
   type: double
   inputBinding:
     prefix: --diff_ratio_merging_DEL
+- id: in_diff_ratio_filtering_del
+  doc: "Filter breakpoints with basepair identity less than\n[0.7] for deletion."
+  type: double
+  inputBinding:
+    prefix: --diff_ratio_filtering_DEL
 - id: in_max_cluster_bias_in_v
   doc: "Maximum distance to cluster read together for\ninversion.[500]"
   type: long

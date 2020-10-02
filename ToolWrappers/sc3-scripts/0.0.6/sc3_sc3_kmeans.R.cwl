@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sc3_sc3_kmeans.R.cwl
+id: sc3_sc3_kmeans.R.cwl
 inputs:
 - id: in_input_object_file
   doc: File name in which a transformed SC3 'SingleCellExperiment' object has been

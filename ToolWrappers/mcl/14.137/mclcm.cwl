@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mclcm.cwl
+id: mclcm.cwl
 inputs:
 - id: in_shared_mcl_options
   doc: shared mcl options

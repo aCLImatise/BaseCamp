@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../toLower.cwl
+id: toLower.cwl
 inputs:
 - id: in_in_file
   doc: ''

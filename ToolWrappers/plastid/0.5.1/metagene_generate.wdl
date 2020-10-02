@@ -28,9 +28,11 @@ task MetageneGenerate {
     Boolean? mask_add_three
     Boolean? mask_tab_ix
     Boolean? mask_sorted
+    String out_base
   }
   command <<<
     metagene generate \
+      ~{out_base} \
       ~{if defined(landmark) then ("--landmark " +  '"' + landmark + '"') else ""} \
       ~{if defined(upstream) then ("--upstream " +  '"' + upstream + '"') else ""} \
       ~{if defined(downstream) then ("--downstream " +  '"' + downstream + '"') else ""} \
@@ -85,6 +87,7 @@ task MetageneGenerate {
     mask_add_three: "If supplied, coding regions will be extended by 3\\nnucleotides at their 3' ends (except for GTF2 files\\nthat explicitly include `stop_codon` features). Use if\\nyour annotation file excludes stop codons from CDS."
     mask_tab_ix: "mask_annotation_files are tabix-compressed and indexed\\n(Default: False). Ignored for BigBed files."
     mask_sorted: "mask_annotation_files are sorted by chromosomal\\nposition (Default: False)\\n"
+    out_base: "Basename for output files"
   }
   output {
     File out_stdout = stdout()

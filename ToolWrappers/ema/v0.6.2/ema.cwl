@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ema.cwl
+id: ema.cwl
 inputs:
 - id: in_specify_barcode_whitelist
   doc: ': specify barcode whitelist [required]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwa_samse.cwl
+id: bwa_samse.cwl
 inputs:
 - id: in_r
   doc: ''

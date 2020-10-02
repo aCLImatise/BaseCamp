@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../download_spectacle_data.sh.cwl
+id: download_spectacle_data.sh.cwl
 inputs:
 - id: in_canonicalize_following_symlinks
   doc: Canonicalize by following all symlinks

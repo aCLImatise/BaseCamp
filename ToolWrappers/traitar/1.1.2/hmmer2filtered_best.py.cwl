@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmer2filtered_best.py.cwl
+id: hmmer2filtered_best.py.cwl
 inputs:
 - id: in_parse
   doc: ''

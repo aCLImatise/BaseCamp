@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../config_data.cwl
+id: config_data.cwl
 inputs:
 - id: in_config
   doc: Print the value of a config option

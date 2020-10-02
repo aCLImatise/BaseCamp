@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_generate_histogram.pl.cwl
+id: bp_generate_histogram.pl.cwl
 inputs:
 - id: in_dsn
   doc: <dsn>       Data source (default dbi:mysql:test)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deblur_multiple_seq_alignment.cwl
+id: deblur_multiple_seq_alignment.cwl
 inputs:
 - id: in_threads_per_sample
   doc: "Number of threads to use per sample (0 to\nuse all)  [default: 1]"

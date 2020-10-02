@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../edgeredef.cwl
+id: edgeredef.cwl
 inputs:
 - id: in_fam_def
   doc: ''

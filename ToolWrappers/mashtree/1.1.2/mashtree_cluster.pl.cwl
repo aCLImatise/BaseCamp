@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mashtree_cluster.pl.cwl
+id: mashtree_cluster.pl.cwl
 inputs:
 - id: in_threshold
   doc: "0.1       Maximum any two genomes can be\nfrom the seed in a given cluster"

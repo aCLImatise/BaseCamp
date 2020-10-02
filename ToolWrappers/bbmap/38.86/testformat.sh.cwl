@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../testformat.sh.cwl
+id: testformat.sh.cwl
 inputs:
 - id: in_file
   doc: ''

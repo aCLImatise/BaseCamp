@@ -1,4 +1,4 @@
-&id001 !Command
+!Command
 command:
 - mamotif
 - integrate
@@ -65,8 +65,8 @@ named:
   - --correction
   args: !ChoiceFlagArg
     choices: !!set
-      ? benjamin
-      ? bonferroni
+      bonferroni:
+      benjamin:
   optional: true
 - !Flag
   description: Directory to write output files.
@@ -76,55 +76,7 @@ named:
   args: !SimpleFlagArg
     name: DIR
   optional: true
-parent: !Command
-  command:
-  - mamotif
-  positional: []
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - -v
-    args: !EmptyFlagArg {}
-    optional: true
-  parent:
-  subcommands:
-  - *id001
-  usage: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag: !Flag
-    description: show program's version number and exit
-    synonyms:
-    - -v
-    - --version
-    args: !EmptyFlagArg {}
-    optional: true
-  help_text: "usage: mamotif [-h] [-v] command ...\n\nMAmotif: An integrative toolkit\
-    \ for detecting cell type-specific regulators\n\nMAmotif is used to compare two\
-    \ ChIP-seq samples of the same protein from \ndifferent cell types (or conditions,\
-    \ e.g. wild-type vs mutant) and \nidentify transcriptional factors (TFs) associated\
-    \ with the cell type-biased \nbinding of this protein as its co-factors, by using\
-    \ TF binding information \nobtained from motif analysis.\n\nCitation:\nSun, H.,\
-    \ Wang, J., Gong, Z. et al. Quantitative integration of epigenomic\nvariation\
-    \ and transcription factor binding using MAmotif toolkit identifies\nan important\
-    \ role of IRF2 as transcription activator at gene promoters.\nCell Discov 4, 38\
-    \ (2018). https://doi.org/10.1038/s41421-018-0045-y\n\noptional arguments:\n \
-    \ -h, --help     show this help message and exit\n  -v, --version  show program's\
-    \ version number and exit\n\nMAmotif Subcommands:\n  command\n    run        \
-    \  Run complete workflow (MAnorm + MotifScan + Integration).\n    integrate  \
-    \  Run the integration module with MAnorm and MotifScan results.\n\nPlease run\
-    \ `mamotif COMMAND -h` to see the subcommand options.\n\nSee also:\n  Documentation:\
-    \ https://mamotif.readthedocs.io\n  Source code: https://github.com/shao-lab/MAmotif\n\
-    \  Bug reports: https://github.com/shao-lab/MAmotif/issues\n"
-  generated_using: &id002
-  - --help
+parent:
 subcommands: []
 usage: []
 help_flag: !Flag
@@ -162,4 +114,5 @@ help_text: "usage: mamotif integrate [-h] -i FILE -m FILE [-n] [-g GENOME] [--sp
   \ <path>\n\n2) Convert M=log2(A/B) to -M=log2(B/A) and find co-factors for sample\
   \ B:\n\n    mamotif integrate -i B_MAvalues.xls -m B_motifscan/motif_sites_numbers.xls\
   \ -n -o <path>\n"
-generated_using: *id002
+generated_using:
+- --help

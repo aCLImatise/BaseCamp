@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MsLibTask.exe.cwl
+id: MsLibTask.exe.cwl
 inputs: []
 outputs:
 - id: out_stdout

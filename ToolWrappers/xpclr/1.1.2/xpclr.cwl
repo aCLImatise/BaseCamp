@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xpclr.cwl
+id: xpclr.cwl
 inputs:
 - id: in_out
   doc: output file

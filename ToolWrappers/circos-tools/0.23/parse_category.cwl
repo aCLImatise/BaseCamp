@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parse_category.cwl
+id: parse_category.cwl
 inputs:
 - id: in_cat
   doc: ''

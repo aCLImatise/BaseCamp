@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kcforestmgr.cwl
+id: kcforestmgr.cwl
 inputs:
 - id: in_otr
   doc: ''

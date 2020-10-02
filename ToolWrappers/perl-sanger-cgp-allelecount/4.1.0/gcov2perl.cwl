@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcov2perl.cwl
+id: gcov2perl.cwl
 inputs:
 - id: in_db
   doc: ''

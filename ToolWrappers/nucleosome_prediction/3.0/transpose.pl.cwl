@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../transpose.pl.cwl
+id: transpose.pl.cwl
 inputs:
 - id: in_set_delimiter_columns
   doc: ": set the delimiter for the columns to DELIM (default is\ntab).\n"

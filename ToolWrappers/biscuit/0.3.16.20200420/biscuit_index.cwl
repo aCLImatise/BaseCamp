@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biscuit_index.cwl
+id: biscuit_index.cwl
 inputs:
 - id: in_bwt_construction_algorithm
   doc: 'BWT construction algorithm: bwtsw or is [auto]'

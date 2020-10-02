@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sorted_merge.cwl
+id: sorted_merge.cwl
 inputs:
 - id: in_key
   doc: Key (1 base column number) for sorting (1)

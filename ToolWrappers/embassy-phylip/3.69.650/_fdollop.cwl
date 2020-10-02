@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fdollop.cwl
+id: _fdollop.cwl
 inputs:
 - id: in_weights
   doc: properties Phylip weights file (optional)

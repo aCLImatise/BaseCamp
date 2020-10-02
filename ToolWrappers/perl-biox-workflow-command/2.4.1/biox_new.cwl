@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biox_new.cwl
+id: biox_new.cwl
 inputs:
 - id: in_plugins
   doc: Load aplication plugins [Multiple; Split by ","]

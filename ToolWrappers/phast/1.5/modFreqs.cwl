@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../modFreqs.cwl
+id: modFreqs.cwl
 inputs:
 - id: in_or
   doc: modFreqs tree.mod <G+Cfreq> > new.mod

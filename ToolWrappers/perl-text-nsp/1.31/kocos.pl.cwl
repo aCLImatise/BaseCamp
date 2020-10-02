@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kocos.pl.cwl
+id: kocos.pl.cwl
 inputs:
 - id: in_literal
   doc: Specify the target word directly on command line as a literal.

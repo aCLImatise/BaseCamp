@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PIPmiR_PRECURSOR.cwl
+id: PIPmiR_PRECURSOR.cwl
 inputs:
 - id: in_file_putative_mirnas
   doc: File of putative miRNAs in .bed format

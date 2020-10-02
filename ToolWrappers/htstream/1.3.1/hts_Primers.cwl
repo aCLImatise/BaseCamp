@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hts_Primers.cwl
+id: hts_Primers.cwl
 inputs:
 - id: in__version_print
   doc: '[ --version ]                      Version print'

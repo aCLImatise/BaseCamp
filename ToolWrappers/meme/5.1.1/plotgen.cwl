@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plotgen.cwl
+id: plotgen.cwl
 inputs: []
 outputs:
 - id: out_stdout

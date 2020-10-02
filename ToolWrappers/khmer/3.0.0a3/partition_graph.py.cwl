@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../partition_graph.py.cwl
+id: partition_graph.py.cwl
 inputs:
 - id: in_info
   doc: print citation information

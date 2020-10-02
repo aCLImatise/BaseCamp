@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msp_upgrade_destination.cwl
+id: msp_upgrade_destination.cwl
 inputs:
 - id: in_msp
   doc: ''

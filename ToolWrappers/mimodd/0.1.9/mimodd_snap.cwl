@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mimodd_snap.cwl
+id: mimodd_snap.cwl
 inputs:
 - id: in_ofile
   doc: name of the output file (required)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ante_MMPBSA.py.cwl
+id: ante_MMPBSA.py.cwl
 inputs:
 - id: in_prm_top
   doc: "Input \"dry\" complex topology or solvated complex\ntopology"

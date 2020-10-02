@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FrameBot_index.cwl
+id: FrameBot_index.cwl
 inputs:
 - id: in_gap_ext_penalty
   doc: gap extension penalty. Default is -4

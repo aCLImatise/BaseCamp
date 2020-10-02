@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../count_median.py.cwl
+id: count_median.py.cwl
 inputs:
 - id: in_info
   doc: print citation information

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alignment_handler_multi.cwl
+id: alignment_handler_multi.cwl
 inputs: []
 outputs:
 - id: out_stdout

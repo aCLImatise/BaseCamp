@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findGenesInIntrons.pl.cwl
+id: findGenesInIntrons.pl.cwl
 inputs:
 - id: in_in_gff
   doc: '[name] name of file with gtf format gene predictions'
@@ -17,15 +17,10 @@ inputs:
   inputBinding:
     prefix: --out_gff
 - id: in_verbose
-  doc: ''
+  doc: --debug
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: in_debug
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --debug
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obrms.cwl
+id: obrms.cwl
 inputs: []
 outputs:
 - id: out_stdout

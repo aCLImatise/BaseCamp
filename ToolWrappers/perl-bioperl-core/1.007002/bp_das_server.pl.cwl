@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_das_server.pl.cwl
+id: bp_das_server.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

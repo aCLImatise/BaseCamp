@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genome_LenFilter_stats.pl.cwl
+id: genome_LenFilter_stats.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

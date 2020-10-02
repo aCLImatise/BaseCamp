@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tombo_write_most_significant_fasta.cwl
+id: tombo_write_most_significant_fasta.cwl
 inputs:
 - id: in_file_saveload_base
   doc: File to save/load base by base statistics.

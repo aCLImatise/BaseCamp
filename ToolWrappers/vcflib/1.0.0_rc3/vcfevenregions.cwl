@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfevenregions.cwl
+id: vcfevenregions.cwl
 inputs:
 - id: in_fast_a_reference
   doc: FASTA reference file to use to obtain primer sequences.

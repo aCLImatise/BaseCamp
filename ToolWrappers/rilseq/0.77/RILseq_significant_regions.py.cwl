@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RILseq_significant_regions.py.cwl
+id: RILseq_significant_regions.py.cwl
 inputs:
 - id: in_genome
   doc: 'genome fasta file (default: None)'

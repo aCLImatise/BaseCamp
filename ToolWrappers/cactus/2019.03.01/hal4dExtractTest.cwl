@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hal4dExtractTest.cwl
+id: hal4dExtractTest.cwl
 inputs: []
 outputs:
 - id: out_stdout

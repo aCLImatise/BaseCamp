@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rainbow.cwl
+id: rainbow.cwl
 inputs:
 - id: in_input_fastafastq_file_supports_multiple
   doc: Input fasta/fastq file, supports multiple '-1'

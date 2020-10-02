@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bgziptabix.cwl
+id: bgziptabix.cwl
 inputs: []
 outputs:
 - id: out_stdout

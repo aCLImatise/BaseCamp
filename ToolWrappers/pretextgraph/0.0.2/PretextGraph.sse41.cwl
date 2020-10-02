@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PretextGraph.sse41.cwl
+id: PretextGraph.sse41.cwl
 inputs: []
 outputs:
 - id: out_stdout

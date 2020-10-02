@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LTR_retriever.py.cwl
+id: LTR_retriever.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

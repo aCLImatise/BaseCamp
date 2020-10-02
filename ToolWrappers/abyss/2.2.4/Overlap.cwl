@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Overlap.cwl
+id: Overlap.cwl
 inputs:
 - id: in_kmer_size
   doc: k-mer size

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_seqpart.pl.cwl
+id: bp_seqpart.pl.cwl
 inputs:
 - id: in_files_create_partitioning
   doc: of files to create through partitioning

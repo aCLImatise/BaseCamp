@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceSnpScreenPhasedAlignments {
   input {
-    String? var_output
+    File? var_output
     Directory? alignments
     String? input_format
     String? output_format
@@ -27,7 +27,7 @@ task PhyluceSnpScreenPhasedAlignments {
       ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    var_output: "[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\\n[--output-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\\n[--include-missing] [--random]\\n[--numerical-encoding]\\n[--cores CORES]\\n[--verbosity {INFO,WARN,CRITICAL}]\\n[--log-path LOG_PATH]"
     alignments: "The directory containing the alignment files"
     input_format: "The input alignment format"
     output_format: "The input alignment format"

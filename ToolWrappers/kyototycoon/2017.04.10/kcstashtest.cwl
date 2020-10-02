@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kcstashtest.cwl
+id: kcstashtest.cwl
 inputs:
 - id: in_lv
   doc: ''

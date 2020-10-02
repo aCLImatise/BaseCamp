@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_reference.py.cwl
+id: extract_reference.py.cwl
 inputs:
 - id: in_input_strand_list
   doc: 'Strand summary file containing subset (default: None)'

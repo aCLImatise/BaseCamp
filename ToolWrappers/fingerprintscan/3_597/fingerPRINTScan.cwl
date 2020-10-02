@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fingerPRINTScan.cwl
+id: fingerPRINTScan.cwl
 inputs:
 - id: in_calculate_consensus_sequences
   doc: Calculate consensus sequences for the Alignment view (Table 4) [EXPERIMENTAL]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../launchy.cwl
+id: launchy.cwl
 inputs:
 - id: in_application
   doc: Explicitly specify the application class to use in the launch

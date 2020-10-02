@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clipcontext_eir.cwl
+id: clipcontext_eir.cwl
 inputs:
 - id: in_tr
   doc: "Transcript sequence IDs list file for which to extract\nexon + intron regions"

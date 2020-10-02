@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_frag_coverage.py.cwl
+id: bam_frag_coverage.py.cwl
 inputs:
 - id: in_reference_fasta
   doc: Reference fasta.

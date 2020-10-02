@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_process_sgd.pl.cwl
+id: bp_process_sgd.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

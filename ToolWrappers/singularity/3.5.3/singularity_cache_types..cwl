@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singularity_cache_types..cwl
+id: singularity_cache_types..cwl
 inputs:
 - id: in_clean
   doc: Clean your local Singularity cache

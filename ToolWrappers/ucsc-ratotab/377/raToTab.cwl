@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../raToTab.cwl
+id: raToTab.cwl
 inputs:
 - id: in_cols
   doc: ",b,c - List columns in order to output in table\nOnly these columns will be\

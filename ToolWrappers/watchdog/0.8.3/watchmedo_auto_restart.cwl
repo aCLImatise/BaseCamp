@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../watchmedo_auto_restart.cwl
+id: watchmedo_auto_restart.cwl
 inputs:
 - id: in_directory
   doc: "Directory to watch. Use another -d or --directory\noption for each directory.\

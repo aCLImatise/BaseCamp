@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglex_cli_classify.cwl
+id: mglex_cli_classify.cwl
 inputs:
 - id: in_normalize
   doc: Output class posterior instead of the raw likelihood

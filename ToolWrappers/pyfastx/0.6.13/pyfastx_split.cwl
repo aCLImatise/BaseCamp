@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyfastx_split.cwl
+id: pyfastx_split.cwl
 inputs:
 - id: in_split_fastaq_file_n
   doc: split a fasta/q file into N new files with even size

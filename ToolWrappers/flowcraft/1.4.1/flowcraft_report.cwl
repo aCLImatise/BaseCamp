@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flowcraft_report.cwl
+id: flowcraft_report.cwl
 inputs:
 - id: in_specify_path_pipeline
   doc: Specify the path to the pipeline report JSON file.

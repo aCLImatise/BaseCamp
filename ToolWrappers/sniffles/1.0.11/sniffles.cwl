@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sniffles.cwl
+id: sniffles.cwl
 inputs:
 - id: in__mappedreads_stringrequired
   doc: ",  --mapped_reads <string>\n(required)  Sorted bam File"

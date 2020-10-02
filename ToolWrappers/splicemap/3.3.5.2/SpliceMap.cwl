@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SpliceMap.cwl
+id: SpliceMap.cwl
 inputs: []
 outputs:
 - id: out_stdout

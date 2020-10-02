@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aragorn.cwl
+id: aragorn.cwl
 inputs:
 - id: in_fast_a
   doc: <filename>

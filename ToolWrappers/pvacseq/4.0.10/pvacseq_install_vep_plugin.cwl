@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pvacseq_install_vep_plugin.cwl
+id: pvacseq_install_vep_plugin.cwl
 inputs:
 - id: in_vep_plugins_path
   doc: Path to your VEP_plugins directory

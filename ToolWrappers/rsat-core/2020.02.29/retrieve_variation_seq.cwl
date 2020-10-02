@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../retrieve_variation_seq.cwl
+id: retrieve_variation_seq.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tsort.cwl
+id: tsort.cwl
 inputs:
 - id: in_file
   doc: ''

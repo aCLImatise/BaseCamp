@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_format.cwl
+id: vtools_format.cwl
 inputs:
 - id: in_v_tools
   doc: ''

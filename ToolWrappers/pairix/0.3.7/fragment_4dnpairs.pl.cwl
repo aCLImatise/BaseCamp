@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fragment_4dnpairs.pl.cwl
+id: fragment_4dnpairs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

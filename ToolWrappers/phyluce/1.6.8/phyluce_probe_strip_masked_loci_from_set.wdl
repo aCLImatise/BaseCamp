@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceProbeStripMaskedLociFromSet {
   input {
-    String? var_output
+    Int? var_output
     File? bed
     Int? two_bit
     String? filter_mask
@@ -19,7 +19,7 @@ task PhyluceProbeStripMaskedLociFromSet {
       ~{if defined(min_length) then ("--min-length " +  '"' + min_length + '"') else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    var_output: "[--filter-mask MASK]\\n[--max-n MAX_N]\\n[--min-length MIN_LENGTH]"
     bed: "The input BED file"
     two_bit: "The input genome to slice in UCSC 2bit format"
     filter_mask: "Filter strings with > X frequency of masked bases"

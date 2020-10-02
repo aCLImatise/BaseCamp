@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../demuxlet.cwl
+id: demuxlet.cwl
 inputs:
 - id: in_sam
   doc: '[STR: ]             : Input SAM/BAM/CRAM file. Must be sorted by coordinates

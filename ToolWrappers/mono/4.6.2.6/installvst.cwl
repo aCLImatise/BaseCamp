@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../installvst.cwl
+id: installvst.cwl
 inputs:
 - id: in_vs_template_file
   doc: ''

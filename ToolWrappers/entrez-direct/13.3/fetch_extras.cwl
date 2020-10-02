@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fetch_extras.cwl
+id: fetch_extras.cwl
 inputs: []
 outputs:
 - id: out_stdout

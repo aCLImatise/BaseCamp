@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_flags.py.cwl
+id: merge_flags.py.cwl
 inputs:
 - id: in_input
   doc: "Input any number of flag files that have the same\nindexes"

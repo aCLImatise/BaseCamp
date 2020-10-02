@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_fillAdjacencies.cwl
+id: cactus_fillAdjacencies.cwl
 inputs:
 - id: in_loglevel
   doc: ': Set the log level'

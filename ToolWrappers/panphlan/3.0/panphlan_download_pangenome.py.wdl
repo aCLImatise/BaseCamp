@@ -2,20 +2,20 @@ version 1.0
 
 task PanphlanDownloadPangenomepy {
   input {
-    String? input_name
-    String? var_output
-    Boolean? verbose
+    Boolean? v
+    String? o
+    String? i
   }
   command <<<
     panphlan_download_pangenome_py \
-      ~{if defined(input_name) then ("--input_name " +  '"' + input_name + '"') else ""} \
-      ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""} \
-      ~{if (verbose) then "--verbose" else ""}
+      ~{if (v) then "-v" else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
   parameter_meta {
-    input_name: ""
-    var_output: ""
-    verbose: "Show progress information"
+    v: ""
+    o: ""
+    i: ""
   }
   output {
     File out_stdout = stdout()

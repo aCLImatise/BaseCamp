@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hierarchical_clustering_heatmap.py.cwl
+id: hierarchical_clustering_heatmap.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

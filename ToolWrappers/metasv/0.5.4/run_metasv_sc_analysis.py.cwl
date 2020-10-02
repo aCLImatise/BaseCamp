@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_metasv_sc_analysis.py.cwl
+id: run_metasv_sc_analysis.py.cwl
 inputs:
 - id: in_bams
   doc: 'BAMs (default: None)'

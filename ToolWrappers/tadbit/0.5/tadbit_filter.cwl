@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tadbit_filter.cwl
+id: tadbit_filter.cwl
 inputs:
 - id: in_force
   doc: overwrite previously run job

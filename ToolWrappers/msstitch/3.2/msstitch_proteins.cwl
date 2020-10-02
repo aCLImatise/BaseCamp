@@ -1,9 +1,11 @@
 class: CommandLineTool
-id: ../../../msstitch_proteins.cwl
+id: msstitch_proteins.cwl
 inputs:
 - id: in_score_col_pattern
-  doc: ''
-  type: string
+  doc: "[--logscore] [--isobquantcolpattern QUANTCOLPATTERN]\n[--minint MININT]\n\
+    [--denomcols DENOMCOLS [DENOMCOLS ...]]\n[--denompatterns DENOMPATTERNS [DENOMPATTERNS\
+    \ ...]]\n[--ms1quant] [--psmtable PSMFILE]"
+  type: long
   inputBinding:
     prefix: --scorecolpattern
 - id: in_input_file_format

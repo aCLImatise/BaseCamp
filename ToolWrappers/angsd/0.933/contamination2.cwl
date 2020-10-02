@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contamination2.cwl
+id: contamination2.cwl
 inputs: []
 outputs:
 - id: out_stdout

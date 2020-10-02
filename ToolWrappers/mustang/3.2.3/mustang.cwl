@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mustang.cwl
+id: mustang.cwl
 inputs: []
 outputs:
 - id: out_stdout

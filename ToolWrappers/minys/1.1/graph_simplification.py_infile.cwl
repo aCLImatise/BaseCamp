@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graph_simplification.py_infile.cwl
+id: graph_simplification.py_infile.cwl
 inputs:
 - id: in_length_minimal_suffix
   doc: Length of minimal suffix for node merging

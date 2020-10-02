@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcmctree.cwl
+id: mcmctree.cwl
 inputs: []
 outputs:
 - id: out_stdout

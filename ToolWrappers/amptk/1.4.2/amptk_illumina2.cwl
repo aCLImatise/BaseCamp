@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_illumina2.cwl
+id: amptk_illumina2.cwl
 inputs:
 - id: in_fast_q
   doc: Illumina R1 (PE forward) reads (Required)

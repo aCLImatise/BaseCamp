@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reduce.cwl
+id: reduce.cwl
 inputs:
 - id: in_flip
   doc: add H and rotate and flip NQH groups

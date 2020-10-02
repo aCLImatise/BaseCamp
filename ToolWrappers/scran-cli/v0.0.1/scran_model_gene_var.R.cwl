@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scran_model_gene_var.R.cwl
+id: scran_model_gene_var.R.cwl
 inputs:
 - id: in_input_sce_object
   doc: Path to the input SCE object in rds format.

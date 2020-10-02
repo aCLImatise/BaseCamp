@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hlso.cwl
+id: hlso.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_esl_alistat.cwl
+id: ssu_esl_alistat.cwl
 inputs:
 - id: in_use_tabular_output
   doc: ': use tabular output, one line per alignment'

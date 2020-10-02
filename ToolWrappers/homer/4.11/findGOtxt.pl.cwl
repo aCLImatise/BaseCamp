@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findGOtxt.pl.cwl
+id: findGOtxt.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

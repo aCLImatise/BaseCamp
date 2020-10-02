@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../batchMakeMultiWigHub.pl.cwl
+id: batchMakeMultiWigHub.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_ion.cwl
+id: amptk_ion.cwl
 inputs:
 - id: in_fast_q
   doc: Input BAM or FASTQ file (Required)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglobminimize.cwl
+id: mglobminimize.cwl
 inputs: []
 outputs:
 - id: out_stdout

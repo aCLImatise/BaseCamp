@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plotProfile.R.cwl
+id: plotProfile.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

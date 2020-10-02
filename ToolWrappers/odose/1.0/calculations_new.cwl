@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../calculations_new.cwl
+id: calculations_new.cwl
 inputs: []
 outputs:
 - id: out_stdout

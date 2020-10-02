@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../join_into_groups_of.cwl
+id: join_into_groups_of.cwl
 inputs: []
 outputs:
 - id: out_stdout

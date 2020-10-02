@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../r_manova.Rmd.cwl
+id: r_manova.Rmd.cwl
 inputs: []
 outputs:
 - id: out_stdout

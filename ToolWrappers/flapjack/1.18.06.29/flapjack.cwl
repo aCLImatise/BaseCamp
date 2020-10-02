@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flapjack.cwl
+id: flapjack.cwl
 inputs: []
 outputs:
 - id: out_stdout

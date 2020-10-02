@@ -2,7 +2,7 @@ version 1.0
 
 task QuasitoolsDnds {
   input {
-    File? var_output
+    File? _help_show
     String csv
     String reference
     String offset
@@ -12,10 +12,10 @@ task QuasitoolsDnds {
       ~{csv} \
       ~{reference} \
       ~{offset} \
-      ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""}
+      ~{if defined(_help_show) then ("--output " +  '"' + _help_show + '"') else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    _help_show: "--help                 Show this message and exit.\\n"
     csv: ""
     reference: ""
     offset: ""

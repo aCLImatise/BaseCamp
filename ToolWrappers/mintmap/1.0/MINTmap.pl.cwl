@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MINTmap.pl.cwl
+id: MINTmap.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNApaln.cwl
+id: RNApaln.cwl
 inputs:
 - id: in_detailed_help
   doc: "Print help, including all details and hidden\noptions, and exit"

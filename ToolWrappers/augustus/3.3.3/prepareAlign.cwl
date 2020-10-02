@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepareAlign.cwl
+id: prepareAlign.cwl
 inputs: []
 outputs:
 - id: out_stdout

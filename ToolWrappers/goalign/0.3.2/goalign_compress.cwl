@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_compress.cwl
+id: goalign_compress.cwl
 inputs:
 - id: in_output
   doc: Compressed output alignment file (default "stdout")

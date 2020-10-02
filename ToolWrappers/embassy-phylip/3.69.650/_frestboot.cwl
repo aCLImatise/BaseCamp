@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_frestboot.cwl
+id: _frestboot.cwl
 inputs:
 - id: in_weights
   doc: properties Weights file

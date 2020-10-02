@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../concatemer_tree.cwl
+id: concatemer_tree.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DBshow.cwl
+id: DBshow.cwl
 inputs:
 - id: in_show_untrimmed_database
   doc: ': Show the untrimmed database.'

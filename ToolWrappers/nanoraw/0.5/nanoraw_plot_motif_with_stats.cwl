@@ -1,9 +1,16 @@
 class: CommandLineTool
-id: ../../../nanoraw_plot_motif_with_stats.cwl
+id: nanoraw_plot_motif_with_stats.cwl
 inputs:
 - id: in_motif
-  doc: ''
-  type: string
+  doc: "[--corrected-group CORRECTED_GROUP]\n[--basecall-subgroups BASECALL_SUBGROUPS\
+    \ [BASECALL_SUBGROUPS ...]\n| --2d]\n[--overplot-threshold OVERPLOT_THRESHOLD]\n\
+    [--overplot-type {Downsample,Boxplot,Quantile,Violin}]\n[--obs-per-base-filter\
+    \ OBS_PER_BASE_FILTER [OBS_PER_BASE_FILTER ...]]\n[--test-type {mw_utest,ttest}]\n\
+    [--fishers-method-offset FISHERS_METHOD_OFFSET]\n[--minimum-test-reads MINIMUM_TEST_READS]\n\
+    [--pdf-filename PDF_FILENAME]\n[--statistics-filename STATISTICS_FILENAME]\n[--num-regions\
+    \ NUM_REGIONS]\n[--num-context NUM_CONTEXT]\n[--num-statistics NUM_STATISTICS]\n\
+    [--quiet] [--help]"
+  type: long
   inputBinding:
     prefix: --motif
 - id: in_base_call_subgroups

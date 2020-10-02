@@ -1,25 +1,62 @@
-&id001 !Command
+!Command
 command:
 - pbmm2
 - align
 positional:
 - !Positional
-  description: ': -k 19 -w 10    -o 5 -O 56 -e 4 -E 1 -A 2 -B 5 -z 400 -Z 50  -r 2000   -L
-    0.5 -g 5000'
+  description: ''
   position: 0
-  name: SUBREAD
+  name: out.aligned.bam|xml
   optional: false
 - !Positional
-  description: ': -k 15 -w 5  -u -o 2 -O 32 -e 1 -E 0 -A 1 -B 2 -z 200 -Z 100 -r 200000
-    -L 0.5 -g 2000 -C 5 -G 200000'
+  description: ''
   position: 0
-  name: ISOSEQ
+  name: ref.fa|xml|mmi
   optional: false
 - !Positional
-  description: ': -k 15 -w 15    -o 2 -O 32 -e 1 -E 0 -A 1 -B 2 -z 200 -Z 100 -r 2000   -L
-    0.5 -g 10000'
+  description: ''
   position: 1
-  name: UNROLLED
+  name: STR
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: in.bam|xml|fa|fq|gz|fofn
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: Input
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: Output
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: Reference
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: BAM
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: FASTA
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: or
+  optional: false
+- !Positional
+  description: ''
+  position: 5
+  name: DataSet
   optional: false
 named:
 - !Flag
@@ -288,156 +325,7 @@ named:
   - --log-file
   args: !EmptyFlagArg {}
   optional: true
-parent: &id002 !Command
-  command:
-  - pbmm2
-  positional: []
-  named: []
-  parent:
-  subcommands:
-  - *id001
-  - !Command
-    command:
-    - pbmm2
-    - index
-    positional:
-    - !Positional
-      description: STR   Output Reference Index
-      position: 0
-      name: out.mmi
-      optional: false
-    - !Positional
-      description: ': -k 19 -w 10'
-      position: 0
-      name: SUBREAD
-      optional: false
-    - !Positional
-      description: ': -k 19 -w 10 -u'
-      position: 1
-      name: CCS
-      optional: false
-    - !Positional
-      description: ': -k 15 -w 5 -u'
-      position: 2
-      name: ISOSEQ
-      optional: false
-    named:
-    - !Flag
-      description: "STR   Set alignment mode. See below for preset parameter details.\
-        \ Valid choices: (SUBREAD,\nCCS, ISOSEQ, UNROLLED). [SUBREAD]"
-      synonyms:
-      - --preset
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: INT   k-mer size (no larger than 28). [-1]
-      synonyms:
-      - -k
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: INT   Minimizer window size. [-1]
-      synonyms:
-      - -w
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: "Disable homopolymer-compressed k-mer (compression is active for\
-        \ SUBREAD & UNROLLED\npresets)."
-      synonyms:
-      - -u
-      - --no-kmer-compression
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: INT   Number of threads to use, 0 means autodetection. [0]
-      synonyms:
-      - -j
-      - --num-threads
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN,
-        FATAL). [WARN]'
-      synonyms:
-      - --log-level
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: FILE  Log to a file, instead of stderr.
-      synonyms:
-      - --log-file
-      args: !EmptyFlagArg {}
-      optional: true
-    parent: *id002
-    subcommands: []
-    usage: []
-    help_flag: !Flag
-      description: Show this help and exit.
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag: !Flag
-      description: Show application version and exit.
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
-    help_text: "pbmm2 index - Index reference and store as .mmi file\n\nUsage:\n \
-      \ pbmm2 index [options] <ref.fa|xml> <out.mmi>\n\n  ref.fa|xml             \
-      \   STR   Reference FASTA, ReferenceSet XML\n  out.mmi                   STR\
-      \   Output Reference Index\n\nParameter Set Option:\n  --preset            \
-      \      STR   Set alignment mode. See below for preset parameter details. Valid\
-      \ choices: (SUBREAD,\n                                  CCS, ISOSEQ, UNROLLED).\
-      \ [SUBREAD]\n\nParameter Override Options:\n  -k                        INT\
-      \   k-mer size (no larger than 28). [-1]\n  -w                        INT  \
-      \ Minimizer window size. [-1]\n  -u,--no-kmer-compression        Disable homopolymer-compressed\
-      \ k-mer (compression is active for SUBREAD & UNROLLED\n                    \
-      \              presets).\n\n  -h,--help                       Show this help\
-      \ and exit.\n  --version                       Show application version and\
-      \ exit.\n  -j,--num-threads          INT   Number of threads to use, 0 means\
-      \ autodetection. [0]\n  --log-level               STR   Set log level. Valid\
-      \ choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n  --log-file         \
-      \       FILE  Log to a file, instead of stderr.\n\nAlignment modes of --preset:\n\
-      \    SUBREAD  : -k 19 -w 10\n    CCS      : -k 19 -w 10 -u\n    ISOSEQ   : -k\
-      \ 15 -w 5 -u\n    UNROLLED : -k 15 -w 15\n    \n"
-    generated_using: &id003
-    - --help
-  usage: []
-  help_flag: !Flag
-    description: Show this help and exit.
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag: !Flag
-    description: Show application version and exit.
-    synonyms:
-    - --version
-    args: !EmptyFlagArg {}
-    optional: true
-  help_text: "pbmm2 - minimap2 with native PacBio BAM support\n\nUsage:\n  pbmm2 <tool>\n\
-    \n  -h,--help    Show this help and exit.\n  --version    Show application version\
-    \ and exit.\n\nTools:\n  index      Index reference and store as .mmi file\n \
-    \ align      Align PacBio reads to reference sequences\n\nExamples:\n  pbmm2 index\
-    \ ref.referenceset.xml ref.mmi\n  pbmm2 align ref.referenceset.xml movie.subreadset.xml\
-    \ ref.movie.alignmentset.xml\n\nTypical workflows:\n  A. Generate index file for\
-    \ reference and reuse it to align reads\n     $ pbmm2 index ref.fasta ref.mmi\n\
-    \     $ pbmm2 align ref.mmi movie.subreads.bam ref.movie.bam\n\n  B. Align reads\
-    \ and sort on-the-fly, with 4 alignment and 2 sort threads\n     $ pbmm2 align\
-    \ ref.fasta movie.subreads.bam ref.movie.bam --sort -j 4 -J 2\n\n  C. Align reads,\
-    \ sort on-the-fly, and create PBI\n     $ pbmm2 align ref.fasta movie.subreadset.xml\
-    \ ref.movie.alignmentset.xml --sort\n\n  D. Omit output file and stream BAM output\
-    \ to stdout\n     $ pbmm2 align hg38.mmi movie1.subreadset.xml | samtools sort\
-    \ > hg38.movie1.sorted.bam\n\n  E. Align CCS fastq input and sort on-the-fly\n\
-    \     $ pbmm2 align ref.fasta movie.Q20.fastq ref.movie.bam --preset CCS --sort\
-    \ --rg '@RG\\tID:myid\\tSM:mysample'\n"
-  generated_using: *id003
+parent:
 subcommands: []
 usage: []
 help_flag: !Flag
@@ -518,4 +406,5 @@ help_text: "pbmm2 align - Align PacBio reads to reference sequences\n\nUsage:\n 
   \ -Z 100 -r 200000 -L 0.5 -g 2000 -C 5 -G 200000\n    UNROLLED    : -k 15 -w 15\
   \    -o 2 -O 32 -e 1 -E 0 -A 1 -B 2 -z 200 -Z 100 -r 2000   -L 0.5 -g 10000\n  \
   \  \n"
-generated_using: *id003
+generated_using:
+- --help

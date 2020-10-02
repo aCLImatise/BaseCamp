@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pauvre_marginplot.cwl
+id: pauvre_marginplot.cwl
 inputs:
 - id: in_quiet
   doc: Do not output warnings to stderr

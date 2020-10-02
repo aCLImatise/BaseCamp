@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastspar_bootstrap.cwl
+id: fastspar_bootstrap.cwl
 inputs:
 - id: in_c_slash_otu_table
   doc: OTU input table

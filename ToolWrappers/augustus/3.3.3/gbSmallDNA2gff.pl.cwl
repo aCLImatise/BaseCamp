@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gbSmallDNA2gff.pl.cwl
+id: gbSmallDNA2gff.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

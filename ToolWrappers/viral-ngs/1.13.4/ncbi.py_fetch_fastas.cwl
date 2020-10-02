@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncbi.py_fetch_fastas.cwl
+id: ncbi.py_fetch_fastas.cwl
 inputs:
 - id: in_force_overwrite
   doc: Overwrite existing files, if present.

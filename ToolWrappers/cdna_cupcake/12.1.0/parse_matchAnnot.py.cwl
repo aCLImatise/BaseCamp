@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parse_matchAnnot.py.cwl
+id: parse_matchAnnot.py.cwl
 inputs:
 - id: in_parse_fl_coverage
   doc: ''

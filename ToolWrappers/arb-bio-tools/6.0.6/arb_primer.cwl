@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_primer.cwl
+id: arb_primer.cwl
 inputs:
 - id: in_dbname
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pcatoy.cwl
+id: pcatoy.cwl
 inputs: []
 outputs:
 - id: out_stdout

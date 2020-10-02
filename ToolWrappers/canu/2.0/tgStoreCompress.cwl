@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tgStoreCompress.cwl
+id: tgStoreCompress.cwl
 inputs:
 - id: in_path_sequence_store
   doc: Path to a sequence store

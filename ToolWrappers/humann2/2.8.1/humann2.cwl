@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2.cwl
+id: humann2.cwl
 inputs:
 - id: in_verbose
   doc: additional output is printed

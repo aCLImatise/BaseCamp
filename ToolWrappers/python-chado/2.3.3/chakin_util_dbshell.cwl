@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_util_dbshell.cwl
+id: chakin_util_dbshell.cwl
 inputs:
 - id: in_none
   doc: 'Options:'

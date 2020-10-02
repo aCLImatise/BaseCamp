@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../riboplot.cwl
+id: riboplot.cwl
 inputs:
 - id: in_rna_file
   doc: RNA-Seq alignment file (BAM)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phame.cwl
+id: phame.cwl
 inputs:
 - id: in_help_message_exit
   doc: this help message and exit

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2bed_sge.cwl
+id: bam2bed_sge.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fgrep.cwl
+id: fgrep.cwl
 inputs:
 - id: in_extended_regexp
   doc: PATTERNS are extended regular expressions
@@ -206,11 +206,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -NUM
-- id: in_color
-  doc: '[=WHEN],'
-  type: boolean
-  inputBinding:
-    prefix: --color
 - id: in_colour
   doc: "[=WHEN]       use markers to highlight the matching strings;\nWHEN is 'always',\
     \ 'never', or 'auto'"

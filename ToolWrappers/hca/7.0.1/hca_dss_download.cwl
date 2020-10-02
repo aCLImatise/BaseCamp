@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_download.cwl
+id: hca_dss_download.cwl
 inputs:
 - id: in_no_data
   doc: if using the CLI or pass the no_data=True argument if calling the download()

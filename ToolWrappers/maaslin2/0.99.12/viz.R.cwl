@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../viz.R.cwl
+id: viz.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

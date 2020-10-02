@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../describe_cg.py.cwl
+id: describe_cg.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

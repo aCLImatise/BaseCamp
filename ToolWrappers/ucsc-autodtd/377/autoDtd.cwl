@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../autoDtd.cwl
+id: autoDtd.cwl
 inputs: []
 outputs:
 - id: out_stdout

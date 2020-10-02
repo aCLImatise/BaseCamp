@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scaffold2contig.pl.cwl
+id: scaffold2contig.pl.cwl
 inputs:
 - id: in_scaffold_seq_file
   doc: ''

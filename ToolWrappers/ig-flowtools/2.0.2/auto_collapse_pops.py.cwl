@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../auto_collapse_pops.py.cwl
+id: auto_collapse_pops.py.cwl
 inputs:
-- id: in_p
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -p
 - id: in_flock_output_file
   doc: FLOCK output file
   type: File
@@ -21,6 +16,11 @@ inputs:
   type: File
   inputBinding:
     prefix: -r
+- id: in_file_location_profiletxt
+  doc: File location for the profile.txt from FLOCK.
+  type: File
+  inputBinding:
+    prefix: -p
 - id: in_auto_pop_collapse_from_profile
   doc: ''
   type: string

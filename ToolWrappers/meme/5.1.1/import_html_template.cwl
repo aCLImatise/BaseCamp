@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../import_html_template.cwl
+id: import_html_template.cwl
 inputs:
 - id: in_variable_name
   doc: ''

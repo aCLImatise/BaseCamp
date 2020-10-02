@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Joiner.cwl
+id: Joiner.cwl
 inputs: []
 outputs:
 - id: out_stdout

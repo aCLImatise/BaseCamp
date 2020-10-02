@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncbi_genetic_codes.py.cwl
+id: ncbi_genetic_codes.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

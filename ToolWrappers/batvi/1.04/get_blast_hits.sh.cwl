@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_blast_hits.sh.cwl
+id: get_blast_hits.sh.cwl
 inputs:
 - id: in_run_command_input
   doc: Don't run command if input is empty

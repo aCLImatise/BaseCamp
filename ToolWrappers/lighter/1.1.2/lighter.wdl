@@ -4,7 +4,6 @@ task Lighter {
   input {
     File? seqfile_path_sequence
     Int? genomesize_alpha_see
-    File? od
     Int? number_use_default
     Int? max_cor
     Boolean? trim
@@ -22,7 +21,6 @@ task Lighter {
       ~{or} \
       ~{if defined(seqfile_path_sequence) then ("-r " +  '"' + seqfile_path_sequence + '"') else ""} \
       ~{if defined(genomesize_alpha_see) then ("-k " +  '"' + genomesize_alpha_see + '"') else ""} \
-      ~{if defined(od) then ("-od " +  '"' + od + '"') else ""} \
       ~{if defined(number_use_default) then ("-t " +  '"' + number_use_default + '"') else ""} \
       ~{if defined(max_cor) then ("-maxcor " +  '"' + max_cor + '"') else ""} \
       ~{if (trim) then "-trim" else ""} \
@@ -37,7 +35,6 @@ task Lighter {
   parameter_meta {
     seqfile_path_sequence: ": seq_file is the path to the sequence file. Can use multiple -r to specifiy multiple sequence files\\nThe file can be fasta and fastq, and can be gzip'ed with extension *.gz.\\nWhen the input file is *.gz, the corresponding output file will also be gzip'ed."
     genomesize_alpha_see: "genome_size alpha: (see README for information on setting alpha)"
-    od: ": (default: ./)"
     number_use_default: ": number of threads to use (default: 1)"
     max_cor: ": the maximum number of corrections within a 20bp window (default: 4)"
     trim: ": allow trimming (default: false)"
@@ -52,6 +49,5 @@ task Lighter {
   }
   output {
     File out_stdout = stdout()
-    File out_od = "${in_od}"
   }
 }

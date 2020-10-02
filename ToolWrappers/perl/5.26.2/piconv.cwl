@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../piconv.cwl
+id: piconv.cwl
 inputs:
 - id: in_list
   doc: lists all available encodings

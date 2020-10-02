@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_gd2togif.cwl
+id: _gd2togif.cwl
 inputs:
 - id: in_gd_two_to_gif
   doc: ''

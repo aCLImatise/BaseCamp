@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ngm.cwl
+id: ngm.cwl
 inputs:
 - id: in_c_slash_config
   doc: "Path to the config file. The config file contains\nall advanced options. If\

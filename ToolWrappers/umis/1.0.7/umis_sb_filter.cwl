@@ -1,23 +1,13 @@
 class: CommandLineTool
-id: ../../../umis_sb_filter.cwl
+id: umis_sb_filter.cwl
 inputs:
 - id: in_bc
-  doc: ''
+  doc: "--cores INTEGER\n--nedit INTEGER\n--help           Show this message and exit.\n"
   type: File
   inputBinding:
     prefix: --bc
-- id: in_cores
+- id: in_fast_q
   doc: ''
-  type: long
-  inputBinding:
-    prefix: --cores
-- id: in_nedit
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: --nedit
-- id: in_files_dot
-  doc: 'Options:'
   type: string
   inputBinding:
     position: 0

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_bwamem.cwl
+id: run_bwamem.cwl
 inputs:
 - id: in_prefix_output_files
   doc: prefix for output files                       [inferred from input]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pipits_getsamplelistfromfasta.cwl
+id: pipits_getsamplelistfromfasta.cwl
 inputs:
 - id: in_o
   doc: ''

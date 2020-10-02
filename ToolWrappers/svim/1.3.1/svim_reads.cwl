@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svim_reads.cwl
+id: svim_reads.cwl
 inputs:
 - id: in_min_mapq
   doc: "Minimum mapping quality of reads to consider (default:\n20). Reads with a\

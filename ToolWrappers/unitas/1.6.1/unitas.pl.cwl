@@ -1,29 +1,19 @@
 class: CommandLineTool
-id: ../../../unitas.pl.cwl
+id: unitas.pl.cwl
 inputs:
+- id: in_species
+  doc: "this:\n-species x"
+  type: string
+  inputBinding:
+    prefix: -species
 - id: in_refseq
   doc: '[-refseq sequence_2.fas ...]'
   type: long
   inputBinding:
     prefix: -refseq
-- id: in_o_xx_do_to
-  doc: .XXXX
-  type: string
-  inputBinding:
-    position: 0
-- id: in_xxx
-  doc: .oXXXXXXXX. .XXXXo
-  type: string
-  inputBinding:
-    position: 0
 - id: in_xxxx_x_dot
   doc: ".oXXXXoo..                 ...oXXXXXXXXXXXXXXXXXX\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXo'''\n\
     XXXXXXXXXXXXXXX------------------XXXXXXXXXXXX'"
-  type: string
-  inputBinding:
-    position: 1
-- id: in_xxx_xxx_oo_xxxx_xxx_xxx_xxx_xxx_xxx_xxx_xxx_xoooooodotdotdotxxxx
-  doc: .XXXX'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'''XXXXXXXXXXXXXXX''
   type: string
   inputBinding:
     position: 0

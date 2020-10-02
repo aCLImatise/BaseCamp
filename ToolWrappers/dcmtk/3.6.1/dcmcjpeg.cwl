@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dcmcjpeg.cwl
+id: dcmcjpeg.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments

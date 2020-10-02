@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ucpp.cwl
+id: ucpp.cwl
 inputs:
 - id: in_keep_comments_output
   doc: keep comments in output

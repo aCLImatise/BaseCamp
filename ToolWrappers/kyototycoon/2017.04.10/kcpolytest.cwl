@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kcpolytest.cwl
+id: kcpolytest.cwl
 inputs:
 - id: in_rnd
   doc: ''

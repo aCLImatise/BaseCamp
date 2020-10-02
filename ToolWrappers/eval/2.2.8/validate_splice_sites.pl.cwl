@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validate_splice_sites.pl.cwl
+id: validate_splice_sites.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

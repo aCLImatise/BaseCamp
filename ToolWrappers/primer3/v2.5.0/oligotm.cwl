@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oligotm.cwl
+id: oligotm.cwl
 inputs:
 - id: in_mv
   doc: '- concentration of monovalent cations in mM, by default 50mM'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_annotations_add_feature.cwl
+id: arrow_annotations_add_feature.cwl
 inputs:
 - id: in_feature
   doc: Feature information

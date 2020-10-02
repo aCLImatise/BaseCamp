@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../glim_diff.awk.cwl
+id: glim_diff.awk.cwl
 inputs: []
 outputs:
 - id: out_stdout

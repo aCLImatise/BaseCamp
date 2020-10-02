@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rust_nucleotide.bak.cwl
+id: rust_nucleotide.bak.cwl
 inputs:
 - id: in_directory_path_outputfile
   doc: directory  path to outputfile, default is "nucleotide"

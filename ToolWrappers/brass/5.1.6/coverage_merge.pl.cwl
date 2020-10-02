@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coverage_merge.pl.cwl
+id: coverage_merge.pl.cwl
 inputs:
 - id: in_genome_dot_fa_dot_fai
   doc: ''

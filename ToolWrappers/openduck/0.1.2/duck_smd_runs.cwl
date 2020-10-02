@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../duck_smd_runs.cwl
+id: duck_smd_runs.cwl
 inputs:
 - id: in_input
   doc: Equilibrated system as input

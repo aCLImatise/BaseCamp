@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kaiju_gbk2faa.pl.cwl
+id: kaiju_gbk2faa.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

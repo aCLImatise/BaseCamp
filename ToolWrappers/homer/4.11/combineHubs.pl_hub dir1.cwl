@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combineHubs.pl_hub dir1.cwl
+id: combineHubs.pl_hub dir1.cwl
 inputs:
 - id: in_same_as_dpr
   doc: Same as -dpR

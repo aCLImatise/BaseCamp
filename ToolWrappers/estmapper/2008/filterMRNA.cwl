@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterMRNA.cwl
+id: filterMRNA.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_lines_for_each_column.R.cwl
+id: o_lines_for_each_column.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

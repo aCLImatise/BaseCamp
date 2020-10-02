@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qseq2fasta.pl.cwl
+id: qseq2fasta.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoalignMPI.cwl
+id: novoalignMPI.cwl
 inputs: []
 outputs:
 - id: out_stdout

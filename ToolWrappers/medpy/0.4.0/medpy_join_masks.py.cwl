@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_join_masks.py.cwl
+id: medpy_join_masks.py.cwl
 inputs:
 - id: in_operation
   doc: Combinatorial operation to conduct.

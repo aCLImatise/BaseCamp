@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getfeatures.py.cwl
+id: getfeatures.py.cwl
 inputs:
 - id: in_linear
   doc: consider genome circular

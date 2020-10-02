@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eagle_interface.cwl
+id: eagle_interface.cwl
 inputs:
 - id: in_port
   doc: 'port (default: 8000)'

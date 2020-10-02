@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../twoBitMask.cwl
+id: twoBitMask.cwl
 inputs:
 - id: in_add
   doc: Don't remove pre-existing masking before applying maskFile.

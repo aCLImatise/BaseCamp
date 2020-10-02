@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mawk.cwl
+id: mawk.cwl
 inputs:
 - id: in_program_text_read
   doc: Program  text is read from file instead of from the

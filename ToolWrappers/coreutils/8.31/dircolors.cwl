@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dircolors.cwl
+id: dircolors.cwl
 inputs:
 - id: in_bourne_shell
   doc: output Bourne shell code to set LS_COLORS

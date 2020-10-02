@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../evaluator.cwl
+id: evaluator.cwl
 inputs:
 - id: in_genome_gff
   doc: Specify the maker gff file to evaluate.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_showdb.cwl
+id: _showdb.cwl
 inputs:
 - id: in_database
   doc: "string     Name of a single database to give\ninformation on (Any string)"

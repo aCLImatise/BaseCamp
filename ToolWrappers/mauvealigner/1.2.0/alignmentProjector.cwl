@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alignmentProjector.cwl
+id: alignmentProjector.cwl
 inputs:
 - id: in_input_x_mfa
   doc: ''

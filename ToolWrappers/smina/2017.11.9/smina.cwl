@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smina.cwl
+id: smina.cwl
 inputs:
 - id: in_arg_rigid_part
   doc: '[ --receptor ] arg         rigid part of the receptor (PDBQT)'

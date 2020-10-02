@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../saddle2gml.pl.cwl
+id: saddle2gml.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

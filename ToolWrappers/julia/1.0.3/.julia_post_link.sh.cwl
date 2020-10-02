@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.julia_post_link.sh.cwl
+id: .julia_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

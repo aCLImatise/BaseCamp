@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_sample.cwl
+id: smof_sample.cwl
 inputs:
 - id: in_number
   doc: sample size (default=1)

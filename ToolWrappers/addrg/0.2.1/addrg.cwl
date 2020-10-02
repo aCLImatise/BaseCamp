@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addrg.cwl
+id: addrg.cwl
 inputs:
 - id: in_file_dot_bam
   doc: ''

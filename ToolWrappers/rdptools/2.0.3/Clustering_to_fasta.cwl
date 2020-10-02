@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clustering_to_fasta.cwl
+id: Clustering_to_fasta.cwl
 inputs:
 - id: in_to_fast_a
   doc: ''

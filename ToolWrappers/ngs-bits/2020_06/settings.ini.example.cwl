@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../settings.ini.example.cwl
+id: settings.ini.example.cwl
 inputs: []
 outputs:
 - id: out_stdout

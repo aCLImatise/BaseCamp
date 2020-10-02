@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastspar_pvalues.cwl
+id: fastspar_pvalues.cwl
 inputs:
 - id: in_c_slash_otu_table
   doc: OTU input table used to generated correlations

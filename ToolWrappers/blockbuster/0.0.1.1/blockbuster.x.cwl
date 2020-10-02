@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blockbuster.x.cwl
+id: blockbuster.x.cwl
 inputs:
 - id: in_format
   doc: "file format of input file (default: 1)\n(1) bed\n(2) segemehl-output"

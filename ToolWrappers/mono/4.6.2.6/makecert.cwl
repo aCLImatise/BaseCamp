@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makecert.cwl
+id: makecert.cwl
 inputs:
 - id: in_subject_distinguished_name
   doc: Subject Distinguished Name

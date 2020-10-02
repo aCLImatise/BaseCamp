@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generate_names.pl.cwl
+id: generate_names.pl.cwl
 inputs:
 - id: in_out
   doc: Data directory to process. Default 'data/'.

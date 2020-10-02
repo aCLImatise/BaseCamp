@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sierrapy_recipe_alignment.cwl
+id: sierrapy_recipe_alignment.cwl
 inputs:
 - id: in_gap_handling
   doc: "[squeeze|hxb2strip]\nSpecify how you want the recipe to handle\nthe gaps.\n\

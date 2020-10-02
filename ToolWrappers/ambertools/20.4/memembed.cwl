@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../memembed.cwl
+id: memembed.cwl
 inputs:
 - id: in_output_pdb_file
   doc: Output pdb file. Default <input pdb file>_EMBED.pdb

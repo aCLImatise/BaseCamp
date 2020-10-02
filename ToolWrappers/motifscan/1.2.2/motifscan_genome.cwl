@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../motifscan_genome.cwl
+id: motifscan_genome.cwl
 inputs:
 - id: in_verbose
   doc: Enable verbose log messages.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../applauncher.cwl
+id: applauncher.cwl
 inputs:
 - id: in_list
   doc: ''

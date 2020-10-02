@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eprimer32.cwl
+id: eprimer32.cwl
 inputs:
 - id: in_hybrid_probe
   doc: "toggle     [N] An 'internal oligo' is intended to be\nused as a hybridization\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../myrimatch.cwl
+id: myrimatch.cwl
 inputs: []
 outputs:
 - id: out_stdout

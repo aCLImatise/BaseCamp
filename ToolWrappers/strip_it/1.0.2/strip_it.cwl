@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strip_it.cwl
+id: strip_it.cwl
 inputs:
 - id: in_input
   doc: "Specifies the file containing the input molecules. The format of the\nfile\

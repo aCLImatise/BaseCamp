@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mispipe.cwl
+id: mispipe.cwl
 inputs: []
 outputs:
 - id: out_stdout

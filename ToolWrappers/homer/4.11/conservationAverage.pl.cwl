@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../conservationAverage.pl.cwl
+id: conservationAverage.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

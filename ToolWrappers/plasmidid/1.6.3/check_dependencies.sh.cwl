@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../check_dependencies.sh.cwl
+id: check_dependencies.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

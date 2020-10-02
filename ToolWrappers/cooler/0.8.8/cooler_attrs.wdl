@@ -11,7 +11,7 @@ task CoolerAttrs {
       ~{if defined(level) then ("--level " +  '"' + level + '"') else ""}
   >>>
   parameter_meta {
-    level: ""
+    level: "-h, --help           Show this message and exit.\\n"
     uri: ""
   }
   output {

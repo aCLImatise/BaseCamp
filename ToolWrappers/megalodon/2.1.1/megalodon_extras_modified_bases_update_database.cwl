@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_modified_bases_update_database.cwl
+id: megalodon_extras_modified_bases_update_database.cwl
 inputs:
 - id: in_new_db
   doc: "Output data base name. Should replace\nper_read_modified_base_calls.db in\

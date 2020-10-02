@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribocount.cwl
+id: ribocount.cwl
 inputs:
 - id: in_read_lengths
   doc: "Read lengths to consider (default: 0). Multiple read\nlengths should be separated\

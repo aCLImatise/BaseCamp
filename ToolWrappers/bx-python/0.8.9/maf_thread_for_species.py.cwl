@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_thread_for_species.py.cwl
+id: maf_thread_for_species.py.cwl
 inputs:
 - id: in_no_fuse
   doc: Don't attempt to join blocks, just remove rows.

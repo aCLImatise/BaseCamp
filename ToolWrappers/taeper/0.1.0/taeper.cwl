@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taeper.cwl
+id: taeper.cwl
 inputs:
 - id: in_input_dir
   doc: Directory where files are located.

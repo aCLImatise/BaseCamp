@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastqSimulate_sort.cwl
+id: fastqSimulate_sort.cwl
 inputs:
 - id: in_o_two
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamToPsl.cwl
+id: bamToPsl.cwl
 inputs:
 - id: in_fast_a
   doc: '- output query sequences to specified file'

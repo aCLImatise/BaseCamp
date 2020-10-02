@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getChrLengths.pl.cwl
+id: getChrLengths.pl.cwl
 inputs:
 - id: in_fast_a_file
   doc: ''

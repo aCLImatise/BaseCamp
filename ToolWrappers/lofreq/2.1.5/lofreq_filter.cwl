@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lofreq_filter.cwl
+id: lofreq_filter.cwl
 inputs:
 - id: in__file_vcf_input
   doc: '| --in FILE                 VCF input file (no streaming supported; gzip supported)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_submit.cwl
+id: synapse_submit.cwl
 inputs:
 - id: in_evaluation_id
   doc: Evaluation ID where the entity/file will be submitted

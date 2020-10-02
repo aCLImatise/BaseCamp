@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_generate_dxapp.cwl
+id: dx_generate_dxapp.cwl
 inputs:
 - id: in_target_module
   doc: "The fully-qualified module that contains the target\nmethod."

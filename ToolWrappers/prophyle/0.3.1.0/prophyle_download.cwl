@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_download.cwl
+id: prophyle_download.cwl
 inputs:
 - id: in_directory_tree_sequences
   doc: directory for the tree and the sequences [~/prophyle]

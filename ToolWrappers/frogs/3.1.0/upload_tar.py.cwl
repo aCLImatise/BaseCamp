@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../upload_tar.py.cwl
+id: upload_tar.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

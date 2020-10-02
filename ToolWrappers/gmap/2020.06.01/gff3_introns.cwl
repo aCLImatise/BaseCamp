@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff3_introns.cwl
+id: gff3_introns.cwl
 inputs:
 - id: in_more_options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eliminateBadSuperReadsUsingList.cwl
+id: eliminateBadSuperReadsUsingList.cwl
 inputs: []
 outputs:
 - id: out_stdout

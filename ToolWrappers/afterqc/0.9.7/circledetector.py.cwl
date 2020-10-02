@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../circledetector.py.cwl
+id: circledetector.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

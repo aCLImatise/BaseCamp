@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmscan_hmmdb.cwl
+id: hmmscan_hmmdb.cwl
 inputs:
 - id: in_options
   doc: ''

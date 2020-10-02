@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxsummary2krona.cwl
+id: taxsummary2krona.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genePredToFakePsl.cwl
+id: genePredToFakePsl.cwl
 inputs: []
 outputs:
 - id: out_stdout

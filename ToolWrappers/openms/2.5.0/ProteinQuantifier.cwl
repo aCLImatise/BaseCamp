@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ProteinQuantifier.cwl
+id: ProteinQuantifier.cwl
 inputs:
 - id: in_in
   doc: "*                        Input file (valid formats: 'featureXML', 'consensusXML',\

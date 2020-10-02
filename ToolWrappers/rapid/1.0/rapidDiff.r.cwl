@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rapidDiff.r.cwl
+id: rapidDiff.r.cwl
 inputs:
 - id: in_expand_dot_grid
   doc: 'Loading required package: IRanges'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hp_demo_Dload.cwl
+id: hp_demo_Dload.cwl
 inputs:
 - id: in_outdir
   doc: 'Output directory (default: .)'

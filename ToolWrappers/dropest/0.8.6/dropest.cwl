@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dropest.cwl
+id: dropest.cwl
 inputs: []
 outputs:
 - id: out_stdout

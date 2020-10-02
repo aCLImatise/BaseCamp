@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minion.cwl
+id: minion.cwl
 inputs: []
 outputs:
 - id: out_stdout

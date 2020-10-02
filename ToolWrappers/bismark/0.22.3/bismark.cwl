@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bismark.cwl
+id: bismark.cwl
 inputs:
 - id: in_commaseparated_list_bismark
   doc: "Comma-separated list of files containing the #1 mates (filename usually includes\n\

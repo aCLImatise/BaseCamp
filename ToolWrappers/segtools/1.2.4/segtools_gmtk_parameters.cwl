@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segtools_gmtk_parameters.cwl
+id: segtools_gmtk_parameters.cwl
 inputs:
 - id: in_clobber
   doc: Overwrite any existing output files.

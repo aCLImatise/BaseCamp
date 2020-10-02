@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alfred_count_rna.cwl
+id: alfred_count_rna.cwl
 inputs:
 - id: in_arg_min_quality
   doc: '[ --map-qual ] arg (=10)           min. mapping quality'

@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceAlignExtractTaxaFromAlignments {
   input {
-    String? var_output
+    File? _include_include
     Directory? alignments
     String? input_format
     String? output_format
@@ -15,7 +15,7 @@ task PhyluceAlignExtractTaxaFromAlignments {
   }
   command <<<
     phyluce_align_extract_taxa_from_alignments \
-      ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""} \
+      ~{if defined(_include_include) then ("--output " +  '"' + _include_include + '"') else ""} \
       ~{if defined(alignments) then ("--alignments " +  '"' + alignments + '"') else ""} \
       ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
       ~{if defined(output_format) then ("--output-format " +  '"' + output_format + '"') else ""} \
@@ -27,7 +27,7 @@ task PhyluceAlignExtractTaxaFromAlignments {
       ~{if defined(include) then ("--include " +  '"' + include + '"') else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    _include_include: "[--input-format {nexus,newick,fasta,phylip}]\\n[--output-format {fasta,nexus,phylip,phylip-relaxed,phylip-sequential,clustal,emboss,stockholm}]\\n[--verbosity {INFO,WARN,CRITICAL}]\\n[--log-path LOG_PATH]\\n[--cores CORES]\\n[--skip-check]\\n[--exclude EXCLUDE [EXCLUDE ...]\\n| --include INCLUDE\\n[INCLUDE ...]]"
     alignments: "The input directory containing nexus files"
     input_format: "The input format of the alignments"
     output_format: "The input alignment format"

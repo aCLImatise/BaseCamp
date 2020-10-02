@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pancake_seeddb.cwl
+id: pancake_seeddb.cwl
 inputs:
 - id: in_split_blocks
   doc: Write seeds for each block into a separate file.

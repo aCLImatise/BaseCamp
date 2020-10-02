@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cargo_publish.cwl
+id: cargo_publish.cwl
 inputs:
 - id: in_host
   doc: Host to upload the package to

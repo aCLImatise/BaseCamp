@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compPlot.Rmd.cwl
+id: compPlot.Rmd.cwl
 inputs: []
 outputs:
 - id: out_stdout

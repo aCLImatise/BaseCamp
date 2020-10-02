@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multiparagraph.py.cwl
+id: multiparagraph.py.cwl
 inputs:
 - id: in_bam
   doc: BAM file name

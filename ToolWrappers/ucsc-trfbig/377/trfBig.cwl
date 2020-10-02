@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trfBig.cwl
+id: trfBig.cwl
 inputs:
 - id: in_bed
   doc: a bed file in current dir

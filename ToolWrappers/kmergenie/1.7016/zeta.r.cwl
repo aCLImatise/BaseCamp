@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../zeta.r.cwl
+id: zeta.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

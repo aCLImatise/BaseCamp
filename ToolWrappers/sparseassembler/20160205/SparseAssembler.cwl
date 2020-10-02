@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SparseAssembler.cwl
+id: SparseAssembler.cwl
 inputs: []
 outputs:
 - id: out_stdout

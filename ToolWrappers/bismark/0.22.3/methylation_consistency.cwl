@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../methylation_consistency.cwl
+id: methylation_consistency.cwl
 inputs:
 - id: in_min_count
   doc: "Set the minumum number of CpGs which need to be present for a read to be considered\

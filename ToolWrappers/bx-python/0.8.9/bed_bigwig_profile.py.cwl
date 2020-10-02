@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed_bigwig_profile.py.cwl
+id: bed_bigwig_profile.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

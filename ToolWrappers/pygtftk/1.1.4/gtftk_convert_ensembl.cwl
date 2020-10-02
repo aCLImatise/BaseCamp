@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_convert_ensembl.cwl
+id: gtftk_convert_ensembl.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the GTF file. Default to STDIN (default: <stdin>)'
@@ -57,11 +57,6 @@ inputs:
 - id: in_lack
   doc: of non ambiguous gene or transcript names For instance, a refSeq sequence ID
     used as
-  type: string
-  inputBinding:
-    position: 0
-- id: in_instead_dot
-  doc: 'Version:  2018-02-06'
   type: string
   inputBinding:
     position: 0

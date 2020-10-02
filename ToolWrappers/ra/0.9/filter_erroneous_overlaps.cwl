@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_erroneous_overlaps.cwl
+id: filter_erroneous_overlaps.cwl
 inputs:
 - id: in_depot
   doc: depot path (string)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FrameBot_stat.cwl
+id: FrameBot_stat.cwl
 inputs:
 - id: in_seq_desc
   doc: the description of the reference seq, tab-delimited file or fasta

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mhcflurry_class1_select_pan_allele_models.cwl
+id: mhcflurry_class1_select_pan_allele_models.cwl
 inputs:
 - id: in_data
   doc: "Model selection data CSV. Expected columns: allele,\npeptide, measurement_value"
@@ -70,36 +70,6 @@ inputs:
   type: Directory
   inputBinding:
     prefix: --worker-log-dir
-- id: in_cluster_parallelism
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --cluster-parallelism
-- id: in_cluster_submit_command
-  doc: 'Default: sh'
-  type: string
-  inputBinding:
-    prefix: --cluster-submit-command
-- id: in_cluster_results_workdir
-  doc: 'Default: ./cluster-workdir'
-  type: string
-  inputBinding:
-    prefix: --cluster-results-workdir
-- id: in_additional_complete_file
-  doc: "Additional file to monitor for job completion.\nDefault: STDERR"
-  type: File
-  inputBinding:
-    prefix: --additional-complete-file
-- id: in_cluster_script_prefix_path
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --cluster-script-prefix-path
-- id: in_cluster_max_retries
-  doc: "How many times to rerun failing jobs. Default: 3\n"
-  type: long
-  inputBinding:
-    prefix: --cluster-max-retries
 - id: in_model
   doc: ''
   type: string

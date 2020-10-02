@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getN50.cwl
+id: getN50.cwl
 inputs: []
 outputs:
 - id: out_stdout

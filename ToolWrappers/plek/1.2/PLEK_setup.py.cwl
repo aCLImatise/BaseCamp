@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PLEK_setup.py.cwl
+id: PLEK_setup.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../quasitools_dnds.cwl
+id: quasitools_dnds.cwl
 inputs:
 - id: in_output
-  doc: ''
+  doc: "--help                 Show this message and exit.\n"
   type: File
   inputBinding:
     prefix: --output

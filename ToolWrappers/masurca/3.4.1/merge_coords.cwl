@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_coords.cwl
+id: merge_coords.cwl
 inputs:
 - id: in_output
   doc: Output file (stdout)

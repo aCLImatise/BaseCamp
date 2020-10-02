@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_concordance.cwl
+id: SnpSift_concordance.cwl
 inputs:
 - id: in_only_use_ids
   doc: ': Only use sample IDs in file (format: one sample ID per line).'

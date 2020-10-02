@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_maskseq.cwl
+id: _maskseq.cwl
 inputs:
 - id: in_regions
   doc: "range      [None] Regions to mask.\nA set of regions is specified by a set\

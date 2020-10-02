@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_mpileup.cwl
+id: samtools_mpileup.cwl
 inputs:
 - id: in_reference_sequence_file
   doc: reference sequence file [null]

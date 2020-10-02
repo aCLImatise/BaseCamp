@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chimera.cwl
+id: chimera.cwl
 inputs:
 - id: in_allow_percent_error
   doc: allow 'erate' percent error (default is AS_OVL_ERROR_RATE environment variable)

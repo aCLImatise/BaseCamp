@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcftools_isec.cwl
+id: bcftools_isec.cwl
 inputs:
 - id: in_collapse
   doc: treat as identical records with <snps|indels|both|all|some|none>, see man page

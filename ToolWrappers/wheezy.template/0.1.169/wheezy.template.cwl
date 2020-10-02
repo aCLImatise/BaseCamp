@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wheezy.template.cwl
+id: wheezy.template.cwl
 inputs: []
 outputs:
 - id: out_stdout

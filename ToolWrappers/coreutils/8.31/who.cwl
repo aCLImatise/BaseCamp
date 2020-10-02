@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../who.cwl
+id: who.cwl
 inputs:
-- id: in_all
-  doc: same as -b -d --login -p -r -t -T -u
-  type: boolean
-  inputBinding:
-    prefix: --all
 - id: in_boot
   doc: time of last system boot
   type: boolean

@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: ../../../trimmomatic.cwl
+id: trimmomatic.cwl
 inputs:
-- id: in_version
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -version
 - id: in_threads
   doc: ''
   type: string
   inputBinding:
     prefix: -threads
+- id: in_version
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -version
 - id: in_pe
   doc: ''
   type: string

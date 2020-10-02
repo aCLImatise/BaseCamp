@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findNovelJunctions.cwl
+id: findNovelJunctions.cwl
 inputs:
 - id: in_or
   doc: ./findNovelJunction refFlat.bed junction.bed

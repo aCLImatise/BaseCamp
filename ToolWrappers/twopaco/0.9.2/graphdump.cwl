@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graphdump.cwl
+id: graphdump.cwl
 inputs:
 - id: in__kvalue_integerrequired
   doc: ",  --kvalue <integer>\n(required)  Value of k"
@@ -22,12 +22,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --prefix
-- id: in_graph_dump
-  doc: "-k <integer> [-s <>] ...  -f <seq|group|dot|gfa1|gfa2|fasta>\n[--prefix] [--]\
-    \ [--version] [-h] <file name>"
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

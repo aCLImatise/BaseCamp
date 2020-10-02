@@ -1,26 +1,21 @@
 class: CommandLineTool
-id: ../../../ppanini_infer_gene.cwl
+id: ppanini_infer_gene.cwl
 inputs:
 - id: in_min_q_cover
-  doc: ''
+  doc: "[--all-valid-hits]\nhits"
   type: long
   inputBinding:
     prefix: --min-qcover
-- id: in_output
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --output
 - id: in_min_per_cid
   doc: ''
   type: long
   inputBinding:
     prefix: --min-percid
-- id: in_all_valid_hits
+- id: in_output
   doc: ''
-  type: boolean
+  type: string
   inputBinding:
-    prefix: --all-valid-hits
+    prefix: --output
 outputs:
 - id: out_stdout
   doc: Standard output stream

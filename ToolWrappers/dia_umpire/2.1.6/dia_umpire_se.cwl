@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dia_umpire_se.cwl
+id: dia_umpire_se.cwl
 inputs: []
 outputs:
 - id: out_stdout

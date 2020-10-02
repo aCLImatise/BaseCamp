@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rankprodbounds.R.cwl
+id: rankprodbounds.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../pileupCaller.cwl
+id: pileupCaller.cwl
 inputs:
 - id: in_random_diploid
   doc: ) [--keepIncongruentReads]
   type: boolean
   inputBinding:
     prefix: --randomDiploid
-- id: in_single_strand_mode
-  doc: '] (-f|--snpFile <FILE>)'
-  type: boolean
-  inputBinding:
-    prefix: --singleStrandMode
 - id: in_random_haploid
   doc: "This method samples one read at random at each site,\nand uses the allele\
     \ on that read as the one for the\nactual genotype. This results in a haploid\
@@ -69,6 +64,14 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --transitionsMissing
+- id: in_single_strand_mode
+  doc: "[THIS IS CURRENTLY AN EXPERIMENTAL FEATURE]. At C/T\npolymorphisms, ignore\
+    \ reads aligning to the forward\nstrand. At G/A polymorphisms, ignore reads aligning\n\
+    to the reverse strand. This should remove post-mortem\ndamage in ancient DNA libraries\
+    \ prepared with the\nnon-UDG single-stranded protocol."
+  type: boolean
+  inputBinding:
+    prefix: --singleStrandMode
 - id: in_snp_file
   doc: "an Eigenstrat-formatted SNP list file for the\npositions and alleles to call.\
     \ All positions in the\nSNP file will be output, adding missing data where\nthere\

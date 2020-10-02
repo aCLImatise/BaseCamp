@@ -14,7 +14,6 @@ task Lz4 {
     Boolean? force_write_standard
     Boolean? test_compressed_integrity
     Boolean? compress_using_compression
-    Boolean? block_size_default
     Boolean? bd
     Boolean? sx
     Boolean? _benchmark_files
@@ -34,7 +33,6 @@ task Lz4 {
       ~{if (force_write_standard) then "-c" else ""} \
       ~{if (test_compressed_integrity) then "-t" else ""} \
       ~{if (compress_using_compression) then "-l" else ""} \
-      ~{if (block_size_default) then "-B" else ""} \
       ~{if (bd) then "-BD" else ""} \
       ~{if (sx) then "-Sx" else ""} \
       ~{if (_benchmark_files) then "-b" else ""} \
@@ -53,7 +51,6 @@ task Lz4 {
     force_write_standard: ": force write to standard output, even if it is the console"
     test_compressed_integrity: ": test compressed file integrity"
     compress_using_compression: ": compress using Legacy format (Linux kernel compression)"
-    block_size_default: "#    : Block size [4-7](default : 7)"
     bd: ": Block dependency (improve compression ratio)"
     sx: ": disable stream checksum (default:enabled)"
     _benchmark_files: ": benchmark file(s)"

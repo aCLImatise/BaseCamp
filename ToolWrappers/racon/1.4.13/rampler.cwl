@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rampler.cwl
+id: rampler.cwl
 inputs:
 - id: in_out_directory
   doc: "default: current directory\npath in which sampled files will be created"

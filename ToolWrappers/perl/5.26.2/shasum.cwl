@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../shasum.cwl
+id: shasum.cwl
 inputs:
-- id: in_algorithm
-  doc: 1 (default), 224, 256, 384, 512, 512224, 512256
-  type: boolean
-  inputBinding:
-    prefix: --algorithm
 - id: in_binary
   doc: read in binary mode
   type: boolean

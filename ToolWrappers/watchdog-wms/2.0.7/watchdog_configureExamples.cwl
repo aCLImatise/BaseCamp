@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../watchdog_configureExamples.cwl
+id: watchdog_configureExamples.cwl
 inputs: []
 outputs:
 - id: out_stdout

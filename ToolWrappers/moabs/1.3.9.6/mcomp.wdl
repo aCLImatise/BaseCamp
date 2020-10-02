@@ -18,10 +18,7 @@ task Mcomp {
     Int? with_variance
     Int? do_merge_ratio_files
     Int? do_strand_specifi_meth
-    Int? do_comp
     Boolean? arg_site_depth
-    Int? do_dmcs_can
-    Int? dod_mrs_can
     Int? filter_credible_dif
     Int? dmr_methods
     Float? pf_et_dmc
@@ -54,10 +51,7 @@ task Mcomp {
       ~{if defined(with_variance) then ("--withVariance " +  '"' + with_variance + '"') else ""} \
       ~{if defined(do_merge_ratio_files) then ("--doMergeRatioFiles " +  '"' + do_merge_ratio_files + '"') else ""} \
       ~{if defined(do_strand_specifi_meth) then ("--doStrandSpecifiMeth " +  '"' + do_strand_specifi_meth + '"') else ""} \
-      ~{if defined(do_comp) then ("--doComp " +  '"' + do_comp + '"') else ""} \
       ~{if (arg_site_depth) then "-d" else ""} \
-      ~{if defined(do_dmcs_can) then ("--doDmcScan " +  '"' + do_dmcs_can + '"') else ""} \
-      ~{if defined(dod_mrs_can) then ("--doDmrScan " +  '"' + dod_mrs_can + '"') else ""} \
       ~{if defined(filter_credible_dif) then ("--filterCredibleDif " +  '"' + filter_credible_dif + '"') else ""} \
       ~{if defined(dmr_methods) then ("--dmrMethods " +  '"' + dmr_methods + '"') else ""} \
       ~{if defined(pf_et_dmc) then ("--pFetDmc " +  '"' + pf_et_dmc + '"') else ""} \
@@ -89,10 +83,7 @@ task Mcomp {
     with_variance: "(=0)           Specify if there's individual biological\\nvariance among the same condition; default\\n0; Should be 0 for most animal models 1 for\\nmost patient studies; WithVariance=1 is not\\neffective if only 1 or 2 replicates."
     do_merge_ratio_files: "(=0)      Internal parameter. Is true when -m\\nparameter is ',' separated and program will\\nmerge ratio Files that are separated by ','\\nand the output files are named according to\\noption -x;"
     do_strand_specifi_meth: "(=0)    whether strand specific methylation\\nanalysis will be performed;"
-    do_comp: "(=1)                 doComp;"
     arg_site_depth: "[ --minDepthForComp ] arg (=3) If a site has depth < d then this site is\\nignored for statistical tests; This option\\naffects much of nominal ratios but none of\\ncredible ratios; Suggest 10 for method 2\\nand 3 for method 2; You may also reset this\\noption during later DMC/DMR rescan to\\nfilter sites with depth < d;"
-    do_dmcs_can: "(=1)              doDmcScan;"
-    dod_mrs_can: "(=1)              doDmrScan;"
     filter_credible_dif: "(=-10)    if absolute value of cDif for a site <\\nfilterCredibleDif, then this site is\\nignored for regional calculation. use\\n0.01(for example) to filter all sites with\\nno difference; use 0.20(for example) to\\nselect DMCs; Any negative number = no\\nfilter;"
     dmr_methods: "(=7)             dmrMethods: add 2^x  method x; examples: 7\\nfor three methods, 4 for method 3 only;"
     pf_et_dmc: "(=0.05)             Cutoff of P value from Fisher Exact Test\\nfor Dmc scan;"

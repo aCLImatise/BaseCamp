@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sander.LES.cwl
+id: sander.LES.cwl
 inputs:
 - id: in_scaled_md
   doc: '] -cph-data -ce-data <file>'

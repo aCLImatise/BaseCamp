@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../telescope_resume.cwl
+id: telescope_resume.cwl
 inputs:
 - id: in_quiet
   doc: 'Silence (most) output. (default: False)'

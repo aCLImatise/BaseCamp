@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../build_weighted_model.cwl
+id: build_weighted_model.cwl
 inputs: []
 outputs:
 - id: out_stdout

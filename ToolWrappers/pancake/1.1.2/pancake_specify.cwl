@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pancake_specify.cwl
+id: pancake_specify.cwl
 inputs:
 - id: in_pan_file
   doc: Name of PanCake Data Object File (required)

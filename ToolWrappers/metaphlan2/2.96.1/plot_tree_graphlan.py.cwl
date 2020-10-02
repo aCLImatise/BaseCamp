@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_tree_graphlan.py.cwl
+id: plot_tree_graphlan.py.cwl
 inputs:
 - id: in_ifn_tree
   doc: The input tree in newick format.

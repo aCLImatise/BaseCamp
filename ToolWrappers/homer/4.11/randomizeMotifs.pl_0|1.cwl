@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../randomizeMotifs.pl_0|1.cwl
-inputs:
-- id: in_column_randomized_inverted
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -ColumnRandomized-Inverted
+id: randomizeMotifs.pl_0|1.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

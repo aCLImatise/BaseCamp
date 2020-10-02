@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_result2flat.cwl
+id: mmseqs_result2flat.cwl
 inputs:
 - id: in_use_fast_a_header
   doc: false           use the id parsed from the fasta header as the index key instead

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../busco.cwl
+id: busco.cwl
 inputs:
 - id: in_file__fasta
   doc: "FILE, --in FASTA FILE\nInput sequence file in FASTA format. Can be an assembled\

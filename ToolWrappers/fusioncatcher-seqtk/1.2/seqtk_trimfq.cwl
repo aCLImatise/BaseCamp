@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqtk_trimfq.cwl
+id: seqtk_trimfq.cwl
 inputs:
 - id: in_error_rate_threshold
   doc: error rate threshold (disabled by -b/-e/-B/-E) [0.05]

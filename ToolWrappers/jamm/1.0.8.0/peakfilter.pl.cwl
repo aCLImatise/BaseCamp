@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../peakfilter.pl.cwl
+id: peakfilter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

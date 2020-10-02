@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pypgatk_cli.py_generate_decoy.cwl
+id: pypgatk_cli.py_generate_decoy.cwl
 inputs:
 - id: in_config_file
   doc: "Configuration file for the protein database\ndecoy generation"

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../mclblastline.cwl
+id: mclblastline.cwl
 inputs:
-- id: in_parser_tag
-  doc: .
-  type: string
-  inputBinding:
-    prefix: --parser-tag
 - id: in_what_if
   doc: shows only what would be done.
   type: boolean
@@ -71,6 +66,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --parser
+- id: in_parser_tag
+  doc: tag of options to pass to parse script.
+  type: string
+  inputBinding:
+    prefix: --parser-tag
 - id: in_ass_repeat
   doc: str in <add|max|mul|left|right>
   type: long

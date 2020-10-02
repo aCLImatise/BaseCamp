@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../roundtrip.cwl
+id: roundtrip.cwl
 inputs: []
 outputs:
 - id: out_stdout

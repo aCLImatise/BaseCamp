@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cargo_bench.cwl
+id: cargo_bench.cwl
 inputs:
 - id: in_lib
   doc: Benchmark only this package's library

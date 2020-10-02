@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_vcf2tped.cwl
+id: SnpSift_vcf2tped.cwl
 inputs:
 - id: in_force_overwrite_files
   doc: ': Force. Overwrite new files if they exist. Default: false'

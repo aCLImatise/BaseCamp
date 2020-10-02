@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../endsInLf.cwl
+id: endsInLf.cwl
 inputs:
-- id: in_zero_ok
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -zeroOk
 - id: in_file
   doc: ''
   type: File

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../demux_isoseq_no_genome.py.cwl
+id: demux_isoseq_no_genome.py.cwl
 inputs:
 - id: in_job_dir
   doc: "Job directory (if given, automatically finds required\nfiles)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../virmet_index.cwl
+id: virmet_index.cwl
 inputs:
 - id: in_viral
   doc: make blast index of viral database

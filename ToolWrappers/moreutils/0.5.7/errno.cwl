@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../errno.cwl
+id: errno.cwl
 inputs:
 - id: in_search_all_locales
   doc: ''

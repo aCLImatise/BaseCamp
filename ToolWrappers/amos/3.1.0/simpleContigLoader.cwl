@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simpleContigLoader.cwl
+id: simpleContigLoader.cwl
 inputs:
 - id: in_be_verbose
   doc: Be Verbose

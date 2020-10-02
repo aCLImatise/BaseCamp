@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_convert_minimap2_bam2gff.pl.cwl
+id: agat_convert_minimap2_bam2gff.pl.cwl
 inputs:
 - id: in_input
   doc: "Input file in sam (.sam extension) or bam (.bam extension)\nformat."

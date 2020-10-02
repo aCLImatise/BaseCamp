@@ -33,7 +33,7 @@ task PathwaymatcherpyMatchvcf {
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
   parameter_meta {
-    i: ""
+    i: "[-o=<output_prefix>]"
     mapping: "Path to directory with the static mapping files. By\\ndefault uses the mapping files integrated in the jar\\nfile."
     graph: "Create default connection graph according to input type."
     graph_gene: "Create gene connection graph"

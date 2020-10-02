@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertMetaMapsToKraken.pl.cwl
+id: convertMetaMapsToKraken.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

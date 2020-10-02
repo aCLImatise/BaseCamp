@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plantcv_workflow.py.cwl
+id: plantcv_workflow.py.cwl
 inputs:
 - id: in_dir
   doc: "Input directory containing images or snapshots.\n(default: None)"

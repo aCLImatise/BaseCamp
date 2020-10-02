@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamnumericalindex.cwl
+id: bamnumericalindex.cwl
 inputs: []
 outputs:
 - id: out_stdout

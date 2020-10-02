@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dm_zdump.cwl
+id: dm_zdump.cwl
 inputs:
 - id: in_h_slash_help
   doc: ': Print help.'

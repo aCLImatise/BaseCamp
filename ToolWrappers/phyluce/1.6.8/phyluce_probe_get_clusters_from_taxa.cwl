@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_probe_get_clusters_from_taxa.cwl
+id: phyluce_probe_get_clusters_from_taxa.cwl
 inputs:
 - id: in_clusters
   doc: The directory containing cluster files

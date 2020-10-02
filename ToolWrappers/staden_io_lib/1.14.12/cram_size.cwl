@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cram_size.cwl
+id: cram_size.cwl
 inputs:
 - id: in_filename_dot_cram
   doc: ''

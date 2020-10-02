@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arv_put.cwl
+id: arv_put.cwl
 inputs:
 - id: in_normalize
   doc: "Normalize the manifest by re-ordering files and\nstreams after writing data."

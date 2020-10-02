@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haploconduct.cwl
+id: haploconduct.cwl
 inputs:
 - id: in_program
   doc: ''

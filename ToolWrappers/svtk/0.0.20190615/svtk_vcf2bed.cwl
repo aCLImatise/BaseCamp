@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtk_vcf2bed.cwl
+id: svtk_vcf2bed.cwl
 inputs:
 - id: in_no_samples
   doc: "Don't include comma-delimited list of called samples\nfor each variant."

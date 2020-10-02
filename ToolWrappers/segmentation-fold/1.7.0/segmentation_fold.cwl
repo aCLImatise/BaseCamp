@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segmentation_fold.cwl
+id: segmentation_fold.cwl
 inputs:
 - id: in_specific_rna_sequence
   doc: Specific RNA SEQUENCE (overrules -f)

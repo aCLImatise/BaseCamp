@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconvert_sam2bam.cwl
+id: bioconvert_sam2bam.cwl
 inputs:
 - id: in_force
   doc: "if outfile exists, it is overwritten with this option\n(default: False)"

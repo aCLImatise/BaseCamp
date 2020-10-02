@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_gwpa_granking.cwl
+id: deepac_gwpa_granking.cwl
 inputs:
 - id: in_patho_dir
   doc: "Directory containing the pathogenicity scores over all\ngenomic regions per\

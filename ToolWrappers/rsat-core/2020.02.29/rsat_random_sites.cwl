@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_random_sites.cwl
+id: rsat_random_sites.cwl
 inputs:
 - id: in__verbosity_set
   doc: "#, --verbosity=#   set verbosity to level #\n0 no verbosity\n1 max verbosity"

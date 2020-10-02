@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotate_bacteria.cwl
+id: annotate_bacteria.cwl
 inputs:
 - id: in_clusters
   doc: Conserved domain database

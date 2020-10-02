@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_genetrees_split_models_from_genetrees.cwl
+id: phyluce_genetrees_split_models_from_genetrees.cwl
 inputs:
 - id: in_gene_trees
   doc: The cloudforest genetree file containing models

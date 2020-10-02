@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fileMerger.py.cwl
+id: fileMerger.py.cwl
 inputs:
 - id: in_o
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trimadap_mt.cwl
+id: trimadap_mt.cwl
 inputs: []
 outputs:
 - id: out_stdout

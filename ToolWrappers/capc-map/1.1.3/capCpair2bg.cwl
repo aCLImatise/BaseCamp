@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../capCpair2bg.cwl
+id: capCpair2bg.cwl
 inputs:
 - id: in_pairfile_input_file
   doc: "pairfile       is the input file name; can use this option more\nthan once\
@@ -28,11 +28,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --interchrom
-- id: in_options
-  doc: ':'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

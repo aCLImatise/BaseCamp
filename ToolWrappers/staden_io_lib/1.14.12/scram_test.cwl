@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scram_test.cwl
+id: scram_test.cwl
 inputs:
 - id: in_set_input_format
   doc: 'Set input format:  "bam", "sam" or "cram".'

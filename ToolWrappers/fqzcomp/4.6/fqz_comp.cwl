@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fqz_comp.cwl
+id: fqz_comp.cwl
 inputs:
 - id: in_perform_lossy_compression
   doc: "Perform lossy compression with all quality values\nbeing within 'num' distance\

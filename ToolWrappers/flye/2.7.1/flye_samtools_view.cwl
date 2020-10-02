@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_view.cwl
+id: flye_samtools_view.cwl
 inputs:
 - id: in_output_bam
   doc: output BAM

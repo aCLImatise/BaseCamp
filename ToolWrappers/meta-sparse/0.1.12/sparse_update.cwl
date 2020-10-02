@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sparse_update.cwl
+id: sparse_update.cwl
 inputs:
 - id: in_dbname
   doc: Name for the database. REQUIRED.

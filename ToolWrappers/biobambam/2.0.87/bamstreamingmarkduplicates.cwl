@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamstreamingmarkduplicates.cwl
+id: bamstreamingmarkduplicates.cwl
 inputs: []
 outputs:
 - id: out_stdout

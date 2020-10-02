@@ -61,7 +61,7 @@ subcommands:
     - --bins
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id013 !Command
+  parent: &id014 !Command
     command: *id001
     positional: []
     named: []
@@ -121,16 +121,10 @@ subcommands:
         - --bins
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: &id013 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: show where the metawrap configuration files are stored
-          synonyms:
-          - --show-config
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -187,7 +181,721 @@ subcommands:
             - --bins
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: show where the metawrap configuration files are stored
+              synonyms:
+              - --show-config
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: readsA_1.fastq
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: readsA_2.fastq
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: readsB_2.fastq
+                optional: true
+              named:
+              - !Flag
+                description: assembly fasta file
+                synonyms:
+                - -a
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: output directory
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: number of threads
+                synonyms:
+                - -t
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: INT     Number of contigs to run blobology on. Subsampling
+                  is randomized. (default=ALL)
+                synonyms:
+                - --subsamble
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: STR     Folder containing bins. Contig names must match
+                  those of the assembly file. (default=None)
+                synonyms:
+                - --bins
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "metawrap blobology --help\n\nUsage: metaWRAP blobology [options]\
+                \ -a assembly.fasta -o output_dir readsA_1.fastq readsA_2.fastq [readsB_1.fastq\
+                \ readsB_2.fastq ... ]\nOptions:\n\n\t-a STR\t\tassembly fasta file\n\
+                \t-o STR          output directory\n\t-t INT          number of threads\n\
+                \n\t--subsamble \tINT\tNumber of contigs to run blobology on. Subsampling\
+                \ is randomized. (default=ALL)\n\t--bins\t\tSTR\tFolder containing\
+                \ bins. Contig names must match those of the assembly file. (default=None)\n\
+                \n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - metaWRAP
+              - bin_refinement
+              positional: []
+              named:
+              - !Flag
+                description: output directory
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: number of threads (default=1)
+                synonyms:
+                - -t
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: memory available (default=40)
+                synonyms:
+                - -m
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: minimum % completion of bins [should be >50%] (default=70)
+                synonyms:
+                - -c
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: maximum % contamination of bins that is acceptable (default=10)
+                synonyms:
+                - -x
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: folder with metagenomic bins (files must have .fa or
+                  .fasta extension)
+                synonyms:
+                - -A
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: another folder with metagenomic bins
+                synonyms:
+                - -B
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: another folder with metagenomic bins
+                synonyms:
+                - -C
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: dont use binning_refiner to come up with refined bins
+                  based on combinations of binner outputs
+                synonyms:
+                - --skip-refinement
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: dont run CheckM to assess bins
+                synonyms:
+                - --skip-checkm
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: choose the best version of each bin from all bin refinement
+                  iteration
+                synonyms:
+                - --skip-consolidation
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'for contigs that end up in more than one bin, keep them
+                  in all bins (default: keeps them only in the best bin)'
+                synonyms:
+                - --keep-ambiguous
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'for contigs that end up in more than one bin, remove
+                  them in all bins (default: keeps them only in the best bin)'
+                synonyms:
+                - --remove-ambiguous
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: adds --reduced_tree option to checkm, reducing runtime,
+                  especially with low memory
+                synonyms:
+                - --quick
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "metawrap bin_refinement --help\n\nUsage: metaWRAP bin_refinement\
+                \ [options] -o output_dir -A bin_folderA [-B bin_folderB -C bin_folderC]\n\
+                Note: the contig names in different bin folders must be consistant\
+                \ (must come from the same assembly).\n\nOptions:\n\n\t-o STR    \
+                \      output directory\n\t-t INT          number of threads (default=1)\n\
+                \t-m INT\t\tmemory available (default=40)\n\t-c INT          minimum\
+                \ % completion of bins [should be >50%] (default=70)\n\t-x INT   \
+                \       maximum % contamination of bins that is acceptable (default=10)\n\
+                \n\t-A STR\t\tfolder with metagenomic bins (files must have .fa or\
+                \ .fasta extension)\n\t-B STR\t\tanother folder with metagenomic bins\n\
+                \t-C STR\t\tanother folder with metagenomic bins\n\n\t--skip-refinement\t\
+                dont use binning_refiner to come up with refined bins based on combinations\
+                \ of binner outputs\n\t--skip-checkm\t\tdont run CheckM to assess\
+                \ bins\n\t--skip-consolidation\tchoose the best version of each bin\
+                \ from all bin refinement iteration\n\t--keep-ambiguous\tfor contigs\
+                \ that end up in more than one bin, keep them in all bins (default:\
+                \ keeps them only in the best bin)\n\t--remove-ambiguous\tfor contigs\
+                \ that end up in more than one bin, remove them in all bins (default:\
+                \ keeps them only in the best bin)\n\t--quick\t\t\tadds --reduced_tree\
+                \ option to checkm, reducing runtime, especially with low memory\n\
+                \n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - metaWRAP
+              - quant_bins
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: readsX_1.fastq
+                optional: true
+              - !Positional
+                description: ''
+                position: 1
+                name: readsX_2.fastq
+                optional: true
+              named:
+              - !Flag
+                description: folder containing draft genomes (bins) in fasta format
+                synonyms:
+                - -b
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: output directory
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: fasta file with entire metagenomic assembly (strongly
+                  recommended!)
+                synonyms:
+                - -a
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: number of threads
+                synonyms:
+                - -t
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "metawrap quant_bins --help\n\nUsage: metaWRAP quant_bins\
+                \ [options] -b bins_folder -o output_dir -a assembly.fa readsA_1.fastq\
+                \ readsA_2.fastq ... [readsX_1.fastq readsX_2.fastq]\nOptions:\n\n\
+                \t-b STR          folder containing draft genomes (bins) in fasta\
+                \ format\n\t-o STR          output directory\n\t-a STR\t\tfasta file\
+                \ with entire metagenomic assembly (strongly recommended!)\n\t-t INT\t\
+                \tnumber of threads\n\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - metaWRAP
+              - classify_bins
+              positional: []
+              named:
+              - !Flag
+                description: folder with the bins to be classified (in fasta format)
+                synonyms:
+                - -b
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: output directory
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: number of threads
+                synonyms:
+                - -t
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "metawrap classify_bins --help\n\nUsage: metaWRAP classify_bins\
+                \ [options] -b bin_folder -o output_dir\nOptions:\n\n\t-b STR\t\t\
+                folder with the bins to be classified (in fasta format)\n\t-o STR\t\
+                \toutput directory\n\t-t INT          number of threads\n\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id008
+              - metaWRAP
+              - assembly
+              positional: []
+              named:
+              - !Flag
+                description: forward fastq reads
+                synonyms:
+                - '-1'
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: reverse fastq reads
+                synonyms:
+                - '-2'
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: output directory
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: memory in GB (default=24)
+                synonyms:
+                - -m
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: number of threads (defualt=1)
+                synonyms:
+                - -t
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: minimum length of assembled contigs (default=1000)
+                synonyms:
+                - -l
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: assemble with megahit (default)
+                synonyms:
+                - --megahit
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: assemble with metaspades instead of megahit (better results
+                  but slower amd higher memory requirement)
+                synonyms:
+                - --metaspades
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "metawrap assembly --help\n\nUsage: metaWRAP assembly [options]\
+                \ -1 reads_1.fastq -2 reads_2.fastq -o output_dir\nOptions:\n\n\t\
+                -1 STR          forward fastq reads\n\t-2 STR          reverse fastq\
+                \ reads\n\t-o STR          output directory\n\t-m INT          memory\
+                \ in GB (default=24)\n\t-t INT          number of threads (defualt=1)\n\
+                \t-l INT\t\tminimum length of assembled contigs (default=1000)\n\n\
+                \t--megahit\tassemble with megahit (default)\n\t--metaspades\tassemble\
+                \ with metaspades instead of megahit (better results but slower amd\
+                \ higher memory requirement)\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id009
+              - metaWRAP
+              - kraken
+              positional: []
+              named:
+              - !Flag
+                description: output directory
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: number of threads
+                synonyms:
+                - -t
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: read subsampling number (default=all)
+                synonyms:
+                - -s
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: do not pre-load the kraken DB into memory (slower, but
+                  lower memory requirement)
+                synonyms:
+                - --no-preload
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "metawrap kraken --help\n\nRun on any number of fasta assembly\
+                \ files and/or or paired-end reads.\nUsage: metaWRAP kraken [options]\
+                \ -o output_dir assembly.fasta reads_1.fastq reads_2.fastq ...\nOptions:\n\
+                \n\t-o STR          output directory\n\t-t INT          number of\
+                \ threads\n\t-s INT\t\tread subsampling number (default=all)\n\t--no-preload\t\
+                do not pre-load the kraken DB into memory (slower, but lower memory\
+                \ requirement)\n\n\tNote: you may pass any number of sequence files\
+                \ with the following extensions:\n\t*.fa *.fasta (assumed to be assembly\
+                \ files) or *_1.fastq and *_2.fastq (assumed to be paired)\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id010
+              - metaWRAP
+              - read_qc
+              positional: []
+              named:
+              - !Flag
+                description: forward fastq reads
+                synonyms:
+                - '-1'
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: reverse fastq reads
+                synonyms:
+                - '-2'
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: output directory
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: number of threads (default=1)
+                synonyms:
+                - -t
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: prefix of host index in bmtagger database folder (default=hg38)
+                synonyms:
+                - -x
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: dont remove human sequences with bmtagger
+                synonyms:
+                - --skip-bmtagger
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: dont trim sequences with trimgalore
+                synonyms:
+                - --skip-trimming
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: dont make FastQC report of input sequences
+                synonyms:
+                - --skip-pre-qc-report
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: dont make FastQC report of final sequences
+                synonyms:
+                - --skip-post-qc-report
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "metawrap read_qc --help\n\nUsage: metaWRAP read_qc [options]\
+                \ -1 reads_1.fastq -2 reads_2.fastq -o output_dir\nNote: the read\
+                \ files have to be named in the name_1.fastq/name_2.fastq convention.\n\
+                Options:\n\n\t-1 STR          forward fastq reads\n\t-2 STR      \
+                \    reverse fastq reads\n\t-o STR          output directory\n\t-t\
+                \ INT          number of threads (default=1)\n\t-x STR\t\tprefix of\
+                \ host index in bmtagger database folder (default=hg38)\n\n\t--skip-bmtagger\t\
+                \tdont remove human sequences with bmtagger\n\t--skip-trimming\t\t\
+                dont trim sequences with trimgalore\n\t--skip-pre-qc-report\tdont\
+                \ make FastQC report of input sequences\n\t--skip-post-qc-report\t\
+                dont make FastQC report of final sequences\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id011
+              - metaWRAP
+              - binning
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: readsX_1.fastq
+                optional: true
+              - !Positional
+                description: ''
+                position: 1
+                name: readsX_2.fastq
+                optional: true
+              named:
+              - !Flag
+                description: metagenomic assembly file
+                synonyms:
+                - -a
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: output directory
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: number of threads (default=1)
+                synonyms:
+                - -t
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: amount of RAM available (default=4)
+                synonyms:
+                - -m
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: 'minimum contig length to bin (default=1000bp). Note:
+                  metaBAT will default to 1500bp minimum'
+                synonyms:
+                - -l
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: bin contigs with metaBAT2
+                synonyms:
+                - --metabat2
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: bin contigs with the original metaBAT
+                synonyms:
+                - --metabat1
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: bin contigs with MaxBin2
+                synonyms:
+                - --maxbin2
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: bin contigs with CONCOCT
+                synonyms:
+                - --concoct
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: use universal marker genes instead of bacterial markers
+                  in MaxBin2 (improves Archaea binning)
+                synonyms:
+                - --universal
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: immediately run CheckM on the bin results (requires 40GB+
+                  of memory)
+                synonyms:
+                - --run-checkm
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: non-paired reads mode (provide *.fastq files)
+                synonyms:
+                - --single-end
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: the input read files contain interleaved paired-end reads
+                synonyms:
+                - --interleaved
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "metawrap binning --help\n\nUsage: metaWRAP binning [options]\
+                \ -a assembly.fa -o output_dir readsA_1.fastq readsA_2.fastq ... [readsX_1.fastq\
+                \ readsX_2.fastq]\nNote1: Make sure to provide all your separately\
+                \ replicate read files, not the joined file.\nNote2: You may provide\
+                \ single end or interleaved reads as well with the use of the correct\
+                \ option\nNote3: If the output already has the .bam alignments files\
+                \ from previous runs, the module will skip re-aligning the reads\n\
+                \nOptions:\n\n\t-a STR          metagenomic assembly file\n\t-o STR\
+                \          output directory\n\t-t INT          number of threads (default=1)\n\
+                \t-m INT\t\tamount of RAM available (default=4)\n\t-l INT\t\tminimum\
+                \ contig length to bin (default=1000bp). Note: metaBAT will default\
+                \ to 1500bp minimum\n\n\t--metabat2      bin contigs with metaBAT2\n\
+                \t--metabat1\tbin contigs with the original metaBAT\n\t--maxbin2\t\
+                bin contigs with MaxBin2\n\t--concoct\tbin contigs with CONCOCT\n\n\
+                \t--universal\tuse universal marker genes instead of bacterial markers\
+                \ in MaxBin2 (improves Archaea binning)\n\t--run-checkm\timmediately\
+                \ run CheckM on the bin results (requires 40GB+ of memory)\n\t--single-end\t\
+                non-paired reads mode (provide *.fastq files)\n\t--interleaved\tthe\
+                \ input read files contain interleaved paired-end reads\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id012
+              - metaWRAP
+              - annotate_bins
+              positional: []
+              named:
+              - !Flag
+                description: output directory
+                synonyms:
+                - -o
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              - !Flag
+                description: number of threads (default=1)
+                synonyms:
+                - -t
+                args: !SimpleFlagArg
+                  name: INT
+                optional: true
+              - !Flag
+                description: folder with metagenomic bins in fasta format
+                synonyms:
+                - -b
+                args: !SimpleFlagArg
+                  name: STR
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "metawrap annotate_bins --help\n\nUsage: metaWRAP annotate_bins\
+                \ [options] -o output_dir -b bin_folder\n\nOptions:\n\n\t-o STR\t\t\
+                output directory\n\t-t INT\t\tnumber of threads (default=1)\n\t-b\
+                \ STR\t\tfolder with metagenomic bins in fasta format\n\n\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: '| -h             show this help message'
+              synonyms:
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: '| -v  show metaWRAP version'
+              synonyms:
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "\nMetaWRAP v=1.2\nUsage: metaWRAP [module]\n\n\tModules:\n\
+              \tread_qc\t\tRaw read QC module (read trimming and contamination removal)\n\
+              \tassembly\tAssembly module (metagenomic assembly)\n\tkraken\t\tKRAKEN\
+              \ module (taxonomy annotation of reads and assemblies)\n\tblobology\t\
+              Blobology module (GC vs Abund plots of contigs and bins)\n\n\tbinning\t\
+              \tBinning module (metabat, maxbin, or concoct)\n\tbin_refinement\tRefinement\
+              \ of bins from binning module\n\treassemble_bins Reassemble bins using\
+              \ metagenomic reads\n\tquant_bins\tQuantify the abundance of each bin\
+              \ across samples\n\tclassify_bins\tAssign taxonomy to genomic bins\n\
+              \tannotate_bins\tFunctional annotation of draft genomes\n\n\t--help\
+              \ | -h\t\tshow this help message\n\t--version | -v\tshow metaWRAP version\n\
+              \t--show-config\tshow where the metawrap configuration files are stored\n\
+              \n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag:
@@ -201,12 +909,9 @@ subcommands:
             \ is randomized. (default=ALL)\n\t--bins\t\tSTR\tFolder containing bins.\
             \ Contig names must match those of the assembly file. (default=None)\n\
             \n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - metaWRAP
-          - bin_refinement
+          command: *id005
           positional: []
           named:
           - !Flag
@@ -334,9 +1039,7 @@ subcommands:
             \ option to checkm, reducing runtime, especially with low memory\n\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - metaWRAP
-          - quant_bins
+          command: *id006
           positional:
           - !Positional
             description: ''
@@ -391,9 +1094,7 @@ subcommands:
             \ recommended!)\n\t-t INT\t\tnumber of threads\n\n\n"
           generated_using: *id004
         - !Command
-          command: &id007
-          - metaWRAP
-          - classify_bins
+          command: *id007
           positional: []
           named:
           - !Flag
@@ -429,9 +1130,7 @@ subcommands:
             \ directory\n\t-t INT          number of threads\n\n\n"
           generated_using: *id004
         - !Command
-          command: &id008
-          - metaWRAP
-          - assembly
+          command: *id008
           positional: []
           named:
           - !Flag
@@ -505,9 +1204,7 @@ subcommands:
             \ (better results but slower amd higher memory requirement)\n\n"
           generated_using: *id004
         - !Command
-          command: &id009
-          - metaWRAP
-          - kraken
+          command: *id009
           positional: []
           named:
           - !Flag
@@ -555,9 +1252,7 @@ subcommands:
             \ and *_2.fastq (assumed to be paired)\n\n"
           generated_using: *id004
         - !Command
-          command: &id010
-          - metaWRAP
-          - read_qc
+          command: *id010
           positional: []
           named:
           - !Flag
@@ -638,9 +1333,7 @@ subcommands:
             \ sequences\n\n"
           generated_using: *id004
         - !Command
-          command: &id011
-          - metaWRAP
-          - binning
+          command: *id011
           positional:
           - !Positional
             description: ''
@@ -766,9 +1459,7 @@ subcommands:
             \n"
           generated_using: *id004
         - !Command
-          command: &id012
-          - metaWRAP
-          - annotate_bins
+          command: *id012
           positional: []
           named:
           - !Flag
@@ -804,19 +1495,9 @@ subcommands:
             \ with metagenomic bins in fasta format\n\n\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: '| -h             show this help message'
-          synonyms:
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: '| -v  show metaWRAP version'
-          synonyms:
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "\nMetaWRAP v=1.2\nUsage: metaWRAP [module]\n\n\tModules:\n\tread_qc\t\
           \tRaw read QC module (read trimming and contamination removal)\n\tassembly\t\
           Assembly module (metagenomic assembly)\n\tkraken\t\tKRAKEN module (taxonomy\
@@ -943,7 +1624,7 @@ subcommands:
         - --quick
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id013
       subcommands: []
       usage: []
       help_flag:
@@ -1011,7 +1692,7 @@ subcommands:
         args: !SimpleFlagArg
           name: INT
         optional: true
-      parent: *id003
+      parent: *id013
       subcommands: []
       usage: []
       help_flag:
@@ -1049,7 +1730,7 @@ subcommands:
         args: !SimpleFlagArg
           name: INT
         optional: true
-      parent: *id003
+      parent: *id013
       subcommands: []
       usage: []
       help_flag:
@@ -1119,7 +1800,7 @@ subcommands:
         - --metaspades
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id013
       subcommands: []
       usage: []
       help_flag:
@@ -1166,7 +1847,7 @@ subcommands:
         - --no-preload
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id013
       subcommands: []
       usage: []
       help_flag:
@@ -1245,7 +1926,7 @@ subcommands:
         - --skip-post-qc-report
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id013
       subcommands: []
       usage: []
       help_flag:
@@ -1362,7 +2043,7 @@ subcommands:
         - --interleaved
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id013
       subcommands: []
       usage: []
       help_flag:
@@ -1411,7 +2092,7 @@ subcommands:
         args: !SimpleFlagArg
           name: STR
         optional: true
-      parent: *id003
+      parent: *id013
       subcommands: []
       usage: []
       help_flag:
@@ -1551,7 +2232,7 @@ subcommands:
     - --quick
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag:
@@ -1618,7 +2299,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag:
@@ -1656,7 +2337,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag:
@@ -1726,7 +2407,7 @@ subcommands:
     - --metaspades
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag:
@@ -1773,7 +2454,7 @@ subcommands:
     - --no-preload
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag:
@@ -1851,7 +2532,7 @@ subcommands:
     - --skip-post-qc-report
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag:
@@ -1966,7 +2647,7 @@ subcommands:
     - --interleaved
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag:
@@ -2014,7 +2695,7 @@ subcommands:
     args: !SimpleFlagArg
       name: STR
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag:

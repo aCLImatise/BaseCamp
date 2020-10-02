@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamauxsort.cwl
+id: bamauxsort.cwl
 inputs: []
 outputs:
 - id: out_stdout

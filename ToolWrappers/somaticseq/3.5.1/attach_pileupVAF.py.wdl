@@ -2,7 +2,6 @@ version 1.0
 
 task AttachPileupVAFpy {
   input {
-    File? outfile
     File? my_vcf_file
     String? normal_sample_name
     String? tumor_sample_name
@@ -16,7 +15,6 @@ task AttachPileupVAFpy {
   }
   command <<<
     attach_pileupVAF_py \
-      ~{if defined(outfile) then ("-outfile " +  '"' + outfile + '"') else ""} \
       ~{if defined(my_vcf_file) then ("--my-vcf-file " +  '"' + my_vcf_file + '"') else ""} \
       ~{if defined(normal_sample_name) then ("--normal-sample-name " +  '"' + normal_sample_name + '"') else ""} \
       ~{if defined(tumor_sample_name) then ("--tumor-sample-name " +  '"' + tumor_sample_name + '"') else ""} \
@@ -29,7 +27,6 @@ task AttachPileupVAFpy {
       ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
   parameter_meta {
-    outfile: ""
     my_vcf_file: "My VCF (default: None)"
     normal_sample_name: "Normal Sample Name (default: NORMAL)"
     tumor_sample_name: "Tumor Sample Name (default: TUMOR)"
@@ -43,7 +40,6 @@ task AttachPileupVAFpy {
   }
   output {
     File out_stdout = stdout()
-    File out_outfile = "${in_outfile}"
     File out_output_file = "${in_output_file}"
   }
 }

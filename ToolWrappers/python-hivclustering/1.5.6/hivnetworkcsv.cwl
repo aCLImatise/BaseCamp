@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hivnetworkcsv.cwl
+id: hivnetworkcsv.cwl
 inputs:
 - id: in_input
   doc: "Input CSV file with inferred genetic links (or stdin\nif omitted). Can be\

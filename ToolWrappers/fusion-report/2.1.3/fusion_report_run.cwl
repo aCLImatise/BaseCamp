@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fusion_report_run.cwl
+id: fusion_report_run.cwl
 inputs:
 - id: in_eric_script
   doc: EricScript output file

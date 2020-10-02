@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../build_fusion_annot_db_index.pl.cwl
+id: build_fusion_annot_db_index.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

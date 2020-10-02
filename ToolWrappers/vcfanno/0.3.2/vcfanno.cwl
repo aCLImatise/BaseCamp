@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfanno.cwl
+id: vcfanno.cwl
 inputs:
 - id: in_base_path
   doc: optional base-path to prepend to annotation files in the config

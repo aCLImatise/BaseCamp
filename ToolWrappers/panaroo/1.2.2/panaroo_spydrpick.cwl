@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../panaroo_spydrpick.cwl
+id: panaroo_spydrpick.cwl
 inputs:
 - id: in_quantile
   doc: "the quantile used to determine a threshold for keeping\nMI values (default=0.9)."

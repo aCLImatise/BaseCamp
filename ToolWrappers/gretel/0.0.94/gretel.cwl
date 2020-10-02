@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gretel.cwl
+id: gretel.cwl
 inputs:
 - id: in_start
   doc: '1-indexed included start base position [default: 1]'

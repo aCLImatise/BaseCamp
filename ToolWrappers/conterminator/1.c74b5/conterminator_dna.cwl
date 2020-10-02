@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../conterminator_dna.cwl
+id: conterminator_dna.cwl
 inputs:
 - id: in_comp_bias_corr
   doc: correct for locally biased amino acid composition (range 0-1) [0]
@@ -396,11 +396,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --blacklist
-- id: in_kingdoms
-  doc: '[(2||2157),4751,33208,33090,(2759&&!4751&&!33208&&!33090)]'
-  type: long
-  inputBinding:
-    prefix: --kingdoms
 - id: in_sub_mat
   doc: amino acid substitution matrix file [nucl:nucleotide.out,aa:blosum62.out]
   type: File

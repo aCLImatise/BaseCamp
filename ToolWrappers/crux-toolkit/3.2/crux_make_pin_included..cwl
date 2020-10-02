@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_make_pin_included..cwl
+id: crux_make_pin_included..cwl
 inputs:
 - id: in_crux
   doc: ''

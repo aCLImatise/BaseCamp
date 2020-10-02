@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_rnamaps.cwl
+id: iCount_rnamaps.cwl
 inputs:
 - id: in_implicit_handling
   doc: "Can be 'closest' or 'split'. In case of implicit read - split score to\nboth\

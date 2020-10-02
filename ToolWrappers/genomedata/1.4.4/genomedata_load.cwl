@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomedata_load.cwl
+id: genomedata_load.cwl
 inputs:
 - id: in_sequence
   doc: "Add the sequence data in the specified file or files\n(may use UNIX glob wildcard\

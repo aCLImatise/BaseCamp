@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blocksplit.cwl
+id: blocksplit.cwl
 inputs:
 - id: in_input_file
   doc: "The input VCF/BCF file(s) (use file:sample to\nspecify a sample)"

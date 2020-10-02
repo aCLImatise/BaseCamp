@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_merge_annotations.pl.cwl
+id: agat_sp_merge_annotations.pl.cwl
 inputs:
 - id: in_gff
   doc: "Input GTF/GFF file(s). You can specify as much file you want\nlike so: -f\

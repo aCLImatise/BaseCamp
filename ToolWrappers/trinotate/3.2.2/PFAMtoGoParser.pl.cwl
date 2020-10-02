@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PFAMtoGoParser.pl.cwl
+id: PFAMtoGoParser.pl.cwl
 inputs:
 - id: in_pfam_to_go
   doc: ''

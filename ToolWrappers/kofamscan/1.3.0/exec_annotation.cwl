@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../exec_annotation.cwl
+id: exec_annotation.cwl
 inputs:
 - id: in_file_output_result
   doc: File to output the result  [stdout]

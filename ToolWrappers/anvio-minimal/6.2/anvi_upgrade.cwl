@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_upgrade.cwl
+id: anvi_upgrade.cwl
 inputs:
 - id: in_repository
   doc: "Source repository to download releases, currently only\nGithub is supported.\

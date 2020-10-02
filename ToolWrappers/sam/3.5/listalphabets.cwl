@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../listalphabets.cwl
+id: listalphabets.cwl
 inputs:
 - id: in_option
   doc: ''

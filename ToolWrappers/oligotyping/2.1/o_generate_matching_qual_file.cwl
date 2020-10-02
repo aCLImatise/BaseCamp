@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_generate_matching_qual_file.cwl
+id: o_generate_matching_qual_file.cwl
 inputs: []
 outputs:
 - id: out_stdout

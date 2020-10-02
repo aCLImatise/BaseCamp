@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extractDEs.cwl
+id: extractDEs.cwl
 inputs:
 - id: in_output
   doc: Write output to this file (STDOUT if omitted).

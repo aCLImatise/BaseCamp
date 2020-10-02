@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReverseSatsumaOut.cwl
+id: ReverseSatsumaOut.cwl
 inputs:
 - id: in_string_input_file
   doc: '<string> : input satsuma file'

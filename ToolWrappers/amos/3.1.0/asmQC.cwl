@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../asmQC.cwl
+id: asmQC.cwl
 inputs:
 - id: in_bank
   doc: bank where assembly is stored

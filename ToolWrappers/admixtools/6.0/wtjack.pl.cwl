@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtjack.pl.cwl
+id: wtjack.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

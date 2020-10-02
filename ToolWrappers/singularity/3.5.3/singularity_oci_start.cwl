@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singularity_oci_start.cwl
+id: singularity_oci_start.cwl
 inputs:
 - id: in_singularity
   doc: ''

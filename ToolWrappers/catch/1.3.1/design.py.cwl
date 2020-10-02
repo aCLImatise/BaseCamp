@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../design.py.cwl
+id: design.py.cwl
 inputs:
 - id: in_output_probes
   doc: "The file to which all final probes should be written;\nthey are written in\

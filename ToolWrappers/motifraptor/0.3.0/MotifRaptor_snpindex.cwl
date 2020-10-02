@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MotifRaptor_snpindex.cwl
+id: MotifRaptor_snpindex.cwl
 inputs:
 - id: in_vcf_filename
   doc: "input - VCF file for SNPs, first five columns need to\nbe CHR,POS,ID,REF,ALT"

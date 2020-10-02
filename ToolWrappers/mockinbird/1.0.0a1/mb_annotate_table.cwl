@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_annotate_table.cwl
+id: mb_annotate_table.cwl
 inputs:
 - id: in_max_n
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../btwisted.cwl
+id: btwisted.cwl
 inputs:
 - id: in_angle_data
   doc: datafile   [Eangles.dat] DNA base pair twist angle data

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LongGF.cwl
+id: LongGF.cwl
 inputs:
 - id: in_input_bam
   doc: ''

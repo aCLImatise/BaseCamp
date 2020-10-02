@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Compare.cwl
+id: Compare.cwl
 inputs:
 - id: in_bam
   doc: ': bam file'

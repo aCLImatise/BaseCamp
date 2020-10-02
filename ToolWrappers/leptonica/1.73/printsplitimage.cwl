@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../printsplitimage.cwl
+id: printsplitimage.cwl
 inputs: []
 outputs:
 - id: out_stdout

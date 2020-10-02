@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmcloser_blast_LR_MT.pl_alignments..cwl
+id: gmcloser_blast_LR_MT.pl_alignments..cwl
 inputs:
 - id: in_target_s_caf
   doc: 'is not specied:'

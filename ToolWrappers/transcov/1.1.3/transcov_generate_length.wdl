@@ -3,7 +3,6 @@ version 1.0
 task TranscovGeneratelength {
   input {
     File? output_file
-    Int? max_length
     String bam_file
     String bed_file
   }
@@ -11,12 +10,10 @@ task TranscovGeneratelength {
     transcov generate_length \
       ~{bam_file} \
       ~{bed_file} \
-      ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
-      ~{if defined(max_length) then ("--max-length " +  '"' + max_length + '"') else ""}
+      ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""}
   >>>
   parameter_meta {
-    output_file: ""
-    max_length: "RANGE"
+    output_file: "-m, --max-length INTEGER RANGE\\n--help                          Show this message and exit.\\n"
     bam_file: ""
     bed_file: ""
   }

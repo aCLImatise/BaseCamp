@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LiBis.cwl
+id: LiBis.cwl
 inputs:
 - id: in_file
   doc: "Enter a number, 0 means using parameter to set up, 1\nmeans using text file\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MACARON.cwl
+id: MACARON.cwl
 inputs:
 - id: in_script
   doc: identify SnpClusters (SNPs within the same genetic codon)

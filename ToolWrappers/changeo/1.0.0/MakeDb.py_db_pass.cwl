@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MakeDb.py_db_pass.cwl
+id: MakeDb.py_db_pass.cwl
 inputs:
 - id: in_make_db_do_tpy
   doc: ''

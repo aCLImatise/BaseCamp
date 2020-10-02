@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../erne_filter.cwl
+id: erne_filter.cwl
 inputs:
 - id: in_contamination_reference
   doc: "reference file to use (in our format and with\n.ebh extension)"

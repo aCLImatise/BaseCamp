@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plotkmers.cwl
+id: plotkmers.cwl
 inputs:
 - id: in_plot_filename
   doc: Kmer to use, depends on read length [kmerplot.png]

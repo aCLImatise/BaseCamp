@@ -19,8 +19,6 @@ task SgaPreprocess {
     Float? dust_threshold
     String? suffix
     Boolean? no_primer_check
-    String? remove_adapter_fwd
-    String? remove_adapter_rev
     String prepare
     Int reads_one
   }
@@ -44,9 +42,7 @@ task SgaPreprocess {
       ~{if (dust) then "--dust" else ""} \
       ~{if defined(dust_threshold) then ("--dust-threshold " +  '"' + dust_threshold + '"') else ""} \
       ~{if defined(suffix) then ("--suffix " +  '"' + suffix + '"') else ""} \
-      ~{if (no_primer_check) then "--no-primer-check" else ""} \
-      ~{if defined(remove_adapter_fwd) then ("--remove-adapter-fwd " +  '"' + remove_adapter_fwd + '"') else ""} \
-      ~{if defined(remove_adapter_rev) then ("--remove-adapter-rev " +  '"' + remove_adapter_rev + '"') else ""}
+      ~{if (no_primer_check) then "--no-primer-check" else ""}
   >>>
   parameter_meta {
     verbose: "display verbose output"
@@ -65,9 +61,7 @@ task SgaPreprocess {
     dust: "Perform dust-style filtering of low complexity reads."
     dust_threshold: "filter out reads that have a dust score higher than FLOAT (default: 4.0)."
     suffix: "append SUFFIX to each read ID"
-    no_primer_check: "disable the default check for primer sequences"
-    remove_adapter_fwd: ""
-    remove_adapter_rev: "Remove the adapter STRING from input reads."
+    no_primer_check: "disable the default check for primer sequences\\n-r, --remove-adapter-fwd=STRING\\n-c, --remove-adapter-rev=STRING  Remove the adapter STRING from input reads."
     prepare: ""
     reads_one: ""
   }

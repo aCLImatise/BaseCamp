@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MapNormalizer.cwl
+id: MapNormalizer.cwl
 inputs:
 - id: in_in
   doc: "*        Input file  (valid formats: 'mzML')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../est_params.r.cwl
+id: est_params.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../matchGraph.py.cwl
+id: matchGraph.py.cwl
 inputs:
 - id: in_is_input_filename
   doc: is the input filename

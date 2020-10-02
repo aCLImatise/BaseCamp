@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BlibFilter.cwl
+id: BlibFilter.cwl
 inputs:
 - id: in_arg_sqlite_memory
   doc: '[ --memory-cache ] arg (=250)  SQLite memory cache size in Megs.  Default'

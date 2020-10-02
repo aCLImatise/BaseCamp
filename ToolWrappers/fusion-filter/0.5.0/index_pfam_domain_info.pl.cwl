@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../index_pfam_domain_info.pl.cwl
+id: index_pfam_domain_info.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_fishtaco.py.cwl
+id: run_fishtaco.py.cwl
 inputs:
 - id: in_taxonomic_abundance_profiles
   doc: Input file of taxonomic abundance profiles

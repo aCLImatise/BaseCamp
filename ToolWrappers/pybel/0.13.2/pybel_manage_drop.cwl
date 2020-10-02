@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pybel_manage_drop.cwl
+id: pybel_manage_drop.cwl
 inputs:
 - id: in_yes
   doc: Confirm the action without prompting.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simkaMin_update.py.cwl
+id: simkaMin_update.py.cwl
 inputs:
 - id: in_in
   doc: '(1 arg) :    input file of datasets (datasets to add to existing simka results'

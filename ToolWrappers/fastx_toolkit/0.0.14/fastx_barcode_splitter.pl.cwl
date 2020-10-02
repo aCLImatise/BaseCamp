@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastx_barcode_splitter.pl.cwl
+id: fastx_barcode_splitter.pl.cwl
 inputs:
 - id: in_bc_file
   doc: '- Barcodes file name. (see explanation below.)'
@@ -57,8 +57,8 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
-- id: in_var_10
-  doc: ''
+- id: in_gatct__mismatch
+  doc: GATCT (1 mismatch)
   type: boolean
   inputBinding:
     prefix: -ATTTACTATGTAAAGATAGAAGGAATAAGGTGAAG

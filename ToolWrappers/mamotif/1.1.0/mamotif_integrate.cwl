@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mamotif_integrate.cwl
+id: mamotif_integrate.cwl
 inputs:
 - id: in_verbose
   doc: Enable verbose log messages.

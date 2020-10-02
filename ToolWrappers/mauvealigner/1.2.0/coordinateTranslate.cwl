@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coordinateTranslate.cwl
+id: coordinateTranslate.cwl
 inputs:
 - id: in_x_mfa_alignment
   doc: ''

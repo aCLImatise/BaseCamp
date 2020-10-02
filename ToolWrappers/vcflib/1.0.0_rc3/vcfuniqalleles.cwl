@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfuniqalleles.cwl
+id: vcfuniqalleles.cwl
 inputs: []
 outputs:
 - id: out_stdout

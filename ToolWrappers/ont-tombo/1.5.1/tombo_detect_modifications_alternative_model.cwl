@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tombo_detect_modifications_alternative_model.cwl
+id: tombo_detect_modifications_alternative_model.cwl
 inputs:
 - id: in_fast_five_based_irs
   doc: Directories containing fast5 files.

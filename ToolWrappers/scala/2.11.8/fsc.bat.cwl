@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fsc.bat.cwl
+id: fsc.bat.cwl
 inputs: []
 outputs:
 - id: out_stdout

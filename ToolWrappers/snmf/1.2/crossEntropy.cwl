@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crossEntropy.cwl
+id: crossEntropy.cwl
 inputs:
 - id: in__genotype_file_geno
   doc: -- genotype file (in .geno format)

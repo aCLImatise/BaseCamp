@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_get_bundles_all.cwl
+id: hca_dss_get_bundles_all.cwl
 inputs:
 - id: in_replica
   doc: Replica to fetch from.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svict.cwl
+id: svict.cwl
 inputs:
 - id: in_input
   doc: "[FILE]\nInput alignment file. This file should be a sorted SAM or BAM file."

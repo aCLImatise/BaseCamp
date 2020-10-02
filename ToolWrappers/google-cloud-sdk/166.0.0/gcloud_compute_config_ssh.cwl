@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_config_ssh.cwl
+id: gcloud_compute_config_ssh.cwl
 inputs:
 - id: in_dry_run
   doc: "If provided, the proposed changes to the SSH config file are printed to\n\

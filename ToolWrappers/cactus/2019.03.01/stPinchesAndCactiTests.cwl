@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stPinchesAndCactiTests.cwl
+id: stPinchesAndCactiTests.cwl
 inputs: []
 outputs:
 - id: out_stdout

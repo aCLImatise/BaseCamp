@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hailctl_dataproc_describe.cwl
+id: hailctl_dataproc_describe.cwl
 inputs:
 - id: in_file
   doc: Path to hail file (either MatrixTable or Table).

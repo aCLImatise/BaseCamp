@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../est_abundance.py.cwl
+id: est_abundance.py.cwl
 inputs:
 - id: in_input
   doc: Input kraken report file.

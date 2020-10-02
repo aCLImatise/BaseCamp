@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bfconvert.cwl
+id: bfconvert.cwl
 inputs:
 - id: in_version
   doc: ': print the library version and exit'

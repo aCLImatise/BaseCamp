@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_graphdr.py.cwl
+id: run_graphdr.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

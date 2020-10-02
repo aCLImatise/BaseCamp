@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_analyze.cwl
+id: checkm_analyze.cwl
 inputs:
 - id: in_ali
   doc: generate HMMER alignment file for each bin

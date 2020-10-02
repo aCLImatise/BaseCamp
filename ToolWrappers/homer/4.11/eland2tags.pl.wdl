@@ -24,7 +24,7 @@ task Eland2tagspl {
     uniq: "<#> (Max matches to genome for multiple eland format, default=1)"
     seq: "(include sequence with tag)"
     non_uniq: "(include a single version of nonuniq tags, bowtie only)"
-    or: ""
+    or: "Column 6: + or - for stand\\n"
   }
   output {
     File out_stdout = stdout()

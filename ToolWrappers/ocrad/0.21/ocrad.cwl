@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ocrad.cwl
+id: ocrad.cwl
 inputs: []
 outputs:
 - id: out_stdout

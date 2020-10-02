@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pdb_variants.cwl
+id: pdb_variants.cwl
 inputs:
 - id: in_config
   doc: This file can be a YAML file, JSON file or JSON string

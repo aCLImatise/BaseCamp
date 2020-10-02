@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IDMassAccuracy.cwl
+id: IDMassAccuracy.cwl
 inputs:
 - id: in_in
   doc: "*                      Input mzML file list, containing the spectra. (valid\

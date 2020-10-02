@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test.mgcv.installed.R.cwl
+id: test.mgcv.installed.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

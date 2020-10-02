@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_genemetrics.cwl
+id: cnvkit.py_genemetrics.cwl
 inputs:
 - id: in_segment
   doc: "Segmentation calls (.cns), the output of the 'segment'\ncommand)."

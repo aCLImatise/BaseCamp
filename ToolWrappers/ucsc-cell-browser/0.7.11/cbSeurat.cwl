@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cbSeurat.cwl
+id: cbSeurat.cwl
 inputs:
 - id: in_in_it
   doc: copy sample seurat.conf to current directory

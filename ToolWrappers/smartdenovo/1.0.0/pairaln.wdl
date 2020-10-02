@@ -8,7 +8,6 @@ task Pairaln {
     Int? alignment_penalty_insertion
     Int? alignment_penalty_gap
     Int? alignment_penalty_read
-    Int? bandwidth
     Boolean? output_alignment
     String a_aggcc_tt
     String aag_cctt
@@ -23,7 +22,6 @@ task Pairaln {
       ~{if defined(alignment_penalty_insertion) then ("-O " +  '"' + alignment_penalty_insertion + '"') else ""} \
       ~{if defined(alignment_penalty_gap) then ("-E " +  '"' + alignment_penalty_gap + '"') else ""} \
       ~{if defined(alignment_penalty_read) then ("-T " +  '"' + alignment_penalty_read + '"') else ""} \
-      ~{if defined(bandwidth) then ("-W " +  '"' + bandwidth + '"') else ""} \
       ~{if (output_alignment) then "-a" else ""}
   >>>
   parameter_meta {
@@ -33,7 +31,6 @@ task Pairaln {
     alignment_penalty_insertion: "Alignment penalty: insertion or deletion, [-3]"
     alignment_penalty_gap: "Alignment penalty: gap extension, [-1]"
     alignment_penalty_read: "Alignment penalty: read end clipping, 0: distable HSP extension, otherwise set to -100 or other [-100]"
-    bandwidth: "Bandwidth, [800]"
     output_alignment: "Output alignment"
     a_aggcc_tt: ">read2"
     aag_cctt: "and so on, read3, read4, ..."

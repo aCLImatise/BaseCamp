@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedpeToBed.cwl
+id: BedpeToBed.cwl
 inputs:
 - id: in_in
   doc: Input BEDPE file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../latex.py.cwl
+id: latex.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

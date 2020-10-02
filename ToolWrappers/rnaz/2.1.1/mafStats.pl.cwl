@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafStats.pl.cwl
+id: mafStats.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

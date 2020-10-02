@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../espgen.py.cwl
+id: espgen.py.cwl
 inputs:
 - id: in_input_file_name
   doc: Input file name

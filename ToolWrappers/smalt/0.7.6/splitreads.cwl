@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitreads.cwl
+id: splitreads.cwl
 inputs: []
 outputs:
 - id: out_stdout

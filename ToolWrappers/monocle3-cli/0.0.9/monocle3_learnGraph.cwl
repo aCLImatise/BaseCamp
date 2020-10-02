@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../monocle3_learnGraph.cwl
+id: monocle3_learnGraph.cwl
 inputs:
 - id: in_input_object_format
   doc: 'Format of input object. [Default: cds3]'

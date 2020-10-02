@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jasmine.jar.cwl
+id: jasmine.jar.cwl
 inputs: []
 outputs:
 - id: out_stdout

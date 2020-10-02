@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stk2ct.cwl
+id: stk2ct.cwl
 inputs:
 - id: in_options
   doc: ''

@@ -31,7 +31,6 @@ task RsatComparepatterns {
     Int max_w_two
     Int length
     String seq
-    String thresholds
   }
   command <<<
     rsat compare_patterns \
@@ -51,7 +50,6 @@ task RsatComparepatterns {
       ~{max_w_two} \
       ~{length} \
       ~{seq} \
-      ~{thresholds} \
       ~{if (help) then "-help" else ""} \
       ~{if (verbose) then "-v" else ""} \
       ~{if (seq_one) then "-seq1" else ""} \
@@ -96,7 +94,6 @@ task RsatComparepatterns {
     max_w_two: "maximal weight for pattern 2"
     length: "lengths \\nThis option returns 4 length values\\nlen1   length of sequence 1\\nlen2   length of sequence 2\\nmlen   length of the match\\ntlen   total length of the alignment\\ntlen = len1 + len2 - mlen"
     seq: "sequences to be compared"
-    thresholds: "----------"
   }
   output {
     File out_stdout = stdout()

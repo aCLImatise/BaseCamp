@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SanitizeMePaired_CLI.py.cwl
+id: SanitizeMePaired_CLI.py.cwl
 inputs:
 - id: in_input_folder
   doc: "Folder containing paired fq, fq.gz, fastq, and\nfastq.gz files. Program will\

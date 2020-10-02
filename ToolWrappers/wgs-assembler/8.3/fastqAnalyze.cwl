@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastqAnalyze.cwl
+id: fastqAnalyze.cwl
 inputs:
 - id: in_solexa
   doc: input QV is solexa
@@ -16,9 +16,9 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -sanger
-- id: in_sangerstyleoutputfastq
-  doc: sanger-style-output.fastq
-  type: boolean
+- id: in_o
+  doc: ''
+  type: string
   inputBinding:
     prefix: -o
 - id: in_stats

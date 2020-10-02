@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../upimapi.py.cwl
+id: upimapi.py.cwl
 inputs:
 - id: in_input
   doc: "Input filename - can be a list of IDs (one per line)\nor a BLAST TSV file\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../check_mandatory_files.sh.cwl
+id: check_mandatory_files.sh.cwl
 inputs:
 - id: in_basename
   doc: ''

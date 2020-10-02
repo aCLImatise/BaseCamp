@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chain2dim.cwl
+id: chain2dim.cwl
 inputs: []
 outputs:
 - id: out_stdout

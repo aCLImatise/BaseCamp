@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../suppa.py_clusterEvents.cwl
+id: suppa.py_clusterEvents.cwl
 inputs:
 - id: in_dps_i
   doc: Input file of delta-PSI values (.dpsi format)

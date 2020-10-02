@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runAmos.cwl
+id: runAmos.cwl
 inputs:
 - id: in_allows_variables_defined
   doc: "allows variables to be defined outside of the conf file.\nmultiple such options\

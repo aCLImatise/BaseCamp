@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../infobase.cwl
+id: infobase.cwl
 inputs: []
 outputs:
 - id: out_stdout

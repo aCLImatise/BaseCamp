@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../diff3.cwl
+id: diff3.cwl
 inputs:
 - id: in_show_all
   doc: output all changes, bracketing conflicts

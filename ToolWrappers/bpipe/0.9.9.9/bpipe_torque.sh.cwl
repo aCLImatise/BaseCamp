@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bpipe_torque.sh.cwl
+id: bpipe_torque.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

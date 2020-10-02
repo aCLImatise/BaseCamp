@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_scan.cwl
+id: fastq_scan.cwl
 inputs:
 - id: in_genome_size_calculating
   doc: Genome size for calculating estimated sequencing coverage. (Default 1)

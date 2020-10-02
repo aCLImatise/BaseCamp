@@ -18,7 +18,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: &id098 !Command
+  parent: &id099 !Command
     command: *id001
     positional: []
     named: []
@@ -35,322 +35,10 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: &id003 !Command
+      parent: &id098 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: input target scaffold fasta file (e.g., scaf.fa) [mandatory]
-          synonyms:
-          - --target_scaf
-          - -t
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: input query contig (or long-read) fasta file (e.g., contig.fa)
-            (if long reads are used, -lr option must be specified) [mandatory]
-          synonyms:
-          - --query_seq
-          - -q
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: prefix name of output files [mandatory]
-          synonyms:
-          - --prefix_out
-          - -p
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: space-separated list of fastq or fasta files (or gzip compressed
-            files) of paired-end reads (e.g., -r read_pe1.fq read_pe2.fq)
-          synonyms:
-          - --read_file
-          - -r
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: read length of paired-end reads specified with the -r, -st,
-            -sq, or -sd option (mean read length if read lengths are variable) [mandatory]
-          synonyms:
-          - --read_len
-          - -l
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'average insert size of paired-end reads [>read_len <20001,
-            default: 400]'
-          synonyms:
-          - --insert
-          - -i
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'standard deviation of insert size of paired-end reads [default:
-            40]'
-          synonyms:
-          - --sd_insert
-          - -d
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'fastq or fasta [default: fastq]'
-          synonyms:
-          - --read_format
-          - -f
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: space-separated list of sam alignment file(s) for target scaffolds,
-            created in a single-end read alignment mode for paired-end reads (e.g.,
-            -sa tPE1.sam tPE2.sam, for paired-end read files PE1.fq and PE2.fq)
-          synonyms:
-          - --sam_talign
-          - -st
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: space-separated list of sam alignment file(s) for query contigs,
-            created in a single-end read alignment mode for paired-end reads (e.g.,
-            -sa qPE1.sam qPE2.sam, for paired-end read files PE1.fq and PE2.fq)
-          synonyms:
-          - --sam_qalign
-          - -sq
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: path of directory (i.e., bowtie_align) containing sam alignment
-            files generated from a previous job with GMcloser (this can be used in
-            place of -st and -sq option)
-          synonyms:
-          - --sam_dir
-          - -sd
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: Nucmer alignment file for query against target [optional]
-          synonyms:
-          - --align_file
-          - -a
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'connect between gap-encompassing subcontig pairs with their
-            original (not merged with query contigs) termini [default: false]'
-          synonyms:
-          - --connect_subcon
-          - -c
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'extend scaffold temini with aligned query sequences [default:
-            false] (When using long read query, this option is disabled in the current
-            version)'
-          synonyms:
-          - --extend
-          - -et
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'conduct alignment between target and query contigs with BLASTn
-            [default: false] (Nucmer alignment by default)'
-          synonyms:
-          - --blast
-          - -b
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: "minimum overlap length to be filtered for Nucmer alignments.\n\
-            Contig-alignments that satisfy both the values specified with -mm and\
-            \ -mi are selected, irrespective of any mapping rates of PE-reads. [>49,\
-            \ default: 300]"
-          synonyms:
-          - --min_match_len
-          - -mm
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'minimum overlap identity (%) to be filtered for Nucmer alignments.
-            Alignments are selected by combination with -mm option. [95~100, default:
-            99]'
-          synonyms:
-          - --min_identity
-          - -mi
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'minimum overlap length for merging between neighbor subcontigs
-            with YASS aligner [>14, default: 20]'
-          synonyms:
-          - --min_len_local
-          - -ml
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'minimum length of subcontigs, to be used for gapclosing [default:
-            100]'
-          synonyms:
-          - --min_subcon
-          - -ms
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'minimum length of gap, when spliting the target scaffold sequences
-            into subcontigs  [>0, default: 1]'
-          synonyms:
-          - --min_gap_size
-          - -g
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'maximum length of indel, observed in alignments between target
-            subcontigs and query contigs. The alignments separated by the indel will
-            be merged. [default: 70]'
-          synonyms:
-          - --max_indel
-          - -is
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'maximum alignment coverage (%) of query singletones for target
-            subcontigs (query with >= INT is excluded from query singletone output)
-            [default: 60]'
-          synonyms:
-          - --max_qsc
-          - -qsc
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'base call quality format of fastq read file; illumina (phred64)
-            or sanger (phred33) [default: auto]'
-          synonyms:
-          - --base_qual
-          - -bq
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: "nucmer exact match length, a value specified with '-l' option\
-            \ of the Nucmer aligner [default: auto, increased from 30 to 50 depending\
-            \ on the total contig length]"
-          synonyms:
-          - --nuc_len
-          - -nl
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'score to add to (subtract from) the standard threshold score
-            for selection of correct contig-subcontig alignments (e.g., 1 or -1) [default:
-            0]'
-          synonyms:
-          - --ad_score
-          - -as
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'heterozygosity factor (specify this if your sequenced genome
-            is heterozygous (>0.2% difference of the haploid size)) [default: false]'
-          synonyms:
-          - --hetero
-          - -ht
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'number of threads (for machines with multiple processors),
-            enabling all the alignment processes in parallel [default: 5]'
-          synonyms:
-          - --thread
-          - -n
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'number of threads (for machines with multiple processors),
-            enabling the subcontig-connection process in parallel [default: number
-            specified with --thread]'
-          synonyms:
-          - --thread_connect
-          - -nc
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'query sequence file is a fasta file of long reads (PacBio
-            reads must be error-corrected) [default: false] (alignment is peformed
-            with blast)'
-          synonyms:
-          - --long_read
-          - -LR
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'fold coverage of long reads for target scaffolds [default:
-            auto ; automatically calculated by dividing a total length of query by
-            a total length of target]'
-          synonyms:
-          - --lr_cov
-          - -lc
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: "minimum number of queries that are aligned to either 5'- or\
-            \ 3'-terminus of a target subcontig [default: 1]"
-          synonyms:
-          - --min_qalign
-          - -mq
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: 'number of iteration [default: 3]'
-          synonyms:
-          - --iterate
-          - -it
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: BLASTn alignment file for query against query [optional]
-          synonyms:
-          - --alignq
-          - -aq
-          args: !SimpleFlagArg
-            name: or
-          optional: true
-        - !Flag
-          description: ''
-          synonyms:
-          - --help
-          args: !SimpleFlagArg
-            name: or
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -364,804 +52,3112 @@ subcommands:
             args: !SimpleFlagArg
               name: option
             optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: &id004
-          - --help
-        - !Command
-          command: &id005
-          - gmcloser-nucmer.pl
-          - connect
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id006
-          - gmcloser-nucmer.pl
-          - input
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id007
-          - gmcloser-nucmer.pl
-          - queries
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id008
-          - gmcloser-nucmer.pl
-          - factor
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id009
-          - gmcloser-nucmer.pl
-          - against
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id010
-          - gmcloser-nucmer.pl
-          - base
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id011
-          - gmcloser-nucmer.pl
-          - YASS
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id012
-          - gmcloser-nucmer.pl
-          - call
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id013
-          - gmcloser-nucmer.pl
-          - their
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id014
-          - gmcloser-nucmer.pl
-          - gap
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id015
-          - gmcloser-nucmer.pl
-          - name
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id016
-          - gmcloser-nucmer.pl
-          - fastq
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id017
-          - gmcloser-nucmer.pl
-          - between
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id018
-          - gmcloser-nucmer.pl
-          - path
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id019
-          - gmcloser-nucmer.pl
-          - extend
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id020
-          - gmcloser-nucmer.pl
-          - deviation
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id021
-          - gmcloser-nucmer.pl
-          - output
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id022
-          - gmcloser-nucmer.pl
-          - ver.
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id023
-          - gmcloser-nucmer.pl
-          - exact
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id024
-          - gmcloser-nucmer.pl
-          - reads
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id025
-          - gmcloser-nucmer.pl
-          - filtered
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id026
-          - gmcloser-nucmer.pl
-          - iteration
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id027
-          - gmcloser-nucmer.pl
-          - files
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id028
-          - gmcloser-nucmer.pl
-          - identity
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id029
-          - gmcloser-nucmer.pl
-          - be
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id030
-          - gmcloser-nucmer.pl
-          - average
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id031
-          - gmcloser-nucmer.pl
-          - for
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id032
-          - gmcloser-nucmer.pl
-          - indel
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id033
-          - gmcloser-nucmer.pl
-          - original
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id034
-          - gmcloser-nucmer.pl
-          - read
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id035
-          - gmcloser-nucmer.pl
-          - gap-encompassing
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id036
-          - gmcloser-nucmer.pl
-          - size
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id037
-          - gmcloser-nucmer.pl
-          - length
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id038
-          - gmcloser-nucmer.pl
-          - fold
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id039
-          - gmcloser-nucmer.pl
-          - are
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id040
-          - gmcloser-nucmer.pl
-          - target
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id041
-          - gmcloser-nucmer.pl
-          - scaffold
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
-            optional: true
-          parent: *id003
-          subcommands: []
-          usage: []
-          help_flag:
-          usage_flag:
-          version_flag:
-          help_text: "--target_scaf option is not specied: \n"
-          generated_using: *id004
-        - !Command
-          command: &id042
-          - gmcloser-nucmer.pl
-          - or
-          positional: []
-          named:
-          - !Flag
-            description: 'is not specied:'
-            synonyms:
-            - --target_scaf
-            args: !SimpleFlagArg
-              name: option
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: input target scaffold fasta file (e.g., scaf.fa) [mandatory]
+              synonyms:
+              - --target_scaf
+              - -t
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: input query contig (or long-read) fasta file (e.g., contig.fa)
+                (if long reads are used, -lr option must be specified) [mandatory]
+              synonyms:
+              - --query_seq
+              - -q
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: prefix name of output files [mandatory]
+              synonyms:
+              - --prefix_out
+              - -p
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: space-separated list of fastq or fasta files (or gzip compressed
+                files) of paired-end reads (e.g., -r read_pe1.fq read_pe2.fq)
+              synonyms:
+              - --read_file
+              - -r
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: read length of paired-end reads specified with the -r,
+                -st, -sq, or -sd option (mean read length if read lengths are variable)
+                [mandatory]
+              synonyms:
+              - --read_len
+              - -l
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'average insert size of paired-end reads [>read_len <20001,
+                default: 400]'
+              synonyms:
+              - --insert
+              - -i
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'standard deviation of insert size of paired-end reads
+                [default: 40]'
+              synonyms:
+              - --sd_insert
+              - -d
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'fastq or fasta [default: fastq]'
+              synonyms:
+              - --read_format
+              - -f
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: space-separated list of sam alignment file(s) for target
+                scaffolds, created in a single-end read alignment mode for paired-end
+                reads (e.g., -sa tPE1.sam tPE2.sam, for paired-end read files PE1.fq
+                and PE2.fq)
+              synonyms:
+              - --sam_talign
+              - -st
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: space-separated list of sam alignment file(s) for query
+                contigs, created in a single-end read alignment mode for paired-end
+                reads (e.g., -sa qPE1.sam qPE2.sam, for paired-end read files PE1.fq
+                and PE2.fq)
+              synonyms:
+              - --sam_qalign
+              - -sq
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: path of directory (i.e., bowtie_align) containing sam alignment
+                files generated from a previous job with GMcloser (this can be used
+                in place of -st and -sq option)
+              synonyms:
+              - --sam_dir
+              - -sd
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: Nucmer alignment file for query against target [optional]
+              synonyms:
+              - --align_file
+              - -a
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'connect between gap-encompassing subcontig pairs with
+                their original (not merged with query contigs) termini [default: false]'
+              synonyms:
+              - --connect_subcon
+              - -c
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'extend scaffold temini with aligned query sequences [default:
+                false] (When using long read query, this option is disabled in the
+                current version)'
+              synonyms:
+              - --extend
+              - -et
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'conduct alignment between target and query contigs with
+                BLASTn [default: false] (Nucmer alignment by default)'
+              synonyms:
+              - --blast
+              - -b
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: "minimum overlap length to be filtered for Nucmer alignments.\n\
+                Contig-alignments that satisfy both the values specified with -mm\
+                \ and -mi are selected, irrespective of any mapping rates of PE-reads.\
+                \ [>49, default: 300]"
+              synonyms:
+              - --min_match_len
+              - -mm
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'minimum overlap identity (%) to be filtered for Nucmer
+                alignments. Alignments are selected by combination with -mm option.
+                [95~100, default: 99]'
+              synonyms:
+              - --min_identity
+              - -mi
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'minimum overlap length for merging between neighbor subcontigs
+                with YASS aligner [>14, default: 20]'
+              synonyms:
+              - --min_len_local
+              - -ml
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'minimum length of subcontigs, to be used for gapclosing
+                [default: 100]'
+              synonyms:
+              - --min_subcon
+              - -ms
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'minimum length of gap, when spliting the target scaffold
+                sequences into subcontigs  [>0, default: 1]'
+              synonyms:
+              - --min_gap_size
+              - -g
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'maximum length of indel, observed in alignments between
+                target subcontigs and query contigs. The alignments separated by the
+                indel will be merged. [default: 70]'
+              synonyms:
+              - --max_indel
+              - -is
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'maximum alignment coverage (%) of query singletones for
+                target subcontigs (query with >= INT is excluded from query singletone
+                output) [default: 60]'
+              synonyms:
+              - --max_qsc
+              - -qsc
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'base call quality format of fastq read file; illumina
+                (phred64) or sanger (phred33) [default: auto]'
+              synonyms:
+              - --base_qual
+              - -bq
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: "nucmer exact match length, a value specified with '-l'\
+                \ option of the Nucmer aligner [default: auto, increased from 30 to\
+                \ 50 depending on the total contig length]"
+              synonyms:
+              - --nuc_len
+              - -nl
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'score to add to (subtract from) the standard threshold
+                score for selection of correct contig-subcontig alignments (e.g.,
+                1 or -1) [default: 0]'
+              synonyms:
+              - --ad_score
+              - -as
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'heterozygosity factor (specify this if your sequenced
+                genome is heterozygous (>0.2% difference of the haploid size)) [default:
+                false]'
+              synonyms:
+              - --hetero
+              - -ht
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'number of threads (for machines with multiple processors),
+                enabling all the alignment processes in parallel [default: 5]'
+              synonyms:
+              - --thread
+              - -n
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'number of threads (for machines with multiple processors),
+                enabling the subcontig-connection process in parallel [default: number
+                specified with --thread]'
+              synonyms:
+              - --thread_connect
+              - -nc
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'query sequence file is a fasta file of long reads (PacBio
+                reads must be error-corrected) [default: false] (alignment is peformed
+                with blast)'
+              synonyms:
+              - --long_read
+              - -LR
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'fold coverage of long reads for target scaffolds [default:
+                auto ; automatically calculated by dividing a total length of query
+                by a total length of target]'
+              synonyms:
+              - --lr_cov
+              - -lc
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: "minimum number of queries that are aligned to either 5'-\
+                \ or 3'-terminus of a target subcontig [default: 1]"
+              synonyms:
+              - --min_qalign
+              - -mq
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: 'number of iteration [default: 3]'
+              synonyms:
+              - --iterate
+              - -it
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: BLASTn alignment file for query against query [optional]
+              synonyms:
+              - --alignq
+              - -aq
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            - !Flag
+              description: ''
+              synonyms:
+              - --help
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - gmcloser-nucmer.pl
+              - connect
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - gmcloser-nucmer.pl
+              - input
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - gmcloser-nucmer.pl
+              - queries
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id008
+              - gmcloser-nucmer.pl
+              - factor
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id009
+              - gmcloser-nucmer.pl
+              - against
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id010
+              - gmcloser-nucmer.pl
+              - base
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id011
+              - gmcloser-nucmer.pl
+              - YASS
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id012
+              - gmcloser-nucmer.pl
+              - call
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id013
+              - gmcloser-nucmer.pl
+              - their
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id014
+              - gmcloser-nucmer.pl
+              - gap
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id015
+              - gmcloser-nucmer.pl
+              - name
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id016
+              - gmcloser-nucmer.pl
+              - fastq
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id017
+              - gmcloser-nucmer.pl
+              - between
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id018
+              - gmcloser-nucmer.pl
+              - path
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id019
+              - gmcloser-nucmer.pl
+              - extend
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id020
+              - gmcloser-nucmer.pl
+              - deviation
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id021
+              - gmcloser-nucmer.pl
+              - output
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id022
+              - gmcloser-nucmer.pl
+              - ver.
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id023
+              - gmcloser-nucmer.pl
+              - exact
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id024
+              - gmcloser-nucmer.pl
+              - reads
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id025
+              - gmcloser-nucmer.pl
+              - filtered
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id026
+              - gmcloser-nucmer.pl
+              - iteration
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id027
+              - gmcloser-nucmer.pl
+              - files
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id028
+              - gmcloser-nucmer.pl
+              - identity
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id029
+              - gmcloser-nucmer.pl
+              - be
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id030
+              - gmcloser-nucmer.pl
+              - average
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id031
+              - gmcloser-nucmer.pl
+              - for
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id032
+              - gmcloser-nucmer.pl
+              - indel
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id033
+              - gmcloser-nucmer.pl
+              - original
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id034
+              - gmcloser-nucmer.pl
+              - read
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id035
+              - gmcloser-nucmer.pl
+              - gap-encompassing
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id036
+              - gmcloser-nucmer.pl
+              - size
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id037
+              - gmcloser-nucmer.pl
+              - length
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id038
+              - gmcloser-nucmer.pl
+              - fold
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id039
+              - gmcloser-nucmer.pl
+              - are
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id040
+              - gmcloser-nucmer.pl
+              - target
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id041
+              - gmcloser-nucmer.pl
+              - scaffold
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id042
+              - gmcloser-nucmer.pl
+              - or
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id043
+              - gmcloser-nucmer.pl
+              - merging
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id044
+              - gmcloser-nucmer.pl
+              - Nucmer
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id045
+              - gmcloser-nucmer.pl
+              - sam
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id046
+              - gmcloser-nucmer.pl
+              - help
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id047
+              - gmcloser-nucmer.pl
+              - and
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id048
+              - gmcloser-nucmer.pl
+              - list
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id049
+              - gmcloser-nucmer.pl
+              - directory
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id050
+              - gmcloser-nucmer.pl
+              - either
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id051
+              - gmcloser-nucmer.pl
+              - overlap
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id052
+              - gmcloser-nucmer.pl
+              - score
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id053
+              - gmcloser-nucmer.pl
+              - of
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id054
+              - gmcloser-nucmer.pl
+              - add
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id055
+              - gmcloser-nucmer.pl
+              - heterozygosity
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id056
+              - gmcloser-nucmer.pl
+              - subcontig
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id057
+              - gmcloser-nucmer.pl
+              - query
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id058
+              - gmcloser-nucmer.pl
+              - number
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id059
+              - gmcloser-nucmer.pl
+              - sequence
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id060
+              - gmcloser-nucmer.pl
+              - temini
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id061
+              - gmcloser-nucmer.pl
+              - minimum
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id062
+              - gmcloser-nucmer.pl
+              - contigs
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id063
+              - gmcloser-nucmer.pl
+              - aligner
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id064
+              - gmcloser-nucmer.pl
+              - format
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id065
+              - gmcloser-nucmer.pl
+              - match
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id066
+              - gmcloser-nucmer.pl
+              - conduct
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id067
+              - gmcloser-nucmer.pl
+              - BLASTn
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id068
+              - gmcloser-nucmer.pl
+              - paired-end
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id069
+              - gmcloser-nucmer.pl
+              - sequences
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id070
+              - gmcloser-nucmer.pl
+              - aligned
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id071
+              - gmcloser-nucmer.pl
+              - with
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id072
+              - gmcloser-nucmer.pl
+              - alignments.
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id073
+              - gmcloser-nucmer.pl
+              - nucmer
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id074
+              - gmcloser-nucmer.pl
+              - neighbor
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id075
+              - gmcloser-nucmer.pl
+              - to
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id076
+              - gmcloser-nucmer.pl
+              - contig
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id077
+              - gmcloser-nucmer.pl
+              - long
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id078
+              - gmcloser-nucmer.pl
+              - scaffolds
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id079
+              - gmcloser-nucmer.pl
+              - alignment
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id080
+              - gmcloser-nucmer.pl
+              - that
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id081
+              - gmcloser-nucmer.pl
+              - subcontigs
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id082
+              - gmcloser-nucmer.pl
+              - prefix
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id083
+              - gmcloser-nucmer.pl
+              - file
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id084
+              - gmcloser-nucmer.pl
+              - coverage
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id085
+              - gmcloser-nucmer.pl
+              - quality
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id086
+              - gmcloser-nucmer.pl
+              - insert
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id087
+              - gmcloser-nucmer.pl
+              - the
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id088
+              - gmcloser-nucmer.pl
+              - threads
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id089
+              - gmcloser-nucmer.pl
+              - pairs
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id090
+              - gmcloser-nucmer.pl
+              - space-separated
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id091
+              - gmcloser-nucmer.pl
+              - specified
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id092
+              - gmcloser-nucmer.pl
+              - standard
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id093
+              - gmcloser-nucmer.pl
+              - a
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id094
+              - gmcloser-nucmer.pl
+              - fasta
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id095
+              - gmcloser-nucmer.pl
+              - is
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id096
+              - gmcloser-nucmer.pl
+              - GMcloser
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            - !Command
+              command: &id097
+              - gmcloser-nucmer.pl
+              - maximum
+              positional: []
+              named:
+              - !Flag
+                description: 'is not specied:'
+                synonyms:
+                - --target_scaf
+                args: !SimpleFlagArg
+                  name: option
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "--target_scaf option is not specied: \n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: output help message
+              synonyms:
+              - --help
+              - -h
+              args: !SimpleFlagArg
+                name: or
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "Usage:\n      GMcloser ver. 1.5\n  \n      Options:\n    \
+              \   --target_scaf or -t <STR>       input target scaffold fasta file\
+              \ (e.g., scaf.fa) [mandatory]\n       --query_seq or -q <STR>      \
+              \   input query contig (or long-read) fasta file (e.g., contig.fa) (if\
+              \ long reads are used, -lr option must be specified) [mandatory]\n \
+              \      --prefix_out or -p <STR>        prefix name of output files [mandatory]\n\
+              \   \n       --read_file or -r <STR>         space-separated list of\
+              \ fastq or fasta files (or gzip compressed files) of paired-end reads\
+              \ (e.g., -r read_pe1.fq read_pe2.fq)\n       --read_len or -l <INT>\
+              \          read length of paired-end reads specified with the -r, -st,\
+              \ -sq, or -sd option (mean read length if read lengths are variable)\
+              \ [mandatory]\n       --insert or -i <INT>            average insert\
+              \ size of paired-end reads [>read_len <20001, default: 400]\n      \
+              \ --sd_insert or -d <INT>         standard deviation of insert size\
+              \ of paired-end reads [default: 40]\n       --read_format or -f <STR>\
+              \       fastq or fasta [default: fastq]\n       --sam_talign or -st\
+              \ <STR>       space-separated list of sam alignment file(s) for target\
+              \ scaffolds, created in a single-end read alignment mode for paired-end\
+              \ reads (e.g., -sa tPE1.sam tPE2.sam, for paired-end read files PE1.fq\
+              \ and PE2.fq)\n       --sam_qalign or -sq <STR>       space-separated\
+              \ list of sam alignment file(s) for query contigs, created in a single-end\
+              \ read alignment mode for paired-end reads (e.g., -sa qPE1.sam qPE2.sam,\
+              \ for paired-end read files PE1.fq and PE2.fq)\n       --sam_dir or\
+              \ -sd <STR>          path of directory (i.e., bowtie_align) containing\
+              \ sam alignment files generated from a previous job with GMcloser (this\
+              \ can be used in place of -st and -sq option)\n       --align_file or\
+              \ -a <STR>        Nucmer alignment file for query against target [optional]\n\
+              \n       --connect_subcon or -c          connect between gap-encompassing\
+              \ subcontig pairs with their original (not merged with query contigs)\
+              \ termini [default: false]\n       --extend or -et                 extend\
+              \ scaffold temini with aligned query sequences [default: false] (When\
+              \ using long read query, this option is disabled in the current version)\n\
+              \       --blast or -b                   conduct alignment between target\
+              \ and query contigs with BLASTn [default: false] (Nucmer alignment by\
+              \ default)\n   \n       --min_match_len or -mm <INT>    minimum overlap\
+              \ length to be filtered for Nucmer alignments.\n                   \
+              \                    Contig-alignments that satisfy both the values\
+              \ specified with -mm and -mi are selected, irrespective of any mapping\
+              \ rates of PE-reads. [>49, default: 300]\n       --min_identity or -mi\
+              \ <INT>     minimum overlap identity (%) to be filtered for Nucmer alignments.\
+              \ Alignments are selected by combination with -mm option. [95~100, default:\
+              \ 99]\n       --min_len_local or -ml <INT>    minimum overlap length\
+              \ for merging between neighbor subcontigs with YASS aligner [>14, default:\
+              \ 20]\n       --min_subcon or -ms <INT>       minimum length of subcontigs,\
+              \ to be used for gapclosing [default: 100]\n       --min_gap_size or\
+              \ -g <INT>      minimum length of gap, when spliting the target scaffold\
+              \ sequences into subcontigs  [>0, default: 1]\n       --max_indel or\
+              \ -is <INT>        maximum length of indel, observed in alignments between\
+              \ target subcontigs and query contigs. The alignments separated by the\
+              \ indel will be merged. [default: 70]\n       --max_qsc or -qsc <INT>\
+              \         maximum alignment coverage (%) of query singletones for target\
+              \ subcontigs (query with >= INT is excluded from query singletone output)\
+              \ [default: 60]\n       --base_qual or -bq <STR>        base call quality\
+              \ format of fastq read file; illumina (phred64) or sanger (phred33)\
+              \ [default: auto]\n       --nuc_len or -nl <INT>          nucmer exact\
+              \ match length, a value specified with '-l' option of the Nucmer aligner\
+              \ [default: auto, increased from 30 to 50 depending on the total contig\
+              \ length]\n       --ad_score or -as <FLOAT>       score to add to (subtract\
+              \ from) the standard threshold score for selection of correct contig-subcontig\
+              \ alignments (e.g., 1 or -1) [default: 0]\n       --hetero or -ht  \
+              \               heterozygosity factor (specify this if your sequenced\
+              \ genome is heterozygous (>0.2% difference of the haploid size)) [default:\
+              \ false]\n       --thread or -n <INT>            number of threads (for\
+              \ machines with multiple processors), enabling all the alignment processes\
+              \ in parallel [default: 5]\n       --thread_connect or -nc <INT>   number\
+              \ of threads (for machines with multiple processors), enabling the subcontig-connection\
+              \ process in parallel [default: number specified with --thread]\n  \
+              \     --help or -h                    output help message\n   \n   \
+              \    [Options for long read query]\n       --long_read or -LR      \
+              \        query sequence file is a fasta file of long reads (PacBio reads\
+              \ must be error-corrected) [default: false] (alignment is peformed with\
+              \ blast)\n       --lr_cov or -lc <INT>           fold coverage of long\
+              \ reads for target scaffolds [default: auto ; automatically calculated\
+              \ by dividing a total length of query by a total length of target]\n\
+              \       --min_qalign or -mq <INT>       minimum number of queries that\
+              \ are aligned to either 5'- or 3'-terminus of a target subcontig [default:\
+              \ 1]\n       --iterate or -it <INT>          number of iteration [default:\
+              \ 3]\n       --alignq or -aq <STR>           BLASTn alignment file for\
+              \ query against query [optional]\n\n"
+            generated_using: *id004
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id005
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id006
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id007
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id008
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id009
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id010
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id011
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id012
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id013
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id014
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id015
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id016
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id017
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id018
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id019
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id020
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id021
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id022
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id023
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id024
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id025
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id026
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id027
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id028
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id029
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id030
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id031
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id032
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id033
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id034
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id035
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id036
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id037
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id038
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id039
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id040
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id041
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
+            optional: true
+          parent: *id003
+          subcommands: []
+          usage: []
+          help_flag:
+          usage_flag:
+          version_flag:
+          help_text: "--target_scaf option is not specied: \n"
+          generated_using: *id004
+        - !Command
+          command: *id042
+          positional: []
+          named:
+          - !Flag
+            description: 'is not specied:'
+            synonyms:
+            - --target_scaf
+            args: !SimpleFlagArg
+              name: option
             optional: true
           parent: *id003
           subcommands: []
@@ -1172,9 +3168,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id043
-          - gmcloser-nucmer.pl
-          - merging
+          command: *id043
           positional: []
           named:
           - !Flag
@@ -1193,9 +3187,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id044
-          - gmcloser-nucmer.pl
-          - Nucmer
+          command: *id044
           positional: []
           named:
           - !Flag
@@ -1214,9 +3206,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id045
-          - gmcloser-nucmer.pl
-          - sam
+          command: *id045
           positional: []
           named:
           - !Flag
@@ -1235,9 +3225,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id046
-          - gmcloser-nucmer.pl
-          - help
+          command: *id046
           positional: []
           named:
           - !Flag
@@ -1256,9 +3244,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id047
-          - gmcloser-nucmer.pl
-          - and
+          command: *id047
           positional: []
           named:
           - !Flag
@@ -1277,9 +3263,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id048
-          - gmcloser-nucmer.pl
-          - list
+          command: *id048
           positional: []
           named:
           - !Flag
@@ -1298,9 +3282,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id049
-          - gmcloser-nucmer.pl
-          - directory
+          command: *id049
           positional: []
           named:
           - !Flag
@@ -1319,9 +3301,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id050
-          - gmcloser-nucmer.pl
-          - either
+          command: *id050
           positional: []
           named:
           - !Flag
@@ -1340,9 +3320,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id051
-          - gmcloser-nucmer.pl
-          - overlap
+          command: *id051
           positional: []
           named:
           - !Flag
@@ -1361,9 +3339,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id052
-          - gmcloser-nucmer.pl
-          - score
+          command: *id052
           positional: []
           named:
           - !Flag
@@ -1382,9 +3358,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id053
-          - gmcloser-nucmer.pl
-          - of
+          command: *id053
           positional: []
           named:
           - !Flag
@@ -1403,9 +3377,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id054
-          - gmcloser-nucmer.pl
-          - add
+          command: *id054
           positional: []
           named:
           - !Flag
@@ -1424,9 +3396,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id055
-          - gmcloser-nucmer.pl
-          - heterozygosity
+          command: *id055
           positional: []
           named:
           - !Flag
@@ -1445,9 +3415,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id056
-          - gmcloser-nucmer.pl
-          - subcontig
+          command: *id056
           positional: []
           named:
           - !Flag
@@ -1466,9 +3434,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id057
-          - gmcloser-nucmer.pl
-          - query
+          command: *id057
           positional: []
           named:
           - !Flag
@@ -1487,9 +3453,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id058
-          - gmcloser-nucmer.pl
-          - number
+          command: *id058
           positional: []
           named:
           - !Flag
@@ -1508,9 +3472,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id059
-          - gmcloser-nucmer.pl
-          - sequence
+          command: *id059
           positional: []
           named:
           - !Flag
@@ -1529,9 +3491,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id060
-          - gmcloser-nucmer.pl
-          - temini
+          command: *id060
           positional: []
           named:
           - !Flag
@@ -1550,9 +3510,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id061
-          - gmcloser-nucmer.pl
-          - minimum
+          command: *id061
           positional: []
           named:
           - !Flag
@@ -1571,9 +3529,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id062
-          - gmcloser-nucmer.pl
-          - contigs
+          command: *id062
           positional: []
           named:
           - !Flag
@@ -1592,9 +3548,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id063
-          - gmcloser-nucmer.pl
-          - aligner
+          command: *id063
           positional: []
           named:
           - !Flag
@@ -1613,9 +3567,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id064
-          - gmcloser-nucmer.pl
-          - format
+          command: *id064
           positional: []
           named:
           - !Flag
@@ -1634,9 +3586,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id065
-          - gmcloser-nucmer.pl
-          - match
+          command: *id065
           positional: []
           named:
           - !Flag
@@ -1655,9 +3605,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id066
-          - gmcloser-nucmer.pl
-          - conduct
+          command: *id066
           positional: []
           named:
           - !Flag
@@ -1676,9 +3624,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id067
-          - gmcloser-nucmer.pl
-          - BLASTn
+          command: *id067
           positional: []
           named:
           - !Flag
@@ -1697,9 +3643,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id068
-          - gmcloser-nucmer.pl
-          - paired-end
+          command: *id068
           positional: []
           named:
           - !Flag
@@ -1718,9 +3662,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id069
-          - gmcloser-nucmer.pl
-          - sequences
+          command: *id069
           positional: []
           named:
           - !Flag
@@ -1739,9 +3681,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id070
-          - gmcloser-nucmer.pl
-          - aligned
+          command: *id070
           positional: []
           named:
           - !Flag
@@ -1760,9 +3700,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id071
-          - gmcloser-nucmer.pl
-          - with
+          command: *id071
           positional: []
           named:
           - !Flag
@@ -1781,9 +3719,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id072
-          - gmcloser-nucmer.pl
-          - alignments.
+          command: *id072
           positional: []
           named:
           - !Flag
@@ -1802,9 +3738,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id073
-          - gmcloser-nucmer.pl
-          - nucmer
+          command: *id073
           positional: []
           named:
           - !Flag
@@ -1823,9 +3757,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id074
-          - gmcloser-nucmer.pl
-          - neighbor
+          command: *id074
           positional: []
           named:
           - !Flag
@@ -1844,9 +3776,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id075
-          - gmcloser-nucmer.pl
-          - to
+          command: *id075
           positional: []
           named:
           - !Flag
@@ -1865,9 +3795,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id076
-          - gmcloser-nucmer.pl
-          - contig
+          command: *id076
           positional: []
           named:
           - !Flag
@@ -1886,9 +3814,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id077
-          - gmcloser-nucmer.pl
-          - long
+          command: *id077
           positional: []
           named:
           - !Flag
@@ -1907,9 +3833,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id078
-          - gmcloser-nucmer.pl
-          - scaffolds
+          command: *id078
           positional: []
           named:
           - !Flag
@@ -1928,9 +3852,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id079
-          - gmcloser-nucmer.pl
-          - alignment
+          command: *id079
           positional: []
           named:
           - !Flag
@@ -1949,9 +3871,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id080
-          - gmcloser-nucmer.pl
-          - that
+          command: *id080
           positional: []
           named:
           - !Flag
@@ -1970,9 +3890,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id081
-          - gmcloser-nucmer.pl
-          - subcontigs
+          command: *id081
           positional: []
           named:
           - !Flag
@@ -1991,9 +3909,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id082
-          - gmcloser-nucmer.pl
-          - prefix
+          command: *id082
           positional: []
           named:
           - !Flag
@@ -2012,9 +3928,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id083
-          - gmcloser-nucmer.pl
-          - file
+          command: *id083
           positional: []
           named:
           - !Flag
@@ -2033,9 +3947,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id084
-          - gmcloser-nucmer.pl
-          - coverage
+          command: *id084
           positional: []
           named:
           - !Flag
@@ -2054,9 +3966,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id085
-          - gmcloser-nucmer.pl
-          - quality
+          command: *id085
           positional: []
           named:
           - !Flag
@@ -2075,9 +3985,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id086
-          - gmcloser-nucmer.pl
-          - insert
+          command: *id086
           positional: []
           named:
           - !Flag
@@ -2096,9 +4004,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id087
-          - gmcloser-nucmer.pl
-          - the
+          command: *id087
           positional: []
           named:
           - !Flag
@@ -2117,9 +4023,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id088
-          - gmcloser-nucmer.pl
-          - threads
+          command: *id088
           positional: []
           named:
           - !Flag
@@ -2138,9 +4042,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id089
-          - gmcloser-nucmer.pl
-          - pairs
+          command: *id089
           positional: []
           named:
           - !Flag
@@ -2159,9 +4061,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id090
-          - gmcloser-nucmer.pl
-          - space-separated
+          command: *id090
           positional: []
           named:
           - !Flag
@@ -2180,9 +4080,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id091
-          - gmcloser-nucmer.pl
-          - specified
+          command: *id091
           positional: []
           named:
           - !Flag
@@ -2201,9 +4099,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id092
-          - gmcloser-nucmer.pl
-          - standard
+          command: *id092
           positional: []
           named:
           - !Flag
@@ -2222,9 +4118,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id093
-          - gmcloser-nucmer.pl
-          - a
+          command: *id093
           positional: []
           named:
           - !Flag
@@ -2243,9 +4137,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id094
-          - gmcloser-nucmer.pl
-          - fasta
+          command: *id094
           positional: []
           named:
           - !Flag
@@ -2264,9 +4156,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id095
-          - gmcloser-nucmer.pl
-          - is
+          command: *id095
           positional: []
           named:
           - !Flag
@@ -2285,9 +4175,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id096
-          - gmcloser-nucmer.pl
-          - GMcloser
+          command: *id096
           positional: []
           named:
           - !Flag
@@ -2306,9 +4194,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         - !Command
-          command: &id097
-          - gmcloser-nucmer.pl
-          - maximum
+          command: *id097
           positional: []
           named:
           - !Flag
@@ -2327,14 +4213,7 @@ subcommands:
           help_text: "--target_scaf option is not specied: \n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: output help message
-          synonyms:
-          - --help
-          - -h
-          args: !SimpleFlagArg
-            name: or
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "Usage:\n      GMcloser ver. 1.5\n  \n      Options:\n       --target_scaf\
@@ -2432,7 +4311,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2451,7 +4330,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2470,7 +4349,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2489,7 +4368,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2508,7 +4387,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2527,7 +4406,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2546,7 +4425,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2565,7 +4444,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2584,7 +4463,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2603,7 +4482,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2622,7 +4501,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2641,7 +4520,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2660,7 +4539,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2679,7 +4558,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2698,7 +4577,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2717,7 +4596,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2736,7 +4615,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2755,7 +4634,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2774,7 +4653,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2793,7 +4672,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2812,7 +4691,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2831,7 +4710,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2850,7 +4729,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2869,7 +4748,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2888,7 +4767,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2907,7 +4786,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2926,7 +4805,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2945,7 +4824,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2964,7 +4843,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -2983,7 +4862,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3002,7 +4881,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3021,7 +4900,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3040,7 +4919,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3059,7 +4938,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3078,7 +4957,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3097,7 +4976,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3116,7 +4995,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3135,7 +5014,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3154,7 +5033,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3173,7 +5052,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3192,7 +5071,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3211,7 +5090,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3230,7 +5109,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3249,7 +5128,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3268,7 +5147,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3287,7 +5166,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3306,7 +5185,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3325,7 +5204,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3344,7 +5223,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3363,7 +5242,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3382,7 +5261,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3401,7 +5280,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3420,7 +5299,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3439,7 +5318,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3458,7 +5337,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3477,7 +5356,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3496,7 +5375,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3515,7 +5394,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3534,7 +5413,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3553,7 +5432,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3572,7 +5451,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3591,7 +5470,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3610,7 +5489,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3629,7 +5508,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3648,7 +5527,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3667,7 +5546,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3686,7 +5565,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3705,7 +5584,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3724,7 +5603,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3743,7 +5622,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3762,7 +5641,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3781,7 +5660,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3800,7 +5679,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3819,7 +5698,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3838,7 +5717,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3857,7 +5736,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3876,7 +5755,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3895,7 +5774,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3914,7 +5793,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3933,7 +5812,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3952,7 +5831,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3971,7 +5850,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -3990,7 +5869,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -4009,7 +5888,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -4028,7 +5907,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -4047,7 +5926,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -4066,7 +5945,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -4085,7 +5964,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -4104,7 +5983,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -4123,7 +6002,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -4142,7 +6021,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -4161,7 +6040,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -4180,7 +6059,7 @@ subcommands:
         args: !SimpleFlagArg
           name: option
         optional: true
-      parent: *id003
+      parent: *id098
       subcommands: []
       usage: []
       help_flag:
@@ -4282,7 +6161,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4301,7 +6180,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4320,7 +6199,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4339,7 +6218,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4358,7 +6237,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4377,7 +6256,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4396,7 +6275,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4415,7 +6294,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4434,7 +6313,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4453,7 +6332,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4472,7 +6351,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4491,7 +6370,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4510,7 +6389,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4529,7 +6408,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4548,7 +6427,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4567,7 +6446,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4586,7 +6465,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4605,7 +6484,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4624,7 +6503,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4643,7 +6522,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4662,7 +6541,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4681,7 +6560,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4700,7 +6579,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4719,7 +6598,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4738,7 +6617,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4757,7 +6636,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4776,7 +6655,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4795,7 +6674,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4814,7 +6693,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4833,7 +6712,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4852,7 +6731,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4871,7 +6750,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4890,7 +6769,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4909,7 +6788,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4928,7 +6807,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4947,7 +6826,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4966,7 +6845,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -4985,7 +6864,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5004,7 +6883,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5023,7 +6902,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5042,7 +6921,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5061,7 +6940,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5080,7 +6959,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5099,7 +6978,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5118,7 +6997,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5137,7 +7016,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5156,7 +7035,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5175,7 +7054,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5194,7 +7073,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5213,7 +7092,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5232,7 +7111,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5251,7 +7130,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5270,7 +7149,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5289,7 +7168,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5308,7 +7187,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5327,7 +7206,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5346,7 +7225,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5365,7 +7244,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5384,7 +7263,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5403,7 +7282,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5422,7 +7301,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5441,7 +7320,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5460,7 +7339,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5479,7 +7358,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5498,7 +7377,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5517,7 +7396,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5536,7 +7415,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5555,7 +7434,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5574,7 +7453,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5593,7 +7472,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5612,7 +7491,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5631,7 +7510,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5650,7 +7529,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5669,7 +7548,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5688,7 +7567,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5707,7 +7586,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5726,7 +7605,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5745,7 +7624,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5764,7 +7643,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5783,7 +7662,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5802,7 +7681,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5821,7 +7700,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5840,7 +7719,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5859,7 +7738,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5878,7 +7757,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5897,7 +7776,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5916,7 +7795,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5935,7 +7814,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5954,7 +7833,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5973,7 +7852,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -5992,7 +7871,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -6011,7 +7890,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:
@@ -6030,7 +7909,7 @@ subcommands:
     args: !SimpleFlagArg
       name: option
     optional: true
-  parent: *id098
+  parent: *id099
   subcommands: []
   usage: []
   help_flag:

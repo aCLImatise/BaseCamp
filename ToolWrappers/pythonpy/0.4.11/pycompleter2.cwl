@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../pycompleter2.cwl
-inputs:
-- id: in_jo
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --jo
+id: pycompleter2.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

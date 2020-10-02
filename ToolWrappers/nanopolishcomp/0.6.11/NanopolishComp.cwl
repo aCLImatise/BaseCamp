@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NanopolishComp.cwl
+id: NanopolishComp.cwl
 inputs: []
 outputs:
 - id: out_stdout

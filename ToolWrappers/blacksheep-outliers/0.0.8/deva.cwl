@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deva.cwl
+id: deva.cwl
 inputs: []
 outputs:
 - id: out_stdout

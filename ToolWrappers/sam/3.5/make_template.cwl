@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_template.cwl
+id: make_template.cwl
 inputs:
 - id: in_align_file
   doc: ': Aligned sequences to read.'

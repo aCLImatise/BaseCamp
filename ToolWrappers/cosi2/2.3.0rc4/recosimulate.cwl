@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../recosimulate.cwl
+id: recosimulate.cwl
 inputs:
 - id: in_reco_sim
   doc: ''

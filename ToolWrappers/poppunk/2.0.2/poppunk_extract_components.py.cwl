@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../poppunk_extract_components.py.cwl
+id: poppunk_extract_components.py.cwl
 inputs:
 - id: in_extract_components
   doc: ''

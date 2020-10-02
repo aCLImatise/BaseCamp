@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mascot_to_pepxml.rb.cwl
+id: mascot_to_pepxml.rb.cwl
 inputs:
 - id: in_replace_output
   doc: Dont skip analyses for which the output file already exists [false]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAlienStatistics_bin.cwl
+id: RNAlienStatistics_bin.cwl
 inputs:
 - id: in_alien_covariance_model_path
   doc: Path to alienCovarianceModelPath

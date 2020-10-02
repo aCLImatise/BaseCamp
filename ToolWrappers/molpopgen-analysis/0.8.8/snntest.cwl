@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snntest.cwl
+id: snntest.cwl
 inputs:
 - id: in_data_fasta_format
   doc: ": data are in fasta format in a file called filename\nfurther options for\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fix_swath_windows.py.cwl
+id: fix_swath_windows.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeVariantTaxLookups.pl.cwl
+id: makeVariantTaxLookups.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

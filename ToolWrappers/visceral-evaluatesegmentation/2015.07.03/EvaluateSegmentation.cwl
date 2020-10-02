@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EvaluateSegmentation.cwl
+id: EvaluateSegmentation.cwl
 inputs:
 - id: in_thd
   doc: =before evaluation convert fuzzy images to binary using threshold

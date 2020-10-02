@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_dida.cwl
+id: abyss_dida.cwl
 inputs:
 - id: in_additional_command_line
   doc: additional command line opts for DIDA

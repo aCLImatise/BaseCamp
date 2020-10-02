@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpptraj_slice.cwl
+id: cpptraj_slice.cwl
 inputs:
 - id: in_config
   doc: Configuration file

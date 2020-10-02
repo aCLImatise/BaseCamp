@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../downpore.cwl
+id: downpore.cwl
 inputs:
 - id: in_overlap
   doc: map

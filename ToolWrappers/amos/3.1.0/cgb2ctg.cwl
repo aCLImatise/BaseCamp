@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgb2ctg.cwl
+id: cgb2ctg.cwl
 inputs:
 - id: in_extension
   doc: "otherwise -i and -o are those specified in the command line\nif -i is provided\

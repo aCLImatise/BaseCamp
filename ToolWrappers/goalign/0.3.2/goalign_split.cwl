@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_split.cwl
+id: goalign_split.cwl
 inputs:
 - id: in_out_prefix
   doc: Prefix of output files

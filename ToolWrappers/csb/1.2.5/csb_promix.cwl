@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csb_promix.cwl
+id: csb_promix.cwl
 inputs:
 - id: in_components
   doc: Number of components (default=-1)

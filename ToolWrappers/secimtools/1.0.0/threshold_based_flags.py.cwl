@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../threshold_based_flags.py.cwl
+id: threshold_based_flags.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

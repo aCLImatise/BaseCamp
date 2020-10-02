@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_file_names.cwl
+id: read_file_names.cwl
 inputs:
 - id: in_in
   doc: '(1 arg) :    bank input'

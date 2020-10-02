@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyprophet_export_compound.cwl
+id: pyprophet_export_compound.cwl
 inputs:
 - id: in_in
   doc: PyProphet input file.  [required]

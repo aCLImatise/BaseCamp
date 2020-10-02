@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../focus.cwl
+id: focus.cwl
 inputs:
 - id: in_query
   doc: Path to directory with FAST(A/Q) files

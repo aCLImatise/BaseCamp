@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_components_restore.cwl
+id: gcloud_components_restore.cwl
 inputs:
 - id: in_optional
   doc: ''

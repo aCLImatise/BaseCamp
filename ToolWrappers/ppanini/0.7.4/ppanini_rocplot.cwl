@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanini_rocplot.cwl
+id: ppanini_rocplot.cwl
 inputs:
 - id: in_p_panini_output
   doc: PPANINI output table

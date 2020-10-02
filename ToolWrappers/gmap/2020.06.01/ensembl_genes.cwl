@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ensembl_genes.cwl
+id: ensembl_genes.cwl
 inputs:
 - id: in_more_options
   doc: ''

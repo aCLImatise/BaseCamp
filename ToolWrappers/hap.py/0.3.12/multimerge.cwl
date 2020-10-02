@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multimerge.cwl
+id: multimerge.cwl
 inputs:
 - id: in_input_file
   doc: The input files

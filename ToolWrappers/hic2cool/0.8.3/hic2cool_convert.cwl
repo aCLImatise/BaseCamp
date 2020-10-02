@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hic2cool_convert.cwl
+id: hic2cool_convert.cwl
 inputs:
 - id: in_resolution
   doc: "integer bp resolution desired in cooler file. Setting\nto 0 (default) will\

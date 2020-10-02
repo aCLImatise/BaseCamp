@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyfastx_index.cwl
+id: pyfastx_index.cwl
 inputs:
 - id: in_full
   doc: build full index, base composition will be calculated

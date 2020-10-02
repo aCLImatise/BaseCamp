@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_NVC.py.cwl
+id: read_NVC.py.cwl
 inputs:
 - id: in_input_file
   doc: Input file in BAM or SAM format.[required]

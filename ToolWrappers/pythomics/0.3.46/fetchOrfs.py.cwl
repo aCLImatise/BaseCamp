@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fetchOrfs.py.cwl
+id: fetchOrfs.py.cwl
 inputs:
 - id: in_threads_run_default
   doc: 'Threads to run (default: 1)'

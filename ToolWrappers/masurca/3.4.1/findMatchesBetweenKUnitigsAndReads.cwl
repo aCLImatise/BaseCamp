@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findMatchesBetweenKUnitigsAndReads.cwl
+id: findMatchesBetweenKUnitigsAndReads.cwl
 inputs:
 - id: in_long
   doc: Long output format (false)

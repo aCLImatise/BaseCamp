@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ffindex_build.cwl
+id: ffindex_build.cwl
 inputs:
 - id: in_append_filesindexes_also
   doc: append files/indexes, also needed for sorting an already existing ffindex

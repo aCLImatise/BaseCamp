@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../locarna_motif_scan.cwl
+id: locarna_motif_scan.cwl
 inputs: []
 outputs:
 - id: out_stdout

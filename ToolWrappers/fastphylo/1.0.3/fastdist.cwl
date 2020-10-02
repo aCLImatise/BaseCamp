@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastdist.cwl
+id: fastdist.cwl
 inputs:
 - id: in_outfile
   doc: "output filename. If not specifed, output is\nwritten to stdout"

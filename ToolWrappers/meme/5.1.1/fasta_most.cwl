@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_most.cwl
+id: fasta_most.cwl
 inputs:
 - id: in_min
   doc: <length>  minimum length to accept

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2fasta.cwl
+id: vcf2fasta.cwl
 inputs:
 - id: in_reference
   doc: Use this reference when decomposing samples.

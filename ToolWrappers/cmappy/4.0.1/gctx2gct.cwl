@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gctx2gct.cwl
+id: gctx2gct.cwl
 inputs:
 - id: in_filename
   doc: ".gctx file that you would like to converted to .gct\n(default: None)"

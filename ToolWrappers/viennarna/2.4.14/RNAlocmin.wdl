@@ -30,14 +30,12 @@ task RNAlocmin {
     Int? flood_portion
     Int? flood_max
     Float? e_range
-    String this
     String postprocessing_dot
     String flag_dot
     String basin
   }
   command <<<
     RNAlocmin \
-      ~{this} \
       ~{postprocessing_dot} \
       ~{flag_dot} \
       ~{basin} \
@@ -99,7 +97,6 @@ task RNAlocmin {
     flood_portion: "Fraction of minima to flood (floods first minima\\nwith low number of inwalking sample structures)\\n(0.0 -> no flood; 1.0 -> try to flood all)\\nUsable only with -r or -b options.\\n(default=`0.95')"
     flood_max: "Flood cap - how many structures to flood in one"
     e_range: "Report only LM, which energy is in range <MFE (or\\nlowest found LM), MFE+eRange> in kcal/mol.\\n"
-    this: "(default=`0.0')"
     postprocessing_dot: "(default=off)"
     flag_dot: "(default=`treeRNAloc.ps')"
     basin: "(default=`1000')"

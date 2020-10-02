@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotatePeaks.pl.cwl
+id: annotatePeaks.pl.cwl
 inputs:
 - id: in_gtf
   doc: (Use -gff and -gff3 if appropriate, but GTF is better)
@@ -157,11 +157,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -gsize
-- id: in_hist
-  doc: (i.e 1, 2, 5, 10, 20, 50, 100 etc.)
-  type: long
-  inputBinding:
-    prefix: -hist
 - id: in_nuc
   doc: "(calculated mononucleotide frequencies at each position,\nWill report by default\
     \ if extracting sequence for other purposes like motifs)"

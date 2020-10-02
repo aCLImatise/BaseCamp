@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_abundance.py.cwl
+id: run_abundance.py.cwl
 inputs:
 - id: in_alignment_size
   doc: "max alignment subset size of N [default: 10% of the\ntotal number of taxa\

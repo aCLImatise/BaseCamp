@@ -1,23 +1,14 @@
 class: CommandLineTool
-id: ../../../flatfile_to_json.pl.cwl
+id: flatfile_to_json.pl.cwl
 inputs:
-- id: in_bed
-  doc: ''
+- id: in_gff
+  doc: "--bed <BED file>\n--gbk <GenBank file>\nProcess a GFF3, BED, or GenBank file\
+    \ containing annotation data.\nThis script does not support GFF version 2 or GTF\
+    \ (GFF 2.5) input.\nGenBank input is limited to handling records for single genes.\n\
+    --trackLabel <track identifier>\nUnique identifier for this track. Required."
   type: File
   inputBinding:
-    prefix: --bed
-- id: in_gbk
-  doc: "Process a GFF3, BED, or GenBank file containing annotation data.\nThis script\
-    \ does not support GFF version 2 or GTF (GFF 2.5) input.\nGenBank input is limited\
-    \ to handling records for single genes."
-  type: File
-  inputBinding:
-    prefix: --gbk
-- id: in_track_label
-  doc: Unique identifier for this track. Required.
-  type: string
-  inputBinding:
-    prefix: --trackLabel
+    prefix: --gff
 - id: in_key
   doc: "'<text>'\nHuman-readable track name."
   type: boolean
@@ -156,16 +147,6 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_required
-  doc: --gff <GFF3 file>
-  type: string
-  inputBinding:
-    position: 0
-- id: in_optional
-  doc: "--help | -h | -?\nDisplay an extended help screen."
-  type: string
-  inputBinding:
-    position: 1
 - id: in_gff_three_specific
   doc: "--maxLookback <integer>\nMaximum number of features to keep in memory when\
     \ parsing GFF3\nfiles. Defaults to 10000.\nIf you receive \"orphan features\"\
@@ -174,12 +155,12 @@ inputs:
     \ machine has\nenough memory."
   type: long
   inputBinding:
-    position: 2
+    position: 0
 - id: in_bed_specific
   doc: --thinType <type>
   type: string
   inputBinding:
-    position: 3
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

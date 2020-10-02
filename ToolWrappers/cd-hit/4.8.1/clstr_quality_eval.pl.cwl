@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clstr_quality_eval.pl.cwl
+id: clstr_quality_eval.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

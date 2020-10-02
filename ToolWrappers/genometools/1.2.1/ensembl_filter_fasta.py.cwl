@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ensembl_filter_fasta.py.cwl
+id: ensembl_filter_fasta.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

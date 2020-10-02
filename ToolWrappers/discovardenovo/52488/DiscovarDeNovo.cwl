@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DiscovarDeNovo.cwl
+id: DiscovarDeNovo.cwl
 inputs:
 - id: in_arg_one
   doc: ''

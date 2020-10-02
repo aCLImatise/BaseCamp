@@ -2,26 +2,14 @@ version 1.0
 
 task BuildRefContigs {
   input {
-    String? g
-    String? m
-    Boolean? min_overlap
-    Boolean? build_unitigs_input
-    Boolean? build_scaffolds_input
+    String? m_mappingminoverlap_fragments
   }
   command <<<
     buildRefContigs \
-      ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
-      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
-      ~{if (min_overlap) then "-minoverlap" else ""} \
-      ~{if (build_unitigs_input) then "-U" else ""} \
-      ~{if (build_scaffolds_input) then "-S" else ""}
+      ~{if defined(m_mappingminoverlap_fragments) then ("-g " +  '"' + m_mappingminoverlap_fragments + '"') else ""}
   >>>
   parameter_meta {
-    g: ""
-    m: ""
-    min_overlap: "fragments must overlap by at least this much"
-    build_unitigs_input: "build unitigs, for input to cgw"
-    build_scaffolds_input: "build scaffolds, for input to terminator"
+    m_mappingminoverlap_fragments: "-m mapping\\n-minoverlap    fragments must overlap by at least this much\\n-U             build unitigs, for input to cgw\\n-S             build scaffolds, for input to terminator\\n"
   }
   output {
     File out_stdout = stdout()

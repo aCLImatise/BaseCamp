@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_probe_reconstruct_uce_from_probe.cwl
+id: phyluce_probe_reconstruct_uce_from_probe.cwl
 inputs:
 - id: in_input
   doc: The input probe set

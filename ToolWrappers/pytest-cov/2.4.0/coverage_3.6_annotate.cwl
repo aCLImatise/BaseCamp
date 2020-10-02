@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coverage_3.6_annotate.cwl
+id: coverage_3.6_annotate.cwl
 inputs:
 - id: in_directory
   doc: Write the output files to DIR.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pourRNA.cwl
+id: pourRNA.cwl
 inputs:
 - id: in_sequence
   doc: "The RNA sequence of the molecule\n(default=`ACUGUAUGCGCGU')"

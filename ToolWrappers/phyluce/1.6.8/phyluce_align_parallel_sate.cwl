@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_parallel_sate.cwl
+id: phyluce_align_parallel_sate.cwl
 inputs:
 - id: in_sate_conf
   doc: '[--cores CORES]'

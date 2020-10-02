@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Mobius.py.cwl
+id: Mobius.py.cwl
 inputs:
 - id: in_force_trans
   doc: Force blocks where annotated transcripts start and end

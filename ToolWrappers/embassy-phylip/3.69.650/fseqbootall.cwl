@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fseqbootall.cwl
+id: fseqbootall.cwl
 inputs:
 - id: in_categories
   doc: properties File of input categories

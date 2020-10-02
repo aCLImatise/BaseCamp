@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vep_install.cwl
+id: vep_install.cwl
 inputs:
 - id: in__destdir_directory
   doc: "| --DESTDIR     Set destination directory for API install (default = './')"
@@ -89,31 +89,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -f
-- id: in_ensembl
-  doc: ': 100.171092c'
+- id: in_perl
+  doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_ensembl_func_gen
-  doc: ': 100.f0c3948'
+- id: in_install_do_tpl
+  doc: ''
   type: string
   inputBinding:
     position: 1
-- id: in_ensembl_io
-  doc: ': 100.f87ae4f'
+- id: in_arguments
+  doc: ''
   type: string
   inputBinding:
     position: 2
-- id: in_ensembl_variation
-  doc: ': 100.b220ff4'
-  type: string
-  inputBinding:
-    position: 3
-- id: in_ensembl_vep
-  doc: ': 100.3'
-  type: string
-  inputBinding:
-    position: 4
 outputs:
 - id: out_stdout
   doc: Standard output stream

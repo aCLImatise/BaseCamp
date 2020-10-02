@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ska.cwl
+id: ska.cwl
 inputs:
 - id: in_subcommand
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_tsvs.py.cwl
+id: merge_tsvs.py.cwl
 inputs:
 - id: in_join_type_outer
   doc: Join type (outer).

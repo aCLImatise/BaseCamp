@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SeqIO.py.cwl
+id: SeqIO.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

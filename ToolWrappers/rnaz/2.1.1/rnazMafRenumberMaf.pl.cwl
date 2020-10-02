@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazMafRenumberMaf.pl.cwl
+id: rnazMafRenumberMaf.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

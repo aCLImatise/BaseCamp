@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fsnviz_star_fusion.cwl
+id: fsnviz_star_fusion.cwl
 inputs:
 - id: in_input
   doc: ''

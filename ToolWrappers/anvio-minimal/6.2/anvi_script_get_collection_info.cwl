@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_get_collection_info.cwl
+id: anvi_script_get_collection_info.cwl
 inputs: []
 outputs:
 - id: out_stdout

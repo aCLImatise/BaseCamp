@@ -2,7 +2,6 @@ version 1.0
 
 task Obiannotate {
   input {
-    Int? with_tax_on_at_rank
     Boolean? debug
     Boolean? without_progress_bar
     String? sequence
@@ -33,6 +32,7 @@ task Obiannotate {
     Boolean? clear
     String? keep
     Boolean? length
+    String? with_tax_on_at_rank
     File? mcl
     Boolean? uniq_id
     String? skip
@@ -52,12 +52,9 @@ task Obiannotate {
     Boolean? fast_q_output
     String? eco_pcr_db_output
     Boolean? uppercase
-    String bash
   }
   command <<<
     obiannotate \
-      ~{bash} \
-      ~{if defined(with_tax_on_at_rank) then ("--with-taxon-at-rank " +  '"' + with_tax_on_at_rank + '"') else ""} \
       ~{if (debug) then "--DEBUG" else ""} \
       ~{if (without_progress_bar) then "--without-progress-bar" else ""} \
       ~{if defined(sequence) then ("--sequence " +  '"' + sequence + '"') else ""} \
@@ -88,6 +85,7 @@ task Obiannotate {
       ~{if (clear) then "--clear" else ""} \
       ~{if defined(keep) then ("--keep " +  '"' + keep + '"') else ""} \
       ~{if (length) then "--length" else ""} \
+      ~{if defined(with_tax_on_at_rank) then ("--with-taxon-at-rank " +  '"' + with_tax_on_at_rank + '"') else ""} \
       ~{if defined(mcl) then ("--mcl " +  '"' + mcl + '"') else ""} \
       ~{if (uniq_id) then "--uniq-id" else ""} \
       ~{if defined(skip) then ("--skip " +  '"' + skip + '"') else ""} \
@@ -109,7 +107,6 @@ task Obiannotate {
       ~{if (uppercase) then "--uppercase" else ""}
   >>>
   parameter_meta {
-    with_tax_on_at_rank: "seq1.fasta > seq2.fasta"
     debug: "Set logging in debug mode"
     without_progress_bar: "desactivate progress bar"
     sequence: "regular expression pattern used to select the\\nsequence. The pattern is case insensitive"
@@ -140,6 +137,7 @@ task Obiannotate {
     clear: "clear all tags associated to the sequences"
     keep: "only keep this tag"
     length: "add seqLength tag with sequence length"
+    with_tax_on_at_rank: "add taxonomy annotation at a specified rank level"
     mcl: "add cluster tag to sequences according to a mcl graph\\nclustering partition"
     uniq_id: "force sequence ids to be uniq"
     skip: "skip the N first sequences"
@@ -159,7 +157,6 @@ task Obiannotate {
     fast_q_output: "Output sequences in sanger fastq format"
     eco_pcr_db_output: "Output sequences in ecopcr database format (sequence\\nrecords are not printed on standard output)"
     uppercase: "Print sequences in upper case (default is lower case)"
-    bash: "> obiannotate -d my_ecopcr_database \\"
   }
   output {
     File out_stdout = stdout()

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_vpn_tunnels.cwl
+id: gcloud_compute_vpn_tunnels.cwl
 inputs:
 - id: in_tunnels
   doc: SYNOPSIS

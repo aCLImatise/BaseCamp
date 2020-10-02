@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_important_factors.py.cwl
+id: filter_important_factors.py.cwl
 inputs:
 - id: in_in
   doc: Input file

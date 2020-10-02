@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../openslide_write_png.cwl
+id: openslide_write_png.cwl
 inputs: []
 outputs:
 - id: out_stdout

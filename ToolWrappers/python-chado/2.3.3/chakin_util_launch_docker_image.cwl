@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_util_launch_docker_image.cwl
+id: chakin_util_launch_docker_image.cwl
 inputs:
 - id: in_background
   doc: Launch the image in the background

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncrf_consensus_filter.cwl
+id: ncrf_consensus_filter.cwl
 inputs: []
 outputs:
 - id: out_stdout

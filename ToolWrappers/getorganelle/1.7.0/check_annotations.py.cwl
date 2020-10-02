@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../check_annotations.py.cwl
+id: check_annotations.py.cwl
 inputs:
 - id: in_input_reference_file
   doc: input reference *.gb file

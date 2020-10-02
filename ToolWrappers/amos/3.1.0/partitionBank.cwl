@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../partitionBank.cwl
+id: partitionBank.cwl
 inputs:
 - id: in_b
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_filterdb.cwl
+id: mmseqs_filterdb.cwl
 inputs:
 - id: in_add_self_matches
   doc: false           artificially add entries of queries with themselves (for clustering)

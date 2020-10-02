@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cleanUpPeakFile.pl.cwl
+id: cleanUpPeakFile.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

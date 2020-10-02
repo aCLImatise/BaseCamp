@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wiggle_to_chr_binned_array.py.cwl
+id: wiggle_to_chr_binned_array.py.cwl
 inputs:
 - id: in_score_file
   doc: ''

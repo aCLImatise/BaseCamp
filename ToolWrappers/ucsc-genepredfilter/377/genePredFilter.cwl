@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genePredFilter.cwl
+id: genePredFilter.cwl
 inputs:
 - id: in_db
   doc: "- If specified, then this database is used to\nget chromosome sizes."

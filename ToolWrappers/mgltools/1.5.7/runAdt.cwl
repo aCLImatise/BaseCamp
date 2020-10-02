@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runAdt.cwl
+id: runAdt.cwl
 inputs:
 - id: in_again
   doc: ': play back lastlog file'

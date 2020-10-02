@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kneaddata_database.cwl
+id: kneaddata_database.cwl
 inputs:
 - id: in_available
   doc: print the available databases

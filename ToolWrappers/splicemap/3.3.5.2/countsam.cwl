@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../countsam.cwl
+id: countsam.cwl
 inputs:
 - id: in_in_file_dots_am
   doc: ''

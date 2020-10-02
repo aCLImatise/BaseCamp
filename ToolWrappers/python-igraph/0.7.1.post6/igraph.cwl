@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igraph.cwl
+id: igraph.cwl
 inputs: []
 outputs:
 - id: out_stdout

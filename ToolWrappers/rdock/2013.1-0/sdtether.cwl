@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sdtether.cwl
+id: sdtether.cwl
 inputs: []
 outputs:
 - id: out_stdout

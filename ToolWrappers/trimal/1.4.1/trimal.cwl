@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trimal.cwl
+id: trimal.cwl
 inputs:
 - id: in_in
   doc: Input file in several formats (clustal, fasta, NBRF/PIR, nexus, phylip3.2,

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chunkify.py_raw_identity.cwl
+id: chunkify.py_raw_identity.cwl
 inputs:
 - id: in_alphabet
   doc: "Alphabet of the sequences (default: b'ACGT')"

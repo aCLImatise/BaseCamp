@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cluster2bedgraph.pl.cwl
+id: cluster2bedgraph.pl.cwl
 inputs:
 - id: in_cluster_distance_file
   doc: ''

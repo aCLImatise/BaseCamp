@@ -2,53 +2,14 @@ version 1.0
 
 task BlastToBedsh {
   input {
-    File? file
-    Int? identity_cutoff_default
-    Int? length_percentage_cutoff
-    Int? length_alignment_cutoff
-    File? directory_optional_default
-    String? var_5
-    String? field_retrieve_left
-    String? var_7
-    String? field_retrieve_right
-    String? mode
-    String? outputs_one_entry
-    String? mode_one_query
-    String? v
-    String? usage_message
+    Int? fileb_blast_identity
   }
   command <<<
     blast_to_bed_sh \
-      ~{if defined(file) then ("-i " +  '"' + file + '"') else ""} \
-      ~{if defined(identity_cutoff_default) then ("-b " +  '"' + identity_cutoff_default + '"') else ""} \
-      ~{if defined(length_percentage_cutoff) then ("-l " +  '"' + length_percentage_cutoff + '"') else ""} \
-      ~{if defined(length_alignment_cutoff) then ("-L " +  '"' + length_alignment_cutoff + '"') else ""} \
-      ~{if defined(directory_optional_default) then ("-o " +  '"' + directory_optional_default + '"') else ""} \
-      ~{if defined(var_5) then ("-q " +  '"' + var_5 + '"') else ""} \
-      ~{if defined(field_retrieve_left) then ("-Q " +  '"' + field_retrieve_left + '"') else ""} \
-      ~{if defined(var_7) then ("-d " +  '"' + var_7 + '"') else ""} \
-      ~{if defined(field_retrieve_right) then ("-D " +  '"' + field_retrieve_right + '"') else ""} \
-      ~{if defined(mode) then ("-I " +  '"' + mode + '"') else ""} \
-      ~{if defined(outputs_one_entry) then ("-u " +  '"' + outputs_one_entry + '"') else ""} \
-      ~{if defined(mode_one_query) then ("-U " +  '"' + mode_one_query + '"') else ""} \
-      ~{if defined(v) then ("-v " +  '"' + v + '"') else ""} \
-      ~{if defined(usage_message) then ("-h " +  '"' + usage_message + '"') else ""}
+      ~{if defined(fileb_blast_identity) then ("-i " +  '"' + fileb_blast_identity + '"') else ""}
   >>>
   parameter_meta {
-    file: "file"
-    identity_cutoff_default: "identity cutoff (0 - 100), default 90"
-    length_percentage_cutoff: "length percentage cutoff (0 - 100), default 20, use 90 for genes"
-    length_alignment_cutoff: "length alignment cutoff, default 0, use 200 or 500 for contigs"
-    directory_optional_default: "directory (optional). By default the file is replaced in the same location"
-    var_5: "chraracter delimiter, default \\\"_\\\""
-    field_retrieve_left: "field to retrieve (l=left, r=right), default left"
-    var_7: "chraracter delimiter, default \\\"_\\\""
-    field_retrieve_right: "field to retrieve (l=left, r=right), default right"
-    mode: "mode"
-    outputs_one_entry: "Outputs only one query entry per database entry"
-    mode_one_query: "mode with delimiter. Outputs only one delimited query per database entry"
-    v: ""
-    usage_message: "usage message"
+    fileb_blast_identity: "file\\n-b blast identity cutoff (0 - 100), default 90\\n-l blast length percentage cutoff (0 - 100), default 20, use 90 for genes\\n-L blast length alignment cutoff, default 0, use 200 or 500 for contigs\\n-o output directory (optional). By default the file is replaced in the same location\\n-q database chraracter delimiter, default \\\"_\\\"\\n-Q query field to retrieve (l=left, r=right), default left\\n-d database chraracter delimiter, default \\\"_\\\"\\n-D database field to retrieve (l=left, r=right), default right\\n-I contig mode\\n-u unique. Outputs only one query entry per database entry\\n-U unique mode with delimiter. Outputs only one delimited query per database entry\\n-v version\\n-h display usage message"
   }
   output {
     File out_stdout = stdout()

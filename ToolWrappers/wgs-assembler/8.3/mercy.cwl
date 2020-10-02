@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mercy.cwl
+id: mercy.cwl
 inputs:
 - id: in_af
   doc: '| -tf        fragcounts'

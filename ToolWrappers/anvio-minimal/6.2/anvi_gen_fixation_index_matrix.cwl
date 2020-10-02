@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_gen_fixation_index_matrix.cwl
+id: anvi_gen_fixation_index_matrix.cwl
 inputs:
 - id: in_profile_db
   doc: Anvi'o profile database

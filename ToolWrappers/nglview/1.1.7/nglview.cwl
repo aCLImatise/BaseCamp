@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nglview.cwl
+id: nglview.cwl
 inputs:
 - id: in_crd
   doc: coordinate filename

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../evalCGP.pl.cwl
+id: evalCGP.pl.cwl
 inputs:
 - id: in_eval_exec_dir
   doc: "Directory that contains the executable evaluate_gtf.pl from the eval package.\n\

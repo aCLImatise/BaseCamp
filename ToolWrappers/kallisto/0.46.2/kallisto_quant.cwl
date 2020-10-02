@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kallisto_quant.cwl
+id: kallisto_quant.cwl
 inputs:
 - id: in_index
   doc: "Filename for the kallisto index to be used for\nquantification"

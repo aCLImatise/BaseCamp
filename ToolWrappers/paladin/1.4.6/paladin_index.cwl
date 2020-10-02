@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paladin_index.cwl
+id: paladin_index.cwl
 inputs:
 - id: in_enable_indexing_frames
   doc: Enable indexing all frames in nucleotide references

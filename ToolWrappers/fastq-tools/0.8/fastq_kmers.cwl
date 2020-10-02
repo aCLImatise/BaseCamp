@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_kmers.cwl
+id: fastq_kmers.cwl
 inputs:
 - id: in_size
   doc: 'kmer size (default: 1)'

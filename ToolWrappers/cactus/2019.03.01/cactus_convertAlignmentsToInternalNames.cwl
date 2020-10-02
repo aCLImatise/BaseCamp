@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_convertAlignmentsToInternalNames.cwl
+id: cactus_convertAlignmentsToInternalNames.cwl
 inputs:
 - id: in_cactus_disk
   doc: must be provided

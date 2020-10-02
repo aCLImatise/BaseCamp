@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotate_bed.py.cwl
+id: annotate_bed.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

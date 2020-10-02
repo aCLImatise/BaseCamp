@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compiled_table.py.cwl
+id: compiled_table.py.cwl
 inputs:
 - id: in_tables
   doc: tables to compile

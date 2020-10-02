@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_match.cwl
+id: fastq_match.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psl_splicesites.cwl
+id: psl_splicesites.cwl
 inputs:
 - id: in_more_options
   doc: ''

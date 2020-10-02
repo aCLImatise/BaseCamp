@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_print_chroms.py_refindex.cwl
+id: maf_print_chroms.py_refindex.cwl
 inputs:
 - id: in_program_dot
   doc: 'usage: /usr/local/bin/maf_print_chroms.py refindex [options]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LAb2a.cwl
+id: LAb2a.cwl
 inputs:
 - id: in_la_a_two_b
   doc: ''

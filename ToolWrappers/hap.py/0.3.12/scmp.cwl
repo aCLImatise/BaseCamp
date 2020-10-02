@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scmp.cwl
+id: scmp.cwl
 inputs:
 - id: in_input_file
   doc: "Input VCF file. Must have exactly two\nsamples, the first sample will be used\n\

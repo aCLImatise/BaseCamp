@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cal_EcoliDetPerf.py.cwl
+id: cal_EcoliDetPerf.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

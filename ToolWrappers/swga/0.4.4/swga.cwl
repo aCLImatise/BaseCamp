@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../swga.cwl
+id: swga.cwl
 inputs:
 - id: in_usage
   doc: ''

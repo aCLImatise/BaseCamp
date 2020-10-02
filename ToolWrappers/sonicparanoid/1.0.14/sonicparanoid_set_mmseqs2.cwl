@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sonicparanoid_set_mmseqs2.cwl
+id: sonicparanoid_set_mmseqs2.cwl
 inputs:
 - id: in_mm_seqs_path
   doc: The path to the MMseqs2 binary file.

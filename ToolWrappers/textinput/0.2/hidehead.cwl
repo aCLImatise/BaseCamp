@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hidehead.cwl
+id: hidehead.cwl
 inputs: []
 outputs:
 - id: out_stdout

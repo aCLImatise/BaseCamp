@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nextflow_config.cwl
+id: nextflow_config.cwl
 inputs:
 - id: in_flat
   doc: "Print config using flat notation\nDefault: false"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cut.cwl
+id: cut.cwl
 inputs:
 - id: in_bytes
   doc: select only these bytes

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../align_collect.py.cwl
+id: align_collect.py.cwl
 inputs:
 - id: in_script
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthomclReduceGroups.cwl
+id: orthomclReduceGroups.cwl
 inputs:
 - id: in_groups_file
   doc: ''

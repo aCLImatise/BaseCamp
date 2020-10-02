@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getUniqueProtein_o.py.cwl
+id: getUniqueProtein_o.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

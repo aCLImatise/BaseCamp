@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ParseLog.py.cwl
+id: ParseLog.py.cwl
 inputs:
 - id: in_explicit_output_file
   doc: "Explicit output file name(s). Note, this argument\ncannot be used with the\

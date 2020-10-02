@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_associate.cwl
+id: vtools_associate.cwl
 inputs:
 - id: in_jobs
   doc: Number of processes to carry out association tests.

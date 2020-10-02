@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmtkTFmerge.cwl
+id: gmtkTFmerge.cwl
 inputs: []
 outputs:
 - id: out_stdout

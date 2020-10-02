@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NOVOPlasty4.0.pl.cwl
+id: NOVOPlasty4.0.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

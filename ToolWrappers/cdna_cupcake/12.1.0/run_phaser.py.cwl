@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_phaser.py.cwl
+id: run_phaser.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preprocess_dataset.cwl
+id: preprocess_dataset.cwl
 inputs:
 - id: in_disable_filtering
   doc: skip the filtering step

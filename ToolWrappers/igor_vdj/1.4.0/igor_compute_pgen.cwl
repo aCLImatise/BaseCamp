@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igor_compute_pgen.cwl
+id: igor_compute_pgen.cwl
 inputs: []
 outputs:
 - id: out_stdout

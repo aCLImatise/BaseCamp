@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paladin_shm.cwl
+id: paladin_shm.cwl
 inputs:
 - id: in_destroy_indices_shared
   doc: destroy all indices in shared memory

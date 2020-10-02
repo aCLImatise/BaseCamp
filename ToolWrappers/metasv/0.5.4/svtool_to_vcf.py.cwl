@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtool_to_vcf.py.cwl
+id: svtool_to_vcf.py.cwl
 inputs:
 - id: in_sample
   doc: '[--reference REFERENCE] [--sort]'

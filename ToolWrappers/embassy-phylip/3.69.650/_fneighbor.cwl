@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fneighbor.cwl
+id: _fneighbor.cwl
 inputs: []
 outputs:
 - id: out_stdout

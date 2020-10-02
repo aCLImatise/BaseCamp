@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../index_gff.cwl
+id: index_gff.cwl
 inputs:
 - id: in_index
   doc: "Index the given GFF. Takes as arguments as GFF filename\nand an output directory."

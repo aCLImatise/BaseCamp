@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_merge_bins.cwl
+id: anvi_merge_bins.cwl
 inputs:
 - id: in_collection_name
   doc: Collection name.

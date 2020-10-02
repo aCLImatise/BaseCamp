@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idba_subasm.o.cwl
+id: idba_subasm.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_validate_results.cwl
+id: megalodon_extras_validate_results.cwl
 inputs:
 - id: in_control_megalodon_results_dirs
   doc: "Megalodon output directories for modified base control\nsample(s). Could be\

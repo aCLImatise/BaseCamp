@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotateBed.cwl
+id: annotateBed.cwl
 inputs:
 - id: in_names
   doc: "A list of names (one / file) to describe each file in -i.\nThese names will\

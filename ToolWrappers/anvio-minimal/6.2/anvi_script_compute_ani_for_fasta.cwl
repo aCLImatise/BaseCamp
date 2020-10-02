@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_compute_ani_for_fasta.cwl
+id: anvi_script_compute_ani_for_fasta.cwl
 inputs:
 - id: in_fast_a_file
   doc: A FASTA-formatted input file

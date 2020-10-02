@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LAcheck.cwl
+id: LAcheck.cwl
 inputs:
 - id: in_verbose_mode_output
   doc: ': Verbose mode, output error messages.'

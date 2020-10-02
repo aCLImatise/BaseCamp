@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../showpep.cwl
+id: showpep.cwl
 inputs:
 - id: in_format
   doc: "menu       [2] Display format (Values: 0 (Enter your\nown list of things to\

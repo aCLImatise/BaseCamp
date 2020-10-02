@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pybel_machine.cwl
+id: pybel_machine.cwl
 inputs:
 - id: in_local
   doc: Upload to local database.

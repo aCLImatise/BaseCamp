@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../pslToBed.cwl
+id: pslToBed.cwl
 inputs:
-- id: in_cds
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -cds
-- id: in_pos_name
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -posName
 - id: in_psl
   doc: ''
   type: string

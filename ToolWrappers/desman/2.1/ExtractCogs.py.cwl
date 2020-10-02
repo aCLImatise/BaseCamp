@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ExtractCogs.py.cwl
+id: ExtractCogs.py.cwl
 inputs:
 - id: in_blast_outfile
   doc: "Output of rpsblast run, assumed to be in tabular\nformat whith columns: qseqid\

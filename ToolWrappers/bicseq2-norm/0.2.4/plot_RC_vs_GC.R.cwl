@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_RC_vs_GC.R.cwl
+id: plot_RC_vs_GC.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

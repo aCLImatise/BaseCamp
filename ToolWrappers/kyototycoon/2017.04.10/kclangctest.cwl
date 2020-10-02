@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kclangctest.cwl
+id: kclangctest.cwl
 inputs:
 - id: in_etc
   doc: ''

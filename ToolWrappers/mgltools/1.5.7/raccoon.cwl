@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../raccoon.cwl
+id: raccoon.cwl
 inputs:
 - id: in_no_splash
   doc: ": doesn't show the Vision splash screen (works only if registered)"

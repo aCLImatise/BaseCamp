@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sdmodify.cwl
+id: sdmodify.cwl
 inputs:
 - id: in_f
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Plot_ANIheatmap.R.cwl
+id: Plot_ANIheatmap.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

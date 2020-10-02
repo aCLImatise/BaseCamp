@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2_benchmark.cwl
+id: humann2_benchmark.cwl
 inputs: []
 outputs:
 - id: out_stdout

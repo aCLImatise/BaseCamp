@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xcmp.cwl
+id: xcmp.cwl
 inputs:
 - id: in_input_v_cfs
   doc: "Two VCF files to compare (use file:sample\nfor a specific sample column)."

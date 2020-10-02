@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uniquePeptides.pl.cwl
+id: uniquePeptides.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

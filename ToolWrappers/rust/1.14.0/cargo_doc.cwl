@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cargo_doc.cwl
+id: cargo_doc.cwl
 inputs:
 - id: in_open
   doc: Opens the docs in a browser after the operation

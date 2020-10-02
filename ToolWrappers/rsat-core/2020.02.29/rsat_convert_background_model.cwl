@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_convert_background_model.cwl
+id: rsat_convert_background_model.cwl
 inputs:
 - id: in_convert_background_model
   doc: "\e[1mDESCRIPTION\e[0m"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../marge_genes.cwl
+id: marge_genes.cwl
 inputs:
 - id: in_marge
   doc: ''

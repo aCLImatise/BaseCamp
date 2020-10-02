@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_collapse_length.cwl
+id: gotree_collapse_length.cwl
 inputs:
 - id: in_length
   doc: Length cutoff to collapse branches

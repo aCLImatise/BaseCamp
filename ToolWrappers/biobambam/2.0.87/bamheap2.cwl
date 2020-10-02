@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamheap2.cwl
+id: bamheap2.cwl
 inputs: []
 outputs:
 - id: out_stdout

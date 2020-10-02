@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_export_tree.cwl
+id: arb_export_tree.cwl
 inputs:
 - id: in_bifurcated
   doc: write a bifurcated tree (default is a trifurcated tree)

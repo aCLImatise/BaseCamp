@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mlst.cwl
+id: mlst.cwl
 inputs:
 - id: in_check
   doc: Just check dependencies and exit (default OFF)

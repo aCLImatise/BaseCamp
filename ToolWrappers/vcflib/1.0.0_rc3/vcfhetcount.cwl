@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfhetcount.cwl
+id: vcfhetcount.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_addresses.cwl
+id: gcloud_compute_addresses.cwl
 inputs:
 - id: in_addresses
   doc: SYNOPSIS

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mono_symbolicate.cwl
+id: mono_symbolicate.cwl
 inputs:
 - id: in_quiet_warnings_displayed
   doc: Quiet, warnings are not displayed

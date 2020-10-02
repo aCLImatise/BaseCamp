@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_status_delete_status.cwl
+id: arrow_status_delete_status.cwl
 inputs:
 - id: in_id_number
   doc: ''

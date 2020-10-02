@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../high_precision_irt.py.cwl
+id: high_precision_irt.py.cwl
 inputs:
 - id: in_mq_out_dir
   doc: ''

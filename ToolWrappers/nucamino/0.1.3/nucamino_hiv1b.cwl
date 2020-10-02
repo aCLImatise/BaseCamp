@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucamino_hiv1b.cwl
+id: nucamino_hiv1b.cwl
 inputs:
 - id: in_quiet
   doc: hide non-error information

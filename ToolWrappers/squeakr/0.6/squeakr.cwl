@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../squeakr.cwl
+id: squeakr.cwl
 inputs: []
 outputs:
 - id: out_stdout

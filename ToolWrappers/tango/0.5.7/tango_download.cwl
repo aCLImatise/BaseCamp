@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tango_download.cwl
+id: tango_download.cwl
 inputs:
 - id: in_dl_dir
   doc: "Write files to this directory. Defaults to db name in\ncurrent directory.\

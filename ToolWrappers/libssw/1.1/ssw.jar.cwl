@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssw.jar.cwl
+id: ssw.jar.cwl
 inputs: []
 outputs:
 - id: out_stdout

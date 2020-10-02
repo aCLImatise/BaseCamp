@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bl_exclude.cwl
+id: bl_exclude.cwl
 inputs:
 - id: in_line_excludefile_truncated
   doc: "each line in EXCLUDE_FILE is truncated by a space or tab and\nstored as an\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kaijux.cwl
+id: kaijux.cwl
 inputs:
 - id: in_name_database_file
   doc: Name of database file (.fmi) file

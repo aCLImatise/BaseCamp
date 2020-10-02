@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halReplaceGenome.cwl
+id: halReplaceGenome.cwl
 inputs:
 - id: in_bottom_alignment_file
   doc: ":   hal file containing an alignment of the genome and\nits children. Required\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scHicClusterCompartments.cwl
+id: scHicClusterCompartments.cwl
 inputs:
 - id: in_out_filename
   doc: "File name to save the resulting clusters (default:\nclusters.txt)"

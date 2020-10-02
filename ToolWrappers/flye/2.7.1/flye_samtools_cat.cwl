@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_cat.cwl
+id: flye_samtools_cat.cwl
 inputs:
 - id: in_list_input_bamcram
   doc: list of input BAM/CRAM file names, one per line

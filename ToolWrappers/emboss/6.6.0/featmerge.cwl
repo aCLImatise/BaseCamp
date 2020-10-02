@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../featmerge.cwl
+id: featmerge.cwl
 inputs: []
 outputs:
 - id: out_stdout

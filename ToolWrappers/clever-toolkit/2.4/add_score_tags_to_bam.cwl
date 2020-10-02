@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../add_score_tags_to_bam.cwl
+id: add_score_tags_to_bam.cwl
 inputs:
 - id: in_arg_value_substract
   doc: "[ --phred_offset ] arg (=33)       Value to substract from ASCII code to\n\

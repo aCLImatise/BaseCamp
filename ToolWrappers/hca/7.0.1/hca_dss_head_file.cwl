@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_head_file.cwl
+id: hca_dss_head_file.cwl
 inputs:
 - id: in_uuid
   doc: A RFC4122-compliant ID for the file.

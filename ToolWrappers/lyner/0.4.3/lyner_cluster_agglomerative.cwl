@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_cluster_agglomerative.cwl
+id: lyner_cluster_agglomerative.cwl
 inputs:
 - id: in_by
   doc: "Any comma separated combination of: 'trend',\n'mean', 'median', 'mad', 'var',\

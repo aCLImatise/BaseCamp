@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbconvgrid.cwl
+id: rbconvgrid.cwl
 inputs:
 - id: in_inputfile_input_filename
   doc: <InputFile> - input RbtVdwGridSF binary grid filename

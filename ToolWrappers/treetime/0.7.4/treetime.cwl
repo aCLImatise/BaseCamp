@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treetime.cwl
+id: treetime.cwl
 inputs:
 - id: in_tree
   doc: "Name of file containing the tree in newick, nexus, or\nphylip format. If none\

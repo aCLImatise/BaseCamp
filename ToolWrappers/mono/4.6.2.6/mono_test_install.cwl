@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mono_test_install.cwl
+id: mono_test_install.cwl
 inputs: []
 outputs:
 - id: out_stdout

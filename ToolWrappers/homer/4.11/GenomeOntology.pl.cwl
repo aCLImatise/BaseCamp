@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GenomeOntology.pl.cwl
+id: GenomeOntology.pl.cwl
 inputs:
 - id: in_g_size
   doc: <#> (Genome size used for significance calculations)

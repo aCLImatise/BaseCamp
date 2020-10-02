@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeNBaitsPerBinFile.py.cwl
+id: makeNBaitsPerBinFile.py.cwl
 inputs:
 - id: in_remove_adjacent
   doc: ''

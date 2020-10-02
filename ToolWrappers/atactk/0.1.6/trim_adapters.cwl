@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trim_adapters.cwl
+id: trim_adapters.cwl
 inputs:
 - id: in_max_edit_distance
   doc: "The maximum edit distance permitted when aligning the\npaired reads (default:\

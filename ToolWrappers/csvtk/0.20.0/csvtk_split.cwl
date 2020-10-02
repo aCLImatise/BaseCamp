@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_split.cwl
+id: csvtk_split.cwl
 inputs:
 - id: in_buf_groups
   doc: buffering N groups before writing to file (default 100)

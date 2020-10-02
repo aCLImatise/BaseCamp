@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eventClusterer.py.cwl
+id: eventClusterer.py.cwl
 inputs:
 - id: in_st
   doc: ''

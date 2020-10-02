@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../afplot_whole_genome_distance.cwl
+id: afplot_whole_genome_distance.cwl
 inputs:
 - id: in_output
   doc: Path to output file  [required]

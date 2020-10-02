@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_jobutil_report_error.cwl
+id: dx_jobutil_report_error.cwl
 inputs:
 - id: in_message
   doc: Error message for the job

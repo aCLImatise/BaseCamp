@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../svtools_copynumber.cwl
+id: svtools_copynumber.cwl
 inputs:
-- id: in_cnv_nator
-  doc: '[-i <VCF>] [-o <PATH>] [-t <DIR>]'
-  type: File
-  inputBinding:
-    prefix: --cnvnator
 - id: in_coordinates
   doc: "file containing coordinate for which to retrieve\ncopynumber (required)"
   type: File
@@ -26,6 +21,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --sample
+- id: in_cnv_nator
+  doc: "path to cnvnator binary for the cnvnator used by\nspeedseq (required)"
+  type: File
+  inputBinding:
+    prefix: --cnvnator
 - id: in_input
   doc: VCF input
   type: string

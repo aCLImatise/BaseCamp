@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chicPlotViewpoint.cwl
+id: chicPlotViewpoint.cwl
 inputs:
 - id: in_interaction_file
   doc: "path to the interaction files which should be used for\nplotting"

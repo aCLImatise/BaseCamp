@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../axt_to_fasta.py.cwl
+id: axt_to_fasta.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

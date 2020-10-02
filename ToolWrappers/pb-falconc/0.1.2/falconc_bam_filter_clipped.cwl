@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconc_bam_filter_clipped.cwl
+id: falconc_bam_filter_clipped.cwl
 inputs:
 - id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fix_unitigs.sh.cwl
+id: fix_unitigs.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

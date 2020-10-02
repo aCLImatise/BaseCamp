@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicup_mapper.cwl
+id: hicup_mapper.cwl
 inputs:
 - id: in_bowtie
   doc: Specify the path to Bowtie

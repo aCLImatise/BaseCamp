@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clone_filter.cwl
+id: clone_filter.cwl
 inputs:
 - id: in_oligo_len_one
   doc: ': length of the single-end oligo sequence in data set.'

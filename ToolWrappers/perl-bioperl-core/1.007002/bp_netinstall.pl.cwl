@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_netinstall.pl.cwl
+id: bp_netinstall.pl.cwl
 inputs:
 - id: in_dev
   doc: Use the development version of bioperl from git

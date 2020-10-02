@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../print_picrust_config.py.cwl
+id: print_picrust_config.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for debugging\n[default: False]\n"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../log_reg_prothints.pl.cwl
+id: log_reg_prothints.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

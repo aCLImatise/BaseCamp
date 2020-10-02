@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snippy_vcf_extract_subs.cwl
+id: snippy_vcf_extract_subs.cwl
 inputs:
 - id: in_debug
   doc: +        Output verbose debug info (default '0').

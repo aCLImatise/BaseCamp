@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../umis_add_uid.cwl
+id: umis_add_uid.cwl
 inputs:
 - id: in_cores
-  doc: ''
+  doc: "--help           Show this message and exit.\n"
   type: long
   inputBinding:
     prefix: --cores

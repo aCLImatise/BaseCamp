@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyfastx_extract.cwl
+id: pyfastx_extract.cwl
 inputs:
 - id: in_list_file
   doc: "a file containing sequence or read names, one name per\nline"

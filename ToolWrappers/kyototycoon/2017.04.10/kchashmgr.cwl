@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kchashmgr.cwl
+id: kchashmgr.cwl
 inputs:
 - id: in_otr
   doc: ''

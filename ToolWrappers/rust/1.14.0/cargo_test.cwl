@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cargo_test.cwl
+id: cargo_test.cwl
 inputs:
 - id: in_lib
   doc: Test only this package's library

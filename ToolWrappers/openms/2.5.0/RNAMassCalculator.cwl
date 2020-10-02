@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAMassCalculator.cwl
+id: RNAMassCalculator.cwl
 inputs:
 - id: in_in
   doc: "Input file with RNA sequences and optionally charge numbers (mutually exclusive\

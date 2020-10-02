@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../logback.xml.cwl
+id: logback.xml.cwl
 inputs: []
 outputs:
 - id: out_stdout

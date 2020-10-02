@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runPAML.pl.cwl
+id: runPAML.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

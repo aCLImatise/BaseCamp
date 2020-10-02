@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bactopia_versions.py.cwl
+id: bactopia_versions.py.cwl
 inputs:
 - id: in_directory_where_stored
   doc: Directory where Bactopia repository is stored.

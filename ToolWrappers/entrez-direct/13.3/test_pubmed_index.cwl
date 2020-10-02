@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_pubmed_index.cwl
+id: test_pubmed_index.cwl
 inputs: []
 outputs:
 - id: out_stdout

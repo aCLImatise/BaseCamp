@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FCS1Dplotggcyto.R.cwl
+id: FCS1Dplotggcyto.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

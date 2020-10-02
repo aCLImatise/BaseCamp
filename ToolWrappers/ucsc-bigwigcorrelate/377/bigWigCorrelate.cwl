@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bigWigCorrelate.cwl
+id: bigWigCorrelate.cwl
 inputs: []
 outputs:
 - id: out_stdout

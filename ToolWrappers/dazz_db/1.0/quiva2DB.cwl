@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quiva2DB.cwl
+id: quiva2DB.cwl
 inputs:
 - id: in_vl
   doc: ''

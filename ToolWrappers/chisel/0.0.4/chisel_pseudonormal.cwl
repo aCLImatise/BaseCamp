@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chisel_pseudonormal.cwl
+id: chisel_pseudonormal.cwl
 inputs:
 - id: in_reference
   doc: Reference genome

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../asn2idx.cwl
+id: asn2idx.cwl
 inputs:
 - id: in_path_to_files
   doc: Path to Files [String]

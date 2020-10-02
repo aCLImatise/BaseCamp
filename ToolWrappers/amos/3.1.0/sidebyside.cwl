@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sidebyside.cwl
+id: sidebyside.cwl
 inputs:
 - id: in_width
   doc: ': line width for each file (default: 50)'

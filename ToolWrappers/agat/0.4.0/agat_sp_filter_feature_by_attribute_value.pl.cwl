@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_filter_feature_by_attribute_value.pl.cwl
+id: agat_sp_filter_feature_by_attribute_value.pl.cwl
 inputs:
 - id: in_ref_file
   doc: Input GFF3 file that will be read

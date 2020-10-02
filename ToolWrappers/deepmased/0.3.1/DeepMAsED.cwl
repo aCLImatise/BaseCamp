@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DeepMAsED.cwl
+id: DeepMAsED.cwl
 inputs: []
 outputs:
 - id: out_stdout

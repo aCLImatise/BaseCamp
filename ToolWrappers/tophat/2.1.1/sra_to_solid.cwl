@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sra_to_solid.cwl
+id: sra_to_solid.cwl
 inputs:
 - id: in_input_dot_fast_q
   doc: ''

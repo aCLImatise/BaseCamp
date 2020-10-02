@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../grep.py_out.cwl
+id: grep.py_out.cwl
 inputs:
 - id: in_q
   doc: ''

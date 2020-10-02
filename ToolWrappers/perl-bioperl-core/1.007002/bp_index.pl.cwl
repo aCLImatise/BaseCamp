@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_index.pl.cwl
+id: bp_index.pl.cwl
 inputs:
 - id: in_fmt
   doc: <format>   - Fasta (default), swiss or EMBL

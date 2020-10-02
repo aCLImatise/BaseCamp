@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_webpng.cwl
+id: _webpng.cwl
 inputs:
 - id: in_turns_onoff_interlace
   doc: Turns on/off interlace

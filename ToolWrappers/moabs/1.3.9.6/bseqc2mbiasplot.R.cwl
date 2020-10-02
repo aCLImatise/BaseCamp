@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bseqc2mbiasplot.R.cwl
+id: bseqc2mbiasplot.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../partition.cwl
+id: partition.cwl
 inputs:
 - id: in_dna
   doc: "Specify that the sequence is DNA, and DNA parameters are to be used.\nDefault\
@@ -88,11 +88,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -xs
-- id: in_written_dot
-  doc: =========================================
-  type: string
+- id: in_sequence_file
+  doc: ''
+  type: File
   inputBinding:
     position: 0
+- id: in_pfs_file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

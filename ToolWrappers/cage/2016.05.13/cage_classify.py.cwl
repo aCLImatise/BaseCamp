@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cage_classify.py.cwl
+id: cage_classify.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

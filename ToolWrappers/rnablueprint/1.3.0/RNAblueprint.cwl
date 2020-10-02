@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAblueprint.cwl
+id: RNAblueprint.cwl
 inputs:
 - id: in__be_verbose
   doc: '[ --verbose ]             be verbose'

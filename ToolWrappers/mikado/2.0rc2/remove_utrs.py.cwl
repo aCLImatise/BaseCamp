@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_utrs.py.cwl
+id: remove_utrs.py.cwl
 inputs:
 - id: in_f
   doc: ''

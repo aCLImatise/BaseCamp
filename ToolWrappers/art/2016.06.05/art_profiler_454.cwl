@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../art_profiler_454.cwl
+id: art_profiler_454.cwl
 inputs: []
 outputs:
 - id: out_stdout

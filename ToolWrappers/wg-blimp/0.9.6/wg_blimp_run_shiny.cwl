@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wg_blimp_run_shiny.cwl
+id: wg_blimp_run_shiny.cwl
 inputs:
 - id: in_host
   doc: Host ip for shiny to listen on.

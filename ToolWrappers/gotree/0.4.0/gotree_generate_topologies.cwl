@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_generate_topologies.cwl
+id: gotree_generate_topologies.cwl
 inputs:
 - id: in_input
   doc: 'Input Tree: Tip names of generate trees are taken from it (default "none")'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BETA_minus.cwl
+id: BETA_minus.cwl
 inputs:
 - id: in_peak_file
   doc: "The bed format of peaks binding sites. (BETA support 3\nor 5 columns bed format,\

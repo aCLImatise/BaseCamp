@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../toArachne.cwl
+id: toArachne.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CompNovoCID.cwl
+id: CompNovoCID.cwl
 inputs:
 - id: in_in
   doc: "*        Input file in mzML format (valid formats: 'mzML')"

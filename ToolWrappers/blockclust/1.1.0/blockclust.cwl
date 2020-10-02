@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blockclust.cwl
+id: blockclust.cwl
 inputs:
 - id: in_accept
   doc: '[accept annotations]'

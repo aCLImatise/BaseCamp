@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfannotategenotypes.cwl
+id: vcfannotategenotypes.cwl
 inputs:
 - id: in_annotation_tag
   doc: ''

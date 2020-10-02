@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../umis_cb_histogram.cwl
+id: umis_cb_histogram.cwl
 inputs:
 - id: in_umi_histogram
   doc: "Output a count of each UMI for each cellular barcode\nto this file."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../advntr_addmodel.cwl
+id: advntr_addmodel.cwl
 inputs:
 - id: in_r_slash_reference
   doc: Reference genome

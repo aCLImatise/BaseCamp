@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getpub.cwl
+id: getpub.cwl
 inputs:
 - id: in_input_binary_data
   doc: "Input binary data [Data In]\ndefault = medline.val\nData Type = Pub-set"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_hwe.cwl
+id: SnpSift_hwe.cwl
 inputs:
 - id: in__be_quite
   doc: ': Be quite'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../batchMakeHiCMatrix.pl.cwl
+id: batchMakeHiCMatrix.pl.cwl
 inputs:
 - id: in_tag_directories_hic
   doc: '[HiC TagDir2] ... (Tag Directories of Hi-C experiments to visulize)'

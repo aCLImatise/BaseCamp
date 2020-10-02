@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../make_ktaxonomy.py.cwl
+id: make_ktaxonomy.py.cwl
 inputs:
-- id: in_seq_id_two_taxid
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --seqid2taxid
 - id: in_nodes
   doc: nodes.dmp file from taxonomy
   type: File
@@ -16,6 +11,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --names
+- id: in_seq_id_two_taxid
+  doc: seqid2taxid.map file
+  type: File
+  inputBinding:
+    prefix: --seqid2taxid
 - id: in_output
   doc: "output taxonomy file\n"
   type: File

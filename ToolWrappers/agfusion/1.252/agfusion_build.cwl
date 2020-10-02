@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agfusion_build.cwl
+id: agfusion_build.cwl
 inputs:
 - id: in_dir
   doc: Directory to write database file to.

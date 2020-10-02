@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_merge_variants.cwl
+id: megalodon_extras_merge_variants.cwl
 inputs:
 - id: in_output_megalodon_results_dir
   doc: "Output directory. Default:\nmegalodon_merge_vars_results"

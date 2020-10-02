@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funnel_node.cwl
+id: funnel_node.cwl
 inputs:
 - id: in_amazons_three_dot_disabled
   doc: Disable storage backend

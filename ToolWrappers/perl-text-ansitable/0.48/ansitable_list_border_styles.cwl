@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ansitable_list_border_styles.cwl
+id: ansitable_list_border_styles.cwl
 inputs: []
 outputs:
 - id: out_stdout

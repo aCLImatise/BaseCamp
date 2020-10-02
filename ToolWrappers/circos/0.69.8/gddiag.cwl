@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gddiag.cwl
+id: gddiag.cwl
 inputs: []
 outputs:
 - id: out_stdout

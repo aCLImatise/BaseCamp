@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pedwipe.cwl
+id: pedwipe.cwl
 inputs: []
 outputs:
 - id: out_stdout

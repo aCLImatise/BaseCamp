@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fitsinfo.cwl
+id: fitsinfo.cwl
 inputs:
 - id: in_filename
   doc: Path to one or more FITS files. Wildcards are supported.

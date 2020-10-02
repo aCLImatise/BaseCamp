@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sra_sort_cg.2.10.8.cwl
+id: sra_sort_cg.2.10.8.cwl
 inputs:
 - id: in_ignore_failure
   doc: "ignore failure when sorting multiple objects\ni.e. continue in spite of previous\

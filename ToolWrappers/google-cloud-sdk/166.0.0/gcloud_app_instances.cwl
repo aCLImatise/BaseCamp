@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_app_instances.cwl
+id: gcloud_app_instances.cwl
 inputs:
 - id: in_delete
   doc: Delete a specified instance.

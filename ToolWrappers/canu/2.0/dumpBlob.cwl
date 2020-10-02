@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dumpBlob.cwl
+id: dumpBlob.cwl
 inputs:
 - id: in_b
   doc: ''

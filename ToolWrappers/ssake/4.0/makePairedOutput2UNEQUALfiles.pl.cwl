@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makePairedOutput2UNEQUALfiles.pl.cwl
+id: makePairedOutput2UNEQUALfiles.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

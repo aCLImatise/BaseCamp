@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../swiss2gsi.pl.cwl
+id: swiss2gsi.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

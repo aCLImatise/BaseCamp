@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novo2paf.cwl
+id: novo2paf.cwl
 inputs: []
 outputs:
 - id: out_stdout

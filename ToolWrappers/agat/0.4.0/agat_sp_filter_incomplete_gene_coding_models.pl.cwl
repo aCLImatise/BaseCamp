@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_filter_incomplete_gene_coding_models.pl.cwl
+id: agat_sp_filter_incomplete_gene_coding_models.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GTF/GFF file.

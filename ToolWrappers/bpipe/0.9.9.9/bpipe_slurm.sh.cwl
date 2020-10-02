@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bpipe_slurm.sh.cwl
+id: bpipe_slurm.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kmer_filter.cwl
+id: kmer_filter.cwl
 inputs:
 - id: in_rare
   doc: ': turn on filtering based on rare k-mers.'

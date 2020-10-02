@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../certmgr.cwl
+id: certmgr.cwl
 inputs:
 - id: in_add
   doc: Add a certificate, CRL or CTL to specified store

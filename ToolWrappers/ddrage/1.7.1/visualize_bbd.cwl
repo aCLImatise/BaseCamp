@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../visualize_bbd.cwl
+id: visualize_bbd.cwl
 inputs: []
 outputs:
 - id: out_stdout

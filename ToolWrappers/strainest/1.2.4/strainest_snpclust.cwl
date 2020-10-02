@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strainest_snpclust.cwl
+id: strainest_snpclust.cwl
 inputs:
 - id: in_snp
   doc: ''

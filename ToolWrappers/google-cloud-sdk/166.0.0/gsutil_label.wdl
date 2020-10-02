@@ -2,19 +2,16 @@ version 1.0
 
 task GsutilLabel {
   input {
-    String? value
-    String? d
+    Boolean? remove_label_specified
     String command_dot
   }
   command <<<
     gsutil label \
       ~{command_dot} \
-      ~{if defined(value) then ("-l " +  '"' + value + '"') else ""} \
-      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
+      ~{if (remove_label_specified) then "-d" else ""}
   >>>
   parameter_meta {
-    value: ":<value>"
-    d: ""
+    remove_label_specified: "Remove the label with the specified key."
     command_dot: "SET"
   }
   output {

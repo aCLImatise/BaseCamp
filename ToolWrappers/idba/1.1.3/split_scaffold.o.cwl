@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_scaffold.o.cwl
+id: split_scaffold.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_manage_functional_annotation.pl.cwl
+id: agat_sp_manage_functional_annotation.pl.cwl
 inputs:
 - id: in_ref_file
   doc: ", --gff or --gff3\nString - Input GTF/GFF file."

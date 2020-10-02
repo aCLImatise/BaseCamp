@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_upload_files.cwl
+id: hca_upload_files.cwl
 inputs:
 - id: in_target_filename
   doc: "Filename to use in upload area (if you wish to change\nit during upload).\

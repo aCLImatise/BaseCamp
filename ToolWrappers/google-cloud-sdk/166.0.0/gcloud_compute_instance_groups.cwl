@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_instance_groups.cwl
+id: gcloud_compute_instance_groups.cwl
 inputs:
 - id: in_managed
   doc: Read and manipulate Google Compute Engine managed instance groups.

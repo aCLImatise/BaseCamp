@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnabob.cwl
+id: rnabob.cwl
 inputs:
 - id: in_search_strands_database
   doc: ':    search both strands of database'

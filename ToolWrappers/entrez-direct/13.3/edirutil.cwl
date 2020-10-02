@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../edirutil.cwl
+id: edirutil.cwl
 inputs: []
 outputs:
 - id: out_stdout

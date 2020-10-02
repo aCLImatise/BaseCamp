@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tepid_discover.cwl
+id: tepid_discover.cwl
 inputs:
 - id: in_keep
   doc: keep all intermediate files

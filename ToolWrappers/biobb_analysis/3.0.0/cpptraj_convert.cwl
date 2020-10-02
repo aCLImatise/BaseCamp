@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpptraj_convert.cwl
+id: cpptraj_convert.cwl
 inputs:
 - id: in_config
   doc: Configuration file

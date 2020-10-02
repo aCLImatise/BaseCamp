@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi2_simplify.cwl
+id: fermi2_simplify.cwl
 inputs:
 - id: in_read_maximum_neighbors
   doc: read maximum INT neighbors per node [512]

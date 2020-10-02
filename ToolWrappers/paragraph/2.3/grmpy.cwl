@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../grmpy.cwl
+id: grmpy.cwl
 inputs:
 - id: in_arg_output_folder
   doc: "[ --alignment-output-folder ] arg      Output folder for alignments. Note\n\
@@ -101,11 +101,6 @@ inputs:
   type: File
   inputBinding:
     prefix: --path-sequence-matching
-- id: in_progress
-  doc: '[=arg(=1)] (=1)'
-  type: boolean
-  inputBinding:
-    prefix: --progress
 - id: in_arg_reference_genome
   doc: '[ --reference ] arg                    Reference genome fasta file.'
   type: boolean

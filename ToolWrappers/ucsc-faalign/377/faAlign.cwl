@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faAlign.cwl
+id: faAlign.cwl
 inputs:
 - id: in_dna
   doc: '- use DNA scoring scheme'

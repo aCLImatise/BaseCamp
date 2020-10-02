@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../single_sample_vcf2tsv.py.cwl
+id: single_sample_vcf2tsv.py.cwl
 inputs:
 - id: in_bam
   doc: '[-truth GROUND_TRUTH_VCF]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_emperor.py.cwl
+id: make_emperor.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

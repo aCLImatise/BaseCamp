@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obdistgen.cwl
+id: obdistgen.cwl
 inputs:
 - id: in_filename
   doc: ''

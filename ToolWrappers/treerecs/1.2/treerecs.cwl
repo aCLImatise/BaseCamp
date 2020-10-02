@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treerecs.cwl
+id: treerecs.cwl
 inputs:
 - id: in_verbose
   doc: verbose mode. Causes Treerecs to print messages about its progress.

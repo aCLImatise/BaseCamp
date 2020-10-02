@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_reads_by_backbone.py.cwl
+id: split_reads_by_backbone.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

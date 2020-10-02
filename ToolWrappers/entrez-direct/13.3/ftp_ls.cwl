@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ftp_ls.cwl
+id: ftp_ls.cwl
 inputs: []
 outputs:
 - id: out_stdout

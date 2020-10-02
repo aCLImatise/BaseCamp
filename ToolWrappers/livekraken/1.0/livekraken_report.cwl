@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../livekraken_report.cwl
+id: livekraken_report.cwl
 inputs:
 - id: in_show_zeros
   doc: ''

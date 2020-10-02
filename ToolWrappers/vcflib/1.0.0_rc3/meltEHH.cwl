@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meltEHH.cwl
+id: meltEHH.cwl
 inputs:
 - id: in_region
   doc: :1-1000 > STDOUT 2> STDERR

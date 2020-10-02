@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cath_ssap.cwl
+id: cath_ssap.cwl
 inputs:
 - id: in_output_version_information
   doc: '[ --version ]                         Output version information'

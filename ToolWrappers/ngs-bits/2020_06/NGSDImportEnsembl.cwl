@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGSDImportEnsembl.cwl
+id: NGSDImportEnsembl.cwl
 inputs:
 - id: in_in
   doc: Ensembl transcript file (download and unzip ftp://ftp.ensembl.org/pub/grch37/release-87/gff3/homo_sapiens/Homo_sapiens.GRCh37.87.chr.gff3.gz).

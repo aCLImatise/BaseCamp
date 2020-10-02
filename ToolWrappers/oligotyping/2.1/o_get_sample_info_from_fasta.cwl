@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_get_sample_info_from_fasta.cwl
+id: o_get_sample_info_from_fasta.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kaiju_excluded_accessions.txt.cwl
+id: kaiju_excluded_accessions.txt.cwl
 inputs: []
 outputs:
 - id: out_stdout

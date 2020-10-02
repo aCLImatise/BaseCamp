@@ -12,11 +12,11 @@ task ScanpycliRead {
     Boolean? var_names
     File? extra_obs
     File? extra_var
-    String format_dot
+    String output_obj
   }
   command <<<
     scanpy_cli read \
-      ~{format_dot} \
+      ~{output_obj} \
       ~{if defined(input_one_zero_x_h_five) then ("--input-10x-h5 " +  '"' + input_one_zero_x_h_five + '"') else ""} \
       ~{if defined(input_one_zero_x_mtx) then ("--input-10x-mtx " +  '"' + input_one_zero_x_mtx + '"') else ""} \
       ~{if (output_format) then "--output-format" else ""} \
@@ -39,7 +39,7 @@ task ScanpycliRead {
     var_names: "[gene_symbols|gene_ids]\\nAttribute to be used as the index of the\\nvariable table, required by \\\"--\\ninput-10x-mtx\\\".  [default: gene_symbols]"
     extra_obs: "Extra cell metadata table, must be tab-\\nseparated with a header row and an index\\ncolumn, and with matched dimension."
     extra_var: "Extra gene metadata table, must be tab-\\nseparated with a header row and an index\\ncolumn, and with matched dimension."
-    format_dot: "[default: 1000]"
+    output_obj: ""
   }
   output {
     File out_stdout = stdout()

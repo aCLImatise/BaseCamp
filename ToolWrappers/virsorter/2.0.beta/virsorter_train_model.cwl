@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../virsorter_train_model.cwl
+id: virsorter_train_model.cwl
 inputs:
 - id: in_working_dir
   doc: output directory  [required]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halTreeNIBackground.py.cwl
+id: halTreeNIBackground.py.cwl
 inputs:
 - id: in_background_bed_name
   doc: "Name function for background bed files where genome\nname is specified as\

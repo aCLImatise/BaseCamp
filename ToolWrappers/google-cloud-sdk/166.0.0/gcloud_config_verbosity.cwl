@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_verbosity.cwl
+id: gcloud_config_verbosity.cwl
 inputs:
 - id: in_g_cloud
   doc: ''

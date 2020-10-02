@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PATHOGIST_visualize_format.cwl
+id: PATHOGIST_visualize_format.cwl
 inputs:
 - id: in_pathog_ist
   doc: ''

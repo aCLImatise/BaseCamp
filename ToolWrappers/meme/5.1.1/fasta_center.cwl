@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_center.cwl
+id: fasta_center.cwl
 inputs:
 - id: in_dna
   doc: the sequences use the DNA alphabet

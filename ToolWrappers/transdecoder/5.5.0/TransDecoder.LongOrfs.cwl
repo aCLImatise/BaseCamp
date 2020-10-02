@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TransDecoder.LongOrfs.cwl
+id: TransDecoder.LongOrfs.cwl
 inputs: []
 outputs:
 - id: out_stdout

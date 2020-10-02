@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gc_assembler.cwl
+id: gc_assembler.cwl
 inputs:
 - id: in_input
   doc: '[string]                 Input DAA or RMA6 file. Mandatory option.'

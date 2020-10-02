@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../ctseq_add_umis.cwl
+id: ctseq_add_umis.cwl
 inputs:
 - id: in_forward_ext
-  doc: ''
+  doc: '[--umiExt UMIEXT]'
   type: string
   inputBinding:
     prefix: --forwardExt

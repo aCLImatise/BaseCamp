@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interop_imaging_table.cwl
+id: interop_imaging_table.cwl
 inputs: []
 outputs:
 - id: out_stdout

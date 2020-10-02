@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../yapc.cwl
+id: yapc.cwl
 inputs:
 - id: in_smoothing_window_width
   doc: "Width of the smoothing window used for the second\nderivative track. If the\

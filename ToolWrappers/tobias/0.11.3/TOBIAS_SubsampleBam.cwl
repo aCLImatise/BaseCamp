@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_SubsampleBam.cwl
+id: TOBIAS_SubsampleBam.cwl
 inputs:
 - id: in_bam
   doc: Path to .bam-file

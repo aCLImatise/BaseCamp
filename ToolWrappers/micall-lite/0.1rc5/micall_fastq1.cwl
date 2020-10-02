@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../micall_fastq1.cwl
+id: micall_fastq1.cwl
 inputs:
 - id: in_keep
   doc: ''

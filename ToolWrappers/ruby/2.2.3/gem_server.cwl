@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gem_server.cwl
+id: gem_server.cwl
 inputs:
 - id: in_port
   doc: port to listen on

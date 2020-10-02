@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../newProg.cwl
+id: newProg.cwl
 inputs:
 - id: in_jkh_gap
   doc: '- include jkhgap.a and mysql libraries as well as jkweb.a archives'

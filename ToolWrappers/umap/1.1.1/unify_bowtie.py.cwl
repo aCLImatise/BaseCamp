@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unify_bowtie.py.cwl
+id: unify_bowtie.py.cwl
 inputs:
 - id: in_job_id
   doc: "If not using a cluster for submitting jobs, specify the\njob_id by integer\

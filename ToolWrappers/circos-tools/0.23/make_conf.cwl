@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_conf.cwl
+id: make_conf.cwl
 inputs:
 - id: in_cat
   doc: ''

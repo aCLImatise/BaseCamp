@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../allele_specific_modification.cwl
+id: allele_specific_modification.cwl
 inputs:
 - id: in_bed
   doc: Bed file to aggregate modifications on.

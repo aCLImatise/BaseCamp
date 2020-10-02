@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FrameBot_taxonAbund.cwl
+id: FrameBot_taxonAbund.cwl
 inputs:
 - id: in_seq_coverage
   doc: "contains the ID and coverage separated by space or\ntab. Used to adjust the\

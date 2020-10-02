@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapGeneNetwork.py.cwl
+id: mapGeneNetwork.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

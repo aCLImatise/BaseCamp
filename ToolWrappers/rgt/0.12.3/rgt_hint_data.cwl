@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_hint_data.cwl
+id: rgt_hint_data.cwl
 inputs:
 - id: in_rgt_hint
   doc: ''

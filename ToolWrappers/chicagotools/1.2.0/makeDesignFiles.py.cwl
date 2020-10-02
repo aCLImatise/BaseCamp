@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeDesignFiles.py.cwl
+id: makeDesignFiles.py.cwl
 inputs:
 - id: in_binsize
   doc: ''

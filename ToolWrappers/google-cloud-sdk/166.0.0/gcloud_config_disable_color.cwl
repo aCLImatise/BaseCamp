@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_disable_color.cwl
+id: gcloud_config_disable_color.cwl
 inputs:
 - id: in_g_cloud
   doc: ''

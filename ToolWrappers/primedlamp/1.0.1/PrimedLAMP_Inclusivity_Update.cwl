@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PrimedLAMP_Inclusivity_Update.cwl
+id: PrimedLAMP_Inclusivity_Update.cwl
 inputs: []
 outputs:
 - id: out_stdout

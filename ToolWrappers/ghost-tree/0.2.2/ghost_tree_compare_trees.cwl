@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ghost_tree_compare_trees.cwl
+id: ghost_tree_compare_trees.cwl
 inputs:
 - id: in_method
   doc: "[pearson|spearman]\ncorrelation method to use in Mantel test"

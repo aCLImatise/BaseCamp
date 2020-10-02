@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../typeHLA.sh.cwl
+id: typeHLA.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

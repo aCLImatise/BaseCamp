@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kobas_annotate.cwl
+id: kobas_annotate.cwl
 inputs:
 - id: in_list
   doc: "list available species, or list available databases\nfor a specific species"

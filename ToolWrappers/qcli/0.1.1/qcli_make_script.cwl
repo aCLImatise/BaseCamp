@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qcli_make_script.cwl
+id: qcli_make_script.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

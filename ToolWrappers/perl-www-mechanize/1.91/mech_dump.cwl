@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mech_dump.cwl
+id: mech_dump.cwl
 inputs:
 - id: in_headers
   doc: Dump HTTP response headers

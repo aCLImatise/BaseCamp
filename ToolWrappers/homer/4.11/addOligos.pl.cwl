@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addOligos.pl.cwl
+id: addOligos.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

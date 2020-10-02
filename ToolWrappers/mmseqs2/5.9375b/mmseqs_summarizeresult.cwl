@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_summarizeresult.cwl
+id: mmseqs_summarizeresult.cwl
 inputs:
 - id: in_false_add_convert
   doc: false           add backtrace string (convert to alignments with mmseqs convertalis

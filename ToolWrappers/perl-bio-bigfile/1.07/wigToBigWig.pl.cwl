@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wigToBigWig.pl.cwl
+id: wigToBigWig.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

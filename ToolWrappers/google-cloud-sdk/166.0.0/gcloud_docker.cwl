@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_docker.cwl
+id: gcloud_docker.cwl
 inputs:
 - id: in_authorize_only
   doc: "Configure docker authorization only, do not launch the docker\ncommand-line."

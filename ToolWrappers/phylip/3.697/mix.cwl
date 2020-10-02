@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mix.cwl
+id: mix.cwl
 inputs: []
 outputs:
 - id: out_stdout

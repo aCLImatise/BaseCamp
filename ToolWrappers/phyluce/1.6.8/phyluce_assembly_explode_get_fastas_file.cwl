@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_assembly_explode_get_fastas_file.cwl
+id: phyluce_assembly_explode_get_fastas_file.cwl
 inputs:
 - id: in_input
   doc: The input fasta file to explode

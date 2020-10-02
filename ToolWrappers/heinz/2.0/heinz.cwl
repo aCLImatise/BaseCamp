@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../heinz.cwl
+id: heinz.cwl
 inputs:
 - id: in_fdr
   doc: Specifies fdr

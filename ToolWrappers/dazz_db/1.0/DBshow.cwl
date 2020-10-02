@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DBshow.cwl
+id: DBshow.cwl
 inputs:
 - id: in_unq_uq
   doc: ''

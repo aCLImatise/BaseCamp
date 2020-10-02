@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ConsensusID.cwl
+id: ConsensusID.cwl
 inputs:
 - id: in_in
   doc: "*                       Input file (valid formats: 'idXML', 'featureXML',\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chisel_plotting.cwl
+id: chisel_plotting.cwl
 inputs:
 - id: in_clone_map
   doc: "Clone map (default: not used, the cells will be\nclustered for plotting purposes)"

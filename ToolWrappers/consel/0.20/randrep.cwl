@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randrep.cwl
+id: randrep.cwl
 inputs: []
 outputs:
 - id: out_stdout

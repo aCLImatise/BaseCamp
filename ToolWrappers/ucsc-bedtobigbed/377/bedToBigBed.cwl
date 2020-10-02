@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedToBigBed.cwl
+id: bedToBigBed.cwl
 inputs:
 - id: in_type
   doc: "[+[P]] :\nN is between 3 and 15,\noptional (+) if extra \"bedPlus\" fields,\n\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sim_cover_depth.cwl
+id: sim_cover_depth.cwl
 inputs:
 - id: in_adjust_genome_length
   doc: "Adjust genome length to get best match to distrib\ninput from stdin"

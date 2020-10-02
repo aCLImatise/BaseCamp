@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpat.py.cwl
+id: cpat.py.cwl
 inputs:
 - id: in_gene
   doc: "RNAs either in BED or FASTA format: If this is BED\nformat file, '-r/--ref'\

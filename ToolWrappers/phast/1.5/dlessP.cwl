@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dlessP.cwl
+id: dlessP.cwl
 inputs:
 - id: in_msa_format
   doc: "|PHYLIP|MPM|MAF|SS\nAlignment format (default is to guess format from file\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_report_variant_stat.cwl
+id: vtools_report_variant_stat.cwl
 inputs:
 - id: in_limiting_variants_samples
   doc: "[SAMPLES [SAMPLES ...]], --samples [SAMPLES [SAMPLES ...]]\nLimiting variants\

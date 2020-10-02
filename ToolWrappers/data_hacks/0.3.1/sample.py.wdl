@@ -2,18 +2,15 @@ version 1.0
 
 task Samplepy {
   input {
-    Boolean? verbose
     String cat
     String data
   }
   command <<<
     sample_py \
       ~{cat} \
-      ~{data} \
-      ~{if (verbose) then "--verbose" else ""}
+      ~{data}
   >>>
   parameter_meta {
-    verbose: ""
     cat: ""
     data: ""
   }

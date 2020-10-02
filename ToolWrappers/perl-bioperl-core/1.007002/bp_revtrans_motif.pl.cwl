@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_revtrans_motif.pl.cwl
+id: bp_revtrans_motif.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

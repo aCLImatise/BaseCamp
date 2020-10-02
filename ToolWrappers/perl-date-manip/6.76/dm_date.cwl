@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dm_date.cwl
+id: dm_date.cwl
 inputs:
 - id: in_h_slash_help
   doc: ': Print help.'

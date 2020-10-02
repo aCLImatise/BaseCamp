@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preparseGenome.pl.cwl
+id: preparseGenome.pl.cwl
 inputs:
 - id: in_size
   doc: <#> (size of fragments to use for preparsing the genome)

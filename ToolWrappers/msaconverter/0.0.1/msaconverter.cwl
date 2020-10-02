@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msaconverter.cwl
+id: msaconverter.cwl
 inputs:
 - id: in_input_msa_file
   doc: input msa file

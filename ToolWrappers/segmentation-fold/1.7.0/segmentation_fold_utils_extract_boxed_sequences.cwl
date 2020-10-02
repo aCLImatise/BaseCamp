@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segmentation_fold_utils_extract_boxed_sequences.cwl
+id: segmentation_fold_utils_extract_boxed_sequences.cwl
 inputs:
 - id: in_max_inner_dist
   doc: "Maximal distance between the boxes\n(default=250bp)"

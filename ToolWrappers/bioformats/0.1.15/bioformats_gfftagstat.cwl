@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioformats_gfftagstat.cwl
+id: bioformats_gfftagstat.cwl
 inputs:
 - id: in_source
   doc: filter GFF3 features by the specified source

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runFlockMFI.py.cwl
+id: runFlockMFI.py.cwl
 inputs:
 - id: in_file_location_fcs
   doc: File location for the FCS file.

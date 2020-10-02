@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segmentation_fold_utils_add_read_counts.cwl
+id: segmentation_fold_utils_add_read_counts.cwl
 inputs:
 - id: in_regex
   doc: "Regex to capture the targeted location in DBN file\n(default: '>.*?(chr[^:]):([0-9]+)-([0-9]+)'\

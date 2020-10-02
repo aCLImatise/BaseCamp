@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pauvre_custommargin.cwl
+id: pauvre_custommargin.cwl
 inputs:
 - id: in_quiet
   doc: Do not output warnings to stderr

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_profile2pssm.cwl
+id: mmseqs_profile2pssm.cwl
 inputs:
 - id: in_comp_bias_corr
   doc: 1               correct for locally biased amino acid composition [0,1]

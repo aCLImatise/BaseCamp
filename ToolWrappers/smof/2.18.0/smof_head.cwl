@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_head.cwl
+id: smof_head.cwl
 inputs:
 - id: in_entries
   doc: "print first K entries; or use -n -K to print all but the\nlast K entries"

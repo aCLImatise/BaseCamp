@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checksub.cwl
+id: checksub.cwl
 inputs:
 - id: in_input_data_type
   doc: "Input data [Data In]\nData Type = Seq-submit"

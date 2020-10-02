@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../distruct.py.cwl
+id: distruct.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

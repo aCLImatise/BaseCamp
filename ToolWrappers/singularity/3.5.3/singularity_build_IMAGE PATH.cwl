@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singularity_build_IMAGE PATH.cwl
+id: singularity_build_IMAGE PATH.cwl
 inputs:
 - id: in_singularity
   doc: ''

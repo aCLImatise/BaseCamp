@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_childsim.cwl
+id: rtg_childsim.cwl
 inputs:
 - id: in_father
   doc: name of the existing sample to use as the father

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_convertalis.cwl
+id: mmseqs_convertalis.cwl
 inputs:
 - id: in_format_mode
   doc: 'output format 0: BLAST-TAB, 1: PAIRWISE, 2: BLAST-TAB + query/db length'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepDE.py.cwl
+id: prepDE.py.cwl
 inputs:
 - id: in_input
   doc: "a folder containing all sample sub-directories, or a\ntext file with sample\

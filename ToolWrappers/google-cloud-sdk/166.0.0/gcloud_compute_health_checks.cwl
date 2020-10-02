@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_health_checks.cwl
+id: gcloud_compute_health_checks.cwl
 inputs:
 - id: in_create
   doc: Create health checks for load balanced instances.

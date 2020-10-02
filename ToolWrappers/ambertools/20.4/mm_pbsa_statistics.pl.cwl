@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mm_pbsa_statistics.pl.cwl
+id: mm_pbsa_statistics.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

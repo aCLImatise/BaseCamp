@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../servertell.cwl
+id: servertell.cwl
 inputs:
 - id: in_full
   doc: "boolean    [N] The default behaviour is to report for\nrelevant servers only\

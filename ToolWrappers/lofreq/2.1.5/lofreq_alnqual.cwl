@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lofreq_alnqual.cwl
+id: lofreq_alnqual.cwl
 inputs:
 - id: in_bam_output_instead
   doc: BAM output (instead of SAM)

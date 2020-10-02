@@ -1,8 +1,9 @@
 class: CommandLineTool
-id: ../../../compare_vcfs.cwl
+id: compare_vcfs.cwl
 inputs:
 - id: in_output_file
-  doc: ''
+  doc: "[--variant_site_quality VARIANT_SITE_QUALITY]\n[--variant_genotype_quality\
+    \ VARIANT_GENOTYPE_QUALITY]\n[--variant_depth VARIANT_DEPTH] --chrom CHROM"
   type: File
   inputBinding:
     prefix: --output_file
@@ -46,7 +47,8 @@ outputs:
   doc: Standard output stream
   type: stdout
 - id: out_output_file
-  doc: ''
+  doc: "[--variant_site_quality VARIANT_SITE_QUALITY]\n[--variant_genotype_quality\
+    \ VARIANT_GENOTYPE_QUALITY]\n[--variant_depth VARIANT_DEPTH] --chrom CHROM"
   type: File
   outputBinding:
     glob: $(inputs.in_output_file)

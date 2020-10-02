@@ -15,7 +15,7 @@ task FastqutilsIl {
       ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    verbose: ""
+    verbose: "--help         Show this message and exit.\\n"
     mate_one_file: ""
     mate_two_file: ""
     fast_q_file: ""

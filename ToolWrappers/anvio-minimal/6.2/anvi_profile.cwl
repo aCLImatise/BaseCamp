@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_profile.cwl
+id: anvi_profile.cwl
 inputs:
 - id: in_input_file
   doc: "Sorted and indexed BAM file to analyze. Takes a long\ntime depending on the\

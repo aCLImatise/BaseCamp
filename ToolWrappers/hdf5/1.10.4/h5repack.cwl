@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5repack.cwl
+id: h5repack.cwl
 inputs:
 - id: in_verbose
   doc: Verbose mode, print object information

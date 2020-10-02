@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PATHOGIST_correlation.cwl
+id: PATHOGIST_correlation.cwl
 inputs:
 - id: in_all_constraints
   doc: "add all constraints to the optimization problem, not\njust those with mixed\

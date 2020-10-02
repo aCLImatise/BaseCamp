@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertMetaMapsToMash.pl.cwl
+id: convertMetaMapsToMash.pl.cwl
 inputs:
 - id: in_perl
   doc: ''

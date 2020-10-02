@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../afplot_regions_distance.cwl
+id: afplot_regions_distance.cwl
 inputs:
 - id: in_margin
   doc: Margin around regions to plot

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_depths..cwl
+id: cnvkit.py_depths..cwl
 inputs:
 - id: in_cnv_kit_do_tpy
   doc: ''

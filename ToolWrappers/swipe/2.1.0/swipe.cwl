@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../swipe.cwl
+id: swipe.cwl
 inputs:
 - id: in_db
   doc: sequence database base name (required)

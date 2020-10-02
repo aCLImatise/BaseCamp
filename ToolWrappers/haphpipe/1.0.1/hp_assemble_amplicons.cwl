@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hp_assemble_amplicons.cwl
+id: hp_assemble_amplicons.cwl
 inputs:
 - id: in_ref_gtf
   doc: '[--outdir OUTDIR]'

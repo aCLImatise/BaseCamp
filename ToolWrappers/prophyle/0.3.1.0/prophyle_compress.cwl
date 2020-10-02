@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_compress.cwl
+id: prophyle_compress.cwl
 inputs:
 - id: in_advanced_configuration_json
   doc: '[STR [STR ...]]  advanced configuration (a JSON dictionary)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mhap.cwl
+id: mhap.cwl
 inputs:
 - id: in_filter_threshold
   doc: ", default = 1.0E-5\n[double], The cutoff at which the k-mer in the k-mer filter\

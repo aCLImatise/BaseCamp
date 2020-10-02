@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../riboraptor_plot_read_length.cwl
+id: riboraptor_plot_read_length.cwl
 inputs:
 - id: in_read_lengths
   doc: Path to read length pickle file

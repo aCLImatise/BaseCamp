@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_MB_SF_fn.py.cwl
+id: run_MB_SF_fn.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -15,7 +15,7 @@ task PhyluceProbeGetMultiMergeTable {
       ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""}
   >>>
   parameter_meta {
-    base_tax_on: ""
+    base_tax_on: "[--filter FILTER]"
     conf: "A config file mapping names to BED files."
     sqlite_database_create: "A SQLite database to create during integration."
     filter: "A file-type filter to apply to the BED directory of\\nfiles\\n"

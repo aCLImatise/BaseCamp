@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multigrmpy.py.cwl
+id: multigrmpy.py.cwl
 inputs:
 - id: in_input
   doc: Input file of variants. Must be either JSON or VCF.

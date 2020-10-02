@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cds_mapping_stats.cwl
+id: cds_mapping_stats.cwl
 inputs:
 - id: in_kmer_length_use
   doc: k-mer length to use

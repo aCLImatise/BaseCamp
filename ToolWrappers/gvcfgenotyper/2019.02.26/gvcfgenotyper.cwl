@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gvcfgenotyper.cwl
+id: gvcfgenotyper.cwl
 inputs:
 - id: in_list
   doc: <file>          plain text list of gvcfs to merge

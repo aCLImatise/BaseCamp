@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../magic.cwl
+id: magic.cwl
 inputs: []
 outputs:
 - id: out_stdout

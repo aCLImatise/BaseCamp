@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_visualize_distance_matrix.R.cwl
+id: o_visualize_distance_matrix.R.cwl
 inputs:
 - id: in_metadata
   doc: Metadata file

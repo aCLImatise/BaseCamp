@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_license.cwl
+id: rtg_license.cwl
 inputs:
 - id: in_format
   doc: Licensed          GA

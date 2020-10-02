@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PepNovoAdapter.cwl
+id: PepNovoAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                     Input file  (valid formats: 'mzML')"

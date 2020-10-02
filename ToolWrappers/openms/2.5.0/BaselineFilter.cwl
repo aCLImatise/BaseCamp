@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BaselineFilter.cwl
+id: BaselineFilter.cwl
 inputs:
 - id: in_in
   doc: "*                Input raw data file  (valid formats: 'mzML')"

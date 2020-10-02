@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_annotations_files.bash.cwl
+id: create_annotations_files.bash.cwl
 inputs: []
 outputs:
 - id: out_stdout

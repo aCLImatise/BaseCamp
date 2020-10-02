@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_time_slice.py_input_fastq.cwl
+id: fastq_time_slice.py_input_fastq.cwl
 inputs:
 - id: in_e
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../siteproBW.cwl
+id: siteproBW.cwl
 inputs:
 - id: in_bw
   doc: "input bigWIG file. Multiple bigWIG files can be given\nvia -w (--bw) individually\

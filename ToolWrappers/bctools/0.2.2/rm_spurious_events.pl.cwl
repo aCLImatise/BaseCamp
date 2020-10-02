@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rm_spurious_events.pl.cwl
+id: rm_spurious_events.pl.cwl
 inputs:
 - id: in_filter_alignments_supported
   doc: filter out alignments supported by less reads than this fraction of the maximum

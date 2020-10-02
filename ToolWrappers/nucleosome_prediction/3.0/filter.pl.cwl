@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter.pl.cwl
+id: filter.pl.cwl
 inputs:
 - id: in_column_filter_applied
   doc: ":           The column to which the filter is applied (if not specified,\n\

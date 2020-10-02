@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq_seq_pan_extract.cwl
+id: seq_seq_pan_extract.cwl
 inputs:
 - id: in_quiet
   doc: Suppress warnings.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_live_test.cwl
+id: deepac_live_test.cwl
 inputs:
 - id: in_command
   doc: DeePaC command to use (switches builtin models).

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centrimo.cwl
+id: centrimo.cwl
 inputs:
 - id: in_output_directory_default
   doc: "output directory; default: 'centrimo_out'"

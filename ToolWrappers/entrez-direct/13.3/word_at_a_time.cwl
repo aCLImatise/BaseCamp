@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../word_at_a_time.cwl
+id: word_at_a_time.cwl
 inputs: []
 outputs:
 - id: out_stdout

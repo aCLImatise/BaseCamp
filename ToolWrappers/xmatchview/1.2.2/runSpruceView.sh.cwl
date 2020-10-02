@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../runSpruceView.sh.cwl
+id: runSpruceView.sh.cwl
 inputs:
-- id: in_label
-  doc: SCALE (1:n)
-  type: string
-  inputBinding:
-    position: 0
 - id: in_cross_match_slash_minimap_two
   doc: PATH-TO-FONTS
   type: long

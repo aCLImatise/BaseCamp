@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centreseq_core.cwl
+id: centreseq_core.cwl
 inputs:
 - id: in_fast_a_dir
   doc: "Path to directory containing *.fasta files for\ninput to the core pipeline\

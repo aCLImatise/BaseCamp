@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_genetrees_reformat_trees.cwl
+id: phyluce_genetrees_reformat_trees.cwl
 inputs:
 - id: in_input
   doc: The input trees directory

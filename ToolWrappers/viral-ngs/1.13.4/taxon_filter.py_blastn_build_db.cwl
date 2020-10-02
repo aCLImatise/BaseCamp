@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxon_filter.py_blastn_build_db.cwl
+id: taxon_filter.py_blastn_build_db.cwl
 inputs:
 - id: in_output_file_prefix
   doc: "Prefix for the output file name (default: inputFasta\nname, sans \".fasta\"\

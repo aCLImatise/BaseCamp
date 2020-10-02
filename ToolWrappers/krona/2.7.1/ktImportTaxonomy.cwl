@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktImportTaxonomy.cwl
+id: ktImportTaxonomy.cwl
 inputs:
 - id: in_taxonomy
   doc: "Tab-delimited file with taxonomy IDs and (optionally) query\nIDs, magnitudes\

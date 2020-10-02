@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNALfold.cwl
+id: RNALfold.cwl
 inputs: []
 outputs:
 - id: out_stdout

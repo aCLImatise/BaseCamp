@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqmap.cwl
+id: seqmap.cwl
 inputs:
 - id: in_number_of_mismatches
   doc: ''

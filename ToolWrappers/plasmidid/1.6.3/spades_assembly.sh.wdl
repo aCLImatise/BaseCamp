@@ -2,47 +2,14 @@ version 1.0
 
 task SpadesAssemblysh {
   input {
-    Int? var_0
-    Int? var_1
-    Int? supplied_numbers_sepparated
-    Directory? directory_optional
-    File? name
-    String? name_mandatory
-    String? name_optional_unset
-    Directory? look_files_folder
-    String? mode_remove_folders
-    Int? _default
-    String? v
-    String? usage_message
+    Int? file_mandatoryp_rpaired
   }
   command <<<
     spades_assembly_sh \
-      ~{if defined(var_0) then ("-p " +  '"' + var_0 + '"') else ""} \
-      ~{if defined(var_1) then ("-P " +  '"' + var_1 + '"') else ""} \
-      ~{if defined(supplied_numbers_sepparated) then ("-k " +  '"' + supplied_numbers_sepparated + '"') else ""} \
-      ~{if defined(directory_optional) then ("-o " +  '"' + directory_optional + '"') else ""} \
-      ~{if defined(name) then ("-f " +  '"' + name + '"') else ""} \
-      ~{if defined(name_mandatory) then ("-s " +  '"' + name_mandatory + '"') else ""} \
-      ~{if defined(name_optional_unset) then ("-g " +  '"' + name_optional_unset + '"') else ""} \
-      ~{if defined(look_files_folder) then ("-q " +  '"' + look_files_folder + '"') else ""} \
-      ~{if defined(mode_remove_folders) then ("-c " +  '"' + mode_remove_folders + '"') else ""} \
-      ~{if defined(_default) then ("-T " +  '"' + _default + '"') else ""} \
-      ~{if defined(v) then ("-v " +  '"' + v + '"') else ""} \
-      ~{if defined(usage_message) then ("-h " +  '"' + usage_message + '"') else ""}
+      ~{if defined(file_mandatoryp_rpaired) then ("-p " +  '"' + file_mandatoryp_rpaired + '"') else ""}
   >>>
   parameter_meta {
-    var_0: "file (mandatory)"
-    var_1: "file (mandatory)"
-    supplied_numbers_sepparated: ", supplied as numbers sepparated by number or one flag per number, default: 21,33,55,77,99,127"
-    directory_optional: "directory (optional)"
-    name: "name"
-    name_mandatory: "name (mandatory)"
-    name_optional_unset: "name (optional). If unset, samples will be gathered in NO_GROUP group"
-    look_files_folder: ": look for files in a folder SUPPLIED with \\\"paired\\\" term"
-    mode_remove_folders: "mode: remove unnecesary temporary folders"
-    _default: ", default 1"
-    v: ""
-    usage_message: "usage message"
+    file_mandatoryp_rpaired: "file (mandatory)\\n-P R2_paired file (mandatory)\\n-k kmers, supplied as numbers sepparated by number or one flag per number, default: 21,33,55,77,99,127\\n-o output directory (optional)\\n-f file name\\n-s sample name (mandatory)\\n-g group name (optional). If unset, samples will be gathered in NO_GROUP group\\n-q quick_mode: look for files in a folder SUPPLIED with \\\"paired\\\" term\\n-c clean mode: remove unnecesary temporary folders\\n-T threads, default 1\\n-v version\\n-h display usage message"
   }
   output {
     File out_stdout = stdout()

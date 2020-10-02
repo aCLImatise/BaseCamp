@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../variantbreak.cwl
+id: variantbreak.cwl
 inputs:
 - id: in_annotation_file_dir
   doc: "path to single annotation file or directory containing annotation\nfiles of\

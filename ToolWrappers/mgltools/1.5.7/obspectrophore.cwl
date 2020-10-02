@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obspectrophore.cwl
+id: obspectrophore.cwl
 inputs: []
 outputs:
 - id: out_stdout

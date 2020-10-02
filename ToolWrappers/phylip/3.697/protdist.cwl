@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../protdist.cwl
+id: protdist.cwl
 inputs: []
 outputs:
 - id: out_stdout

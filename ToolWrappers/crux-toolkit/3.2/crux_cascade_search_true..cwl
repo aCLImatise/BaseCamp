@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_cascade_search_true..cwl
+id: crux_cascade_search_true..cwl
 inputs:
 - id: in_crux
   doc: ''

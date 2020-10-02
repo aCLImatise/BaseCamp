@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GSvar.ini.example.cwl
+id: GSvar.ini.example.cwl
 inputs: []
 outputs:
 - id: out_stdout

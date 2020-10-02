@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_preprocess_exist.cwl
+id: mb_preprocess_exist.cwl
 inputs:
 - id: in_log_level
   doc: ''

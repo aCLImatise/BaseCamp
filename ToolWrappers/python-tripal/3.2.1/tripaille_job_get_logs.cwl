@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_job_get_logs.cwl
+id: tripaille_job_get_logs.cwl
 inputs:
 - id: in_stdout
   doc: ''

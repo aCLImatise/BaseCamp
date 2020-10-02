@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_reformat.cwl
+id: goalign_reformat.cwl
 inputs:
 - id: in_clean_names
   doc: Replaces special characters (tabs, spaces, newick characters) with '-' from

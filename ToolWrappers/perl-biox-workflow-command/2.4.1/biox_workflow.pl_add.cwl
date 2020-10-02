@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biox_workflow.pl_add.cwl
+id: biox_workflow.pl_add.cwl
 inputs:
 - id: in_plugins_opts
   doc: Options for application plugins [Key-Value]

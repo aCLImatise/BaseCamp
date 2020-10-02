@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smudgeplot.py_cutoff_boundary.cwl
+id: smudgeplot.py_cutoff_boundary.cwl
 inputs:
 - id: in_smudge_plot
   doc: ''

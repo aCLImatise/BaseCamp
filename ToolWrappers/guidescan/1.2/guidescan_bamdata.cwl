@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guidescan_bamdata.cwl
+id: guidescan_bamdata.cwl
 inputs:
 - id: in_project_name_load
   doc: "project name, load previously saved arguments and save\nadditional output\

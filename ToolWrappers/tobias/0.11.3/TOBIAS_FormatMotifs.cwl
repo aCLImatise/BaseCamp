@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_FormatMotifs.cwl
+id: TOBIAS_FormatMotifs.cwl
 inputs:
 - id: in_input
   doc: '[ [ ...]]  One or more input motif files (required)'

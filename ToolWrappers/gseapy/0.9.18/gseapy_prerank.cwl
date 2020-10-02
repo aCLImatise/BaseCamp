@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gseapy_prerank.cwl
+id: gseapy_prerank.cwl
 inputs:
 - id: in_rnk
   doc: Ranking metric file in .rnk format. Same with GSEA.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastatrans.cwl
+id: fastatrans.cwl
 inputs:
 - id: in_contig_file
   doc: ''

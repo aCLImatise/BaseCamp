@@ -1,26 +1,22 @@
 class: CommandLineTool
-id: ../../../planemo_cwl_script.cwl
+id: planemo_cwl_script.cwl
 inputs:
 - id: in_no_container
-  doc: ''
+  doc: "--output_dir PATH\n--base_dir PATH\n--help             Show this message and\
+    \ exit.\n"
   type: boolean
   inputBinding:
     prefix: --no_container
-- id: in_output_dir
+- id: in_tool_path
   doc: ''
-  type: File
-  inputBinding:
-    prefix: --output_dir
-- id: in_base_dir
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --base_dir
-- id: in_script_dot
-  doc: 'Options:'
   type: string
   inputBinding:
     position: 0
+- id: in_job_path
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

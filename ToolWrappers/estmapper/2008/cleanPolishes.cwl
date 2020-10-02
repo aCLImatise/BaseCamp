@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cleanPolishes.cwl
+id: cleanPolishes.cwl
 inputs:
 - id: in_threshold
   doc: Introns bigger than this are candidates for trimming (default = 100000).

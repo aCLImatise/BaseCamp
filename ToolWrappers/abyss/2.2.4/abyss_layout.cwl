@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_layout.cwl
+id: abyss_layout.cwl
 inputs:
 - id: in_min_length
   doc: minimum sequence length [0]

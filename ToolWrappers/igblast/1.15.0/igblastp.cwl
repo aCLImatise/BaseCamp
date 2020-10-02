@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igblastp.cwl
+id: igblastp.cwl
 inputs: []
 outputs:
 - id: out_stdout

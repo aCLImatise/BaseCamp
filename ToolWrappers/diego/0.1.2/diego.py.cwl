@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../diego.py.cwl
+id: diego.py.cwl
 inputs:
 - id: in_table
   doc: "table of splice junction supports per sample with gene\ninformation (created\

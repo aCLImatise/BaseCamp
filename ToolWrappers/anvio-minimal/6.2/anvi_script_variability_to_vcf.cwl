@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_variability_to_vcf.cwl
+id: anvi_script_variability_to_vcf.cwl
 inputs:
 - id: in_input
   doc: "Filepath to the SNV table. This is the output from the\nanvi-gen-variability-profile\

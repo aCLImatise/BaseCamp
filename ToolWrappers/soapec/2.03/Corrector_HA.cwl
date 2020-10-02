@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Corrector_HA.cwl
+id: Corrector_HA.cwl
 inputs:
 - id: in_set_kmer_size
   doc: "Set kmer size, default=17.\nNote: this value must be set to be same as that\

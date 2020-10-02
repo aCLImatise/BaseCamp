@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5import_CHUNKED_DIMENSION_SIZES.cwl
+id: h5import_CHUNKED_DIMENSION_SIZES.cwl
 inputs:
 - id: in_h_five_import
   doc: ''

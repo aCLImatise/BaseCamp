@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbletters.cwl
+id: dbletters.cwl
 inputs:
 - id: in_db
   doc: '[-db seq_filen]*     one or more sequence files'

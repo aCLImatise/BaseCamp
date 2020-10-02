@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../score_fixed.cwl
+id: score_fixed.cwl
 inputs:
 - id: in_negative_model_regular
   doc: Negative model is regular ICM, not fixed-length ICM

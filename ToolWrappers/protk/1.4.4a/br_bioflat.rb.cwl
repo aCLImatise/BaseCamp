@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../br_bioflat.rb.cwl
+id: br_bioflat.rb.cwl
 inputs:
 - id: in_namespace
   doc: set serch namespace to NAME

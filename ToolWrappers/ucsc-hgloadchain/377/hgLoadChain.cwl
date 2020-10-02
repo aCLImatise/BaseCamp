@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hgLoadChain.cwl
+id: hgLoadChain.cwl
 inputs:
 - id: in_t_index
   doc: Include tName in indexes (for non-split chain tables)

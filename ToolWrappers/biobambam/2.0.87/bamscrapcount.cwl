@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamscrapcount.cwl
+id: bamscrapcount.cwl
 inputs: []
 outputs:
 - id: out_stdout

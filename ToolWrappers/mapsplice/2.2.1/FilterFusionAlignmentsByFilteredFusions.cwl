@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FilterFusionAlignmentsByFilteredFusions.cwl
+id: FilterFusionAlignmentsByFilteredFusions.cwl
 inputs: []
 outputs:
 - id: out_stdout

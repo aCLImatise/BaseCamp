@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomepy_plugin.cwl
+id: genomepy_plugin.cwl
 inputs:
 - id: in_command
   doc: ''

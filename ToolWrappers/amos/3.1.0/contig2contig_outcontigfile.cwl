@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contig2contig_outcontigfile.cwl
+id: contig2contig_outcontigfile.cwl
 inputs:
 - id: in_contig_two_contig
   doc: ''

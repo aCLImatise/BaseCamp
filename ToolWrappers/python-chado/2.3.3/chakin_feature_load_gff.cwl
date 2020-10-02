@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_feature_load_gff.cwl
+id: chakin_feature_load_gff.cwl
 inputs:
 - id: in_landmark_type
   doc: "Type of the landmarks (will speed up loading if\nprovided, e.g. contig, should\

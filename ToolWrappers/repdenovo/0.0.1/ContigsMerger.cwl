@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ContigsMerger.cwl
+id: ContigsMerger.cwl
 inputs: []
 outputs:
 - id: out_stdout

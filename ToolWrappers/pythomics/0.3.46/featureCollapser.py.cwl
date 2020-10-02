@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../featureCollapser.py.cwl
+id: featureCollapser.py.cwl
 inputs:
 - id: in_threads_to_run
   doc: Threads to run

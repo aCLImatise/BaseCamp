@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enrichm_enrichment.cwl
+id: enrichm_enrichment.cwl
 inputs:
 - id: in_log
   doc: Output logging information to this file.

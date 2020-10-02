@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cvgStat.cwl
+id: cvgStat.cwl
 inputs:
 - id: in_name_bank_used
   doc: '- name of bank to be used'

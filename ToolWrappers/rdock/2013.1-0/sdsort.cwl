@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sdsort.cwl
+id: sdsort.cwl
 inputs:
 - id: in_numeric_sort_default
   doc: numeric sort (default is text sort)

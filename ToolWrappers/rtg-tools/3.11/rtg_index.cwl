@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_index.cwl
+id: rtg_index.cwl
 inputs:
 - id: in_format
   doc: "format of input to index. Allowed values are [sam,\nbam, cram, sv, coveragetsv,\

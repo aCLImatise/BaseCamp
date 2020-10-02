@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prefixEditDistance_matchLimitGenerate.cwl
+id: prefixEditDistance_matchLimitGenerate.cwl
 inputs:
 - id: in_mine_value
   doc: ''

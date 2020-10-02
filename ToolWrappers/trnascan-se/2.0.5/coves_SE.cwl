@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coves_SE.cwl
+id: coves_SE.cwl
 inputs:
 - id: in_show_pairs_watsoncrick
   doc: ': show all pairs, not just Watson-Crick'

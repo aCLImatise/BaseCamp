@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_param_medic.cwl
+id: crux_param_medic.cwl
 inputs:
 - id: in_spectrum_file
   doc: ''

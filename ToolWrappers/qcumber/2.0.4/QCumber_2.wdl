@@ -15,14 +15,11 @@ task QCumber2 {
     Directory? sav
     String? trim_better
     Boolean? no_kraken
-    Boolean? not_rimming
     Int? illumina_clip
     Int? min_len
     Int? trim_option
     Float? trim_better_threshold
-    String? var_output
-    File? rename
-    Boolean? save_mapping
+    File? _rename_rename
   }
   command <<<
     QCumber_2 \
@@ -39,14 +36,11 @@ task QCumber2 {
       ~{if defined(sav) then ("--sav " +  '"' + sav + '"') else ""} \
       ~{if defined(trim_better) then ("--trimBetter " +  '"' + trim_better + '"') else ""} \
       ~{if (no_kraken) then "--nokraken" else ""} \
-      ~{if (not_rimming) then "--notrimming" else ""} \
       ~{if defined(illumina_clip) then ("--illuminaclip " +  '"' + illumina_clip + '"') else ""} \
       ~{if defined(min_len) then ("--minlen " +  '"' + min_len + '"') else ""} \
       ~{if defined(trim_option) then ("--trimOption " +  '"' + trim_option + '"') else ""} \
       ~{if defined(trim_better_threshold) then ("--trimBetter_threshold " +  '"' + trim_better_threshold + '"') else ""} \
-      ~{if defined(var_output) then ("--output " +  '"' + var_output + '"') else ""} \
-      ~{if defined(rename) then ("--rename " +  '"' + rename + '"') else ""} \
-      ~{if (save_mapping) then "--save_mapping" else ""}
+      ~{if defined(_rename_rename) then ("--output " +  '"' + _rename_rename + '"') else ""}
   >>>
   parameter_meta {
     threads: "Number of threads. Default: 4"
@@ -61,15 +55,12 @@ task QCumber2 {
     kraken_db: "Custom Kraken database. Default value is taken from\\nenvironment variable KRAKEN_DB_PATH. Default: ."
     sav: "Illumina folder for SAV. Requires RunInfo.xml,\\nRunParameter.xml and Interop folder."
     trim_better: "Optimize trimming parameter using 'Per sequence base\\ncontent' from fastqc. Not recommended for amplicons."
-    no_kraken: ""
-    not_rimming: ""
+    no_kraken: "--notrimming, -Q"
     illumina_clip: "Illuminaclip option: <leading quality>:<trailing\\nquality>:<sliding window>. Default: 2:30:10"
     min_len: "Minlen parameter for Trimmomatic. Drops read short\\nthan minlen. Default: 50"
     trim_option: "Additional Trimmomatic input. Default (if trimBetter\\nis not set): SLIDINGWINDOW:4:20"
     trim_better_threshold: "Set -trimBetter to use this option.Default setting for\\nIllumina: 0.15 and for IonTorrent: 0.25."
-    var_output: ""
-    rename: "TSV File with two columns: <old sample name> <new\\nsample name>"
-    save_mapping: ""
+    _rename_rename: "--rename RENAME, -R RENAME\\nTSV File with two columns: <old sample name> <new\\nsample name>\\n--save_mapping, -S"
   }
   output {
     File out_stdout = stdout()

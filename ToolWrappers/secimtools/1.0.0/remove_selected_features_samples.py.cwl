@@ -1,8 +1,9 @@
 class: CommandLineTool
-id: ../../../remove_selected_features_samples.py.cwl
+id: remove_selected_features_samples.py.cwl
 inputs:
 - id: in_fft
-  doc: ''
+  doc: "[-fid FLAGUNIQID] -fd FLAGDROP\n[-val VALUE] [-con CONDITION] -ow\nOUTWIDE\
+    \ -of OUTFLAGS"
   type: string
   inputBinding:
     prefix: -fft

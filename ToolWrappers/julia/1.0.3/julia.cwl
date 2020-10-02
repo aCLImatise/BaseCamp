@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../julia.cwl
+id: julia.cwl
 inputs:
 - id: in_project
   doc: '[={<dir>|@.}]    Set <dir> as the home project/environment'

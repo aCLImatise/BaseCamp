@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SatsumaSynteny2.cwl
+id: SatsumaSynteny2.cwl
 inputs:
 - id: in_string_query_sequence
   doc: '<string> : query fasta sequence'

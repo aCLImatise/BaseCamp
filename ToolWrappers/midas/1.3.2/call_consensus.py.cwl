@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../call_consensus.py.cwl
+id: call_consensus.py.cwl
 inputs:
 - id: in_out
   doc: path to output file

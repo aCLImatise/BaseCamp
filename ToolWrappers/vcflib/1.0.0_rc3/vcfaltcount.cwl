@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfaltcount.cwl
+id: vcfaltcount.cwl
 inputs:
 - id: in_vcf_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rust_synergy.bak.cwl
+id: rust_synergy.bak.cwl
 inputs:
 - id: in_directory_path_outputfile
   doc: directory  path to outputfile, default is "synergy"

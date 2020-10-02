@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anomaly.cwl
+id: anomaly.cwl
 inputs:
 - id: in_start_codonssample_format
   doc: "Use comma-separated list of codons as start codons\nSample format:  -A atg,gtg\n\

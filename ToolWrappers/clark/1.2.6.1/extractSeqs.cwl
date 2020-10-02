@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extractSeqs.cwl
+id: extractSeqs.cwl
 inputs: []
 outputs:
 - id: out_stdout

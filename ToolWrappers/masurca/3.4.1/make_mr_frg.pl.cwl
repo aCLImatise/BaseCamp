@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_mr_frg.pl.cwl
+id: make_mr_frg.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

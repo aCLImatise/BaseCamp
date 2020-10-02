@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wgs2ncbi.cwl
+id: wgs2ncbi.cwl
 inputs:
 - id: in_ncbi
   doc: "SYNOPSIS\nUsage: wgs2ncbi [action] -conf [config file]"

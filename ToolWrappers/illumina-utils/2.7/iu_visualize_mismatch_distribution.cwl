@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iu_visualize_mismatch_distribution.cwl
+id: iu_visualize_mismatch_distribution.cwl
 inputs: []
 outputs:
 - id: out_stdout

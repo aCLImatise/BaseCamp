@@ -54,22 +54,14 @@ task Vardictjava {
     Float? lowest_frequency_normal
     Boolean? vcf_format_output
     String? vs
-    Int? insert_size
-    Int? extension_look_bp
-    Int? number_nucleotide_extend
-    Int? ref_extension
-    Boolean? verbose
-    Float? down_sample
-    Int? indicate_zerobased_uses
+    Int? insert_std
     String insert_std_dot
     String guide_dot
     String mismatches_dot
     String positive_dot
     String strict
-    String emit_warnings_keep
+    String lenient
     String silent
-    String winsertstd_int_insert
-    String caution_dot
   }
   command <<<
     vardict_java \
@@ -78,10 +70,8 @@ task Vardictjava {
       ~{mismatches_dot} \
       ~{positive_dot} \
       ~{strict} \
-      ~{emit_warnings_keep} \
+      ~{lenient} \
       ~{silent} \
-      ~{winsertstd_int_insert} \
-      ~{caution_dot} \
       ~{if (indicate_move_indels) then "-3" else ""} \
       ~{if defined(number_std_pair) then ("-A " +  '"' + number_std_pair + '"') else ""} \
       ~{if (amplicon) then "--amplicon" else ""} \
@@ -134,13 +124,7 @@ task Vardictjava {
       ~{if defined(lowest_frequency_normal) then ("-V " +  '"' + lowest_frequency_normal + '"') else ""} \
       ~{if (vcf_format_output) then "-v" else ""} \
       ~{if defined(vs) then ("-VS " +  '"' + vs + '"') else ""} \
-      ~{if defined(insert_size) then ("--insert-size " +  '"' + insert_size + '"') else ""} \
-      ~{if defined(extension_look_bp) then ("-X " +  '"' + extension_look_bp + '"') else ""} \
-      ~{if defined(number_nucleotide_extend) then ("-x " +  '"' + number_nucleotide_extend + '"') else ""} \
-      ~{if defined(ref_extension) then ("--ref-extension " +  '"' + ref_extension + '"') else ""} \
-      ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(down_sample) then ("--downsample " +  '"' + down_sample + '"') else ""} \
-      ~{if defined(indicate_zerobased_uses) then ("-z " +  '"' + indicate_zerobased_uses + '"') else ""}
+      ~{if defined(insert_std) then ("--insert-std " +  '"' + insert_std + '"') else ""}
   >>>
   parameter_meta {
     indicate_move_indels: "Indicate to move indels to 3-prime if alternative alignment can be achieved."
@@ -195,22 +179,14 @@ task Vardictjava {
     lowest_frequency_normal: "The lowest frequency in the normal sample allowed for a putative somatic mutation.  Defaults to 0.05"
     vcf_format_output: "VCF format output"
     vs: "How strict to be when reading a SAM or BAM."
-    insert_size: "The insert size.  Used for SV calling.  Default: 300"
-    extension_look_bp: "Extension of bp to look for mismatches after insersion or deletion.  Default to 2 bp, or only calls when\\nthey're within 2 bp."
-    number_nucleotide_extend: "The number of nucleotide to extend for each segment, default: 0"
-    ref_extension: "Extension of bp of reference to build lookup table. Default to 1200 bp. Increase the number will slowdown\\nthe program. The main purpose is to call large indels with 1000 bp that can be missed by discordant mate\\npairs."
-    verbose: ""
-    down_sample: "For downsampling fraction.  e.g. 0.7 means roughly 70% downsampling.  Default: No downsampling.  Use with"
-    indicate_zerobased_uses: "Indicate whether coordinates are zero-based, as IGV uses.  Default: 1 for BED file or amplicon BED file.\\nUse 0 to turn it off. When using the -R option, it's set to 0"
+    insert_std: "The insert size STD.  Used for SV calling.  Default: 100\\n-w,--insert-size <INT>              The insert size.  Used for SV calling.  Default: 300\\n-X <INT>                            Extension of bp to look for mismatches after insersion or deletion.  Default to 2 bp, or only calls when\\nthey're within 2 bp.\\n-x <INT>                            The number of nucleotide to extend for each segment, default: 0\\n-Y,--ref-extension <INT>            Extension of bp of reference to build lookup table. Default to 1200 bp. Increase the number will slowdown\\nthe program. The main purpose is to call large indels with 1000 bp that can be missed by discordant mate\\npairs.\\n-y,--verbose\\n-Z,--downsample <double>            For downsampling fraction.  e.g. 0.7 means roughly 70% downsampling.  Default: No downsampling.  Use with\\ncaution.  The\\ndownsampling will be random and non-reproducible.\\n-z <0/1>                            Indicate whether coordinates are zero-based, as IGV uses.  Default: 1 for BED file or amplicon BED file.\\nUse 0 to turn it off. When using the -R option, it's set to 0"
     insert_std_dot: "Default: 4"
     guide_dot: "For"
     mismatches_dot: "Valid only for bowtie2/TopHat or BWA aln followed by sampe.  BWA mem is calculated as NM - Indels."
     positive_dot: "Default: 5"
     strict: "- throw an exception if something looks wrong."
-    emit_warnings_keep: "- Emit warnings but keep going if possible."
+    lenient: "- Emit warnings but keep going if possible."
     silent: "- Like LENIENT, only don't emit warning messages."
-    winsertstd_int_insert: "-W,--insert-std <INT>               The insert size STD.  Used for SV calling.  Default: 100"
-    caution_dot: "The"
   }
   output {
     File out_stdout = stdout()

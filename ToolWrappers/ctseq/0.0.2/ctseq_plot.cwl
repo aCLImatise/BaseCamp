@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ctseq_plot.cwl
+id: ctseq_plot.cwl
 inputs:
 - id: in_dir
   doc: "Path to directory where you have your plot input files.\nIf no '--dir' is\

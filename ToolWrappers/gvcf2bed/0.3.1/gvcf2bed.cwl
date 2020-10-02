@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gvcf2bed.cwl
+id: gvcf2bed.cwl
 inputs:
 - id: in_input
   doc: Input gVCF

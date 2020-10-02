@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reverse_fastq.py_output_fastq.cwl
+id: reverse_fastq.py_output_fastq.cwl
 inputs:
 - id: in_reverse_fast_q_do_tpy
   doc: ''

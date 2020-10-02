@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../msstitch_storespectra.cwl
+id: msstitch_storespectra.cwl
 inputs:
 - id: in_set_names
-  doc: ''
+  doc: SETNAMES [SETNAMES ...]
   type: string[]
   inputBinding:
     prefix: --setnames

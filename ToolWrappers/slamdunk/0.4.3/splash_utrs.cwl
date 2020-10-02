@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splash_utrs.cwl
+id: splash_utrs.cwl
 inputs:
 - id: in_reference
   doc: Reference fasta file

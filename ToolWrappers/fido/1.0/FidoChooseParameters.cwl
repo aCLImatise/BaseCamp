@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FidoChooseParameters.cwl
+id: FidoChooseParameters.cwl
 inputs:
 - id: in_c
   doc: ''

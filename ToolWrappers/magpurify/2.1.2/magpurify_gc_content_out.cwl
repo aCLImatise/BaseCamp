@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../magpurify_gc_content_out.cwl
+id: magpurify_gc_content_out.cwl
 inputs:
 - id: in_weighted_mean
   doc: ''

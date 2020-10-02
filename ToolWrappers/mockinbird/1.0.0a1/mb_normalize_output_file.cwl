@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_normalize_output_file.cwl
+id: mb_normalize_output_file.cwl
 inputs:
 - id: in_mut_snp_ratio
   doc: ''

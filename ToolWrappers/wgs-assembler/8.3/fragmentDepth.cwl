@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fragmentDepth.cwl
+id: fragmentDepth.cwl
 inputs:
 - id: in_min
   doc: use scaffolds at least N bases long.

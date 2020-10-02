@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sarscov2formatter.cwl
+id: sarscov2formatter.cwl
 inputs:
 - id: in_alignment
   doc: Mulitple sequence alignment file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkParamArchive.pl.cwl
+id: checkParamArchive.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

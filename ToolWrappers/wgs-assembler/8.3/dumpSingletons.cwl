@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dumpSingletons.cwl
+id: dumpSingletons.cwl
 inputs:
 - id: in_attempt_locate_checkpoint
   doc: Attempt to locate the last checkpoint in directory 7-CGW.

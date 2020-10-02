@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halAlignedExtract.cwl
+id: halAlignedExtract.cwl
 inputs:
 - id: in_aligned_file
   doc: ':   path to bed file to write to [default = stdout]'

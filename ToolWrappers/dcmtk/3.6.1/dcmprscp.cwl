@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dcmprscp.cwl
+id: dcmprscp.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments

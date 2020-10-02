@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfremap.cwl
+id: vcfremap.cwl
 inputs:
 - id: in_ref_window_size
   doc: align using this many bases flanking each side of the reference allele

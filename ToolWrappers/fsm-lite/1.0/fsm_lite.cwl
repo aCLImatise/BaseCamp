@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fsm_lite.cwl
+id: fsm_lite.cwl
 inputs:
 - id: in_list
   doc: "Text file that lists all input files as whitespace-separated pairs\n<data-name>\

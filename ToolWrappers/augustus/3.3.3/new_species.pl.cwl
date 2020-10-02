@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../new_species.pl.cwl
+id: new_species.pl.cwl
 inputs:
 - id: in_augustus_config_path
   doc: full path to augustus/config directory

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ancestral_state_reconstruction.py.cwl
+id: ancestral_state_reconstruction.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

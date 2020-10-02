@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../REQ.cwl
+id: REQ.cwl
 inputs:
 - id: in_verbose_mode
   doc: verbose mode

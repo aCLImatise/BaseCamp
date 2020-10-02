@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mob_cluster.cwl
+id: mob_cluster.cwl
 inputs:
 - id: in_mode
   doc: "Build: Create a new database from scratch, Update:\nUpdate an existing database\

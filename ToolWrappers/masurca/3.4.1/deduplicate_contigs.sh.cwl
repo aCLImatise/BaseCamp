@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deduplicate_contigs.sh.cwl
+id: deduplicate_contigs.sh.cwl
 inputs:
 - id: in_always_prompt_removing
   doc: Always prompt before removing

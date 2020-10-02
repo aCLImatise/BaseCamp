@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jgi_summarize_bam_contig_depths.cwl
+id: jgi_summarize_bam_contig_depths.cwl
 inputs:
 - id: in_output_depth
   doc: 'arg  The file to put the contig by bam depth matrix (default: STDOUT)'

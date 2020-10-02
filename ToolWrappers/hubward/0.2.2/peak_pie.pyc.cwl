@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../peak_pie.pyc.cwl
+id: peak_pie.pyc.cwl
 inputs: []
 outputs:
 - id: out_stdout

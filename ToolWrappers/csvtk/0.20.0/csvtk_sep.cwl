@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_sep.cwl
+id: csvtk_sep.cwl
 inputs:
 - id: in_drop
   doc: drop extra data, exclusive with --merge

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rearrangeSeqs.cwl
+id: rearrangeSeqs.cwl
 inputs:
 - id: in_good_dot
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samToDelta.cwl
+id: samToDelta.cwl
 inputs: []
 outputs:
 - id: out_stdout

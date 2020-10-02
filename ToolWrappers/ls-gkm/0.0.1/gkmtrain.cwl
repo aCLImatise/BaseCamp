@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gkmtrain.cwl
+id: gkmtrain.cwl
 inputs:
 - id: in_set_function_default
   doc: "<0 ~ 5>   set kernel function (default: 4 wgkm)\nNOTE: RBF kernels (3 and\

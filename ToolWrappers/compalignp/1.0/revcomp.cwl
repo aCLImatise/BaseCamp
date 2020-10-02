@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../revcomp.cwl
+id: revcomp.cwl
 inputs:
 - id: in_options
   doc: ''

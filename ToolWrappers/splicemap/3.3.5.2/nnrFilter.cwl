@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nnrFilter.cwl
+id: nnrFilter.cwl
 inputs: []
 outputs:
 - id: out_stdout

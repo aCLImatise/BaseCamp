@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ytasm.cwl
+id: ytasm.cwl
 inputs: []
 outputs:
 - id: out_stdout

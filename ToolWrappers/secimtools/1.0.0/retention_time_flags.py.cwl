@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../retention_time_flags.py.cwl
+id: retention_time_flags.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hallagram.cwl
+id: hallagram.cwl
 inputs:
 - id: in_strongest
   doc: isolate the N strongest associations

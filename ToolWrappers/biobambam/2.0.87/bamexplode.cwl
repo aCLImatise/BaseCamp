@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamexplode.cwl
+id: bamexplode.cwl
 inputs: []
 outputs:
 - id: out_stdout

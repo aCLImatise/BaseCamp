@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../netReg.cwl
+id: netReg.cwl
 inputs:
 - id: in_arg_filename_design
   doc: '[ --design ] arg                  Filename of the design matrix X.'

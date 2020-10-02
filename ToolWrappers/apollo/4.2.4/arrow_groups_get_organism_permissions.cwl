@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_groups_get_organism_permissions.cwl
+id: arrow_groups_get_organism_permissions.cwl
 inputs:
 - id: in_group
   doc: ''

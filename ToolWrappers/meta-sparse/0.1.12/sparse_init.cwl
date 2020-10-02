@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sparse_init.cwl
+id: sparse_init.cwl
 inputs:
 - id: in_dbname
   doc: "Name for the new database to be generated.\n"

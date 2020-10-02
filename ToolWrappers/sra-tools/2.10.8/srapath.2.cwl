@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../srapath.2.cwl
+id: srapath.2.cwl
 inputs: []
 outputs:
 - id: out_stdout

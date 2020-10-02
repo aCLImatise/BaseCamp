@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h2xs.cwl
+id: h2xs.cwl
 inputs:
 - id: in_omit_autoload
   doc: Omit all autoloading facilities (implies -c).

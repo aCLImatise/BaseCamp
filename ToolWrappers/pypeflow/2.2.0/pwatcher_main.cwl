@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pwatcher_main.cwl
+id: pwatcher_main.cwl
 inputs: []
 outputs:
 - id: out_stdout

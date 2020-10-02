@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../align_cache.2.10.8.cwl
+id: align_cache.2.10.8.cwl
 inputs:
 - id: in_threshold
   doc: "cache PRIMARY_ALIGNMENT records with\ndifference between values of ALIGN_ID\

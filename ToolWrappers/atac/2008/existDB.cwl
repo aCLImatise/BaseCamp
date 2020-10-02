@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../existDB.cwl
+id: existDB.cwl
 inputs: []
 outputs:
 - id: out_stdout

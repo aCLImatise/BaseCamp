@@ -1,21 +1,12 @@
 class: CommandLineTool
-id: ../../../lyner_targets.cwl
+id: lyner_targets.cwl
 inputs:
 - id: in_targets
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --targets
-- id: in_from_file
-  doc: ''
+  doc: "-f, --from-file FILENAME\n-m, --mode [exclude|intersect]\n--help         \
+    \                 Show this message and exit.\n"
   type: File
   inputBinding:
-    prefix: --from-file
-- id: in_mode
-  doc: '[exclude|intersect]'
-  type: boolean
-  inputBinding:
-    prefix: --mode
+    prefix: --targets
 outputs:
 - id: out_stdout
   doc: Standard output stream

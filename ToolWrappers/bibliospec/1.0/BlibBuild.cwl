@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BlibBuild.cwl
+id: BlibBuild.cwl
 inputs:
 - id: in_overwrite_library_append
   doc: Overwrite existing library. Default append.

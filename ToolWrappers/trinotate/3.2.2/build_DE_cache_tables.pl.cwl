@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../build_DE_cache_tables.pl.cwl
+id: build_DE_cache_tables.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

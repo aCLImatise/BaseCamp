@@ -27,14 +27,12 @@ task RNAalifold {
     Boolean? old
     File? param_file
     String program
-    String structure_dot
     String molecule_dot
     String characters_dot
   }
   command <<<
     RNAalifold \
       ~{program} \
-      ~{structure_dot} \
       ~{molecule_dot} \
       ~{characters_dot} \
       ~{if (detailed_help) then "--detailed-help" else ""} \
@@ -88,7 +86,6 @@ task RNAalifold {
     old: "use old energy evaluation, treating gaps as"
     param_file: "Read energy parameters from paramfile, instead\\nof using the default parameter set."
     program: "-C, --constraint              Calculate structures subject to constraints.\\nThe constraining structure will be read from\\n'stdin', the alignment has to be given as a\\nfile name on the command line.\\n(default=off)"
-    structure_dot: "(default=`1.')"
     molecule_dot: "(default=off)"
     characters_dot: "(default=off)"
   }

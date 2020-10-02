@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../repfind.pl.cwl
+id: repfind.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../elector.cwl
+id: elector.cwl
 inputs:
 - id: in_threads
   doc: '[THREADS]    Number of threads'

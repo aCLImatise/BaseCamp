@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ggd_uninstall.cwl
+id: ggd_uninstall.cwl
 inputs:
 - id: in_channel
   doc: "The ggd channel of the recipe to uninstall. (Default =\ngenomics)\n"

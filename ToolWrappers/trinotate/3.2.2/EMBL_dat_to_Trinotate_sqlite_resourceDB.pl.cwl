@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EMBL_dat_to_Trinotate_sqlite_resourceDB.pl.cwl
+id: EMBL_dat_to_Trinotate_sqlite_resourceDB.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

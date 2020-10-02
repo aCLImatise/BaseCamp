@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AMAS.py_summary.cwl
+id: AMAS.py_summary.cwl
 inputs:
 - id: in_summary_out
   doc: "File name for the alignment summary. Default:\n'summary.txt'"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_plot_heatmap_parclip.cwl
+id: mb_plot_heatmap_parclip.cwl
 inputs:
 - id: in_upstream
   doc: ''

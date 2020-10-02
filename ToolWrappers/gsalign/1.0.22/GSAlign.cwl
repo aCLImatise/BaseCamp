@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GSAlign.cwl
+id: GSAlign.cwl
 inputs:
 - id: in_int_number_threads
   doc: INT     number of threads [8]

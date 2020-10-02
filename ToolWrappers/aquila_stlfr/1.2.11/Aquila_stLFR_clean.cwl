@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Aquila_stLFR_clean.cwl
+id: Aquila_stLFR_clean.cwl
 inputs:
 - id: in_assembly_dir
   doc: assembly folder

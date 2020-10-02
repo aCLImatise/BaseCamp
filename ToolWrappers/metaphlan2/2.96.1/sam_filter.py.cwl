@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam_filter.py.cwl
+id: sam_filter.py.cwl
 inputs:
 - id: in_input_file
   doc: The input sam file.

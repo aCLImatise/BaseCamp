@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../airr_tools_validate_rearrangement.cwl
+id: airr_tools_validate_rearrangement.cwl
 inputs:
 - id: in_list_airr_rearrangement
   doc: "A list of AIRR rearrangement files.\n"

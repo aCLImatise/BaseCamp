@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAalisplit.pl.cwl
+id: RNAalisplit.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

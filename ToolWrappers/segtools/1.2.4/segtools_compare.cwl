@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segtools_compare.cwl
+id: segtools_compare.cwl
 inputs:
 - id: in_edit_distance
   doc: "Measure the base-wise edit distance between the two\nspecified segmentations"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pool.py.cwl
+id: pool.py.cwl
 inputs:
 - id: in_round_params
   doc: "ROUND_PARAMS\n<m> <e>; round mismatches parameter to the nearest\nmultiple\

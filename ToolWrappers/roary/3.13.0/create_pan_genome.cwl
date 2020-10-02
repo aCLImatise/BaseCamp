@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_pan_genome.cwl
+id: create_pan_genome.cwl
 inputs:
 - id: in_number_of_threads
   doc: number of threads [1]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam_stats.cwl
+id: sam_stats.cwl
 inputs:
 - id: in_keep_track_multiple
   doc: Keep track of multiple alignments

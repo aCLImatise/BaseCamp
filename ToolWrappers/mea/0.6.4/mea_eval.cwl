@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mea_eval.cwl
+id: mea_eval.cwl
 inputs:
 - id: in_alpha
   doc: "slope of base pair distance penalty\n(default=`0.012')"
@@ -56,11 +56,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: in_file
-  doc: (default=`')
-  type: File
+- id: in_me_a
+  doc: ''
+  type: string
   inputBinding:
     position: 0
+- id: in_input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

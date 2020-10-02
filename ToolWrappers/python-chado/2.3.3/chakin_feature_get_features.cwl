@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_feature_get_features.cwl
+id: chakin_feature_get_features.cwl
 inputs:
 - id: in_organism_id
   doc: organism_id filter

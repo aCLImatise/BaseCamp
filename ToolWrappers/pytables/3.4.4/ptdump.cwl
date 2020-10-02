@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ptdump.cwl
+id: ptdump.cwl
 inputs:
 - id: in_verbose
   doc: dump more metainformation on nodes

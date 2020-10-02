@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribo_try.cwl
+id: ribo_try.cwl
 inputs:
 - id: in_output
   doc: 'output directory; default: /riboSeed_sample_results'

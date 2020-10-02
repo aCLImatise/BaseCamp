@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsnp_filter_finder.py.cwl
+id: vsnp_filter_finder.py.cwl
 inputs:
 - id: in_cwd
   doc: "Working directoy to be added as path to dependency\nfiles."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmconvert_cmfile.cwl
+id: cmconvert_cmfile.cwl
 inputs:
 - id: in_options
   doc: ''

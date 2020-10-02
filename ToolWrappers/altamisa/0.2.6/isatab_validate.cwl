@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isatab_validate.cwl
+id: isatab_validate.cwl
 inputs:
 - id: in_input_investigation_file
   doc: Path to input investigation file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samFLAGinfo.pl.orig.cwl
+id: samFLAGinfo.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

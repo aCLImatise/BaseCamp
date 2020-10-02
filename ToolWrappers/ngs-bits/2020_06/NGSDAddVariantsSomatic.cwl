@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGSDAddVariantsSomatic.cwl
+id: NGSDAddVariantsSomatic.cwl
 inputs:
 - id: in_t_ps
   doc: Tumor processed sample name

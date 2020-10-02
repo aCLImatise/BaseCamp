@@ -10,116 +10,52 @@ positional:
   optional: false
 named:
 - !Flag
-  description: "Bed or gff file  of  regions  to process in batch.\nUse - to read\
-    \ from stdin.\nASCIIGenome will iterate  through  the  regions in\nthis file"
-  synonyms:
-  - --batchFile
-  - -b
-  args: !SimpleFlagArg
-    name: BATCHFILE
-  optional: true
-- !Flag
-  description: "Go to region. Format  1-based as 'chrom:start-end'\nor 'chrom:start'\
-    \ or 'chrom'.\nE.g. chr1:1-1000"
+  description: ''
   synonyms:
   - --region
-  - -r
   args: !SimpleFlagArg
     name: REGION
   optional: true
 - !Flag
-  description: "Optional reference fasta file.  If  given, must be\nindexed, e.g.\
-    \ with\nsamtools faidx ref.fa"
+  description: ''
   synonyms:
-  - --fasta
-  - -fa
+  - --batchFile
   args: !SimpleFlagArg
-    name: FASTA
-  optional: true
-- !Flag
-  description: "Commands to be executed  at  the  prompt. Either a\nfile with one\
-    \ command per line\na single string of  commands,  e.g.  'goto chr1 &&\nnext &&\
-    \ seqRegex ACTG'"
-  synonyms:
-  - --exec
-  - -x
-  args: !SimpleFlagArg
-    name: EXEC
-  optional: true
-- !Flag
-  description: "Do  not  format  output   with   non  ascii  chars\n(colour, bold,\
-    \ etc.) (default: false)"
-  synonyms:
-  - --noFormat
-  - -nf
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Non interactive mode: Exit  after having processed\ncmd line args\
-    \ (default: false)"
-  synonyms:
-  - --nonInteractive
-  - -ni
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Source of  configuration  settings.  It  can  be a\nlocal file or\
-    \ a tag matching a\nbuilt-in     configuration:      'black_on_white',\n'white_on_black',\
-    \ 'metal'. If null,\nfirst try to  read  configuration  from  file '~/.\nasciigenome_config'.\
-    \ If this\nfile  is  missing  use  a  built-in  setting.  For\nexamples of configuration\
-    \ files\nsee                                https://github.\ncom/dariober/ASCIIGenome/tree/master/src/main/resources/config\n\
-    (default: null)"
-  synonyms:
-  - --config
-  - -c
-  args: !SimpleFlagArg
-    name: CONFIG
-  optional: true
-- !Flag
-  description: "Show memory usage.  Typically  used  for debugging\nonly (default:\
-    \ false)"
-  synonyms:
-  - --showMem
-  - -sm
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Show time  elapsed  to  process  tracks. Typically\nused for debugging\
-    \ only (default: false)"
-  synonyms:
-  - --showTime
-  - -st
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Set debugging mode.  0:  off;  1:  print exception\nstack traces;\
-    \ 2: print stack traces\nand exit. (default: 0)"
-  synonyms:
-  - --debug
-  args: !ChoiceFlagArg
-    choices: !!set
-      ? "1"
-      ? "2"
-      ? "0"
+    name: BATCHFILE
   optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  description: "show this help message and exit\n--batchFile BATCHFILE, -b BATCHFILE\n\
+    Bed or gff file  of  regions  to process in batch.\nUse - to read from stdin.\n\
+    ASCIIGenome will iterate  through  the  regions in\nthis file\n--region REGION,\
+    \ -r REGION\nGo to region. Format  1-based as 'chrom:start-end'\nor 'chrom:start'\
+    \ or 'chrom'.\nE.g. chr1:1-1000\n--fasta FASTA, -fa FASTA\nOptional reference\
+    \ fasta file.  If  given, must be\nindexed, e.g. with\nsamtools faidx ref.fa\n\
+    --exec EXEC, -x EXEC   Commands to be executed  at  the  prompt. Either a\nfile\
+    \ with one command per line\na single string of  commands,  e.g.  'goto chr1 &&\n\
+    next && seqRegex ACTG'\n--noFormat, -nf        Do  not  format  output   with\
+    \   non  ascii  chars\n(colour, bold, etc.) (default: false)\n--nonInteractive,\
+    \ -ni  Non interactive mode: Exit  after having processed\ncmd line args (default:\
+    \ false)\n--config CONFIG, -c CONFIG\nSource of  configuration  settings.  It\
+    \  can  be a\nlocal file or a tag matching a\nbuilt-in     configuration:    \
+    \  'black_on_white',\n'white_on_black', 'metal'. If null,\nfirst try to  read\
+    \  configuration  from  file '~/.\nasciigenome_config'. If this\nfile  is  missing\
+    \  use  a  built-in  setting.  For\nexamples of configuration files\nsee     \
+    \                           https://github.\ncom/dariober/ASCIIGenome/tree/master/src/main/resources/config\n\
+    (default: null)\n--showMem, -sm         Show memory usage.  Typically  used  for\
+    \ debugging\nonly (default: false)\n--showTime, -st        Show time  elapsed\
+    \  to  process  tracks. Typically\nused for debugging only (default: false)\n\
+    --debug {0,1,2}        Set debugging mode.  0:  off;  1:  print exception\nstack\
+    \ traces; 2: print stack traces\nand exit. (default: 0)\n--version, -v\n"
   synonyms:
   - -h
   - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag: !Flag
-  description: ''
-  synonyms:
-  - --version
-  - -v
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "usage: ASCIIGenome [-h] [--batchFile BATCHFILE] [--region REGION]\n  \
   \                 [--fasta FASTA] [--exec EXEC] [--noFormat]\n                 \
   \  [--nonInteractive] [--config CONFIG] [--showMem]\n                   [--showTime]\

@@ -1,31 +1,16 @@
 class: CommandLineTool
-id: ../../../tbprofiler_get_mutation.py.cwl
+id: tbprofiler_get_mutation.py.cwl
 inputs:
-- id: in_sample_file
-  doc: 'NGS Platform (default: None)'
-  type: File
-  inputBinding:
-    prefix: --sample_file
 - id: in_dir
-  doc: 'NGS Platform (default: results/)'
+  doc: ''
   type: string
   inputBinding:
     prefix: --dir
-- id: in_lineage
-  doc: 'NGS Platform (default: None)'
-  type: string
-  inputBinding:
-    prefix: --lineage
-- id: in_txt
+- id: in_sample_file
   doc: ''
-  type: boolean
+  type: File
   inputBinding:
-    prefix: --txt
-- id: in_it_ol
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --itol
+    prefix: --sample_file
 - id: in_gene
   doc: NGS Platform
   type: string

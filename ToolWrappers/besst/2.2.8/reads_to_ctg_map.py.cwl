@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reads_to_ctg_map.py.cwl
+id: reads_to_ctg_map.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

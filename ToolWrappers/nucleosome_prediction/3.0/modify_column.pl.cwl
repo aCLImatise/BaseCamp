@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../modify_column.pl.cwl
+id: modify_column.pl.cwl
 inputs:
 - id: in_column_modify_default
   doc: 'The column to modify (default: 0; specify multiple columns using commas) (zero-based)'

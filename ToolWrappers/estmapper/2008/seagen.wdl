@@ -3,21 +3,6 @@ version 1.0
 task Seagen {
   input {
     String? mer_size
-    String? mer_skip
-    Boolean? forward
-    Boolean? reverse
-    String? max_diagonal
-    String? max_gap
-    String? q_overlap
-    String? d_overlap
-    String? max_intron
-    Boolean? small_sequence
-    String? single_length
-    String? single_coverage
-    String? multiple_length
-    String? multiple_coverage
-    String? extend_weight
-    String? extend_minimum
     String? num_threads
     Int? loader_queue
     String? loader_sleep
@@ -42,21 +27,6 @@ task Seagen {
   command <<<
     seagen \
       ~{if defined(mer_size) then ("-mersize " +  '"' + mer_size + '"') else ""} \
-      ~{if defined(mer_skip) then ("-merskip " +  '"' + mer_skip + '"') else ""} \
-      ~{if (forward) then "-forward" else ""} \
-      ~{if (reverse) then "-reverse" else ""} \
-      ~{if defined(max_diagonal) then ("-maxdiagonal " +  '"' + max_diagonal + '"') else ""} \
-      ~{if defined(max_gap) then ("-maxgap " +  '"' + max_gap + '"') else ""} \
-      ~{if defined(q_overlap) then ("-qoverlap " +  '"' + q_overlap + '"') else ""} \
-      ~{if defined(d_overlap) then ("-doverlap " +  '"' + d_overlap + '"') else ""} \
-      ~{if defined(max_intron) then ("-maxintron " +  '"' + max_intron + '"') else ""} \
-      ~{if (small_sequence) then "-smallsequence" else ""} \
-      ~{if defined(single_length) then ("-singlelength " +  '"' + single_length + '"') else ""} \
-      ~{if defined(single_coverage) then ("-singlecoverage " +  '"' + single_coverage + '"') else ""} \
-      ~{if defined(multiple_length) then ("-multiplelength " +  '"' + multiple_length + '"') else ""} \
-      ~{if defined(multiple_coverage) then ("-multiplecoverage " +  '"' + multiple_coverage + '"') else ""} \
-      ~{if defined(extend_weight) then ("-extendweight " +  '"' + extend_weight + '"') else ""} \
-      ~{if defined(extend_minimum) then ("-extendminimum " +  '"' + extend_minimum + '"') else ""} \
       ~{if defined(num_threads) then ("-numthreads " +  '"' + num_threads + '"') else ""} \
       ~{if defined(loader_queue) then ("-loaderqueue " +  '"' + loader_queue + '"') else ""} \
       ~{if defined(loader_sleep) then ("-loadersleep " +  '"' + loader_sleep + '"') else ""} \
@@ -79,22 +49,7 @@ task Seagen {
       ~{if defined(count) then ("-count " +  '"' + count + '"') else ""}
   >>>
   parameter_meta {
-    mer_size: "Use k-mers"
-    mer_skip: "Skip j mers between each mer inserted into table"
-    forward: "Search only the normal query sequences"
-    reverse: "Search only the reverse-complemented query sequences"
-    max_diagonal: ""
-    max_gap: ""
-    q_overlap: ""
-    d_overlap: ""
-    max_intron: ""
-    small_sequence: ""
-    single_length: ""
-    single_coverage: ""
-    multiple_length: ""
-    multiple_coverage: ""
-    extend_weight: ""
-    extend_minimum: ""
+    mer_size: "Use k-mers\\n-merskip j              Skip j mers between each mer inserted into table\\n-forward                Search only the normal query sequences\\n-reverse                Search only the reverse-complemented query sequences\\n-maxdiagonal d\\n-maxgap g\\n-qoverlap q\\n-doverlap d\\n-maxintron m\\n-smallsequence\\n-singlelength l\\n-singlecoverage c\\n-multiplelength l\\n-multiplecoverage c\\n-extendweight w\\n-extendminimum m"
     num_threads: "Use n search threads"
     loader_queue: "Size of the loader queue"
     loader_sleep: "Time the loader will sleep when its output queue is full"

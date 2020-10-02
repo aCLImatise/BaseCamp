@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtools_prune.cwl
+id: svtools_prune.cwl
 inputs:
 - id: in_distance
   doc: "max separation distance (bp) of adjacent loci in\ncluster [50]"

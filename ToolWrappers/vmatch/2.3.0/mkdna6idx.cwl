@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mkdna6idx.cwl
+id: mkdna6idx.cwl
 inputs:
 - id: in_index_name
   doc: ''

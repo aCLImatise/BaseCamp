@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../delly_merge.cwl
+id: delly_merge.cwl
 inputs:
 - id: in_arg_merged_file
   doc: '[ --outfile ] arg (="sv.bcf")      Merged SV BCF output file'

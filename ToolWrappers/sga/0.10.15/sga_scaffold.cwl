@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_scaffold.cwl
+id: sga_scaffold.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amr_report.cwl
+id: amr_report.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enano.cwl
+id: enano.cwl
 inputs:
 - id: in_use_compresion_default
   doc: To use MAX COMPRESION MODE. Default is FAST MODE.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_strain_explain_fa2transfac.cwl
+id: deepac_strain_explain_fa2transfac.cwl
 inputs:
 - id: in_in_dir
   doc: Directory containing motifs per filter (.fasta)

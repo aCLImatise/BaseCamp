@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msbar.cwl
+id: msbar.cwl
 inputs:
 - id: in_count
   doc: "integer    [1] Number of times to perform the mutation\noperations (Integer\

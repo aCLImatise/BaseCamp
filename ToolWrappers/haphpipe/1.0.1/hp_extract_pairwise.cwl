@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hp_extract_pairwise.cwl
+id: hp_extract_pairwise.cwl
 inputs:
 - id: in_align_json
   doc: "JSON file describing alignment (output of\npairwise_align stage)"

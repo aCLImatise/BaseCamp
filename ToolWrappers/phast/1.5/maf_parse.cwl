@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_parse.cwl
+id: maf_parse.cwl
 inputs:
 - id: in_out_format
   doc: "|PHYLIP|FASTA|MPM|SS\n(Default MAF).  Output file format.  SS format is only\n\

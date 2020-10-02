@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_mega_reads.cwl
+id: create_mega_reads.cwl
 inputs:
 - id: in_size
   doc: '*Number of k-mers in SuperReads'

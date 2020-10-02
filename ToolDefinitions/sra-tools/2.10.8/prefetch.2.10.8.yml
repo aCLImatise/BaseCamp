@@ -148,7 +148,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: &id024 !Command
+  parent: &id025 !Command
     command: *id001
     positional: []
     named: []
@@ -295,7 +295,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: &id003 !Command
+      parent: &id024 !Command
         command: *id001
         positional: []
         named: []
@@ -443,7 +443,3785 @@ subcommands:
             args: !SimpleFlagArg
               name: file
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - prefetch.2.10.8
+              - missed
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - prefetch.2.10.8
+              - Download
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id007
+              - prefetch.2.10.8
+              - prefetch
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id008
+              - prefetch.2.10.8
+              - download
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id009
+              - prefetch.2.10.8
+              - URL-s
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id010
+              - prefetch.2.10.8
+              - cart
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id011
+              - prefetch.2.10.8
+              - their
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id012
+              - prefetch.2.10.8
+              - SRA
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id013
+              - prefetch.2.10.8
+              - SRA accession
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id014
+              - prefetch.2.10.8
+              - or
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id015
+              - prefetch.2.10.8
+              - file
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id016
+              - prefetch.2.10.8
+              - SRA file
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id017
+              - prefetch.2.10.8
+              - dependencies
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id018
+              - prefetch.2.10.8
+              - and
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id019
+              - prefetch.2.10.8
+              - URL
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id020
+              - prefetch.2.10.8
+              - to
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id021
+              - prefetch.2.10.8
+              - files
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            - !Command
+              command: &id022
+              - prefetch.2.10.8
+              - Check
+              positional:
+              - !Positional
+                description: -h|--help                        print this message
+                position: 0
+                name: file.
+                optional: false
+              named:
+              - !Flag
+                description: 'Specify file type to download. Default: sra'
+                synonyms:
+                - -T
+                - --type
+                args: !SimpleFlagArg
+                  name: file-type
+                optional: true
+              - !Flag
+                description: "Minimum file size to download in KB\n(inclusive)."
+                synonyms:
+                - -N
+                - --min-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Maximum file size to download in KB\n(exclusive). Default:\
+                  \ 20G"
+                synonyms:
+                - -X
+                - --max-size
+                args: !SimpleFlagArg
+                  name: size
+                optional: true
+              - !Flag
+                description: "Force object download - one of: no, yes,\nall, ALL.\
+                  \ no [default]: skip download if\nthe object if found and complete;\
+                  \ yes:\ndownload it even if it is found and is\ncomplete; all: ignore\
+                  \ lock files (stale\nlocks or it is being downloaded by\nanother\
+                  \ process - use at your own\nrisk!); ALL: ignore lock files, restart\n\
+                  download from beginning"
+                synonyms:
+                - -f
+                - --force
+                args: !SimpleFlagArg
+                  name: no|yes|all|ALL
+                optional: true
+              - !Flag
+                description: Show progress
+                synonyms:
+                - -p
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Resume partial downloads - one of: no, yes\n[default]"
+                synonyms:
+                - -r
+                - --resume
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: "Verify after download - one of: no, yes\n[default]"
+                synonyms:
+                - -C
+                - --verify
+                args: !SimpleFlagArg
+                  name: yes|no
+                optional: true
+              - !Flag
+                description: Double-check all refseqs
+                synonyms:
+                - -c
+                - --check-all
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Write file to <file> when downloading\nsingle file"
+                synonyms:
+                - -o
+                - --output-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              - !Flag
+                description: Save files to <directory>/
+                synonyms:
+                - -O
+                - --output-directory
+                args: !SimpleFlagArg
+                  name: directory
+                optional: true
+              - !Flag
+                description: <path> to ngc file
+                synonyms:
+                - --ngc
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: <path> to permission file
+                synonyms:
+                - --perm
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: location in cloud
+                synonyms:
+                - --location
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: <path> to cart file
+                synonyms:
+                - --cart
+                args: !SimpleFlagArg
+                  name: path
+                optional: true
+              - !Flag
+                description: disable multithreading
+                synonyms:
+                - --disable-multithreading
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Logging level as number or enum string.\nOne of\n(fatal|sys|int|err|warn|info|debug)\
+                  \ or\n(0-6) Current/default is warn"
+                synonyms:
+                - -L
+                - --log-level
+                args: !SimpleFlagArg
+                  name: level
+                optional: true
+              - !Flag
+                description: Read more options and parameters from the
+                synonyms:
+                - --option-file
+                args: !SimpleFlagArg
+                  name: file
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag: !Flag
+                description: Display the version of the program
+                synonyms:
+                - -V
+                - --version
+                args: !EmptyFlagArg {}
+                optional: true
+              help_text: "\nUsage: prefetch.2.10.8 [ options ] [ accessions(s)...\
+                \ ]\n\nParameters:\n\n  accessions(s)                    list of accessions\
+                \ to process\n\n\nOptions:\n\n  -T|--type <file-type>            Specify\
+                \ file type to download. Default: sra\n  -N|--min-size <size>    \
+                \         Minimum file size to download in KB\n                  \
+                \                   (inclusive).\n  -X|--max-size <size>         \
+                \    Maximum file size to download in KB\n                       \
+                \              (exclusive). Default: 20G\n  -f|--force <no|yes|all|ALL>\
+                \      Force object download - one of: no, yes,\n                \
+                \                     all, ALL. no [default]: skip download if\n \
+                \                                    the object if found and complete;\
+                \ yes:\n                                     download it even if it\
+                \ is found and is\n                                     complete;\
+                \ all: ignore lock files (stale\n                                \
+                \     locks or it is being downloaded by\n                       \
+                \              another process - use at your own\n               \
+                \                      risk!); ALL: ignore lock files, restart\n \
+                \                                    download from beginning\n  -p|--progress\
+                \                    Show progress\n  -r|--resume <yes|no>       \
+                \      Resume partial downloads - one of: no, yes\n              \
+                \                       [default]\n  -C|--verify <yes|no>        \
+                \     Verify after download - one of: no, yes\n                  \
+                \                   [default]\n  -c|--check-all                  \
+                \ Double-check all refseqs\n  -o|--output-file <file>          Write\
+                \ file to <file> when downloading\n                              \
+                \       single file\n  -O|--output-directory <directory>\n       \
+                \                            Save files to <directory>/\n     --ngc\
+                \ <path>                  <path> to ngc file\n     --perm <path> \
+                \                <path> to permission file\n     --location <location>\
+                \         location in cloud\n     --cart <path>                 <path>\
+                \ to cart file\n     --disable-multithreading      disable multithreading\n\
+                \  -V|--version                     Display the version of the program\n\
+                \  -L|--log-level <level>           Logging level as number or enum\
+                \ string.\n                                     One of\n         \
+                \                            (fatal|sys|int|err|warn|info|debug) or\n\
+                \                                     (0-6) Current/default is warn\n\
+                \     --option-file file            Read more options and parameters\
+                \ from the\n                                     file.\n  -h|--help\
+                \                        print this message\n\n\"prefetch.2.10.8\"\
+                \ version 2.10.8\n\n"
+              generated_using: *id004
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "Usage:\n  prefetch [options] <SRA accession> [...]\n  Download\
+              \ SRA files and their dependencies\n\n  prefetch [options] --cart <kart\
+              \ file>\n  Download cart file\n\n  prefetch [options] <URL> --output-file\
+              \ <FILE>\n  Download URL to FILE\n\n  prefetch [options] <URL> [...]\
+              \ --output-directory <DIRECTORY>\n  Download URL or URL-s to DIRECTORY\n\
+              \n  prefetch [options] <SRA file> [...]\n  Check SRA file for missed\
+              \ dependencies and download them\n\n"
+            generated_using: &id023 []
           subcommands: []
           usage: []
           help_flag:
@@ -492,12 +4270,9 @@ subcommands:
             \ file            Read more options and parameters from the\n        \
             \                             file.\n  -h|--help                     \
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - prefetch.2.10.8
-          - missed
+          command: *id005
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -689,9 +4464,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - prefetch.2.10.8
-          - Download
+          command: *id006
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -883,9 +4656,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id007
-          - prefetch.2.10.8
-          - prefetch
+          command: *id007
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -1077,9 +4848,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id008
-          - prefetch.2.10.8
-          - download
+          command: *id008
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -1271,9 +5040,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id009
-          - prefetch.2.10.8
-          - URL-s
+          command: *id009
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -1465,9 +5232,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id010
-          - prefetch.2.10.8
-          - cart
+          command: *id010
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -1659,9 +5424,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id011
-          - prefetch.2.10.8
-          - their
+          command: *id011
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -1853,9 +5616,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id012
-          - prefetch.2.10.8
-          - SRA
+          command: *id012
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -2047,9 +5808,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id013
-          - prefetch.2.10.8
-          - SRA accession
+          command: *id013
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -2241,9 +6000,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id014
-          - prefetch.2.10.8
-          - or
+          command: *id014
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -2435,9 +6192,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id015
-          - prefetch.2.10.8
-          - file
+          command: *id015
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -2629,9 +6384,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id016
-          - prefetch.2.10.8
-          - SRA file
+          command: *id016
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -2823,9 +6576,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id017
-          - prefetch.2.10.8
-          - dependencies
+          command: *id017
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -3017,9 +6768,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id018
-          - prefetch.2.10.8
-          - and
+          command: *id018
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -3211,9 +6960,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id019
-          - prefetch.2.10.8
-          - URL
+          command: *id019
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -3405,9 +7152,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id020
-          - prefetch.2.10.8
-          - to
+          command: *id020
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -3599,9 +7344,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id021
-          - prefetch.2.10.8
-          - files
+          command: *id021
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -3793,9 +7536,7 @@ subcommands:
             \   print this message\n\n\"prefetch.2.10.8\" version 2.10.8\n\n"
           generated_using: *id004
         - !Command
-          command: &id022
-          - prefetch.2.10.8
-          - Check
+          command: *id022
           positional:
           - !Positional
             description: -h|--help                        print this message
@@ -3997,7 +7738,7 @@ subcommands:
           \ <DIRECTORY>\n  Download URL or URL-s to DIRECTORY\n\n  prefetch [options]\
           \ <SRA file> [...]\n  Check SRA file for missed dependencies and download\
           \ them\n\n"
-        generated_using: &id023 []
+        generated_using: *id023
       subcommands: []
       usage: []
       help_flag:
@@ -4186,7 +7927,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -4375,7 +8116,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -4564,7 +8305,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -4753,7 +8494,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -4942,7 +8683,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -5131,7 +8872,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -5320,7 +9061,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -5509,7 +9250,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -5698,7 +9439,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -5887,7 +9628,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -6076,7 +9817,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -6265,7 +10006,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -6454,7 +10195,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -6643,7 +10384,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -6832,7 +10573,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -7021,7 +10762,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -7210,7 +10951,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -7399,7 +11140,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file
         optional: true
-      parent: *id003
+      parent: *id024
       subcommands: []
       usage: []
       help_flag:
@@ -7646,7 +11387,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -7834,7 +11575,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -8022,7 +11763,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -8210,7 +11951,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -8398,7 +12139,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -8586,7 +12327,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -8774,7 +12515,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -8962,7 +12703,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -9150,7 +12891,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -9338,7 +13079,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -9526,7 +13267,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -9714,7 +13455,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -9902,7 +13643,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -10090,7 +13831,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -10278,7 +14019,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -10466,7 +14207,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -10654,7 +14395,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:
@@ -10842,7 +14583,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file
     optional: true
-  parent: *id024
+  parent: *id025
   subcommands: []
   usage: []
   help_flag:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../go_filter_subset.pl.cwl
+id: go_filter_subset.pl.cwl
 inputs:
 - id: in_id
   doc: "ID to use as leaf node in subgraph. All ancestors of this ID are\nincluded\

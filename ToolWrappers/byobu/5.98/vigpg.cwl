@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vigpg.cwl
+id: vigpg.cwl
 inputs: []
 outputs:
 - id: out_stdout

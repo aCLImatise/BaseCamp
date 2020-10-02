@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chopFaLines.cwl
+id: chopFaLines.cwl
 inputs:
 - id: in_in_dot_fa
   doc: ''

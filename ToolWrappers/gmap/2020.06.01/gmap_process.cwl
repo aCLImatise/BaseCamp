@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmap_process.cwl
+id: gmap_process.cwl
 inputs:
 - id: in_more_options
   doc: ''

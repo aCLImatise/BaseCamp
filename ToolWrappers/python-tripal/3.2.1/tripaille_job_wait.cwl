@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_job_wait.cwl
+id: tripaille_job_wait.cwl
 inputs:
 - id: in_job_id
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../screen_list2.pl.cwl
+id: screen_list2.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

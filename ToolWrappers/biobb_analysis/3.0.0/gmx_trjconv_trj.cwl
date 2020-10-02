@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmx_trjconv_trj.cwl
+id: gmx_trjconv_trj.cwl
 inputs:
 - id: in_config
   doc: Configuration file

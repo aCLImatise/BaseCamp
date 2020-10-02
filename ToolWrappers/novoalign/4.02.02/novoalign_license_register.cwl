@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoalign_license_register.cwl
+id: novoalign_license_register.cwl
 inputs: []
 outputs:
 - id: out_stdout

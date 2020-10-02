@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../surpyvor_insseq_vcf.cwl
+id: surpyvor_insseq_vcf.cwl
 inputs:
 - id: in_o
   doc: ''

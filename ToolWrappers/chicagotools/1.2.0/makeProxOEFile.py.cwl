@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeProxOEFile.py.cwl
+id: makeProxOEFile.py.cwl
 inputs:
 - id: in_remove_adjacent
   doc: ''

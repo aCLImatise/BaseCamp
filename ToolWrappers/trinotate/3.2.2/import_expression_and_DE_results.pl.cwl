@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../import_expression_and_DE_results.pl.cwl
+id: import_expression_and_DE_results.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

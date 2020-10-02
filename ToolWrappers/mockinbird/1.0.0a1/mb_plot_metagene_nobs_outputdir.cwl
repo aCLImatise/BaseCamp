@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_plot_metagene_nobs_outputdir.cwl
+id: mb_plot_metagene_nobs_outputdir.cwl
 inputs:
 - id: in_downstream
   doc: ''

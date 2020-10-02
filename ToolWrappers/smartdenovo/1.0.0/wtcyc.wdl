@@ -15,7 +15,6 @@ task Wtcyc {
     Int? alignment_penalty_gap_open
     Int? alignment_penalty_gap_extension
     Int? alignment_penalty_read
-    Int? bandwidth
     String long_read_file
   }
   command <<<
@@ -33,8 +32,7 @@ task Wtcyc {
       ~{if defined(alignment_penalty_mismatch) then ("-X " +  '"' + alignment_penalty_mismatch + '"') else ""} \
       ~{if defined(alignment_penalty_gap_open) then ("-O " +  '"' + alignment_penalty_gap_open + '"') else ""} \
       ~{if defined(alignment_penalty_gap_extension) then ("-E " +  '"' + alignment_penalty_gap_extension + '"') else ""} \
-      ~{if defined(alignment_penalty_read) then ("-T " +  '"' + alignment_penalty_read + '"') else ""} \
-      ~{if defined(bandwidth) then ("-W " +  '"' + bandwidth + '"') else ""}
+      ~{if defined(alignment_penalty_read) then ("-T " +  '"' + alignment_penalty_read + '"') else ""}
   >>>
   parameter_meta {
     number_of_threads: "Number of threads, [1]"
@@ -50,7 +48,6 @@ task Wtcyc {
     alignment_penalty_gap_open: "Alignment penalty: gap open, [-3]"
     alignment_penalty_gap_extension: "Alignment penalty: gap extension, [-1]"
     alignment_penalty_read: "Alignment penalty: read end clipping, 0: distable HSP extension, otherwise set to -30 or other [-100]"
-    bandwidth: "Bandwidth, [800]"
     long_read_file: ""
   }
   output {

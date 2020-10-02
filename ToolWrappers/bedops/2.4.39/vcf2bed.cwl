@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2bed.cwl
+id: vcf2bed.cwl
 inputs:
 - id: in_keep_header
   doc: ', which munges these data into pseudo-elements'

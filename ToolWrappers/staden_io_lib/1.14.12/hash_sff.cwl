@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hash_sff.cwl
+id: hash_sff.cwl
 inputs:
 - id: in_t
   doc: ''

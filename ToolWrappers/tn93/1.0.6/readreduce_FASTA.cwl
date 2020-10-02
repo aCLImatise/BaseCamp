@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../readreduce_FASTA.cwl
+id: readreduce_FASTA.cwl
 inputs:
 - id: in_j
   doc: ''

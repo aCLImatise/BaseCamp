@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2bed_slurm.cwl
+id: bam2bed_slurm.cwl
 inputs: []
 outputs:
 - id: out_stdout

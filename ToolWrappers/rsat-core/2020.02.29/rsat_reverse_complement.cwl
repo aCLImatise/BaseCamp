@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_reverse_complement.cwl
+id: rsat_reverse_complement.cwl
 inputs:
 - id: in_reverse_complement
   doc: "\e[1mDESCRIPTION\e[0m"

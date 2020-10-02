@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNPxlSearch.cwl
+id: RNPxlSearch.cwl
 inputs:
 - id: in_in
   doc: "*                                    Input file  (valid formats: 'mzML')"

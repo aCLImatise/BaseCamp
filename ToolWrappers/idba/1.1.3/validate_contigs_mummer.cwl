@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../validate_contigs_mummer.cwl
+id: validate_contigs_mummer.cwl
 inputs:
 - id: in_min_contig
   doc: (=100)            minimum contigs
   type: long
   inputBinding:
     prefix: --min_contig
-- id: in_similar
-  doc: (=0.95)              similarity
-  type: double
-  inputBinding:
-    prefix: --similar
 - id: in_ref_dot_fa
   doc: ''
   type: string

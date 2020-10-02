@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fusion_report_download.cwl
+id: fusion_report_download.cwl
 inputs:
 - id: in_cosmic_usr
   doc: COSMIC username

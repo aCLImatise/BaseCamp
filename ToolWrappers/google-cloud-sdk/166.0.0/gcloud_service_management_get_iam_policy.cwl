@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_service_management_get_iam_policy.cwl
+id: gcloud_service_management_get_iam_policy.cwl
 inputs:
 - id: in_filter
   doc: "Apply a Boolean filter EXPRESSION to each resource item to be listed.\nIf\

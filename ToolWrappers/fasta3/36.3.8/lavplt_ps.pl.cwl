@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lavplt_ps.pl.cwl
+id: lavplt_ps.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

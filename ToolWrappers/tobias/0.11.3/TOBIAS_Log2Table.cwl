@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_Log2Table.cwl
+id: TOBIAS_Log2Table.cwl
 inputs:
 - id: in_log_files
   doc: '[ [ ...]]  Logfiles from PlotAggregate'

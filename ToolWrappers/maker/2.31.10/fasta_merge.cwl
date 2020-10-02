@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_merge.cwl
+id: fasta_merge.cwl
 inputs:
 - id: in_location_maker_datastore
   doc: location of the MAKER datastore index log.

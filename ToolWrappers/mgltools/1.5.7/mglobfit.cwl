@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglobfit.cwl
+id: mglobfit.cwl
 inputs: []
 outputs:
 - id: out_stdout

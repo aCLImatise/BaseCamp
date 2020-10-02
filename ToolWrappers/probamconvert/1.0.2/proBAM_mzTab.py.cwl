@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proBAM_mzTab.py.cwl
+id: proBAM_mzTab.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

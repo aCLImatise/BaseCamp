@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../acdpretty.cwl
+id: acdpretty.cwl
 inputs: []
 outputs:
 - id: out_stdout

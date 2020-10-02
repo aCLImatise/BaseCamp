@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mccortex.cwl
+id: mccortex.cwl
 inputs:
 - id: in_k
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_feature_size.cwl
+id: gtftk_feature_size.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the GTF file. Default to STDIN (default: <stdin>)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_iam_group | command.cwl
+id: gcloud_iam_group | command.cwl
 inputs:
 - id: in_g_cloud
   doc: ''

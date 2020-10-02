@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cath_refine_align.cwl
+id: cath_refine_align.cwl
 inputs:
 - id: in_output_version_information
   doc: '[ --version ]                   Output version information'

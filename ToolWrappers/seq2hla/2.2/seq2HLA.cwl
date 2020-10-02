@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq2HLA.cwl
+id: seq2HLA.cwl
 inputs:
 - id: in_one
   doc: 'File name of #1 mates (uncompressed or gzipped fastq)'

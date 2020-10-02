@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicInfo.cwl
+id: hicInfo.cwl
 inputs:
 - id: in_matrices
   doc: "The matrix (or multiple matrices) to get information\nabout. HiCExplorer supports\

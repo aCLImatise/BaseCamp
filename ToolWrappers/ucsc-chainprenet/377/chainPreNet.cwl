@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chainPreNet.cwl
+id: chainPreNet.cwl
 inputs:
 - id: in_dots
   doc: '- output a dot every so often'

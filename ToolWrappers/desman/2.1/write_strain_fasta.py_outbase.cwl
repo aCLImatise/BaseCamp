@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../write_strain_fasta.py_outbase.cwl
+id: write_strain_fasta.py_outbase.cwl
 inputs:
 - id: in_write_strain_fasta_do_tpy
   doc: ''

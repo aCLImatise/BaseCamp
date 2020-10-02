@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../mixcr_analyze_amplicon.cwl
+id: mixcr_analyze_amplicon.cwl
 inputs:
-- id: in_starting_material
-  doc: '[-r <report>] -s <species>'
-  type: string
-  inputBinding:
-    prefix: --starting-material
 - id: in_no_warnings
   doc: Suppress all warning messages.
   type: boolean
@@ -88,6 +83,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --receptor-type
+- id: in_starting_material
+  doc: 'Starting material. Possible values: rna, dna'
+  type: string
+  inputBinding:
+    prefix: --starting-material
 - id: in_five_end
   doc: "5'-end of the library. Possible values: no-v-primers, v-primers"
   type: long

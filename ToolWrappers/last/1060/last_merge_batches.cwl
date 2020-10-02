@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../last_merge_batches.cwl
+id: last_merge_batches.cwl
 inputs:
 - id: in_files
   doc: ''

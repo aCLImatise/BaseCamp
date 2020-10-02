@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spring.cwl
+id: spring.cwl
 inputs:
 - id: in__compress
   doc: '[ --compress ]               compress'

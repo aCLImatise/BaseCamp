@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcx.cwl
+id: mcx.cwl
 inputs:
 - id: in_mode
   doc: ''

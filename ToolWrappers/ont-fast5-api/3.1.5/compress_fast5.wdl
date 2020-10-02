@@ -2,7 +2,6 @@ version 1.0
 
 task CompressFast5 {
   input {
-    Boolean? c
     File? i
     String tool
     String for
@@ -23,11 +22,9 @@ task CompressFast5 {
       ~{of} \
       ~{fast_five} \
       ~{files} \
-      ~{if (c) then "-c" else ""} \
       ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
   parameter_meta {
-    c: ""
     i: ""
     tool: ""
     for: ""

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DRAM_setup.py_update_description_db.cwl
+id: DRAM_setup.py_update_description_db.cwl
 inputs:
 - id: in_dram_setup_do_tpy
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_ovlp_to_graph.cwl
+id: fc_ovlp_to_graph.cwl
 inputs:
 - id: in_min_len
   doc: minimum length of the reads to be considered for

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vennPolishes.cwl
+id: vennPolishes.cwl
 inputs:
 - id: in_there_input_set
   doc: there are <num-seqs> in the input set

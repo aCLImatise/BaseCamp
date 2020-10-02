@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../report.pl.cwl
+id: report.pl.cwl
 inputs:
 - id: in_merge
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FastaInfo.cwl
+id: FastaInfo.cwl
 inputs:
 - id: in_in
   doc: "Input FASTA file. If unset, reads from STDIN.\nDefault value: ''"

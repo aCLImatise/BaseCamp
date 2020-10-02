@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DBrm.cwl
+id: DBrm.cwl
 inputs: []
 outputs:
 - id: out_stdout

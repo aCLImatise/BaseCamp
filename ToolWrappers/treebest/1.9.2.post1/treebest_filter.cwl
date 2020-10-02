@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebest_filter.cwl
+id: treebest_filter.cwl
 inputs:
 - id: in_nucleotide_alignment
   doc: nucleotide alignment

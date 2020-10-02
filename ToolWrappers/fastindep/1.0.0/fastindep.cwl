@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastindep.cwl
+id: fastindep.cwl
 inputs: []
 outputs:
 - id: out_stdout

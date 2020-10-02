@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MaxQuantGui.exe.config.cwl
+id: MaxQuantGui.exe.config.cwl
 inputs: []
 outputs:
 - id: out_stdout

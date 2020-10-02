@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dfgEval.cwl
+id: dfgEval.cwl
 inputs:
 - id: in_arg_calculate_posterior
   doc: "[ --ppFile ] arg                   Calculate posterior probabilities for\n\

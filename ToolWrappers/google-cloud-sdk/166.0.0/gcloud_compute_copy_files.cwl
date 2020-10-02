@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_copy_files.cwl
+id: gcloud_compute_copy_files.cwl
 inputs:
 - id: in_dry_run
   doc: "If provided, prints the command that would be run to standard out\ninstead\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../random_forest.py.cwl
+id: random_forest.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

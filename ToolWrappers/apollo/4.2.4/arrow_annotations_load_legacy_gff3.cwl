@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_annotations_load_legacy_gff3.cwl
+id: arrow_annotations_load_legacy_gff3.cwl
 inputs:
 - id: in_source
   doc: URL where the input dataset can be found.

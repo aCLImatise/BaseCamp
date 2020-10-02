@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../model_commands.cwl
+id: model_commands.cwl
 inputs:
 - id: in_x
   doc: ''

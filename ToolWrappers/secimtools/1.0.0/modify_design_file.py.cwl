@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../modify_design_file.py.cwl
+id: modify_design_file.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

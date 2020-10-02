@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../exactSNP.cwl
+id: exactSNP.cwl
 inputs:
 - id: in_specify_name_input
   doc: Specify name of an input file including read mapping results. The

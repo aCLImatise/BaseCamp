@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_annotate.cwl
+id: SnpSift_annotate.cwl
 inputs:
 - id: in_dbsnp
   doc: ': Use DbSnp database.'

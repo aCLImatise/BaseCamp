@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../configureESTmapper.pl.cwl
+id: configureESTmapper.pl.cwl
 inputs:
 - id: in_genome
   doc: the genome to map to

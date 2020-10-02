@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assembly.py_modify_contig.cwl
+id: assembly.py_modify_contig.cwl
 inputs:
 - id: in_name
   doc: 'fasta header output name (default: existing header)'

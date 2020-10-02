@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: ../../../neurodocker.cwl
+id: neurodocker.cwl
 inputs:
-- id: in_verbosity
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --verbosity
-- id: in_v
+- id: in_var_0
   doc: ''
   type: boolean
   inputBinding:
     prefix: -V
+- id: in_var_1
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -v
 - id: in_generate
   doc: generate recipes
   type: string

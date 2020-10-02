@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psiblast.cwl
+id: psiblast.cwl
 inputs: []
 outputs:
 - id: out_stdout

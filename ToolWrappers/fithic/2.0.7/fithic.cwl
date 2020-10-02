@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fithic.cwl
+id: fithic.cwl
 inputs:
 - id: in_interactions
   doc: "REQUIRED: interactions between fragment pairs are read\nfrom INTERSFILE"

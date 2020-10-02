@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaxa2_dbb.cwl
+id: metaxa2_dbb.cwl
 inputs:
 - id: in_dna_fasta_file_containing_reference_sequences_single
   doc: ': DNA FASTA file containing the reference sequences of a single gene to be

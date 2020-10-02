@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EstimateError.py_DISTANCE.cwl
+id: EstimateError.py_DISTANCE.cwl
 inputs:
 - id: in_estimate_error_do_tpy
   doc: ''

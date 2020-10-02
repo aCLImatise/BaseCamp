@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../download_uniprot_taxa.sh.cwl
+id: download_uniprot_taxa.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

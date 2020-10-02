@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SignalGenerator.sh.cwl
+id: SignalGenerator.sh.cwl
 inputs:
 - id: in_directory_containing_sample_files
   doc: Directory containing sample files (required)

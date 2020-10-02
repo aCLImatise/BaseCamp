@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SepSam.cwl
+id: SepSam.cwl
 inputs: []
 outputs:
 - id: out_stdout

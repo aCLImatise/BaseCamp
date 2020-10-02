@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbt_fastq_split.cwl
+id: rbt_fastq_split.cwl
 inputs:
 - id: in_chunks
   doc: ''

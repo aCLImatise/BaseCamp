@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Admin_CacheFileBuilder.pl.cwl
+id: Admin_CacheFileBuilder.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxtree.py.cwl
+id: taxtree.py.cwl
 inputs:
 - id: in_gb_dir
   doc: genbank directory

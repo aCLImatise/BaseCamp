@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fpocket.cwl
+id: fpocket.cwl
 inputs:
 - id: in_calculate_interaction_grids
   doc: ": Specify this flag if you want fpocket to\ncalculate VdW and Coulomb grids\

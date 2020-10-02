@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_job_add_import_job.cwl
+id: tripaille_job_add_import_job.cwl
 inputs:
 - id: in_name
   doc: ''

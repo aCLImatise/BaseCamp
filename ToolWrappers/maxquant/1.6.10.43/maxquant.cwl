@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maxquant.cwl
+id: maxquant.cwl
 inputs:
 - id: in_partial_processing
   doc: "(Default: 1) Start processing from the\nspecified job id. Can be used to continue/redo\n\

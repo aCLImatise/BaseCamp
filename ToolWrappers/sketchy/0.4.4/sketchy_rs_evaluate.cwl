@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_rs_evaluate.cwl
+id: sketchy_rs_evaluate.cwl
 inputs:
 - id: in_features
   doc: genotype feature index

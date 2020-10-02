@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_target_fasta_records.pl.cwl
+id: get_target_fasta_records.pl.cwl
 inputs:
 - id: in_this
   doc: ''

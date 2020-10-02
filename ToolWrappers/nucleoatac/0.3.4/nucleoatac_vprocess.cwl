@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../nucleoatac_vprocess.cwl
+id: nucleoatac_vprocess.cwl
 inputs:
-- id: in_out
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --out
 - id: in_v_plot
   doc: Accepts VMat file. Default is Vplot from S. Cer.
   type: File
@@ -36,6 +31,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --sizes
+- id: in_out
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --out
 - id: in_optional
   doc: --sizes file          Insert distribution file
   type: string

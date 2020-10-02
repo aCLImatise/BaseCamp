@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pl2pm.cwl
+id: pl2pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

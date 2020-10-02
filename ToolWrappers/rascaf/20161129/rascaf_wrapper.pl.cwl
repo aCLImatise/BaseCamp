@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rascaf_wrapper.pl.cwl
+id: rascaf_wrapper.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

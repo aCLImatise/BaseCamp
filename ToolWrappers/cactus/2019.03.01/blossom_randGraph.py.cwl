@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blossom_randGraph.py.cwl
+id: blossom_randGraph.py.cwl
 inputs:
 - id: in_number_vertices_graphnote
   doc: "is the number of vertices in graph\nNote: N must be even and an integer"

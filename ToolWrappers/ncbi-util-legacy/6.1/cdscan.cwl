@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cdscan.cwl
+id: cdscan.cwl
 inputs:
 - id: in_scan_dna_protein
   doc: "Scan DNA (1) or Protein (2) [Integer]\ndefault = 1\nrange from 1 to 2"

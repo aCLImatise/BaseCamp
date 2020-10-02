@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAsoup.cwl
+id: RNAsoup.cwl
 inputs:
 - id: in_tree_newick_format
   doc: Tree in NEWICK format

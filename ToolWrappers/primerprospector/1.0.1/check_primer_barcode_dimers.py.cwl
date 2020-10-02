@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../check_primer_barcode_dimers.py.cwl
+id: check_primer_barcode_dimers.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

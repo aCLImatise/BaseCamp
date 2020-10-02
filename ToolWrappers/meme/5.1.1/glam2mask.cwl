@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../glam2mask.cwl
+id: glam2mask.cwl
 inputs:
 - id: in_output_file_stdout
   doc: ': output file (stdout)'

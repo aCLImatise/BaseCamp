@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summarizePolishes.cwl
+id: summarizePolishes.cwl
 inputs:
 - id: in_p
   doc: ''

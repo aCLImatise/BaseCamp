@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../garnier.cwl
+id: garnier.cwl
 inputs:
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 - id: in_idc
   doc: "integer    [0] In their paper, GOR mention that if you\nknow something about\
     \ the secondary structure\ncontent of the protein you are analyzing,\nyou can\

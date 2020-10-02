@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceProbeGetTiledProbes {
   input {
-    String? probe_prefix
+    Int? probe_prefix
     File? path_input_file
     File? path_output_file
     String? design
@@ -35,7 +35,7 @@ task PhyluceProbeGetTiledProbes {
       ~{if (two_probes) then "--two-probes" else ""}
   >>>
   parameter_meta {
-    probe_prefix: ""
+    probe_prefix: "DESIGNER --design DESIGN\\n[--probe-length LENGTH]\\n[--tiling-density DENSITY]\\n[--overlap {middle,flush-left}]\\n[--probe-bed PROBE_BED]\\n[--locus-bed LOCUS_BED] [--masking MASK]\\n[--do-not-remove-ambiguous]\\n[--remove-gc]\\n[--start-index START_INDEX]\\n[--two-probes]"
     path_input_file: "The path to the input file"
     path_output_file: "The path to the output file"
     design: "The design name."

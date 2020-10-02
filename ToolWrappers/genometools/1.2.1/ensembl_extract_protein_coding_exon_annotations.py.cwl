@@ -1,8 +1,9 @@
 class: CommandLineTool
-id: ../../../ensembl_extract_protein_coding_exon_annotations.py.cwl
+id: ensembl_extract_protein_coding_exon_annotations.py.cwl
 inputs:
 - id: in_o
-  doc: ''
+  doc: "[-s {fly,human,mouse,worm,yeast,zebrafish}]\n[-c CHROMOSOME_PATTERN]\n[-f\
+    \ FIELD_NAME]\n[-l <file>] [-q]\n[-v]"
   type: File
   inputBinding:
     prefix: -o
@@ -56,7 +57,8 @@ outputs:
   doc: Standard output stream
   type: stdout
 - id: out_o
-  doc: ''
+  doc: "[-s {fly,human,mouse,worm,yeast,zebrafish}]\n[-c CHROMOSOME_PATTERN]\n[-f\
+    \ FIELD_NAME]\n[-l <file>] [-q]\n[-v]"
   type: File
   outputBinding:
     glob: $(inputs.in_o)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReadSeq_split.cwl
+id: ReadSeq_split.cwl
 inputs:
 - id: in_seq_file_splitter
   doc: ''

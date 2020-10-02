@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bigWigMerge.cwl
+id: bigWigMerge.cwl
 inputs:
 - id: in_threshold
   doc: "- don't output values at or below this threshold. Default is 0.0"

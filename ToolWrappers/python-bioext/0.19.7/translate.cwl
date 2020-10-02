@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../translate.cwl
+id: translate.cwl
 inputs:
 - id: in_f
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../archosv.cwl
+id: archosv.cwl
 inputs: []
 outputs:
 - id: out_stdout

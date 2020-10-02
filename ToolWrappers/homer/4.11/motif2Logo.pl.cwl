@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../motif2Logo.pl.cwl
+id: motif2Logo.pl.cwl
 inputs:
 - id: in_pdf
   doc: '(create a pdf: "motif file".pdf: default creates a PNG image)'

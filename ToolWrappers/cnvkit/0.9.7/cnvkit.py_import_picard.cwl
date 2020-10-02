@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_import_picard.cwl
+id: cnvkit.py_import_picard.cwl
 inputs:
 - id: in_output_dir
   doc: "Output directory name.\n"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../havana_analysis.py.cwl
+id: havana_analysis.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

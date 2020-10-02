@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomedata_query_begin.cwl
+id: genomedata_query_begin.cwl
 inputs:
 - id: in_genome_data_query
   doc: ''

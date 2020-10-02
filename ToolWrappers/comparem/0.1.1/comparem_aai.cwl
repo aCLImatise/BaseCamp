@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comparem_aai.cwl
+id: comparem_aai.cwl
 inputs:
 - id: in_evalue
   doc: "maximum e-value for reporting an alignments (default:\n0.001)"

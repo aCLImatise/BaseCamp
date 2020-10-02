@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nunit.framework.pdb.cwl
+id: nunit.framework.pdb.cwl
 inputs: []
 outputs:
 - id: out_stdout

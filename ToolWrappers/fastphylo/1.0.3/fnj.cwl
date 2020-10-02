@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fnj.cwl
+id: fnj.cwl
 inputs:
 - id: in_outfile
   doc: "output filename. If not specifed, output is\nwritten to stdout"

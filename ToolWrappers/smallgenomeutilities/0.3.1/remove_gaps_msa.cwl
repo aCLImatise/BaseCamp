@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_gaps_msa.cwl
+id: remove_gaps_msa.cwl
 inputs:
 - id: in_name_write_sequences
   doc: Name of output file to write sequences to

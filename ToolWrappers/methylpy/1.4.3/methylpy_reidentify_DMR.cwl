@@ -1,8 +1,11 @@
 class: CommandLineTool
-id: ../../../methylpy_reidentify_DMR.cwl
+id: methylpy_reidentify_DMR.cwl
 inputs:
 - id: in_output_file
-  doc: ''
+  doc: "[--collapse-samples COLLAPSE_SAMPLES [COLLAPSE_SAMPLES ...]]\n[--sample-category\
+    \ SAMPLE_CATEGORY [SAMPLE_CATEGORY ...]]\n[--min-cluster MIN_CLUSTER]\n[--sig-cutoff\
+    \ SIG_CUTOFF]\n[--dmr-max-dist DMR_MAX_DIST]\n[--min-num-dms MIN_NUM_DMS]\n[--resid-cutoff\
+    \ RESID_CUTOFF]\n[--num-sims NUM_SIMS] [--min-tests MIN_TESTS]"
   type: File
   inputBinding:
     prefix: --output-file
@@ -70,7 +73,10 @@ outputs:
   doc: Standard output stream
   type: stdout
 - id: out_output_file
-  doc: ''
+  doc: "[--collapse-samples COLLAPSE_SAMPLES [COLLAPSE_SAMPLES ...]]\n[--sample-category\
+    \ SAMPLE_CATEGORY [SAMPLE_CATEGORY ...]]\n[--min-cluster MIN_CLUSTER]\n[--sig-cutoff\
+    \ SIG_CUTOFF]\n[--dmr-max-dist DMR_MAX_DIST]\n[--min-num-dms MIN_NUM_DMS]\n[--resid-cutoff\
+    \ RESID_CUTOFF]\n[--num-sims NUM_SIMS] [--min-tests MIN_TESTS]"
   type: File
   outputBinding:
     glob: $(inputs.in_output_file)

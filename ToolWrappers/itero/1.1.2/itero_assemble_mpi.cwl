@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../itero_assemble_mpi.cwl
+id: itero_assemble_mpi.cwl
 inputs:
 - id: in_config
   doc: A configuration file containing reads to assemble

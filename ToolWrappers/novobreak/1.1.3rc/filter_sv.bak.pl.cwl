@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_sv.bak.pl.cwl
+id: filter_sv.bak.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

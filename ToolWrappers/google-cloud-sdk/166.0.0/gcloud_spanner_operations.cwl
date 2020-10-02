@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_spanner_operations.cwl
+id: gcloud_spanner_operations.cwl
 inputs:
 - id: in_cancel
   doc: Cancel a Cloud Spanner operation.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../editFCSmarkers.R.cwl
+id: editFCSmarkers.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

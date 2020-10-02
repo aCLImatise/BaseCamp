@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chromosomer_fragmentmapstat_output.cwl
+id: chromosomer_fragmentmapstat_output.cwl
 inputs:
 - id: in_chromosome_r
   doc: ''

@@ -50,15 +50,6 @@ task AnalyzeHiC {
     Boolean? max_dist
     Boolean? boundary
     Directory? ped
-    Boolean? washu
-    File? circo_s
-    Directory? will_plot_densities
-    File? similar_visiualization_labels
-    File? shows_gene_locations
-    Boolean? hist
-    Boolean? size
-    File? analyzing_specific_sets
-    File? i_raw
     Directory pe_tag_directory
   }
   command <<<
@@ -111,16 +102,7 @@ task AnalyzeHiC {
       ~{if (mind_ist) then "-minDist" else ""} \
       ~{if (max_dist) then "-maxDist" else ""} \
       ~{if (boundary) then "-boundary" else ""} \
-      ~{if defined(ped) then ("-ped " +  '"' + ped + '"') else ""} \
-      ~{if (washu) then "-washu" else ""} \
-      ~{if defined(circo_s) then ("-circos " +  '"' + circo_s + '"') else ""} \
-      ~{if defined(will_plot_densities) then ("-d " +  '"' + will_plot_densities + '"') else ""} \
-      ~{if defined(similar_visiualization_labels) then ("-b " +  '"' + similar_visiualization_labels + '"') else ""} \
-      ~{if defined(shows_gene_locations) then ("-g " +  '"' + shows_gene_locations + '"') else ""} \
-      ~{if (hist) then "-hist" else ""} \
-      ~{if (size) then "-size" else ""} \
-      ~{if defined(analyzing_specific_sets) then ("-i " +  '"' + analyzing_specific_sets + '"') else ""} \
-      ~{if defined(i_raw) then ("-iraw " +  '"' + i_raw + '"') else ""}
+      ~{if defined(ped) then ("-ped " +  '"' + ped + '"') else ""}
   >>>
   parameter_meta {
     res: "<#> (Resolution of matrix in bp or use \\\"-res site\\\" [see below], default: 10000000)"
@@ -170,16 +152,7 @@ task AnalyzeHiC {
     mind_ist: "<#> (Minimum interaction distance, default: resolution/2)"
     max_dist: "<#> (Maximum interaction distance, default: -1=none)"
     boundary: "<#> (score boundaries at the given scale i.e. 100000)"
-    ped: ""
-    washu: "(Both matrix and interaction outputs will be in WashH BED format)"
-    circo_s: "(creates circos files with the given prefix)"
-    will_plot_densities: "[tag directory 2] ... (will plot tag densities with circos)"
-    similar_visiualization_labels: "(similar to visiualization of genes/-g, but no labels)"
-    shows_gene_locations: "(shows gene locations)"
-    hist: "<#> (create a histogram matrix around peak positions, # is the resolution)"
-    size: "<#> (size of region in histogram, default = 100 * resolution)"
-    analyzing_specific_sets: "(for analyzing specific sets of interactions)"
-    i_raw: "(output raw reads from interactions, or -irawtags <file>)"
+    ped: "Creating BED file to view with Wash U Epigenome Browser:\\n-washu (Both matrix and interaction outputs will be in WashH BED format)\\nCreating Circos Diagrams:\\n-circos <filename prefix> (creates circos files with the given prefix)\\n-d <tag directory 1> [tag directory 2] ... (will plot tag densities with circos)\\n-b <peak/BED file> (similar to visiualization of genes/-g, but no labels)\\n-g <gene location file> (shows gene locations)\\nMaking Histograms:\\n-hist <#> (create a histogram matrix around peak positions, # is the resolution)\\n-size <#> (size of region in histogram, default = 100 * resolution)\\nGiven Interaction Analysis Mode (no matrix is produced):\\n-i <interaction input file> (for analyzing specific sets of interactions)\\n-iraw <output BED filename> (output raw reads from interactions, or -irawtags <file>)\\n"
     pe_tag_directory: ""
   }
   output {
@@ -191,6 +164,5 @@ task AnalyzeHiC {
     File out_four_c = "${in_four_c}"
     File out_create_model = "${in_create_model}"
     File out_randomize = "${in_randomize}"
-    File out_i_raw = "${in_i_raw}"
   }
 }

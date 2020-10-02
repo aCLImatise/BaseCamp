@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ecoPCR.cwl
+id: ecoPCR.cwl
 inputs:
 - id: in_salt_concentration_m
   doc: ': Salt concentration in M for Tm computation (default 0.05 M)'

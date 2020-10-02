@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kmer_mask.cwl
+id: kmer_mask.cwl
 inputs: []
 outputs:
 - id: out_stdout

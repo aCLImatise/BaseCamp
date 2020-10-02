@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_tpx2bed.cwl
+id: rgt_tools.py_tpx2bed.cwl
 inputs:
 - id: in_input_tpx_file
   doc: Input TPX file

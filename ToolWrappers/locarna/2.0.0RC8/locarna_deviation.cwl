@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../locarna_deviation.cwl
+id: locarna_deviation.cwl
 inputs:
 - id: in_deviation
   doc: ''

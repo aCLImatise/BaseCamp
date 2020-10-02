@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kobas_identify.cwl
+id: kobas_identify.cwl
 inputs:
 - id: in_fg_file
   doc: foreground file, the output of annotate

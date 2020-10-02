@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kcforesttest.cwl
+id: kcforesttest.cwl
 inputs:
 - id: in_hard
   doc: ''

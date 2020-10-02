@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rppr_infer.cwl
+id: rppr_infer.cwl
 inputs:
 - id: in_reference_package_path
   doc: Reference package path. Required.

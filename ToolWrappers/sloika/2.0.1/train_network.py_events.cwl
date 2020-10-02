@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../train_network.py_events.cwl
+id: train_network.py_events.cwl
 inputs:
 - id: in_adam
   doc: "decay1 decay2\nParameters for Exponential Decay Adaptive Momementum\n(default:\

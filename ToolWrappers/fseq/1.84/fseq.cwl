@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fseq.cwl
+id: fseq.cwl
 inputs:
 - id: in_background_directory_defaultnone
   doc: background directory (default=none)

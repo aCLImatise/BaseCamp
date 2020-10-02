@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splice_site_summary.pl.cwl
+id: splice_site_summary.pl.cwl
 inputs:
 - id: in_reference_annotation_bed
   doc: Reference annotation in BED12 format

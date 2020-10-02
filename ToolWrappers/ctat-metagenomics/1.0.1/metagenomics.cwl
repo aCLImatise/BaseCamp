@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metagenomics.cwl
+id: metagenomics.cwl
 inputs:
 - id: in_threads
   doc: "Launch NTHREADS parallel search threads - default: 1\n(default: 1)"

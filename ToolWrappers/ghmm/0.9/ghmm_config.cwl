@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ghmm_config.cwl
+id: ghmm_config.cwl
 inputs: []
 outputs:
 - id: out_stdout

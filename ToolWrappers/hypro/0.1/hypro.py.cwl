@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hypro.py.cwl
+id: hypro.py.cwl
 inputs:
 - id: in_modus_decide_restricted
   doc: "['restricted', 'full'], --modus ['restricted', 'full']\nModus of HyPro to\

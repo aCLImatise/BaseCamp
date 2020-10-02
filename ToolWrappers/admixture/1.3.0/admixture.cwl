@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../admixture.cwl
+id: admixture.cwl
 inputs:
 - id: in_jx
   doc: ': do computation on X threads'
@@ -11,21 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
-- id: in_m
-  doc: '='
-  type: boolean
-  inputBinding:
-    prefix: -m
 - id: in_method
   doc: '=[em|block]     : set method.  block is default'
   type: boolean
   inputBinding:
     prefix: --method
-- id: in_a
-  doc: '='
-  type: boolean
-  inputBinding:
-    prefix: -a
 - id: in_acceleration
   doc: "|\nsqs<X> |\nqn<X>      : set acceleration"
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam2vcf.pl.cwl
+id: sam2vcf.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

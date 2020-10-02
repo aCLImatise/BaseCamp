@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_correlate_correlation..cwl
+id: lyner_correlate_correlation..cwl
 inputs:
 - id: in_lyne_r
   doc: ''

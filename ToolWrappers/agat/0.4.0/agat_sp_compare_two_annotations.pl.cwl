@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_compare_two_annotations.pl.cwl
+id: agat_sp_compare_two_annotations.pl.cwl
 inputs:
 - id: in_gff_one
   doc: Input GTF/GFF file1.

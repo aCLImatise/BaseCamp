@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_unionbedg.cwl
+id: bedtools_unionbedg.cwl
 inputs:
 - id: in_header
   doc: "Print a header line.\n(chrom/start/end + names of each file)."

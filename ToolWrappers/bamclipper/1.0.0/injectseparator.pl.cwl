@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../injectseparator.pl.cwl
+id: injectseparator.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

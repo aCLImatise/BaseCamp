@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cyvcf2.cwl
+id: cyvcf2.cwl
 inputs: []
 outputs:
 - id: out_stdout

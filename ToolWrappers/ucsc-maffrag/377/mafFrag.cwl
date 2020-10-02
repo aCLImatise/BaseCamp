@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafFrag.cwl
+id: mafFrag.cwl
 inputs:
 - id: in_out_name
   doc: Use XXX instead of database.chrom for the name

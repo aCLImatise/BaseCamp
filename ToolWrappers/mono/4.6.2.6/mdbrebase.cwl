@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mdbrebase.cwl
+id: mdbrebase.cwl
 inputs:
 - id: in_output
   doc: "Output directory to the mdb file, replace existing\none if ommited"

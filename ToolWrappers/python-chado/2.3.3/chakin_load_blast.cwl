@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_load_blast.cwl
+id: chakin_load_blast.cwl
 inputs:
 - id: in_blast_db
   doc: "Name of the database blasted against (must be in the\nChado db table)"

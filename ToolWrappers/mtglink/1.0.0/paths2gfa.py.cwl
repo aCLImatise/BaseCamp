@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paths2gfa.py.cwl
+id: paths2gfa.py.cwl
 inputs:
 - id: in_in
   doc: "FASTA file containing the sequences of the scaffolds obtained from the assembly\

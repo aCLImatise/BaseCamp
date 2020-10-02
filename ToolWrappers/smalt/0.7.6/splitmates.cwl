@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitmates.cwl
+id: splitmates.cwl
 inputs: []
 outputs:
 - id: out_stdout

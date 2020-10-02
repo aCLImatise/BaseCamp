@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_wordcount.cwl
+id: _wordcount.cwl
 inputs:
 - id: in_word_size
   doc: "integer    [@($(acdprotein)? 2 : 4)] Word size (Integer\n1 or more)"

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../hera_build.cwl
+id: hera_build.cwl
 inputs:
-- id: in_full_index
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: --full_index
-- id: in_gr_ch_three_eight
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: --grch38
 - id: in_fast_a
   doc: input reference genome fasta file
   type: boolean
@@ -26,6 +16,16 @@ inputs:
   type: Directory
   inputBinding:
     prefix: --outdir
+- id: in_full_index
+  doc: '0: none, 1: index full genome'
+  type: boolean
+  inputBinding:
+    prefix: --full_index
+- id: in_gr_ch_three_eight
+  doc: 'is input fasta GRCh38? 0: No, 1: Yes'
+  type: boolean
+  inputBinding:
+    prefix: --grch38
 outputs:
 - id: out_stdout
   doc: Standard output stream

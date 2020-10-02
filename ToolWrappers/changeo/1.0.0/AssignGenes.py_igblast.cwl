@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AssignGenes.py_igblast.cwl
+id: AssignGenes.py_igblast.cwl
 inputs:
 - id: in_explicit_output_file
   doc: "Explicit output file name. Note, this argument cannot\nbe used with the --failed,\

@@ -33,7 +33,7 @@ task MakeDbpyIgblast {
       ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""}
   >>>
   parameter_meta {
-    i: ""
+    i: "[--10x CELLRANGER_FILE [CELLRANGER_FILE ...]]\\n[--asis-id] [--asis-calls] [--partial] [--extended]\\n[--regions {default,rhesus-igl}]"
     explicit_output_file: "Explicit output file name. Note, this argument cannot\\nbe used with the --failed, --outdir, or --outname\\narguments. If unspecified, then the output filename\\nwill be based on the input filename(s). (default:\\nNone)"
     outdir: "Specify to changes the output directory to the\\nlocation specified. The input file directory is used\\nif this is not specified. (default: None)"
     out_name: "Changes the prefix of the successfully processed\\noutput file to the string specified. May not be\\nspecified with multiple input files. (default: None)"

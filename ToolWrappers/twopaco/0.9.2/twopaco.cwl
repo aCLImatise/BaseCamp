@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../twopaco.cwl
+id: twopaco.cwl
 inputs:
 - id: in__outfile_file
   doc: ",  --outfile <file name>\nOutput file name prefix"

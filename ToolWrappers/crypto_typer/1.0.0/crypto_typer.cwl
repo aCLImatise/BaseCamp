@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crypto_typer.cwl
+id: crypto_typer.cwl
 inputs:
 - id: in_verbose
   doc: Turn on verbose logging [False].

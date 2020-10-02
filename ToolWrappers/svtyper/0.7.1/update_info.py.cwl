@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../update_info.py.cwl
+id: update_info.py.cwl
 inputs:
 - id: in_vcf
   doc: 'VCF input (default: stdin)'

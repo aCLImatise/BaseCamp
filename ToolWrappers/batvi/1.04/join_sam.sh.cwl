@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../join_sam.sh.cwl
+id: join_sam.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

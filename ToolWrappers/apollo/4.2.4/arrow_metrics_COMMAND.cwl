@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_metrics_COMMAND.cwl
+id: arrow_metrics_COMMAND.cwl
 inputs:
 - id: in_args
   doc: ''

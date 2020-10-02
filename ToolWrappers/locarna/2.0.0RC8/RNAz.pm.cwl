@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAz.pm.cwl
+id: RNAz.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

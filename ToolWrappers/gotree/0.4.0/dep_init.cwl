@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dep_init.cwl
+id: dep_init.cwl
 inputs:
 - id: in_go_path
   doc: 'search in GOPATH for dependencies (default: false)'

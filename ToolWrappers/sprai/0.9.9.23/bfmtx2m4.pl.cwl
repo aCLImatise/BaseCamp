@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bfmtx2m4.pl.cwl
+id: bfmtx2m4.pl.cwl
 inputs:
 - id: in_this
   doc: ''

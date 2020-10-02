@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genometreetk_pull.cwl
+id: genometreetk_pull.cwl
 inputs:
 - id: in_no_validation
   doc: do not assume decorated nodes adhear to standard taxonomy

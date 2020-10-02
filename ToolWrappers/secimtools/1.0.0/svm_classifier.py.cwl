@@ -1,8 +1,10 @@
 class: CommandLineTool
-id: ../../../svm_classifier.py.cwl
+id: svm_classifier.py.cwl
 inputs:
 - id: in_ted
-  doc: ''
+  doc: "DEGREE -c C -cv CROSS_VALIDATION\n[-c_lower_bound C_LOWER_BOUND]\n[-c_upper_bound\
+    \ C_UPPER_BOUND] -a A -b B -oc\nOUTCLASSIFICATION -oca OUTCLASSIFICATIONACCURACY\
+    \ -op\nOUTPREDICTION -opa OUTPREDICTIONACCURACY"
   type: string
   inputBinding:
     prefix: -ted

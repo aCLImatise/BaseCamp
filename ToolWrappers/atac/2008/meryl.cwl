@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meryl.cwl
+id: meryl.cwl
 inputs: []
 outputs:
 - id: out_stdout

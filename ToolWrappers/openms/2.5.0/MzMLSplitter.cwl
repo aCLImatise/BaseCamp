@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MzMLSplitter.cwl
+id: MzMLSplitter.cwl
 inputs:
 - id: in_in
   doc: "*        Input file (valid formats: 'mzML')"

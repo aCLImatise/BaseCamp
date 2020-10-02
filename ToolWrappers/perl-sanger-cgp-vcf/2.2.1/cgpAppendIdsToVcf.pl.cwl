@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgpAppendIdsToVcf.pl.cwl
+id: cgpAppendIdsToVcf.pl.cwl
 inputs:
 - id: in_file
   doc: (-i)       The file to append IDs to.

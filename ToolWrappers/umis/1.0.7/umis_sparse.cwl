@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../umis_sparse.cwl
+id: umis_sparse.cwl
 inputs:
 - id: in_csv
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_strain_explain_weblogos.cwl
+id: deepac_strain_explain_weblogos.cwl
 inputs:
 - id: in_in_dir
   doc: Directory containing motifs per filter

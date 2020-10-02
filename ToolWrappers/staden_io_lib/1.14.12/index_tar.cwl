@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../index_tar.cwl
+id: index_tar.cwl
 inputs:
 - id: in_d
   doc: ''

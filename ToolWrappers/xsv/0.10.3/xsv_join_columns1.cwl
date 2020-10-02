@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_join_columns1.cwl
+id: xsv_join_columns1.cwl
 inputs:
 - id: in_input_one
   doc: ''

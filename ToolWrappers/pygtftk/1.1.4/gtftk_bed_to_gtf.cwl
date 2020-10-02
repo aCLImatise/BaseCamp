@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_bed_to_gtf.cwl
+id: gtftk_bed_to_gtf.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the poor BED file to would like to behave as if it was a GTF. (default:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_sort.cwl
+id: flye_samtools_sort.cwl
 inputs:
 - id: in_set_compression_level
   doc: Set compression level, from 0 (uncompressed) to 9 (best)

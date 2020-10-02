@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ExpansionHunterDenovo_profile.cwl
+id: ExpansionHunterDenovo_profile.cwl
 inputs:
 - id: in_reads
   doc: BAM or CRAM file with aligned reads

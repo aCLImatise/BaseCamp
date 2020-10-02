@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hera.cwl
+id: hera.cwl
 inputs:
 - id: in_output_directory_default
   doc: ':      Output directory (default: ./)'

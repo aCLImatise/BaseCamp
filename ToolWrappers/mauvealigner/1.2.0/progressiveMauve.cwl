@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../progressiveMauve.cwl
+id: progressiveMauve.cwl
 inputs:
 - id: in_island_gap_size
   doc: Alignment gaps above this size in nucleotides are considered to be islands

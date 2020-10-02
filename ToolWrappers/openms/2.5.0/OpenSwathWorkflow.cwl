@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OpenSwathWorkflow.cwl
+id: OpenSwathWorkflow.cwl
 inputs:
 - id: in_in
   doc: "*                        Input files separated by blank (valid formats: 'mzML',\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SLAM.cwl
+id: SLAM.cwl
 inputs:
 - id: in_db
   doc: "SLAM database file which reads will be\naligned against"

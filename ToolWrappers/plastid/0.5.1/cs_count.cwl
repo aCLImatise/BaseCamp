@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cs_count.cwl
+id: cs_count.cwl
 inputs:
 - id: in_quiet
   doc: Suppress all warning messages. Cannot use with '-v'.

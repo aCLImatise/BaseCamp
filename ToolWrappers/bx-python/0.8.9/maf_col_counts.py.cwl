@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_col_counts.py.cwl
+id: maf_col_counts.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

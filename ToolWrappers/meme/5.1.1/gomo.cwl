@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gomo.cwl
+id: gomo.cwl
 inputs:
 - id: in_name_directory_not
   doc: "name of the directory for output. Will not replace\nan existing directory;\

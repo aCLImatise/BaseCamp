@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastg2fasta.py.cwl
+id: fastg2fasta.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

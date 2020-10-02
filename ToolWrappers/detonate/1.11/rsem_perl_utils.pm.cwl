@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_perl_utils.pm.cwl
+id: rsem_perl_utils.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

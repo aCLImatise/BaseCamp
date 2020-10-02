@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotate.py.cwl
+id: annotate.py.cwl
 inputs:
 - id: in_input
   doc: "Input file. Must a valid FASTA contigs file (post-\nassembly)."

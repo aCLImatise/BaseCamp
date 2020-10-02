@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_count_words.cwl
+id: rsat_count_words.cwl
 inputs:
 - id: in_change_verbosity_level
   doc: '#             change verbosity level (0, 1, 2)'

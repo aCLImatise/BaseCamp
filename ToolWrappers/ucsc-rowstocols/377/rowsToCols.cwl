@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rowsToCols.cwl
+id: rowsToCols.cwl
 inputs:
 - id: in_var_col
   doc: '- rows may to have various numbers of columns.'

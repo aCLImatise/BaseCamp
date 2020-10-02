@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ca2singletons.cwl
+id: ca2singletons.cwl
 inputs:
 - id: in_asm_file
   doc: .asm file

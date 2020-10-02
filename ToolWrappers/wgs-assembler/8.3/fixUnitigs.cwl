@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fixUnitigs.cwl
+id: fixUnitigs.cwl
 inputs:
 - id: in_o
   doc: ''

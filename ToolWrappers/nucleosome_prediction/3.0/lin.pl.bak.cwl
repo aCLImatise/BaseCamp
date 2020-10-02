@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lin.pl.bak.cwl
+id: lin.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

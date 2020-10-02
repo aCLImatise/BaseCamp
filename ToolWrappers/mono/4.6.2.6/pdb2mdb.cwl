@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pdb2mdb.cwl
+id: pdb2mdb.cwl
 inputs:
 - id: in_assembly
   doc: ''

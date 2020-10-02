@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../standardized_euclidean_distance.py.cwl
+id: standardized_euclidean_distance.py.cwl
 inputs:
 - id: in_input
   doc: Dataset in Wide format

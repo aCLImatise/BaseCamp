@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_report_avg_depth.cwl
+id: vtools_report_avg_depth.cwl
 inputs:
 - id: in_num_field
   doc: "Name of the field that holds sample variant count,\nwhich is the field name\

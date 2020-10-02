@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOFCalibration.cwl
+id: TOFCalibration.cwl
 inputs:
 - id: in_in
   doc: "*              Input peak or raw data file  (valid formats: 'mzML')"

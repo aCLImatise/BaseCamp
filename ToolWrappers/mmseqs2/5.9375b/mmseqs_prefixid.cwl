@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_prefixid.cwl
+id: mmseqs_prefixid.cwl
 inputs:
 - id: in_prefix
   doc: Use this prefix for all entries

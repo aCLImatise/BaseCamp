@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_species_contigs.py.cwl
+id: extract_species_contigs.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

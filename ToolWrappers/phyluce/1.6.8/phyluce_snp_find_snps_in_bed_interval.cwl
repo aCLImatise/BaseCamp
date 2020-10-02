@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_snp_find_snps_in_bed_interval.cwl
+id: phyluce_snp_find_snps_in_bed_interval.cwl
 inputs:
 - id: in_uce
   doc: The UCE BED file

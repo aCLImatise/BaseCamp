@@ -1,41 +1,15 @@
 class: CommandLineTool
-id: ../../../bcftools_polysomy.cwl
+id: bcftools_polysomy.cwl
 inputs:
 - id: in_output_dir
-  doc: ''
+  doc: "-r, --regions <region>         restrict to comma-separated list of regions\n\
+    -R, --regions-file <file>      restrict to regions listed in a file\n-s, --sample\
+    \ <name>            sample to analyze\n-t, --targets <region>         similar\
+    \ to -r but streams rather than index-jumps\n-T, --targets-file <file>      similar\
+    \ to -R but streams rather than index-jumps\n-v, --verbose"
   type: File
   inputBinding:
     prefix: --output-dir
-- id: in_regions
-  doc: restrict to comma-separated list of regions
-  type: string
-  inputBinding:
-    prefix: --regions
-- id: in_regions_file
-  doc: restrict to regions listed in a file
-  type: File
-  inputBinding:
-    prefix: --regions-file
-- id: in_sample
-  doc: sample to analyze
-  type: string
-  inputBinding:
-    prefix: --sample
-- id: in_targets
-  doc: similar to -r but streams rather than index-jumps
-  type: string
-  inputBinding:
-    prefix: --targets
-- id: in_targets_file
-  doc: similar to -R but streams rather than index-jumps
-  type: File
-  inputBinding:
-    prefix: --targets-file
-- id: in_verbose
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --verbose
 - id: in_peak_size
   doc: minimum peak size (0-1, larger is stricter) [0.1]
   type: double

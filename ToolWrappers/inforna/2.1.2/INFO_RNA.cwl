@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../INFO_RNA.cwl
+id: INFO_RNA.cwl
 inputs:
 - id: in_constraining_sequence_given
   doc: '"constraints"        Constraining sequence given in IUPAC code.'

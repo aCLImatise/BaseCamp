@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_double_rgs.pl.cwl
+id: merge_double_rgs.pl.cwl
 inputs:
 - id: in_minimum_overlap_required
   doc: "Minimum overlap required as fraction of A (e.g. 0.05).\nDefault is 1E-9 (effectively\

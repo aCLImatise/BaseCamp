@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../readucks.cwl
+id: readucks.cwl
 inputs:
 - id: in_input
   doc: "FASTQ of input reads or a directory which will be\nrecursively searched for\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assembly.py_refine_assembly.cwl
+id: assembly.py_refine_assembly.cwl
 inputs:
 - id: in_already_realigned_bam
   doc: "BAM with reads that are already aligned to inFasta.\nThis bypasses the alignment\

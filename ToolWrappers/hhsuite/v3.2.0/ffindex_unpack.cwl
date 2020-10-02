@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ffindex_unpack.cwl
+id: ffindex_unpack.cwl
 inputs:
 - id: in_data_filename
   doc: ''

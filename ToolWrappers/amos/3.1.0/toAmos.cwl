@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../toAmos.cwl
+id: toAmos.cwl
 inputs:
 - id: in_output_filename_standard
   doc: "- output filename ('-' for standard output)"

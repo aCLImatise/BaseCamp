@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sc3_sc3_estimate_k.R.cwl
+id: sc3_sc3_estimate_k.R.cwl
 inputs:
 - id: in_input_object_file
   doc: File name in which a processed SC3 object can be found.

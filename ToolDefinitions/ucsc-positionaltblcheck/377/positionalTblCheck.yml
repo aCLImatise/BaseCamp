@@ -35,17 +35,10 @@ subcommands:
         args: !SimpleFlagArg
           name: is
         optional: true
-      parent: &id003 !Command
+      parent: !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: n>=2, print tables as checked
-          synonyms:
-          - -verbose
-          args: !SimpleFlagArg
-            name: n
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -59,15 +52,56 @@ subcommands:
             args: !SimpleFlagArg
               name: is
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: n>=2, print tables as checked
+              synonyms:
+              - -verbose
+              args: !SimpleFlagArg
+                name: n
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional: []
+              named:
+              - !Flag
+                description: not a valid option
+                synonyms:
+                - -h
+                args: !SimpleFlagArg
+                  name: is
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "-h is not a valid option\n"
+              generated_using: &id004
+              - -h
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "positionalTblCheck - check that positional tables are sorted\n\
+              usage:\n   positionalTblCheck db table\n\noptions:\n  -verbose=n  n>=2,\
+              \ print tables as checked\nThis will check sorting of a table in a variety\
+              \ of formats.\nIt looks for commonly used names for chrom and chrom\
+              \ start\ncolumns.  It also handles split tables\n\n"
+            generated_using: &id005 []
           subcommands: []
           usage: []
           help_flag:
           usage_flag:
           version_flag:
           help_text: "-h is not a valid option\n"
-          generated_using: &id004
-          - -h
+          generated_using: *id004
         usage: []
         help_flag:
         usage_flag:
@@ -77,7 +111,7 @@ subcommands:
           \ print tables as checked\nThis will check sorting of a table in a variety\
           \ of formats.\nIt looks for commonly used names for chrom and chrom start\n\
           columns.  It also handles split tables\n\n"
-        generated_using: &id005 []
+        generated_using: *id005
       subcommands: []
       usage: []
       help_flag:

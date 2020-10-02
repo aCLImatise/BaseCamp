@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PrecursorIonSelector.cwl
+id: PrecursorIonSelector.cwl
 inputs:
 - id: in_in
   doc: "*            Input feature map file (featureXML) (valid formats: 'featureXML')"

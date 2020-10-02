@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../streamer_1d.cwl
+id: streamer_1d.cwl
 inputs:
 - id: in_in_dot_two_ddot_pairs_do_tgz
   doc: ''

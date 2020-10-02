@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DB2fasta.cwl
+id: DB2fasta.cwl
 inputs:
 - id: in_vu
   doc: ''

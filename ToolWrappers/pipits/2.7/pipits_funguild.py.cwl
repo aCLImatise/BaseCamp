@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pipits_funguild.py.cwl
+id: pipits_funguild.py.cwl
 inputs:
 - id: in_input_otu_table
   doc: '[REQUIRED] Input OTU table generated from pipits_process.'

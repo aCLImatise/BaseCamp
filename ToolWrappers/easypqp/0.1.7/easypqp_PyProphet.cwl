@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../easypqp_PyProphet.cwl
+id: easypqp_PyProphet.cwl
 inputs:
 - id: in_easy_pqp
   doc: ''

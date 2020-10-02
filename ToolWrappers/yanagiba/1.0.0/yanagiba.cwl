@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../yanagiba.cwl
+id: yanagiba.cwl
 inputs:
 - id: in_in_file
   doc: Input fastq.gz file.

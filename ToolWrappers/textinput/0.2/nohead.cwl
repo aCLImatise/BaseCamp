@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nohead.cwl
+id: nohead.cwl
 inputs:
 - id: in_lines
   doc: suppress NUM lines (default 1)

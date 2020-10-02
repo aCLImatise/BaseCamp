@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../adjustPeakFile.pl.cwl
+id: adjustPeakFile.pl.cwl
 inputs:
 - id: in_size
   doc: <#> (resize peak [around center] to this size, supports -size <#,#>)

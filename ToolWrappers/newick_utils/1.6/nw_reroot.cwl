@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_reroot.cwl
+id: nw_reroot.cwl
 inputs:
 - id: in_deroot_splice_lca
   doc: ": deroot - splice out the LCA of the ingroup, attaching its children\nto the\

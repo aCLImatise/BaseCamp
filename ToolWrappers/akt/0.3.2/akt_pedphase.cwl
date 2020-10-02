@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../akt_pedphase.cwl
+id: akt_pedphase.cwl
 inputs:
 - id: in_pedigree
   doc: pedigree information in plink .fam format

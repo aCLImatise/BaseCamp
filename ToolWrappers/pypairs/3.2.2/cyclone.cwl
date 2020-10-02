@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cyclone.cwl
+id: cyclone.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alleyoop_read_separator.cwl
+id: alleyoop_read_separator.cwl
 inputs:
 - id: in_output_dir
   doc: Output directory for bam files.

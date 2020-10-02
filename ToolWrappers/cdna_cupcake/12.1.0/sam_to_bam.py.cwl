@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam_to_bam.py.cwl
+id: sam_to_bam.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

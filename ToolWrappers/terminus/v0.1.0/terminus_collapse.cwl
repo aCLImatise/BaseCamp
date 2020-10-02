@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../terminus_collapse.cwl
+id: terminus_collapse.cwl
 inputs:
 - id: in_consensus_thresh
   doc: 'threshold for edge consensus [default: 0.5]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intrahost.py_tabfile_rename.cwl
+id: intrahost.py_tabfile_rename.cwl
 inputs:
 - id: in_col_idx
   doc: "Which column number to replace (0-based index).\n[default: 0]"

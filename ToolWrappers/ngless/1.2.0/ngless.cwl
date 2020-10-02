@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ngless.cwl
+id: ngless.cwl
 inputs:
 - id: in_local_file
   doc: '| --download-demo DEMO-NAME |'

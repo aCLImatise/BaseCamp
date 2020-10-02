@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../config_metawrap.cwl
+id: config_metawrap.cwl
 inputs: []
 outputs:
 - id: out_stdout

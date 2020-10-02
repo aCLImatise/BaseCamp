@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genemark_gtf2gff3.cwl
+id: genemark_gtf2gff3.cwl
 inputs:
 - id: in_var_0
   doc: ''

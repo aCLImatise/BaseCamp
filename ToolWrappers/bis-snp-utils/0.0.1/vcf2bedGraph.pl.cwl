@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2bedGraph.pl.cwl
+id: vcf2bedGraph.pl.cwl
 inputs:
 - id: in_sample_order
   doc: ': sample order choose to output as bed file when there are multiple samples

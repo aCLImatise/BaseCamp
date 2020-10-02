@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extractmessages.cwl
+id: extractmessages.cwl
 inputs:
 - id: in_include_following_messages
   doc: include the following messages in the next output

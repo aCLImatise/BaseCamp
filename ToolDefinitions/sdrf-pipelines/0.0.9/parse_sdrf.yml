@@ -33,7 +33,7 @@ subcommands:
     - --check_ms
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id007 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -66,7 +66,7 @@ subcommands:
         - --check_ms
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: &id007 !Command
         command: *id001
         positional: []
         named: []
@@ -100,7 +100,269 @@ subcommands:
             - --check_ms
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional: []
+              named:
+              - !Flag
+                description: SDRF file to be validated
+                synonyms:
+                - -s
+                - --sdrf_file
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "[default|human|vertebrates|nonvertebrates|plants|cell_lines]\n\
+                  select the template that will be use to\nvalidate the file (default:\
+                  \ default)"
+                synonyms:
+                - -t
+                - --template
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "check mass spectrometry fields in SDRF (e.g.\npostranslational\
+                  \ modifications)"
+                synonyms:
+                - --check_ms
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: parse_sdrf validate-sdrf [OPTIONS]\n\nOptions:\n\
+                \  -s, --sdrf_file TEXT            SDRF file to be validated\n  -t,\
+                \ --template [default|human|vertebrates|nonvertebrates|plants|cell_lines]\n\
+                \                                  select the template that will be\
+                \ use to\n                                  validate the file (default:\
+                \ default)\n\n  --check_ms                      check mass spectrometry\
+                \ fields in SDRF (e.g.\n                                  postranslational\
+                \ modifications)\n\n  -h, --help                      Show this message\
+                \ and exit.\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - parse_sdrf
+              - convert-maxquant
+              positional:
+              - !Positional
+                description: -pef, --peptidefdr FLOAT     posterior error probability
+                  calculation based
+                position: 0
+                name: identifications
+                optional: false
+              named:
+              - !Flag
+                description: SDRF file
+                synonyms:
+                - -s
+                - --sdrf
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: protein database file path,please use /
+                synonyms:
+                - -f
+                - --fastafilepath
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: via matching between runs to boosts number of
+                synonyms:
+                - -m
+                - --matchbetweenruns
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "protein score = product of peptide PEPs (one\nfor each\
+                  \ sequence)"
+                synonyms:
+                - -prf
+                - --proteinfdr
+                args: !SimpleFlagArg
+                  name: FLOAT
+                optional: true
+              - !Flag
+                description: "temporary folder: place on SSD (if possible)\nfor faster\
+                  \ search, please use /"
+                synonyms:
+                - -t
+                - --tempfolder
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: raw data folder,please use \
+                synonyms:
+                - -r
+                - --raw_folder
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "each thread needs at least 2 GB of RAM,number\nof threads\
+                  \ should be ≤ number of logical cores\navailable (otherwise, MaxQuant\
+                  \ can crash)"
+                synonyms:
+                - -n
+                - --numthreads
+                args: !SimpleFlagArg
+                  name: INTEGER
+                optional: true
+              - !Flag
+                description: parameters .xml file  output file path
+                synonyms:
+                - -o1
+                - --output1
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: maxquant experimental design .txt file
+                synonyms:
+                - -o2
+                - --output2
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: parse_sdrf convert-maxquant [OPTIONS]\n\nOptions:\n\
+                \  -s, --sdrf TEXT              SDRF file\n  -f, --fastafilepath TEXT\
+                \     protein database file path,please use /\n  -m, --matchbetweenruns\
+                \ TEXT  via matching between runs to boosts number of\n          \
+                \                     identifications\n\n  -pef, --peptidefdr FLOAT\
+                \     posterior error probability calculation based\n            \
+                \                   on target-decoy search\n\n  -prf, --proteinfdr\
+                \ FLOAT     protein score = product of peptide PEPs (one\n       \
+                \                        for each sequence)\n\n  -t, --tempfolder\
+                \ TEXT        temporary folder: place on SSD (if possible)\n     \
+                \                          for faster search, please use /\n\n  -r,\
+                \ --raw_folder TEXT        raw data folder,please use \\\n  -n, --numthreads\
+                \ INTEGER     each thread needs at least 2 GB of RAM,number\n    \
+                \                           of threads should be ≤ number of logical\
+                \ cores\n                               available (otherwise, MaxQuant\
+                \ can crash)\n\n  -o1, --output1 TEXT          parameters .xml file\
+                \  output file path\n  -o2, --output2 TEXT          maxquant experimental\
+                \ design .txt file\n  -h, --help                   Show this message\
+                \ and exit.\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - parse_sdrf
+              - convert-openms
+              positional: []
+              named:
+              - !Flag
+                description: SDRF file
+                synonyms:
+                - -s
+                - --sdrf
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "Keep filenames in experimental design output\nas raw."
+                synonyms:
+                - -r
+                - --raw
+                args: !SimpleFlagArg
+                  name: TEXT
+                optional: true
+              - !Flag
+                description: "/ -m, --modern     legacy=Create artifical sample column\
+                  \ not\nneeded in OpenMS 2.6."
+                synonyms:
+                - -l
+                - --legacy
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "/ -t2, --twotables\nCreate one-table or two-tables format."
+                synonyms:
+                - -t1
+                - --onetable
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: / -q, --quiet     Output debug information.
+                synonyms:
+                - -v
+                - --verbose
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: Show this message and exit.
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Usage: parse_sdrf convert-openms [OPTIONS]\n\nOptions:\n\
+                \  -s, --sdrf TEXT                 SDRF file\n  -r, --raw TEXT   \
+                \               Keep filenames in experimental design output\n   \
+                \                               as raw.\n\n  -l, --legacy / -m, --modern\
+                \     legacy=Create artifical sample column not\n                \
+                \                  needed in OpenMS 2.6.\n\n  -t1, --onetable / -t2,\
+                \ --twotables\n                                  Create one-table\
+                \ or two-tables format.\n  -v, --verbose / -q, --quiet     Output\
+                \ debug information.\n  -h, --help                      Show this\
+                \ message and exit.\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: Show this message and exit.
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "Usage: parse_sdrf [OPTIONS] COMMAND [ARGS]...\n\n  This is\
+              \ the main tool that gives access to all commands to convert SDRF\n\
+              \  files into pipelines specific configuration files\n\nOptions:\n \
+              \ -h, --help  Show this message and exit.\n\nCommands:\n  convert-maxquant\
+              \  convert sdrf to maxquant parameters file and generate an\n      \
+              \              experimental design file\n\n  convert-openms    convert\
+              \ sdrf to openms file output\n  validate-sdrf     Command to validate\
+              \ the sdrf file\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -120,12 +382,9 @@ subcommands:
             \n  --check_ms                      check mass spectrometry fields in\
             \ SDRF (e.g.\n                                  postranslational modifications)\n\
             \n  -h, --help                      Show this message and exit.\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - parse_sdrf
-          - convert-maxquant
+          command: *id005
           positional:
           - !Positional
             description: -pef, --peptidefdr FLOAT     posterior error probability
@@ -241,9 +500,7 @@ subcommands:
             \ message and exit.\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - parse_sdrf
-          - convert-openms
+          command: *id006
           positional: []
           named:
           - !Flag
@@ -307,13 +564,7 @@ subcommands:
             \                      Show this message and exit.\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: Show this message and exit.
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "Usage: parse_sdrf [OPTIONS] COMMAND [ARGS]...\n\n  This is the\
@@ -427,7 +678,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TEXT
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -498,7 +749,7 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -634,7 +885,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -705,7 +956,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

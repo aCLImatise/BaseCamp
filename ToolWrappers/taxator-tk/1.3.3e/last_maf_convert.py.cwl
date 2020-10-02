@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../last_maf_convert.py.cwl
+id: last_maf_convert.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

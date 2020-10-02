@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../builder.pl.cwl
+id: builder.pl.cwl
 inputs:
 - id: in_newick
   doc: '- Guide tree in newick format (same names as fasta files without suffix .fna)'

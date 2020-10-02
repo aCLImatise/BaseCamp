@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../homer.cwl
+id: homer.cwl
 inputs:
 - id: in_prot
   doc: ': Sequence type (-dna)'

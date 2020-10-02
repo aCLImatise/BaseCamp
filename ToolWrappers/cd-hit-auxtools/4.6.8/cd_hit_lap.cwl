@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cd_hit_lap.cwl
+id: cd_hit_lap.cwl
 inputs:
 - id: in_input_file
   doc: Input file;

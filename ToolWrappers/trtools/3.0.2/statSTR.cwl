@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../statSTR.cwl
+id: statSTR.cwl
 inputs:
 - id: in_input_str_vcf
   doc: Input STR VCF file

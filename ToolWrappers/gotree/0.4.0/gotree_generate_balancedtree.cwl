@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_generate_balancedtree.cwl
+id: gotree_generate_balancedtree.cwl
 inputs:
 - id: in_depth
   doc: Depth of the balanced binary tree (default 3)

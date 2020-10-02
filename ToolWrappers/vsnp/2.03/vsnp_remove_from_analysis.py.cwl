@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsnp_remove_from_analysis.py.cwl
+id: vsnp_remove_from_analysis.py.cwl
 inputs:
 - id: in_codes
   doc: "Excel file containing samples to remove from analysis\nColumn 1: to match\

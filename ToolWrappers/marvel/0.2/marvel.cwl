@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../marvel.cwl
+id: marvel.cwl
 inputs:
 - id: in_input_dir
   doc: "Path to a folder containing metagenomic bins in .fa or\n.fasta format"

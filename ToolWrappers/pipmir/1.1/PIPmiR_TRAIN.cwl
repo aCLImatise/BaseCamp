@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PIPmiR_TRAIN.cwl
+id: PIPmiR_TRAIN.cwl
 inputs:
 - id: in_p
   doc: File of putative miRNA precursor sequences and their fold structure (see README)

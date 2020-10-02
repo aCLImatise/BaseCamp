@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_projects_create.cwl
+id: gcloud_projects_create.cwl
 inputs:
 - id: in_enable_cloud_apis
   doc: "Enable cloudapis.googleapis.com during creation. Enabled by default,\nuse\

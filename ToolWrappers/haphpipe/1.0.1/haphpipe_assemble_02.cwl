@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haphpipe_assemble_02.cwl
+id: haphpipe_assemble_02.cwl
 inputs:
 - id: in_read_one
   doc: ''

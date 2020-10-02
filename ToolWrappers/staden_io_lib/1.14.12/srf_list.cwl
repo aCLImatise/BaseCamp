@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../srf_list.cwl
+id: srf_list.cwl
 inputs:
 - id: in_count_only_list
   doc: Count only - do not list filenames

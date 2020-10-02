@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanini_gene_caller.cwl
+id: ppanini_gene_caller.cwl
 inputs:
 - id: in_contig
   doc: contigs file (fna)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_build_report_html.cwl
+id: dx_build_report_html.cwl
 inputs:
 - id: in_remote
   doc: "Destination route. Can be: (1) a project ID, (2) a\npath, with or without\

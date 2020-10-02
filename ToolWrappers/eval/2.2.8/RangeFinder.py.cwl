@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RangeFinder.py.cwl
+id: RangeFinder.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

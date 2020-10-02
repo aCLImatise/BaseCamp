@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../influx_i.py.cwl
+id: influx_i.py.cwl
 inputs:
 - id: in_no_opt
   doc: "no optimization, just use free parameters as is (after\na projection on feasibility\

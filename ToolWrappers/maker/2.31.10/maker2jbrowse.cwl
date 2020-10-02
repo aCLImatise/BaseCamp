@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maker2jbrowse.cwl
+id: maker2jbrowse.cwl
 inputs: []
 outputs:
 - id: out_stdout

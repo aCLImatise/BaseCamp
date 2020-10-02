@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kleborate.cwl
+id: kleborate.cwl
 inputs:
 - id: in_assemblies
   doc: FASTA file(s) for assemblies

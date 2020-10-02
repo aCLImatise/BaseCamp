@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../updateLibSizes.cwl
+id: updateLibSizes.cwl
 inputs:
 - id: in_bank_name
   doc: ''

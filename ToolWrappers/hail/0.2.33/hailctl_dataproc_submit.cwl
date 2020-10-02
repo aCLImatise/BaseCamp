@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hailctl_dataproc_submit.cwl
+id: hailctl_dataproc_submit.cwl
 inputs:
 - id: in_files
   doc: "Comma-separated list of files to add to the working\ndirectory of the Hail\

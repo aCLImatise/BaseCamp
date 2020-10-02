@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Confounder.cwl
+id: Confounder.cwl
 inputs:
 - id: in_v
   doc: verbose

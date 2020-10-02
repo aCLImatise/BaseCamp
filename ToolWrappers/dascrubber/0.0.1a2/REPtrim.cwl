@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../REPtrim.cwl
+id: REPtrim.cwl
 inputs: []
 outputs:
 - id: out_stdout

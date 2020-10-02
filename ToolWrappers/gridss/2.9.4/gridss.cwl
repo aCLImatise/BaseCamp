@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gridss.cwl
+id: gridss.cwl
 inputs:
 - id: in_v
   doc: ''

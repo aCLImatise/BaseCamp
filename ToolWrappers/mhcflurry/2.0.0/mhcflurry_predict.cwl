@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../mhcflurry_predict.cwl
+id: mhcflurry_predict.cwl
 inputs:
-- id: in_affinity_only_dot
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --affinity-only.
 - id: in_list_supported_alleles
   doc: Prints the list of supported alleles and exits
   type: boolean

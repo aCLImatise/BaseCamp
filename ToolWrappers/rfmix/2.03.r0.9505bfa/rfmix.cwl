@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rfmix.cwl
+id: rfmix.cwl
 inputs:
 - id: in_query_file
   doc: "(required)\nVCF file with samples to analyze                      (required)"

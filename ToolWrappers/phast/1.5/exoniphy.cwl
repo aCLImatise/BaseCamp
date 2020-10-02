@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../exoniphy.cwl
+id: exoniphy.cwl
 inputs:
 - id: in_tree_models
   doc: "List of tree model (*.mod) files, one for each state in the\nHMM.  Order of\

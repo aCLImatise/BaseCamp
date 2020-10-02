@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gm.cwl
+id: gm.cwl
 inputs:
 - id: in_command
   doc: ''

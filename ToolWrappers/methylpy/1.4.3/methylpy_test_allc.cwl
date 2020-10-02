@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../methylpy_test_allc.cwl
+id: methylpy_test_allc.cwl
 inputs:
 - id: in_all_c_file
   doc: 'allc file to be tested. (default: None)'

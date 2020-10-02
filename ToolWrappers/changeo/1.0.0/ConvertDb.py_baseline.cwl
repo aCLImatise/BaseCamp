@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ConvertDb.py_baseline.cwl
+id: ConvertDb.py_baseline.cwl
 inputs:
 - id: in_list_tab_defaultnone
   doc: "A list of tab delimited database files. (default:\nNone)"

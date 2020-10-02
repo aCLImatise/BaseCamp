@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../to_upper_case.pl.cwl
+id: to_upper_case.pl.cwl
 inputs:
 - id: in_convert_lower_case
   doc: ':       Convert to lower case'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psass_convert.cwl
+id: psass_convert.cwl
 inputs:
 - id: in_output_file
   doc: TEXT    Write to an output file instead of stdout

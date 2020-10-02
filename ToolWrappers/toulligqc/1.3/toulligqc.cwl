@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../toulligqc.cwl
+id: toulligqc.cwl
 inputs:
 - id: in_conf_file
   doc: Specify config file

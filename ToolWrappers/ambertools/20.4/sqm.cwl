@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sqm.cwl
+id: sqm.cwl
 inputs:
 - id: in_overwrite_output_file
   doc: Overwrite output file if it exists

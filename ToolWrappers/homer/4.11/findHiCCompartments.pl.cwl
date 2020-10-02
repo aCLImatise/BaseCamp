@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findHiCCompartments.pl.cwl
+id: findHiCCompartments.pl.cwl
 inputs:
 - id: in_opp
   doc: (return inactive, not active regions)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_viz_bed_profile.cwl
+id: rgt_viz_bed_profile.cwl
 inputs:
 - id: in_input_experimental_matrix
   doc: "Input experimental matrix or Input BED file or Input\ndirectory which contains\

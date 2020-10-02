@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pybel_post_commons.scai.fraunhofer.de.cwl
+id: pybel_post_commons.scai.fraunhofer.de.cwl
 inputs:
 - id: in_py_bel
   doc: ''

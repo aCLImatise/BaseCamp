@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pblayout_subgraph.cwl
+id: pblayout_subgraph.cwl
 inputs:
 - id: in_directed
   doc: "Apply the directed ego-graph algorithm to\nextract the subgraph."

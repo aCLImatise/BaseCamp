@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../update_sort_bed_migrate_candidates_float128.cwl
+id: update_sort_bed_migrate_candidates_float128.cwl
 inputs: []
 outputs:
 - id: out_stdout

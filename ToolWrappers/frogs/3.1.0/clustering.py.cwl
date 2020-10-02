@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clustering.py.cwl
+id: clustering.py.cwl
 inputs:
 - id: in_distance
   doc: "Maximum distance between sequences in each aggregation\nstep. [Default: 2]"

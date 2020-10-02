@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../twoBitInfo.cwl
+id: twoBitInfo.cwl
 inputs:
 - id: in_mask_bed
   doc: "of seq sizes, output BED records that define\nareas with masked sequence"

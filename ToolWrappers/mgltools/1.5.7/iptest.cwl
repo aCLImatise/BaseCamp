@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iptest.cwl
+id: iptest.cwl
 inputs: []
 outputs:
 - id: out_stdout

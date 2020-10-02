@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_exons.cwl
+id: get_exons.cwl
 inputs:
 - id: in_include_noncoding
   doc: Whether non-coding regions should be included.

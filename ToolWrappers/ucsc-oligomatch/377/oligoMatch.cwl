@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oligoMatch.cwl
+id: oligoMatch.cwl
 inputs:
 - id: in_oligos
   doc: ''

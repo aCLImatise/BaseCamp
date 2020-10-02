@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../add_tags_to_adapters.py.cwl
+id: add_tags_to_adapters.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

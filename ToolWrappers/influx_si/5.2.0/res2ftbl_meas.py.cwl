@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../res2ftbl_meas.py.cwl
+id: res2ftbl_meas.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

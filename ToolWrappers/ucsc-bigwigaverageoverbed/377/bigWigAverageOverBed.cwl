@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bigWigAverageOverBed.cwl
+id: bigWigAverageOverBed.cwl
 inputs:
 - id: in_stats
   doc: '- Output a collection of overall statistics to stat.ra file'

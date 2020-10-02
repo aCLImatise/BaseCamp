@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../gqt_calpha.cwl
+id: gqt_calpha.cwl
 inputs:
-- id: in_d
-  doc: \
-  type: File
-  inputBinding:
-    prefix: -d
 - id: in_direcory_name_remote
   doc: direcory name for remote files (default ./)
   type: string

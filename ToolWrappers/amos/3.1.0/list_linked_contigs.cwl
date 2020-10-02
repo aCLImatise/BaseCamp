@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../list_linked_contigs.cwl
+id: list_linked_contigs.cwl
 inputs:
 - id: in_disregard_bank_locks
   doc: Disregard bank locks and write permissions (spy mode)

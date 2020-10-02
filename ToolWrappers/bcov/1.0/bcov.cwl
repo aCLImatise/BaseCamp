@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcov.cwl
+id: bcov.cwl
 inputs:
 - id: in_input_msa_file
   doc: ":        Input MSA file in the PSICOV format. A contact score matrix\nis internally\

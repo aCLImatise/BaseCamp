@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ovStoreStats.cwl
+id: ovStoreStats.cwl
 inputs:
 - id: in_expect_coverage_mean
   doc: Expect coverage at mean (below 1/3 this is 'low coverage', above 5/3 is 'repeat')

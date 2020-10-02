@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_uniq.cwl
+id: fastq_uniq.cwl
 inputs:
 - id: in_verbose
   doc: print status along the way

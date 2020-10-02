@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgatreport_test.cwl
+id: cgatreport_test.cwl
 inputs:
 - id: in_tracker
   doc: tracker to use [default=none]

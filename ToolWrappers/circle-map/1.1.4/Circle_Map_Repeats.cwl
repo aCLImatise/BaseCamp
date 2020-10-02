@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Circle_Map_Repeats.cwl
+id: Circle_Map_Repeats.cwl
 inputs:
 - id: in_input_coordinate_name
   doc: 'Input: coordinate name sorted bam file'

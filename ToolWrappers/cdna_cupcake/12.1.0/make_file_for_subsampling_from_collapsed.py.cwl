@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_file_for_subsampling_from_collapsed.py.cwl
+id: make_file_for_subsampling_from_collapsed.py.cwl
 inputs:
 - id: in_input_prefix
   doc: "Collapsed prefix (default: hq_isoforms.fastq.no5merge.\ncollapsed.min_fl_2.filtered)"

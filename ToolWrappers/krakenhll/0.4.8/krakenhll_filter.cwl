@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../krakenhll_filter.cwl
+id: krakenhll_filter.cwl
 inputs:
 - id: in_threshold
   doc: ''

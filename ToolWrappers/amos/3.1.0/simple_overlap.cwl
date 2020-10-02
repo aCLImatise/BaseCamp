@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simple_overlap.cwl
+id: simple_overlap.cwl
 inputs:
 - id: in_also_show_alignments
   doc: Also show alignments of overlaps

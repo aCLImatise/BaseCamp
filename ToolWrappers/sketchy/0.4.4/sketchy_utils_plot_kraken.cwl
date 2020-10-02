@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_utils_plot_kraken.cwl
+id: sketchy_utils_plot_kraken.cwl
 inputs:
 - id: in_report
   doc: Path or file glob to tax report files

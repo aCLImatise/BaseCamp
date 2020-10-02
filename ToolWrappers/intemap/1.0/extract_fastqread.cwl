@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_fastqread.cwl
+id: extract_fastqread.cwl
 inputs:
 - id: in_r
   doc: ''

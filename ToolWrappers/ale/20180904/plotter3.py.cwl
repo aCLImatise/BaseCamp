@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plotter3.py.cwl
+id: plotter3.py.cwl
 inputs:
 - id: in_no_save
   doc: ': do not save the figure as a pdf (instead plot to screen)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx.cwl
+id: dx.cwl
 inputs:
 - id: in_env_help
   doc: Display help message for overriding environment

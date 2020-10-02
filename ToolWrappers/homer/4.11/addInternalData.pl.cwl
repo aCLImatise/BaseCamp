@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addInternalData.pl.cwl
+id: addInternalData.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../r2r_msa_comply.pl.cwl
+id: r2r_msa_comply.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

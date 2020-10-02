@@ -5,8 +5,6 @@ task Hmmscore {
     File? db
     Int? calibrate
     Int? track_prior
-    Array[String] i
-    Array[String] model_file
     File? track_mod
     File? model_library
     String? query
@@ -19,8 +17,6 @@ task Hmmscore {
       ~{if defined(db) then ("-db " +  '"' + db + '"') else ""} \
       ~{if defined(calibrate) then ("-calibrate " +  '"' + calibrate + '"') else ""} \
       ~{if defined(track_prior) then ("-trackprior " +  '"' + track_prior + '"') else ""} \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
-      ~{if defined(model_file) then ("-modelfile " +  '"' + model_file + '"') else ""} \
       ~{if defined(track_mod) then ("-trackmod " +  '"' + track_mod + '"') else ""} \
       ~{if defined(model_library) then ("-modellibrary " +  '"' + model_library + '"') else ""} \
       ~{if defined(query) then ("-query " +  '"' + query + '"') else ""} \
@@ -30,8 +26,6 @@ task Hmmscore {
     db: "[-db seq_filen]*     one or more sequence files"
     calibrate: "or calibrate E-values"
     track_prior: ",<prior2>..   Dirichlets for calibration"
-    i: "."
-    model_file: "."
     track_mod: ",file2,...         or ...."
     model_library: ",...           or ...."
     query: "&W_query_sequence         required ...."

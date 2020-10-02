@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pathoscope_ID.cwl
+id: pathoscope_ID.cwl
 inputs:
 - id: in_out_matrix
   doc: Output alignment matrix

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_split_xd_to_xminus1d.py.cwl
+id: medpy_split_xd_to_xminus1d.py.cwl
 inputs:
 - id: in_display_more_information
   doc: Display more information.

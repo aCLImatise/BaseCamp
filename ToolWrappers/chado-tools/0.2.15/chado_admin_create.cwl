@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chado_admin_create.cwl
+id: chado_admin_create.cwl
 inputs:
 - id: in_verbose
   doc: verbose mode

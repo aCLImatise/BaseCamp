@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../palindrome.cwl
+id: palindrome.cwl
 inputs:
 - id: in_min_p_allen
   doc: "integer    [10] Enter minimum length of palindrome\n(Integer 1 or more)"

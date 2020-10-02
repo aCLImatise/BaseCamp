@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_experiment_data.R.cwl
+id: get_experiment_data.R.cwl
 inputs:
 - id: in_access_sion_code
   doc: Accession code of the data set to be extracted

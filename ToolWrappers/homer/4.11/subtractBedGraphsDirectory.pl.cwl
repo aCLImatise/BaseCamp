@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../subtractBedGraphsDirectory.pl.cwl
+id: subtractBedGraphsDirectory.pl.cwl
 inputs:
 - id: in_prefix
   doc: (will separate bedGraphs based on this name)

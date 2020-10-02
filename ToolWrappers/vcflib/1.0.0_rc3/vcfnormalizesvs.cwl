@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfnormalizesvs.cwl
+id: vcfnormalizesvs.cwl
 inputs:
 - id: in__reference_reffa
   doc: / --reference <ref.fa>   FASTA-format reference genome from which to pull SV

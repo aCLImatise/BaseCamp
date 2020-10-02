@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../format_tree_and_trait_table.py.cwl
+id: format_tree_and_trait_table.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

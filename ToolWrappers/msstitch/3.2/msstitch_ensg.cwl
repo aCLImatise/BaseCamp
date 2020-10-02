@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../msstitch_ensg.cwl
+id: msstitch_ensg.cwl
 inputs:
-- id: in_decoy_fast_a
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --decoyfasta
 - id: in_input_file_format
   doc: Input file of {} format
   type: File
@@ -84,6 +79,12 @@ inputs:
   type: File
   inputBinding:
     prefix: --targetfasta
+- id: in_decoy_fast_a
+  doc: "FASTA file with decoy proteins to determine best\nscoring proteins of target/decoy\
+    \ pairs for picked FDR.\nIn case using --picktype ensg/genename\n"
+  type: File
+  inputBinding:
+    prefix: --decoyfasta
 - id: in_values_dot
   doc: --isobquantcolpattern QUANTCOLPATTERN
   type: string

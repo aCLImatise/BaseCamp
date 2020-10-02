@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_subgrep.pl.cwl
+id: fasta_subgrep.pl.cwl
 inputs:
 - id: in_fa
   doc: Input file in Fasta format (mandatory)

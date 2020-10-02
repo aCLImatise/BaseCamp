@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scoreAlignment.cwl
+id: scoreAlignment.cwl
 inputs: []
 outputs:
 - id: out_stdout

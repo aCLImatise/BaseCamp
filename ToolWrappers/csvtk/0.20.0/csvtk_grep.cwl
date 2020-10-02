@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_grep.cwl
+id: csvtk_grep.cwl
 inputs:
 - id: in_delete_matched
   doc: delete a pattern right after being matched, this keeps the firstly matched

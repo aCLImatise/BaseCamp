@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtk_bincov.cwl
+id: svtk_bincov.cwl
 inputs:
 - id: in_norm_out
   doc: Output bed file of normalized coverage

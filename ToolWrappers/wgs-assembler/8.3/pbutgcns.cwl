@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbutgcns.cwl
+id: pbutgcns.cwl
 inputs:
 - id: in_increase_logging_verbosity
   doc: '[ --verbose ]      Increase logging verbosity'

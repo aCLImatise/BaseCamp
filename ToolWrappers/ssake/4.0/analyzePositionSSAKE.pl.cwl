@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyzePositionSSAKE.pl.cwl
+id: analyzePositionSSAKE.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

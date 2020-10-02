@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfinfosummarize.cwl
+id: vcfinfosummarize.cwl
 inputs:
 - id: in_field
   doc: Summarize this field in the INFO column

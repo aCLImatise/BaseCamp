@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nab2c.cwl
+id: nab2c.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafSplit.cwl
+id: mafSplit.cwl
 inputs:
 - id: in_by_target
   doc: "Make one file per target sequence.  (splits.bed input\nis ignored)."

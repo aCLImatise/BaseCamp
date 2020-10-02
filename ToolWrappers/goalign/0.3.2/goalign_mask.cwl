@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_mask.cwl
+id: goalign_mask.cwl
 inputs:
 - id: in_length
   doc: Length of the sub alignment (default 10)

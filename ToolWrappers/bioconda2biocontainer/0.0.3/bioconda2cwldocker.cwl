@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconda2cwldocker.cwl
+id: bioconda2cwldocker.cwl
 inputs: []
 outputs:
 - id: out_stdout

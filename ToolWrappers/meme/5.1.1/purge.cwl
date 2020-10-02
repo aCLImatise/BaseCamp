@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../purge.cwl
+id: purge.cwl
 inputs:
 - id: in_file
   doc: ''

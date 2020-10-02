@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uidclient.cwl
+id: uidclient.cwl
 inputs:
 - id: in_print_n_uids
   doc: print n UIDs and exit.

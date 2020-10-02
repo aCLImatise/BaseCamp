@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_set.cwl
+id: gcloud_config_set.cwl
 inputs:
 - id: in_section_slash_property
   doc: "The property to be set. Note that SECTION/ is optional while referring\nto\

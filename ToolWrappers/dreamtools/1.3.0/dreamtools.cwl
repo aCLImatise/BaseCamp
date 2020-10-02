@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dreamtools.cwl
+id: dreamtools.cwl
 inputs:
 - id: in_challenge
   doc: "alias of the challenge (e.g., D8C1 stands fordream8\nchallenge 1)."

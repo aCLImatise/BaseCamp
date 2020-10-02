@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CARNAC_LR.cwl
+id: CARNAC_LR.cwl
 inputs:
 - id: in_mandatory
   doc: mandatory

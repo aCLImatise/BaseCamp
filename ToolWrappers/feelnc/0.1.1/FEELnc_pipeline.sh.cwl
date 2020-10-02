@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FEELnc_pipeline.sh.cwl
+id: FEELnc_pipeline.sh.cwl
 inputs:
 - id: in_outdir
   doc: ''

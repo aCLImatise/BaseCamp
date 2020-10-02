@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf_paste.py.cwl
+id: vcf_paste.py.cwl
 inputs:
 - id: in_master
   doc: VCF file to set first 8 columns of variant info [first file in vcf_list]

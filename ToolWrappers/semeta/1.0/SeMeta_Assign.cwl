@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SeMeta_Assign.cwl
+id: SeMeta_Assign.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synchain_mugsy.cwl
+id: synchain_mugsy.cwl
 inputs:
 - id: in_mugsy_chaining
   doc: ''

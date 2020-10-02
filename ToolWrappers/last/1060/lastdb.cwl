@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lastdb.cwl
+id: lastdb.cwl
 inputs:
 - id: in_interpret_sequences_proteins
   doc: ': interpret the sequences as proteins'

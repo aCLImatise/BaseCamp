@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_samplesim.cwl
+id: rtg_samplesim.cwl
 inputs:
 - id: in_input
   doc: input VCF containing population variants

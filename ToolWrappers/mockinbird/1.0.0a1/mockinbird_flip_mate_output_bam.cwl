@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mockinbird_flip_mate_output_bam.cwl
+id: mockinbird_flip_mate_output_bam.cwl
 inputs:
 - id: in_mock_in_bird
   doc: ''

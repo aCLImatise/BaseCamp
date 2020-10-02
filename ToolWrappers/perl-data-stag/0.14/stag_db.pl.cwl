@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stag_db.pl.cwl
+id: stag_db.pl.cwl
 inputs:
 - id: in_name_stag_node
   doc: "This is the name of the stag node (XML element) that will be stored in\nthe\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SCNIC_analysis.py_within.cwl
+id: SCNIC_analysis.py_within.cwl
 inputs:
 - id: in_input_loc
   doc: 'location of input biom file (default: None)'

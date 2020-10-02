@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FaQCs.cwl
+id: FaQCs.cwl
 inputs:
 - id: in_file_unpaired_reads
   doc: <File> Unpaired reads

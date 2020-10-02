@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylophlan_setup_database.cwl
+id: phylophlan_setup_database.cwl
 inputs:
 - id: in_input
   doc: "Specify the path to either the folder containing the\nmarker files or the\

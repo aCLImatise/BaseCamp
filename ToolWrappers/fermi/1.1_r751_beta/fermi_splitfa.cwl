@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_splitfa.cwl
+id: fermi_splitfa.cwl
 inputs:
 - id: in_in_dot_fq
   doc: ''

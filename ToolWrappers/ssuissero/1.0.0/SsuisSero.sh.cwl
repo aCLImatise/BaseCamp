@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SsuisSero.sh.cwl
+id: SsuisSero.sh.cwl
 inputs:
 - id: in_raw_reads
   doc: raw reads

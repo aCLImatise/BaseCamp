@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snps_to_vcf.py.cwl
+id: snps_to_vcf.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

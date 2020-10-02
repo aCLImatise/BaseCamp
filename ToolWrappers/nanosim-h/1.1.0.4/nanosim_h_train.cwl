@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanosim_h_train.cwl
+id: nanosim_h_train.cwl
 inputs:
 - id: in_in_file
   doc: training ONT real reads, must be fasta files

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phastBias.cwl
+id: phastBias.cwl
 inputs:
 - id: in_msa_format
   doc: ).  The neutral model must be in the .mod format

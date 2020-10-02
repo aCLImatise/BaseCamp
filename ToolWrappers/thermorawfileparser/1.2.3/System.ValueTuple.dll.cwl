@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../System.ValueTuple.dll.cwl
+id: System.ValueTuple.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

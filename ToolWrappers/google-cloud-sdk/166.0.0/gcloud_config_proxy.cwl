@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_proxy.cwl
+id: gcloud_config_proxy.cwl
 inputs:
 - id: in_g_cloud
   doc: ''

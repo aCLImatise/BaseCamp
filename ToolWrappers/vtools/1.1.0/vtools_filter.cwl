@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_filter.cwl
+id: vtools_filter.cwl
 inputs:
 - id: in_input
   doc: Path to input VCF file  [required]

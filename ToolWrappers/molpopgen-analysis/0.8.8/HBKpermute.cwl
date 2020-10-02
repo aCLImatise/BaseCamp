@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HBKpermute.cwl
+id: HBKpermute.cwl
 inputs: []
 outputs:
 - id: out_stdout

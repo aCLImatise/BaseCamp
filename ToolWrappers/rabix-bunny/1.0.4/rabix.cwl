@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rabix.cwl
+id: rabix.cwl
 inputs:
 - id: in_basedir
   doc: execution directory

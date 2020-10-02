@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssw_wrap.py.cwl
+id: ssw_wrap.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

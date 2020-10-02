@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Sparc.cwl
+id: Sparc.cwl
 inputs: []
 outputs:
 - id: out_stdout

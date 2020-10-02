@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../QCCalculator.cwl
+id: QCCalculator.cwl
 inputs:
 - id: in_in
   doc: "*                  Raw data input file (this is relevant if you want to look\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fdnaml.cwl
+id: _fdnaml.cwl
 inputs:
 - id: in_n_categories
   doc: "integer    [1] Number of substitution rate categories\n(Integer from 1 to\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rextract.cwl
+id: rextract.cwl
 inputs:
 - id: in_debug
   doc: increase output verbosity and perform additional

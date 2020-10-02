@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scale_metagenome.py.cwl
+id: scale_metagenome.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

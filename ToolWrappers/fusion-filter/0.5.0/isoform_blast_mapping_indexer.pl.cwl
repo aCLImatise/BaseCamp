@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isoform_blast_mapping_indexer.pl.cwl
+id: isoform_blast_mapping_indexer.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

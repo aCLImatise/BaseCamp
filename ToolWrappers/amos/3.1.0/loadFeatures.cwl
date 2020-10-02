@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../loadFeatures.cwl
+id: loadFeatures.cwl
 inputs:
 - id: in_are_ungapped
   doc: are ungapped

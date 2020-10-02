@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../peverify.cwl
+id: peverify.cwl
 inputs: []
 outputs:
 - id: out_stdout

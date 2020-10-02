@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergeprocess.sh.cwl
+id: mergeprocess.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

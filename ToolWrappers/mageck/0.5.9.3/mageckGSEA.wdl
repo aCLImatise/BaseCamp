@@ -10,11 +10,11 @@ task MageckGSEA {
     File? _outputfile_outputfilethe
     File? _rankfile_rankfilerequired
     File? _gmtfile_gmtfilerequired
-    String mage_ckg_sea
+    String? pathway_name
   }
   command <<<
     mageckGSEA \
-      ~{mage_ckg_sea} \
+      ~{pathway_name} \
       ~{if (_reversevaluereverse_order) then "-e" else ""} \
       ~{if (_sortbypsort_pathways) then "-s" else ""} \
       ~{if defined(_scorecolumn_scorecolumnthe) then ("-c " +  '"' + _scorecolumn_scorecolumnthe + '"') else ""} \
@@ -33,7 +33,7 @@ task MageckGSEA {
     _outputfile_outputfilethe: ",  --output_file <output_file>\\nThe name of the output file. Use - to print to standard output."
     _rankfile_rankfilerequired: ",  --rank_file <rank_file>\\n(required)  Rank file. The first column of the rank file must be the\\ngene name."
     _gmtfile_gmtfilerequired: ",  --gmt_file <gmt_file>\\n(required)  The pathway annotation in GMT format."
-    mage_ckg_sea: "[-e] [-s] [-c <score_column>] [-p <perm_time>] [-n\\n<pathway_name>] [-o <output_file>] -r <rank_file> -g\\n<gmt_file> [--] [--version] [-h]"
+    pathway_name: ""
   }
   output {
     File out_stdout = stdout()

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_utils.py_gbcf_lineage.cwl
+id: tbprofiler_utils.py_gbcf_lineage.cwl
 inputs:
 - id: in_prefix
   doc: 'Sample prefix (default: tbprofiler)'

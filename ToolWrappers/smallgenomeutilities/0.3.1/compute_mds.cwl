@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compute_mds.cwl
+id: compute_mds.cwl
 inputs:
 - id: in_start
   doc: "Starting position of the region of interest, 0-based\nindexing (default: 2252)"

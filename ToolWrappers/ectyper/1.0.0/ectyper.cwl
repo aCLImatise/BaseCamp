@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ectyper.cwl
+id: ectyper.cwl
 inputs:
 - id: in_input
   doc: "Location of E. coli genome file(s). Can be a single\nfile, a comma-separated\

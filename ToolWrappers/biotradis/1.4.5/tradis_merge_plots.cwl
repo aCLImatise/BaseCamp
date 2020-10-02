@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tradis_merge_plots.cwl
+id: tradis_merge_plots.cwl
 inputs: []
 outputs:
 - id: out_stdout

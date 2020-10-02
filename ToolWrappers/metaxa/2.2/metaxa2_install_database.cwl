@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaxa2_install_database.cwl
+id: metaxa2_install_database.cwl
 inputs:
 - id: in_specify_name_install
   doc: ": Specify the name of the database to install (usually a gene name)\nIf not\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mercat.cwl
+id: mercat.cwl
 inputs:
 - id: in_pathtoinputfile
   doc: path-to-input-file

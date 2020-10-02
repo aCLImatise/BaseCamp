@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_man_barcodes.cwl
+id: iCount_man_barcodes.cwl
 inputs:
 - id: in_mode
   doc: ''

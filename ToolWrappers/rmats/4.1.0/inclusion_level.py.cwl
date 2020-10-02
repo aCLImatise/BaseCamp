@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../inclusion_level.py.cwl
+id: inclusion_level.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

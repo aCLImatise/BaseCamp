@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../printafm.cwl
+id: printafm.cwl
 inputs:
 - id: in_fontname
   doc: ''

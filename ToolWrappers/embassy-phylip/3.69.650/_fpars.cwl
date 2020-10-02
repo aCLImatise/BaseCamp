@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fpars.cwl
+id: _fpars.cwl
 inputs:
 - id: in_weights
   doc: properties Weights file

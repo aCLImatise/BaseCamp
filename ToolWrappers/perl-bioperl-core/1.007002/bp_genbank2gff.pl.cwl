@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_genbank2gff.pl.cwl
+id: bp_genbank2gff.pl.cwl
 inputs:
 - id: in_create
   doc: Force creation and initialization of database

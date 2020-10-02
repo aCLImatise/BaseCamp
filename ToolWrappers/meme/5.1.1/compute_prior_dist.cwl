@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compute_prior_dist.cwl
+id: compute_prior_dist.cwl
 inputs:
 - id: in_num_bins
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ontoisobsolete.cwl
+id: ontoisobsolete.cwl
 inputs:
 - id: in_obo_terms
   doc: ': enter obo value: Error: Unable to get reply from user - end of standard

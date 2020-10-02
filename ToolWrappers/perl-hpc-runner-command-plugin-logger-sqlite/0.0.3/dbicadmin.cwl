@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbicadmin.cwl
+id: dbicadmin.cwl
 inputs: []
 outputs:
 - id: out_stdout

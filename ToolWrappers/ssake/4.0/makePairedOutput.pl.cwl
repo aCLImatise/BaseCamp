@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makePairedOutput.pl.cwl
+id: makePairedOutput.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

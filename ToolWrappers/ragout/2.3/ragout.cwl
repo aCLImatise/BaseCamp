@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ragout.cwl
+id: ragout.cwl
 inputs:
 - id: in_outdir
   doc: 'output directory (default: ragout-out)'

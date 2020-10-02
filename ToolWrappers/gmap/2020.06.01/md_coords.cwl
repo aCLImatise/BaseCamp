@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../md_coords.cwl
+id: md_coords.cwl
 inputs:
 - id: in_more_options
   doc: ''

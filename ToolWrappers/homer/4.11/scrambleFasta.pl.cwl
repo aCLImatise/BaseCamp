@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scrambleFasta.pl.cwl
+id: scrambleFasta.pl.cwl
 inputs:
 - id: in_number_defulat_input
   doc: '<#> (Number of scrambled output sequences, defulat: 5x input)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepare_gene_ref.sh.cwl
+id: prepare_gene_ref.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnftools_validate.cwl
+id: rnftools_validate.cwl
 inputs:
 - id: in_fast_q
   doc: FASTQ file to be validated.

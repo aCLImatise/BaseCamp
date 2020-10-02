@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mono_heapviz.cwl
+id: mono_heapviz.cwl
 inputs: []
 outputs:
 - id: out_stdout

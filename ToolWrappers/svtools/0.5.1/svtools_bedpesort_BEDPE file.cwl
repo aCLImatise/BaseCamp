@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtools_bedpesort_BEDPE file.cwl
+id: svtools_bedpesort_BEDPE file.cwl
 inputs:
 - id: in_support
   doc: ''

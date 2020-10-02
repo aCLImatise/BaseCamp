@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../hca_auth_post_v1_role.cwl
+id: hca_auth_post_v1_role.cwl
 inputs:
 - id: in_role_id
-  doc: Used to identify users, groups, and roles.
+  doc: "Used to identify users, groups, and roles.\n--policy POLICY\n"
   type: string
   inputBinding:
     prefix: --role-id

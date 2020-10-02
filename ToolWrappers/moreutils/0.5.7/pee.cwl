@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pee.cwl
+id: pee.cwl
 inputs: []
 outputs:
 - id: out_stdout

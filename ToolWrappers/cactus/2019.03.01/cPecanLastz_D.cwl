@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cPecanLastz_D.cwl
+id: cPecanLastz_D.cwl
 inputs:
 - id: in_self
   doc: the target sequence is also the query

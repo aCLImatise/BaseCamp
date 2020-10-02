@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkmodel.cwl
+id: checkmodel.cwl
 inputs:
 - id: in_file_contains_model
   doc: ', while file contains a MODEL, or'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../popera.cwl
+id: popera.cwl
 inputs:
 - id: in_data
   doc: data file, should be sorted bam format

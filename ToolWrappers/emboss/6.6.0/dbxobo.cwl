@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbxobo.cwl
+id: dbxobo.cwl
 inputs:
 - id: in_directory
   doc: directory  [.] Database directory

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnacentral.py.cwl
+id: rnacentral.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

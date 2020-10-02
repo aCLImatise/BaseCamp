@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LabelSMap.pl.cwl
+id: LabelSMap.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

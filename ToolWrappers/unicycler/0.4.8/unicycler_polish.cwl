@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unicycler_polish.cwl
+id: unicycler_polish.cwl
 inputs:
 - id: in_assembly
   doc: Input assembly to be polished

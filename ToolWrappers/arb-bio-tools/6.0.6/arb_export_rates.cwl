@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_export_rates.cwl
+id: arb_export_rates.cwl
 inputs: []
 outputs:
 - id: out_stdout

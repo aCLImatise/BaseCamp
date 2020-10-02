@@ -1,21 +1,11 @@
 class: CommandLineTool
-id: ../../../ma.cwl
+id: ma.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_r_regionstartregionendi_id
+  doc: "-R <REGION_START:REGION_END>\n-I <ID to assign to assembly sequence>"
   type: string
   inputBinding:
     prefix: -c
-- id: in_regionstartregionend
-  doc: <REGION_START:REGION_END>
-  type: boolean
-  inputBinding:
-    prefix: -R
-- id: in_i
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -I
 - id: in_format_output_pipe
   doc: format 6 output -> don't pipe this output to file!
   type: File

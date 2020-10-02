@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbt_bam_depth.cwl
+id: rbt_bam_depth.cwl
 inputs:
 - id: in_excl_flags
   doc: Skip reads with mask bits set [UNMAP, SECONDARY, QCFAIL, DUP].

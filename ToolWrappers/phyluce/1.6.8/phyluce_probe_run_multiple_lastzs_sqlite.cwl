@@ -1,8 +1,10 @@
 class: CommandLineTool
-id: ../../../phyluce_probe_run_multiple_lastzs_sqlite.cwl
+id: phyluce_probe_run_multiple_lastzs_sqlite.cwl
 inputs:
 - id: in_probe_file
-  doc: ''
+  doc: "[--chromolist CHROMOLIST [CHROMOLIST ...]]\n[--scaffoldlist SCAFFOLDLIST [SCAFFOLDLIST\
+    \ ...]]\n[--append] [--no-dir]\n[--cores CORES]\n[--genome-base-path BASE_PATH]\n\
+    [--coverage COVERAGE]\n[--identity IDENTITY]"
   type: File
   inputBinding:
     prefix: --probefile

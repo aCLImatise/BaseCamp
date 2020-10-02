@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../re_PCR.cwl
+id: re_PCR.cwl
 inputs:
 - id: in_var_0
   doc: Perform primer lookup using hash-file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SeqFilters.cwl
+id: SeqFilters.cwl
 inputs:
 - id: in_forward_primers
   doc: Comma seperated list of forward primers

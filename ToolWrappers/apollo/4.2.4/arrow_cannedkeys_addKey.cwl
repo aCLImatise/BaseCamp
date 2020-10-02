@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../arrow_cannedkeys_addKey.cwl
+id: arrow_cannedkeys_addKey.cwl
 inputs:
 - id: in_metadata
-  doc: ''
+  doc: "-h, --help       Show this message and exit.\n"
   type: string
   inputBinding:
     prefix: --metadata

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../use_devel_assertos.cwl
+id: use_devel_assertos.cwl
 inputs: []
 outputs:
 - id: out_stdout

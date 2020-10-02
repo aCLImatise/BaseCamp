@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pm_stash.cwl
+id: pm_stash.cwl
 inputs: []
 outputs:
 - id: out_stdout

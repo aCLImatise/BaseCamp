@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../env_parallel.csh.cwl
+id: env_parallel.csh.cwl
 inputs: []
 outputs:
 - id: out_stdout

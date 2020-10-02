@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simplifyLibraries.cwl
+id: simplifyLibraries.cwl
 inputs:
 - id: in_bank_name
   doc: ''

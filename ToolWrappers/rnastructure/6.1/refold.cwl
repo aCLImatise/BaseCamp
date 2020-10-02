@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refold.cwl
+id: refold.cwl
 inputs:
 - id: in_maximum
   doc: "Specify a maximum number of structures.\nDefault is 20 structures."

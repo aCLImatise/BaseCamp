@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../REPqv.cwl
+id: REPqv.cwl
 inputs: []
 outputs:
 - id: out_stdout

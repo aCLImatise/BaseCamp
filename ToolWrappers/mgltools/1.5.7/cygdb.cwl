@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cygdb.cwl
+id: cygdb.cwl
 inputs: []
 outputs:
 - id: out_stdout

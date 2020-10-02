@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TEcount.cwl
+id: TEcount.cwl
 inputs:
 - id: in_bam
   doc: An RNAseq BAM file.

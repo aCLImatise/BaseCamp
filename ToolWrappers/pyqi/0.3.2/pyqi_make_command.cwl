@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyqi_make_command.cwl
+id: pyqi_make_command.cwl
 inputs:
 - id: in_author
   doc: 'author/maintainer name [default: none]'

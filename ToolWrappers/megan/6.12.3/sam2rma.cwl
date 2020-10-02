@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam2rma.cwl
+id: sam2rma.cwl
 inputs:
 - id: in_reads_files_fasta
   doc: '[string(s)]              Reads file(s) (fasta or fastq, gzipped ok).'

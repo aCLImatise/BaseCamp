@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qmer_filter.cwl
+id: qmer_filter.cwl
 inputs:
 - id: in_threshold
   doc: ''

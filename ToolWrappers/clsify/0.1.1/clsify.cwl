@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clsify.cwl
+id: clsify.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trunkreads.cwl
+id: trunkreads.cwl
 inputs: []
 outputs:
 - id: out_stdout

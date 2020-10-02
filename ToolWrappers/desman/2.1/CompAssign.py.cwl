@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CompAssign.py.cwl
+id: CompAssign.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

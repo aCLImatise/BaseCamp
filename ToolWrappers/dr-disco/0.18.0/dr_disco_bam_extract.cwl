@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dr_disco_bam_extract.cwl
+id: dr_disco_bam_extract.cwl
 inputs:
 - id: in_region_one
   doc: ''

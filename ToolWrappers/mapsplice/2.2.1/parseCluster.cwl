@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parseCluster.cwl
+id: parseCluster.cwl
 inputs: []
 outputs:
 - id: out_stdout

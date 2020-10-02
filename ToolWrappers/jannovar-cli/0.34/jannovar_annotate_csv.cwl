@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jannovar_annotate_csv.cwl
+id: jannovar_annotate_csv.cwl
 inputs:
 - id: in_r
   doc: '[-t {Default,TDF,RFC4180,Excel,MySQL}]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../imfusion_ctg.cwl
+id: imfusion_ctg.cwl
 inputs:
 - id: in_insertions
   doc: "Path to the merged insertions file from imfusion-\nmerge."

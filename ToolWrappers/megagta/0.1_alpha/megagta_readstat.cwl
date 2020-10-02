@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megagta_readstat.cwl
+id: megagta_readstat.cwl
 inputs:
 - id: in_cat
   doc: ''

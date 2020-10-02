@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcerunner.pl.cwl
+id: mcerunner.pl.cwl
 inputs:
 - id: in_using_mce
   doc: '- Bool. Default=1.'

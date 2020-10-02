@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genotype.pl.cwl
+id: genotype.pl.cwl
 inputs:
 - id: in_tmp
   doc: ': the tmp directory; If unspecified, use /usr/local/bin/tmp/'

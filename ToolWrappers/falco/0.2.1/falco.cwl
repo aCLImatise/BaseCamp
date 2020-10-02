@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falco.cwl
+id: falco.cwl
 inputs:
 - id: in_outdir
   doc: "Create all output files in the specified\noutput directory. If notprovided,\

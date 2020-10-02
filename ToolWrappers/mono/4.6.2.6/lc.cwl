@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lc.cwl
+id: lc.cwl
 inputs:
 - id: in_verbose
   doc: Verbose output

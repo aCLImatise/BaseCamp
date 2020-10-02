@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../detectionCall.cwl
+id: detectionCall.cwl
 inputs: []
 outputs:
 - id: out_stdout

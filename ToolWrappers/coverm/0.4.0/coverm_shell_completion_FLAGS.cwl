@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coverm_shell_completion_FLAGS.cwl
+id: coverm_shell_completion_FLAGS.cwl
 inputs:
 - id: in_output_file
   doc: ''

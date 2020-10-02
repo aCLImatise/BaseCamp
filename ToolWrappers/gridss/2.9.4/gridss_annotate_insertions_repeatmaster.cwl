@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gridss_annotate_insertions_repeatmaster.cwl
+id: gridss_annotate_insertions_repeatmaster.cwl
 inputs: []
 outputs:
 - id: out_stdout

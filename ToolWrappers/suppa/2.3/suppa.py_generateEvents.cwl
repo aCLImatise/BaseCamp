@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../suppa.py_generateEvents.cwl
+id: suppa.py_generateEvents.cwl
 inputs:
 - id: in_input_file
   doc: specify input file

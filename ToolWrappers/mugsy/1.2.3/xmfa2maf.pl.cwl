@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xmfa2maf.pl.cwl
+id: xmfa2maf.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nullarbor_json.pl.cwl
+id: nullarbor_json.pl.cwl
 inputs:
 - id: in_in_dir
   doc: Nullarbor result folder

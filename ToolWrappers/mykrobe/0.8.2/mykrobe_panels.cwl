@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mykrobe_panels.cwl
+id: mykrobe_panels.cwl
 inputs:
 - id: in_quiet
   doc: do not output warnings to stderr

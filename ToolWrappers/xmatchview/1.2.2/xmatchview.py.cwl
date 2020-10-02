@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xmatchview.py.cwl
+id: xmatchview.py.cwl
 inputs:
 - id: in_file_crossmatch_format
   doc: file (cross_match .rep or Pairwise mApping Format .paf)

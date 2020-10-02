@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapDamage.cwl
+id: mapDamage.cwl
 inputs:
 - id: in_input
   doc: "SAM/BAM file, must contain a valid header, use '-' for\nreading a BAM from\
@@ -207,21 +207,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --rescale-length-3p
-- id: in_optimization
-  doc: '[30]'
-  type: string
-  inputBinding:
-    position: 0
-- id: in_iterations
-  doc: '[10]'
-  type: string
-  inputBinding:
-    position: 1
 - id: in__nostats_disabled
   doc: --no-stats          Disabled statistical estimation, active by default
   type: Directory
   inputBinding:
-    position: 2
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

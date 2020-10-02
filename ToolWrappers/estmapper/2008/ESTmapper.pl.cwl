@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ESTmapper.pl.cwl
+id: ESTmapper.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

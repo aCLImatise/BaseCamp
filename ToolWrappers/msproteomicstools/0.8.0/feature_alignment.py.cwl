@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../feature_alignment.py.cwl
+id: feature_alignment.py.cwl
 inputs:
 - id: in_in
   doc: "A list of mProphet output files containing all\npeakgroups (use quotes around\
@@ -90,50 +90,28 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force
-- id: in_disable_isotopic_grouping
-  doc: "Disable grouping of isotopic variants by\npeptide_group_label"
-  type: boolean
-  inputBinding:
-    prefix: --disable_isotopic_grouping
-- id: in_use_d_score_filter
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --use_dscore_filter
 - id: in_d_score_cut_off
   doc: Discard all peakgroups below this d-score
   type: long
   inputBinding:
     prefix: --dscore_cutoff
 - id: in_nr_high_conf_exp
-  doc: "Number of experiments in which the peptide needs to be\nidentified with confidence\
-    \ above fdr_cutoff"
+  doc: Number of experiments in which the peptide needs to be
   type: long
   inputBinding:
     prefix: --nr_high_conf_exp
 - id: in_read_method
-  doc: "Read full or minimal transition groups\n(cminimal,minimal,full)"
+  doc: Read full or minimal transition groups
   type: string
   inputBinding:
     prefix: --readmethod
-- id: in_tmpdir
-  doc: Temporary directory
-  type: Directory
-  inputBinding:
-    prefix: --tmpdir
-- id: in_alignment_score
-  doc: "Minimal score needed for a feature to be considered\nfor alignment between\
-    \ runs"
-  type: long
-  inputBinding:
-    prefix: --alignment_score
 - id: in_realign_runs
-  doc: "Deprecated option (equals '--realign_method\nexternal_r')"
+  doc: Deprecated option (equals '--realign_method
   type: boolean
   inputBinding:
     prefix: --realign_runs
 - id: in_use_external_r
-  doc: "Deprecated option (equals '--realign_method\nexternal_r')\n"
+  doc: Deprecated option (equals '--realign_method
   type: boolean
   inputBinding:
     prefix: --use_external_r

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extendClearRanges.cwl
+id: extendClearRanges.cwl
 inputs:
 - id: in_use_ckpname_checkpoint
   doc: Use ckpName as the checkpoint name

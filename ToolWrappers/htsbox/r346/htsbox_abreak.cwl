@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsbox_abreak.cwl
+id: htsbox_abreak.cwl
 inputs:
 - id: in_assume_input_bam
   doc: assume the input is BAM (default is SAM)

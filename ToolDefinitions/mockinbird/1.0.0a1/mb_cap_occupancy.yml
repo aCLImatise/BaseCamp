@@ -33,7 +33,7 @@ subcommands:
     args: !SimpleFlagArg
       name: QUANTILE
     optional: true
-  parent: &id006 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -65,18 +65,10 @@ subcommands:
         args: !SimpleFlagArg
           name: QUANTILE
         optional: true
-      parent: &id003 !Command
+      parent: &id006 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: "quantile [0, 1.0]\n"
-          synonyms:
-          - --quantile
-          - -q
-          args: !SimpleFlagArg
-            name: QUANTILE
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -105,7 +97,113 @@ subcommands:
             args: !SimpleFlagArg
               name: QUANTILE
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: "quantile [0, 1.0]\n"
+              synonyms:
+              - --quantile
+              - -q
+              args: !SimpleFlagArg
+                name: QUANTILE
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: mb-cap-occupancy
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: inputfile
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: outputfile
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --quantile
+                args: !SimpleFlagArg
+                  name: QUANTILE
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: mb-cap-occupancy [-h] [--quantile QUANTILE] inputfile\
+                \ outputfile\nmb-cap-occupancy: error: argument inputfile: 'outputfile'\
+                \ does not exist\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - mb-cap-occupancy
+              - inputfile
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: outputfile
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --quantile
+                args: !SimpleFlagArg
+                  name: QUANTILE
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: mb-cap-occupancy [-h] [--quantile QUANTILE] inputfile\
+                \ outputfile\nmb-cap-occupancy: error: argument inputfile: 'inputfile'\
+                \ does not exist\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: mb-cap-occupancy [-h] [--quantile QUANTILE] inputfile\
+              \ outputfile\n\nSet maximum occupancy to the specified quantile.\n\n\
+              positional arguments:\n  inputfile             normalized PAR-CLIP file\
+              \ *.table\n  outputfile            converted PAR-CLIP file *.table\n\
+              \noptional arguments:\n  -h, --help            show this help message\
+              \ and exit\n  --quantile QUANTILE, -q QUANTILE\n                   \
+              \     quantile [0, 1.0]\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -119,12 +217,9 @@ subcommands:
           help_text: "usage: mb-cap-occupancy [-h] [--quantile QUANTILE] inputfile\
             \ outputfile\nmb-cap-occupancy: error: argument inputfile: 'outputfile'\
             \ does not exist\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - mb-cap-occupancy
-          - inputfile
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -155,13 +250,7 @@ subcommands:
             \ does not exist\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: mb-cap-occupancy [-h] [--quantile QUANTILE] inputfile outputfile\n\
@@ -200,7 +289,7 @@ subcommands:
         args: !SimpleFlagArg
           name: QUANTILE
         optional: true
-      parent: *id003
+      parent: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -254,7 +343,7 @@ subcommands:
     args: !SimpleFlagArg
       name: QUANTILE
     optional: true
-  parent: *id006
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

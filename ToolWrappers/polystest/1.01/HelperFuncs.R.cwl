@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HelperFuncs.R.cwl
+id: HelperFuncs.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

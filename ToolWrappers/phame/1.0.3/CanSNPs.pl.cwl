@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CanSNPs.pl.cwl
+id: CanSNPs.pl.cwl
 inputs:
 - id: in_group
   doc: "Group inforamtion in tab-delimited text file [mutually exclusive to list]\n\

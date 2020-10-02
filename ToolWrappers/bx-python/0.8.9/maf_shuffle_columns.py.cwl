@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_shuffle_columns.py.cwl
+id: maf_shuffle_columns.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

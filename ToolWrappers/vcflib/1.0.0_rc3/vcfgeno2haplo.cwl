@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfgeno2haplo.cwl
+id: vcfgeno2haplo.cwl
 inputs:
 - id: in_reference
   doc: FASTA reference file, required with -i and -u

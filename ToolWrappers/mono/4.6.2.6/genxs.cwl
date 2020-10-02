@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genxs.cwl
+id: genxs.cwl
 inputs:
 - id: in_config_file_name
   doc: ''

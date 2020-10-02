@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../infoassembly.cwl
+id: infoassembly.cwl
 inputs:
 - id: in_ref_sequence
   doc: seqset     Reference sequences in the assembly

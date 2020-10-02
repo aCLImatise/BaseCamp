@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PePr.cwl
+id: PePr.cwl
 inputs:
 - id: in_parameter_file
   doc: provide a file that contain the parameters

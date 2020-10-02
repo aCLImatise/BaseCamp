@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_word_frequency.py.cwl
+id: maf_word_frequency.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

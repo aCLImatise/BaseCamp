@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MinYS.py.cwl
+id: MinYS.py.cwl
 inputs:
 - id: in_in
   doc: '(1 arg) :    Input reads file'

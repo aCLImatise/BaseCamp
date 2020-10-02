@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ltr_finder.cwl
+id: ltr_finder.cwl
 inputs:
 - id: in_gap_open_penalty
   doc: gap open penalty, default is 3

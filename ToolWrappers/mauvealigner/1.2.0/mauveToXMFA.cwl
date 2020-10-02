@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mauveToXMFA.cwl
+id: mauveToXMFA.cwl
 inputs:
 - id: in_mauve_alignment_input
   doc: ''

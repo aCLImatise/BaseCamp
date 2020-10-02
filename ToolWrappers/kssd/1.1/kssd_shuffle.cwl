@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kssd_shuffle.cwl
+id: kssd_shuffle.cwl
 inputs:
 - id: in_half_k_merle_n
   doc: "a half of the length of k-mer. For proyakat\ngenome, k = 8 is suggested; for\

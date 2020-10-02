@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stringify.cwl
+id: stringify.cwl
 inputs:
 - id: in_var
   doc: "- create a variable with the specified name containing\nthe string."

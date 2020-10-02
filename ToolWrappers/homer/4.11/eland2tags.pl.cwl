@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eland2tags.pl.cwl
+id: eland2tags.pl.cwl
 inputs:
 - id: in_mis
   doc: <0,1,2> (Max mismatches, default=2)
@@ -28,7 +28,7 @@ inputs:
   inputBinding:
     prefix: -nonuniq
 - id: in_or
-  doc: ''
+  doc: "Column 6: + or - for stand\n"
   type: boolean
   inputBinding:
     prefix: -or-

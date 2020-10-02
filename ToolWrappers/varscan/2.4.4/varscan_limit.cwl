@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varscan_limit.cwl
+id: varscan_limit.cwl
 inputs:
 - id: in_regions_file
   doc: '- a file of chromosome-start-stops, tab delimited'

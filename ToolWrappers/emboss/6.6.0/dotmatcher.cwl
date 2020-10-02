@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dotmatcher.cwl
+id: dotmatcher.cwl
 inputs:
 - id: in_matrix_file
   doc: "matrix     [EBLOSUM62 for protein, EDNAFULL for DNA]\nThis is the scoring\

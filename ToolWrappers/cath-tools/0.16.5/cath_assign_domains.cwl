@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cath_assign_domains.cwl
+id: cath_assign_domains.cwl
 inputs:
 - id: in_output_version_information
   doc: '[ --version ]                                                  Output version

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.krona_post_link.sh.cwl
+id: .krona_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

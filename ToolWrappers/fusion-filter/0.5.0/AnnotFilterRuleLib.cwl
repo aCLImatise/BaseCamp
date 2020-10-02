@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AnnotFilterRuleLib.cwl
+id: AnnotFilterRuleLib.cwl
 inputs: []
 outputs:
 - id: out_stdout

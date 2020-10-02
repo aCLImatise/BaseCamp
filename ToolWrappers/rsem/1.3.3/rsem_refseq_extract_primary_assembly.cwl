@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_refseq_extract_primary_assembly.cwl
+id: rsem_refseq_extract_primary_assembly.cwl
 inputs: []
 outputs:
 - id: out_stdout

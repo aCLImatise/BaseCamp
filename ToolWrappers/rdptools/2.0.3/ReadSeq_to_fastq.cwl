@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReadSeq_to_fastq.cwl
+id: ReadSeq_to_fastq.cwl
 inputs:
 - id: in_to_fast_q
   doc: ''

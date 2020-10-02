@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_vcf_samples.cwl
+id: dsh_vcf_samples.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

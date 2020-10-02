@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pfscan.cwl
+id: pfscan.cwl
 inputs:
 - id: in_report_optimal_alignment
   doc: ': report optimal alignment for all profiles.'

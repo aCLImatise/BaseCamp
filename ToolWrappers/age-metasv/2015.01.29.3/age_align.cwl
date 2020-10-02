@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../age_align.cwl
+id: age_align.cwl
 inputs: []
 outputs:
 - id: out_stdout

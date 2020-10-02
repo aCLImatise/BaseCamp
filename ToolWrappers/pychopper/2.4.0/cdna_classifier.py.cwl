@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cdna_classifier.py.cwl
+id: cdna_classifier.py.cwl
 inputs:
 - id: in_primers_fasta
   doc: Primers fasta.

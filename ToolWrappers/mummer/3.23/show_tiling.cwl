@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../show_tiling.cwl
+id: show_tiling.cwl
 inputs:
 - id: in_describe_path_tabdelimitedalignment
   doc: "Describe the tiling path by printing the tab-delimited\nalignment region coordinates\

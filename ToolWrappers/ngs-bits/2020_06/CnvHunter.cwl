@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CnvHunter.cwl
+id: CnvHunter.cwl
 inputs:
 - id: in_in
   doc: Input TSV files (one per sample) containing coverage data (chr, start, end,

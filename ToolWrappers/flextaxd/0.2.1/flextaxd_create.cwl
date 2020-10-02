@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flextaxd_create.cwl
+id: flextaxd_create.cwl
 inputs:
 - id: in__outdir_output
   doc: ", --outdir      Output directory (same directory as\ncustom_taxonomy_databases\

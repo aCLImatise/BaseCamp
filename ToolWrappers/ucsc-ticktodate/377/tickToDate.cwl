@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tickToDate.cwl
+id: tickToDate.cwl
 inputs: []
 outputs:
 - id: out_stdout

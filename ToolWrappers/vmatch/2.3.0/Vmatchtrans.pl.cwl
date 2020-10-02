@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Vmatchtrans.pl.cwl
+id: Vmatchtrans.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

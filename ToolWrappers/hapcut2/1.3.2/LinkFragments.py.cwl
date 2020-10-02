@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LinkFragments.py.cwl
+id: LinkFragments.py.cwl
 inputs:
 - id: in_file_unlinked_hapcut
   doc: "[FRAGMENTS], --fragments [FRAGMENTS]\nfile with unlinked hapcut2 fragments\

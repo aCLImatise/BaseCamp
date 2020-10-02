@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../loadGenome.pl.cwl
+id: loadGenome.pl.cwl
 inputs:
 - id: in_name
   doc: (i.e. hg19, tair10, etc.)

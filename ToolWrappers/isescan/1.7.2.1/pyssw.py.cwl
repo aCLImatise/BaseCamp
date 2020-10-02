@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyssw.py.cwl
+id: pyssw.py.cwl
 inputs:
 - id: in_subject
   doc: "Path of the fasta file containing the subject genome\nsequence. Can be gziped.\

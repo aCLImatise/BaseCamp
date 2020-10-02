@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Admin_GeneRegionBedDumper.pl.cwl
+id: Admin_GeneRegionBedDumper.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

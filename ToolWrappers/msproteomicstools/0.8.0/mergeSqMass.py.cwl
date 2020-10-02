@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergeSqMass.py.cwl
+id: mergeSqMass.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

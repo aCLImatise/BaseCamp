@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../formatlist.cwl
+id: formatlist.cwl
 inputs: []
 outputs:
 - id: out_stdout

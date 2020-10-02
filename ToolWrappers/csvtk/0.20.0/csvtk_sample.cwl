@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_sample.cwl
+id: csvtk_sample.cwl
 inputs:
 - id: in_line_number
   doc: print line number as the first column ("n")

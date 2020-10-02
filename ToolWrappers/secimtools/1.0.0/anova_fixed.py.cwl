@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anova_fixed.py.cwl
+id: anova_fixed.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

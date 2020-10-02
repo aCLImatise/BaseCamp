@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dummy_variables.cwl
+id: dummy_variables.cwl
 inputs:
 - id: in_config
   doc: Configuration file

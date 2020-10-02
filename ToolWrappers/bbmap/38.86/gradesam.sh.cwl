@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gradesam.sh.cwl
+id: gradesam.sh.cwl
 inputs:
 - id: in_in
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generate_report.py.bak.cwl
+id: generate_report.py.bak.cwl
 inputs:
 - id: in_name_report_file
   doc: 'name of the report file (default: [prefix]_report.html)'

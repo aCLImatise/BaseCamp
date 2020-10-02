@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pfam_search.pl.cwl
+id: pfam_search.pl.cwl
 inputs:
 - id: in_outfile
   doc: ': output file, otherwise send to STDOUT'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReadSeq_select_seqs.cwl
+id: ReadSeq_select_seqs.cwl
 inputs:
 - id: in_sequence_selector
   doc: ''

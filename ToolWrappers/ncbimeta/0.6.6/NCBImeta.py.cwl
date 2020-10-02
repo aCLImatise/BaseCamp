@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NCBImeta.py.cwl
+id: NCBImeta.py.cwl
 inputs:
 - id: in_config
   doc: Path to the yaml configuration file (ex. config.yaml).

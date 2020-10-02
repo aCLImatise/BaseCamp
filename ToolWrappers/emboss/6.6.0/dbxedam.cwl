@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbxedam.cwl
+id: dbxedam.cwl
 inputs:
 - id: in_directory
   doc: directory  [.] Database directory

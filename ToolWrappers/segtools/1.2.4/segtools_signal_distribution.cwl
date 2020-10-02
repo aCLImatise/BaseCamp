@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segtools_signal_distribution.cwl
+id: segtools_signal_distribution.cwl
 inputs: []
 outputs:
 - id: out_stdout

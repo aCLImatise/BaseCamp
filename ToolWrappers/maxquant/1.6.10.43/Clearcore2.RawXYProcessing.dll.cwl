@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clearcore2.RawXYProcessing.dll.cwl
+id: Clearcore2.RawXYProcessing.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

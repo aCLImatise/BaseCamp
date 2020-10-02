@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsk2ascii.cwl
+id: dsk2ascii.cwl
 inputs:
 - id: in_arg_output_stdout
   doc: '(0 arg) :    output to stdout'

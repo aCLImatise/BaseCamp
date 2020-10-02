@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kctreetest.cwl
+id: kctreetest.cwl
 inputs:
 - id: in_hard
   doc: ''

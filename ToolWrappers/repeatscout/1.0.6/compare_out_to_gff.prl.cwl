@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compare_out_to_gff.prl.cwl
+id: compare_out_to_gff.prl.cwl
 inputs:
 - id: in_gff
   doc: "A GFF-formatted file of features. More than one file may be specified\nwith\

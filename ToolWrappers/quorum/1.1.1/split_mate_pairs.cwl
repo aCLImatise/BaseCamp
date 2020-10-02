@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_mate_pairs.cwl
+id: split_mate_pairs.cwl
 inputs: []
 outputs:
 - id: out_stdout

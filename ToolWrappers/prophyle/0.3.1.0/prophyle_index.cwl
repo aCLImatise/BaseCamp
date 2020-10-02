@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_index.cwl
+id: prophyle_index.cwl
 inputs:
 - id: in_directory_library_sequences
   doc: "directory with the library sequences [dir. of the first\ntree]"

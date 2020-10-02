@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtdbgConvert.cwl
+id: wtdbgConvert.cwl
 inputs:
 - id: in_output_prefix
   doc: output prefix

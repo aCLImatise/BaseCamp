@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validjson.cwl
+id: validjson.cwl
 inputs:
 - id: in_verbose
   doc: Get confirmation that the files are valid.

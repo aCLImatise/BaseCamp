@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stag_drawtree.pl.cwl
+id: stag_drawtree.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

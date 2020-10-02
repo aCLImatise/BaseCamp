@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../panphlan_map.py.cwl
+id: panphlan_map.py.cwl
 inputs:
 - id: in_input
   doc: Metagenomic sample to map

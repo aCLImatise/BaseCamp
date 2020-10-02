@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randomly_select_sequences.py.cwl
+id: randomly_select_sequences.py.cwl
 inputs:
 - id: in_outputprefix
   doc: output_prefix

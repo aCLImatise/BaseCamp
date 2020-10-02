@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idmatrix.sh.cwl
+id: idmatrix.sh.cwl
 inputs:
 - id: in_x_mx
   doc: "This will set Java's memory usage, overriding automatic\nmemory detection.\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proBAM.py.cwl
+id: proBAM.py.cwl
 inputs:
 - id: in_file
   doc: location of the psm file to be processed

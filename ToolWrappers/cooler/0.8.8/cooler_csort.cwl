@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cooler_csort.cwl
+id: cooler_csort.cwl
 inputs:
 - id: in_chrom_one
   doc: "chrom1 field number in the input file (starting\nfrom 1)  [required]"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tsplit_LTR.cwl
+id: tsplit_LTR.cwl
 inputs:
 - id: in_in_file
   doc: Multifasta containing complete elements.

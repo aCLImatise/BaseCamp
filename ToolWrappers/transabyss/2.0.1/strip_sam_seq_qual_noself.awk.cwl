@@ -1,26 +1,12 @@
 class: CommandLineTool
-id: ../../../strip_sam_seq_qual_noself.awk.cwl
+id: strip_sam_seq_qual_noself.awk.cwl
 inputs:
-- id: in_val_set_variable
-  doc: =VAL      Set variable
-  type: string
-  inputBinding:
-    prefix: -v
-- id: in_use_sep_field
-  doc: Use SEP as field separator
-  type: string
-  inputBinding:
-    prefix: -F
-- id: in_read_program_file
-  doc: Read program from FILE
+- id: in_val_set_sep
+  doc: "=VAL      Set variable\n-F SEP          Use SEP as field separator\n-f FILE\
+    \         Read program from FILE\n-e AWK_PROGRAM\n"
   type: File
   inputBinding:
-    prefix: -f
-- id: in_e
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -e
+    prefix: -v
 - id: in_awk
   doc: ''
   type: string

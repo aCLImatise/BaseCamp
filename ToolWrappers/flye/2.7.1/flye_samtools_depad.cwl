@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_depad.cwl
+id: flye_samtools_depad.cwl
 inputs:
 - id: in_output_sam_default
   doc: Output is SAM (default is BAM)

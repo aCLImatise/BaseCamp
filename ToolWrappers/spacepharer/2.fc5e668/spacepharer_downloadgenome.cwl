@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spacepharer_downloadgenome.cwl
+id: spacepharer_downloadgenome.cwl
 inputs:
 - id: in_reverse_set_db
   doc: Create additional setDB with reversed fragments to compute under null [0,1]

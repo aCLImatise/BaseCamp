@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkHgFindSpec_general..cwl
+id: checkHgFindSpec_general..cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

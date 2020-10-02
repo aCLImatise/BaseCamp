@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicstuff_convert.cwl
+id: hicstuff_convert.cwl
 inputs:
 - id: in_frags
   doc: "Tab-separated file with headers,\ncontaining columns id, chrom, start_pos,\n\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfbiallelic.cwl
+id: vcfbiallelic.cwl
 inputs: []
 outputs:
 - id: out_stdout

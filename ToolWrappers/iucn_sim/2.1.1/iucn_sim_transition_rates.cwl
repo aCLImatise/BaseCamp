@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iucn_sim_transition_rates.cwl
+id: iucn_sim_transition_rates.cwl
 inputs:
 - id: in_species_data
   doc: "File containing species list and current IUCN status\nof species, as well\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq_trim_fastq.py.cwl
+id: seq_trim_fastq.py.cwl
 inputs:
 - id: in_left
   doc: Number of base pairs to trim from the left.

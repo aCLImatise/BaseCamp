@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../poppunk_calculate_silhouette.py.cwl
+id: poppunk_calculate_silhouette.py.cwl
 inputs:
 - id: in_distances
   doc: "Prefix of input pickle of pre-calculated distances\n(required)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_man_segment.cwl
+id: iCount_man_segment.cwl
 inputs:
 - id: in_mode
   doc: ''

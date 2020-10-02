@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed_extend_to.py.cwl
+id: bed_extend_to.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

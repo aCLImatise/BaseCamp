@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../grow_readbank.cwl
+id: grow_readbank.cwl
 inputs:
 - id: in_create_new_bank
   doc: Create a new read bank
@@ -23,11 +23,6 @@ inputs:
     prefix: -s
 - id: in_grow_read_bank
   doc: <bank-name> <input-file[s]>
-  type: string
-  inputBinding:
-    position: 0
-- id: in_specified_dot
-  doc: .OPTIONS.
   type: string
   inputBinding:
     position: 0

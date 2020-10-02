@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_splitter.cwl
+id: fasta_splitter.cwl
 inputs:
 - id: in_n_parts
   doc: '- Divide into <N> parts'

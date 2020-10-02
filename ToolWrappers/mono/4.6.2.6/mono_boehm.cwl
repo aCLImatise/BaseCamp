@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mono_boehm.cwl
+id: mono_boehm.cwl
 inputs:
 - id: in_aot
   doc: '[=<options>]      Compiles the assembly to native code'

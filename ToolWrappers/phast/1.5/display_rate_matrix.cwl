@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../display_rate_matrix.cwl
+id: display_rate_matrix.cwl
 inputs:
 - id: in_output_pt_instead
   doc: ": Output P(t) = exp(Qt) instead of Q.  Requires t >= 0.\nUse \"-t A\" to output\

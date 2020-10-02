@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Discovar.cwl
+id: Discovar.cwl
 inputs: []
 outputs:
 - id: out_stdout

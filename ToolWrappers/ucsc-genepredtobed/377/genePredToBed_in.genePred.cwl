@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genePredToBed_in.genePred.cwl
+id: genePredToBed_in.genePred.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

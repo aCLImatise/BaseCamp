@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dexta.cwl
+id: dexta.cwl
 inputs:
 - id: in_vk
   doc: ''

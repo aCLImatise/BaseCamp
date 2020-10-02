@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepForR.pl.cwl
+id: prepForR.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

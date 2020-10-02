@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megagta_findstart.cwl
+id: megagta_findstart.cwl
 inputs:
 - id: in_find_start
   doc: ''

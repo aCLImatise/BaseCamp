@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../survey.pl.orig.cwl
+id: survey.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

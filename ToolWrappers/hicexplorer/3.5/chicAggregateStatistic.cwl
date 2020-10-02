@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chicAggregateStatistic.cwl
+id: chicAggregateStatistic.cwl
 inputs:
 - id: in_interaction_file
   doc: "path to the interaction files which should be used for\naggregation of the\
@@ -34,20 +34,14 @@ inputs:
   inputBinding:
     prefix: --outputFolder
 - id: in_write_filenames_to_file
-  doc: ''
+  doc: "--batchMode, -bm      turns on batch mode. The files provided by\n--interactionFile\
+    \ and/or --targetFile contain a list\nof the files to be processed.\n--threads\
+    \ THREADS, -t THREADS\nNumber of threads (uses the python multiprocessing\nmodule).\n\
+    --help, -h            show this help message and exit\n--version             show\
+    \ program's version number and exit\n"
   type: File
   inputBinding:
     prefix: --writeFileNamesToFile
-- id: in_batch_mode
-  doc: turns on batch mode. The files provided by
-  type: boolean
-  inputBinding:
-    prefix: --batchMode
-- id: in_threads
-  doc: "Number of threads (uses the python multiprocessing\nmodule)."
-  type: long
-  inputBinding:
-    prefix: --threads
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -3,19 +3,19 @@ version 1.0
 task Locarnappredictandplotpl {
   input {
     Boolean? man
-    Boolean? var_1
+    Boolean? test
+    Directory? output_dir
     Boolean? dont_plot
     Boolean? show_sw
     Boolean? rev_compl
     Boolean? write_subseq
     String? output_format
-    String _outputdird
   }
   command <<<
     locarnap_predict_and_plot_pl \
-      ~{_outputdird} \
       ~{if (man) then "--man" else ""} \
-      ~{if (var_1) then "--test" else ""} \
+      ~{if (test) then "--test" else ""} \
+      ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
       ~{if (dont_plot) then "--dont-plot" else ""} \
       ~{if (show_sw) then "--show-sw" else ""} \
       ~{if (rev_compl) then "--revcompl" else ""} \
@@ -24,15 +24,16 @@ task Locarnappredictandplotpl {
   >>>
   parameter_meta {
     man: "Full documentation"
-    var_1: ""
+    test: "Test"
+    output_dir: "Output directory (def=Relplots)"
     dont_plot: "Skip plotting, only output"
     show_sw: "Show the structure weight in the plot"
     rev_compl: "Draw for reverse complement (3'-5')"
     write_subseq: "Write the subsequence of fit"
     output_format: "Output format (f = pdf or png, def=pdf)"
-    _outputdird: "--output-dir=d"
   }
   output {
     File out_stdout = stdout()
+    Directory out_output_dir = "${in_output_dir}"
   }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../QueryDNADatabase.py.cwl
+id: QueryDNADatabase.py.cwl
 inputs:
 - id: in_threads
   doc: 'Number of threads to use (default: 8)'

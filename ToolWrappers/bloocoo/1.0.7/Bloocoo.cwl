@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Bloocoo.cwl
+id: Bloocoo.cwl
 inputs:
 - id: in_nb_cores
   doc: "(1 arg) :    number of cores  [default '0']"

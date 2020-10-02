@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jstatd.cwl
+id: jstatd.cwl
 inputs:
 - id: in_n
   doc: ''

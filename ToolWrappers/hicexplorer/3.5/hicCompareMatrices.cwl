@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicCompareMatrices.cwl
+id: hicCompareMatrices.cwl
 inputs:
 - id: in_matrices
   doc: "matrix.h5, -m matrix.h5 matrix.h5\nName of the matrices in .h5 format to use,\

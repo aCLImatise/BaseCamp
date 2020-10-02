@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preassembleFrgs.cwl
+id: preassembleFrgs.cwl
 inputs:
 - id: in_write_contig_graphs
   doc: Write contig graphs as dot files (fullgraph.dot and Contig-*.dot)

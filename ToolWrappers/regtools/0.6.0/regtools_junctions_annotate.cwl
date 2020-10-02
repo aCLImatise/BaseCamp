@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../regtools_junctions_annotate.cwl
+id: regtools_junctions_annotate.cwl
 inputs:
 - id: in_single_exon_genes
   doc: single exon genes

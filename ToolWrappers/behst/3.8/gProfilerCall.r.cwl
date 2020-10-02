@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gProfilerCall.r.cwl
+id: gProfilerCall.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

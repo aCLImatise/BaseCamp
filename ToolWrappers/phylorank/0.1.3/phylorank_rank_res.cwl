@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylorank_rank_res.cwl
+id: phylorank_rank_res.cwl
 inputs:
 - id: in_tax_a_file
   doc: "output file indicating taxa within each resolution\ncategory\n"

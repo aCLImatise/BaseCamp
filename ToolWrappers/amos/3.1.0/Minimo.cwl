@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Minimo.cwl
+id: Minimo.cwl
 inputs:
 - id: in_d
   doc: ''

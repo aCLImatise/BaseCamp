@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../align_cache.2.cwl
+id: align_cache.2.cwl
 inputs:
 - id: in_threshold
   doc: "cache PRIMARY_ALIGNMENT records with\ndifference between values of ALIGN_ID\
@@ -54,11 +54,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_file_dot
-  doc: 'align-cache.2 : 2.10.8'
-  type: File
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

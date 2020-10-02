@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_get_example.cwl
+id: gtftk_get_example.cwl
 inputs:
 - id: in_dataset
   doc: 'Select a dataset. (default: simple)'

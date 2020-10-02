@@ -9,7 +9,6 @@ task VIBRANTAnnotationpy {
     Boolean? vi_rome
     File? path_directory_hmm
     File? path_directory_tsv
-    String? outfolder
     String? base
   }
   command <<<
@@ -21,7 +20,6 @@ task VIBRANTAnnotationpy {
       ~{if (vi_rome) then "-virome" else ""} \
       ~{if defined(path_directory_hmm) then ("-d " +  '"' + path_directory_hmm + '"') else ""} \
       ~{if defined(path_directory_tsv) then ("-m " +  '"' + path_directory_tsv + '"') else ""} \
-      ~{if defined(outfolder) then ("-x " +  '"' + outfolder + '"') else ""} \
       ~{if defined(base) then ("-y " +  '"' + base + '"') else ""}
   >>>
   parameter_meta {
@@ -32,7 +30,6 @@ task VIBRANTAnnotationpy {
     vi_rome: "use this setting if dataset is known to be comprised mainly\\nof viruses. More sensitive to viruses, less sensitive to\\nfalse identifications [default=off]"
     path_directory_hmm: "path to \\\"databases\\\" directory that contains .HMM files (if\\nmoved from default location)"
     path_directory_tsv: "path to \\\"files\\\" directory that contains .tsv and model files\\n(if moved from default location)"
-    outfolder: "out_folder"
     base: "base"
   }
   output {

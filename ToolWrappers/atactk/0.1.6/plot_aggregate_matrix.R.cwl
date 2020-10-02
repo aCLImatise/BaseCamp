@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_aggregate_matrix.R.cwl
+id: plot_aggregate_matrix.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

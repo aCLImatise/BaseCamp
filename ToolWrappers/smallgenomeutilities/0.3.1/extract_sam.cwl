@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_sam.cwl
+id: extract_sam.cwl
 inputs:
 - id: in_name_target_contig
   doc: Name of target contig, e.g. HXB2:2253-2256

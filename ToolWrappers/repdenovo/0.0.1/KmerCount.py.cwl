@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../KmerCount.py.cwl
+id: KmerCount.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

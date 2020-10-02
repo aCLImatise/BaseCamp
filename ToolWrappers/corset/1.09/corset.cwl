@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../corset.cwl
+id: corset.cwl
 inputs:
 - id: in_comma_separated_list
   doc: "A comma separated list of distance thresholds. The range must be\nbetween\

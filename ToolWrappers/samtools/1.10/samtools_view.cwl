@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_view.cwl
+id: samtools_view.cwl
 inputs:
 - id: in_output_bam
   doc: output BAM

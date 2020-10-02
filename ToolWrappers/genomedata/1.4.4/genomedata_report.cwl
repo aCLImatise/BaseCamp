@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomedata_report.cwl
+id: genomedata_report.cwl
 inputs:
 - id: in_gd_archive
   doc: genomedata archive

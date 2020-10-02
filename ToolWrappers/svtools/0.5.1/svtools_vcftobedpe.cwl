@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtools_vcftobedpe.cwl
+id: svtools_vcftobedpe.cwl
 inputs:
 - id: in_input
   doc: 'VCF input (default: stdin)'

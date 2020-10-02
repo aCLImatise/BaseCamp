@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../copylink.cwl
+id: copylink.cwl
 inputs:
 - id: in_linkat_usrlocalbincopylink_line
   doc: "a link\nat /usr/local/bin/copylink line 9.\n"

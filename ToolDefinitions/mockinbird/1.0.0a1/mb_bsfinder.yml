@@ -30,7 +30,7 @@ subcommands:
     args: !SimpleFlagArg
       name: THRESHOLD
     optional: true
-  parent: &id006 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -59,49 +59,10 @@ subcommands:
         args: !SimpleFlagArg
           name: THRESHOLD
         optional: true
-      parent: &id003 !Command
+      parent: &id006 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: set maximum p-value for site selection
-          synonyms:
-          - --threshold
-          - -p
-          args: !SimpleFlagArg
-            name: THRESHOLD
-          optional: true
-        - !Flag
-          description: set minimum coverage
-          synonyms:
-          - --mincov
-          - -c
-          args: !SimpleFlagArg
-            name: MINCOV
-          optional: true
-        - !Flag
-          description: set default reference nucleotide
-          synonyms:
-          - --reference
-          - -r
-          args: !SimpleFlagArg
-            name: REFERENCE
-          optional: true
-        - !Flag
-          description: set default mutation nucleotide
-          synonyms:
-          - --mutation
-          - -m
-          args: !SimpleFlagArg
-            name: MUTATION
-          optional: true
-        - !Flag
-          description: verbose output
-          synonyms:
-          - --verbose
-          - -v
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -127,7 +88,157 @@ subcommands:
             args: !SimpleFlagArg
               name: THRESHOLD
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: set maximum p-value for site selection
+              synonyms:
+              - --threshold
+              - -p
+              args: !SimpleFlagArg
+                name: THRESHOLD
+              optional: true
+            - !Flag
+              description: set minimum coverage
+              synonyms:
+              - --mincov
+              - -c
+              args: !SimpleFlagArg
+                name: MINCOV
+              optional: true
+            - !Flag
+              description: set default reference nucleotide
+              synonyms:
+              - --reference
+              - -r
+              args: !SimpleFlagArg
+                name: REFERENCE
+              optional: true
+            - !Flag
+              description: set default mutation nucleotide
+              synonyms:
+              - --mutation
+              - -m
+              args: !SimpleFlagArg
+                name: MUTATION
+              optional: true
+            - !Flag
+              description: verbose output
+              synonyms:
+              - --verbose
+              - -v
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: mb-bsfinder
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --mincov
+                args: !SimpleFlagArg
+                  name: MINCOV
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - --threshold
+                args: !SimpleFlagArg
+                  name: THRESHOLD
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: mb-bsfinder [-h] [--threshold THRESHOLD] [--mincov\
+                \ MINCOV]\n                   [--reference REFERENCE] [--mutation\
+                \ MUTATION] [--verbose]\n                   inputfile outputfile\n\
+                mb-bsfinder: error: argument inputfile: 'outputfile' does not exist\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - mb-bsfinder
+              - inputfile
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: mb-bsfinder
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --mincov
+                args: !SimpleFlagArg
+                  name: MINCOV
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - --threshold
+                args: !SimpleFlagArg
+                  name: THRESHOLD
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: mb-bsfinder [-h] [--threshold THRESHOLD] [--mincov\
+                \ MINCOV]\n                   [--reference REFERENCE] [--mutation\
+                \ MUTATION] [--verbose]\n                   inputfile outputfile\n\
+                mb-bsfinder: error: argument inputfile: 'inputfile' does not exist\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: mb-bsfinder [-h] [--threshold THRESHOLD] [--mincov\
+              \ MINCOV]\n                   [--reference REFERENCE] [--mutation MUTATION]\
+              \ [--verbose]\n                   inputfile outputfile\n\nmockinbird-bsfinder\
+              \ detects protein RNA binding sites from PAR-CLIP\nexperiments in mpileup\
+              \ files.\n\npositional arguments:\n  inputfile             path to the\
+              \ inputfile *.pileup\n  outputfile            define output file *.table\n\
+              \noptional arguments:\n  -h, --help            show this help message\
+              \ and exit\n  --threshold THRESHOLD, -p THRESHOLD\n                \
+              \        set maximum p-value for site selection\n  --mincov MINCOV,\
+              \ -c MINCOV\n                        set minimum coverage\n  --reference\
+              \ REFERENCE, -r REFERENCE\n                        set default reference\
+              \ nucleotide\n  --mutation MUTATION, -m MUTATION\n                 \
+              \       set default mutation nucleotide\n  --verbose, -v         verbose\
+              \ output\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -142,12 +253,9 @@ subcommands:
             \                   [--reference REFERENCE] [--mutation MUTATION] [--verbose]\n\
             \                   inputfile outputfile\nmb-bsfinder: error: argument\
             \ inputfile: 'outputfile' does not exist\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - mb-bsfinder
-          - inputfile
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -186,13 +294,7 @@ subcommands:
             \ inputfile: 'inputfile' does not exist\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: mb-bsfinder [-h] [--threshold THRESHOLD] [--mincov MINCOV]\n\
@@ -247,7 +349,7 @@ subcommands:
         args: !SimpleFlagArg
           name: THRESHOLD
         optional: true
-      parent: *id003
+      parent: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -318,7 +420,7 @@ subcommands:
     args: !SimpleFlagArg
       name: THRESHOLD
     optional: true
-  parent: *id006
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

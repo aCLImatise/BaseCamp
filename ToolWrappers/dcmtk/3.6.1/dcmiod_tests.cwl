@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dcmiod_tests.cwl
+id: dcmiod_tests.cwl
 inputs:
 - id: in__list_tests
   doc: --list        list available tests and exit

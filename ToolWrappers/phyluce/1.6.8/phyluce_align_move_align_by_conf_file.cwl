@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../phyluce_align_move_align_by_conf_file.cwl
+id: phyluce_align_move_align_by_conf_file.cwl
 inputs:
-- id: in_opposite
-  doc: )
-  type: boolean
-  inputBinding:
-    prefix: --opposite
 - id: in_conf
   doc: The configuration file giving locus names
   type: File
@@ -26,6 +21,11 @@ inputs:
   type: string[]
   inputBinding:
     prefix: --sections
+- id: in_opposite
+  doc: Move alignments based on what is NOT in the conf file
+  type: boolean
+  inputBinding:
+    prefix: --opposite
 - id: in_extension
   doc: "The extension of the files to move\n"
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uniqPolishes.cwl
+id: uniqPolishes.cwl
 inputs: []
 outputs:
 - id: out_stdout

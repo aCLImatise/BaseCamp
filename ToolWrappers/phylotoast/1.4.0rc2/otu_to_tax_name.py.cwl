@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../otu_to_tax_name.py.cwl
+id: otu_to_tax_name.py.cwl
 inputs:
 - id: in_otu_table
   doc: Input biom file format OTU table. [REQUIRED]

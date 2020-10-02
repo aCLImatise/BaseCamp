@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_annoIS.pl.cwl
+id: run_annoIS.pl.cwl
 inputs:
 - id: in_more_options
   doc: ''

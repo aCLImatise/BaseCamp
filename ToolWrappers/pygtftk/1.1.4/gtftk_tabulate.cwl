@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_tabulate.cwl
+id: gtftk_tabulate.cwl
 inputs:
 - id: in_select_transcript_ids
   doc: 'A shortcuts for "-k transcript_id". (default: False)'

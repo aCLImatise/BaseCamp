@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../thapbi_pict.cwl
+id: thapbi_pict.cwl
 inputs:
 - id: in_v
   doc: ''

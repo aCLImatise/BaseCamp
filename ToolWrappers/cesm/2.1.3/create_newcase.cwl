@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_newcase.cwl
+id: create_newcase.cwl
 inputs:
 - id: in_res
   doc: '[--machine MACHINE] [--compiler COMPILER]'

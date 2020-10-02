@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../barcode_splitter.cwl
+id: barcode_splitter.cwl
 inputs:
 - id: in_bc_file
   doc: "REQUIRED: Tab delimited file: \"Sample_ID <tab>\nBarcode_Sequence\" Multiple\

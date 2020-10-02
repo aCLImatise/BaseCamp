@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AnalyseSeqs.cwl
+id: AnalyseSeqs.cwl
 inputs: []
 outputs:
 - id: out_stdout

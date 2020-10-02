@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_long_intron_readthru_transcripts.pl.cwl
+id: remove_long_intron_readthru_transcripts.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../triqler.cwl
+id: triqler.cwl
 inputs:
 - id: in_out_file
   doc: "Path to output file (writing in TSV format). N.B. if\nmore than 2 treatment\

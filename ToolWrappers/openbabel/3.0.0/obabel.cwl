@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obabel.cwl
+id: obabel.cwl
 inputs:
 - id: in_start_import_molecule
   doc: '<#> Start import at molecule # specified'

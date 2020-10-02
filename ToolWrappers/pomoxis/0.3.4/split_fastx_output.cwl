@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_fastx_output.cwl
+id: split_fastx_output.cwl
 inputs:
 - id: in_split_fast_x
   doc: ''

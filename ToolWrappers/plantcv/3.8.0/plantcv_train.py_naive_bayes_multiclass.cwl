@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plantcv_train.py_naive_bayes_multiclass.cwl
+id: plantcv_train.py_naive_bayes_multiclass.cwl
 inputs:
 - id: in_file
   doc: "Input file containing a table of pixel RGB values\nsampled for each input\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../staramr_search.cwl
+id: staramr_search.cwl
 inputs:
 - id: in_point_finder_organism
   doc: The organism to use for pointfinder {salmonella, campylobacter}. Defaults to

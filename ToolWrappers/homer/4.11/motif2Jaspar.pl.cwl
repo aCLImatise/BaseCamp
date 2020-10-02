@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../motif2Jaspar.pl.cwl
+id: motif2Jaspar.pl.cwl
 inputs:
 - id: in_motif_file
   doc: ''

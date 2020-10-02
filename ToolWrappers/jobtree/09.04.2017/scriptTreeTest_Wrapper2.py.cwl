@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scriptTreeTest_Wrapper2.py.cwl
+id: scriptTreeTest_Wrapper2.py.cwl
 inputs:
 - id: in_logoff
   doc: Turn off logging. (default is CRITICAL)

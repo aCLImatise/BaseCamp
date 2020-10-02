@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../conus_fold_NUS.cwl
+id: conus_fold_NUS.cwl
 inputs:
 - id: in_options
   doc: ''

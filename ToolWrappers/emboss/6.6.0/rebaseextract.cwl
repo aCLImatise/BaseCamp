@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rebaseextract.cwl
+id: rebaseextract.cwl
 inputs: []
 outputs:
 - id: out_stdout

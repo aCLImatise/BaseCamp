@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tkpp.cwl
+id: tkpp.cwl
 inputs: []
 outputs:
 - id: out_stdout

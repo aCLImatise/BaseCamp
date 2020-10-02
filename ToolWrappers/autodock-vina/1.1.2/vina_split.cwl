@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vina_split.cwl
+id: vina_split.cwl
 inputs:
 - id: in_input
   doc: input to split (PDBQT)

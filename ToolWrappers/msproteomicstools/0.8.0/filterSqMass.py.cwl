@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterSqMass.py.cwl
+id: filterSqMass.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

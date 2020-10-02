@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DASpatch.cwl
+id: DASpatch.cwl
 inputs:
 - id: in_v
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_esl_histplot_datafile.cwl
+id: ssu_esl_histplot_datafile.cwl
 inputs:
 - id: in_options
   doc: ''

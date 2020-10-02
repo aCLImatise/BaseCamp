@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../load_fusion_chrom_seq_std.cwl
+id: load_fusion_chrom_seq_std.cwl
 inputs: []
 outputs:
 - id: out_stdout

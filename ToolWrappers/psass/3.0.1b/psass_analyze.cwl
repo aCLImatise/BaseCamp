@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../psass_analyze.cwl
+id: psass_analyze.cwl
 inputs:
 - id: in_pool_one
   doc: TEXT         Name of the first pool (order in the pileup file)                        [females]

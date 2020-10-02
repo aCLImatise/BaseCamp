@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funcannot.cwl
+id: funcannot.cwl
 inputs:
 - id: in_geneid
   doc: specifies common genelist identifier in VCF file(s)

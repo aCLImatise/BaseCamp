@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../puncsamfile.sh.cwl
+id: puncsamfile.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

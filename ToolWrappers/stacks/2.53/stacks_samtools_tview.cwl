@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stacks_samtools_tview.cwl
+id: stacks_samtools_tview.cwl
 inputs:
 - id: in_write_alignments
   doc: (This is a convenience wrapper around samtools-tview.)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtk_pe_test.cwl
+id: svtk_pe_test.cwl
 inputs:
 - id: in_window_out
   doc: "Window outside breakpoint to query for discordant\npairs. [500]"

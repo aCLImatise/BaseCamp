@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5import_forms..cwl
+id: h5import_forms..cwl
 inputs:
 - id: in_h_five_import
   doc: ''

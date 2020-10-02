@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vk_calc.cwl
+id: vk_calc.cwl
 inputs:
 - id: in_frequency
   doc: ''

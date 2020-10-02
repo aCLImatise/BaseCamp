@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compareMotifs.pl.cwl
+id: compareMotifs.pl.cwl
 inputs:
 - id: in_reduce_thresh
   doc: '<#> (Similarity Threshold used to remove similar motifs, default: 0.6)'

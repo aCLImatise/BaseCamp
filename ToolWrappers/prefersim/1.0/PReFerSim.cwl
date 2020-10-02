@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PReFerSim.cwl
+id: PReFerSim.cwl
 inputs: []
 outputs:
 - id: out_stdout

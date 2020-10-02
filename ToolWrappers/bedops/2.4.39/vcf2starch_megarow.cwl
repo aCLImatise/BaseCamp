@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2starch_megarow.cwl
+id: vcf2starch_megarow.cwl
 inputs:
 - id: in_keep_header
   doc: ', which munges these data into pseudo-elements'

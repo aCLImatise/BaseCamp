@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FrameBot_rdmselect.cwl
+id: FrameBot_rdmselect.cwl
 inputs:
 - id: in_num_selection
   doc: number of sequence IDs for each sample. Default is the smallest sample size

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preprocessor.py.cwl
+id: preprocessor.py.cwl
 inputs:
 - id: in_input_file
   doc: "Input file in BAM format. BAM file must be sorted and\nindexed using samTools.\

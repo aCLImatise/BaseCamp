@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_sigcleave.cwl
+id: _sigcleave.cwl
 inputs:
 - id: in_min_weight
   doc: "float      [3.5] Minimum scoring weight value for the\npredicted cleavage\

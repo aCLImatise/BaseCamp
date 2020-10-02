@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcxload.cwl
+id: mcxload.cwl
 inputs:
 - id: in_abc
   doc: input file in abc format

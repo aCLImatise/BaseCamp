@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sample2markers.py.cwl
+id: sample2markers.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

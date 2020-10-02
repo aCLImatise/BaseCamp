@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scrub_sample_GFF_junctions.py.cwl
+id: scrub_sample_GFF_junctions.py.cwl
 inputs:
 - id: in_min_sample
   doc: 'Minimum number of samples as evidence (default: 1)'
@@ -16,21 +16,6 @@ inputs:
   type: File
   inputBinding:
     prefix: --scrubbed_junction_file
-- id: in_positional_arguments
-  doc: 'positional arguments:'
-  type: string
-  inputBinding:
-    position: 0
-- id: in_sample_config
-  doc: summary_report
-  type: string
-  inputBinding:
-    position: 1
-- id: in_optional_arguments
-  doc: 'optional arguments:'
-  type: string
-  inputBinding:
-    position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream

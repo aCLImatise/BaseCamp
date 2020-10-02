@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../emtools.py.cwl
+id: emtools.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

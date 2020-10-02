@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pKiss.cwl
+id: pKiss.cwl
 inputs:
 - id: in_mode
   doc: ": Select the computation mode. Available modes are \"mfe\",\n\"subopt\", \"\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fa.cwl
+id: fa.cwl
 inputs:
 - id: in_verbose
   doc: "!      Debug info (default '0')."

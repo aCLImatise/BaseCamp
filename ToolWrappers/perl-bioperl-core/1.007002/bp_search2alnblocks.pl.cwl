@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_search2alnblocks.pl.cwl
+id: bp_search2alnblocks.pl.cwl
 inputs:
 - id: in_max_evalue
   doc: Maximum E-value for an HSP

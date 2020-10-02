@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../loadBalanceMers.pl.cwl
+id: loadBalanceMers.pl.cwl
 inputs:
 - id: in_mer_count_file
   doc: ''

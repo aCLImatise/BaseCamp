@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jjs.cwl
+id: jjs.cwl
 inputs:
 - id: in_dnamevalue_set_property
   doc: (-Dname=value. Set a system property. This option can be repeated.)

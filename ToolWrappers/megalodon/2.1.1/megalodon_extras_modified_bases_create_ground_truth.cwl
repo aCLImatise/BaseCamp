@@ -1,8 +1,10 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_modified_bases_create_ground_truth.cwl
+id: megalodon_extras_modified_bases_create_ground_truth.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_bed_methyl_files
+  doc: "BED_METHYL_FILES\n[BED_METHYL_FILES ...]\n[--coverage-threshold COVERAGE_THRESHOLD]\n\
+    [--pct-mod-thresholds PCT_MOD_THRESHOLDS PCT_MOD_THRESHOLDS]\n[--out-csv OUT_CSV]\n\
+    [--strand-offset STRAND_OFFSET]"
   type: boolean
   inputBinding:
     prefix: --bed-methyl-files
@@ -22,11 +24,6 @@ inputs:
   type: File
   inputBinding:
     prefix: --out-csv
-- id: in_var_4
-  doc: '[BED_METHYL_FILES ...]'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_ground_truth_modifications_dot_csv
   doc: --strand-offset STRAND_OFFSET
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sumaclust.cwl
+id: sumaclust.cwl
 inputs:
 - id: in_reference_sequence_shortest
   doc: ': Reference sequence length is the shortest.'

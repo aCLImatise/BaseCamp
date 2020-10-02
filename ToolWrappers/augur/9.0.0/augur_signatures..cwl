@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augur_signatures..cwl
+id: augur_signatures..cwl
 inputs:
 - id: in_augur
   doc: ''

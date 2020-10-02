@@ -20,13 +20,11 @@ task PhyloFlashComparepl {
     String? cluster_tax_a
     Boolean? long_tax_names
     Int? min_ntu_count
-    String barplot
     String heat_map
     String format_dot
   }
   command <<<
     phyloFlash_compare_pl \
-      ~{barplot} \
       ~{heat_map} \
       ~{format_dot} \
       ~{if defined(zip) then ("--zip " +  '"' + zip + '"') else ""} \
@@ -67,7 +65,6 @@ task PhyloFlashComparepl {
     cluster_tax_a: "Clustering method to use for clustering/sorting taxa. Options:\\n\\\"alpha\\\", \\\"ward\\\", \\\"single\\\", \\\"complete\\\", \\\"average\\\", \\\"mcquitty\\\",\\n\\\"median\\\", \\\"centroid\\\".\\nDefault: \\\"ward.D\\\""
     long_tax_names: "Do not shorten taxa names to two last groups"
     min_ntu_count: "Sum up NTUs with fewer counts into a pseudo-NTU \\\"Other\\\".\\nDefault: 50\\n"
-    barplot: "phyloFlash_compare.pl --csv"
     heat_map: "# phyloFlash tar.gz archives as input"
     format_dot: "--csv FILES\\nComma-separated list of NTU abundance tables from phyloFlash\\nruns. The files should be named\\n[LIBNAME].phyloFlash.NTUabundance.csv or\\n[LIBNAME].phyloFlash.NTUfull_abundance.csv"
   }

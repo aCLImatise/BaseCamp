@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../imgsize.cwl
+id: imgsize.cwl
 inputs:
 - id: in_more_options
   doc: ''

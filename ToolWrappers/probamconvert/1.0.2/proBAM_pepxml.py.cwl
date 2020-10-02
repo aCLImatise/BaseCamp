@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proBAM_pepxml.py.cwl
+id: proBAM_pepxml.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

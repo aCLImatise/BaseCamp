@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../2bwt_builder.cwl
+id: 2bwt_builder.cwl
 inputs:
 - id: in_sequence_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../whiptail.cwl
+id: whiptail.cwl
 inputs:
 - id: in_msgbox
   doc: <height> <width>

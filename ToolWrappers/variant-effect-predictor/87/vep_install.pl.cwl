@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vep_install.pl.cwl
+id: vep_install.pl.cwl
 inputs:
 - id: in__destdir_directory
   doc: "| --DESTDIR     Set destination directory for API install (default = './')"

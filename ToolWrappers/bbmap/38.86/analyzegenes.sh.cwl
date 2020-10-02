@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyzegenes.sh.cwl
+id: analyzegenes.sh.cwl
 inputs:
 - id: in_in
   doc: ''

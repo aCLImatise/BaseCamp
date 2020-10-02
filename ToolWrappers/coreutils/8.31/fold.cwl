@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fold.cwl
+id: fold.cwl
 inputs:
 - id: in_bytes
   doc: count bytes rather than columns

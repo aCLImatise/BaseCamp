@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_MUMMER2MASK.cwl
+id: gdtools_MUMMER2MASK.cwl
 inputs:
 - id: in_reference
   doc: File containing reference sequences in GenBank, GFF3, or FASTA format. Option

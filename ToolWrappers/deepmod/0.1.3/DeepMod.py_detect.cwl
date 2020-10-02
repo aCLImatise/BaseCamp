@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DeepMod.py_detect.cwl
+id: DeepMod.py_detect.cwl
 inputs:
 - id: in_ref
   doc: The reference sequence

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../knock_knock_directory.cwl
+id: knock_knock_directory.cwl
 inputs:
 - id: in_knock_knock
   doc: ''

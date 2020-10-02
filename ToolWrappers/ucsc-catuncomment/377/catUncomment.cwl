@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../catUncomment.cwl
+id: catUncomment.cwl
 inputs: []
 outputs:
 - id: out_stdout

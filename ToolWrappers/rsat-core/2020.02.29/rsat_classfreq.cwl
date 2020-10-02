@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_classfreq.cwl
+id: rsat_classfreq.cwl
 inputs:
 - id: in_help
   doc: (must be first argument) display options

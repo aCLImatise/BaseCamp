@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isONcorrect.cwl
+id: isONcorrect.cwl
 inputs:
 - id: in_fast_q
   doc: 'Path to input fastq file with reads (default: False)'

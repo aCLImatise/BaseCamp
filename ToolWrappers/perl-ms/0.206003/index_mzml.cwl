@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../index_mzml.cwl
+id: index_mzml.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyatac_counts.cwl
+id: pyatac_counts.cwl
 inputs:
 - id: in_bam
   doc: Aligned reads

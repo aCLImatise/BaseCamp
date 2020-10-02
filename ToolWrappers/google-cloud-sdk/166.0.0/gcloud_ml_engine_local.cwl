@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_ml_engine_local.cwl
+id: gcloud_ml_engine_local.cwl
 inputs:
 - id: in_optional
   doc: ''

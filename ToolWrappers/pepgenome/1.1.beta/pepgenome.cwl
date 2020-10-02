@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pepgenome.cwl
+id: pepgenome.cwl
 inputs:
 - id: in_chr
   doc: 'Export chr prefix Allowed 0, 1  (default: 0)'

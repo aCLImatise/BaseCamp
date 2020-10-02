@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wcslint.cwl
+id: wcslint.cwl
 inputs:
 - id: in_filename
   doc: Path to FITS file to check

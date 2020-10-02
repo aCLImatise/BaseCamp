@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../poppunk.cwl
+id: poppunk.cwl
 inputs:
 - id: in_easy_run
   doc: Create clusters from assemblies with default settings

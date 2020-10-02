@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dynalign_ii.cwl
+id: dynalign_ii.cwl
 inputs:
 - id: in_config
   doc: ''

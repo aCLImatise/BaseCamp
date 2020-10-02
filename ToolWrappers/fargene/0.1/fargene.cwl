@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fargene.cwl
+id: fargene.cwl
 inputs:
 - id: in_in_files
   doc: "Input file(s) to be searched. Could either be in FASTA\nor FASTQ format."

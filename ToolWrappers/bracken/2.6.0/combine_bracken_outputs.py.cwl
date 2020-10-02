@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combine_bracken_outputs.py.cwl
+id: combine_bracken_outputs.py.cwl
 inputs:
 - id: in_files
   doc: Bracken output files to combine.

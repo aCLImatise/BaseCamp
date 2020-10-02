@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parsecasm.cwl
+id: parsecasm.cwl
 inputs:
 - id: in_no_fast_a
   doc: Do not create .fasta output

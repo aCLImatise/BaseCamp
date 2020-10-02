@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IDRipper.cwl
+id: IDRipper.cwl
 inputs:
 - id: in_in
   doc: "*        Input file, in which the protein/peptide identifications must be\

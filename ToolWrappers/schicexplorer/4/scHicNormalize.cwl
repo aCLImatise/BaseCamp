@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scHicNormalize.cwl
+id: scHicNormalize.cwl
 inputs:
 - id: in_schic_matrix_m
   doc: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction matrices\

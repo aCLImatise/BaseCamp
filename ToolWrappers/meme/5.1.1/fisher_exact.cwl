@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fisher_exact.cwl
+id: fisher_exact.cwl
 inputs:
 - id: in_compute
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../panX.py.cwl
+id: panX.py.cwl
 inputs:
 - id: in_fn
   doc: ', --folder_name   the absolute path for project folder'
@@ -283,11 +283,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --clean_temporary_files
-- id: in_inference
-  doc: -dgl, --disable_gain_loss
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

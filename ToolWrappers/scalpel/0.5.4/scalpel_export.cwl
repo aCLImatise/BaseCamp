@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scalpel_export.cwl
+id: scalpel_export.cwl
 inputs:
 - id: in_verbose
   doc: ': verbose mode'

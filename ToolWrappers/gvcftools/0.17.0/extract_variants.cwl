@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_variants.cwl
+id: extract_variants.cwl
 inputs:
 - id: in_skip_header
   doc: Write gVCF output without header

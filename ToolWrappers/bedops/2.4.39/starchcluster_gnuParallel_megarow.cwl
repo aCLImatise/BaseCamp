@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../starchcluster_gnuParallel_megarow.cwl
+id: starchcluster_gnuParallel_megarow.cwl
 inputs: []
 outputs:
 - id: out_stdout

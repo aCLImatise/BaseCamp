@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cooler_zoomify.cwl
+id: cooler_zoomify.cwl
 inputs:
 - id: in_nproc
   doc: "Number of processes to use for batch processing\nchunks of pixels [default:\

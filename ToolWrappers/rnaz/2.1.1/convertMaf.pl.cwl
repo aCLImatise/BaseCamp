@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertMaf.pl.cwl
+id: convertMaf.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

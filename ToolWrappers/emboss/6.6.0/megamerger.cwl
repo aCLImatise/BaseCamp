@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megamerger.cwl
+id: megamerger.cwl
 inputs:
 - id: in_word_size
   doc: integer    [20] Word size (Integer 2 or more)

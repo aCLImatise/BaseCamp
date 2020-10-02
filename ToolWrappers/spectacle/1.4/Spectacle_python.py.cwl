@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Spectacle_python.py.cwl
+id: Spectacle_python.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

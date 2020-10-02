@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_makeAlphaNumericHeaders.py.cwl
+id: cactus_makeAlphaNumericHeaders.py.cwl
 inputs:
 - id: in_fast_a_input_file
   doc: ''

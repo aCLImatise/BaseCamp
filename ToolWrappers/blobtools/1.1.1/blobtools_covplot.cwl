@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blobtools_covplot.cwl
+id: blobtools_covplot.cwl
 inputs:
 - id: in_in_file
   doc: BlobDB file

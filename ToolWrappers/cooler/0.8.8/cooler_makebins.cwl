@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cooler_makebins.cwl
+id: cooler_makebins.cwl
 inputs:
 - id: in_out
   doc: Output file (defaults to stdout)

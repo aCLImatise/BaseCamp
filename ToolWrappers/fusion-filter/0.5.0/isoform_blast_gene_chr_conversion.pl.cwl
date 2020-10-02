@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isoform_blast_gene_chr_conversion.pl.cwl
+id: isoform_blast_gene_chr_conversion.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

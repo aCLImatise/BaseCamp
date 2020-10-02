@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maskFastaFromBed.cwl
+id: maskFastaFromBed.cwl
 inputs:
 - id: in_fi
   doc: Input FASTA file

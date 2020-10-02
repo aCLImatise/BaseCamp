@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_flush_mem.cwl
+id: arb_flush_mem.cwl
 inputs: []
 outputs:
 - id: out_stdout

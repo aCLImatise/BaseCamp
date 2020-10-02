@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_coverage.cwl
+id: samtools_coverage.cwl
 inputs:
 - id: in_bam_list
   doc: list of input BAM filenames, one per line

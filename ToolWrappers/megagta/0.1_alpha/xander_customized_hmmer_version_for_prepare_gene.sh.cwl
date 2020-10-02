@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xander_customized_hmmer_version_for_prepare_gene.sh.cwl
+id: xander_customized_hmmer_version_for_prepare_gene.sh.cwl
 inputs:
 - id: in_gene
   doc: ''

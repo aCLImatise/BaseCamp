@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_ml_engine_models.cwl
+id: gcloud_ml_engine_models.cwl
 inputs:
 - id: in_add_i_am_policy_binding
   doc: Add IAM policy binding to a model.

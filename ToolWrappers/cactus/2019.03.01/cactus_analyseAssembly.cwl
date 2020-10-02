@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_analyseAssembly.cwl
+id: cactus_analyseAssembly.cwl
 inputs: []
 outputs:
 - id: out_stdout

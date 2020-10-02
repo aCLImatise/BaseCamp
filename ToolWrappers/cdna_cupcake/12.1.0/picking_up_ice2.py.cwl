@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../picking_up_ice2.py.cwl
+id: picking_up_ice2.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

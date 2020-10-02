@@ -74,7 +74,6 @@ task ConterminatorDna {
     Directory? ncbi_tax_dump
     File? tax_mapping_file
     Int? blacklist
-    Int? kingdoms
     File? sub_mat
     Int? max_seq_len
     Int? db_load_mode
@@ -166,7 +165,6 @@ task ConterminatorDna {
       ~{if defined(ncbi_tax_dump) then ("--ncbi-tax-dump " +  '"' + ncbi_tax_dump + '"') else ""} \
       ~{if defined(tax_mapping_file) then ("--tax-mapping-file " +  '"' + tax_mapping_file + '"') else ""} \
       ~{if defined(blacklist) then ("--blacklist " +  '"' + blacklist + '"') else ""} \
-      ~{if defined(kingdoms) then ("--kingdoms " +  '"' + kingdoms + '"') else ""} \
       ~{if defined(sub_mat) then ("--sub-mat " +  '"' + sub_mat + '"') else ""} \
       ~{if defined(max_seq_len) then ("--max-seq-len " +  '"' + max_seq_len + '"') else ""} \
       ~{if defined(db_load_mode) then ("--db-load-mode " +  '"' + db_load_mode + '"') else ""} \
@@ -257,7 +255,6 @@ task ConterminatorDna {
     ncbi_tax_dump: "NCBI tax dump directory. The tax dump can be downloaded here \\\"ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz\\\" []"
     tax_mapping_file: "File to map sequence identifer to taxonomical identifier []"
     blacklist: "Comma separated list of ignored taxa in LCA computation [10239,12908,28384,81077,11632,340016,61964,48479,48510]"
-    kingdoms: "[(2||2157),4751,33208,33090,(2759&&!4751&&!33208&&!33090)]"
     sub_mat: "amino acid substitution matrix file [nucl:nucleotide.out,aa:blosum62.out]"
     max_seq_len: "maximum sequence length (range 1-32768]) [1000]"
     db_load_mode: "Database preload mode 0: auto, 1: fread, 2: mmap, 3: mmap+touch [0]"

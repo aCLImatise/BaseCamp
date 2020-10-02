@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biscuit_bsconv.cwl
+id: biscuit_bsconv.cwl
 inputs:
 - id: in_region
   doc: region.

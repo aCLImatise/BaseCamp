@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gthgetseq.cwl
+id: gthgetseq.cwl
 inputs:
 - id: in_get_cdna
   doc: "get cDNA/EST sequences\ndefault: no"

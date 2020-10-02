@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scaffoldRange2Ungapped.cwl
+id: scaffoldRange2Ungapped.cwl
 inputs:
 - id: in_bank
   doc: bank where assembly is stored

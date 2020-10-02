@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metfrag.cwl
+id: metfrag.cwl
 inputs:
 - id: in_jar
   doc: ''

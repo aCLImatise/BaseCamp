@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../padaligner.cwl
+id: padaligner.cwl
 inputs: []
 outputs:
 - id: out_stdout

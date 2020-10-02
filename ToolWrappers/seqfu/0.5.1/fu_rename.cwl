@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fu_rename.cwl
+id: fu_rename.cwl
 inputs: []
 outputs:
 - id: out_stdout

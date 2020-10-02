@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnaclustDecodeTable.cwl
+id: rnaclustDecodeTable.cwl
 inputs: []
 outputs:
 - id: out_stdout

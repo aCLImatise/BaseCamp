@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dimspy_get_average_peaklist.cwl
+id: dimspy_get_average_peaklist.cwl
 inputs:
 - id: in_input
   doc: "Single or Multiple HDF5 files that contain a peak\nmatrix object from one\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktImportXML.cwl
+id: ktImportXML.cwl
 inputs:
 - id: in_xml_file
   doc: "A file containing XML tags that specify chart attributes and\ndescribe the\

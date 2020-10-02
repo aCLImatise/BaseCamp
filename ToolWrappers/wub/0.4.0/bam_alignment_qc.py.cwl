@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_alignment_qc.py.cwl
+id: bam_alignment_qc.py.cwl
 inputs:
 - id: in_reference_fasta
   doc: Reference fasta.

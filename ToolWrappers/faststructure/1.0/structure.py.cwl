@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../structure.py.cwl
+id: structure.py.cwl
 inputs:
 - id: in_number_of_populations
   doc: (number of populations)

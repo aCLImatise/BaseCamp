@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lwp_download.cwl
+id: lwp_download.cwl
 inputs:
 - id: in_a
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_export_export_fasta.cwl
+id: chakin_export_export_fasta.cwl
 inputs:
 - id: in_file
   doc: If true, write to files in CWD

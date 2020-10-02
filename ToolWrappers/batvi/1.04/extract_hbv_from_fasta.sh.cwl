@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_hbv_from_fasta.sh.cwl
+id: extract_hbv_from_fasta.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

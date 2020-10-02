@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tgt_shift_boundaries.py_file.cwl
+id: tgt_shift_boundaries.py_file.cwl
 inputs:
 - id: in_o
   doc: ''

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../agfusion_annotate.cwl
+id: agfusion_annotate.cwl
 inputs:
-- id: in_j_three
-  doc: '[-nc]'
-  type: long
-  inputBinding:
-    prefix: -j3
 - id: in_gene_five_prime
   doc: 5' gene partner
   type: long

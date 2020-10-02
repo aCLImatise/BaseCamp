@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treeannotator.cwl
+id: treeannotator.cwl
 inputs:
 - id: in_heights
   doc: option of 'keep' (default), 'median', 'mean' or 'ca'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_postprocess_exist.cwl
+id: mb_postprocess_exist.cwl
 inputs:
 - id: in_prefix
   doc: ''

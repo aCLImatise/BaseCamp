@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blastMapAnalyzer2.pl.cwl
+id: blastMapAnalyzer2.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

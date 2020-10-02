@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_meraculous.sh.cwl
+id: run_meraculous.sh.cwl
 inputs:
 - id: in_config_config_file
   doc: '|config <config file>         : user config file'

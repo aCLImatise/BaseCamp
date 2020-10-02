@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_select_by_key.cwl
+id: gtftk_select_by_key.cwl
 inputs:
 - id: in_value
   doc: 'A comma-separated list of values. (default: None)'

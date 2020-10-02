@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../soap.cwl
+id: soap.cwl
 inputs:
 - id: in_str_query_file
   doc: <str>   query a file, *.fq, *.fa

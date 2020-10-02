@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crTreeIndexBed.cwl
+id: crTreeIndexBed.cwl
 inputs:
 - id: in_block_size
   doc: '- number of children per node in index tree. Default 1024'

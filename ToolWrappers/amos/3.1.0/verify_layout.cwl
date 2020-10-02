@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../verify_layout.cwl
+id: verify_layout.cwl
 inputs:
 - id: in_verbose
   doc: "the coordinates and bases for each read in layout\nreadid rc offset roffset\

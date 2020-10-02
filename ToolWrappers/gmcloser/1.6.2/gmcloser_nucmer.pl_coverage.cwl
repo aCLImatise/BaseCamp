@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmcloser_nucmer.pl_coverage.cwl
+id: gmcloser_nucmer.pl_coverage.cwl
 inputs:
 - id: in_target_s_caf
   doc: 'is not specied:'

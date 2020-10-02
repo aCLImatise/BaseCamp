@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uchime.cwl
+id: uchime.cwl
 inputs:
 - id: in_input
   doc: "Query sequences in FASTA format.\nIf the --db option is not specificed, uchime\
@@ -102,11 +102,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --maxp
-- id: in_min_len
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --minlen
 - id: in_maxlen
   doc: "Minimum and maximum sequence length. Defaults 10, 10000.\nApplies to both\
     \ query and reference sequences."
@@ -144,6 +139,686 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --self
+- id: in_ab_sort
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --absort
+- id: in_abx
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --abx
+- id: in_all_pairs
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --allpairs
+- id: in_alpha
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --alpha
+- id: in_band
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --band
+- id: in_blast_six_out
+  doc: help
+  type: long
+  inputBinding:
+    prefix: --blast6out
+- id: in_blast_out
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --blastout
+- id: in_bump
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --bump
+- id: in_cc
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --cc
+- id: in_chain_evalue
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --chain_evalue
+- id: in_chain_target_fract
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --chain_targetfract
+- id: in_chain_hits
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --chainhits
+- id: in_chain_out
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --chainout
+- id: in_cl_str_two_uc
+  doc: help
+  type: long
+  inputBinding:
+    prefix: --clstr2uc
+- id: in_clump
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --clump
+- id: in_clump_two_fast_a
+  doc: help
+  type: long
+  inputBinding:
+    prefix: --clump2fasta
+- id: in_clump_fast_a
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --clumpfasta
+- id: in_clump_out
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --clumpout
+- id: in_cluster
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --cluster
+- id: in_compiler_info
+  doc: 'Write info about compiler types and #defines to stdout.'
+  type: boolean
+  inputBinding:
+    prefix: --compilerinfo
+- id: in_compute_kl
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --computekl
+- id: in_db_step
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --dbstep
+- id: in_de_rep
+  doc: help
+  type: boolean
+  inputBinding:
+    prefix: --derep
+- id: in_diff_char
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --diffchar
+- id: in_doug
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --doug
+- id: in_drop_pct
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --droppct
+- id: in_evalue
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --evalue
+- id: in_evalue_g
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --evalue_g
+- id: in_exact
+  doc: help
+  type: boolean
+  inputBinding:
+    prefix: --exact
+- id: in_fast_a_pairs
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --fastapairs
+- id: in_fast_q_two_fast_a
+  doc: help
+  type: long
+  inputBinding:
+    prefix: --fastq2fasta
+- id: in_find_orfs
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --findorfs
+- id: in_frame
+  doc: help
+  type: long
+  inputBinding:
+    prefix: --frame
+- id: in_fs_penalty
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --fspenalty
+- id: in_gap_ext
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --gapext
+- id: in_gap_open
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --gapopen
+- id: in_get_seqs
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --getseqs
+- id: in_global
+  doc: help
+  type: boolean
+  inputBinding:
+    prefix: --global
+- id: in_hash
+  doc: help
+  type: boolean
+  inputBinding:
+    prefix: --hash
+- id: in_hash_size
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --hashsize
+- id: in_hire_out
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --hireout
+- id: in_hsp_alpha
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --hspalpha
+- id: in_id
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --id
+- id: in_id_char
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --idchar
+- id: in_id_def
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --iddef
+- id: in_id_prefix
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --idprefix
+- id: in_ids
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --ids
+- id: in_id_suffix
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --idsuffix
+- id: in_index_stats
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --indexstats
+- id: in_k
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --k
+- id: in_ka_db_size
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --ka_dbsize
+- id: in_ka_gapped_k
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --ka_gapped_k
+- id: in_ka_gapped_lambda
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --ka_gapped_lambda
+- id: in_ka_un_gapped_k
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --ka_ungapped_k
+- id: in_ka_un_gapped_lambda
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --ka_ungapped_lambda
+- id: in_labels
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --labels
+- id: in_l_ext
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --lext
+- id: in_local
+  doc: help
+  type: boolean
+  inputBinding:
+    prefix: --local
+- id: in_logo_pts
+  doc: Log options.
+  type: boolean
+  inputBinding:
+    prefix: --logopts
+- id: in_l_open
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --lopen
+- id: in_make_index
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --makeindex
+- id: in_match
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --match
+- id: in_matrix
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --matrix
+- id: in_max_two
+  doc: help
+  type: long
+  inputBinding:
+    prefix: --max2
+- id: in_max_accepts
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --maxaccepts
+- id: in_max_clump
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --maxclump
+- id: in_max_ovd
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --maxovd
+- id: in_max_poly
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --maxpoly
+- id: in_maxq_gap
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --maxqgap
+- id: in_max_rejects
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --maxrejects
+- id: in_max_span_one
+  doc: help
+  type: long
+  inputBinding:
+    prefix: --maxspan1
+- id: in_max_span_two
+  doc: help
+  type: long
+  inputBinding:
+    prefix: --maxspan2
+- id: in_max_targets
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --maxtargets
+- id: in_max_t_gap
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --maxtgap
+- id: in_mcc
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --mcc
+- id: in_merge_clumps
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --mergeclumps
+- id: in_mergesort
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --mergesort
+- id: in_min_codons
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --mincodons
+- id: in_min_diffs
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --mindiffs
+- id: in_minh_sp
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --minhsp
+- id: in_min_len
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --minlen
+- id: in_minor_f_cov
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --minorfcov
+- id: in_min_span_ratio_one
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --minspanratio1
+- id: in_min_span_ratio_two
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --minspanratio2
+- id: in_mismatch
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --mismatch
+- id: in_mkc_test
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --mkctest
+- id: in_optimal
+  doc: help
+  type: boolean
+  inputBinding:
+    prefix: --optimal
+- id: in_orf_style
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --orfstyle
+- id: in_otu_sort
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --otusort
+- id: in_output
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --output
+- id: in_pro_bmx
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --probmx
+- id: in_query
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --query
+- id: in_query_len
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --querylen
+- id: in_rand_seed
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --randseed
+- id: in_realign
+  doc: help
+  type: boolean
+  inputBinding:
+    prefix: --realign
+- id: in_row_len
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --rowlen
+- id: in_secs
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --secs
+- id: in_seeds
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --seeds
+- id: in_seeds_out
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --seedsout
+- id: in_seed_tone
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --seedt1
+- id: in_seed_t_two
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --seedt2
+- id: in_sim_cl
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --simcl
+- id: in_sort
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --sort
+- id: in_sort_uc
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --sortuc
+- id: in_sparse_dist
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --sparsedist
+- id: in_sparse_dist_params
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --sparsedistparams
+- id: in_split
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --split
+- id: in_ss_penalty
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --sspenalty
+- id: in_star_align
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --staralign
+- id: in_step_words
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --stepwords
+- id: in_strand
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --strand
+- id: in_target_fract
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --targetfract
+- id: in_target_len
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --targetlen
+- id: in_tmpdir
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --tmpdir
+- id: in_trace_state
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --tracestate
+- id: in_uc
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --uc
+- id: in_uc_two_cl_str
+  doc: help
+  type: long
+  inputBinding:
+    prefix: --uc2clstr
+- id: in_uc_two_fast_a
+  doc: help
+  type: long
+  inputBinding:
+    prefix: --uc2fasta
+- id: in_uc_two_fast_a_x
+  doc: help
+  type: long
+  inputBinding:
+    prefix: --uc2fastax
+- id: in_u_chime
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --uchime
+- id: in_u_hire
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --uhire
+- id: in_un_gapped
+  doc: help
+  type: boolean
+  inputBinding:
+    prefix: --ungapped
+- id: in_user_fields
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --userfields
+- id: in_user_out
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --userout
+- id: in_user_sort
+  doc: help
+  type: boolean
+  inputBinding:
+    prefix: --usersort
+- id: in_us_link
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --uslink
+- id: in_u_tax
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --utax
+- id: in_w
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --w
+- id: in_weak_evalue
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --weak_evalue
+- id: in_weak_id
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --weak_id
+- id: in_x_drop_g
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --xdrop_g
+- id: in_x_drop_nw
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --xdrop_nw
+- id: in_x_drop_u
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --xdrop_u
+- id: in_x_drop_ug
+  doc: help
+  type: double
+  inputBinding:
+    prefix: --xdrop_ug
+- id: in_x_frame
+  doc: help
+  type: string
+  inputBinding:
+    prefix: --xframe
+- id: in_xl_at
+  doc: help
+  type: boolean
+  inputBinding:
+    prefix: --xlat
 outputs:
 - id: out_stdout
   doc: Standard output stream

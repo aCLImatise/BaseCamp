@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xcf2pnm.cwl
+id: xcf2pnm.cwl
 inputs:
 - id: in_show_version_version
   doc: show version (--version)

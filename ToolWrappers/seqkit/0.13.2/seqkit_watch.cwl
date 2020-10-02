@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_watch.cwl
+id: seqkit_watch.cwl
 inputs:
 - id: in_bins
   doc: number of histogram bins (default -1)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_shuffle_rogue.cwl
+id: goalign_shuffle_rogue.cwl
 inputs:
 - id: in_length
   doc: Proportion of the sites to shuffle (default 0.5)

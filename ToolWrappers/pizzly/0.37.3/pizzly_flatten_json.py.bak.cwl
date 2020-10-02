@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pizzly_flatten_json.py.bak.cwl
+id: pizzly_flatten_json.py.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

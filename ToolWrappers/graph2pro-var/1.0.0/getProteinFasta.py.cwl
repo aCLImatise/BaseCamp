@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getProteinFasta.py.cwl
+id: getProteinFasta.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SeedListGenerator.cwl
+id: SeedListGenerator.cwl
 inputs:
 - id: in_in
   doc: "*         Input file (see below for details) (valid formats: 'mzML', 'idXML',\

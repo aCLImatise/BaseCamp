@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blasr.cwl
+id: blasr.cwl
 inputs:
 - id: in_sa
   doc: "Use the suffix array 'sa' for detecting matches\nbetween the reads and the\

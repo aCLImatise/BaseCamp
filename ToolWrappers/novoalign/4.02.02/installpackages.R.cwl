@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../installpackages.R.cwl
+id: installpackages.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

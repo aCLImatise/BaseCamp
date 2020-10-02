@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_disk_types.cwl
+id: gcloud_compute_disk_types.cwl
 inputs:
 - id: in_optional
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CMCWStoCMCV.cwl
+id: CMCWStoCMCV.cwl
 inputs:
 - id: in_cm_compare_result_file
   doc: Path to CMCompare result file

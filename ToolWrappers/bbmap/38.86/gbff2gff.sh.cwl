@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gbff2gff.sh.cwl
+id: gbff2gff.sh.cwl
 inputs:
 - id: in_gb_ff_file
   doc: ''

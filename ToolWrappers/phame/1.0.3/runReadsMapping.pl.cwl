@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runReadsMapping.pl.cwl
+id: runReadsMapping.pl.cwl
 inputs:
 - id: in_referencefasta
   doc: <reference_fasta>

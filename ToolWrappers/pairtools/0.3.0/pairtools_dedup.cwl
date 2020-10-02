@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairtools_dedup.cwl
+id: pairtools_dedup.cwl
 inputs:
 - id: in_output
   doc: "output file for pairs after duplicate\nremoval. If the path ends with .gz\

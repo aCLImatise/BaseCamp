@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfjoincalls.cwl
+id: vcfjoincalls.cwl
 inputs: []
 outputs:
 - id: out_stdout

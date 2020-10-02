@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../align2hints.pl.cwl
+id: align2hints.pl.cwl
 inputs:
 - id: in_skip_alignment_out
   doc: '... -o gthfile'
   type: boolean
   inputBinding:
     prefix: -skipalignmentout
-- id: in_prg
-  doc: '|exonerate|spaln|scipio'
-  type: string
-  inputBinding:
-    prefix: --prg
 - id: in_in
   doc: input file from gth (gff3), spaln (gff3) or exonerate
   type: boolean
@@ -37,6 +32,12 @@ inputs:
   type: long
   inputBinding:
     prefix: --priority
+- id: in_prg
+  doc: "Alignment program of input file, either 'gth',\n'spaln', 'exonerate', 'scipio',\
+    \ or 'gemoma'."
+  type: File
+  inputBinding:
+    prefix: --prg
 - id: in_source
   doc: Source identifier (default 'P')
   type: string

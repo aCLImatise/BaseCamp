@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmscan.cwl
+id: cmscan.cwl
 inputs:
 - id: in_configure_cm_glocal
   doc: ': configure CM for glocal alignment [default: local]'

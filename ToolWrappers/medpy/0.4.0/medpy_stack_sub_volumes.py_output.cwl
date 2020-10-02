@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_stack_sub_volumes.py_output.cwl
+id: medpy_stack_sub_volumes.py_output.cwl
 inputs:
 - id: in_r
   doc: ''

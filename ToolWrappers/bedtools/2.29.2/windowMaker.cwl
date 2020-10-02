@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../windowMaker.cwl
+id: windowMaker.cwl
 inputs:
 - id: in_genome_file_size
   doc: "Genome file size (see notes below).\nWindows will be created for each chromosome\
@@ -48,21 +48,21 @@ inputs:
   type: long
   inputBinding:
     prefix: -i
-- id: in_chr_one
-  doc: '249250621'
-  type: long
+- id: in_bed_tools
+  doc: ''
+  type: string
   inputBinding:
     position: 0
-- id: in_chr_two
-  doc: '243199373'
-  type: long
+- id: in_make_windows
+  doc: ''
+  type: string
   inputBinding:
     position: 1
-- id: in_chr_one_eight_gl_zero_zero_zero_two_zero_seven_random
-  doc: '4262'
-  type: long
+- id: in_or
+  doc: ''
+  type: string
   inputBinding:
-    position: 0
+    position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream

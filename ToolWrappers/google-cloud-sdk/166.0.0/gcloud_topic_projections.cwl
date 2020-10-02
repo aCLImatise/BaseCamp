@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_topic_projections.cwl
+id: gcloud_topic_projections.cwl
 inputs:
 - id: in_projections
   doc: "A projection is a list of keys that selects resource data values.\nProjections\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfutils.pl_subsam.cwl
+id: vcfutils.pl_subsam.cwl
 inputs:
 - id: in_in_dot_vcf
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RepeatModeler.cwl
+id: RepeatModeler.cwl
 inputs:
 - id: in_database
   doc: "The name of the sequence database to run an analysis on. This is the\nname\

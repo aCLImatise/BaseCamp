@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_matrix_by_distance.py.cwl
+id: filter_matrix_by_distance.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

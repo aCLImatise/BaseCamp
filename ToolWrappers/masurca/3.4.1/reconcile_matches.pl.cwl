@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reconcile_matches.pl.cwl
+id: reconcile_matches.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

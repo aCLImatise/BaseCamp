@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strainest_est.cwl
+id: strainest_est.cwl
 inputs:
 - id: in_quality_thr
   doc: 'base quality threshold  [default: 20]'

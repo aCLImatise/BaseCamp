@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../umis_bamtag.cwl
+id: umis_bamtag.cwl
 inputs:
 - id: in_sam
   doc: ''

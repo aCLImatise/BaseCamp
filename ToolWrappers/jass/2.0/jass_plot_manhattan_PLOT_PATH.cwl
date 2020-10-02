@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jass_plot_manhattan_PLOT_PATH.cwl
+id: jass_plot_manhattan_PLOT_PATH.cwl
 inputs:
 - id: in_plot_path
   doc: ''

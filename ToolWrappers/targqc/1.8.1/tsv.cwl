@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tsv.cwl
+id: tsv.cwl
 inputs:
 - id: in_quit_end_reached
   doc: Quit once the end of a file is reached

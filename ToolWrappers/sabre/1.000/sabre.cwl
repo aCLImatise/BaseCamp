@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sabre.cwl
+id: sabre.cwl
 inputs:
 - id: in_command
   doc: ''

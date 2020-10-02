@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioawk.cwl
+id: bioawk.cwl
 inputs:
 - id: in_f
   doc: ''

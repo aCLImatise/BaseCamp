@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_pepstats.cwl
+id: _pepstats.cwl
 inputs:
 - id: in_aa_data
   doc: datafile   [Eamino.dat] Amino acid properties

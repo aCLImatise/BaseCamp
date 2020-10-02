@@ -33,7 +33,7 @@ task SnaptoolsAlignpairedend {
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""}
   >>>
   parameter_meta {
-    input_fast_q_one: ""
+    input_fast_q_one: "INPUT_FASTQ2 --output-bam OUTPUT_BAM\\n[--aligner ALIGNER]\\n[--path-to-aligner PATH_TO_ALIGNER]\\n[--aligner-options ALIGNER_OPTIONS [ALIGNER_OPTIONS ...]]\\n[--read-fastq-command READ_FASTQ_COMMAND]\\n[--min-cov MIN_COV]\\n[--num-threads NUM_THREADS]\\n[--if-sort IF_SORT]\\n[--tmp-folder TMP_FOLDER]\\n[--overwrite OVERWRITE] [--verbose VERBOSE]"
     input_reference: "reference genome file contains the reference genome\\nthat reads are mapped against, the genome index must\\nbe under the same folder (default: None)"
     output_bam: "output bam file contains unfiltered alignments\\n(default: None)"
     aligner: "aligner to use. Currently, snaptools supports bwa,\\nbowtie, bowtie2 and minimap2. (default: bwa)"

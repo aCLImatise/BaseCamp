@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lofreq_somatic.cwl
+id: lofreq_somatic.cwl
 inputs:
 - id: in_verbose
   doc: Be verbose

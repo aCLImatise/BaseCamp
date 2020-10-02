@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_merStream.cwl
+id: test_merStream.cwl
 inputs: []
 outputs:
 - id: out_stdout

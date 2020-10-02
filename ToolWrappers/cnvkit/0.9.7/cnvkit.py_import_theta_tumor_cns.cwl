@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_import_theta_tumor_cns.cwl
+id: cnvkit.py_import_theta_tumor_cns.cwl
 inputs:
 - id: in_d
   doc: ''

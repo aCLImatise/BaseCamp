@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SplicedAlignment.pm.cwl
+id: SplicedAlignment.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

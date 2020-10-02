@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktremotemgr.cwl
+id: ktremotemgr.cwl
 inputs:
 - id: in_limit
   doc: ''

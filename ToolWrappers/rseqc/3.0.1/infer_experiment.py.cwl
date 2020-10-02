@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../infer_experiment.py.cwl
+id: infer_experiment.py.cwl
 inputs:
 - id: in_input_file
   doc: Input alignment file in SAM or BAM format

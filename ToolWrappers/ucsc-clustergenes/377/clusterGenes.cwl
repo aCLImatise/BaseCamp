@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clusterGenes.cwl
+id: clusterGenes.cwl
 inputs: []
 outputs:
 - id: out_stdout

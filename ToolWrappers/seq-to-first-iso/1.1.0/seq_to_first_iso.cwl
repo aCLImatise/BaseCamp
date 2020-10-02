@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq_to_first_iso.cwl
+id: seq_to_first_iso.cwl
 inputs:
 - id: in_output
   doc: name of output file

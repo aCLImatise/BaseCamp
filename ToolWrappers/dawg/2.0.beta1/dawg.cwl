@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dawg.cwl
+id: dawg.cwl
 inputs:
 - id: in_help_trick
   doc: display description of common control variables

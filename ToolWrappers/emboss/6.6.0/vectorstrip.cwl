@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vectorstrip.cwl
+id: vectorstrip.cwl
 inputs:
 - id: in_mismatch
   doc: "integer    [10] Max allowed % mismatch (Any integer\nvalue)"

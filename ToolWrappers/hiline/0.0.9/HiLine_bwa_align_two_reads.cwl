@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HiLine_bwa_align_two_reads.cwl
+id: HiLine_bwa_align_two_reads.cwl
 inputs:
 - id: in_rmd_ups
   doc: "/ --no-rmdups  Run samtools mark_dup pipeline on alignment.\nDefault=rmdups"

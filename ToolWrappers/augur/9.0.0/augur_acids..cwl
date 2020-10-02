@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augur_acids..cwl
+id: augur_acids..cwl
 inputs:
 - id: in_augur
   doc: ''

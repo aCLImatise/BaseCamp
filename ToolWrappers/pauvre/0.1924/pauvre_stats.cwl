@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pauvre_stats.cwl
+id: pauvre_stats.cwl
 inputs:
 - id: in_quiet
   doc: Do not output warnings to stderr

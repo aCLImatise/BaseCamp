@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../saffrontree.cwl
+id: saffrontree.cwl
 inputs:
 - id: in_km_er
   doc: Kmer to use, depends on read length [31]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../locus2bed.cwl
+id: locus2bed.cwl
 inputs:
 - id: in_input
   doc: Path to input locus file

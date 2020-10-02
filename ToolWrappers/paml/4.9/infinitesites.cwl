@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../infinitesites.cwl
+id: infinitesites.cwl
 inputs: []
 outputs:
 - id: out_stdout

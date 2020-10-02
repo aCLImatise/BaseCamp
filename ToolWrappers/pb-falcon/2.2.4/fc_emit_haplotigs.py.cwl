@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_emit_haplotigs.py.cwl
+id: fc_emit_haplotigs.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paladin_bwtupdate.cwl
+id: paladin_bwtupdate.cwl
 inputs:
 - id: in_the_dot_bwt
   doc: ''

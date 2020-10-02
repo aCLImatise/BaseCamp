@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cromwell.cwl
+id: cromwell.cwl
 inputs:
 - id: in_workflow_root
   doc: Workflow root.

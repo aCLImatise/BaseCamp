@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nib_chrom_intervals_to_fasta.py.cwl
+id: nib_chrom_intervals_to_fasta.py.cwl
 inputs:
 - id: in_nib_dir
   doc: ''

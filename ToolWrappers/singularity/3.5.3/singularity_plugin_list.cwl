@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singularity_plugin_list.cwl
+id: singularity_plugin_list.cwl
 inputs:
 - id: in_enabled
   doc: NAME

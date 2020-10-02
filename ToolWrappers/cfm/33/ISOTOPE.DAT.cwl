@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ISOTOPE.DAT.cwl
+id: ISOTOPE.DAT.cwl
 inputs: []
 outputs:
 - id: out_stdout

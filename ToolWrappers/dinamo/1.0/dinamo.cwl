@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dinamo.cwl
+id: dinamo.cwl
 inputs:
 - id: in_norc
   doc: ": When -p is not used, prevents dinamo to link motif to their reverse complement\n\

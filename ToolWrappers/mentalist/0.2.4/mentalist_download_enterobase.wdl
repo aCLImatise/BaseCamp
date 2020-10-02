@@ -2,7 +2,6 @@ version 1.0
 
 task MentalistDownloadEnterobase {
   input {
-    String? o
     File? db
     Int? kmer_size_type
     Int? threads
@@ -12,7 +11,6 @@ task MentalistDownloadEnterobase {
   }
   command <<<
     mentalist download_enterobase \
-      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(kmer_size_type) then ("-k " +  '"' + kmer_size_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
@@ -21,7 +19,6 @@ task MentalistDownloadEnterobase {
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""}
   >>>
   parameter_meta {
-    o: "[-h]"
     db: "Output file (kmer database)"
     kmer_size_type: "Kmer size (type: Int8)"
     threads: "Number of threads used in parallel. (type:\\nInt64, default: 2)"

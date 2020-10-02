@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtpre.cwl
+id: wtpre.cwl
 inputs:
 - id: in_output_processed_reads
   doc: Output of processed reads, [-]

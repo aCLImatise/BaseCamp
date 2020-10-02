@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../raxml_ng_mpi.cwl
+id: raxml_ng_mpi.cwl
 inputs:
 - id: in_evaluate
   doc: evaluate the likelihood of a tree (with model+brlen optimization)

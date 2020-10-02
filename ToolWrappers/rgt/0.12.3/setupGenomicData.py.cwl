@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../setupGenomicData.py.cwl
+id: setupGenomicData.py.cwl
 inputs:
 - id: in_all
   doc: Fetch all data sets.

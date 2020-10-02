@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../qtlseq.cwl
+id: qtlseq.cwl
 inputs:
-- id: in_b_two
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -b2
 - id: in__ref_reference
   doc: ', --ref         Reference fasta.'
   type: boolean
@@ -24,6 +19,28 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -b1
+- id: in_b_two
+  doc: ", --bulk2      fastq or bam of bulk 2. If you specify\nfastq, please separate\
+    \ pairs by comma,\ne.g. -b2 fastq1,fastq2. You can use this\noptiion multiple\
+    \ times"
+  type: boolean
+  inputBinding:
+    prefix: -b2
+- id: in_none
+  doc: ', --N-bulk1    Number of individuals in bulk 1.'
+  type: boolean
+  inputBinding:
+    prefix: -n1
+- id: in_n_two
+  doc: ', --N-bulk2    Number of individuals in bulk 2.'
+  type: boolean
+  inputBinding:
+    prefix: -n2
+- id: in__output_directory
+  doc: ', --out         Output directory. Specified name must not'
+  type: Directory
+  inputBinding:
+    prefix: -o
 - id: in__threads_number
   doc: ", --threads     Number of threads. If you specify the number\nbelow one, then\
     \ QTL-seq will use the threads\nas many as possible. [2]"
@@ -120,6 +137,11 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
+- id: out__output_directory
+  doc: ', --out         Output directory. Specified name must not'
+  type: Directory
+  outputBinding:
+    glob: $(inputs.in__output_directory)
 cwlVersion: v1.1
 baseCommand:
 - qtlseq

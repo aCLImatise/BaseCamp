@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_mergeDriver.pl.cwl
+id: sga_mergeDriver.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

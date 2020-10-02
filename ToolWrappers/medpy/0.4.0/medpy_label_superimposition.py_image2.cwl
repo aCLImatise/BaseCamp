@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_label_superimposition.py_image2.cwl
+id: medpy_label_superimposition.py_image2.cwl
 inputs:
 - id: in_f
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comparem_aai_wf.cwl
+id: comparem_aai_wf.cwl
 inputs:
 - id: in_evalue
   doc: "e-value cutoff for identifying initial blast hits\n(default: 0.001)"

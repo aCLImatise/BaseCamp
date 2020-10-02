@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_snp_summarize_vcf_file.cwl
+id: phyluce_snp_summarize_vcf_file.cwl
 inputs:
 - id: in_input
   doc: The vcf file to process

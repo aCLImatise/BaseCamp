@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoutil_genejunctions.cwl
+id: novoutil_genejunctions.cwl
 inputs:
 - id: in_max_read_default
   doc: "max read length. Default 100.  This sets the size of junction\nrecords in\

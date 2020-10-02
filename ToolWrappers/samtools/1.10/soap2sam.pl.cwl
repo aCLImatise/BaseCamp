@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../soap2sam.pl.cwl
+id: soap2sam.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_TDF_get_TTS.cwl
+id: rgt_TDF_get_TTS.cwl
 inputs:
 - id: in_input_bed_file
   doc: Input BED file of the target regions

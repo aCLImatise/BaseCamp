@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_trtools.sh.cwl
+id: test_trtools.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

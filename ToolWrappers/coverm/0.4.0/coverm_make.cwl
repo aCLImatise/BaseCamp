@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coverm_make.cwl
+id: coverm_make.cwl
 inputs:
 - id: in_output_directory
   doc: Where generated BAM files will go

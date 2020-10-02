@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_reheader.cwl
+id: samtools_reheader.cwl
 inputs:
 - id: in_no_pg
   doc: Do not generate a @PG header line.

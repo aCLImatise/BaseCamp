@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_db_index.cwl
+id: tripaille_db_index.cwl
 inputs:
 - id: in_mode
   doc: "Indexing mode: 'website' to index the website ,\n'nodes' for the website nodes,\

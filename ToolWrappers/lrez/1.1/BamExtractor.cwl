@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BamExtractor.cwl
+id: BamExtractor.cwl
 inputs: []
 outputs:
 - id: out_stdout

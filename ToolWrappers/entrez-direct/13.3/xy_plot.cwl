@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xy_plot.cwl
+id: xy_plot.cwl
 inputs: []
 outputs:
 - id: out_stdout

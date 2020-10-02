@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qualitycontrol.py.cwl
+id: qualitycontrol.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

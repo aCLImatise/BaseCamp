@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summarizecoverage.sh.cwl
+id: summarizecoverage.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

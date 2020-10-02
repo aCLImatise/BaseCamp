@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VcfFilter.cwl
+id: VcfFilter.cwl
 inputs:
 - id: in_in
   doc: "Input VCF file. If unset, reads from STDIN.\nDefault value: ''"

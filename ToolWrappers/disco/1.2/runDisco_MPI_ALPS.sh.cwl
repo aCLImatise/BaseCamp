@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runDisco_MPI_ALPS.sh.cwl
+id: runDisco_MPI_ALPS.sh.cwl
 inputs:
 - id: in_ins
   doc: single read filenames (comma separated fasta/fastq/fastq.gz files).

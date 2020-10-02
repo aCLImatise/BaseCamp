@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genotyper.cwl
+id: genotyper.cwl
 inputs:
 - id: in_arg_maximum_allowed_read
   doc: "[ --max_offset_split ] arg (=10)   Maximum allowed distance between two\n\

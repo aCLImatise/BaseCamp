@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../common_errors_from_bam_ref_fasta.cwl
+id: common_errors_from_bam_ref_fasta.cwl
 inputs:
 - id: in_o
   doc: ''

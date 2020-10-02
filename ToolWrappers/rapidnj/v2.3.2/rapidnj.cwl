@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rapidnj.cwl
+id: rapidnj.cwl
 inputs:
 - id: in_verbose
   doc: turn on verbose output.

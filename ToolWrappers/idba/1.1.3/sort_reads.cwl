@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sort_reads.cwl
+id: sort_reads.cwl
 inputs:
 - id: in_paired
   doc: if the reads are paired-end in one file

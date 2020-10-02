@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nextflow_console.cwl
+id: nextflow_console.cwl
 inputs:
 - id: in_filename
   doc: ''

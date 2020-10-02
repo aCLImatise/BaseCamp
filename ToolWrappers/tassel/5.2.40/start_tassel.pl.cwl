@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../start_tassel.pl.cwl
+id: start_tassel.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

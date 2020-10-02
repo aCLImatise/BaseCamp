@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../huge_count.pl.cwl
+id: huge_count.pl.cwl
 inputs:
 - id: in_token_list
   doc: This option is required. Print out all bigrams list.

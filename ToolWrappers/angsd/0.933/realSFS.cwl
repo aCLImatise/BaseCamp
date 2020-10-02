@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../realSFS.cwl
+id: realSFS.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pathoscope_QC.cwl
+id: pathoscope_QC.cwl
 inputs:
 - id: in_st_pair_read
   doc: 1st pair of read in PER or SER

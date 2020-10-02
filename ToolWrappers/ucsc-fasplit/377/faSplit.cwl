@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faSplit.cwl
+id: faSplit.cwl
 inputs:
 - id: in_verbose
   doc: '- Write names of each file created (=3 more details)'

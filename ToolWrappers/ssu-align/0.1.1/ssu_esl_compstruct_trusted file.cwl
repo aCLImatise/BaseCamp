@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_esl_compstruct_trusted file.cwl
+id: ssu_esl_compstruct_trusted file.cwl
 inputs:
 - id: in_options
   doc: ''

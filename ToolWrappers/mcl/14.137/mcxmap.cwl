@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcxmap.cwl
+id: mcxmap.cwl
 inputs:
 - id: in_imx
   doc: use matrix from file <fname>

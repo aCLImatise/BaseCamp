@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../starseqr.py.cwl
+id: starseqr.py.cwl
 inputs:
 - id: in_prefix
   doc: prefix to name files. Can be string or /path/to/string

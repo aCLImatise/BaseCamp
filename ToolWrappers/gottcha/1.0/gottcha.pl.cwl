@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gottcha.pl.cwl
+id: gottcha.pl.cwl
 inputs:
 - id: in_input
   doc: "|i    <STRING>  Input one or multiple FASTQ file(s). Use comma (,)\nto separate\

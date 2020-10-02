@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbt_collapse_reads_to_fragments_fastq.cwl
+id: rbt_collapse_reads_to_fragments_fastq.cwl
 inputs:
 - id: in__length_umi
   doc: '\                    # length of UMI'

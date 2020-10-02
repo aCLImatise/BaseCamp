@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_kaligner.cwl
+id: abyss_kaligner.cwl
 inputs:
 - id: in_kmer_size_length
   doc: k-mer size and minimum alignment length

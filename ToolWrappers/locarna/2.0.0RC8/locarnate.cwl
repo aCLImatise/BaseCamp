@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../locarnate.cwl
+id: locarnate.cwl
 inputs:
-- id: in_additional_libraries
-  doc: ']'
-  type: string
-  inputBinding:
-    prefix: --additional-libraries
 - id: in_pairwise_parameters
   doc: parameters for the pairwise alignment step
   type: boolean
@@ -31,6 +26,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --library-only
+- id: in_library_name
+  doc: "the file name of the produced t-coffee library (default:\n\"input.lib\")"
+  type: boolean
+  inputBinding:
+    prefix: --library-name
+- id: in_additional_libraries
+  doc: "a comma separated list of paths to t-coffee library files that\nshould be\
+    \ given to t-coffee in addition to the one generated during\nthis run"
+  type: boolean
+  inputBinding:
+    prefix: --additional-libraries
 - id: in_pairwise_aligner
   doc: 'which pairwise aligner to use (default: locarna)'
   type: boolean

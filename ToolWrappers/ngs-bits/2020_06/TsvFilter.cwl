@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TsvFilter.cwl
+id: TsvFilter.cwl
 inputs:
 - id: in_filter
   doc: Filter string with column name, operation and value,e.g. 'depth > 17'.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mimodd_info.cwl
+id: mimodd_info.cwl
 inputs:
 - id: in_ofile
   doc: "redirect the output to the specified file (default:\nstdout)"

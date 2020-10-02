@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runquake.py.cwl
+id: runquake.py.cwl
 inputs:
 - id: in_parameters
   doc: ''

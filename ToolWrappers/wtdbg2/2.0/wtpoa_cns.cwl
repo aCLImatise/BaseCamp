@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtpoa_cns.cwl
+id: wtpoa_cns.cwl
 inputs:
 - id: in_number_of_threads
   doc: Number of threads, [4]
@@ -47,11 +47,6 @@ inputs:
   type: long
   inputBinding:
     prefix: -D
-- id: in_bandwidth
-  doc: Bandwidth, [96]
-  type: long
-  inputBinding:
-    prefix: -B
 - id: in_window_size_middle
   doc: "Window size in the middle of the first read for fast align remaining reads,\
     \ [200]\nIf $W is negative, will disable fast align, but use the abs($W) as Band\

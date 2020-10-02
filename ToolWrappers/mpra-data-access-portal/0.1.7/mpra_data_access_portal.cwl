@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mpra_data_access_portal.cwl
+id: mpra_data_access_portal.cwl
 inputs:
 - id: in_self_test
   doc: Run self-check and tests

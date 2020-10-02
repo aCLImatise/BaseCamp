@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../down_tRNA.pl.cwl
+id: down_tRNA.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

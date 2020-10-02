@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chembl_sub.cwl
+id: chembl_sub.cwl
 inputs:
 - id: in_input
   doc: input file with ChEMBL IDs

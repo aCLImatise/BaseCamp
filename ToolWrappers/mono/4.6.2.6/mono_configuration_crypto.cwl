@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mono_configuration_crypto.cwl
+id: mono_configuration_crypto.cwl
 inputs:
 - id: in_verbose
   doc: "Show verbose information (including exception\nstacktraces)"

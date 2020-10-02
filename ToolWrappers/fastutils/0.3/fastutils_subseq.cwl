@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastutils_subseq.cwl
+id: fastutils_subseq.cwl
 inputs:
 - id: in_input_file_fastx
   doc: input file in fastx format. Use - for stdin.

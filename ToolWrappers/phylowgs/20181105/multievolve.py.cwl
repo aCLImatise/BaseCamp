@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multievolve.py.cwl
+id: multievolve.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

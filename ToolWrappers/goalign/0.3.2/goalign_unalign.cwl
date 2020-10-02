@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_unalign.cwl
+id: goalign_unalign.cwl
 inputs:
 - id: in_output_prefix
   doc: Unaligned alignment output file prefix (default "stdout")

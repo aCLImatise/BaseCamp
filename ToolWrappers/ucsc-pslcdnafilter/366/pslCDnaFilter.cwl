@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslCDnaFilter.cwl
+id: pslCDnaFilter.cwl
 inputs: []
 outputs:
 - id: out_stdout

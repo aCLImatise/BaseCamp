@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lwp_download.cwl
+id: lwp_download.cwl
 inputs:
 - id: in_save_file_ascii
   doc: save the file in ASCII mode

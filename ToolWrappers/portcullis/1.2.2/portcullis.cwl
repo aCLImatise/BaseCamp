@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../portcullis.cwl
+id: portcullis.cwl
 inputs:
 - id: in_print_extra_information
   doc: '[ --verbose ]      Print extra information'

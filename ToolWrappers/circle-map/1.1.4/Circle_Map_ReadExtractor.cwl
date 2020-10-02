@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Circle_Map_ReadExtractor.cwl
+id: Circle_Map_ReadExtractor.cwl
 inputs:
 - id: in_input_query_name
   doc: 'Input: query name sorted bam file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../removePoorSeq.pl.cwl
+id: removePoorSeq.pl.cwl
 inputs:
 - id: in_seq_file
   doc: ''

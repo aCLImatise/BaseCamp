@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trimends.cwl
+id: trimends.cwl
 inputs:
 - id: in_help_dot_qual
   doc: ', and --help.frg must exist'

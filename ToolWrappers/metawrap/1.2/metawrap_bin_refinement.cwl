@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metawrap_bin_refinement.cwl
+id: metawrap_bin_refinement.cwl
 inputs:
 - id: in_output_directory
   doc: output directory

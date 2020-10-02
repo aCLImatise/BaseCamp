@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amb2chm_par.py.cwl
+id: amb2chm_par.py.cwl
 inputs:
 - id: in_o
   doc: '[--nat use_new_attype]'

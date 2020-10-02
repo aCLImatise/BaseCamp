@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quake.py.cwl
+id: quake.py.cwl
 inputs:
 - id: in_fastq_file_reads
   doc: Fastq file of reads

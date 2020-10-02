@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoutil_fafilt.cwl
+id: novoutil_fafilt.cwl
 inputs:
 - id: in_length_limit_default
   doc: 999     Length limit, default 150.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chcon.cwl
+id: chcon.cwl
 inputs:
 - id: in_dereference
   doc: "affect the referent of each symbolic link (this is\nthe default), rather than\

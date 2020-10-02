@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clipcontext_g2t.cwl
+id: clipcontext_g2t.cwl
 inputs:
 - id: in_thr
   doc: "Site score threshold for filtering --in BED file\n(default: None)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FEELnc_filter.pl.cwl
+id: FEELnc_filter.pl.cwl
 inputs:
 - id: in_man
   doc: Open man page

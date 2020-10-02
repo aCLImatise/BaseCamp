@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamrank.cwl
+id: bamrank.cwl
 inputs: []
 outputs:
 - id: out_stdout

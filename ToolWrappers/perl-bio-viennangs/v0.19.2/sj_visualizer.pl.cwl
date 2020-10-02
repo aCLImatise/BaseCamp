@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sj_visualizer.pl.cwl
+id: sj_visualizer.pl.cwl
 inputs:
 - id: in_splice_junctions_mapped
   doc: Splice junctions from mapped RNA-seq data in BED6 format

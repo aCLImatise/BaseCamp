@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scaladoc.bat.cwl
+id: scaladoc.bat.cwl
 inputs: []
 outputs:
 - id: out_stdout

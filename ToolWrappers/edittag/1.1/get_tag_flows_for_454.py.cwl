@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_tag_flows_for_454.py.cwl
+id: get_tag_flows_for_454.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

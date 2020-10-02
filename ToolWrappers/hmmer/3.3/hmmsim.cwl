@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmsim.cwl
+id: hmmsim.cwl
 inputs:
 - id: in_obtain_length_statistics
   doc: ': obtain alignment length statistics too'

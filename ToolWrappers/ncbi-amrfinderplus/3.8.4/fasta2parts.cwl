@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta2parts.cwl
+id: fasta2parts.cwl
 inputs:
 - id: in_threads
   doc: ''

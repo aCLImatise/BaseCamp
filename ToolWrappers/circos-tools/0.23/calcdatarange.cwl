@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../calcdatarange.cwl
+id: calcdatarange.cwl
 inputs:
 - id: in_cat
   doc: ''

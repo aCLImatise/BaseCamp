@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sort_snos.pl.cwl
+id: sort_snos.pl.cwl
 inputs:
 - id: in_sort_snos_position_hit
   doc: ':  sort snos by position of hit in query sequence'

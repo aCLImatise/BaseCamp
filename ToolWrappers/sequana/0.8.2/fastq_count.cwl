@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_count.cwl
+id: fastq_count.cwl
 inputs:
 - id: in_input_fastq_gzipped
   doc: "input fastq gzipped or not\n"

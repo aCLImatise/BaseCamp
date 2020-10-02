@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../castats.cwl
+id: castats.cwl
 inputs:
 - id: in_min_qual
   doc: "<n>   Minimum quality value threshhold to report as bad\nquality (default\

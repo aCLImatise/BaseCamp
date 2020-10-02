@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tagsum_reduce.cwl
+id: tagsum_reduce.cwl
 inputs: []
 outputs:
 - id: out_stdout

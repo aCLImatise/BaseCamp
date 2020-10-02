@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicup2gothic.cwl
+id: hicup2gothic.cwl
 inputs: []
 outputs:
 - id: out_stdout

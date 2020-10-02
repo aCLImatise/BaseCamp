@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FormPath.cwl
+id: FormPath.cwl
 inputs:
 - id: in_arg_one
   doc: ''

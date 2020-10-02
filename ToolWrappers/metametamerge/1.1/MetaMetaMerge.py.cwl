@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MetaMetaMerge.py.cwl
+id: MetaMetaMerge.py.cwl
 inputs:
 - id: in_input_binning_profiling
   doc: "[<input_files> [<input_files> ...]], --input-files [<input_files> [<input_files>\

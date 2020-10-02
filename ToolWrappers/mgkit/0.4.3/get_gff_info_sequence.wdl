@@ -3,11 +3,6 @@ version 1.0
 task GetgffinfoSequence {
   input {
     Boolean? verbose
-    Boolean? reverse
-    Boolean? no_wrap
-    Boolean? split
-    File? reference
-    Boolean? progress
     String? gff_file
     String? fast_a_file
   }
@@ -15,20 +10,10 @@ task GetgffinfoSequence {
     get_gff_info sequence \
       ~{gff_file} \
       ~{fast_a_file} \
-      ~{if (verbose) then "--verbose" else ""} \
-      ~{if (reverse) then "--reverse" else ""} \
-      ~{if (no_wrap) then "--no-wrap" else ""} \
-      ~{if (split) then "--split" else ""} \
-      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
-      ~{if (progress) then "--progress" else ""}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    verbose: ""
-    reverse: "Reverse complement sequences on the - strand"
-    no_wrap: "Write the sequences on one line"
-    split: "Split the sequence header of the reference at the\\nfirst space, to emulate BLAST behaviour"
-    reference: "Fasta file containing the reference sequences of\\nthe GFF file"
-    progress: "Shows Progress Bar"
+    verbose: "-r, --reverse             Reverse complement sequences on the - strand\\n-w, --no-wrap             Write the sequences on one line\\n-s, --split               Split the sequence header of the reference at the\\nfirst space, to emulate BLAST behaviour\\n-f, --reference FILENAME  Fasta file containing the reference sequences of\\nthe GFF file\\n--progress                Shows Progress Bar\\n--help                    Show this message and exit.\\n"
     gff_file: ""
     fast_a_file: ""
   }

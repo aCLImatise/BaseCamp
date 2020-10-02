@@ -1,86 +1,16 @@
 class: CommandLineTool
-id: ../../../seagen.cwl
+id: seagen.cwl
 inputs:
 - id: in_mer_size
-  doc: Use k-mers
+  doc: "Use k-mers\n-merskip j              Skip j mers between each mer inserted\
+    \ into table\n-forward                Search only the normal query sequences\n\
+    -reverse                Search only the reverse-complemented query sequences\n\
+    -maxdiagonal d\n-maxgap g\n-qoverlap q\n-doverlap d\n-maxintron m\n-smallsequence\n\
+    -singlelength l\n-singlecoverage c\n-multiplelength l\n-multiplecoverage c\n-extendweight\
+    \ w\n-extendminimum m"
   type: string
   inputBinding:
     prefix: -mersize
-- id: in_mer_skip
-  doc: Skip j mers between each mer inserted into table
-  type: string
-  inputBinding:
-    prefix: -merskip
-- id: in_forward
-  doc: Search only the normal query sequences
-  type: boolean
-  inputBinding:
-    prefix: -forward
-- id: in_reverse
-  doc: Search only the reverse-complemented query sequences
-  type: boolean
-  inputBinding:
-    prefix: -reverse
-- id: in_max_diagonal
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -maxdiagonal
-- id: in_max_gap
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -maxgap
-- id: in_q_overlap
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -qoverlap
-- id: in_d_overlap
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -doverlap
-- id: in_max_intron
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -maxintron
-- id: in_small_sequence
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -smallsequence
-- id: in_single_length
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -singlelength
-- id: in_single_coverage
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -singlecoverage
-- id: in_multiple_length
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -multiplelength
-- id: in_multiple_coverage
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -multiplecoverage
-- id: in_extend_weight
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -extendweight
-- id: in_extend_minimum
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -extendminimum
 - id: in_num_threads
   doc: Use n search threads
   type: string

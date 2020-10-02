@@ -2,16 +2,13 @@ version 1.0
 
 task NetSplit {
   input {
-    String? xxx
     String in_dotnet
   }
   command <<<
     netSplit \
-      ~{in_dotnet} \
-      ~{if defined(xxx) then ("-xxx " +  '"' + xxx + '"') else ""}
+      ~{in_dotnet}
   >>>
   parameter_meta {
-    xxx: ""
     in_dotnet: ""
   }
   output {

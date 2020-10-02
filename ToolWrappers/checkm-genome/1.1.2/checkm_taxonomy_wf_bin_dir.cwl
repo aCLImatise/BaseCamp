@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_taxonomy_wf_bin_dir.cwl
+id: checkm_taxonomy_wf_bin_dir.cwl
 inputs:
 - id: in_individual_markers
   doc: ''

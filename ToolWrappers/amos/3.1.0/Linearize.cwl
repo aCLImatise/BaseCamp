@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Linearize.cwl
+id: Linearize.cwl
 inputs:
 - id: in_version
   doc: ''

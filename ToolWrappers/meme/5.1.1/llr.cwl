@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../llr.cwl
+id: llr.cwl
 inputs:
 - id: in_range
   doc: ''

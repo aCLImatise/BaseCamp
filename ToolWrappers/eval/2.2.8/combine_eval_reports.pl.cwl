@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combine_eval_reports.pl.cwl
+id: combine_eval_reports.pl.cwl
 inputs:
 - id: in_eval_report_mode
   doc: ': Eval report mode [default]'

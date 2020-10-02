@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_annotations_add_comment.cwl
+id: arrow_annotations_add_comment.cwl
 inputs:
 - id: in_comments
   doc: Feature comments

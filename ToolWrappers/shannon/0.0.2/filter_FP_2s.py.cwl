@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_FP_2s.py.cwl
+id: filter_FP_2s.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

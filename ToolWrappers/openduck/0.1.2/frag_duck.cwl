@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../frag_duck.cwl
+id: frag_duck.cwl
 inputs: []
 outputs:
 - id: out_stdout

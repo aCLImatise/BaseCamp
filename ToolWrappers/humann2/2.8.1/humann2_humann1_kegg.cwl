@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2_humann1_kegg.cwl
+id: humann2_humann1_kegg.cwl
 inputs:
 - id: in_var_0
   doc: '[IGENELS]'
@@ -16,17 +16,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ikoc
-- id: in_i_kegg_orgid_two_orgname
-  doc: '[IKEGGORGID2ORGNAME]'
-  type: boolean
-  inputBinding:
-    prefix: --ikeggOrgId2OrgName
 - id: in_o
   doc: '[O]'
   type: boolean
   inputBinding:
     prefix: --o
-- id: in_var_5
+- id: in_var_4
   doc: ''
   type: string
   inputBinding:

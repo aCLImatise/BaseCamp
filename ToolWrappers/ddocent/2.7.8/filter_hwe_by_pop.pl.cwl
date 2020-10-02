@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_hwe_by_pop.pl.cwl
+id: filter_hwe_by_pop.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_compalign_trusted file.cwl
+id: esl_compalign_trusted file.cwl
 inputs:
 - id: in_options
   doc: ''

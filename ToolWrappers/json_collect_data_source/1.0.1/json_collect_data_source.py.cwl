@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../json_collect_data_source.py.cwl
+id: json_collect_data_source.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

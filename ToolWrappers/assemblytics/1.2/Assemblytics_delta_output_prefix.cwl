@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Assemblytics_delta_output_prefix.cwl
+id: Assemblytics_delta_output_prefix.cwl
 inputs:
 - id: in_unique_length_required
   doc: ''

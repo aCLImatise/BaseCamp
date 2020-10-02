@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicValidateLocations.cwl
+id: hicValidateLocations.cwl
 inputs:
 - id: in_resolution
   doc: The used resolution of the Hi-C interaction matrix.

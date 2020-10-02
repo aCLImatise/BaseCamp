@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomedata_open_data.cwl
+id: genomedata_open_data.cwl
 inputs:
 - id: in_track_names
   doc: tracknames to open

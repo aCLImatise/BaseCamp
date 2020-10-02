@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_analyze.py.cwl
+id: prophyle_analyze.py.cwl
 inputs:
 - id: in_use_stdin_files
   doc: Use '-' for stdin or multiple files with

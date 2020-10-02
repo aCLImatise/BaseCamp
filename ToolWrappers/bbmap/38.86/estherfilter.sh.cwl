@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../estherfilter.sh.cwl
+id: estherfilter.sh.cwl
 inputs:
 - id: in_query
   doc: ''

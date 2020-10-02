@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../daijin.cwl
+id: daijin.cwl
 inputs:
 - id: in_a
   doc: ''

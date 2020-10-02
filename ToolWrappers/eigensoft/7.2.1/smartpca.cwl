@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smartpca.cwl
+id: smartpca.cwl
 inputs:
 - id: in_bad
   doc: ''

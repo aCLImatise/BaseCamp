@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicup.cwl
+id: hicup.cwl
 inputs:
 - id: in_bowtie
   doc: Specify the path to Bowtie

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findErrors_Dump.cwl
+id: findErrors_Dump.cwl
 inputs:
 - id: in_r
   doc: ''

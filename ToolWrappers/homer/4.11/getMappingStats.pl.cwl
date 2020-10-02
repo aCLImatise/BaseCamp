@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getMappingStats.pl.cwl
+id: getMappingStats.pl.cwl
 inputs:
 - id: in_min
   doc: <#> (minimum length to consider a sequence an adapter-dimer, def. 15)

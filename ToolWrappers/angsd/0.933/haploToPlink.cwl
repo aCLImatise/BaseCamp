@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haploToPlink.cwl
+id: haploToPlink.cwl
 inputs: []
 outputs:
 - id: out_stdout

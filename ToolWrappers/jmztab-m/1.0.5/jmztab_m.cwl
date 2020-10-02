@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jmztab_m.cwl
+id: jmztab_m.cwl
 inputs:
 - id: in_from_json
   doc: "Example: --fromJson. Will parse inFile as JSON\nand write mzTab representation\

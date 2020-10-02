@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed_diff_basewise_summary.py.cwl
+id: bed_diff_basewise_summary.py.cwl
 inputs:
 - id: in_bed_file_one
   doc: ''

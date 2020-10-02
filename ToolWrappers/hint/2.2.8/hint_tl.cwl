@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hint_tl.cwl
+id: hint_tl.cwl
 inputs:
 - id: in_back_dir
   doc: '[-c CUTOFF] [-o OUTDIR]'

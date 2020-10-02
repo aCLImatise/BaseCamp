@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Barcode_split.cwl
+id: Barcode_split.cwl
 inputs:
 - id: in_summary_file
   doc: "[SUMMARY_FILE [SUMMARY_FILE ...]], -f [SUMMARY_FILE [SUMMARY_FILE ...]]\n\

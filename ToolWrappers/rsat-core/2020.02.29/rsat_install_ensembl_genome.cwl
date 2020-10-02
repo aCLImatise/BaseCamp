@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_install_ensembl_genome.cwl
+id: rsat_install_ensembl_genome.cwl
 inputs:
 - id: in_install_ensembl_genome
   doc: "\e[1mVERSION\e[0m"

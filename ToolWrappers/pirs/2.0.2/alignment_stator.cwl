@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alignment_stator.cwl
+id: alignment_stator.cwl
 inputs:
 - id: in_pause_batch_runsm
   doc: "pause for batch runs\e[32;1m"

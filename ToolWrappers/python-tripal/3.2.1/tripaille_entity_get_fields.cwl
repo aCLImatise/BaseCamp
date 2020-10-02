@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_entity_get_fields.cwl
+id: tripaille_entity_get_fields.cwl
 inputs:
 - id: in_entity
   doc: ''

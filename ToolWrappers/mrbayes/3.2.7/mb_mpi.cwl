@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_mpi.cwl
+id: mb_mpi.cwl
 inputs: []
 outputs:
 - id: out_stdout

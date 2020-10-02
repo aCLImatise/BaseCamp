@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglobabel.cwl
+id: mglobabel.cwl
 inputs: []
 outputs:
 - id: out_stdout

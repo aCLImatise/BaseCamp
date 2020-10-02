@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../a3m_database_filter.cwl
+id: a3m_database_filter.cwl
 inputs:
 - id: in_s
   doc: ''

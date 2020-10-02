@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_dna_pattern.cwl
+id: rsat_dna_pattern.cwl
 inputs:
 - id: in_help
   doc: short help message

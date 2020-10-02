@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../go2sxpr.cwl
+id: go2sxpr.cwl
 inputs:
 - id: in_writes_errors_defaults
   doc: "writes parse errors in XML - defaults to STDERR (there should be no\nparse\

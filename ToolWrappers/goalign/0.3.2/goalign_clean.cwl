@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_clean.cwl
+id: goalign_clean.cwl
 inputs:
 - id: in_cut_off
   doc: 'Cutoff for gap deletion : 0 remove sites/sequences with > 0 gap, 1 remove

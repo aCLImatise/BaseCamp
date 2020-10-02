@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../opal.py.cwl
+id: opal.py.cwl
 inputs:
 - id: in_gold_standard_file
   doc: Gold standard file

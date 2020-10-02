@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_input.cwl
+id: xsv_input.cwl
 inputs:
 - id: in_quote
   doc: 'The quote character to use. [default: "]'

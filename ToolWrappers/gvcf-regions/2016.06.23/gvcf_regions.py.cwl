@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gvcf_regions.py.cwl
+id: gvcf_regions.py.cwl
 inputs:
 - id: in_unreported_is_called
   doc: use this flag to treat unreported sites as called

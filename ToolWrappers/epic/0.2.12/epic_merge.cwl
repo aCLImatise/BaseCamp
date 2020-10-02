@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../epic_merge.cwl
+id: epic_merge.cwl
 inputs:
 - id: in_matrixes
   doc: epic-count matrixes to merge.

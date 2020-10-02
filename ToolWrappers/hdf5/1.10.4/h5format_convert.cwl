@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5format_convert.cwl
+id: h5format_convert.cwl
 inputs:
 - id: in_verbose
   doc: Turn on verbose mode

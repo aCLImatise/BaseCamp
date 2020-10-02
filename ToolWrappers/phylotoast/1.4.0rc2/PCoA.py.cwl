@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PCoA.py.cwl
+id: PCoA.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

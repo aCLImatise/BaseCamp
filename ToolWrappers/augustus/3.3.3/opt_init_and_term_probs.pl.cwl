@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../opt_init_and_term_probs.pl.cwl
+id: opt_init_and_term_probs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

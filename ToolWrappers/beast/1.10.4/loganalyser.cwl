@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../loganalyser.cwl
+id: loganalyser.cwl
 inputs:
 - id: in_burnin
   doc: number of states to be considered as 'burn-in'

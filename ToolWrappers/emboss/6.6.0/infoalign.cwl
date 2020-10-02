@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../infoalign.cwl
+id: infoalign.cwl
 inputs:
 - id: in_matrix
   doc: "matrix     [EBLOSUM62 for protein, EDNAFULL for DNA]\nThis is the scoring\

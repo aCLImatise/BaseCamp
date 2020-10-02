@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gkmpredict.cwl
+id: gkmpredict.cwl
 inputs:
 - id: in_set_level_msgs
   doc: "set the level of verbosity (default: 2)\n0 -- error msgs only (ERROR)\n1 --\

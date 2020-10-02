@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mira.cwl
+id: mira.cwl
 inputs:
 - id: in__cwd_directory
   doc: / --cwd=           directory       Change working directory

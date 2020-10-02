@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqret.cwl
+id: seqret.cwl
 inputs:
 - id: in_feature
   doc: boolean    Use feature information

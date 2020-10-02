@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../base32.cwl
+id: base32.cwl
 inputs:
 - id: in_decode
   doc: decode data

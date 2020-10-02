@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parasol.cwl
+id: parasol.cwl
 inputs:
 - id: in_in
   doc: '- Where to get stdin, default /dev/null'

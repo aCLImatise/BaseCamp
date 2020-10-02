@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_extractseq.cwl
+id: _extractseq.cwl
 inputs:
 - id: in_regions
   doc: "range      [Whole sequence] Regions to extract.\nA set of regions is specified\

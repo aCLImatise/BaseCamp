@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho_treeBuilderCore.cwl
+id: proteinortho_treeBuilderCore.cwl
 inputs: []
 outputs:
 - id: out_stdout

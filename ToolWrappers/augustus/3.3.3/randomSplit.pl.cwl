@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randomSplit.pl.cwl
+id: randomSplit.pl.cwl
 inputs:
 - id: in_dbfile
   doc: ''

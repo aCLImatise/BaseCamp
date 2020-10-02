@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioformats_flanknfilter.cwl
+id: bioformats_flanknfilter.cwl
 inputs:
 - id: in_type
   doc: 'the input file type (default: bed)'

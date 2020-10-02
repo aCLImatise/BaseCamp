@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncbi.py_fetch_genbank_records.cwl
+id: ncbi.py_fetch_genbank_records.cwl
 inputs:
 - id: in_force_overwrite
   doc: Overwrite existing files, if present.
@@ -47,11 +47,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --loglevel
-- id: in_var_8
-  doc: '[accession_IDs ...]'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_email_address
   doc: "Your email address. To access the Genbank\nCoreNucleotide database, NCBI requires\
     \ you to specify\nyour email address with each request. In case of\nexcessive\
@@ -67,7 +62,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_list_genbank_nuccore
+- id: in_accession_ids
   doc: List of Genbank nuccore accession IDs
   type: string
   inputBinding:

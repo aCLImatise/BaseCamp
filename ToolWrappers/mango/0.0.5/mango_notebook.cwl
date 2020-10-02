@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mango_notebook.cwl
+id: mango_notebook.cwl
 inputs: []
 outputs:
 - id: out_stdout

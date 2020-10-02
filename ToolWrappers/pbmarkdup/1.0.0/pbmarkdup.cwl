@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbmarkdup.cwl
+id: pbmarkdup.cwl
 inputs:
 - id: in_cross_library
   doc: Identify duplicates across sequencing libraries (LB tag in read group).

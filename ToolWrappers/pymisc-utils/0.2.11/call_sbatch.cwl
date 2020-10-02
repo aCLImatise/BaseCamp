@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../call_sbatch.cwl
+id: call_sbatch.cwl
 inputs:
 - id: in_at_call_aside
   doc: File "/usr/local/lib/python3.6/site-packages/pkg_resources/__init__.py", line

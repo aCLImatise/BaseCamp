@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.motus_post_link.sh.cwl
+id: .motus_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

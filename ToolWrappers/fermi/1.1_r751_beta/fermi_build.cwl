@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_build.cwl
+id: fermi_build.cwl
 inputs:
 - id: in_use_small_marker
   doc: use a small marker per 2^(INT+3) bytes [3]

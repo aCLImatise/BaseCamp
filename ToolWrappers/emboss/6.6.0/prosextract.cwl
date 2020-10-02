@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prosextract.cwl
+id: prosextract.cwl
 inputs: []
 outputs:
 - id: out_stdout

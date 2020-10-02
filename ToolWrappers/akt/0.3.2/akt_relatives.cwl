@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../akt_relatives.cwl
+id: akt_relatives.cwl
 inputs:
 - id: in_km_in
   doc: ':                     threshold for relatedness (0.05)'

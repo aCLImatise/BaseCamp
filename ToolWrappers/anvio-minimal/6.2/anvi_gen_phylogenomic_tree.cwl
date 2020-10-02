@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_gen_phylogenomic_tree.cwl
+id: anvi_gen_phylogenomic_tree.cwl
 inputs:
 - id: in_output_file
   doc: File path to store results.

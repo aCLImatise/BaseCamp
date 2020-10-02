@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parseSitePAML.pl.cwl
+id: parseSitePAML.pl.cwl
 inputs:
 - id: in_defined_dot
   doc: It was interpreted as a "" or a 0, but maybe it was a mistake.

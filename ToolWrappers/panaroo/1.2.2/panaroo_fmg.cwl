@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../panaroo_fmg.cwl
+id: panaroo_fmg.cwl
 inputs:
 - id: in_tree
   doc: A dated phylogeny.

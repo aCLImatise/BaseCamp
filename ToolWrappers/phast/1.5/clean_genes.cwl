@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clean_genes.cwl
+id: clean_genes.cwl
 inputs:
 - id: in_start
   doc: Require conserved start codons (all species)

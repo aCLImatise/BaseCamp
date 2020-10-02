@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cramtools_bam.cwl
+id: cramtools_bam.cwl
 inputs:
 - id: in_calculate_md_tag
   doc: 'Calculate MD tag. (default: false)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maker_functional_fasta.cwl
+id: maker_functional_fasta.cwl
 inputs: []
 outputs:
 - id: out_stdout

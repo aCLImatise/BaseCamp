@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../align_trim_orthologs.cwl
+id: align_trim_orthologs.cwl
 inputs:
 - id: in_orthologs_zip
   doc: archive of orthologous genes in FASTA format

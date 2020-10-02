@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../peakranger_wigpe.cwl
+id: peakranger_wigpe.cwl
 inputs:
 - id: in_arg_data_file
   doc: '[ --data ] arg             the data file'

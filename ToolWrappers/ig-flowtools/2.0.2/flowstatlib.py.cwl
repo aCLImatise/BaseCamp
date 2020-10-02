@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flowstatlib.py.cwl
+id: flowstatlib.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

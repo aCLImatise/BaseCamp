@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genePredToProt.cwl
+id: genePredToProt.cwl
 inputs:
 - id: in_cds_fa
   doc: "- output FASTA with CDS that was used to generate protein.\nThis will not\

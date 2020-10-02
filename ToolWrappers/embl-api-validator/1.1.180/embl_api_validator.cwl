@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../embl_api_validator.cwl
+id: embl_api_validator.cwl
 inputs:
 - id: in_assembly
   doc: 'genome assembly entries (default: false)'

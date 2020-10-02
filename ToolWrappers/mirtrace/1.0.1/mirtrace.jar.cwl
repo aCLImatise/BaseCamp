@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mirtrace.jar.cwl
+id: mirtrace.jar.cwl
 inputs: []
 outputs:
 - id: out_stdout

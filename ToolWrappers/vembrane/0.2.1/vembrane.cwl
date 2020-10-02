@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vembrane.cwl
+id: vembrane.cwl
 inputs:
 - id: in_output
   doc: "Output file, if not specified, output is written to\nSTDOUT."

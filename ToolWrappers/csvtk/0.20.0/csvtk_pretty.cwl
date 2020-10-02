@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_pretty.cwl
+id: csvtk_pretty.cwl
 inputs:
 - id: in_align_right
   doc: align right

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../normalize_by_copy_number.py.cwl
+id: normalize_by_copy_number.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

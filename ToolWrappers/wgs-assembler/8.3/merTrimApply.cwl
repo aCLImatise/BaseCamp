@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merTrimApply.cwl
+id: merTrimApply.cwl
 inputs:
 - id: in_var_0
   doc: ''

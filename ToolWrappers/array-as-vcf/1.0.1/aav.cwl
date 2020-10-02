@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aav.cwl
+id: aav.cwl
 inputs:
 - id: in_path
   doc: 'Path to array file (default: None)'

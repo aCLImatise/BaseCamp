@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ceasBW.cwl
+id: ceasBW.cwl
 inputs:
 - id: in_bed
   doc: BED file of ChIP regions.

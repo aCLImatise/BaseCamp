@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../heatmap.r.cwl
+id: heatmap.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fuzztran.cwl
+id: _fuzztran.cwl
 inputs:
 - id: in_pattern
   doc: "pattern    The standard IUPAC one-letter codes for the\namino acids are used.\n\

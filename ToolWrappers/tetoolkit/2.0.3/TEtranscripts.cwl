@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TEtranscripts.cwl
+id: TEtranscripts.cwl
 inputs:
 - id: in_te
   doc: '[--format [input file format]]'

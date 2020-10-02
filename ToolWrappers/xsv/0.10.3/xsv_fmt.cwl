@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_fmt.cwl
+id: xsv_fmt.cwl
 inputs:
 - id: in_out_delimiter
   doc: "The field delimiter for writing CSV data.\n[default: ,]"

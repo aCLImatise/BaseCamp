@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2genome.cwl
+id: vcf2genome.cwl
 inputs: []
 outputs:
 - id: out_stdout

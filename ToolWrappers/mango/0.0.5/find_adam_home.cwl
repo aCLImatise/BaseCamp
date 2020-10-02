@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_adam_home.cwl
+id: find_adam_home.cwl
 inputs: []
 outputs:
 - id: out_stdout

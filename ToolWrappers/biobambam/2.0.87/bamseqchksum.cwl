@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamseqchksum.cwl
+id: bamseqchksum.cwl
 inputs: []
 outputs:
 - id: out_stdout

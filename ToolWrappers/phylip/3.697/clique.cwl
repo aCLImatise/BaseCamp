@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clique.cwl
+id: clique.cwl
 inputs: []
 outputs:
 - id: out_stdout

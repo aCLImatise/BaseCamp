@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ngsutils.cwl
+id: ngsutils.cwl
 inputs:
 - id: in_command
   doc: ''

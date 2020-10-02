@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sql.cwl
+id: sql.cwl
 inputs: []
 outputs:
 - id: out_stdout

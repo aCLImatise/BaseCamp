@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minority_freq.cwl
+id: minority_freq.cwl
 inputs:
 - id: in_start
   doc: "Starting position of the region of interest, 0-based\nindexing (default: None)"

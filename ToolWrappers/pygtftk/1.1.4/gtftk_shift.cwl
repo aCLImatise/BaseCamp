@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_shift.cwl
+id: gtftk_shift.cwl
 inputs:
 - id: in_shift_value
   doc: 'Shift coordinate by s nucleotides. (default: 0)'

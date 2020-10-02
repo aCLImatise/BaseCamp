@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cd_hit.cwl
+id: cd_hit.cwl
 inputs:
 - id: in_input_filename_fasta
   doc: input filename in fasta format, required, can be in .gz format

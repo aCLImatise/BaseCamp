@@ -17,8 +17,6 @@ task Kmermask {
     Boolean? discard
     Boolean? unlink
     Boolean? no_masking
-    Float? low_threshold
-    Float? high_threshold
     String? write_histogram_amount
     String? use_compute_threads
     Boolean? show_progress
@@ -40,8 +38,6 @@ task Kmermask {
       ~{if (discard) then "-discard" else ""} \
       ~{if (unlink) then "-unlink" else ""} \
       ~{if (no_masking) then "-nomasking" else ""} \
-      ~{if defined(low_threshold) then ("-lowthreshold " +  '"' + low_threshold + '"') else ""} \
-      ~{if defined(high_threshold) then ("-highthreshold " +  '"' + high_threshold + '"') else ""} \
       ~{if defined(write_histogram_amount) then ("-h " +  '"' + write_histogram_amount + '"') else ""} \
       ~{if defined(use_compute_threads) then ("-t " +  '"' + use_compute_threads + '"') else ""} \
       ~{if (show_progress) then "-v" else ""}
@@ -62,8 +58,6 @@ task Kmermask {
     discard: "discard pairs with conflicting status (DEFAULT)\\nread1=fullymasked and read2=partiallymasked -> both are discarded"
     unlink: "leave conflicting status alone; mate pairing will be broken"
     no_masking: "classify reads as normal, but do not trim masked sequence; output the full original read"
-    low_threshold: "(0.3333)"
-    high_threshold: "(0.6667)"
     write_histogram_amount: "write a histogram of the amount of sequence RETAINED"
     use_compute_threads: "use 't' compute threads"
     show_progress: "show progress"

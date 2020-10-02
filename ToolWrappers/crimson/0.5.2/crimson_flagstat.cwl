@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crimson_flagstat.cwl
+id: crimson_flagstat.cwl
 inputs:
 - id: in_input
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_tfscan.cwl
+id: _tfscan.cwl
 inputs:
 - id: in_menu
   doc: "menu       [V] Select class (Values: F (fungi); I\n(insect); P (plant); V\
@@ -12,11 +12,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -mismatch
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 - id: in_minlength
   doc: "integer    [1] Display matches equal to or above this\nlength (Integer 1 or\
     \ more)"

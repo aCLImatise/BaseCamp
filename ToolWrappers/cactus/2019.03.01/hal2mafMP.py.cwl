@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hal2mafMP.py.cwl
+id: hal2mafMP.py.cwl
 inputs:
 - id: in_num_proc
   doc: Maximum number of processes to create. If neither

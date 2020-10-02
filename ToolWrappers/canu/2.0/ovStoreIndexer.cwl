@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ovStoreIndexer.cwl
+id: ovStoreIndexer.cwl
 inputs:
 - id: in_path_overlap_store
   doc: path to overlap store to create

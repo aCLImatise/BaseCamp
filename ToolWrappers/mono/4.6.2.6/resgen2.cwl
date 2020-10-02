@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../resgen2.cwl
+id: resgen2.cwl
 inputs:
 - id: in_compile
   doc: ", /compile\ntakes a list of .resX or .txt files to convert to .resources files\n\

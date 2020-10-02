@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../binner.cwl
+id: binner.cwl
 inputs:
 - id: in_citation
   doc: show citation info

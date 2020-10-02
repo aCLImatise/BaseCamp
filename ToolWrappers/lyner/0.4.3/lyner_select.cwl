@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_select.cwl
+id: lyner_select.cwl
 inputs:
 - id: in_what
   doc: ''

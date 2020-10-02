@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dicey_index.cwl
+id: dicey_index.cwl
 inputs:
 - id: in_arg_output_file
   doc: '[ --output ] arg (="genome.fm9")  output file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../monocle3_diffExp.cwl
+id: monocle3_diffExp.cwl
 inputs:
 - id: in_input_object_format
   doc: 'Format of input object. [Default: cds3]'

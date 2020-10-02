@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_phylogeny_COMMAND.cwl
+id: tripaille_phylogeny_COMMAND.cwl
 inputs:
 - id: in_args
   doc: ''

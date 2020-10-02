@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf2vcf.pl.cwl
+id: maf2vcf.pl.cwl
 inputs:
 - id: in_input_maf
   doc: Path to input file in MAF format

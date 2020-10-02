@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../decision_tree.cwl
+id: decision_tree.cwl
 inputs:
 - id: in_config
   doc: Configuration file

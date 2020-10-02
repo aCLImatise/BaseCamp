@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sagapython_version.cwl
+id: sagapython_version.cwl
 inputs: []
 outputs:
 - id: out_stdout

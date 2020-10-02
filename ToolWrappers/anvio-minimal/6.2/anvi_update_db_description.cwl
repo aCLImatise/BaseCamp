@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_update_db_description.cwl
+id: anvi_update_db_description.cwl
 inputs:
 - id: in_description
   doc: "A plain text file that contains some description about\nthe project. You can\

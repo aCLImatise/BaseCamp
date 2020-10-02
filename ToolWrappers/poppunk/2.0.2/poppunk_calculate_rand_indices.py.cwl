@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../poppunk_calculate_rand_indices.py.cwl
+id: poppunk_calculate_rand_indices.py.cwl
 inputs:
 - id: in_input
   doc: "Comma separated list of clustering CSVs between which\nindices should be calculated\

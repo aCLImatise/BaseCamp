@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proBAM_coref.py.cwl
+id: proBAM_coref.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

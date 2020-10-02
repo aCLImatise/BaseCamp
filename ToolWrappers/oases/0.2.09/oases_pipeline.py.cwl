@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oases_pipeline.py.cwl
+id: oases_pipeline.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

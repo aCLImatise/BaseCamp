@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MentaLiST.jl_call_reads..cwl
+id: MentaLiST.jl_call_reads..cwl
 inputs:
 - id: in_t
   doc: ''

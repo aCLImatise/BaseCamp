@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_pairs.sh_FILE_DEST.cwl
+id: merge_pairs.sh_FILE_DEST.cwl
 inputs:
 - id: in_write_to_stdout
   doc: Write to stdout

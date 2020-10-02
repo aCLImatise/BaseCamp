@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../methratio.py.cwl
+id: methratio.py.cwl
 inputs:
 - id: in_out
   doc: 'output methylation ratio file name. [default: STDOUT]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../translateCoding.cwl
+id: translateCoding.cwl
 inputs: []
 outputs:
 - id: out_stdout

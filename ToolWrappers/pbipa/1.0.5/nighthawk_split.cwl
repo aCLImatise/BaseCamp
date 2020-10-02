@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nighthawk_split.cwl
+id: nighthawk_split.cwl
 inputs:
 - id: in_split_type
   doc: "STR   Type of splitting to perform. Valid choices: (nfiles,\novlpiles, noverlaps).\

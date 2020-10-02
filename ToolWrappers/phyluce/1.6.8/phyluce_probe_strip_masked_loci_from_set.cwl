@@ -1,9 +1,9 @@
 class: CommandLineTool
-id: ../../../phyluce_probe_strip_masked_loci_from_set.cwl
+id: phyluce_probe_strip_masked_loci_from_set.cwl
 inputs:
 - id: in_output
-  doc: ''
-  type: string
+  doc: "[--filter-mask MASK]\n[--max-n MAX_N]\n[--min-length MIN_LENGTH]"
+  type: long
   inputBinding:
     prefix: --output
 - id: in_bed

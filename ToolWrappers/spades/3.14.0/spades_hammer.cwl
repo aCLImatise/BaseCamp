@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spades_hammer.cwl
+id: spades_hammer.cwl
 inputs: []
 outputs:
 - id: out_stdout

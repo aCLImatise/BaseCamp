@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../loeb_2.0.sh.cwl
+id: loeb_2.0.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

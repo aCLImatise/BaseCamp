@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spectrast_cluster.py.cwl
+id: spectrast_cluster.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

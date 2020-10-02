@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nextflow.bak_drop.cwl
+id: nextflow.bak_drop.cwl
 inputs:
 - id: in_delete_repository_taking
   doc: "Delete the repository without taking care of local changes\nDefault: false"

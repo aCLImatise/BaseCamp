@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../external_sparse_matrix_list.py.cwl
+id: external_sparse_matrix_list.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

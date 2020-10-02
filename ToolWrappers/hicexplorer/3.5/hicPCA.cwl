@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicPCA.cwl
+id: hicPCA.cwl
 inputs:
 - id: in_matrix
   doc: 'HiCExplorer matrix in h5 format. (default: None)'

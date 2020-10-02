@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../delta_filter_wrapper.py.cwl
+id: delta_filter_wrapper.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_utils_fx_time.cwl
+id: sketchy_utils_fx_time.cwl
 inputs:
 - id: in_fast_q
   doc: "Path to Fast{a,q} input file used in evaluation NOTE:\nThis argument is mutually\

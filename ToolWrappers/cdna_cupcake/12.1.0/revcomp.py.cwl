@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../revcomp.py.cwl
+id: revcomp.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

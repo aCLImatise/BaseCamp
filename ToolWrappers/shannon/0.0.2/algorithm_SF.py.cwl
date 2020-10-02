@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../algorithm_SF.py.cwl
+id: algorithm_SF.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

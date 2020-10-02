@@ -1,8 +1,9 @@
 class: CommandLineTool
-id: ../../../MakeDb.py_igblast.cwl
+id: MakeDb.py_igblast.cwl
 inputs:
 - id: in_i
-  doc: ''
+  doc: "[--10x CELLRANGER_FILE [CELLRANGER_FILE ...]]\n[--asis-id] [--asis-calls]\
+    \ [--partial] [--extended]\n[--regions {default,rhesus-igl}]"
   type: string[]
   inputBinding:
     prefix: -i

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MSGFPlusAdapter.cwl
+id: MSGFPlusAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                        Input file (MS-GF+ parameter '-s') (valid formats:\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_use_application_default_credentials.cwl
+id: gcloud_config_use_application_default_credentials.cwl
 inputs:
 - id: in_g_cloud
   doc: ''

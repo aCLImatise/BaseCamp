@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hgLoadNet.cwl
+id: hgLoadNet.cwl
 inputs:
 - id: in_no_bin
   doc: suppress bin field

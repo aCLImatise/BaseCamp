@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../joinPeptides.pl.cwl
+id: joinPeptides.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyrsa_verify.cwl
+id: pyrsa_verify.cwl
 inputs:
 - id: in_input
   doc: "Name of the file to verify. Reads from stdin if not\nspecified."

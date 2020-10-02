@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../suppa.py_psiPerIsoform.cwl
+id: suppa.py_psiPerIsoform.cwl
 inputs:
 - id: in_gtf_file
   doc: Input gtf file

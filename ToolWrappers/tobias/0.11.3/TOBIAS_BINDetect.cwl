@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_BINDetect.cwl
+id: TOBIAS_BINDetect.cwl
 inputs:
 - id: in_signals
   doc: "[<bigwig> [<bigwig> ...]]\nSignal per condition (.bigwig format)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scpd2meme.cwl
+id: scpd2meme.cwl
 inputs:
 - id: in_skip
   doc: skip this ID (may be repeated)

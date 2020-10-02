@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanonetcall.cwl
+id: nanonetcall.cwl
 inputs:
 - id: in_watch
   doc: "Switch to watching folder, argument value used as\ntimeout period. (default:\

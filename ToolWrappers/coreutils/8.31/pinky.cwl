@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pinky.cwl
+id: pinky.cwl
 inputs:
 - id: in_produce_format_output
   doc: produce long format output for the specified USERs

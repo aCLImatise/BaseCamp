@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dreamtools_layout.cwl
+id: dreamtools_layout.cwl
 inputs: []
 outputs:
 - id: out_stdout

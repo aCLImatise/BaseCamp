@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map2slim.cwl
+id: map2slim.cwl
 inputs:
 - id: in_slim_filethis_argument
   doc: "slim file\nThis argument adds bucket terms to the slim ontology; see the\n\
@@ -37,11 +37,6 @@ inputs:
   doc: "(Only works with -outmap)\nShow the names of the term in the slim mapping\
     \ file"
   type: string
-  inputBinding:
-    position: 0
-- id: in_one_zero
-  doc: 2+3                    2,3,1
-  type: long
   inputBinding:
     position: 0
 - id: in_output

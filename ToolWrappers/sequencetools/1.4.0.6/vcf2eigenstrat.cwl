@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2eigenstrat.cwl
+id: vcf2eigenstrat.cwl
 inputs:
 - id: in_snp_file
   doc: "specify an Eigenstrat SNP file with the positions and\nalleles of a reference\

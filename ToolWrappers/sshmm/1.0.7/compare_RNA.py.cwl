@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compare_RNA.py.cwl
+id: compare_RNA.py.cwl
 inputs:
 - id: in_keep_length_one_stems
   doc: "For all input formats except forgi bg/cg files, this\ncontrolls whether stems\

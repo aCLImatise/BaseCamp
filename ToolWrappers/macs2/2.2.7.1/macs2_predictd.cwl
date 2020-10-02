@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../macs2_predictd.cwl
+id: macs2_predictd.cwl
 inputs:
 - id: in_i_file
   doc: "ChIP-seq alignment file. If multiple files are given\nas '-t A B C', then\

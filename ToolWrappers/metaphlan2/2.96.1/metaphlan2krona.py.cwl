@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaphlan2krona.py.cwl
+id: metaphlan2krona.py.cwl
 inputs:
 - id: in_profile
   doc: The input file is the MetaPhlAn standard result file

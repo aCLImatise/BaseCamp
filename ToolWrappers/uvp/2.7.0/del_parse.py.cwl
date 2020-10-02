@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../del_parse.py.cwl
+id: del_parse.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

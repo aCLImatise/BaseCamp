@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snippy_vcf_to_tab.cwl
+id: snippy_vcf_to_tab.cwl
 inputs:
 - id: in_debug
   doc: "!        Output verbose debug info (default '0')."

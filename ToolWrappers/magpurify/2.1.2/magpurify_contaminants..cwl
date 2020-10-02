@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../magpurify_contaminants..cwl
+id: magpurify_contaminants..cwl
 inputs:
 - id: in_mag_purify
   doc: ''

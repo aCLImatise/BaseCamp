@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fpcat.cwl
+id: fpcat.cwl
 inputs:
 - id: in_in
   doc: "input fingerprint format. One of fps or fps.gz.\n(default guesses from filename\

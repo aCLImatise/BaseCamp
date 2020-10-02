@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nb_train.cwl
+id: nb_train.cwl
 inputs:
 - id: in_contact
   doc: Print contact information.

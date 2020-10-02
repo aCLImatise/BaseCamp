@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_gdlib_config.cwl
+id: _gdlib_config.cwl
 inputs:
 - id: in_libdir
   doc: '# directory where GD library is installed'

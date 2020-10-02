@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../breseq.cwl
+id: breseq.cwl
 inputs:
 - id: in_reference
   doc: File containing reference sequences in GenBank, GFF3, or FASTA format. Option

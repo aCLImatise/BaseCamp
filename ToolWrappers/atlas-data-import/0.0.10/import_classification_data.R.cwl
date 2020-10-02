@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../import_classification_data.R.cwl
+id: import_classification_data.R.cwl
 inputs:
 - id: in_config_file
   doc: Config file in .yaml format

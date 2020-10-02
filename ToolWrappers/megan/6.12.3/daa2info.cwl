@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../daa2info.cwl
+id: daa2info.cwl
 inputs:
 - id: in_in
   doc: '[string]                    Input DAA file. Mandatory option.'

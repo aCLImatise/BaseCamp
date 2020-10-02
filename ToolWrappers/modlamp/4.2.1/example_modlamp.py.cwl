@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../example_modlamp.py.cwl
+id: example_modlamp.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

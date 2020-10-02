@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_fasta_bins.py.cwl
+id: extract_fasta_bins.py.cwl
 inputs:
 - id: in_output_path
   doc: "Directory where files will be printed\n"

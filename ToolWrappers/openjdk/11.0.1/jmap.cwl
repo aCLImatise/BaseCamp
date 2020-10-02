@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jmap.cwl
+id: jmap.cwl
 inputs:
 - id: in_dump
   doc: ''

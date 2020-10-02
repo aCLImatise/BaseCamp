@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophex_bwtdowngrade.cwl
+id: prophex_bwtdowngrade.cwl
 inputs:
 - id: in_input_dot_bwt
   doc: ''

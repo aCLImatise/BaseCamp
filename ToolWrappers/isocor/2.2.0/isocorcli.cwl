@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isocorcli.cwl
+id: isocorcli.cwl
 inputs:
 - id: in_path_metabolites_database
   doc: path to metabolites database

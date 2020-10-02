@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enasearch_retrieve_data.cwl
+id: enasearch_retrieve_data.cwl
 inputs:
 - id: in_ids
   doc: "Ids for records to return (other than Taxon and\nProject) [multiple]  [required]"

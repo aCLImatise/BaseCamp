@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_stoptags.py.cwl
+id: filter_stoptags.py.cwl
 inputs:
 - id: in_info
   doc: print citation information
@@ -16,11 +16,6 @@ inputs:
   type: File
   inputBinding:
     prefix: --force
-- id: in_input_stop_tags_filename
-  doc: input_sequence_filename
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

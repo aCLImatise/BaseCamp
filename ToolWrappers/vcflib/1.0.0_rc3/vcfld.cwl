@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfld.cwl
+id: vcfld.cwl
 inputs:
 - id: in_version
   doc: ': v1.0.0-rc0-349-g45c6-dirty'

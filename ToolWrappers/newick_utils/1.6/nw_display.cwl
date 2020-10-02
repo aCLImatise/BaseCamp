@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_display.cwl
+id: nw_display.cwl
 inputs:
 - id: in_rotate_labels_amount
   doc: ": rotate all labels by this amount (radians, default: 0)\n[only SVG radial]"

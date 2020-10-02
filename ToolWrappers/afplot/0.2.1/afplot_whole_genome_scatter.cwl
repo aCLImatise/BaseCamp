@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../afplot_whole_genome_scatter.cwl
+id: afplot_whole_genome_scatter.cwl
 inputs:
 - id: in_output
   doc: Path to output file  [required]

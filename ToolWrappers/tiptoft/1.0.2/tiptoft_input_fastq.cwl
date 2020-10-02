@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tiptoft_input_fastq.cwl
+id: tiptoft_input_fastq.cwl
 inputs:
 - id: in_tip_to_ft
   doc: ''

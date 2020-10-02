@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intersectFiles.py.cwl
+id: intersectFiles.py.cwl
 inputs:
 - id: in_threads_to_run
   doc: Threads to run

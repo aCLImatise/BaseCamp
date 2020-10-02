@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../determine_phred.cwl
+id: determine_phred.cwl
 inputs: []
 outputs:
 - id: out_stdout

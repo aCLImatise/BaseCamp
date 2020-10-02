@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwise.cwl
+id: bwise.cwl
 inputs:
 - id: in_input_fasta_pairedend
   doc: "input fasta or (compressed .gz if -c option is != 0)\npaired-end read files.\

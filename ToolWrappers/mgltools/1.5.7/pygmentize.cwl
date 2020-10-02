@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pygmentize.cwl
+id: pygmentize.cwl
 inputs: []
 outputs:
 - id: out_stdout

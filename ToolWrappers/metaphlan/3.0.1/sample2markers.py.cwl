@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sample2markers.py.cwl
+id: sample2markers.py.cwl
 inputs:
 - id: in_input
   doc: The input samples as SAM or BAM files

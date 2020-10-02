@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../baseCalling_Matrix_analyzer.cwl
+id: baseCalling_Matrix_analyzer.cwl
 inputs:
 - id: in_matrix_file
   doc: matrix file

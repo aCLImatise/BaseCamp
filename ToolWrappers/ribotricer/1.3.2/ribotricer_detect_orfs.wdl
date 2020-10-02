@@ -14,11 +14,9 @@ task RibotricerDetectorfs {
     Float? min_valid_codons_ratio
     Float? min_read_density
     Boolean? report_all
-    String translation
   }
   command <<<
     ribotricer detect_orfs \
-      ~{translation} \
       ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
       ~{if defined(ribot_ricer_index) then ("--ribotricer_index " +  '"' + ribot_ricer_index + '"') else ""} \
       ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
@@ -45,7 +43,6 @@ task RibotricerDetectorfs {
     min_valid_codons_ratio: "Minimum ratio of codons with non-zero reads\\nto total codons for determining active\\ntranslation  [default: 0]"
     min_read_density: "Minimum read density (total_reads/length)\\nover an ORF total codons for determining\\nactive translation  [default: 0.0]"
     report_all: "Whether output all ORFs including those non-\\ntranslating ones"
-    translation: "[default: 0.428571428571]"
   }
   output {
     File out_stdout = stdout()

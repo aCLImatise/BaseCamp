@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../panoct.pl.cwl
+id: panoct.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nasp_output_folder.cwl
+id: nasp_output_folder.cwl
 inputs:
 - id: in_config
   doc: ''

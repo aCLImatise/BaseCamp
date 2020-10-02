@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_explain_mcompare.cwl
+id: deepac_explain_mcompare.cwl
 inputs:
 - id: in_in_file_one
   doc: File containing all filter motifs in transfac format

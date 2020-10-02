@@ -3,7 +3,6 @@ version 1.0
 task PslToBigPsl {
   input {
     File? cds
-    File? fa
     File file_dot_psl
     String stdout
   }
@@ -11,12 +10,10 @@ task PslToBigPsl {
     pslToBigPsl \
       ~{file_dot_psl} \
       ~{stdout} \
-      ~{if defined(cds) then ("-cds " +  '"' + cds + '"') else ""} \
-      ~{if defined(fa) then ("-fa " +  '"' + fa + '"') else ""}
+      ~{if defined(cds) then ("-cds " +  '"' + cds + '"') else ""}
   >>>
   parameter_meta {
-    cds: ""
-    fa: ""
+    cds: "-fa=file.fasta"
     file_dot_psl: ""
     stdout: ""
   }

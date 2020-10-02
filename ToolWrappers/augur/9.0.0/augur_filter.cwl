@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augur_filter.cwl
+id: augur_filter.cwl
 inputs:
 - id: in_sequences
   doc: 'sequences in fasta or VCF format (default: None)'

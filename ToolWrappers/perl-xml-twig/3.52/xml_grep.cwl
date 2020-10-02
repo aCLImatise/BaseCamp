@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xml_grep.cwl
+id: xml_grep.cwl
 inputs:
 - id: in_man
   doc: full documentation

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dropletBarcodePlot.R.cwl
+id: dropletBarcodePlot.R.cwl
 inputs:
 - id: in_barcode_frequencies
   doc: Path to a two-column tab-delimited file, with barcodes in the first column

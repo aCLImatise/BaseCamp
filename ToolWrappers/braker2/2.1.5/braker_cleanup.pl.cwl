@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../braker_cleanup.pl.cwl
+id: braker_cleanup.pl.cwl
 inputs:
 - id: in_wdir
   doc: output directory of braker.pl job

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../unicycler.cwl
+id: unicycler.cwl
 inputs:
 - id: in_help_all
   doc: Show a help message with all program options

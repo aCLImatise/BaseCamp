@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tsv2bam.cwl
+id: tsv2bam.cwl
 inputs:
 - id: in_in_dir
   doc: ': input directory.'

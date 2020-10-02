@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../to_upper_case.pl.bak.cwl
+id: to_upper_case.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

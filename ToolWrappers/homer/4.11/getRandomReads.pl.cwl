@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getRandomReads.pl.cwl
+id: getRandomReads.pl.cwl
 inputs:
 - id: in_tag_directory
   doc: ''

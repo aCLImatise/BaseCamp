@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getPartOfPromoter.pl.cwl
+id: getPartOfPromoter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

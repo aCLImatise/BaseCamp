@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ctg2umdcontig.cwl
+id: ctg2umdcontig.cwl
 inputs:
 - id: in_file_dot_ctg
   doc: ''

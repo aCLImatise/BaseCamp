@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_distmat.cwl
+id: _distmat.cwl
 inputs:
 - id: in_file
   doc: 'Additional (Optional) qualifiers (* if not always prompted):'

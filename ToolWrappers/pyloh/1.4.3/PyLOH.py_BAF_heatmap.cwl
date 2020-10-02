@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PyLOH.py_BAF_heatmap.cwl
+id: PyLOH.py_BAF_heatmap.cwl
 inputs:
 - id: in_filename_base
   doc: Base name of preprocessed files created.

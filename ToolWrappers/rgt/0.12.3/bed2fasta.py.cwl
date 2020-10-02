@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed2fasta.py.cwl
+id: bed2fasta.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

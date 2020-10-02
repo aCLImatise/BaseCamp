@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_select_most_5p_tx.cwl
+id: gtftk_select_most_5p_tx.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the GTF file. Default to STDIN (default: <stdin>)'

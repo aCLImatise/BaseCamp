@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extracthbv.sh.cwl
+id: extracthbv.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

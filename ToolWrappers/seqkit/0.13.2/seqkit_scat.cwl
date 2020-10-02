@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_scat.cwl
+id: seqkit_scat.cwl
 inputs:
 - id: in_allow_gaps
   doc: allow gap character (-) in sequences

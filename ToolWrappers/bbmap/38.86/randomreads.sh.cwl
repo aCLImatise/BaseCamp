@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randomreads.sh.cwl
+id: randomreads.sh.cwl
 inputs:
 - id: in_x_mx
   doc: "This will set Java's memory usage, overriding the\nprogram's automatic memory\

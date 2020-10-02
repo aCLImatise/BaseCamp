@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rmblastn.cwl
+id: rmblastn.cwl
 inputs: []
 outputs:
 - id: out_stdout

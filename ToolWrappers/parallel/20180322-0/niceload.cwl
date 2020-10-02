@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../niceload.cwl
+id: niceload.cwl
 inputs: []
 outputs:
 - id: out_stdout

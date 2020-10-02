@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbvcfreport_COMMAND.cwl
+id: tbvcfreport_COMMAND.cwl
 inputs:
 - id: in_args
   doc: ''

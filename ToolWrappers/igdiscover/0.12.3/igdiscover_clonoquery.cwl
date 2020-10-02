@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_clonoquery.cwl
+id: igdiscover_clonoquery.cwl
 inputs:
 - id: in_minimum_count
   doc: 'Discard all rows with count less than N. Default: 1'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comb_p_peaks.cwl
+id: comb_p_peaks.cwl
 inputs:
 - id: in_dist
   doc: "Maximum dist to skip before finding a seed/thresh\nvalue. If this number is\

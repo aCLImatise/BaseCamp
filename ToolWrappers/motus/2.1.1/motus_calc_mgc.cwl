@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../motus_calc_mgc.cwl
+id: motus_calc_mgc.cwl
 inputs:
 - id: in_profile
   doc: Perform a taxonomic profiling (map_tax + calc_mgc + calc_motu)

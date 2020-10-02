@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intersectGenomicSets.py.cwl
+id: intersectGenomicSets.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

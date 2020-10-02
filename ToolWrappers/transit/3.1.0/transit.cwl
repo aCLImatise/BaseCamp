@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../transit.cwl
+id: transit.cwl
 inputs:
 - id: in_python
   doc: ''

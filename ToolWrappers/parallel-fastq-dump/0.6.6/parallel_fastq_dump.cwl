@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parallel_fastq_dump.cwl
+id: parallel_fastq_dump.cwl
 inputs:
 - id: in_sra_id
   doc: SRA id

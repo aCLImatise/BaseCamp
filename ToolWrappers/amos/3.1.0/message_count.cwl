@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../message_count.cwl
+id: message_count.cwl
 inputs:
 - id: in_message
   doc: ''

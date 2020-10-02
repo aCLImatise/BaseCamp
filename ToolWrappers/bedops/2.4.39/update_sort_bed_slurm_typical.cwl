@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../update_sort_bed_slurm_typical.cwl
+id: update_sort_bed_slurm_typical.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_gd2copypal.cwl
+id: _gd2copypal.cwl
 inputs:
 - id: in_gd_two_copy_pal
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fix_sqn_date.cwl
+id: fix_sqn_date.cwl
 inputs: []
 outputs:
 - id: out_stdout

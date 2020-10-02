@@ -3,17 +3,8 @@ version 1.0
 task SequenceGenerate {
   input {
     Int? min
-    Int? max
-    String? sequences
-    Int? bases
-    Boolean? gaussian
-    String? mirror
-    Float? gc
-    Float? at
-    Float? sets_frequency_bases
-    Float? sets_frequency_c
-    Float? sets_frequency_g
-    Float? sets_frequency_t
+    Int? _results_sum
+    Int? gc
     String sequence
     String? mode
     String? sequence_file
@@ -24,31 +15,13 @@ task SequenceGenerate {
       ~{mode} \
       ~{sequence_file} \
       ~{if defined(min) then ("-min " +  '"' + min + '"') else ""} \
-      ~{if defined(max) then ("-max " +  '"' + max + '"') else ""} \
-      ~{if defined(sequences) then ("-sequences " +  '"' + sequences + '"') else ""} \
-      ~{if defined(bases) then ("-bases " +  '"' + bases + '"') else ""} \
-      ~{if (gaussian) then "-gaussian" else ""} \
-      ~{if defined(mirror) then ("-mirror " +  '"' + mirror + '"') else ""} \
-      ~{if defined(gc) then ("-gc " +  '"' + gc + '"') else ""} \
-      ~{if defined(at) then ("-at " +  '"' + at + '"') else ""} \
-      ~{if defined(sets_frequency_bases) then ("-a " +  '"' + sets_frequency_bases + '"') else ""} \
-      ~{if defined(sets_frequency_c) then ("-c " +  '"' + sets_frequency_c + '"') else ""} \
-      ~{if defined(sets_frequency_g) then ("-g " +  '"' + sets_frequency_g + '"') else ""} \
-      ~{if defined(sets_frequency_t) then ("-t " +  '"' + sets_frequency_t + '"') else ""}
+      ~{if defined(_results_sum) then ("-a " +  '"' + _results_sum + '"') else ""} \
+      ~{if defined(gc) then ("-gc " +  '"' + gc + '"') else ""}
   >>>
   parameter_meta {
-    min: "minimum sequence length"
-    max: "maximum sequence length"
-    sequences: "generate N sequences"
-    bases: "generate at least B bases, no more than B+maxLength-1 bases."
-    gaussian: "99.73% of the reads (3 standard deviations) will be between min and max"
-    mirror: ""
-    gc: "sets GC/AT composition (default 0.50)"
-    at: "sets GC/AT composition (default 0.50)"
-    sets_frequency_bases: "sets frequency of A bases (default 0.25)"
-    sets_frequency_c: "sets frequency of C bases (default 0.25)"
-    sets_frequency_g: "sets frequency of G bases (default 0.25)"
-    sets_frequency_t: "sets frequency of T bases (default 0.25)"
+    min: "minimum sequence length\\n-max M         maximum sequence length\\n-sequences N   generate N sequences\\n-bases B       generate at least B bases, no more than B+maxLength-1 bases.\\n-gaussian      99.73% of the reads (3 standard deviations) will be between min and max\\n-mirror F\\n-gc bias       sets GC/AT composition (default 0.50)\\n-at bias       sets GC/AT composition (default 0.50)\\n-a freq        sets frequency of A bases (default 0.25)\\n-c freq        sets frequency of C bases (default 0.25)\\n-g freq        sets frequency of G bases (default 0.25)\\n-t freq        sets frequency of T bases (default 0.25)"
+    _results_sum: "-- results in a sum of 2.0 (1.25 + 0.25 + 0.25 + 0.25) so final frequencies will be:\\nA =         1.25/2 = 0.625\\nC = G = T = 0.25/2 = 0.125."
+    gc: "-- sum is also 2.0, final frequencies will be:\\nA =         1.00/2 = 0.5\\nC = G =     0.40/2 = 0.2\\nT =         0.20/2 = 0.1"
     sequence: ""
     mode: ""
     sequence_file: ""

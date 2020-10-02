@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../select_taxa.cwl
+id: select_taxa.cwl
 inputs: []
 outputs:
 - id: out_stdout

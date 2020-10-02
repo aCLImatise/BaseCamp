@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterlinks.cwl
+id: filterlinks.cwl
 inputs:
 - id: in_no_intra
   doc: ''

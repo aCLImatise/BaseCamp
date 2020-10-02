@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validateFiles_idat.cwl
+id: validateFiles_idat.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

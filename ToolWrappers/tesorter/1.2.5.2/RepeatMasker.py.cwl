@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RepeatMasker.py.cwl
+id: RepeatMasker.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

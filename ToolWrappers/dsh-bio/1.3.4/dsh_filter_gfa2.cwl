@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_filter_gfa2.cwl
+id: dsh_filter_gfa2.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

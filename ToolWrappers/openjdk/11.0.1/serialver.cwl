@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../serialver.cwl
+id: serialver.cwl
 inputs: []
 outputs:
 - id: out_stdout

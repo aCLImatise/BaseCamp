@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../build_lmer_table.cwl
+id: build_lmer_table.cwl
 inputs:
 - id: in_tandem
   doc: '--- tandem distance window (def: 500)'

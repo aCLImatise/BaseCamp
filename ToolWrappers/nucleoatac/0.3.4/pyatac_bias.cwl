@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyatac_bias.cwl
+id: pyatac_bias.cwl
 inputs:
 - id: in_fast_a
   doc: Accepts fasta file

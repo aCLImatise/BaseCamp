@@ -1,9 +1,10 @@
 class: CommandLineTool
-id: ../../../phyluce_ncbi_prep_uce_align_files_for_ncbi.cwl
+id: phyluce_ncbi_prep_uce_align_files_for_ncbi.cwl
 inputs:
 - id: in_output
-  doc: ''
-  type: string
+  doc: "[--input-format {fasta,nexus,phylip,phylip-relaxed,clustal,emboss,stockholm}]\n\
+    [--verbosity {INFO,WARN,CRITICAL}]\n[--log-path LOG_PATH]"
+  type: File
   inputBinding:
     prefix: --output
 - id: in_alignments

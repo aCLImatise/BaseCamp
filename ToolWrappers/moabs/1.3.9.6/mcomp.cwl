@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcomp.cwl
+id: mcomp.cwl
 inputs:
 - id: in_email
   doc: Specify email;
@@ -95,11 +95,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --doStrandSpecifiMeth
-- id: in_do_comp
-  doc: (=1)                 doComp;
-  type: long
-  inputBinding:
-    prefix: --doComp
 - id: in_arg_site_depth
   doc: "[ --minDepthForComp ] arg (=3) If a site has depth < d then this site is\n\
     ignored for statistical tests; This option\naffects much of nominal ratios but\
@@ -109,16 +104,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -d
-- id: in_do_dmcs_can
-  doc: (=1)              doDmcScan;
-  type: long
-  inputBinding:
-    prefix: --doDmcScan
-- id: in_dod_mrs_can
-  doc: (=1)              doDmrScan;
-  type: long
-  inputBinding:
-    prefix: --doDmrScan
 - id: in_filter_credible_dif
   doc: "(=-10)    if absolute value of cDif for a site <\nfilterCredibleDif, then\
     \ this site is\nignored for regional calculation. use\n0.01(for example) to filter\

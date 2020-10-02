@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mugsy.cwl
+id: mugsy.cwl
 inputs:
 - id: in_prefix_prefix_output
   doc: '|prefix       prefix for output files'

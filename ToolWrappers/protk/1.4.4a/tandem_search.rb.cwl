@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tandem_search.rb.cwl
+id: tandem_search.rb.cwl
 inputs:
 - id: in_replace_output
   doc: Dont skip analyses for which the output file already exists [false]

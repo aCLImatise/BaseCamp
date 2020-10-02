@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_dataflow_optional.cwl
+id: gcloud_dataflow_optional.cwl
 inputs:
 - id: in_flags
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kseq_split.cwl
+id: kseq_split.cwl
 inputs: []
 outputs:
 - id: out_stdout

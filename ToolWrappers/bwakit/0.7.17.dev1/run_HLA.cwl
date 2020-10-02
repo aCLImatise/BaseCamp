@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_HLA.cwl
+id: run_HLA.cwl
 inputs:
 - id: in_do_create_files
   doc: Don't create files

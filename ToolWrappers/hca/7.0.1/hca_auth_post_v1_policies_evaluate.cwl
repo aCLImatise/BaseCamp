@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_auth_post_v1_policies_evaluate.cwl
+id: hca_auth_post_v1_policies_evaluate.cwl
 inputs:
 - id: in_principal
   doc: Attested user identifier.

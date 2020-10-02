@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../asn2xml.cwl
+id: asn2xml.cwl
 inputs:
 - id: in_filename_asn_input
   doc: "Filename for asn.1 input [File In]\ndefault = stdin"

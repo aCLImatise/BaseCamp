@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../antarna.py_MFE.cwl
+id: antarna.py_MFE.cwl
 inputs:
 - id: in_cstr
   doc: "Structure constraint using RNA dotbracket notation\nwith fuzzy block constraint.\

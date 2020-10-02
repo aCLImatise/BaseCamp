@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_alipid.cwl
+id: esl_alipid.cwl
 inputs:
 - id: in_in_format
   doc: ': specify the input MSA file is in format <s>'

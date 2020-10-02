@@ -30,7 +30,7 @@ subcommands:
     args: !SimpleFlagArg
       name: in_format
     optional: true
-  parent: &id006 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -59,24 +59,10 @@ subcommands:
         args: !SimpleFlagArg
           name: in_format
         optional: true
-      parent: &id003 !Command
+      parent: &id006 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: Input format (fastq).
-          synonyms:
-          - -i
-          args: !SimpleFlagArg
-            name: in_format
-          optional: true
-        - !Flag
-          description: .
-          synonyms:
-          - -n
-          args: !SimpleFlagArg
-            name: nr_bases
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -102,7 +88,125 @@ subcommands:
             args: !SimpleFlagArg
               name: in_format
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: Input format (fastq).
+              synonyms:
+              - -i
+              args: !SimpleFlagArg
+                name: in_format
+              optional: true
+            - !Flag
+              description: .
+              synonyms:
+              - -n
+              args: !SimpleFlagArg
+                name: nr_bases
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: fastx_ends_tab.py
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -n
+                args: !SimpleFlagArg
+                  name: nr_bases
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -i
+                args: !SimpleFlagArg
+                  name: in_format
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: fastx_ends_tab.py [-h] [-i in_format] [-n nr_bases]\n\
+                \                         [input_fastx] [output_tsv]\nfastx_ends_tab.py:\
+                \ error: argument input_fastx: can't open 'output_tsv': [Errno 2]\
+                \ No such file or directory: 'output_tsv'\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - fastx_ends_tab.py
+              - input_fastx
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: fastx_ends_tab.py
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - -n
+                args: !SimpleFlagArg
+                  name: nr_bases
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -i
+                args: !SimpleFlagArg
+                  name: in_format
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: fastx_ends_tab.py [-h] [-i in_format] [-n nr_bases]\n\
+                \                         [input_fastx] [output_tsv]\nfastx_ends_tab.py:\
+                \ error: argument input_fastx: can't open 'input_fastx': [Errno 2]\
+                \ No such file or directory: 'input_fastx'\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: fastx_ends_tab.py [-h] [-i in_format] [-n nr_bases]\n\
+              \                         [input_fastx] [output_tsv]\n\nGenerate a tab\
+              \ separated file with the first and last -n bases of the\nsequences.\n\
+              \npositional arguments:\n  input_fastx   Input file (default: stdin).\n\
+              \  output_tsv    Output file (default: stdout).\n\noptional arguments:\n\
+              \  -h, --help    show this help message and exit\n  -i in_format  Input\
+              \ format (fastq).\n  -n nr_bases   .\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -117,12 +221,9 @@ subcommands:
             \                         [input_fastx] [output_tsv]\nfastx_ends_tab.py:\
             \ error: argument input_fastx: can't open 'output_tsv': [Errno 2] No such\
             \ file or directory: 'output_tsv'\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - fastx_ends_tab.py
-          - input_fastx
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -161,13 +262,7 @@ subcommands:
             \ such file or directory: 'input_fastx'\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: fastx_ends_tab.py [-h] [-i in_format] [-n nr_bases]\n \
@@ -216,7 +311,7 @@ subcommands:
         args: !SimpleFlagArg
           name: in_format
         optional: true
-      parent: *id003
+      parent: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -280,7 +375,7 @@ subcommands:
     args: !SimpleFlagArg
       name: in_format
     optional: true
-  parent: *id006
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

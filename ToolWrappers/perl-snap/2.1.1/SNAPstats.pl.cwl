@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SNAPstats.pl.cwl
+id: SNAPstats.pl.cwl
 inputs:
 - id: in_codons_dot
   doc: ''

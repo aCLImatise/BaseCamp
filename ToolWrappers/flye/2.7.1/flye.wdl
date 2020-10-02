@@ -3,12 +3,12 @@ version 1.0
 task Flye {
   input {
     Boolean? nano_corr
-    Int? genome_size
     Array[File] pac_bio_raw
     Array[File] pac_bio_corr
     Array[File] pac_bio_hifi
     Array[File] nano_raw
     Array[File] subassemblies
+    Int? genome_size
     Directory? out_dir
     Int? threads
     Int? iterations
@@ -27,12 +27,12 @@ task Flye {
   command <<<
     flye \
       ~{if (nano_corr) then "--nano-corr" else ""} \
-      ~{if defined(genome_size) then ("--genome-size " +  '"' + genome_size + '"') else ""} \
       ~{if defined(pac_bio_raw) then ("--pacbio-raw " +  '"' + pac_bio_raw + '"') else ""} \
       ~{if defined(pac_bio_corr) then ("--pacbio-corr " +  '"' + pac_bio_corr + '"') else ""} \
       ~{if defined(pac_bio_hifi) then ("--pacbio-hifi " +  '"' + pac_bio_hifi + '"') else ""} \
       ~{if defined(nano_raw) then ("--nano-raw " +  '"' + nano_raw + '"') else ""} \
       ~{if defined(subassemblies) then ("--subassemblies " +  '"' + subassemblies + '"') else ""} \
+      ~{if defined(genome_size) then ("--genome-size " +  '"' + genome_size + '"') else ""} \
       ~{if defined(out_dir) then ("--out-dir " +  '"' + out_dir + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(iterations) then ("--iterations " +  '"' + iterations + '"') else ""} \
@@ -49,13 +49,13 @@ task Flye {
       ~{if (debug) then "--debug" else ""}
   >>>
   parameter_meta {
-    nano_corr: "| --subassemblies) file1 [file_2 ...]"
-    genome_size: "estimated genome size (for example, 5m or 2.6g)"
+    nano_corr: "| --subassemblies) file1 [file_2 ...]\\n--genome-size SIZE --out-dir PATH\\n[--threads int] [--iterations int] [--min-overlap int]\\n[--meta] [--plasmids] [--trestle] [--polish-target]\\n[--keep-haplotypes] [--debug] [--version] [--help]\\n[--resume] [--resume-from] [--stop-after]"
     pac_bio_raw: "PacBio raw reads"
     pac_bio_corr: "PacBio corrected reads"
     pac_bio_hifi: "PacBio HiFi reads"
     nano_raw: "ONT raw reads"
     subassemblies: "high-quality contigs input"
+    genome_size: "estimated genome size (for example, 5m or 2.6g)"
     out_dir: "Output directory"
     threads: "number of parallel threads [1]"
     iterations: "number of polishing iterations [1]"

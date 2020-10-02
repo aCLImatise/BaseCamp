@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ama.cwl
+id: ama.cwl
 inputs:
 - id: in_s_dbg
   doc: "Use Markov background model of order <order>\nderived from the sequence to\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../loadCorrectedReads.cwl
+id: loadCorrectedReads.cwl
 inputs:
 - id: in_path_sequence_store
   doc: Path to a sequence store

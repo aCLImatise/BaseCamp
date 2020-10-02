@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../microhapdb.cwl
+id: microhapdb.cwl
 inputs:
 - id: in_files
   doc: print data table filenames and exit

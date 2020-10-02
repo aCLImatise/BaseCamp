@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_gs.py.cwl
+id: create_gs.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jobTreeStatus.cwl
+id: jobTreeStatus.cwl
 inputs:
 - id: in_tempdir_root
   doc: "Path to where temporary directory containing all temp\nfiles are created,\

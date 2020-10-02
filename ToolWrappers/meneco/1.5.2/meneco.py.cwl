@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meneco.py.cwl
+id: meneco.py.cwl
 inputs:
 - id: in_draft_net
   doc: metabolic network in SBML format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tracy_assemble.cwl
+id: tracy_assemble.cwl
 inputs:
 - id: in_arg_referenceguided_assembly
   doc: '[ --reference ] arg              reference-guided assembly (optional)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NhoodInfo.cwl
+id: NhoodInfo.cwl
 inputs:
 - id: in_arg_one
   doc: ''

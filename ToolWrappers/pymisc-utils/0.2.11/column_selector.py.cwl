@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../column_selector.py.cwl
+id: column_selector.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

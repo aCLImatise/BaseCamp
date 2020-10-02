@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_fastq.cwl
+id: flye_samtools_fastq.cwl
 inputs:
 - id: in_write_reads_designated_readother
   doc: write reads designated READ_OTHER to FILE

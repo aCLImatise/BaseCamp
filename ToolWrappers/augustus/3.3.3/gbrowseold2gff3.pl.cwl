@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gbrowseold2gff3.pl.cwl
+id: gbrowseold2gff3.pl.cwl
 inputs:
 - id: in_hints
   doc: convert gff format for intron hints to gff3

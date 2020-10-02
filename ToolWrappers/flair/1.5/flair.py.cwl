@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flair.py.cwl
+id: flair.py.cwl
 inputs:
 - id: in_mode
   doc: ''

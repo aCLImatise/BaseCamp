@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_noreturn.cwl
+id: _noreturn.cwl
 inputs:
 - id: in_system
   doc: "menu       [unix] Target operating system for\nend-of-line format (Values:\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plaScope.sh.cwl
+id: plaScope.sh.cwl
 inputs:
 - id: in_no_banner
   doc: don't print beautiful banners

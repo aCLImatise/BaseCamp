@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metawrap_annotate_bins.cwl
+id: metawrap_annotate_bins.cwl
 inputs:
 - id: in_output_directory
   doc: output directory

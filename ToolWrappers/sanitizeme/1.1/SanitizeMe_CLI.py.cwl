@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SanitizeMe_CLI.py.cwl
+id: SanitizeMe_CLI.py.cwl
 inputs:
 - id: in_input_folder
   doc: "Folder containing fastq files. Only files ending in\n.fq, .fg.gz, .fastq,\

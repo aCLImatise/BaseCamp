@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samp_hub.cwl
+id: samp_hub.cwl
 inputs:
 - id: in_secret
   doc: custom secret code.

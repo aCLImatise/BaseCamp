@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfcountalleles.cwl
+id: vcfcountalleles.cwl
 inputs: []
 outputs:
 - id: out_stdout

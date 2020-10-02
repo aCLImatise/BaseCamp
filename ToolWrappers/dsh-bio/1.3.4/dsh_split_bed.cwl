@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_split_bed.cwl
+id: dsh_split_bed.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

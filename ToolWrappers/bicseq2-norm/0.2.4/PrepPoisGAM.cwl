@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PrepPoisGAM.cwl
+id: PrepPoisGAM.cwl
 inputs:
 - id: in_two_column_read
   doc: ": a two column read count file(position and count); If unspecified, use <stdin>\

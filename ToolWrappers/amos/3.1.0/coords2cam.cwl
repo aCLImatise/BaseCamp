@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coords2cam.cwl
+id: coords2cam.cwl
 inputs: []
 outputs:
 - id: out_stdout

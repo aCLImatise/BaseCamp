@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_process_genbank.cwl
+id: anvi_script_process_genbank.cwl
 inputs:
 - id: in_input_genbank
   doc: Input GenBank file

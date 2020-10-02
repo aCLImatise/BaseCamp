@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../support_scripts.cwl
+id: support_scripts.cwl
 inputs: []
 outputs:
 - id: out_stdout

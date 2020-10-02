@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../acpype_params_gmx.cwl
+id: acpype_params_gmx.cwl
 inputs:
 - id: in_config
   doc: Configuration file

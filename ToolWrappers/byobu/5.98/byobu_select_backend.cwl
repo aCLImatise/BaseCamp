@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../byobu_select_backend.cwl
+id: byobu_select_backend.cwl
 inputs: []
 outputs:
 - id: out_stdout

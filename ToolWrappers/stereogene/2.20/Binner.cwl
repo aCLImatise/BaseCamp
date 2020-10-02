@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Binner.cwl
+id: Binner.cwl
 inputs:
 - id: in_v
   doc: verbose

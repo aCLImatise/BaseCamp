@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pathogen_profiler_get_mutations.py.cwl
+id: pathogen_profiler_get_mutations.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

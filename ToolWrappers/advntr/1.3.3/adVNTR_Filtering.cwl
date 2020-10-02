@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../adVNTR_Filtering.cwl
+id: adVNTR_Filtering.cwl
 inputs:
 - id: in_min_matches
   doc: Minimum number of matches to accept a read

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rb_mpi.cwl
+id: rb_mpi.cwl
 inputs:
 - id: in_show_version_exit
   doc: '[ --version ]      Show version and exit.'

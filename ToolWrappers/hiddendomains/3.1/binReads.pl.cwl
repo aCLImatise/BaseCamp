@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../binReads.pl.cwl
+id: binReads.pl.cwl
 inputs:
 - id: in_width_bin_default
   doc: The width of the bin. Default is 1000bp.

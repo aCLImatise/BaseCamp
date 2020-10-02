@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../import_Trinotate_xls_as_annot.pl.cwl
+id: import_Trinotate_xls_as_annot.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

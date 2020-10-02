@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_GO_DAG.pl.cwl
+id: test_GO_DAG.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../obiaddtaxids.cwl
+id: obiaddtaxids.cwl
 inputs:
-- id: in_u
-  doc: \
-  type: string
-  inputBinding:
-    prefix: -u
 - id: in_debug
   doc: Set logging in debug mode
   type: boolean
@@ -73,11 +68,6 @@ inputs:
 - id: in_database_dot
   doc: '- If the input file is an ``OBITools`` extended :doc:`fasta <../fasta>` format,
     the ``-k`` option'
-  type: string
-  inputBinding:
-    position: 0
-- id: in_bash
-  doc: '> obiaddtaxids -k species_name -g genus_identified.fasta \'
   type: string
   inputBinding:
     position: 0

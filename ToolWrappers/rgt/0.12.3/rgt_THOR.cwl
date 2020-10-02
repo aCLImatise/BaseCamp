@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_THOR.cwl
+id: rgt_THOR.cwl
 inputs:
 - id: in_name
   doc: Experiment's name and prefix for all files that are

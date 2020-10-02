@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi2_assemble.cwl
+id: fermi2_assemble.cwl
 inputs:
 - id: in_min_match
   doc: min match [0]

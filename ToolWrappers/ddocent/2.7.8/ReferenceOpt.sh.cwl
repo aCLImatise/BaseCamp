@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReferenceOpt.sh.cwl
+id: ReferenceOpt.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

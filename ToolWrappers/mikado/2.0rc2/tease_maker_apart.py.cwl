@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tease_maker_apart.py.cwl
+id: tease_maker_apart.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

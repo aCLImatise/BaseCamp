@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../confindr_database_setup.cwl
+id: confindr_database_setup.cwl
 inputs:
 - id: in_output_folder
   doc: "Path to download databases to - if folder does not\nexist, will be created.\

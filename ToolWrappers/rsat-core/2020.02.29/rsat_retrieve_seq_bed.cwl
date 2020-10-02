@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_retrieve_seq_bed.cwl
+id: rsat_retrieve_seq_bed.cwl
 inputs:
 - id: in_retrieve_seq_bed
   doc: "\e[1mVERSION\e[0m"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centrifuge_RemoveEmptySequence.pl.cwl
+id: centrifuge_RemoveEmptySequence.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

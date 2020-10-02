@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hp_vcf_to_consensus.cwl
+id: hp_vcf_to_consensus.cwl
 inputs:
 - id: in_vcf
   doc: VCF file (created with all sites).

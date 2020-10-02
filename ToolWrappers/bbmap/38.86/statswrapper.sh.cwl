@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../statswrapper.sh.cwl
+id: statswrapper.sh.cwl
 inputs:
 - id: in_in
   doc: ''

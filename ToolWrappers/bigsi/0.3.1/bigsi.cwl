@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bigsi.cwl
+id: bigsi.cwl
 inputs: []
 outputs:
 - id: out_stdout

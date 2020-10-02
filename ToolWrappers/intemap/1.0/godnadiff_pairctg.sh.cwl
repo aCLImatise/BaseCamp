@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../godnadiff_pairctg.sh.cwl
+id: godnadiff_pairctg.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

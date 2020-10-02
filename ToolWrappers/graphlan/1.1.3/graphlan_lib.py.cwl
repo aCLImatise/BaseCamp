@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graphlan_lib.py.cwl
+id: graphlan_lib.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

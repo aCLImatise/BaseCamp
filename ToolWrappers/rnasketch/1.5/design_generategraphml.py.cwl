@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../design_generategraphml.py.cwl
+id: design_generategraphml.py.cwl
 inputs:
 - id: in_input
   doc: Read custom structures and sequence constraints from

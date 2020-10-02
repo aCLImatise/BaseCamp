@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tb_profiler_reprofile.cwl
+id: tb_profiler_reprofile.cwl
 inputs:
 - id: in_prefix
   doc: 'Sample prefix (default: tbprofiler)'

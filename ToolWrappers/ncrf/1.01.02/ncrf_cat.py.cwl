@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncrf_cat.py.cwl
+id: ncrf_cat.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

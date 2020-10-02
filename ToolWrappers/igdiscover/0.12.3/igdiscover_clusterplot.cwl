@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_clusterplot.cwl
+id: igdiscover_clusterplot.cwl
 inputs:
 - id: in_minimum_group_size
   doc: "Do not plot if there are less than N sequences for a\ngene. Default: 200"

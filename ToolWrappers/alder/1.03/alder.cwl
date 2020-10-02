@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alder.cwl
+id: alder.cwl
 inputs:
 - id: in_bad
   doc: ''

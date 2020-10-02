@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SpecLibCreator.cwl
+id: SpecLibCreator.cwl
 inputs:
 - id: in_info
   doc: "*          Holds id, peptide, retention time etc. (valid formats: 'csv')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../basqcol.cwl
+id: basqcol.cwl
 inputs: []
 outputs:
 - id: out_stdout

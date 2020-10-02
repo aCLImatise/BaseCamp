@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FEELnc_codpot.pl.bak.cwl
+id: FEELnc_codpot.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

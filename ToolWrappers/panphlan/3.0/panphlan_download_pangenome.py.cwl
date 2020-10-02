@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: ../../../panphlan_download_pangenome.py.cwl
+id: panphlan_download_pangenome.py.cwl
 inputs:
-- id: in_input_name
+- id: in_v
   doc: ''
-  type: string
-  inputBinding:
-    prefix: --input_name
-- id: in_output
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --output
-- id: in_verbose
-  doc: Show progress information
   type: boolean
   inputBinding:
-    prefix: --verbose
+    prefix: -v
+- id: in_o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: in_i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
 outputs:
 - id: out_stdout
   doc: Standard output stream

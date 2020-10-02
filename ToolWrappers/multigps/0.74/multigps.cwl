@@ -1,74 +1,31 @@
 class: CommandLineTool
-id: ../../../multigps.cwl
+id: multigps.cwl
 inputs:
 - id: in_out
-  doc: ''
+  doc: "--threads <number of threads to use (default=1)>\n--verbose [flag to print\
+    \ intermediate files and extra output]\n--config <config file: all options here\
+    \ can be specified in a name<space>value text file, over-ridden by command-line\
+    \ args>"
   type: File
   inputBinding:
     prefix: --out
-- id: in_threads
-  doc: <number of threads to use (default=1)>
-  type: boolean
-  inputBinding:
-    prefix: --threads
-- id: in_verbose
-  doc: '[flag to print intermediate files and extra output]'
-  type: boolean
-  inputBinding:
-    prefix: --verbose
-- id: in_config
-  doc: '<config file: all options here can be specified in a name<space>value text
-    file, over-ridden by command-line args>'
-  type: boolean
-  inputBinding:
-    prefix: --config
 - id: in_geninfo
   doc: AND --seq <fasta seq directory reqd if using motif prior>
   type: File
   inputBinding:
     prefix: --geninfo
 - id: in_expt
-  doc: AND --format <SAM/BED/SCIDX>
+  doc: "AND --format <SAM/BED/SCIDX>\n--ctrl <file name (optional argument. must be\
+    \ same format as expt files)>\n--design <experiment design file name to use instead\
+    \ of --expt and --ctrl; see website for format>\n--fixedpb <fixed per base limit\
+    \ (default: estimated from background model)>\n--poissongausspb <filter per base\
+    \ using a Poisson threshold parameterized by a local Gaussian sliding window>\n\
+    --nonunique [flag to use non-unique reads]\n--mappability <fraction of the genome\
+    \ that is mappable for these experiments (default=0.8)>\n--nocache [flag to turn\
+    \ off caching of the entire set of experiments (i.e. run slower with less memory)]"
   type: File
   inputBinding:
     prefix: --expt
-- id: in_ctrl
-  doc: <file name (optional argument. must be same format as expt files)>
-  type: boolean
-  inputBinding:
-    prefix: --ctrl
-- id: in_design
-  doc: <experiment design file name to use instead of --expt and --ctrl; see website
-    for format>
-  type: boolean
-  inputBinding:
-    prefix: --design
-- id: in_fixed_pb
-  doc: '<fixed per base limit (default: estimated from background model)>'
-  type: boolean
-  inputBinding:
-    prefix: --fixedpb
-- id: in_poisson_gauss_pb
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --poissongausspb
-- id: in_non_unique
-  doc: '[flag to use non-unique reads]'
-  type: boolean
-  inputBinding:
-    prefix: --nonunique
-- id: in_mapp_ability
-  doc: <fraction of the genome that is mappable for these experiments (default=0.8)>
-  type: boolean
-  inputBinding:
-    prefix: --mappability
-- id: in_nocache
-  doc: '[flag to turn off caching of the entire set of experiments (i.e. run slower
-    with less memory)]'
-  type: boolean
-  inputBinding:
-    prefix: --nocache
 - id: in_no_scaling
   doc: '[flag to turn off auto estimation of signal vs control scaling factor]'
   type: boolean
@@ -105,81 +62,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --plotscaling
-- id: in_d
-  doc: ''
+- id: in__r_max
+  doc: "--r <max. model update rounds, default=3>\n--nomodelupdate [flag to turn off\
+    \ binding model updates]\n--minmodelupdateevents <minimum number of events to\
+    \ support an update (default=500)>\n--nomodelsmoothing [flag to turn off binding\
+    \ model smoothing]\n--splinesmoothparam <spline smoothing parameter (default=30)>\n\
+    --gaussmodelsmoothing [flag to turn on Gaussian model smoothing (default = cubic\
+    \ spline)]\n--gausssmoothparam <Gaussian smoothing std dev (default=3)>\n--jointinmodel\
+    \ [flag to allow joint events in model updates (default=do not)]\n--fixedmodelrange\
+    \ [flag to keep binding model range fixed to inital size (default: vary automatically)]\n\
+    --prlogconf <Poisson log threshold for potential region scanning(default=-6)>\n\
+    --alphascale <alpha scaling factor(default=1.0>\n--fixedalpha <impose this alpha\
+    \ (default: set automatically)>\n--mlconfignotshared [flag to not share component\
+    \ configs in the ML step]\n--exclude <file of regions to ignore>"
   type: File
   inputBinding:
     prefix: --d
-- id: in_max_model_update
-  doc: <max. model update rounds, default=3>
-  type: boolean
-  inputBinding:
-    prefix: --r
-- id: in_no_model_update
-  doc: '[flag to turn off binding model updates]'
-  type: boolean
-  inputBinding:
-    prefix: --nomodelupdate
-- id: in_min_model_update_events
-  doc: <minimum number of events to support an update (default=500)>
-  type: boolean
-  inputBinding:
-    prefix: --minmodelupdateevents
-- id: in_no_model_smoothing
-  doc: '[flag to turn off binding model smoothing]'
-  type: boolean
-  inputBinding:
-    prefix: --nomodelsmoothing
-- id: in_spline_smooth_param
-  doc: <spline smoothing parameter (default=30)>
-  type: boolean
-  inputBinding:
-    prefix: --splinesmoothparam
-- id: in_gauss_model_smoothing
-  doc: '[flag to turn on Gaussian model smoothing (default = cubic spline)]'
-  type: boolean
-  inputBinding:
-    prefix: --gaussmodelsmoothing
-- id: in_gauss_smooth_param
-  doc: <Gaussian smoothing std dev (default=3)>
-  type: boolean
-  inputBinding:
-    prefix: --gausssmoothparam
-- id: in_joint_in_model
-  doc: '[flag to allow joint events in model updates (default=do not)]'
-  type: boolean
-  inputBinding:
-    prefix: --jointinmodel
-- id: in_fixed_model_range
-  doc: '[flag to keep binding model range fixed to inital size (default: vary automatically)]'
-  type: boolean
-  inputBinding:
-    prefix: --fixedmodelrange
-- id: in_pr_log_conf
-  doc: <Poisson log threshold for potential region scanning(default=-6)>
-  type: boolean
-  inputBinding:
-    prefix: --prlogconf
-- id: in_alpha_scale
-  doc: <alpha scaling factor(default=1.0>
-  type: boolean
-  inputBinding:
-    prefix: --alphascale
-- id: in_fixed_alpha
-  doc: '<impose this alpha (default: set automatically)>'
-  type: boolean
-  inputBinding:
-    prefix: --fixedalpha
-- id: in_ml_config_not_shared
-  doc: '[flag to not share component configs in the ML step]'
-  type: boolean
-  inputBinding:
-    prefix: --mlconfignotshared
-- id: in_exclude
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --exclude
 - id: in_no_pos_prior
   doc: '[flag to turn off inter-experiment positional prior (default=on)]'
   type: boolean
@@ -271,7 +169,10 @@ outputs:
   doc: Standard output stream
   type: stdout
 - id: out_out
-  doc: ''
+  doc: "--threads <number of threads to use (default=1)>\n--verbose [flag to print\
+    \ intermediate files and extra output]\n--config <config file: all options here\
+    \ can be specified in a name<space>value text file, over-ridden by command-line\
+    \ args>"
   type: File
   outputBinding:
     glob: $(inputs.in_out)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanggolin_rgp.cwl
+id: ppanggolin_rgp.cwl
 inputs:
 - id: in_persistent_penalty
   doc: "Penalty score to apply to persistent genes (default:\n3)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FuzzyDiff.cwl
+id: FuzzyDiff.cwl
 inputs:
 - id: in_in_one
   doc: '*         First input file'

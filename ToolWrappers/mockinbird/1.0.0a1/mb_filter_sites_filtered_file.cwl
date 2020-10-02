@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_filter_sites_filtered_file.cwl
+id: mb_filter_sites_filtered_file.cwl
 inputs:
 - id: in_padding_bp
   doc: ''

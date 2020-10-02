@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../irida_sistr_results.cwl
+id: irida_sistr_results.cwl
 inputs:
 - id: in_irid_a_url
   doc: The URL to the IRIDA instance.

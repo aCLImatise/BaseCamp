@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAforester.cwl
+id: RNAforester.cwl
 inputs:
 - id: in_read_input_file
   doc: read input from file

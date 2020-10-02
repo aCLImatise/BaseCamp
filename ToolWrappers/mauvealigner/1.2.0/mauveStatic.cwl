@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mauveStatic.cwl
+id: mauveStatic.cwl
 inputs:
 - id: in_output
   doc: Output file name.  Prints to screen by default

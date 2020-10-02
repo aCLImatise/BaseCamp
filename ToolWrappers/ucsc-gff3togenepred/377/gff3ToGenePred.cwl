@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff3ToGenePred.cwl
+id: gff3ToGenePred.cwl
 inputs:
 - id: in_warn_and_continue
   doc: '- on bad genePreds being created, put out warning but continue'

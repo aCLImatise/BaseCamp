@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyfastx_fq2fa.cwl
+id: pyfastx_fq2fa.cwl
 inputs:
 - id: in_out_file
   doc: "output file, default: output to stdout\n"

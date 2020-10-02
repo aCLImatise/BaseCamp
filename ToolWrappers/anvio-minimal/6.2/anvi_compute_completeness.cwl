@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_compute_completeness.cwl
+id: anvi_compute_completeness.cwl
 inputs:
 - id: in_splits_of_interest
   doc: "A file with split names. There should be only one\ncolumn in the file, and\

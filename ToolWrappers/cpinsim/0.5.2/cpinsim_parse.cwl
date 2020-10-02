@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpinsim_parse.cwl
+id: cpinsim_parse.cwl
 inputs:
 - id: in_interactions_without_constraints
   doc: Files containing the annotated pairwise interactions.

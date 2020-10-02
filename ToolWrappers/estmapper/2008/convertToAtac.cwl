@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertToAtac.cwl
+id: convertToAtac.cwl
 inputs:
 - id: in_two
   doc: ''

@@ -28,6 +28,7 @@ task Ernemap {
     Int? min_mean_phred_quality
     Int? min_size
     Boolean? gap
+    Int? ref_insertion_max_gap
     Int? ref_deletion_max_gap
     Boolean? print_all
     Int? print_at_most
@@ -67,6 +68,7 @@ task Ernemap {
       ~{if defined(min_mean_phred_quality) then ("--min-mean-phred-quality " +  '"' + min_mean_phred_quality + '"') else ""} \
       ~{if defined(min_size) then ("--min-size " +  '"' + min_size + '"') else ""} \
       ~{if (gap) then "--gap" else ""} \
+      ~{if defined(ref_insertion_max_gap) then ("--ref-insertion-max-gap " +  '"' + ref_insertion_max_gap + '"') else ""} \
       ~{if defined(ref_deletion_max_gap) then ("--ref-deletion-max-gap " +  '"' + ref_deletion_max_gap + '"') else ""} \
       ~{if (print_all) then "--print-all" else ""} \
       ~{if defined(print_at_most) then ("--print-at-most " +  '"' + print_at_most + '"') else ""} \
@@ -103,6 +105,7 @@ task Ernemap {
     min_mean_phred_quality: "minimum mean value to accept a (trimmed)\\nsequence (default 20)"
     min_size: "min length for a sequence (default 25)"
     gap: "Efficiently search 1 gap (see"
+    ref_insertion_max_gap: "maximum value for an insertion in the reference\\n(default: 100)"
     ref_deletion_max_gap: "maximum value for a deletion in the reference\\n(default: 20)"
     print_all: "print all possible alignments, see manual for\\noutput syntax [only for single-end reads]"
     print_at_most: "print at most the number of specified\\nalignments, see manual for output syntax [only\\nfor single-end reads]"

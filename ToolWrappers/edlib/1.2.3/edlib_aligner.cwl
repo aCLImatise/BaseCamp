@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../edlib_aligner.cwl
+id: edlib_aligner.cwl
 inputs:
 - id: in_specified_there_will
   doc: If specified, there will be no score or alignment output (silent mode).

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PhyloCSF.Linux.x86_64.cwl
+id: PhyloCSF.Linux.x86_64.cwl
 inputs:
 - id: in_strategy
   doc: "|fixed|omega\nevaluation strategy (default mle)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gffcompare.cwl
+id: gffcompare.cwl
 inputs:
 - id: in_gffcompare_version_also
   doc: gffcompare version (also --version)

@@ -2,7 +2,6 @@ version 1.0
 
 task Mhcflurrypredict {
   input {
-    Boolean? affinity_only_dot
     Boolean? list_supported_alleles
     Boolean? list_supported_peptide_lengths
     Array[String] alleles
@@ -25,7 +24,6 @@ task Mhcflurrypredict {
   command <<<
     mhcflurry_predict \
       ~{input_dot_csv} \
-      ~{if (affinity_only_dot) then "--affinity-only." else ""} \
       ~{if (list_supported_alleles) then "--list-supported-alleles" else ""} \
       ~{if (list_supported_peptide_lengths) then "--list-supported-peptide-lengths" else ""} \
       ~{if defined(alleles) then ("--alleles " +  '"' + alleles + '"') else ""} \
@@ -45,7 +43,6 @@ task Mhcflurrypredict {
       ~{if (no_flanking) then "--no-flanking" else ""}
   >>>
   parameter_meta {
-    affinity_only_dot: ""
     list_supported_alleles: "Prints the list of supported alleles and exits"
     list_supported_peptide_lengths: "Prints the list of supported peptide lengths and exits"
     alleles: "Alleles to predict (exclusive with passing an input\\nCSV)"

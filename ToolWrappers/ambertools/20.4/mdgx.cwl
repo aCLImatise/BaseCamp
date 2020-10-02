@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mdgx.cwl
+id: mdgx.cwl
 inputs:
 - id: in_input
   doc: ':   print all command line input options'

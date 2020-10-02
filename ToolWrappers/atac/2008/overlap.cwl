@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlap.cwl
+id: overlap.cwl
 inputs: []
 outputs:
 - id: out_stdout

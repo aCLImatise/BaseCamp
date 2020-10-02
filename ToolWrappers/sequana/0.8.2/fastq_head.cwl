@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_head.cwl
+id: fastq_head.cwl
 inputs:
 - id: in_nlines
   doc: Number of lines to extract.

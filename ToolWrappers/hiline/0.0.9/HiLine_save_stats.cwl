@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HiLine_save_stats.cwl
+id: HiLine_save_stats.cwl
 inputs:
 - id: in_location_dot
   doc: 'Options:'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../differential_modification.cwl
+id: differential_modification.cwl
 inputs:
 - id: in_bed
   doc: Bed file to aggregate modifications on.

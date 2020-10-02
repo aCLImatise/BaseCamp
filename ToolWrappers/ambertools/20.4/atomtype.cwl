@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../atomtype.cwl
+id: atomtype.cwl
 inputs: []
 outputs:
 - id: out_stdout

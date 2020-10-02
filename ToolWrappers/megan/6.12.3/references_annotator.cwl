@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../references_annotator.cwl
+id: references_annotator.cwl
 inputs:
 - id: in_in
   doc: '[string]                    Input references file (gzipped ok). Mandatory

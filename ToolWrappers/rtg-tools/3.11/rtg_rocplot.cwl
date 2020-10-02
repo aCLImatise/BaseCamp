@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_rocplot.cwl
+id: rtg_rocplot.cwl
 inputs:
 - id: in_curve
   doc: "ROC data file with title optionally specified\n(path[=title]). May be specified\

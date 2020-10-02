@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ngsPSMC.cwl
+id: ngsPSMC.cwl
 inputs: []
 outputs:
 - id: out_stdout

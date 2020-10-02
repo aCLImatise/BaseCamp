@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tadbit_merge.cwl
+id: tadbit_merge.cwl
 inputs:
 - id: in_workdir
   doc: path to a new output folder

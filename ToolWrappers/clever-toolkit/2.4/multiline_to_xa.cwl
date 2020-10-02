@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multiline_to_xa.cwl
+id: multiline_to_xa.cwl
 inputs: []
 outputs:
 - id: out_stdout

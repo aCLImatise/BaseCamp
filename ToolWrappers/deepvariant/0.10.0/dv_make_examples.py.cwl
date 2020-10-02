@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../dv_make_examples.py.cwl
+id: dv_make_examples.py.cwl
 inputs:
-- id: in_examples
-  doc: '[-h]'
-  type: string
-  inputBinding:
-    prefix: --examples
 - id: in_reads
   doc: ''
   type: boolean

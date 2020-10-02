@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pybel_manage_nodes.cwl
+id: pybel_manage_nodes.cwl
 inputs:
 - id: in_command
   doc: ''

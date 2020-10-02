@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mafft_nwns.cwl
+id: mafft_nwns.cwl
 inputs:
 - id: in_op
   doc: '# :         Gap opening penalty, default: 1.53'

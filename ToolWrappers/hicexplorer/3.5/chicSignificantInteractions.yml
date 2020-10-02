@@ -12,13 +12,6 @@ named:
     name: BACKGROUNDMODELFILE
   optional: true
 - !Flag
-  description: RANGE
-  synonyms:
-  - --range
-  args: !SimpleFlagArg
-    name: RANGE
-  optional: true
-- !Flag
   description: "Filter x-fold over background. Used to merge\nneighboring bins with\
     \ a broader peak but less\nsignificant interactions to a single peak with high\n\
     significance. Used only for pValue option."
@@ -57,6 +50,16 @@ named:
     name: PVALUE
   optional: true
 - !Flag
+  description: "RANGE   Defines the region upstream and downstream of a\nreference\
+    \ point which should be included. Format is\n--region upstream downstream, e.g.\
+    \ --region 500000\n500000 plots 500kb up- and 500kb downstream. This\nvalue should\
+    \ not exceed the range used in the other\nchic-tools."
+  synonyms:
+  - --range
+  args: !SimpleFlagArg
+    name: RANGE
+  optional: true
+- !Flag
   description: "File name suffix to save the results; prefix is the\ninput file name."
   synonyms:
   - --outFileNameSuffix
@@ -90,118 +93,40 @@ named:
     name: OUTPUTFOLDER
   optional: true
 - !Flag
-  description: ''
+  description: "--targetFileList TARGETFILELIST, -tl TARGETFILELIST\nThe file to store\
+    \ the target file names.\n--batchMode, -bm      Turn on batch mode. The given\
+    \ file for\n--interactionFile and or --targetFile contain a list\nof the to be\
+    \ processed files.\n--threads THREADS, -t THREADS\nNumber of threads (uses the\
+    \ python multiprocessing\nmodule).\n--truncateZeroPvalues, -tzpv\nSets all p-values\
+    \ which are equal to zero to one. This\nhas the effect that the associated positions\
+    \ are not\npart of the significance decision.\n--fixateRange FIXATERANGE, -fs\
+    \ FIXATERANGE\nFixate range of backgroundmodel starting at distance\nx. E.g. all\
+    \ values greater than 500kb are set to the\nvalue of the 500kb bin.\n--peakInteractionsThreshold\
+    \ PEAKINTERACTIONSTHRESHOLD, -pit PEAKINTERACTIONSTHRESHOLD\nThe minimum number\
+    \ of interactions a detected peak\nneeds to have to be considered.\n--resolution\
+    \ RESOLUTION, -r RESOLUTION\nResolution of the bin in genomic units. Values are\
+    \ set\nas number of bases, e.g. 1000 for a 1kb, 5000 for a\n5kb or 10000 for a\
+    \ 10kb resolution.This value is used\nto merge neighboring bins.\n--computeSampleNumber\
+    \ COMPUTESAMPLENUMBER, -csn COMPUTESAMPLENUMBER\nNumber of samples to compute\
+    \ together. Applies only in\nbatch mode.\n--multipleTesting {fdr,bonferroni,None},\
+    \ -mt {fdr,bonferroni,None}\nMultiple testing correction per relative distance\
+    \ with\nBonferroni or FDR.\n--thresholdMultipleTesting THRESHOLDMULTIPLETESTING,\
+    \ -tmt THRESHOLDMULTIPLETESTING\nThreshold for Bonferroni / FDR. Either a float\
+    \ value\nfor all or a file with one threshold per relative\ndistance.\n--help,\
+    \ -h            show this help message and exit\n--version             show program's\
+    \ version number and exit\n"
   synonyms:
   - --writeFileNamesToFile
   - -w
   args: !SimpleFlagArg
     name: WRITEFILENAMESTOFILE
   optional: true
-- !Flag
-  description: The file to store the target file names.
-  synonyms:
-  - --targetFileList
-  - -tl
-  args: !SimpleFlagArg
-    name: TARGETFILELIST
-  optional: true
-- !Flag
-  description: Turn on batch mode. The given file for
-  synonyms:
-  - --batchMode
-  - -bm
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Number of threads (uses the python multiprocessing\nmodule)."
-  synonyms:
-  - --threads
-  - -t
-  args: !SimpleFlagArg
-    name: THREADS
-  optional: true
-- !Flag
-  description: "Sets all p-values which are equal to zero to one. This\nhas the effect\
-    \ that the associated positions are not\npart of the significance decision."
-  synonyms:
-  - --truncateZeroPvalues
-  - -tzpv
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "Fixate range of backgroundmodel starting at distance\nx. E.g. all\
-    \ values greater than 500kb are set to the\nvalue of the 500kb bin."
-  synonyms:
-  - --fixateRange
-  - -fs
-  args: !SimpleFlagArg
-    name: FIXATERANGE
-  optional: true
-- !Flag
-  description: "The minimum number of interactions a detected peak\nneeds to have\
-    \ to be considered."
-  synonyms:
-  - --peakInteractionsThreshold
-  - -pit
-  args: !SimpleFlagArg
-    name: PEAKINTERACTIONSTHRESHOLD
-  optional: true
-- !Flag
-  description: "Resolution of the bin in genomic units. Values are set\nas number\
-    \ of bases, e.g. 1000 for a 1kb, 5000 for a\n5kb or 10000 for a 10kb resolution.This\
-    \ value is used\nto merge neighboring bins."
-  synonyms:
-  - --resolution
-  - -r
-  args: !SimpleFlagArg
-    name: RESOLUTION
-  optional: true
-- !Flag
-  description: "Number of samples to compute together. Applies only in\nbatch mode."
-  synonyms:
-  - --computeSampleNumber
-  - -csn
-  args: !SimpleFlagArg
-    name: COMPUTESAMPLENUMBER
-  optional: true
-- !Flag
-  description: "Multiple testing correction per relative distance with\nBonferroni\
-    \ or FDR."
-  synonyms:
-  - --multipleTesting
-  - -mt
-  args: !ChoiceFlagArg
-    choices: !!set
-      ? fdr
-      ? None
-      ? bonferroni
-  optional: true
-- !Flag
-  description: "Threshold for Bonferroni / FDR. Either a float value\nfor all or a\
-    \ file with one threshold per relative\ndistance."
-  synonyms:
-  - --thresholdMultipleTesting
-  - -tmt
-  args: !SimpleFlagArg
-    name: THRESHOLDMULTIPLETESTING
-  optional: true
 parent:
 subcommands: []
 usage: []
-help_flag: !Flag
-  description: show this help message and exit
-  synonyms:
-  - --help
-  - -h
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
-version_flag: !Flag
-  description: show program's version number and exit
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
 help_text: "usage: chicSignificantInteractions --interactionFile INTERACTIONFILE\n\
   \                                   [INTERACTIONFILE ...] --pValue PVALUE\n    \
   \                               [--xFoldBackground XFOLDBACKGROUND | --loosePValue\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fixfrg.cwl
+id: fixfrg.cwl
 inputs: []
 outputs:
 - id: out_stdout

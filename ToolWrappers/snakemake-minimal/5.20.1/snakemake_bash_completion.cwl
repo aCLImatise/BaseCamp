@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snakemake_bash_completion.cwl
+id: snakemake_bash_completion.cwl
 inputs: []
 outputs:
 - id: out_stdout

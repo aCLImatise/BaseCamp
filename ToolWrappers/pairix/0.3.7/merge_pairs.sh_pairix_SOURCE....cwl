@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_pairs.sh_pairix_SOURCE....cwl
+id: merge_pairs.sh_pairix_SOURCE....cwl
 inputs:
 - id: in_write_to_stdout
   doc: Write to stdout

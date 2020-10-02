@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SVbenchmark.cwl
+id: SVbenchmark.cwl
 inputs:
 - id: in_ref
   doc: "The fasta file that was used as the reference for the two VCF files\nbeing\

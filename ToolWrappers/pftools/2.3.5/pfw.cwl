@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pfw.cwl
+id: pfw.cwl
 inputs:
 - id: in_input_sequences_msa
   doc: ': input sequences in MSA format.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scvis_train.cwl
+id: scvis_train.cwl
 inputs:
 - id: in_data_matrix_file
   doc: The high-dimensional data matrix

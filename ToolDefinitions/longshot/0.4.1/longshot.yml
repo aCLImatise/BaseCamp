@@ -49,300 +49,10 @@ subcommands:
         args: !SimpleFlagArg
           name: BAM
         optional: true
-      parent: &id003 !Command
+      parent: !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: "Automatically calculate mean coverage for region and set max\
-            \ coverage to mean_coverage +\n5*sqrt(mean_coverage). (SLOWER)"
-          synonyms:
-          - -A
-          - --auto_max_cov
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "Use numerically-stable (logspace) pair HMM forward algorithm.\
-            \ Is significantly slower but\nmay be more accurate. Tests have shown\
-            \ this not to be necessary for highly error prone\nreads (PacBio CLR)."
-          synonyms:
-          - -S
-          - --stable_alignment
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: If output files (VCF or variant debug directory) exist, delete
-            and overwrite them.
-          synonyms:
-          - -F
-          - --force_overwrite
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Use max scoring alignment algorithm rather than pair HMM forward
-            algorithm.
-          synonyms:
-          - -x
-          - --max_alignment
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: Don't call HapCUT2 to phase variants.
-          synonyms:
-          - -n
-          - --no_haps
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: sorted, indexed BAM file with error-prone reads
-          synonyms:
-          - -b
-          - --bam
-          args: !SimpleFlagArg
-            name: BAM
-          optional: true
-        - !Flag
-          description: indexed FASTA reference that BAM file is aligned to
-          synonyms:
-          - -f
-          - --ref
-          args: !SimpleFlagArg
-            name: FASTA
-          optional: true
-        - !Flag
-          description: output VCF file with called variants.
-          synonyms:
-          - -o
-          - --out
-          args: !SimpleFlagArg
-            name: VCF
-          optional: true
-        - !Flag
-          description: "Region in format <chrom> or <chrom:start-stop> in which to\
-            \ call variants\n(1-based, inclusive)."
-          synonyms:
-          - -r
-          - --region
-          args: !SimpleFlagArg
-            name: string
-          optional: true
-        - !Flag
-          description: "Genotype and phase the variants in this VCF instead of using\
-            \ pileup\nmethod to find variants. NOTES: VCF must be gzipped and tabix\
-            \ indexed or\ncontain contig information. Use with caution because excessive\
-            \ false\npotential variants can lead to inaccurate results. Every variant\
-            \ is used\nand only the allele fields are considered -- Genotypes, filters,\n\
-            qualities etc are ignored. Indel variants will be genotyped but not\n\
-            phased. Triallelic variants and structural variants are currently not\n\
-            supported."
-          synonyms:
-          - -v
-          - --potential_variants
-          args: !SimpleFlagArg
-            name: VCF
-          optional: true
-        - !Flag
-          description: "Write new bam file with haplotype tags (HP:i:1 and HP:i:2)\
-            \ for reads\nassigned to each haplotype, any existing HP and PS tags are\
-            \ removed"
-          synonyms:
-          - -O
-          - --out_bam
-          args: !SimpleFlagArg
-            name: BAM
-          optional: true
-        - !Flag
-          description: "Minimum coverage (of reads passing filters) to consider position\
-            \ as a\npotential SNV. [default: 6]"
-          synonyms:
-          - -c
-          - --min_cov
-          args: !SimpleFlagArg
-            name: int
-          optional: true
-        - !Flag
-          description: "Maximum coverage (of reads passing filters) to consider position\
-            \ as a\npotential SNV. [default: 8000]"
-          synonyms:
-          - -C
-          - --max_cov
-          args: !SimpleFlagArg
-            name: int
-          optional: true
-        - !Flag
-          description: 'Minimum mapping quality to use a read. [default: 30]'
-          synonyms:
-          - -q
-          - --min_mapq
-          args: !SimpleFlagArg
-            name: int
-          optional: true
-        - !Flag
-          description: "Minimum estimated quality (Phred-scaled) of allele observation\
-            \ on read to\nuse for genotyping/haplotyping. [default: 7.0]"
-          synonyms:
-          - -a
-          - --min_allele_qual
-          args: !SimpleFlagArg
-            name: float
-          optional: true
-        - !Flag
-          description: "Minimum quality (Phred-scaled) of read->haplotype assignment\
-            \ (for read\nseparation). [default: 20.0]"
-          synonyms:
-          - -y
-          - --hap_assignment_qual
-          args: !SimpleFlagArg
-            name: float
-          optional: true
-        - !Flag
-          description: "Consider a site as a potential SNV if the original PHRED-scaled\
-            \ QUAL\nscore for 0/0 genotype is below this amount (a larger value considers\n\
-            more potential SNV sites). [default: 20.0]"
-          synonyms:
-          - -Q
-          - --potential_snv_cutoff
-          args: !SimpleFlagArg
-            name: float
-          optional: true
-        - !Flag
-          description: "Require a potential SNV to have at least this many alternate\
-            \ allele\nobservations. [default: 3]"
-          synonyms:
-          - -e
-          - --min_alt_count
-          args: !SimpleFlagArg
-            name: int
-          optional: true
-        - !Flag
-          description: "Require a potential SNV to have at least this fraction of\
-            \ alternate\nallele observations. [default: 0.125]"
-          synonyms:
-          - -E
-          - --min_alt_frac
-          args: !SimpleFlagArg
-            name: float
-          optional: true
-        - !Flag
-          description: "Terminate the haplotype/genotype iteration when the relative\
-            \ change in\nlog-likelihood falls below this amount. Setting a larger\
-            \ value results in\nfaster termination but potentially less accurate results.\
-            \ [default:\n0.0001]"
-          synonyms:
-          - -L
-          - --hap_converge_delta
-          args: !SimpleFlagArg
-            name: float
-          optional: true
-        - !Flag
-          description: "Length of indel-free anchor sequence on the left and right\
-            \ side of read\nrealignment window. [default: 6]"
-          synonyms:
-          - -l
-          - --anchor_length
-          args: !SimpleFlagArg
-            name: int
-          optional: true
-        - !Flag
-          description: "Cut off variant clusters after this many variants. 2^m haplotypes\
-            \ must be\naligned against per read for a variant cluster of size m. [default:\
-            \ 3]"
-          synonyms:
-          - -m
-          - --max_snvs
-          args: !SimpleFlagArg
-            name: int
-          optional: true
-        - !Flag
-          description: "Maximum \"padding\" bases on either side of variant realignment\
-            \ window\n[default: 50]"
-          synonyms:
-          - -W
-          - --max_window
-          args: !SimpleFlagArg
-            name: int
-          optional: true
-        - !Flag
-          description: "Throw away a read-variant during allelotyping if there is\
-            \ a CIGAR indel\n(I/D/N) longer than this amount in its window. [default:\
-            \ 20]"
-          synonyms:
-          - -I
-          - --max_cigar_indel
-          args: !SimpleFlagArg
-            name: int
-          optional: true
-        - !Flag
-          description: "Minimum width of alignment band. Band will increase in size\
-            \ if sequences\nare different lengths. [default: 20]"
-          synonyms:
-          - -B
-          - --band_width
-          args: !SimpleFlagArg
-            name: Band width
-          optional: true
-        - !Flag
-          description: "Parameters to flag a variant as part of a \"dense cluster\"\
-            . Format\n<n>:<l>:<gq>. If there are at least n variants within l base\
-            \ pairs with\ngenotype quality >=gq, then these variants are flagged as\
-            \ \"dn\" [default:\n10:500:50]"
-          synonyms:
-          - -D
-          - --density_params
-          args: !SimpleFlagArg
-            name: string
-          optional: true
-        - !Flag
-          description: 'Specify a sample ID to write to the output VCF [default: SAMPLE]'
-          synonyms:
-          - -s
-          - --sample_id
-          args: !SimpleFlagArg
-            name: string
-          optional: true
-        - !Flag
-          description: "Specify the homozygous SNV Rate for genotype prior estimation\
-            \ [default:\n0.0005]"
-          synonyms:
-          - --hom_snv_rate
-          args: !SimpleFlagArg
-            name: float
-          optional: true
-        - !Flag
-          description: "Specify the heterozygous SNV Rate for genotype prior estimation\
-            \ [default:\n0.001]"
-          synonyms:
-          - --het_snv_rate
-          args: !SimpleFlagArg
-            name: float
-          optional: true
-        - !Flag
-          description: "Specify the transition/transversion rate for genotype grior\
-            \ estimation\n[default: 0.5]"
-          synonyms:
-          - --ts_tv_ratio
-          args: !SimpleFlagArg
-            name: float
-          optional: true
-        - !Flag
-          description: "Remove a variant if the allele observations are biased toward\
-            \ one strand\n(forward or reverse) according to Fisher's exact test. Use\
-            \ this cutoff\nfor the two-tailed P-value. [default: 0.01]"
-          synonyms:
-          - -P
-          - --strand_bias_pvalue_cutoff
-          args: !SimpleFlagArg
-            name: float
-          optional: true
-        - !Flag
-          description: "write out current information about variants at each step\
-            \ of algorithm to\nfiles in this directory\n"
-          synonyms:
-          - -d
-          - --variant_debug_dir
-          args: !SimpleFlagArg
-            name: path
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -363,7 +73,457 @@ subcommands:
             args: !SimpleFlagArg
               name: BAM
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: "Automatically calculate mean coverage for region and set\
+                \ max coverage to mean_coverage +\n5*sqrt(mean_coverage). (SLOWER)"
+              synonyms:
+              - -A
+              - --auto_max_cov
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "Use numerically-stable (logspace) pair HMM forward algorithm.\
+                \ Is significantly slower but\nmay be more accurate. Tests have shown\
+                \ this not to be necessary for highly error prone\nreads (PacBio CLR)."
+              synonyms:
+              - -S
+              - --stable_alignment
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: If output files (VCF or variant debug directory) exist,
+                delete and overwrite them.
+              synonyms:
+              - -F
+              - --force_overwrite
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Use max scoring alignment algorithm rather than pair HMM
+                forward algorithm.
+              synonyms:
+              - -x
+              - --max_alignment
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: Don't call HapCUT2 to phase variants.
+              synonyms:
+              - -n
+              - --no_haps
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: sorted, indexed BAM file with error-prone reads
+              synonyms:
+              - -b
+              - --bam
+              args: !SimpleFlagArg
+                name: BAM
+              optional: true
+            - !Flag
+              description: indexed FASTA reference that BAM file is aligned to
+              synonyms:
+              - -f
+              - --ref
+              args: !SimpleFlagArg
+                name: FASTA
+              optional: true
+            - !Flag
+              description: output VCF file with called variants.
+              synonyms:
+              - -o
+              - --out
+              args: !SimpleFlagArg
+                name: VCF
+              optional: true
+            - !Flag
+              description: "Region in format <chrom> or <chrom:start-stop> in which\
+                \ to call variants\n(1-based, inclusive)."
+              synonyms:
+              - -r
+              - --region
+              args: !SimpleFlagArg
+                name: string
+              optional: true
+            - !Flag
+              description: "Genotype and phase the variants in this VCF instead of\
+                \ using pileup\nmethod to find variants. NOTES: VCF must be gzipped\
+                \ and tabix indexed or\ncontain contig information. Use with caution\
+                \ because excessive false\npotential variants can lead to inaccurate\
+                \ results. Every variant is used\nand only the allele fields are considered\
+                \ -- Genotypes, filters,\nqualities etc are ignored. Indel variants\
+                \ will be genotyped but not\nphased. Triallelic variants and structural\
+                \ variants are currently not\nsupported."
+              synonyms:
+              - -v
+              - --potential_variants
+              args: !SimpleFlagArg
+                name: VCF
+              optional: true
+            - !Flag
+              description: "Write new bam file with haplotype tags (HP:i:1 and HP:i:2)\
+                \ for reads\nassigned to each haplotype, any existing HP and PS tags\
+                \ are removed"
+              synonyms:
+              - -O
+              - --out_bam
+              args: !SimpleFlagArg
+                name: BAM
+              optional: true
+            - !Flag
+              description: "Minimum coverage (of reads passing filters) to consider\
+                \ position as a\npotential SNV. [default: 6]"
+              synonyms:
+              - -c
+              - --min_cov
+              args: !SimpleFlagArg
+                name: int
+              optional: true
+            - !Flag
+              description: "Maximum coverage (of reads passing filters) to consider\
+                \ position as a\npotential SNV. [default: 8000]"
+              synonyms:
+              - -C
+              - --max_cov
+              args: !SimpleFlagArg
+                name: int
+              optional: true
+            - !Flag
+              description: 'Minimum mapping quality to use a read. [default: 30]'
+              synonyms:
+              - -q
+              - --min_mapq
+              args: !SimpleFlagArg
+                name: int
+              optional: true
+            - !Flag
+              description: "Minimum estimated quality (Phred-scaled) of allele observation\
+                \ on read to\nuse for genotyping/haplotyping. [default: 7.0]"
+              synonyms:
+              - -a
+              - --min_allele_qual
+              args: !SimpleFlagArg
+                name: float
+              optional: true
+            - !Flag
+              description: "Minimum quality (Phred-scaled) of read->haplotype assignment\
+                \ (for read\nseparation). [default: 20.0]"
+              synonyms:
+              - -y
+              - --hap_assignment_qual
+              args: !SimpleFlagArg
+                name: float
+              optional: true
+            - !Flag
+              description: "Consider a site as a potential SNV if the original PHRED-scaled\
+                \ QUAL\nscore for 0/0 genotype is below this amount (a larger value\
+                \ considers\nmore potential SNV sites). [default: 20.0]"
+              synonyms:
+              - -Q
+              - --potential_snv_cutoff
+              args: !SimpleFlagArg
+                name: float
+              optional: true
+            - !Flag
+              description: "Require a potential SNV to have at least this many alternate\
+                \ allele\nobservations. [default: 3]"
+              synonyms:
+              - -e
+              - --min_alt_count
+              args: !SimpleFlagArg
+                name: int
+              optional: true
+            - !Flag
+              description: "Require a potential SNV to have at least this fraction\
+                \ of alternate\nallele observations. [default: 0.125]"
+              synonyms:
+              - -E
+              - --min_alt_frac
+              args: !SimpleFlagArg
+                name: float
+              optional: true
+            - !Flag
+              description: "Terminate the haplotype/genotype iteration when the relative\
+                \ change in\nlog-likelihood falls below this amount. Setting a larger\
+                \ value results in\nfaster termination but potentially less accurate\
+                \ results. [default:\n0.0001]"
+              synonyms:
+              - -L
+              - --hap_converge_delta
+              args: !SimpleFlagArg
+                name: float
+              optional: true
+            - !Flag
+              description: "Length of indel-free anchor sequence on the left and right\
+                \ side of read\nrealignment window. [default: 6]"
+              synonyms:
+              - -l
+              - --anchor_length
+              args: !SimpleFlagArg
+                name: int
+              optional: true
+            - !Flag
+              description: "Cut off variant clusters after this many variants. 2^m\
+                \ haplotypes must be\naligned against per read for a variant cluster\
+                \ of size m. [default: 3]"
+              synonyms:
+              - -m
+              - --max_snvs
+              args: !SimpleFlagArg
+                name: int
+              optional: true
+            - !Flag
+              description: "Maximum \"padding\" bases on either side of variant realignment\
+                \ window\n[default: 50]"
+              synonyms:
+              - -W
+              - --max_window
+              args: !SimpleFlagArg
+                name: int
+              optional: true
+            - !Flag
+              description: "Throw away a read-variant during allelotyping if there\
+                \ is a CIGAR indel\n(I/D/N) longer than this amount in its window.\
+                \ [default: 20]"
+              synonyms:
+              - -I
+              - --max_cigar_indel
+              args: !SimpleFlagArg
+                name: int
+              optional: true
+            - !Flag
+              description: "Minimum width of alignment band. Band will increase in\
+                \ size if sequences\nare different lengths. [default: 20]"
+              synonyms:
+              - -B
+              - --band_width
+              args: !SimpleFlagArg
+                name: Band width
+              optional: true
+            - !Flag
+              description: "Parameters to flag a variant as part of a \"dense cluster\"\
+                . Format\n<n>:<l>:<gq>. If there are at least n variants within l\
+                \ base pairs with\ngenotype quality >=gq, then these variants are\
+                \ flagged as \"dn\" [default:\n10:500:50]"
+              synonyms:
+              - -D
+              - --density_params
+              args: !SimpleFlagArg
+                name: string
+              optional: true
+            - !Flag
+              description: 'Specify a sample ID to write to the output VCF [default:
+                SAMPLE]'
+              synonyms:
+              - -s
+              - --sample_id
+              args: !SimpleFlagArg
+                name: string
+              optional: true
+            - !Flag
+              description: "Specify the homozygous SNV Rate for genotype prior estimation\
+                \ [default:\n0.0005]"
+              synonyms:
+              - --hom_snv_rate
+              args: !SimpleFlagArg
+                name: float
+              optional: true
+            - !Flag
+              description: "Specify the heterozygous SNV Rate for genotype prior estimation\
+                \ [default:\n0.001]"
+              synonyms:
+              - --het_snv_rate
+              args: !SimpleFlagArg
+                name: float
+              optional: true
+            - !Flag
+              description: "Specify the transition/transversion rate for genotype\
+                \ grior estimation\n[default: 0.5]"
+              synonyms:
+              - --ts_tv_ratio
+              args: !SimpleFlagArg
+                name: float
+              optional: true
+            - !Flag
+              description: "Remove a variant if the allele observations are biased\
+                \ toward one strand\n(forward or reverse) according to Fisher's exact\
+                \ test. Use this cutoff\nfor the two-tailed P-value. [default: 0.01]"
+              synonyms:
+              - -P
+              - --strand_bias_pvalue_cutoff
+              args: !SimpleFlagArg
+                name: float
+              optional: true
+            - !Flag
+              description: "write out current information about variants at each step\
+                \ of algorithm to\nfiles in this directory\n"
+              synonyms:
+              - -d
+              - --variant_debug_dir
+              args: !SimpleFlagArg
+                name: path
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional: []
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --ref
+                args: !SimpleFlagArg
+                  name: FASTA
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - --bam
+                args: !SimpleFlagArg
+                  name: BAM
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag:
+              usage_flag:
+              version_flag:
+              help_text: "\nerror: Found argument 'FLAGS' which wasn't expected, or\
+                \ isn't valid in this context\n\nUSAGE:\n    longshot [FLAGS] [OPTIONS]\
+                \ --bam <BAM> --ref <FASTA> --out <VCF>\n\nFor more information try\
+                \ --help\n"
+              generated_using: &id004
+              - --help
+            usage: []
+            help_flag: !Flag
+              description: Prints help information
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag: !Flag
+              description: Prints version information
+              synonyms:
+              - -V
+              - --version
+              args: !EmptyFlagArg {}
+              optional: true
+            help_text: "Longshot 0.4.1\nPeter Edge <edge.peterj@gmail.com>\nSNV caller\
+              \ for Third-Generation Sequencing reads\n\nUSAGE:\n    longshot [FLAGS]\
+              \ [OPTIONS] --bam <BAM> --ref <FASTA> --out <VCF>\n\nFLAGS:\n    -A,\
+              \ --auto_max_cov        Automatically calculate mean coverage for region\
+              \ and set max coverage to mean_coverage +\n                        \
+              \      5*sqrt(mean_coverage). (SLOWER)\n    -S, --stable_alignment \
+              \   Use numerically-stable (logspace) pair HMM forward algorithm. Is\
+              \ significantly slower but\n                              may be more\
+              \ accurate. Tests have shown this not to be necessary for highly error\
+              \ prone\n                              reads (PacBio CLR).\n    -F,\
+              \ --force_overwrite     If output files (VCF or variant debug directory)\
+              \ exist, delete and overwrite them.\n    -x, --max_alignment       Use\
+              \ max scoring alignment algorithm rather than pair HMM forward algorithm.\n\
+              \    -n, --no_haps             Don't call HapCUT2 to phase variants.\n\
+              \    -h, --help                Prints help information\n    -V, --version\
+              \             Prints version information\n\nOPTIONS:\n    -b, --bam\
+              \ <BAM>                            sorted, indexed BAM file with error-prone\
+              \ reads\n    -f, --ref <FASTA>                          indexed FASTA\
+              \ reference that BAM file is aligned to\n    -o, --out <VCF>       \
+              \                     output VCF file with called variants.\n    -r,\
+              \ --region <string>                      Region in format <chrom> or\
+              \ <chrom:start-stop> in which to call variants\n                   \
+              \                            (1-based, inclusive).\n    -v, --potential_variants\
+              \ <VCF>             Genotype and phase the variants in this VCF instead\
+              \ of using pileup\n                                               method\
+              \ to find variants. NOTES: VCF must be gzipped and tabix indexed or\n\
+              \                                               contain contig information.\
+              \ Use with caution because excessive false\n                       \
+              \                        potential variants can lead to inaccurate results.\
+              \ Every variant is used\n                                          \
+              \     and only the allele fields are considered -- Genotypes, filters,\n\
+              \                                               qualities etc are ignored.\
+              \ Indel variants will be genotyped but not\n                       \
+              \                        phased. Triallelic variants and structural\
+              \ variants are currently not\n                                     \
+              \          supported.\n    -O, --out_bam <BAM>                     \
+              \   Write new bam file with haplotype tags (HP:i:1 and HP:i:2) for reads\n\
+              \                                               assigned to each haplotype,\
+              \ any existing HP and PS tags are removed\n    -c, --min_cov <int> \
+              \                       Minimum coverage (of reads passing filters)\
+              \ to consider position as a\n                                      \
+              \         potential SNV. [default: 6]\n    -C, --max_cov <int>     \
+              \                   Maximum coverage (of reads passing filters) to consider\
+              \ position as a\n                                               potential\
+              \ SNV. [default: 8000]\n    -q, --min_mapq <int>                   \
+              \    Minimum mapping quality to use a read. [default: 30]\n    -a, --min_allele_qual\
+              \ <float>              Minimum estimated quality (Phred-scaled) of allele\
+              \ observation on read to\n                                         \
+              \      use for genotyping/haplotyping. [default: 7.0]\n    -y, --hap_assignment_qual\
+              \ <float>          Minimum quality (Phred-scaled) of read->haplotype\
+              \ assignment (for read\n                                           \
+              \    separation). [default: 20.0]\n    -Q, --potential_snv_cutoff <float>\
+              \         Consider a site as a potential SNV if the original PHRED-scaled\
+              \ QUAL\n                                               score for 0/0\
+              \ genotype is below this amount (a larger value considers\n        \
+              \                                       more potential SNV sites). [default:\
+              \ 20.0]\n    -e, --min_alt_count <int>                  Require a potential\
+              \ SNV to have at least this many alternate allele\n                \
+              \                               observations. [default: 3]\n    -E,\
+              \ --min_alt_frac <float>                 Require a potential SNV to\
+              \ have at least this fraction of alternate\n                       \
+              \                        allele observations. [default: 0.125]\n   \
+              \ -L, --hap_converge_delta <float>           Terminate the haplotype/genotype\
+              \ iteration when the relative change in\n                          \
+              \                     log-likelihood falls below this amount. Setting\
+              \ a larger value results in\n                                      \
+              \         faster termination but potentially less accurate results.\
+              \ [default:\n                                               0.0001]\n\
+              \    -l, --anchor_length <int>                  Length of indel-free\
+              \ anchor sequence on the left and right side of read\n             \
+              \                                  realignment window. [default: 6]\n\
+              \    -m, --max_snvs <int>                       Cut off variant clusters\
+              \ after this many variants. 2^m haplotypes must be\n               \
+              \                                aligned against per read for a variant\
+              \ cluster of size m. [default: 3]\n    -W, --max_window <int>      \
+              \               Maximum \"padding\" bases on either side of variant\
+              \ realignment window\n                                             \
+              \  [default: 50]\n    -I, --max_cigar_indel <int>                Throw\
+              \ away a read-variant during allelotyping if there is a CIGAR indel\n\
+              \                                               (I/D/N) longer than\
+              \ this amount in its window. [default: 20]\n    -B, --band_width <Band\
+              \ width>              Minimum width of alignment band. Band will increase\
+              \ in size if sequences\n                                           \
+              \    are different lengths. [default: 20]\n    -D, --density_params\
+              \ <string>              Parameters to flag a variant as part of a \"\
+              dense cluster\". Format\n                                          \
+              \     <n>:<l>:<gq>. If there are at least n variants within l base pairs\
+              \ with\n                                               genotype quality\
+              \ >=gq, then these variants are flagged as \"dn\" [default:\n      \
+              \                                         10:500:50]\n    -s, --sample_id\
+              \ <string>                   Specify a sample ID to write to the output\
+              \ VCF [default: SAMPLE]\n        --hom_snv_rate <float>            \
+              \     Specify the homozygous SNV Rate for genotype prior estimation\
+              \ [default:\n                                               0.0005]\n\
+              \        --het_snv_rate <float>                 Specify the heterozygous\
+              \ SNV Rate for genotype prior estimation [default:\n               \
+              \                                0.001]\n        --ts_tv_ratio <float>\
+              \                  Specify the transition/transversion rate for genotype\
+              \ grior estimation\n                                               [default:\
+              \ 0.5]\n    -P, --strand_bias_pvalue_cutoff <float>    Remove a variant\
+              \ if the allele observations are biased toward one strand\n        \
+              \                                       (forward or reverse) according\
+              \ to Fisher's exact test. Use this cutoff\n                        \
+              \                       for the two-tailed P-value. [default: 0.01]\n\
+              \    -d, --variant_debug_dir <path>             write out current information\
+              \ about variants at each step of algorithm to\n                    \
+              \                           files in this directory\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag:
@@ -372,24 +532,11 @@ subcommands:
           help_text: "\nerror: Found argument 'FLAGS' which wasn't expected, or isn't\
             \ valid in this context\n\nUSAGE:\n    longshot [FLAGS] [OPTIONS] --bam\
             \ <BAM> --ref <FASTA> --out <VCF>\n\nFor more information try --help\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: Prints help information
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
-        version_flag: !Flag
-          description: Prints version information
-          synonyms:
-          - -V
-          - --version
-          args: !EmptyFlagArg {}
-          optional: true
+        version_flag:
         help_text: "Longshot 0.4.1\nPeter Edge <edge.peterj@gmail.com>\nSNV caller\
           \ for Third-Generation Sequencing reads\n\nUSAGE:\n    longshot [FLAGS]\
           \ [OPTIONS] --bam <BAM> --ref <FASTA> --out <VCF>\n\nFLAGS:\n    -A, --auto_max_cov\

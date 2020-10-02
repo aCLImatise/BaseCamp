@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../pathwaymatcher.py_match_chrbp.cwl
+id: pathwaymatcher.py_match_chrbp.cwl
 inputs:
 - id: in_i
-  doc: ''
+  doc: '[-o=<output_prefix>]'
   type: File
   inputBinding:
     prefix: -i

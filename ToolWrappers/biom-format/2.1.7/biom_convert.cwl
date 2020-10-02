@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biom_convert.cwl
+id: biom_convert.cwl
 inputs:
 - id: in_input_fp
   doc: The input BIOM table  [required]

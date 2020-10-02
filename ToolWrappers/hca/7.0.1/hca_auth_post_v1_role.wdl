@@ -11,7 +11,7 @@ task HcaAuthPostv1role {
       ~{if defined(policy) then ("--policy " +  '"' + policy + '"') else ""}
   >>>
   parameter_meta {
-    role_id: "Used to identify users, groups, and roles."
+    role_id: "Used to identify users, groups, and roles.\\n--policy POLICY\\n"
     policy: ""
   }
   output {

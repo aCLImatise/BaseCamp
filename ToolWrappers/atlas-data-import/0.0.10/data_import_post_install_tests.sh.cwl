@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../data_import_post_install_tests.sh.cwl
+id: data_import_post_install_tests.sh.cwl
 inputs:
 - id: in_garnett_cli_post_install_tests_dots_h
   doc: ''

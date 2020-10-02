@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_in_sorted_file.py.cwl
+id: find_in_sorted_file.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

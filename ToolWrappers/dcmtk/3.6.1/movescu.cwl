@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../movescu.cwl
+id: movescu.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments

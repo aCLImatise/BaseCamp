@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnazSort.pl.cwl
+id: rnazSort.pl.cwl
 inputs:
 - id: in_reverse
   doc: Sort in reverse order.

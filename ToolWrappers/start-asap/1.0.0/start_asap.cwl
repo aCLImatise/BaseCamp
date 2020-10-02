@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../start_asap.cwl
-inputs:
-- id: in_subdirectory_dot
-  doc: '*-ft*, *--for-tag* STRING'
-  type: string
-  inputBinding:
-    position: 0
+id: start_asap.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncogemini_query.cwl
+id: oncogemini_query.cwl
 inputs:
 - id: in_query_issued_database
   doc: The query to be issued to the database

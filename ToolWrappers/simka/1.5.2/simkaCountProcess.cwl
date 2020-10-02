@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simkaCountProcess.cwl
+id: simkaCountProcess.cwl
 inputs:
 - id: in_nohup
   doc: ''

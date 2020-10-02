@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ivar_Command.cwl
+id: ivar_Command.cwl
 inputs:
 - id: in_command
   doc: Description

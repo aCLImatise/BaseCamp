@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvetti.cwl
+id: cnvetti.cwl
 inputs:
 - id: in_verbose
   doc: Increase verbosity

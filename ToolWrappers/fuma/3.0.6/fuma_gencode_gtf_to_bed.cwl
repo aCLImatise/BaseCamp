@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fuma_gencode_gtf_to_bed.cwl
+id: fuma_gencode_gtf_to_bed.cwl
 inputs:
 - id: in_output
   doc: output filename; '-' for stdout

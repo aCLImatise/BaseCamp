@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refgenie_pull.cwl
+id: refgenie_pull.cwl
 inputs:
 - id: in_genome_config
   doc: "Path to local genome configuration file. Optional if\nREFGENIE environment\

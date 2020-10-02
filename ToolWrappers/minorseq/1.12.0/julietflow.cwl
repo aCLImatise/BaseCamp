@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../julietflow.cwl
+id: julietflow.cwl
 inputs:
 - id: in_bam_ccs_file
   doc: '[arg]  BAM CCS file to process. Required.'

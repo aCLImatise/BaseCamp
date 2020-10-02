@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getDifferentialPeaks.cwl
+id: getDifferentialPeaks.cwl
 inputs:
 - id: in_fold_enrichment_background
   doc: '<#> (fold enrichment over background tag count, default: 4.0)'

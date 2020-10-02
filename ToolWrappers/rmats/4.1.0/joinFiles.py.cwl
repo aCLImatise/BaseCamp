@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../joinFiles.py.cwl
+id: joinFiles.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

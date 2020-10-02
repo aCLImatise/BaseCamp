@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paraview_config.cwl
+id: paraview_config.cwl
 inputs: []
 outputs:
 - id: out_stdout

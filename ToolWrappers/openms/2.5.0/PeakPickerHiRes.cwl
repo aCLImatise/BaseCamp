@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PeakPickerHiRes.cwl
+id: PeakPickerHiRes.cwl
 inputs:
 - id: in_in
   doc: "*        Input profile data file  (valid formats: 'mzML')"

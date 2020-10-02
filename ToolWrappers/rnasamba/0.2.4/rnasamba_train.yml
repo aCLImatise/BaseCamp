@@ -1,4 +1,4 @@
-&id001 !Command
+!Command
 command:
 - rnasamba
 - train
@@ -59,117 +59,12 @@ named:
   - --verbose
   args: !ChoiceFlagArg
     choices: !!set
-      ? "3"
-      ? "1"
-      ? "2"
-      ? "0"
+      '1':
+      '2':
+      '0':
+      '3':
   optional: true
-parent: &id002 !Command
-  command:
-  - rnasamba
-  positional: []
-  named: []
-  parent:
-  subcommands:
-  - *id001
-  - !Command
-    command:
-    - rnasamba
-    - classify
-    positional:
-    - !Positional
-      description: output TSV file containing the results of the
-      position: 0
-      name: output_file
-      optional: false
-    - !Positional
-      description: fasta_file            input FASTA file containing transcript sequences.
-      position: 1
-      name: classification.
-      optional: false
-    - !Positional
-      description: "input HDF5 file(s) containing weights of a trained\nRNAsamba network\
-        \ (if more than a file is provided, an\nensembling of the models will be performed)."
-      position: 2
-      name: weights
-      optional: false
-    named:
-    - !Flag
-      description: "output FASTA file containing translated sequences for\nthe predicted\
-        \ coding ORFs. (default: None)"
-      synonyms:
-      - -p
-      - --protein_fasta
-      args: !SimpleFlagArg
-        name: PROTEIN_FASTA
-      optional: true
-    - !Flag
-      description: "print the progress of the classification. 0 = silent,\n1 = current\
-        \ step. (default: 0)\n"
-      synonyms:
-      - -v
-      - --verbose
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? "1"
-          ? "0"
-      optional: true
-    parent: *id002
-    subcommands: []
-    usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag: !Flag
-      description: show program's version number and exit
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
-    help_text: "usage: rnasamba classify [-h] [--version] [-p PROTEIN_FASTA] [-v {0,1}]\n\
-      \                         output_file fasta_file weights [weights ...]\n\nClassify\
-      \ sequences from a input FASTA file.\n\npositional arguments:\n  output_file\
-      \           output TSV file containing the results of the\n                \
-      \        classification.\n  fasta_file            input FASTA file containing\
-      \ transcript sequences.\n  weights               input HDF5 file(s) containing\
-      \ weights of a trained\n                        RNAsamba network (if more than\
-      \ a file is provided, an\n                        ensembling of the models will\
-      \ be performed).\n\noptional arguments:\n  -h, --help            show this help\
-      \ message and exit\n  --version             show program's version number and\
-      \ exit\n  -p PROTEIN_FASTA, --protein_fasta PROTEIN_FASTA\n                \
-      \        output FASTA file containing translated sequences for\n           \
-      \             the predicted coding ORFs. (default: None)\n  -v {0,1}, --verbose\
-      \ {0,1}\n                        print the progress of the classification. 0\
-      \ = silent,\n                        1 = current step. (default: 0)\n"
-    generated_using: &id003
-    - --help
-  usage: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag: !Flag
-    description: show program's version number and exit
-    synonyms:
-    - --version
-    args: !EmptyFlagArg {}
-    optional: true
-  help_text: "usage: rnasamba [-h] [--version] {classify,train} ...\n\nCoding potential\
-    \ calculation using deep learning.\n\npositional arguments:\n  {classify,train}\n\
-    \    classify        classify sequences from a input FASTA file.\n    train  \
-    \         train a new classification model.\n\noptional arguments:\n  -h, --help\
-    \        show this help message and exit\n  --version         show program's version\
-    \ number and exit\n"
-  generated_using: *id003
+parent:
 subcommands: []
 usage: []
 help_flag: !Flag
@@ -206,4 +101,5 @@ help_text: "usage: rnasamba train [-h] [--version] [-s EARLY_STOPPING] [-b BATCH
   \ --verbose {0,1,2,3}\n                        print the progress of the training.\
   \ 0 = silent, 1 =\n                        current step, 2 = progress bar, 3 = one\
   \ line per\n                        epoch. (default: 0)\n"
-generated_using: *id003
+generated_using:
+- --help

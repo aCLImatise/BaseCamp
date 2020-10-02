@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PgSAtest.cwl
+id: PgSAtest.cwl
 inputs:
 - id: in_by_position
   doc: by position

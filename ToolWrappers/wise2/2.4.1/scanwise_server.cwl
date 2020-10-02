@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scanwise_server.cwl
+id: scanwise_server.cwl
 inputs:
 - id: in_compress
   doc: use compressed index, for large indexes

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_zero_one_based.cwl
+id: convert_zero_one_based.cwl
 inputs: []
 outputs:
 - id: out_stdout

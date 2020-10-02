@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ptardiff.cwl
+id: ptardiff.cwl
 inputs:
 - id: in_more_options
   doc: ''

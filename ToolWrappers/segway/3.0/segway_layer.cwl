@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segway_layer.cwl
+id: segway_layer.cwl
 inputs:
 - id: in_big_bed
   doc: specify bigBed output file

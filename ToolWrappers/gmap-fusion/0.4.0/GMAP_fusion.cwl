@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GMAP_fusion.cwl
+id: GMAP_fusion.cwl
 inputs: []
 outputs:
 - id: out_stdout

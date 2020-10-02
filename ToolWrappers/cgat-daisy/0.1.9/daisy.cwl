@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../daisy.cwl
+id: daisy.cwl
 inputs: []
 outputs:
 - id: out_stdout

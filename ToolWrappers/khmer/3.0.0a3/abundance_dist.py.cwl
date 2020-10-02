@@ -1,37 +1,36 @@
 class: CommandLineTool
-id: ../../../abundance_dist.py.cwl
+id: abundance_dist.py.cwl
 inputs:
-- id: in_info
-  doc: print citation information
-  type: boolean
-  inputBinding:
-    prefix: --info
-- id: in_no_zero
-  doc: 'Do not output zero-count bins (default: True)'
-  type: boolean
-  inputBinding:
-    prefix: --no-zero
-- id: in_squash
-  doc: "Overwrite existing output_histogram_filename (default:\nFalse)"
-  type: boolean
-  inputBinding:
-    prefix: --squash
-- id: in_no_big_count
-  doc: 'Do not count k-mers past 255 (default: True)'
-  type: boolean
-  inputBinding:
-    prefix: --no-bigcount
-- id: in_force
-  doc: "Continue even if specified input files do not exist or\nare empty. (default:\
-    \ False)"
-  type: boolean
-  inputBinding:
-    prefix: --force
-- id: in_quiet
+- id: in_q
   doc: ''
   type: boolean
   inputBinding:
-    prefix: --quiet
+    prefix: -q
+- id: in_f
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -f
+- id: in_b
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -b
+- id: in_s
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -s
+- id: in_z
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -z
+- id: in_info
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --info
 - id: in_calculate_abundance_distribution
   doc: Calculate abundance distribution of the k-mers in the sequence file using a
   type: string

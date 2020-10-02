@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../startAlign.pl.cwl
+id: startAlign.pl.cwl
 inputs:
 - id: in_genome
   doc: fasta file with DNA sequences

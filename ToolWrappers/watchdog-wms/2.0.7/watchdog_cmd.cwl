@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../watchdog_cmd.cwl
+id: watchdog_cmd.cwl
 inputs:
 - id: in_attach_info
   doc: "path to a file that is used to restore the info on previously running\ntasks\

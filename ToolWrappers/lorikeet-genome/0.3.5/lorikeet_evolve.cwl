@@ -1,41 +1,12 @@
 class: CommandLineTool
-id: ../../../lorikeet_evolve.cwl
+id: lorikeet_evolve.cwl
 inputs:
 - id: in_bam_files
-  doc: '...'
-  type: string
+  doc: "...\n--coupled <coupled>...\n--interleaved <interleaved>...\n-1 <read1>...\n\
+    -2 <read2>...\n--reference <reference>\n--single <single>..."
+  type: long
   inputBinding:
     prefix: --bam-files
-- id: in_coupled
-  doc: '...'
-  type: string
-  inputBinding:
-    prefix: --coupled
-- id: in_interleaved
-  doc: '...'
-  type: string
-  inputBinding:
-    prefix: --interleaved
-- id: in_one
-  doc: '...'
-  type: long
-  inputBinding:
-    prefix: '-1'
-- id: in_two
-  doc: '...'
-  type: long
-  inputBinding:
-    prefix: '-2'
-- id: in_reference
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --reference
-- id: in_single
-  doc: '...'
-  type: string
-  inputBinding:
-    prefix: --single
 - id: in_bam_file_cache_directory
   doc: ''
   type: File

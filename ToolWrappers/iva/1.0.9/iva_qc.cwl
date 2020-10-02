@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iva_qc.cwl
+id: iva_qc.cwl
 inputs:
 - id: in_embl_dir
   doc: "Directory of reference EMBL files. If not used, must\nuse --ref_db"

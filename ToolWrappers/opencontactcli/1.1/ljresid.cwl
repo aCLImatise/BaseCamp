@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ljresid.cwl
+id: ljresid.cwl
 inputs: []
 outputs:
 - id: out_stdout

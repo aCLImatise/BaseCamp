@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../inchworm.cwl
+id: inchworm.cwl
 inputs:
 - id: in_reads
   doc: <str>             :fasta file containing reads

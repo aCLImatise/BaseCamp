@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_report_meta_analysis.cwl
+id: vtools_report_meta_analysis.cwl
 inputs:
 - id: in_beta
   doc: column number of beta

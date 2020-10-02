@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_shed_build.cwl
+id: planemo_shed_build.cwl
 inputs:
 - id: in_tool_path
   doc: ''

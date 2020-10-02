@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scalac.bat.cwl
+id: scalac.bat.cwl
 inputs: []
 outputs:
 - id: out_stdout

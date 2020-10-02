@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pvaluesPlotGenerator.r.cwl
+id: pvaluesPlotGenerator.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

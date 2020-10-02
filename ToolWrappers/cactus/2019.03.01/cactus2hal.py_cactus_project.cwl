@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus2hal.py_cactus_project.cwl
+id: cactus2hal.py_cactus_project.cwl
 inputs:
 - id: in_cache_bytes
   doc: ''

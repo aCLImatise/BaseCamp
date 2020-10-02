@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../einverted.cwl
+id: einverted.cwl
 inputs:
 - id: in_gap
   doc: integer    [12] Gap penalty (Integer 0 or more)

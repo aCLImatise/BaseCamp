@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svm_train.cwl
+id: svm_train.cwl
 inputs:
 - id: in_set_type_svm
   doc: ": set type of SVM (default 0)\n0 -- C-SVC              (multi-class classification)\n\

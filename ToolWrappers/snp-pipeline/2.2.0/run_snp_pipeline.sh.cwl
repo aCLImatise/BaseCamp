@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_snp_pipeline.sh.cwl
+id: run_snp_pipeline.sh.cwl
 inputs:
 - id: in_force
   doc: "Force processing even when result files already exist\nand are newer than\

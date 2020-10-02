@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../humann2_join_tables.cwl
+id: humann2_join_tables.cwl
 inputs:
 - id: in_verbose
   doc: additional output is printed

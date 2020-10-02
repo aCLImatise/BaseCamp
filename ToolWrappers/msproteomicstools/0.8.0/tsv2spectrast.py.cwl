@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tsv2spectrast.py.cwl
+id: tsv2spectrast.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../window_acgt.cwl
+id: window_acgt.cwl
 inputs:
 - id: in__percentoutput_percentages
   doc: "or  --percent\nOutput percentages instead of counts\n"

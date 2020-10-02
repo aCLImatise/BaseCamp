@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../printenv.cwl
+id: printenv.cwl
 inputs:
 - id: in_null
   doc: end each output line with NUL, not newline

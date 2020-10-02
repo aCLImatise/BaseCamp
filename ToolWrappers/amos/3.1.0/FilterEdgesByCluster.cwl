@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FilterEdgesByCluster.cwl
+id: FilterEdgesByCluster.cwl
 inputs:
 - id: in_clusters
   doc: ''

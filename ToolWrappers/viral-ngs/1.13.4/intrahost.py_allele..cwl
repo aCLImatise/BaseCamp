@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intrahost.py_allele..cwl
+id: intrahost.py_allele..cwl
 inputs:
 - id: in_intra_host_do_tpy
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crispritz.py.cwl
+id: crispritz.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metadata_conda_debug.yaml.cwl
+id: metadata_conda_debug.yaml.cwl
 inputs: []
 outputs:
 - id: out_stdout

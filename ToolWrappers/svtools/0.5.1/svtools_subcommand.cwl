@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtools_subcommand.cwl
+id: svtools_subcommand.cwl
 inputs:
 - id: in_support
   doc: ''

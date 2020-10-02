@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fq.cwl
+id: fq.cwl
 inputs:
 - id: in_quiet
   doc: "!        Quiet mode: no progress output (default '0')."

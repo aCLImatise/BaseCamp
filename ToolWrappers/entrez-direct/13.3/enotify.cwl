@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enotify.cwl
+id: enotify.cwl
 inputs:
 - id: in_email
   doc: Contact person's address

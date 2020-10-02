@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_kms_keys.cwl
+id: gcloud_kms_keys.cwl
 inputs:
 - id: in_keyring
   doc: The containing keyring.

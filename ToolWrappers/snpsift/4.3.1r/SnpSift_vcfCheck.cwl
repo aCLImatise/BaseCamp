@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_vcfCheck.cwl
+id: SnpSift_vcfCheck.cwl
 inputs:
 - id: in_jar
   doc: ''

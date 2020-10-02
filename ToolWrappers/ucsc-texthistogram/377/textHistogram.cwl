@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../textHistogram.cwl
+id: textHistogram.cwl
 inputs:
 - id: in_binsize
   doc: '- Size of bins, default 1'

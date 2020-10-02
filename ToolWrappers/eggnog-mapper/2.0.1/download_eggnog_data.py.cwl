@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../download_eggnog_data.py.cwl
+id: download_eggnog_data.py.cwl
 inputs:
 - id: in_install_diamond_database
   doc: Do not install the diamond database

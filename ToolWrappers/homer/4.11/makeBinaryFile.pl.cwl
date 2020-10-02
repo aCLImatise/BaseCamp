@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeBinaryFile.pl.cwl
+id: makeBinaryFile.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

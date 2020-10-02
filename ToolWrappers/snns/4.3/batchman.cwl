@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../batchman.cwl
+id: batchman.cwl
 inputs:
 - id: in_read_input_file
   doc: ': read input from <file>'

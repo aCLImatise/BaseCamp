@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spectra_cluster_cli.cwl
+id: spectra_cluster_cli.cwl
 inputs:
 - id: in_add_scores
   doc: "if set, the similarity\nscores of each spectrum\nto the cluster's\nconsensus\

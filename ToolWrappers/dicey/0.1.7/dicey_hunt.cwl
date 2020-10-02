@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dicey_hunt.cwl
+id: dicey_hunt.cwl
 inputs:
 - id: in_arg_genome_file
   doc: '[ --genome ] arg                   genome file'

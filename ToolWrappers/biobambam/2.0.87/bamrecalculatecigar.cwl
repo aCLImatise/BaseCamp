@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamrecalculatecigar.cwl
+id: bamrecalculatecigar.cwl
 inputs: []
 outputs:
 - id: out_stdout

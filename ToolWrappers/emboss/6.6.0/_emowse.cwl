@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_emowse.cwl
+id: _emowse.cwl
 inputs:
 - id: in_weight
   doc: integer    [0] Whole sequence molwt (Any integer value)

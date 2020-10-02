@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biom_validate_table.cwl
+id: biom_validate_table.cwl
 inputs:
 - id: in_input_fp
   doc: "The input filpath to validate against the BIOM\nformat specification  [required]"

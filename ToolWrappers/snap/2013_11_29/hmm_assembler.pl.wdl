@@ -3,14 +3,9 @@ version 1.0
 task Hmmassemblerpl {
   input {
     Boolean? var_0
-    Boolean? e
-    Boolean? var_2
     Boolean? d
     Boolean? m
     Boolean? s
-    Boolean? var_6
-    Boolean? var_7
-    Boolean? n
     Boolean? orderlength_include_utr_model_requires
     Boolean? orderlength_include_polya_model_requires
     Boolean? orderlength_include_moel_requires
@@ -31,15 +26,10 @@ task Hmmassemblerpl {
     hmm_assembler_pl \
       ~{name} \
       ~{directory_of_files_from_forge} \
-      ~{if (var_0) then "-i" else ""} \
-      ~{if (e) then "-e" else ""} \
-      ~{if (var_2) then "-A" else ""} \
+      ~{if (var_0) then "-A" else ""} \
       ~{if (d) then "-D" else ""} \
       ~{if (m) then "-M" else ""} \
       ~{if (s) then "-S" else ""} \
-      ~{if (var_6) then "-C" else ""} \
-      ~{if (var_7) then "-I" else ""} \
-      ~{if (n) then "-N" else ""} \
       ~{if (orderlength_include_utr_model_requires) then "-3" else ""} \
       ~{if (orderlength_include_polya_model_requires) then "-a" else ""} \
       ~{if (orderlength_include_moel_requires) then "-5" else ""} \
@@ -55,15 +45,10 @@ task Hmmassemblerpl {
       ~{if (options) then "-OPTIONS" else ""}
   >>>
   parameter_meta {
-    var_0: "<length>       [500]"
-    e: "<length>       [1000]"
-    var_2: "<order:length> [0:30]"
+    var_0: "<order:length> [0:30]"
     d: "<order:length> [0:9]"
     m: "<order:length> [0:15]"
     s: "<order:length> [0:9]"
-    var_6: "<order>        [4]"
-    var_7: "<order>        [4]"
-    n: "<order>        [4]"
     orderlength_include_utr_model_requires: "<order:length> []  include 3'UTR model, requires -a"
     orderlength_include_polya_model_requires: "<order:length> []  include PolyA model, requires -3"
     orderlength_include_moel_requires: "<order:length> []  include 5'UTR moel, requires -p"

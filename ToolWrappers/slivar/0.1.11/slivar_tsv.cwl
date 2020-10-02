@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slivar_tsv.cwl
+id: slivar_tsv.cwl
 inputs:
 - id: in_ped
   doc: required ped file describing the trios in the VCF

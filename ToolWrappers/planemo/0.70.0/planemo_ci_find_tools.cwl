@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_ci_find_tools.cwl
+id: planemo_ci_find_tools.cwl
 inputs:
 - id: in_exclude
   doc: Paths to exclude.

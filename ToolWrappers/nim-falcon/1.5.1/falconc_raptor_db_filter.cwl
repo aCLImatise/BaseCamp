@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconc_raptor_db_filter.cwl
+id: falconc_raptor_db_filter.cwl
 inputs:
 - id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'

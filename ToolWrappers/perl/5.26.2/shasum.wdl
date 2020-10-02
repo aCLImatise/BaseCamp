@@ -2,7 +2,6 @@ version 1.0
 
 task Shasum {
   input {
-    Boolean? algorithm
     Boolean? binary
     Boolean? check
     Boolean? text
@@ -14,7 +13,6 @@ task Shasum {
   }
   command <<<
     shasum \
-      ~{if (algorithm) then "--algorithm" else ""} \
       ~{if (binary) then "--binary" else ""} \
       ~{if (check) then "--check" else ""} \
       ~{if (text) then "--text" else ""} \
@@ -25,7 +23,6 @@ task Shasum {
       ~{if (warn) then "--warn" else ""}
   >>>
   parameter_meta {
-    algorithm: "1 (default), 224, 256, 384, 512, 512224, 512256"
     binary: "read in binary mode"
     check: "read SHA sums from the FILEs and check them"
     text: "read in text mode (default)"

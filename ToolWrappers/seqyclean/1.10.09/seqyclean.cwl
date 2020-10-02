@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqyclean.cwl
+id: seqyclean.cwl
 inputs:
 - id: in_turns_vector_trimming
   doc: '- Turns on vector trimming, default=off. <filename> - is a path to a FASTA-file

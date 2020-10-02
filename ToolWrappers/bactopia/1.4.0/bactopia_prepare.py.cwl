@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bactopia_prepare.py.cwl
+id: bactopia_prepare.py.cwl
 inputs:
 - id: in_fast_q_ext
   doc: 'Extension of the FASTQs. Default: .fastq.gz'

@@ -1,26 +1,26 @@
 class: CommandLineTool
-id: ../../../mimodd_varextract.cwl
+id: mimodd_varextract.cwl
 inputs:
-- id: in_pre_vcf
-  doc: ''
-  type: string[]
-  inputBinding:
-    prefix: --pre-vcf
 - id: in_keep_alts
-  doc: "keep all alternate allele candidates even if they do\nnot appear in any genotype"
+  doc: keep all alternate allele candidates even if they do
   type: boolean
   inputBinding:
     prefix: --keep-alts
-- id: in_verbose
-  doc: verbose output
+- id: in_o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: in_v
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: --verbose
-- id: in_ofile
-  doc: "redirect the output (variant sites) to the specified\nfile (default: stdout)\n"
-  type: File
+    prefix: -v
+- id: in_p
+  doc: ''
+  type: string[]
   inputBinding:
-    prefix: --ofile
+    prefix: -p
 - id: in_var_extract
   doc: ''
   type: string
@@ -30,11 +30,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_ofile
-  doc: "redirect the output (variant sites) to the specified\nfile (default: stdout)\n"
-  type: File
-  outputBinding:
-    glob: $(inputs.in_ofile)
 cwlVersion: v1.1
 baseCommand:
 - mimodd

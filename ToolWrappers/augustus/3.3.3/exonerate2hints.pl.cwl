@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../exonerate2hints.pl.cwl
+id: exonerate2hints.pl.cwl
 inputs:
 - id: in_priority
   doc: priority of hint group (default 4)

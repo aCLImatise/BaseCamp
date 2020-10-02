@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goalign_codonalign.cwl
+id: goalign_codonalign.cwl
 inputs:
 - id: in_fast_a
   doc: Input nucleotide Fasta file to be codon aligned (default "stdin")

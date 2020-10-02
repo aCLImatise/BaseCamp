@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scorer.cwl
+id: scorer.cwl
 inputs:
 - id: in_exact
   doc: "Specify exact comparison when structure comparison is scored.\nDefault is\

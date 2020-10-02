@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbhoover.cwl
+id: pbhoover.cwl
 inputs:
 - id: in_consensus
   doc: Call consensus (output all positions to VCF)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jps.cwl
+id: jps.cwl
 inputs: []
 outputs:
 - id: out_stdout

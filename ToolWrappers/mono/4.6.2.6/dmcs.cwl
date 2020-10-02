@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dmcs.cwl
+id: dmcs.cwl
 inputs:
 - id: in_about
   doc: About the Mono C# compiler

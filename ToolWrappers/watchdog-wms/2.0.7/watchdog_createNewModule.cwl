@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../watchdog_createNewModule.cwl
+id: watchdog_createNewModule.cwl
 inputs: []
 outputs:
 - id: out_stdout

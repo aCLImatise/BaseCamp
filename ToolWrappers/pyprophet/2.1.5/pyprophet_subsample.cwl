@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyprophet_subsample.cwl
+id: pyprophet_subsample.cwl
 inputs:
 - id: in_in
   doc: OpenSWATH input file.  [required]

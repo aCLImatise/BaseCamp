@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../poppunk_tsne.cwl
+id: poppunk_tsne.cwl
 inputs:
 - id: in_distances
   doc: "Prefix of input pickle and numpy file of pre-\ncalculated distances"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktGetContigMagnitudes.cwl
+id: ktGetContigMagnitudes.cwl
 inputs: []
 outputs:
 - id: out_stdout

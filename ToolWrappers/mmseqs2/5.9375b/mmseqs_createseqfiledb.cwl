@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_createseqfiledb.cwl
+id: mmseqs_createseqfiledb.cwl
 inputs:
 - id: in_min_sequences
   doc: 1               minimum number of sequences a cluster may contain

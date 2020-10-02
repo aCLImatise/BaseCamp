@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hichipper.cwl
+id: hichipper.cwl
 inputs:
 - id: in_out
   doc: "Output directory name; must not be already\nexisting [Required]  [required]"

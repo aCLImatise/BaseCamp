@@ -9,14 +9,6 @@ task Recalladapters {
     Boolean? inline_pbi
     Boolean? silent
     Boolean? disable_adapter_finding
-    String? adapters
-    Boolean? global_aln_flanking
-    Int? flank_length
-    Float? min_soft_accuracy
-    Float? min_hard_accuracy
-    Float? min_flanking_score
-    Boolean? disable_adapter_correction
-    Boolean? adp_qc
     Int? min_adapter_score
     Int? min_sub_length
     Float? mins_nr
@@ -31,14 +23,6 @@ task Recalladapters {
       ~{if (inline_pbi) then "--inlinePbi" else ""} \
       ~{if (silent) then "--silent" else ""} \
       ~{if (disable_adapter_finding) then "--disableAdapterFinding" else ""} \
-      ~{if defined(adapters) then ("--adapters " +  '"' + adapters + '"') else ""} \
-      ~{if (global_aln_flanking) then "--globalAlnFlanking" else ""} \
-      ~{if defined(flank_length) then ("--flankLength " +  '"' + flank_length + '"') else ""} \
-      ~{if defined(min_soft_accuracy) then ("--minSoftAccuracy " +  '"' + min_soft_accuracy + '"') else ""} \
-      ~{if defined(min_hard_accuracy) then ("--minHardAccuracy " +  '"' + min_hard_accuracy + '"') else ""} \
-      ~{if defined(min_flanking_score) then ("--minFlankingScore " +  '"' + min_flanking_score + '"') else ""} \
-      ~{if (disable_adapter_correction) then "--disableAdapterCorrection" else ""} \
-      ~{if (adp_qc) then "--adpqc" else ""} \
       ~{if defined(min_adapter_score) then ("--minAdapterScore " +  '"' + min_adapter_score + '"') else ""} \
       ~{if defined(min_sub_length) then ("--minSubLength " +  '"' + min_sub_length + '"') else ""} \
       ~{if defined(mins_nr) then ("--minSnr " +  '"' + mins_nr + '"') else ""} \
@@ -51,15 +35,7 @@ task Recalladapters {
     number_threads_parallel_bam: "Number of threads for parallel BAM compression, can only\\nbe set when not generating pbindex inline with --inlinePbi"
     inline_pbi: "Generate pbindex inline with BAM writing"
     silent: "No progress output."
-    disable_adapter_finding: ""
-    adapters: ""
-    global_aln_flanking: ""
-    flank_length: ""
-    min_soft_accuracy: ""
-    min_hard_accuracy: ""
-    min_flanking_score: ""
-    disable_adapter_correction: ""
-    adp_qc: ""
+    disable_adapter_finding: "--adapters=adapterSequences.fasta\\n--globalAlnFlanking\\n--flankLength=INT\\n--minSoftAccuracy=FLOAT\\n--minHardAccuracy=FLOAT\\n--minFlankingScore=FLOAT\\n--disableAdapterCorrection\\n--adpqc"
     min_adapter_score: "Minimal score for an adapter"
     min_sub_length: "Minimal subread length. Default: 50"
     mins_nr: "Minimal SNR across channels. Default: 3.75"

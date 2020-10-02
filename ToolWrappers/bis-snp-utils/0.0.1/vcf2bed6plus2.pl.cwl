@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf2bed6plus2.pl.cwl
+id: vcf2bed6plus2.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

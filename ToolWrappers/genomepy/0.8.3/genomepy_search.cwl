@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomepy_search.cwl
+id: genomepy_search.cwl
 inputs:
 - id: in_provider
   doc: provider

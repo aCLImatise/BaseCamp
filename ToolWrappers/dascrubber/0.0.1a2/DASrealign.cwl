@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DASrealign.cwl
+id: DASrealign.cwl
 inputs:
 - id: in_v
   doc: ''

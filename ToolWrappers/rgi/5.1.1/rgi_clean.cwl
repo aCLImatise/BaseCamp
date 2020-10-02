@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_clean.cwl
+id: rgi_clean.cwl
 inputs:
 - id: in_local
   doc: "use local database (default: uses database in executable\ndirectory)"

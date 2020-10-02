@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../concatenate_domains.py.cwl
+id: concatenate_domains.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

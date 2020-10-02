@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../restml.cwl
+id: restml.cwl
 inputs: []
 outputs:
 - id: out_stdout

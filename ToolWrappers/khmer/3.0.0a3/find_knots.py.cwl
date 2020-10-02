@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_knots.py.cwl
+id: find_knots.py.cwl
 inputs:
 - id: in_info
   doc: print citation information

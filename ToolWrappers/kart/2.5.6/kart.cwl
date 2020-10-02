@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kart.cwl
+id: kart.cwl
 inputs:
 - id: in_number_of_threads
   doc: number of threads [4]

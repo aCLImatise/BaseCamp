@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../typeHLA.js.cwl
+id: typeHLA.js.cwl
 inputs:
 - id: in_use_strict
   doc: "(enforce strict mode)\ntype: bool  default: false"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NumPluginXgboost.exe.cwl
+id: NumPluginXgboost.exe.cwl
 inputs: []
 outputs:
 - id: out_stdout

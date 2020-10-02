@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsbox_bam2bed.cwl
+id: htsbox_bam2bed.cwl
 inputs:
 - id: in_se
   doc: ''

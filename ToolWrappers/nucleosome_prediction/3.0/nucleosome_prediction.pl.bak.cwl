@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucleosome_prediction.pl.bak.cwl
+id: nucleosome_prediction.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

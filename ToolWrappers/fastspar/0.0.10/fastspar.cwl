@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastspar.cwl
+id: fastspar.cwl
 inputs:
 - id: in_otu_table
   doc: OTU input OTU count table

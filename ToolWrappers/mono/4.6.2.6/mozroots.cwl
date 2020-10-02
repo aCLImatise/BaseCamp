@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mozroots.cwl
+id: mozroots.cwl
 inputs:
 - id: in_import
   doc: Import the certificates into the trust store.

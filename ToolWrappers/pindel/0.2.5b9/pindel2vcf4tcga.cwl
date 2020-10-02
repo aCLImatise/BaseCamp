@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../pindel2vcf4tcga.cwl
+id: pindel2vcf4tcga.cwl
 inputs:
-- id: in_var_0
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -R
 - id: in_is
   doc: guaranteed to work correctly on output files produced by pindel version 0.2.3
     and above.
@@ -201,7 +196,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -h/--help
-- id: in_var_33
+- id: in_r
   doc: ''
   type: File
   inputBinding:

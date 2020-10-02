@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnaQUAST.py.cwl
+id: rnaQUAST.py.cwl
 inputs:
 - id: in_reference
   doc: "Single file (or several files for meta RNA) with\nreference genome in FASTA\
@@ -135,11 +135,6 @@ inputs:
     prefix: --busco
 - id: in_used
   doc: -c TRANSCRIPTS [TRANSCRIPTS ...], --transcripts TRANSCRIPTS [TRANSCRIPTS ...]
-  type: string
-  inputBinding:
-    position: 0
-- id: in_assemblies
-  doc: --lower_threshold LOWER_THRESHOLD
   type: string
   inputBinding:
     position: 0

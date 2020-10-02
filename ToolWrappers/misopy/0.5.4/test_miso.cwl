@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_miso.cwl
+id: test_miso.cwl
 inputs:
 - id: in_verbose
   doc: Verbose output

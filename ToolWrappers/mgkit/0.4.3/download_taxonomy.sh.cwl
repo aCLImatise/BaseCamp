@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../download_taxonomy.sh.cwl
+id: download_taxonomy.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

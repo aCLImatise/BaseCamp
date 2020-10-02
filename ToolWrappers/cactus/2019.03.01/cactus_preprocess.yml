@@ -35,13 +35,6 @@ positional:
   optional: false
 named:
 - !Flag
-  description: ''
-  synonyms:
-  - --configFile
-  args: !SimpleFlagArg
-    name: CONFIGFILE
-  optional: true
-- !Flag
   description: Same as --logCritical
   synonyms:
   - --logOff
@@ -127,10 +120,10 @@ named:
   - --clean
   args: !ChoiceFlagArg
     choices: !!set
-      ? onError
-      ? never
-      ? always
-      ? onSuccess
+      onSuccess:
+      never:
+      always:
+      onError:
   optional: true
 - !Flag
   description: "Determines deletion of temporary worker directory upon\ncompletion\
@@ -141,10 +134,10 @@ named:
   - --cleanWorkDir
   args: !ChoiceFlagArg
     choices: !!set
-      ? never
-      ? onError
-      ? always
-      ? onSuccess
+      onSuccess:
+      never:
+      always:
+      onError:
   optional: true
 - !Flag
   description: "[CLUSTERSTATS]\nIf enabled, writes out JSON resource usage statistics\n\
@@ -380,37 +373,17 @@ named:
     name: INT
   optional: true
 - !Flag
-  description: ''
+  description: "--maxCores INT        The maximum number of CPU cores to request from\
+    \ the\nbatch system at any one time. Standard suffixes like\nK, Ki, M, Mi, G or\
+    \ Gi are supported. Default is 8.0 Ei\n--maxMemory INT       The maximum amount\
+    \ of memory to request from the batch\nsystem at any one time. Standard suffixes\
+    \ like K, Ki,\nM, Mi, G or Gi are supported. Default is 8.0 Ei\n--maxDisk INT\
+    \         The maximum amount of disk space to request from the\nbatch system at\
+    \ any one time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported. Default\
+    \ is 8.0 Ei"
   synonyms:
   - --defaultPreemptable
   args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "The maximum number of CPU cores to request from the\nbatch system\
-    \ at any one time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported.\
-    \ Default is 8.0 Ei"
-  synonyms:
-  - --maxCores
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: "The maximum amount of memory to request from the batch\nsystem at\
-    \ any one time. Standard suffixes like K, Ki,\nM, Mi, G or Gi are supported. Default\
-    \ is 8.0 Ei"
-  synonyms:
-  - --maxMemory
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: "The maximum amount of disk space to request from the\nbatch system\
-    \ at any one time. Standard suffixes like\nK, Ki, M, Mi, G or Gi are supported.\
-    \ Default is 8.0 Ei"
-  synonyms:
-  - --maxDisk
-  args: !SimpleFlagArg
-    name: INT
   optional: true
 - !Flag
   description: "Number of times to retry a failing job before giving\nup and labeling\
@@ -542,7 +515,7 @@ parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  description: "show this help message and exit\n--configFile CONFIGFILE"
   synonyms:
   - -h
   - --help

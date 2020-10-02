@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slsh.cwl
+id: slsh.cwl
 inputs:
 - id: in_execute_slang_code
   doc: Execute 'string' as S-Lang code

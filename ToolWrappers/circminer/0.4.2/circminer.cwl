@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../circminer.cwl
+id: circminer.cwl
 inputs:
 - id: in_index
   doc: ':            Indicates the indexing stage.'

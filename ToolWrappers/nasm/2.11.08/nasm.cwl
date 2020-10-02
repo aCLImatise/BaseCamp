@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nasm.cwl
+id: nasm.cwl
 inputs:
 - id: in_assemble_tasm_mode
   doc: assemble in SciTech TASM compatible mode

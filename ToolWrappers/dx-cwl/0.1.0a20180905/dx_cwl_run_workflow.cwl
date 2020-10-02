@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_cwl_run_workflow.cwl
+id: dx_cwl_run_workflow.cwl
 inputs:
 - id: in_token
   doc: DNAnexus authentication token

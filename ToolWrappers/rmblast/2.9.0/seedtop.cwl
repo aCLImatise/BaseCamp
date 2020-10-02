@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seedtop.cwl
+id: seedtop.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_entret.cwl
+id: _entret.cwl
 inputs:
 - id: in_first_only
   doc: boolean    Read one sequence and stop

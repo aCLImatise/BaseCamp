@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cov_model_qmer.r.cwl
+id: cov_model_qmer.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

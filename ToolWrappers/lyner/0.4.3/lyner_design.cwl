@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lyner_design.cwl
+id: lyner_design.cwl
 inputs:
 - id: in_design
   doc: ''

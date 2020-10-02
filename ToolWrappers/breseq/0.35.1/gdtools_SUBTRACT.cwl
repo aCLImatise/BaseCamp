@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_SUBTRACT.cwl
+id: gdtools_SUBTRACT.cwl
 inputs:
 - id: in_output
   doc: output GD file (DEFAULT=output.gd)

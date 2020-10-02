@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioformats_gff2bed.cwl
+id: bioformats_gff2bed.cwl
 inputs:
 - id: in_attributes_include_defaultnone
   doc: "[ATTRIBUTES [ATTRIBUTES ...]], --attributes [ATTRIBUTES [ATTRIBUTES ...]]\n\

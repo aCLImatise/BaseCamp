@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../log_and_glog_transformation.py.cwl
+id: log_and_glog_transformation.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

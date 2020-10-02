@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sdfilter.cwl
+id: sdfilter.cwl
 inputs:
 - id: in_f
   doc: ''

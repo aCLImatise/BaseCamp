@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_align.cwl
+id: ssu_align.cwl
 inputs:
 - id: in_force_dir_named
   doc: ': force; if dir named <output dir> already exists, empty it first'

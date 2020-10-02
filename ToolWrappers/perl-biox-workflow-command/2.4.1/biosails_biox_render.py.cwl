@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biosails_biox_render.py.cwl
+id: biosails_biox_render.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

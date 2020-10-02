@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spades_gbuilder.cwl
+id: spades_gbuilder.cwl
 inputs:
 - id: in_kmer_length_use
   doc: k-mer length to use

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepare_receptor4.py.cwl
+id: prepare_receptor4.py.cwl
 inputs:
 - id: in_receptorfilename
   doc: receptor_filename

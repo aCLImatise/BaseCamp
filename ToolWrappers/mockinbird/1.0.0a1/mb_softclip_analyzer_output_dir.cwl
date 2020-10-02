@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_softclip_analyzer_output_dir.cwl
+id: mb_softclip_analyzer_output_dir.cwl
 inputs:
 - id: in_top_n
   doc: ''

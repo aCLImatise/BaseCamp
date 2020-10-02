@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smudgeplot.py_hetkmers_infile.cwl
+id: smudgeplot.py_hetkmers_infile.cwl
 inputs:
 - id: in_middle
   doc: ''

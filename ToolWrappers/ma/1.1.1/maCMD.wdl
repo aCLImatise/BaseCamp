@@ -57,12 +57,10 @@ task MaCMD {
     Int? z_drop
     Boolean? detect_small_inversions
     Int? z_drop_inversions
-    String flag_dot
     String limit_dot
   }
   command <<<
     maCMD \
-      ~{flag_dot} \
       ~{limit_dot} \
       ~{if defined(presetting) then ("--Presetting " +  '"' + presetting + '"') else ""} \
       ~{if defined(index) then ("--Index " +  '"' + index + '"') else ""} \
@@ -176,7 +174,6 @@ task MaCMD {
     z_drop: "[200]                           If the running score during dynamic programming\\ndrops faster than <val> stop the extension process."
     detect_small_inversions: "[false]       Use DP to search for small inversions that do not\\ncontain any seeds."
     z_drop_inversions: "[100]                Check for an inversion if the running score during\\ndynamic programming drops faster than <val>."
-    flag_dot: "-d, --Mean_Distance_of_Paired_Reads <double> [400]"
     limit_dot: "-M, --Minimal_Number_of_SoC's <int> [1]        Always consider the first <val> SoC's no matter the "
   }
   output {

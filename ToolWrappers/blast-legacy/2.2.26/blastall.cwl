@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blastall.cwl
+id: blastall.cwl
 inputs:
 - id: in_program_name
   doc: Program Name [String]

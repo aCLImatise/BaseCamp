@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hal2assemblyHub.py.cwl
+id: hal2assemblyHub.py.cwl
 inputs:
 - id: in_cp_hal_file_to_out
   doc: "If specified, copy the input halfile to the output\ndirectory (instead of\

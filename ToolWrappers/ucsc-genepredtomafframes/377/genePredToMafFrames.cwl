@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genePredToMafFrames.cwl
+id: genePredToMafFrames.cwl
 inputs:
 - id: in_bed
   doc: '- output a bed of for each mafFrame region, useful for debugging.'

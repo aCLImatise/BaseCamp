@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CartHess2FC.py.cwl
+id: CartHess2FC.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho_grab_proteins.pl.cwl
+id: proteinortho_grab_proteins.pl.cwl
 inputs:
 - id: in_to_files
   doc: print everything to files instead of stdout files are called OrthoGroup**.fasta

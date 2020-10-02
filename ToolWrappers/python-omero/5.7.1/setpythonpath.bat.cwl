@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../setpythonpath.bat.cwl
+id: setpythonpath.bat.cwl
 inputs: []
 outputs:
 - id: out_stdout

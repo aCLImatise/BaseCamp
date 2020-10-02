@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_bam.cwl
+id: seqkit_bam.cwl
 inputs:
 - id: in_bins
   doc: number of histogram bins (default -1)

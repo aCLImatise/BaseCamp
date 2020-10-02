@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../k8.cwl
+id: k8.cwl
 inputs:
 - id: in_use_strict
   doc: "(enforce strict mode)\ntype: bool  default: false"

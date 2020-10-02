@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedparse_cds_bedfile.cwl
+id: bedparse_cds_bedfile.cwl
 inputs:
 - id: in_ignore_cds_only
   doc: ''

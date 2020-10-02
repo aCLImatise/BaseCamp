@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metagenomics.py_report.cwl
+id: metagenomics.py_report.cwl
 inputs:
 - id: in_meta_genomics_do_tpy
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runMetaphyler.pl.cwl
+id: runMetaphyler.pl.cwl
 inputs:
 - id: in_prefix_dot_classification
   doc: Classification results.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iqtree.cwl
+id: iqtree.cwl
 inputs:
 - id: in_seqtype
   doc: 'BIN, DNA, AA, NT2AA, CODON, MORPH (default: auto-detect)'

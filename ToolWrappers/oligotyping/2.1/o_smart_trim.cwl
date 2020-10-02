@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_smart_trim.cwl
+id: o_smart_trim.cwl
 inputs:
 - id: in_min_percent
   doc: "Even if there is only one read that is too short and\ntherefore full of gap\

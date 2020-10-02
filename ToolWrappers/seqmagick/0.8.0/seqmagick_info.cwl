@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqmagick_info.cwl
+id: seqmagick_info.cwl
 inputs:
 - id: in_input_format
   doc: Input format. Overrides extension for all input files

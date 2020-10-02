@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../toMultiFastA.cwl
+id: toMultiFastA.cwl
 inputs:
 - id: in_input_interval_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MergeContigs.py.cwl
+id: MergeContigs.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

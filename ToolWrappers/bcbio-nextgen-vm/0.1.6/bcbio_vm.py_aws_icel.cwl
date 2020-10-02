@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_vm.py_aws_icel.cwl
+id: bcbio_vm.py_aws_icel.cwl
 inputs:
 - id: in_create
   doc: "Create scratch filesystem using Intel Cloud Edition\nfor Lustre"

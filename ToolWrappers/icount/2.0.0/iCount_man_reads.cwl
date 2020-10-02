@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_man_reads.cwl
+id: iCount_man_reads.cwl
 inputs:
 - id: in_mode
   doc: ''

@@ -1,8 +1,10 @@
 class: CommandLineTool
-id: ../../../gcloud_kms_encrypt.cwl
+id: gcloud_kms_encrypt.cwl
 inputs:
 - id: in_plain_text_file
-  doc: ''
+  doc: "[--additional-authenticated-data-file=ADDITIONAL_AUTHENTICATED_DATA_FILE]\n\
+    [--key=KEY] [--keyring=KEYRING] [--location=LOCATION]\n[--version=VERSION] [GCLOUD_WIDE_FLAG\
+    \ ...]"
   type: File
   inputBinding:
     prefix: --plaintext-file

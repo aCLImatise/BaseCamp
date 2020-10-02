@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smCounter2.cwl
+id: smCounter2.cwl
 inputs:
 - id: in_run_path
   doc: path to working directory

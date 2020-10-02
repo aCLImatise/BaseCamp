@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hgsqldump.cwl
+id: hgsqldump.cwl
 inputs:
 - id: in_database
   doc: ''

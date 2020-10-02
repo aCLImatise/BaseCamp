@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pat_sel_out_pat_file.cwl
+id: pat_sel_out_pat_file.cwl
 inputs:
 - id: in_pat_sel
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chewie.cwl
+id: chewie.cwl
 inputs: []
 outputs:
 - id: out_stdout

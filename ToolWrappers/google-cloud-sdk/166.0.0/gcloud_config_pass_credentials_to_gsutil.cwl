@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_pass_credentials_to_gsutil.cwl
+id: gcloud_config_pass_credentials_to_gsutil.cwl
 inputs:
 - id: in_g_cloud
   doc: ''

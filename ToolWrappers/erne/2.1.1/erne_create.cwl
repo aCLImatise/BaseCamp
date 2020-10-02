@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../erne_create.cwl
+id: erne_create.cwl
 inputs:
 - id: in_fast_a
   doc: input file (can be repeated several time) [REQUIRED]

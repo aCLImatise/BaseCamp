@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_conda_init.cwl
+id: planemo_conda_init.cwl
 inputs:
 - id: in_cond_a_prefix
   doc: Conda prefix to use for conda dependency

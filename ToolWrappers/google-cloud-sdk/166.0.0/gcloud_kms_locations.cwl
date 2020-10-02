@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_kms_locations.cwl
+id: gcloud_kms_locations.cwl
 inputs:
 - id: in_optional
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../domtblout2gene_generic.py.cwl
+id: domtblout2gene_generic.py.cwl
 inputs:
 - id: in_generate
   doc: ''

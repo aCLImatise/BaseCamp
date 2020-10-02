@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfrandom.cwl
+id: vcfrandom.cwl
 inputs: []
 outputs:
 - id: out_stdout

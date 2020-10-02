@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_covered_ranges.py.cwl
+id: maf_covered_ranges.py.cwl
 inputs:
 - id: in_species_one
   doc: ''

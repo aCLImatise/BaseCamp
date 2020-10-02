@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makdbs.cwl
+id: makdbs.cwl
 inputs:
 - id: in_ignore_abmiguity_code
   doc: ': Ignore abmiguity code'

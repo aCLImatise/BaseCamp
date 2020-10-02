@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../augur_import_beast.cwl
+id: augur_import_beast.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_output_node_data
+  doc: OUTPUT_NODE_DATA
   type: string
   inputBinding:
     prefix: --output-node-data
@@ -42,11 +42,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --recursion-limit
-- id: in_optional_arguments
-  doc: 'optional arguments:'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

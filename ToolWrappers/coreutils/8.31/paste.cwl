@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paste.cwl
+id: paste.cwl
 inputs:
 - id: in_delimiters
   doc: reuse characters from LIST instead of TABs

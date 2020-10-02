@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sviol.cwl
+id: sviol.cwl
 inputs:
 - id: in_old
   doc: "Use the old AMBER formatting (pre-Amber6).\nThe 'ideal bonds' and 'ideal angles'\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_split.cwl
+id: samtools_split.cwl
 inputs:
 - id: in_output_filename_format
   doc: output filename format string ["%*_%#.%."]

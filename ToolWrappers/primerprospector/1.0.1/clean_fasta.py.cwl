@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clean_fasta.py.cwl
+id: clean_fasta.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

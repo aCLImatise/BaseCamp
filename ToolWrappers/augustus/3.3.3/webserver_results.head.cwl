@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../webserver_results.head.cwl
+id: webserver_results.head.cwl
 inputs: []
 outputs:
 - id: out_stdout

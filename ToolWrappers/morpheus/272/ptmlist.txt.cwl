@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ptmlist.txt.cwl
+id: ptmlist.txt.cwl
 inputs: []
 outputs:
 - id: out_stdout

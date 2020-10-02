@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seedRand.py_n.cwl
+id: seedRand.py_n.cwl
 inputs:
 - id: in_see_dr_and_do_tpy
   doc: ''

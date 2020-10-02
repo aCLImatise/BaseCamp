@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_consensus.cwl
+id: smof_consensus.cwl
 inputs:
 - id: in_table
   doc: Print count table instead of consensus

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../peakranger_ccat.cwl
+id: peakranger_ccat.cwl
 inputs:
 - id: in_arg_data_file
   doc: '[ --data ] arg               data file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslPairs.cwl
+id: pslPairs.cwl
 inputs:
 - id: in_max
   doc: '- maximum length of clone sequence (default=47000)'

@@ -10,16 +10,10 @@ task Pbmm2Index {
     Boolean? log_level
     Boolean? log_file
     String out_dot_mmi
-    String sub_read
-    String ccs
-    String iso_seq
   }
   command <<<
     pbmm2 index \
       ~{out_dot_mmi} \
-      ~{sub_read} \
-      ~{ccs} \
-      ~{iso_seq} \
       ~{if (preset) then "--preset" else ""} \
       ~{if (int_size_no) then "-k" else ""} \
       ~{if (int_minimizer_window) then "-w" else ""} \
@@ -37,9 +31,6 @@ task Pbmm2Index {
     log_level: "STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]"
     log_file: "FILE  Log to a file, instead of stderr."
     out_dot_mmi: "STR   Output Reference Index"
-    sub_read: ": -k 19 -w 10"
-    ccs: ": -k 19 -w 10 -u"
-    iso_seq: ": -k 15 -w 5 -u"
   }
   output {
     File out_stdout = stdout()

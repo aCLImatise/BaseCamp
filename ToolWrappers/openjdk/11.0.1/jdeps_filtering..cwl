@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jdeps_filtering..cwl
+id: jdeps_filtering..cwl
 inputs:
 - id: in_j_deps
   doc: ''

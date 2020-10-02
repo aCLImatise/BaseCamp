@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TPMCalculator.cwl
+id: TPMCalculator.cwl
 inputs:
 - id: in_print_info
   doc: Print info

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TANmask.cwl
+id: TANmask.cwl
 inputs:
 - id: in_v
   doc: ''

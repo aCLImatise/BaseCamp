@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snv_matrix.pl.cwl
+id: snv_matrix.pl.cwl
 inputs:
 - id: in_print_more_information
   doc: ':  Print more information (to stderr)'

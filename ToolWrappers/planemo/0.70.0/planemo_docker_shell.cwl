@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_docker_shell.cwl
+id: planemo_docker_shell.cwl
 inputs:
 - id: in_from_tag
   doc: "Treat the tool's Docker container identifier\nas a locally cached tag."

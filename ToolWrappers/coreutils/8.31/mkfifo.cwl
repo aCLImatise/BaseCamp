@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mkfifo.cwl
+id: mkfifo.cwl
 inputs:
 - id: in_mode
   doc: set file permission bits to MODE, not a=rw - umask

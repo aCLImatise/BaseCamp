@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cacheensembl.cwl
+id: cacheensembl.cwl
 inputs:
 - id: in_servername
   doc: string     Server name (Any string)

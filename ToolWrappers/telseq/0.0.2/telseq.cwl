@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../telseq.cwl
+id: telseq.cwl
 inputs:
 - id: in_bam_list
   doc: "a file that contains a list of file paths of BAMs. It should has only one\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tradis_plot.cwl
+id: tradis_plot.cwl
 inputs:
 - id: in_mapped_sorted_file
   doc: ': mapped, sorted bam file'

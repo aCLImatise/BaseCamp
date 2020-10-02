@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paralog_matchtable.pl.cwl
+id: paralog_matchtable.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

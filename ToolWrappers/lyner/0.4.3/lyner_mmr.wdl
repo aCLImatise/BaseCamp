@@ -9,7 +9,7 @@ task LynerMmr {
       ~{if defined(order) then ("--order " +  '"' + order + '"') else ""}
   >>>
   parameter_meta {
-    order: ""
+    order: "--help               Show this message and exit.\\n"
   }
   output {
     File out_stdout = stdout()

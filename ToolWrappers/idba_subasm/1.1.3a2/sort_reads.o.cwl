@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sort_reads.o.cwl
+id: sort_reads.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

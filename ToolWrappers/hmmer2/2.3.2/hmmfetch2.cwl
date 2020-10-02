@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmfetch2.cwl
+id: hmmfetch2.cwl
 inputs:
 - id: in_interpret_hmm_name
   doc: ': interpret <HMM name> instead as an HMM number (0..nhmm-1)'

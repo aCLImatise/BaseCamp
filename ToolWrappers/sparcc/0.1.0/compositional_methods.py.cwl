@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compositional_methods.py.cwl
+id: compositional_methods.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

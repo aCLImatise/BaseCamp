@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vstree2tex.cwl
+id: vstree2tex.cwl
 inputs:
 - id: in_index_name
   doc: ''

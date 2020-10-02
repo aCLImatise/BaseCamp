@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cramtools_getref.cwl
+id: cramtools_getref.cwl
 inputs:
 - id: in_destination_file
   doc: Destination file.

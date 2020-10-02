@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CircleCompare.cwl
+id: CircleCompare.cwl
 inputs:
 - id: in_alternative
   doc: "Specify that an alternative color scheme should be used.\nDefault is not to\

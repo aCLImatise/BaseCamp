@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../true.cwl
+id: true.cwl
 inputs:
 - id: in_ignored
   doc: ''

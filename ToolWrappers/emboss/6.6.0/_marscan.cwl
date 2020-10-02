@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../_marscan.cwl
-inputs:
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
+id: _marscan.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

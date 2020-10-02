@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fargene_model_creation.cwl
+id: fargene_model_creation.cwl
 inputs: []
 outputs:
 - id: out_stdout

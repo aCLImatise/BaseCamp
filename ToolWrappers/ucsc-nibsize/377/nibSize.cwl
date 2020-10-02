@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nibSize.cwl
+id: nibSize.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

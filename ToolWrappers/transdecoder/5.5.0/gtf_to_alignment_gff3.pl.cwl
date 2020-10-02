@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf_to_alignment_gff3.pl.cwl
+id: gtf_to_alignment_gff3.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

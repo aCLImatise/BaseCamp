@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trimByOvl.cwl
+id: trimByOvl.cwl
 inputs:
 - id: in_file_do_to_vl
   doc: ''

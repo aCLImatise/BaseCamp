@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_cmemit.cwl
+id: ssu_cmemit.cwl
 inputs:
 - id: in_generate_n_sequences
   doc: ': generate <n> sequences  [10]  (n>0)'

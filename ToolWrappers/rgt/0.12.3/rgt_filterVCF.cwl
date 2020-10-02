@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_filterVCF.cwl
+id: rgt_filterVCF.cwl
 inputs:
 - id: in_t_mq
   doc: 'Threshold for mapping quality (MQ) [default: 20]'

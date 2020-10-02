@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../illumina_dump.cwl
+id: illumina_dump.cwl
 inputs:
 - id: in_accession
   doc: "Replaces accession derived from <path> in\nfilename(s) and deflines (only\

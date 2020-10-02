@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tardis.cwl
+id: tardis.cwl
 inputs:
 - id: in_in_workflow
   doc: "Run the command as part of a workflow. After launching\nall of the jobs, tardis\

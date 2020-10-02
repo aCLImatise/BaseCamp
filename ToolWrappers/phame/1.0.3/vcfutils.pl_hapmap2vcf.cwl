@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfutils.pl_hapmap2vcf.cwl
+id: vcfutils.pl_hapmap2vcf.cwl
 inputs:
 - id: in_vcf_utils_do_tpl
   doc: ''

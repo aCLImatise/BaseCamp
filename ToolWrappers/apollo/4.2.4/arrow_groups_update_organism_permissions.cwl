@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_groups_update_organism_permissions.cwl
+id: arrow_groups_update_organism_permissions.cwl
 inputs:
 - id: in_administrate
   doc: Should the group have administrate privileges

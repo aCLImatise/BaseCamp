@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_hub.py.cwl
+id: make_hub.py.cwl
 inputs:
 - id: in_print_usage_examples
   doc: Print usage examples for make_hub.py

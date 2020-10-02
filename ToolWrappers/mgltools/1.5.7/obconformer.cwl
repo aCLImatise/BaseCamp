@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obconformer.cwl
+id: obconformer.cwl
 inputs: []
 outputs:
 - id: out_stdout

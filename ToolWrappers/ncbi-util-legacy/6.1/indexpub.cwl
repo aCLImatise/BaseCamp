@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../indexpub.cwl
+id: indexpub.cwl
 inputs:
 - id: in_input_data_default
   doc: "Input data [Data In]\ndefault = medline.val\nData Type = Pub-set"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_args.cwl
+id: iCount_args.cwl
 inputs:
 - id: in_annotation
   doc: '(-a): annotation, indexstar, mapstar'
@@ -106,11 +106,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --overhang_min
-- id: in_perms
-  doc: '(-p): peaks'
-  type: boolean
-  inputBinding:
-    prefix: --perms
 - id: in_prefix
   doc: ': demultiplex'
   type: boolean

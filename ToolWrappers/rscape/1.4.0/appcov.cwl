@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../appcov.cwl
+id: appcov.cwl
 inputs:
 - id: in_outdir
   doc: ': specify a directory for all output files'

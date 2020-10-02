@@ -25,7 +25,7 @@ task EnsemblExtractProteinCodingExonAnnotationspy {
       ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    o: ""
+    o: "[-s {fly,human,mouse,worm,yeast,zebrafish}]\\n[-c CHROMOSOME_PATTERN]\\n[-f FIELD_NAME]\\n[-l <file>] [-q]\\n[-v]"
     annotation_file: "Path of Ensembl gene annotation file (in GTF format). The file\\nmay be gzip'ed. If set to ``-``, read from ``stdin``."
     output_file: "Path of output file. If set to ``-``, print to ``stdout``,\\nand redirect logging messages to ``stderr``."
     species: "Species for which to extract genes. (This parameter is ignored\\nif ``--chromosome-pattern`` is specified.)"

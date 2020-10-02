@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../pathwaymatcher.py_match_proteoforms.cwl
+id: pathwaymatcher.py_match_proteoforms.cwl
 inputs:
-- id: in_i
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -i
 - id: in_mapping
   doc: "Path to directory with the static mapping files. By\ndefault uses the mapping\
     \ files integrated in the jar\nfile."

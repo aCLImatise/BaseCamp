@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ctseq_call_methylation.cwl
+id: ctseq_call_methylation.cwl
 inputs:
 - id: in_ref_dir
   doc: "Full path to directory where you have already built\nyour methylation reference\

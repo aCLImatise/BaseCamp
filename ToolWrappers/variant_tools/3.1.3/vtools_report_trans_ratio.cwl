@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../vtools_report_trans_ratio.cwl
+id: vtools_report_trans_ratio.cwl
 inputs:
-- id: in_from_stat
-  doc: "\"num=#(alt)\"'."
-  type: boolean
-  inputBinding:
-    prefix: --from_stat
 - id: in_num_field
   doc: "Name of the field that holds sample variant count,\nwhich is the field name\
     \ for command 'vtools update\ntable --from_stat \"num=#(alt)\"'."

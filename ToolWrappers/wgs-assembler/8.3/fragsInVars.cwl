@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fragsInVars.cwl
+id: fragsInVars.cwl
 inputs:
 - id: in_var_scf
   doc: ''

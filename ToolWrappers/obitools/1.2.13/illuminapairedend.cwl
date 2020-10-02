@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../illuminapairedend.cwl
+id: illuminapairedend.cwl
 inputs:
 - id: in_debug
   doc: Set logging in debug mode

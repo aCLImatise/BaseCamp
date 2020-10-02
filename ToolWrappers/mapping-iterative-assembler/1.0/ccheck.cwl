@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ccheck.cwl
+id: ccheck.cwl
 inputs:
 - id: in_reference
   doc: 'FASTA file with the likely contaminant (default: builtin mt311)'

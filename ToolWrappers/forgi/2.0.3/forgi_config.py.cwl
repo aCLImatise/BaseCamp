@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../forgi_config.py.cwl
+id: forgi_config.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

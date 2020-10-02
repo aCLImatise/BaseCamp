@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../anvi_report_linkmers.cwl
+id: anvi_report_linkmers.cwl
 inputs:
 - id: in_contigs_and_positions
-  doc: ''
+  doc: "[--only-complete-links] -o FILE_PATH\n[--list-contigs]"
   type: string
   inputBinding:
     prefix: --contigs-and-positions

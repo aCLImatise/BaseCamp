@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deadzones.cwl
+id: deadzones.cwl
 inputs:
 - id: in_output
   doc: 'Name of output file (default: stdout)'

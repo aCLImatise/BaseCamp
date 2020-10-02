@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runCA.cwl
+id: runCA.cwl
 inputs:
 - id: in_use_dir_required
   doc: Use <dir> as the working directory.  Required

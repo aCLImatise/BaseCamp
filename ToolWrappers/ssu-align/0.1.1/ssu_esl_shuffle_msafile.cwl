@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_esl_shuffle_msafile.cwl
+id: ssu_esl_shuffle_msafile.cwl
 inputs:
 - id: in_g
   doc: ''

@@ -5,12 +5,10 @@ task GetDescendentTermspl {
     Boolean? obo_input_file
     Boolean? term_id
     String usage
-    String options
   }
   command <<<
     get_descendent_terms_pl \
       ~{usage} \
-      ~{options} \
       ~{if (obo_input_file) then "-f" else ""} \
       ~{if (term_id) then "-t" else ""}
   >>>
@@ -18,7 +16,6 @@ task GetDescendentTermspl {
     obo_input_file: "OBO input file"
     term_id: "term ID"
     usage: ": get_descendent_terms.pl [options]"
-    options: ":"
   }
   output {
     File out_stdout = stdout()

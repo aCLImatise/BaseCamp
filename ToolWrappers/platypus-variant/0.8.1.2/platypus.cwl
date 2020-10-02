@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../platypus.cwl
+id: platypus.cwl
 inputs: []
 outputs:
 - id: out_stdout

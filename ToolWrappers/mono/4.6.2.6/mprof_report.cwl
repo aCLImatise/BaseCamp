@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mprof_report.cwl
+id: mprof_report.cwl
 inputs:
 - id: in_out
   doc: write to FILE instead of stdout

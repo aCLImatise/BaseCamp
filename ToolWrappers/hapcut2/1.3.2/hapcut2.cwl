@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hapcut2.cwl
+id: hapcut2.cwl
 inputs: []
 outputs:
 - id: out_stdout

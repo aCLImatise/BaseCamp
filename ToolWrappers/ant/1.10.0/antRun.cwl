@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../antRun.cwl
+id: antRun.cwl
 inputs: []
 outputs:
 - id: out_stdout

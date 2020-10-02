@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_CHECK.cwl
+id: gdtools_CHECK.cwl
 inputs:
 - id: in_output
   doc: output GD file (DEFAULT=comp.gd)

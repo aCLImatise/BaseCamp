@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastaptamer_cluster.cwl
+id: fastaptamer_cluster.cwl
 inputs:
 - id: in_o
   doc: ''

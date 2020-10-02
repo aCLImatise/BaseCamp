@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MethylExtractBSPvalue.pl.cwl
+id: MethylExtractBSPvalue.pl.cwl
 inputs:
 - id: in_accepted_parameter_check
   doc: not an accepted parameter, please check spelling and case sensitive

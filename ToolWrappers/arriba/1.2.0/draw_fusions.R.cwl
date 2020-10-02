@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../draw_fusions.R.cwl
+id: draw_fusions.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

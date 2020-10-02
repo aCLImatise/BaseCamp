@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Colombo.cwl
+id: Colombo.cwl
 inputs: []
 outputs:
 - id: out_stdout

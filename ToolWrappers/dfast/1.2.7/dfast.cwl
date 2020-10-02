@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dfast.cwl
+id: dfast.cwl
 inputs:
 - id: in_genome
   doc: Genomic FASTA file

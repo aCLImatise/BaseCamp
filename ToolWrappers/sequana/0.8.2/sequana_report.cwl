@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequana_report.cwl
+id: sequana_report.cwl
 inputs: []
 outputs:
 - id: out_stdout

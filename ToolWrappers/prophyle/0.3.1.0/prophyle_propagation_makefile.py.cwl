@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_propagation_makefile.py.cwl
+id: prophyle_propagation_makefile.py.cwl
 inputs:
 - id: in_kmer_length
   doc: k-mer length

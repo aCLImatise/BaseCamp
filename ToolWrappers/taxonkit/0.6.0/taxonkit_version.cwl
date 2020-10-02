@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxonkit_version.cwl
+id: taxonkit_version.cwl
 inputs:
 - id: in_check_update
   doc: check update

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../loadErates.cwl
+id: loadErates.cwl
 inputs:
 - id: in_path_overlap_store
   doc: path to the overlap store to create

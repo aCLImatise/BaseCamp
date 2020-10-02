@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TSSAR.bak.cwl
+id: TSSAR.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faNoise.cwl
+id: faNoise.cwl
 inputs:
 - id: in_upper
   doc: '- output in upper case'

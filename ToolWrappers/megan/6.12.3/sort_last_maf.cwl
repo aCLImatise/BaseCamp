@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sort_last_maf.cwl
+id: sort_last_maf.cwl
 inputs:
 - id: in_input
   doc: '[string]                 Input file in MAF format as produced by Last (.gz

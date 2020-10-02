@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_antitarget.cwl
+id: cnvkit.py_antitarget.cwl
 inputs:
 - id: in_access
   doc: "Regions of accessible sequence on chromosomes (.bed),\nas output by genome2access.py."

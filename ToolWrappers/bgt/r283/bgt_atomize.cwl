@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bgt_atomize.cwl
+id: bgt_atomize.cwl
 inputs:
 - id: in_bcf_output
   doc: BCF output

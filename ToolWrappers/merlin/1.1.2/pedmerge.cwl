@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pedmerge.cwl
+id: pedmerge.cwl
 inputs:
 - id: in_output
   doc: ''

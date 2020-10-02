@@ -1,21 +1,12 @@
 class: CommandLineTool
-id: ../../../lyner_dist_graph.cwl
+id: lyner_dist_graph.cwl
 inputs:
 - id: in_threshold
-  doc: ''
+  doc: "-l, --layout [fruchterman_reingold|kamada_kawai]\n-c, --cliques\n--help  \
+    \                        Show this message and exit.\n"
   type: double
   inputBinding:
     prefix: --threshold
-- id: in_layout
-  doc: '[fruchterman_reingold|kamada_kawai]'
-  type: boolean
-  inputBinding:
-    prefix: --layout
-- id: in_cliques
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --cliques
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_init.cwl
+id: vtools_init.cwl
 inputs:
 - id: in_force
   doc: Remove a project if it already exists.

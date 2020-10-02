@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LTR_retriever.cwl
+id: LTR_retriever.cwl
 inputs:
 - id: in_genome
   doc: '[File]     specify the genome sequence file (FASTA)'

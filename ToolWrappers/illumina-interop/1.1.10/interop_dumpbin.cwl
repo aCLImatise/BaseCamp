@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../interop_dumpbin.cwl
+id: interop_dumpbin.cwl
 inputs:
 - id: in_subset
   doc: '[0]: Display only a subset of records from each file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_pair.cwl
+id: fastq_pair.cwl
 inputs:
 - id: in_size_default
   doc: size (default 100003)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Bifrost.cwl
+id: Bifrost.cwl
 inputs:
 - id: in_input_seq_file
   doc: "Input sequence file (FASTA/FASTQ possibly gzipped)\nMultiple files can be\

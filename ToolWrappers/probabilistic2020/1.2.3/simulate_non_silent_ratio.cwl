@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simulate_non_silent_ratio.cwl
+id: simulate_non_silent_ratio.cwl
 inputs:
 - id: in_log_level
   doc: "Write a log file (--log-level=DEBUG for debug mode,\n--log-level=INFO for\

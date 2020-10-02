@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../neptune.cwl
+id: neptune.cwl
 inputs:
 - id: in_inclusion
   doc: The inclusion targets in FASTA format.

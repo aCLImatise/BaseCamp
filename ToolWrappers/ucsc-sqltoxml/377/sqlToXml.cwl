@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sqlToXml.cwl
+id: sqlToXml.cwl
 inputs:
 - id: in_top_tag
   doc: "- Give the top level XML tag the given name.  By\ndefault it will be the same\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergePeaks.cwl
+id: mergePeaks.cwl
 inputs:
 - id: in_strand
   doc: '(Only merge/consider peaks on the same strand, default: either strand)'

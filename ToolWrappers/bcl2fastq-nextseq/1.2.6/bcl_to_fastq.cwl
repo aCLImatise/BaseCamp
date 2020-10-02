@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcl_to_fastq.cwl
+id: bcl_to_fastq.cwl
 inputs:
 - id: in_input_dir
   doc: path to input directory; default is RUNFOLDER-

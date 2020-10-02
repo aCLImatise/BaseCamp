@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parse_genes_from_gffs.cwl
+id: parse_genes_from_gffs.cwl
 inputs: []
 outputs:
 - id: out_stdout

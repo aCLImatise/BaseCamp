@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SweepFinder2.cwl
+id: SweepFinder2.cwl
 inputs:
 - id: in_to
   doc: ''

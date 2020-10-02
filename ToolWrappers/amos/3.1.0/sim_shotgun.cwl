@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sim_shotgun.cwl
+id: sim_shotgun.cwl
 inputs:
 - id: in_set_minimum_reads
   doc: Set minimum reads in a contig to <n> (default = 2)

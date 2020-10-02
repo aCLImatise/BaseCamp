@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_deployment_manager_operations.cwl
+id: gcloud_deployment_manager_operations.cwl
 inputs:
 - id: in_operations
   doc: SYNOPSIS

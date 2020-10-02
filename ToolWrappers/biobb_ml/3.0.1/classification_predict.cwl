@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../classification_predict.cwl
+id: classification_predict.cwl
 inputs:
 - id: in_config
   doc: Configuration file

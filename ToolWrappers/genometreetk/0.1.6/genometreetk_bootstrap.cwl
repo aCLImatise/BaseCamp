@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genometreetk_bootstrap.cwl
+id: genometreetk_bootstrap.cwl
 inputs:
 - id: in_boot_dir
   doc: "directory containing pre-computed bootstrap trees\n(must have '.tree', '.tre',\

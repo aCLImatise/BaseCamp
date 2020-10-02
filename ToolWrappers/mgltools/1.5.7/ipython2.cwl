@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ipython2.cwl
+id: ipython2.cwl
 inputs: []
 outputs:
 - id: out_stdout

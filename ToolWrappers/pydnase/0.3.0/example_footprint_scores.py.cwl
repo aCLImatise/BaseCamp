@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../example_footprint_scores.py.cwl
+id: example_footprint_scores.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kodoja_search.py.cwl
+id: kodoja_search.py.cwl
 inputs:
 - id: in_output_dir
   doc: Output directory path, required

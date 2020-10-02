@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_VCF2GD.cwl
+id: gdtools_VCF2GD.cwl
 inputs:
 - id: in_output
   doc: name of output Genome Diff file (DEFAULT=output.gd)

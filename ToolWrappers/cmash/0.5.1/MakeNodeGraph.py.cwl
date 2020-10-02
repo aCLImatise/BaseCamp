@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MakeNodeGraph.py.cwl
+id: MakeNodeGraph.py.cwl
 inputs:
 - id: in_fp_rate
   doc: 'False positive rate. (default: 0.0001)'

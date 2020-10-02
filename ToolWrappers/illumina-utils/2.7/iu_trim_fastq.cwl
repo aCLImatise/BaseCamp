@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iu_trim_fastq.cwl
+id: iu_trim_fastq.cwl
 inputs:
 - id: in_trim_from
   doc: Trim from

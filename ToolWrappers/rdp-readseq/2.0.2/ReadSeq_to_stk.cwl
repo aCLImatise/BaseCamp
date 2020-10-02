@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReadSeq_to_stk.cwl
+id: ReadSeq_to_stk.cwl
 inputs:
 - id: in_header
   doc: "the header of the output file in case a differenet\nstk version, default is\

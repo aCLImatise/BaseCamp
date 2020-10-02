@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedSort.cwl
+id: BedSort.cwl
 inputs:
 - id: in_in
   doc: "Input BED file. If unset, reads from STDIN.\nDefault value: ''"

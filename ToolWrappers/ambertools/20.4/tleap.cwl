@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tleap.cwl
+id: tleap.cwl
 inputs:
 - id: in_ignore_leaprc_startup
   doc: Ignore leaprc startup file.

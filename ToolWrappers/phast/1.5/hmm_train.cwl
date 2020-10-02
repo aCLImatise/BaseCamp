@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../hmm_train.cwl
+id: hmm_train.cwl
 inputs:
-- id: in__outhmm
-  doc: '[OPTIONS] > out.hmm'
-  type: string
-  inputBinding:
-    prefix: -g
 - id: in_list_multiple_sequence
   doc: "List of multiple sequence alignment files.\nCurrently, in testing mode, the\
     \ list must be of length one."
@@ -17,6 +12,14 @@ inputs:
   type: File
   inputBinding:
     prefix: -c
+- id: in_files_used_indices
+  doc: "Files in GFF defining sequence\nfeatures to be used in labeling sites.   Frame\
+    \ of reference of\nfeature indices is determined feature-by-feature according\
+    \ to\n'seqname' attribute.  Filenames must correspond in number and order\nto\
+    \ the elements of <msa_fname_list>."
+  type: long
+  inputBinding:
+    prefix: -g
 - id: in_mutually_exclusive_list
   doc: "(Mutually exclusive with -m) Assume alignments\nof the specified lengths (comma-separated\
     \ list) and do not not\nattempt to map the coordinates in the specified GFFs (assume\n\
@@ -65,11 +68,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -q
-- id: in_hmm_train
-  doc: 'USAGE: hmm_train -m <msa_fname_list> -c <category_map_fname> \'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

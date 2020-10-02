@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tamo2meme.cwl
+id: tamo2meme.cwl
 inputs:
 - id: in_skip
   doc: skip this ID (may be repeated)

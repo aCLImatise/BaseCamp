@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pheniqs_mux.cwl
+id: pheniqs_mux.cwl
 inputs:
 - id: in_input
   doc: Path to an input file. May be repeated.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergeBamWithSameSM.pl.cwl
+id: mergeBamWithSameSM.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

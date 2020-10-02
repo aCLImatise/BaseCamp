@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_match.cwl
+id: nw_match.cwl
 inputs:
 - id: in_hv
   doc: ''

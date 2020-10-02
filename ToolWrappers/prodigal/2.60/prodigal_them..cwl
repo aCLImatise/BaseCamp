@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prodigal_them..cwl
+id: prodigal_them..cwl
 inputs:
 - id: in_f
   doc: ''

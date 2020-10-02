@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quickmerge.cwl
+id: quickmerge.cwl
 inputs:
 - id: in_hco
   doc: ''

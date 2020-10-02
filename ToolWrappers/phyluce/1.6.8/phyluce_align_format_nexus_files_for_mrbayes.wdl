@@ -19,7 +19,7 @@ task PhyluceAlignFormatNexusFilesForMrbayes {
       ~{if (unlink) then "--unlink" else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    var_output: "[--fully-partition]\\n[--interleave] [--unlink]"
     alignments: "The path to the alignments directory"
     models: "The path to the model configuration file"
     fully_partition: "Fully partition the output"

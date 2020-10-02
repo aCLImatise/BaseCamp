@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annot_blast_btop2.pl.cwl
+id: annot_blast_btop2.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

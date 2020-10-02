@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PIPmiR_PIPELINE.cwl
+id: PIPmiR_PIPELINE.cwl
 inputs:
 - id: in_sorted_file_containing
   doc: ".bam Sorted .bam file containing alignment of the read data\nmust also have\

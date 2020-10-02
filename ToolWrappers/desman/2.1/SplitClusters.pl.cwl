@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SplitClusters.pl.cwl
+id: SplitClusters.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../table_filter.py.cwl
+id: table_filter.py.cwl
 inputs:
 - id: in_header
   doc: keep header in output

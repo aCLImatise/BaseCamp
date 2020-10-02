@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clustering_derep.cwl
+id: Clustering_derep.cwl
 inputs:
 - id: in_aligned
   doc: Dereplicate aligned sequences

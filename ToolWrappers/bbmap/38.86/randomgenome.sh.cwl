@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randomgenome.sh.cwl
+id: randomgenome.sh.cwl
 inputs:
 - id: in_len
   doc: ''

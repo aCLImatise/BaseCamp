@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_fix_longest_ORF.pl.cwl
+id: agat_sp_fix_longest_ORF.pl.cwl
 inputs:
 - id: in_model
   doc: "Kind of ORF Model you want to fix. By default all are used. To\nselect specific\

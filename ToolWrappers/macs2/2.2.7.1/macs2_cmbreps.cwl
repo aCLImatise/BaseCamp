@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../macs2_cmbreps.cwl
+id: macs2_cmbreps.cwl
 inputs:
 - id: in_macs_score_bedgraph
   doc: "MACS score in bedGraph for each replicate. Require at\nleast 2 files such\

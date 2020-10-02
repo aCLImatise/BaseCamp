@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedpeAnnotateFromBed.cwl
+id: BedpeAnnotateFromBed.cwl
 inputs:
 - id: in_bed
   doc: BED file that is used as annotation source.

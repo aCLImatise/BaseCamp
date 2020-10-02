@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gottcha_db.pl.cwl
+id: gottcha_db.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

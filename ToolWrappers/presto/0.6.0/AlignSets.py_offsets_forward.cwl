@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AlignSets.py_offsets_forward.cwl
+id: AlignSets.py_offsets_forward.cwl
 inputs:
 - id: in_align_sets_do_tpy
   doc: ''

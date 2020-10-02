@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../System.Text.Encoding.CodePages.dll.cwl
+id: System.Text.Encoding.CodePages.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

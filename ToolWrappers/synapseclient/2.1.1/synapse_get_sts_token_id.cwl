@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_get_sts_token_id.cwl
+id: synapse_get_sts_token_id.cwl
 inputs:
 - id: in_o
   doc: ''

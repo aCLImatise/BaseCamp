@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fa2fq.cwl
+id: fa2fq.cwl
 inputs:
 - id: in_paired
   doc: if the reads are paired-end in one file

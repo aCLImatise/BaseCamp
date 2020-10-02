@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicFindRestSite.cwl
+id: hicFindRestSite.cwl
 inputs:
 - id: in_fast_a
   doc: Path to fasta file for the organism genome.

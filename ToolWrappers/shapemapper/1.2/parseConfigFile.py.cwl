@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parseConfigFile.py.cwl
+id: parseConfigFile.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

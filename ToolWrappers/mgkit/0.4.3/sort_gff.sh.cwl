@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sort_gff.sh.cwl
+id: sort_gff.sh.cwl
 inputs:
 - id: in_ignore_leading_blanks
   doc: ignore leading blanks

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_stage_2.prl.cwl
+id: filter_stage_2.prl.cwl
 inputs:
 - id: in_cat
   doc: "The RepeatMasker output file. It can either be a .cat file or a .out\nfile,\

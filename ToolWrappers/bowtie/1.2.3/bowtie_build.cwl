@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bowtie_build.cwl
+id: bowtie_build.cwl
 inputs:
 - id: in_reference_files_fasta
   doc: reference files are Fasta (default)

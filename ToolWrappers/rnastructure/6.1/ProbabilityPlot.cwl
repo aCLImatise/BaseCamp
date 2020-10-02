@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ProbabilityPlot.cwl
+id: ProbabilityPlot.cwl
 inputs:
 - id: in_log_one_zero
   doc: "Specifies that the input file format is a dot plot text file of log10 base\n\

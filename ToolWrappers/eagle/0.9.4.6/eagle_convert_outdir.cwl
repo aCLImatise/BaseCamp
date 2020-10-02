@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eagle_convert_outdir.cwl
+id: eagle_convert_outdir.cwl
 inputs:
 - id: in_ref
   doc: ''

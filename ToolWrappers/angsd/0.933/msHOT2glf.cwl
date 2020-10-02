@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msHOT2glf.cwl
+id: msHOT2glf.cwl
 inputs: []
 outputs:
 - id: out_stdout

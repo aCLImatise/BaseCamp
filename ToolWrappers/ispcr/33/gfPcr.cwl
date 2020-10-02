@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gfPcr.cwl
+id: gfPcr.cwl
 inputs:
 - id: in_maxsize
   doc: '- Maximum size of PCR product (default 4000)'

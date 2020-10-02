@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsnp_alignment_vcf.py.cwl
+id: vsnp_alignment_vcf.py.cwl
 inputs:
 - id: in_read_one
   doc: 'Required: single read, R1 when Illumina read'

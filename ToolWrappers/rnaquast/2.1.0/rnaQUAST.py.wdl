@@ -28,12 +28,10 @@ task RnaQUASTpy {
     Boolean? disable_infer_transcripts
     File? busco
     String used
-    String assemblies
   }
   command <<<
     rnaQUAST_py \
       ~{used} \
-      ~{assemblies} \
       ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
       ~{if defined(gtf) then ("--gtf " +  '"' + gtf + '"') else ""} \
       ~{if defined(gene_db) then ("--gene_db " +  '"' + gene_db + '"') else ""} \
@@ -87,7 +85,6 @@ task RnaQUASTpy {
     disable_infer_transcripts: "Use this option if your GTF already contains\\ntranscripts records"
     busco: "Run with BUSCO tool (http://busco.ezlab.org/).\\nAutomated lineage selection [auto-lineage], BUSCO\\ndataset name or a path to the lineage data to be used"
     used: "-c TRANSCRIPTS [TRANSCRIPTS ...], --transcripts TRANSCRIPTS [TRANSCRIPTS ...]"
-    assemblies: "--lower_threshold LOWER_THRESHOLD"
   }
   output {
     File out_stdout = stdout()

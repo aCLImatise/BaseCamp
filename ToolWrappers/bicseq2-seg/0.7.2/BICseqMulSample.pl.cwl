@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BICseqMulSample.pl.cwl
+id: BICseqMulSample.pl.cwl
 inputs:
 - id: in_lambda
   doc: ': the (positive) penalty used for BIC-seq'

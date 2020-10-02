@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pybel_manage_edges.cwl
+id: pybel_manage_edges.cwl
 inputs:
 - id: in_command
   doc: ''

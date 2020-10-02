@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ansible_doc.cwl
+id: ansible_doc.cwl
 inputs:
 - id: in_module_path
   doc: Ansible modules/ directory

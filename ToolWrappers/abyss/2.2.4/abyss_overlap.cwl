@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_overlap.cwl
+id: abyss_overlap.cwl
 inputs:
 - id: in_min
   doc: find matches at least N bp [50]

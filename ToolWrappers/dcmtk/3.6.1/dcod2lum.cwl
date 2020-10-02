@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dcod2lum.cwl
+id: dcod2lum.cwl
 inputs:
 - id: in_in_file
   doc: hardcopy characteristic curve file to be converted

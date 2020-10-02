@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NSPDK_candidateClusters.pl.cwl
+id: NSPDK_candidateClusters.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

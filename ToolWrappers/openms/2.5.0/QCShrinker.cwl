@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../QCShrinker.cwl
+id: QCShrinker.cwl
 inputs:
 - id: in_in
   doc: "*             Input qcml file (valid formats: 'qcML')"

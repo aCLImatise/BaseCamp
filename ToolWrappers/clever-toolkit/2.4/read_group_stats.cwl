@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_group_stats.cwl
+id: read_group_stats.cwl
 inputs:
 - id: in_read_group_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_compress_fastq.cwl
+id: dsh_compress_fastq.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

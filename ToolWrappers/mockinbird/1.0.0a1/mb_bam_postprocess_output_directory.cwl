@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_bam_postprocess_output_directory.cwl
+id: mb_bam_postprocess_output_directory.cwl
 inputs:
 - id: in_min_length
   doc: ''

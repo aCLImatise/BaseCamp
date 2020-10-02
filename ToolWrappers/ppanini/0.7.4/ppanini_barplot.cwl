@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanini_barplot.cwl
+id: ppanini_barplot.cwl
 inputs:
 - id: in_p_panini_input
   doc: Gene abundance table

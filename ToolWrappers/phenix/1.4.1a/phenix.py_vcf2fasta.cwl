@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phenix.py_vcf2fasta.cwl
+id: phenix.py_vcf2fasta.cwl
 inputs:
 - id: in_directory
   doc: Path to the directory with .vcf files.

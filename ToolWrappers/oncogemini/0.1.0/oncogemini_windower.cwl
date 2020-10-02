@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncogemini_windower.cwl
+id: oncogemini_windower.cwl
 inputs:
 - id: in_name_column_added
   doc: The name of the column to be added to the variant

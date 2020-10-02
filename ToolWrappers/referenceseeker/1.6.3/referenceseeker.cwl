@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../referenceseeker.cwl
+id: referenceseeker.cwl
 inputs:
 - id: in_crg
   doc: "Max number of candidate reference genomes to pass kmer\nprefilter (default\

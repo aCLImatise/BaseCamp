@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jrunscript.cwl
+id: jrunscript.cwl
 inputs:
 - id: in_classpath
   doc: Specify where to find user class files

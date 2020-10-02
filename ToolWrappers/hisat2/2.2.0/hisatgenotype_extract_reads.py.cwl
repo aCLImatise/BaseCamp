@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisatgenotype_extract_reads.py.cwl
+id: hisatgenotype_extract_reads.py.cwl
 inputs:
 - id: in_base_fname
   doc: base filename for genotype genome

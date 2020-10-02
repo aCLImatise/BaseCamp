@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../m8_btop_msa.pl.cwl
+id: m8_btop_msa.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

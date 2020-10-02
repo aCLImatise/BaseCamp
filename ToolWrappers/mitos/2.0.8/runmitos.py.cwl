@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runmitos.py.cwl
+id: runmitos.py.cwl
 inputs:
 - id: in_input
   doc: the input file

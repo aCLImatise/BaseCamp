@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TBLASTN_hit_chainer.pl.cwl
+id: TBLASTN_hit_chainer.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kocos_script.sh.cwl
+id: kocos_script.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

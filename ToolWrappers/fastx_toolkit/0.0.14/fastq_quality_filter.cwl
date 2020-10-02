@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_quality_filter.cwl
+id: fastq_quality_filter.cwl
 inputs:
 - id: in_o
   doc: ''

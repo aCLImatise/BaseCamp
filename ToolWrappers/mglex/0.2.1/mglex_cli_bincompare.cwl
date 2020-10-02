@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglex_cli_bincompare.cwl
+id: mglex_cli_bincompare.cwl
 inputs:
 - id: in_posterior_ratio
   doc: 'Weigh sequences by (subset) bin posterior [default: False]'

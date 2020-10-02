@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PARTS.cwl
+id: PARTS.cwl
 inputs:
 - id: in_configuration_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../readinfo2cam.cwl
+id: readinfo2cam.cwl
 inputs:
 - id: in_contig_info_file
   doc: ''

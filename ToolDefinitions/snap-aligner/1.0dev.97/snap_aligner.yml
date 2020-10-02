@@ -388,7 +388,7 @@ subcommands:
     - -ku
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id007 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -780,7 +780,7 @@ subcommands:
         - -ku
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id003 !Command
+      parent: &id007 !Command
         command: *id001
         positional: []
         named: []
@@ -1143,48 +1143,6 @@ subcommands:
             args: !EmptyFlagArg {}
             optional: true
           - !Flag
-            description: ''
-            synonyms:
-            - -fastq
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -compressedFastq
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -sam
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -bam
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -pairedFastq
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -pairedInterleavedFastq
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -pairedCompressedInterleavedFastq
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
             description: 'min and max spacing to allow between paired ends (default:
               50 1000).'
             synonyms:
@@ -1224,7 +1182,1417 @@ subcommands:
             - -ku
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: index-dir
+                optional: false
+              named:
+              - !Flag
+                description: "filename  output alignments to filename in SAM or BAM\
+                  \ format, depending on the file extension or\nexplicit type specifier\
+                  \ (see below).  Use a dash with an explicit type specifier to write\
+                  \ to\nstdout, so for example -o -sam - would write SAM output to\
+                  \ stdout"
+                synonyms:
+                - -o
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'maximum edit distance allowed per read or pair (default:
+                  15)'
+                synonyms:
+                - -d
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: number of seeds to use per read
+                synonyms:
+                - -n
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Seed coverage (i.e., readSize/seedSize).  Floating point.  Exclusive
+                  with -n.  (default uses -n)
+                synonyms:
+                - -sc
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'minimum seed matches per location (default: 1)'
+                synonyms:
+                - -ms
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: number of threads (default is one per core)
+                synonyms:
+                - -t
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: bind each thread to its processor (this is the default)
+                synonyms:
+                - -b
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "disables cache prefetching in the genome; may be helpful\
+                  \ for machines\nwith small caches or lots of cores/cache"
+                synonyms:
+                - -P
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: sort output file by alignment location
+                synonyms:
+                - -so
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: memory to use for sorting in Gb
+                synonyms:
+                - -sm
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: explore some hits of overly popular seeds (useful for
+                  filtering)
+                synonyms:
+                - -x
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: stop on first match within edit distance limit (filtering
+                  mode)
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: filter output (a=aligned only, s=single hit only (MAPQ
+                  >= 10), u=unaligned only, l=long enough to align (see -mrl))
+                synonyms:
+                - -F
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "an alternate (and fully general) way to specify filter\
+                  \ options.  Emit only these types s = single hit (MAPQ >= 10), m\
+                  \ = multiple hit (MAPQ < 10),\nx = not long enough to align, u =\
+                  \ unaligned, b = filter must apply to both ends of a paired-end\
+                  \ read.  Combine the letters after\n-E, so for example -E smu will\
+                  \ emit all reads that aren't too short/have too many Ns (because\
+                  \ it leaves off l).  -E smx is the same\nas -F a, -E ux is the same\
+                  \ as -F u, and so forth.\nWhen filtering in paired-end mode (either\
+                  \ with -F or -E) unless you specify the b flag a read will be emitted\
+                  \ if it's mate pair passes the filter\nEven if the read itself does\
+                  \ not.  If you specify b mode, then a read will be emitted only\
+                  \ if it and its partner both pass the filter."
+                synonyms:
+                - -E
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "suppress additional processing (sorted BAM output only)\n\
+                  i=index, d=duplicate marking"
+                synonyms:
+                - -S
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ignore IDs that don't match in the paired-end aligner
+                synonyms:
+                - -I
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "be followed by two + or - symbols saying whether to\
+                  \ clip low-quality\nbases from front and back of read respectively;\
+                  \ default: back only (-C-+)"
+                synonyms:
+                - -Cxx
+                args: !SimpleFlagArg
+                  name: must
+                optional: true
+              - !Flag
+                description: "indicates that CIGAR strings in the generated SAM file\
+                  \ should use M (alignment\nmatch) rather than = and X (sequence\
+                  \ (mis-)match).  This is the default"
+                synonyms:
+                - -M
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: specify a gap penalty to use when generating CIGAR strings
+                synonyms:
+                - -G
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: specify the name of a file to contain the run speed
+                synonyms:
+                - -pf
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: not to use huge pages (this may speed up index load and
+                  slow down alignment)  This is the default
+                synonyms:
+                - --hp
+                args: !SimpleFlagArg
+                  name: Indicates
+                optional: true
+              - !Flag
+                description: Specifies the extra search depth (the edit distance beyond
+                  the best hit that SNAP uses to compute MAPQ).  Default 2
+                synonyms:
+                - -D
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Specify the default read group if it is not specified
+                  in the input file
+                synonyms:
+                - -rg
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Specify the entire read group line for the SAM/BAM output.\
+                  \  This must include an ID tag.  If it doesn't start with\n'@RG'\
+                  \ SNAP will add that.  Specify tabs by \\t.  Two backslashes will\
+                  \ generate a single backslash.\nbackslash followed by anything else\
+                  \ is illegal.  So, '-R @RG\\tID:foo\\tDS:my data' would generate\
+                  \ reads\nwith defualt tag foo, and an @RG line that also included\
+                  \ the DS:my data field."
+                synonyms:
+                - -R
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Include reads from SAM or BAM files with the secondary
+                  (0x100) or supplementary (0x800) flag set; default is to drop them.
+                synonyms:
+                - -sa
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Output multiple alignments.  Takes as a parameter the\
+                  \ maximum extra edit distance relative to the best alignment\nto\
+                  \ allow for secondary alignments"
+                synonyms:
+                - -om
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "the number of alignments per read generated by -om.\
+                  \  This means that if -om would generate more\nthan -omax secondary\
+                  \ alignments, SNAP will write out only the best -omax of them, where\
+                  \ 'best' means\n'with the lowest edit distance'.  Ties are broken\
+                  \ arbitrarily."
+                synonyms:
+                - -omax
+                args: !SimpleFlagArg
+                  name: Limit
+                optional: true
+              - !Flag
+                description: "the number of alignments generated by -om to this many\
+                  \ per contig (chromosome/FASTA entry);\n'mpc' means 'max per contig;\
+                  \ default unlimited.  This filter is applied prior to -omax.  The\
+                  \ primary alignment\nis counted."
+                synonyms:
+                - -mpc
+                args: !SimpleFlagArg
+                  name: Limit
+                optional: true
+              - !Flag
+                description: Preserve the soft clipping for reads coming from SAM
+                  or BAM files
+                synonyms:
+                - -pc
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Increase expansion factor for BAM and GZ files (default
+                  1.0)
+                synonyms:
+                - -xf
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Hadoop-style prefixes (reporter:status:...) on error
+                  messages, and emit hadoop-style progress messages
+                synonyms:
+                - -hdp
+                args: !SimpleFlagArg
+                  name: Use
+                optional: true
+              - !Flag
+                description: "the minimum read length to align, reads shorter than\
+                  \ this (after clipping) stay unaligned.  This should be\na good\
+                  \ bit bigger than the seed length or you might get some questionable\
+                  \ alignments.  Default 50"
+                synonyms:
+                - -mrl
+                args: !SimpleFlagArg
+                  name: Specify
+                optional: true
+              - !Flag
+                description: "file mapping to load the index rather than reading it.\
+                  \  This might speed up index loading in cases\nwhere SNAP is run\
+                  \ repatedly on the same index, and the index is larger than half\
+                  \ of the memory size\nof the machine.  On some operating systems,\
+                  \ loading an index with -map is much slower than without if the\n\
+                  index is not in memory.  You might consider adding -pre to prefetch\
+                  \ the index into system cache when loading\nwith -map when you don't\
+                  \ expect the index to be in cache."
+                synonyms:
+                - -map
+                args: !SimpleFlagArg
+                  name: Use
+                optional: true
+              - !Flag
+                description: "the index into system cache.  This is only meaningful\
+                  \ with -map, and only helps if the index is not\nalready in memory\
+                  \ and your operating system is slow at reading mapped files (i.e.,\
+                  \ some versions of Linux,\nbut not Windows)."
+                synonyms:
+                - -pre
+                args: !SimpleFlagArg
+                  name: Prefetch
+                optional: true
+              - !Flag
+                description: Run SNAP at low scheduling priority (Only implemented
+                  on Windows)
+                synonyms:
+                - -lp
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "No Ukkonen: don't reduce edit distance search based\
+                  \ on prior candidates. This option is purely for\nevaluating the\
+                  \ performance effect of using Ukkonen's algorithm rather than Smith-Waterman,\
+                  \ and specifying\nit will slow down execution without improving\
+                  \ the alignments."
+                synonyms:
+                - -nu
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "No Ordering: don't order the evalutation of reads so\
+                  \ as to select more likely candidates first.  This option\nis purely\
+                  \ for evaluating the performance effect of the read evaluation order,\
+                  \ and specifying it will slow\ndown execution without improving\
+                  \ alignments."
+                synonyms:
+                - -no
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Don't truncate searches based on missed seed hits. \
+                  \ This option is purely for evaluating the performance effect\n\
+                  of candidate truncation, and specifying it will slow down execution\
+                  \ without improving alignments."
+                synonyms:
+                - -nt
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Write buffer size in megabytes.  Don't specify this unless
+                  you've gotten an error message saying to make it bigger.  Default
+                  16.
+                synonyms:
+                - -wbs
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Drop the index after aligning and before sorting.  This
+                  frees up memory for the sort at the expense of not having the index
+                  loaded for your next run.
+                synonyms:
+                - -di
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Kill if too slow.  Monitor our progress and kill ourself\
+                  \ if we're not moving fast enough.  This is intended for use on\
+                  \ machines\nwith limited memory, where some alignment tasks will\
+                  \ push SNAP into paging, and take disproportinaltely long.  This\
+                  \ allows the script\nto move on to the next alignment.  Only works\
+                  \ when generating output, and not during the sort phase.  If you're\
+                  \ running out of memory\nsorting, try using -di."
+                synonyms:
+                - -kts
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Specifies the sort intermediate directory.  When SNAP\
+                  \ is sorting, it aligns the reads in the order in which they come\
+                  \ in, and writes\nthe aligned reads in batches to a temporary file.\
+                  \  When the aligning is done, it does a merge sort from the temporary\
+                  \ file into the\nfinal output file.  By default, the intermediate\
+                  \ file is in the same directory as the output file, but for performance\
+                  \ or space\nreasons, you might want to put it elsewhere.  If so,\
+                  \ use this option."
+                synonyms:
+                - -sid
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Profile alignment to give you an idea of how much time
+                  is spent aligning and how much waiting for IO
+                synonyms:
+                - -pro
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -fastq
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -compressedFastq
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -sam
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -bam
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -pairedFastq
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -pairedInterleavedFastq
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -pairedCompressedInterleavedFastq
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'min and max spacing to allow between paired ends (default:
+                  50 1000).'
+                synonyms:
+                - -s
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: force spacing to lie between min and max.
+                synonyms:
+                - -fs
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'max hits for intersecting aligner (default: 2000).'
+                synonyms:
+                - -H
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "the maximum candidate pool size (An internal data structure.\n\
+                  Only increase this if you get an error message saying to do so.\
+                  \ If you're running\nout of memory, you may want to reduce it. \
+                  \ Default: 1000000)"
+                synonyms:
+                - -mcp
+                args: !SimpleFlagArg
+                  name: specifies
+                optional: true
+              - !Flag
+                description: "Keep unpaired-looking reads in SAM/BAM input.  Ordinarily,\
+                  \ if a read doesn't specify\nmate information (RNEXT field is *\
+                  \ and/or PNEXT is 0) then the code that matches reads will immdeiately\n\
+                  discard it.  Specifying this flag may cause large memory usage for\
+                  \ some input files,\nbut may be necessary for some strangely formatted\
+                  \ input files.  You'll also need to specify this\nflag for SAM/BAM\
+                  \ files that were aligned by a single-end aligner.\n"
+                synonyms:
+                - -ku
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: 'maximum hits to consider per seed (default: 300)'
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Welcome to SNAP version 1.0dev.97.\n\nToo few parameters\n\
+                Usage: \nsnap-aligner paired <index-dir> <inputFile(s)> [<options>]\
+                \ where <input file(s)> is a list of files to process.\n\nOptions:\n\
+                \  -o   filename  output alignments to filename in SAM or BAM format,\
+                \ depending on the file extension or\n       explicit type specifier\
+                \ (see below).  Use a dash with an explicit type specifier to write\
+                \ to\n       stdout, so for example -o -sam - would write SAM output\
+                \ to stdout\n  -d   maximum edit distance allowed per read or pair\
+                \ (default: 15)\n  -n   number of seeds to use per read\n  -sc  Seed\
+                \ coverage (i.e., readSize/seedSize).  Floating point.  Exclusive\
+                \ with -n.  (default uses -n)\n  -h   maximum hits to consider per\
+                \ seed (default: 300)\n  -ms  minimum seed matches per location (default:\
+                \ 1)\n  -t   number of threads (default is one per core)\n  -b   bind\
+                \ each thread to its processor (this is the default)\n --b   Don't\
+                \ bind each thread to its processor (note the double dash)\n  -P \
+                \  disables cache prefetching in the genome; may be helpful for machines\n\
+                \       with small caches or lots of cores/cache\n  -so  sort output\
+                \ file by alignment location\n  -sm  memory to use for sorting in\
+                \ Gb\n  -x   explore some hits of overly popular seeds (useful for\
+                \ filtering)\n  -f   stop on first match within edit distance limit\
+                \ (filtering mode)\n  -F   filter output (a=aligned only, s=single\
+                \ hit only (MAPQ >= 10), u=unaligned only, l=long enough to align\
+                \ (see -mrl))\n  -E   an alternate (and fully general) way to specify\
+                \ filter options.  Emit only these types s = single hit (MAPQ >= 10),\
+                \ m = multiple hit (MAPQ < 10),\n       x = not long enough to align,\
+                \ u = unaligned, b = filter must apply to both ends of a paired-end\
+                \ read.  Combine the letters after\n       -E, so for example -E smu\
+                \ will emit all reads that aren't too short/have too many Ns (because\
+                \ it leaves off l).  -E smx is the same\n       as -F a, -E ux is\
+                \ the same as -F u, and so forth.\n       When filtering in paired-end\
+                \ mode (either with -F or -E) unless you specify the b flag a read\
+                \ will be emitted if it's mate pair passes the filter\n       Even\
+                \ if the read itself does not.  If you specify b mode, then a read\
+                \ will be emitted only if it and its partner both pass the filter.\n\
+                \  -S   suppress additional processing (sorted BAM output only)\n\
+                \       i=index, d=duplicate marking\n  -I   ignore IDs that don't\
+                \ match in the paired-end aligner\n  -Cxx must be followed by two\
+                \ + or - symbols saying whether to clip low-quality\n       bases\
+                \ from front and back of read respectively; default: back only (-C-+)\n\
+                \  -M   indicates that CIGAR strings in the generated SAM file should\
+                \ use M (alignment\n       match) rather than = and X (sequence (mis-)match).\
+                \  This is the default\n  -=   use the new style CIGAR strings with\
+                \ = and X rather than M.  The opposite of -M\n  -G   specify a gap\
+                \ penalty to use when generating CIGAR strings\n  -pf  specify the\
+                \ name of a file to contain the run speed\n  --hp Indicates not to\
+                \ use huge pages (this may speed up index load and slow down alignment)\
+                \  This is the default\n  -hp  Indicates to use huge pages (this may\
+                \ speed up alignment and slow down index load).\n  -D   Specifies\
+                \ the extra search depth (the edit distance beyond the best hit that\
+                \ SNAP uses to compute MAPQ).  Default 2\n  -rg  Specify the default\
+                \ read group if it is not specified in the input file\n  -R   Specify\
+                \ the entire read group line for the SAM/BAM output.  This must include\
+                \ an ID tag.  If it doesn't start with\n       '@RG' SNAP will add\
+                \ that.  Specify tabs by \\t.  Two backslashes will generate a single\
+                \ backslash.\n       backslash followed by anything else is illegal.\
+                \  So, '-R @RG\\tID:foo\\tDS:my data' would generate reads\n     \
+                \  with defualt tag foo, and an @RG line that also included the DS:my\
+                \ data field.\n  -sa  Include reads from SAM or BAM files with the\
+                \ secondary (0x100) or supplementary (0x800) flag set; default is\
+                \ to drop them.\n  -om  Output multiple alignments.  Takes as a parameter\
+                \ the maximum extra edit distance relative to the best alignment\n\
+                \       to allow for secondary alignments\n -omax Limit the number\
+                \ of alignments per read generated by -om.  This means that if -om\
+                \ would generate more\n       than -omax secondary alignments, SNAP\
+                \ will write out only the best -omax of them, where 'best' means\n\
+                \       'with the lowest edit distance'.  Ties are broken arbitrarily.\n\
+                \  -mpc Limit the number of alignments generated by -om to this many\
+                \ per contig (chromosome/FASTA entry);\n       'mpc' means 'max per\
+                \ contig; default unlimited.  This filter is applied prior to -omax.\
+                \  The primary alignment\n       is counted.\n  -pc  Preserve the\
+                \ soft clipping for reads coming from SAM or BAM files\n  -xf  Increase\
+                \ expansion factor for BAM and GZ files (default 1.0)\n  -hdp Use\
+                \ Hadoop-style prefixes (reporter:status:...) on error messages, and\
+                \ emit hadoop-style progress messages\n  -mrl Specify the minimum\
+                \ read length to align, reads shorter than this (after clipping) stay\
+                \ unaligned.  This should be\n       a good bit bigger than the seed\
+                \ length or you might get some questionable alignments.  Default 50\n\
+                \  -map Use file mapping to load the index rather than reading it.\
+                \  This might speed up index loading in cases\n       where SNAP is\
+                \ run repatedly on the same index, and the index is larger than half\
+                \ of the memory size\n       of the machine.  On some operating systems,\
+                \ loading an index with -map is much slower than without if the\n\
+                \       index is not in memory.  You might consider adding -pre to\
+                \ prefetch the index into system cache when loading\n       with -map\
+                \ when you don't expect the index to be in cache.\n  -pre Prefetch\
+                \ the index into system cache.  This is only meaningful with -map,\
+                \ and only helps if the index is not\n       already in memory and\
+                \ your operating system is slow at reading mapped files (i.e., some\
+                \ versions of Linux,\n       but not Windows).\n  -lp  Run SNAP at\
+                \ low scheduling priority (Only implemented on Windows)\n  -nu  No\
+                \ Ukkonen: don't reduce edit distance search based on prior candidates.\
+                \ This option is purely for\n       evaluating the performance effect\
+                \ of using Ukkonen's algorithm rather than Smith-Waterman, and specifying\n\
+                \       it will slow down execution without improving the alignments.\n\
+                \  -no  No Ordering: don't order the evalutation of reads so as to\
+                \ select more likely candidates first.  This option\n       is purely\
+                \ for evaluating the performance effect of the read evaluation order,\
+                \ and specifying it will slow\n       down execution without improving\
+                \ alignments.\n  -nt  Don't truncate searches based on missed seed\
+                \ hits.  This option is purely for evaluating the performance effect\n\
+                \       of candidate truncation, and specifying it will slow down\
+                \ execution without improving alignments.\n -wbs  Write buffer size\
+                \ in megabytes.  Don't specify this unless you've gotten an error\
+                \ message saying to make it bigger.  Default 16.\n  -di  Drop the\
+                \ index after aligning and before sorting.  This frees up memory for\
+                \ the sort at the expense of not having the index loaded for your\
+                \ next run.\n -kts  Kill if too slow.  Monitor our progress and kill\
+                \ ourself if we're not moving fast enough.  This is intended for use\
+                \ on machines\n       with limited memory, where some alignment tasks\
+                \ will push SNAP into paging, and take disproportinaltely long.  This\
+                \ allows the script\n       to move on to the next alignment.  Only\
+                \ works when generating output, and not during the sort phase.  If\
+                \ you're running out of memory\n       sorting, try using -di.\n -sid\
+                \  Specifies the sort intermediate directory.  When SNAP is sorting,\
+                \ it aligns the reads in the order in which they come in, and writes\n\
+                \       the aligned reads in batches to a temporary file.  When the\
+                \ aligning is done, it does a merge sort from the temporary file into\
+                \ the\n       final output file.  By default, the intermediate file\
+                \ is in the same directory as the output file, but for performance\
+                \ or space\n       reasons, you might want to put it elsewhere.  If\
+                \ so, use this option.\n -pro  Profile alignment to give you an idea\
+                \ of how much time is spent aligning and how much waiting for IO\n\
+                \n\nYou may process more than one alignment without restarting SNAP,\
+                \ and if possible without reloading\nthe index.  In order to do this,\
+                \ list on the command line all of the parameters for the first\nalignment,\
+                \ followed by a comma (separated by a space from the other parameters)\
+                \ followed by the\nparameters for the next alignment (including single\
+                \ or paired).  You may have as many of these\nas you please.  If two\
+                \ consecutive alignments use the same index, it will not be reloaded.\n\
+                So, for example, you could do 'snap-aligner single hg19-20 foo.fq\
+                \ -o foo.sam , paired hg19-20 end1.fq end2.fq -o paired.sam'\nand\
+                \ it would not reload the index between the single and paired alignments.\n\
+                When specifying an input or output file, you can simply list the filename,\
+                \ in which case\nSNAP will infer the type of the file from the file\
+                \ extension (.sam or .bam for example),\nor you can explicitly specify\
+                \ the file type by preceding the filename with one of the\n following\
+                \ type specifiers (which are case sensitive):\n    -fastq\n    -compressedFastq\n\
+                \    -sam\n    -bam\n    -pairedFastq\n    -pairedInterleavedFastq\n\
+                \    -pairedCompressedInterleavedFastq\n\nSo, for example, you could\
+                \ specify -bam input.file to make SNAP treat input.file as a BAM file,\n\
+                even though it would ordinarily assume a FASTQ file for input or a\
+                \ SAM file for output when it\ndoesn't recoginize the file extension.\n\
+                In order to use a file name that begins with a '-' and not have SNAP\
+                \ treat it as a switch, you must\nexplicitly specify the type.  But\
+                \ really, that's just confusing and you shouldn't do it.\nInput and\
+                \ output may also be from/to stdin/stdout. To do that, use a - for\
+                \ the input or output file\nname and give an explicit type specifier.\
+                \  So, for example, \nsnap-aligner single myIndex -fastq - -o -sam\
+                \ -\nwould read FASTQ from stdin and write SAM to stdout.\n\n  -s\
+                \   min and max spacing to allow between paired ends (default: 50\
+                \ 1000).\n  -fs  force spacing to lie between min and max.\n  -H \
+                \  max hits for intersecting aligner (default: 2000).\n  -mcp specifies\
+                \ the maximum candidate pool size (An internal data structure. \n\
+                \       Only increase this if you get an error message saying to do\
+                \ so. If you're running\n       out of memory, you may want to reduce\
+                \ it.  Default: 1000000)\n  -F b additional option to -F to require\
+                \ both mates to satisfy filter (default is just one)\n       If you\
+                \ specify -F b together with one of the other -F options, -F b MUST\
+                \ be second\n  -ku  Keep unpaired-looking reads in SAM/BAM input.\
+                \  Ordinarily, if a read doesn't specify\n       mate information\
+                \ (RNEXT field is * and/or PNEXT is 0) then the code that matches\
+                \ reads will immdeiately\n       discard it.  Specifying this flag\
+                \ may cause large memory usage for some input files,\n       but may\
+                \ be necessary for some strangely formatted input files.  You'll also\
+                \ need to specify this\n       flag for SAM/BAM files that were aligned\
+                \ by a single-end aligner.\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - snap-aligner
+              - single
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: index-dir
+                optional: false
+              named:
+              - !Flag
+                description: "filename  output alignments to filename in SAM or BAM\
+                  \ format, depending on the file extension or\nexplicit type specifier\
+                  \ (see below).  Use a dash with an explicit type specifier to write\
+                  \ to\nstdout, so for example -o -sam - would write SAM output to\
+                  \ stdout"
+                synonyms:
+                - -o
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'maximum edit distance allowed per read or pair (default:
+                  14)'
+                synonyms:
+                - -d
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: number of seeds to use per read
+                synonyms:
+                - -n
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Seed coverage (i.e., readSize/seedSize).  Floating point.  Exclusive
+                  with -n.  (default uses -n)
+                synonyms:
+                - -sc
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'minimum seed matches per location (default: 1)'
+                synonyms:
+                - -ms
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: number of threads (default is one per core)
+                synonyms:
+                - -t
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: bind each thread to its processor (this is the default)
+                synonyms:
+                - -b
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "disables cache prefetching in the genome; may be helpful\
+                  \ for machines\nwith small caches or lots of cores/cache"
+                synonyms:
+                - -P
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: sort output file by alignment location
+                synonyms:
+                - -so
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: memory to use for sorting in Gb
+                synonyms:
+                - -sm
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: explore some hits of overly popular seeds (useful for
+                  filtering)
+                synonyms:
+                - -x
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: stop on first match within edit distance limit (filtering
+                  mode)
+                synonyms:
+                - -f
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: filter output (a=aligned only, s=single hit only (MAPQ
+                  >= 10), u=unaligned only, l=long enough to align (see -mrl))
+                synonyms:
+                - -F
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "an alternate (and fully general) way to specify filter\
+                  \ options.  Emit only these types s = single hit (MAPQ >= 10), m\
+                  \ = multiple hit (MAPQ < 10),\nx = not long enough to align, u =\
+                  \ unaligned, b = filter must apply to both ends of a paired-end\
+                  \ read.  Combine the letters after\n-E, so for example -E smu will\
+                  \ emit all reads that aren't too short/have too many Ns (because\
+                  \ it leaves off l).  -E smx is the same\nas -F a, -E ux is the same\
+                  \ as -F u, and so forth.\nWhen filtering in paired-end mode (either\
+                  \ with -F or -E) unless you specify the b flag a read will be emitted\
+                  \ if it's mate pair passes the filter\nEven if the read itself does\
+                  \ not.  If you specify b mode, then a read will be emitted only\
+                  \ if it and its partner both pass the filter."
+                synonyms:
+                - -E
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "suppress additional processing (sorted BAM output only)\n\
+                  i=index, d=duplicate marking"
+                synonyms:
+                - -S
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ignore IDs that don't match in the paired-end aligner
+                synonyms:
+                - -I
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "be followed by two + or - symbols saying whether to\
+                  \ clip low-quality\nbases from front and back of read respectively;\
+                  \ default: back only (-C-+)"
+                synonyms:
+                - -Cxx
+                args: !SimpleFlagArg
+                  name: must
+                optional: true
+              - !Flag
+                description: "indicates that CIGAR strings in the generated SAM file\
+                  \ should use M (alignment\nmatch) rather than = and X (sequence\
+                  \ (mis-)match).  This is the default"
+                synonyms:
+                - -M
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: specify a gap penalty to use when generating CIGAR strings
+                synonyms:
+                - -G
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: specify the name of a file to contain the run speed
+                synonyms:
+                - -pf
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: not to use huge pages (this may speed up index load and
+                  slow down alignment)  This is the default
+                synonyms:
+                - --hp
+                args: !SimpleFlagArg
+                  name: Indicates
+                optional: true
+              - !Flag
+                description: Specifies the extra search depth (the edit distance beyond
+                  the best hit that SNAP uses to compute MAPQ).  Default 2
+                synonyms:
+                - -D
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Specify the default read group if it is not specified
+                  in the input file
+                synonyms:
+                - -rg
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Specify the entire read group line for the SAM/BAM output.\
+                  \  This must include an ID tag.  If it doesn't start with\n'@RG'\
+                  \ SNAP will add that.  Specify tabs by \\t.  Two backslashes will\
+                  \ generate a single backslash.\nbackslash followed by anything else\
+                  \ is illegal.  So, '-R @RG\\tID:foo\\tDS:my data' would generate\
+                  \ reads\nwith defualt tag foo, and an @RG line that also included\
+                  \ the DS:my data field."
+                synonyms:
+                - -R
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Include reads from SAM or BAM files with the secondary
+                  (0x100) or supplementary (0x800) flag set; default is to drop them.
+                synonyms:
+                - -sa
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Output multiple alignments.  Takes as a parameter the\
+                  \ maximum extra edit distance relative to the best alignment\nto\
+                  \ allow for secondary alignments"
+                synonyms:
+                - -om
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "the number of alignments per read generated by -om.\
+                  \  This means that if -om would generate more\nthan -omax secondary\
+                  \ alignments, SNAP will write out only the best -omax of them, where\
+                  \ 'best' means\n'with the lowest edit distance'.  Ties are broken\
+                  \ arbitrarily."
+                synonyms:
+                - -omax
+                args: !SimpleFlagArg
+                  name: Limit
+                optional: true
+              - !Flag
+                description: "the number of alignments generated by -om to this many\
+                  \ per contig (chromosome/FASTA entry);\n'mpc' means 'max per contig;\
+                  \ default unlimited.  This filter is applied prior to -omax.  The\
+                  \ primary alignment\nis counted."
+                synonyms:
+                - -mpc
+                args: !SimpleFlagArg
+                  name: Limit
+                optional: true
+              - !Flag
+                description: Preserve the soft clipping for reads coming from SAM
+                  or BAM files
+                synonyms:
+                - -pc
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Increase expansion factor for BAM and GZ files (default
+                  1.0)
+                synonyms:
+                - -xf
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Hadoop-style prefixes (reporter:status:...) on error
+                  messages, and emit hadoop-style progress messages
+                synonyms:
+                - -hdp
+                args: !SimpleFlagArg
+                  name: Use
+                optional: true
+              - !Flag
+                description: "the minimum read length to align, reads shorter than\
+                  \ this (after clipping) stay unaligned.  This should be\na good\
+                  \ bit bigger than the seed length or you might get some questionable\
+                  \ alignments.  Default 50"
+                synonyms:
+                - -mrl
+                args: !SimpleFlagArg
+                  name: Specify
+                optional: true
+              - !Flag
+                description: "file mapping to load the index rather than reading it.\
+                  \  This might speed up index loading in cases\nwhere SNAP is run\
+                  \ repatedly on the same index, and the index is larger than half\
+                  \ of the memory size\nof the machine.  On some operating systems,\
+                  \ loading an index with -map is much slower than without if the\n\
+                  index is not in memory.  You might consider adding -pre to prefetch\
+                  \ the index into system cache when loading\nwith -map when you don't\
+                  \ expect the index to be in cache."
+                synonyms:
+                - -map
+                args: !SimpleFlagArg
+                  name: Use
+                optional: true
+              - !Flag
+                description: "the index into system cache.  This is only meaningful\
+                  \ with -map, and only helps if the index is not\nalready in memory\
+                  \ and your operating system is slow at reading mapped files (i.e.,\
+                  \ some versions of Linux,\nbut not Windows)."
+                synonyms:
+                - -pre
+                args: !SimpleFlagArg
+                  name: Prefetch
+                optional: true
+              - !Flag
+                description: Run SNAP at low scheduling priority (Only implemented
+                  on Windows)
+                synonyms:
+                - -lp
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "No Ukkonen: don't reduce edit distance search based\
+                  \ on prior candidates. This option is purely for\nevaluating the\
+                  \ performance effect of using Ukkonen's algorithm rather than Smith-Waterman,\
+                  \ and specifying\nit will slow down execution without improving\
+                  \ the alignments."
+                synonyms:
+                - -nu
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "No Ordering: don't order the evalutation of reads so\
+                  \ as to select more likely candidates first.  This option\nis purely\
+                  \ for evaluating the performance effect of the read evaluation order,\
+                  \ and specifying it will slow\ndown execution without improving\
+                  \ alignments."
+                synonyms:
+                - -no
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Don't truncate searches based on missed seed hits. \
+                  \ This option is purely for evaluating the performance effect\n\
+                  of candidate truncation, and specifying it will slow down execution\
+                  \ without improving alignments."
+                synonyms:
+                - -nt
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Write buffer size in megabytes.  Don't specify this unless
+                  you've gotten an error message saying to make it bigger.  Default
+                  16.
+                synonyms:
+                - -wbs
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Drop the index after aligning and before sorting.  This
+                  frees up memory for the sort at the expense of not having the index
+                  loaded for your next run.
+                synonyms:
+                - -di
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Kill if too slow.  Monitor our progress and kill ourself\
+                  \ if we're not moving fast enough.  This is intended for use on\
+                  \ machines\nwith limited memory, where some alignment tasks will\
+                  \ push SNAP into paging, and take disproportinaltely long.  This\
+                  \ allows the script\nto move on to the next alignment.  Only works\
+                  \ when generating output, and not during the sort phase.  If you're\
+                  \ running out of memory\nsorting, try using -di."
+                synonyms:
+                - -kts
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Specifies the sort intermediate directory.  When SNAP\
+                  \ is sorting, it aligns the reads in the order in which they come\
+                  \ in, and writes\nthe aligned reads in batches to a temporary file.\
+                  \  When the aligning is done, it does a merge sort from the temporary\
+                  \ file into the\nfinal output file.  By default, the intermediate\
+                  \ file is in the same directory as the output file, but for performance\
+                  \ or space\nreasons, you might want to put it elsewhere.  If so,\
+                  \ use this option."
+                synonyms:
+                - -sid
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Profile alignment to give you an idea of how much time
+                  is spent aligning and how much waiting for IO
+                synonyms:
+                - -pro
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -fastq
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -compressedFastq
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -sam
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -bam
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -pairedFastq
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -pairedInterleavedFastq
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: ''
+                synonyms:
+                - -pairedCompressedInterleavedFastq
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: 'maximum hits to consider per seed (default: 300)'
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Welcome to SNAP version 1.0dev.97.\n\nToo few parameters\n\
+                Usage: \nsnap-aligner single <index-dir> <inputFile(s)> [<options>]\
+                \ where <input file(s)> is a list of files to process.\n\nOptions:\n\
+                \  -o   filename  output alignments to filename in SAM or BAM format,\
+                \ depending on the file extension or\n       explicit type specifier\
+                \ (see below).  Use a dash with an explicit type specifier to write\
+                \ to\n       stdout, so for example -o -sam - would write SAM output\
+                \ to stdout\n  -d   maximum edit distance allowed per read or pair\
+                \ (default: 14)\n  -n   number of seeds to use per read\n  -sc  Seed\
+                \ coverage (i.e., readSize/seedSize).  Floating point.  Exclusive\
+                \ with -n.  (default uses -n)\n  -h   maximum hits to consider per\
+                \ seed (default: 300)\n  -ms  minimum seed matches per location (default:\
+                \ 1)\n  -t   number of threads (default is one per core)\n  -b   bind\
+                \ each thread to its processor (this is the default)\n --b   Don't\
+                \ bind each thread to its processor (note the double dash)\n  -P \
+                \  disables cache prefetching in the genome; may be helpful for machines\n\
+                \       with small caches or lots of cores/cache\n  -so  sort output\
+                \ file by alignment location\n  -sm  memory to use for sorting in\
+                \ Gb\n  -x   explore some hits of overly popular seeds (useful for\
+                \ filtering)\n  -f   stop on first match within edit distance limit\
+                \ (filtering mode)\n  -F   filter output (a=aligned only, s=single\
+                \ hit only (MAPQ >= 10), u=unaligned only, l=long enough to align\
+                \ (see -mrl))\n  -E   an alternate (and fully general) way to specify\
+                \ filter options.  Emit only these types s = single hit (MAPQ >= 10),\
+                \ m = multiple hit (MAPQ < 10),\n       x = not long enough to align,\
+                \ u = unaligned, b = filter must apply to both ends of a paired-end\
+                \ read.  Combine the letters after\n       -E, so for example -E smu\
+                \ will emit all reads that aren't too short/have too many Ns (because\
+                \ it leaves off l).  -E smx is the same\n       as -F a, -E ux is\
+                \ the same as -F u, and so forth.\n       When filtering in paired-end\
+                \ mode (either with -F or -E) unless you specify the b flag a read\
+                \ will be emitted if it's mate pair passes the filter\n       Even\
+                \ if the read itself does not.  If you specify b mode, then a read\
+                \ will be emitted only if it and its partner both pass the filter.\n\
+                \  -S   suppress additional processing (sorted BAM output only)\n\
+                \       i=index, d=duplicate marking\n  -I   ignore IDs that don't\
+                \ match in the paired-end aligner\n  -Cxx must be followed by two\
+                \ + or - symbols saying whether to clip low-quality\n       bases\
+                \ from front and back of read respectively; default: back only (-C-+)\n\
+                \  -M   indicates that CIGAR strings in the generated SAM file should\
+                \ use M (alignment\n       match) rather than = and X (sequence (mis-)match).\
+                \  This is the default\n  -=   use the new style CIGAR strings with\
+                \ = and X rather than M.  The opposite of -M\n  -G   specify a gap\
+                \ penalty to use when generating CIGAR strings\n  -pf  specify the\
+                \ name of a file to contain the run speed\n  --hp Indicates not to\
+                \ use huge pages (this may speed up index load and slow down alignment)\
+                \  This is the default\n  -hp  Indicates to use huge pages (this may\
+                \ speed up alignment and slow down index load).\n  -D   Specifies\
+                \ the extra search depth (the edit distance beyond the best hit that\
+                \ SNAP uses to compute MAPQ).  Default 2\n  -rg  Specify the default\
+                \ read group if it is not specified in the input file\n  -R   Specify\
+                \ the entire read group line for the SAM/BAM output.  This must include\
+                \ an ID tag.  If it doesn't start with\n       '@RG' SNAP will add\
+                \ that.  Specify tabs by \\t.  Two backslashes will generate a single\
+                \ backslash.\n       backslash followed by anything else is illegal.\
+                \  So, '-R @RG\\tID:foo\\tDS:my data' would generate reads\n     \
+                \  with defualt tag foo, and an @RG line that also included the DS:my\
+                \ data field.\n  -sa  Include reads from SAM or BAM files with the\
+                \ secondary (0x100) or supplementary (0x800) flag set; default is\
+                \ to drop them.\n  -om  Output multiple alignments.  Takes as a parameter\
+                \ the maximum extra edit distance relative to the best alignment\n\
+                \       to allow for secondary alignments\n -omax Limit the number\
+                \ of alignments per read generated by -om.  This means that if -om\
+                \ would generate more\n       than -omax secondary alignments, SNAP\
+                \ will write out only the best -omax of them, where 'best' means\n\
+                \       'with the lowest edit distance'.  Ties are broken arbitrarily.\n\
+                \  -mpc Limit the number of alignments generated by -om to this many\
+                \ per contig (chromosome/FASTA entry);\n       'mpc' means 'max per\
+                \ contig; default unlimited.  This filter is applied prior to -omax.\
+                \  The primary alignment\n       is counted.\n  -pc  Preserve the\
+                \ soft clipping for reads coming from SAM or BAM files\n  -xf  Increase\
+                \ expansion factor for BAM and GZ files (default 1.0)\n  -hdp Use\
+                \ Hadoop-style prefixes (reporter:status:...) on error messages, and\
+                \ emit hadoop-style progress messages\n  -mrl Specify the minimum\
+                \ read length to align, reads shorter than this (after clipping) stay\
+                \ unaligned.  This should be\n       a good bit bigger than the seed\
+                \ length or you might get some questionable alignments.  Default 50\n\
+                \  -map Use file mapping to load the index rather than reading it.\
+                \  This might speed up index loading in cases\n       where SNAP is\
+                \ run repatedly on the same index, and the index is larger than half\
+                \ of the memory size\n       of the machine.  On some operating systems,\
+                \ loading an index with -map is much slower than without if the\n\
+                \       index is not in memory.  You might consider adding -pre to\
+                \ prefetch the index into system cache when loading\n       with -map\
+                \ when you don't expect the index to be in cache.\n  -pre Prefetch\
+                \ the index into system cache.  This is only meaningful with -map,\
+                \ and only helps if the index is not\n       already in memory and\
+                \ your operating system is slow at reading mapped files (i.e., some\
+                \ versions of Linux,\n       but not Windows).\n  -lp  Run SNAP at\
+                \ low scheduling priority (Only implemented on Windows)\n  -nu  No\
+                \ Ukkonen: don't reduce edit distance search based on prior candidates.\
+                \ This option is purely for\n       evaluating the performance effect\
+                \ of using Ukkonen's algorithm rather than Smith-Waterman, and specifying\n\
+                \       it will slow down execution without improving the alignments.\n\
+                \  -no  No Ordering: don't order the evalutation of reads so as to\
+                \ select more likely candidates first.  This option\n       is purely\
+                \ for evaluating the performance effect of the read evaluation order,\
+                \ and specifying it will slow\n       down execution without improving\
+                \ alignments.\n  -nt  Don't truncate searches based on missed seed\
+                \ hits.  This option is purely for evaluating the performance effect\n\
+                \       of candidate truncation, and specifying it will slow down\
+                \ execution without improving alignments.\n -wbs  Write buffer size\
+                \ in megabytes.  Don't specify this unless you've gotten an error\
+                \ message saying to make it bigger.  Default 16.\n  -di  Drop the\
+                \ index after aligning and before sorting.  This frees up memory for\
+                \ the sort at the expense of not having the index loaded for your\
+                \ next run.\n -kts  Kill if too slow.  Monitor our progress and kill\
+                \ ourself if we're not moving fast enough.  This is intended for use\
+                \ on machines\n       with limited memory, where some alignment tasks\
+                \ will push SNAP into paging, and take disproportinaltely long.  This\
+                \ allows the script\n       to move on to the next alignment.  Only\
+                \ works when generating output, and not during the sort phase.  If\
+                \ you're running out of memory\n       sorting, try using -di.\n -sid\
+                \  Specifies the sort intermediate directory.  When SNAP is sorting,\
+                \ it aligns the reads in the order in which they come in, and writes\n\
+                \       the aligned reads in batches to a temporary file.  When the\
+                \ aligning is done, it does a merge sort from the temporary file into\
+                \ the\n       final output file.  By default, the intermediate file\
+                \ is in the same directory as the output file, but for performance\
+                \ or space\n       reasons, you might want to put it elsewhere.  If\
+                \ so, use this option.\n -pro  Profile alignment to give you an idea\
+                \ of how much time is spent aligning and how much waiting for IO\n\
+                \n\nYou may process more than one alignment without restarting SNAP,\
+                \ and if possible without reloading\nthe index.  In order to do this,\
+                \ list on the command line all of the parameters for the first\nalignment,\
+                \ followed by a comma (separated by a space from the other parameters)\
+                \ followed by the\nparameters for the next alignment (including single\
+                \ or paired).  You may have as many of these\nas you please.  If two\
+                \ consecutive alignments use the same index, it will not be reloaded.\n\
+                So, for example, you could do 'snap-aligner single hg19-20 foo.fq\
+                \ -o foo.sam , paired hg19-20 end1.fq end2.fq -o paired.sam'\nand\
+                \ it would not reload the index between the single and paired alignments.\n\
+                When specifying an input or output file, you can simply list the filename,\
+                \ in which case\nSNAP will infer the type of the file from the file\
+                \ extension (.sam or .bam for example),\nor you can explicitly specify\
+                \ the file type by preceding the filename with one of the\n following\
+                \ type specifiers (which are case sensitive):\n    -fastq\n    -compressedFastq\n\
+                \    -sam\n    -bam\n    -pairedFastq\n    -pairedInterleavedFastq\n\
+                \    -pairedCompressedInterleavedFastq\n\nSo, for example, you could\
+                \ specify -bam input.file to make SNAP treat input.file as a BAM file,\n\
+                even though it would ordinarily assume a FASTQ file for input or a\
+                \ SAM file for output when it\ndoesn't recoginize the file extension.\n\
+                In order to use a file name that begins with a '-' and not have SNAP\
+                \ treat it as a switch, you must\nexplicitly specify the type.  But\
+                \ really, that's just confusing and you shouldn't do it.\nInput and\
+                \ output may also be from/to stdin/stdout. To do that, use a - for\
+                \ the input or output file\nname and give an explicit type specifier.\
+                \  So, for example, \nsnap-aligner single myIndex -fastq - -o -sam\
+                \ -\nwould read FASTQ from stdin and write SAM to stdout.\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - snap-aligner
+              - index
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: input.fa
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: output-dir
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: options
+                optional: true
+              named:
+              - !Flag
+                description: 'Seed size (default: 20)'
+                synonyms:
+                - -s
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Use pre-computed table bias for hg19, which results in
+                  better speed, balance, and a smaller index, but only works for the
+                  complete human reference.
+                synonyms:
+                - -hg19
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: This parameter is deprecated and will be ignored.
+                synonyms:
+                - -Ofactor
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Specify the maximum number of threads to use. Default
+                  is the number of cores.
+                synonyms:
+                - -tMaxThreads
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "<chars>         Specify characters to use as chromosome\
+                  \ name terminators in the FASTA header line; these characters and\
+                  \ anything after are\nnot part of the chromosome name.  You must\
+                  \ specify all characters on a single -B switch.  So, for example,\
+                  \ with -B_|,\nthe FASTA header line '>chr1|Chromosome 1' would generate\
+                  \ a chromosome named 'chr1'.  There's a separate flag for\nindicating\
+                  \ that a space is a terminator."
+                synonyms:
+                - -B
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Indicates that the space character is a terminator for\
+                  \ chromosome names (see -B above).  This may be used in addition\n\
+                  to other terminators specified by -B.  -B and -bSpace are case sensitive."
+                synonyms:
+                - -bSpace
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Specify the number of Ns to put as padding between chromosomes.\
+                  \  This must be as large as the largest\nedit distance you'll ever\
+                  \ use, and there's a performance advantage to have it be bigger\
+                  \ than any\nread you'll process.  Default is 500"
+                synonyms:
+                - -pPadding
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Build a histogram of seed popularity.  This is just for
+                  information, it's not used by SNAP.
+                synonyms:
+                - -HHistogramFile
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: Compute hash table sizes exactly.  This will slow down
+                  index build, but usually will result in smaller indices.
+                synonyms:
+                - -exact
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "The number of bytes to use for the hash table key. \
+                  \ Larger values increase SNAP's memory footprint, but allow larger\
+                  \ seeds.  Default: 4"
+                synonyms:
+                - -keysize
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Build a larger index that's a little faster, particualrly\
+                  \ for runs with quick/inaccurate parameters.  Increases index size\
+                  \ by\nabout 30%, depending on the other index parameters and the\
+                  \ contents of the reference genome"
+                synonyms:
+                - -large
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "The size of the genome locations stored in the index.\
+                  \  This can be from 4 to 8 bytes.  The locations need to be big\
+                  \ enough\nnot only to index the genome, but also to allow some space\
+                  \ for representing seeds that occur multiple times.  For the\nhuman\
+                  \ genome, it will fit with four byte locations if the seed size\
+                  \ is 19 or larger, but needs 5 (or more) for smaller\nseeds.  Making\
+                  \ the location size bigger than necessary will just waste (lots\
+                  \ of) space, so unless you're doing something\nquite unusual, the\
+                  \ right answer is 4 or 5.  Default is 4"
+                synonyms:
+                - -locationSize
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Use a temp file to work better in smaller memory.  This\
+                  \ only helps a little, but can be the difference if you're close.\n\
+                  In particular, this will generally use less memory than the index\
+                  \ will use once it's built, so if this doesn't work you\nwon't be\
+                  \ able to use the index anyway. However, if you've got sufficient\
+                  \ memory to begin with, this option will just\nslow down the index\
+                  \ build by doing extra, useless IO.\n"
+                synonyms:
+                - -sm
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: 'Hash table slack (default: 0.3)'
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "Welcome to SNAP version 1.0dev.97.\n\nUsage: snap-aligner\
+                \ index <input.fa> <output-dir> [<options>]\nOptions:\n  -s      \
+                \         Seed size (default: 20)\n  -h               Hash table slack\
+                \ (default: 0.3)\n  -hg19            Use pre-computed table bias for\
+                \ hg19, which results in better speed, balance, and a smaller index,\
+                \ but only works for the complete human reference.\n  -Ofactor   \
+                \      This parameter is deprecated and will be ignored.\n -tMaxThreads\
+                \      Specify the maximum number of threads to use. Default is the\
+                \ number of cores.\n -B<chars>         Specify characters to use as\
+                \ chromosome name terminators in the FASTA header line; these characters\
+                \ and anything after are\n                   not part of the chromosome\
+                \ name.  You must specify all characters on a single -B switch.  So,\
+                \ for example, with -B_|,\n                   the FASTA header line\
+                \ '>chr1|Chromosome 1' would generate a chromosome named 'chr1'. \
+                \ There's a separate flag for\n                   indicating that\
+                \ a space is a terminator.\n -bSpace           Indicates that the\
+                \ space character is a terminator for chromosome names (see -B above).\
+                \  This may be used in addition\n                   to other terminators\
+                \ specified by -B.  -B and -bSpace are case sensitive.\n -pPadding\
+                \         Specify the number of Ns to put as padding between chromosomes.\
+                \  This must be as large as the largest\n                   edit distance\
+                \ you'll ever use, and there's a performance advantage to have it\
+                \ be bigger than any\n                   read you'll process.  Default\
+                \ is 500\n -HHistogramFile   Build a histogram of seed popularity.\
+                \  This is just for information, it's not used by SNAP.\n -exact \
+                \           Compute hash table sizes exactly.  This will slow down\
+                \ index build, but usually will result in smaller indices.\n -keysize\
+                \          The number of bytes to use for the hash table key.  Larger\
+                \ values increase SNAP's memory footprint, but allow larger seeds.\
+                \  Default: 4\n -large            Build a larger index that's a little\
+                \ faster, particualrly for runs with quick/inaccurate parameters.\
+                \  Increases index size by\n                   about 30%, depending\
+                \ on the other index parameters and the contents of the reference\
+                \ genome\n -locationSize     The size of the genome locations stored\
+                \ in the index.  This can be from 4 to 8 bytes.  The locations need\
+                \ to be big enough\n                   not only to index the genome,\
+                \ but also to allow some space for representing seeds that occur multiple\
+                \ times.  For the\n                   human genome, it will fit with\
+                \ four byte locations if the seed size is 19 or larger, but needs\
+                \ 5 (or more) for smaller\n                   seeds.  Making the location\
+                \ size bigger than necessary will just waste (lots of) space, so unless\
+                \ you're doing something\n                   quite unusual, the right\
+                \ answer is 4 or 5.  Default is 4\n -sm               Use a temp file\
+                \ to work better in smaller memory.  This only helps a little, but\
+                \ can be the difference if you're close.\n                   In particular,\
+                \ this will generally use less memory than the index will use once\
+                \ it's built, so if this doesn't work you\n                   won't\
+                \ be able to use the index anyway. However, if you've got sufficient\
+                \ memory to begin with, this option will just\n                  \
+                \ slow down the index build by doing extra, useless IO.\n"
+              generated_using: *id004
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "Welcome to SNAP version 1.0dev.97.\n\nInvalid command: --help\n\
+              \nUsage: snap-aligner <command> [<options>]\nCommands:\n   index   \
+              \ build a genome index\n   single   align single-end reads\n   paired\
+              \   align paired-end reads\n   daemon   run in daemon mode--accept commands\
+              \ remotely\nType a command without arguments to see its help.\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1391,12 +2759,9 @@ subcommands:
             \ memory usage for some input files,\n       but may be necessary for\
             \ some strangely formatted input files.  You'll also need to specify this\n\
             \       flag for SAM/BAM files that were aligned by a single-end aligner.\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - snap-aligner
-          - single
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -1751,48 +3116,6 @@ subcommands:
             - -pro
             args: !EmptyFlagArg {}
             optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -fastq
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -compressedFastq
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -sam
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -bam
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -pairedFastq
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -pairedInterleavedFastq
-            args: !EmptyFlagArg {}
-            optional: true
-          - !Flag
-            description: ''
-            synonyms:
-            - -pairedCompressedInterleavedFastq
-            args: !EmptyFlagArg {}
-            optional: true
           parent: *id003
           subcommands: []
           usage: []
@@ -1947,9 +3270,7 @@ subcommands:
             would read FASTQ from stdin and write SAM to stdout.\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - snap-aligner
-          - index
+          command: *id006
           positional:
           - !Positional
             description: ''
@@ -2654,7 +3975,7 @@ subcommands:
         - -pro
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2927,7 +4248,7 @@ subcommands:
         - -sm
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -3489,7 +4810,7 @@ subcommands:
     - -pro
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -3754,7 +5075,7 @@ subcommands:
     - -sm
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

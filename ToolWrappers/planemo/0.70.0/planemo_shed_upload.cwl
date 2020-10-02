@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_shed_upload.cwl
+id: planemo_shed_upload.cwl
 inputs:
 - id: in_recursive
   doc: "Recursively perform command for nested\nrepository directories."
@@ -77,21 +77,16 @@ inputs:
   type: File
   inputBinding:
     prefix: --tar
-- id: in_test_data_slash_blast_db_dot_loc
-  doc: '...'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_tools_slash_ncbi_blast_plus_slash_tool_dependencies_dot_xml
   doc: '% tar -tzf shed_upload.tar.gz | wc -l'
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: in_one_ones_even
   doc: 'Options:'
   type: long
   inputBinding:
-    position: 2
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

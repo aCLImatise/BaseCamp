@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biscuit_asm.cwl
+id: biscuit_asm.cwl
 inputs:
 - id: in_input_dot_epi_read
   doc: ''

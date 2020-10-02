@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_conditions.cwl
+id: vtools_conditions.cwl
 inputs:
 - id: in_v_tools
   doc: ''

@@ -11,11 +11,11 @@ task Analyzereaddepth {
     String? only_use_len
     Boolean? print_depth_contig
     Boolean? use_ungapped_length
-    String options
+    String bank
   }
   command <<<
     analyze_read_depth \
-      ~{options} \
+      ~{bank} \
       ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""} \
       ~{if defined(flag_regions_times) then ("-x " +  '"' + flag_regions_times + '"') else ""} \
       ~{if defined(cluster_regions_dist) then ("-c " +  '"' + cluster_regions_dist + '"') else ""} \
@@ -36,7 +36,7 @@ task Analyzereaddepth {
     only_use_len: "Only use contigs >= len for computing average"
     print_depth_contig: "Print the depth for each contig"
     use_ungapped_length: "Use ungapped length for reports"
-    options: "-------------------"
+    bank: ""
   }
   output {
     File out_stdout = stdout()

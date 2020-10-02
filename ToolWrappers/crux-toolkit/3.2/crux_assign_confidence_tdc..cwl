@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_assign_confidence_tdc..cwl
+id: crux_assign_confidence_tdc..cwl
 inputs:
 - id: in_crux
   doc: ''

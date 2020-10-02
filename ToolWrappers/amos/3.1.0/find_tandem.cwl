@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_tandem.cwl
+id: find_tandem.cwl
 inputs:
 - id: in_multifasta_file_scan
   doc: multifasta file to scan

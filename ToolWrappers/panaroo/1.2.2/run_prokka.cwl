@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_prokka.cwl
+id: run_prokka.cwl
 inputs:
 - id: in_threads
   doc: number of threads to use (default=1)

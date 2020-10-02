@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_generate_environment_from_matrix_counts.cwl
+id: o_generate_environment_from_matrix_counts.cwl
 inputs: []
 outputs:
 - id: out_stdout

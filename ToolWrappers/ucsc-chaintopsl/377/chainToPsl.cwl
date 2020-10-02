@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chainToPsl.cwl
+id: chainToPsl.cwl
 inputs:
 - id: in_in_dot_chain
   doc: ''

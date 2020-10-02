@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../XFDR.cwl
+id: XFDR.cwl
 inputs:
 - id: in_in
   doc: "Crosslink Identifications in either xquest.xml, idXML, or mzIdentML format\

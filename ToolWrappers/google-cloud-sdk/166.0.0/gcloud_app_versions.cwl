@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_app_versions.cwl
+id: gcloud_app_versions.cwl
 inputs:
 - id: in_browse
   doc: Open the specified versions in a browser.

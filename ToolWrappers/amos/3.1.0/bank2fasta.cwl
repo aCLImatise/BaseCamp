@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bank2fasta.cwl
+id: bank2fasta.cwl
 inputs:
 - id: in_bank
   doc: bank where assembly is stored

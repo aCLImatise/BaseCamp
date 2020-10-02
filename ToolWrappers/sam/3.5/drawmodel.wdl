@@ -2,11 +2,7 @@ version 1.0
 
 task Drawmodel {
   input {
-    String? s
     Boolean? landscape
-    Boolean? mod
-    Boolean? reg
-    Boolean? freq
     String model_file
     String psfile
   }
@@ -14,18 +10,10 @@ task Drawmodel {
     drawmodel \
       ~{model_file} \
       ~{psfile} \
-      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
-      ~{if (landscape) then "-landscape" else ""} \
-      ~{if (mod) then "-mod" else ""} \
-      ~{if (reg) then "-reg" else ""} \
-      ~{if (freq) then "-freq" else ""}
+      ~{if (landscape) then "-landscape" else ""}
   >>>
   parameter_meta {
-    s: ""
-    landscape: ""
-    mod: "[n]      Draw first or nth model"
-    reg: "[n]      Draw first or nth regularizer"
-    freq: "[n]      Draw first or nth frequencies"
+    landscape: "-mod  [n]      Draw first or nth model\\n-reg  [n]      Draw first or nth regularizer\\n-freq [n]      Draw first or nth frequencies\\n"
     model_file: ""
     psfile: ""
   }

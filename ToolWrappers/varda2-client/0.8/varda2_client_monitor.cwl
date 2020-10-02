@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varda2_client_monitor.cwl
+id: varda2_client_monitor.cwl
 inputs:
 - id: in_task_file
   doc: "Filename of tasks to monitor\n"

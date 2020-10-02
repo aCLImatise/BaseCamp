@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../motif.cwl
+id: motif.cwl
 inputs: []
 outputs:
 - id: out_stdout

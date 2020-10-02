@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EdgeInfo.cwl
+id: EdgeInfo.cwl
 inputs:
 - id: in_arg_one
   doc: ''

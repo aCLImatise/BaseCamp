@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../break_blocks.cwl
+id: break_blocks.cwl
 inputs:
 - id: in_region_file
   doc: "A bed file specifying regions where call blocks should\nbe broken into individual\

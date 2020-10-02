@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../latf_load.cwl
+id: latf_load.cwl
 inputs:
 - id: in_output
   doc: Path and Name of the output database.

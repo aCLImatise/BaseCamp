@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phenix.py_prepare_reference.cwl
+id: phenix.py_prepare_reference.cwl
 inputs:
 - id: in_reference
   doc: Path to reference file to prepare.

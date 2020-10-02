@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xmatchview_conifer.py.cwl
+id: xmatchview_conifer.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

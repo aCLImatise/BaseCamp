@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../QueryLookupTable.cwl
+id: QueryLookupTable.cwl
 inputs:
 - id: in_arg_one
   doc: ''

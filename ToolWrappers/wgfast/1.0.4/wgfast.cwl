@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wgfast.cwl
+id: wgfast.cwl
 inputs:
 - id: in_reference_directory
   doc: path to reference file directory [REQUIRED]

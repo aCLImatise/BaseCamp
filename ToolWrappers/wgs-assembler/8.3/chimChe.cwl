@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chimChe.cwl
+id: chimChe.cwl
 inputs:
 - id: in_multifasta_sequences_analyzed
   doc: multi-fasta sequences to be analyzed

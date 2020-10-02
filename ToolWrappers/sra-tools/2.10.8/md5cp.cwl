@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../md5cp.cwl
+id: md5cp.cwl
 inputs:
 - id: in_force
   doc: overwrite existing columns
@@ -16,11 +16,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --recursive
-- id: in_test
-  doc: '?'
-  type: boolean
-  inputBinding:
-    prefix: --test
 - id: in_verbose
   doc: "Increase the verbosity of the program\nstatus messages. Use multiple times\
     \ for more\nverbosity. Negates quiet."

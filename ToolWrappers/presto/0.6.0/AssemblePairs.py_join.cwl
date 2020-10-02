@@ -1,8 +1,12 @@
 class: CommandLineTool
-id: ../../../AssemblePairs.py_join.cwl
+id: AssemblePairs.py_join.cwl
 inputs:
 - id: in_two
-  doc: ''
+  doc: "[-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n[--outname OUT_NAME] [--log\
+    \ LOG_FILE] [--failed]\n[--fasta] [--delim DELIMITER DELIMITER DELIMITER]\n[--nproc\
+    \ NPROC]\n[--coord {illumina,solexa,sra,454,presto}]\n[--rc {tail,head,both,none}]\n\
+    [--1f HEAD_FIELDS [HEAD_FIELDS ...]]\n[--2f TAIL_FIELDS [TAIL_FIELDS ...]] [--gap\
+    \ GAP]"
   type: long[]
   inputBinding:
     prefix: '-2'

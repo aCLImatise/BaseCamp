@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dataset_manager.py.cwl
+id: dataset_manager.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

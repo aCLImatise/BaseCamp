@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterCorrectionOverlaps.cwl
+id: filterCorrectionOverlaps.cwl
 inputs:
 - id: in_input_reads
   doc: input reads

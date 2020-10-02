@@ -1,16 +1,14 @@
 class: CommandLineTool
-id: ../../../ggd_make_recipe.cwl
+id: ggd_make_recipe.cwl
 inputs:
-- id: in_g
-  doc: ''
+- id: in_pv_packageversion_dp
+  doc: "{GRCh37,GRCh38,GRCz10,GRCz11,canFam3,danRer10,danRer11,dm3,dm6,hg19,hg38,mm10,mm9}\n\
+    [--authors AUTHORS] -pv PACKAGE_VERSION -dv\nDATA_VERSION -dp DATA_PROVIDER --summary\
+    \ SUMMARY -k\nKEYWORD -cb\n{0-based-inclusive,0-based-exclusive,1-based-inclusive,1-based-exclusive,NA}\n\
+    -n NAME\nscript"
   type: boolean
   inputBinding:
     prefix: -g
-- id: in_n
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -n
 - id: in_channel
   doc: the ggd channel to use. (Default = genomics)
   type: string
@@ -97,6 +95,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --name
+- id: in_script
+  doc: "bash script that contains the commands to obtain and\nprocess the data\n"
+  type: string
+  inputBinding:
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

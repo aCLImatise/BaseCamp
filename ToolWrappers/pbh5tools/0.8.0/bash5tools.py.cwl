@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bash5tools.py.cwl
+id: bash5tools.py.cwl
 inputs:
 - id: in_verbose
   doc: 'Set the verbosity level (default: None)'

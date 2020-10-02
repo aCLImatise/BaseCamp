@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeUtrTrainingSet.pl.cwl
+id: makeUtrTrainingSet.pl.cwl
 inputs:
 - id: in_only_best
   doc: for each stop/start codon only the 3'/5'-UTR from the most frequent splice

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaseq_cli.cwl
+id: metaseq_cli.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pedump.cwl
+id: pedump.cwl
 inputs: []
 outputs:
 - id: out_stdout

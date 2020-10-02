@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bank_combine.cwl
+id: bank_combine.cwl
 inputs:
 - id: in_in_n
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makehist.cwl
+id: makehist.cwl
 inputs:
 - id: in_distfile
   doc: .dist    Score file to read (required).

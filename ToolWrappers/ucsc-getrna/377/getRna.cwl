@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getRna.cwl
+id: getRna.cwl
 inputs:
 - id: in_cds_upper
   doc: "- lookup CDS and output it as upper case. If CDS annotation\ncan't be obtained,\

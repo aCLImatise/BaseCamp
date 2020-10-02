@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../relocaTE_trim.py.cwl
+id: relocaTE_trim.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

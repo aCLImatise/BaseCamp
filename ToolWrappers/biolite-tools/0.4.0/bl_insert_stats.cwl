@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bl_insert_stats.cwl
+id: bl_insert_stats.cwl
 inputs:
 - id: in_specify_sam_file
   doc: specify the SAM input file

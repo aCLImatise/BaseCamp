@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergeNotCombined.cwl
+id: mergeNotCombined.cwl
 inputs: []
 outputs:
 - id: out_stdout

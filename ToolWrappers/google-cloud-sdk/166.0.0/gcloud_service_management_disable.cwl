@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_service_management_disable.cwl
+id: gcloud_service_management_disable.cwl
 inputs:
 - id: in_service
   doc: ''

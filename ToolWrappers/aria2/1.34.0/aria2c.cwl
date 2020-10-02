@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aria2c.cwl
+id: aria2c.cwl
 inputs:
 - id: in_log
   doc: "The file name of the log file. If '-' is\nspecified, log is written to stdout.\n\

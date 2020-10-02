@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsbox_bgzip.cwl
+id: htsbox_bgzip.cwl
 inputs:
 - id: in_write_keep_files
   doc: write on standard output, keep original files unchanged

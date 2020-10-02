@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seurat_get_random_genes.R.cwl
+id: seurat_get_random_genes.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

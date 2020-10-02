@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../headRest_count.cwl
+id: headRest_count.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

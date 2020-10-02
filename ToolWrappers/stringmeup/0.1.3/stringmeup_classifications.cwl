@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stringmeup_classifications.cwl
+id: stringmeup_classifications.cwl
 inputs:
 - id: in_confidence_recal
   doc: ''

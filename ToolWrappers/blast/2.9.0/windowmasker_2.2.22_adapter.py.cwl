@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../windowmasker_2.2.22_adapter.py.cwl
+id: windowmasker_2.2.22_adapter.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

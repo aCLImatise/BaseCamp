@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../heartbeat_wrapper.cwl
+id: heartbeat_wrapper.cwl
 inputs:
 - id: in_exit_file
   doc: '[--directory DIRECTORY]'

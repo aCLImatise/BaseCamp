@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../traitar_new.cwl
+id: traitar_new.cwl
 inputs:
 - id: in_models_dir
   doc: directory with phenotype models to be included

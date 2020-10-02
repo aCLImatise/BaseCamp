@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapsembler2_extend.cwl
+id: mapsembler2_extend.cwl
 inputs:
 - id: in_default_strict_sequence
   doc: "Default: 1\n1: a strict sequence: any branching stops the extension\n2: a\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clustering_to_unaligned_fasta.cwl
+id: Clustering_to_unaligned_fasta.cwl
 inputs:
 - id: in_input_file
   doc: ''

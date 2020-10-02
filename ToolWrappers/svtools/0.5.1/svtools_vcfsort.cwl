@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtools_vcfsort.cwl
+id: svtools_vcfsort.cwl
 inputs:
 - id: in_support
   doc: ''

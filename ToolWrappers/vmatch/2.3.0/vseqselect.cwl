@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vseqselect.cwl
+id: vseqselect.cwl
 inputs: []
 outputs:
 - id: out_stdout

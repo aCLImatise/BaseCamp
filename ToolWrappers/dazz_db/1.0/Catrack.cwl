@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Catrack.cwl
+id: Catrack.cwl
 inputs:
 - id: in_v
   doc: ''

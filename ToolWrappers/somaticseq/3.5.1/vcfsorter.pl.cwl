@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfsorter.pl.cwl
+id: vcfsorter.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

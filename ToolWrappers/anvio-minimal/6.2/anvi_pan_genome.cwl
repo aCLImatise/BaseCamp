@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_pan_genome.cwl
+id: anvi_pan_genome.cwl
 inputs:
 - id: in_genomes_storage
   doc: Anvi'o genomes storage file

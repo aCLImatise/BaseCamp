@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anise.cwl
+id: anise.cwl
 inputs:
 - id: in_quiet
   doc: Set verbosity to a minimum.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refine.cwl
+id: refine.cwl
 inputs: []
 outputs:
 - id: out_stdout

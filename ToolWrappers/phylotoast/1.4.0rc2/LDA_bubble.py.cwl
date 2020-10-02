@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LDA_bubble.py.cwl
+id: LDA_bubble.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

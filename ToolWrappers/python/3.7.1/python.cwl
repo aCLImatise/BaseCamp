@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../python.cwl
+id: python.cwl
 inputs:
 - id: in_issue_warnings_strbytesinstance
   doc: ": issue warnings about str(bytes_instance), str(bytearray_instance)\nand comparing\

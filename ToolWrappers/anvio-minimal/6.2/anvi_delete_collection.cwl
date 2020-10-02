@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_delete_collection.cwl
+id: anvi_delete_collection.cwl
 inputs:
 - id: in_profile_db
   doc: Anvi'o profile database

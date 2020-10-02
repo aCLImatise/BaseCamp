@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglobgen.cwl
+id: mglobgen.cwl
 inputs: []
 outputs:
 - id: out_stdout

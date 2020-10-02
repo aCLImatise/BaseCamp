@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf_to_gene_spans.pl.cwl
+id: gtf_to_gene_spans.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

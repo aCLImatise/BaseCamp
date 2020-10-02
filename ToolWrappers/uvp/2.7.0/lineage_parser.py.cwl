@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lineage_parser.py.cwl
+id: lineage_parser.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

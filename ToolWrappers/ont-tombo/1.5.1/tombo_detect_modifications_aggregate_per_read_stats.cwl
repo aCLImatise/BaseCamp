@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: ../../../tombo_detect_modifications_aggregate_per_read_stats.cwl
+id: tombo_detect_modifications_aggregate_per_read_stats.cwl
 inputs:
-- id: in_file_saveload_base
+- id: in_statistics_filename
   doc: File to save/load genomic base anchored statistics.
   type: File
   inputBinding:
     prefix: --statistics-filename
-- id: in_pvalue_log_threshold
+- id: in_single_read_threshold
   doc: "P-value or log likelihood ratio threshold when\ncomputing fraction of significant\
     \ reads at each\ngenomic position. If two values are provided,\nstatistics between\
     \ these values are not considered."
@@ -56,21 +56,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: in_per_read_statistics_filename
-  doc: --statistics-filename
-  type: string
-  inputBinding:
-    position: 0
-- id: in__singlereadthreshold
-  doc: --single-read-threshold
-  type: string
-  inputBinding:
-    position: 1
-- id: in_var_11
-  doc: '[SINGLE_READ_THRESHOLD ...]'
-  type: string
-  inputBinding:
-    position: 2
 outputs:
 - id: out_stdout
   doc: Standard output stream

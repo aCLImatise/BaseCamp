@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_clear_hca_cache.cwl
+id: hca_clear_hca_cache.cwl
 inputs:
 - id: in_log_level
   doc: ''

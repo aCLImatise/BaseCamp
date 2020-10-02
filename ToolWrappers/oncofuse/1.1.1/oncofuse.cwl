@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncofuse.cwl
+id: oncofuse.cwl
 inputs:
 - id: in_genome_assembly_version
   doc: 'Genome assembly version, default is hg19. Allowed values: hg18, hg19, hg38'

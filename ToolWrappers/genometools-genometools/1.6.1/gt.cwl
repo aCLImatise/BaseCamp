@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gt.cwl
+id: gt.cwl
 inputs:
 - id: in_enter_interactive_mode
   doc: enter interactive mode after executing 'tool' or 'script'

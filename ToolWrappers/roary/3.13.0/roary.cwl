@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../roary.cwl
+id: roary.cwl
 inputs:
 - id: in_number_of_threads
   doc: number of threads [1]

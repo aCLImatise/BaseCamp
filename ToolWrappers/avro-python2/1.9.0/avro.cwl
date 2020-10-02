@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../avro.cwl
+id: avro.cwl
 inputs: []
 outputs:
 - id: out_stdout

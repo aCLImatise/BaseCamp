@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_merge_ologram_stats.cwl
+id: gtftk_merge_ologram_stats.cwl
 inputs:
 - id: in_pdf_width
   doc: 'Output pdf file width (inches). (default: None)'

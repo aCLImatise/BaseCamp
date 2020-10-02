@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clearcore2.Data.Contracts.dll.cwl
+id: Clearcore2.Data.Contracts.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../updateDeltaClr.cwl
+id: updateDeltaClr.cwl
 inputs:
 - id: in_version_print_version
   doc: '|version      - Print the version and exit;'

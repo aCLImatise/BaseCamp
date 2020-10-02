@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_gc.cwl
+id: abyss_gc.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

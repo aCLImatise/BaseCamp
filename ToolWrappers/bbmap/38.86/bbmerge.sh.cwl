@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bbmerge.sh.cwl
+id: bbmerge.sh.cwl
 inputs:
 - id: in_x_mx
   doc: "This will set Java's memory usage,\noverriding autodetection.\nFor example,\

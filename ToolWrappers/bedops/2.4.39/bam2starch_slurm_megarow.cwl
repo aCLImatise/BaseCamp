@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2starch_slurm_megarow.cwl
+id: bam2starch_slurm_megarow.cwl
 inputs: []
 outputs:
 - id: out_stdout

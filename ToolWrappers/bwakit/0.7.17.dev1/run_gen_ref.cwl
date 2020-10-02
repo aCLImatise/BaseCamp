@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_gen_ref.cwl
+id: run_gen_ref.cwl
 inputs:
 - id: in_hs_three_eight
   doc: primary assembly of GRCh38 (incl. chromosomes, unplaced and unlocalized contigs)

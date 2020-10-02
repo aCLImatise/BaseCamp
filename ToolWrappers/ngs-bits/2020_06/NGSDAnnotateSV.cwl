@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGSDAnnotateSV.cwl
+id: NGSDAnnotateSV.cwl
 inputs:
 - id: in_in
   doc: BEDPE file containing structural variants.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_calmd.cwl
+id: samtools_calmd.cwl
 inputs:
 - id: in_change_identical_bases
   doc: change identical bases to '='

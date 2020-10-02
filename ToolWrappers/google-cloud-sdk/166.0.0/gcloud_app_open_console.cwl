@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_app_open_console.cwl
+id: gcloud_app_open_console.cwl
 inputs:
 - id: in_logs
   doc: Open the log viewer instead of the App Engine dashboard.

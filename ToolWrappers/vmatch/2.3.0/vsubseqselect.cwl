@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsubseqselect.cwl
+id: vsubseqselect.cwl
 inputs: []
 outputs:
 - id: out_stdout

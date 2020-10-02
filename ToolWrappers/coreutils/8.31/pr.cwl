@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pr.cwl
+id: pr.cwl
 inputs:
 - id: in_columns
   doc: "output COLUMN columns and print columns down,\nunless -a is used. Balance\

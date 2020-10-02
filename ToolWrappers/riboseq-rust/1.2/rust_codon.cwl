@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rust_codon.cwl
+id: rust_codon.cwl
 inputs:
 - id: in_directory_path_outputfile
   doc: directory  path to outputfile, default is "codon"

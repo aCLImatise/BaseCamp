@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../PgSAgen.cwl
+id: PgSAgen.cwl
 inputs:
-- id: in_rate
-  doc: rate [1 - 6]
-  type: long
-  inputBinding:
-    prefix: -r
 - id: in_kmer_length
   doc: kmer length
   type: long
@@ -26,6 +21,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -v
+- id: in_r
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -r
 - id: in_reads_srcfile
   doc: ''
   type: string

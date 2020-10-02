@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scf_info.cwl
+id: scf_info.cwl
 inputs:
 - id: in_scf_filename
   doc: ''

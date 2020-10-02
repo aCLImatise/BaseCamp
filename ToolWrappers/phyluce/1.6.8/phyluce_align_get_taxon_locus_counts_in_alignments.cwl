@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_get_taxon_locus_counts_in_alignments.cwl
+id: phyluce_align_get_taxon_locus_counts_in_alignments.cwl
 inputs:
 - id: in_input_directory_alignment
   doc: The input directory of alignment files

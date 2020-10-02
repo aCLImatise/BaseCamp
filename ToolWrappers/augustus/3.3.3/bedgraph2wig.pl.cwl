@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedgraph2wig.pl.cwl
+id: bedgraph2wig.pl.cwl
 inputs:
 - id: in_bed_graph_file
   doc: ': The path to the bedgraphffile'

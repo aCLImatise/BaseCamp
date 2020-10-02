@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_coverage.cwl
+id: bedtools_coverage.cwl
 inputs:
 - id: in_hist
   doc: "Report a histogram of coverage for each feature in A\nas well as a summary\

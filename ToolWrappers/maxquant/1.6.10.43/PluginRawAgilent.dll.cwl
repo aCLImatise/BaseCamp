@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PluginRawAgilent.dll.cwl
+id: PluginRawAgilent.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

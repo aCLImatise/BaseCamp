@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clustalw2phylip.cwl
+id: clustalw2phylip.cwl
 inputs:
 - id: in_clustalw_two_phy_i_lip
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../inStrain_other.cwl
+id: inStrain_other.cwl
 inputs:
 - id: in_processes
   doc: 'Number of processes to use (default: 6)'

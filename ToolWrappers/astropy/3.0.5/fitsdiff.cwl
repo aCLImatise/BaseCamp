@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fitsdiff.cwl
+id: fitsdiff.cwl
 inputs:
 - id: in_quiet
   doc: Produce no output and just return a status code.

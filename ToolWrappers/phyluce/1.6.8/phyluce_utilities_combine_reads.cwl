@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_utilities_combine_reads.cwl
+id: phyluce_utilities_combine_reads.cwl
 inputs:
 - id: in_config
   doc: The configuration file for reads we are combining

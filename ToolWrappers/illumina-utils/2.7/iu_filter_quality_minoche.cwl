@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iu_filter_quality_minoche.cwl
+id: iu_filter_quality_minoche.cwl
 inputs:
 - id: in_minimum_highquality_read
   doc: 'Minimum high-quality read length (default: 0.75)'

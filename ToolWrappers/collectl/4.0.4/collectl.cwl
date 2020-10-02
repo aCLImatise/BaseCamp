@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../collectl.cwl
+id: collectl.cwl
 inputs:
 - id: in_count
   doc: count      collect this number of samples and exit

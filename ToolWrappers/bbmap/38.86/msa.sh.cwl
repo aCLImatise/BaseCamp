@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msa.sh.cwl
+id: msa.sh.cwl
 inputs:
 - id: in_x_mx
   doc: "This will set Java's memory usage, overriding automatic\nmemory detection.\

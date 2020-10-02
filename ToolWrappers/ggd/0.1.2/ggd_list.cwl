@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ggd_list.cwl
+id: ggd_list.cwl
 inputs:
 - id: in_pattern
   doc: "(Optional) pattern to match the name of the ggd data\npackage."

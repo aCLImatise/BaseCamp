@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kpal.cwl
+id: kpal.cwl
 inputs:
 - id: in_show_programs_version
   doc: show program's version number and exit

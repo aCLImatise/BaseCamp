@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtcyc.cwl
+id: wtcyc.cwl
 inputs:
 - id: in_number_of_threads
   doc: Number of threads, [1]
@@ -68,11 +68,6 @@ inputs:
   type: long
   inputBinding:
     prefix: -T
-- id: in_bandwidth
-  doc: Bandwidth, [800]
-  type: long
-  inputBinding:
-    prefix: -W
 - id: in_long_read_file
   doc: ''
   type: string

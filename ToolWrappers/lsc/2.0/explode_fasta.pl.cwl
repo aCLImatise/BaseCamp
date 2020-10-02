@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../explode_fasta.pl.cwl
+id: explode_fasta.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mentalist_list_pubmlst.cwl
+id: mentalist_list_pubmlst.cwl
 inputs:
 - id: in_prefix
   doc: "Only list schemes where the species name starts\nwith this prefix."

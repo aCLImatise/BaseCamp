@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ambmask.cwl
+id: ambmask.cwl
 inputs:
 - id: in_prm_top
   doc: ': amber topology'

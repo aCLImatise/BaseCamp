@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_bed_to_gtf.cwl
+id: rgt_tools.py_bed_to_gtf.cwl
 inputs:
 - id: in_input_bed_file
   doc: Input BED file

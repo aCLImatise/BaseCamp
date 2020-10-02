@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nextflow_clone.cwl
+id: nextflow_clone.cwl
 inputs:
 - id: in_hub
   doc: Service hub where the project is hosted

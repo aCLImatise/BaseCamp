@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../normalizeGAM.R.cwl
+id: normalizeGAM.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

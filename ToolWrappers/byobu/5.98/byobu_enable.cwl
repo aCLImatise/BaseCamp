@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../byobu_enable.cwl
+id: byobu_enable.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_filter_sam.cwl
+id: dsh_filter_sam.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

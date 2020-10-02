@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cythonize.cwl
+id: cythonize.cwl
 inputs: []
 outputs:
 - id: out_stdout

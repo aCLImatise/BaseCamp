@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trace_scf_dump.cwl
+id: trace_scf_dump.cwl
 inputs:
 - id: in_scf_dump
   doc: ''

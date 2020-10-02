@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktImportKrona.cwl
+id: ktImportKrona.cwl
 inputs:
 - id: in_krona_chart
   doc: "Krona HTML file created with KronaTools or the Krona Excel\nTemplate By default,\

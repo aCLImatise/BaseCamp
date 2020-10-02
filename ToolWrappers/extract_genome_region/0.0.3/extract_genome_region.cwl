@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_genome_region.cwl
+id: extract_genome_region.cwl
 inputs:
 - id: in_naming
   doc: "[csv|seq_range|csv_seq_range]\nOptions regarding how each new fasta record\n\

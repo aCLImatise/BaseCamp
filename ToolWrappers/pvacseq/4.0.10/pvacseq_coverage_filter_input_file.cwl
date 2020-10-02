@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pvacseq_coverage_filter_input_file.cwl
+id: pvacseq_coverage_filter_input_file.cwl
 inputs:
 - id: in_normal_cov
   doc: ''

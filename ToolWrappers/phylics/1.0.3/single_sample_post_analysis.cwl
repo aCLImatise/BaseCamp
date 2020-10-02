@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../single_sample_post_analysis.cwl
+id: single_sample_post_analysis.cwl
 inputs:
 - id: in_seed
   doc: "Seed to initialize the pseudo-random generator used to\nperform the permutation\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_probe.cwl
+id: arb_probe.cwl
 inputs: []
 outputs:
 - id: out_stdout

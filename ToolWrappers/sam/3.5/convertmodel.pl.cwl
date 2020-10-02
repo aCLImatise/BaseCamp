@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertmodel.pl.cwl
+id: convertmodel.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

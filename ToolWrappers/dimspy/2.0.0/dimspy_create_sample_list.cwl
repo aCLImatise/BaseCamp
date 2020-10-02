@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dimspy_create_sample_list.cwl
+id: dimspy_create_sample_list.cwl
 inputs:
 - id: in_input
   doc: "HDF5 file that contains a peak matrix object from one\nof the processing steps."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnftools_curesim2rnf.cwl
+id: rnftools_curesim2rnf.cwl
 inputs:
 - id: in_cure_sim_fast_q
   doc: CuReSim FASTQ file (- for standard input).

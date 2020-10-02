@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqhax_pecheck.cwl
+id: seqhax_pecheck.cwl
 inputs:
 - id: in_output_interleaved_reads
   doc: "Output interleaved reads to FILE. Use - for stdout.\nAll sets of paired end\

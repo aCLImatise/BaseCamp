@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmalign.cwl
+id: cmalign.cwl
 inputs:
 - id: in_output_alignment_file
   doc: ': output the alignment to file <f>, not stdout'

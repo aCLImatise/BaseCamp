@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dipenum.cwl
+id: dipenum.cwl
 inputs:
 - id: in_input_file
   doc: "The input VCF/BCF file (use file:sample to specify\na sample)"

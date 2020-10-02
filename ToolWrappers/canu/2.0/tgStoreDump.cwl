@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tgStoreDump.cwl
+id: tgStoreDump.cwl
 inputs:
 - id: in_path_sequence_store
   doc: path to the sequence store

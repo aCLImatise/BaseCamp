@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coalesceMatches.cwl
+id: coalesceMatches.cwl
 inputs: []
 outputs:
 - id: out_stdout

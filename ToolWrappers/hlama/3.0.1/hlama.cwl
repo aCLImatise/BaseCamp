@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hlama.cwl
+id: hlama.cwl
 inputs:
 - id: in_tumor_normal
   doc: "Path to tumor/normal TSV file, starts tumor/normal\nmode"

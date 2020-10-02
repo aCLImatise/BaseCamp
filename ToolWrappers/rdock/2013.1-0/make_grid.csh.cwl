@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_grid.csh.cwl
+id: make_grid.csh.cwl
 inputs: []
 outputs:
 - id: out_stdout

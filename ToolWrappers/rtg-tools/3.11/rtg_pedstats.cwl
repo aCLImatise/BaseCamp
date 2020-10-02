@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_pedstats.cwl
+id: rtg_pedstats.cwl
 inputs:
 - id: in_delimiter
   doc: output id lists using this separator (Default is \n)

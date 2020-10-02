@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ggsearch36.cwl
+id: ggsearch36.cwl
 inputs:
 - id: in_compare_forward_strand
   doc: compare forward strand only

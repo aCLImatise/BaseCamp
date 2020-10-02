@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BlastAlignP.cwl
+id: BlastAlignP.cwl
 inputs:
 - id: in_tf_leave_stop
   doc: <T/F> Leave in stop codons T(rue)/F(alse - replace with gaps). Optional; default

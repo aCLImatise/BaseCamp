@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_splitAlignmentOverlaps.cwl
+id: cactus_splitAlignmentOverlaps.cwl
 inputs: []
 outputs:
 - id: out_stdout

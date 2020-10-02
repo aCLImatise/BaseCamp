@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eleredef.cwl
+id: eleredef.cwl
 inputs:
 - id: in_re_def
   doc: ''

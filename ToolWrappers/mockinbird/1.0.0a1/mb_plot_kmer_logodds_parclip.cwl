@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_plot_kmer_logodds_parclip.cwl
+id: mb_plot_kmer_logodds_parclip.cwl
 inputs:
 - id: in_gff
   doc: ''

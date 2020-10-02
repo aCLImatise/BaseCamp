@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicstuff_pipeline.cwl
+id: hicstuff_pipeline.cwl
 inputs:
 - id: in_aligner
   doc: "Alignment software to use. Can be either\nbowtie2, minimap2 or bwa. minimap2\

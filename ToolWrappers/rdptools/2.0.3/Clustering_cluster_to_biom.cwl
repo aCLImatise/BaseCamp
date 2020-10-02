@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clustering_cluster_to_biom.cwl
+id: Clustering_cluster_to_biom.cwl
 inputs:
 - id: in_cluster_file
   doc: ''

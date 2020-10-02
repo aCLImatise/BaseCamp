@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Epsilon_NB.py.cwl
+id: Epsilon_NB.py.cwl
 inputs:
 - id: in_nb_results
   doc: ''

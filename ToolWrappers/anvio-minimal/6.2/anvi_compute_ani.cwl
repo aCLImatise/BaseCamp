@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_compute_ani.cwl
+id: anvi_compute_ani.cwl
 inputs: []
 outputs:
 - id: out_stdout

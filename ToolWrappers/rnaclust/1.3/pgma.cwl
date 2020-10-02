@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pgma.cwl
+id: pgma.cwl
 inputs:
 - id: in_names
   doc: ''

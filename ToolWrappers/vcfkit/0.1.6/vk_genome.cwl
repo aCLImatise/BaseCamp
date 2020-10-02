@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vk_genome.cwl
+id: vk_genome.cwl
 inputs:
 - id: in_directory
   doc: Set Genome Directory

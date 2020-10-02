@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SamT2k.pm.cwl
+id: SamT2k.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faSomeRecords.cwl
+id: faSomeRecords.cwl
 inputs:
 - id: in_exclude
   doc: '- output sequences not in the list file.'

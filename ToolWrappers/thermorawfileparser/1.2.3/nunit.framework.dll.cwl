@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nunit.framework.dll.cwl
+id: nunit.framework.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

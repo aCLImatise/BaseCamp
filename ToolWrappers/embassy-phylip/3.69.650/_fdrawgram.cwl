@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fdrawgram.cwl
+id: _fdrawgram.cwl
 inputs:
 - id: in_style
   doc: "menu       [c] Tree style output (Values: c (cladogram\n(v-shaped)); p (phenogram\

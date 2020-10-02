@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../swalign.cwl
+id: swalign.cwl
 inputs:
 - id: in_match_score_default
   doc: 'Match score (default: 2)'

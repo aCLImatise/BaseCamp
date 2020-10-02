@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fpa_keep_FLAGS.cwl
+id: fpa_keep_FLAGS.cwl
 inputs:
 - id: in_input
   doc: ''

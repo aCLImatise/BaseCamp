@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtgbo.cwl
+id: wtgbo.cwl
 inputs:
 - id: in_number_of_threads
   doc: Number of threads, [1]

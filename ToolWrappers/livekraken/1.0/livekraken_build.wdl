@@ -12,7 +12,6 @@ task Livekrakenbuild {
     Boolean? standard
     Boolean? upgrade
     String? db
-    Boolean? help_slash_version
     Boolean? threads
     String? new_db
     Int? km_er_len
@@ -36,7 +35,6 @@ task Livekrakenbuild {
       ~{if (standard) then "--standard" else ""} \
       ~{if (upgrade) then "--upgrade" else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
-      ~{if (help_slash_version) then "--help/--version" else ""} \
       ~{if (threads) then "--threads" else ""} \
       ~{if defined(new_db) then ("--new-db " +  '"' + new_db + '"') else ""} \
       ~{if defined(km_er_len) then ("--kmer-len " +  '"' + km_er_len + '"') else ""} \
@@ -57,7 +55,6 @@ task Livekrakenbuild {
     standard: "Download and create default database"
     upgrade: "Upgrade an existing older database to use scrambled\\nminimizer ordering (see README for details)"
     db: "Kraken DB/library name (mandatory except for"
-    help_slash_version: ")"
     threads: "#                Number of threads (def: 1)"
     new_db: "New Kraken DB name (shrink task only; mandatory\\nfor shrink task)"
     km_er_len: "K-mer length in bp (build/shrink tasks only;\\ndef: 31)"

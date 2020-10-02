@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fftw_wisdom_to_conf.cwl
+id: fftw_wisdom_to_conf.cwl
 inputs: []
 outputs:
 - id: out_stdout

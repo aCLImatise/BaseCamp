@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../go2godb_prestore.cwl
+id: go2godb_prestore.cwl
 inputs: []
 outputs:
 - id: out_stdout

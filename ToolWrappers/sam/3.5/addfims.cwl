@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addfims.cwl
+id: addfims.cwl
 inputs:
 - id: in_option
   doc: ''

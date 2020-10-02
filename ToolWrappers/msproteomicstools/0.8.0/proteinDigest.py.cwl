@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinDigest.py.cwl
+id: proteinDigest.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

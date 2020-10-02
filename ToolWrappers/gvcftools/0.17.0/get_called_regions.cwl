@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_called_regions.cwl
+id: get_called_regions.cwl
 inputs:
 - id: in_gvc_f
   doc: ''

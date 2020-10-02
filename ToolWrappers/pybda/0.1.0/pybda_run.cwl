@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pybda_run.cwl
+id: pybda_run.cwl
 inputs:
 - id: in_config
   doc: ''

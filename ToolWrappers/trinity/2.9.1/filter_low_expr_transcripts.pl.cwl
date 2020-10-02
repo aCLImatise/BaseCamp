@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_low_expr_transcripts.pl.cwl
+id: filter_low_expr_transcripts.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qpWave.cwl
+id: qpWave.cwl
 inputs:
 - id: in_use_parameters_file
   doc: '... use parameters from <file> .'

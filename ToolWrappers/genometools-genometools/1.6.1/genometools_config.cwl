@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../genometools_config.cwl
-inputs:
-- id: in_cppflags
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -cppflags
+id: genometools_config.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

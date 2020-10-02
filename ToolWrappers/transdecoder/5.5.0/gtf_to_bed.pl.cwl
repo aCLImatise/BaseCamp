@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf_to_bed.pl.cwl
+id: gtf_to_bed.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

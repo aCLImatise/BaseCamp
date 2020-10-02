@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shapeshift.cwl
+id: shapeshift.cwl
 inputs:
 - id: in_input_file_type
   doc: "Type of file to be imported. If not specified, file\ntype will be determined\

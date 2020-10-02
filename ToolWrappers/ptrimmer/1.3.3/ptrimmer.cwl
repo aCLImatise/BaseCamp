@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ptrimmer.cwl
+id: ptrimmer.cwl
 inputs:
 - id: in_keep
   doc: "keep the complete reads if failed to locate primer\nsequence [default: discard\

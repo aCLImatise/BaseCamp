@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kronos_make_component.cwl
+id: kronos_make_component.cwl
 inputs:
 - id: in_component_name
   doc: a name for the component to be generated

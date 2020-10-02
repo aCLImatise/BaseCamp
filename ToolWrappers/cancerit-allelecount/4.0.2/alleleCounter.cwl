@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alleleCounter.cwl
+id: alleleCounter.cwl
 inputs:
 - id: in_loci_file
   doc: '[file]           Path to loci file.'

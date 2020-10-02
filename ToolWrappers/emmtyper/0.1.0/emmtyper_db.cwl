@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../emmtyper_db.cwl
+id: emmtyper_db.cwl
 inputs:
 - id: in_db_folder
   doc: "Where to update the DB  [default:\n/usr/local/lib/python3.7/site-packages/emmtyper/db]"

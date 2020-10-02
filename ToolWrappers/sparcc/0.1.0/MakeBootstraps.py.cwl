@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MakeBootstraps.py.cwl
+id: MakeBootstraps.py.cwl
 inputs:
 - id: in_number_simulated_datasets
   doc: Number of simulated datasets to create (100 default).

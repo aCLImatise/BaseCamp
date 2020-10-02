@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglobgrep.cwl
+id: mglobgrep.cwl
 inputs: []
 outputs:
 - id: out_stdout

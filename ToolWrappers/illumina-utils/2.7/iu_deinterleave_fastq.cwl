@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iu_deinterleave_fastq.cwl
+id: iu_deinterleave_fastq.cwl
 inputs:
 - id: in_two
   doc: ''

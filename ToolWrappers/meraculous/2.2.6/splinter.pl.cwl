@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splinter.pl.cwl
+id: splinter.pl.cwl
 inputs:
 - id: in_more_options
   doc: ''

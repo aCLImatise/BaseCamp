@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../convert2blastmask.cwl
+id: convert2blastmask.cwl
 inputs:
 - id: in_masking_algorithm
-  doc: ''
+  doc: '[-version]'
   type: string
   inputBinding:
     prefix: -masking_algorithm

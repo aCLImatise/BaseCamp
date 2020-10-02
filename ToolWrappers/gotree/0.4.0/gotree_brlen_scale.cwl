@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_brlen_scale.cwl
+id: gotree_brlen_scale.cwl
 inputs:
 - id: in_factor
   doc: Branch length scaling factor (default 1)

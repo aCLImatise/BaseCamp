@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ratt.cwl
+id: ratt.cwl
 inputs: []
 outputs:
 - id: out_stdout

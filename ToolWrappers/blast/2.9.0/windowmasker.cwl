@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../windowmasker.cwl
+id: windowmasker.cwl
 inputs: []
 outputs:
 - id: out_stdout

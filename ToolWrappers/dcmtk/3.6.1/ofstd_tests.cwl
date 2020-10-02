@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ofstd_tests.cwl
+id: ofstd_tests.cwl
 inputs:
 - id: in_list
   doc: list available tests and exit

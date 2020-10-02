@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_alimap_msafile2.cwl
+id: esl_alimap_msafile2.cwl
 inputs:
 - id: in_esl_ali_map
   doc: ''

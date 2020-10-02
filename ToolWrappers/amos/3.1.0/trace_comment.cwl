@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trace_comment.cwl
+id: trace_comment.cwl
 inputs:
 - id: in_suppresses_display_fieldid
   doc: Suppresses display of field-ID

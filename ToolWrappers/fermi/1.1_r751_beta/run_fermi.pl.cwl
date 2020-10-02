@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_fermi.pl.cwl
+id: run_fermi.pl.cwl
 inputs:
 - id: in_input_files_paired
   doc: the input files are paired (ends in separate files)

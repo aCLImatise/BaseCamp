@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sizeseq.cwl
+id: sizeseq.cwl
 inputs:
 - id: in_descending
   doc: "boolean    [N] By default the shortest sequence is\ngiven first."

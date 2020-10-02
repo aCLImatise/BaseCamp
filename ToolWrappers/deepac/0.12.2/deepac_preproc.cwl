@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_preproc.cwl
+id: deepac_preproc.cwl
 inputs:
 - id: in_config
   doc: Preprocessing config file.

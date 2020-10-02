@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reparation.pl.cwl
+id: reparation.pl.cwl
 inputs:
 - id: in_bam
   doc: Ribosome alignment file (bam)

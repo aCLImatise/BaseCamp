@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reports.py_plot_coverage.cwl
+id: reports.py_plot_coverage.cwl
 inputs:
 - id: in_plot_format
   doc: "File format of the coverage plot. By default it is\ninferred from the file\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bgzip.pl.cwl
+id: bgzip.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

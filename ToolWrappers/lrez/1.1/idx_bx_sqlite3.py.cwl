@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idx_bx_sqlite3.py.cwl
+id: idx_bx_sqlite3.py.cwl
 inputs:
 - id: in_basic
   doc: "barcoded Fastq file from reads obtained with\nlongranger basic"

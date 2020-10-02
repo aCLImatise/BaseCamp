@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergeBed.cwl
+id: mergeBed.cwl
 inputs:
 - id: in_force_strandedness_only
   doc: "Force strandedness.  That is, only merge features\nthat are on the same strand.\n\

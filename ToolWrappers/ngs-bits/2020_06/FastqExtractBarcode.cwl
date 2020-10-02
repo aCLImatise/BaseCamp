@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FastqExtractBarcode.cwl
+id: FastqExtractBarcode.cwl
 inputs:
 - id: in_in
   doc: input fastq file1.

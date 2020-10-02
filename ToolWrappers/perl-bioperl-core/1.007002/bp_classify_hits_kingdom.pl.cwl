@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: ../../../bp_classify_hits_kingdom.pl.cwl
+id: bp_classify_hits_kingdom.pl.cwl
 inputs:
-- id: in_usage
-  doc: "bp_classify_hits_kingdom [-i tab_file] [-i second_BLAST_file] [-e\nevalue_cutoff]\
-    \ [-t dir_where_TAXONOMY_files_are] [-g gi2taxid] [-z\nPATH_TO_zcat] [-v]"
-  type: string
-  inputBinding:
-    position: 0
 - id: in_description
   doc: "Will print out the taxonomic distribution (at the kingdom level) for a\nset\
     \ of hits against the NR database. By default, this script assumes you\ndid a\
@@ -29,12 +23,12 @@ inputs:
     \ in\nyour directory after making these changes."
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: in_author
   doc: Jason Stajich jason_at_bioperl_dot_org
   type: string
   inputBinding:
-    position: 2
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

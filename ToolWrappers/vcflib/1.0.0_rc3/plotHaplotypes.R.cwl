@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plotHaplotypes.R.cwl
+id: plotHaplotypes.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

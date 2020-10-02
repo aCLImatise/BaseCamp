@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_supported_organisms.cwl
+id: rsat_supported_organisms.cwl
 inputs: []
 outputs:
 - id: out_stdout

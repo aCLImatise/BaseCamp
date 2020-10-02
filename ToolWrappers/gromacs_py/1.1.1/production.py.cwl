@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../production.py.cwl
+id: production.py.cwl
 inputs:
 - id: in_input_pdb_file
   doc: Input PDB file

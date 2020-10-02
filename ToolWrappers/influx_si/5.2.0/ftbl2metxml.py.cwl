@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ftbl2metxml.py.cwl
+id: ftbl2metxml.py.cwl
 inputs:
 - id: in_network
   doc: ''

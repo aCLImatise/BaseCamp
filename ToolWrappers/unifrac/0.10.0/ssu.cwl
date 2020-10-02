@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu.cwl
+id: ssu.cwl
 inputs:
 - id: in_input_biom_table
   doc: The input BIOM table.

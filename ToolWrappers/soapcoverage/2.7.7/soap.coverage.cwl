@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../soap.coverage.cwl
+id: soap.coverage.cwl
 inputs:
 - id: in_cvg
   doc: "Selector for sequencing coverage mode, physical coverage mode or reads tag\

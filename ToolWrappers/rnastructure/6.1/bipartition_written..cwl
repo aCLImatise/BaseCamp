@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bipartition_written..cwl
+id: bipartition_written..cwl
 inputs:
 - id: in_bi_partition
   doc: ''

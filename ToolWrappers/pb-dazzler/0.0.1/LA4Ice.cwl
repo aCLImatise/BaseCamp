@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LA4Ice.cwl
+id: LA4Ice.cwl
 inputs:
 - id: in_car_me_uf
   doc: ''

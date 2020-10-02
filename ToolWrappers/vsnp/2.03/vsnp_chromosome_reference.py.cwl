@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsnp_chromosome_reference.py.cwl
+id: vsnp_chromosome_reference.py.cwl
 inputs:
 - id: in_cwd
   doc: 'Optional: path to VCF files'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamfillquery.cwl
+id: bamfillquery.cwl
 inputs: []
 outputs:
 - id: out_stdout

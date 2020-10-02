@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sfs_code.cwl
+id: sfs_code.cwl
 inputs:
 - id: in_mutation
   doc: "[P <population>] [L <locus>] [S <site>] [G <gamma>]\nAdd mutation at specified\

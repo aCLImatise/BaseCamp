@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqsplit.cwl
+id: seqsplit.cwl
 inputs:
 - id: in_output_new_fasta
   doc: ': output the new FASTA file to <file>'

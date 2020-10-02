@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsnp_excel_merge_files.py.cwl
+id: vsnp_excel_merge_files.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

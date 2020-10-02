@@ -1,16 +1,12 @@
 class: CommandLineTool
-id: ../../../fastq_utils_di.cwl
+id: fastq_utils_di.cwl
 inputs:
 - id: in_verbose
-  doc: ''
+  doc: "-s, --strip    Strip additional info\n--help         Show this message and\
+    \ exit.\n"
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: in_strip
-  doc: Strip additional info
-  type: boolean
-  inputBinding:
-    prefix: --strip
 - id: in_fast_q_file
   doc: ''
   type: string

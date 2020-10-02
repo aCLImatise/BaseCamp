@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tac.cwl
+id: tac.cwl
 inputs:
 - id: in_before
   doc: attach the separator before instead of after

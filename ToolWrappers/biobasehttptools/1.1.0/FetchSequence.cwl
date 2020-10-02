@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FetchSequence.cwl
+id: FetchSequence.cwl
 inputs:
 - id: in_geneid
   doc: Gene id

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../import_transcript_clusters.pl.cwl
+id: import_transcript_clusters.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

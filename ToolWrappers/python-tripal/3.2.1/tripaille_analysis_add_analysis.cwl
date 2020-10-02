@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_analysis_add_analysis.cwl
+id: tripaille_analysis_add_analysis.cwl
 inputs:
 - id: in_algorithm
   doc: analysis algorithm

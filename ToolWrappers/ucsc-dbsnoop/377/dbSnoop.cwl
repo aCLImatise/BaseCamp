@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dbSnoop.cwl
+id: dbSnoop.cwl
 inputs:
 - id: in_unsplit
   doc: '- if set will merge together tables split by chromosome'

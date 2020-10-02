@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AssemblyStatistics.cwl
+id: AssemblyStatistics.cwl
 inputs: []
 outputs:
 - id: out_stdout

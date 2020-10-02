@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TransformationEvaluation.cwl
+id: TransformationEvaluation.cwl
 inputs:
 - id: in_in
   doc: "*        Input file containing the transformation description (valid formats:\

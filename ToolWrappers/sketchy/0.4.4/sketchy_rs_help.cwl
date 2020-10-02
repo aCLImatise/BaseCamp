@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_rs_help.cwl
+id: sketchy_rs_help.cwl
 inputs:
 - id: in_for
   doc: ''

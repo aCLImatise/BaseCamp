@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqmerge_OUTPUT.cwl
+id: seqmerge_OUTPUT.cwl
 inputs:
 - id: in_s
   doc: ''

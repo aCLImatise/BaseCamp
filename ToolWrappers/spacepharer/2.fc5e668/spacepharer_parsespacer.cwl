@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spacepharer_parsespacer.cwl
+id: spacepharer_parsespacer.cwl
 inputs:
 - id: in_threads
   doc: Number of CPU-cores used (all by default) [8]

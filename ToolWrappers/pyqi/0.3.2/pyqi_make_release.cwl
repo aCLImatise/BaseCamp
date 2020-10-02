@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyqi_make_release.cwl
+id: pyqi_make_release.cwl
 inputs:
 - id: in_real_run
   doc: 'Perform a real run [default: False]'

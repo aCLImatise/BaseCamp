@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../table_add_column.py.cwl
+id: table_add_column.py.cwl
 inputs:
 - id: in_header
   doc: keep header in output

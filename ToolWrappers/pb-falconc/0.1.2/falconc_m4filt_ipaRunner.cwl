@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconc_m4filt_ipaRunner.cwl
+id: falconc_m4filt_ipaRunner.cwl
 inputs:
 - id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'

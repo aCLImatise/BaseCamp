@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../call_sbatch.py.cwl
+id: call_sbatch.py.cwl
 inputs:
 - id: in_num_cpus
   doc: 'The number of CPUs to use (default: 1)'

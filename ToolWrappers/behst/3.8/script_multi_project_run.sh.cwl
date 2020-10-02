@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../script_multi_project_run.sh.cwl
+id: script_multi_project_run.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

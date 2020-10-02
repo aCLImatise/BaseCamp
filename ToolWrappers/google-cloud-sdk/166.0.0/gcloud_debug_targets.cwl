@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_debug_targets.cwl
+id: gcloud_debug_targets.cwl
 inputs:
 - id: in_targets
   doc: SYNOPSIS

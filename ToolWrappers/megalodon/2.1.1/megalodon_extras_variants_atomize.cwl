@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_variants_atomize.cwl
+id: megalodon_extras_variants_atomize.cwl
 inputs:
 - id: in_out_vcf
   doc: 'Output VCF file. Default:'

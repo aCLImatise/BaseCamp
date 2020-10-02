@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNA_fragment_size.py.cwl
+id: RNA_fragment_size.py.cwl
 inputs:
 - id: in_input
   doc: Input BAM file

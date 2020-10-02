@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs2.sh.cwl
+id: mmseqs2.sh.cwl
 inputs:
 - id: in_dont_split_seq_by_len
   doc: Dont split sequences by --max-seq-len [1, set to 0 to disable]

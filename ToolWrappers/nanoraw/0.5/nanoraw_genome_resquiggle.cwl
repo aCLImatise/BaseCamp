@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanoraw_genome_resquiggle.cwl
+id: nanoraw_genome_resquiggle.cwl
 inputs:
 - id: in_base_call_subgroups
   doc: "FAST5 subgroup (under Analyses/[corrected-group])\nwhere individual template\

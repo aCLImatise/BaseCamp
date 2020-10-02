@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pls_regression.cwl
+id: pls_regression.cwl
 inputs:
 - id: in_config
   doc: Configuration file

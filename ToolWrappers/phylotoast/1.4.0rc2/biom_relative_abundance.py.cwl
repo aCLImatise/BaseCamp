@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biom_relative_abundance.py.cwl
+id: biom_relative_abundance.py.cwl
 inputs:
 - id: in_input_biom_fp
   doc: BIOM file path.

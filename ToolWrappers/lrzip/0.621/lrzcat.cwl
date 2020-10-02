@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lrzcat.cwl
+id: lrzcat.cwl
 inputs:
 - id: in_check
   doc: check integrity of file written on decompression

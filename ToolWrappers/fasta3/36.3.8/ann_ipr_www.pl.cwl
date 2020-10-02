@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ann_ipr_www.pl.cwl
+id: ann_ipr_www.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

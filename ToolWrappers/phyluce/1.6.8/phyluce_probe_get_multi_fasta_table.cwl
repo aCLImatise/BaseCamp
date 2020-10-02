@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_probe_get_multi_fasta_table.cwl
+id: phyluce_probe_get_multi_fasta_table.cwl
 inputs:
 - id: in_fast_as
   doc: A folder of fasta files.

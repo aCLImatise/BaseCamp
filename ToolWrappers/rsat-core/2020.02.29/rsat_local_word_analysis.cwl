@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_local_word_analysis.cwl
+id: rsat_local_word_analysis.cwl
 inputs:
 - id: in__verbosity_set
   doc: '#, --verbosity=#   set verbosity to level #'

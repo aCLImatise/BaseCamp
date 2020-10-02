@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bracken.cwl
+id: bracken.cwl
 inputs:
 - id: in_t
   doc: ''

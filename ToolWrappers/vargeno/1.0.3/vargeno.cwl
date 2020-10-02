@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vargeno.cwl
+id: vargeno.cwl
 inputs:
 - id: in_option
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../macs2_bdgcmp.cwl
+id: macs2_bdgcmp.cwl
 inputs:
 - id: in_t_file
   doc: "Treatment bedGraph file, e.g. *_treat_pileup.bdg from\nMACSv2. REQUIRED"

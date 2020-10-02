@@ -1,9 +1,9 @@
 class: CommandLineTool
-id: ../../../phyluce_probe_get_screened_loci_by_proximity.cwl
+id: phyluce_probe_get_screened_loci_by_proximity.cwl
 inputs:
 - id: in_output
-  doc: ''
-  type: string
+  doc: "[--distance DISTANCE]\n[--length LENGTH]"
+  type: long
   inputBinding:
     prefix: --output
 - id: in_input

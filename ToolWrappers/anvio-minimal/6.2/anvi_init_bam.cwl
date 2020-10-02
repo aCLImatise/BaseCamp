@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_init_bam.cwl
+id: anvi_init_bam.cwl
 inputs:
 - id: in_output_file
   doc: File path to store results.

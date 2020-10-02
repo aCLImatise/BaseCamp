@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getTargetSpecificKmersStat.cwl
+id: getTargetSpecificKmersStat.cwl
 inputs: []
 outputs:
 - id: out_stdout

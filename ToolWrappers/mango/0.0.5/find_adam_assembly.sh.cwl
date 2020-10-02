@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_adam_assembly.sh.cwl
+id: find_adam_assembly.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

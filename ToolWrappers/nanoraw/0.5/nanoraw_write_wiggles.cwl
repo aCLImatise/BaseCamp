@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanoraw_write_wiggles.cwl
+id: nanoraw_write_wiggles.cwl
 inputs:
 - id: in_base_call_subgroups
   doc: "FAST5 subgroup (under Analyses/[corrected-group])\nwhere individual template\

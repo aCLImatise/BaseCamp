@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi2.pl_utglog.cwl
+id: fermi2.pl_utglog.cwl
 inputs:
 - id: in_prefix
   doc: ''

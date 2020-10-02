@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uropa_summary.R.cwl
+id: uropa_summary.R.cwl
 inputs:
 - id: in_final_hits
   doc: file containing the final hits from UROPA.

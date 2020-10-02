@@ -2,8 +2,6 @@ version 1.0
 
 task PathwaymatcherpyMatchmodifiedpeptides {
   input {
-    File? f
-    File? i
     File? mapping
     File? fast_a
     Boolean? graph
@@ -24,8 +22,6 @@ task PathwaymatcherpyMatchmodifiedpeptides {
     pathwaymatcher_py match_modified_peptides \
       ~{java} \
       ~{match_modified_peptides} \
-      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
-      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
       ~{if defined(mapping) then ("--mapping " +  '"' + mapping + '"') else ""} \
       ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
       ~{if (graph) then "--graph" else ""} \
@@ -41,8 +37,6 @@ task PathwaymatcherpyMatchmodifiedpeptides {
       ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
   parameter_meta {
-    f: ""
-    i: ""
     mapping: "Path to directory with the static mapping files. By\\ndefault uses the mapping files integrated in the jar\\nfile."
     fast_a: "Path and name of the fasta file containing the Proteins\\nwhere to find the peptides."
     graph: "Create default connection graph according to input type."

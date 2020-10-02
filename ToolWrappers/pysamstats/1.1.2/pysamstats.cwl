@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pysamstats.cwl
+id: pysamstats.cwl
 inputs:
 - id: in_type
   doc: "Type of statistics to print, one of: alignment_binned,\nbaseq, baseq_ext,\

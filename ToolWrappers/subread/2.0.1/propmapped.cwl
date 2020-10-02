@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../propmapped.cwl
+id: propmapped.cwl
 inputs:
 - id: in_input_file_containing
   doc: "An input file containing read mapping results. Both SAM or BAM\nformats are\

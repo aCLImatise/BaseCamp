@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prosolo_estimate_mutation_rate.cwl
+id: prosolo_estimate_mutation_rate.cwl
 inputs:
 - id: in_fit
   doc: Path to file that will contain observations and the parameters of the fitted

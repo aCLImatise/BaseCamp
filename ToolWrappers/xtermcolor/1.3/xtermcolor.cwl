@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xtermcolor.cwl
+id: xtermcolor.cwl
 inputs:
 - id: in_color
   doc: Color to convert

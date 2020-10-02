@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlapAlign.cwl
+id: overlapAlign.cwl
 inputs:
 - id: in_mandatory_path_seqstore
   doc: Mandatory, path to seqStore sequences.
@@ -16,16 +16,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -r
-- id: in_trim
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -trim
-- id: in_apply
-  doc: <...>
-  type: File
-  inputBinding:
-    prefix: -apply
 - id: in_erate
   doc: Overlaps are computed at 'e' fraction error; must be larger than the original
     erate

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cython.cwl
+id: cython.cwl
 inputs: []
 outputs:
 - id: out_stdout

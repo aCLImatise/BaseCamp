@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../illumina.py_illumina_demux.cwl
+id: illumina.py_illumina_demux.cwl
 inputs:
 - id: in_out_metrics
   doc: "Output ExtractIlluminaBarcodes metrics file. Default\nis to dump to a temp\

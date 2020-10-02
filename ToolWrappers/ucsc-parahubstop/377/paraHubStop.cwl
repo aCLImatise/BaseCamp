@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paraHubStop.cwl
+id: paraHubStop.cwl
 inputs: []
 outputs:
 - id: out_stdout

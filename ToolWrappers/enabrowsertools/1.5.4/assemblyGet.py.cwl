@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../assemblyGet.py.cwl
+id: assemblyGet.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

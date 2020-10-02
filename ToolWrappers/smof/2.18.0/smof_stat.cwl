@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_stat.cwl
+id: smof_stat.cwl
 inputs:
 - id: in_delimiter
   doc: output delimiter

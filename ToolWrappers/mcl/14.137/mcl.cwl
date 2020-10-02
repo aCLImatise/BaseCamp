@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mcl.cwl
+id: mcl.cwl
 inputs:
 - id: in_write_output_file
   doc: '!  write output to file <fname>'

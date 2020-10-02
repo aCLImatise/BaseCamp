@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../removehuman.sh.cwl
+id: removehuman.sh.cwl
 inputs:
 - id: in_in
   doc: ''

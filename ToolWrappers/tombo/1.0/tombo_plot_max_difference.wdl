@@ -3,7 +3,7 @@ version 1.0
 task TomboPlotMaxDifference {
   input {
     Array[Int] fast_five_based_irs
-    Array[Int] control_set_directories
+    Array[Int] control_fast_five_based_irs
     Int? over_plot_threshold
     String? over_plot_type
     Int? num_regions
@@ -13,13 +13,11 @@ task TomboPlotMaxDifference {
     Int? corrected_group
     Array[String] base_call_subgroups
     Boolean? quiet
-    Int var_11
   }
   command <<<
     tombo plot_max_difference \
-      ~{var_11} \
       ~{if defined(fast_five_based_irs) then ("--fast5-basedirs " +  '"' + fast_five_based_irs + '"') else ""} \
-      ~{if defined(control_set_directories) then ("--control-fast5-basedirs " +  '"' + control_set_directories + '"') else ""} \
+      ~{if defined(control_fast_five_based_irs) then ("--control-fast5-basedirs " +  '"' + control_fast_five_based_irs + '"') else ""} \
       ~{if defined(over_plot_threshold) then ("--overplot-threshold " +  '"' + over_plot_threshold + '"') else ""} \
       ~{if defined(over_plot_type) then ("--overplot-type " +  '"' + over_plot_type + '"') else ""} \
       ~{if defined(num_regions) then ("--num-regions " +  '"' + num_regions + '"') else ""} \
@@ -32,7 +30,7 @@ task TomboPlotMaxDifference {
   >>>
   parameter_meta {
     fast_five_based_irs: "Directories containing fast5 files."
-    control_set_directories: "Control set of directories containing fast5 files.\\nThese reads should contain only standard nucleotides."
+    control_fast_five_based_irs: "Control set of directories containing fast5 files.\\nThese reads should contain only standard nucleotides."
     over_plot_threshold: "Coverage level to trigger alternative plot type\\ninstead of raw signal. Default: 50"
     over_plot_type: "Plot type for regions with higher coverage. Default:\\nDownsample"
     num_regions: "Number of regions to plot. Default: 10"
@@ -42,7 +40,6 @@ task TomboPlotMaxDifference {
     corrected_group: "FAST5 group created by resquiggle command. Default:\\nRawGenomeCorrected_000"
     base_call_subgroups: "FAST5 subgroup(s) (under Analyses/[corrected-group])\\ncontaining basecalls. Default: ['BaseCalled_template']"
     quiet: "Don't print status information."
-    var_11: "[CONTROL_FAST5_BASEDIRS ...]"
   }
   output {
     File out_stdout = stdout()

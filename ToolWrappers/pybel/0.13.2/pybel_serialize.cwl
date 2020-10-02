@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pybel_serialize.cwl
+id: pybel_serialize.cwl
 inputs:
 - id: in_csv
   doc: Path to output a CSV file.

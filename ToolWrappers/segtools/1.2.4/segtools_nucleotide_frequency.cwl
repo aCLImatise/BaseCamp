@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segtools_nucleotide_frequency.cwl
+id: segtools_nucleotide_frequency.cwl
 inputs:
 - id: in_clobber
   doc: Overwrite any existing output files.

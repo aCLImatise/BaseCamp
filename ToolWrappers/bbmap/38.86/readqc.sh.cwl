@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../readqc.sh.cwl
+id: readqc.sh.cwl
 inputs:
 - id: in_in
   doc: ''

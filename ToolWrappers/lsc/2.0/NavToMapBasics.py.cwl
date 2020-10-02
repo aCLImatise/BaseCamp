@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NavToMapBasics.py.cwl
+id: NavToMapBasics.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

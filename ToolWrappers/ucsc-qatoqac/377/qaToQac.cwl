@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qaToQac.cwl
+id: qaToQac.cwl
 inputs:
 - id: in_in_dot_qa
   doc: ''

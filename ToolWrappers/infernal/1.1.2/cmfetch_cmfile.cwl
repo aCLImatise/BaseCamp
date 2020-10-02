@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cmfetch_cmfile.cwl
+id: cmfetch_cmfile.cwl
 inputs:
 - id: in_index
   doc: ''

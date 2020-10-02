@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../createBackboneMFA.cwl
+id: createBackboneMFA.cwl
 inputs:
 - id: in_input_interval_file
   doc: ''

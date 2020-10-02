@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../binlinks.cwl
+id: binlinks.cwl
 inputs:
 - id: in_link_end
   doc: '|1|2|3'
   type: File
   inputBinding:
     prefix: -link_end
-- id: in_output_style
-  doc: '|1|2'
-  type: long
-  inputBinding:
-    prefix: -output_style
 - id: in_bin_size
   doc: ''
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meme.cwl
+id: meme.cwl
 inputs:
 - id: in_alignment
   doc: '[-wg <wg>]              gap opening cost for multiple alignments'

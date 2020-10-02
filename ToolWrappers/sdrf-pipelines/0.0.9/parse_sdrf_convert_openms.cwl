@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parse_sdrf_convert_openms.cwl
+id: parse_sdrf_convert_openms.cwl
 inputs:
 - id: in_sd_rf
   doc: SDRF file

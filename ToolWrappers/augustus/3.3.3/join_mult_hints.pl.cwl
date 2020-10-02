@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../join_mult_hints.pl.cwl
+id: join_mult_hints.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

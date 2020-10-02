@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../roundtrip.cwl
+id: roundtrip.cwl
 inputs:
 - id: in_file_one
   doc: ''

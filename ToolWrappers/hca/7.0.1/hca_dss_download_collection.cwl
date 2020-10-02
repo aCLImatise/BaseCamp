@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_download_collection.cwl
+id: hca_dss_download_collection.cwl
 inputs:
 - id: in_uuid
   doc: The uuid of the collection to download

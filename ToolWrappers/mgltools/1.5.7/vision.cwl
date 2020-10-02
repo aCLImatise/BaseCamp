@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vision.cwl
+id: vision.cwl
 inputs:
 - id: in_no_splash
   doc: ": doesn't show the Vision splash screen (works only if registered)"

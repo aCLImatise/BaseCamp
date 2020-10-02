@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ReadSeq_random_sample.cwl
+id: ReadSeq_random_sample.cwl
 inputs:
 - id: in_num_selection
   doc: "number of sequence to select for each sample. Default is the smallest sample\

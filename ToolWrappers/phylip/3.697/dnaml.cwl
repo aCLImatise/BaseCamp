@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnaml.cwl
+id: dnaml.cwl
 inputs: []
 outputs:
 - id: out_stdout

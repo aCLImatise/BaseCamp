@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findbp.cwl
+id: findbp.cwl
 inputs: []
 outputs:
 - id: out_stdout

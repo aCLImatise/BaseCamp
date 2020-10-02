@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phenix.py_vcf2distancematrix.cwl
+id: phenix.py_vcf2distancematrix.cwl
 inputs:
 - id: in_out
   doc: "Path to the maxtrix output file in given format.\n[REQUIRED. default format\

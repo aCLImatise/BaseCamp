@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cegma2zff.cwl
+id: cegma2zff.cwl
 inputs:
 - id: in_this
   doc: ''

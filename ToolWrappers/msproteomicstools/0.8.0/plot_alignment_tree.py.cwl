@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_alignment_tree.py.cwl
+id: plot_alignment_tree.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

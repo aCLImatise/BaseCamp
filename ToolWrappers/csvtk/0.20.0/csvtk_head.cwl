@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_head.cwl
+id: csvtk_head.cwl
 inputs:
 - id: in_number
   doc: print first N records (default 10)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randtree.cwl
+id: randtree.cwl
 inputs: []
 outputs:
 - id: out_stdout

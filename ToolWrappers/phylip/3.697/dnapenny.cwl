@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnapenny.cwl
+id: dnapenny.cwl
 inputs: []
 outputs:
 - id: out_stdout

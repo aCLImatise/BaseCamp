@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_motif.pl.cwl
+id: merge_motif.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

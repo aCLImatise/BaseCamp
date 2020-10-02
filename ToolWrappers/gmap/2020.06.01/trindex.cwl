@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trindex.cwl
+id: trindex.cwl
 inputs:
 - id: in_c
   doc: ''

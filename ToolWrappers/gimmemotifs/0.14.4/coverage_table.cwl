@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coverage_table.cwl
+id: coverage_table.cwl
 inputs: []
 outputs:
 - id: out_stdout

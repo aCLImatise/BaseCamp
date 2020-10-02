@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfSummaryLite.cwl
+id: vcfSummaryLite.cwl
 inputs: []
 outputs:
 - id: out_stdout

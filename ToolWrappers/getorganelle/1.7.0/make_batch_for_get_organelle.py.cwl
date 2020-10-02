@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_batch_for_get_organelle.py.cwl
+id: make_batch_for_get_organelle.py.cwl
 inputs:
 - id: in_output_base_name
   doc: output base name for each sample

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vSNP_step1.py.cwl
+id: vSNP_step1.py.cwl
 inputs:
 - id: in_read_one
   doc: 'Required: single read, R1 when Illumina read'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proml.cwl
+id: proml.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ClassifyContigs.py.cwl
+id: ClassifyContigs.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

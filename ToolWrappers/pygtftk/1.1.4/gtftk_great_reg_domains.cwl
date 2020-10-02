@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_great_reg_domains.cwl
+id: gtftk_great_reg_domains.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the GTF file. Default to STDIN (default: <stdin>)'

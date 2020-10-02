@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_matrix_to_newick.cwl
+id: anvi_matrix_to_newick.cwl
 inputs:
 - id: in_output_file
   doc: File path to store results.

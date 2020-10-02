@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_fake_genome.py.cwl
+id: create_fake_genome.py.cwl
 inputs:
 - id: in_locus
   doc: locus in format <chr>:<start>-<end>
@@ -16,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --output_prefix
-- id: in_genome_filename
-  doc: gff_filename
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

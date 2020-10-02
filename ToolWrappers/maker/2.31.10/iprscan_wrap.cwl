@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iprscan_wrap.cwl
+id: iprscan_wrap.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tb_profiler_load_library.cwl
+id: tb_profiler_load_library.cwl
 inputs:
 - id: in_prefix
   doc: Prefix to the library files

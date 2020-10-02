@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../skivi.cwl
+id: skivi.cwl
 inputs:
 - id: in_image_file
   doc: ''

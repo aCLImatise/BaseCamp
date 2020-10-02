@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findDMin2.pl.cwl
+id: findDMin2.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

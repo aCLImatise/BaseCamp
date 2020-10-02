@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../disco.cwl
+id: disco.cwl
 inputs:
 - id: in_nologo
   doc: Supress the startup logo

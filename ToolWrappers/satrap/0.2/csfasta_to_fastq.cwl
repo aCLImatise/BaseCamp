@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csfasta_to_fastq.cwl
+id: csfasta_to_fastq.cwl
 inputs:
 - id: in_cs_fast_a
   doc: (string)        input SOLiD csfasta file.

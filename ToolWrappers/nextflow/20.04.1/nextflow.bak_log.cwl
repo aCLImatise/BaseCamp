@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nextflow.bak_log.cwl
+id: nextflow.bak_log.cwl
 inputs:
 - id: in_after
   doc: Show log entries for runs executed after the specified one

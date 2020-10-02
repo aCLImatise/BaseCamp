@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../btrim.cwl
+id: btrim.cwl
 inputs:
 - id: in_u
   doc: '[Unitig file]'

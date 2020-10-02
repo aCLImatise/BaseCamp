@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairtools_stats.cwl
+id: pairtools_stats.cwl
 inputs:
 - id: in_output
   doc: output stats tsv file.

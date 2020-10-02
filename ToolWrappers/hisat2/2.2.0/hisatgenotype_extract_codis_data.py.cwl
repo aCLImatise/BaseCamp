@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisatgenotype_extract_codis_data.py.cwl
+id: hisatgenotype_extract_codis_data.py.cwl
 inputs:
 - id: in_base
   doc: 'base filename (default: codis)'

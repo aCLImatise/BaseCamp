@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tpocket.cwl
+id: tpocket.cwl
 inputs:
 - id: in_write_global_performance
   doc: ": Write global performance to this file\nDefault name: ./stats_g.txt.    \

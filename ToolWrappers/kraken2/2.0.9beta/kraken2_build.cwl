@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kraken2_build.cwl
+id: kraken2_build.cwl
 inputs:
 - id: in_download_taxonomy
   doc: Download NCBI taxonomic information
@@ -45,11 +45,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --db
-- id: in_help_slash_version
-  doc: )
-  type: boolean
-  inputBinding:
-    prefix: --help/--version
 - id: in_threads
   doc: '#                Number of threads (def: 1)'
   type: boolean
@@ -89,15 +84,10 @@ inputs:
   inputBinding:
     prefix: --max-db-size
 - id: in_use_ftp
-  doc: Use FTP for downloading instead of RSYNC; used with
+  doc: "Use FTP for downloading instead of RSYNC; used with\n--download-library/--download-taxonomy/--standard."
   type: boolean
   inputBinding:
     prefix: --use-ftp
-- id: in_download_library_slash_download_taxonomy_slash_standard_dot
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --download-library/--download-taxonomy/--standard.
 - id: in_skip_maps
   doc: "Avoids downloading accession number to taxid maps,\nused with --download-taxonomy."
   type: boolean

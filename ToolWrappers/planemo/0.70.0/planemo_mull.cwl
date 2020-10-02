@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_mull.cwl
+id: planemo_mull.cwl
 inputs:
 - id: in_cond_a_requirements
   doc: '`` on the target tool(s).'

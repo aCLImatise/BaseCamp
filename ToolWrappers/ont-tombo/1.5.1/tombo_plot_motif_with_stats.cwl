@@ -1,16 +1,17 @@
 class: CommandLineTool
-id: ../../../tombo_plot_motif_with_stats.cwl
+id: tombo_plot_motif_with_stats.cwl
 inputs:
 - id: in_statistics_filename
-  doc: ''
+  doc: "--genome-fasta GENOME_FASTA\n[--control-fast5-basedirs CONTROL_FAST5_BASEDIRS\
+    \ [CONTROL_FAST5_BASEDIRS ...]]\n[--plot-standard-model]\n[--plot-alternate-model\
+    \ {dam,CpG,6mA,5mC,dcm}]\n[--overplot-threshold OVERPLOT_THRESHOLD]\n[--num-regions\
+    \ NUM_REGIONS]\n[--num-context NUM_CONTEXT]\n[--num-statistics NUM_STATISTICS]\n\
+    [--coverage-dampen-counts COVERAGE_DAMPEN_COUNTS COVERAGE_DAMPEN_COUNTS]\n[--pdf-filename\
+    \ PDF_FILENAME]\n[--corrected-group CORRECTED_GROUP]\n[--basecall-subgroups BASECALL_SUBGROUPS\
+    \ [BASECALL_SUBGROUPS ...]]\n[--quiet] [--help]"
   type: File
   inputBinding:
     prefix: --statistics-filename
-- id: in_genome_fast_a
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --genome-fasta
 - id: in_fast_five_based_irs
   doc: Directories containing fast5 files.
   type: long[]
@@ -22,6 +23,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --motif
+- id: in_genome_fast_a
+  doc: "FASTA file used to re-squiggle. For faster sequence\naccess."
+  type: File
+  inputBinding:
+    prefix: --genome-fasta
 - id: in_control_fast_five_based_irs
   doc: "Set of directories containing fast5 files for control\nreads, containing only\
     \ canonical nucleotides."

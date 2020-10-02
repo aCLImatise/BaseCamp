@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reveal.cwl
+id: reveal.cwl
 inputs:
 - id: in_h
   doc: ''

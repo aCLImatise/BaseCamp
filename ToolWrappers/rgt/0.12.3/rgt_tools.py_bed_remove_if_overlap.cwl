@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_bed_remove_if_overlap.cwl
+id: rgt_tools.py_bed_remove_if_overlap.cwl
 inputs:
 - id: in_input_bed_file
   doc: Input BED file

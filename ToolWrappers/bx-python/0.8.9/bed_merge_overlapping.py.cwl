@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed_merge_overlapping.py.cwl
+id: bed_merge_overlapping.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../toAmos_new.cwl
+id: toAmos_new.cwl
 inputs:
 - id: in_t
   doc: '[SCUFL]'

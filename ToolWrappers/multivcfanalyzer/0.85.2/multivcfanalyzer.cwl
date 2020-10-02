@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multivcfanalyzer.cwl
+id: multivcfanalyzer.cwl
 inputs: []
 outputs:
 - id: out_stdout

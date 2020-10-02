@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequenza_utils_gc_wiggle.cwl
+id: sequenza_utils_gc_wiggle.cwl
 inputs:
 - id: in_fast_a
   doc: "the fasta file. It can be a file name or \"-\" to use\nSTDIN"

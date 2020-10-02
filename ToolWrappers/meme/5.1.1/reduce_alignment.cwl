@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reduce_alignment.cwl
+id: reduce_alignment.cwl
 inputs:
 - id: in_start
   doc: ''

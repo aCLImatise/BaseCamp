@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGSDImportHGNC.cwl
+id: NGSDImportHGNC.cwl
 inputs:
 - id: in_in
   doc: HGNC flat file (download ftp://ftp.ebi.ac.uk/pub/databases/genenames/hgnc/tsv/hgnc_complete_set.txt)

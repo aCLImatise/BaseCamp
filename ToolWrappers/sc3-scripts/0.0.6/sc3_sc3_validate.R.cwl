@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sc3_sc3_validate.R.cwl
+id: sc3_sc3_validate.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

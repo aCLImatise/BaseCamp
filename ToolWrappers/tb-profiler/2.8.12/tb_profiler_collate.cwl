@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tb_profiler_collate.cwl
+id: tb_profiler_collate.cwl
 inputs:
 - id: in_prefix
   doc: 'Sample prefix (default: tbprofiler)'

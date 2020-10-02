@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ext_corr.py.cwl
+id: ext_corr.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

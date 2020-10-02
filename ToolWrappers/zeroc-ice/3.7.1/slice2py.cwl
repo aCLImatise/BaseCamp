@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slice2py.cwl
+id: slice2py.cwl
 inputs:
 - id: in_uname
   doc: Remove any definition for NAME.

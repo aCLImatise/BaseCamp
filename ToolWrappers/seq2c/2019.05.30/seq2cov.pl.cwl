@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq2cov.pl.cwl
+id: seq2cov.pl.cwl
 inputs:
 - id: in_this_help
   doc: this help

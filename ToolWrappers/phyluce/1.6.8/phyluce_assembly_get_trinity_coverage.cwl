@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_assembly_get_trinity_coverage.cwl
+id: phyluce_assembly_get_trinity_coverage.cwl
 inputs:
 - id: in_assemblies
   doc: The directory containing the assemblies

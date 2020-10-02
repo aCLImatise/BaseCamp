@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TERefiner_1.cwl
+id: TERefiner_1.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tadaridaC.r.cwl
+id: tadaridaC.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

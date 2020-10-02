@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mash_screen.cwl
+id: mash_screen.cwl
 inputs:
 - id: in_parallelism_many_threads
   doc: Parallelism. This many threads will be spawned for processing. [1]

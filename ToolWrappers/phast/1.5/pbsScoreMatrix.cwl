@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbsScoreMatrix.cwl
+id: pbsScoreMatrix.cwl
 inputs:
 - id: in_branch_length
   doc: "Output a matrix for a branch of the specified length, rather\nthan a matrix\

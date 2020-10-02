@@ -1,4 +1,4 @@
-&id002 !Command
+!Command
 command:
 - rnasamba
 - classify
@@ -37,146 +37,10 @@ named:
   - --verbose
   args: !ChoiceFlagArg
     choices: !!set
-      ? "1"
-      ? "0"
+      '1':
+      '0':
   optional: true
-parent: &id001 !Command
-  command:
-  - rnasamba
-  positional: []
-  named: []
-  parent:
-  subcommands:
-  - !Command
-    command:
-    - rnasamba
-    - train
-    positional:
-    - !Positional
-      description: "output HDF5 file containing weights of the newly\ntrained RNAsamba\
-        \ network."
-      position: 0
-      name: output_file
-      optional: false
-    - !Positional
-      description: "input FASTA file containing sequences of protein-\ncoding transcripts."
-      position: 1
-      name: coding_file
-      optional: false
-    - !Positional
-      description: input FASTA file containing sequences of noncoding
-      position: 2
-      name: noncoding_file
-      optional: false
-    - !Positional
-      description: 'optional arguments:'
-      position: 3
-      name: transcripts.
-      optional: false
-    named:
-    - !Flag
-      description: "number of epochs after lowest validation loss before\nstopping\
-        \ training (a fraction of 0.1 of the training\nset is set apart for validation\
-        \ and the model with the\nlowest validation loss will be saved). (default:\
-        \ 0)"
-      synonyms:
-      - -s
-      - --early_stopping
-      args: !SimpleFlagArg
-        name: EARLY_STOPPING
-      optional: true
-    - !Flag
-      description: 'number of samples per gradient update. (default: 128)'
-      synonyms:
-      - -b
-      - --batch_size
-      args: !SimpleFlagArg
-        name: BATCH_SIZE
-      optional: true
-    - !Flag
-      description: 'number of epochs to train the model. (default: 40)'
-      synonyms:
-      - -e
-      - --epochs
-      args: !SimpleFlagArg
-        name: EPOCHS
-      optional: true
-    - !Flag
-      description: "print the progress of the training. 0 = silent, 1 =\ncurrent step,\
-        \ 2 = progress bar, 3 = one line per\nepoch. (default: 0)\n"
-      synonyms:
-      - -v
-      - --verbose
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? "3"
-          ? "1"
-          ? "2"
-          ? "0"
-      optional: true
-    parent: *id001
-    subcommands: []
-    usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag: !Flag
-      description: show program's version number and exit
-      synonyms:
-      - --version
-      args: !EmptyFlagArg {}
-      optional: true
-    help_text: "usage: rnasamba train [-h] [--version] [-s EARLY_STOPPING] [-b BATCH_SIZE]\n\
-      \                      [-e EPOCHS] [-v {0,1,2,3}]\n                      output_file\
-      \ coding_file noncoding_file\n\nTrain a new classification model.\n\npositional\
-      \ arguments:\n  output_file           output HDF5 file containing weights of\
-      \ the newly\n                        trained RNAsamba network.\n  coding_file\
-      \           input FASTA file containing sequences of protein-\n            \
-      \            coding transcripts.\n  noncoding_file        input FASTA file containing\
-      \ sequences of noncoding\n                        transcripts.\n\noptional arguments:\n\
-      \  -h, --help            show this help message and exit\n  --version      \
-      \       show program's version number and exit\n  -s EARLY_STOPPING, --early_stopping\
-      \ EARLY_STOPPING\n                        number of epochs after lowest validation\
-      \ loss before\n                        stopping training (a fraction of 0.1\
-      \ of the training\n                        set is set apart for validation and\
-      \ the model with the\n                        lowest validation loss will be\
-      \ saved). (default: 0)\n  -b BATCH_SIZE, --batch_size BATCH_SIZE\n         \
-      \               number of samples per gradient update. (default: 128)\n  -e\
-      \ EPOCHS, --epochs EPOCHS\n                        number of epochs to train\
-      \ the model. (default: 40)\n  -v {0,1,2,3}, --verbose {0,1,2,3}\n          \
-      \              print the progress of the training. 0 = silent, 1 =\n       \
-      \                 current step, 2 = progress bar, 3 = one line per\n       \
-      \                 epoch. (default: 0)\n"
-    generated_using: &id003
-    - --help
-  - *id002
-  usage: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag: !Flag
-    description: show program's version number and exit
-    synonyms:
-    - --version
-    args: !EmptyFlagArg {}
-    optional: true
-  help_text: "usage: rnasamba [-h] [--version] {classify,train} ...\n\nCoding potential\
-    \ calculation using deep learning.\n\npositional arguments:\n  {classify,train}\n\
-    \    classify        classify sequences from a input FASTA file.\n    train  \
-    \         train a new classification model.\n\noptional arguments:\n  -h, --help\
-    \        show this help message and exit\n  --version         show program's version\
-    \ number and exit\n"
-  generated_using: *id003
+parent:
 subcommands: []
 usage: []
 help_flag: !Flag
@@ -208,4 +72,5 @@ help_text: "usage: rnasamba classify [-h] [--version] [-p PROTEIN_FASTA] [-v {0,
   \  -v {0,1}, --verbose {0,1}\n                        print the progress of the\
   \ classification. 0 = silent,\n                        1 = current step. (default:\
   \ 0)\n"
-generated_using: *id003
+generated_using:
+- --help

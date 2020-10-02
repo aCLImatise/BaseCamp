@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepare_ligand4.py.cwl
+id: prepare_ligand4.py.cwl
 inputs:
 - id: in_ligandfilename_pdbq_format
   doc: ligand_filename (.pdb or .mol2 or .pdbq format)

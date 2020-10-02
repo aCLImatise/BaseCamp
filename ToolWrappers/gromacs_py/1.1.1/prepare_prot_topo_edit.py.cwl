@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepare_prot_topo_edit.py.cwl
+id: prepare_prot_topo_edit.py.cwl
 inputs:
 - id: in_input_pdb_file
   doc: Input PDB file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_circos_plot.py.cwl
+id: plot_circos_plot.py.cwl
 inputs:
 - id: in_summary
   doc: "Plot only significant interactions that appear in the\nsummary file. (default:\

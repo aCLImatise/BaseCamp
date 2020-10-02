@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../product_types.tsv.cwl
+id: product_types.tsv.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../miso_zip.cwl
+id: miso_zip.cwl
 inputs:
 - id: in_compress
   doc: "Compress a directory containing MISO output. Takes as\narguments: (1) the\

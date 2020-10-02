@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compare_reads.cwl
+id: compare_reads.cwl
 inputs:
 - id: in_file_containing_files
   doc: ": A file containing the list of files to index (comma separated) - MANDATORY\n\

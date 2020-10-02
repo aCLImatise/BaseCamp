@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_upstream.cwl
+id: igdiscover_upstream.cwl
 inputs:
 - id: in_max_error_percentage
   doc: 'Allow PERCENT errors in V gene match. Default: 1'

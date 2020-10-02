@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FastqExtractUMI.cwl
+id: FastqExtractUMI.cwl
 inputs:
 - id: in_in_one
   doc: Input FASTQ file 1.

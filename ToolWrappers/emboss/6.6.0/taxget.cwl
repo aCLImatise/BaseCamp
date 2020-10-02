@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxget.cwl
+id: taxget.cwl
 inputs:
 - id: in_taxons
   doc: ': enter taxon value: Error: Unable to get reply from user - end of standard

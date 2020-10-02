@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeBadgerMatrix.cwl
+id: makeBadgerMatrix.cwl
 inputs:
 - id: in_input_x_mfa
   doc: ''

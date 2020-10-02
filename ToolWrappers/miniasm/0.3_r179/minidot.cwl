@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minidot.cwl
+id: minidot.cwl
 inputs:
 - id: in_min_match_length
   doc: min match length [100]

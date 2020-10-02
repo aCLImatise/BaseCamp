@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../polydot.cwl
+id: polydot.cwl
 inputs:
 - id: in_word_size
   doc: integer    [6] Word size (Integer 2 or more)

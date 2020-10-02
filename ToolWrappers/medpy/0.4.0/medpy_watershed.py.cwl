@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_watershed.py.cwl
+id: medpy_watershed.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

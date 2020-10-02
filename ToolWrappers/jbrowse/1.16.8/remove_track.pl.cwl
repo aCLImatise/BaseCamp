@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_track.pl.cwl
+id: remove_track.pl.cwl
 inputs:
 - id: in_dir
   doc: Path to the JBrowse data directory to operate on.

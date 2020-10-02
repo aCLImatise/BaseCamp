@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novolrcorrector_Corrector.cwl
+id: novolrcorrector_Corrector.cwl
 inputs:
 - id: in_colheader_select_columns
   doc: ',COL2=HEADER     Select columns for display'

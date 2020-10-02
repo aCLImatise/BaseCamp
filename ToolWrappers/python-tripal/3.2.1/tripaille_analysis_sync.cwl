@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_analysis_sync.cwl
+id: tripaille_analysis_sync.cwl
 inputs:
 - id: in_analysis
   doc: Analysis name

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_rmdup.cwl
+id: seqkit_rmdup.cwl
 inputs:
 - id: in_by_name
   doc: by full name instead of just id

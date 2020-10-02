@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aletsch.cwl
+id: aletsch.cwl
 inputs:
 - id: in_profile
   doc: profiling individual samples and exit (will write to files if -p provided)

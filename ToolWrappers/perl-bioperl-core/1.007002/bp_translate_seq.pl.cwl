@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_translate_seq.pl.cwl
+id: bp_translate_seq.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

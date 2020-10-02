@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_groups_update_membership.cwl
+id: arrow_groups_update_membership.cwl
 inputs:
 - id: in_group_id
   doc: Group ID Number

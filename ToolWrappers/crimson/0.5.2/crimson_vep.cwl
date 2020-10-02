@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crimson_vep.cwl
+id: crimson_vep.cwl
 inputs:
 - id: in_input
   doc: ''

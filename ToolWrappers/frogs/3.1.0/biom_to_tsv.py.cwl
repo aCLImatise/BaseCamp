@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biom_to_tsv.py.cwl
+id: biom_to_tsv.py.cwl
 inputs:
 - id: in_input_biom
   doc: 'The abundance file (format: BIOM).'

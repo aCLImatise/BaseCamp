@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wig2bed_megarow.cwl
+id: wig2bed_megarow.cwl
 inputs:
 - id: in_keep_header
   doc: "(-k)\nPreserve header section as pseudo-BED elements"

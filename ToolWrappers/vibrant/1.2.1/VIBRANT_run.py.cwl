@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VIBRANT_run.py.cwl
+id: VIBRANT_run.py.cwl
 inputs:
 - id: in_input_fasta_file
   doc: input fasta file

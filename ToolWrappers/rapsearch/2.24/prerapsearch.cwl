@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prerapsearch.cwl
+id: prerapsearch.cwl
 inputs:
 - id: in_splits_database_specified
   doc: (splits the database into specified number of files)

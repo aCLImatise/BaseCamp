@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconc_raptor_db_calc_length_cutoff.cwl
+id: falconc_raptor_db_calc_length_cutoff.cwl
 inputs:
 - id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'

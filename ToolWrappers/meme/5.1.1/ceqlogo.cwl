@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ceqlogo.cwl
+id: ceqlogo.cwl
 inputs:
 - id: in_loads_motif_file
   doc: "Loads a motif from the file specified by the\nprevious -i option. The motif\

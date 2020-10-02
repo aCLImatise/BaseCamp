@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AlignRecords.py_align_pass.cwl
+id: AlignRecords.py_align_pass.cwl
 inputs:
 - id: in_align_records_do_tpy
   doc: ''

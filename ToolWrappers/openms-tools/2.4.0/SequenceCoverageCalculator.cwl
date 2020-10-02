@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SequenceCoverageCalculator.cwl
+id: SequenceCoverageCalculator.cwl
 inputs:
 - id: in_in_database
   doc: "*  Input file containing the database in FASTA format (valid formats: 'fasta')"

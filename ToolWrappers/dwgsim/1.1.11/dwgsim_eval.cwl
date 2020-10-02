@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dwgsim_eval.cwl
+id: dwgsim_eval.cwl
 inputs:
 - id: in_int_split_mapping
   doc: "INT     split by [0]:\n0: by mapping quality\n1: by alignment score\n2: by\

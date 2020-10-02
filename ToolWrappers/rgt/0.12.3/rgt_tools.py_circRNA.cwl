@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgt_tools.py_circRNA.cwl
+id: rgt_tools.py_circRNA.cwl
 inputs:
 - id: in_input_chimeric_junction
   doc: Input chimeric junction file from STAR

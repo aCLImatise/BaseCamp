@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_sixpack.cwl
+id: _sixpack.cwl
 inputs:
 - id: in_out_seq
   doc: seqoutall  [<sequence>.<format>] ORF sequence output

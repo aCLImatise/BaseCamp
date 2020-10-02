@@ -11,33 +11,11 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "input. Four fields separated by colons:\n<AD1.fa>: fasta file containing\
-    \ adapters,\n<AD2.fa>: fasta file containing adapters,\n<mismatches>: maximum\
-    \ mismatch count allowed,\n<score>: score threshold  for the aligner."
-  synonyms:
-  - -A
-  - --adapter
-  args: !SimpleFlagArg
-    name: adapter
-  optional: true
-- !Flag
   description: "method used to look for contaminations:\nTREE:  uses a 4-ary tree.\
     \ Index file optional,\nBLOOM: uses a bloom filter. Index file mandatory."
   synonyms:
   - -C
   - --method
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "fasta input file of potential contaminations.\nTo be included only\
-    \ with method TREE\n(it excludes the option --idx). Otherwise, an\nindex file\
-    \ has to be precomputed and given as parameter\n(see option --idx). 3 fields separated\
-    \ by colons:\n<INPUT.fa>: fasta input file [*fa|*fa.gz|*fa.bz2],\n<score>: score\
-    \ threshold to accept a match [0,1],\n<lmer_len>: depth of the tree: [1,READ_LENGTH].\n\
-    Corresponds to the length of the lmers to be\nlooked for in the reads."
-  synonyms:
-  - -a
-  - --ifa
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -64,16 +42,6 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "NO:     does nothing to reads containing N's,\nALL:    removes all\
-    \ reads containing N's,\nENDS:   trims ends of reads with N's,\nSTRIPS: looks\
-    \ for the largest substring with no N's.\nAll reads are discarded if they are\
-    \ shorter than the\nsequence length specified by -m/--minL.\n"
-  synonyms:
-  - -N
-  - --trimN
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: "2 fastq input files [*fq|*fq.gz|*fq.bz2] separated by\ncolons, mandatory\
     \ option."
   synonyms:
@@ -96,6 +64,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: "input. Four fields separated by colons:\n<AD1.fa>: fasta file containing\
+    \ adapters,\n<AD2.fa>: fasta file containing adapters,\n<mismatches>: maximum\
+    \ mismatch count allowed,\n<score>: score threshold  for the aligner."
+  synonyms:
+  - -A
+  - --adapter
+  args: !SimpleFlagArg
+    name: adapter
+  optional: true
+- !Flag
   description: "index input file. To be included with any methods to remove.\ncontaminations\
     \ (TREE, BLOOM). 3 fields separated by colons:\n<INDEX_FILE>: output of makeTree,\
     \ makeBloom,\n<score>: score threshold to accept a match [0,1],\n[lmer_len]: the\
@@ -103,6 +81,18 @@ named:
   synonyms:
   - -x
   - --idx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "fasta input file of potential contaminations.\nTo be included only\
+    \ with method TREE\n(it excludes the option --idx). Otherwise, an\nindex file\
+    \ has to be precomputed and given as parameter\n(see option --idx). 3 fields separated\
+    \ by colons:\n<INPUT.fa>: fasta input file [*fa|*fa.gz|*fa.bz2],\n<score>: score\
+    \ threshold to accept a match [0,1],\n<lmer_len>: depth of the tree: [1,READ_LENGTH].\n\
+    Corresponds to the length of the lmers to be\nlooked for in the reads."
+  synonyms:
+  - -a
+  - --ifa
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -136,6 +126,16 @@ named:
   synonyms:
   - -g
   - --global
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "NO:     does nothing to reads containing N's,\nALL:    removes all\
+    \ reads containing N's,\nENDS:   trims ends of reads with N's,\nSTRIPS: looks\
+    \ for the largest substring with no N's.\nAll reads are discarded if they are\
+    \ shorter than the\nsequence length specified by -m/--minL.\n"
+  synonyms:
+  - -N
+  - --trimN
   args: !EmptyFlagArg {}
   optional: true
 parent:

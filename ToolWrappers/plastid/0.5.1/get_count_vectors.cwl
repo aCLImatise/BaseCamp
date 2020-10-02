@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_count_vectors.cwl
+id: get_count_vectors.cwl
 inputs:
 - id: in_out_prefix
   doc: 'Prefix to prepend to output files (default: no prefix)'
@@ -223,6 +223,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --mask_sorted
+- id: in_out_folder
+  doc: Folder in which to save output vectors
+  type: string
+  inputBinding:
+    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

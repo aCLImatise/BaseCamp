@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_fetch_bundled_depends.cwl
+id: dx_fetch_bundled_depends.cwl
 inputs: []
 outputs:
 - id: out_stdout

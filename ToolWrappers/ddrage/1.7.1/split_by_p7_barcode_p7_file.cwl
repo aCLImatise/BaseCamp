@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_by_p7_barcode_p7_file.cwl
+id: split_by_p7_barcode_p7_file.cwl
 inputs:
 - id: in_f
   doc: ''

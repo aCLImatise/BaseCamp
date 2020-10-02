@@ -3,9 +3,7 @@ version 1.0
 task Coinfinder {
   input {
     File? path_genepresenceabsencecsv_output
-    Boolean? or
     String? input_roar_y
-    String? phylogeny
     String? associate
     String? dissociate
     Float? level
@@ -28,9 +26,7 @@ task Coinfinder {
   command <<<
     coinfinder \
       ~{if defined(path_genepresenceabsencecsv_output) then ("--input " +  '"' + path_genepresenceabsencecsv_output + '"') else ""} \
-      ~{if (or) then "-or-" else ""} \
       ~{if defined(input_roar_y) then ("--inputroary " +  '"' + input_roar_y + '"') else ""} \
-      ~{if defined(phylogeny) then ("--phylogeny " +  '"' + phylogeny + '"') else ""} \
       ~{if defined(associate) then ("--associate " +  '"' + associate + '"') else ""} \
       ~{if defined(dissociate) then ("--dissociate " +  '"' + dissociate + '"') else ""} \
       ~{if defined(level) then ("--level " +  '"' + level + '"') else ""} \
@@ -51,10 +47,8 @@ task Coinfinder {
       ~{if defined(prefix_output_files) then ("--output " +  '"' + prefix_output_files + '"') else ""}
   >>>
   parameter_meta {
-    path_genepresenceabsencecsv_output: "The path to the gene_presence_absence.csv output from Roary"
-    or: ""
-    input_roar_y: "Set if -i is in the gene_presence_absence.csv format from Roary"
-    phylogeny: "Phylogeny of Betas in Newick format (required)"
+    path_genepresenceabsencecsv_output: "The path to the gene_presence_absence.csv output from Roary\\n-or-\\nThe path of the Alpha-to-Beta file with (alpha)(TAB)(beta)"
+    input_roar_y: "Set if -i is in the gene_presence_absence.csv format from Roary\\n-p or --phylogeny      Phylogeny of Betas in Newick format (required)"
     associate: "Overlap; identify groups that tend to associate/co-occur (default)."
     dissociate: "Separation; identify groups that tend to dissociate/avoid."
     level: "Specify the significnace level cutoff (default: 0.05)"

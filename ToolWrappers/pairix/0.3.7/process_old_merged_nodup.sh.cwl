@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../process_old_merged_nodup.sh.cwl
+id: process_old_merged_nodup.sh.cwl
 inputs:
 - id: in_ignore_leading_blanks
   doc: Ignore leading blanks

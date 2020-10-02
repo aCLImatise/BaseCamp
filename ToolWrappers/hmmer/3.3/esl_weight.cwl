@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_weight.cwl
+id: esl_weight.cwl
 inputs:
 - id: in_gersteinsonnhammerchothia_tree_weights
   doc: ': Gerstein/Sonnhammer/Chothia tree weights  [default]'

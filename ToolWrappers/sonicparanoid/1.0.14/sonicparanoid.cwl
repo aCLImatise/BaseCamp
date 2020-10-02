@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sonicparanoid.cwl
+id: sonicparanoid.cwl
 inputs: []
 outputs:
 - id: out_stdout

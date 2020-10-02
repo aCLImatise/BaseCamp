@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clstr_sql_tbl.pl.cwl
+id: clstr_sql_tbl.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

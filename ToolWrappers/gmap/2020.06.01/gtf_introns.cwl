@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf_introns.cwl
+id: gtf_introns.cwl
 inputs:
 - id: in_more_options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funannotate_clean.cwl
+id: funannotate_clean.cwl
 inputs:
 - id: in_input
   doc: Multi-fasta genome file (Required)

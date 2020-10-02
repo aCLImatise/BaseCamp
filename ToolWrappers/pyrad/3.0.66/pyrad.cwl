@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyrad.cwl
+id: pyrad.cwl
 inputs:
 - id: in_input_file_sample
   doc: input file for within sample filtering and clustering

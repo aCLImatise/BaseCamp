@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TQSexport.py.cwl
+id: TQSexport.py.cwl
 inputs:
 - id: in_export
   doc: "=EXPORTFILE\nIllumina export file - Output format from the Genome\nAnalyzer"

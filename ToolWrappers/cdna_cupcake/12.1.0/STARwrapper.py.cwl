@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../STARwrapper.py.cwl
+id: STARwrapper.py.cwl
 inputs:
 - id: in_cpus
   doc: ''

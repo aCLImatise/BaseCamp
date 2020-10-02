@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmpgmd.cwl
+id: hmmpgmd.cwl
 inputs:
 - id: in_master
   doc: ': run program as the master server'

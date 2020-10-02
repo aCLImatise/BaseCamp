@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preprocess_tpl.html.cwl
+id: preprocess_tpl.html.cwl
 inputs: []
 outputs:
 - id: out_stdout

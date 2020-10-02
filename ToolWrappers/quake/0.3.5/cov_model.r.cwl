@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cov_model.r.cwl
+id: cov_model.r.cwl
 inputs: []
 outputs:
 - id: out_stdout

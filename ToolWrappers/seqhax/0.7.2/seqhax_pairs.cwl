@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqhax_pairs.cwl
+id: seqhax_pairs.cwl
 inputs:
 - id: in_force_output_existing
   doc: Force output to existing files.

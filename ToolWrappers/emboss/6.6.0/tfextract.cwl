@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tfextract.cwl
+id: tfextract.cwl
 inputs: []
 outputs:
 - id: out_stdout

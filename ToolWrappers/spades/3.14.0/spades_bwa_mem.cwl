@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spades_bwa_mem.cwl
+id: spades_bwa_mem.cwl
 inputs:
 - id: in_number_of_threads
   doc: number of threads [1]

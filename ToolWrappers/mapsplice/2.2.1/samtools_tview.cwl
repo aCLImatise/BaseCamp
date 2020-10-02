@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_tview.cwl
+id: samtools_tview.cwl
 inputs:
 - id: in_bam_tk
   doc: ''

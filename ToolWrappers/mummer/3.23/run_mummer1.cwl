@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_mummer1.cwl
+id: run_mummer1.cwl
 inputs: []
 outputs:
 - id: out_stdout

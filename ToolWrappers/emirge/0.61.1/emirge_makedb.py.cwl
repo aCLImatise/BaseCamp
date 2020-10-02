@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../emirge_makedb.py.cwl
+id: emirge_makedb.py.cwl
 inputs:
 - id: in_build_database_gene
   doc: "[SSU|LSU], --gene=[SSU|LSU]\nbuild database from this gene (SSU=Small Subunit\

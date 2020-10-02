@@ -1,8 +1,16 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_scp.cwl
+id: gcloud_compute_scp.cwl
 inputs:
 - id: in_zone
-  doc: ''
+  doc: "In the above example, ~/REMOTE-DIR from example-instance is copied into the\n\
+    ~/LOCAL-DIR directory.\nConversely, files from your local computer can be copied\
+    \ to a virtual\nmachine:\n$ gcloud compute scp ~/LOCAL-FILE-1 ~/LOCAL-FILE-2 \\\
+    \nexample-instance:~/REMOTE-DIR --zone us-central1-a\nIf a file contains a colon\
+    \ (``:''), you must specify it by either using an\nabsolute path or a path that\
+    \ begins with ``./''.\nUnder the covers, scp(1) or pscp (on Windows) is used to\
+    \ facilitate the\ntransfer.\nWhen the destination is local, all sources must be\
+    \ the same virtual machine\ninstance. When the destination is remote, all sources\
+    \ must be local."
   type: long
   inputBinding:
     prefix: --zone
@@ -60,11 +68,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --strict-host-key-checking
-- id: in_transfer_dot
-  doc: When the destination is local, all sources must be the same virtual machine
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

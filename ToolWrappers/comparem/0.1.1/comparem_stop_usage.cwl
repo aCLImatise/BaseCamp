@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comparem_stop_usage.cwl
+id: comparem_stop_usage.cwl
 inputs:
 - id: in_counts
   doc: output raw counts instead of frequencies

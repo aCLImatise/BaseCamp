@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmgs_stats.cwl
+id: hmmgs_stats.cwl
 inputs:
 - id: in_bloom_filter_stats
   doc: ''

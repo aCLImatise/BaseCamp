@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_delete_subscription.cwl
+id: hca_dss_delete_subscription.cwl
 inputs:
 - id: in_uuid
   doc: A RFC4122-compliant ID for the subscription.

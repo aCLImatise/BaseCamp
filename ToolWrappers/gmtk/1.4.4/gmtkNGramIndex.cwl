@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmtkNGramIndex.cwl
+id: gmtkNGramIndex.cwl
 inputs: []
 outputs:
 - id: out_stdout

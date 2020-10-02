@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rmats2sashimiplot.cwl
+id: rmats2sashimiplot.cwl
 inputs:
 - id: in_type_event_rmats
   doc: "Type of event from rMATS result used in the\nanalysis.eventType is 'SE', 'A5SS',\
@@ -91,15 +91,10 @@ inputs:
   inputBinding:
     prefix: --font-size
 - id: in_hide_number
-  doc: ''
+  doc: "--no-text-background\n"
   type: boolean
   inputBinding:
     prefix: --hide-number
-- id: in_no_text_background
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --no-text-background
 - id: in_usage
   doc: ''
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plass_nuclassemble.cwl
+id: plass_nuclassemble.cwl
 inputs:
 - id: in_alph_size
   doc: alphabet size (range 2-21) [5]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cuffdiff.cwl
+id: cuffdiff.cwl
 inputs:
 - id: in_oslash_output_dir
   doc: 'write all output files to this directory              [ default:     ./ ]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makerep.cwl
+id: makerep.cwl
 inputs: []
 outputs:
 - id: out_stdout

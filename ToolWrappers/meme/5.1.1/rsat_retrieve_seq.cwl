@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_retrieve_seq.cwl
+id: rsat_retrieve_seq.cwl
 inputs: []
 outputs:
 - id: out_stdout

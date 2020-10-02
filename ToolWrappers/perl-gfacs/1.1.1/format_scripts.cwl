@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../format_scripts.cwl
+id: format_scripts.cwl
 inputs: []
 outputs:
 - id: out_stdout

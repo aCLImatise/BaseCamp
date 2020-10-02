@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mean.cwl
+id: mean.cwl
 inputs:
 - id: in_threshold
   doc: The minimum probability threshold (default=1e-30)

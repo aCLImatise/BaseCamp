@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quasirecomb.cwl
+id: quasirecomb.cwl
 inputs:
 - id: in_alignment_file_bam
   doc: ': Alignment file in BAM or SAM format.'

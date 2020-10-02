@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hts_nim_tools.cwl
+id: hts_nim_tools.cwl
 inputs: []
 outputs:
 - id: out_stdout

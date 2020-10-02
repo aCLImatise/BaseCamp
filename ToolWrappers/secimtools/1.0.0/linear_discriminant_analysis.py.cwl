@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../linear_discriminant_analysis.py.cwl
+id: linear_discriminant_analysis.py.cwl
 inputs:
 - id: in_input
   doc: Input dataset in wide format.

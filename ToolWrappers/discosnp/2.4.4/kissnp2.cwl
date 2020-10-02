@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kissnp2.cwl
+id: kissnp2.cwl
 inputs:
 - id: in_arg_keep_bubbles
   doc: '(0 arg) :    keep truncated bubbles, that have no successors on the 2 paths

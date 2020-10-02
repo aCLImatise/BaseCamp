@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../class_run.py.cwl
+id: class_run.py.cwl
 inputs:
 - id: in_clean
   doc: ''

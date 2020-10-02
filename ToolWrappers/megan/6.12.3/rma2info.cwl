@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rma2info.cwl
+id: rma2info.cwl
 inputs:
 - id: in_in
   doc: '[string]                    Input RMA file. Mandatory option.'

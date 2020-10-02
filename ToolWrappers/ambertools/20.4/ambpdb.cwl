@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ambpdb.cwl
+id: ambpdb.cwl
 inputs:
 - id: in_topology_file_default
   doc: "'Top'       Topology file (default: prmtop)."

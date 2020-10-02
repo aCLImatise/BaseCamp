@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../watchdog_docuTemplateExtractor.cwl
+id: watchdog_docuTemplateExtractor.cwl
 inputs: []
 outputs:
 - id: out_stdout

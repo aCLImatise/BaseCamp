@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_push.cwl
+id: anvi_push.cwl
 inputs:
 - id: in_user
   doc: The user for an anvi'server.

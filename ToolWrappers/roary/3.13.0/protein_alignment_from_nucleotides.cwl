@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../protein_alignment_from_nucleotides.cwl
+id: protein_alignment_from_nucleotides.cwl
 inputs:
 - id: in_nucleotide_alignment_mafft
   doc: nucleotide alignment with MAFFT

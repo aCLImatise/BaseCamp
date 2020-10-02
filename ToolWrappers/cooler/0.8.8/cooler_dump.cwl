@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cooler_dump.cwl
+id: cooler_dump.cwl
 inputs:
 - id: in_table
   doc: "[chroms|bins|pixels]\nWhich table to dump. Choosing 'chroms' or\n'bins' will\

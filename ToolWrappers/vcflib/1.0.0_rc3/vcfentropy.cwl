@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfentropy.cwl
+id: vcfentropy.cwl
 inputs:
 - id: in_fast_a_reference
   doc: FASTA reference file to use to obtain flanking sequences

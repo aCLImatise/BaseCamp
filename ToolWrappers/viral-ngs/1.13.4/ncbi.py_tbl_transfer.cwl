@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncbi.py_tbl_transfer.cwl
+id: ncbi.py_tbl_transfer.cwl
 inputs:
 - id: in_oob_clip
   doc: "Out of bounds feature behavior. False: drop all\nfeatures that are completely\

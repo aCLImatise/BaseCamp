@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../updateClrRanges.cwl
+id: updateClrRanges.cwl
 inputs:
 - id: in_i
   doc: ''

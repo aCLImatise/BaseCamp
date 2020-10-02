@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../corset_fasta_ID_changer.cwl
+id: corset_fasta_ID_changer.cwl
 inputs:
 - id: in_cluster_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_convert.cwl
+id: maf_convert.cwl
 inputs:
 - id: in_protein
   doc: assume protein alignments, for psl match counts

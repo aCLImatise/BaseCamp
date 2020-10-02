@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeIgnoreList.cwl
+id: makeIgnoreList.cwl
 inputs:
 - id: in_m
   doc: ''

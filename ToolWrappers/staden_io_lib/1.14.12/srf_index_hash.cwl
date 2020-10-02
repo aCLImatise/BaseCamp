@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../srf_index_hash.cwl
+id: srf_index_hash.cwl
 inputs:
 - id: in_check_existing_index
   doc: check an existing index, don't re-index

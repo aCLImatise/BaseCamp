@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_generate_sequences.py.cwl
+id: tbprofiler_generate_sequences.py.cwl
 inputs:
 - id: in_samples
   doc: 'NGS Platform (default: None)'

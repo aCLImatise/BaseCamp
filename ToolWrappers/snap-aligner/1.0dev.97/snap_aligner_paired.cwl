@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snap_aligner_paired.cwl
+id: snap_aligner_paired.cwl
 inputs:
 - id: in_filename_output_alignments
   doc: "filename  output alignments to filename in SAM or BAM format, depending on\
@@ -280,41 +280,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -pro
-- id: in_fast_q
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -fastq
-- id: in_compressed_fast_q
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -compressedFastq
-- id: in_sam
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -sam
-- id: in_bam
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -bam
-- id: in_paired_fast_q
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -pairedFastq
-- id: in_paired_interleaved_fast_q
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -pairedInterleavedFastq
-- id: in_paired_compressed_interleaved_fast_q
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -pairedCompressedInterleavedFastq
 - id: in_min_max_spacing
   doc: 'min and max spacing to allow between paired ends (default: 50 1000).'
   type: boolean

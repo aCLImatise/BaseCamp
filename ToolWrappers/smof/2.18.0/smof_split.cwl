@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_split.cwl
+id: smof_split.cwl
 inputs:
 - id: in_number
   doc: Number of output files or sequences per file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mdout_analyzer.py.cwl
+id: mdout_analyzer.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

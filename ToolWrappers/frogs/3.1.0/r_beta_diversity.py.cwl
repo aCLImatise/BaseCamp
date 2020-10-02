@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../r_beta_diversity.py.cwl
+id: r_beta_diversity.py.cwl
 inputs:
 - id: in_debug
   doc: Keep temporary files to debug program.

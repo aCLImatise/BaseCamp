@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../k_means_coefficient.cwl
+id: k_means_coefficient.cwl
 inputs:
 - id: in_config
   doc: Configuration file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam_to_collapsed_gff.py.cwl
+id: sam_to_collapsed_gff.py.cwl
 inputs:
 - id: in_convert
   doc: ''

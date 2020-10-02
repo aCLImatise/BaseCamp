@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compRatio.R.cwl
+id: compRatio.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

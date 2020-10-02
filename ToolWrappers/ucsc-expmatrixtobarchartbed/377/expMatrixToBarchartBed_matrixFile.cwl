@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../expMatrixToBarchartBed_matrixFile.cwl
+id: expMatrixToBarchartBed_matrixFile.cwl
 inputs:
 - id: in_auto_sql
   doc: ''

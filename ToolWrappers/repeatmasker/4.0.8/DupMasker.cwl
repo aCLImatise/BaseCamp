@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DupMasker.cwl
+id: DupMasker.cwl
 inputs: []
 outputs:
 - id: out_stdout

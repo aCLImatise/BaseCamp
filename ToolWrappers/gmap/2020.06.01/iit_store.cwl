@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iit_store.cwl
+id: iit_store.cwl
 inputs:
 - id: in_output
   doc: Name of output iit file

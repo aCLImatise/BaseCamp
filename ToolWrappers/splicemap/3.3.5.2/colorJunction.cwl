@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../colorJunction.cwl
+id: colorJunction.cwl
 inputs: []
 outputs:
 - id: out_stdout

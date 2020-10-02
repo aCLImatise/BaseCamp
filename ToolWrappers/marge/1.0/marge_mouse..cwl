@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../marge_mouse..cwl
+id: marge_mouse..cwl
 inputs:
 - id: in_marge
   doc: ''

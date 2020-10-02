@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxmapper_plot.cwl
+id: taxmapper_plot.cwl
 inputs:
 - id: in_tax_a
   doc: "Taxonomy file(s), counted taxa for a taxonomic\nhierarchy"

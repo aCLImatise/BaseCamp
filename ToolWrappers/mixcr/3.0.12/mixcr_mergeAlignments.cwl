@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mixcr_mergeAlignments.cwl
+id: mixcr_mergeAlignments.cwl
 inputs:
 - id: in_overwrite_if_required
   doc: "Overwrite output file if it is corrupted or if it was generated from\ndifferent\

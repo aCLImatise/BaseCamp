@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitFileByColumn.cwl
+id: splitFileByColumn.cwl
 inputs:
 - id: in_col
   doc: '- Use the Nth column value (default: N=1, first column)'

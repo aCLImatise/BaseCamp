@@ -1,34 +1,17 @@
 class: CommandLineTool
-id: ../../../trimFilterPE.cwl
+id: trimFilterPE.cwl
 inputs:
 - id: in_output
   doc: output prefix (with path), optional (default ./out).
   type: File
   inputBinding:
     prefix: --output
-- id: in_adapter
-  doc: "input. Four fields separated by colons:\n<AD1.fa>: fasta file containing adapters,\n\
-    <AD2.fa>: fasta file containing adapters,\n<mismatches>: maximum mismatch count\
-    \ allowed,\n<score>: score threshold  for the aligner."
-  type: File
-  inputBinding:
-    prefix: --adapter
 - id: in_method
   doc: "method used to look for contaminations:\nTREE:  uses a 4-ary tree. Index file\
     \ optional,\nBLOOM: uses a bloom filter. Index file mandatory."
   type: boolean
   inputBinding:
     prefix: --method
-- id: in_if_a
-  doc: "fasta input file of potential contaminations.\nTo be included only with method\
-    \ TREE\n(it excludes the option --idx). Otherwise, an\nindex file has to be precomputed\
-    \ and given as parameter\n(see option --idx). 3 fields separated by colons:\n\
-    <INPUT.fa>: fasta input file [*fa|*fa.gz|*fa.bz2],\n<score>: score threshold to\
-    \ accept a match [0,1],\n<lmer_len>: depth of the tree: [1,READ_LENGTH].\nCorresponds\
-    \ to the length of the lmers to be\nlooked for in the reads."
-  type: boolean
-  inputBinding:
-    prefix: --ifa
 - id: in_trim_q
   doc: "NO:       does nothing to low quality reads (default),\nALL:      removes\
     \ all reads containing at least one low\nquality nucleotide.\nENDS:     trims\
@@ -47,14 +30,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --minL
-- id: in_trim_n
-  doc: "NO:     does nothing to reads containing N's,\nALL:    removes all reads containing\
-    \ N's,\nENDS:   trims ends of reads with N's,\nSTRIPS: looks for the largest substring\
-    \ with no N's.\nAll reads are discarded if they are shorter than the\nsequence\
-    \ length specified by -m/--minL.\n"
-  type: boolean
-  inputBinding:
-    prefix: --trimN
 - id: in_if_q
   doc: "2 fastq input files [*fq|*fq.gz|*fq.bz2] separated by\ncolons, mandatory option."
   type: boolean
@@ -70,6 +45,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gzip
+- id: in_adapter
+  doc: "input. Four fields separated by colons:\n<AD1.fa>: fasta file containing adapters,\n\
+    <AD2.fa>: fasta file containing adapters,\n<mismatches>: maximum mismatch count\
+    \ allowed,\n<score>: score threshold  for the aligner."
+  type: File
+  inputBinding:
+    prefix: --adapter
 - id: in_idx
   doc: "index input file. To be included with any methods to remove.\ncontaminations\
     \ (TREE, BLOOM). 3 fields separated by colons:\n<INDEX_FILE>: output of makeTree,\
@@ -78,6 +60,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --idx
+- id: in_if_a
+  doc: "fasta input file of potential contaminations.\nTo be included only with method\
+    \ TREE\n(it excludes the option --idx). Otherwise, an\nindex file has to be precomputed\
+    \ and given as parameter\n(see option --idx). 3 fields separated by colons:\n\
+    <INPUT.fa>: fasta input file [*fa|*fa.gz|*fa.bz2],\n<score>: score threshold to\
+    \ accept a match [0,1],\n<lmer_len>: depth of the tree: [1,READ_LENGTH].\nCorresponds\
+    \ to the length of the lmers to be\nlooked for in the reads."
+  type: boolean
+  inputBinding:
+    prefix: --ifa
 - id: in_min_q
   doc: minimum quality allowed (int), optional (default 27).
   type: boolean
@@ -101,6 +93,14 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --global
+- id: in_trim_n
+  doc: "NO:     does nothing to reads containing N's,\nALL:    removes all reads containing\
+    \ N's,\nENDS:   trims ends of reads with N's,\nSTRIPS: looks for the largest substring\
+    \ with no N's.\nAll reads are discarded if they are shorter than the\nsequence\
+    \ length specified by -m/--minL.\n"
+  type: boolean
+  inputBinding:
+    prefix: --trimN
 outputs:
 - id: out_stdout
   doc: Standard output stream

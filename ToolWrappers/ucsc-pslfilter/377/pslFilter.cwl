@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslFilter.cwl
+id: pslFilter.cwl
 inputs:
 - id: in_dir
   doc: Input files are directories rather than single files

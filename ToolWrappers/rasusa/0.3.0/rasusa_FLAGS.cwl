@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rasusa_FLAGS.cwl
+id: rasusa_FLAGS.cwl
 inputs:
 - id: in_input
   doc: ''

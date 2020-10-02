@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refeature.cwl
+id: refeature.cwl
 inputs:
 - id: in_include_only
   doc: "Include only features of the specified types (comma-delimited list);\nfilter\

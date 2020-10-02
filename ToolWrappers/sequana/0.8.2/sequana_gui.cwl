@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequana_gui.cwl
+id: sequana_gui.cwl
 inputs: []
 outputs:
 - id: out_stdout

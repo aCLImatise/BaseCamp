@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isONclust_write_fastq.cwl
+id: isONclust_write_fastq.cwl
 inputs:
 - id: in_clusters
   doc: the file "final_clusters.csv created by isONclust."

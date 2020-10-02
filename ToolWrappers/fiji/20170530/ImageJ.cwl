@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ImageJ.cwl
+id: ImageJ.cwl
 inputs:
 - id: in_dry_run
   doc: show the command line, but do not run anything
@@ -141,50 +141,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --edit
-- id: in_update
-  doc: start the command-line version of the ImageJ updater
-  type: boolean
-  inputBinding:
-    prefix: --update
-- id: in_clo_jure
-  doc: "start Clojure instead of ImageJ (this is the\ndefault when called with a file\
-    \ ending in .clj)"
-  type: boolean
-  inputBinding:
-    prefix: --clojure
-- id: in_beanshell
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --beanshell
-- id: in_bsh
-  doc: "start BeanShell instead of ImageJ (this is the\ndefault when called with a\
-    \ file ending in .bs or .bsh"
-  type: boolean
-  inputBinding:
-    prefix: --bsh
-- id: in_javascript
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --javascript
-- id: in_js
-  doc: "start Javascript (the Rhino engine) instead of\nImageJ (this is the default\
-    \ when called with a\nfile ending in .js)"
-  type: boolean
-  inputBinding:
-    prefix: --js
 - id: in_main_class
-  doc: "(this is the\ndefault when called with a file ending in .class)\nstart the\
-    \ given class instead of ImageJ"
-  type: File
+  doc: (this is the
+  type: string
   inputBinding:
     prefix: --main-class
-- id: in_retro_translator
-  doc: "use Retrotranslator to support Java < 1.6\n"
-  type: boolean
-  inputBinding:
-    prefix: --retrotranslator
 outputs:
 - id: out_stdout
   doc: Standard output stream

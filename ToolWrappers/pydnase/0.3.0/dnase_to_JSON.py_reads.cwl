@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnase_to_JSON.py_reads.cwl
+id: dnase_to_JSON.py_reads.cwl
 inputs:
 - id: in_a
   doc: ''

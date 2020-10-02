@@ -14,30 +14,6 @@ positional:
   optional: false
 named:
 - !Flag
-  description: '100'
-  synonyms:
-  - --max_cluster_bias_INS
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '0.2'
-  synonyms:
-  - --diff_ratio_merging_INS
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '0.6'
-  synonyms:
-  - --diff_ratio_filtering_INS
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '0.7'
-  synonyms:
-  - --diff_ratio_filtering_DEL
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: Number of threads to use.[16]
   synonyms:
   - -t
@@ -154,6 +130,28 @@ named:
     name: GT_ROUND
   optional: true
 - !Flag
+  description: "Maximum distance to cluster read together for\ninsertion.[100]"
+  synonyms:
+  - --max_cluster_bias_INS
+  args: !SimpleFlagArg
+    name: MAX_CLUSTER_BIAS_INS
+  optional: true
+- !Flag
+  description: "Do not merge breakpoints with basepair identity more\nthan [0.2] for\
+    \ insertion."
+  synonyms:
+  - --diff_ratio_merging_INS
+  args: !SimpleFlagArg
+    name: DIFF_RATIO_MERGING_INS
+  optional: true
+- !Flag
+  description: "Filter breakpoints with basepair identity less than\n[0.6] for insertion."
+  synonyms:
+  - --diff_ratio_filtering_INS
+  args: !SimpleFlagArg
+    name: DIFF_RATIO_FILTERING_INS
+  optional: true
+- !Flag
   description: "Maximum distance to cluster read together for\ndeletion.[200]"
   synonyms:
   - --max_cluster_bias_DEL
@@ -167,6 +165,13 @@ named:
   - --diff_ratio_merging_DEL
   args: !SimpleFlagArg
     name: DIFF_RATIO_MERGING_DEL
+  optional: true
+- !Flag
+  description: "Filter breakpoints with basepair identity less than\n[0.7] for deletion."
+  synonyms:
+  - --diff_ratio_filtering_DEL
+  args: !SimpleFlagArg
+    name: DIFF_RATIO_FILTERING_DEL
   optional: true
 - !Flag
   description: "Maximum distance to cluster read together for\ninversion.[500]"

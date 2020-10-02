@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastindep_symmetry.cwl
+id: fastindep_symmetry.cwl
 inputs: []
 outputs:
 - id: out_stdout

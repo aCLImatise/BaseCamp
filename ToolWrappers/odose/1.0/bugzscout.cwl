@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bugzscout.cwl
+id: bugzscout.cwl
 inputs: []
 outputs:
 - id: out_stdout

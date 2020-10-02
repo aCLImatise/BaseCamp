@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alfred_consensus.cwl
+id: alfred_consensus.cwl
 inputs:
 - id: in_f
   doc: '[ --format ] arg (=bam)            input format [bam|fasta]'

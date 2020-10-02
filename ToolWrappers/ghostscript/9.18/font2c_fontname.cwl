@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../font2c_fontname.cwl
+id: font2c_fontname.cwl
 inputs:
 - id: in_nostringval
   doc: cfile   (--help)   (w)

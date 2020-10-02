@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../h5cc.cwl
+id: h5cc.cwl
 inputs: []
 outputs:
 - id: out_stdout

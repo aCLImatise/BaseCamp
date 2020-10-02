@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_paired_reads.py.cwl
+id: split_paired_reads.py.cwl
 inputs:
 - id: in_info
   doc: print citation information

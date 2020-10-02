@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amber.py.cwl
+id: amber.py.cwl
 inputs:
 - id: in_gold_standard_file
   doc: Gold standard - ground truth - file

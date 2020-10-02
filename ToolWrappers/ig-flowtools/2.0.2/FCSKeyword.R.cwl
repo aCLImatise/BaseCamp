@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FCSKeyword.R.cwl
+id: FCSKeyword.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

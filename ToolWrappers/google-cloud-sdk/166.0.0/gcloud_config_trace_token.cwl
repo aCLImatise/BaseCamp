@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_config_trace_token.cwl
+id: gcloud_config_trace_token.cwl
 inputs:
 - id: in_g_cloud
   doc: ''

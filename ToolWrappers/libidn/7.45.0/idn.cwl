@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idn.cwl
+id: idn.cwl
 inputs:
 - id: in_stringprep
   doc: Prepare string according to nameprep profile

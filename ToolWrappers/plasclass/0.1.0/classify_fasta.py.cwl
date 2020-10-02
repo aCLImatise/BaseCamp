@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../classify_fasta.py.cwl
+id: classify_fasta.py.cwl
 inputs:
 - id: in_fast_a
   doc: "fasta file of the sequences to be classified (default:\nNone)"

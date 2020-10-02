@@ -1,21 +1,11 @@
 class: CommandLineTool
-id: ../../../validate_blat.cwl
+id: validate_blat.cwl
 inputs:
 - id: in_min_contig
   doc: (=100)            minimum contigs
   type: long
   inputBinding:
     prefix: --min_contig
-- id: in_similar
-  doc: (=0.95)              similarity
-  type: double
-  inputBinding:
-    prefix: --similar
-- id: in_complete_rate
-  doc: (=0.8)         completeness
-  type: double
-  inputBinding:
-    prefix: --complete_rate
 - id: in_is_local
   doc: local align
   type: boolean

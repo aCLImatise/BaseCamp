@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_plot_kmer_enrichment_outdir.cwl
+id: mb_plot_kmer_enrichment_outdir.cwl
 inputs:
 - id: in_start
   doc: ''

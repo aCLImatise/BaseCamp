@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spectrast2spectrast_irt.py.cwl
+id: spectrast2spectrast_irt.py.cwl
 inputs:
 - id: in__input_file
   doc: '[--in]: input file'

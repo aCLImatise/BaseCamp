@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsCompareCurves.cwl
+id: dsCompareCurves.cwl
 inputs:
 - id: in_input
   doc: "DeepTools file obtained from computeMatrix\n--outFileNameMatrix. Alternatively,\

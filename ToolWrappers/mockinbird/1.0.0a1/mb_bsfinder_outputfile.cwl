@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_bsfinder_outputfile.cwl
+id: mb_bsfinder_outputfile.cwl
 inputs:
 - id: in_min_cov
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../express.cwl
+id: express.cwl
 inputs: []
 outputs:
 - id: out_stdout

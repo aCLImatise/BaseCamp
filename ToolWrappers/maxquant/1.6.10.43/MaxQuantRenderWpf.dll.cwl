@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MaxQuantRenderWpf.dll.cwl
+id: MaxQuantRenderWpf.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

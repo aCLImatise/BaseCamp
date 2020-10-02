@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fits2bitmap.cwl
+id: fits2bitmap.cwl
 inputs:
 - id: in_ext
   doc: "Specify the HDU extension number or name (Default is\n0)."

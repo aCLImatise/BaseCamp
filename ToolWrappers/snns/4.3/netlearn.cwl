@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../netlearn.cwl
+id: netlearn.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spspaln.pl.cwl
+id: spspaln.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

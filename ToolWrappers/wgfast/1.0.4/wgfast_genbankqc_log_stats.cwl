@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wgfast_genbankqc_log_stats.cwl
+id: wgfast_genbankqc_log_stats.cwl
 inputs:
 - id: in_path
   doc: ''

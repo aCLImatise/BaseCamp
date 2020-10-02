@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_app_deploy.cwl
+id: gcloud_app_deploy.cwl
 inputs:
 - id: in_bucket
   doc: "The Google Cloud Storage bucket used to stage files associated with the\n\

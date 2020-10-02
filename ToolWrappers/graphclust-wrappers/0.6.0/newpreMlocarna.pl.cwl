@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../newpreMlocarna.pl.cwl
+id: newpreMlocarna.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

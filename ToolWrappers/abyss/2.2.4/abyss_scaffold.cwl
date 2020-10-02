@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_scaffold.cwl
+id: abyss_scaffold.cwl
 inputs:
 - id: in_n_pairs
   doc: "minimum number of pairs [0]\nor -n A-B:S       Find the value of n in [A,B]\

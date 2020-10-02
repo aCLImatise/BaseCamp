@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DecoyDatabase.cwl
+id: DecoyDatabase.cwl
 inputs:
 - id: in_enzyme
   doc: "Enzyme used for the digestion of the sample (default: 'Trypsin' valid: 'Arg-C',\

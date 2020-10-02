@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../delta_filter.cwl
+id: delta_filter.cwl
 inputs:
 - id: in__alignment_allowing
   doc: "1-to-1 alignment allowing for rearrangements\n(intersection of -r and -q alignments)"

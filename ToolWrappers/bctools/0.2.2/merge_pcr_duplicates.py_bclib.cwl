@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_pcr_duplicates.py_bclib.cwl
+id: merge_pcr_duplicates.py_bclib.cwl
 inputs:
 - id: in_d
   doc: ''

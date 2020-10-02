@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_ftreedist.cwl
+id: _ftreedist.cwl
 inputs:
 - id: in_d_type
   doc: "menu       [b] Distance type (Values: s (Symmetric\ndifference); b (Branch\

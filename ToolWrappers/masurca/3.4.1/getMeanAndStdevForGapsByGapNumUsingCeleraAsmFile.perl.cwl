@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getMeanAndStdevForGapsByGapNumUsingCeleraAsmFile.perl.cwl
+id: getMeanAndStdevForGapsByGapNumUsingCeleraAsmFile.perl.cwl
 inputs:
 - id: in_contig_end_seq_file
   doc: "; the file that contains the contig end\nsequences to be joined by the gap\

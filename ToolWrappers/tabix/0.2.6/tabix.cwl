@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tabix.cwl
+id: tabix.cwl
 inputs:
 - id: in_preset_gff_bed
   doc: 'preset: gff, bed, sam, vcf, psltbl [gff]'

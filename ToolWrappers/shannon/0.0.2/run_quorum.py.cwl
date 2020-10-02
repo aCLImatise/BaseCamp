@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_quorum.py.cwl
+id: run_quorum.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

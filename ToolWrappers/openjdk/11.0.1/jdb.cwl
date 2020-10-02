@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jdb.cwl
+id: jdb.cwl
 inputs:
 - id: in_sourcepath
   doc: "<directories separated by \":\">\ndirectories in which to look for source\

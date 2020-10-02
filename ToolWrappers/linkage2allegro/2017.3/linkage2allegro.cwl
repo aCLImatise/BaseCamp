@@ -1,21 +1,11 @@
 class: CommandLineTool
-id: ../../../linkage2allegro.cwl
+id: linkage2allegro.cwl
 inputs:
-- id: in_l
-  doc: ''
+- id: in_h_haplofiled_descentfile
+  doc: "-h haplofile\n-d descentfile\n"
   type: File
   inputBinding:
     prefix: -l
-- id: in_h
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -h
-- id: in_d
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -d
 outputs:
 - id: out_stdout
   doc: Standard output stream

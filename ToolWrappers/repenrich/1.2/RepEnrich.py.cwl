@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RepEnrich.py.cwl
+id: RepEnrich.py.cwl
 inputs:
 - id: in_paired_end
   doc: "Designate this option for paired-end sequencing.\nDefault FALSE change to\

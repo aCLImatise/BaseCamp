@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coverage2cytosine.cwl
+id: coverage2cytosine.cwl
 inputs:
 - id: in_oslash_output
   doc: Name of the output file, mandatory.

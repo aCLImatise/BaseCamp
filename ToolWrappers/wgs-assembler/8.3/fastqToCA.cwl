@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastqToCA.cwl
+id: fastqToCA.cwl
 inputs:
 - id: in_insert_size
   doc: "d    Mates are on average i +- d bp apart.\nIf the word 'constant' follows\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../date.cwl
+id: date.cwl
 inputs:
 - id: in_date
   doc: display time described by STRING, not 'now'

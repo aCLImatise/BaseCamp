@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msstitch_peptides.cwl
+id: msstitch_peptides.cwl
 inputs:
 - id: in_input_file_format
   doc: Input file of {} format

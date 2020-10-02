@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getFastaFromIds.py_out.cwl
+id: getFastaFromIds.py_out.cwl
 inputs:
 - id: in_v
   doc: ''

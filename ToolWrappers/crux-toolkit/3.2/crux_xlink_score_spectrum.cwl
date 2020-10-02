@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_xlink_score_spectrum.cwl
+id: crux_xlink_score_spectrum.cwl
 inputs:
 - id: in_peptide_a
   doc: ''

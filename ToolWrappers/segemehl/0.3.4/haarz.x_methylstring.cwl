@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haarz.x_methylstring.cwl
+id: haarz.x_methylstring.cwl
 inputs:
 - id: in_database
   doc: '[<file>]         list of path/filename(s) of fasta database sequence(s) (default:none)'

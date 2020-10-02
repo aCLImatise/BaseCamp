@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxonkit_reformat.cwl
+id: taxonkit_reformat.cwl
 inputs:
 - id: in_delimiter
   doc: field delimiter in input lineage (default ";")

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_jobutil_parse_link.cwl
+id: dx_jobutil_parse_link.cwl
 inputs:
 - id: in_no_project
   doc: "Ignore project ID in an extended dxlink - just print the\nobject ID\n"

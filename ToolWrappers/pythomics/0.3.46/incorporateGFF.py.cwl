@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../incorporateGFF.py.cwl
+id: incorporateGFF.py.cwl
 inputs:
 - id: in_threads_to_run
   doc: Threads to run

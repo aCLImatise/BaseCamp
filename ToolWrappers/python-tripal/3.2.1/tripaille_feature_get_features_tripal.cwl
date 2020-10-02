@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_feature_get_features_tripal.cwl
+id: tripaille_feature_get_features_tripal.cwl
 inputs:
 - id: in_feature_id
   doc: A feature entity/node ID

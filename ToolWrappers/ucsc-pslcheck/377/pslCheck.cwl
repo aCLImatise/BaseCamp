@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslCheck.cwl
+id: pslCheck.cwl
 inputs: []
 outputs:
 - id: out_stdout

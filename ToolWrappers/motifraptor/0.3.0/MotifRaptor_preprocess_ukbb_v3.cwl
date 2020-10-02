@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MotifRaptor_preprocess_ukbb_v3.cwl
+id: MotifRaptor_preprocess_ukbb_v3.cwl
 inputs:
 - id: in_g_was_summary
   doc: GWAS summary statistic - UKBB v3 tsv filename

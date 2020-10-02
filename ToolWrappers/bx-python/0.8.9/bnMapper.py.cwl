@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bnMapper.py.cwl
+id: bnMapper.py.cwl
 inputs:
 - id: in_format
   doc: "Output format. BED4 output reports all aligned blocks\nas separate BED records.\

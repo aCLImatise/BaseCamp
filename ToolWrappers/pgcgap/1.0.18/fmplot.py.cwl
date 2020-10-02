@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fmplot.py.cwl
+id: fmplot.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_with_microbes_and_remapping.pl.cwl
+id: filter_with_microbes_and_remapping.pl.cwl
 inputs:
 - id: in_bam
   doc: required at /usr/local/bin/filter_with_microbes_and_remapping.pl line 113.

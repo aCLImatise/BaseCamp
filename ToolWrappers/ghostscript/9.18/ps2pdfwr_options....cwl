@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../ps2pdfwr_options....cwl
-inputs:
-- id: in_dict
-  doc: :1191/1684(ro)(G)--   --dict:0/20(G)--   --dict:78/200(L)--
-  type: boolean
-  inputBinding:
-    prefix: --dict
+id: ps2pdfwr_options....cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

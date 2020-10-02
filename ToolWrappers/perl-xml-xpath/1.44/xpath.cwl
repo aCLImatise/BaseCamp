@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xpath.cwl
+id: xpath.cwl
 inputs:
 - id: in_only_output_path
   doc: ', only output the resulting PATH.'

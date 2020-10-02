@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_alignment_length.py.cwl
+id: bam_alignment_length.py.cwl
 inputs:
 - id: in_tab_separated_file
   doc: "Tab separated file to save alignment lengths\n(bam_alignment_length.tsv)."

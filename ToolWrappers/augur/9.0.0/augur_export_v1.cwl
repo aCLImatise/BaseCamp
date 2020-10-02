@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augur_export_v1.cwl
+id: augur_export_v1.cwl
 inputs:
 - id: in_tree
   doc: tree to perform trait reconstruction on

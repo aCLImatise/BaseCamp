@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../add_protein_annotation.py.cwl
+id: add_protein_annotation.py.cwl
 inputs:
 - id: in_fast_a
   doc: A fasta file

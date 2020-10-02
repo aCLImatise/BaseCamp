@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chainSwap.cwl
+id: chainSwap.cwl
 inputs:
 - id: in_in_dot_chain
   doc: ''

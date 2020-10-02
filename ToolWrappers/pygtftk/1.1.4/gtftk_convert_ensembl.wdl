@@ -13,12 +13,10 @@ task GtftkConvertEnsembl {
     Boolean? logger_file
     Boolean? write_message_to_file
     String lack
-    String instead_dot
   }
   command <<<
     gtftk convert_ensembl \
       ~{lack} \
-      ~{instead_dot} \
       ~{if (input_file) then "--inputfile" else ""} \
       ~{if (output_file) then "--outputfile" else ""} \
       ~{if (no_check_gene_chr) then "--no-check-gene-chr" else ""} \
@@ -42,7 +40,6 @@ task GtftkConvertEnsembl {
     logger_file: "Stores the arguments passed to the command into a file. (default: None)"
     write_message_to_file: "Store all message into a file. (default: None)"
     lack: "of non ambiguous gene or transcript names For instance, a refSeq sequence ID used as"
-    instead_dot: "Version:  2018-02-06"
   }
   output {
     File out_stdout = stdout()

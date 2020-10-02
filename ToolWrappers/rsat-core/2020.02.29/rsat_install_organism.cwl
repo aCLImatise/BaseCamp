@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_install_organism.cwl
+id: rsat_install_organism.cwl
 inputs:
 - id: in_help
   doc: (must be first argument) display options
@@ -11,8 +11,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -v
+- id: in_org
+  doc: "organism name without spaces (e.g. Saccharomyces_cerevisiae)\nThe option -org\
+    \ can be used iteratively on the same\ncommand line to iterate the installation\
+    \ over multiple\norganisms."
+  type: boolean
+  inputBinding:
+    prefix: -org
+- id: in_org_file
+  doc: "Text file containing a list of organisms to install.\nThe first word of each\
+    \ row is taken as a query\norgnanism. Further information of the same row is\n\
+    ignored."
+  type: File
+  inputBinding:
+    prefix: -org_file
 - id: in_all_organisms
-  doc: ''
+  doc: "Install all the organisms found in the Refseq\ndirectory (see option -refseq)."
   type: boolean
   inputBinding:
     prefix: -all_organisms
@@ -208,18 +222,45 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -img_format
-- id: in_o
-  doc: ''
-  type: string
+- id: in_download_one_species
+  doc: "Download one species with rsync:\ninstall-organism -v 1  -group [GROUP] -species\
+    \ [SPECIES]\n-task download\nParse the genome for a given species, and declare\
+    \ it in RSAT\nsupported organism. NOTE: this installs all the strains for the\n\
+    selected species. For some species this can represent thousands of\nstrains (e.g.\
+    \ Eschrichia coli). Strains can be restricted with the\noptions -strain or -max_strains.\n\
+    install-organism -v 1  -group [GROUP] -species [SPECIES]\n-task parse,config\n\
+    Run the default installation steps for a given species. Note: the\noption -list\
+    \ is required in order to collect the organism names,\nwhich are made by concatenating\
+    \ species and strain\ninstall-organism -v 1  -group [GROUP] -species [SPECIES]\n\
+    -task list,default\nInstallation can be automated and parallelized with a job\n\
+    scheduler (e.g. qsub) in order to install all the species of a\ngiven group.\n\
+    Example: install all species of the group \"fungi\" at NCBI.\nStep 1: get the\
+    \ list of species available at NCBI\ninstall-organism -v 1 -group fungi -task\
+    \ available\n-o fungi_available_species.txt\nStep 2: download genome for all the\
+    \ strains of these\nspecies. Beware, this takes space, there are several hundreds\
+    \ of\nspecies.\ninstall-organism -v 1 -group fungi -task download\n-species_file\
+    \ fungi_available_species.txt\nStep 3: parse the genomes of all strains for each\
+    \ fungal species.\ninstall-organism -v 1 -group fungi -task parse,config\n-species_file\
+    \ fungi_available_species.txt\nStep 4: collect the list of downloaded organisms.\
+    \ Organism names\nare built by concatenating species and strain names.\ninstall-organism\
+    \ -v 1 -group fungi\n-species_file fungi_available_species.txt\n-task list\n-o\
+    \ fungi_downloaded_orgnanisms.txt\nStep 5: extract fasta sequences for different\
+    \ types of genomic\nregions, and run some control tests (e.g. oligonucleotide\n\
+    frequencies of start and stop codons). With the option -batch, the\ntasks are\
+    \ sent to a job scheuler (qsub) in order to be executed in\nparallel.\ninstall-organism\
+    \ -v 1\n-org_file fungi_downloaded_orgnanisms.txt\n-task start_stop,allup,seq_len_distrib,genome_segments\n\
+    -task protein_len,fasta_genome,fasta_genome_rm\n-task chrom_sizes,index_bedtools\n\
+    -batch\nStep 6: compute the oligomer frequency tables. In batch mode, this\ntask\
+    \ can be done only after the previous job list is finished,\nbecause of the dependencies\
+    \ between the parallelized tasks\n(upstream sequences have to be computed before\
+    \ computing their\noligonucleotide and dyad frequencies).\ninstall-organism -v\
+    \ 1\n-org_file fungi_downloaded_orgnanisms.txt\n-task upstream_freq,genome_freq,protein_freq,oligos,dyads\n\
+    -batch"
+  type: long
   inputBinding:
     prefix: -o
 - id: in_install_organism
   doc: AUTHOR
-  type: string
-  inputBinding:
-    position: 0
-- id: in_column_dot
-  doc: '-max_strains #'
   type: string
   inputBinding:
     position: 0
@@ -323,16 +364,6 @@ inputs:
   type: string
   inputBinding:
     position: 14
-- id: in_species_dot
-  doc: 'install-organism -v 1 -group fungi -task download '
-  type: string
-  inputBinding:
-    position: 0
-- id: in_parallel_dot
-  doc: 'install-organism -v 1 '
-  type: string
-  inputBinding:
-    position: 0
 - id: in_download_organisms
   doc: "The program I<install-organism> performs all the formatting\nand calibration\
     \ tasks for importing genomes from the reference\ndatabases (NCBI, EMBL) to RSAT.\n\

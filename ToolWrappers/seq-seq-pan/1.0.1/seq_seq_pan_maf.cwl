@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq_seq_pan_maf.cwl
+id: seq_seq_pan_maf.cwl
 inputs:
 - id: in_g
   doc: ''

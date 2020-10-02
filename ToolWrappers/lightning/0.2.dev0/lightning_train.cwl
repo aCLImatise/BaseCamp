@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lightning_train.cwl
+id: lightning_train.cwl
 inputs: []
 outputs:
 - id: out_stdout

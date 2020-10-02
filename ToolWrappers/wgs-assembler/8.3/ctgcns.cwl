@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ctgcns.cwl
+id: ctgcns.cwl
 inputs:
 - id: in_test_computation_contig
   doc: Test the computation of the contig layout in 'file'

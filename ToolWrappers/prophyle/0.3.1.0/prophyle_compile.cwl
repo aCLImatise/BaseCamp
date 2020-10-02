@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophyle_compile.cwl
+id: prophyle_compile.cwl
 inputs:
 - id: in_clean_files_instead
   doc: clean files instead of compiling

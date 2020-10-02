@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ClusterMassTracesByPrecursor.cwl
+id: ClusterMassTracesByPrecursor.cwl
 inputs:
 - id: in_in_ms_one
   doc: "*                    MS1 mass traces (valid formats: 'consensusXML')"

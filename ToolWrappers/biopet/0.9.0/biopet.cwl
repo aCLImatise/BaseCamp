@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biopet.cwl
+id: biopet.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../tombo_filter_raw_signal_matching.cwl
+id: tombo_filter_raw_signal_matching.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_signal_matching_score
+  doc: "SIGNAL_MATCHING_SCORE\n[--corrected-group CORRECTED_GROUP]\n[--quiet] [--help]"
   type: boolean
   inputBinding:
     prefix: --signal-matching-score
@@ -21,11 +21,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: in_var_4
-  doc: '[--corrected-group CORRECTED_GROUP]'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ntedit.cwl
+id: ntedit.cwl
 inputs:
 - id: in__number_threads
   doc: ',     number of threads [default=1]'

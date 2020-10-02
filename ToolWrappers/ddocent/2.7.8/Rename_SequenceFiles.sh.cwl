@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Rename_SequenceFiles.sh.cwl
+id: Rename_SequenceFiles.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

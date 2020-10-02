@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_corr.cwl
+id: csvtk_corr.cwl
 inputs:
 - id: in_fields
   doc: comma separated fields

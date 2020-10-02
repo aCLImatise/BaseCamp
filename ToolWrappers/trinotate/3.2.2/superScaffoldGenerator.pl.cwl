@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../superScaffoldGenerator.pl.cwl
+id: superScaffoldGenerator.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

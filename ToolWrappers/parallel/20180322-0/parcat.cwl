@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parcat.cwl
+id: parcat.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DBsplit.cwl
+id: DBsplit.cwl
 inputs:
 - id: in_target_size_blocks
   doc: ': Target size of blocks (in Mbp).'

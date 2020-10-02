@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../geneOntologyFromBed.py.cwl
+id: geneOntologyFromBed.py.cwl
 inputs:
 - id: in_mode
   doc: choose mode

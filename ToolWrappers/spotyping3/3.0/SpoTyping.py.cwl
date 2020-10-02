@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SpoTyping.py.cwl
+id: SpoTyping.py.cwl
 inputs:
 - id: in_seq
   doc: "Set this if input is a fasta file that contains only a\ncomplete genomic sequence\

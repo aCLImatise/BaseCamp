@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VIBRANT_extract_nucleotide.py.cwl
+id: VIBRANT_extract_nucleotide.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_heatmap.cwl
+id: rgi_heatmap.cwl
 inputs:
 - id: in_input
   doc: Directory containing the RGI .json files (REQUIRED)

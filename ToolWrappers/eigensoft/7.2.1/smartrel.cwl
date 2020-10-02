@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smartrel.cwl
+id: smartrel.cwl
 inputs:
 - id: in_bad
   doc: ''

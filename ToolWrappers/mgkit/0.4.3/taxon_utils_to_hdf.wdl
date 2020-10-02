@@ -3,11 +3,6 @@ version 1.0
 task TaxonutilsToHdf {
   input {
     Boolean? verbose
-    String? table_name
-    Boolean? overwrite
-    Int? index_size
-    Int? chunk_size
-    Boolean? progress
     String? input_file
     String? output_file
   }
@@ -15,20 +10,10 @@ task TaxonutilsToHdf {
     taxon_utils to_hdf \
       ~{input_file} \
       ~{output_file} \
-      ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(table_name) then ("--table-name " +  '"' + table_name + '"') else ""} \
-      ~{if (overwrite) then "--overwrite" else ""} \
-      ~{if defined(index_size) then ("--index-size " +  '"' + index_size + '"') else ""} \
-      ~{if defined(chunk_size) then ("--chunk-size " +  '"' + chunk_size + '"') else ""} \
-      ~{if (progress) then "--progress" else ""}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    verbose: ""
-    table_name: "Name of the table/storage to use  [default: taxa]"
-    overwrite: "Overwrite the file, instead of appending to it"
-    index_size: "Maximum number of characters for the gene_id\\n[default: 12]"
-    chunk_size: "Chunk size to use when reading the input file\\n[default: 5000000]"
-    progress: "Shows Progress Bar"
+    verbose: "-n, --table-name TEXT     Name of the table/storage to use  [default: taxa]\\n-w, --overwrite           Overwrite the file, instead of appending to it\\n-s, --index-size INTEGER  Maximum number of characters for the gene_id\\n[default: 12]\\n-c, --chunk-size INTEGER  Chunk size to use when reading the input file\\n[default: 5000000]\\n--progress                Shows Progress Bar\\n--help                    Show this message and exit.\\n"
     input_file: ""
     output_file: ""
   }

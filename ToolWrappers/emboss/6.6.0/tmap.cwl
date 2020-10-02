@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tmap.cwl
+id: tmap.cwl
 inputs:
 - id: in_graph
   doc: "xygraph    [$EMBOSS_GRAPHICS value, or png] Graph type\n(ps, hpgl, hp7470,\
@@ -7,11 +7,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -graph
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 outputs:
 - id: out_stdout
   doc: Standard output stream

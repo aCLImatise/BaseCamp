@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../errorEstimate.cwl
+id: errorEstimate.cwl
 inputs: []
 outputs:
 - id: out_stdout

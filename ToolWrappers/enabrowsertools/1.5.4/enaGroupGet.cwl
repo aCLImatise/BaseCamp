@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enaGroupGet.cwl
+id: enaGroupGet.cwl
 inputs:
 - id: in_group
   doc: "Data group to be downloaded for this\nstudy/sample/taxon (default is read)"

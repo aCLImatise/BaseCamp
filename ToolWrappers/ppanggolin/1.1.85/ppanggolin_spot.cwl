@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanggolin_spot.cwl
+id: ppanggolin_spot.cwl
 inputs:
 - id: in_output
   doc: "Output directory (default:\nppanggolin_output_DATE2020-09-09_HOUR23.41.14_PID1862)"

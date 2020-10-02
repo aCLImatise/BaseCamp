@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_convertmsa.cwl
+id: mmseqs_convertmsa.cwl
 inputs:
 - id: in_identifier_field
   doc: '1               Field from STOCKHOLM comments for choosing the MSA identifier:

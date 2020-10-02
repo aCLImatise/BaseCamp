@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../buildCustomModels.pl.cwl
+id: buildCustomModels.pl.cwl
 inputs:
 - id: in__datadir_s
   doc: '/ --datadir  <s>    :       Data directory for writing output to'

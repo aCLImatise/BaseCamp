@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lexmapr_OUTPUT.cwl
+id: lexmapr_OUTPUT.cwl
 inputs:
 - id: in_v
   doc: ''

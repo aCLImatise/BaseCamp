@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../UnifyHeaders.py_consensus.cwl
+id: UnifyHeaders.py_consensus.cwl
 inputs:
 - id: in_list_fastafastq_files
   doc: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default: None)"

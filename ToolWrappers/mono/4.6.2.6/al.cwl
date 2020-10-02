@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../al.cwl
+id: al.cwl
 inputs:
 - id: in_sources
   doc: ''

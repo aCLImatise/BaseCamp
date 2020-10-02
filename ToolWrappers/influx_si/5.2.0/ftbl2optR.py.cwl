@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ftbl2optR.py.cwl
+id: ftbl2optR.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

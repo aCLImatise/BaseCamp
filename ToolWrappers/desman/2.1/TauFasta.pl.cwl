@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TauFasta.pl.cwl
+id: TauFasta.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

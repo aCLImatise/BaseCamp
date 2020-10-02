@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MotifRaptor_preprocess.cwl
+id: MotifRaptor_preprocess.cwl
 inputs:
 - id: in_g_was_summary
   doc: GWAS summary statistic file

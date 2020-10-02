@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wkhtmltoimage.cwl
+id: wkhtmltoimage.cwl
 inputs: []
 outputs:
 - id: out_stdout

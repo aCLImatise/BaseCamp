@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stats_alignment.py.cwl
+id: stats_alignment.py.cwl
 inputs:
 - id: in_query
   doc: "file containing the inserted sequences obtained from MindTheGap (format: 'xxx.insertions.fasta')"

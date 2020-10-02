@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_lq_isoforms.py.cwl
+id: filter_lq_isoforms.py.cwl
 inputs:
 - id: in_min_fl_count
   doc: 'Minimum FL count (default: 2).'

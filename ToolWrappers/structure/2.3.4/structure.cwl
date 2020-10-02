@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../structure.cwl
+id: structure.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertsegfilestops.cwl
+id: convertsegfilestops.cwl
 inputs:
 - id: in_where
   doc: "pagedir:  Input directory for page image files\npagestr:  Substring for matching;\

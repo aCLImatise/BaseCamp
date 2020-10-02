@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsnp_group_reporter.py.cwl
+id: vsnp_group_reporter.py.cwl
 inputs:
 - id: in_vcf
   doc: 'Required: vcf file'

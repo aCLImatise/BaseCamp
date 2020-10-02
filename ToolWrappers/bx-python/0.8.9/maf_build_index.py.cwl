@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_build_index.py.cwl
+id: maf_build_index.py.cwl
 inputs:
 - id: in_species
   doc: "only index the position of the block in the listed\nspecies\n"

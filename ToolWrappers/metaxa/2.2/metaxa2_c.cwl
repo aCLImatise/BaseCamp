@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaxa2_c.cwl
+id: metaxa2_c.cwl
 inputs:
 - id: in_dna_fasta_input
   doc: ': DNA FASTA input file of rRNA sequences to investigate'

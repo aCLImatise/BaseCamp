@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mirdeep2bed.pl.orig.cwl
+id: mirdeep2bed.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../StoatyDive.py.cwl
+id: StoatyDive.py.cwl
 inputs:
 - id: in__inputbed_peak
   doc: "*.bed, --input_bed *.bed\nPath to the peak file in bed6 format."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho_clustering.cwl
+id: proteinortho_clustering.cwl
 inputs:
 - id: in_verbose
   doc: report progress

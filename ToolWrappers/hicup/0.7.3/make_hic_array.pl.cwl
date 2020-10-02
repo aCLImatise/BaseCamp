@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_hic_array.pl.cwl
+id: make_hic_array.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

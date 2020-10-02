@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../ccrewrite.cwl
+id: ccrewrite.cwl
 inputs:
 - id: in_debug
   doc: Use MDB or PDB debug information (default=true).
   type: boolean
   inputBinding:
     prefix: --debug
-- id: in_level
-  doc: Instrumentation level, 0 - 4 (default=4).
-  type: long
-  inputBinding:
-    prefix: --level
 - id: in_write_pdb_file
   doc: Write MDB or PDB file (default=true).
   type: boolean

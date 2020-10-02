@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RNAlien_bin.cwl
+id: RNAlien_bin.cwl
 inputs:
 - id: in_input_fast_a_file_path
   doc: Path to input fasta file

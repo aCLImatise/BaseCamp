@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../process_mdout.perl.cwl
+id: process_mdout.perl.cwl
 inputs: []
 outputs:
 - id: out_stdout

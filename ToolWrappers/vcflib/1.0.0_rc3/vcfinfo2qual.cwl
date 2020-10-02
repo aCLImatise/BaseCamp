@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfinfo2qual.cwl
+id: vcfinfo2qual.cwl
 inputs:
 - id: in_key
   doc: ''

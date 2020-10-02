@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../estpost.entropy.cwl
+id: estpost.entropy.cwl
 inputs:
 - id: in_outfile
   doc: Outfile [default = postout.txt]

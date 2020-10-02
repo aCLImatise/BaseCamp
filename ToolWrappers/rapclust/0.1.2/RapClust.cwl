@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RapClust.cwl
+id: RapClust.cwl
 inputs:
 - id: in_config
   doc: Config file describing the experimental setup  [required]

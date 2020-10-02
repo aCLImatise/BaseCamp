@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clxdo.cwl
+id: clxdo.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../datma_seq.py.cwl
+id: datma_seq.py.cwl
 inputs:
 - id: in_file
   doc: configuration file

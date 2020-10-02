@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfbreakmulti.cwl
+id: vcfbreakmulti.cwl
 inputs:
 - id: in_file
   doc: ''

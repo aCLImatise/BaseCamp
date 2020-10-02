@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_interpop_chars.pl.cwl
+id: extract_interpop_chars.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

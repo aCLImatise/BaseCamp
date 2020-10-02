@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jshell.cwl
+id: jshell.cwl
 inputs:
 - id: in_class_path
   doc: Specify where to find user class files

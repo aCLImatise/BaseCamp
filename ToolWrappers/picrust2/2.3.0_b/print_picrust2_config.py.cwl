@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../print_picrust2_config.py.cwl
+id: print_picrust2_config.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

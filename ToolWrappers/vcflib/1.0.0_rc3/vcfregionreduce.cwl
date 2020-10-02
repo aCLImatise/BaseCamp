@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfregionreduce.cwl
+id: vcfregionreduce.cwl
 inputs: []
 outputs:
 - id: out_stdout

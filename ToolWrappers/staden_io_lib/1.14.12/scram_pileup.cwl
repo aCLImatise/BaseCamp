@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scram_pileup.cwl
+id: scram_pileup.cwl
 inputs:
 - id: in_gap_pileup_format
   doc: Gap5 pileup format.

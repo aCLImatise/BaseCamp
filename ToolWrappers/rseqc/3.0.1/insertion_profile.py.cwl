@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../insertion_profile.py.cwl
+id: insertion_profile.py.cwl
 inputs:
 - id: in_input_file
   doc: Alignment file in BAM or SAM format.

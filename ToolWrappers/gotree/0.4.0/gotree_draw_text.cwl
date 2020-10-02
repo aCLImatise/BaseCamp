@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_draw_text.cwl
+id: gotree_draw_text.cwl
 inputs:
 - id: in_width
   doc: Width of tree/terminal (in characters) (default 200)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../topas.cwl
+id: topas.cwl
 inputs:
 - id: in_validate_fast_a
   doc: validate a fasta file

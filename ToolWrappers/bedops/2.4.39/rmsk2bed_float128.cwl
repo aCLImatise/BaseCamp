@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rmsk2bed_float128.cwl
+id: rmsk2bed_float128.cwl
 inputs:
 - id: in_input
   doc: "=[bam|gff|gtf|gvf|psl|rmsk|sam|vcf|wig] (-i <fmt>)\nGenomic format of input\

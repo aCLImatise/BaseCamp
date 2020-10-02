@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vsearch.cwl
+id: vsearch.cwl
 inputs:
 - id: in_bzip_two_decompress
   doc: decompress input with bzip2 (required if pipe)

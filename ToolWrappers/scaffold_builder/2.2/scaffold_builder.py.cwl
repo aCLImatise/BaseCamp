@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scaffold_builder.py.cwl
+id: scaffold_builder.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

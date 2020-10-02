@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpptraj_dry.cwl
+id: cpptraj_dry.cwl
 inputs:
 - id: in_config
   doc: Configuration file

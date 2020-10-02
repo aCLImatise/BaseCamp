@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../baseCalling_Matrix_calculator.cwl
+id: baseCalling_Matrix_calculator.cwl
 inputs:
 - id: in_fasta_file_m
   doc: "FASTA file [\e[0;0m.{gz,bz2} is OK\e[32;1m]\e[32;1m"

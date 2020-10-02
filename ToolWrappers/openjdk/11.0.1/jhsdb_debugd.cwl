@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jhsdb_debugd.cwl
+id: jhsdb_debugd.cwl
 inputs:
 - id: in_java
   doc: ''

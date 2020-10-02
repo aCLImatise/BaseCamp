@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_gen_contigs_database.cwl
+id: anvi_gen_contigs_database.cwl
 inputs:
 - id: in_contigs_fast_a
   doc: "The FASTA file that contains reference sequences you\nmapped your samples\

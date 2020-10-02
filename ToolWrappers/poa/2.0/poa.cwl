@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../poa.cwl
+id: poa.cwl
 inputs:
 - id: in_read_fast_a
   doc: Read in FASTA sequence file.

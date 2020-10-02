@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LengthFilter.py.cwl
+id: LengthFilter.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../selectFasta.cwl
+id: selectFasta.cwl
 inputs:
 - id: in_fast_q
   doc: FILE  (fastq file to select reads from)

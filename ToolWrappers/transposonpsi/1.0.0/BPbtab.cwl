@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BPbtab.cwl
+id: BPbtab.cwl
 inputs: []
 outputs:
 - id: out_stdout

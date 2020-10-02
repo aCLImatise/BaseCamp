@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maskfeat.cwl
+id: maskfeat.cwl
 inputs:
 - id: in_type
   doc: "string     [repeat*] By default any feature in the\nfeature table with a type\

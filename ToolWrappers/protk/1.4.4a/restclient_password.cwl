@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../restclient_password.cwl
+id: restclient_password.cwl
 inputs:
 - id: in_rest_client
   doc: ''

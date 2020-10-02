@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../breadth_depth.py.cwl
+id: breadth_depth.py.cwl
 inputs:
 - id: in_id__contig
   doc: "ID, --contig REFERENCE ID\nFocus on a subset of references in the BAM file.\
@@ -25,11 +25,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --minlen
-- id: in_minco_vdot
-  doc: ': 30'
-  type: long
-  inputBinding:
-    prefix: --mincov.
 - id: in_min_cov
   doc: "Minimum position coverage to perform the polymorphism\ncalculation. Position\
     \ with a lower depth of coverage\nwill be discarded (i.e. considered as zero-coverage\n\

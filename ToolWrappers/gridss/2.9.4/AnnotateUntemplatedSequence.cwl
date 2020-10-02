@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AnnotateUntemplatedSequence.cwl
+id: AnnotateUntemplatedSequence.cwl
 inputs: []
 outputs:
 - id: out_stdout

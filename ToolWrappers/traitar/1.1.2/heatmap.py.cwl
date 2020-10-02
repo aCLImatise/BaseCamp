@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../heatmap.py.cwl
+id: heatmap.py.cwl
 inputs:
 - id: in_secondary_model_tar
   doc: "secondary model tar if combining the prediction of two\ndifferent phenotype\

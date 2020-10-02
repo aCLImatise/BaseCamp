@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../comparePolishes.cwl
+id: comparePolishes.cwl
 inputs:
 - id: in_gff_three
   doc: ''

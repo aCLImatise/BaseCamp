@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_export_splits_and_coverages.cwl
+id: anvi_export_splits_and_coverages.cwl
 inputs:
 - id: in_profile_db
   doc: Anvi'o profile database

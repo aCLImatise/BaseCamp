@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tandem_genotypes_join.cwl
+id: tandem_genotypes_join.cwl
 inputs:
 - id: in_shrink
   doc: shrink the output

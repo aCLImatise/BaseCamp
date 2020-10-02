@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minia_nooverlap.cwl
+id: minia_nooverlap.cwl
 inputs: []
 outputs:
 - id: out_stdout

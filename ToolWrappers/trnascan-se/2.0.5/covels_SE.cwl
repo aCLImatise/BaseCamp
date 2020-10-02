@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../covels_SE.cwl
+id: covels_SE.cwl
 inputs:
 - id: in_complementary_strand_too
   doc: ': do complementary strand too'

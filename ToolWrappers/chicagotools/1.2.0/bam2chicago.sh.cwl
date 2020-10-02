@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2chicago.sh.cwl
+id: bam2chicago.sh.cwl
 inputs:
 - id: in_bam_file
   doc: ''

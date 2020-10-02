@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tigmint_molecule.cwl
+id: tigmint_molecule.cwl
 inputs:
 - id: in_output
   doc: Output TSV file [stdout]

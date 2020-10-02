@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqmagick_backtrans_align.cwl
+id: seqmagick_backtrans_align.cwl
 inputs:
 - id: in_out_file
   doc: 'Output destination. Default: STDOUT'

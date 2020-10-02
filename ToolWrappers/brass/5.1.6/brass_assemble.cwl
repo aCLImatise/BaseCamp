@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../brass_assemble.cwl
+id: brass_assemble.cwl
 inputs: []
 outputs:
 - id: out_stdout

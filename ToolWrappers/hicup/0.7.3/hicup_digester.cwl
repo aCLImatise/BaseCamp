@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicup_digester.cwl
+id: hicup_digester.cwl
 inputs:
 - id: in_arima
   doc: "Set the --re1 option to that used by the Arima protocol:\n^GATC,DpnII:G^ANTC,Arima"

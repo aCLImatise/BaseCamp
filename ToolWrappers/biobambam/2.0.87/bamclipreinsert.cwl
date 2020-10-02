@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamclipreinsert.cwl
+id: bamclipreinsert.cwl
 inputs: []
 outputs:
 - id: out_stdout

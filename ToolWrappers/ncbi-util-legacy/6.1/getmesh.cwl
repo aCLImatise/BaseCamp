@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getmesh.cwl
+id: getmesh.cwl
 inputs:
 - id: in_input_data_data
   doc: "Input data [Data In]\nData Type = Medline-entry"

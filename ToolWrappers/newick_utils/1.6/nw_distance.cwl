@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_distance.cwl
+id: nw_distance.cwl
 inputs:
 - id: in_selects_mode_see
   doc: ": selects mode (see Output). Mode is determined by the first\nletter of the\

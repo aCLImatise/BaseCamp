@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_fetch_reads.cwl
+id: fc_fetch_reads.cwl
 inputs:
 - id: in_base_dir
   doc: the base working dir of a falcon assembly

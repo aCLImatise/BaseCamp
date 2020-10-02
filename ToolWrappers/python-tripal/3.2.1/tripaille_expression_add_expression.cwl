@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_expression_add_expression.cwl
+id: tripaille_expression_add_expression.cwl
 inputs:
 - id: in_match_type
   doc: "Match to features using either name or\nuniquename. Default to uniquename\

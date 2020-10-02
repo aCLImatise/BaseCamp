@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterout_bam.cwl
+id: filterout_bam.cwl
 inputs:
 - id: in_write_bam_compressed
   doc: Write output BAM compressed [uncompressed]

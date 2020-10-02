@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parseAlignment.cwl
+id: parseAlignment.cwl
 inputs: []
 outputs:
 - id: out_stdout

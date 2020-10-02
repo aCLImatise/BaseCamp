@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msa2vcf.py.cwl
+id: msa2vcf.py.cwl
 inputs:
 - id: in_ref
   doc: "reference name used for the CHROM column. Optional\nDefault: chrUn"

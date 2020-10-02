@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyprophet_merge.cwl
+id: pyprophet_merge.cwl
 inputs:
 - id: in_out
   doc: Merged OSW output file.  [required]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta36.cwl
+id: fasta36.cwl
 inputs:
 - id: in_compare_forward_strand
   doc: compare forward strand only

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trim_fastq.pl.cwl
+id: trim_fastq.pl.cwl
 inputs:
 - id: in_fast_q
   doc: Fastq file for trimming

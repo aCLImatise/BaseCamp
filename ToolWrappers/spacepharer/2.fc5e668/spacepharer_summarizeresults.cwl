@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spacepharer_summarizeresults.cwl
+id: spacepharer_summarizeresults.cwl
 inputs:
 - id: in_fmt
   doc: '0: short (only matches); 1: long (matches and hits); 2: long with nucleotide

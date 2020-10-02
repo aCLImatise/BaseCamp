@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../famsa.cwl
+id: famsa.cwl
 inputs:
 - id: in_threads_means_default
   doc: '- no. of threads, 0 means all available (default: 0)'

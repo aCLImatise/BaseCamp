@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slivar_expr.cwl
+id: slivar_expr.cwl
 inputs:
 - id: in_vcf
   doc: path to VCF/BCF

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chiron.cwl
+id: chiron.cwl
 inputs: []
 outputs:
 - id: out_stdout

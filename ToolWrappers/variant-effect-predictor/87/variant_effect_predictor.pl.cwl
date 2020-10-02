@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../variant_effect_predictor.pl.cwl
+id: variant_effect_predictor.pl.cwl
 inputs:
 - id: in__inputfile_input
   doc: '| --input_file      Input file'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../refseq_masher_contains.cwl
+id: refseq_masher_contains.cwl
 inputs:
 - id: in_mash_bin
   doc: Mash binary path (default="mash")

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CanSNPer2_download.cwl
+id: CanSNPer2_download.cwl
 inputs:
 - id: in_db
   doc: ', --database   CanSNP database'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2sam.cwl
+id: bam2sam.cwl
 inputs:
 - id: in_no_header
   doc: Omit header from output.

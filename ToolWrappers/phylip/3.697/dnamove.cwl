@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnamove.cwl
+id: dnamove.cwl
 inputs: []
 outputs:
 - id: out_stdout

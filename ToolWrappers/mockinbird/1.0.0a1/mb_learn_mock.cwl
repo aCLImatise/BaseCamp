@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_learn_mock.cwl
+id: mb_learn_mock.cwl
 inputs: []
 outputs:
 - id: out_stdout

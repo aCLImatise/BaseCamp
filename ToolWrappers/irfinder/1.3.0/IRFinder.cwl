@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IRFinder.cwl
+id: IRFinder.cwl
 inputs:
 - id: in_version_number_irfinder
   doc: version number of current IRFinder.

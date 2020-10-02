@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../base64.cwl
+id: base64.cwl
 inputs:
 - id: in_decode
   doc: decode data

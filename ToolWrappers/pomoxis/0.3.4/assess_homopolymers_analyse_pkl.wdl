@@ -3,16 +3,22 @@ version 1.0
 task AssessHomopolymersAnalysePkl {
   input {
     Directory? output_dir
-    String pkl
+    String homopolymer
+    String analyse
+    String? pkl
   }
   command <<<
     assess_homopolymers analyse pkl \
+      ~{homopolymer} \
+      ~{analyse} \
       ~{pkl} \
       ~{if defined(output_dir) then ("--output_dir " +  '"' + output_dir + '"') else ""}
   >>>
   parameter_meta {
     output_dir: "Output directory (will be created). (default:\\nhomopolymers)\\n"
-    pkl: "Input .pkl file(s)."
+    homopolymer: ""
+    analyse: ""
+    pkl: ""
   }
   output {
     File out_stdout = stdout()

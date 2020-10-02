@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vkmz_tabular.cwl
+id: vkmz_tabular.cwl
 inputs:
 - id: in_input
   doc: Path to tabular file.

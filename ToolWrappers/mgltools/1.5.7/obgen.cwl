@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obgen.cwl
+id: obgen.cwl
 inputs: []
 outputs:
 - id: out_stdout

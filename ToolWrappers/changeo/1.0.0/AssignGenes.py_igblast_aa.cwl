@@ -1,8 +1,9 @@
 class: CommandLineTool
-id: ../../../AssignGenes.py_igblast_aa.cwl
+id: AssignGenes.py_igblast_aa.cwl
 inputs:
 - id: in_b
-  doc: ''
+  doc: "[--organism {human,mouse,rabbit,rat,rhesus_monkey}]\n[--loci {ig,tr}] [--vdb\
+    \ VDB]\n[--exec IGBLAST_EXEC]"
   type: string
   inputBinding:
     prefix: -b

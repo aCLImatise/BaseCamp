@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phasedstacks.cwl
+id: phasedstacks.cwl
 inputs:
 - id: in_haplotypes
   doc: ': data were phased as RAD locus haplotypes.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mod_seqfiles.py.cwl
+id: mod_seqfiles.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

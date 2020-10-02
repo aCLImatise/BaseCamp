@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../decoypyrat.cwl
+id: decoypyrat.cwl
 inputs:
 - id: in_cleavage_sites
   doc: "A list of amino acids at which to cleave during\ndigestion. Default = KR"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sortmerna.cwl
+id: sortmerna.cwl
 inputs:
 - id: in_ref
   doc: "PATH        Required  Reference file (FASTA) absolute or relative path.\n\

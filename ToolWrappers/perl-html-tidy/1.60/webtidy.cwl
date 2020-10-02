@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../webtidy.cwl
+id: webtidy.cwl
 inputs:
 - id: in_context
   doc: '[=n]   Show the offending line (and n surrounding lines)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scaffReportToFasta.pl.cwl
+id: scaffReportToFasta.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgw.cwl
+id: cgw.cwl
 inputs:
 - id: in_do_cleanup_scaffolds
   doc: Don't cleanup scaffolds

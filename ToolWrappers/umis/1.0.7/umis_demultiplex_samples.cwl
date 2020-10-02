@@ -1,23 +1,14 @@
 class: CommandLineTool
-id: ../../../umis_demultiplex_samples.cwl
+id: umis_demultiplex_samples.cwl
 inputs:
 - id: in_out_dir
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --out_dir
-- id: in_nedit
-  doc: ''
+  doc: "--nedit INTEGER\n--barcodes FILENAME\n--help               Show this message\
+    \ and exit.\n"
   type: long
   inputBinding:
-    prefix: --nedit
-- id: in_barcodes
+    prefix: --out_dir
+- id: in_fast_q
   doc: ''
-  type: File
-  inputBinding:
-    prefix: --barcodes
-- id: in_sample_dot
-  doc: 'Options:'
   type: string
   inputBinding:
     position: 0

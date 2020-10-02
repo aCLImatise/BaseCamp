@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wignorm.cwl
+id: wignorm.cwl
 inputs: []
 outputs:
 - id: out_stdout

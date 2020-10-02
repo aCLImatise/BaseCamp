@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kneaddata_test.cwl
+id: kneaddata_test.cwl
 inputs:
 - id: in_bypass_functional_tests
   doc: do not run the kneaddata end to end functional tests

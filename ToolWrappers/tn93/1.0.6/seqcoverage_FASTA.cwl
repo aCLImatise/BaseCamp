@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqcoverage_FASTA.cwl
+id: seqcoverage_FASTA.cwl
 inputs:
 - id: in_q
   doc: ''

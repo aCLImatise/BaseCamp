@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pilprint.py.cwl
+id: pilprint.py.cwl
 inputs:
 - id: in_colour_printer_default
   doc: colour printer (default is monochrome)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../melt.pl.cwl
+id: melt.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

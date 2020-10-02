@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_stripUniqueIDs.cwl
+id: cactus_stripUniqueIDs.cwl
 inputs:
 - id: in_cactus_disk
   doc: must be provided

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sample_stats_extra.cwl
+id: sample_stats_extra.cwl
 inputs:
 - id: in_arg_name_output
   doc: "[ --outfile ] arg                  name of output file (default is to\nwrite\

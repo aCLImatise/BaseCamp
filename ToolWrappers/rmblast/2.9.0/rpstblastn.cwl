@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rpstblastn.cwl
+id: rpstblastn.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shustring.cwl
+id: shustring.cwl
 inputs:
 - id: in_input_slash_output
   doc: "[-i <FILE> input file; default: FILE=stdin]\n[-o <FILE> write output to FILE;\

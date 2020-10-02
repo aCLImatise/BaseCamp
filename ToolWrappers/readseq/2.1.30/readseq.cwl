@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../readseq.cwl
+id: readseq.cwl
 inputs:
 - id: in_change_lower_case
   doc: '[aselower]        change to lower case'
@@ -68,40 +68,17 @@ inputs:
   inputBinding:
     prefix: -amino
 - id: in_feat
-  doc: '[ures]=exon,CDS...   extract sequence of selected features'
+  doc: "[ures]=exon,CDS...   extract sequence of selected features\n-nofeat[ures]=repeat_region,intron...\
+    \ remove sequence of selected features\n-field=AC,ID...      include selected\
+    \ document fields in output\n-nofield=COMMENT,... remove selected document fields\
+    \ from output\n-extract=1000..9999  * extract all features, sequence from given\
+    \ base range\n-subrange=-1000..10  * extract subrange of sequence for feature\
+    \ locations\n-subrange=1..end\n-subrange=end-10..end+99\n-pair=1             \
+    \ * combine features (fff,gff) and sequence files to one output\n-unpair=1   \
+    \         * split features,sequence from one input to two files"
   type: boolean
   inputBinding:
     prefix: -feat
-- id: in_no_feat
-  doc: '[ures]=repeat_region,intron... remove sequence of selected features'
-  type: boolean
-  inputBinding:
-    prefix: -nofeat
-- id: in_field
-  doc: ',ID...      include selected document fields in output'
-  type: string
-  inputBinding:
-    prefix: -field
-- id: in_no_field
-  doc: ',... remove selected document fields from output'
-  type: string
-  inputBinding:
-    prefix: -nofield
-- id: in_extract
-  doc: '* extract all features, sequence from given base range'
-  type: long
-  inputBinding:
-    prefix: -extract
-- id: in_pair
-  doc: '* combine features (fff,gff) and sequence files to one output'
-  type: long
-  inputBinding:
-    prefix: -pair
-- id: in_un_pair
-  doc: '* split features,sequence from one input to two files'
-  type: long
-  inputBinding:
-    prefix: -unpair
 - id: in_wid
   doc: '[th]=#            sequence line width'
   type: boolean
@@ -157,7 +134,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_31
+- id: in_var_25
   doc: "Name             Read  Write  Int'leaf  Features  Sequence  Suffix  Content-type\n\
     1  IG|Stanford      yes    yes        --        --       yes   .ig     biosequence/ig\n\
     2  GenBank|gb       yes    yes        --       yes       yes   .gb     biosequence/genbank\n\
@@ -171,77 +148,77 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_32
+- id: in_var_26
   doc: Olsen             --     --       yes        --       yes   .olsen  biosequence/olsen
   type: long
   inputBinding:
     position: 1
-- id: in_var_33
+- id: in_var_27
   doc: Phylip3.2        yes    yes       yes        --       yes   .phylip2  biosequence/phylip2
   type: long
   inputBinding:
     position: 2
-- id: in_var_34
+- id: in_var_28
   doc: Phylip|Phylip4   yes    yes       yes        --       yes   .phylip  biosequence/phylip
   type: long
   inputBinding:
     position: 3
-- id: in_var_35
+- id: in_var_29
   doc: Plain|Raw        yes    yes        --        --       yes   .seq    biosequence/plain
   type: long
   inputBinding:
     position: 4
-- id: in_var_36
+- id: in_var_30
   doc: PIR|CODATA       yes    yes        --        --       yes   .pir    biosequence/codata
   type: long
   inputBinding:
     position: 5
-- id: in_var_37
+- id: in_var_31
   doc: MSF              yes    yes       yes        --       yes   .msf    biosequence/msf
   type: long
   inputBinding:
     position: 6
-- id: in_var_38
+- id: in_var_32
   doc: ASN.1             --     --        --        --       yes   .asn    biosequence/asn1
   type: long
   inputBinding:
     position: 7
-- id: in_var_39
+- id: in_var_33
   doc: PAUP|NEXUS       yes    yes       yes        --       yes   .nexus  biosequence/nexus
   type: long
   inputBinding:
     position: 8
-- id: in_var_40
+- id: in_var_34
   doc: Pretty            --    yes       yes        --       yes   .pretty  biosequence/pretty
   type: long
   inputBinding:
     position: 9
-- id: in_var_41
+- id: in_var_35
   doc: XML              yes    yes        --       yes       yes   .xml    biosequence/xml
   type: long
   inputBinding:
     position: 10
-- id: in_var_42
+- id: in_var_36
   doc: BLAST            yes     --       yes        --       yes   .blast  biosequence/blast
   type: long
   inputBinding:
     position: 11
-- id: in_var_43
+- id: in_var_37
   doc: SCF              yes     --        --        --       yes   .scf    biosequence/scf
   type: long
   inputBinding:
     position: 12
-- id: in_var_44
+- id: in_var_38
   doc: Clustal          yes    yes       yes        --       yes   .aln    biosequence/clustal
   type: long
   inputBinding:
     position: 13
-- id: in_var_45
+- id: in_var_39
   doc: FlatFeat|FFF     yes    yes        --       yes        --   .fff    biosequence/fff
   type: long
   inputBinding:
     position: 14
-- id: in_var_46
+- id: in_var_40
   doc: GFF              yes    yes        --       yes        --   .gff    biosequence/gff
   type: long
   inputBinding:
@@ -283,7 +260,7 @@ inputs:
   type: long
   inputBinding:
     position: 16
-- id: in_var_48
+- id: in_var_42
   doc: "Name             Read  Write  Int'leaf  Features  Sequence  Suffix  Content-type\n\
     1  IG|Stanford      yes    yes        --        --       yes   .ig     biosequence/ig\n\
     2  GenBank|gb       yes    yes        --       yes       yes   .gb     biosequence/genbank\n\
@@ -297,77 +274,77 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_49
+- id: in_var_43
   doc: Olsen             --     --       yes        --       yes   .olsen  biosequence/olsen
   type: long
   inputBinding:
     position: 1
-- id: in_var_50
+- id: in_var_44
   doc: Phylip3.2        yes    yes       yes        --       yes   .phylip2  biosequence/phylip2
   type: long
   inputBinding:
     position: 2
-- id: in_var_51
+- id: in_var_45
   doc: Phylip|Phylip4   yes    yes       yes        --       yes   .phylip  biosequence/phylip
   type: long
   inputBinding:
     position: 3
-- id: in_var_52
+- id: in_var_46
   doc: Plain|Raw        yes    yes        --        --       yes   .seq    biosequence/plain
   type: long
   inputBinding:
     position: 4
-- id: in_var_53
+- id: in_var_47
   doc: PIR|CODATA       yes    yes        --        --       yes   .pir    biosequence/codata
   type: long
   inputBinding:
     position: 5
-- id: in_var_54
+- id: in_var_48
   doc: MSF              yes    yes       yes        --       yes   .msf    biosequence/msf
   type: long
   inputBinding:
     position: 6
-- id: in_var_55
+- id: in_var_49
   doc: ASN.1             --     --        --        --       yes   .asn    biosequence/asn1
   type: long
   inputBinding:
     position: 7
-- id: in_var_56
+- id: in_var_50
   doc: PAUP|NEXUS       yes    yes       yes        --       yes   .nexus  biosequence/nexus
   type: long
   inputBinding:
     position: 8
-- id: in_var_57
+- id: in_var_51
   doc: Pretty            --    yes       yes        --       yes   .pretty  biosequence/pretty
   type: long
   inputBinding:
     position: 9
-- id: in_var_58
+- id: in_var_52
   doc: XML              yes    yes        --       yes       yes   .xml    biosequence/xml
   type: long
   inputBinding:
     position: 10
-- id: in_var_59
+- id: in_var_53
   doc: BLAST            yes     --       yes        --       yes   .blast  biosequence/blast
   type: long
   inputBinding:
     position: 11
-- id: in_var_60
+- id: in_var_54
   doc: SCF              yes     --        --        --       yes   .scf    biosequence/scf
   type: long
   inputBinding:
     position: 12
-- id: in_var_61
+- id: in_var_55
   doc: Clustal          yes    yes       yes        --       yes   .aln    biosequence/clustal
   type: long
   inputBinding:
     position: 13
-- id: in_var_62
+- id: in_var_56
   doc: FlatFeat|FFF     yes    yes        --       yes        --   .fff    biosequence/fff
   type: long
   inputBinding:
     position: 14
-- id: in_var_63
+- id: in_var_57
   doc: GFF              yes    yes        --       yes        --   .gff    biosequence/gff
   type: long
   inputBinding:

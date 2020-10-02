@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fusionsam2junc_filteranchor_newfmt.cwl
+id: fusionsam2junc_filteranchor_newfmt.cwl
 inputs: []
 outputs:
 - id: out_stdout

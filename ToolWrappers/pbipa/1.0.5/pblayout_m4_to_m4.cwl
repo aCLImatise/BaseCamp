@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pblayout_m4_to_m4.cwl
+id: pblayout_m4_to_m4.cwl
 inputs:
 - id: in_in_do_tm_four
   doc: STR  Input M4.

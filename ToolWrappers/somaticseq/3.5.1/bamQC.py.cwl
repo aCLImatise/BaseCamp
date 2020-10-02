@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamQC.py.cwl
+id: bamQC.py.cwl
 inputs:
 - id: in_bam_file_in
   doc: 'Input BAM file (default: None)'

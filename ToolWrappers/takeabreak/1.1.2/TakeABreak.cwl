@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TakeABreak.cwl
+id: TakeABreak.cwl
 inputs:
 - id: in_in
   doc: "(1 arg) :    input read file(s)  [default '']"

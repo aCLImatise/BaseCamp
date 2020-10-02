@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cargo_clean.cwl
+id: cargo_clean.cwl
 inputs:
 - id: in_package
   doc: to clean artifacts for

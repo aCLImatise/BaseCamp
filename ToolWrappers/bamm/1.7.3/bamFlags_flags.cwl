@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamFlags_flags.cwl
+id: bamFlags_flags.cwl
 inputs:
 - id: in_flags
   doc: ''

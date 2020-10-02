@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hts_LengthFilter.cwl
+id: hts_LengthFilter.cwl
 inputs:
 - id: in__version_print
   doc: '[ --version ]                      Version print'

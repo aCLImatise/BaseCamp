@@ -2,11 +2,6 @@ version 1.0
 
 task SequanaBamSplitter {
   input {
-    File? input_sambamcram_default
-    Directory? output_directory
-    String? prefix
-    Boolean? keep_unmapped
-    String? level
     String this
     String bam_slash_sam_slash_cram
     String filter
@@ -23,19 +18,9 @@ task SequanaBamSplitter {
       ~{removes} \
       ~{unmapped} \
       ~{and} \
-      ~{secondary} \
-      ~{if defined(input_sambamcram_default) then ("--input " +  '"' + input_sambamcram_default + '"') else ""} \
-      ~{if defined(output_directory) then ("--output-directory " +  '"' + output_directory + '"') else ""} \
-      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
-      ~{if (keep_unmapped) then "--keep-unmapped" else ""} \
-      ~{if defined(level) then ("--level " +  '"' + level + '"') else ""}
+      ~{secondary}
   >>>
   parameter_meta {
-    input_sambamcram_default: "input SAM/BAM/CRAM file (default: None)"
-    output_directory: "input fastq gzipped or not (default: None)"
-    prefix: ""
-    keep_unmapped: "keep unmapped files (default: False)"
-    level: ""
     this: ""
     bam_slash_sam_slash_cram: ""
     filter: ""
@@ -46,6 +31,5 @@ task SequanaBamSplitter {
   }
   output {
     File out_stdout = stdout()
-    Directory out_output_directory = "${in_output_directory}"
   }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clumpMaker.cwl
+id: clumpMaker.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../yaha.cwl
+id: yaha.cwl
 inputs:
 - id: in_o_eight
   doc: produces alignment output in modified Blast8 format.

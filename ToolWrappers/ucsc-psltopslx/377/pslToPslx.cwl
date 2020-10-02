@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslToPslx.cwl
+id: pslToPslx.cwl
 inputs:
 - id: in_masked
   doc: "- if specified, repeats are in lower case cases, otherwise entire\nsequence\

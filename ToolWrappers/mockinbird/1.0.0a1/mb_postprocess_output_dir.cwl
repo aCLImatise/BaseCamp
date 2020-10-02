@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_postprocess_output_dir.cwl
+id: mb_postprocess_output_dir.cwl
 inputs:
 - id: in_prefix
   doc: ''

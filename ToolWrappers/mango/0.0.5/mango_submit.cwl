@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mango_submit.cwl
+id: mango_submit.cwl
 inputs:
 - id: in_coverage
   doc: ': A list of coverage files to view, separated by commas (,)'

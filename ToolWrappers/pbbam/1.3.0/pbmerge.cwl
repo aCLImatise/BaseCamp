@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbmerge.cwl
+id: pbmerge.cwl
 inputs:
 - id: in_str_output_bam
   doc: STR   Output BAM filename. Writes to stdout if not provided.

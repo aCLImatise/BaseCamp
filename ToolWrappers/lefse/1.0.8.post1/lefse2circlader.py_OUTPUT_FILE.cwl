@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lefse2circlader.py_OUTPUT_FILE.cwl
+id: lefse2circlader.py_OUTPUT_FILE.cwl
 inputs:
 - id: in_l
   doc: ''

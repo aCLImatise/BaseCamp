@@ -12,8 +12,6 @@ task CgwDump {
     Boolean? contigs
     Boolean? scaffolds
     String? dumps_objects_iid
-    String? e
-    String? dumps_specific_multiple
     Boolean? consensus
     Boolean? layout
     Boolean? edges
@@ -36,8 +34,6 @@ task CgwDump {
       ~{if (contigs) then "-contigs" else ""} \
       ~{if (scaffolds) then "-scaffolds" else ""} \
       ~{if defined(dumps_objects_iid) then ("-b " +  '"' + dumps_objects_iid + '"') else ""} \
-      ~{if defined(e) then ("-e " +  '"' + e + '"') else ""} \
-      ~{if defined(dumps_specific_multiple) then ("-i " +  '"' + dumps_specific_multiple + '"') else ""} \
       ~{if (consensus) then "-consensus" else ""} \
       ~{if (layout) then "-layout" else ""} \
       ~{if (edges) then "-edges" else ""} \
@@ -54,9 +50,7 @@ task CgwDump {
     unit_igs: "dumps unitigs"
     contigs: "dumps contigs"
     scaffolds: "dumps scaffolds"
-    dumps_objects_iid: "dumps objects bgnIID <= IID <= endIID"
-    e: ""
-    dumps_specific_multiple: "dumps a specific object (multiple -i allowed)"
+    dumps_objects_iid: "dumps objects bgnIID <= IID <= endIID\\n-e endIID\\n-i singleIID            dumps a specific object (multiple -i allowed)"
     consensus: "dumps consensus sequence"
     layout: "dumps posmap layout of component objects"
     edges: "dumps unused mate edges involving selected objects"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairaln.cwl
+id: pairaln.cwl
 inputs:
 - id: in_try_both_strands
   doc: Try both strands
@@ -32,11 +32,6 @@ inputs:
   type: long
   inputBinding:
     prefix: -T
-- id: in_bandwidth
-  doc: Bandwidth, [800]
-  type: long
-  inputBinding:
-    prefix: -W
 - id: in_output_alignment
   doc: Output alignment
   type: boolean

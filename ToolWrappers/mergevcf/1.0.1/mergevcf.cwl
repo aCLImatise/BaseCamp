@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergevcf.cwl
+id: mergevcf.cwl
 inputs:
 - id: in_output
   doc: Specify output file (default:stdout)

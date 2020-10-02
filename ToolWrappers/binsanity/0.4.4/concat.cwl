@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../concat.cwl
+id: concat.cwl
 inputs:
 - id: in_specify_directory_where
   doc: Specify directory where alignments are

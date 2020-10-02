@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mQC.pl.cwl
+id: mQC.pl.cwl
 inputs:
 - id: in_work_dir
   doc: 'working directory to run the scripts in (default: current working directory)'

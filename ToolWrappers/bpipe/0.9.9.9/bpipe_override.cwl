@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bpipe_override.cwl
+id: bpipe_override.cwl
 inputs:
 - id: in_comment_add_given
   doc: comment to add to given operation

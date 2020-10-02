@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_plot_model.cwl
+id: rsem_plot_model.cwl
 inputs: []
 outputs:
 - id: out_stdout

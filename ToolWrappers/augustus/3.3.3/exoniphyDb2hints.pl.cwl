@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../exoniphyDb2hints.pl.cwl
+id: exoniphyDb2hints.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

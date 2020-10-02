@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../whatshap_unphase.cwl
+id: whatshap_unphase.cwl
 inputs:
 - id: in_vcf
   doc: VCF file. Use "-" to read from standard input

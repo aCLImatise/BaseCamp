@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../surpyvor_fixvcf.cwl
+id: surpyvor_fixvcf.cwl
 inputs:
 - id: in_verbose
   doc: Print out more information while running.

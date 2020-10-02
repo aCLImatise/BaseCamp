@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../linx.cwl
+id: linx.cwl
 inputs: []
 outputs:
 - id: out_stdout

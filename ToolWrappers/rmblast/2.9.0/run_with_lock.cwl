@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_with_lock.cwl
+id: run_with_lock.cwl
 inputs: []
 outputs:
 - id: out_stdout

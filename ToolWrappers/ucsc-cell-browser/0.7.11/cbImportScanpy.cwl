@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cbImportScanpy.cwl
+id: cbImportScanpy.cwl
 inputs:
 - id: in_debug
   doc: show debug messages

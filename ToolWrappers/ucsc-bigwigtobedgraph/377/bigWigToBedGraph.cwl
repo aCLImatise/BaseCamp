@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bigWigToBedGraph.cwl
+id: bigWigToBedGraph.cwl
 inputs:
 - id: in_chrom
   doc: '- if set restrict output to given chromosome'

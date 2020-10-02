@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mpa.cwl
+id: mpa.cwl
 inputs:
 - id: in_mpa_directory
   doc: "The path to the MPA installation folder. [Default:\n/usr/local/bin]"

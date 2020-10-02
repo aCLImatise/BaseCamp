@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../peakCenters_chipSeq.bam | chipSeq.bed.cwl
+id: peakCenters_chipSeq.bam | chipSeq.bed.cwl
 inputs:
 - id: in_hist
   doc: "Report a histogram of coverage for each feature in A\nas well as a summary\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intrahost.py_vphaser_one_sample.cwl
+id: intrahost.py_vphaser_one_sample.cwl
 inputs:
 - id: in_v_phaser_num_threads
   doc: Number of threads in call to V-Phaser 2.

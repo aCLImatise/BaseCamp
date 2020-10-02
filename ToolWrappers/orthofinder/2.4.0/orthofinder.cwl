@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../orthofinder.cwl
+id: orthofinder.cwl
 inputs:
 - id: in_number_parallel_sequence
   doc: Number of parallel sequence search threads [Default = 8]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../weblogo.cwl
+id: weblogo.cwl
 inputs:
 - id: in_fin
   doc: 'Sequence input file (default: stdin)'

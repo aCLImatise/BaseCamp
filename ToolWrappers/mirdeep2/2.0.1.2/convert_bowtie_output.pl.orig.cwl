@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_bowtie_output.pl.orig.cwl
+id: convert_bowtie_output.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

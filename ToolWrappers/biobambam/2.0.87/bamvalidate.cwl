@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamvalidate.cwl
+id: bamvalidate.cwl
 inputs: []
 outputs:
 - id: out_stdout

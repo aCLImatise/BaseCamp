@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_man_genome.cwl
+id: iCount_man_genome.cwl
 inputs:
 - id: in_mode
   doc: ''

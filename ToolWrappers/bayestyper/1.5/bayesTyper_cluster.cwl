@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bayesTyper_cluster.cwl
+id: bayesTyper_cluster.cwl
 inputs:
 - id: in_arg_variant_format
   doc: '[ --variant-file ] arg             variant file (vcf format).'

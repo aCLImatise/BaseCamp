@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeMatchLists.pl.cwl
+id: makeMatchLists.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

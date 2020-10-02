@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../solvate_ions.py.cwl
+id: solvate_ions.py.cwl
 inputs:
 - id: in_input_pdb_file
   doc: Input PDB file

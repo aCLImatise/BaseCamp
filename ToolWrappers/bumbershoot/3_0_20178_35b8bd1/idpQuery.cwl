@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idpQuery.cwl
+id: idpQuery.cwl
 inputs: []
 outputs:
 - id: out_stdout

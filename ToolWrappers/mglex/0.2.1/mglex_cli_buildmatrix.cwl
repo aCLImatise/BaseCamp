@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglex_cli_buildmatrix.cwl
+id: mglex_cli_buildmatrix.cwl
 inputs:
 - id: in_seeds
   doc: Space-separated sequence identifier per line

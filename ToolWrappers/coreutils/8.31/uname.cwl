@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../uname.cwl
+id: uname.cwl
 inputs:
 - id: in_all
   doc: "print all information, in the following order,\nexcept omit -p and -i if unknown:"

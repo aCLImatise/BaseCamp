@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jhsdb_jmap.cwl
+id: jhsdb_jmap.cwl
 inputs:
 - id: in_heap
   doc: to print java heap summary

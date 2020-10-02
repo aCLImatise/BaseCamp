@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qfy.py.cwl
+id: qfy.py.cwl
 inputs:
 - id: in_adjust_conf_regions
   doc: "When hap.py was run with --adjust-conf-regions, on the\noriginal VCF, then\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../last_map_probs.cwl
+id: last_map_probs.cwl
 inputs:
 - id: in_mis_map
   doc: "don't write alignments with mismap probability > M\n(default: 0.01)"

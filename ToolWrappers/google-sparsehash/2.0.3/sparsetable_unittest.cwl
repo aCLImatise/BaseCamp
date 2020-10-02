@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sparsetable_unittest.cwl
+id: sparsetable_unittest.cwl
 inputs: []
 outputs:
 - id: out_stdout

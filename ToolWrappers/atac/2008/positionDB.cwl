@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../positionDB.cwl
+id: positionDB.cwl
 inputs: []
 outputs:
 - id: out_stdout

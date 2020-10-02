@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertfilestops.cwl
+id: convertfilestops.cwl
 inputs:
 - id: in_where
   doc: "dirin:  input directory for image files\nsubstr:  Use 'allfiles' to convert\

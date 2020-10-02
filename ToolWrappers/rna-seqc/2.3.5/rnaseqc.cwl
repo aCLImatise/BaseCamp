@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnaseqc.cwl
+id: rnaseqc.cwl
 inputs:
 - id: in_name_current_sample
   doc: "[sample], --sample=[sample]     The name of the current sample. Default:\n\

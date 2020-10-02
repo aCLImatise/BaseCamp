@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../glistcompare.cwl
+id: glistcompare.cwl
 inputs:
 - id: in_union
   doc: '- union of input lists'

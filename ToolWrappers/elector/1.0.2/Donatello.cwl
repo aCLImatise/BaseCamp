@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Donatello.cwl
+id: Donatello.cwl
 inputs: []
 outputs:
 - id: out_stdout

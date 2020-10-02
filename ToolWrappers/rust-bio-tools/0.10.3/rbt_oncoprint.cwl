@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbt_oncoprint.cwl
+id: rbt_oncoprint.cwl
 inputs:
 - id: in_vep_annotation
   doc: Annotation field gets parsed as definded by VEP.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map_and_profile.py.cwl
+id: map_and_profile.py.cwl
 inputs:
 - id: in_db
   doc: "Path to database from select_db.py. Required if read\nfiles given"
@@ -77,16 +77,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: in_hit_dot
-  doc: --no_quantify_unmapped
-  type: string
-  inputBinding:
-    position: 0
-- id: in_estimation_dot
-  doc: --read_cutoff READ_CUTOFF
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

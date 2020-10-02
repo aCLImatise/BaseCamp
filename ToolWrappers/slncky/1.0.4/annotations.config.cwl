@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotations.config.cwl
+id: annotations.config.cwl
 inputs: []
 outputs:
 - id: out_stdout

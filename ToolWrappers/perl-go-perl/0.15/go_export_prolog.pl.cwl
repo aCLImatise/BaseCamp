@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../go_export_prolog.pl.cwl
+id: go_export_prolog.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spades.py.cwl
+id: spades.py.cwl
 inputs:
 - id: in_directory_store_files
   doc: directory to store all the resulting files (required)

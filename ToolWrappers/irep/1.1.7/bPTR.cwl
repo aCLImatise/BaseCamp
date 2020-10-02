@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bPTR.cwl
+id: bPTR.cwl
 inputs:
 - id: in__fastas
   doc: '[F [F ...]]  fasta(s)'

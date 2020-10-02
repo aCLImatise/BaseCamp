@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aaindexextract.cwl
+id: aaindexextract.cwl
 inputs: []
 outputs:
 - id: out_stdout

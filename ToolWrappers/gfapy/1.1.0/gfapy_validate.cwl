@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gfapy_validate.cwl
+id: gfapy_validate.cwl
 inputs:
 - id: in_filename
   doc: 'optional arguments:'

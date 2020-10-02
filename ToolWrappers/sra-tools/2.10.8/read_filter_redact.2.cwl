@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../read_filter_redact.2.cwl
+id: read_filter_redact.2.cwl
 inputs:
 - id: in_file
   doc: File containing SpotId-s to redact

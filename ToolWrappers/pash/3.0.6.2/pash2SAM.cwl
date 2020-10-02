@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pash2SAM.cwl
+id: pash2SAM.cwl
 inputs:
 - id: in_pash_mappings
   doc: '| -p    pash mappings file'

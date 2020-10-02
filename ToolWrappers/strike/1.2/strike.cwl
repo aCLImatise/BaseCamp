@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strike.cwl
+id: strike.cwl
 inputs:
 - id: in_alignment
   doc: Alignment File

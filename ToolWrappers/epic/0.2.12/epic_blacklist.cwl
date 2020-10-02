@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../epic_blacklist.cwl
+id: epic_blacklist.cwl
 inputs:
-- id: in_outfile
-  doc: "File to write gzipped count matrix to.\n"
-  type: File
-  inputBinding:
-    prefix: --outfile
 - id: in_in_files
   doc: ChIP files to count reads in (bed/bedpe format).
   type: string[]
@@ -60,6 +55,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --effective-genome-fraction
+- id: in_outfile
+  doc: "File to write gzipped count matrix to.\n"
+  type: File
+  inputBinding:
+    prefix: --outfile
 outputs:
 - id: out_stdout
   doc: Standard output stream

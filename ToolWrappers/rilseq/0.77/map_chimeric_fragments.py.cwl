@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map_chimeric_fragments.py.cwl
+id: map_chimeric_fragments.py.cwl
 inputs:
 - id: in_reverse_complement
   doc: "Treat the reads as reverse complement. This means that\nthe first read is\

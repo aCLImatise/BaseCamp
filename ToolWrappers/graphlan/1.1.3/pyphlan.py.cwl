@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyphlan.py.cwl
+id: pyphlan.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

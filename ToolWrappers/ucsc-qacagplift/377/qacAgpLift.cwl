@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qacAgpLift.cwl
+id: qacAgpLift.cwl
 inputs:
 - id: in_m_score
   doc: "- score to use for missing data (otherwise fail)\nrange: 0-99, recommended\

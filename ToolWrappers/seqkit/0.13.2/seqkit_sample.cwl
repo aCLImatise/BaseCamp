@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_sample.cwl
+id: seqkit_sample.cwl
 inputs:
 - id: in_number
   doc: sample by number (result may not exactly match), DO NOT use on large FASTQ

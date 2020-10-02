@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ss.cwl
+id: ss.cwl
 inputs:
 - id: in_input_file_type
   doc: "Type of file to be imported. If not specified, file\ntype will be determined\

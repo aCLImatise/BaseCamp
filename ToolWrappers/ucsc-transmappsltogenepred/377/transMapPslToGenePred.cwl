@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../transMapPslToGenePred.cwl
+id: transMapPslToGenePred.cwl
 inputs: []
 outputs:
 - id: out_stdout

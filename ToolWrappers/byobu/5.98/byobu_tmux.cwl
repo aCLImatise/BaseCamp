@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../byobu_tmux.cwl
+id: byobu_tmux.cwl
 inputs:
 - id: in_l
   doc: ''

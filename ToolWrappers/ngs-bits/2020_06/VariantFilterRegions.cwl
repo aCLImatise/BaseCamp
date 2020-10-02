@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VariantFilterRegions.cwl
+id: VariantFilterRegions.cwl
 inputs:
 - id: in_in
   doc: Input variant list.

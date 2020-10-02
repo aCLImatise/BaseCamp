@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_fastaGenerator.cwl
+id: cactus_fastaGenerator.cwl
 inputs:
 - id: in_loglevel
   doc: ': Set the log level'

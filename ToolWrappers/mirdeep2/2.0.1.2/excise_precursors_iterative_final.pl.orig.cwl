@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../excise_precursors_iterative_final.pl.orig.cwl
+id: excise_precursors_iterative_final.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

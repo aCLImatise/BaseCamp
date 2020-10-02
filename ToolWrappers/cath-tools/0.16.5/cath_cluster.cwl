@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cath_cluster.cwl
+id: cath_cluster.cwl
 inputs:
 - id: in_output_version_information
   doc: '[ --version ]              Output version information'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_fix_small_exon_from_extremities.pl.cwl
+id: agat_sp_fix_small_exon_from_extremities.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GTF/GFF file.

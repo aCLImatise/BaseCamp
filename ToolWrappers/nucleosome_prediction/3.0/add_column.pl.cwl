@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../add_column.pl.cwl
+id: add_column.pl.cwl
 inputs:
 - id: in_add_column_add
   doc: ':                 add the column as the first in the file (default: add at

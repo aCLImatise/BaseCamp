@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fq2fa.py.cwl
+id: fq2fa.py.cwl
 inputs:
 - id: in_convert
   doc: ''

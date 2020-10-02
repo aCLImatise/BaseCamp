@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xa2multi.pl.cwl
+id: xa2multi.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

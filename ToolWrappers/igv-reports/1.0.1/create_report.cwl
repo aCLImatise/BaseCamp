@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../create_report.cwl
+id: create_report.cwl
 inputs:
 - id: in_type
   doc: "Report type. Possible values are mutation and\njunctions. Default is mutation"

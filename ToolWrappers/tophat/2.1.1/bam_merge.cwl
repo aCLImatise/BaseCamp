@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_merge.cwl
+id: bam_merge.cwl
 inputs:
 - id: in_q
   doc: ''

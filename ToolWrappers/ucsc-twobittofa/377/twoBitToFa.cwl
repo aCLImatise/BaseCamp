@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../twoBitToFa.cwl
+id: twoBitToFa.cwl
 inputs:
 - id: in_seq
   doc: Restrict this to just one sequence.

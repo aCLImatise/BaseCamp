@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_ncbi_prep_uce_fasta_files_for_ncbi.cwl
+id: phyluce_ncbi_prep_uce_fasta_files_for_ncbi.cwl
 inputs: []
 outputs:
 - id: out_stdout

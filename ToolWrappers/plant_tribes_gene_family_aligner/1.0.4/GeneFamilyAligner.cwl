@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GeneFamilyAligner.cwl
+id: GeneFamilyAligner.cwl
 inputs: []
 outputs:
 - id: out_stdout

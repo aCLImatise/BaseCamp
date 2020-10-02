@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../teloclip_alignment..cwl
+id: teloclip_alignment..cwl
 inputs:
 - id: in_max_break
   doc: ''

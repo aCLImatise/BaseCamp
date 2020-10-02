@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smartCount.cwl
+id: smartCount.cwl
 inputs: []
 outputs:
 - id: out_stdout

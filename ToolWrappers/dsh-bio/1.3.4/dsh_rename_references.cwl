@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_rename_references.cwl
+id: dsh_rename_references.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

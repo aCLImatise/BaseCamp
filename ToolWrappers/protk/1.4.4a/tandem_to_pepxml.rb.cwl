@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tandem_to_pepxml.rb.cwl
+id: tandem_to_pepxml.rb.cwl
 inputs:
 - id: in_output_prefix
   doc: A string to prepend to the name of output files

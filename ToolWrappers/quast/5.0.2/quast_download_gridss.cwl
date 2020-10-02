@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quast_download_gridss.cwl
+id: quast_download_gridss.cwl
 inputs: []
 outputs:
 - id: out_stdout

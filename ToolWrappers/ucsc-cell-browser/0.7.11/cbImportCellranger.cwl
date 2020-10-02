@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cbImportCellranger.cwl
+id: cbImportCellranger.cwl
 inputs:
 - id: in_debug
   doc: show debug messages

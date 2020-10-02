@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcftools_consensus.cwl
+id: bcftools_consensus.cwl
 inputs:
 - id: in_sample
   doc: apply variants of the given sample

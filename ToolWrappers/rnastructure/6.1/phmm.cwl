@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phmm.cwl
+id: phmm.cwl
 inputs:
 - id: in_log_probability
   doc: "Specify that program should output probabilities as logs (base 10).\nDefault\

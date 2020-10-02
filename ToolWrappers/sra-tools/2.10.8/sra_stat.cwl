@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sra_stat.cwl
+id: sra_stat.cwl
 inputs:
 - id: in_xml
   doc: output as XML, default is text

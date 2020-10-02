@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lofreq2_vcfplot.py.cwl
+id: lofreq2_vcfplot.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

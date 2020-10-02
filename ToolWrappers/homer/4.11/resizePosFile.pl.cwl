@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../resizePosFile.pl.cwl
+id: resizePosFile.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

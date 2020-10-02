@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../magicblast.cwl
+id: magicblast.cwl
 inputs: []
 outputs:
 - id: out_stdout

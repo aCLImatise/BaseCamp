@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../calculate_coverage.py_input_fastx.cwl
+id: calculate_coverage.py_input_fastx.cwl
 inputs:
 - id: in_s
   doc: ''

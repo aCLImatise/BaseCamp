@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_help.cwl
+id: anvi_help.cwl
 inputs:
 - id: in_requires
   doc: Restrict to programs that require this search term

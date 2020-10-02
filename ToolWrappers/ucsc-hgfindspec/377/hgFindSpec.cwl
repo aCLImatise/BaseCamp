@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hgFindSpec.cwl
+id: hgFindSpec.cwl
 inputs:
 - id: in_strict
   doc: Add spec to hgFindSpec only if its table(s) exist.

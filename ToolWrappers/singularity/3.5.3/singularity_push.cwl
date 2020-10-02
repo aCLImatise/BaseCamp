@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singularity_push.cwl
+id: singularity_push.cwl
 inputs:
 - id: in_singularity
   doc: ''

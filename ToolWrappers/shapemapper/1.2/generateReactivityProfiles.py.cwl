@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generateReactivityProfiles.py.cwl
+id: generateReactivityProfiles.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

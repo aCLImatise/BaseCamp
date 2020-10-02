@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_bloom_dbg.cwl
+id: abyss_bloom_dbg.cwl
 inputs:
 - id: in___assemblyfasta
   doc: '[options] <FASTQ> [FASTQ]... > assembly.fasta'

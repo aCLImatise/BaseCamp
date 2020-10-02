@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff3_gene_to_gtf_format.pl.cwl
+id: gff3_gene_to_gtf_format.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

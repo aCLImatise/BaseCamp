@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crass_assembler.cwl
+id: crass_assembler.cwl
 inputs:
 - id: in_group
   doc: "<INT>   ID of the group that you want to assemble.  Give only the group number;\

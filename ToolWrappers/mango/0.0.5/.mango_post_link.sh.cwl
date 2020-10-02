@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.mango_post_link.sh.cwl
+id: .mango_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

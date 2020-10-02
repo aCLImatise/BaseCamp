@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spectral_hk.cwl
+id: spectral_hk.cwl
 inputs: []
 outputs:
 - id: out_stdout

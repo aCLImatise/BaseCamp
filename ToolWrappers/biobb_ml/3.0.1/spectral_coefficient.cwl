@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spectral_coefficient.cwl
+id: spectral_coefficient.cwl
 inputs:
 - id: in_config
   doc: Configuration file

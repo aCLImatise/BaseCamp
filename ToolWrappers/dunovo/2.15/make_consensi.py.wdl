@@ -17,17 +17,13 @@ task Makeconsensipy {
     Boolean? test
     File? log
     Boolean? quiet
-    Boolean? verbose
-    Boolean? debug
     Int? processes
     Int? queue_size
     String families_dot_msa_dot_tsv
-    String run_dot
   }
   command <<<
     make_consensi_py \
       ~{families_dot_msa_dot_tsv} \
-      ~{run_dot} \
       ~{if defined(dcs_one) then ("--dcs1 " +  '"' + dcs_one + '"') else ""} \
       ~{if defined(dcs_two) then ("--dcs2 " +  '"' + dcs_two + '"') else ""} \
       ~{if defined(sscs_one) then ("--sscs1 " +  '"' + sscs_one + '"') else ""} \
@@ -43,8 +39,6 @@ task Makeconsensipy {
       ~{if (test) then "--test" else ""} \
       ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""} \
-      ~{if (verbose) then "--verbose" else ""} \
-      ~{if (debug) then "--debug" else ""} \
       ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
       ~{if defined(queue_size) then ("--queue-size " +  '"' + queue_size + '"') else ""}
   >>>
@@ -61,15 +55,12 @@ task Makeconsensipy {
     min_cons_reads: "The absolute threshold to use when making\\nconsensus sequences. The consensus base must\\nbe present in more than this number of reads,\\nor N will be used as the consensus base\\ninstead. Default: 0"
     phone_home: "Report helpful usage data to the developer, to\\nbetter understand the use cases and\\nperformance of the tool. The only data which\\nwill be recorded is the name and version of\\nthe tool, the size of the input data, the time\\nand memory taken to process it, and the IP\\naddress of the machine running it. Also, if\\nthe script fails, it will report the name of\\nthe exception thrown and the line of code it\\noccurred in. No filenames are sent, and the\\nonly parameters reported are the number of\\n--processes and the --queue-size. All the\\nreporting and recording code is available at\\nhttps://github.com/NickSto/ET."
     galaxy: "Tell the script it's running on Galaxy.\\nCurrently this only affects data reported when\\nphoning home."
-    test: "If reporting usage data, mark this as a test"
+    test: "If reporting usage data, mark this as a test\\nrun."
     log: "Print log messages to this file instead of to\\nstderr. Warning: Will overwrite the file."
-    quiet: ""
-    verbose: ""
-    debug: ""
+    quiet: "-V, --verbose\\n-D, --debug"
     processes: "Number of worker subprocesses to use. If 0, no\\nsubprocesses will be started and everything\\nwill be done inside one process. Give \\\"auto\\\"\\nto use as many processes as there are CPU\\ncores. Default: 0."
     queue_size: "How long to go accumulating responses from\\nworker subprocesses before dealing with all of\\nthem. Default: 8 * the number of worker\\n--processes."
     families_dot_msa_dot_tsv: "The output of align_families.py. 6 columns:\\n1. (canonical) barcode\\n2. order (\\\"ab\\\" or \\\"ba\\\")\\n3. mate (\\\"1\\\" or \\\"2\\\")\\n4. read name\\n5. aligned sequence\\n6. aligned quality scores."
-    run_dot: "Logging:"
   }
   output {
     File out_stdout = stdout()

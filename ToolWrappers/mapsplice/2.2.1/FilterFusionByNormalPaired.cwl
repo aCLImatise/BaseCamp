@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FilterFusionByNormalPaired.cwl
+id: FilterFusionByNormalPaired.cwl
 inputs: []
 outputs:
 - id: out_stdout

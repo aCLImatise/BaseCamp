@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../partition_fa.pl.cwl
+id: partition_fa.pl.cwl
 inputs:
 - id: in_this
   doc: ''

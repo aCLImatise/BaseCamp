@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_COUNT.cwl
+id: gdtools_COUNT.cwl
 inputs:
 - id: in_verbose
   doc: produce output for each mutation counted.

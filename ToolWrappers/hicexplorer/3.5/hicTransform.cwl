@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicTransform.cwl
+id: hicTransform.cwl
 inputs:
 - id: in_matrix
   doc: "input file. The computation is done per chromosome.\n(default: None)"

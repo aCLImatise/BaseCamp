@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_man_iCount.demultiplex.run.cwl
+id: iCount_man_iCount.demultiplex.run.cwl
 inputs:
 - id: in_mode
   doc: ''

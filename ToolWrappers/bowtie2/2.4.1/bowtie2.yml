@@ -288,58 +288,25 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: -D 5 -R 1 -N 0 -L 22 -i S,0,2.50
+  description: 'max # mismatches in seed alignment; can be 0 or 1 (0)'
   synonyms:
-  - --very-fast
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: -D 10 -R 2 -N 0 -L 22 -i S,0,2.50
-  synonyms:
-  - --fast
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: -D 15 -R 2 -N 0 -L 22 -i S,1,1.15 (default)
-  synonyms:
-  - --sensitive
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: -D 20 -R 3 -N 0 -L 20 -i S,1,0.50
-  synonyms:
-  - --very-sensitive
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: -D 5 -R 1 -N 0 -L 25 -i S,1,2.00
-  synonyms:
-  - --very-fast-local
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: -D 10 -R 2 -N 0 -L 22 -i S,1,1.75
-  synonyms:
-  - --fast-local
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: -D 15 -R 2 -N 0 -L 20 -i S,1,0.75 (default)
-  synonyms:
-  - --sensitive-local
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ',1,0.50'
-  synonyms:
-  - --very-sensitive-local
-  - -D
-  - -R
   - -N
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: length of seed substrings; must be >3, <32 (22)
+  synonyms:
   - -L
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: interval between seed substrings w/r/t read len (S,1,1.15)
+  synonyms:
   - -i
   args: !SimpleFlagArg
-    name: '20'
+    name: func
   optional: true
 - !Flag
   description: 'func for max # non-A/C/G/Ts permitted in aln (L,0,0.15)'
@@ -435,6 +402,20 @@ named:
   - --score-min
   args: !SimpleFlagArg
     name: func
+  optional: true
+- !Flag
+  description: give up extending after <int> failed extends in a row (15)
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: for reads w/ repetitive seeds, try <int> sets of seeds (2)
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: int
   optional: true
 - !Flag
   description: minimum fragment length (0)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tabutils_filter.cwl
+id: tabutils_filter.cwl
 inputs:
 - id: in_header
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../junc_db.cwl
+id: junc_db.cwl
 inputs: []
 outputs:
 - id: out_stdout

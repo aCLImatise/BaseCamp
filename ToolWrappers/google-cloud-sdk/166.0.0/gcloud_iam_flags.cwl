@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_iam_flags.cwl
+id: gcloud_iam_flags.cwl
 inputs:
 - id: in_g_cloud
   doc: ''

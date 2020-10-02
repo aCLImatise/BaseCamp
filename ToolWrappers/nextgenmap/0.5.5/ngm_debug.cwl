@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ngm_debug.cwl
+id: ngm_debug.cwl
 inputs: []
 outputs:
 - id: out_stdout

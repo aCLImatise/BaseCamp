@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_pngtogd.cwl
+id: _pngtogd.cwl
 inputs:
 - id: in_png_to_gd
   doc: ''

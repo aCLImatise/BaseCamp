@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_modified_bases_estimate_threshold.cwl
+id: megalodon_extras_modified_bases_estimate_threshold.cwl
 inputs:
 - id: in_fraction_modified
   doc: "Specify fraction of modified calls. Default: Use\n--mod-percentile most extreme\
@@ -18,6 +18,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --num-positions
+- id: in_megalodon_results_dir
+  doc: Output directory from megalodon with per_read_mods in
+  type: string
+  inputBinding:
+    position: 0
 - id: in_output_dot
   doc: mod_base              Single letter code for the modified base.
   type: string

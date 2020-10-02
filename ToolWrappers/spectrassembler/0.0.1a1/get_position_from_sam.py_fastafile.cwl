@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_position_from_sam.py_fastafile.cwl
+id: get_position_from_sam.py_fastafile.cwl
 inputs:
 - id: in_r
   doc: ''

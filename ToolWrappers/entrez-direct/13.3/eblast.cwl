@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eblast.cwl
+id: eblast.cwl
 inputs: []
 outputs:
 - id: out_stdout

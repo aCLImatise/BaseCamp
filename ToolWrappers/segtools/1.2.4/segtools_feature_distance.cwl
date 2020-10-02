@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segtools_feature_distance.cwl
+id: segtools_feature_distance.cwl
 inputs:
 - id: in_clobber
   doc: Overwrite any existing output files.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../download_dfam.py.cwl
+id: download_dfam.py.cwl
 inputs:
 - id: in_output
   doc: Give an output destination /home/user/Dfam.hmm.gz

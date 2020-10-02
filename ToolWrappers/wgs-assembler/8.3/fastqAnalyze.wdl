@@ -5,7 +5,7 @@ task FastqAnalyze {
     Boolean? solexa
     Boolean? illumina
     Boolean? sanger
-    Boolean? sangerstyleoutputfastq
+    String? o
     Boolean? stats
     String output_dot
   }
@@ -15,14 +15,14 @@ task FastqAnalyze {
       ~{if (solexa) then "-solexa" else ""} \
       ~{if (illumina) then "-illumina" else ""} \
       ~{if (sanger) then "-sanger" else ""} \
-      ~{if (sangerstyleoutputfastq) then "-o" else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
       ~{if (stats) then "-stats" else ""}
   >>>
   parameter_meta {
     solexa: "input QV is solexa"
     illumina: "input QV is illumina"
     sanger: "input QV is sanger"
-    sangerstyleoutputfastq: "sanger-style-output.fastq"
+    o: ""
     stats: ""
     output_dot: "For conversion, you can force the input QV type with:"
   }

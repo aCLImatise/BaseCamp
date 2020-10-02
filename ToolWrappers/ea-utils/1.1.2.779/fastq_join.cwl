@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_join.cwl
+id: fastq_join.cwl
 inputs:
 - id: in_see__below
   doc: See 'Output' below

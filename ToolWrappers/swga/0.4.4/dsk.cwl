@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsk.cwl
+id: dsk.cwl
 inputs:
 - id: in_c
   doc: ''

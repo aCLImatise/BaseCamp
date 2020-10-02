@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_topology.cwl
+id: nw_topology.cwl
 inputs:
 - id: in_keep_branch_lengths
   doc: ': keep branch lengths'

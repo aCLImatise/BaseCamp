@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lua.cwl
+id: lua.cwl
 inputs:
 - id: in_execute_string
   doc: execute string 'stat'

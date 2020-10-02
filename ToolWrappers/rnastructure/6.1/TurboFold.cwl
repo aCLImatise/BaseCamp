@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TurboFold.cwl
+id: TurboFold.cwl
 inputs:
 - id: in_sequence_dot
   doc: Default is no limit.

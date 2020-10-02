@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mappedCoverage.cwl
+id: mappedCoverage.cwl
 inputs:
 - id: in_mask
   doc: "Read sequences from in.fasta, lower-case mask\nany base with an alignment,\

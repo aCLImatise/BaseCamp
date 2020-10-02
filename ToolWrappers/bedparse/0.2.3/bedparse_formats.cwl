@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedparse_formats.cwl
+id: bedparse_formats.cwl
 inputs:
 - id: in_bed_parse
   doc: ''

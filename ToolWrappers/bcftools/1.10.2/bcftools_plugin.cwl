@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcftools_plugin.cwl
+id: bcftools_plugin.cwl
 inputs:
 - id: in_exclude
   doc: exclude sites for which the expression is true

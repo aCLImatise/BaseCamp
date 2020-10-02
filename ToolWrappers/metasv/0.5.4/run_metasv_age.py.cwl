@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_metasv_age.py.cwl
+id: run_metasv_age.py.cwl
 inputs:
 - id: in_reference
   doc: 'Reference FASTA (default: None)'

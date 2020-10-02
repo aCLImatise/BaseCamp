@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../erne_bs5.cwl
+id: erne_bs5.cwl
 inputs:
 - id: in_reference
   doc: "reference file to use (in our format and with\n.ebm extension). [REQUIRED]"
@@ -126,6 +126,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gap
+- id: in_ref_insertion_max_gap
+  doc: "maximum value for an insertion in the reference\n(default: 100)"
+  type: long
+  inputBinding:
+    prefix: --ref-insertion-max-gap
 - id: in_ref_deletion_max_gap
   doc: "maximum value for a deletion in the reference\n(default: 20)"
   type: long

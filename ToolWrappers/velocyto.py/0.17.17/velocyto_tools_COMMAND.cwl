@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../velocyto_tools_COMMAND.cwl
+id: velocyto_tools_COMMAND.cwl
 inputs:
 - id: in_args
   doc: ''

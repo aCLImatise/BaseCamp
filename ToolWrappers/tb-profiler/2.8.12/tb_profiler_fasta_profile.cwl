@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tb_profiler_fasta_profile.cwl
+id: tb_profiler_fasta_profile.cwl
 inputs:
 - id: in_db
   doc: 'Mutation panel name (default: tbdb)'

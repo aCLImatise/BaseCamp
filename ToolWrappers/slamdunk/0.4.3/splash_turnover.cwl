@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splash_turnover.cwl
+id: splash_turnover.cwl
 inputs:
 - id: in_bed
   doc: BED file

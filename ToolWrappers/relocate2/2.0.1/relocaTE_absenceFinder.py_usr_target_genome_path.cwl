@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../relocaTE_absenceFinder.py_usr_target_genome_path.cwl
+id: relocaTE_absenceFinder.py_usr_target_genome_path.cwl
 inputs:
 - id: in_te
   doc: '= sys.argv[4] ## repeat to analyze: ALL or mPing/other te name '

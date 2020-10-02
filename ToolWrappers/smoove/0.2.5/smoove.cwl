@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smoove.cwl
+id: smoove.cwl
 inputs: []
 outputs:
 - id: out_stdout

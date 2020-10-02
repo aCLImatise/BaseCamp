@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nf_core_bump_version.cwl
+id: nf_core_bump_version.cwl
 inputs:
 - id: in_next_flow
   doc: Bump required nextflow version instead of pipeline version

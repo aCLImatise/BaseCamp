@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../olapsFromContig.cwl
+id: olapsFromContig.cwl
 inputs:
 - id: in_set_maximum_default
   doc: Set maximum overlap error, default 0.05

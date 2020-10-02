@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fetch.cwl
+id: fetch.cwl
 inputs:
 - id: in_config
   doc: Use <file> as configuration file

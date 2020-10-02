@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cat_sorted_sam.sh.cwl
+id: cat_sorted_sam.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

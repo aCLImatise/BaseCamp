@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alleyoop_positional_tracks.cwl
+id: alleyoop_positional_tracks.cwl
 inputs:
 - id: in_r
   doc: '[-c CONVERSIONTHRESHOLD]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runConcurrently.pl.cwl
+id: runConcurrently.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

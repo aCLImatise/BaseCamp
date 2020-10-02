@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gffGetmRNA.pl.cwl
+id: gffGetmRNA.pl.cwl
 inputs:
 - id: in_genome
   doc: Input a fasta file with the genomic sequences.

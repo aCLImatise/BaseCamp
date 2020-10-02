@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicup_truncater.cwl
+id: hicup_truncater.cwl
 inputs:
 - id: in_config
   doc: Name of the optional configuration file

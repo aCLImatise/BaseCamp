@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gatk_to_gvcf.cwl
+id: gatk_to_gvcf.cwl
 inputs:
 - id: in_chrom_depth_file
   doc: "Read mean depth for each chromosome from file,\nand use these values for maximum\

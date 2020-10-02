@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_anisotropic_diffusion.py.cwl
+id: medpy_anisotropic_diffusion.py.cwl
 inputs:
 - id: in_iterations
   doc: The number of smoothing iterations. Strong parameter.

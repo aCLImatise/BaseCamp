@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfecho.cwl
+id: vcfecho.cwl
 inputs: []
 outputs:
 - id: out_stdout

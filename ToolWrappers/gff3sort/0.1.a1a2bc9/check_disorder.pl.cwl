@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../check_disorder.pl.cwl
+id: check_disorder.pl.cwl
 inputs:
 - id: in_list
   doc: list all IDs that have children features appearing in front of themselves

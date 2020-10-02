@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FastqMidParser.cwl
+id: FastqMidParser.cwl
 inputs:
 - id: in_in
   doc: Input gzipped FASTQ file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ansitable_list_style_sets.cwl
+id: ansitable_list_style_sets.cwl
 inputs: []
 outputs:
 - id: out_stdout

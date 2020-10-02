@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_codeml.cwl
+id: run_codeml.cwl
 inputs:
 - id: in_genomes_a
   doc: file with GenBank Project IDs from complete genomes table on each line for

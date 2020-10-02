@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../upload_genomes.cwl
+id: upload_genomes.cwl
 inputs:
 - id: in_external_genomes
   doc: "=    comma-separated list of label:nucleotide fasta file pairs of externally\

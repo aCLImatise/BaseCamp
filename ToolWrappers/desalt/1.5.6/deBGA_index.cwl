@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deBGA_index.cwl
+id: deBGA_index.cwl
 inputs:
 - id: in_reference_dot_fast_a
   doc: ''

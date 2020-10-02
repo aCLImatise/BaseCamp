@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reconcile_alignments.sh.cwl
+id: reconcile_alignments.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

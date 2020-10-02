@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findrule.cwl
+id: findrule.cwl
 inputs: []
 outputs:
 - id: out_stdout

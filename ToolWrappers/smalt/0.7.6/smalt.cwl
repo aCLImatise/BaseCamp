@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smalt.cwl
+id: smalt.cwl
 inputs: []
 outputs:
 - id: out_stdout

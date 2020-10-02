@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runTest.cwl
+id: runTest.cwl
 inputs: []
 outputs:
 - id: out_stdout

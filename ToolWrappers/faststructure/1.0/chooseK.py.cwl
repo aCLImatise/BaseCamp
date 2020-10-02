@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../chooseK.py.cwl
+id: chooseK.py.cwl
 inputs:
-- id: in_input
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --input
 - id: in_python
   doc: ''
   type: string

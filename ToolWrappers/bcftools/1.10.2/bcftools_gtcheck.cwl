@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcftools_gtcheck.cwl
+id: bcftools_gtcheck.cwl
 inputs:
 - id: in_all_sites
   doc: output comparison for all sites

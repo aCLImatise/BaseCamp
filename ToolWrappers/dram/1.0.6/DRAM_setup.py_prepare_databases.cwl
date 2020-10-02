@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DRAM_setup.py_prepare_databases.cwl
+id: DRAM_setup.py_prepare_databases.cwl
 inputs:
 - id: in_output_dir
   doc: 'output directory (default: .)'

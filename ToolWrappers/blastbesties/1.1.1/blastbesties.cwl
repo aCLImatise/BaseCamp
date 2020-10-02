@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blastbesties.cwl
+id: blastbesties.cwl
 inputs:
 - id: in_blast_a_vb
   doc: "Blast tab result file for fastaA query against fastaB\nsubject"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_specific_genes_from_all_matrices.pl.cwl
+id: extract_specific_genes_from_all_matrices.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

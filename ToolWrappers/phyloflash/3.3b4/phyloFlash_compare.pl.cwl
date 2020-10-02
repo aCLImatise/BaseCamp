@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyloFlash_compare.pl.cwl
+id: phyloFlash_compare.pl.cwl
 inputs:
 - id: in_zip
   doc: "Comma-separated list of tar.gz archives from phyloFlash runs.\nThese will\
@@ -121,11 +121,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --min-ntu-count
-- id: in_barplot
-  doc: phyloFlash_compare.pl --csv
-  type: string
-  inputBinding:
-    position: 0
 - id: in_heat_map
   doc: '# phyloFlash tar.gz archives as input'
   type: string

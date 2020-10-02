@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seer.cwl
+id: seer.cwl
 inputs:
 - id: in_arg_dsm_kmer
   doc: '[ --kmers ] arg       dsm kmer output file'

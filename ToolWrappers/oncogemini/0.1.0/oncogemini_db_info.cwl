@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncogemini_db_info.cwl
+id: oncogemini_db_info.cwl
 inputs:
 - id: in_db
   doc: The name of the database to be updated.

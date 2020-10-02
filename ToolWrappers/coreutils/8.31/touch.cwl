@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../touch.cwl
+id: touch.cwl
 inputs:
 - id: in_change_only_access_time
   doc: change only the access time

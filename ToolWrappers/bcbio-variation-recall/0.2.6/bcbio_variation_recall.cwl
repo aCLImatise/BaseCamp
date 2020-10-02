@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_variation_recall.cwl
+id: bcbio_variation_recall.cwl
 inputs: []
 outputs:
 - id: out_stdout

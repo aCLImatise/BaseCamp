@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nucfreqsfasta.cwl
+id: nucfreqsfasta.cwl
 inputs: []
 outputs:
 - id: out_stdout

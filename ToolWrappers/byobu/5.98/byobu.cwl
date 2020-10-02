@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../byobu.cwl
+id: byobu.cwl
 inputs:
 - id: in_l
   doc: ''

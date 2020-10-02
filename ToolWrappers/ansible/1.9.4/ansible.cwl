@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ansible.cwl
+id: ansible.cwl
 inputs:
 - id: in_args
   doc: module arguments

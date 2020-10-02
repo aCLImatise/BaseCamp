@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../longest_path.cwl
+id: longest_path.cwl
 inputs:
 - id: in_threads
   doc: Number of threads (1)

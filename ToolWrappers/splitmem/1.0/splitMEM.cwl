@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splitMEM.cwl
+id: splitMEM.cwl
 inputs:
 - id: in_file
   doc: Load sequence from file

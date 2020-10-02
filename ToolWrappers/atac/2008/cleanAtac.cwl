@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cleanAtac.cwl
+id: cleanAtac.cwl
 inputs: []
 outputs:
 - id: out_stdout

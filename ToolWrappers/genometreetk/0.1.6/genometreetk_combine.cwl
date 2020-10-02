@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genometreetk_combine.cwl
+id: genometreetk_combine.cwl
 inputs:
 - id: in_support_type
   doc: 'type of support values to compute (default: average)'

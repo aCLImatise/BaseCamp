@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cs_generate.cwl
+id: cs_generate.cwl
 inputs:
 - id: in_quiet
   doc: Suppress all warning messages. Cannot use with '-v'.
@@ -133,17 +133,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --mask_sorted
-- id: in___
-  doc: '------------------------------------------------------------------------------'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_genes_dot
   doc: 2. Within merged genes, all positions are classified. All positions are
   type: string
   inputBinding:
     position: 0
-- id: in_basename_output_files
+- id: in_out_base
   doc: Basename for output files
   type: string
   inputBinding:

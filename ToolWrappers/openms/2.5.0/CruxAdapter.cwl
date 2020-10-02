@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CruxAdapter.cwl
+id: CruxAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                            Input file (valid formats: 'mzML')"

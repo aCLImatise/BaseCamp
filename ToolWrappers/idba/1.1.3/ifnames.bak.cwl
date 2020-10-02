@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ifnames.bak.cwl
+id: ifnames.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -2,12 +2,7 @@ version 1.0
 
 task Parsnp {
   input {
-    Boolean? curated
-    Array[String] sequences
-    String? reference
-    Array[String] genbank
-    String? output_dir
-    String? query
+    File? curated
     Int? max_mumi_distr_dist
     Int? max_mumi_distance
     Boolean? fast_mum
@@ -24,21 +19,12 @@ task Parsnp {
     String? alignment_program
     Boolean? unaligned
     Boolean? use_fast_tree
-    Int? threads
-    Int? max_partition_size
-    Boolean? verbose
-    Boolean? xtra_fast
-    File? ini_file
-    Boolean? extend
+    String? r
+    Array[String] d
   }
   command <<<
     parsnp \
       ~{if (curated) then "--curated" else ""} \
-      ~{if defined(sequences) then ("--sequences " +  '"' + sequences + '"') else ""} \
-      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
-      ~{if defined(genbank) then ("--genbank " +  '"' + genbank + '"') else ""} \
-      ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
-      ~{if defined(query) then ("--query " +  '"' + query + '"') else ""} \
       ~{if defined(max_mumi_distr_dist) then ("--max-mumi-distr-dist " +  '"' + max_mumi_distr_dist + '"') else ""} \
       ~{if defined(max_mumi_distance) then ("--max-mumi-distance " +  '"' + max_mumi_distance + '"') else ""} \
       ~{if (fast_mum) then "--fastmum" else ""} \
@@ -55,20 +41,11 @@ task Parsnp {
       ~{if defined(alignment_program) then ("--alignment-program " +  '"' + alignment_program + '"') else ""} \
       ~{if (unaligned) then "--unaligned" else ""} \
       ~{if (use_fast_tree) then "--use-fasttree" else ""} \
-      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
-      ~{if defined(max_partition_size) then ("--max-partition-size " +  '"' + max_partition_size + '"') else ""} \
-      ~{if (verbose) then "--verbose" else ""} \
-      ~{if (xtra_fast) then "--xtrafast" else ""} \
-      ~{if defined(ini_file) then ("--ini-file " +  '"' + ini_file + '"') else ""} \
-      ~{if (extend) then "--extend" else ""}
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
   parameter_meta {
-    curated: "(c)urated genome directory, use all genomes in dir and ignore MUMi?"
-    sequences: "A list of files containing genomes/contigs/scaffolds"
-    reference: "(r)eference genome (set to ! to pick random one from sequence dir)"
-    genbank: "A list of Genbank file(s) (gbk)"
-    output_dir: ""
-    query: "Specify (assembled) query genome to use, in addition to genomes found in genome dir"
+    curated: "(c)urated genome directory, use all genomes in dir and ignore MUMi?\\n-d SEQUENCES [SEQUENCES ...], --sequences SEQUENCES [SEQUENCES ...]\\nA list of files containing genomes/contigs/scaffolds\\n-r REFERENCE, --reference REFERENCE\\n(r)eference genome (set to ! to pick random one from sequence dir)\\n-g GENBANK [GENBANK ...], --genbank GENBANK [GENBANK ...]\\nA list of Genbank file(s) (gbk)\\n-o OUTPUT_DIR, --output-dir OUTPUT_DIR\\n-q QUERY, --query QUERY\\nSpecify (assembled) query genome to use, in addition to genomes found in genome dir"
     max_mumi_distr_dist: "Max MUMi distance value for MUMi distribution"
     max_mumi_distance: "Max MUMi distance (default: autocutoff based on distribution of MUMi values)"
     fast_mum: "Fast MUMi calculation"
@@ -84,15 +61,12 @@ task Parsnp {
     max_diagonal_difference: "Maximal diagonal difference. Either percentage (e.g. 0.2) or bp (e.g. 100bp)"
     alignment_program: "Alignment program to use"
     unaligned: "Ouput unaligned regions"
-    use_fast_tree: "Use fasttree instead of RaxML"
-    threads: "Number of threads to use"
-    max_partition_size: "Max partition size (limits memory usage)"
-    verbose: "Verbose output"
-    xtra_fast: ""
-    ini_file: ""
-    extend: ""
+    use_fast_tree: "Use fasttree instead of RaxML\\n-p THREADS, --threads THREADS\\nNumber of threads to use\\n-P MAX_PARTITION_SIZE, --max-partition-size MAX_PARTITION_SIZE\\nMax partition size (limits memory usage)\\n-v, --verbose         Verbose output\\n-x, --xtrafast\\n-i INIFILE, --inifile INIFILE, --ini-file INIFILE\\n-e, --extend\\n-V, --version         show program's version number and exit\\n"
+    r: ""
+    d: ""
   }
   output {
     File out_stdout = stdout()
+    File out_curated = "${in_curated}"
   }
 }

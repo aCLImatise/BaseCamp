@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mkpat.cwl
+id: mkpat.cwl
 inputs:
 - id: in_xsize
   doc: ''

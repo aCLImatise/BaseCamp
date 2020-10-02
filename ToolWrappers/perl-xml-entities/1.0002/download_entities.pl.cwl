@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../download_entities.pl.cwl
+id: download_entities.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

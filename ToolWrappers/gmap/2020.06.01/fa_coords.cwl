@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fa_coords.cwl
+id: fa_coords.cwl
 inputs: []
 outputs:
 - id: out_stdout

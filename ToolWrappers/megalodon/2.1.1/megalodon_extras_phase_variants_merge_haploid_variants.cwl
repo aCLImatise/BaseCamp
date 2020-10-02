@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_phase_variants_merge_haploid_variants.cwl
+id: megalodon_extras_phase_variants_merge_haploid_variants.cwl
 inputs:
 - id: in_out_vcf
   doc: 'Output name for VCF. Default:'

@@ -1,35 +1,15 @@
 class: CommandLineTool
-id: ../../../summarizeConsensus.cwl
+id: summarizeConsensus.cwl
 inputs:
 - id: in_variants_gff
-  doc: "Input variants.gff or variants.gff.gz filename\n(default: None)"
-  type: File
-  inputBinding:
-    prefix: --variantsGff
-- id: in_output
-  doc: 'Output alignment_summary.gff filename (default: None)'
-  type: File
-  inputBinding:
-    prefix: --output
-- id: in_resolved_tool_contract
-  doc: "Run Tool directly from a PacBio Resolved tool contract\n(default: None)"
+  doc: ''
   type: string
   inputBinding:
-    prefix: --resolved-tool-contract
-- id: in_emit_tool_contract
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --emit-tool-contract
+    prefix: --variantsGff
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_output
-  doc: 'Output alignment_summary.gff filename (default: None)'
-  type: File
-  outputBinding:
-    glob: $(inputs.in_output)
 cwlVersion: v1.1
 baseCommand:
 - summarizeConsensus

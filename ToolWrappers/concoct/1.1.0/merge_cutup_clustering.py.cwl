@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_cutup_clustering.py.cwl
+id: merge_cutup_clustering.py.cwl
 inputs:
 - id: in_cut_up_clustering_result
   doc: Input cutup clustering result.

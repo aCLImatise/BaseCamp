@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../statistic.pl.cwl
+id: statistic.pl.cwl
 inputs:
 - id: in_n_gram
   doc: "Assumes that n-grams in SOURCE file have N\ntokens each. N = 2 by default."

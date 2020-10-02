@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dreme.cwl
+id: dreme.cwl
 inputs:
 - id: in_directory_create_write
   doc: "<directory>         create the specified output directory\nand write all output\

@@ -14,6 +14,7 @@ task Spaln {
     Boolean? minimum_score_report
     String? ls
     Boolean? number_outputs_query
+    Boolean? gvsac_alignment_bed
     Boolean? dp_hspsearch_blocksearch
     Boolean? read_block_file
     Boolean? orientation_annotation_forward
@@ -46,7 +47,7 @@ task Spaln {
     Boolean? yx_zero
     Boolean? weight_intron_potential
     Boolean? kd
-    Boolean? var_44
+    Boolean? var_45
     String? genome_dot_bkn
     String? w_options
     String genome_dot_mfa
@@ -68,6 +69,7 @@ task Spaln {
       ~{if (minimum_score_report) then "-H" else ""} \
       ~{if defined(ls) then ("-LS " +  '"' + ls + '"') else ""} \
       ~{if (number_outputs_query) then "-M" else ""} \
+      ~{if (gvsac_alignment_bed) then "-O" else ""} \
       ~{if (dp_hspsearch_blocksearch) then "-Q" else ""} \
       ~{if (read_block_file) then "-R" else ""} \
       ~{if (orientation_annotation_forward) then "-S" else ""} \
@@ -100,7 +102,7 @@ task Spaln {
       ~{if (yx_zero) then "-yX0" else ""} \
       ~{if (weight_intron_potential) then "-yZ" else ""} \
       ~{if (kd) then "-KD" else ""} \
-      ~{if (var_44) then "-W" else ""}
+      ~{if (var_45) then "-W" else ""}
   >>>
   parameter_meta {
     generate_local_table: "Generate local lookup table for each block"
@@ -115,6 +117,7 @@ task Spaln {
     minimum_score_report: "#     Minimum score for report (35)"
     ls: "#        semi-global or local alignment (-L)"
     number_outputs_query: "#[,#2]        Number of outputs per query (1) (4 if # is omitted)\\n#2 (4) specifies the max number of candidate loci\\nThis option is effective only for map-and-align modes"
+    gvsac_alignment_bed: "#[,#2,..] (GvsA|C)    0:Gff3_gene; 1:alignment; 2:Gff3_match; 3:Bed; 4:exon-inf;\\n5:intron-inf; 6:cDNA; 7:translated; 8:block-only;\\n10:SAM; 12:binary; 15:query+GS (4)"
     dp_hspsearch_blocksearch: "#     0:DP; 1-3:HSP-Search; 4-7; Block-Search (3)"
     read_block_file: "$     Read block information file *.bkn, *.bkp or *.bka"
     orientation_annotation_forward: "#     Orientation. 0:annotation; 1:forward; 2:reverse; 3:both (3)"
@@ -147,7 +150,7 @@ task Spaln {
     yx_zero: "Don't use parameter set for cross-species comparison"
     weight_intron_potential: "#    Weight for intron potential (0)"
     kd: ""
-    var_44: ""
+    var_45: ""
     genome_dot_bkn: ""
     w_options: ""
     genome_dot_mfa: ""

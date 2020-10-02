@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getGenomeTilingPeaks.cwl
+id: getGenomeTilingPeaks.cwl
 inputs:
 - id: in_tag_directories_analyze
   doc: '[tag directory 2] ... (tag directories to analyze)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_barcodes.awk.cwl
+id: make_barcodes.awk.cwl
 inputs: []
 outputs:
 - id: out_stdout

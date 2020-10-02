@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../watchdog_workflowValidator.cwl
+id: watchdog_workflowValidator.cwl
 inputs: []
 outputs:
 - id: out_stdout

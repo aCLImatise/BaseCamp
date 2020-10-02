@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../antenv.cmd.cwl
+id: antenv.cmd.cwl
 inputs: []
 outputs:
 - id: out_stdout

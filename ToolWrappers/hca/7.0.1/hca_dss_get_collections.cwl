@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_get_collections.cwl
+id: hca_dss_get_collections.cwl
 inputs:
 - id: in_per_page
   doc: Max number of results to return per page.

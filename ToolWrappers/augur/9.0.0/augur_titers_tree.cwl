@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../augur_titers_tree.cwl
+id: augur_titers_tree.cwl
 inputs:
 - id: in_titers
   doc: file with titer measurements

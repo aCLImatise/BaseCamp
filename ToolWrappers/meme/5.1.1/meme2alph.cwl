@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meme2alph.cwl
+id: meme2alph.cwl
 inputs:
 - id: in_motifs_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../codeml.cwl
+id: codeml.cwl
 inputs: []
 outputs:
 - id: out_stdout

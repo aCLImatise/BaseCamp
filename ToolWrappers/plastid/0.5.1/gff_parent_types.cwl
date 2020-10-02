@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff_parent_types.cwl
+id: gff_parent_types.cwl
 inputs:
 - id: in_exclude
   doc: Feature types to exclude from consideration

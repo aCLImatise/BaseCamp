@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_firebase_group.cwl
+id: gcloud_firebase_group.cwl
 inputs:
 - id: in_g_cloud
   doc: ''

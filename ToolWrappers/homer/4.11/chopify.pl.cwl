@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chopify.pl.cwl
+id: chopify.pl.cwl
 inputs:
 - id: in_peak_slash_bed_file
   doc: ''

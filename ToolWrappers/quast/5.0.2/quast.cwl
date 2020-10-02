@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quast.cwl
+id: quast.cwl
 inputs:
 - id: in_output_dir
   doc: '<dirname>       Directory to store all result files [default: quast_results/results_<datetime>]'

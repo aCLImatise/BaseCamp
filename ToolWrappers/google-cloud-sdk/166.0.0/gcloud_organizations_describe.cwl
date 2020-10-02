@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_organizations_describe.cwl
+id: gcloud_organizations_describe.cwl
 inputs:
 - id: in_organization_id
   doc: ''

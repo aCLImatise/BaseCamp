@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../py2neo.cwl
+id: py2neo.cwl
 inputs:
 - id: in_p
   doc: ''

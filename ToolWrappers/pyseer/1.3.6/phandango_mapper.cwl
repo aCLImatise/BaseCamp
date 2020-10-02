@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phandango_mapper.cwl
+id: phandango_mapper.cwl
 inputs:
 - id: in_bwa
   doc: 'Location of bwa executable [Default: bwa]'

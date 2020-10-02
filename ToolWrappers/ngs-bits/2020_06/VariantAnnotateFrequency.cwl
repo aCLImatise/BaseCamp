@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VariantAnnotateFrequency.cwl
+id: VariantAnnotateFrequency.cwl
 inputs:
 - id: in_in
   doc: Input variant list to annotate in VCF or GSvar format.

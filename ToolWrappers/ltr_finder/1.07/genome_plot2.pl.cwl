@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genome_plot2.pl.cwl
+id: genome_plot2.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

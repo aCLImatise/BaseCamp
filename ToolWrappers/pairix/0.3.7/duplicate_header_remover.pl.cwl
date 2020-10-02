@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../duplicate_header_remover.pl.cwl
+id: duplicate_header_remover.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

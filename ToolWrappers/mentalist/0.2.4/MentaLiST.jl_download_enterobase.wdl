@@ -2,7 +2,6 @@ version 1.0
 
 task MentaLiSTjlDownloadEnterobase {
   input {
-    String? t
     File? db
     Int? kmer_size_type
     Int? threads
@@ -12,7 +11,6 @@ task MentaLiSTjlDownloadEnterobase {
   }
   command <<<
     MentaLiST_jl download_enterobase \
-      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
       ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
       ~{if defined(kmer_size_type) then ("-k " +  '"' + kmer_size_type + '"') else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
@@ -21,7 +19,6 @@ task MentaLiSTjlDownloadEnterobase {
       ~{if defined(type) then ("--type " +  '"' + type + '"') else ""}
   >>>
   parameter_meta {
-    t: "[-h]"
     db: "Output file (kmer database)"
     kmer_size_type: "Kmer size (type: Int8)"
     threads: "Number of threads used in parallel. (type:\\nInt64, default: 2)"

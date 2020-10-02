@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastaptamer_count.cwl
+id: fastaptamer_count.cwl
 inputs:
 - id: in_o
   doc: ''

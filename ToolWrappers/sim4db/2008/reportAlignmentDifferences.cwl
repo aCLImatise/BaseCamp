@@ -1,76 +1,22 @@
 class: CommandLineTool
-id: ../../../reportAlignmentDifferences.cwl
+id: reportAlignmentDifferences.cwl
 inputs:
-- id: in_genomic
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -genomic
-- id: in_positions
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -positions
-- id: in_aligns
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -aligns
-- id: in_min_match_identity
-  doc: ''
+- id: in_queries
+  doc: "-genomic G.fasta\n-positions G.posDB\n-aligns\n-minmatchidentity 94\n-minmatchcoverage\
+    \ 90\n-mersize 18\n-ignore 500\n-numthreads 16\n-verbose\n-output Q.sim4db"
   type: long
   inputBinding:
-    prefix: -minmatchidentity
-- id: in_min_match_coverage
-  doc: ''
+    prefix: -queries
+- id: in_o_q
+  doc: "-o Q\n"
   type: long
   inputBinding:
-    prefix: -minmatchcoverage
-- id: in_mer_size
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -mersize
-- id: in_ignore
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -ignore
-- id: in_num_threads
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -numthreads
-- id: in_verbose
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -verbose
-- id: in_output
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -output
+    prefix: -i
 - id: in_o
   doc: ''
   type: string
   inputBinding:
     prefix: -o
-- id: in_i
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -i
-- id: in_snapper_two
-  doc: -queries Q.fasta
-  type: long
-  inputBinding:
-    position: 0
-- id: in_report_alignment_differences
-  doc: -i Q.best.sim4db
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -2,8 +2,8 @@ version 1.0
 
 task Mapsplicepy {
   input {
-    String? x
     Boolean? c_slash_chromosome_dir
+    Boolean? string_path_prefix
     Boolean? one_slash
     Boolean? two_slash
     Boolean? p_slash_threads
@@ -32,8 +32,8 @@ task Mapsplicepy {
   }
   command <<<
     mapsplice_py \
-      ~{if defined(x) then ("-x " +  '"' + x + '"') else ""} \
       ~{if (c_slash_chromosome_dir) then "-c/--chromosome-dir" else ""} \
+      ~{if (string_path_prefix) then "-x" else ""} \
       ~{if (one_slash) then "-1/" else ""} \
       ~{if (two_slash) then "-2/" else ""} \
       ~{if (p_slash_threads) then "-p/--threads" else ""} \
@@ -61,8 +61,8 @@ task Mapsplicepy {
       ~{if defined(c) then ("-c " +  '"' + c + '"') else ""}
   >>>
   parameter_meta {
-    x: ""
     c_slash_chromosome_dir: "<string>     reference sequence directory"
+    string_path_prefix: "<string>     path and prefix of bowtie index"
     one_slash: "<string>     end 1 reads / single end reads"
     two_slash: "<string>     end 2 reads"
     p_slash_threads: "<int>        number of threads, default: 1"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gepardcmd.cwl
+id: gepardcmd.cwl
 inputs:
 - id: in_seq_one
   doc: ':        first sequence file'

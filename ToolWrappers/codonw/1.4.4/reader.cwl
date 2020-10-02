@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reader.cwl
+id: reader.cwl
 inputs:
 - id: in_no_menu
   doc: Prevent the menu interface being displayed

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../pirs_diploid.cwl
+id: pirs_diploid.cwl
 inputs:
-- id: in_enable_multiple
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --enable-multiple
 - id: in_snp_rate
   doc: "A floating-point number in the interval [0, 1] that\nspecifies the heterozygous\
     \ SNP rate.  Default: 0.001"

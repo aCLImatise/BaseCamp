@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../transIndel_build_DNA.py.cwl
+id: transIndel_build_DNA.py.cwl
 inputs:
 - id: in_mapq_cut_off
   doc: :minimal MapQ in SAM for support SV event, default 15

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DBdump.cwl
+id: DBdump.cwl
 inputs:
 - id: in_r_read_number
   doc: ': R #              - read number'

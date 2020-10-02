@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validate_rna.o.cwl
+id: validate_rna.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

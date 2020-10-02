@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pdb4amber.cwl
+id: pdb4amber.cwl
 inputs:
 - id: in_in
   doc: 'PDB input file (default: stdin)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clustering_replay_cluster.cwl
+id: Clustering_replay_cluster.cwl
 inputs:
 - id: in_cluster_replay
   doc: ''

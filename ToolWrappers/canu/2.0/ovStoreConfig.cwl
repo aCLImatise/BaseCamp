@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ovStoreConfig.cwl
+id: ovStoreConfig.cwl
 inputs:
 - id: in_path_seqstore_assembly
   doc: path to seqStore for this assembly

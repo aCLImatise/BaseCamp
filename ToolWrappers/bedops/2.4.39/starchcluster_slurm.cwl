@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../starchcluster_slurm.cwl
+id: starchcluster_slurm.cwl
 inputs: []
 outputs:
 - id: out_stdout

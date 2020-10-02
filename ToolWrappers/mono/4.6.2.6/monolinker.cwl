@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../monolinker.cwl
+id: monolinker.cwl
 inputs:
 - id: in_about
   doc: About the Mono CIL Linker

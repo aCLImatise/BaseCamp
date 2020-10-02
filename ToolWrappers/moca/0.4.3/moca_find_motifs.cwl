@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../moca_find_motifs.cwl
+id: moca_find_motifs.cwl
 inputs:
 - id: in_bed_file
   doc: Bed file input  [required]

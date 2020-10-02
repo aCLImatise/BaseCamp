@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kill.cwl
+id: kill.cwl
 inputs:
 - id: in_signal
   doc: specify the name or number of the signal to be sent

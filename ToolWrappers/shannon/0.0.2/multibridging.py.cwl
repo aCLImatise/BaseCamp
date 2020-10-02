@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multibridging.py.cwl
+id: multibridging.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

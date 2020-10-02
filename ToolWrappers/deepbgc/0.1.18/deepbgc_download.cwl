@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepbgc_download.cwl
+id: deepbgc_download.cwl
 inputs:
 - id: in_debug
   doc: ''

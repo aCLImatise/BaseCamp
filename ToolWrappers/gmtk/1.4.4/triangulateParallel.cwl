@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../triangulateParallel.cwl
+id: triangulateParallel.cwl
 inputs: []
 outputs:
 - id: out_stdout

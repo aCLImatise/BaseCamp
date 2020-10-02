@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../format_fasta.cwl
+id: format_fasta.cwl
 inputs:
 - id: in_input_fast_a
   doc: Path to input fasta.

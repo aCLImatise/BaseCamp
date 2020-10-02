@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_post_search.cwl
+id: hca_dss_post_search.cwl
 inputs:
 - id: in_es_query
   doc: Elasticsearch query

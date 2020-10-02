@@ -1,26 +1,12 @@
 class: CommandLineTool
-id: ../../../PretextMap.avx2.cwl
+id: PretextMap.avx2.cwl
 inputs:
 - id: in_sort_order
-  doc: ({descend}, ascend)
+  doc: "({descend}, ascend)\n--mapq {10}\n--filterInclude \"seq_ [, seq_]*\"\n--filterExclude\
+    \ \"seq_ [, seq_]*\")"
   type: boolean
   inputBinding:
     prefix: --sortorder
-- id: in_mapq
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --mapq
-- id: in_filter_include
-  doc: '"seq_ [, seq_]*"'
-  type: boolean
-  inputBinding:
-    prefix: --filterInclude
-- id: in_filter_exclude
-  doc: '"seq_ [, seq_]*")'
-  type: boolean
-  inputBinding:
-    prefix: --filterExclude
 outputs:
 - id: out_stdout
   doc: Standard output stream

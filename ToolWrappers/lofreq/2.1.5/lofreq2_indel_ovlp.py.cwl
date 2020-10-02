@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lofreq2_indel_ovlp.py.cwl
+id: lofreq2_indel_ovlp.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

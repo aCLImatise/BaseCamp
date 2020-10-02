@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../umi_mark_duplicates.cwl
+id: umi_mark_duplicates.cwl
 inputs:
 - id: in_file
   doc: the input bam file

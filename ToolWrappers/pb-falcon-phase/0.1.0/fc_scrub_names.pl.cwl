@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_scrub_names.pl.cwl
+id: fc_scrub_names.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

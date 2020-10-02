@@ -1,21 +1,11 @@
 class: CommandLineTool
-id: ../../../mfqe.cwl
+id: mfqe.cwl
 inputs:
 - id: in_input_fast_q
   doc: ': Use this file as input FASTQ [default: Use STDIN]'
   type: File
   inputBinding:
     prefix: --input-fastq
-- id: in_output_fast_a_files
-  doc: ..
-  type: long
-  inputBinding:
-    prefix: --output-fasta-files
-- id: in_input_fast_a
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --input-fasta
 - id: in_output_uncompressed
   doc: 'Output sequences uncompressed [default: gzip compress outputs]'
   type: boolean
@@ -31,6 +21,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --fastq-read-name-lists
+- id: in_input_fast_a
+  doc: 'File containing uncompressed input FASTA sequences [default: Use STDIN]'
+  type: File
+  inputBinding:
+    prefix: --input-fasta
+- id: in_output_fast_a_files
+  doc: '...          List of files to write FASTA to'
+  type: string
+  inputBinding:
+    prefix: --output-fasta-files
 - id: in_output_fast_q_files
   doc: '...          List of files to write FASTQ to'
   type: string

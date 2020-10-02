@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_genomedata_tests.py.cwl
+id: run_genomedata_tests.py.cwl
 inputs:
 - id: in_verbose
   doc: Verbose output

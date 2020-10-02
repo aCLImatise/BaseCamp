@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../espell.cwl
+id: espell.cwl
 inputs:
 - id: in_db
   doc: Database name

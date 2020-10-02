@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seq2science_explain.cwl
+id: seq2science_explain.cwl
 inputs:
 - id: in_config_file
   doc: "The path to the config file.\n"

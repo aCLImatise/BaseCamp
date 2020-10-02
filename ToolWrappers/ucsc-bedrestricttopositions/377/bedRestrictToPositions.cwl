@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedRestrictToPositions.cwl
+id: bedRestrictToPositions.cwl
 inputs: []
 outputs:
 - id: out_stdout

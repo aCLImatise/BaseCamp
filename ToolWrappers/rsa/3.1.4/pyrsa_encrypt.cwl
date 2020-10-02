@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyrsa_encrypt.cwl
+id: pyrsa_encrypt.cwl
 inputs:
 - id: in_input
   doc: "Name of the file to encrypt. Reads from stdin if not\nspecified."

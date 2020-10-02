@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../roi.cwl
+id: roi.cwl
 inputs: []
 outputs:
 - id: out_stdout

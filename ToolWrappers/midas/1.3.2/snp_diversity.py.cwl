@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snp_diversity.py.cwl
+id: snp_diversity.py.cwl
 inputs:
 - id: in_out
   doc: path to output file (/dev/stdout)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../call_integrations.sh.cwl
+id: call_integrations.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

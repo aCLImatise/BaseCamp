@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fpa_rename.cwl
+id: fpa_rename.cwl
 inputs:
 - id: in_input
   doc: Rename reads with value in path passed as parameter

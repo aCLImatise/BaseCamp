@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quorum.cwl
+id: quorum.cwl
 inputs:
 - id: in_size
   doc: Mer database size (default 200M)

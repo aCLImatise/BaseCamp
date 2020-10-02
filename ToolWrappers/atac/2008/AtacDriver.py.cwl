@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../AtacDriver.py.cwl
+id: AtacDriver.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

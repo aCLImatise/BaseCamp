@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pileup.sh.cwl
+id: pileup.sh.cwl
 inputs:
 - id: in_x_mx
   doc: "This will set Java's memory usage, overriding\nautodetection. -Xmx20g will\n\

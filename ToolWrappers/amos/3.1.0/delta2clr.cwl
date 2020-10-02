@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../delta2clr.cwl
+id: delta2clr.cwl
 inputs:
 - id: in_zero_cvg
   doc: "- File that contain zero coverage regions;\nreads ending in these regions\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf2daa.cwl
+id: maf2daa.cwl
 inputs:
 - id: in_in
   doc: sets path to MAF-File (can also be piped in, no gzip allowed here)

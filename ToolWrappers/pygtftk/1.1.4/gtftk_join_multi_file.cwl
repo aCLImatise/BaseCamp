@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_join_multi_file.cwl
+id: gtftk_join_multi_file.cwl
 inputs:
 - id: in_input_file
   doc: 'Path to the GTF file. Default to STDIN (default: <stdin>)'

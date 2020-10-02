@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flux_simulator.cwl
+id: flux_simulator.cwl
 inputs: []
 outputs:
 - id: out_stdout

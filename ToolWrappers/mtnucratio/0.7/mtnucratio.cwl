@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mtnucratio.cwl
+id: mtnucratio.cwl
 inputs: []
 outputs:
 - id: out_stdout

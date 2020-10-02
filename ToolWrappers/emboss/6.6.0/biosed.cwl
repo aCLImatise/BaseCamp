@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biosed.cwl
+id: biosed.cwl
 inputs:
 - id: in_target_region
   doc: string     [N] Sequence section to match (Any string)

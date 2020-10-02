@@ -11,11 +11,13 @@ task ScanpycliNorm {
     Boolean? no_log_transform
     Float? normalize_to
     Float? fraction
-    String format_dot
+    String input_obj
+    String output_obj
   }
   command <<<
     scanpy_cli norm \
-      ~{format_dot} \
+      ~{input_obj} \
+      ~{output_obj} \
       ~{if (input_format) then "--input-format" else ""} \
       ~{if (output_format) then "--output-format" else ""} \
       ~{if defined(zarr_chunk_size) then ("--zarr-chunk-size " +  '"' + zarr_chunk_size + '"') else ""} \
@@ -36,7 +38,8 @@ task ScanpycliNorm {
     no_log_transform: "When set, do not apply (natural) log\\ntransform following normalisation.\\n[default: True]"
     normalize_to: "Normalize per cell nUMI to this number.\\n[default: 10000]"
     fraction: "Only use genes that make up less than this\\nfraction of the total count in every cell.\\nSo only these genes will sum up to the\\nnumber specified by --normalize-to.\\n[default: 0.9]"
-    format_dot: "[default: 1000]"
+    input_obj: ""
+    output_obj: ""
   }
   output {
     File out_stdout = stdout()

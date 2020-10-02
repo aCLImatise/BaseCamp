@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_fm_merge.cwl
+id: sga_fm_merge.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

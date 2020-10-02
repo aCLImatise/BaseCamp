@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pt2to3.cwl
+id: pt2to3.cwl
 inputs:
 - id: in_reverse
   doc: reverts changes, going from 3.x -> 2.x.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PhosphoScoring.cwl
+id: PhosphoScoring.cwl
 inputs:
 - id: in_in
   doc: "*                       Input file with MS/MS spectra (valid formats: 'mzML')"

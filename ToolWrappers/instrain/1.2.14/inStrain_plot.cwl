@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../inStrain_plot.cwl
+id: inStrain_plot.cwl
 inputs:
 - id: in_is
   doc: 'an inStrain profile object (default: None)'

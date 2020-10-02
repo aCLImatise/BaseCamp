@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MapGHeader.pl.cwl
+id: MapGHeader.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

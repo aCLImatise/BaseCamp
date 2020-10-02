@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pwd.cwl
+id: pwd.cwl
 inputs:
 - id: in_logical
   doc: use PWD from environment, even if it contains symlinks

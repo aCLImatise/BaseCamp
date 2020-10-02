@@ -1,18 +1,14 @@
 class: CommandLineTool
-id: ../../../rsat_matrix_quality.cwl
+id: rsat_matrix_quality.cwl
 inputs:
-- id: in_no_cv
-  doc: 0 -bgfile my_background.txt \
+- id: in_perm
+  doc: "0 -bgfile my_background.txt \\\n-o my_matrix_quality"
   type: long
   inputBinding:
-    prefix: -no_cv
-- id: in_o
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -o
+    prefix: -perm
 - id: in_h_dot
-  doc: ''
+  doc: "Multiple image formats can be specified either by using iteratively\nthe option,\
+    \ or by separating them by commas.\nExample: -img_format png,pdf"
   type: boolean
   inputBinding:
     prefix: -h.

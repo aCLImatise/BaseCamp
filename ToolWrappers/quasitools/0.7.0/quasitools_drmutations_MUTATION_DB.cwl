@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quasitools_drmutations_MUTATION_DB.cwl
+id: quasitools_drmutations_MUTATION_DB.cwl
 inputs:
 - id: in_quasi_tools
   doc: ''

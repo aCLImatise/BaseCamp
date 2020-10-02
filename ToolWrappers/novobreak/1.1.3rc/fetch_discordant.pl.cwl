@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fetch_discordant.pl.cwl
+id: fetch_discordant.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

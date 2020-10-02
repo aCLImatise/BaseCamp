@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svm_predict.cwl
+id: svm_predict.cwl
 inputs:
 - id: in_predict_probability_estimates
   doc: ': whether to predict probability estimates, 0 or 1 (default 0); for one-class

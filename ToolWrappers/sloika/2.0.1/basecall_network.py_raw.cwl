@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../basecall_network.py_raw.cwl
+id: basecall_network.py_raw.cwl
 inputs:
 - id: in_alphabet
   doc: "Alphabet of the sequences (default: b'ACGT')"

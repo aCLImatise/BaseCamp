@@ -25,7 +25,7 @@ task JassPreprocessing {
       ~{if defined(additional_masked_region) then ("--additional-masked-region " +  '"' + additional_masked_region + '"') else ""}
   >>>
   parameter_meta {
-    diagnostic_folder: ""
+    diagnostic_folder: "DIAGNOSTIC_FOLDER --output-folder OUTPUT_FOLDER\\n[--output-folder-1-file OUTPUT_FOLDER_1_FILE]\\n[--percent-sample-size PERCENT_SAMPLE_SIZE]\\n[--minimum-MAF MINIMUM_MAF] [--mask-MHC MASK_MHC]\\n[--additional-masked-region ADDITIONAL_MASKED_REGION]"
     g_was_info: "Path to the file describing the format of the\\nindividual GWASs files with correct header"
     ref_path: "reference panel location (used to determine which snp\\nto impute)"
     output_folder: "Location of main ouput folder for preprocessed GWAS\\nfiles (splitted by chromosome)"

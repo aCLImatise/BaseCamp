@@ -2,23 +2,17 @@ version 1.0
 
 task CalculateDistancespy {
   input {
-    String? out
-    String? log
-    String? log_level
-    String? procs
+    String? l
+    String? o
   }
   command <<<
     calculate_distances_py \
-      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
-      ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
-      ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""} \
-      ~{if defined(procs) then ("--procs " +  '"' + procs + '"') else ""}
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
   parameter_meta {
-    out: ""
-    log: ""
-    log_level: ""
-    procs: ""
+    l: ""
+    o: ""
   }
   output {
     File out_stdout = stdout()

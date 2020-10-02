@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmgs_find_cuts.cwl
+id: hmmgs_find_cuts.cwl
 inputs:
 - id: in_cut_finder
   doc: ''

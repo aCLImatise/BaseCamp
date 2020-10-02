@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scaffold.cwl
+id: scaffold.cwl
 inputs:
 - id: in_out
   doc: (=out)                   output directory

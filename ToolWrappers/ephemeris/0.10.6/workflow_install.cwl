@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../workflow_install.cwl
+id: workflow_install.cwl
 inputs:
 - id: in_workflow_path
   doc: "Path to a workflow file or a directory with multiple\nworkflow files ending\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_expression_get_biomaterials_tripal.cwl
+id: tripaille_expression_get_biomaterials_tripal.cwl
 inputs:
 - id: in_biomaterial_id
   doc: A biomaterial entity ID

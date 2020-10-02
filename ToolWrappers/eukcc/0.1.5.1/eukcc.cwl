@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eukcc.cwl
+id: eukcc.cwl
 inputs:
 - id: in_db
   doc: Path to EukCC DB

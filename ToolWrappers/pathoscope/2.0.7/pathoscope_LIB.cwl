@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pathoscope_LIB.cwl
+id: pathoscope_LIB.cwl
 inputs:
 - id: in_genome_file
   doc: "Specify reference genome(Download\nftp://ftp.ncbi.nih.gov/blast/db/FASTA/nt.gz)"

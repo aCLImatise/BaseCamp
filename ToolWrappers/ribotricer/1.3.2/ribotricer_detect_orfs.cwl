@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribotricer_detect_orfs.cwl
+id: ribotricer_detect_orfs.cwl
 inputs:
 - id: in_bam
   doc: Path to BAM file  [required]
@@ -70,11 +70,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --report_all
-- id: in_translation
-  doc: '[default: 0.428571428571]'
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

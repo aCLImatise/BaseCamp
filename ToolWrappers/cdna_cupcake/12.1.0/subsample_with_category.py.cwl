@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../subsample_with_category.py.cwl
+id: subsample_with_category.py.cwl
 inputs:
 - id: in_by
   doc: 'Unique specifier name(default: id)'

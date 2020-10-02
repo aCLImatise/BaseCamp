@@ -25,7 +25,6 @@ task FunannotateUpdate {
     Boolean? min_coverage
     Boolean? pasa_config
     Boolean? pasa_db
-    Float? stringent_alignment_overlap_dot
     Boolean? aligners
     Boolean? max_intron_len
     Boolean? min_prot_len
@@ -39,8 +38,6 @@ task FunannotateUpdate {
     Boolean? seq_center
     Boolean? seq_accession
     Boolean? cpus
-    Boolean? pasa_home
-    Boolean? trinity_home
     String or
   }
   command <<<
@@ -69,7 +66,6 @@ task FunannotateUpdate {
       ~{if (min_coverage) then "--min_coverage" else ""} \
       ~{if (pasa_config) then "--pasa_config" else ""} \
       ~{if (pasa_db) then "--pasa_db" else ""} \
-      ~{if defined(stringent_alignment_overlap_dot) then ("--stringent_alignment_overlap. " +  '"' + stringent_alignment_overlap_dot + '"') else ""} \
       ~{if (aligners) then "--aligners" else ""} \
       ~{if (max_intron_len) then "--max_intronlen" else ""} \
       ~{if (min_prot_len) then "--min_protlen" else ""} \
@@ -82,9 +78,7 @@ task FunannotateUpdate {
       ~{if (isolate) then "--isolate" else ""} \
       ~{if (seq_center) then "--SeqCenter" else ""} \
       ~{if (seq_accession) then "--SeqAccession" else ""} \
-      ~{if (cpus) then "--cpus" else ""} \
-      ~{if (pasa_home) then "--PASAHOME" else ""} \
-      ~{if (trinity_home) then "--TRINITYHOME" else ""}
+      ~{if (cpus) then "--cpus" else ""}
   >>>
   parameter_meta {
     funannotate_folder_genome: "Funannotate folder or Genome in GenBank format (.gbk,.gbff)."
@@ -110,7 +104,6 @@ task FunannotateUpdate {
     min_coverage: "Min depth for normalizing reads. Default: 5"
     pasa_config: "PASA assembly config file, i.e. from previous PASA run"
     pasa_db: "Database to use. Default: sqlite [mysql,sqlite]"
-    stringent_alignment_overlap_dot: ": 30.0"
     aligners: "Aligners to use with PASA: Default: minimap2 blat [gmap]"
     max_intron_len: "Maximum intron length. Default: 3000"
     min_prot_len: "Minimum protein length. Default: 50"
@@ -124,8 +117,6 @@ task FunannotateUpdate {
     seq_center: "Sequencing facilty for NCBI tbl file. Default: CFMR"
     seq_accession: "Sequence accession number for NCBI tbl file. Default: 12345"
     cpus: "Number of CPUs to use. Default: 2"
-    pasa_home: ""
-    trinity_home: ""
     or: "-f, --fasta              Genome in FASTA format"
   }
   output {

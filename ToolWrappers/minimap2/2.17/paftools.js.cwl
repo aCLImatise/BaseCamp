@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../paftools.js.cwl
+id: paftools.js.cwl
 inputs:
 - id: in_use_strict
   doc: "(enforce strict mode)\ntype: bool  default: false"

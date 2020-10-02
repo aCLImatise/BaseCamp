@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FusionInspector.cwl
+id: FusionInspector.cwl
 inputs:
 - id: in_fusions
   doc: fusions summary files (list, comma-delimited and no spaces)

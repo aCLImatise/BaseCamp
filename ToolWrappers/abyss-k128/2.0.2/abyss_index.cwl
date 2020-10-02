@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_index.cwl
+id: abyss_index.cwl
 inputs:
 - id: in_both
   doc: build both FAI and FM indexes [default]

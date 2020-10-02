@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ca2scaff.cwl
+id: ca2scaff.cwl
 inputs: []
 outputs:
 - id: out_stdout

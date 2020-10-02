@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqmagick_convert.cwl
+id: seqmagick_convert.cwl
 inputs:
 - id: in_alphabet
   doc: Input alphabet. Required for writing NEXUS.

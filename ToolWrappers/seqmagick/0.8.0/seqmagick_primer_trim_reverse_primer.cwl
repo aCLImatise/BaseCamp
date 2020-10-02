@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqmagick_primer_trim_reverse_primer.cwl
+id: seqmagick_primer_trim_reverse_primer.cwl
 inputs:
 - id: in_reverse_is_rev_comp
   doc: ''

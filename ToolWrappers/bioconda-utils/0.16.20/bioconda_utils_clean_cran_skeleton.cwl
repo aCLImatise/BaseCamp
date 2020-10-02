@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconda_utils_clean_cran_skeleton.cwl
+id: bioconda_utils_clean_cran_skeleton.cwl
 inputs:
 - id: in_no_windows
   doc: "Use this when submitting an R package to Bioconda.\nAfter a CRAN skeleton\

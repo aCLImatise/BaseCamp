@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_keep_longest_isoform.pl.cwl
+id: agat_sp_keep_longest_isoform.pl.cwl
 inputs:
 - id: in_gff
   doc: GTF/GFF file.

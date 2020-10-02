@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simwalk2.cwl
+id: simwalk2.cwl
 inputs: []
 outputs:
 - id: out_stdout

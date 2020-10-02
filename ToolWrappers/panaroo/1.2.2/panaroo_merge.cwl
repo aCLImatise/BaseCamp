@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../panaroo_merge.cwl
+id: panaroo_merge.cwl
 inputs:
 - id: in_min_edge_support_sv
   doc: "minimum edge support required to call structural\nvariants in the presence/absence\

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../maf_chop.py.cwl
-inputs:
-- id: in_length
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: --length
+id: maf_chop.py.cwl
+inputs: []
 outputs:
 - id: out_stdout
   doc: Standard output stream

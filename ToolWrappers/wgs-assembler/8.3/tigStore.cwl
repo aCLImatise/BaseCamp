@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tigStore.cwl
+id: tigStore.cwl
 inputs:
 - id: in_path_gatekeeper_store
   doc: Path to the gatekeeper store

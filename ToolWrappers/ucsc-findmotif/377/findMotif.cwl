@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findMotif.cwl
+id: findMotif.cwl
 inputs:
 - id: in_motif
   doc: '- search for this specified motif (case ignored, [acgt] only)'

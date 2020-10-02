@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runidba.py.cwl
+id: runidba.py.cwl
 inputs:
 - id: in_para_file
   doc: ''

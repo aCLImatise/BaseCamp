@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hcp_getpdb.cwl
+id: hcp_getpdb.cwl
 inputs: []
 outputs:
 - id: out_stdout

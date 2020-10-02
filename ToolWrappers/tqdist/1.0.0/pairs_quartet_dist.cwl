@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairs_quartet_dist.cwl
+id: pairs_quartet_dist.cwl
 inputs:
 - id: in_v
   doc: ''

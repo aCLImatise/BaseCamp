@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../expMatrixToBarchartBed_median..cwl
+id: expMatrixToBarchartBed_median..cwl
 inputs:
 - id: in_auto_sql
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../catalogue_errors.cwl
+id: catalogue_errors.cwl
 inputs:
 - id: in_bed
   doc: ".bed file of reference regions to include. (default:\nNone)"

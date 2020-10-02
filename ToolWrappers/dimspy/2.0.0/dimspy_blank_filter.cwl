@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dimspy_blank_filter.cwl
+id: dimspy_blank_filter.cwl
 inputs:
 - id: in_input
   doc: "HDF5 file or tab-delimited file that contains a peak\nmatrix (object)."

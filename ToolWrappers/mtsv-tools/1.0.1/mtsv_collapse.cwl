@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mtsv_collapse.cwl
+id: mtsv_collapse.cwl
 inputs:
 - id: in_include_flag_trigger
   doc: Include this flag to trigger debug-level logging.

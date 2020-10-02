@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PSMFeatureExtractor.cwl
+id: PSMFeatureExtractor.cwl
 inputs:
 - id: in_in
   doc: "*                 Input file(s) (valid formats: 'mzid', 'idXML')"

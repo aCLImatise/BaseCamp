@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwcat.cwl
+id: bwcat.cwl
 inputs:
 - id: in_input_path
   doc: '[file]                          Path to the input bigwig file'

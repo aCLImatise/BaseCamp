@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_plot_transcript_wiggles.cwl
+id: rsem_plot_transcript_wiggles.cwl
 inputs:
 - id: in_gene_list
   doc: 'The input-list is a list of gene ids. (Default: off)'

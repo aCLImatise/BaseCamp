@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../calculate_ref_alt_counts.cwl
+id: calculate_ref_alt_counts.cwl
 inputs:
 - id: in_output
   doc: Path to the output file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnp_corrprofile.cwl
+id: dnp_corrprofile.cwl
 inputs:
 - id: in_version_check
   doc: "Turn this option off to disable version update notifications of the\napplication.\

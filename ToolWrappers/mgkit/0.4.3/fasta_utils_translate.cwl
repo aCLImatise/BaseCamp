@@ -1,22 +1,13 @@
 class: CommandLineTool
-id: ../../../fasta_utils_translate.cwl
+id: fasta_utils_translate.cwl
 inputs:
 - id: in_verbose
-  doc: ''
+  doc: "-t, --trans-table [bac_plt|drs_mit|inv_mit|prt_mit|universal|vt_mit|yst_alt|yst_mit]\n\
+    translation table  [default: universal]\n--progress                      Shows\
+    \ Progress Bar\n--help                          Show this message and exit.\n"
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: in_trans_table
-  doc: "[bac_plt|drs_mit|inv_mit|prt_mit|universal|vt_mit|yst_alt|yst_mit]\ntranslation\
-    \ table  [default: universal]"
-  type: boolean
-  inputBinding:
-    prefix: --trans-table
-- id: in_progress
-  doc: Shows Progress Bar
-  type: boolean
-  inputBinding:
-    prefix: --progress
 - id: in_fast_a_file
   doc: ''
   type: string

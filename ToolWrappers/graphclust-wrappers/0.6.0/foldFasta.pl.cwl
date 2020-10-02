@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../foldFasta.pl.cwl
+id: foldFasta.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

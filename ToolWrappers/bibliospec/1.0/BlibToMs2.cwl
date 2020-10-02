@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BlibToMs2.cwl
+id: BlibToMs2.cwl
 inputs:
 - id: in_arg_name_output
   doc: "[ --file-name ] arg                Name the output ms2 file.  Default is\n\

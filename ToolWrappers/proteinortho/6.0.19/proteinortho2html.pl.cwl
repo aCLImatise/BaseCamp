@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proteinortho2html.pl.cwl
+id: proteinortho2html.pl.cwl
 inputs:
 - id: in_my_project_dot_protein_ortho
   doc: ''

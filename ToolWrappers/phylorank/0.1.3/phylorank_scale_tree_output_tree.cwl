@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylorank_scale_tree_output_tree.cwl
+id: phylorank_scale_tree_output_tree.cwl
 inputs:
 - id: in_phylo_rank
   doc: ''

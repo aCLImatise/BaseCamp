@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../svtk_rdtest2vcf_fout.cwl
+id: svtk_rdtest2vcf_fout.cwl
 inputs:
 - id: in_contigs
   doc: ''

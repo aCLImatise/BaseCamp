@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merfishtools_multidiffexp_FLAGS.cwl
+id: merfishtools_multidiffexp_FLAGS.cwl
 inputs:
 - id: in_mer_fish_tools
   doc: ''

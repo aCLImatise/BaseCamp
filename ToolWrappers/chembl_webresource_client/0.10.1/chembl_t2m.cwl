@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chembl_t2m.cwl
+id: chembl_t2m.cwl
 inputs:
 - id: in_input
   doc: input file, standard input by default

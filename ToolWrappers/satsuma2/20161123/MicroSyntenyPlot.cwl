@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MicroSyntenyPlot.cwl
+id: MicroSyntenyPlot.cwl
 inputs:
 - id: in_string_homologybyxcorr_file
   doc: '<string> : HomologyByXCorr output file'

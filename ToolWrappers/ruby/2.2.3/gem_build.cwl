@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gem_build.cwl
+id: gem_build.cwl
 inputs:
 - id: in_force
   doc: skip validation of the spec

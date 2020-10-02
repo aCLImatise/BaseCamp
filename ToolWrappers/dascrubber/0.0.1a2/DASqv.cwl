@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DASqv.cwl
+id: DASqv.cwl
 inputs:
 - id: in_c
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastx_clipper.cwl
+id: fastx_clipper.cwl
 inputs:
 - id: in_o
   doc: ''

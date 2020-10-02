@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pythonsh.cwl
+id: pythonsh.cwl
 inputs:
 - id: in_write_files_pythondontwritebytecodex
   doc: ": don't write .py[co] files on import; also PYTHONDONTWRITEBYTECODE=x"

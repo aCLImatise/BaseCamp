@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reaper.cwl
+id: reaper.cwl
 inputs:
 - id: in_geom
   doc: mode in {no-bc, 3p-bc, 5p-bc}
@@ -71,11 +71,6 @@ inputs:
   type: long
   inputBinding:
     prefix: -5p-barcode
-- id: in_five_p_s_insert
-  doc: '[/g[/o]]  (default 0/2/1/10)'
-  type: long
-  inputBinding:
-    prefix: -5p-sinsert
 - id: in_mr_tabu
   doc: l/e[/g[/o]]  (default 16/2/1/0)
   type: boolean
@@ -195,21 +190,6 @@ inputs:
   type: long
   inputBinding:
     prefix: -sc-max
-- id: in_three_pa
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -3pa
-- id: in_five_psi
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -5psi
-- id: in_tabu
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -tabu
 outputs:
 - id: out_stdout
   doc: Standard output stream

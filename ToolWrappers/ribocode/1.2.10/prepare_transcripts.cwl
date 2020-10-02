@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prepare_transcripts.cwl
+id: prepare_transcripts.cwl
 inputs:
 - id: in_gtf
   doc: "Default, suitable for GENCODE and ENSEMBL GTF file,\nplease refer: https://en.wikipedia.org/wiki/GENCODE,\n\

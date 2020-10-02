@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plot_counts_correlation.py.cwl
+id: plot_counts_correlation.py.cwl
 inputs:
 - id: in_report_pdf
   doc: Report PDF.

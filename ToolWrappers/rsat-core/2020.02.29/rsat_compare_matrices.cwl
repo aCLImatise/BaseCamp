@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../rsat_compare_matrices.cwl
+id: rsat_compare_matrices.cwl
 inputs:
-- id: in_format_two
-  doc: ).
-  type: boolean
-  inputBinding:
-    prefix: -format2
-- id: in_format_one
-  doc: ).
-  type: boolean
-  inputBinding:
-    prefix: -format1
 - id: in_compare_matrices
   doc: "\e[1mVERSION\e[0m"
   type: string

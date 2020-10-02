@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ALE.cwl
+id: ALE.cwl
 inputs:
 - id: in_km_er
   doc: ': Kmer depth for kmer stats [4]'

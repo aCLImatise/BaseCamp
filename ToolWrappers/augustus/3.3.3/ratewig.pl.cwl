@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ratewig.pl.cwl
+id: ratewig.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

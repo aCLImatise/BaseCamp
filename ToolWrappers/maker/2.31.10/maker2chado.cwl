@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maker2chado.cwl
+id: maker2chado.cwl
 inputs: []
 outputs:
 - id: out_stdout

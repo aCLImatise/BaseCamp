@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_extractalignedregion.cwl
+id: mmseqs_extractalignedregion.cwl
 inputs:
 - id: in_extract_mode
   doc: 2               Query 1, Target 2

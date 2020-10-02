@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HLA_ASM.pl.cwl
+id: HLA_ASM.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

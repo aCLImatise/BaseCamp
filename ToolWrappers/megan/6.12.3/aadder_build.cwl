@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aadder_build.cwl
+id: aadder_build.cwl
 inputs:
 - id: in_input_gff
   doc: '[string(s)]        Input GFF3 files or directory (.gz ok). Mandatory option.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findcsRNATSS.pl_findPeaks.cwl
+id: findcsRNATSS.pl_findPeaks.cwl
 inputs:
 - id: in_o
   doc: (*see note below)

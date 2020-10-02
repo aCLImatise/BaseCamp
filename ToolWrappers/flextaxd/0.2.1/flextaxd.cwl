@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flextaxd.cwl
+id: flextaxd.cwl
 inputs:
 - id: in__outdir_output
   doc: ', --outdir         Output directory'

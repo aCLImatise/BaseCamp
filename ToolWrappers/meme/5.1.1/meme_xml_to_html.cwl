@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meme_xml_to_html.cwl
+id: meme_xml_to_html.cwl
 inputs:
 - id: in_meme_xml_file
   doc: ''

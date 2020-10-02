@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stag_xml2itext.pl.cwl
+id: stag_xml2itext.pl.cwl
 inputs:
 - id: in_help
   doc: "processed in rearrange(), did you use a\nnon-recognized parameter name ? \

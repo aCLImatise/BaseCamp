@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dx_jobutil_add_output_some_output.cwl
+id: dx_jobutil_add_output_some_output.cwl
 inputs:
 - id: in_array
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biopet_seattleseqkit.cwl
+id: biopet_seattleseqkit.cwl
 inputs:
 - id: in_log_level
   doc: "Level of log information printed. Possible levels: 'debug', 'info', 'warn',\

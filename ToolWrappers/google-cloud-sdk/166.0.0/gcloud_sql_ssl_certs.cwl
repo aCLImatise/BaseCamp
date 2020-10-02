@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_sql_ssl_certs.cwl
+id: gcloud_sql_ssl_certs.cwl
 inputs:
 - id: in_certificates_dot
   doc: GCLOUD WIDE FLAGS

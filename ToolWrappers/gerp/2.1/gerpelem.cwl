@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gerpelem.cwl
+id: gerpelem.cwl
 inputs:
 - id: in_verbose_mode
   doc: verbose mode
@@ -16,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -c
-- id: in_s
-  doc: '[default = 0]'
-  type: long
-  inputBinding:
-    prefix: -s
 - id: in_suffix_naming_files
   doc: suffix for naming output files [default = ".elems"]
   type: string

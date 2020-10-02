@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vdb_dump_orig.2.10.8.cwl
+id: vdb_dump_orig.2.10.8.cwl
 inputs:
 - id: in_row_id_on
   doc: print row id

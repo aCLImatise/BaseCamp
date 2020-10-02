@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../banner_predict.cwl
+id: banner_predict.cwl
 inputs:
 - id: in_model
   doc: The model that banner trained

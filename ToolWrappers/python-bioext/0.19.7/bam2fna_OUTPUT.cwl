@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2fna_OUTPUT.cwl
+id: bam2fna_OUTPUT.cwl
 inputs:
 - id: in_bam_two_fna
   doc: ''

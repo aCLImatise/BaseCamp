@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_taxon_list.cwl
+id: checkm_taxon_list.cwl
 inputs:
 - id: in_rank
   doc: 'restrict list to specified taxonomic rank (default: ALL)'

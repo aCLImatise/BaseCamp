@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splash_reads.cwl
+id: splash_reads.cwl
 inputs:
 - id: in_output_dir
   doc: Output directory for mapped BAM files.

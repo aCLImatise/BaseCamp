@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotate_length.py_output_fastx.cwl
+id: annotate_length.py_output_fastx.cwl
 inputs:
 - id: in_o
   doc: ''

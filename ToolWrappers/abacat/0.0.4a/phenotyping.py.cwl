@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phenotyping.py.cwl
+id: phenotyping.py.cwl
 inputs:
 - id: in_input
   doc: "Input genome. Must be either: a valid contigs file or\na json genome file."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kttimedtest.cwl
+id: kttimedtest.cwl
 inputs:
 - id: in_rnd
   doc: ''

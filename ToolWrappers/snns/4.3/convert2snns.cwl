@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert2snns.cwl
+id: convert2snns.cwl
 inputs:
 - id: in_control_file
   doc: ''

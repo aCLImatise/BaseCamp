@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gxw2stats.pl.cwl
+id: gxw2stats.pl.cwl
 inputs:
 - id: in_matrices_file_gxw
   doc: ':         matrices file (gxw format)'
@@ -301,26 +301,6 @@ inputs:
   type: File
   inputBinding:
     prefix: -sxml
-- id: in_weight_average_occupancy
-  doc: ======================
-  type: string
-  inputBinding:
-    position: 0
-- id: in_weight_matrix_positions
-  doc: =====================
-  type: string
-  inputBinding:
-    position: 1
-- id: in_weight_matrix_clustering
-  doc: ======================
-  type: string
-  inputBinding:
-    position: 2
-- id: in_weight_matrix_sequence_features
-  doc: ============================
-  type: string
-  inputBinding:
-    position: 3
 outputs:
 - id: out_stdout
   doc: Standard output stream

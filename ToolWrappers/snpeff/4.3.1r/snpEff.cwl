@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snpEff.cwl
+id: snpEff.cwl
 inputs:
 - id: in_chr
   doc: ": Prepend 'string' to chromosome name (e.g. 'chr1' instead of '1'). Only on\

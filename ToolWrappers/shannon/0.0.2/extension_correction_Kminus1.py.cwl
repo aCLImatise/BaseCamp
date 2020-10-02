@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extension_correction_Kminus1.py.cwl
+id: extension_correction_Kminus1.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

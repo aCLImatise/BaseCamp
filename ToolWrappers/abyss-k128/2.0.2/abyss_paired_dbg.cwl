@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_paired_dbg.cwl
+id: abyss_paired_dbg.cwl
 inputs:
 - id: in_chastity
   doc: discard unchaste reads [default]

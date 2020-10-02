@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../libtable.pl.bak.cwl
+id: libtable.pl.bak.cwl
 inputs: []
 outputs:
 - id: out_stdout

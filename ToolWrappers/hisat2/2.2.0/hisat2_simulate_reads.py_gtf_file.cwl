@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisat2_simulate_reads.py_gtf_file.cwl
+id: hisat2_simulate_reads.py_gtf_file.cwl
 inputs:
 - id: in_r
   doc: ''

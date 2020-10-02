@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_join.cwl
+id: csvtk_join.cwl
 inputs:
 - id: in_fields
   doc: Semicolon separated key fields of all files, if given one, we think all the

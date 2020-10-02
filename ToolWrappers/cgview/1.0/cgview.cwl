@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgview.cwl
+id: cgview.cwl
 inputs:
 - id: in_specifies_label_size
   doc: Specifies a label font size.

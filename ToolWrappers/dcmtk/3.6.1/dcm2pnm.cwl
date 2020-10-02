@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dcm2pnm.cwl
+id: dcm2pnm.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments

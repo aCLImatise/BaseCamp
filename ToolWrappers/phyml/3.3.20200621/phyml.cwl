@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyml.cwl
+id: phyml.cwl
 inputs:
 - id: in__datatype_mdatatypemmdatatypem
   doc: "(or --datatype) \e[00;04mdata_type\e[00;00m\n\e[00;04mdata_type\e[00;00m is\

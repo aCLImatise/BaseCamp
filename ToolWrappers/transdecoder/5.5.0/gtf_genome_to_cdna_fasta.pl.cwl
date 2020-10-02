@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf_genome_to_cdna_fasta.pl.cwl
+id: gtf_genome_to_cdna_fasta.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

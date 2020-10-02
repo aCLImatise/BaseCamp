@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parseMismatch.py.cwl
+id: parseMismatch.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

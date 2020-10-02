@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../domainlist.cwl
+id: domainlist.cwl
 inputs:
 - id: in_var_0
   doc: OME-XML

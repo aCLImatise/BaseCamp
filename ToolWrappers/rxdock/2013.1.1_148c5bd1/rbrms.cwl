@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbrms.cwl
+id: rbrms.cwl
 inputs: []
 outputs:
 - id: out_stdout

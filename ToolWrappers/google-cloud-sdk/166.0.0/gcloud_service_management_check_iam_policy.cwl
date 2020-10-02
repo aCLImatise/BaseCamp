@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_service_management_check_iam_policy.cwl
+id: gcloud_service_management_check_iam_policy.cwl
 inputs:
 - id: in_service
   doc: ''

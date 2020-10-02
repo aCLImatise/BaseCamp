@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cleanUpSequences.pl.cwl
+id: cleanUpSequences.pl.cwl
 inputs:
 - id: in_max
   doc: '# and -min # removes sequences that are longer than max and shorter than min(optional)'

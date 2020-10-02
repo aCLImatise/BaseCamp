@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../a3m_reduce.cwl
+id: a3m_reduce.cwl
 inputs:
 - id: in_d
   doc: ''

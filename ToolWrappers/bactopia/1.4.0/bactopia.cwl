@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bactopia.cwl
+id: bactopia.cwl
 inputs:
 - id: in_fast_qs
   doc: "An input file containing the sample name and\nabsolute paths to FASTQ/FASTAs\

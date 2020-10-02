@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../subset.cwl
+id: subset.cwl
 inputs:
 - id: in_in_path
   doc: 'file path to input GCT(x) file (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_window.cwl
+id: bedtools_window.cwl
 inputs:
 - id: in_a_bam
   doc: The A input file is in BAM format.  Output will be BAM as well. Replaces -a.

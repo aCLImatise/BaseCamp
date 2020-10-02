@@ -122,7 +122,7 @@ subcommands:
     args: !SimpleFlagArg
       name: beginning
     optional: true
-  parent: &id006 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -243,7 +243,7 @@ subcommands:
         args: !SimpleFlagArg
           name: beginning
         optional: true
-      parent: &id003 !Command
+      parent: &id006 !Command
         command: *id001
         positional: []
         named: []
@@ -366,7 +366,352 @@ subcommands:
             args: !SimpleFlagArg
               name: beginning
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named: []
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: Pickled model file
+                position: 0
+                name: model
+                optional: false
+              - !Positional
+                description: Directory containing single-read fast5 files
+                position: 1
+                name: input_folder
+                optional: false
+              named:
+              - !Flag
+                description: "Alphabet of the sequences (default: b'ACGT')"
+                synonyms:
+                - --alphabet
+                args: !SimpleFlagArg
+                  name: ALPHABET
+                optional: true
+              - !Flag
+                description: 'File output compiled model (default: None)'
+                synonyms:
+                - --compile
+                args: !SimpleFlagArg
+                  name: COMPILE
+                optional: true
+              - !Flag
+                description: 'Strand summary file containing subset (default: None)'
+                synonyms:
+                - --input_strand_list
+                args: !SimpleFlagArg
+                  name: INPUT_STRAND_LIST
+                optional: true
+              - !Flag
+                description: "Number of threads to use when processing data\n(default:\
+                  \ 1)"
+                synonyms:
+                - --jobs
+                args: !SimpleFlagArg
+                  name: n
+                optional: true
+              - !Flag
+                description: 'Length of kmer (default: 5)'
+                synonyms:
+                - --kmer_len
+                args: !SimpleFlagArg
+                  name: length
+                optional: true
+              - !Flag
+                description: 'Limit number of reads to process (default: None)'
+                synonyms:
+                - --limit
+                args: !SimpleFlagArg
+                  name: reads
+                optional: true
+              - !Flag
+                description: "Minimum allowed probabiility for basecalls (default:\n\
+                  1e-05)"
+                synonyms:
+                - --min_prob
+                args: !SimpleFlagArg
+                  name: proportion
+                optional: true
+              - !Flag
+                description: 'Skip penalty (default: 0.0)'
+                synonyms:
+                - --skip
+                args: !SimpleFlagArg
+                  name: SKIP
+                optional: true
+              - !Flag
+                description: "step skip\nBase transition probabilities (default: None)"
+                synonyms:
+                - --trans
+                args: !SimpleFlagArg
+                  name: stay
+                optional: true
+              - !Flag
+                description: "Model is transducer (Default: --transducer) (default:\n\
+                  True)"
+                synonyms:
+                - --transducer
+                - --no-transducer
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'Model emits bad events as a separate state (Default:'
+                synonyms:
+                - --bad
+                - --no-bad
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: 'Section to call (default: template)'
+                synonyms:
+                - --section
+                args: !ChoiceFlagArg
+                  choices: !!set
+                    ? complement
+                    ? template
+                optional: true
+              - !Flag
+                description: "Location of segmentation information (default:\nSegmentation)"
+                synonyms:
+                - --segmentation
+                args: !SimpleFlagArg
+                  name: location
+                optional: true
+              - !Flag
+                description: "end  Number of events to trim off start and end (default:\n\
+                  (50, 1))\n"
+                synonyms:
+                - --trim
+                args: !SimpleFlagArg
+                  name: beginning
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: basecall_network.py events [-h] [--alphabet ALPHABET]\n\
+                \                                  [--compile COMPILE]\n         \
+                \                         [--input_strand_list INPUT_STRAND_LIST]\n\
+                \                                  [--jobs n] [--kmer_len length]\n\
+                \                                  [--limit reads] [--min_prob proportion]\n\
+                \                                  [--skip SKIP] [--trans stay step\
+                \ skip]\n                                  [--transducer] [--bad]\n\
+                \                                  [--section {template,complement}]\n\
+                \                                  [--segmentation location]\n   \
+                \                               [--trim beginning end]\n         \
+                \                         model input_folder\n\npositional arguments:\n\
+                \  model                 Pickled model file\n  input_folder      \
+                \    Directory containing single-read fast5 files\n\noptional arguments:\n\
+                \  -h, --help            show this help message and exit\n  --alphabet\
+                \ ALPHABET   Alphabet of the sequences (default: b'ACGT')\n  --compile\
+                \ COMPILE     File output compiled model (default: None)\n  --input_strand_list\
+                \ INPUT_STRAND_LIST\n                        Strand summary file containing\
+                \ subset (default: None)\n  --jobs n              Number of threads\
+                \ to use when processing data\n                        (default: 1)\n\
+                \  --kmer_len length     Length of kmer (default: 5)\n  --limit reads\
+                \         Limit number of reads to process (default: None)\n  --min_prob\
+                \ proportion\n                        Minimum allowed probabiility\
+                \ for basecalls (default:\n                        1e-05)\n  --skip\
+                \ SKIP           Skip penalty (default: 0.0)\n  --trans stay step\
+                \ skip\n                        Base transition probabilities (default:\
+                \ None)\n  --transducer, --no-transducer\n                       \
+                \ Model is transducer (Default: --transducer) (default:\n        \
+                \                True)\n  --bad, --no-bad       Model emits bad events\
+                \ as a separate state (Default:\n                        --bad) (default:\
+                \ True)\n  --section {template,complement}\n                     \
+                \   Section to call (default: template)\n  --segmentation location\n\
+                \                        Location of segmentation information (default:\n\
+                \                        Segmentation)\n  --trim beginning end  Number\
+                \ of events to trim off start and end (default:\n                \
+                \        (50, 1))\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - basecall_network.py
+              - raw
+              positional:
+              - !Positional
+                description: Pickled model file
+                position: 0
+                name: model
+                optional: false
+              - !Positional
+                description: Directory containing single-read fast5 files
+                position: 1
+                name: input_folder
+                optional: false
+              named:
+              - !Flag
+                description: "Alphabet of the sequences (default: b'ACGT')"
+                synonyms:
+                - --alphabet
+                args: !SimpleFlagArg
+                  name: ALPHABET
+                optional: true
+              - !Flag
+                description: 'File output compiled model (default: None)'
+                synonyms:
+                - --compile
+                args: !SimpleFlagArg
+                  name: COMPILE
+                optional: true
+              - !Flag
+                description: 'Strand summary file containing subset (default: None)'
+                synonyms:
+                - --input_strand_list
+                args: !SimpleFlagArg
+                  name: INPUT_STRAND_LIST
+                optional: true
+              - !Flag
+                description: "Number of threads to use when processing data\n(default:\
+                  \ 1)"
+                synonyms:
+                - --jobs
+                args: !SimpleFlagArg
+                  name: n
+                optional: true
+              - !Flag
+                description: 'Length of kmer (default: 5)'
+                synonyms:
+                - --kmer_len
+                args: !SimpleFlagArg
+                  name: length
+                optional: true
+              - !Flag
+                description: 'Limit number of reads to process (default: None)'
+                synonyms:
+                - --limit
+                args: !SimpleFlagArg
+                  name: reads
+                optional: true
+              - !Flag
+                description: "Minimum allowed probabiility for basecalls (default:\n\
+                  1e-05)"
+                synonyms:
+                - --min_prob
+                args: !SimpleFlagArg
+                  name: proportion
+                optional: true
+              - !Flag
+                description: 'Skip penalty (default: 0.0)'
+                synonyms:
+                - --skip
+                args: !SimpleFlagArg
+                  name: SKIP
+                optional: true
+              - !Flag
+                description: "step skip\nBase transition probabilities (default: None)"
+                synonyms:
+                - --trans
+                args: !SimpleFlagArg
+                  name: stay
+                optional: true
+              - !Flag
+                description: "Model is transducer (Default: --transducer) (default:\n\
+                  True)"
+                synonyms:
+                - --transducer
+                - --no-transducer
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Model emits bad signal blocks as a separate state\n\
+                  (Default: --bad) (default: True)"
+                synonyms:
+                - --bad
+                - --no-bad
+                args: !EmptyFlagArg {}
+                optional: true
+              - !Flag
+                description: "Max fraction of signal to trim due to open pore\n(default:\
+                  \ 0)"
+                synonyms:
+                - --open_pore_fraction
+                args: !SimpleFlagArg
+                  name: proportion
+                optional: true
+              - !Flag
+                description: "end  Number of samples to trim off start and end (default:\n\
+                  (200, 10))\n"
+                synonyms:
+                - --trim
+                args: !SimpleFlagArg
+                  name: beginning
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: show this help message and exit
+                synonyms:
+                - -h
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: basecall_network.py raw [-h] [--alphabet ALPHABET]\
+                \ [--compile COMPILE]\n                               [--input_strand_list\
+                \ INPUT_STRAND_LIST]\n                               [--jobs n] [--kmer_len\
+                \ length] [--limit reads]\n                               [--min_prob\
+                \ proportion] [--skip SKIP]\n                               [--trans\
+                \ stay step skip] [--transducer] [--bad]\n                       \
+                \        [--open_pore_fraction proportion]\n                     \
+                \          [--trim beginning end]\n                              \
+                \ model input_folder\n\npositional arguments:\n  model           \
+                \      Pickled model file\n  input_folder          Directory containing\
+                \ single-read fast5 files\n\noptional arguments:\n  -h, --help   \
+                \         show this help message and exit\n  --alphabet ALPHABET \
+                \  Alphabet of the sequences (default: b'ACGT')\n  --compile COMPILE\
+                \     File output compiled model (default: None)\n  --input_strand_list\
+                \ INPUT_STRAND_LIST\n                        Strand summary file containing\
+                \ subset (default: None)\n  --jobs n              Number of threads\
+                \ to use when processing data\n                        (default: 1)\n\
+                \  --kmer_len length     Length of kmer (default: 5)\n  --limit reads\
+                \         Limit number of reads to process (default: None)\n  --min_prob\
+                \ proportion\n                        Minimum allowed probabiility\
+                \ for basecalls (default:\n                        1e-05)\n  --skip\
+                \ SKIP           Skip penalty (default: 0.0)\n  --trans stay step\
+                \ skip\n                        Base transition probabilities (default:\
+                \ None)\n  --transducer, --no-transducer\n                       \
+                \ Model is transducer (Default: --transducer) (default:\n        \
+                \                True)\n  --bad, --no-bad       Model emits bad signal\
+                \ blocks as a separate state\n                        (Default: --bad)\
+                \ (default: True)\n  --open_pore_fraction proportion\n           \
+                \             Max fraction of signal to trim due to open pore\n  \
+                \                      (default: 0)\n  --trim beginning end  Number\
+                \ of samples to trim off start and end (default:\n               \
+                \         (200, 10))\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: basecall_network.py [-h] {events,raw} ...\n\n1D basecaller\
+              \ for RNNs\n\npositional arguments:\n  {events,raw}  command\n    events\
+              \      basecall from events\n    raw         basecall from raw signal\n\
+              \noptional arguments:\n  -h, --help    show this help message and exit\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -412,12 +757,9 @@ subcommands:
             \                        Segmentation)\n  --trim beginning end  Number\
             \ of events to trim off start and end (default:\n                    \
             \    (50, 1))\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - basecall_network.py
-          - raw
+          command: *id005
           positional:
           - !Positional
             description: Pickled model file
@@ -570,13 +912,7 @@ subcommands:
             \  (200, 10))\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: basecall_network.py [-h] {events,raw} ...\n\n1D basecaller\
@@ -735,7 +1071,7 @@ subcommands:
         args: !SimpleFlagArg
           name: beginning
         optional: true
-      parent: *id003
+      parent: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -934,7 +1270,7 @@ subcommands:
     args: !SimpleFlagArg
       name: beginning
     optional: true
-  parent: *id006
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

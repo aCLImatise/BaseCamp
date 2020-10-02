@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../intron_exon_reads.py.cwl
+id: intron_exon_reads.py.cwl
 inputs:
 - id: in_gff
   doc: GFF or GTF file containing annotations

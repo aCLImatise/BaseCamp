@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MatchDump.cwl
+id: MatchDump.cwl
 inputs:
 - id: in_k_match_output_file
   doc: ''

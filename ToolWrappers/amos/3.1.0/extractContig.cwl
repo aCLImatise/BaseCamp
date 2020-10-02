@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extractContig.cwl
+id: extractContig.cwl
 inputs:
 - id: in_bank_name
   doc: ''

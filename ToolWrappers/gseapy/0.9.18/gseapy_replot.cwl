@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gseapy_replot.cwl
+id: gseapy_replot.cwl
 inputs:
 - id: in_in_dir
   doc: "The GSEA desktop results directroy that you want to\nreproduce the figure"

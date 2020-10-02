@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summarizemerge.sh.cwl
+id: summarizemerge.sh.cwl
 inputs:
 - id: in_in
   doc: ''

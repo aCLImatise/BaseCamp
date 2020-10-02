@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../packmol_memgen.cwl
+id: packmol_memgen.cwl
 inputs:
 - id: in_help
   doc: prints this help message and exits

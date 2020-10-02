@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../whatshap_find_snv_candidates.cwl
+id: whatshap_find_snv_candidates.cwl
 inputs:
 - id: in_min_abs
   doc: 'Minimum absolute ALT depth to call a SNP (default: 3).'

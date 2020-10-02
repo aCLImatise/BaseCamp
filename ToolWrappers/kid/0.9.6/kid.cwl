@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kid.cwl
+id: kid.cwl
 inputs:
 - id: in_encoding
   doc: "Specify the output character encoding.\nDefault: utf-8"

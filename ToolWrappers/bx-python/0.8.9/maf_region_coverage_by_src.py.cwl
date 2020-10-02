@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_region_coverage_by_src.py.cwl
+id: maf_region_coverage_by_src.py.cwl
 inputs:
 - id: in_src
   doc: Use this src for all intervals

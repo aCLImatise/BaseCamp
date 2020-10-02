@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_adapter_clipper_prime3_adapter.cwl
+id: mb_adapter_clipper_prime3_adapter.cwl
 inputs:
 - id: in_min_len
   doc: ''

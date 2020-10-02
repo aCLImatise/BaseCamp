@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megahit_toolkit_contig2fastg.cwl
+id: megahit_toolkit_contig2fastg.cwl
 inputs:
 - id: in_contig_two_fast_g
   doc: ''

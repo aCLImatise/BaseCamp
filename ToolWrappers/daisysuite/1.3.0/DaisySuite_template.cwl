@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DaisySuite_template.cwl
+id: DaisySuite_template.cwl
 inputs:
 - id: in_same_as_dpr
   doc: Same as -dpR

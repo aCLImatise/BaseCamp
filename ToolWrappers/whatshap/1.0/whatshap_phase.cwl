@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../whatshap_phase.cwl
+id: whatshap_phase.cwl
 inputs:
 - id: in_output
   doc: "Output VCF file. Add .gz to the file name to get\ncompressed output. If omitted,\

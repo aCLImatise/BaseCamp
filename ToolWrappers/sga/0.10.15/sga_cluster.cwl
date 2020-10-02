@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_cluster.cwl
+id: sga_cluster.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TBLASTN_hit_chainer_nonoverlapping_genome_DP_extraction.pl.cwl
+id: TBLASTN_hit_chainer_nonoverlapping_genome_DP_extraction.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

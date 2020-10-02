@@ -1,6 +1,13 @@
 class: CommandLineTool
-id: ../../../biom_subset_table.cwl
+id: biom_subset_table.cwl
 inputs:
+- id: in_choose_subset_write
+  doc: "Choose a subset of the observations in table.biom (HDF5) and write them to\n\
+    subset.biom:\n$ biom subset-table -i table.biom -a observations -s observation_ids.txt\n\
+    -o subset.biom"
+  type: long
+  inputBinding:
+    prefix: -o
 - id: in_input_hdf_five_fp
   doc: the input hdf5 BIOM table filepath to subset
   type: File

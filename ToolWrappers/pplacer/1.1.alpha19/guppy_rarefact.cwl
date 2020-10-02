@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guppy_rarefact.cwl
+id: guppy_rarefact.cwl
 inputs:
 - id: in_pp
   doc: Use posterior probability for the weight.

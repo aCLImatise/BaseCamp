@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hapLrt.cwl
+id: hapLrt.cwl
 inputs: []
 outputs:
 - id: out_stdout

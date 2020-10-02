@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singularity_remote_use.cwl
+id: singularity_remote_use.cwl
 inputs:
 - id: in_singularity
   doc: ''

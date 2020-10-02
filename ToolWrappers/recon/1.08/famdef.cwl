@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../famdef.cwl
+id: famdef.cwl
 inputs:
 - id: in_seq_list
   doc: ''

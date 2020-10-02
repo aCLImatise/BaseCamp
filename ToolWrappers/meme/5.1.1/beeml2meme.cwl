@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../beeml2meme.cwl
+id: beeml2meme.cwl
 inputs:
 - id: in_bg
   doc: "file with background frequencies of letters\ndefault: uniform background"

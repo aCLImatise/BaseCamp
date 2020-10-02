@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_seq_length.pl.cwl
+id: bp_seq_length.pl.cwl
 inputs:
 - id: in_f_slash_format
   doc: "- Specify the database format ('fasta' is default).\nThis script uses SeqIO\

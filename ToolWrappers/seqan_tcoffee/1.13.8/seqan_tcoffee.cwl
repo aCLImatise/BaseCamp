@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqan_tcoffee.cwl
+id: seqan_tcoffee.cwl
 inputs:
 - id: in_version_check
   doc: "Turn this option off to disable version update notifications of the\napplication.\

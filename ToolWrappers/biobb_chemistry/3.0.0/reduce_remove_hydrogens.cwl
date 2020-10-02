@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reduce_remove_hydrogens.cwl
+id: reduce_remove_hydrogens.cwl
 inputs:
 - id: in_config
   doc: Configuration file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gc_res_noalign.pl.cwl
+id: gc_res_noalign.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

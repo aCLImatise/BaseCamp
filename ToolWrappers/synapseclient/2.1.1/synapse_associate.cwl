@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_associate.cwl
+id: synapse_associate.cwl
 inputs:
 - id: in_limit_search
   doc: "Synapse ID of a container such as project or folder to\nlimit search to."

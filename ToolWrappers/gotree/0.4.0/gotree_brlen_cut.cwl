@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_brlen_cut.cwl
+id: gotree_brlen_cut.cwl
 inputs:
 - id: in_max_length
   doc: Length cutoff. Branches with length greater than or equal to this cutoff are

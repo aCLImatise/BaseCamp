@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioformats_bedautosql.cwl
+id: bioformats_bedautosql.cwl
 inputs:
 - id: in_name
   doc: 'a table name (default: Table)'

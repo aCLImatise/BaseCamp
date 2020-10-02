@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../printScaff.cwl
+id: printScaff.cwl
 inputs:
 - id: in_l
   doc: '[-dot -page -plot -unused -phys -oo -sum] [-detail]'

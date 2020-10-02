@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_scripts..cwl
+id: arrow_scripts..cwl
 inputs:
 - id: in_arrow
   doc: ''

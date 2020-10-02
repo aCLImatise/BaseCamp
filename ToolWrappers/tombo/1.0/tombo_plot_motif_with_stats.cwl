@@ -1,8 +1,13 @@
 class: CommandLineTool
-id: ../../../tombo_plot_motif_with_stats.cwl
+id: tombo_plot_motif_with_stats.cwl
 inputs:
 - id: in_statistics_filename
-  doc: ''
+  doc: "[--control-fast5-basedirs CONTROL_FAST5_BASEDIRS [CONTROL_FAST5_BASEDIRS ...]]\n\
+    [--tombo-model-filename TOMBO_MODEL_FILENAME]\n[--overplot-threshold OVERPLOT_THRESHOLD]\n\
+    [--num-regions NUM_REGIONS]\n[--num-context NUM_CONTEXT]\n[--num-statistics NUM_STATISTICS]\n\
+    [--statistic-order]\n[--pdf-filename PDF_FILENAME]\n[--corrected-group CORRECTED_GROUP]\n\
+    [--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\n[--quiet]\
+    \ [--help]"
   type: File
   inputBinding:
     prefix: --statistics-filename

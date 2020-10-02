@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../twofeat.cwl
+id: twofeat.cwl
 inputs:
 - id: in_a_type
   doc: "string     [*] By default every feature in the feature\ntable is allowed.\
@@ -35,11 +35,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -maxrange
-- id: in_r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 - id: in_a_source
   doc: "string     [*] By default any feature source in the\nfeature table is allowed.\
     \ You can set this\nto match any feature source you wish to\nallow.\nThe source\

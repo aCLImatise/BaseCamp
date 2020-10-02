@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../removeDuplicate.cwl
+id: removeDuplicate.cwl
 inputs:
 - id: in_gff_three
   doc: ''

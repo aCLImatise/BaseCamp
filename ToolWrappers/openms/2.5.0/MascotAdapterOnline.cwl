@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MascotAdapterOnline.cwl
+id: MascotAdapterOnline.cwl
 inputs:
 - id: in_in
   doc: "*        Input file in mzML format.\n(valid formats: 'mzML')"

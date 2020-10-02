@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../copymat.cwl
+id: copymat.cwl
 inputs:
 - id: in_database_matrix_profiles
   doc: "Database for matrix profiles [File In]\ndefault = stdin"

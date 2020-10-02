@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sierrapy_IN....cwl
+id: sierrapy_IN....cwl
 inputs:
 - id: in_sierra_py
   doc: ''

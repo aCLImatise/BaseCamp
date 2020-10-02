@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_comb.cwl
+id: csvtk_comb.cwl
 inputs:
 - id: in_ignore_case
   doc: ignore-case

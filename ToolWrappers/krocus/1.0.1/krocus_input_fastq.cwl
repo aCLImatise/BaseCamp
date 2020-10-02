@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../krocus_input_fastq.cwl
+id: krocus_input_fastq.cwl
 inputs:
 - id: in_kroc_us
   doc: ''

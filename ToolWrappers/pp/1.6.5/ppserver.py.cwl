@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppserver.py.cwl
+id: ppserver.py.cwl
 inputs:
 - id: in_set_log_level
   doc: ': set log level to debug'

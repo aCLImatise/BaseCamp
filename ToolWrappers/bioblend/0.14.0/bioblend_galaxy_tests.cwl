@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioblend_galaxy_tests.cwl
+id: bioblend_galaxy_tests.cwl
 inputs: []
 outputs:
 - id: out_stdout

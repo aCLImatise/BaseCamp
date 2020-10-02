@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../annotate.cwl
+id: annotate.cwl
 inputs:
 - id: in_gap_file
   doc: ''

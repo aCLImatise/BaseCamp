@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haphpipe_pairwise_align.cwl
+id: haphpipe_pairwise_align.cwl
 inputs:
 - id: in_amplicons_fa
   doc: Assembled amplicons (fasta)

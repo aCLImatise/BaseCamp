@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summarizescafstats.sh.cwl
+id: summarizescafstats.sh.cwl
 inputs:
 - id: in_in
   doc: ''

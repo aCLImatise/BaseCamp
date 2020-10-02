@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../design_cofold.py.cwl
+id: design_cofold.py.cwl
 inputs:
 - id: in_input
   doc: Read custom structures and sequence constraints from

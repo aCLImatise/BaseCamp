@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blobtools_taxify.cwl
+id: blobtools_taxify.cwl
 inputs:
 - id: in_hit_file
   doc: "BLAST/Diamond similarity search result (TSV format).\nDefaults assume \"-outfmt\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gene_read_count_per_genome.py.cwl
+id: gene_read_count_per_genome.py.cwl
 inputs:
 - id: in_max_n_processors
   doc: "Specify the maximum number of processors to use, if\nabsent, all present processors\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_annotate.cwl
+id: gotree_annotate.cwl
 inputs:
 - id: in_comment
   doc: Annotations are stored in Newick comment fields

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varscan_copynumber.cwl
+id: varscan_copynumber.cwl
 inputs:
 - id: in_min_base_qual
   doc: '- Minimum base quality to count for coverage [20]'

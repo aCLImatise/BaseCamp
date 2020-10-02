@@ -2,8 +2,6 @@ version 1.0
 
 task ArbNameServer {
   input {
-    Boolean? kill
-    Boolean? look
     Boolean? name_sets_species
     Boolean? name_sets_name
     Boolean? ali_sets_alignment
@@ -22,8 +20,6 @@ task ArbNameServer {
     arb_name_server \
       ~{var_command} \
       ~{server_parameters} \
-      ~{if (kill) then "-kill" else ""} \
-      ~{if (look) then "-look" else ""} \
       ~{if (name_sets_species) then "-s" else ""} \
       ~{if (name_sets_name) then "-e" else ""} \
       ~{if (ali_sets_alignment) then "-a" else ""} \
@@ -37,8 +33,6 @@ task ArbNameServer {
       ~{if (port) then "-T" else ""}
   >>>
   parameter_meta {
-    kill: ""
-    look: ""
     name_sets_species: "<name>        sets species name to '<name>'"
     name_sets_name: "<name>        sets extended name to '<name>'"
     ali_sets_alignment: "<ali>         sets alignment to '<ali>'"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ngsfilter.cwl
+id: ngsfilter.cwl
 inputs:
 - id: in_debug
   doc: Set logging in debug mode

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_phylogeny_gene_order.cwl
+id: chakin_phylogeny_gene_order.cwl
 inputs:
 - id: in_nuke
   doc: Removes all previous gene ordering data

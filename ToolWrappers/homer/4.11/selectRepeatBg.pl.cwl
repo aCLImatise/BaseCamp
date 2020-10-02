@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../selectRepeatBg.pl.cwl
+id: selectRepeatBg.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

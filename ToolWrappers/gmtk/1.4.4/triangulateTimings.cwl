@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../triangulateTimings.cwl
+id: triangulateTimings.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gem_install.cwl
+id: gem_install.cwl
 inputs:
 - id: in_platform
   doc: Specify the platform of gem to install

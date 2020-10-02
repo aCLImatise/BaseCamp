@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebest_mfa2aln.cwl
+id: treebest_mfa2aln.cwl
 inputs:
 - id: in_n
   doc: ''

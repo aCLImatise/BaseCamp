@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../computeFlankingRegion.pl.cwl
+id: computeFlankingRegion.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../axtToPsl.cwl
+id: axtToPsl.cwl
 inputs: []
 outputs:
 - id: out_stdout

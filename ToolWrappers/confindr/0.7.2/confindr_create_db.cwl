@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../confindr_create_db.cwl
+id: confindr_create_db.cwl
 inputs:
 - id: in_output_folder
   doc: "Folder to first store temporary files, and eventually\nstore the created database."

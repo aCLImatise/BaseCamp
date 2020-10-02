@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pphs.cwl
+id: pphs.cwl
 inputs:
 - id: in_dict
   doc: :1189/1684(ro)(G)--   --dict:0/20(G)--   --dict:93/200(L)--

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../affiliations_stat.py.cwl
+id: affiliations_stat.py.cwl
 inputs:
 - id: in_debug
   doc: Keep temporary files to debug program.

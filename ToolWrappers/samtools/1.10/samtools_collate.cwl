@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_collate.cwl
+id: samtools_collate.cwl
 inputs:
 - id: in_output_to_stdout
   doc: output to stdout

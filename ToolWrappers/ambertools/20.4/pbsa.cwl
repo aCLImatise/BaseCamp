@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbsa.cwl
+id: pbsa.cwl
 inputs:
 - id: in_c
   doc: ''

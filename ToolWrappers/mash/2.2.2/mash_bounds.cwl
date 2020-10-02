@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mash_bounds.cwl
+id: mash_bounds.cwl
 inputs:
 - id: in_kmer_size_
   doc: k-mer size. (1-32) [21]

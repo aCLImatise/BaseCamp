@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam_annotate.sh.cwl
+id: bam_annotate.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

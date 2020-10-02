@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_table.cwl
+id: xsv_table.cwl
 inputs:
 - id: in_width
   doc: "The minimum width of each column.\n[default: 2]"

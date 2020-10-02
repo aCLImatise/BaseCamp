@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_extract_contour.py.cwl
+id: medpy_extract_contour.py.cwl
 inputs:
 - id: in_width
   doc: Width of the contour.

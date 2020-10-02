@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Sreport.cwl
+id: Sreport.cwl
 inputs:
 - id: in_package_version
   doc: package version.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../menescope.cwl
+id: menescope.cwl
 inputs:
 - id: in_draft_net
   doc: metabolic network in SBML format

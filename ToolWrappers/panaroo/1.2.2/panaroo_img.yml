@@ -9,15 +9,6 @@ positional:
   optional: false
 named:
 - !Flag
-  description: '[--no_essential] [--no_constraint]'
-  synonyms:
-  - -D
-  args: !ChoiceFlagArg
-    choices: !!set
-      ? "1"
-      ? "2"
-  optional: true
-- !Flag
   description: A dated phylogeny.
   synonyms:
   - --tree
@@ -40,6 +31,16 @@ named:
     name: OUTPUT_DIR
   optional: true
 - !Flag
+  description: "Number of seperate rate classes to use for the\ndispensable genome.\
+    \ Can be either 1 or 2."
+  synonyms:
+  - -D
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '2':
+  optional: true
+- !Flag
   description: Removes essential gene class from model
   synonyms:
   - --no_essential
@@ -58,8 +59,8 @@ named:
   - --fit
   args: !ChoiceFlagArg
     choices: !!set
-      ? gf
-      ? cp
+      gf:
+      cp:
   optional: true
 - !Flag
   description: Initial value for u1 (default=0.01).

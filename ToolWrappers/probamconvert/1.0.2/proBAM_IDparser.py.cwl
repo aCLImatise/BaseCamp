@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../proBAM_IDparser.py.cwl
+id: proBAM_IDparser.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

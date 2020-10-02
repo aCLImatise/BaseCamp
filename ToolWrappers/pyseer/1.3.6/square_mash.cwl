@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../square_mash.cwl
+id: square_mash.cwl
 inputs:
 - id: in_classic
   doc: Output table in a format suitable for R_mds.pl

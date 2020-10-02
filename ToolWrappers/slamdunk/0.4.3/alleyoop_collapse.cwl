@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alleyoop_collapse.cwl
+id: alleyoop_collapse.cwl
 inputs:
 - id: in_output_dir
   doc: Output directory for mapped BAM files.

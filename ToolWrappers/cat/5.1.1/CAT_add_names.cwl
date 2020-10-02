@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CAT_add_names.cwl
+id: CAT_add_names.cwl
 inputs:
 - id: in__inputfile_path
   doc: ", --input_file     Path to input file. Can be either classification\noutput\

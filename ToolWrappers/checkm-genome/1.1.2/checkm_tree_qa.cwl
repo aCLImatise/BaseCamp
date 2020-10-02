@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkm_tree_qa.cwl
+id: checkm_tree_qa.cwl
 inputs:
 - id: in_out_format
   doc: "desired output: (default: 1)\n1. brief summary of genome tree placement\n\

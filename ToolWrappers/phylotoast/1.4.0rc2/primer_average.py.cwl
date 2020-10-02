@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../primer_average.py.cwl
+id: primer_average.py.cwl
 inputs:
 - id: in_p_one
   doc: Primer-set 1 seqs_otus results files.

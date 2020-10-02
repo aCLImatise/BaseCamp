@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_export_theta.cwl
+id: cnvkit.py_export_theta.cwl
 inputs:
 - id: in_reference
   doc: "Reference copy number profile (.cnn), or normal-sample\nbin-level log2 copy\

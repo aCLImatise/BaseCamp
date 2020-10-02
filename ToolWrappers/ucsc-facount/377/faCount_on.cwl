@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faCount_on.cwl
+id: faCount_on.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_vm.py_aws_cromwell.cwl
+id: bcbio_vm.py_aws_cromwell.cwl
 inputs:
 - id: in_key_pair
   doc: Existing keypair to use for accessing AWS instances.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncogemini_amend.cwl
+id: oncogemini_amend.cwl
 inputs:
 - id: in_sample
   doc: New sample information file to load

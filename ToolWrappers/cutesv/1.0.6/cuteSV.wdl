@@ -2,10 +2,6 @@ version 1.0
 
 task CuteSV {
   input {
-    Boolean? max_cluster_bias_ins
-    Boolean? diff_ratio_merging_ins
-    Boolean? diff_ratio_filtering_ins
-    Boolean? diff_ratio_filtering_del
     Int? threads
     Int? batches
     String? sample
@@ -21,8 +17,12 @@ task CuteSV {
     Int? min_sig_length
     Boolean? genotype
     Int? gt_round
+    Int? max_cluster_bias_ins
+    Float? diff_ratio_merging_ins
+    Float? diff_ratio_filtering_ins
     Int? max_cluster_bias_del
     Float? diff_ratio_merging_del
+    Float? diff_ratio_filtering_del
     Int? max_cluster_bias_in_v
     Int? max_cluster_bias_dup
     Int? max_cluster_bias_tra
@@ -34,10 +34,6 @@ task CuteSV {
     cuteSV \
       ~{output_vcf_format} \
       ~{work_dir} \
-      ~{if (max_cluster_bias_ins) then "--max_cluster_bias_INS" else ""} \
-      ~{if (diff_ratio_merging_ins) then "--diff_ratio_merging_INS" else ""} \
-      ~{if (diff_ratio_filtering_ins) then "--diff_ratio_filtering_INS" else ""} \
-      ~{if (diff_ratio_filtering_del) then "--diff_ratio_filtering_DEL" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(batches) then ("--batches " +  '"' + batches + '"') else ""} \
       ~{if defined(sample) then ("--sample " +  '"' + sample + '"') else ""} \
@@ -53,18 +49,18 @@ task CuteSV {
       ~{if defined(min_sig_length) then ("--min_siglength " +  '"' + min_sig_length + '"') else ""} \
       ~{if (genotype) then "--genotype" else ""} \
       ~{if defined(gt_round) then ("--gt_round " +  '"' + gt_round + '"') else ""} \
+      ~{if defined(max_cluster_bias_ins) then ("--max_cluster_bias_INS " +  '"' + max_cluster_bias_ins + '"') else ""} \
+      ~{if defined(diff_ratio_merging_ins) then ("--diff_ratio_merging_INS " +  '"' + diff_ratio_merging_ins + '"') else ""} \
+      ~{if defined(diff_ratio_filtering_ins) then ("--diff_ratio_filtering_INS " +  '"' + diff_ratio_filtering_ins + '"') else ""} \
       ~{if defined(max_cluster_bias_del) then ("--max_cluster_bias_DEL " +  '"' + max_cluster_bias_del + '"') else ""} \
       ~{if defined(diff_ratio_merging_del) then ("--diff_ratio_merging_DEL " +  '"' + diff_ratio_merging_del + '"') else ""} \
+      ~{if defined(diff_ratio_filtering_del) then ("--diff_ratio_filtering_DEL " +  '"' + diff_ratio_filtering_del + '"') else ""} \
       ~{if defined(max_cluster_bias_in_v) then ("--max_cluster_bias_INV " +  '"' + max_cluster_bias_in_v + '"') else ""} \
       ~{if defined(max_cluster_bias_dup) then ("--max_cluster_bias_DUP " +  '"' + max_cluster_bias_dup + '"') else ""} \
       ~{if defined(max_cluster_bias_tra) then ("--max_cluster_bias_TRA " +  '"' + max_cluster_bias_tra + '"') else ""} \
       ~{if defined(diff_ratio_filtering_tra) then ("--diff_ratio_filtering_TRA " +  '"' + diff_ratio_filtering_tra + '"') else ""}
   >>>
   parameter_meta {
-    max_cluster_bias_ins: "100"
-    diff_ratio_merging_ins: "0.2"
-    diff_ratio_filtering_ins: "0.6"
-    diff_ratio_filtering_del: "0.7"
     threads: "Number of threads to use.[16]"
     batches: "Batch of genome segmentation interval.[10000000]"
     sample: "Sample name/id"
@@ -80,8 +76,12 @@ task CuteSV {
     min_sig_length: "Minimum length of SV signal to be extracted.[10]"
     genotype: "Enable to generate genotypes."
     gt_round: "Maximum round of iteration for alignments searching if\\nperform genotyping.[500]"
+    max_cluster_bias_ins: "Maximum distance to cluster read together for\\ninsertion.[100]"
+    diff_ratio_merging_ins: "Do not merge breakpoints with basepair identity more\\nthan [0.2] for insertion."
+    diff_ratio_filtering_ins: "Filter breakpoints with basepair identity less than\\n[0.6] for insertion."
     max_cluster_bias_del: "Maximum distance to cluster read together for\\ndeletion.[200]"
     diff_ratio_merging_del: "Do not merge breakpoints with basepair identity more\\nthan [0.3] for deletion."
+    diff_ratio_filtering_del: "Filter breakpoints with basepair identity less than\\n[0.7] for deletion."
     max_cluster_bias_in_v: "Maximum distance to cluster read together for\\ninversion.[500]"
     max_cluster_bias_dup: "Maximum distance to cluster read together for\\nduplication.[500]"
     max_cluster_bias_tra: "Maximum distance to cluster read together for\\ntranslocation.[50]"

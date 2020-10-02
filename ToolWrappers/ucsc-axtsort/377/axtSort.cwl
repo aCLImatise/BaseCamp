@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../axtSort.cwl
+id: axtSort.cwl
 inputs: []
 outputs:
 - id: out_stdout

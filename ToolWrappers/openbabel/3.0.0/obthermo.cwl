@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obthermo.cwl
+id: obthermo.cwl
 inputs:
 - id: in_symm
   doc: override symmetry number used in input file

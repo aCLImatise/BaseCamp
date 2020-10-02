@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../howdesbt_CAAGACCTATGAGTAGAACG.cwl
+id: howdesbt_CAAGACCTATGAGTAGAACG.cwl
 inputs:
 - id: in_how_des_bt
   doc: ''

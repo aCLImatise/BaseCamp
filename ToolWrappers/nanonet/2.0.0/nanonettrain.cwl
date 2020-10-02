@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nanonettrain.cwl
+id: nanonettrain.cwl
 inputs:
 - id: in_train
   doc: "Input training data, either a path to fast5 files or a\nsingle netcdf file\

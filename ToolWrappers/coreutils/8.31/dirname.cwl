@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dirname.cwl
+id: dirname.cwl
 inputs:
 - id: in_end_output_line
   doc: end each output line with NUL, not newline

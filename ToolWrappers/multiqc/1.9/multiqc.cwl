@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multiqc.cwl
+id: multiqc.cwl
 inputs:
 - id: in_force
   doc: Overwrite any existing reports

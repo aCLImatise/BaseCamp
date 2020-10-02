@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_random_genes.cwl
+id: rsat_random_genes.cwl
 inputs:
 - id: in_help
   doc: (must be first argument) display options

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_duplicate.cwl
+id: seqkit_duplicate.cwl
 inputs:
 - id: in_times
   doc: duplication number (default 1)

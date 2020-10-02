@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_index.cwl
+id: xsv_index.cwl
 inputs:
 - id: in_output
   doc: "Write index to <file> instead of <input>.idx.\nGenerally, this is not currently\

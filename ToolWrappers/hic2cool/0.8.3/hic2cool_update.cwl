@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hic2cool_update.cwl
+id: hic2cool_update.cwl
 inputs:
 - id: in_outfile
   doc: optional new output file path

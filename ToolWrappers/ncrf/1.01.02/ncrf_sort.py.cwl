@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncrf_sort.py.cwl
+id: ncrf_sort.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

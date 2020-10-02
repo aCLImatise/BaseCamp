@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bayesTyper_genotype.cwl
+id: bayesTyper_genotype.cwl
 inputs:
 - id: in_arg_file_output
   doc: '[ --variant-clusters-file ] arg    variant_clusters.bin file (BayesTyper cluster

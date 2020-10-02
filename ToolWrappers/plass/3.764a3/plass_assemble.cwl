@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plass_assemble.cwl
+id: plass_assemble.cwl
 inputs:
 - id: in_add_self_matches
   doc: artificially add entries of queries with themselves (for clustering)

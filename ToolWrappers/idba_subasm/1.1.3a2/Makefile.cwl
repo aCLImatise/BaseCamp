@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Makefile.cwl
+id: Makefile.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haphpipe_multiple_align.cwl
+id: haphpipe_multiple_align.cwl
 inputs:
 - id: in_seqs
   doc: FASTA file with sequences to be aligned

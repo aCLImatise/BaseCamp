@@ -17,10 +17,12 @@ task MsisensorproBaseline {
     Boolean? int_output_microsatellite
     Boolean? int_output_site
     String e_dot_gdot
+    Int case_two
   }
   command <<<
     msisensor_pro baseline \
       ~{e_dot_gdot} \
+      ~{case_two} \
       ~{if (string_homopolymer_file) then "-d" else ""} \
       ~{if (string_configure_files) then "-i" else ""} \
       ~{if (string_output_directory) then "-o" else ""} \
@@ -52,6 +54,7 @@ task MsisensorproBaseline {
     int_output_microsatellite: "<int>      output microsatellite only, 0: no; 1: yes, default=0"
     int_output_site: "<int>      output site have no read coverage, 1: no; 0: yes, default=0"
     e_dot_gdot: "case1     /path/to/case1_sorted.bam"
+    case_two: "/path/to/case1-sorted.bam"
   }
   output {
     File out_stdout = stdout()

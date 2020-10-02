@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqhax_randseq.cwl
+id: seqhax_randseq.cwl
 inputs:
 - id: in_number_reads_use
   doc: Number of reads. Use 0 for infinite. [default 1000]

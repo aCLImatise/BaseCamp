@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfrandomsample.cwl
+id: vcfrandomsample.cwl
 inputs:
 - id: in_rate
   doc: base sampling probability per locus

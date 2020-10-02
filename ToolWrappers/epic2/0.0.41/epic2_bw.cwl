@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../epic2_bw.cwl
+id: epic2_bw.cwl
 inputs: []
 outputs:
 - id: out_stdout

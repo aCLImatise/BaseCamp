@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spades_gsimplifier.cwl
+id: spades_gsimplifier.cwl
 inputs:
 - id: in_gfa
   doc: 'produce GFA output (default: true)'

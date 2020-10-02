@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../umis_to....cwl
+id: umis_to....cwl
 inputs:
 - id: in_um_is
   doc: ''

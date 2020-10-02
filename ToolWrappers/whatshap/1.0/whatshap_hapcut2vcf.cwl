@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../whatshap_hapcut2vcf.cwl
+id: whatshap_hapcut2vcf.cwl
 inputs:
 - id: in_output
   doc: "Output VCF file. If omitted, use standard output.\n"

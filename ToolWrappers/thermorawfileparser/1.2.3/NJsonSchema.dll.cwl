@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NJsonSchema.dll.cwl
+id: NJsonSchema.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

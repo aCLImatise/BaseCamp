@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ococo.cwl
+id: ococo.cwl
 inputs:
 - id: in_input
   doc: input SAM/BAM file (- for standard input)

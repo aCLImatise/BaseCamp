@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dropletutils_empty_drops.R.cwl
+id: dropletutils_empty_drops.R.cwl
 inputs:
 - id: in_input_object_file
   doc: File name in which a serialized R SingleCellExperiment object can be found.

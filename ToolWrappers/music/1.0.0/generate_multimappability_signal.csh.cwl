@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generate_multimappability_signal.csh.cwl
+id: generate_multimappability_signal.csh.cwl
 inputs: []
 outputs:
 - id: out_stdout

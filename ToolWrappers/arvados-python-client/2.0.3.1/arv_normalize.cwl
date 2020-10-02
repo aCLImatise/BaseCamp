@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arv_normalize.cwl
+id: arv_normalize.cwl
 inputs:
 - id: in_extract
   doc: The file to extract from the input manifest

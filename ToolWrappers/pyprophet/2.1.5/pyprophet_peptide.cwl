@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyprophet_peptide.cwl
+id: pyprophet_peptide.cwl
 inputs:
 - id: in_in
   doc: PyProphet input file.  [required]

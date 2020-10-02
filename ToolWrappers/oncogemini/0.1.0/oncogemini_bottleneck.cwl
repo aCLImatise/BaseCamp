@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncogemini_bottleneck.cwl
+id: oncogemini_bottleneck.cwl
 inputs:
 - id: in_mind_p
   doc: Minimum depth required in all samples default is 0)

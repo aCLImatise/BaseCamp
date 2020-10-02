@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkv_update_database.cwl
+id: checkv_update_database.cwl
 inputs:
 - id: in_quiet
   doc: Suppress logging messages

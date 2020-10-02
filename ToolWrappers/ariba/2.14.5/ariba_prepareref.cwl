@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ariba_prepareref.cwl
+id: ariba_prepareref.cwl
 inputs:
 - id: in_fast_a
   doc: "REQUIRED. Name of fasta file. Can be used more than\nonce if your sequences\

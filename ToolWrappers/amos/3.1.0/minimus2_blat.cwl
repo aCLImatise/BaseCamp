@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minimus2_blat.cwl
+id: minimus2_blat.cwl
 inputs: []
 outputs:
 - id: out_stdout

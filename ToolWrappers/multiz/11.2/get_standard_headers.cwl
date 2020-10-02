@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_standard_headers.cwl
+id: get_standard_headers.cwl
 inputs: []
 outputs:
 - id: out_stdout

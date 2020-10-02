@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clustering_align_seq_match.cwl
+id: Clustering_align_seq_match.cwl
 inputs:
 - id: in_id_mapping
   doc: ''

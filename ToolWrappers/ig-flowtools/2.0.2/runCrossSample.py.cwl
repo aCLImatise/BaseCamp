@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runCrossSample.py.cwl
+id: runCrossSample.py.cwl
 inputs:
 - id: in_file_locations_flow
   doc: File locations for flow text files.

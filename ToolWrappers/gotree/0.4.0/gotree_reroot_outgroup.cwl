@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_reroot_outgroup.cwl
+id: gotree_reroot_outgroup.cwl
 inputs:
 - id: in_remove_out_group
   doc: Removes the outgroup after reroot

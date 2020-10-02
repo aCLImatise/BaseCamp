@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../k_neighbors_coefficient.cwl
+id: k_neighbors_coefficient.cwl
 inputs:
 - id: in_config
   doc: Configuration file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gffutils_cli_create.cwl
+id: gffutils_cli_create.cwl
 inputs:
 - id: in_output
   doc: "Database to create. Default is to append \".db\" to the\nend of the input\

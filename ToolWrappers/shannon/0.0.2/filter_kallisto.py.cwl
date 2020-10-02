@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_kallisto.py.cwl
+id: filter_kallisto.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

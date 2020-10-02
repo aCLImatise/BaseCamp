@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../whatshap_genotype.cwl
+id: whatshap_genotype.cwl
 inputs:
 - id: in_output
   doc: "Output VCF file. Add .gz to the file name to get\ncompressed output. If omitted,\

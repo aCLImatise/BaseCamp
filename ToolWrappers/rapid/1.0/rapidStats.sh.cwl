@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rapidStats.sh.cwl
+id: rapidStats.sh.cwl
 inputs:
 - id: in_out
   doc: '=/path_to_output_directory/ : path to the output directory, directory will

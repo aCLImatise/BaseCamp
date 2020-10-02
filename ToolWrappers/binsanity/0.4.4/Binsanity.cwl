@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Binsanity.cwl
+id: Binsanity.cwl
 inputs:
 - id: in_specify_coverage_file
   doc: Specify a Coverage File

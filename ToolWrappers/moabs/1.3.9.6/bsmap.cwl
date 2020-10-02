@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bsmap.cwl
+id: bsmap.cwl
 inputs:
 - id: in_str_query_format
   doc: <str>   query a file, FASTA/FASTQ/BAM format

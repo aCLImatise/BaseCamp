@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fusion_finder.py.cwl
+id: fusion_finder.py.cwl
 inputs:
 - id: in_input
   doc: Input FA/FQ filename

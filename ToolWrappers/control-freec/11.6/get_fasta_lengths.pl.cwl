@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_fasta_lengths.pl.cwl
+id: get_fasta_lengths.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

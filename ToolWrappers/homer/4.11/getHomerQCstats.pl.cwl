@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getHomerQCstats.pl.cwl
+id: getHomerQCstats.pl.cwl
 inputs:
 - id: in_mapping_tag_directors
   doc: (mapping between tag directors and alignment files)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribo_scan.cwl
+id: ribo_scan.cwl
 inputs:
 - id: in_output
   doc: 'output directory; default: /'

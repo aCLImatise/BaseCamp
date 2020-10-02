@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hiC_parser.py.cwl
+id: hiC_parser.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

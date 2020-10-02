@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FCSConvert.R.cwl
+id: FCSConvert.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

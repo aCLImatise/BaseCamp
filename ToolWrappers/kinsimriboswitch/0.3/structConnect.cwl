@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../structConnect.cwl
+id: structConnect.cwl
 inputs: []
 outputs:
 - id: out_stdout

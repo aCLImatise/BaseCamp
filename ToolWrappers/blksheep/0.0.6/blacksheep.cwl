@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blacksheep.cwl
+id: blacksheep.cwl
 inputs: []
 outputs:
 - id: out_stdout

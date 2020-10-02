@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../somaticseq_parallel.py.cwl
+id: somaticseq_parallel.py.cwl
 inputs:
 - id: in_output_directory
   doc: 'output directory (default: .)'

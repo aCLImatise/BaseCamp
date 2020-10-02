@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getConfidenceDensity.cwl
+id: getConfidenceDensity.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../oncogemini_unique.cwl
+id: oncogemini_unique.cwl
 inputs:
 - id: in_mind_p
   doc: Minimum depth required in all samples default is 0)

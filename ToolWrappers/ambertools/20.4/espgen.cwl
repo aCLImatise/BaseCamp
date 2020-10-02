@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../espgen.cwl
+id: espgen.cwl
 inputs: []
 outputs:
 - id: out_stdout

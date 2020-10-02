@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ParseDb.py_sequences.cwl
+id: ParseDb.py_sequences.cwl
 inputs:
 - id: in_parsed_b_do_tpy
   doc: ''

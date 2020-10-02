@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGseqBasic.cwl
+id: NGseqBasic.cwl
 inputs:
 - id: in_outfile
   doc: (the STDOUT log file name in your RUN COMMAND - see above )

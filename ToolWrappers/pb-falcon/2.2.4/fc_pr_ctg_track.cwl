@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fc_pr_ctg_track.cwl
+id: fc_pr_ctg_track.cwl
 inputs:
 - id: in_n_core
   doc: 'number of processes used for for tracking reads; 0 for main process only (default:

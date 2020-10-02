@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../phizz_build_genes.cwl
+id: phizz_build_genes.cwl
 inputs:
 - id: in_db_name
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --db_name
-- id: in_path
-  doc: ''
+  doc: "--path TEXT\n--help          Show this message and exit.\n"
   type: File
   inputBinding:
-    prefix: --path
+    prefix: --db_name
 - id: in_gene_file
   doc: ''
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shiver_config.sh.cwl
+id: shiver_config.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

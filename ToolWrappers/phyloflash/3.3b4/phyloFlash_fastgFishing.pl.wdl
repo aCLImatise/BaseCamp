@@ -7,7 +7,6 @@ task PhyloFlashFastgFishingpl {
     File? paths
     String? assembler
     File? compare_ssu
-    File? compare_zip
     File? out
     Boolean? cluster_only
     Int? cut_off
@@ -24,7 +23,6 @@ task PhyloFlashFastgFishingpl {
       ~{if defined(paths) then ("--paths " +  '"' + paths + '"') else ""} \
       ~{if defined(assembler) then ("--assembler " +  '"' + assembler + '"') else ""} \
       ~{if defined(compare_ssu) then ("--compare-ssu " +  '"' + compare_ssu + '"') else ""} \
-      ~{if defined(compare_zip) then ("--compare-zip " +  '"' + compare_zip + '"') else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if (cluster_only) then "--clusteronly" else ""} \
       ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""} \
@@ -39,8 +37,7 @@ task PhyloFlashFastgFishingpl {
     fast_a: "Input Fasta file, to convert Fastg sequence identifiers to\\ncorresponding Fasta sequence IDs.\\nIf using MEGAHIT, this is the *.contigs.fa file. For SPAdes this\\nis either the scaffolds or contigs file (after repeat\\nresolution)."
     paths: "Input Paths file, to convert EDGE to NODE identifiers, if using\\nSPAdes assembler."
     assembler: "Assembler used. Either \\\"megahit\\\" or \\\"spades\\\".\\nDefault: 'megahit'"
-    compare_ssu: ""
-    compare_zip: "If a targeted assembly of SSU rRNA has already been performed\\nfor this library, compare the sequences to those extracted from\\nthe metagenome assembly by barrnap.\\nThe sequences can be supplied either as a Fasta flie (option\\n--compare-ssu) or as a phyloFlash tar.gz archive (option\\n--compare-zip).\\nDefault: None."
+    compare_ssu: "--compare-zip FILE\\nIf a targeted assembly of SSU rRNA has already been performed\\nfor this library, compare the sequences to those extracted from\\nthe metagenome assembly by barrnap.\\nThe sequences can be supplied either as a Fasta flie (option\\n--compare-ssu) or as a phyloFlash tar.gz archive (option\\n--compare-zip).\\nDefault: None."
     out: "Output file name prefix\\nDefault: 'test'"
     cluster_only: "Do not search for SSU rRNA sequences, instead only report all\\nconnected contig clusters above length threshold, regardless of\\nwhether they have SSU rRNA or not\\nDefault: Off"
     cut_off: "Minimum total sequence length of contig cluster to be reported\\n(Default: 100000)"

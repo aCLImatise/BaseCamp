@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_assemble.cwl
+id: sga_assemble.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

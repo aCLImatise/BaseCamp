@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vtools_report_transcript.cwl
+id: vtools_report_transcript.cwl
 inputs:
 - id: in_build
   doc: "[BUILD]       Output sequence at specified build of reference\ngenome. The\

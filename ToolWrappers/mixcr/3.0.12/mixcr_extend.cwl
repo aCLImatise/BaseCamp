@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mixcr_extend.cwl
+id: mixcr_extend.cwl
 inputs:
 - id: in_j_anchor
   doc: J extension anchor point.

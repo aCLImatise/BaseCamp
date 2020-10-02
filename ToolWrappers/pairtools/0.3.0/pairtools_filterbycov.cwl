@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairtools_filterbycov.cwl
+id: pairtools_filterbycov.cwl
 inputs:
 - id: in_output
   doc: "output file for pairs from low coverage\nregions. If the path ends with .gz\

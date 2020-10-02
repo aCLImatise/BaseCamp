@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_align_format_nexus_files_for_raxml.cwl
+id: phyluce_align_format_nexus_files_for_raxml.cwl
 inputs:
 - id: in_output
   doc: '[--nexus]'

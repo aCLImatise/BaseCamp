@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../triform2.cwl
+id: triform2.cwl
 inputs:
 - id: in_treatment
   doc: "Treatment (pull-down) file(s) in\nbam/bed/bed.gz/bed.bz2 format."

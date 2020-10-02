@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../glam2psfm.cwl
+id: glam2psfm.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wdl_run.cwl
+id: wdl_run.cwl
 inputs:
 - id: in_inputs
   doc: Path to JSON file to define inputs

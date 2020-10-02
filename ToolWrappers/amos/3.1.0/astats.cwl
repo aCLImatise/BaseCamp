@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../astats.cwl
+id: astats.cwl
 inputs:
 - id: in_bank_path
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../faketree.cwl
+id: faketree.cwl
 inputs: []
 outputs:
 - id: out_stdout

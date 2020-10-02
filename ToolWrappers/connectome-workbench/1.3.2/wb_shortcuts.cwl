@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wb_shortcuts.cwl
+id: wb_shortcuts.cwl
 inputs:
 - id: in_version
   doc: display version info

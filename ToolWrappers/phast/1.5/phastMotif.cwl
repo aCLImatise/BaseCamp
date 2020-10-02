@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phastMotif.cwl
+id: phastMotif.cwl
 inputs:
 - id: in_required_use_specified
   doc: "(Required unless -m or -p) Use specified tree topology for\nall phylogenetic\

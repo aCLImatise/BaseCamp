@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coalescent.cwl
+id: coalescent.cwl
 inputs:
 - id: in_arg_parameter_file
   doc: '[ --paramfile ] arg                parameter file'

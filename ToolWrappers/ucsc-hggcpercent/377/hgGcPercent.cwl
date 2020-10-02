@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hgGcPercent.cwl
+id: hgGcPercent.cwl
 inputs:
 - id: in_win
   doc: '- change windows size (default 20000)'

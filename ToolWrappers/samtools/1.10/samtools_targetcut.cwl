@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_targetcut.cwl
+id: samtools_targetcut.cwl
 inputs:
 - id: in_input_fmt_option
   doc: "[=VAL]\nSpecify a single input file format option in the form\nof OPTION or\

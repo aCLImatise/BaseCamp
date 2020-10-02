@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fix_map_ordering.cwl
+id: fix_map_ordering.cwl
 inputs:
 - id: in_sam_header
   doc: ''

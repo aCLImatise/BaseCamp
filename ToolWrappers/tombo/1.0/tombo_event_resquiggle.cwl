@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tombo_event_resquiggle.cwl
+id: tombo_event_resquiggle.cwl
 inputs:
 - id: in_minimap_two_executable
   doc: Path to minimap2 executable.

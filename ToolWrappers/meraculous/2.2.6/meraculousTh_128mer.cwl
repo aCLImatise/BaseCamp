@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meraculousTh_128mer.cwl
+id: meraculousTh_128mer.cwl
 inputs:
 - id: in_u_fx_file_wildcard
   doc: ''

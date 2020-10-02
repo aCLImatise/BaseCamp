@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../renamePeaks.pl.cwl
+id: renamePeaks.pl.cwl
 inputs:
 - id: in_peak_file
   doc: ''

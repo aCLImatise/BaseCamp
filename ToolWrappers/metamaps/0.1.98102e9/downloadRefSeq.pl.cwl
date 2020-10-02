@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../downloadRefSeq.pl.cwl
+id: downloadRefSeq.pl.cwl
 inputs:
 - id: in_seq_ences_out_directory
   doc: ''

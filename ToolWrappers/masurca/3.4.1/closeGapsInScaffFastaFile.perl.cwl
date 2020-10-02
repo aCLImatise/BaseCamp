@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../closeGapsInScaffFastaFile.perl.cwl
+id: closeGapsInScaffFastaFile.perl.cwl
 inputs:
 - id: in_scaffold_fast_a_file
   doc: ': file containing the scaffold sequences'

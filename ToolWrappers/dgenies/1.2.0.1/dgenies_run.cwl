@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dgenies_run.cwl
+id: dgenies_run.cwl
 inputs:
 - id: in_mode
   doc: Mode into run the application

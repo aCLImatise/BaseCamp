@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pop_missing_filter.sh.cwl
+id: pop_missing_filter.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

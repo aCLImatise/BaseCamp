@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ConsensusFixer.cwl
+id: ConsensusFixer.cwl
 inputs:
 - id: in_alignment_file_bam
   doc: ': Alignment file in BAM format (required).'

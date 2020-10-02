@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_stat_column.cwl
+id: crux_stat_column.cwl
 inputs:
 - id: in_tsv_file
   doc: ''

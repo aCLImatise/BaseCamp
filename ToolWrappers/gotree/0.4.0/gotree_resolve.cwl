@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_resolve.cwl
+id: gotree_resolve.cwl
 inputs:
 - id: in_input
   doc: Input tree(s) file (default "stdin")

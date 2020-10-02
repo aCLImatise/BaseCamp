@@ -39,9 +39,11 @@ task GetCountVectors {
     Boolean? mask_add_three
     Boolean? mask_tab_ix
     Boolean? mask_sorted
+    String out_folder
   }
   command <<<
     get_count_vectors \
+      ~{out_folder} \
       ~{if defined(out_prefix) then ("--out_prefix " +  '"' + out_prefix + '"') else ""} \
       ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""} \
@@ -118,6 +120,7 @@ task GetCountVectors {
     mask_add_three: "If supplied, coding regions will be extended by 3\\nnucleotides at their 3' ends (except for GTF2 files\\nthat explicitly include `stop_codon` features). Use if\\nyour annotation file excludes stop codons from CDS."
     mask_tab_ix: "mask_annotation_files are tabix-compressed and indexed\\n(Default: False). Ignored for BigBed files."
     mask_sorted: "mask_annotation_files are sorted by chromosomal\\nposition (Default: False)\\n"
+    out_folder: "Folder in which to save output vectors"
   }
   output {
     File out_stdout = stdout()

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_nextgen.py.cwl
+id: bcbio_nextgen.py.cwl
 inputs:
 - id: in_num_cores
   doc: Total cores to use for processing

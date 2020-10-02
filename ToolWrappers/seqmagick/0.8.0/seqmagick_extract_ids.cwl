@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqmagick_extract_ids.cwl
+id: seqmagick_extract_ids.cwl
 inputs:
 - id: in_output_file
   doc: Destination file

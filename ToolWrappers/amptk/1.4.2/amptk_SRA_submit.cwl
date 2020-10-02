@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_SRA_submit.cwl
+id: amptk_SRA_submit.cwl
 inputs:
 - id: in_input
   doc: Input FASTQ file or folder (Required)

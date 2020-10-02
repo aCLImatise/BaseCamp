@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapGL.py.cwl
+id: mapGL.py.cwl
 inputs:
 - id: in_output
   doc: 'Output file. Default stdout. (default: stdout)'

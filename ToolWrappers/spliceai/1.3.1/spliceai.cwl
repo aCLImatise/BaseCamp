@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spliceai.cwl
+id: spliceai.cwl
 inputs:
 - id: in_path_input_vcf
   doc: '[input]     path to the input VCF file, defaults to standard in'

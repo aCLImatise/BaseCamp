@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cramtools_index.cwl
+id: cramtools_index.cwl
 inputs:
 - id: in_index_file
   doc: Write index to this file.

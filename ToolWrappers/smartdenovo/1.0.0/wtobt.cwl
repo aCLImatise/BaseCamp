@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtobt.cwl
+id: wtobt.cwl
 inputs:
 - id: in_long_reads_file
   doc: Long reads sequences file, + *

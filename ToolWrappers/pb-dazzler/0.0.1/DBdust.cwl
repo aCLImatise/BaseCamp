@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DBdust.cwl
+id: DBdust.cwl
 inputs:
 - id: in_dust_algorithm_window
   doc: ': DUST algorithm window size.'

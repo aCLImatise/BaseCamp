@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rapifilt.cwl
+id: rapifilt.cwl
 inputs:
 - id: in_program_version_information
   doc: Program and version information

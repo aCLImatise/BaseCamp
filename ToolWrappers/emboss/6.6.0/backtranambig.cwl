@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../backtranambig.cwl
+id: backtranambig.cwl
 inputs:
 - id: in_table
   doc: "menu       [0] Genetic code to use (Values: 0\n(Standard); 1 (Standard (with\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rustc.cwl
+id: rustc.cwl
 inputs:
 - id: in_cfg
   doc: Configure the compilation environment

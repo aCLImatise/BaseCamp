@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlapStoreIndexer.cwl
+id: overlapStoreIndexer.cwl
 inputs:
 - id: in_path_overlap_store
   doc: path to overlap store to build the final index for

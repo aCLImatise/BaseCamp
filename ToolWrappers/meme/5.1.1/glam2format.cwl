@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../glam2format.cwl
+id: glam2format.cwl
 inputs:
 - id: in_output_file_stdout
   doc: ': output file (stdout)'

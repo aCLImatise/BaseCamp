@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iterate.cwl
+id: iterate.cwl
 inputs: []
 outputs:
 - id: out_stdout

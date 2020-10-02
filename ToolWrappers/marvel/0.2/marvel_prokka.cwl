@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../marvel_prokka.cwl
+id: marvel_prokka.cwl
 inputs:
 - id: in_citation
   doc: Print citation for referencing Prokka

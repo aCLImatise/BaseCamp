@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgmlst_dists.cwl
+id: cgmlst_dists.cwl
 inputs:
 - id: in_print_version_exit
   doc: Print version and exit

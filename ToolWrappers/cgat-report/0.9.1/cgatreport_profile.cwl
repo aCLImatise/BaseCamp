@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cgatreport_profile.cwl
+id: cgatreport_profile.cwl
 inputs:
 - id: in_section
   doc: only examine certain sections [default=[]]

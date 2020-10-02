@@ -1,41 +1,28 @@
 class: CommandLineTool
-id: ../../../pod2html.cwl
+id: pod2html.cwl
 inputs:
 - id: in_outfile
-  doc: ''
+  doc: "--podpath=<name>:...:<name> --podroot=<name>\n--cachedir=<name> --flush --recurse\
+    \ --norecurse\n--quiet --noquiet --verbose --noverbose\n--index --noindex --backlink\
+    \ --nobacklink\n--header --noheader --poderrors --nopoderrors\n--css=<URL> --title=<name>"
   type: string
   inputBinding:
     prefix: --outfile
-- id: in_pod_path
-  doc: :...:<name> --podroot=<name>
-  type: string
-  inputBinding:
-    prefix: --podpath
-- id: in_no_recurse
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --norecurse
-- id: in_no_verbose
-  doc: ''
+- id: in_cache_dir
+  doc: '- directory for the directory cache files.'
   type: boolean
   inputBinding:
-    prefix: --noverbose
-- id: in_no_back_link
-  doc: ''
+    prefix: --cachedir
+- id: in_css
+  doc: '- stylesheet URL'
   type: boolean
   inputBinding:
-    prefix: --nobacklink
-- id: in_no_pod_errors
-  doc: ''
+    prefix: --css
+- id: in_flush
+  doc: '- flushes the directory cache.'
   type: boolean
   inputBinding:
-    prefix: --nopoderrors
-- id: in_title
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --title
+    prefix: --flush
 - id: in_html_dir
   doc: '- directory for resulting HTML files.'
   type: boolean
@@ -47,12 +34,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --htmlroot
+- id: in_pod_path
+  doc: "- colon-separated list of directories containing library\npods (empty by default)."
+  type: boolean
+  inputBinding:
+    prefix: --podpath
 - id: in_pod_root
   doc: "- filesystem base directory from which all relative paths\nin podpath stem\
     \ (default is .)."
   type: boolean
   inputBinding:
     prefix: --podroot
+- id: in_title
+  doc: '- title that will appear in resulting html file.'
+  type: boolean
+  inputBinding:
+    prefix: --title
 outputs:
 - id: out_stdout
   doc: Standard output stream

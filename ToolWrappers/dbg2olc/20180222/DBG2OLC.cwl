@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DBG2OLC.cwl
+id: DBG2OLC.cwl
 inputs: []
 outputs:
 - id: out_stdout

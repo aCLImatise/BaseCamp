@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../edalign.cwl
+id: edalign.cwl
 inputs:
 - id: in_mandatory_path_first
   doc: Mandatory, path to first input file
@@ -13,7 +13,7 @@ inputs:
     prefix: -b
 - id: in_ref
   doc: ''
-  type: string
+  type: File[]
   inputBinding:
     prefix: -ref
 outputs:

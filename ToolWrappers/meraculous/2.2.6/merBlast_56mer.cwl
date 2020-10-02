@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merBlast_56mer.cwl
+id: merBlast_56mer.cwl
 inputs:
 - id: in_contigs_file
   doc: ''

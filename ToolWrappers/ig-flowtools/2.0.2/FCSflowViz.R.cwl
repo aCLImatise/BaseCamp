@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FCSflowViz.R.cwl
+id: FCSflowViz.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

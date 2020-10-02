@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_instances.cwl
+id: gcloud_compute_instances.cwl
 inputs:
 - id: in_add_access_config
   doc: Create a Google Compute Engine virtual machine access configuration.

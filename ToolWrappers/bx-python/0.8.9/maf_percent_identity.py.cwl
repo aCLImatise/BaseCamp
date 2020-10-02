@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_percent_identity.py.cwl
+id: maf_percent_identity.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

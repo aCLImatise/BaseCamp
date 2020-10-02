@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_2_ascii.cwl
+id: arb_2_ascii.cwl
 inputs:
 - id: in_r
   doc: ''

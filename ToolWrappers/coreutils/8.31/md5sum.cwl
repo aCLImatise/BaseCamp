@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../md5sum.cwl
+id: md5sum.cwl
 inputs:
 - id: in_binary
   doc: read in binary mode

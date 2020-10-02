@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf2conswig.pl.cwl
+id: maf2conswig.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

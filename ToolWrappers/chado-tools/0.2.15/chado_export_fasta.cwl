@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chado_export_fasta.cwl
+id: chado_export_fasta.cwl
 inputs:
 - id: in_verbose
   doc: verbose mode

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../diff_motif.cwl
+id: diff_motif.cwl
 inputs:
 - id: in_show_overlapped_sequences
   doc: ': Show overlapped sequences'

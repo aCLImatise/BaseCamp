@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hp_finalize_assembly.cwl
+id: hp_finalize_assembly.cwl
 inputs:
 - id: in_fq_one
   doc: Fastq file with read 1

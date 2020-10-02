@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../calculate_snp_distances.py.cwl
+id: calculate_snp_distances.py.cwl
 inputs:
 - id: in_force
   doc: "Force processing even when result file already exists\nand is newer than inputs\

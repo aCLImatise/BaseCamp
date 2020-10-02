@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../planemo_virtualenv.cwl
+id: planemo_virtualenv.cwl
 inputs:
 - id: in_python
-  doc: ''
+  doc: "--help                   Show this message and exit.\n"
   type: string
   inputBinding:
     prefix: --python

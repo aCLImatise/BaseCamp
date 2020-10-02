@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeBigBedMotifTrack.pl.cwl
+id: makeBigBedMotifTrack.pl.cwl
 inputs:
 - id: in_track_name
   doc: ''

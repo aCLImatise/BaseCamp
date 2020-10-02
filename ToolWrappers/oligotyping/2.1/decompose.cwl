@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../decompose.cwl
+id: decompose.cwl
 inputs: []
 outputs:
 - id: out_stdout

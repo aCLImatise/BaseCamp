@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bloom_query.cwl
+id: bloom_query.cwl
 inputs:
 - id: in_mer
   doc: '*k-mer size'

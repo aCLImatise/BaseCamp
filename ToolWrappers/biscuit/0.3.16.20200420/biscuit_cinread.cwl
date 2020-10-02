@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biscuit_cinread.cwl
+id: biscuit_cinread.cwl
 inputs:
 - id: in_region
   doc: region.

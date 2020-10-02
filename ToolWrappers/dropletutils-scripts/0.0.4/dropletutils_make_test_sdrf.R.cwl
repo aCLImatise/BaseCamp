@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dropletutils_make_test_sdrf.R.cwl
+id: dropletutils_make_test_sdrf.R.cwl
 inputs:
 - id: in_barcodes
   doc: path to the cell barcodes file in .tsv format

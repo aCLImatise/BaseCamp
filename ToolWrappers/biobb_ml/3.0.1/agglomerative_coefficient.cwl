@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agglomerative_coefficient.cwl
+id: agglomerative_coefficient.cwl
 inputs:
 - id: in_config
   doc: Configuration file

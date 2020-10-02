@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../keytool.cwl
+id: keytool.cwl
 inputs:
 - id: in_cert_req
   doc: Generates a certificate request

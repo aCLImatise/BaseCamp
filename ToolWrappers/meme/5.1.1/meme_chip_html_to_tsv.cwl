@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meme_chip_html_to_tsv.cwl
+id: meme_chip_html_to_tsv.cwl
 inputs:
 - id: in_meme_chip_html_file
   doc: ''

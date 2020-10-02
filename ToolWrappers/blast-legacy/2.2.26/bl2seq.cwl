@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bl2seq.cwl
+id: bl2seq.cwl
 inputs:
 - id: in_first_sequence
   doc: First sequence [File In]

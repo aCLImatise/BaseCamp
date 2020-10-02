@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_ppx.pl.cwl
+id: filter_ppx.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

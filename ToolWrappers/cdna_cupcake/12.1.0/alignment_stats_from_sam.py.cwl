@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../alignment_stats_from_sam.py.cwl
+id: alignment_stats_from_sam.py.cwl
 inputs:
 - id: in_input
   doc: Input fasta or fastq.

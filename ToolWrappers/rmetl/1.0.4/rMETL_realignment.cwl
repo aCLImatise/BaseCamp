@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rMETL_realignment.cwl
+id: rMETL_realignment.cwl
 inputs:
 - id: in_threads
   doc: Number of threads to use.[8]

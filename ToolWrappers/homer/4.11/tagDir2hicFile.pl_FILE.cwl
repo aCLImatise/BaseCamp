@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tagDir2hicFile.pl_FILE.cwl
+id: tagDir2hicFile.pl_FILE.cwl
 inputs:
 - id: in_juicer
   doc: (create *.hic file with juicer, "-juicer auto" places file in tagdir)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_percent_columns_matching.py.cwl
+id: maf_percent_columns_matching.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

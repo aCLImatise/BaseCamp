@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cannoli_shell.cwl
+id: cannoli_shell.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_validator.sh.cwl
+id: fastq_validator.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

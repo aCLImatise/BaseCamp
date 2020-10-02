@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_rename.cwl
+id: igdiscover_rename.cwl
 inputs:
 - id: in_no_sort
   doc: Do not sort sequences by name

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../info_gibbs.cwl
+id: info_gibbs.cwl
 inputs:
 - id: in__verbosity_set
   doc: "#, --verbosity=#   set verbosity to level #\n0 no verbosity\n1 low verbosity\n\

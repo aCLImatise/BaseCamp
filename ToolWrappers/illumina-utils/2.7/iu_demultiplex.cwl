@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iu_demultiplex.cwl
+id: iu_demultiplex.cwl
 inputs:
 - id: in_sample_barcode_mapping
   doc: TAB-delimited file of sample-barcode associations

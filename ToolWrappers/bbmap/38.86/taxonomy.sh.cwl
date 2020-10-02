@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxonomy.sh.cwl
+id: taxonomy.sh.cwl
 inputs:
 - id: in_x_mx
   doc: "This will set Java's memory usage,\noverriding autodetection.\n-Xmx20g will\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rgi_galaxy.cwl
+id: rgi_galaxy.cwl
 inputs:
 - id: in_galaxy_database
   doc: path to CARD data and blast databases

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mockinbird_postprocess_output_dir.cwl
+id: mockinbird_postprocess_output_dir.cwl
 inputs:
 - id: in_prefix
   doc: ''

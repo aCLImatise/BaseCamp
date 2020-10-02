@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtftk_profile.cwl
+id: gtftk_profile.cwl
 inputs:
 - id: in_input_file
   doc: 'A zip file containing a matrix as produced by mk_matrix. (default: None)'

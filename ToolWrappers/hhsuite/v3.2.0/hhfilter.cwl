@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hhfilter.cwl
+id: hhfilter.cwl
 inputs:
 - id: in_read_input_file
   doc: read input file in A3M/A2M or FASTA format

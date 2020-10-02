@@ -1,4 +1,4 @@
-&id001 !Command
+!Command
 command:
 - illumina.py
 - illumina_demux
@@ -205,12 +205,12 @@ named:
   - --loglevel
   args: !ChoiceFlagArg
     choices: !!set
-      ? ERROR
-      ? EXCEPTION
-      ? INFO
-      ? DEBUG
-      ? WARNING
-      ? CRITICAL
+      WARNING:
+      CRITICAL:
+      ERROR:
+      DEBUG:
+      INFO:
+      EXCEPTION:
   optional: true
 - !Flag
   description: 'Base directory for temp files. [default: /tmp]'
@@ -226,169 +226,7 @@ named:
   - --tmp_dirKeep
   args: !EmptyFlagArg {}
   optional: true
-parent: &id002 !Command
-  command:
-  - illumina.py
-  positional: []
-  named: []
-  parent:
-  subcommands:
-  - *id001
-  - !Command
-    command:
-    - illumina.py
-    - miseq_fastq_to_bam
-    positional:
-    - !Positional
-      description: Output BAM file.
-      position: 0
-      name: outBam
-      optional: false
-    - !Positional
-      description: Input SampleSheet.csv file.
-      position: 1
-      name: sampleSheet
-      optional: false
-    - !Positional
-      description: Input fastq file; 1st end of paired-end reads if
-      position: 2
-      name: inFastq1
-      optional: false
-    - !Positional
-      description: 'optional arguments:'
-      position: 3
-      name: paired.
-      optional: false
-    named:
-    - !Flag
-      description: Input fastq file; 2nd end of paired-end reads.
-      synonyms:
-      - --inFastq2
-      args: !SimpleFlagArg
-        name: INFASTQ2
-      optional: true
-    - !Flag
-      description: Input RunInfo.xml file.
-      synonyms:
-      - --runInfo
-      args: !SimpleFlagArg
-        name: RUNINFO
-      optional: true
-    - !Flag
-      description: "Name of your sequencing center (default is the\nsequencing machine\
-        \ ID from the RunInfo.xml)"
-      synonyms:
-      - --sequencing_center
-      args: !SimpleFlagArg
-        name: SEQUENCING_CENTER
-      optional: true
-    - !Flag
-      description: 'JVM virtual memory size (default: 2g)'
-      synonyms:
-      - --JVMmemory
-      args: !SimpleFlagArg
-        name: JVMMEMORY
-      optional: true
-    - !Flag
-      description: 'Verboseness of output. [default: DEBUG]'
-      synonyms:
-      - --loglevel
-      args: !ChoiceFlagArg
-        choices: !!set
-          ? ERROR
-          ? EXCEPTION
-          ? INFO
-          ? DEBUG
-          ? WARNING
-          ? CRITICAL
-      optional: true
-    - !Flag
-      description: 'Base directory for temp files. [default: /tmp]'
-      synonyms:
-      - --tmp_dir
-      args: !SimpleFlagArg
-        name: TMP_DIR
-      optional: true
-    - !Flag
-      description: "Keep the tmp_dir if an exception occurs while running.\nDefault\
-        \ is to delete all temp files at the end, even\nif there's a failure.\n"
-      synonyms:
-      - --tmp_dirKeep
-      args: !EmptyFlagArg {}
-      optional: true
-    parent: *id002
-    subcommands: []
-    usage: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag: !Flag
-      description: show program's version number and exit
-      synonyms:
-      - --version
-      - -V
-      args: !EmptyFlagArg {}
-      optional: true
-    help_text: "usage: illumina.py subcommand miseq_fastq_to_bam [-h] [--inFastq2\
-      \ INFASTQ2]\n                                                 [--runInfo RUNINFO]\n\
-      \                                                 [--sequencing_center SEQUENCING_CENTER]\n\
-      \                                                 [--JVMmemory JVMMEMORY]\n\
-      \                                                 [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
-      \                                                 [--version]\n            \
-      \                                     [--tmp_dir TMP_DIR]\n                \
-      \                                 [--tmp_dirKeep]\n                        \
-      \                         outBam sampleSheet inFastq1\n\nConvert fastq read\
-      \ files to a single bam file. Fastq file names must conform\nto patterns emitted\
-      \ by Miseq machines. Sample metadata must be provided in a\nSampleSheet.csv\
-      \ that corresponds to the fastq filename. Specifically, the\n_S##_ index in\
-      \ the fastq file name will be used to find the corresponding row\nin the SampleSheet\n\
-      \npositional arguments:\n  outBam                Output BAM file.\n  sampleSheet\
-      \           Input SampleSheet.csv file.\n  inFastq1              Input fastq\
-      \ file; 1st end of paired-end reads if\n                        paired.\n\n\
-      optional arguments:\n  -h, --help            show this help message and exit\n\
-      \  --inFastq2 INFASTQ2   Input fastq file; 2nd end of paired-end reads.\n  --runInfo\
-      \ RUNINFO     Input RunInfo.xml file.\n  --sequencing_center SEQUENCING_CENTER\n\
-      \                        Name of your sequencing center (default is the\n  \
-      \                      sequencing machine ID from the RunInfo.xml)\n  --JVMmemory\
-      \ JVMMEMORY\n                        JVM virtual memory size (default: 2g)\n\
-      \  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n              \
-      \          Verboseness of output. [default: DEBUG]\n  --version, -V        \
-      \ show program's version number and exit\n  --tmp_dir TMP_DIR     Base directory\
-      \ for temp files. [default: /tmp]\n  --tmp_dirKeep         Keep the tmp_dir\
-      \ if an exception occurs while running.\n                        Default is\
-      \ to delete all temp files at the end, even\n                        if there's\
-      \ a failure.\n"
-    generated_using: &id003
-    - --help
-  usage: []
-  help_flag:
-  usage_flag:
-  version_flag:
-  help_text: "\nEnter a subcommand to view additional information:\n\n     illumina.py\
-    \ \e[1millumina_demux\e[0m [...]\n          Demultiplex Illumina runs & produce\
-    \ BAM files, one per\n          sample. Wraps together Picard's ExtractBarcodes\
-    \ and\n          IlluminaBasecallsToSamwhile handling the various required\n \
-    \         input formats. Also canread Illumina BCL directories, tar.gz\n     \
-    \     BCL directories. TO DO: read BCL or tar.gz BCL directories\n          from\
-    \ S3 / object store.\n\n     illumina.py \e[1mcommon_barcodes\e[0m [...]\n   \
-    \       Extract Illumina barcodes for a run and write a TSV report\n         \
-    \ of the barcode counts in descending order\n\n     illumina.py \e[1mmiseq_fastq_to_bam\e\
-    [0m [...]\n          Convert fastq read files to a single bam file. Fastq file\n\
-    \          names must conformto patterns emitted by Miseq machines.\n        \
-    \  Sample metadata must be providedin a SampleSheet.csv that\n          corresponds\
-    \ to the fastq filename. Specifically,the _S##_\n          index in the fastq\
-    \ file name will be used to find the\n          correspondingrow in the SampleSheet\n\
-    \n     illumina.py \e[1mextract_fc_metadata\e[0m [...]\n          Extract RunInfo.xml\
-    \ and SampleSheet.csv from the provided\n          Illumina directory\n\nusage:\
-    \ illumina.py subcommand\n\nUtilities for demultiplexing Illumina data.\n\nsubcommands:\n\
-    \  \e[F\n    illumina_demux\n    common_barcodes\n    miseq_fastq_to_bam\n   \
-    \ extract_fc_metadata\n"
-  generated_using: *id003
+parent:
 subcommands: []
 usage: []
 help_flag: !Flag
@@ -495,4 +333,5 @@ help_text: "usage: illumina.py subcommand illumina_demux [-h] [--outMetrics OUTM
   \ for temp files. [default: /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an\
   \ exception occurs while running.\n                        Default is to delete\
   \ all temp files at the end, even\n                        if there's a failure.\n"
-generated_using: *id003
+generated_using:
+- --help

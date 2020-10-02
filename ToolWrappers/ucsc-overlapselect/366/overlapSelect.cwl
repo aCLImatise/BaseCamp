@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlapSelect.cwl
+id: overlapSelect.cwl
 inputs:
 - id: in_select_fmt
   doc: "- specify selectFile format:\npsl - PSL format (default for *.psl files).\n\

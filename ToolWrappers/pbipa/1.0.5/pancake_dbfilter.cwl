@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pancake_dbfilter.cwl
+id: pancake_dbfilter.cwl
 inputs:
 - id: in_sampling
   doc: 'STR    Select sampling type: none, linear, random. Valid choices: (none, linear,

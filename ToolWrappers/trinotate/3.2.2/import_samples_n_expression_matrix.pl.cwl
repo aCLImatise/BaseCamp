@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../import_samples_n_expression_matrix.pl.cwl
+id: import_samples_n_expression_matrix.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

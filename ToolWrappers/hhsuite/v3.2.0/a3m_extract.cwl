@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../a3m_extract.cwl
+id: a3m_extract.cwl
 inputs:
 - id: in_q
   doc: ''

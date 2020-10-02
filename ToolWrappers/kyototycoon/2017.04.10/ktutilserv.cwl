@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktutilserv.cwl
+id: ktutilserv.cwl
 inputs:
 - id: in_th
   doc: ''

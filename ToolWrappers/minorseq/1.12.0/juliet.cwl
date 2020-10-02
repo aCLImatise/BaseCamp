@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../juliet.cwl
+id: juliet.cwl
 inputs:
 - id: in_config
   doc: Defines genes of interest within the reference for reporting purposes. Enter

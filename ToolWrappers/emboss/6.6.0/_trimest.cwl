@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_trimest.cwl
+id: _trimest.cwl
 inputs:
 - id: in_minlength
   doc: "integer    [4] This is the minimum length that a poly-A\n(or poly-T) tail\

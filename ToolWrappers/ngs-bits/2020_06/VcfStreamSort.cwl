@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../VcfStreamSort.cwl
+id: VcfStreamSort.cwl
 inputs:
 - id: in_in
   doc: "Input VCF file. If unset, reads from STDIN.\nDefault value: ''"

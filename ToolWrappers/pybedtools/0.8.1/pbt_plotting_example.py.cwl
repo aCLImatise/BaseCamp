@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pbt_plotting_example.py.cwl
+id: pbt_plotting_example.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

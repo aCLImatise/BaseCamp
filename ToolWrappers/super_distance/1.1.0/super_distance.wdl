@@ -6,11 +6,9 @@ task SuperDistance {
     Int? epsilon
     File? species
     File? output_file_species
-    String super_distance
   }
   command <<<
     super_distance \
-      ~{super_distance} \
       ~{if (fast) then "--fast" else ""} \
       ~{if defined(epsilon) then ("--epsilon " +  '"' + epsilon + '"') else ""} \
       ~{if defined(species) then ("--species " +  '"' + species + '"') else ""} \
@@ -21,7 +19,6 @@ task SuperDistance {
     epsilon: "tolerance (small value below which a branch length is considered zero for nodal distances)"
     species: "file with species names, one per line (comments in square braces allowed); if absent, orthology is assumed"
     output_file_species: "output file with species supertrees, in newick format (default '-')"
-    super_distance: "[-h|--help] [-v|--version] [-F|--fast] [-e|--epsilon=<double>] [-s|--species=<species names>] [-o|--output=<newick>] <file> [<file>]..."
   }
   output {
     File out_stdout = stdout()

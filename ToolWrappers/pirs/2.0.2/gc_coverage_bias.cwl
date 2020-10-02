@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gc_coverage_bias.cwl
+id: gc_coverage_bias.cwl
 inputs:
 - id: in_reference_sequence_file
   doc: a reference sequence file about FA format

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_bowtie2.cwl
+id: abyss_bowtie2.cwl
 inputs: []
 outputs:
 - id: out_stdout

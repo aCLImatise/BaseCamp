@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addUnalignedIntervals.cwl
+id: addUnalignedIntervals.cwl
 inputs:
 - id: in_input_interval_file
   doc: ''

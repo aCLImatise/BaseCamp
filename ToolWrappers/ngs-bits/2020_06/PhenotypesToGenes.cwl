@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PhenotypesToGenes.cwl
+id: PhenotypesToGenes.cwl
 inputs:
 - id: in_in
   doc: "Input file, containing one HPO term identifier per line, e.g. HP:0002066.\

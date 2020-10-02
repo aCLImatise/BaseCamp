@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MapCaller.cwl
+id: MapCaller.cwl
 inputs:
 - id: in_bwtindexprefix
   doc: BWT_Index_Prefix

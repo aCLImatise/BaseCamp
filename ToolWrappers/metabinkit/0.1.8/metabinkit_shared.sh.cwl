@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metabinkit_shared.sh.cwl
+id: metabinkit_shared.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

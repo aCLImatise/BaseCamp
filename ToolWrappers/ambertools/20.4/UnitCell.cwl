@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../UnitCell.cwl
+id: UnitCell.cwl
 inputs:
 - id: in_structure_reassemble_pdb
   doc: ': the structure to reassemble (PDB format)'

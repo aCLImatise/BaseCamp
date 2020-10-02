@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_test.cwl
+id: planemo_test.cwl
 inputs:
 - id: in_failed
   doc: "Re-run only failed tests. This command will\nread tool_test_output.json to\

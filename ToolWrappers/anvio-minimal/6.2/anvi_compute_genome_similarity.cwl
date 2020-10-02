@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_compute_genome_similarity.cwl
+id: anvi_compute_genome_similarity.cwl
 inputs:
 - id: in_internal_genomes
   doc: "A five-column TAB-delimited flat text file. The header\nline must contain\

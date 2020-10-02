@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../easypqp_convert_annotation..cwl
+id: easypqp_convert_annotation..cwl
 inputs:
 - id: in_easy_pqp
   doc: ''

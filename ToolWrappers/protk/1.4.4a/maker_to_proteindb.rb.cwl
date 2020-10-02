@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maker_to_proteindb.rb.cwl
+id: maker_to_proteindb.rb.cwl
 inputs:
 - id: in_output
   doc: An explicitly named output file.

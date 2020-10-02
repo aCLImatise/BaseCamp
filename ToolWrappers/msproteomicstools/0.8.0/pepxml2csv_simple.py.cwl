@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pepxml2csv_simple.py.cwl
+id: pepxml2csv_simple.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

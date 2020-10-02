@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfallelicprimitives.cwl
+id: vcfallelicprimitives.cwl
 inputs:
 - id: in_use_mnps
   doc: 'Retain MNPs as separate events (default: false).'

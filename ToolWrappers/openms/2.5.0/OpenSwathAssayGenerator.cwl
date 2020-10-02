@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OpenSwathAssayGenerator.cwl
+id: OpenSwathAssayGenerator.cwl
 inputs:
 - id: in_in
   doc: "*                           Input file (valid formats: 'tsv', 'mrm', 'pqp',\

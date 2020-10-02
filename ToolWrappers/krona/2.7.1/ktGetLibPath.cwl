@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktGetLibPath.cwl
+id: ktGetLibPath.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mustache.pl.cwl
+id: mustache.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

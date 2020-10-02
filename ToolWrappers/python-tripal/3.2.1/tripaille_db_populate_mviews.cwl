@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_db_populate_mviews.cwl
+id: tripaille_db_populate_mviews.cwl
 inputs:
 - id: in_name
   doc: filter on mview name

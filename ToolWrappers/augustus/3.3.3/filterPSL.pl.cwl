@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterPSL.pl.cwl
+id: filterPSL.pl.cwl
 inputs:
 - id: in_pair_bed
   doc: "file name of pairedness coverage:\na .bed format file in which for each position\

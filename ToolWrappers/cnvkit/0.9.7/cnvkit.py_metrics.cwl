@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_metrics.cwl
+id: cnvkit.py_metrics.cwl
 inputs:
 - id: in_segments
   doc: "One or more segmentation data files (*.cns, output of\nthe 'segment' command).\

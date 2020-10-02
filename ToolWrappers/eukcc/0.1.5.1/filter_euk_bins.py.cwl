@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filter_euk_bins.py.cwl
+id: filter_euk_bins.py.cwl
 inputs:
 - id: in_output
   doc: path for the output table

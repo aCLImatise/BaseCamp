@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snaptools_r4fang@gmail.com.cwl
+id: snaptools_r4fang@gmail.com.cwl
 inputs:
 - id: in_snap_tools
   doc: ''

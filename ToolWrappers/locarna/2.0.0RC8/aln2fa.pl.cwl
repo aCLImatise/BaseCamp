@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aln2fa.pl.cwl
+id: aln2fa.pl.cwl
 inputs:
 - id: in_man
   doc: Full documentation

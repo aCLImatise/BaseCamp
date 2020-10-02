@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_cannedkeys_update_key.cwl
+id: arrow_cannedkeys_update_key.cwl
 inputs:
 - id: in_metadata
   doc: Optional metadata

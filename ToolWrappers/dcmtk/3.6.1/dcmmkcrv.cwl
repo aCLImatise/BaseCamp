@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dcmmkcrv.cwl
+id: dcmmkcrv.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments

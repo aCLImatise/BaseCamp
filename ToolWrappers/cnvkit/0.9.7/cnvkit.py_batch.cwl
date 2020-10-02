@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_batch.cwl
+id: cnvkit.py_batch.cwl
 inputs:
 - id: in_seq_method
   doc: "Sequencing assay type: hybridization capture\n('hybrid'), targeted amplicon\

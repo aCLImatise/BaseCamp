@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../new_plugin.pl.cwl
+id: new_plugin.pl.cwl
 inputs:
 - id: in_plugin_dot
   doc: "USAGE\nbin/new-plugin.pl MyNewPlugin\n"

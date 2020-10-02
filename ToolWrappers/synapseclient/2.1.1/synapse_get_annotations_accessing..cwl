@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_get_annotations_accessing..cwl
+id: synapse_get_annotations_accessing..cwl
 inputs:
 - id: in_o
   doc: ''

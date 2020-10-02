@@ -9,7 +9,6 @@ task PartitionGtf2gbpl {
     Int entry_two
     String locus
     String features
-    String source
     String origin
   }
   command <<<
@@ -18,7 +17,6 @@ task PartitionGtf2gbpl {
       ~{entry_two} \
       ~{locus} \
       ~{features} \
-      ~{source} \
       ~{origin} \
       ~{if defined(min_cluster_size) then ("--minClusterSize " +  '"' + min_cluster_size + '"') else ""} \
       ~{if defined(max_flanking_region_size) then ("--maxFlankingRegionSize " +  '"' + max_flanking_region_size + '"') else ""} \
@@ -32,7 +30,6 @@ task PartitionGtf2gbpl {
     entry_two: "NCBI   CDS 7   28  0 + . gene_id \\\"g3\\\"; transcript_id \\\"g3.t1\\\""
     locus: "NC_010473.1_5128-6494   1367 bp  DNA"
     features: "Location/Qualifiers"
-    source: "1..1367"
     origin: "1 aatgcggtaa cttagagatt aggattgcgg agaataacaa ccgccgttct catcgagtaa\\n61 tctccggata tcgacccata acgggcaatg ataaaaggag taacctgtga aaaagatgca\\n...\\n1261 cagcgtatag cgcgtggtgg tcaacgggct ttggtaatca agcgttttcg caggtgaaat\\n1321 aagaatcagc atatccagtc cttgcaggaa atttatgccg"
   }
   output {

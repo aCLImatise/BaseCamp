@@ -1,31 +1,13 @@
 class: CommandLineTool
-id: ../../../findGO.pl.cwl
+id: findGO.pl.cwl
 inputs:
 - id: in_bg
-  doc: ''
+  doc: "-cpu <#> (number of cpus to use)\n-human (convert IDs and run as human [uses\
+    \ homologene])\n-customID (don't convert IDs)\n-ontology <file.genes> [file2.genes]\
+    \ ... (custom ontologies)\n"
   type: File
   inputBinding:
     prefix: -bg
-- id: in_cpu
-  doc: <#> (number of cpus to use)
-  type: boolean
-  inputBinding:
-    prefix: -cpu
-- id: in_human
-  doc: (convert IDs and run as human [uses homologene])
-  type: boolean
-  inputBinding:
-    prefix: -human
-- id: in_custom_id
-  doc: (don't convert IDs)
-  type: boolean
-  inputBinding:
-    prefix: -customID
-- id: in_ontology
-  doc: '[file2.genes] ... (custom ontologies)'
-  type: File
-  inputBinding:
-    prefix: -ontology
 - id: in_target_ids_file
   doc: ''
   type: File

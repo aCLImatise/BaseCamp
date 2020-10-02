@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../babel_convert.cwl
+id: babel_convert.cwl
 inputs:
 - id: in_config
   doc: Configuration file

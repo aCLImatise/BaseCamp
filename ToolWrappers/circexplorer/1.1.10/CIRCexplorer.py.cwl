@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CIRCexplorer.py.cwl
+id: CIRCexplorer.py.cwl
 inputs:
 - id: in_fusion
   doc: TopHat-Fusion fusion BAM file. (used in TopHat-Fusion mapping)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../surpyvor_minlen.cwl
+id: surpyvor_minlen.cwl
 inputs:
 - id: in_verbose
   doc: Print out more information while running.

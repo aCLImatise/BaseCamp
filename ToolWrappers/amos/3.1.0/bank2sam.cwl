@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bank2sam.cwl
+id: bank2sam.cwl
 inputs:
 - id: in_the_bank_operated
   doc: The bank to be operated on.

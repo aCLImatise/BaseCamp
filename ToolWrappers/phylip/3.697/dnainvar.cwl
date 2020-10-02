@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dnainvar.cwl
+id: dnainvar.cwl
 inputs: []
 outputs:
 - id: out_stdout

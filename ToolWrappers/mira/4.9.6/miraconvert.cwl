@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../miraconvert.cwl
+id: miraconvert.cwl
 inputs:
 - id: in_load_type_project
   doc: 'load this type of project files, where fromtype is:'

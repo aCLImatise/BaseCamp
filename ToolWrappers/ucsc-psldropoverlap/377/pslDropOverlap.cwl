@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslDropOverlap.cwl
+id: pslDropOverlap.cwl
 inputs:
 - id: in_in_dot_psl
   doc: ''

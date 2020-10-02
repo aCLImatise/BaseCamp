@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsbox_bamidx.cwl
+id: htsbox_bamidx.cwl
 inputs:
 - id: in_s
   doc: ''

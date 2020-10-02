@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../real_tbl2asn.cwl
+id: real_tbl2asn.cwl
 inputs:
 - id: in_path_files_optional
   doc: Path to Files [String]  Optional

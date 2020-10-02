@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vSNP_step2.py.cwl
+id: vSNP_step2.py.cwl
 inputs:
 - id: in_reference
   doc: provide a valid reference, see -t output

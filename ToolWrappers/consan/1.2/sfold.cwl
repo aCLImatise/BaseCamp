@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sfold.cwl
+id: sfold.cwl
 inputs:
 - id: in_use_parameters_grammar
   doc: ': Use parameters, grammar and scoring specified in model <file>'

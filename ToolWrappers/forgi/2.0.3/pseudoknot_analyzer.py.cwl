@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pseudoknot_analyzer.py.cwl
+id: pseudoknot_analyzer.py.cwl
 inputs:
 - id: in_keep_length_one_stems
   doc: "For all input formats except forgi bg/cg files, this\ncontrolls whether stems\

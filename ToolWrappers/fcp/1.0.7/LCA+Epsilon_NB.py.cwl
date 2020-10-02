@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LCA+Epsilon_NB.py.cwl
+id: LCA+Epsilon_NB.py.cwl
 inputs:
 - id: in_python
   doc: ''

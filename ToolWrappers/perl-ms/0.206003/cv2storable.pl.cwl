@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cv2storable.pl.cwl
+id: cv2storable.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

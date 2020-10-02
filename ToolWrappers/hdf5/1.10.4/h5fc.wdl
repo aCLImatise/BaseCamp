@@ -11,18 +11,12 @@ task H5fc {
     Int hdf_five_fc
     Int hdf_five_f_linker
     String variable
-    Int hdf_five_f_cflags
-    Int hdf_five_ldflags
-    Int hdf_five_libs
   }
   command <<<
     h5fc \
       ~{hdf_five_fc} \
       ~{hdf_five_f_linker} \
       ~{variable} \
-      ~{hdf_five_f_cflags} \
-      ~{hdf_five_ldflags} \
-      ~{hdf_five_libs} \
       ~{if (echo) then "-echo" else ""} \
       ~{if defined(prefix) then ("-prefix " +  '"' + prefix + '"') else ""} \
       ~{if (show) then "-show" else ""} \
@@ -40,9 +34,6 @@ task H5fc {
     hdf_five_fc: "-  use a different Fortran 90 or 95 compiler"
     hdf_five_f_linker: "-  use a different linker"
     variable: "Current value to be replaced"
-    hdf_five_f_cflags: "\\\"\\\""
-    hdf_five_ldflags: "\\\"\\\""
-    hdf_five_libs: "\\\"\\\""
   }
   output {
     File out_stdout = stdout()

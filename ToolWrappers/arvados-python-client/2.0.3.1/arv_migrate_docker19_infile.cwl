@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arv_migrate_docker19_infile.cwl
+id: arv_migrate_docker19_infile.cwl
 inputs:
 - id: in_force
   doc: ''

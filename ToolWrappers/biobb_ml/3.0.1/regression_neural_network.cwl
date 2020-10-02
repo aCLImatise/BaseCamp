@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../regression_neural_network.cwl
+id: regression_neural_network.cwl
 inputs: []
 outputs:
 - id: out_stdout

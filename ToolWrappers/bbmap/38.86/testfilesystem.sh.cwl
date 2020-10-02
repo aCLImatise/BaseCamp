@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../testfilesystem.sh.cwl
+id: testfilesystem.sh.cwl
 inputs:
 - id: in_in
   doc: ''

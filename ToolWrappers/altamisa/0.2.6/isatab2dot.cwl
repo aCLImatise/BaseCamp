@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isatab2dot.cwl
+id: isatab2dot.cwl
 inputs:
 - id: in_investigation_file
   doc: Path to investigation file

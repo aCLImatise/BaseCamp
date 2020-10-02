@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../visualize_pdb.py.cwl
+id: visualize_pdb.py.cwl
 inputs:
 - id: in_secondary_structure
   doc: "Enter a dot-bracket string for the\nsecondary structure of this model"

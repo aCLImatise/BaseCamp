@@ -3,21 +3,15 @@ version 1.0
 task LorikeetKmer {
   input {
     Boolean? full_help
-    Boolean? verbose
-    String? reference
     String? flags
   }
   command <<<
     lorikeet kmer \
       ~{flags} \
-      ~{if (full_help) then "--full-help" else ""} \
-      ~{if (verbose) then "--verbose" else ""} \
-      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""}
+      ~{if (full_help) then "--full-help" else ""}
   >>>
   parameter_meta {
-    full_help: ""
-    verbose: ""
-    reference: ""
+    full_help: "-h, --help         Prints help information\\n-V, --version      Prints version information\\n-v, --verbose"
     flags: ""
   }
   output {

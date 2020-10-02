@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfglxgt.cwl
+id: vcfglxgt.cwl
 inputs:
 - id: in_fix_null_genotypes
   doc: only apply to null and partly-null genotypes

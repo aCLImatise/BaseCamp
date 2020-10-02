@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contigtax_assign.cwl
+id: contigtax_assign.cwl
 inputs:
 - id: in_format
   doc: "Type of file format for diamond results. blast=blast\ntabular output, 'contigtax'=blast\

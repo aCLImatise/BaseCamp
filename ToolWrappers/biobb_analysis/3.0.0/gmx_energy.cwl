@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmx_energy.cwl
+id: gmx_energy.cwl
 inputs:
 - id: in_config
   doc: Configuration file

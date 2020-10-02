@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HLAProfiler.pl_create_profiles.cwl
+id: HLAProfiler.pl_create_profiles.cwl
 inputs:
 - id: in_reference
   doc: '|r    location of HLA reference fasta file.(required)'

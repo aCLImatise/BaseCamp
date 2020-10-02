@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequenza_utils_snp2seqz.cwl
+id: sequenza_utils_snp2seqz.cwl
 inputs:
 - id: in_output
   doc: "Output file. For gzip compressed output name the file\nending in .gz. Default\

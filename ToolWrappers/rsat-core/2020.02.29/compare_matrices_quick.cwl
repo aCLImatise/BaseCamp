@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compare_matrices_quick.cwl
+id: compare_matrices_quick.cwl
 inputs: []
 outputs:
 - id: out_stdout

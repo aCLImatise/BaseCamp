@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fqc.cwl
+id: fqc.cwl
 inputs:
 - id: in_options_dot
   doc: The table "key" is the absolute path of each input file, but the printed

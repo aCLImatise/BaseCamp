@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pmv.cwl
+id: pmv.cwl
 inputs:
 - id: in_again
   doc: ': play back lastlog file'

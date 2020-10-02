@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meryl_import.cwl
+id: meryl_import.cwl
 inputs:
 - id: in_km_ers
   doc: "A file consisting of kmers and values, one per line, separated\nby white space\

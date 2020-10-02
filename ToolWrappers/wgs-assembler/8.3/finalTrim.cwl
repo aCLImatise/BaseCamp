@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../finalTrim.cwl
+id: finalTrim.cwl
 inputs:
 - id: in_allow_percent_error
   doc: allow 'erate' percent error

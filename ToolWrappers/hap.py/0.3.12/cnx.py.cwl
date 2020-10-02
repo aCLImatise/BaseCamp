@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnx.py.cwl
+id: cnx.py.cwl
 inputs:
 - id: in_output
   doc: Output file name (json format)

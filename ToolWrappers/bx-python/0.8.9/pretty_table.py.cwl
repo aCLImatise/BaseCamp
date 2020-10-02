@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pretty_table.py.cwl
+id: pretty_table.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

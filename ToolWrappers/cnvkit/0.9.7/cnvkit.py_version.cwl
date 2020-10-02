@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_version.cwl
+id: cnvkit.py_version.cwl
 inputs:
 - id: in_cnv_kit_do_tpy
   doc: ''

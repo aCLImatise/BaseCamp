@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PluginRawMzXml.dll.cwl
+id: PluginRawMzXml.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

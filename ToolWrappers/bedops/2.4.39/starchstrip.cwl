@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../starchstrip.cwl
+id: starchstrip.cwl
 inputs:
 - id: in_include
   doc: Include specified chromosomes from <starch-file>.

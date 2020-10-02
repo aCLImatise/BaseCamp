@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mtglink.py.cwl
+id: mtglink.py.cwl
 inputs:
 - id: in_gfa
   doc: 'Input GFA file (format: xxx.gfa)'

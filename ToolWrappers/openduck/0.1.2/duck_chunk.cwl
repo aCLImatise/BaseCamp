@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../duck_chunk.cwl
+id: duck_chunk.cwl
 inputs:
 - id: in_protein
   doc: Apoprotein in PDB format

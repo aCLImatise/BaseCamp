@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mast_xml_to_txt.cwl
+id: mast_xml_to_txt.cwl
 inputs:
 - id: in_mast_xml_file
   doc: ''

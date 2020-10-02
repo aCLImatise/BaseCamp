@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_travis_init_testing..cwl
+id: planemo_travis_init_testing..cwl
 inputs:
 - id: in_plane_mo
   doc: ''

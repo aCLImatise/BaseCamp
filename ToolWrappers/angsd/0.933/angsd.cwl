@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../angsd.cwl
+id: angsd.cwl
 inputs:
 - id: in_n_threads
   doc: 1       Number of threads to use

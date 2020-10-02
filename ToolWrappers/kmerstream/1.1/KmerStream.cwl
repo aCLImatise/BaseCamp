@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../KmerStream.cwl
+id: KmerStream.cwl
 inputs:
 - id: in_km_er_size
   doc: Size of k-mers, either a single value or comma separated list

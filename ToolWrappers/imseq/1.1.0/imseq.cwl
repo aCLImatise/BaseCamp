@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../imseq.cwl
+id: imseq.cwl
 inputs:
 - id: in_reference
   doc: FASTA file with gene segment reference sequences.

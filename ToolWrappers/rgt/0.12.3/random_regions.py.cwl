@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../random_regions.py.cwl
+id: random_regions.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../checkAgpAndFa_in.agp.cwl
+id: checkAgpAndFa_in.agp.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

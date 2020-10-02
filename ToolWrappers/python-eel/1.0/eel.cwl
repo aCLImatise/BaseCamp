@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eel.cwl
+id: eel.cwl
 inputs:
 - id: in_var_0
   doc: specifies how many alignments you want. (Default 3)

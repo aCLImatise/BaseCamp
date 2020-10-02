@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_IcePartial2.py.cwl
+id: run_IcePartial2.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

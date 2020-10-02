@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../estimate_mer_threshold.cwl
+id: estimate_mer_threshold.cwl
 inputs:
 - id: in_file_of_mercounts
   doc: file of mercounts

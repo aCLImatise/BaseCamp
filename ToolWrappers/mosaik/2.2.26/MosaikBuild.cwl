@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MosaikBuild.cwl
+id: MosaikBuild.cwl
 inputs:
 - id: in_fr
   doc: the FASTA reference sequences file

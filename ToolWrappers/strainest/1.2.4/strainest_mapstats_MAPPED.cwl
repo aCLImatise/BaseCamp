@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strainest_mapstats_MAPPED.cwl
+id: strainest_mapstats_MAPPED.cwl
 inputs:
 - id: in_examples
   doc: strainest mapstats mapped.fna stats

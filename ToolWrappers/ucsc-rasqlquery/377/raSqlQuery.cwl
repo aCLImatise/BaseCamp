@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../raSqlQuery.cwl
+id: raSqlQuery.cwl
 inputs:
 - id: in_query_file
-  doc: ''
+  doc: "\"-query=select list,of,fields from file where field='this'\""
   type: File
   inputBinding:
     prefix: -queryFile

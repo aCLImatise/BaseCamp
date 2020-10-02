@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamtools_revert.cwl
+id: bamtools_revert.cwl
 inputs:
 - id: in_in
   doc: the input BAM file [stdin]

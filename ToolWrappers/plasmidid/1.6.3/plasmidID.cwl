@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plasmidID.cwl
+id: plasmidID.cwl
 inputs:
 - id: in_one
   doc: '| --R1       <filename>      reads corresponding to paired-end R1 (mandatory)'

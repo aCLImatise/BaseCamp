@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coils_wrap.pl.cwl
+id: coils_wrap.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

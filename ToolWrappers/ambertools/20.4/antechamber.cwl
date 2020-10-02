@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../antechamber.cwl
+id: antechamber.cwl
 inputs: []
 outputs:
 - id: out_stdout

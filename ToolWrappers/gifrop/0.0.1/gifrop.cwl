@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gifrop.cwl
+id: gifrop.cwl
 inputs:
 - id: in_threads
   doc: Number of threads to use for parallel abricate commands

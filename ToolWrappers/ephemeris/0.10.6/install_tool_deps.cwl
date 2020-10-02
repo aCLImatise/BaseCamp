@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../install_tool_deps.cwl
+id: install_tool_deps.cwl
 inputs:
 - id: in_path_tool_file
   doc: "[TOOL [TOOL ...]], --tool [TOOL [TOOL ...]]\nPath to a tool file, tool_conf\

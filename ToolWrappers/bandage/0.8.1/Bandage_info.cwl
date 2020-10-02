@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Bandage_info.cwl
+id: Bandage_info.cwl
 inputs:
 - id: in_tsv
   doc: Output the information in a single tab-delimited line starting with the graph

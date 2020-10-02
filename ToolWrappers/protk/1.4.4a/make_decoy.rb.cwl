@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_decoy.rb.cwl
+id: make_decoy.rb.cwl
 inputs:
 - id: in_output
   doc: An explicitly named output file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gatekeeper.cwl
+id: gatekeeper.cwl
 inputs:
 - id: in_append_existing_store
   doc: append to existing store

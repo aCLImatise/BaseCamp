@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../priority2meme.cwl
+id: priority2meme.cwl
 inputs:
 - id: in_numbers
   doc: use numbers instead of strings as motif names;

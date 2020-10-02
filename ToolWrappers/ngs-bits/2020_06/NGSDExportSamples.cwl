@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGSDExportSamples.cwl
+id: NGSDExportSamples.cwl
 inputs:
 - id: in_out
   doc: "Output TSV file. If unset, writes to STDOUT.\nDefault value: ''"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vk_phylo.cwl
+id: vk_phylo.cwl
 inputs:
 - id: in_fast_a
   doc: ''

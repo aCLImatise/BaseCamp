@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../graph2asqg.cwl
+id: graph2asqg.cwl
 inputs:
 - id: in_b
   doc: '# (required)'

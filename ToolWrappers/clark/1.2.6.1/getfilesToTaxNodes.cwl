@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getfilesToTaxNodes.cwl
+id: getfilesToTaxNodes.cwl
 inputs: []
 outputs:
 - id: out_stdout

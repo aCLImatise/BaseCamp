@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ecoPrimers.cwl
+id: ecoPrimers.cwl
 inputs:
 - id: in_atabase_match_format
   doc: ": [D]atabase : to match the expected format, the database\nhas to be formated\

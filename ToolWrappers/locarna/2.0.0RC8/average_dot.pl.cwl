@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../average_dot.pl.cwl
+id: average_dot.pl.cwl
 inputs:
-- id: in_sequences
-  doc: '...'
-  type: long
-  inputBinding:
-    prefix: --sequences
 - id: in_man
   doc: full documentation
   type: boolean
@@ -26,6 +21,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --alignment
+- id: in_sequences
+  doc: pp files for the input sequences
+  type: File
+  inputBinding:
+    prefix: --sequences
 - id: in_outfile
   doc: 'output file (DEFAULT: averagedot)'
   type: File

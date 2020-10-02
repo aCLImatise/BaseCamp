@@ -1,26 +1,14 @@
 class: CommandLineTool
-id: ../../../lyner_cluster_hierarchical.cwl
+id: lyner_cluster_hierarchical.cwl
 inputs:
 - id: in_method
-  doc: '[single|complete|average|weighted|centroid|median|ward]'
+  doc: "[single|complete|average|weighted|centroid|median|ward]\n-d, --distance-metric\
+    \ [braycurtis|canberra|chebyshev|cityblock|correlation|cosine|dice|euclidean|hamming|jaccard|kulsinski|mahalanobis|matching|minkowski|rogerstanimoto|russellrao|seuclidean|sokalmichener|sokalsneath|sqeuclidean|yule]\n\
+    -c, --criterion [inconsistent|distance|maxclust|monocrit|maxclust_monocrit]\n\
+    -t, --threshold FLOAT\n--help                          Show this message and exit.\n"
   type: boolean
   inputBinding:
     prefix: --method
-- id: in_distance_metric
-  doc: '[braycurtis|canberra|chebyshev|cityblock|correlation|cosine|dice|euclidean|hamming|jaccard|kulsinski|mahalanobis|matching|minkowski|rogerstanimoto|russellrao|seuclidean|sokalmichener|sokalsneath|sqeuclidean|yule]'
-  type: boolean
-  inputBinding:
-    prefix: --distance-metric
-- id: in_criterion
-  doc: '[inconsistent|distance|maxclust|monocrit|maxclust_monocrit]'
-  type: boolean
-  inputBinding:
-    prefix: --criterion
-- id: in_threshold
-  doc: ''
-  type: double
-  inputBinding:
-    prefix: --threshold
 outputs:
 - id: out_stdout
   doc: Standard output stream

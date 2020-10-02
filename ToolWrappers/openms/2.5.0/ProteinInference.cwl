@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ProteinInference.cwl
+id: ProteinInference.cwl
 inputs:
 - id: in_in
   doc: "*                                               Input file(s) (valid formats:\

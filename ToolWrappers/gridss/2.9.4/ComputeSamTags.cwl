@@ -1,17 +1,7 @@
 class: CommandLineTool
-id: ../../../ComputeSamTags.cwl
+id: ComputeSamTags.cwl
 inputs:
 - id: in_displays_options_specific
-  doc: Displays options specific to this tool.
-  type: boolean
-  inputBinding:
-    prefix: -h
-- id: in_std_help
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --stdhelp
-- id: in_displays_options_and
   doc: "Displays options specific to this tool AND options common to all Picard command\
     \ line\ntools."
   type: boolean

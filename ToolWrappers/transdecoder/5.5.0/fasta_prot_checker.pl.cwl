@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_prot_checker.pl.cwl
+id: fasta_prot_checker.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

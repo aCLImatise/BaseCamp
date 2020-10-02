@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_labels.cwl
+id: nw_labels.cwl
 inputs:
 - id: in_print_labels_inner
   doc: ": don't print labels of inner nodes"

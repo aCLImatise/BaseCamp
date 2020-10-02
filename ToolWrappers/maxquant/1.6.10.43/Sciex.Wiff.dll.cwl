@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Sciex.Wiff.dll.cwl
+id: Sciex.Wiff.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

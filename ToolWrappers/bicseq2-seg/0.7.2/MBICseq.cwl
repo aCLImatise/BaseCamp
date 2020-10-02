@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MBICseq.cwl
+id: MBICseq.cwl
 inputs:
 - id: in_input_file_name
   doc: ': the input file name; default stdin'

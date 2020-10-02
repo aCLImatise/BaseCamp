@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../srf_info.cwl
+id: srf_info.cwl
 inputs:
 - id: in_count_goodbad_reads
   doc: "1 Count of good/bad reads.\n2 Counts for selected chunk types.\n4 Trace count\

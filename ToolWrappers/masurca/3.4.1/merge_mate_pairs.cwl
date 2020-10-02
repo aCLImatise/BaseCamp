@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merge_mate_pairs.cwl
+id: merge_mate_pairs.cwl
 inputs: []
 outputs:
 - id: out_stdout

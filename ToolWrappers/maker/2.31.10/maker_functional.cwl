@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maker_functional.cwl
+id: maker_functional.cwl
 inputs: []
 outputs:
 - id: out_stdout

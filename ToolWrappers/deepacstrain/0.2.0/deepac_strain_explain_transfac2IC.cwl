@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_strain_explain_transfac2IC.cwl
+id: deepac_strain_explain_transfac2IC.cwl
 inputs:
 - id: in_in_file
   doc: File containing all filter motifs in transfac format

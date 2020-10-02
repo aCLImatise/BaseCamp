@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../virsorter_setup.cwl
+id: virsorter_setup.cwl
 inputs:
 - id: in_db_dir
   doc: diretory path for databases  [required]

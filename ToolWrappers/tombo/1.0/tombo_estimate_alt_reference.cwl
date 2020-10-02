@@ -1,8 +1,12 @@
 class: CommandLineTool
-id: ../../../tombo_estimate_alt_reference.cwl
+id: tombo_estimate_alt_reference.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_alternate_model_filename
+  doc: "ALTERNATE_MODEL_FILENAME\n--alternate-model-name\nALTERNATE_MODEL_NAME\n--alternate-model-base\
+    \ {A,C,G,T}\n[--tombo-model-filename TOMBO_MODEL_FILENAME]\n[--min-alt-base-percentage\
+    \ MIN_ALT_BASE_PERCENTAGE]\n[--sd-threshold SD_THRESHOLD]\n[--minimum-kmer-observations\
+    \ MINIMUM_KMER_OBSERVATIONS]\n[--corrected-group CORRECTED_GROUP]\n[--basecall-subgroups\
+    \ BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\n[--quiet] [--help]"
   type: boolean
   inputBinding:
     prefix: --alternate-model-filename
@@ -11,7 +15,7 @@ inputs:
   type: long[]
   inputBinding:
     prefix: --fast5-basedirs
-- id: in_short_name_associate
+- id: in_alternate_model_name
   doc: "A short name to associate with this alternate model\n(e.g. 5mC, 4mC, 6mA).\
     \ This text will be included in\noutput filenames when this model is used for\
     \ testing."
@@ -65,16 +69,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: in__alternatemodelname
-  doc: --alternate-model-name
-  type: string
-  inputBinding:
-    position: 0
-- id: in__alternatemodelbase
-  doc: --alternate-model-base {A,C,G,T}
-  type: string
-  inputBinding:
-    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

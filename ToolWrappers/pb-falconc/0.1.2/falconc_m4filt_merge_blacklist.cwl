@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../falconc_m4filt_merge_blacklist.cwl
+id: falconc_m4filt_merge_blacklist.cwl
 inputs:
 - id: in_help_syntax
   doc: 'advanced: prepend,plurals,..'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mono_sgen.cwl
+id: mono_sgen.cwl
 inputs:
 - id: in_aot
   doc: '[=<options>]      Compiles the assembly to native code'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ecogrep.cwl
+id: ecogrep.cwl
 inputs:
 - id: in_compare_pattern_direct
   doc: ': [FIRST] : compare the given pattern with direct strand oligonucleotide'

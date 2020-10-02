@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reconstruct_graph_from_fasta.py.cwl
+id: reconstruct_graph_from_fasta.py.cwl
 inputs:
 - id: in_input_fasta_file
   doc: Input fasta file.

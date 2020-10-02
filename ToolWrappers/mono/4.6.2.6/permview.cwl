@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../permview.cwl
+id: permview.cwl
 inputs:
 - id: in_output
   doc: Output information into specified file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centroid_fold.cwl
+id: centroid_fold.cwl
 inputs:
 - id: in_arg_specify_default
   doc: '[ --engine ] arg    specify the inference engine (default: "McCaskill")'

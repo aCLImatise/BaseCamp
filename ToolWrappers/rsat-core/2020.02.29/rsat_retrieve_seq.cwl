@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_retrieve_seq.cwl
+id: rsat_retrieve_seq.cwl
 inputs:
 - id: in_org
   doc: "When an organism is specified, the program automatically\nloads the appropriate\

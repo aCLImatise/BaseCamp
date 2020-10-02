@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../luciphor2.cwl
+id: luciphor2.cwl
 inputs:
 - id: in_jar
   doc: ''

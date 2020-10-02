@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cachedbfetch.cwl
+id: cachedbfetch.cwl
 inputs:
 - id: in_outfile
   doc: outfile    [stdout] Output file name

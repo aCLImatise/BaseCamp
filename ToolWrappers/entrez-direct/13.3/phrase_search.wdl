@@ -3,11 +3,8 @@ version 1.0
 task Phrasesearch {
   input {
     Boolean? count
-    String phrasesearch_count_case
-    String var_2
-    String numphrasesearch_query_wc
-    String declare_a_themes
-    String numphrasesearch_for_scd
+    String done
+    String do
     String sort
     String abnormalities
     String agonists
@@ -45,7 +42,7 @@ task Phrasesearch {
     String antagonism_blocking
     String bc
     String decreases_expressionproduction
-    String var_43
+    String var_40
     String sa
     String pr
     String pa
@@ -61,11 +58,8 @@ task Phrasesearch {
   }
   command <<<
     phrase_search \
-      ~{phrasesearch_count_case} \
-      ~{var_2} \
-      ~{numphrasesearch_query_wc} \
-      ~{declare_a_themes} \
-      ~{numphrasesearch_for_scd} \
+      ~{done} \
+      ~{do} \
       ~{sort} \
       ~{abnormalities} \
       ~{agonists} \
@@ -103,7 +97,7 @@ task Phrasesearch {
       ~{antagonism_blocking} \
       ~{bc} \
       ~{decreases_expressionproduction} \
-      ~{var_43} \
+      ~{var_40} \
       ~{sa} \
       ~{pr} \
       ~{pa} \
@@ -120,11 +114,8 @@ task Phrasesearch {
   >>>
   parameter_meta {
     count: "| -counts | -query | -filter | -exact | -terms"
-    phrasesearch_count_case: "phrase-search -count \\\"$var* [TREE]\\\"\\ncase \\\"$var\\\" in\\n*.* ) var=\\\"${var%????}\\\" ;;\\n*   ) break             ;;\\nesac"
-    var_2: "}"
-    numphrasesearch_query_wc: "num=$(phrase-search -query \\\"$thm [THME]\\\" | wc -l)\\necho -e \\\"$thm\\t$num\\\""
-    declare_a_themes: "declare -a THEMES"
-    numphrasesearch_for_scd: "num=$(phrase-search -query \\\"$fst [THME]\\\" | wc -l)\\necho -e \\\"$fst\\t \\t$num\\\"\\nfor scd in ${REMAINS[@]}\\ndo\\nnum=$(phrase-search -query \\\"$fst [THME] AND $scd [THME]\\\" | wc -l)\\necho -e \\\"$fst\\t$scd\\t$num\\\"\\necho -e \\\"$scd\\t$fst\\t$num\\\"\\ndone\\nREMAINS=(\\\"${REMAINS[@]:1}\\\")"
+    done: "declare -a THEMES"
+    do: "num=$(phrase-search -query \\\"$fst [THME]\\\" | wc -l)\\necho -e \\\"$fst\\t \\t$num\\\"\\nfor scd in ${REMAINS[@]}\\ndo\\nnum=$(phrase-search -query \\\"$fst [THME] AND $scd [THME]\\\" | wc -l)\\necho -e \\\"$fst\\t$scd\\t$num\\\"\\necho -e \\\"$scd\\t$fst\\t$num\\\"\\ndone\\nREMAINS=(\\\"${REMAINS[@]:1}\\\")"
     sort: "ENTREZ INTEGRATION"
     abnormalities: "administration & dosage"
     agonists: "analogs & derivatives"
@@ -162,7 +153,7 @@ task Phrasesearch {
     antagonism_blocking: "antagonism, blocking"
     bc: "binding, ligand (especially receptors)"
     decreases_expressionproduction: "decreases expression/production"
-    var_43: "affects expression/production (neutral)"
+    var_40: "affects expression/production (neutral)"
     sa: "side effect/adverse event"
     pr: "prevents, suppresses"
     pa: "alleviates, reduces"

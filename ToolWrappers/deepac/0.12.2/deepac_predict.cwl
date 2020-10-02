@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_predict.cwl
+id: deepac_predict.cwl
 inputs:
 - id: in_array
   doc: Use .npy input instead.

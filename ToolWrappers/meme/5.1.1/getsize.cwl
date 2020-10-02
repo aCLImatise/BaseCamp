@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getsize.cwl
+id: getsize.cwl
 inputs:
 - id: in_codons
   doc: ''

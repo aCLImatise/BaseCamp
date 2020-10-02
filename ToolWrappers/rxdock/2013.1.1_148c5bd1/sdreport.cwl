@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sdreport.cwl
+id: sdreport.cwl
 inputs:
 - id: in_list_format_output
   doc: (list format) output all data fields for each record as processed

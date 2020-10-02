@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../merfishtools_gen_mhd4.cwl
+id: merfishtools_gen_mhd4.cwl
 inputs:
 - id: in_one_bits
   doc: Number of 1-bits.

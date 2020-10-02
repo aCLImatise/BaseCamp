@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Bismark_alignment_modes.pdf.cwl
+id: Bismark_alignment_modes.pdf.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_set_provenance.cwl
+id: synapse_set_provenance.cwl
 inputs:
 - id: in_id
   doc: "Synapse ID of entity whose provenance we are\naccessing."

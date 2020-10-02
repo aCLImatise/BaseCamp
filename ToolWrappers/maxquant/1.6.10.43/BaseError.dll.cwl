@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BaseError.dll.cwl
+id: BaseError.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

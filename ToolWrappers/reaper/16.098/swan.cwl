@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../swan.cwl
+id: swan.cwl
 inputs:
 - id: in_output_file_name
   doc: output file name (STDOUT)

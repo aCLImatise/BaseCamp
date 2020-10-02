@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../report_single_snps_single_isolate.py.cwl
+id: report_single_snps_single_isolate.py.cwl
 inputs:
 - id: in_input_matrix
   doc: /path/to/NASP_matrix [REQUIRED]

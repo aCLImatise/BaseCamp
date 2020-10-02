@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Piranha.cwl
+id: Piranha.cwl
 inputs:
 - id: in_output
   doc: Name of output file, STDOUT if omitted

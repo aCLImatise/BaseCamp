@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bed2associated_genes.py.cwl
+id: bed2associated_genes.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

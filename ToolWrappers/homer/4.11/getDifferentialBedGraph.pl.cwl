@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getDifferentialBedGraph.pl.cwl
+id: getDifferentialBedGraph.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

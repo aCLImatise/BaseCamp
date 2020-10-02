@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_analysis_get_analyses_tripal.cwl
+id: tripaille_analysis_get_analyses_tripal.cwl
 inputs:
 - id: in_analysis_id
   doc: An analysis entity/node ID

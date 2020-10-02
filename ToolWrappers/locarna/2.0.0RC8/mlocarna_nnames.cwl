@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mlocarna_nnames.cwl
+id: mlocarna_nnames.cwl
 inputs:
 - id: in_man
   doc: Full documentation

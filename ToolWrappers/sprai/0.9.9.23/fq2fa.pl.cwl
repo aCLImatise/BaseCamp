@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fq2fa.pl.cwl
+id: fq2fa.pl.cwl
 inputs:
 - id: in_this
   doc: ''

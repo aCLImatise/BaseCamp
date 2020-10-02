@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ecoPCRFormat.py.cwl
+id: ecoPCRFormat.py.cwl
 inputs:
 - id: in__embl_mbl
   doc: --embl        :[E]mbl format

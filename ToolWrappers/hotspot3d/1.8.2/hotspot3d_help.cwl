@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hotspot3d_help.cwl
+id: hotspot3d_help.cwl
 inputs:
 - id: in_preprocessing
   doc: drugport  --  0) Parse drugport database (OPTIONAL)

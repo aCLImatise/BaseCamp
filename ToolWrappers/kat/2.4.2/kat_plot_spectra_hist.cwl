@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kat_plot_spectra_hist.cwl
+id: kat_plot_spectra_hist.cwl
 inputs:
 - id: in_output
   doc: The path to the output file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../export2sam.pl.cwl
+id: export2sam.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

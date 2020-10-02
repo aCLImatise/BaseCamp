@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cfsan_snp_pipeline_index_ref.cwl
+id: cfsan_snp_pipeline_index_ref.cwl
 inputs:
 - id: in_force
   doc: "Force processing even when result files already exist\nand are newer than\

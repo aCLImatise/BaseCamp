@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tfastm36.cwl
+id: tfastm36.cwl
 inputs:
 - id: in_compare_forward_strand
   doc: compare forward strand only

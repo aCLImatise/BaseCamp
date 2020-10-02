@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pickUniquePolish.cwl
+id: pickUniquePolish.cwl
 inputs: []
 outputs:
 - id: out_stdout

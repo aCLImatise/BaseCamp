@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rank.pl.cwl
+id: rank.pl.cwl
 inputs:
 - id: in_precision
   doc: Rounds coefficient to N places (default = 4)

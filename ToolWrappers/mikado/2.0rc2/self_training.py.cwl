@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../self_training.py.cwl
+id: self_training.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

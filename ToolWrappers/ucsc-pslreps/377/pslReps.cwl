@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslReps.cwl
+id: pslReps.cwl
 inputs:
 - id: in_no_head
   doc: Don't add PSL header.

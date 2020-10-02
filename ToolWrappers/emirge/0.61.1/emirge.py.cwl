@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../emirge.py.cwl
+id: emirge.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

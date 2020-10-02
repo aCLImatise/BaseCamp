@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../migrate_n.cwl
+id: migrate_n.cwl
 inputs:
 - id: in_version
   doc: '# shows the current version and exits'

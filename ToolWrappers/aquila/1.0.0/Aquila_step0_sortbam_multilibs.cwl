@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Aquila_step0_sortbam_multilibs.cwl
+id: Aquila_step0_sortbam_multilibs.cwl
 inputs:
 - id: in_bam_file_list
   doc: "Required Parameter, BAM file list, each BAM file is\nseperately by comma \"\

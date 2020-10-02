@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bs_seeker2_align.py.cwl
+id: bs_seeker2_align.py.cwl
 inputs:
 - id: in_input
   doc: "Input read file (FORMAT: sequences, qseq, fasta,\nfastq). Ex: read.fa or read.fa.gz"

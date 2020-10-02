@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lofreq_viterbi.cwl
+id: lofreq_viterbi.cwl
 inputs:
 - id: in__ref_file
   doc: '| --ref FILE     Indexed reference fasta file [null]'

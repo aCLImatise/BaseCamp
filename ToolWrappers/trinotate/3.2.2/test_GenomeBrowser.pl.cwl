@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../test_GenomeBrowser.pl.cwl
+id: test_GenomeBrowser.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

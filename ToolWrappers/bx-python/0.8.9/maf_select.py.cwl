@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_select.py.cwl
+id: maf_select.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

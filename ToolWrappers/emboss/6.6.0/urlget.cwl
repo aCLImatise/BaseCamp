@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../urlget.cwl
+id: urlget.cwl
 inputs:
 - id: in_url
   doc: ': enter url value: Error: Unable to get reply from user - end of standard

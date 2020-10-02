@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bogusness.cwl
+id: bogusness.cwl
 inputs: []
 outputs:
 - id: out_stdout

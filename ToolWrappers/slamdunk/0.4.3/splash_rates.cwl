@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splash_rates.cwl
+id: splash_rates.cwl
 inputs:
 - id: in_splash
   doc: ''

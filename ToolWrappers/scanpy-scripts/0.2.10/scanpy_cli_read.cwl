@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scanpy_cli_read.cwl
+id: scanpy_cli_read.cwl
 inputs:
 - id: in_input_one_zero_x_h_five
   doc: Input 10x data in Cell-Ranger hdf5 format.
@@ -56,8 +56,8 @@ inputs:
   type: File
   inputBinding:
     prefix: --extra-var
-- id: in_format_dot
-  doc: '[default: 1000]'
+- id: in_output_obj
+  doc: ''
   type: string
   inputBinding:
     position: 0

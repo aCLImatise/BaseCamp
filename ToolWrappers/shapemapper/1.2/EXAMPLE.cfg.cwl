@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EXAMPLE.cfg.cwl
+id: EXAMPLE.cfg.cwl
 inputs: []
 outputs:
 - id: out_stdout

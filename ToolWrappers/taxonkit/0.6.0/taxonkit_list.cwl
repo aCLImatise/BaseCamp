@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../taxonkit_list.cwl
+id: taxonkit_list.cwl
 inputs:
 - id: in_ids
   doc: taxid(s), multiple values should be separated by comma

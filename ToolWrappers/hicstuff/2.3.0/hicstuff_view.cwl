@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicstuff_view.cwl
+id: hicstuff_view.cwl
 inputs:
 - id: in_binning
   doc: "[bp|kb|Mb|Gb]   Subsampling factor or fix value in\nbasepairs to use for binning\n\

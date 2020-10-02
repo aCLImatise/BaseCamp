@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../restclient_get|put|post|delete.cwl
+id: restclient_get|put|post|delete.cwl
 inputs:
 - id: in_url_vertical_line_name
   doc: ''

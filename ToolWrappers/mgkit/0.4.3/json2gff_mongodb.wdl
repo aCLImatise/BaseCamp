@@ -13,7 +13,7 @@ task Json2gffMongodb {
       ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
-    verbose: ""
+    verbose: "--help         Show this message and exit.\\n"
     input_file: ""
     gff_file: ""
   }

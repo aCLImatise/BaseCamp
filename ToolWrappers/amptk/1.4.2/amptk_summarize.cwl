@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../amptk_summarize.cwl
+id: amptk_summarize.cwl
 inputs:
 - id: in_table
   doc: OTU Table containing Taxonomy information (Required)

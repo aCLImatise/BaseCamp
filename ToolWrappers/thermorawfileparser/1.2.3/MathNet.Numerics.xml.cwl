@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MathNet.Numerics.xml.cwl
+id: MathNet.Numerics.xml.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mkvtree.cwl
+id: mkvtree.cwl
 inputs:
 - id: in_index_name
   doc: ''

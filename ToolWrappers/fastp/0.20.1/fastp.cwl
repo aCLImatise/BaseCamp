@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastp.cwl
+id: fastp.cwl
 inputs:
 - id: in_in_one
   doc: read1 input file name (string [=])

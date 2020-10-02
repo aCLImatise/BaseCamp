@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PluginRawBrukerTdf.dll.config.cwl
+id: PluginRawBrukerTdf.dll.config.cwl
 inputs: []
 outputs:
 - id: out_stdout

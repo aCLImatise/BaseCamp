@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bpipe_jobs.cwl
+id: bpipe_jobs.cwl
 inputs:
 - id: in_all
   doc: Show completed  as well as running jobs

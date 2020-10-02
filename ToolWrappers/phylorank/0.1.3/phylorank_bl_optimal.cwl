@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylorank_bl_optimal.cwl
+id: phylorank_bl_optimal.cwl
 inputs:
 - id: in_min_dist
   doc: "minimum mean branch length value to evaluate (default:\n0.5)"

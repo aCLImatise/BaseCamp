@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeUCSCfile.cwl
+id: makeUCSCfile.cwl
 inputs:
 - id: in_f_size
   doc: '<#> (Size of file, when gzipped, default: 1e10, i.e. no reduction)'

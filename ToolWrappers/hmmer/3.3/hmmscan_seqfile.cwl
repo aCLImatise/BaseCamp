@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmscan_seqfile.cwl
+id: hmmscan_seqfile.cwl
 inputs:
 - id: in_options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pdb_parse.pl.cwl
+id: pdb_parse.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EstimateError.py_threshold_barcode.cwl
+id: EstimateError.py_threshold_barcode.cwl
 inputs:
 - id: in_estimate_error_do_tpy
   doc: ''

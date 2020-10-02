@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_expterm.py.cwl
+id: make_expterm.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

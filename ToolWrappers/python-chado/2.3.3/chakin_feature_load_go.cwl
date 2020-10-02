@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chakin_feature_load_go.cwl
+id: chakin_feature_load_go.cwl
 inputs:
 - id: in_query_type
   doc: "The feature type (e.g. 'gene', 'mRNA', 'polypeptide',\n'contig') of the query.\

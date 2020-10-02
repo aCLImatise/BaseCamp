@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MotifRaptor_motiffilter.cwl
+id: MotifRaptor_motiffilter.cwl
 inputs:
 - id: in_workdir
   doc: Working directory

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ra_integrate.cwl
+id: ra_integrate.cwl
 inputs:
 - id: in_spec
   doc: Set given spec file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hgTrackDb.cwl
+id: hgTrackDb.cwl
 inputs:
 - id: in_strict
   doc: '- only include tables that exist (and complain about missing html files).'

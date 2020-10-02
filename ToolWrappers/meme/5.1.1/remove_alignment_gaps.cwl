@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_alignment_gaps.cwl
+id: remove_alignment_gaps.cwl
 inputs:
 - id: in_species
   doc: ''

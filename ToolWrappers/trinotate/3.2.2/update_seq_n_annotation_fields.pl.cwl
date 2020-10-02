@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../update_seq_n_annotation_fields.pl.cwl
+id: update_seq_n_annotation_fields.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

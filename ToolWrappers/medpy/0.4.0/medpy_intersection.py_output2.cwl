@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_intersection.py_output2.cwl
+id: medpy_intersection.py_output2.cwl
 inputs:
 - id: in_f
   doc: ''

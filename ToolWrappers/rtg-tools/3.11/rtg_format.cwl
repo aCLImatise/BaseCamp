@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rtg_format.cwl
+id: rtg_format.cwl
 inputs:
 - id: in_format
   doc: "format of input. Allowed values are [fasta,\nfastq, fastq-interleaved, sam-se,\

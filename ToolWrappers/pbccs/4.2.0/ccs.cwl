@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ccs.cwl
+id: ccs.cwl
 inputs:
 - id: in_min_passes
   doc: "INT    Minimum number of full-length subreads\nrequired to generate CCS for\

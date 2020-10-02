@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dashing.cwl
+id: dashing.cwl
 inputs:
 - id: in_subcommand
   doc: ''

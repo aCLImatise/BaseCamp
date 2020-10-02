@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_generate_startree.cwl
+id: gotree_generate_startree.cwl
 inputs:
 - id: in_rooted
   doc: Generate rooted trees

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_script_gen_stats_for_single_copy_genes.R.cwl
+id: anvi_script_gen_stats_for_single_copy_genes.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

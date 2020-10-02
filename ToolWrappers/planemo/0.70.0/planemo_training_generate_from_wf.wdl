@@ -49,28 +49,20 @@ task PlanemoTrainingGenerateFromWf {
     File? postgres_psql_path
     String? postgres_database_user
     String? database_connection
-    Directory? shed_tool_path
-    Boolean? galaxy_single_user
-    Boolean? daemon
-    File? pid_file
-    Boolean? daemon_dot
-    Boolean? ignore_dependency_problems
-    Boolean? shed_install
+    File? shed_tool_conf
     String modify
     String _workflowid_text
-    String _galaxyemail_text
+    String galaxy_dot
     String resolvers_dot
     String commands_dot
-    String _shedtoolconf_text
   }
   command <<<
     planemo training_generate_from_wf \
       ~{modify} \
       ~{_workflowid_text} \
-      ~{_galaxyemail_text} \
+      ~{galaxy_dot} \
       ~{resolvers_dot} \
       ~{commands_dot} \
-      ~{_shedtoolconf_text} \
       ~{if defined(topic_name) then ("--topic_name " +  '"' + topic_name + '"') else ""} \
       ~{if defined(tutorial_name) then ("--tutorial_name " +  '"' + tutorial_name + '"') else ""} \
       ~{if defined(workflow_tutorial_locally) then ("--workflow " +  '"' + workflow_tutorial_locally + '"') else ""} \
@@ -118,13 +110,7 @@ task PlanemoTrainingGenerateFromWf {
       ~{if defined(postgres_psql_path) then ("--postgres_psql_path " +  '"' + postgres_psql_path + '"') else ""} \
       ~{if defined(postgres_database_user) then ("--postgres_database_user " +  '"' + postgres_database_user + '"') else ""} \
       ~{if defined(database_connection) then ("--database_connection " +  '"' + database_connection + '"') else ""} \
-      ~{if defined(shed_tool_path) then ("--shed_tool_path " +  '"' + shed_tool_path + '"') else ""} \
-      ~{if (galaxy_single_user) then "--galaxy_single_user" else ""} \
-      ~{if (daemon) then "--daemon" else ""} \
-      ~{if defined(pid_file) then ("--pid_file " +  '"' + pid_file + '"') else ""} \
-      ~{if (daemon_dot) then "--daemon." else ""} \
-      ~{if (ignore_dependency_problems) then "--ignore_dependency_problems" else ""} \
-      ~{if (shed_install) then "--shed_install" else ""}
+      ~{if defined(shed_tool_conf) then ("--shed_tool_conf " +  '"' + shed_tool_conf + '"') else ""}
   >>>
   parameter_meta {
     topic_name: "Name (directory name) of the topic to create\\nor in which a tutorial should be created or\\nupdates  [required]"
@@ -173,20 +159,13 @@ task PlanemoTrainingGenerateFromWf {
     database_type: "[postgres|postgres_docker|sqlite|auto]\\nType of database to use for profile -\\n'auto', 'sqlite', 'postgres', and\\n'postgres_docker' are available options. Use\\npostgres to use an existing postgres server\\nyou user can access without a password via\\nthe psql command. Use postgres_docker to\\nhave Planemo manage a docker container\\nrunning postgres. Data with postgres_docker\\nis not yet persisted past when you restart\\nthe docker container launched by Planemo so\\nbe careful with this option."
     postgres_psql_path: "Name or or path to postgres client binary\\n(psql)."
     postgres_database_user: "Postgres username for managed development"
-    database_connection: "Database connection string to use for"
-    shed_tool_path: "Location of shed tools directory for Galaxy."
-    galaxy_single_user: "/ --no_galaxy_single_user\\nBy default Planemo will configure Galaxy to\\nrun in single-user mode where there is just\\none user and this user is automatically\\nlogged it. Use --no_galaxy_single_user to\\nprevent Galaxy from running this way."
-    daemon: "Serve Galaxy process as a daemon."
-    pid_file: "Location of pid file is executed with"
-    daemon_dot: ""
-    ignore_dependency_problems: "When installing shed repositories for\\nworkflows, ignore dependency issues. These\\nlikely indicate a problem but in some cases\\nmay not prevent a workflow from successfully\\nexecuting."
-    shed_install: "/ --no_shed_install\\nBy default Planemo will attempt to install\\nrepositories needed for workflow testing.\\nThis may not be appropriate for production\\nservers and so this can disabled by calling\\nplanemo with --no_shed_install."
+    database_connection: "Database connection string to use for\\nGalaxy."
+    shed_tool_conf: "Location of shed tools conf file for Galaxy.\\n--shed_tool_path TEXT           Location of shed tools directory for Galaxy.\\n--galaxy_single_user / --no_galaxy_single_user\\nBy default Planemo will configure Galaxy to\\nrun in single-user mode where there is just\\none user and this user is automatically\\nlogged it. Use --no_galaxy_single_user to\\nprevent Galaxy from running this way.\\n--daemon                        Serve Galaxy process as a daemon.\\n--pid_file FILE                 Location of pid file is executed with\\n--daemon.\\n--ignore_dependency_problems    When installing shed repositories for\\nworkflows, ignore dependency issues. These\\nlikely indicate a problem but in some cases\\nmay not prevent a workflow from successfully\\nexecuting.\\n--shed_install / --no_shed_install\\nBy default Planemo will attempt to install\\nrepositories needed for workflow testing.\\nThis may not be appropriate for production\\nservers and so this can disabled by calling\\nplanemo with --no_shed_install.\\n--help                          Show this message and exit.\\n"
     modify: "[required]"
     _workflowid_text: "--workflow_id TEXT              ID of the workflow on the Galaxy instance"
-    _galaxyemail_text: "--galaxy_email TEXT             E-mail address to use when launching single-"
+    galaxy_dot: "--galaxy_email TEXT             E-mail address to use when launching single-"
     resolvers_dot: "--conda_prefix DIRECTORY        Conda prefix to use for conda dependency"
     commands_dot: "--conda_exec FILE               Location of conda executable."
-    _shedtoolconf_text: "--shed_tool_conf TEXT           Location of shed tools conf file for Galaxy."
   }
   output {
     File out_stdout = stdout()

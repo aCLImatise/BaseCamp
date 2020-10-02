@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmgc_mapper.cwl
+id: gmgc_mapper.cwl
 inputs:
 - id: in_input
   doc: 'Path to the input genome FASTA file. (default: None)'

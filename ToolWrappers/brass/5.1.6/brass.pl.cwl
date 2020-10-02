@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../brass.pl.cwl
+id: brass.pl.cwl
 inputs:
 - id: in_outdir
   doc: -o   Folder to output result to.

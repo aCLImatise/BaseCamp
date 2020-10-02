@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktremotetest.cwl
+id: ktremotetest.cwl
 inputs:
 - id: in_iv
   doc: ''

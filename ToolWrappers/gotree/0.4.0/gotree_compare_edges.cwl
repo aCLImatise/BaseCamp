@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_compare_edges.cwl
+id: gotree_compare_edges.cwl
 inputs:
 - id: in_moved_tax_a
   doc: 'only if --transfer-dist is given: Then display, for each branch, taxa that

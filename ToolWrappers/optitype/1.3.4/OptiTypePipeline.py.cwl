@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OptiTypePipeline.py.cwl
+id: OptiTypePipeline.py.cwl
 inputs:
 - id: in_input
   doc: ".fastq file(s) (fished or raw) or .bam files stored\nfor re-use, generated\

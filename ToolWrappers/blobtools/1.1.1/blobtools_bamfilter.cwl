@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blobtools_bamfilter.cwl
+id: blobtools_bamfilter.cwl
 inputs:
 - id: in_bam
   doc: BAM file (sorted by name)

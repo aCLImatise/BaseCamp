@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genePredToGtf.cwl
+id: genePredToGtf.cwl
 inputs:
 - id: in_utr
   doc: '- Add 5UTR and 3UTR features'

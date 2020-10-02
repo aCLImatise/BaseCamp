@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../grabix.cwl
+id: grabix.cwl
 inputs:
 - id: in_index
   doc: ''

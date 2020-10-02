@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyprophet_reduce.cwl
+id: pyprophet_reduce.cwl
 inputs:
 - id: in_in
   doc: Scored PyProphet input file.  [required]

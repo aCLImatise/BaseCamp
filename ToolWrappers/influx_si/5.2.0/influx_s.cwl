@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../influx_s.cwl
+id: influx_s.cwl
 inputs:
 - id: in_no_opt
   doc: "no optimization, just use free parameters as is (after a\nprojection on feasibility\

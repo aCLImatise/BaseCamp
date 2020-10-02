@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arcs.cwl
+id: arcs.cwl
 inputs:
 - id: in_fof_name
   doc: text file listing input filenames

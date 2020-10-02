@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergeassembly.cwl
+id: mergeassembly.cwl
 inputs:
 - id: in_subject_contig_name
   doc: Subject Contig name
@@ -16,11 +16,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -q
-- id: in_minidentiy
-  doc: minIdentiy
-  type: boolean
-  inputBinding:
-    prefix: -i
 - id: in_stringent_rankrank_highest
   doc: "stringent rank[0]\nrank: 0 highest stringent; 1 low stringent\n"
   type: boolean

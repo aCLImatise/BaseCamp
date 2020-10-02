@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vecfix.cwl
+id: vecfix.cwl
 inputs: []
 outputs:
 - id: out_stdout

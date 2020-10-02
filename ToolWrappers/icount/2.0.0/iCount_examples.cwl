@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_examples.cwl
+id: iCount_examples.cwl
 inputs:
 - id: in_od
   doc: ', --out_dir       Directory to which example scripts should be copied (default:

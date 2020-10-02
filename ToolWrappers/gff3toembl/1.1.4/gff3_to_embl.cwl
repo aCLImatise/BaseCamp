@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff3_to_embl.cwl
+id: gff3_to_embl.cwl
 inputs:
 - id: in_authors
   doc: Authors (in the EMBL RA line style)

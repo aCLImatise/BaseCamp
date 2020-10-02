@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmalign2.cwl
+id: hmmalign2.cwl
 inputs:
 - id: in_only_print_symbols
   doc: ': only print symbols aligned to match states'

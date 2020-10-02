@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../catmt.cwl
+id: catmt.cwl
 inputs: []
 outputs:
 - id: out_stdout

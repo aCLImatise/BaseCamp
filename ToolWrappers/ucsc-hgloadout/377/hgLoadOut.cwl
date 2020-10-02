@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hgLoadOut.cwl
+id: hgLoadOut.cwl
 inputs:
 - id: in_tab_file
   doc: "- don't actually load database, just create tab file"

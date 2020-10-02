@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rust_gdb.cwl
+id: rust_gdb.cwl
 inputs: []
 outputs:
 - id: out_stdout

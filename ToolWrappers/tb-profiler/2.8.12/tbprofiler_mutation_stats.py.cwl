@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tbprofiler_mutation_stats.py.cwl
+id: tbprofiler_mutation_stats.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

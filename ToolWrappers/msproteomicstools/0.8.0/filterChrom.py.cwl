@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterChrom.py.cwl
+id: filterChrom.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

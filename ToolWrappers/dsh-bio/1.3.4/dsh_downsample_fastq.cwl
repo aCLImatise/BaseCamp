@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_downsample_fastq.cwl
+id: dsh_downsample_fastq.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

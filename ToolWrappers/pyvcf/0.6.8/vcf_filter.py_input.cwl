@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcf_filter.py_input.cwl
+id: vcf_filter.py_input.cwl
 inputs:
 - id: in_no_filtered
   doc: ''

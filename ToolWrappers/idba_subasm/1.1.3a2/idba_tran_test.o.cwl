@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idba_tran_test.o.cwl
+id: idba_tran_test.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

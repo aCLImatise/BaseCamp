@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../regression_predict.cwl
+id: regression_predict.cwl
 inputs:
 - id: in_config
   doc: Configuration file

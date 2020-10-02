@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remove_redundant_variations.cwl
+id: remove_redundant_variations.cwl
 inputs:
 - id: in_reference_dot_fast_a
   doc: ''

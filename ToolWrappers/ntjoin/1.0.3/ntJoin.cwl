@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ntJoin.cwl
+id: ntJoin.cwl
 inputs:
 - id: in_ignored_for_compatibility
   doc: Ignored for compatibility.

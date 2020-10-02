@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../consEntropy.cwl
+id: consEntropy.cwl
 inputs:
 - id: in_instead_computing_entropy
   doc: "Instead of computing the relative entropy from two .mod files,\njust use the\

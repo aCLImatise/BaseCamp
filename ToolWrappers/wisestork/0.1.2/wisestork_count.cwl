@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wisestork_count.cwl
+id: wisestork_count.cwl
 inputs:
 - id: in_binsize
   doc: RANGE  Bin size to use. Default = 50000

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../JolyTree.sh.cwl
+id: JolyTree.sh.cwl
 inputs:
 - id: in_directory_name_containing
   doc: "directory name containing  FASTA-formatted contig files;  only files\nending\

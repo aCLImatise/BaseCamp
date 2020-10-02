@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Consensus.cwl
+id: Consensus.cwl
 inputs:
 - id: in_out
   doc: write the output FASTA file to OUTPUT

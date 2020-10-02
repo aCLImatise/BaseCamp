@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_grid.py.cwl
+id: medpy_grid.py.cwl
 inputs:
 - id: in_example
   doc: "Option 1/2: Supply an image to create the grid volume\nby example (i.e. with\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MUSIC.cwl
+id: MUSIC.cwl
 inputs:
 - id: in_preprocess
   doc: '[File format ("SAM"/"ELAND"/"bowtie"/"tagAlign"/"BED5"/"BED6")] [Mapped reads

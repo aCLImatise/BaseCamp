@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_process_wormbase.pl.cwl
+id: bp_process_wormbase.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

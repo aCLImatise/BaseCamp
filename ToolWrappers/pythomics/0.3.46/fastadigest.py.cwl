@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastadigest.py.cwl
+id: fastadigest.py.cwl
 inputs:
 - id: in_threads_to_run
   doc: Threads to run

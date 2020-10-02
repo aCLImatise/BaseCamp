@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../revtrans.py.cwl
+id: revtrans.py.cwl
 inputs:
 - id: in_gap_in
   doc: "Specify gap characters in the input sequences.\nDefault is '.-~'"

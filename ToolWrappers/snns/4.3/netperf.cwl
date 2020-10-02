@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../netperf.cwl
+id: netperf.cwl
 inputs: []
 outputs:
 - id: out_stdout

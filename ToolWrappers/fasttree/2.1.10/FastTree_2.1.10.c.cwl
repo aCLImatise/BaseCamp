@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FastTree_2.1.10.c.cwl
+id: FastTree_2.1.10.c.cwl
 inputs: []
 outputs:
 - id: out_stdout

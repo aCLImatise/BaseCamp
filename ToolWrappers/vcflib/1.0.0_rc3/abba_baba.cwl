@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abba_baba.cwl
+id: abba_baba.cwl
 inputs:
 - id: in_tree
   doc: ',B,C,D'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cat_pdb.cwl
+id: cat_pdb.cwl
 inputs:
 - id: in_config
   doc: This file can be a YAML file, JSON file or JSON string

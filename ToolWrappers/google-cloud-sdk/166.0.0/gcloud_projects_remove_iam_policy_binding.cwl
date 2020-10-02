@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_projects_remove_iam_policy_binding.cwl
+id: gcloud_projects_remove_iam_policy_binding.cwl
 inputs:
 - id: in_role
   doc: ''

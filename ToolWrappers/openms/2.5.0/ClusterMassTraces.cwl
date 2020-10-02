@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ClusterMassTraces.cwl
+id: ClusterMassTraces.cwl
 inputs:
 - id: in_in
   doc: "*                        Mass traces (valid formats: 'consensusXML')"

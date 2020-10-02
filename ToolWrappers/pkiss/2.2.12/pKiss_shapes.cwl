@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pKiss_shapes.cwl
+id: pKiss_shapes.cwl
 inputs:
 - id: in_read_energy_parameters
   doc: "Read energy parameters from paramfile, instead of using the default parameter\n\

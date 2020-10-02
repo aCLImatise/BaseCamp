@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_sliding.cwl
+id: seqkit_sliding.cwl
 inputs:
 - id: in_circular_genome
   doc: circular genome.

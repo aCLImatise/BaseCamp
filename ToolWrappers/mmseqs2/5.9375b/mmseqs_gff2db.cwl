@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mmseqs_gff2db.cwl
+id: mmseqs_gff2db.cwl
 inputs:
 - id: in_gff_type
   doc: type in the GFF file to filter by

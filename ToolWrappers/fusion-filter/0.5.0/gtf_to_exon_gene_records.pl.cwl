@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gtf_to_exon_gene_records.pl.cwl
+id: gtf_to_exon_gene_records.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

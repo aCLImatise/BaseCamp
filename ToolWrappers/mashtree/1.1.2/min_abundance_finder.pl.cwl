@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../min_abundance_finder.pl.cwl
+id: min_abundance_finder.pl.cwl
 inputs:
 - id: in_gt
   doc: "1   Look for the first peak at this kmer count\nand then the next valley."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebest_distmat.cwl
+id: treebest_distmat.cwl
 inputs:
 - id: in_dn_vertical_line_ds_vertical_line_dm_vertical_line_jtt_vertical_line_kimura_vertical_line_mm_vertical_line_dns
   doc: ''

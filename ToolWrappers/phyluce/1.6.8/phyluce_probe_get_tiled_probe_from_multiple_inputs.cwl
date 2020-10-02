@@ -1,21 +1,15 @@
 class: CommandLineTool
-id: ../../../phyluce_probe_get_tiled_probe_from_multiple_inputs.cwl
+id: phyluce_probe_get_tiled_probe_from_multiple_inputs.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_multi_fast_a_output
+  doc: "MULTI_FASTA_OUTPUT\n--output OUTPUT\n--probe-prefix\nPROBE_PREFIX\n--designer\
+    \ DESIGNER\n--design DESIGN\n[--probe-length LENGTH]\n[--tiling-density DENSITY]\n\
+    [--overlap {middle,flush-left}]\n[--probe-bed PROBE_BED]\n[--locus-bed LOCUS_BED]\n\
+    [--masking MASK]\n[--do-not-remove-ambiguous]\n[--remove-gc]\n[--start-index START_INDEX]\n\
+    [--two-probes]"
   type: boolean
   inputBinding:
     prefix: --multi-fasta-output
-- id: in_var_1
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --probe-prefix
-- id: in_design
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --design
 - id: in_fast_as
   doc: The folder of fasta files from which to design probes
   type: Directory
@@ -26,11 +20,21 @@ inputs:
   type: File
   inputBinding:
     prefix: --output
+- id: in_probe_prefix
+  doc: The prefix (e.g. "uce-") to add to all probes designed
+  type: string
+  inputBinding:
+    prefix: --probe-prefix
 - id: in_designer
   doc: Your last name (to indicate who designed the probes)
   type: string
   inputBinding:
     prefix: --designer
+- id: in_design
+  doc: The design name.
+  type: string
+  inputBinding:
+    prefix: --design
 - id: in_probe_length
   doc: The length of the probes sequence to design
   type: long
@@ -81,16 +85,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --two-probes
-- id: in__output_output
-  doc: --output OUTPUT
-  type: string
-  inputBinding:
-    position: 0
-- id: in__designer_designer
-  doc: --designer DESIGNER
-  type: string
-  inputBinding:
-    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nibFrag.cwl
+id: nibFrag.cwl
 inputs:
 - id: in_masked
   doc: Use lower-case characters for bases meant to be masked out.

@@ -12,7 +12,6 @@ task MascotAdapter {
     String? taxonomy
     String? modifications
     String? variable_modifications
-    Boolean? charges
     String? db
     Int? hits
     Int? cleavage
@@ -47,7 +46,6 @@ task MascotAdapter {
       ~{if defined(taxonomy) then ("-taxonomy " +  '"' + taxonomy + '"') else ""} \
       ~{if defined(modifications) then ("-modifications " +  '"' + modifications + '"') else ""} \
       ~{if defined(variable_modifications) then ("-variable_modifications " +  '"' + variable_modifications + '"') else ""} \
-      ~{if (charges) then "-charges" else ""} \
       ~{if defined(db) then ("-db " +  '"' + db + '"') else ""} \
       ~{if defined(hits) then ("-hits " +  '"' + hits + '"') else ""} \
       ~{if defined(cleavage) then ("-cleavage " +  '"' + cleavage + '"') else ""} \
@@ -81,7 +79,6 @@ task MascotAdapter {
     taxonomy: "The taxonomy (default: 'All entries' valid: 'All entries', '. . Archaea (Archaeobacteria)', '. . Eukaryota (eucaryotes)', '. . . . Alveolata (alveolates)', '. . . . . . Plasmodium falciparum (malaria parasite)', '. . . . . . Other Alveolata', '. . . . Metazoa (Animals)', '. . . . . . Caenorhabditis elegans', '. . . . . . Drosophila (fruit flies)', '. . . . . . Chordata (vertebrates and relatives)', '. . . . . . . . bony vertebrates', '. . . . . . . . . . lobe-finned fish and tetrapod clade', '. . . . . . . . . . . . Mammalia (mammals)', '. . . . . . . . . . . . . . Primates', '. . . . . . . . . . . . . . . . Homo sapiens (human)', '. . . . . . . . . . . . . . . . Other primates', '. . . . . . . . . . . . . . Rodentia (Rodents)', '. . . . . . . . . . . . . . . . Mus.', '. . . . . . . . . . . . . . . . . . Mus musculus (house mouse)', '. . . . . . . . . . . . . . . . Rattus', '. . . . . . . . . . . . . . . . Other rodentia', '. . . . . . . . . . . . . . Other mammalia', '. . . . . . . . . . . . Xenopus laevis (African clawed frog)', '. . . . . . . . . . . . Other lobe-finned fish and tetrapod clade', '. . . . . . . . . . Actinopterygii (ray-finned fishes)', '. . . . . . . . . . . . Takifugu rubripes (Japanese Pufferfish)', '. . . . . . . . . . . . Danio rerio (zebra fish)', '. . . . . . . . . . . . Other Actinopterygii', '. . . . . . . . Other Chordata', '. . . . . . Other Metazoa', '. . . . Dictyostelium discoideum', '. . . . Fungi', '. . . . . . Saccharomyces Cerevisiae (baker\\'s yeast)', '. . . . . . Schizosaccharomyces pombe (fission yeast)', '. . . . . . Pneumocystis carinii', '. . . . . . Other Fungi', '. . . . Viridiplantae (Green Plants)', '. . . . . . Arabidopsis thaliana (thale cress)', '. . . . . . Oryza sativa (rice)', '. . . . . . Other green plants', '. . . . Other Eukaryota', '. . Bacteria (Eubacteria)', '. . . . Actinobacteria (class)', '. . . . . . Mycobacterium tuberculosis complex', '. . . . . . Other Actinobacteria (class)', '. . . . Firmicutes (gram-positive bacteria)', '. . . . . . Bacillus subtilis', '. . . . . . Mycoplasma', '. . . . . . Streptococcus Pneumoniae', '. . . . . . Streptomyces coelicolor', '. . . . . . Other Firmicutes', '. . . . Proteobacteria (purple bacteria)', '. . . . . . Agrobacterium tumefaciens', '. . . . . . Campylobacter jejuni', '. . . . . . Escherichia coli', '. . . . . . Neisseria meningitidis', '. . . . . . Salmonella', '. . . . . . Other Proteobacteria', '. . . . Other Bacteria', '. . Viruses', '. . . . Hepatitis C virus', '. . . . Other viruses', '. . Other (includes plasmids and artificial sequences)', '. . unclassified', '. . Species information unavailable')"
     modifications: "The modifications i.e. Carboxymethyl (C)"
     variable_modifications: "The variable modifications i.e. Carboxymethyl (C)"
-    charges: "[1+ 2+ ...]             The different charge states (default: '[1+ 2+ 3+]')"
     db: "The database to search in (default: 'MSDB')"
     hits: "The number of hits to report (default: 'AUTO')"
     cleavage: "The enzyme descriptor to the enzyme used for digestion. (Trypsin is default, None would be best for peptide input or unspecific digestion, for more please refer to your mascot server). (default: 'Trypsin' valid: 'Trypsin', 'Arg-C', 'Asp-N', 'Asp-N_ambic', 'Chymotrypsin', 'CNBr', 'CNBr+Trypsin', 'Formic_acid', 'Lys-C', 'Lys-C/P', 'PepsinA', 'Tryp-CNBr', 'TrypChymo', 'Trypsin/P', 'V8-DE', 'V8-E', 'semiTrypsin', 'LysC+AspN', 'None')"

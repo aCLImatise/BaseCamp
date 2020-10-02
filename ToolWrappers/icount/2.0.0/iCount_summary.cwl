@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_summary.cwl
+id: iCount_summary.cwl
 inputs:
 - id: in_types_length_file
   doc: 'Path to file with lengths of each type (default: None)'

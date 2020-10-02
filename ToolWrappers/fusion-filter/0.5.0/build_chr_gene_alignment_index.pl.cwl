@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../build_chr_gene_alignment_index.pl.cwl
+id: build_chr_gene_alignment_index.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

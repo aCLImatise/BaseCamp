@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ngmlr.cwl
+id: ngmlr.cwl
 inputs:
 - id: in__reference_filerequired
   doc: ",  --reference <file>\n(required)  Path to the reference genome (FASTA/Q,\

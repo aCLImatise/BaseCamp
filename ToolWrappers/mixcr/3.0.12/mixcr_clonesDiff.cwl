@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mixcr_clonesDiff.cwl
+id: mixcr_clonesDiff.cwl
 inputs:
 - id: in_verbose
   doc: Verbose warning messages.

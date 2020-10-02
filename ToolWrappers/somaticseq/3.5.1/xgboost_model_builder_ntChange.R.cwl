@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xgboost_model_builder_ntChange.R.cwl
+id: xgboost_model_builder_ntChange.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

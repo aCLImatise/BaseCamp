@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convert_alphabet.py_input_fastx.cwl
+id: convert_alphabet.py_input_fastx.cwl
 inputs:
 - id: in_r
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_utilities_merge_next_seq_gzip_files.cwl
+id: phyluce_utilities_merge_next_seq_gzip_files.cwl
 inputs:
 - id: in_input
   doc: The path to a directory containing the reads to merge.

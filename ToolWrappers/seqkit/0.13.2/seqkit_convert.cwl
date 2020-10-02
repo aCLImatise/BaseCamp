@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_convert.cwl
+id: seqkit_convert.cwl
 inputs:
 - id: in_dry_run
   doc: dry run

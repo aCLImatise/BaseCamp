@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kronos_make_config.cwl
+id: kronos_make_config.cwl
 inputs:
 - id: in_output_filename
   doc: "a name for the resultant config file\n"

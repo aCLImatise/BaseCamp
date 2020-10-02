@@ -73,12 +73,10 @@ task Prinseqlitepl {
     Boolean? stats_info
     Boolean? h
     String tabs_dot
-    String option_dot
   }
   command <<<
     prinseq_lite_pl \
       ~{tabs_dot} \
-      ~{option_dot} \
       ~{if (man) then "-man" else ""} \
       ~{if (version) then "-version" else ""} \
       ~{if (verbose) then "-verbose" else ""} \
@@ -222,7 +220,6 @@ task Prinseqlitepl {
     stats_info: ""
     h: ""
     tabs_dot: "If you specify any statistic option, no other ouput will be"
-    option_dot: "-stats_info"
   }
   output {
     File out_stdout = stdout()

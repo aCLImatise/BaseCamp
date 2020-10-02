@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crosstable_gene_ids.cwl
+id: crosstable_gene_ids.cwl
 inputs: []
 outputs:
 - id: out_stdout

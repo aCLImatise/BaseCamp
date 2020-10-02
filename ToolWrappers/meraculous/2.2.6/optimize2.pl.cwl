@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../optimize2.pl.cwl
+id: optimize2.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

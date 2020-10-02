@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../complete_ant_cmd.pl.cwl
+id: complete_ant_cmd.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

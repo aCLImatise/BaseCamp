@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../handle_fasta.py.cwl
+id: handle_fasta.py.cwl
 inputs:
 - id: in_complement
   doc: Create a double genome with both + and - strand

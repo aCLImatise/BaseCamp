@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../estscan.cwl
+id: estscan.cwl
 inputs:
 - id: in_one_sequence_output
   doc: All in one sequence output

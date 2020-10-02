@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ale2wiggle.py.cwl
+id: ale2wiggle.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

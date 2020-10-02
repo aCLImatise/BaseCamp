@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spades_read_filter.cwl
+id: spades_read_filter.cwl
 inputs:
 - id: in_km_er
   doc: K-mer length

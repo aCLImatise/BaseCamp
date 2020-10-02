@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bindash.cwl
+id: bindash.cwl
 inputs:
 - id: in_com_mm_and
   doc: ''

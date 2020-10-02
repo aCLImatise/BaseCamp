@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanini_rename_contigs.cwl
+id: ppanini_rename_contigs.cwl
 inputs:
 - id: in_input
   doc: fasta file

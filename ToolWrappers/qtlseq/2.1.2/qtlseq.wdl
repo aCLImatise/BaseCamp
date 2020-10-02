@@ -2,10 +2,13 @@ version 1.0
 
 task Qtlseq {
   input {
-    Int? b_two
     Boolean? _ref_reference
     Boolean? _parent_fastq
     Boolean? bone
+    Boolean? b_two
+    Boolean? var_none
+    Boolean? n_two
+    Directory? _output_directory
     Boolean? _threads_number
     Boolean? _window_kb
     Boolean? _step_kb
@@ -26,10 +29,13 @@ task Qtlseq {
   command <<<
     qtlseq \
       ~{exist_dot} \
-      ~{if defined(b_two) then ("-b2 " +  '"' + b_two + '"') else ""} \
       ~{if (_ref_reference) then "-r" else ""} \
       ~{if (_parent_fastq) then "-p" else ""} \
       ~{if (bone) then "-b1" else ""} \
+      ~{if (b_two) then "-b2" else ""} \
+      ~{if (var_none) then "-n1" else ""} \
+      ~{if (n_two) then "-n2" else ""} \
+      ~{if (_output_directory) then "-o" else ""} \
       ~{if (_threads_number) then "-t" else ""} \
       ~{if (_window_kb) then "-w" else ""} \
       ~{if (_step_kb) then "-s" else ""} \
@@ -47,10 +53,13 @@ task Qtlseq {
       ~{if (species) then "--species" else ""}
   >>>
   parameter_meta {
-    b_two: ""
     _ref_reference: ", --ref         Reference fasta."
     _parent_fastq: ", --parent      fastq or bam of parent. If you specify\\nfastq, please separate pairs by comma,\\ne.g. -p fastq1,fastq2. You can use this\\noptiion multiple times"
     bone: ", --bulk1      fastq or bam of bulk 1. If you specify\\nfastq, please separate pairs by comma,\\ne.g. -b1 fastq1,fastq2. You can use this\\noptiion multiple times"
+    b_two: ", --bulk2      fastq or bam of bulk 2. If you specify\\nfastq, please separate pairs by comma,\\ne.g. -b2 fastq1,fastq2. You can use this\\noptiion multiple times"
+    var_none: ", --N-bulk1    Number of individuals in bulk 1."
+    n_two: ", --N-bulk2    Number of individuals in bulk 2."
+    _output_directory: ", --out         Output directory. Specified name must not"
     _threads_number: ", --threads     Number of threads. If you specify the number\\nbelow one, then QTL-seq will use the threads\\nas many as possible. [2]"
     _window_kb: ", --window      Window size (kb). [2000]"
     _step_kb: ", --step        Step size (kb). [100]"
@@ -70,5 +79,6 @@ task Qtlseq {
   }
   output {
     File out_stdout = stdout()
+    Directory out__output_directory = "${in__output_directory}"
   }
 }

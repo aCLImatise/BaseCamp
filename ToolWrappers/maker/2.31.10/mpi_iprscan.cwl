@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mpi_iprscan.cwl
+id: mpi_iprscan.cwl
 inputs: []
 outputs:
 - id: out_stdout

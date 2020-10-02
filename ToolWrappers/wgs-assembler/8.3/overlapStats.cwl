@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlapStats.cwl
+id: overlapStats.cwl
 inputs:
 - id: in_var_0
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LAa2b.cwl
+id: LAa2b.cwl
 inputs: []
 outputs:
 - id: out_stdout

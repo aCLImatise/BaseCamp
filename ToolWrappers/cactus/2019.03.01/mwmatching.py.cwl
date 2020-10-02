@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mwmatching.py.cwl
+id: mwmatching.py.cwl
 inputs:
 - id: in_verbose
   doc: Verbose output

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedGraphToBigWig.cwl
+id: bedGraphToBigWig.cwl
 inputs: []
 outputs:
 - id: out_stdout

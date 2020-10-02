@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fwdppConfig.cwl
+id: fwdppConfig.cwl
 inputs:
 - id: in_print
   doc: ''

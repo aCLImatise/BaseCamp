@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../timsdata.dll.cwl
+id: timsdata.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../deepbgc_prepare.cwl
+id: deepbgc_prepare.cwl
 inputs:
-- id: in_debug
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --debug
-- id: in_limit_to_record
-  doc: Process only specific record ID. Can be provided multiple times
-  type: string
-  inputBinding:
-    prefix: --limit-to-record
 - id: in_prodigal_meta_mode
   doc: Run Prodigal in '-p meta' mode to enable detecting genes in short contigs
   type: boolean
@@ -32,6 +22,16 @@ inputs:
   type: File
   inputBinding:
     prefix: --output-tsv
+- id: in_limit_to_record
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --limit-to-record
+- id: in_debug
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --debug
 - id: in_inputs
   doc: Input sequence file path(s) (FASTA/GenBank)
   type: string

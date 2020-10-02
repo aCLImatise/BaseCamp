@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../matrix2meme.cwl
+id: matrix2meme.cwl
 inputs:
 - id: in_dna
   doc: use DNA IUPAC alphabet

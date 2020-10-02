@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ../../../add_bam_track.pl.cwl
+id: add_bam_track.pl.cwl
 inputs:
-- id: in_label
-  doc: \
-  type: string
-  inputBinding:
-    prefix: --label
-- id: in_bam_url
-  doc: \
-  type: File
-  inputBinding:
-    prefix: --bam_url
 - id: in_in
   doc: 'input trackList.json file. Default: data/trackList.json.'
   type: File
@@ -21,6 +11,16 @@ inputs:
   type: File
   inputBinding:
     prefix: --out
+- id: in_bam_url
+  doc: URL to BAM file (can be a relative path)
+  type: File
+  inputBinding:
+    prefix: --bam_url
+- id: in_label
+  doc: unique track label for the new track.
+  type: string
+  inputBinding:
+    prefix: --label
 - id: in_key
   doc: 'key (display name) for track [default: label value]'
   type: string

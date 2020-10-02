@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maf_randomize.py.cwl
+id: maf_randomize.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

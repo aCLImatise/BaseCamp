@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_networks.cwl
+id: gcloud_compute_networks.cwl
 inputs:
 - id: in_networks
   doc: SYNOPSIS

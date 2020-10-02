@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Nucmer_scaf_validate.pl.cwl
+id: Nucmer_scaf_validate.pl.cwl
 inputs:
 - id: in_input_scaffold_fasta
   doc: input scaffold fasta file (e.g., scaf1.fa)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cpptraj_rgyr.cwl
+id: cpptraj_rgyr.cwl
 inputs:
 - id: in_config
   doc: Configuration file

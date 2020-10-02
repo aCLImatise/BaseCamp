@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FFEval.cwl
+id: FFEval.cwl
 inputs:
 - id: in_in
   doc: "*            Feature input file, which contains the data to be tested against\

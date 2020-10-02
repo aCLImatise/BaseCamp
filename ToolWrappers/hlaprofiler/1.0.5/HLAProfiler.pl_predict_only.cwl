@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HLAProfiler.pl_predict_only.cwl
+id: HLAProfiler.pl_predict_only.cwl
 inputs:
 - id: in_counts_directory
   doc: '|cd            location of directory containing filtered and paired read counts

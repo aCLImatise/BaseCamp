@@ -1,56 +1,26 @@
 class: CommandLineTool
-id: ../../../sqStoreDumpFASTQ.cwl
+id: sqStoreDumpFASTQ.cwl
 inputs:
-- id: in_s
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -S
-- id: in_write_files_outprefix
-  doc: "write files out-prefix.(libname).fastq, ...\nif out-prefix is '-', all sequences\
-    \ output to stdout\nif out-prefix ends in .gz, .bz2 or .xz, output is compressed"
-  type: long
-  inputBinding:
-    prefix: -o
-- id: in_fast_q
-  doc: "output is FASTQ format (with extension .fastq, default)\n(note that QVs are\
-    \ not stored, and are invalid)"
-  type: boolean
-  inputBinding:
-    prefix: -fastq
-- id: in_fast_a
-  doc: output is FASTA format (with extension .fasta)
-  type: boolean
-  inputBinding:
-    prefix: -fasta
-- id: in_no_libname
-  doc: don't include the library name in the output file name
-  type: File
-  inputBinding:
-    prefix: -nolibname
-- id: in_no_read_name
-  doc: "don't include the read name in the sequence header.  header will be:\n'>original-name\
+- id: in_o_outprefix_write
+  doc: "-o out-prefix       write files out-prefix.(libname).fastq, ...\nif out-prefix\
+    \ is '-', all sequences output to stdout\nif out-prefix ends in .gz, .bz2 or .xz,\
+    \ output is compressed\n-fastq              output is FASTQ format (with extension\
+    \ .fastq, default)\n(note that QVs are not stored, and are invalid)\n-fasta  \
+    \            output is FASTA format (with extension .fasta)\n-nolibname      \
+    \    don't include the library name in the output file name\n-noreadname     \
+    \    don't include the read name in the sequence header.  header will be:\n'>original-name\
     \ id=<seqID> clr=<bgn>,<end>   with names\n'>read<seqID> clr=<bgn>,<end>     \
     \           without names"
-  type: boolean
+  type: File
   inputBinding:
-    prefix: -noreadname
+    prefix: -S
 - id: in_reverse
-  doc: Dump the reverse-complement of the read.
+  doc: "Dump the reverse-complement of the read.\n-l id               output only\
+    \ read in library number 'id'\n-r id[-id]          output only the single read\
+    \ 'id', or the specified range of ids"
   type: boolean
   inputBinding:
     prefix: -reverse
-- id: in_output_only_read_library
-  doc: output only read in library number 'id'
-  type: long
-  inputBinding:
-    prefix: -l
-- id: in_output_only_single_read
-  doc: "[-id]          output only the single read 'id', or the specified range of\
-    \ ids"
-  type: string
-  inputBinding:
-    prefix: -r
 - id: in_raw
   doc: Dump raw reads.
   type: boolean
@@ -81,11 +51,19 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_no_libname
-  doc: don't include the library name in the output file name
+- id: out_o_outprefix_write
+  doc: "-o out-prefix       write files out-prefix.(libname).fastq, ...\nif out-prefix\
+    \ is '-', all sequences output to stdout\nif out-prefix ends in .gz, .bz2 or .xz,\
+    \ output is compressed\n-fastq              output is FASTQ format (with extension\
+    \ .fastq, default)\n(note that QVs are not stored, and are invalid)\n-fasta  \
+    \            output is FASTA format (with extension .fasta)\n-nolibname      \
+    \    don't include the library name in the output file name\n-noreadname     \
+    \    don't include the read name in the sequence header.  header will be:\n'>original-name\
+    \ id=<seqID> clr=<bgn>,<end>   with names\n'>read<seqID> clr=<bgn>,<end>     \
+    \           without names"
   type: File
   outputBinding:
-    glob: $(inputs.in_no_libname)
+    glob: $(inputs.in_o_outprefix_write)
 cwlVersion: v1.1
 baseCommand:
 - sqStoreDumpFASTQ

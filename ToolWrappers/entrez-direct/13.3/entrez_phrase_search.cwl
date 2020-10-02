@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../entrez_phrase_search.cwl
+id: entrez_phrase_search.cwl
 inputs: []
 outputs:
 - id: out_stdout

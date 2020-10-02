@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../exact_tandems.cwl
+id: exact_tandems.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../figtree.cwl
+id: figtree.cwl
 inputs:
 - id: in_graphic
   doc: a graphic with the given format
@@ -21,11 +21,16 @@ inputs:
   type: File
   inputBinding:
     prefix: -url
-- id: in_a_dotrambautateddotacdotuk
-  doc: http://tree.bio.ed.ac.uk/
-  type: string
+- id: in_tree_file_name
+  doc: ''
+  type: File
   inputBinding:
     position: 0
+- id: in_graphic_file_name
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../slamdunk_all.cwl
+id: slamdunk_all.cwl
 inputs:
 - id: in_o
   doc: '[-5 TRIM5] [-a MAXPOLYA] [-n TOPN]'

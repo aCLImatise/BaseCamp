@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ShapeKnots.cwl
+id: ShapeKnots.cwl
 inputs:
 - id: in_constraint
   doc: "Specify a constraints file to be applied.\nDefault is to have no constraints\

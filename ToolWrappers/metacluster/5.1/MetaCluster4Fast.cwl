@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MetaCluster4Fast.cwl
+id: MetaCluster4Fast.cwl
 inputs: []
 outputs:
 - id: out_stdout

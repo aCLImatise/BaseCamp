@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_plotcon.cwl
+id: _plotcon.cwl
 inputs:
 - id: in_winsize
   doc: "integer    [4] Number of columns to average alignment\nquality over. The larger\

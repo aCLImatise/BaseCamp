@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tgTigDisplay.cwl
+id: tgTigDisplay.cwl
 inputs:
 - id: in_t
   doc: ''

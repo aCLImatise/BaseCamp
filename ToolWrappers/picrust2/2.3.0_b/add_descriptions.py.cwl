@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../add_descriptions.py.cwl
+id: add_descriptions.py.cwl
 inputs:
 - id: in_input
   doc: Input function abundance table.

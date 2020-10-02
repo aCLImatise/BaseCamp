@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../emirge_amplicon.py.cwl
+id: emirge_amplicon.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

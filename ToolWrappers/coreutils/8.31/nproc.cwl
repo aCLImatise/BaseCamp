@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nproc.cwl
+id: nproc.cwl
 inputs:
 - id: in_all
   doc: print the number of installed processors

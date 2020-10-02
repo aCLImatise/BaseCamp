@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../incremental_gaussian_estimator.py.cwl
+id: incremental_gaussian_estimator.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

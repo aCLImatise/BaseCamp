@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../wtlay.cwl
+id: wtlay.cwl
 inputs:
 - id: in_long_reads_files
   doc: Long reads sequences file(s), + *

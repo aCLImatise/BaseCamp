@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_chkbwt.cwl
+id: fermi_chkbwt.cwl
 inputs:
 - id: in_load_fmindex_memory
   doc: load the FM-index as a memory mapped file

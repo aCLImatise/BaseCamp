@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tripaille_job_add_job.cwl
+id: tripaille_job_add_job.cwl
 inputs:
 - id: in_priority
   doc: 'An integer score to prioritize the job  [default: 10]'

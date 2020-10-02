@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lighter.cwl
+id: lighter.cwl
 inputs:
 - id: in_seqfile_path_sequence
   doc: ": seq_file is the path to the sequence file. Can use multiple -r to specifiy\
@@ -14,11 +14,6 @@ inputs:
   type: long
   inputBinding:
     prefix: -k
-- id: in_od
-  doc: ': (default: ./)'
-  type: File
-  inputBinding:
-    prefix: -od
 - id: in_number_use_default
   doc: ': number of threads to use (default: 1)'
   type: long
@@ -81,11 +76,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_od
-  doc: ': (default: ./)'
-  type: File
-  outputBinding:
-    glob: $(inputs.in_od)
 cwlVersion: v1.1
 baseCommand:
 - lighter

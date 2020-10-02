@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ipa2_graph_to_contig.cwl
+id: ipa2_graph_to_contig.cwl
 inputs:
 - id: in_sg_edges_list_fn
   doc: "Input. File containing string graph edges, produced by\novlp_to_graph.py.\

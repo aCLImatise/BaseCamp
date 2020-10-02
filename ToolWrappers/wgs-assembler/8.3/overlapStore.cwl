@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../overlapStore.cwl
+id: overlapStore.cwl
 inputs:
 - id: in_dump_a_store
   doc: dump a store

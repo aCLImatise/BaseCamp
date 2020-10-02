@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bamtools_2.4.1_split.cwl
+id: bamtools_2.4.1_split.cwl
 inputs:
 - id: in_in
   doc: the input BAM file [stdin]

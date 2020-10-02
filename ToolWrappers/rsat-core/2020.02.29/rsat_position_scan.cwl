@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_position_scan.cwl
+id: rsat_position_scan.cwl
 inputs:
 - id: in_position_scan
   doc: "\e[1mVERSION\e[0m"

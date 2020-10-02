@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_convert_aln.cwl
+id: arb_convert_aln.cwl
 inputs:
 - id: in_where
   doc: "INFMT  may be 'GenBank', 'EMBL', 'AE2' or 'SwissProt' and\nOUTFMT may be 'GenBank',\

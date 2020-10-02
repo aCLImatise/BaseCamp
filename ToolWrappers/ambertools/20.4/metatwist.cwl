@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metatwist.cwl
+id: metatwist.cwl
 inputs:
 - id: in_dx
   doc: 'Input density file(s): *.dx(gz,bz2)|*.ccp4.'

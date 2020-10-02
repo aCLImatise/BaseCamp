@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_oligo_diff.cwl
+id: rsat_oligo_diff.cwl
 inputs:
 - id: in_oligo_diff
   doc: "\e[1mVERSION\e[0m"

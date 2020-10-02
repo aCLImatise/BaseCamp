@@ -27,7 +27,7 @@ task MethylpyAddmethylationlevel {
       ~{if defined(input_no_header) then ("--input-no-header " +  '"' + input_no_header + '"') else ""}
   >>>
   parameter_meta {
-    output_file: ""
+    output_file: "ALLC_FILES [ALLC_FILES ...]\\n[--samples SAMPLES [SAMPLES ...]]\\n[--mc-type MC_TYPE [MC_TYPE ...]]\\n[--extra-info EXTRA_INFO]\\n[--num-procs NUM_PROCS]\\n[--min-cov MIN_COV] [--max-cov MAX_COV]\\n[--buffer-line-number BUFFER_LINE_NUMBER]\\n[--input-no-header INPUT_NO_HEADER]"
     input_tsv_file: "A tab-separate file that specifies genomic intervals.\\nThe file contains a header.First three columns are\\nrequired to be chromosome, start and end, which are\\n1-based cooridates. It may contain additional\\ncolumn(s). (default: None)"
     samples: "List of space separated samples matching allc files.\\nBy default sample names will be inferred from allc\\nfilenames (default: None)"
     mc_type: "List of space separated mc nucleotide contexts for\\nwhich you want to look for DMRs. These classifications\\nmay use the wildcards H (indicating anything but a G)\\nand N (indicating any nucleotide). (default: ['CGN'])"

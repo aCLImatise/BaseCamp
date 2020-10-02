@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../OpenSwathFileSplitter.cwl
+id: OpenSwathFileSplitter.cwl
 inputs:
 - id: in_in
   doc: "*       Input file (SWATH/DIA file) (valid formats: 'mzML', 'mzXML')"

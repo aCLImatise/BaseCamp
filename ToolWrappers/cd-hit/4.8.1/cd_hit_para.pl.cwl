@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cd_hit_para.pl.cwl
+id: cd_hit_para.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

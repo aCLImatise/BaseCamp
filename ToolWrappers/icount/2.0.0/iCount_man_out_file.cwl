@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iCount_man_out_file.cwl
+id: iCount_man_out_file.cwl
 inputs:
 - id: in_mode
   doc: ''

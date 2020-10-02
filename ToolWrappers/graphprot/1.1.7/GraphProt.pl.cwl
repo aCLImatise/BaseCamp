@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../GraphProt.pl.cwl
+id: GraphProt.pl.cwl
 inputs:
 - id: in_mode
   doc: "'regression' or 'classification'\ndefault: classification"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sstacks.cwl
+id: sstacks.cwl
 inputs:
 - id: in_in_path
   doc: ': path to the directory containing Stacks files.'

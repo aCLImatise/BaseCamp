@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../count_chimeric_reads_per_gene.py.cwl
+id: count_chimeric_reads_per_gene.py.cwl
 inputs:
 - id: in_only_first
   doc: 'Count only the first in fragment. (default: False)'

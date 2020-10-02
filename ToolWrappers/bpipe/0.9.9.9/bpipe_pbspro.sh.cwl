@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bpipe_pbspro.sh.cwl
+id: bpipe_pbspro.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

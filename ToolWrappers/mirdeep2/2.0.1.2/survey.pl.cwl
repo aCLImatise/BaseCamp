@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../survey.pl.cwl
+id: survey.pl.cwl
 inputs:
 - id: in_file_outputted_controls
   doc: file outputted by controls

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../autoTrinotate.pl.cwl
+id: autoTrinotate.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

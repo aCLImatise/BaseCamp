@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertfilestopdf.cwl
+id: convertfilestopdf.cwl
 inputs: []
 outputs:
 - id: out_stdout

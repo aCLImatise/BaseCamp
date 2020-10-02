@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SetUnmappedBitFlag.cwl
+id: SetUnmappedBitFlag.cwl
 inputs: []
 outputs:
 - id: out_stdout

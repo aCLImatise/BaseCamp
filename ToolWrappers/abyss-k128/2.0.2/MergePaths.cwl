@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MergePaths.cwl
+id: MergePaths.cwl
 inputs:
 - id: in_km_er
   doc: k-mer size

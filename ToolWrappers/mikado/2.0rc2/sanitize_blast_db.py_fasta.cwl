@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sanitize_blast_db.py_fasta.cwl
+id: sanitize_blast_db.py_fasta.cwl
 inputs:
 - id: in_o
   doc: ''

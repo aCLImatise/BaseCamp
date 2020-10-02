@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../precompute_distributions.cwl
+id: precompute_distributions.cwl
 inputs:
 - id: in_arg_value_distributions
   doc: "[ --max_count ] arg (=500) Value up to which distributions are to be\ncomputed.\n"

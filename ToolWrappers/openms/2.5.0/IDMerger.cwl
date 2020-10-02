@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../IDMerger.cwl
+id: IDMerger.cwl
 inputs:
 - id: in_in
   doc: "*               Input files separated by blanks (valid formats: 'idXML')"

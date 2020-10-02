@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ChromHMM.sh.cwl
+id: ChromHMM.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

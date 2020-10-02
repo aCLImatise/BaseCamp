@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../epic2_df.cwl
+id: epic2_df.cwl
 inputs: []
 outputs:
 - id: out_stdout

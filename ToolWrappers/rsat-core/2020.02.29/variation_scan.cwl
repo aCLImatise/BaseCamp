@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../variation_scan.cwl
+id: variation_scan.cwl
 inputs: []
 outputs:
 - id: out_stdout

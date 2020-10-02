@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rnabloom.cwl
+id: rnabloom.cwl
 inputs:
 - id: in_left
   doc: left reads file(s)

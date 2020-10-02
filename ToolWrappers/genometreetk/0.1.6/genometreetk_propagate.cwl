@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genometreetk_propagate.cwl
+id: genometreetk_propagate.cwl
 inputs:
 - id: in_silent
   doc: suppress output

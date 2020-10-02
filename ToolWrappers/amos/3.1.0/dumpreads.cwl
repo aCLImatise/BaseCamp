@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dumpreads.cwl
+id: dumpreads.cwl
 inputs:
 - id: in_dump_reads_fastq
   doc: Dump reads in fastq format

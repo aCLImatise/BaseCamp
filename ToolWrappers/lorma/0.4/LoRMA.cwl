@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LoRMA.cwl
+id: LoRMA.cwl
 inputs:
 - id: in_best_friends
   doc: "(1 arg) :    Number of best friends  [default '3']"

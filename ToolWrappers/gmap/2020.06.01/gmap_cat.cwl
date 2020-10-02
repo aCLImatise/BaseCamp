@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmap_cat.cwl
+id: gmap_cat.cwl
 inputs:
 - id: in_dir
   doc: Destination directory for output genome index

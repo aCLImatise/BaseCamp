@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phyluce_assembly_get_fastq_lengths.cwl
+id: phyluce_assembly_get_fastq_lengths.cwl
 inputs:
 - id: in_input
   doc: The directory of fastq files to summarize

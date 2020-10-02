@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stag_diff.pl.cwl
+id: stag_diff.pl.cwl
 inputs:
 - id: in_ignore
   doc: "|i ELEMENT\nthese nodes are ignored for the purposes of comparison. Note that\n\

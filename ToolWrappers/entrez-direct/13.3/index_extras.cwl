@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../index_extras.cwl
+id: index_extras.cwl
 inputs: []
 outputs:
 - id: out_stdout

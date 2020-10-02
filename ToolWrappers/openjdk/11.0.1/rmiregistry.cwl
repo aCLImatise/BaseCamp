@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rmiregistry.cwl
+id: rmiregistry.cwl
 inputs:
 - id: in_runtime_flag_pass
   doc: <runtime flag> Pass argument to the java interpreter

@@ -2,7 +2,7 @@ version 1.0
 
 task PhyluceAlignGetOnlyLociWithMinTaxa {
   input {
-    String? var_output
+    File? var_output
     Directory? alignments
     Float? percent
     String? input_format
@@ -21,7 +21,7 @@ task PhyluceAlignGetOnlyLociWithMinTaxa {
       ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
   parameter_meta {
-    var_output: ""
+    var_output: "[--percent PERCENT]\\n[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\\n[--verbosity {INFO,WARN,CRITICAL}]\\n[--log-path LOG_PATH]\\n[--cores CORES]"
     alignments: "The directory containing alignments to screen.\\n(default: None)"
     percent: "The percent of taxa to require (default: 0.75)"
     input_format: "The input alignment format. (default: nexus)"

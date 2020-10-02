@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kounta.cwl
+id: kounta.cwl
 inputs:
 - id: in_fof_n
   doc: file     File of filenames to process

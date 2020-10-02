@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_graphcut_voxel.py_markers.cwl
+id: medpy_graphcut_voxel.py_markers.cwl
 inputs:
 - id: in_me_dpy_graph_cut_voxel_do_tpy
   doc: ''

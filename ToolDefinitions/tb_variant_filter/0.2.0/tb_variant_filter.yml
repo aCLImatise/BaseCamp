@@ -23,7 +23,7 @@ subcommands:
     args: !SimpleFlagArg
       name: REGION_FILTER
     optional: true
-  parent: &id006 !Command
+  parent: &id007 !Command
     command: *id001
     positional: []
     named: []
@@ -45,71 +45,10 @@ subcommands:
         args: !SimpleFlagArg
           name: REGION_FILTER
         optional: true
-      parent: &id003 !Command
+      parent: &id006 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: ''
-          synonyms:
-          - --region_filter
-          - -R
-          args: !SimpleFlagArg
-            name: REGION_FILTER
-          optional: true
-        - !Flag
-          description: "Mask out single nucleotide variants that are too close\nto\
-            \ indels"
-          synonyms:
-          - --close_to_indel_filter
-          - -I
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "Window around indel to mask out (mask this number of\nbases\
-            \ upstream/downstream from the indel. Requires -I\noption to selected)"
-          synonyms:
-          - --indel_window_size
-          args: !SimpleFlagArg
-            name: INDEL_WINDOW_SIZE
-          optional: true
-        - !Flag
-          description: "Mask out variants with less than a given percentage\nvariant\
-            \ allele at this site"
-          synonyms:
-          - --min_percentage_alt_filter
-          - -P
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "Variants with less than this percentage variants at a\nsite\
-            \ will be masked out"
-          synonyms:
-          - --min_percentage_alt
-          args: !SimpleFlagArg
-            name: MIN_PERCENTAGE_ALT
-          optional: true
-        - !Flag
-          description: "Mask out variants with less than a given depth of\nreads"
-          synonyms:
-          - --min_depth_filter
-          - -D
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "Variants at sites with less than this depth of reads\nwill\
-            \ be masked out"
-          synonyms:
-          - --min_depth
-          args: !SimpleFlagArg
-            name: MIN_DEPTH
-          optional: true
-        - !Flag
-          description: Mask out variants that are not SNVs
-          synonyms:
-          - --snv_only_filter
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -128,7 +67,188 @@ subcommands:
             args: !SimpleFlagArg
               name: REGION_FILTER
             optional: true
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: ''
+              synonyms:
+              - --region_filter
+              - -R
+              args: !SimpleFlagArg
+                name: REGION_FILTER
+              optional: true
+            - !Flag
+              description: "Mask out single nucleotide variants that are too close\n\
+                to indels"
+              synonyms:
+              - --close_to_indel_filter
+              - -I
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "Window around indel to mask out (mask this number of\n\
+                bases upstream/downstream from the indel. Requires -I\noption to selected)"
+              synonyms:
+              - --indel_window_size
+              args: !SimpleFlagArg
+                name: INDEL_WINDOW_SIZE
+              optional: true
+            - !Flag
+              description: "Mask out variants with less than a given percentage\n\
+                variant allele at this site"
+              synonyms:
+              - --min_percentage_alt_filter
+              - -P
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "Variants with less than this percentage variants at a\n\
+                site will be masked out"
+              synonyms:
+              - --min_percentage_alt
+              args: !SimpleFlagArg
+                name: MIN_PERCENTAGE_ALT
+              optional: true
+            - !Flag
+              description: "Mask out variants with less than a given depth of\nreads"
+              synonyms:
+              - --min_depth_filter
+              - -D
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "Variants at sites with less than this depth of reads\n\
+                will be masked out"
+              synonyms:
+              - --min_depth
+              args: !SimpleFlagArg
+                name: MIN_DEPTH
+              optional: true
+            - !Flag
+              description: Mask out variants that are not SNVs
+              synonyms:
+              - --snv_only_filter
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: tb_variant_filter
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --region_filter
+                args: !SimpleFlagArg
+                  name: REGION_FILTER
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: tb_variant_filter [-h] [--region_filter REGION_FILTER]\n\
+                \                         [--close_to_indel_filter]\n            \
+                \             [--indel_window_size INDEL_WINDOW_SIZE]\n          \
+                \               [--min_percentage_alt_filter]\n                  \
+                \       [--min_percentage_alt MIN_PERCENTAGE_ALT]\n              \
+                \           [--min_depth_filter] [--min_depth MIN_DEPTH]\n       \
+                \                  [--snv_only_filter]\n                         input_file\
+                \ [output_file]\ntb_variant_filter: error: argument input_file: can't\
+                \ open 'output_file': [Errno 2] No such file or directory: 'output_file'\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - tb_variant_filter
+              - input_file
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: tb_variant_filter
+                optional: false
+              named:
+              - !Flag
+                description: ''
+                synonyms:
+                - --region_filter
+                args: !SimpleFlagArg
+                  name: REGION_FILTER
+                optional: true
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: ''
+                synonyms:
+                - -h
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "usage: tb_variant_filter [-h] [--region_filter REGION_FILTER]\n\
+                \                         [--close_to_indel_filter]\n            \
+                \             [--indel_window_size INDEL_WINDOW_SIZE]\n          \
+                \               [--min_percentage_alt_filter]\n                  \
+                \       [--min_percentage_alt MIN_PERCENTAGE_ALT]\n              \
+                \           [--min_depth_filter] [--min_depth MIN_DEPTH]\n       \
+                \                  [--snv_only_filter]\n                         input_file\
+                \ [output_file]\ntb_variant_filter: error: argument input_file: can't\
+                \ open 'input_file': [Errno 2] No such file or directory: 'input_file'\n"
+              generated_using: *id004
+            usage: []
+            help_flag: !Flag
+              description: show this help message and exit
+              synonyms:
+              - -h
+              - --help
+              args: !EmptyFlagArg {}
+              optional: true
+            usage_flag:
+            version_flag:
+            help_text: "usage: tb_variant_filter [-h] [--region_filter REGION_FILTER]\n\
+              \                         [--close_to_indel_filter]\n              \
+              \           [--indel_window_size INDEL_WINDOW_SIZE]\n              \
+              \           [--min_percentage_alt_filter]\n                        \
+              \ [--min_percentage_alt MIN_PERCENTAGE_ALT]\n                      \
+              \   [--min_depth_filter] [--min_depth MIN_DEPTH]\n                 \
+              \        [--snv_only_filter]\n                         input_file [output_file]\n\
+              \nFilter variants from a VCF file (relative to M. tuberculosis H37Rv)\n\
+              \npositional arguments:\n  input_file            VCF input file (relative\
+              \ to H37Rv)\n  output_file           Output file (VCF format)\n\noptional\
+              \ arguments:\n  -h, --help            show this help message and exit\n\
+              \  --region_filter REGION_FILTER, -R REGION_FILTER\n  --close_to_indel_filter,\
+              \ -I\n                        Mask out single nucleotide variants that\
+              \ are too close\n                        to indels\n  --indel_window_size\
+              \ INDEL_WINDOW_SIZE\n                        Window around indel to\
+              \ mask out (mask this number of\n                        bases upstream/downstream\
+              \ from the indel. Requires -I\n                        option to selected)\n\
+              \  --min_percentage_alt_filter, -P\n                        Mask out\
+              \ variants with less than a given percentage\n                     \
+              \   variant allele at this site\n  --min_percentage_alt MIN_PERCENTAGE_ALT\n\
+              \                        Variants with less than this percentage variants\
+              \ at a\n                        site will be masked out\n  --min_depth_filter,\
+              \ -D\n                        Mask out variants with less than a given\
+              \ depth of\n                        reads\n  --min_depth MIN_DEPTH\n\
+              \                        Variants at sites with less than this depth\
+              \ of reads\n                        will be masked out\n  --snv_only_filter\
+              \     Mask out variants that are not SNVs\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -148,12 +268,9 @@ subcommands:
             \                input_file [output_file]\ntb_variant_filter: error: argument\
             \ input_file: can't open 'output_file': [Errno 2] No such file or directory:\
             \ 'output_file'\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - tb_variant_filter
-          - input_file
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -190,13 +307,7 @@ subcommands:
             \ 'input_file'\n"
           generated_using: *id004
         usage: []
-        help_flag: !Flag
-          description: show this help message and exit
-          synonyms:
-          - -h
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
+        help_flag:
         usage_flag:
         version_flag:
         help_text: "usage: tb_variant_filter [-h] [--region_filter REGION_FILTER]\n\
@@ -261,7 +372,7 @@ subcommands:
         args: !SimpleFlagArg
           name: REGION_FILTER
         optional: true
-      parent: *id003
+      parent: *id006
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -346,7 +457,7 @@ subcommands:
     args: !SimpleFlagArg
       name: REGION_FILTER
     optional: true
-  parent: *id006
+  parent: *id007
   subcommands: []
   usage: []
   help_flag: !Flag

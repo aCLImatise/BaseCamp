@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bl_filter_illumina.cwl
+id: bl_filter_illumina.cwl
 inputs:
 - id: in_specify_multiple_input_files
   doc: specify multiple INPUT files

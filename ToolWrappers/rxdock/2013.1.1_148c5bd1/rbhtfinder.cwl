@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbhtfinder.cwl
+id: rbhtfinder.cwl
 inputs: []
 outputs:
 - id: out_stdout

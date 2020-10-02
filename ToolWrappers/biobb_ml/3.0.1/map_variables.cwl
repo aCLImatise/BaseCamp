@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map_variables.cwl
+id: map_variables.cwl
 inputs:
 - id: in_config
   doc: Configuration file

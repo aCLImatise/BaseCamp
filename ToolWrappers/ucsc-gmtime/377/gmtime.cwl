@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmtime.cwl
+id: gmtime.cwl
 inputs:
 - id: in_time_stamp
   doc: ''

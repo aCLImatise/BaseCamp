@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reduce_qmers.cwl
+id: reduce_qmers.cwl
 inputs: []
 outputs:
 - id: out_stdout

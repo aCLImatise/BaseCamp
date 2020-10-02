@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcfnobiallelicsnps.cwl
+id: vcfnobiallelicsnps.cwl
 inputs: []
 outputs:
 - id: out_stdout

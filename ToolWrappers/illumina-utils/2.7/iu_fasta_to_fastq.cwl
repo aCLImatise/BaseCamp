@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iu_fasta_to_fastq.cwl
+id: iu_fasta_to_fastq.cwl
 inputs:
 - id: in_number_of_sequences
   doc: "Number of sequences to be converted (by default the\neverything will be processed)"

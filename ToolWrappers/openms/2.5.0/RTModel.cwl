@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../RTModel.cwl
+id: RTModel.cwl
 inputs:
 - id: in_in
   doc: "This is the name of the input file (RT prediction). It is assumed that the\

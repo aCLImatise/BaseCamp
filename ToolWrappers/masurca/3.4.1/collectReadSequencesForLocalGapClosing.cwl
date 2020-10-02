@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../collectReadSequencesForLocalGapClosing.cwl
+id: collectReadSequencesForLocalGapClosing.cwl
 inputs:
 - id: in_faux_reads_file
   doc: '*Name of the faux reads file'

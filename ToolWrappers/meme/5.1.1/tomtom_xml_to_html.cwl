@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tomtom_xml_to_html.cwl
+id: tomtom_xml_to_html.cwl
 inputs:
 - id: in_tomtom_xml_file
   doc: ''

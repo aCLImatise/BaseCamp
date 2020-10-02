@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../groot_align.cwl
+id: groot_align.cwl
 inputs:
 - id: in_cont_thresh
   doc: containment threshold for the LSH ensemble (default 0.99)

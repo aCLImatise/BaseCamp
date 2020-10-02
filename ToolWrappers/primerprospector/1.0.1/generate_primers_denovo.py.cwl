@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../generate_primers_denovo.py.cwl
+id: generate_primers_denovo.py.cwl
 inputs:
 - id: in_verbose
   doc: "Print information during execution -- useful for\ndebugging [default: False]"

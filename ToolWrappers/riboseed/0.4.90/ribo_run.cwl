@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ribo_run.cwl
+id: ribo_run.cwl
 inputs:
 - id: in_reference_fast_a
   doc: "path to a (multi)fasta or a directory containing one\nor more chromosomal\

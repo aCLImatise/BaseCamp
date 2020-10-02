@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hp_summary_stats.cwl
+id: hp_summary_stats.cwl
 inputs:
 - id: in_dir_list
   doc: "List of directories which include the required files,\none on each line"

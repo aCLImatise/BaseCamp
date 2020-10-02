@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmcloser_nucmer.pl_average.cwl
+id: gmcloser_nucmer.pl_average.cwl
 inputs:
 - id: in_target_s_caf
   doc: 'is not specied:'

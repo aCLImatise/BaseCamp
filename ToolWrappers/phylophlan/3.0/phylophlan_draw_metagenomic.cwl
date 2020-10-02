@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylophlan_draw_metagenomic.cwl
+id: phylophlan_draw_metagenomic.cwl
 inputs:
 - id: in_input
   doc: "The input file generated from\nphylophlan_metagenomic.py (default: None)"

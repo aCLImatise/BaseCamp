@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arb_consensus_tree.cwl
+id: arb_consensus_tree.cwl
 inputs:
 - id: in_write_consensus_tree
   doc: write consensus tree to outfile

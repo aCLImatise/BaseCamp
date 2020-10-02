@@ -20,7 +20,6 @@ task GraftMCreate {
     Int? threads
     Int? verbosity
     File? log
-    String? graft_m_package
     Int sequence_one
   }
   command <<<
@@ -43,8 +42,7 @@ task GraftMCreate {
       ~{if (force) then "--force" else ""} \
       ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
       ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
-      ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
-      ~{if defined(graft_m_package) then ("--graftm_package " +  '"' + graft_m_package + '"') else ""}
+      ~{if defined(log) then ("--log " +  '"' + log + '"') else ""}
   >>>
   parameter_meta {
     taxonomy: "File containing two tab separated columns, the first with the ID of the sequences, the second with the taxonomy string (required unless --rerooted_annotated_tree or --taxtastic_taxonomy and --taxtastic_seqinfo are specified)"
@@ -65,7 +63,6 @@ task GraftMCreate {
     threads: "Number of threads to use (default: 5)"
     verbosity: "1 - 5, 1 being silent, 5 being noisy indeed (default: 4)"
     log: "output logging information to file"
-    graft_m_package: ""
     sequence_one: "k__kingdom1; p__phylum2"
   }
   output {

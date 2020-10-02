@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_import_rna.cwl
+id: cnvkit.py_import_rna.cwl
 inputs:
 - id: in_format
   doc: "Input format name: 'rsem' for RSEM gene-level read\ncounts (*_rsem.genes.results),\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../plurality.cwl
+id: plurality.cwl
 inputs: []
 outputs:
 - id: out_stdout

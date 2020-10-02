@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../adam_shell.cwl
+id: adam_shell.cwl
 inputs:
 - id: in_preload_file_enforcing
   doc: preload <file>, enforcing line-by-line interpretation

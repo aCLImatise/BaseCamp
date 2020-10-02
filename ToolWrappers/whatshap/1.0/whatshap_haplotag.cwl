@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../whatshap_haplotag.cwl
+id: whatshap_haplotag.cwl
 inputs:
 - id: in_output
   doc: Output file. If omitted, use standard output.

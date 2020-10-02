@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../quast_download_silva.cwl
+id: quast_download_silva.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -33,7 +33,7 @@ task TaxonFilterpyDepleteHuman {
       ~{if (tmp_dir_keep) then "--tmp_dirKeep" else ""}
   >>>
   parameter_meta {
-    bm_tagger_dbs: ""
+    bm_tagger_dbs: "BLASTDBS [BLASTDBS ...]\\n[--lastDb LASTDB]\\n[--threads THREADS]\\n[--JVMmemory JVMMEMORY]\\n[--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\\n[--version]\\n[--tmp_dir TMP_DIR]\\n[--tmp_dirKeep]\\ninBam [revertBam] bmtaggerBam\\nrmdupBam blastnBam"
     tax_filt_bam: "Output BAM: blastnBam run through taxonomic selection\\nvia LASTAL."
     last_db: "One reference database for last (required if"
     threads: "The number of threads to use in running blastn."

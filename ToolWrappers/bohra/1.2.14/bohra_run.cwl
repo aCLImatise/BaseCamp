@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bohra_run.cwl
+id: bohra_run.cwl
 inputs:
 - id: in_input_file
   doc: "Input file = tab-delimited with 3 columns\n<isolatename> <path_to_read1> <path_to_read2>\n\

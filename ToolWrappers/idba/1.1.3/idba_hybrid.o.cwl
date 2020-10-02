@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idba_hybrid.o.cwl
+id: idba_hybrid.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

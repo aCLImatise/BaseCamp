@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../strling_pull_region.cwl
+id: strling_pull_region.cwl
 inputs:
 - id: in_fast_a
   doc: path to fasta file, only required for cram

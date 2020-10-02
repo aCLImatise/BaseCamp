@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xsv_cat.cwl
+id: xsv_cat.cwl
 inputs:
 - id: in_pad
   doc: "When concatenating columns, this flag will cause\nall records to appear. It\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_get_markov.cwl
+id: fasta_get_markov.cwl
 inputs:
 - id: in_sequence
   doc: ''

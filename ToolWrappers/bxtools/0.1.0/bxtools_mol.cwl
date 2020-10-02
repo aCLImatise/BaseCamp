@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bxtools_mol.cwl
+id: bxtools_mol.cwl
 inputs:
 - id: in_verbose
   doc: Set verbose output

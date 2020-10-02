@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../resetFragLibrary.cwl
+id: resetFragLibrary.cwl
 inputs:
 - id: in_update_clr_ranges
   doc: ''

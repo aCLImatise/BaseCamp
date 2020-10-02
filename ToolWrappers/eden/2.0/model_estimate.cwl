@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../model_estimate.cwl
+id: model_estimate.cwl
 inputs:
 - id: in_positive_input_file
   doc: "Path tofile containing input for the positive class.\n(default: None)"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snpit_run.py.cwl
+id: snpit_run.py.cwl
 inputs:
 - id: in_input
   doc: "the path to the VCF or FASTA file to read and classify\n(either can be bzip2ed/gzipped)\n"

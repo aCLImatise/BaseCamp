@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mglex_cli_transform.cwl
+id: mglex_cli_transform.cwl
 inputs:
 - id: in_data
   doc: Likelihood matrix; default standard input

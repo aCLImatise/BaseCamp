@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cortex_con_31.cwl
+id: cortex_con_31.cwl
 inputs:
 - id: in_dump_binary
   doc: ''

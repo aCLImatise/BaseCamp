@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PDBFUNCS.pm.cwl
+id: PDBFUNCS.pm.cwl
 inputs: []
 outputs:
 - id: out_stdout

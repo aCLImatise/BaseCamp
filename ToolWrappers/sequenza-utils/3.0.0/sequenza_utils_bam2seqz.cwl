@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequenza_utils_bam2seqz.cwl
+id: sequenza_utils_bam2seqz.cwl
 inputs:
 - id: in_pile_up
   doc: Use pileups as input files instead of BAMs.

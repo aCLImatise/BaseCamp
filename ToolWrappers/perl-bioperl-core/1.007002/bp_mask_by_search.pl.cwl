@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_mask_by_search.pl.cwl
+id: bp_mask_by_search.pl.cwl
 inputs:
 - id: in_format
   doc: or you can just say -f fasta

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../xml_spellcheck.cwl
+id: xml_spellcheck.cwl
 inputs:
 - id: in_conf
   doc: Gets the options from a configuration file. NOT IMPLEMENTED YET.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_seqfeature_load.pl.cwl
+id: bp_seqfeature_load.pl.cwl
 inputs:
 - id: in_dsn
   doc: DBI data source (default dbi:mysql:test)

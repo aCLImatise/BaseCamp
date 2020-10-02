@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../fc_ovlp_filter_with_phase.py.cwl
+id: fc_ovlp_filter_with_phase.py.cwl
 inputs:
 - id: in_rid_phase_map
-  doc: ''
+  doc: '[--strictness STRICTNESS]'
   type: string
   inputBinding:
     prefix: --rid-phase-map

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../transIndel_call.py.cwl
+id: transIndel_call.py.cwl
 inputs:
 - id: in_reference_genome_used
   doc: :reference genome used for VCF REF column (required for valid VCF)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cirdna.cwl
+id: cirdna.cwl
 inputs:
 - id: in_blocktype
   doc: "menu       [Filled] Type of blocks (Values: Open (Open\nblocks); Filled (Filled\

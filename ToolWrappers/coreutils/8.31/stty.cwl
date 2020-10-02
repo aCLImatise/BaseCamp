@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stty.cwl
+id: stty.cwl
 inputs:
 - id: in_all
   doc: print all current settings in human-readable form
@@ -46,26 +46,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -oddp
-- id: in_var_9
-  doc: same as parenb istrip cs7
+- id: in_pass_eight
+  doc: "same as parenb istrip cs7\nraw           same as -ignbrk -brkint -ignpar -parmrk\
+    \ -inpck -istrip\n-inlcr -igncr -icrnl -ixon -ixoff -icanon -opost\n-isig -iuclc\
+    \ -ixany -imaxbel -xcase min 1 time 0\n-raw          same as cooked\nsane    \
+    \      same as cread -ignbrk brkint -inlcr -igncr icrnl\nicanon iexten echo echoe\
+    \ echok -echonl -noflsh\n-ixoff -iutf8 -iuclc -ixany imaxbel -xcase -olcuc -ocrnl\n\
+    opost -ofill onlcr -onocr -onlret nl0 cr0 tab0 bs0 vt0 ff0\nisig -tostop -ofdel\
+    \ -echoprt echoctl echoke -flusho,\nall special characters to their default values"
   type: boolean
   inputBinding:
     prefix: -pass8
-- id: in_i_canon
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -icanon
-- id: in_imax_bel
-  doc: 1 time 0
-  type: long
-  inputBinding:
-    prefix: -imaxbel
-- id: in_same_as_cooked
-  doc: same as cooked
-  type: boolean
-  inputBinding:
-    prefix: -raw
 - id: in_speed
   doc: print the terminal speed
   type: string
@@ -76,7 +67,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_15
+- id: in_var_12
   doc: same as -icanon
   type: string
   inputBinding:
@@ -102,12 +93,12 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: in_var_20
+- id: in_var_17
   doc: same as parenb -parodd cs7
   type: string
   inputBinding:
     position: 1
-- id: in_var_21
+- id: in_var_18
   doc: same as -parenb -istrip -opost cs8
   type: string
   inputBinding:
@@ -117,26 +108,8 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_var_23
+- id: in_var_20
   doc: same as parenb parodd cs7
-  type: string
-  inputBinding:
-    position: 2
-- id: in_var_24
-  doc: same as -parenb -istrip cs8
-  type: long
-  inputBinding:
-    position: 0
-- id: in_same_ignpar_parmrk
-  doc: same as -ignbrk -brkint -ignpar -parmrk -inpck -istrip
-  type: string
-  inputBinding:
-    position: 1
-- id: in_sane
-  doc: "same as cread -ignbrk brkint -inlcr -igncr icrnl\nicanon iexten echo echoe\
-    \ echok -echonl -noflsh\n-ixoff -iutf8 -iuclc -ixany imaxbel -xcase -olcuc -ocrnl\n\
-    opost -ofill onlcr -onocr -onlret nl0 cr0 tab0 bs0 vt0 ff0\nisig -tostop -ofdel\
-    \ -echoprt echoctl echoke -flusho,\nall special characters to their default values"
   type: string
   inputBinding:
     position: 2

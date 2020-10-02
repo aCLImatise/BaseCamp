@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../run_ECR.sh.cwl
+id: run_ECR.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

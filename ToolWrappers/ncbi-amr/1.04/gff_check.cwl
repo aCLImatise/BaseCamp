@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff_check.cwl
+id: gff_check.cwl
 inputs:
 - id: in_threads
   doc: ''

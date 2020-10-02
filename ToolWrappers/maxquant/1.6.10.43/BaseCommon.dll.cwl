@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BaseCommon.dll.cwl
+id: BaseCommon.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

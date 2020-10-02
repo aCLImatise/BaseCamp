@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kmerHistAnalyzer.pl.cwl
+id: kmerHistAnalyzer.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

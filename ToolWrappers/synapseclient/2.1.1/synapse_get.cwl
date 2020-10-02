@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_get.cwl
+id: synapse_get.cwl
 inputs:
 - id: in_query
   doc: "Optional query parameter, will fetch all of the\nentities returned by a query\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PyLOH.py_preprocess.cwl
+id: PyLOH.py_preprocess.cwl
 inputs:
 - id: in_segments_bed
   doc: "BED file for segments. If not provided, use autosomes\nas segments. Default\

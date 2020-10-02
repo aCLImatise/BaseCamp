@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qgrs.cwl
+id: qgrs.cwl
 inputs:
 - id: in_csv
   doc: output in csv mode

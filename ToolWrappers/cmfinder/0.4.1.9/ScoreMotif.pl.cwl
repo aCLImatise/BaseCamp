@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ScoreMotif.pl.cwl
+id: ScoreMotif.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

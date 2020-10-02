@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncrf_to_bed.cwl
+id: ncrf_to_bed.cwl
 inputs: []
 outputs:
 - id: out_stdout

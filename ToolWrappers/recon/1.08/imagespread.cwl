@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../imagespread.cwl
+id: imagespread.cwl
 inputs:
 - id: in_seq_name_list
   doc: ''

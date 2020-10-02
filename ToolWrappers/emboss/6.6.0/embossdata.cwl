@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../embossdata.cwl
+id: embossdata.cwl
 inputs:
 - id: in_show_all
   doc: toggle     Show all potential EMBOSS data files

@@ -1,13 +1,8 @@
 class: CommandLineTool
-id: ../../../rsat_matrix_clustering.cwl
+id: rsat_matrix_clustering.cwl
 inputs:
 - id: in_matrix_clustering
   doc: "\e[1mDESCRIPTION\e[0m"
-  type: string
-  inputBinding:
-    position: 0
-- id: in_jacques_dot_van_helden_at_univ_am_udot_fr
-  doc: "\e[1mConception\e[0m"
   type: string
   inputBinding:
     position: 0

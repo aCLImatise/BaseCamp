@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_fprotpars.cwl
+id: _fprotpars.cwl
 inputs:
 - id: in_weights
   doc: properties Phylip weights file (optional)

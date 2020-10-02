@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_merge_test_reports.cwl
+id: planemo_merge_test_reports.cwl
 inputs:
 - id: in_input_paths
   doc: ''

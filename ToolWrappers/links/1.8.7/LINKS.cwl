@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../LINKS.cwl
+id: LINKS.cwl
 inputs:
 - id: in_sequences_scaffold_format
   doc: sequences to scaffold (Multi-FASTA format, required)

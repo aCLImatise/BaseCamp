@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_q_ranker_decoy_..cwl
+id: crux_q_ranker_decoy_..cwl
 inputs:
 - id: in_crux
   doc: ''

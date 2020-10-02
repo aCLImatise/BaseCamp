@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PTModel.cwl
+id: PTModel.cwl
 inputs:
 - id: in_in_positive
   doc: "*            Input file with positive examples (valid formats: 'idXML')"

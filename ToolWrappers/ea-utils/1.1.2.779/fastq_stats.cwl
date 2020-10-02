@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_stats.cwl
+id: fastq_stats.cwl
 inputs:
 - id: in_cyclemax_max_cycles
   doc: 'cyclemax: max cycles for which following quality stats are produced [35]'

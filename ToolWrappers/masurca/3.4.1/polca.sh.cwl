@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../polca.sh.cwl
+id: polca.sh.cwl
 inputs:
 - id: in_r
   doc: ''

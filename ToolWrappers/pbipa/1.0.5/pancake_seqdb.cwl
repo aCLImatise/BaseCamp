@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pancake_seqdb.cwl
+id: pancake_seqdb.cwl
 inputs:
 - id: in_compression
   doc: INT    Compression level for output sequences. [1]

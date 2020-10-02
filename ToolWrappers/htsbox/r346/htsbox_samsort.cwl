@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htsbox_samsort.cwl
+id: htsbox_samsort.cwl
 inputs:
 - id: in_t
   doc: ''

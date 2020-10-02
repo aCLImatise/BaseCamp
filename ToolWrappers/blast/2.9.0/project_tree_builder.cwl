@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../project_tree_builder.cwl
+id: project_tree_builder.cwl
 inputs: []
 outputs:
 - id: out_stdout

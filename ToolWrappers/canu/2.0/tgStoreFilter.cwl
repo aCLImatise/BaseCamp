@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tgStoreFilter.cwl
+id: tgStoreFilter.cwl
 inputs: []
 outputs:
 - id: out_stdout

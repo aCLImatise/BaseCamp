@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combine_kreports.py.cwl
+id: combine_kreports.py.cwl
 inputs:
 - id: in_report_files
   doc: "Input kraken report files to combine (separate by\nspaces)"

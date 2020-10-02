@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../od.cwl
+id: od.cwl
 inputs:
 - id: in_address_radix
   doc: "output format for file offsets; RADIX is one\nof [doxn], for Decimal, Octal,\
@@ -99,16 +99,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -x
-- id: in_kb
-  doc: '1000'
-  type: string
-  inputBinding:
-    position: 0
-- id: in_mb
-  doc: 1000*1000
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

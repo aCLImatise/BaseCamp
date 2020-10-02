@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_filter.cwl
+id: smof_filter.cwl
 inputs:
 - id: in_shorter_than
   doc: keep only if length is less than or equal to LEN

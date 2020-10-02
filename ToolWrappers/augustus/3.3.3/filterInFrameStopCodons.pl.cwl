@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterInFrameStopCodons.pl.cwl
+id: filterInFrameStopCodons.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

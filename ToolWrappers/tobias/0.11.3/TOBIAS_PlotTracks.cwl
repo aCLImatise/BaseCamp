@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TOBIAS_PlotTracks.cwl
+id: TOBIAS_PlotTracks.cwl
 inputs:
 - id: in_bigwigs
   doc: "[ [ ...]]  One or more bigwigs to show. Note: All bigwigs within one \"--\n\

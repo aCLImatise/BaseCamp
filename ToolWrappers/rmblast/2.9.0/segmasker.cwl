@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../segmasker.cwl
+id: segmasker.cwl
 inputs: []
 outputs:
 - id: out_stdout

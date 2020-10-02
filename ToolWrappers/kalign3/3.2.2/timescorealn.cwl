@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../timescorealn.cwl
+id: timescorealn.cwl
 inputs:
 - id: in_o
   doc: ''

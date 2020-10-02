@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metaxa2_ttt.cwl
+id: metaxa2_ttt.cwl
 inputs:
 - id: in_metaxa_taxonomy_output
   doc: ': Metaxa taxonomy output file to process (*.taxonomy.txt)'

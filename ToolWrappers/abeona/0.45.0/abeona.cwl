@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abeona.cwl
+id: abeona.cwl
 inputs:
 - id: in_v
   doc: ''

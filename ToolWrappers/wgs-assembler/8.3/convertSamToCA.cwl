@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertSamToCA.cwl
+id: convertSamToCA.cwl
 inputs:
 - id: in_sam_file
   doc: ''

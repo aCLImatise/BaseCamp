@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_components_remove.cwl
+id: gcloud_components_remove.cwl
 inputs:
 - id: in_component_id
   doc: ''

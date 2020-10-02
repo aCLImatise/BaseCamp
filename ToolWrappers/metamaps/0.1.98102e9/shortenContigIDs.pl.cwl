@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shortenContigIDs.pl.cwl
+id: shortenContigIDs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

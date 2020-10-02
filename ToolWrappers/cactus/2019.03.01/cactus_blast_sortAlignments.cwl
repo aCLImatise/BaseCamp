@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_blast_sortAlignments.cwl
+id: cactus_blast_sortAlignments.cwl
 inputs: []
 outputs:
 - id: out_stdout

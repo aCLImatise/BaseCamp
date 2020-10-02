@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fsnviz_fusioncatcher.cwl
+id: fsnviz_fusioncatcher.cwl
 inputs:
 - id: in_input
   doc: ''

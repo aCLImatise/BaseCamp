@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vcftoolbox.cwl
+id: vcftoolbox.cwl
 inputs: []
 outputs:
 - id: out_stdout

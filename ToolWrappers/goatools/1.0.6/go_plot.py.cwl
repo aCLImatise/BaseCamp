@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../go_plot.py.cwl
+id: go_plot.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

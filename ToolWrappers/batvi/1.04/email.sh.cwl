@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../email.sh.cwl
+id: email.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

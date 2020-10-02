@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filtersam.sh.cwl
+id: filtersam.sh.cwl
 inputs:
 - id: in_in
   doc: ''

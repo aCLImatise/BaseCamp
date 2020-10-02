@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tesseract.cwl
+id: tesseract.cwl
 inputs:
 - id: in_tess_data_dir
   doc: Specify the location of tessdata path.

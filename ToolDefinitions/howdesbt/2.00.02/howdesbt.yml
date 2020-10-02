@@ -26,7 +26,7 @@ subcommands:
     name: arguments
     optional: true
   named: []
-  parent: &id007 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -51,247 +51,10 @@ subcommands:
         name: arguments
         optional: true
       named: []
-      parent: &id003 !Command
+      parent: &id007 !Command
         command: *id001
         positional: []
-        named:
-        - !Flag
-          description: "input files are kmers\n(by default input files are expected\
-            \ to be fasta or fastq)"
-          synonyms:
-          - --kmersin
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "name for bloom filter file\n(by default this is derived from\
-            \ first sequence filename)"
-          synonyms:
-          - --out
-          args: !SimpleFlagArg
-            name: filename
-          optional: true
-        - !Flag
-          description: "file containing a list of bloom filters to create; this is\n\
-            used in place of the <filename>s on the command line; the\nfile format\
-            \ is described below"
-          synonyms:
-          - --list
-          args: !SimpleFlagArg
-            name: filename
-          optional: true
-        - !Flag
-          description: "name of an existing bloom filter file to extract settings\n\
-            from; that file's --k, --hashes, --seed, --modulus,\n--bits and compression\
-            \ type will be used if they are not\notherwise specified on the command\
-            \ line"
-          synonyms:
-          - --asper
-          args: !SimpleFlagArg
-            name: filename
-          optional: true
-        - !Flag
-          description: "kmer size (number of nucleotides in a kmer)\n(default is 20)"
-          synonyms:
-          - --k
-          args: !SimpleFlagArg
-            name: N
-          optional: true
-        - !Flag
-          description: "kmers occuring fewer than N times are left out of the\nbloom\
-            \ filter; this does not apply when --kmersin is used\n(default is 1)"
-          synonyms:
-          - --min
-          args: !SimpleFlagArg
-            name: N
-          optional: true
-        - !Flag
-          description: "number of threads to use during kmerization\n(default is 1)"
-          synonyms:
-          - --threads
-          args: !SimpleFlagArg
-            name: N
-          optional: true
-        - !Flag
-          description: "how many hash functions to use for the filter\n(default is\
-            \ 1)"
-          synonyms:
-          - --hashes
-          args: !SimpleFlagArg
-            name: N
-          optional: true
-        - !Flag
-          description: "set the hash modulus, if larger than the number of bits\n\
-            (by default this is the same as the number of bits)"
-          synonyms:
-          - --modulus
-          args: !SimpleFlagArg
-            name: M
-          optional: true
-        - !Flag
-          description: "number of bits in the bloom filter\n(default is 500000)"
-          synonyms:
-          - --bits
-          args: !SimpleFlagArg
-            name: N
-          optional: true
-        - !Flag
-          description: "make the filter with uncompressed bit vector(s)\n(this is\
-            \ the default)"
-          synonyms:
-          - --uncompressed
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: make the filter with RRR-compressed bit vector(s)
-          synonyms:
-          - --rrr
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: make the filter with roar-compressed bit vector(s)
-          synonyms:
-          - --roar
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "[=<filename>] write bloom filter stats to a text file\n(if\
-            \ no filename is given this is derived from the bloom\nfilter filename)"
-          synonyms:
-          - --stats
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: same as --out=<filename>
-          synonyms:
-          - --tree
-          args: !SimpleFlagArg
-            name: filename
-          optional: true
-        - !Flag
-          description: "filename template for internal tree nodes\nthis must contain\
-            \ the substring {number}\n(by default this is derived from the list filename)"
-          synonyms:
-          - --nodename
-          args: !SimpleFlagArg
-            name: template
-          optional: true
-        - !Flag
-          description: keep all nodes of the binary tree
-          synonyms:
-          - --keepallnodes
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: (same as --keepallnodes)
-          synonyms:
-          - --nocull
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "perform the clustering but don't build the tree's nodes\n\
-            (this is the default)"
-          synonyms:
-          - --nobuild
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: perform clustering, then build the uncompressed nodes
-          synonyms:
-          - --build
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "name of topology file to write tree consisting of the\nfilters\
-            \ built\n(by default we derive a name for the resulting topology\nfrom\
-            \ the input filename; but by default no tree is)\nwritten for --simple,\
-            \ as it would be the same as the\ninput tree)"
-          synonyms:
-          - --outtree
-          args: !SimpleFlagArg
-            name: filename
-          optional: true
-        - !Flag
-          description: "create tree nodes as simple bloom filters\n(this is the default)"
-          synonyms:
-          - --simple
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: equivalent to --determined,brief --rrr
-          synonyms:
-          - --howde
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: create tree nodes as all/some bloom filters
-          synonyms:
-          - --allsome
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "fraction of query kmers that must be present in a leaf\nto\
-            \ be considered a match; this must be between 0 and 1;\nthis only applies\
-            \ to query files for which <F> is not\notherwise specified (by <queryfilename>=<F>)\n\
-            (default is 0.7)"
-          synonyms:
-          - --threshold
-          args: !SimpleFlagArg
-            name: F
-          optional: true
-        - !Flag
-          description: "adjust reported number of kmers present, compensating\nfor\
-            \ bloom filter false positives"
-          synonyms:
-          - --adjust
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "sort matched leaves by the number of query kmers present,\n\
-            and report the number of kmers present\n(by default we just report the\
-            \ matched leaves without\nregard to which matches are better)"
-          synonyms:
-          - --sort
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "disregard internal tree nodes and perform the query only\n\
-            at the leaves"
-          synonyms:
-          - --leafonly
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "perform the query counting each distinct kmer only once\n\
-            (by default we count a query kmer each time it occurs)"
-          synonyms:
-          - --distinctkmers
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: "before searching, check that bloom filter properties are\n\
-            consistent across the tree\n(not needed with --usemanager)"
-          synonyms:
-          - --consistencycheck
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: just report the number of kmers in each query, and quit
-          synonyms:
-          - --justcountkmers
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: report the number of kmers that 'hit', for each
-          synonyms:
-          - --countallkmerhits
-          args: !EmptyFlagArg {}
-          optional: true
-        - !Flag
-          description: report wall time and node i/o time
-          synonyms:
-          - --time
-          args: !EmptyFlagArg {}
-          optional: true
+        named: []
         parent:
         subcommands:
         - !Command
@@ -313,7 +76,508 @@ subcommands:
             name: arguments
             optional: true
           named: []
-          parent: *id003
+          parent: &id003 !Command
+            command: *id001
+            positional: []
+            named:
+            - !Flag
+              description: "input files are kmers\n(by default input files are expected\
+                \ to be fasta or fastq)"
+              synonyms:
+              - --kmersin
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "name for bloom filter file\n(by default this is derived\
+                \ from first sequence filename)"
+              synonyms:
+              - --out
+              args: !SimpleFlagArg
+                name: filename
+              optional: true
+            - !Flag
+              description: "file containing a list of bloom filters to create; this\
+                \ is\nused in place of the <filename>s on the command line; the\n\
+                file format is described below"
+              synonyms:
+              - --list
+              args: !SimpleFlagArg
+                name: filename
+              optional: true
+            - !Flag
+              description: "name of an existing bloom filter file to extract settings\n\
+                from; that file's --k, --hashes, --seed, --modulus,\n--bits and compression\
+                \ type will be used if they are not\notherwise specified on the command\
+                \ line"
+              synonyms:
+              - --asper
+              args: !SimpleFlagArg
+                name: filename
+              optional: true
+            - !Flag
+              description: "kmer size (number of nucleotides in a kmer)\n(default\
+                \ is 20)"
+              synonyms:
+              - --k
+              args: !SimpleFlagArg
+                name: N
+              optional: true
+            - !Flag
+              description: "kmers occuring fewer than N times are left out of the\n\
+                bloom filter; this does not apply when --kmersin is used\n(default\
+                \ is 1)"
+              synonyms:
+              - --min
+              args: !SimpleFlagArg
+                name: N
+              optional: true
+            - !Flag
+              description: "number of threads to use during kmerization\n(default\
+                \ is 1)"
+              synonyms:
+              - --threads
+              args: !SimpleFlagArg
+                name: N
+              optional: true
+            - !Flag
+              description: "how many hash functions to use for the filter\n(default\
+                \ is 1)"
+              synonyms:
+              - --hashes
+              args: !SimpleFlagArg
+                name: N
+              optional: true
+            - !Flag
+              description: "set the hash modulus, if larger than the number of bits\n\
+                (by default this is the same as the number of bits)"
+              synonyms:
+              - --modulus
+              args: !SimpleFlagArg
+                name: M
+              optional: true
+            - !Flag
+              description: "number of bits in the bloom filter\n(default is 500000)"
+              synonyms:
+              - --bits
+              args: !SimpleFlagArg
+                name: N
+              optional: true
+            - !Flag
+              description: "make the filter with uncompressed bit vector(s)\n(this\
+                \ is the default)"
+              synonyms:
+              - --uncompressed
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: make the filter with RRR-compressed bit vector(s)
+              synonyms:
+              - --rrr
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: make the filter with roar-compressed bit vector(s)
+              synonyms:
+              - --roar
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "[=<filename>] write bloom filter stats to a text file\n\
+                (if no filename is given this is derived from the bloom\nfilter filename)"
+              synonyms:
+              - --stats
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: same as --out=<filename>
+              synonyms:
+              - --tree
+              args: !SimpleFlagArg
+                name: filename
+              optional: true
+            - !Flag
+              description: "filename template for internal tree nodes\nthis must contain\
+                \ the substring {number}\n(by default this is derived from the list\
+                \ filename)"
+              synonyms:
+              - --nodename
+              args: !SimpleFlagArg
+                name: template
+              optional: true
+            - !Flag
+              description: keep all nodes of the binary tree
+              synonyms:
+              - --keepallnodes
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: (same as --keepallnodes)
+              synonyms:
+              - --nocull
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "perform the clustering but don't build the tree's nodes\n\
+                (this is the default)"
+              synonyms:
+              - --nobuild
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: perform clustering, then build the uncompressed nodes
+              synonyms:
+              - --build
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "name of topology file to write tree consisting of the\n\
+                filters built\n(by default we derive a name for the resulting topology\n\
+                from the input filename; but by default no tree is)\nwritten for --simple,\
+                \ as it would be the same as the\ninput tree)"
+              synonyms:
+              - --outtree
+              args: !SimpleFlagArg
+                name: filename
+              optional: true
+            - !Flag
+              description: "create tree nodes as simple bloom filters\n(this is the\
+                \ default)"
+              synonyms:
+              - --simple
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: equivalent to --determined,brief --rrr
+              synonyms:
+              - --howde
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: create tree nodes as all/some bloom filters
+              synonyms:
+              - --allsome
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "fraction of query kmers that must be present in a leaf\n\
+                to be considered a match; this must be between 0 and 1;\nthis only\
+                \ applies to query files for which <F> is not\notherwise specified\
+                \ (by <queryfilename>=<F>)\n(default is 0.7)"
+              synonyms:
+              - --threshold
+              args: !SimpleFlagArg
+                name: F
+              optional: true
+            - !Flag
+              description: "adjust reported number of kmers present, compensating\n\
+                for bloom filter false positives"
+              synonyms:
+              - --adjust
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "sort matched leaves by the number of query kmers present,\n\
+                and report the number of kmers present\n(by default we just report\
+                \ the matched leaves without\nregard to which matches are better)"
+              synonyms:
+              - --sort
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "disregard internal tree nodes and perform the query only\n\
+                at the leaves"
+              synonyms:
+              - --leafonly
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "perform the query counting each distinct kmer only once\n\
+                (by default we count a query kmer each time it occurs)"
+              synonyms:
+              - --distinctkmers
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: "before searching, check that bloom filter properties are\n\
+                consistent across the tree\n(not needed with --usemanager)"
+              synonyms:
+              - --consistencycheck
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: just report the number of kmers in each query, and quit
+              synonyms:
+              - --justcountkmers
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: report the number of kmers that 'hit', for each
+              synonyms:
+              - --countallkmerhits
+              args: !EmptyFlagArg {}
+              optional: true
+            - !Flag
+              description: report wall time and node i/o time
+              synonyms:
+              - --time
+              args: !EmptyFlagArg {}
+              optional: true
+            parent:
+            subcommands:
+            - !Command
+              command: *id002
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: howdesbt
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: command
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: arguments
+                optional: true
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: '[=<command>]  get detail about a particular command'
+                synonyms:
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "unrecognized argument: \"CAAGACCTATGAGTAGAACG\"\n\nhowdesbt--\
+                \ work with HowDe sequence bloom trees\nusage: howdesbt <command>\
+                \ [arguments]\n  <command>           perform a particular command\n\
+                \  --help[=<command>]  get detail about a particular command\n  ?\
+                \                   list available commands with brief descriptions\n\
+                \  ?<command>          same as --help=<command>\n\nFor a list of available\
+                \ commands, do \"howdesbt ?\".\nFor more detailed descriptions of\
+                \ the commands, do \"howdesbt --help\".\n"
+              generated_using: &id004
+              - --help
+            - !Command
+              command: &id005
+              - howdesbt
+              - query/leaf
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: howdesbt
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: command
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: arguments
+                optional: true
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: '[=<command>]  get detail about a particular command'
+                synonyms:
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "unrecognized argument: \"query/leaf\"\n\nhowdesbt-- work\
+                \ with HowDe sequence bloom trees\nusage: howdesbt <command> [arguments]\n\
+                \  <command>           perform a particular command\n  --help[=<command>]\
+                \  get detail about a particular command\n  ?                   list\
+                \ available commands with brief descriptions\n  ?<command>       \
+                \   same as --help=<command>\n\nFor a list of available commands,\
+                \ do \"howdesbt ?\".\nFor more detailed descriptions of the commands,\
+                \ do \"howdesbt --help\".\n"
+              generated_using: *id004
+            - !Command
+              command: &id006
+              - howdesbt
+              - ATGACCAGATATGTACTTGC
+              positional:
+              - !Positional
+                description: ''
+                position: 0
+                name: howdesbt
+                optional: false
+              - !Positional
+                description: ''
+                position: 1
+                name: command
+                optional: false
+              - !Positional
+                description: ''
+                position: 2
+                name: arguments
+                optional: true
+              named: []
+              parent: *id003
+              subcommands: []
+              usage: []
+              help_flag: !Flag
+                description: '[=<command>]  get detail about a particular command'
+                synonyms:
+                - --help
+                args: !EmptyFlagArg {}
+                optional: true
+              usage_flag:
+              version_flag:
+              help_text: "unrecognized argument: \"ATGACCAGATATGTACTTGC\"\n\nhowdesbt--\
+                \ work with HowDe sequence bloom trees\nusage: howdesbt <command>\
+                \ [arguments]\n  <command>           perform a particular command\n\
+                \  --help[=<command>]  get detail about a particular command\n  ?\
+                \                   list available commands with brief descriptions\n\
+                \  ?<command>          same as --help=<command>\n\nFor a list of available\
+                \ commands, do \"howdesbt ?\".\nFor more detailed descriptions of\
+                \ the commands, do \"howdesbt --help\".\n"
+              generated_using: *id004
+            usage: []
+            help_flag:
+            usage_flag:
+            version_flag:
+            help_text: "=== makebf ===\nmakebf-- convert a sequence file to a bloom\
+              \ filter\nusage: makebf <filename> [<filename>..] [options]\n  <filename>\
+              \         (cumulative) a sequence file, e.g. fasta, fastq, or kmers\n\
+              \                     (one bloom filter is created, for the union of\
+              \ the\n                     sequence files)\n  --kmersin          input\
+              \ files are kmers\n                     (by default input files are\
+              \ expected to be fasta or fastq)\n  --out=<filename>   name for bloom\
+              \ filter file\n                     (by default this is derived from\
+              \ first sequence filename)\n  --list=<filename>  file containing a list\
+              \ of bloom filters to create; this is\n                     used in\
+              \ place of the <filename>s on the command line; the\n              \
+              \       file format is described below\n  --asper=<filename> name of\
+              \ an existing bloom filter file to extract settings\n              \
+              \       from; that file's --k, --hashes, --seed, --modulus,\n      \
+              \               --bits and compression type will be used if they are\
+              \ not\n                     otherwise specified on the command line\n\
+              \  --k=<N>            kmer size (number of nucleotides in a kmer)\n\
+              \                     (default is 20)\n  --min=<N>          kmers occuring\
+              \ fewer than N times are left out of the\n                     bloom\
+              \ filter; this does not apply when --kmersin is used\n             \
+              \        (default is 1)\n  --threads=<N>      number of threads to use\
+              \ during kmerization\n                     (default is 1)\n  --hashes=<N>\
+              \       how many hash functions to use for the filter\n            \
+              \         (default is 1)\n  --seed=<number>    the hash function's 56-bit\
+              \ seed\n  --seed=<number>,<number>  both the hash function seeds; the\
+              \ second seed is\n                     only used if more than one hash\
+              \ function is being used\n                     (by default the second\
+              \ seed is the first seed plus 1)\n  --modulus=<M>      set the hash\
+              \ modulus, if larger than the number of bits\n                     (by\
+              \ default this is the same as the number of bits)\n  --bits=<N>    \
+              \     number of bits in the bloom filter\n                     (default\
+              \ is 500000)\n  --uncompressed     make the filter with uncompressed\
+              \ bit vector(s)\n                     (this is the default)\n  --rrr\
+              \              make the filter with RRR-compressed bit vector(s)\n \
+              \ --roar             make the filter with roar-compressed bit vector(s)\n\
+              \  --stats[=<filename>] write bloom filter stats to a text file\n  \
+              \                   (if no filename is given this is derived from the\
+              \ bloom\n                     filter filename)\n\nWhen --list is used,\
+              \ each line of the file corresponds to a bloom filter. The\nformat of\
+              \ each line is\n  <filename> [<filename>..] [--kmersin] [--out=<filename>]\n\
+              with meaning the same as on the command line. No other options (e.g.\
+              \ --k or\n--bits) are allowed in the file. These are specified on the\
+              \ command line and\nwill affect all the bloom filters.\n\nWhen --kmersin\
+              \ is used, each line of the sequence input files is a single kmer,\n\
+              as the first field in the line. Any additional fields on the line are\
+              \ ignored.\nFor example, with --k=20 this might be\n  ATGACCAGATATGTACTTGC\n\
+              \  TCTGCGAACCCAGACTTGGT\n  CAAGACCTATGAGTAGAACG\n   ...\nEvery kmer\
+              \ in the file(s) is added to the filter. No counting is performed,\n\
+              and --min is not allowed.\n=== cluster ===\ncluster-- determine a tree\
+              \ topology by clustering bloom filters\nusage: cluster [options]\n \
+              \ --list=<filename> file containing a list of bloom filters to cluster;\
+              \ only\n                    filters with uncompressed bit vectors are\
+              \ allowed\n  <filename>        same as --list=<filename>\n  --out=<filename>\
+              \  name for tree toplogy file\n                    (by default this\
+              \ is derived from the list filename)\n  --tree=<filename> same as --out=<filename>\n\
+              \  --nodename=<template> filename template for internal tree nodes\n\
+              \                    this must contain the substring {number}\n    \
+              \                (by default this is derived from the list filename)\n\
+              \  <start>..<end>    interval of bits to use from each filter; the clustering\n\
+              \                    algorithm only considers this subset of each filter's\
+              \ bits\n                    (by default we use the first 100000 bits)\n\
+              \  --bits=<N>        number of bits to use from each filter; same as\
+              \ 0..<N>\n  --cull            remove nodes from the binary tree; remove\
+              \ those for which\n                    saturation of determined is more\
+              \ than 2 standard deviations\n                    below the mean\n \
+              \                   (this is the default)\n  --cull=<Z>sd      remove\
+              \ nodes for which saturation of determined is more\n               \
+              \     than <Z> standard deviations below the mean\n  --cull=<S>    \
+              \    remove nodes for which saturation of determined is less\n     \
+              \               than <S>; e.g. <S> can be \"0.20\" or \"20%\"\n  --keepallnodes\
+              \    keep all nodes of the binary tree\n  --nocull          (same as\
+              \ --keepallnodes)\n  --nobuild         perform the clustering but don't\
+              \ build the tree's nodes\n                    (this is the default)\n\
+              \  --build           perform clustering, then build the uncompressed\
+              \ nodes\n=== build ===\nbuild-- build a sequence bloom tree from a topology\
+              \ file and leaves\nusage: build <filename> [options]\n  <filename> \
+              \          name of the tree toplogy file\n  --outtree=<filename> name\
+              \ of topology file to write tree consisting of the\n               \
+              \        filters built\n                       (by default we derive\
+              \ a name for the resulting topology\n                       from the\
+              \ input filename; but by default no tree is)\n                     \
+              \  written for --simple, as it would be the same as the\n          \
+              \             input tree)\n  --simple             create tree nodes\
+              \ as simple bloom filters\n                       (this is the default)\n\
+              \  --howde              equivalent to --determined,brief --rrr\n  --allsome\
+              \            create tree nodes as all/some bloom filters\n  --determined\
+              \         create tree nodes as determined/how bloom filters\n  --determined,brief\
+              \   create tree nodes as determined/how, but only store\n          \
+              \             active bits\n  --uncompressed       create the nodes as\
+              \ uncompressed bit vector(s)\n                       (this is the default)\n\
+              \  --rrr                create the nodes as rrr-compressed bit vector(s)\n\
+              \  --roar               create the nodes as roar-compressed bit vector(s)\n\
+              === query ===\nquery-- query a sequence bloom tree\nusage: query [<queryfilename>[=<F>]]\
+              \ [options]\n  --tree=<filename>    name of the tree toplogy file\n\
+              \  <queryfilename>      (cumulative) name of a query file; this is either\
+              \ a\n                       fasta file or a file with one nucleotide\
+              \ sequence per\n                       line; if no query files are provided,\
+              \ queries are read\n                       from stdin\n  <queryfilename>=<F>\
+              \  query file with associated threshold; <F> has the same\n        \
+              \               meaning as in --threshold=<F> but applies only to this\n\
+              \                       query file\n  --threshold=<F>      fraction\
+              \ of query kmers that must be present in a leaf\n                  \
+              \     to be considered a match; this must be between 0 and 1;\n    \
+              \                   this only applies to query files for which <F> is\
+              \ not\n                       otherwise specified (by <queryfilename>=<F>)\n\
+              \                       (default is 0.7)\n  --adjust             adjust\
+              \ reported number of kmers present, compensating\n                 \
+              \      for bloom filter false positives\n  --sort               sort\
+              \ matched leaves by the number of query kmers present,\n           \
+              \            and report the number of kmers present\n              \
+              \         (by default we just report the matched leaves without\n  \
+              \                     regard to which matches are better)\n  --leafonly\
+              \           disregard internal tree nodes and perform the query only\n\
+              \                       at the leaves\n  --distinctkmers      perform\
+              \ the query counting each distinct kmer only once\n                \
+              \       (by default we count a query kmer each time it occurs)\n  --consistencycheck\
+              \   before searching, check that bloom filter properties are\n     \
+              \                  consistent across the tree\n                    \
+              \   (not needed with --usemanager)\n  --justcountkmers     just report\
+              \ the number of kmers in each query, and quit\n  --countallkmerhits\
+              \   report the number of kmers that 'hit', for each\n              \
+              \         query/leaf\n  --stat:nodesexamined report the count of nodes\
+              \ examined for each query (as a\n                       comment in the\
+              \ output\n  --time               report wall time and node i/o time\n\
+              \  --out=<filename>     file for query results; if this is not provided,\
+              \ results\n                       are written to stdout\n=== version\
+              \ ===\nversion-- report this program's version\nusage: version\n"
+            generated_using: *id004
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -331,12 +595,9 @@ subcommands:
             \ commands with brief descriptions\n  ?<command>          same as --help=<command>\n\
             \nFor a list of available commands, do \"howdesbt ?\".\nFor more detailed\
             \ descriptions of the commands, do \"howdesbt --help\".\n"
-          generated_using: &id004
-          - --help
+          generated_using: *id004
         - !Command
-          command: &id005
-          - howdesbt
-          - query/leaf
+          command: *id005
           positional:
           - !Positional
             description: ''
@@ -374,9 +635,7 @@ subcommands:
             \ descriptions of the commands, do \"howdesbt --help\".\n"
           generated_using: *id004
         - !Command
-          command: &id006
-          - howdesbt
-          - ATGACCAGATATGTACTTGC
+          command: *id006
           positional:
           - !Positional
             description: ''
@@ -575,7 +834,7 @@ subcommands:
         name: arguments
         optional: true
       named: []
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -613,7 +872,7 @@ subcommands:
         name: arguments
         optional: true
       named: []
-      parent: *id003
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -788,7 +1047,7 @@ subcommands:
     name: arguments
     optional: true
   named: []
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -826,7 +1085,7 @@ subcommands:
     name: arguments
     optional: true
   named: []
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

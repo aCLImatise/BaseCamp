@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_modules.cwl
+id: flye_modules.cwl
 inputs: []
 outputs:
 - id: out_stdout

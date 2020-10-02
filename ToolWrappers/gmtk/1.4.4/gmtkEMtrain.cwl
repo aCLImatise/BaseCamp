@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gmtkEMtrain.cwl
+id: gmtkEMtrain.cwl
 inputs: []
 outputs:
 - id: out_stdout

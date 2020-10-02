@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../evaluate_sv_predictions.cwl
+id: evaluate_sv_predictions.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../preseq_c_curve.cwl
+id: preseq_c_curve.cwl
 inputs:
 - id: in_output
   doc: 'yield output file (default: stdout)'

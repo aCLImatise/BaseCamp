@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map2bed.pl.cwl
+id: map2bed.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

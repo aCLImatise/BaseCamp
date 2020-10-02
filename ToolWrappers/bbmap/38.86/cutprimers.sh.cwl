@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cutprimers.sh.cwl
+id: cutprimers.sh.cwl
 inputs:
 - id: in_x_mx
   doc: "This will set Java's memory usage, overriding automatic\nmemory detection.\

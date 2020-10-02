@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../olap_from_seeds.cwl
+id: olap_from_seeds.cwl
 inputs:
 - id: in_asymmetric_overlaps_overlaps
   doc: "Asymmetric overlaps, i.e., only output overlaps with\na_iid < b_iid"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../venn_gchart.py.cwl
+id: venn_gchart.py.cwl
 inputs:
 - id: in_file_use_leftmost
   doc: File to use for the left-most circle

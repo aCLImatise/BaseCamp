@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_annotations_merge_exons.cwl
+id: arrow_annotations_merge_exons.cwl
 inputs:
 - id: in_organism
   doc: Organism Common Name

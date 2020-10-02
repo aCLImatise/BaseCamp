@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PlotLL.R.cwl
+id: PlotLL.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

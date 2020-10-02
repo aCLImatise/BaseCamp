@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_ssu_align.cwl
+id: _ssu_align.cwl
 inputs: []
 outputs:
 - id: out_stdout

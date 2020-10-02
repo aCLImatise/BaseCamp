@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stats.sh.cwl
+id: stats.sh.cwl
 inputs:
 - id: in_in
   doc: ''

@@ -21,7 +21,7 @@ task SinglemCreate {
       ~{if (force) then "--force" else ""}
   >>>
   parameter_meta {
-    output_single_m_package: ""
+    output_single_m_package: "PATH --hmm_position INTEGER --window_size INTEGER\\n[--force]"
     debug: "output debug information"
     quiet: "only output errors"
     full_help: "display all help options"

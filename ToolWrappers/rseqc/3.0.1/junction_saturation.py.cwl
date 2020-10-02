@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../junction_saturation.py.cwl
+id: junction_saturation.py.cwl
 inputs:
 - id: in_input_file
   doc: Alignment file in BAM or SAM format.[required]

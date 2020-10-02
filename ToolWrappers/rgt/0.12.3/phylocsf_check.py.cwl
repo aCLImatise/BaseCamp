@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylocsf_check.py.cwl
+id: phylocsf_check.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

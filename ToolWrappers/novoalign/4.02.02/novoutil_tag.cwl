@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoutil_tag.cwl
+id: novoutil_tag.cwl
 inputs:
 - id: in_ref_idx
   doc: is an indexed reference sequence created by Novoindex.

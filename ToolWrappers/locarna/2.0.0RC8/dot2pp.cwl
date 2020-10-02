@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dot2pp.cwl
+id: dot2pp.cwl
 inputs:
 - id: in_man
   doc: documentation

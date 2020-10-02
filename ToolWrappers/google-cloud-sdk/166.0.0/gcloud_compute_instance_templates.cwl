@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_instance_templates.cwl
+id: gcloud_compute_instance_templates.cwl
 inputs:
 - id: in_create
   doc: Create a Compute Engine virtual machine instance template.

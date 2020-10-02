@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_sort.cwl
+id: seqkit_sort.cwl
 inputs:
 - id: in_by_length
   doc: by sequence length

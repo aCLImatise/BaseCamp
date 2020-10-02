@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_gnuplot_graph.pl.cwl
+id: make_gnuplot_graph.pl.cwl
 inputs:
 - id: in_x_one
   doc: ':       Index of the x column (x-axis). NOTE: 1-based. NOTE: use -x2... to

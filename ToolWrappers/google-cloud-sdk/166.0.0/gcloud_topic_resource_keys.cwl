@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_topic_resource_keys.cwl
+id: gcloud_topic_resource_keys.cwl
 inputs:
 - id: in_foo
   doc: foo.bar

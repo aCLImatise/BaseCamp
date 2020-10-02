@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../addSurrogatesToFrgctg.perl.cwl
+id: addSurrogatesToFrgctg.perl.cwl
 inputs:
 - id: in_help_dot_asm
   doc: "'t exist!"

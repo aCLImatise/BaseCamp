@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../meme2meme.cwl
+id: meme2meme.cwl
 inputs:
 - id: in_consensus
   doc: "numeric names are swapped for an IUPAC\nconsensus; default: use existing names"

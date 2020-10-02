@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dca.cwl
+id: dca.cwl
 inputs:
 - id: in_norm_type
   doc: "Type of size factor estimation. Possible values:\ndeseq, zheng. (default:\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../summarize_flags.py.cwl
+id: summarize_flags.py.cwl
 inputs:
 - id: in_flags
   doc: Flag file.

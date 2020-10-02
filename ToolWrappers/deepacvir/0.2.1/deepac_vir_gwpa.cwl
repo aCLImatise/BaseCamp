@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../deepac_vir_gwpa.cwl
+id: deepac_vir_gwpa.cwl
 inputs:
 - id: in_details_dot
   doc: fragment            Fragment genomes for analysis.

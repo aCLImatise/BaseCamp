@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SnpSift_ccs.cwl
+id: SnpSift_ccs.cwl
 inputs:
 - id: in__be_quiet
   doc: ': Be quiet'

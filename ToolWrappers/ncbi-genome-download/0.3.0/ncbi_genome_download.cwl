@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ncbi_genome_download.cwl
+id: ncbi_genome_download.cwl
 inputs:
 - id: in_section
   doc: 'NCBI section to download (default: refseq)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../radical_utils_pylint.sh.cwl
+id: radical_utils_pylint.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

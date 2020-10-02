@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sc3_sc3_calc_consens.R.cwl
+id: sc3_sc3_calc_consens.R.cwl
 inputs:
 - id: in_input_object_file
   doc: File name in which a SC3 'SingleCellExperiment' object has been stored after

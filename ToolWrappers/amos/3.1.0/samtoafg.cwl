@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtoafg.cwl
+id: samtoafg.cwl
 inputs:
 - id: in_eid
   doc: the EID of the library

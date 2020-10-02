@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_vm.py_aws_info.cwl
+id: bcbio_vm.py_aws_info.cwl
 inputs:
 - id: in_e_config
   doc: Elasticluster bcbio configuration file

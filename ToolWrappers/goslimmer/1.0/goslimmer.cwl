@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../goslimmer.cwl
+id: goslimmer.cwl
 inputs:
 - id: in_go
   doc: Path to the full Gene Ontology OBO or OWL file

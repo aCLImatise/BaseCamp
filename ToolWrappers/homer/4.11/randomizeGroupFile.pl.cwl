@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randomizeGroupFile.pl.cwl
+id: randomizeGroupFile.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

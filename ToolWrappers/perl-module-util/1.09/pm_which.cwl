@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pm_which.cwl
+id: pm_which.cwl
 inputs:
 - id: in_quiet
   doc: Just print paths

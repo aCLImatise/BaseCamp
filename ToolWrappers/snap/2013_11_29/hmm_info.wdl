@@ -3,19 +3,13 @@ version 1.0
 task Hmminfo {
   input {
     Boolean? models
-    Boolean? general
-    Int? durations
   }
   command <<<
     hmm_info \
-      ~{if (models) then "-models" else ""} \
-      ~{if (general) then "-general" else ""} \
-      ~{if defined(durations) then ("-durations " +  '"' + durations + '"') else ""}
+      ~{if (models) then "-models" else ""}
   >>>
   parameter_meta {
-    models: ""
-    general: ""
-    durations: ""
+    models: "-general\\n-durations <length>\\n"
   }
   output {
     File out_stdout = stdout()

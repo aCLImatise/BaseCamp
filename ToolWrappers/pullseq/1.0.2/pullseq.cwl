@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pullseq.cwl
+id: pullseq.cwl
 inputs:
 - id: in_input
   doc: ',       Input fasta/fastq file (required)'

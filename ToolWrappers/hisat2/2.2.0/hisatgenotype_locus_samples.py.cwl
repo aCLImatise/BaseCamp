@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisatgenotype_locus_samples.py.cwl
+id: hisatgenotype_locus_samples.py.cwl
 inputs:
 - id: in_reference_type
   doc: "Reference type: gene, chromosome, and genome (default:\ngene)"

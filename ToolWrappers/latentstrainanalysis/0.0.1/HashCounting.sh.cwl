@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HashCounting.sh.cwl
+id: HashCounting.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../seqkit_translate.cwl
+id: seqkit_translate.cwl
 inputs:
 - id: in_allow_unknown_codon
   doc: translate unknown code to 'X'. And you may not use flag --trim which removes

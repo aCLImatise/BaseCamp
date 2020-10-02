@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runDisco.sh.cwl
+id: runDisco.sh.cwl
 inputs:
 - id: in_ins
   doc: single read filenames (comma separated fasta/fastq/fastq.gz files).

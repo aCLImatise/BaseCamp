@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sam2spliceJunc.pl.cwl
+id: sam2spliceJunc.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

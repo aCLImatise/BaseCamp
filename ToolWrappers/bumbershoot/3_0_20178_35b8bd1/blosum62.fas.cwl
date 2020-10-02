@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../blosum62.fas.cwl
+id: blosum62.fas.cwl
 inputs: []
 outputs:
 - id: out_stdout

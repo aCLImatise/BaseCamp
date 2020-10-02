@@ -45,13 +45,6 @@ task SnapalignerSingle {
     Boolean? kts
     File? sid
     Boolean? pro
-    Boolean? fast_q
-    Boolean? compressed_fast_q
-    Boolean? sam
-    Boolean? bam
-    Boolean? paired_fast_q
-    Boolean? paired_interleaved_fast_q
-    Boolean? paired_compressed_interleaved_fast_q
     String index_dir
   }
   command <<<
@@ -99,14 +92,7 @@ task SnapalignerSingle {
       ~{if (di) then "-di" else ""} \
       ~{if (kts) then "-kts" else ""} \
       ~{if (sid) then "-sid" else ""} \
-      ~{if (pro) then "-pro" else ""} \
-      ~{if (fast_q) then "-fastq" else ""} \
-      ~{if (compressed_fast_q) then "-compressedFastq" else ""} \
-      ~{if (sam) then "-sam" else ""} \
-      ~{if (bam) then "-bam" else ""} \
-      ~{if (paired_fast_q) then "-pairedFastq" else ""} \
-      ~{if (paired_interleaved_fast_q) then "-pairedInterleavedFastq" else ""} \
-      ~{if (paired_compressed_interleaved_fast_q) then "-pairedCompressedInterleavedFastq" else ""}
+      ~{if (pro) then "-pro" else ""}
   >>>
   parameter_meta {
     filename_output_alignments: "filename  output alignments to filename in SAM or BAM format, depending on the file extension or\\nexplicit type specifier (see below).  Use a dash with an explicit type specifier to write to\\nstdout, so for example -o -sam - would write SAM output to stdout"
@@ -152,13 +138,6 @@ task SnapalignerSingle {
     kts: "Kill if too slow.  Monitor our progress and kill ourself if we're not moving fast enough.  This is intended for use on machines\\nwith limited memory, where some alignment tasks will push SNAP into paging, and take disproportinaltely long.  This allows the script\\nto move on to the next alignment.  Only works when generating output, and not during the sort phase.  If you're running out of memory\\nsorting, try using -di."
     sid: "Specifies the sort intermediate directory.  When SNAP is sorting, it aligns the reads in the order in which they come in, and writes\\nthe aligned reads in batches to a temporary file.  When the aligning is done, it does a merge sort from the temporary file into the\\nfinal output file.  By default, the intermediate file is in the same directory as the output file, but for performance or space\\nreasons, you might want to put it elsewhere.  If so, use this option."
     pro: "Profile alignment to give you an idea of how much time is spent aligning and how much waiting for IO"
-    fast_q: ""
-    compressed_fast_q: ""
-    sam: ""
-    bam: ""
-    paired_fast_q: ""
-    paired_interleaved_fast_q: ""
-    paired_compressed_interleaved_fast_q: ""
     index_dir: ""
   }
   output {

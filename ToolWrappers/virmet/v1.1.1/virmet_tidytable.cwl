@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../virmet_tidytable.cwl
+id: virmet_tidytable.cwl
 inputs:
 - id: in_outdir
   doc: path to run results directory (virmet_output_...)

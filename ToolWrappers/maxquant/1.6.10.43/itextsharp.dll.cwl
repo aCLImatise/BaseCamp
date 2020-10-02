@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../itextsharp.dll.cwl
+id: itextsharp.dll.cwl
 inputs: []
 outputs:
 - id: out_stdout

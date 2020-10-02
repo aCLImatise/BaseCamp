@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../yn00.cwl
+id: yn00.cwl
 inputs: []
 outputs:
 - id: out_stdout

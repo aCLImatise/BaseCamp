@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ctg2fasta.cwl
+id: ctg2fasta.cwl
 inputs: []
 outputs:
 - id: out_stdout

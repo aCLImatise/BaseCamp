@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_scaf.cwl
+id: fermi_scaf.cwl
 inputs:
 - id: in_number_of_threads
   doc: number of threads [1]

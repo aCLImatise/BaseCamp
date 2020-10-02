@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../align_print_template.py.cwl
+id: align_print_template.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../go2cytoscape.pl.cwl
+id: go2cytoscape.pl.cwl
 inputs:
 - id: in_gotwocytosapedotpl
   doc: ''

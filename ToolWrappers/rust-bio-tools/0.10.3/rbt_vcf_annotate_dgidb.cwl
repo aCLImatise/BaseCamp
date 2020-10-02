@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbt_vcf_annotate_dgidb.cwl
+id: rbt_vcf_annotate_dgidb.cwl
 inputs:
 - id: in_api_path
   doc: "url prefix for requesting interaction drugs by gene names. [default:\nhttp://dgidb.org/api/v2/interactions.json?genes=]"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tadtool_tads.cwl
+id: tadtool_tads.cwl
 inputs:
 - id: in_algorithm
   doc: "TAD-calling algorithm. Options: insulation,\nninsulation, directionality.\

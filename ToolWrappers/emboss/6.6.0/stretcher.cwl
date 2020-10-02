@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stretcher.cwl
+id: stretcher.cwl
 inputs:
 - id: in_data_file
   doc: "matrix     [EBLOSUM62 for protein, EDNAFULL for DNA]\nThis is the scoring\

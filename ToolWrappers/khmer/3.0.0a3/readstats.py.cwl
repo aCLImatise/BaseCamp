@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../readstats.py.cwl
+id: readstats.py.cwl
 inputs:
 - id: in_info
   doc: print citation information

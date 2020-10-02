@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbt_record..cwl
+id: rbt_record..cwl
 inputs:
 - id: in_rbt
   doc: ''

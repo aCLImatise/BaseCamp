@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../biocontainers_search.cwl
+id: biocontainers_search.cwl
 inputs:
 - id: in_search_term
   doc: Search term

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../singlem_makedb.cwl
+id: singlem_makedb.cwl
 inputs:
 - id: in_full_help
   doc: ''

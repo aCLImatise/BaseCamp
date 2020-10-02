@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_grep.cwl
+id: fasta_grep.cwl
 inputs:
 - id: in_copyright
   doc: (2014) The Regents of the University of California.

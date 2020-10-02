@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../attach_pileupVAF.py.cwl
+id: attach_pileupVAF.py.cwl
 inputs:
-- id: in_outfile
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: -outfile
 - id: in_my_vcf_file
   doc: 'My VCF (default: None)'
   type: File
@@ -60,11 +55,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_outfile
-  doc: ''
-  type: File
-  outputBinding:
-    glob: $(inputs.in_outfile)
 - id: out_output_file
   doc: "Output File Name (default: None)\n"
   type: File

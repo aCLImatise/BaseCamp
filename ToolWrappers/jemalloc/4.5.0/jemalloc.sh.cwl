@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jemalloc.sh.cwl
+id: jemalloc.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

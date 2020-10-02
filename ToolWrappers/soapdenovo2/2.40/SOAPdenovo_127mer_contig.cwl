@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SOAPdenovo_127mer_contig.cwl
+id: SOAPdenovo_127mer_contig.cwl
 inputs:
 - id: in_inputgraph_prefix_input
   doc: 'inputGraph: prefix of input graph file names'

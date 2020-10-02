@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../trawler.cwl
+id: trawler.cwl
 inputs:
 - id: in_sample
   doc: (FASTA format) better to be repeat-masked.

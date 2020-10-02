@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../genomedata_erase_data.cwl
+id: genomedata_erase_data.cwl
 inputs:
 - id: in_track_name
   doc: tracknames to erase

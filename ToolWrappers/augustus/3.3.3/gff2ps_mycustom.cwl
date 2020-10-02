@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff2ps_mycustom.cwl
+id: gff2ps_mycustom.cwl
 inputs: []
 outputs:
 - id: out_stdout

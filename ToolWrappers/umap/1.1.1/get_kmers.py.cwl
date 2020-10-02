@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_kmers.py.cwl
+id: get_kmers.py.cwl
 inputs:
 - id: in_km_er
   doc: "The software would infer it based on the name of the\n'out_dir'. If it is\

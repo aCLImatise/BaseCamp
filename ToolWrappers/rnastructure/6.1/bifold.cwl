@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bifold.cwl
+id: bifold.cwl
 inputs:
 - id: in_dna
   doc: "Specify that the sequence is DNA, and DNA parameters are to be used.\nDefault\

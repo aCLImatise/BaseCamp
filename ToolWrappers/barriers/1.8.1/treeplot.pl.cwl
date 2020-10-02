@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treeplot.pl.cwl
+id: treeplot.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

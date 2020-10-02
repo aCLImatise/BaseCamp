@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastANI.cwl
+id: fastANI.cwl
 inputs:
 - id: in_ref
   doc: reference genome (fasta/fastq)[.gz]

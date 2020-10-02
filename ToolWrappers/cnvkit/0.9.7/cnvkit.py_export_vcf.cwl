@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cnvkit.py_export_vcf.cwl
+id: cnvkit.py_export_vcf.cwl
 inputs:
 - id: in_cnr
   doc: "Bin-level copy ratios (*.cnr). Used to indicate fuzzy\nboundaries for segments\

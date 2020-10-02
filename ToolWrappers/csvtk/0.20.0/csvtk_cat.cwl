@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_cat.cwl
+id: csvtk_cat.cwl
 inputs:
 - id: in_buff_size
   doc: buffer size (default 8192)

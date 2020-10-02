@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SigiCRF.cwl
+id: SigiCRF.cwl
 inputs: []
 outputs:
 - id: out_stdout

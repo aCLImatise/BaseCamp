@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_time_tab.py.cwl
+id: fastq_time_tab.py.cwl
 inputs:
 - id: in_tab_separated_file
   doc: Tab separated file to save read time table.

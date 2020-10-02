@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsem_parse_alignments.cwl
+id: rsem_parse_alignments.cwl
 inputs: []
 outputs:
 - id: out_stdout

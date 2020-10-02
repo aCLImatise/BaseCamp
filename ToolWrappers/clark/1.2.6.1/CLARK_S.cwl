@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CLARK_S.cwl
+id: CLARK_S.cwl
 inputs:
 - id: in_kmer_length_integer
   doc: ',           k-mer length:  integer, >= 2 and <= 32 (for CLARK only). The default

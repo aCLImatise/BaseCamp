@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sp_ensembl_output_style.pl.cwl
+id: agat_sp_ensembl_output_style.pl.cwl
 inputs:
 - id: in_gff
   doc: Input GTF/GFF file.

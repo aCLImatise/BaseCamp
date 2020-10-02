@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extract_shared_or_unique_otuids.py.cwl
+id: extract_shared_or_unique_otuids.py.cwl
 inputs:
 - id: in_prefix
   doc: "Provide specific text to prepend the output file\nnames. By default, the 'unique'\

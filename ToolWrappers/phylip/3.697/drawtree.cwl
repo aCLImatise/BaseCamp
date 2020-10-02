@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../drawtree.cwl
+id: drawtree.cwl
 inputs: []
 outputs:
 - id: out_stdout

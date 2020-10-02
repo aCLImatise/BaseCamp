@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cbUpgrade.cwl
+id: cbUpgrade.cwl
 inputs:
 - id: in_debug
   doc: show debug messages

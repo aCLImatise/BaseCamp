@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../findMissingMates.cwl
+id: findMissingMates.cwl
 inputs:
 - id: in_disregard_bank_locks
   doc: Disregard bank locks and write permissions (spy mode)

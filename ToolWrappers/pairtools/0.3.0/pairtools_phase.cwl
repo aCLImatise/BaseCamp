@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pairtools_phase.cwl
+id: pairtools_phase.cwl
 inputs:
 - id: in_output
   doc: "output file. If the path ends with .gz or .lz4,\nthe output is pbgzip-/lz4c-compressed.\

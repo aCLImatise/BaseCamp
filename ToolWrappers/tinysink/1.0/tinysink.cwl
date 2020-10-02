@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tinysink.cwl
+id: tinysink.cwl
 inputs:
 - id: in_user
   doc: to log into the server with. [REQUIRED].

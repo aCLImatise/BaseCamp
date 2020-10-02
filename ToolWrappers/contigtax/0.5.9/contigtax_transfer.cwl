@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../contigtax_transfer.cwl
+id: contigtax_transfer.cwl
 inputs:
 - id: in_ignore_unc_rank
   doc: Ignore ORFs unclassified at <rank>

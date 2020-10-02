@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../padel.cwl
+id: padel.cwl
 inputs: []
 outputs:
 - id: out_stdout

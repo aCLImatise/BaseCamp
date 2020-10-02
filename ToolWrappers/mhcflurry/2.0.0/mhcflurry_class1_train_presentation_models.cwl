@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mhcflurry_class1_train_presentation_models.cwl
+id: mhcflurry_class1_train_presentation_models.cwl
 inputs:
 - id: in_data
   doc: "Training data CSV. Expected columns: peptide, n_flank,\nc_flank, hit"

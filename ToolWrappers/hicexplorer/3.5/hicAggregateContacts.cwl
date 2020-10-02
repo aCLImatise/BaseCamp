@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicAggregateContacts.cwl
+id: hicAggregateContacts.cwl
 inputs:
 - id: in_matrix
   doc: Path of the Hi-C matrix to plot.

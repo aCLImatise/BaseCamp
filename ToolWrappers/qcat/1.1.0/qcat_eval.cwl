@@ -1,41 +1,31 @@
 class: CommandLineTool
-id: ../../../qcat_eval.cwl
+id: qcat_eval.cwl
 inputs:
-- id: in_tsv
+- id: in_g
   doc: ''
   type: string
   inputBinding:
-    prefix: --tsv
-- id: in_name
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --name
-- id: in_dataset
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --dataset
-- id: in_summary
+    prefix: -g
+- id: in_s
   doc: ''
   type: boolean
   inputBinding:
-    prefix: --summary
-- id: in_guppy_summary
+    prefix: -s
+- id: in_d
   doc: ''
   type: string
   inputBinding:
-    prefix: --guppy_summary
-- id: in_get_incorrect
+    prefix: -d
+- id: in_n
   doc: ''
   type: string
   inputBinding:
-    prefix: --get-incorrect
-- id: in_fast_q
-  doc: 'optional arguments:'
+    prefix: -n
+- id: in_t
+  doc: ''
   type: string
   inputBinding:
-    position: 0
+    prefix: -t
 outputs:
 - id: out_stdout
   doc: Standard output stream

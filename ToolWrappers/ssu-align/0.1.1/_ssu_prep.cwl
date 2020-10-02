@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_ssu_prep.cwl
+id: _ssu_prep.cwl
 inputs: []
 outputs:
 - id: out_stdout

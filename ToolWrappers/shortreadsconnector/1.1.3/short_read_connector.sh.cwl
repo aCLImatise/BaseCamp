@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../short_read_connector.sh.cwl
+id: short_read_connector.sh.cwl
 inputs:
 - id: in_for_bankexample_b
   doc: "for bank\nExample: -b data/c1.fasta.gz"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gff3_splicesites.cwl
+id: gff3_splicesites.cwl
 inputs:
 - id: in_more_options
   doc: ''

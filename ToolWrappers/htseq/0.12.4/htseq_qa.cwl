@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htseq_qa.cwl
+id: htseq_qa.cwl
 inputs:
 - id: in_type
   doc: "type of read_file (one of: sam [default], bam, solexa-\nexport, fastq, solexa-fastq)"

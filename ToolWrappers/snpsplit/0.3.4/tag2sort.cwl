@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tag2sort.cwl
+id: tag2sort.cwl
 inputs:
 - id: in_paired
   doc: 'Paired-end mode. (Default: OFF).'

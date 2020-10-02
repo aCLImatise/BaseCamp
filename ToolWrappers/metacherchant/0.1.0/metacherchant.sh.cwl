@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../metacherchant.sh.cwl
+id: metacherchant.sh.cwl
 inputs:
 - id: in_kmer_size_mandatory
   doc: k-mer size (MANDATORY)

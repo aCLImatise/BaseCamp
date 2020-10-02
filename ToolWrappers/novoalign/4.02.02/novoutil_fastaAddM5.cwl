@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../novoutil_fastaAddM5.cwl
+id: novoutil_fastaAddM5.cwl
 inputs:
 - id: in_in
   doc: "is the fasta files to be processed.\nInput files may be compressed with gzip\

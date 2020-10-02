@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sem.cwl
+id: sem.cwl
 inputs:
 - id: in_run_jobs_parallel
   doc: Run n jobs in parallel

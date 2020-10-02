@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smeg_growth_est.cwl
+id: smeg_growth_est.cwl
 inputs:
 - id: in_reads_directory_singleend
   doc: Reads directory (single-end reads)

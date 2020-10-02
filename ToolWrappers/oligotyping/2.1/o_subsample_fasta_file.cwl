@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_subsample_fasta_file.cwl
+id: o_subsample_fasta_file.cwl
 inputs:
 - id: in_fasta_file_subsample
   doc: FASTA file to subsample

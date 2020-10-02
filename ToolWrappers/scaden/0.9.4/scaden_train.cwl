@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../scaden_train.cwl
+id: scaden_train.cwl
 inputs:
 - id: in_train_datasets
   doc: Datasets used for training. Uses all by default.

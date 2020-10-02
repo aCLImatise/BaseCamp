@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../count_kmers.cwl
+id: count_kmers.cwl
 inputs:
 - id: in_multifasta_file_count
   doc: multifasta file to count

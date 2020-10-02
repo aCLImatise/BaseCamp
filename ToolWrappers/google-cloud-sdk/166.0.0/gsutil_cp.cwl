@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_cp.cwl
+id: gsutil_cp.cwl
 inputs:
 - id: in_sets_named_cannedacl
   doc: "Sets named canned_acl when uploaded objects created. See\n\"gsutil help acls\"\

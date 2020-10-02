@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SampleOverview.cwl
+id: SampleOverview.cwl
 inputs:
 - id: in_in
   doc: Input variant lists in GSvar format.

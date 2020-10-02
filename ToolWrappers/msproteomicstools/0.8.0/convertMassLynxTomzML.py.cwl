@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertMassLynxTomzML.py.cwl
+id: convertMassLynxTomzML.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

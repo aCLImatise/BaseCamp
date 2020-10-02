@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../get_scores_in_intervals.py.cwl
+id: get_scores_in_intervals.py.cwl
 inputs:
 - id: in_score_file
   doc: ''

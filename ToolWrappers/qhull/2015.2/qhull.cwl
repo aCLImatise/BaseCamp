@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../qhull.cwl
+id: qhull.cwl
 inputs: []
 outputs:
 - id: out_stdout

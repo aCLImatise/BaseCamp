@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../socru_update_profile.cwl
+id: socru_update_profile.cwl
 inputs:
 - id: in_output_file
   doc: 'Output filename (default: updated_profile.txt)'

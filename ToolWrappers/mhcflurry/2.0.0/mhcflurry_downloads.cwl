@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mhcflurry_downloads.cwl
+id: mhcflurry_downloads.cwl
 inputs:
 - id: in_quiet
   doc: Output less

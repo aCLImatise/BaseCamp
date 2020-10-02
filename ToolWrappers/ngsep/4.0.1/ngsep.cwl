@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ngsep.cwl
+id: ngsep.cwl
 inputs:
 - id: in_jar
   doc: ''

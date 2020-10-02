@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_showorf.cwl
+id: _showorf.cwl
 inputs:
 - id: in_frames
   doc: "menu       [1,2,3,4,5,6] Select one or more values\n(Values: 0 (None); 1 (F1);\

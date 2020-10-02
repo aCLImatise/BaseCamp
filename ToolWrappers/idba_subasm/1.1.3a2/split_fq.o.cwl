@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split_fq.o.cwl
+id: split_fq.o.cwl
 inputs: []
 outputs:
 - id: out_stdout

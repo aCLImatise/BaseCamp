@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_calibrate_generate_variant_stats.cwl
+id: megalodon_extras_calibrate_generate_variant_stats.cwl
 inputs:
 - id: in_guppy_config
   doc: "Guppy config. Default: dna_r9.4.1_450bps_modbases_dam-\ndcm-cpg_hac.cfg"

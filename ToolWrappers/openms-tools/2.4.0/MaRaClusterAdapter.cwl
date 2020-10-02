@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MaRaClusterAdapter.cwl
+id: MaRaClusterAdapter.cwl
 inputs:
 - id: in_in
   doc: "*                           Input file(s) (valid formats: 'mzML', 'mgf')"

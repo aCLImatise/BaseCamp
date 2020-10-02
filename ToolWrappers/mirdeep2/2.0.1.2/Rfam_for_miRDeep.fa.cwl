@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Rfam_for_miRDeep.fa.cwl
+id: Rfam_for_miRDeep.fa.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../splash_util.conversionrate_bam.cwl
+id: splash_util.conversionrate_bam.cwl
 inputs:
 - id: in_rev
   doc: ''

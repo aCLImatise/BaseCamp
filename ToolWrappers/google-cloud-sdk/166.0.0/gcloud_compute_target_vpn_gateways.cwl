@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gcloud_compute_target_vpn_gateways.cwl
+id: gcloud_compute_target_vpn_gateways.cwl
 inputs:
 - id: in_create
   doc: Create a target VPN Gateway.

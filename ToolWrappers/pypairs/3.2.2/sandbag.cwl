@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sandbag.cwl
+id: sandbag.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_0.1.18_targetcut.cwl
+id: samtools_0.1.18_targetcut.cwl
 inputs:
 - id: in_f
   doc: ''

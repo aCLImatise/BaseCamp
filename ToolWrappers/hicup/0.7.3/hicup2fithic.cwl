@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hicup2fithic.cwl
+id: hicup2fithic.cwl
 inputs:
 - id: in_digest
   doc: HiCUP Digester generated digest file

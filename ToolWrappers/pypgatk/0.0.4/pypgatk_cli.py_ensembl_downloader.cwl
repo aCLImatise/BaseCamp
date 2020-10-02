@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pypgatk_cli.py_ensembl_downloader.cwl
+id: pypgatk_cli.py_ensembl_downloader.cwl
 inputs:
 - id: in_config_file
   doc: "Configuration file for the ensembl data\ndownloader pipeline"

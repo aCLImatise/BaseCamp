@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fitsheader_filename.cwl
+id: fitsheader_filename.cwl
 inputs:
 - id: in_c
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coverage3_report.cwl
+id: coverage3_report.cwl
 inputs:
 - id: in_fail_under
   doc: "Exit with a status of 2 if the total coverage is less\nthan MIN."

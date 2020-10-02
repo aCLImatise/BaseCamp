@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_whichdb.cwl
+id: _whichdb.cwl
 inputs:
 - id: in_get
   doc: toggle     [N] Retrieve sequences

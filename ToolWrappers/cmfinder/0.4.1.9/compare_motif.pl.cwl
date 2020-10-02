@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../compare_motif.pl.cwl
+id: compare_motif.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

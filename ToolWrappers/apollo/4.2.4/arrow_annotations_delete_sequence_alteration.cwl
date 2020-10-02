@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_annotations_delete_sequence_alteration.cwl
+id: arrow_annotations_delete_sequence_alteration.cwl
 inputs:
 - id: in_organism
   doc: Organism Common Name

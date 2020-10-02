@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gomapandfilter.sh.cwl
+id: gomapandfilter.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

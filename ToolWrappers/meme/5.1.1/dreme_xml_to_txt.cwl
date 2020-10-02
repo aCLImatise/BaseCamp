@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dreme_xml_to_txt.cwl
+id: dreme_xml_to_txt.cwl
 inputs:
 - id: in_dre_me_xml_to_html
   doc: ''

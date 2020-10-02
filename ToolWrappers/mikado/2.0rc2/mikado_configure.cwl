@@ -1,94 +1,6 @@
 class: CommandLineTool
-id: ../../../mikado_configure.cwl
+id: mikado_configure.cwl
 inputs:
-- id: in_full
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --full
-- id: in_seed
-  doc: Random seed number.
-  type: long
-  inputBinding:
-    prefix: --seed
-- id: in_strand_specific
-  doc: Boolean flag indicating whether all the assemblies are strand-specific.
-  type: boolean
-  inputBinding:
-    prefix: --strand-specific
-- id: in_no_files
-  doc: "Remove all files-specific options from the printed configuration file.\nInvoking\
-    \ the \"--gff\" option will disable this flag."
-  type: boolean
-  inputBinding:
-    prefix: --no-files
-- id: in_gff
-  doc: Input GFF/GTF file(s), separated by comma
-  type: File
-  inputBinding:
-    prefix: --gff
-- id: in_list
-  doc: "Tab-delimited file containing rows with the following format:\n<file>  <label>\
-    \ <strandedness> <score(optional)> <is_reference(optional)> <always_keep(optional)\n\
-    strandedness, is_reference and always_keep must be boolean values (True, False)\n\
-    score must be a valid floating number."
-  type: boolean
-  inputBinding:
-    prefix: --list
-- id: in_reference
-  doc: Fasta genomic reference.
-  type: string
-  inputBinding:
-    prefix: --reference
-- id: in_strand_specific_assemblies
-  doc: List of strand-specific assemblies among the inputs.
-  type: string
-  inputBinding:
-    prefix: --strand-specific-assemblies
-- id: in_labels
-  doc: "Labels to attach to the IDs of the transcripts of the input files,\nseparated\
-    \ by comma."
-  type: string
-  inputBinding:
-    prefix: --labels
-- id: in_external
-  doc: "External configuration file to overwrite/add values from.\nParameters specified\
-    \ on the command line will take precedence over those present in the configuration\
-    \ file."
-  type: File
-  inputBinding:
-    prefix: --external
-- id: in_threads
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --threads
-- id: in_skip_split
-  doc: List of labels for which splitting will be disabled (eg long reads such as
-    PacBio)
-  type: string[]
-  inputBinding:
-    prefix: --skip-split
-- id: in_json
-  doc: 'Output will be in JSON (default: inferred by filename, with TOML as fallback).'
-  type: File
-  inputBinding:
-    prefix: --json
-- id: in_yaml
-  doc: 'Output will be in YAML (default: inferred by filename, with TOML as fallback).'
-  type: File
-  inputBinding:
-    prefix: --yaml
-- id: in_to_ml
-  doc: 'Output will be in TOML (default: inferred by filename, with TOML as fallback).'
-  type: File
-  inputBinding:
-    prefix: --toml
-- id: in_out_dir
-  doc: Destination directory for the output.
-  type: Directory
-  inputBinding:
-    prefix: --out-dir
 - id: in_minimum_cdna_length
   doc: Minimum cDNA length for transcripts.
   type: long
@@ -163,16 +75,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --check-references
-- id: in_junctions
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --junctions
-- id: in_blast_targets
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --blast_targets
 - id: in_dai_jin
   doc: Flag. If set, the configuration file will be also valid for Daijin.
   type: boolean
@@ -222,35 +124,20 @@ inputs:
   type: File
   inputBinding:
     prefix: --cluster_config
-- id: in_out
-  doc: 'optional arguments:'
+- id: in_seed
+  doc: ''
   type: string
   inputBinding:
-    position: 0
+    prefix: --seed
+- id: in_full
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --full
 outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_json
-  doc: 'Output will be in JSON (default: inferred by filename, with TOML as fallback).'
-  type: File
-  outputBinding:
-    glob: $(inputs.in_json)
-- id: out_yaml
-  doc: 'Output will be in YAML (default: inferred by filename, with TOML as fallback).'
-  type: File
-  outputBinding:
-    glob: $(inputs.in_yaml)
-- id: out_to_ml
-  doc: 'Output will be in TOML (default: inferred by filename, with TOML as fallback).'
-  type: File
-  outputBinding:
-    glob: $(inputs.in_to_ml)
-- id: out_out_dir
-  doc: Destination directory for the output.
-  type: Directory
-  outputBinding:
-    glob: $(inputs.in_out_dir)
 cwlVersion: v1.1
 baseCommand:
 - mikado

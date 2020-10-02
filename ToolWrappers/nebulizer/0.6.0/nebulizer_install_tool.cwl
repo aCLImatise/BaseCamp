@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_install_tool.cwl
+id: nebulizer_install_tool.cwl
 inputs:
 - id: in_tool_panel_section
   doc: "tool panel section name or id to install the\ntool under; if the section doesn't\

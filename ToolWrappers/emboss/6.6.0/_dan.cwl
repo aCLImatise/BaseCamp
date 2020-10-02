@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_dan.cwl
+id: _dan.cwl
 inputs:
 - id: in_window_size
   doc: "integer    [20] The values of melting point and other\nthermodynamic properties\

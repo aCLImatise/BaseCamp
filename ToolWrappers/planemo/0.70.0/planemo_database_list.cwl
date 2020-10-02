@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_database_list.cwl
+id: planemo_database_list.cwl
 inputs:
 - id: in_postgres
   doc: Use postgres database type.

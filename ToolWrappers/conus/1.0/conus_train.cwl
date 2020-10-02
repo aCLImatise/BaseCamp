@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../conus_train.cwl
+id: conus_train.cwl
 inputs:
 - id: in_use_string_defaults
   doc: ': Use grammar <string>, defaults to NUS'

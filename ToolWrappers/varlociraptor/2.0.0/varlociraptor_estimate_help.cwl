@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varlociraptor_estimate_help.cwl
+id: varlociraptor_estimate_help.cwl
 inputs:
 - id: in_for
   doc: ''

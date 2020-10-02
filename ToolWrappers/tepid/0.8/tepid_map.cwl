@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tepid_map.cwl
+id: tepid_map.cwl
 inputs:
 - id: in_path_bowtie_index
   doc: path to bowtie2 index

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../defuse_clusters_to_CG.cwl
+id: defuse_clusters_to_CG.cwl
 inputs:
 - id: in_gene_annotation
   doc: GTF-file used by defuse

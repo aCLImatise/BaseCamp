@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cargo_install.cwl
+id: cargo_install.cwl
 inputs:
 - id: in_vers
   doc: Specify a version to install from crates.io

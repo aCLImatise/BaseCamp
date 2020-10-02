@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Clustering_square_matrix.cwl
+id: Clustering_square_matrix.cwl
 inputs:
 - id: in_column_matrix
   doc: ''

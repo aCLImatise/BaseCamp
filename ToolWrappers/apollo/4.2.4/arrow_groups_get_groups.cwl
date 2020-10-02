@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_groups_get_groups.cwl
+id: arrow_groups_get_groups.cwl
 inputs:
 - id: in_name
   doc: Only return group(s) with given name

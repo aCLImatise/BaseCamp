@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../o_heatmap.R.cwl
+id: o_heatmap.R.cwl
 inputs:
 - id: in_metadata
   doc: Metadata file

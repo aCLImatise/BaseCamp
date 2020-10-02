@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bp_find_blast_matches.pl.cwl
+id: bp_find_blast_matches.pl.cwl
 inputs:
 - id: in_blast
   doc: "BLAST output file to read from. The alignment should use the file\nspecified\

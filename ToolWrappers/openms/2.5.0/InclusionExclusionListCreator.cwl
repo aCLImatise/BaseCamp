@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../InclusionExclusionListCreator.cwl
+id: InclusionExclusionListCreator.cwl
 inputs:
 - id: in_include
   doc: "Inclusion list input file in FASTA or featureXML format. (valid formats: 'featureXML',\

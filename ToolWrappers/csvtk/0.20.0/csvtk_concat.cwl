@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../csvtk_concat.cwl
+id: csvtk_concat.cwl
 inputs:
 - id: in_ignore_case
   doc: ignore case (column name)

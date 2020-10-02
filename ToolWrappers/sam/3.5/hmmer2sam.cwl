@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hmmer2sam.cwl
+id: hmmer2sam.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../isutf8.cwl
+id: isutf8.cwl
 inputs:
 - id: in_quiet
   doc: ''

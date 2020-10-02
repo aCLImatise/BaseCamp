@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../funnel_aws_batch.cwl
+id: funnel_aws_batch.cwl
 inputs:
 - id: in_create_job_def
   doc: Revise a job definition

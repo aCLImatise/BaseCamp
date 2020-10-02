@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cactus_filterSmallFastaSequences.py.cwl
+id: cactus_filterSmallFastaSequences.py.cwl
 inputs:
 - id: in_prefix
   doc: only filter sequences with prefix in name

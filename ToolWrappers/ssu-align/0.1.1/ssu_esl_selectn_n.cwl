@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ssu_esl_selectn_n.cwl
+id: ssu_esl_selectn_n.cwl
 inputs:
 - id: in_options
   doc: ''

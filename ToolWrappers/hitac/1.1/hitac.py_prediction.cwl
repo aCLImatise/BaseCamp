@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hitac.py_prediction.cwl
+id: hitac.py_prediction.cwl
 inputs:
 - id: in_threads
   doc: ''

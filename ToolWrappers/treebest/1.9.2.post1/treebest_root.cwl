@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../treebest_root.cwl
+id: treebest_root.cwl
 inputs:
 - id: in_tree
   doc: ''

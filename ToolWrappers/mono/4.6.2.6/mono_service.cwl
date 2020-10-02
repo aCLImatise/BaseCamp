@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mono_service.cwl
+id: mono_service.cwl
 inputs:
 - id: in_directory_working_directory
   doc: :<directory>         Working directory

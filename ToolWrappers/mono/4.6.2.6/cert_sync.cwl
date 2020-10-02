@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cert_sync.cwl
+id: cert_sync.cwl
 inputs:
 - id: in_user
   doc: ''

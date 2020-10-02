@@ -6,15 +6,13 @@ task RandomBed {
     Boolean? number_generate_default
     Boolean? seed
     String? g
-    Int chr_one
-    Int chr_two
-    Int chr_one_eight_gl_zero_zero_zero_two_zero_seven_random
+    String bed_tools
+    String random
   }
   command <<<
     randomBed \
-      ~{chr_one} \
-      ~{chr_two} \
-      ~{chr_one_eight_gl_zero_zero_zero_two_zero_seven_random} \
+      ~{bed_tools} \
+      ~{random} \
       ~{if (length_generate_default) then "-l" else ""} \
       ~{if (number_generate_default) then "-n" else ""} \
       ~{if (seed) then "-seed" else ""} \
@@ -25,9 +23,8 @@ task RandomBed {
     number_generate_default: "The number of intervals to generate.\\n- Default = 1,000,000.\\n- (INTEGER)"
     seed: "Supply an integer seed for the shuffling.\\n- By default, the seed is chosen automatically.\\n- (INTEGER)"
     g: ""
-    chr_one: "249250621"
-    chr_two: "243199373"
-    chr_one_eight_gl_zero_zero_zero_two_zero_seven_random: "4262"
+    bed_tools: ""
+    random: ""
   }
   output {
     File out_stdout = stdout()

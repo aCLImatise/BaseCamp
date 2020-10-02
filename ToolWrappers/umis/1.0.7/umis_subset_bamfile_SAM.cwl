@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../umis_subset_bamfile_SAM.cwl
+id: umis_subset_bamfile_SAM.cwl
 inputs:
 - id: in_barcodes
   doc: 'Options:'

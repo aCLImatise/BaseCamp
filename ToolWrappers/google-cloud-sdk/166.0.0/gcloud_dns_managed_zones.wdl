@@ -2,7 +2,6 @@ version 1.0
 
 task GcloudDnsManagedzones {
   input {
-    Boolean? dns_name
     String create
     String delete
     String describe
@@ -13,11 +12,9 @@ task GcloudDnsManagedzones {
       ~{create} \
       ~{delete} \
       ~{describe} \
-      ~{list} \
-      ~{if (dns_name) then "--dns-name" else ""}
+      ~{list}
   >>>
   parameter_meta {
-    dns_name: "=\\\"my.zone.com.\\\""
     create: "Create a Cloud DNS managed-zone."
     delete: "Delete an empty Cloud DNS managed-zone."
     describe: "View the details of a Cloud DNS managed-zone."

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktImportFCP.cwl
+id: ktImportFCP.cwl
 inputs:
 - id: in_fcp_output
   doc: "Results of running any FCP classification tool (except\nBLASTN.py, which only\

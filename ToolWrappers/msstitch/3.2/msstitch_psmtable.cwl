@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msstitch_psmtable.cwl
+id: msstitch_psmtable.cwl
 inputs:
 - id: in_dbfile
   doc: '[--ms1quant] [--isobaric]'

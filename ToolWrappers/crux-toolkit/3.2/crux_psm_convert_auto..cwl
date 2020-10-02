@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../crux_psm_convert_auto..cwl
+id: crux_psm_convert_auto..cwl
 inputs:
 - id: in_crux
   doc: ''

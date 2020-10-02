@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_create_gist.cwl
+id: planemo_create_gist.cwl
 inputs:
 - id: in_link_type
   doc: '[raw|html]  Link type to generate for the file.'

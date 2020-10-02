@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sd.cwl
+id: sd.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_NOT_EVIDENCE.cwl
+id: gdtools_NOT_EVIDENCE.cwl
 inputs:
 - id: in_output
   doc: output GD file (DEFAULT=output.gd)

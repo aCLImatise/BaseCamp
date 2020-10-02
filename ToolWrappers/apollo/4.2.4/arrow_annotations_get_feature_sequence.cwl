@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../arrow_annotations_get_feature_sequence.cwl
+id: arrow_annotations_get_feature_sequence.cwl
 inputs:
 - id: in_organism
   doc: Organism Common Name

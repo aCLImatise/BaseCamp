@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../CMV.cwl
+id: CMV.cwl
 inputs:
 - id: in_model_file
   doc: Path to covariance model file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_fatoagp.cwl
+id: abyss_fatoagp.cwl
 inputs:
 - id: in_more_options
   doc: ''

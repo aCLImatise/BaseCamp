@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta_check.cwl
+id: fasta_check.cwl
 inputs:
 - id: in_threads
   doc: ''

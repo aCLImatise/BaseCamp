@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../varlociraptor_decode_phred.cwl
+id: varlociraptor_decode_phred.cwl
 inputs:
 - id: in_var_loci_raptor
   doc: ''

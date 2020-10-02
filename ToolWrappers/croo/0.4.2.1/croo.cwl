@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../croo.cwl
+id: croo.cwl
 inputs:
 - id: in_out_def_json
   doc: "Output definition JSON file for a WDL file\ncorresponding to the specified\

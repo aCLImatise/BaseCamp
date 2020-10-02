@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../entropy.cwl
+id: entropy.cwl
 inputs:
 - id: in_genetic_data_population
   doc: with genetic data for the population (.mpgl)

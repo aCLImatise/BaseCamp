@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_remove_duplicates_output_fastq.cwl
+id: mb_remove_duplicates_output_fastq.cwl
 inputs:
 - id: in_verbose
   doc: ''

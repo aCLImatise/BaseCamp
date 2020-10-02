@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prinseq_lite.pl.cwl
+id: prinseq_lite.pl.cwl
 inputs:
 - id: in_man
   doc: Print the full documentation; ignore other arguments.
@@ -500,11 +500,6 @@ inputs:
     prefix: -h
 - id: in_tabs_dot
   doc: If you specify any statistic option, no other ouput will be
-  type: string
-  inputBinding:
-    position: 0
-- id: in_option_dot
-  doc: -stats_info
   type: string
   inputBinding:
     position: 0

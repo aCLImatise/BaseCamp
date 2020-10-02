@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../XMLValidator.cwl
+id: XMLValidator.cwl
 inputs:
 - id: in_in
   doc: "*        File to validate (valid formats: 'mzML', 'mzData', 'featureXML',\

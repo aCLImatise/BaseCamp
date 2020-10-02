@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslPosTarget.cwl
+id: pslPosTarget.cwl
 inputs: []
 outputs:
 - id: out_stdout

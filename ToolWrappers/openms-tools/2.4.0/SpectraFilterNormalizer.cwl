@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SpectraFilterNormalizer.cwl
+id: SpectraFilterNormalizer.cwl
 inputs:
 - id: in_in
   doc: "*        Input file (valid formats: 'mzML')"

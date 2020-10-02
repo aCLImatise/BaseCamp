@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../maskambigprot.cwl
+id: maskambigprot.cwl
 inputs:
 - id: in_feature
   doc: boolean    Use feature information

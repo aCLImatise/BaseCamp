@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hisatgenotype_build_genome.py.cwl
+id: hisatgenotype_build_genome.py.cwl
 inputs:
 - id: in_base_fname
   doc: "base filename for genotype genome (default:\ngenotype_genome)"

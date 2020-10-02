@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../EBFilter.cwl
+id: EBFilter.cwl
 inputs:
 - id: in_format_annovar_tsv
   doc: the format of mutation file vcf or annovar (tsv)

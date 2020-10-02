@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../R_scape.cwl
+id: R_scape.cwl
 inputs:
 - id: in_eval_max_expected
   doc: ': Eval: max expected number of covNBPs allowed  [0.05]  (x>=0)'
@@ -452,11 +452,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --minhloop
-- id: in_to_l
-  doc: ': tolerance  [1e-6]'
-  type: double
-  inputBinding:
-    prefix: --tol
 - id: in_seed
   doc: ': set RNG seed to <n>. Use 0 for a random seed.  [42]  (n>=0)'
   type: long
@@ -472,7 +467,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -options
-- id: in_var_94
+- id: in_var_93
   doc: ''
   type: string
   inputBinding:

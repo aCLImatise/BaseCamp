@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylovega.cwl
+id: phylovega.cwl
 inputs: []
 outputs:
 - id: out_stdout

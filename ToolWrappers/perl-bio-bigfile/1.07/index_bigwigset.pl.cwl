@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../index_bigwigset.pl.cwl
+id: index_bigwigset.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../battenberg_version.pl.cwl
+id: battenberg_version.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

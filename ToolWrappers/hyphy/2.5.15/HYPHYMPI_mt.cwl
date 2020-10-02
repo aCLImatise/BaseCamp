@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../HYPHYMPI_mt.cwl
+id: HYPHYMPI_mt.cwl
 inputs:
 - id: in_i
   doc: i=0;

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rbcavity_ReceptorPrmFile.cwl
+id: rbcavity_ReceptorPrmFile.cwl
 inputs:
 - id: in_receptor
   doc: receptor file

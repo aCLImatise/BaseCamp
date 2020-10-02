@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../coreprocess.pl.cwl
+id: coreprocess.pl.cwl
 inputs:
 - id: in_archive
   doc: same as -dR --preserve=all

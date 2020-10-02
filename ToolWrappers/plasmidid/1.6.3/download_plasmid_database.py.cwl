@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../download_plasmid_database.py.cwl
+id: download_plasmid_database.py.cwl
 inputs:
 - id: in_output
   doc: "REQUIRED. Output directory to extract plasmid database\n"

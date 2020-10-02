@@ -1,21 +1,11 @@
 class: CommandLineTool
-id: ../../../hmm_info.cwl
+id: hmm_info.cwl
 inputs:
 - id: in_models
-  doc: ''
+  doc: "-general\n-durations <length>\n"
   type: boolean
   inputBinding:
     prefix: -models
-- id: in_general
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -general
-- id: in_durations
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -durations
 outputs:
 - id: out_stdout
   doc: Standard output stream

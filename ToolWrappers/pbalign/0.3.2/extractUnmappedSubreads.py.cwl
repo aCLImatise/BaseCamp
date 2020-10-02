@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extractUnmappedSubreads.py.cwl
+id: extractUnmappedSubreads.py.cwl
 inputs:
 - id: in_verbose
   doc: 'Set the verbosity level (default: None)'

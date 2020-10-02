@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktImportDiskUsage.cwl
+id: ktImportDiskUsage.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../opsin.cwl
+id: opsin.cwl
 inputs:
 - id: in_allow_acids_without_acid
   doc: "Allows interpretation of acids without\nthe word acid e.g. \"acetic\""

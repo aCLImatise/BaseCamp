@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tinscan_find.cwl
+id: tinscan_find.cwl
 inputs:
 - id: in_in_file
   doc: "Input file containing tab delimited LASTZ alignment\ndata."

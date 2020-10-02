@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ntdpal.cwl
+id: ntdpal.cwl
 inputs:
 - id: in_scoring_matrix_modified
   doc: the scoring matrix to be modified by dpal_set_ambiguity_codes.

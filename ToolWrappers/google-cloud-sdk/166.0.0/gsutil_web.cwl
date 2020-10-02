@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gsutil_web.cwl
+id: gsutil_web.cwl
 inputs:
 - id: in_specifies_object_name
   doc: "Specifies the object name to serve when a bucket\nlisting is requested via\

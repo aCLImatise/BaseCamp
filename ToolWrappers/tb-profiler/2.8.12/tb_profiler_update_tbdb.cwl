@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tb_profiler_update_tbdb.cwl
+id: tb_profiler_update_tbdb.cwl
 inputs:
 - id: in_seqname
   doc: 'Mutation panel name (default: Chromosome)'

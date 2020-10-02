@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MaxQuantServer.exe.cwl
+id: MaxQuantServer.exe.cwl
 inputs: []
 outputs:
 - id: out_stdout

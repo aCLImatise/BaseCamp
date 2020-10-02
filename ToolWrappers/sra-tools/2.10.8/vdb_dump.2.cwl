@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vdb_dump.2.cwl
+id: vdb_dump.2.cwl
 inputs: []
 outputs:
 - id: out_stdout

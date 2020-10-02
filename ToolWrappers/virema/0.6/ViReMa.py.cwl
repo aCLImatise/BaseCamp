@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ViReMa.py.cwl
+id: ViReMa.py.cwl
 inputs:
 - id: in_host_index
   doc: "Host genome reference index key, e.g.\nd_melanogaster_fb5_22"

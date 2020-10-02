@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combig_script.sh.cwl
+id: combig_script.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

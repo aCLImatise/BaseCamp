@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../split.cwl
+id: split.cwl
 inputs:
 - id: in_suffix_length
   doc: generate suffixes of length N (default 2)

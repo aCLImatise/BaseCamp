@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../flye_samtools_faidx.cwl
+id: flye_samtools_faidx.cwl
 inputs:
 - id: in_output
   doc: Write FASTA to file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../apoc.cwl
+id: apoc.cwl
 inputs:
 - id: in_fa
   doc: 'Global structure alignment: 1 - enable (default), 0 - disable.'

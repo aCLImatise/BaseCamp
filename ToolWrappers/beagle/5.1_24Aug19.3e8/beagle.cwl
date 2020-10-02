@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../beagle.cwl
+id: beagle.cwl
 inputs:
 - id: in_jar
   doc: ''

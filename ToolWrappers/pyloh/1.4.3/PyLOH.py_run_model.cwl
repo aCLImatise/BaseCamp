@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PyLOH.py_run_model.cwl
+id: PyLOH.py_run_model.cwl
 inputs:
 - id: in_allele_number_max
   doc: "Maximum copy number of each allele allows to take.\nDefault is 2."

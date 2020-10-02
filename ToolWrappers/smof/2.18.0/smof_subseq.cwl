@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_subseq.cwl
+id: smof_subseq.cwl
 inputs:
 - id: in_n__bounds
   doc: N, --bounds N N  from and to values (indexed from 1)

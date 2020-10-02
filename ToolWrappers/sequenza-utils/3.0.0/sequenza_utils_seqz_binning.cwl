@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sequenza_utils_seqz_binning.cwl
+id: sequenza_utils_seqz_binning.cwl
 inputs:
 - id: in_seq_z
   doc: A seqz file.

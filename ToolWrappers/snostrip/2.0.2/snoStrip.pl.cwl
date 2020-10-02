@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../snoStrip.pl.cwl
+id: snoStrip.pl.cwl
 inputs:
 - id: in_dir_output_directory
   doc: "|dir             Output directory where all retrieved information will\nbe\

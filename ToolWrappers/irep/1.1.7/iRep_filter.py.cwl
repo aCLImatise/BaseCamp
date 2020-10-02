@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iRep_filter.py.cwl
+id: iRep_filter.py.cwl
 inputs:
 - id: in__irep_tables
   doc: '[T [T ...]]  iRep table(s)'

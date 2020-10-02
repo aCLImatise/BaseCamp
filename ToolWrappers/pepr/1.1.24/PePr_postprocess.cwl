@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PePr_postprocess.cwl
+id: PePr_postprocess.cwl
 inputs:
 - id: in_peak
   doc: peak file

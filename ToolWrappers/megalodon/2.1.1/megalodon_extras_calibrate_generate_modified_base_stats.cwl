@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../megalodon_extras_calibrate_generate_modified_base_stats.cwl
+id: megalodon_extras_calibrate_generate_modified_base_stats.cwl
 inputs:
 - id: in_control_megalodon_results_dir
   doc: "Megalodon output directory with modified base control\nsample."

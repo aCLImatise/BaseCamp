@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ppanini_scatterplot.cwl
+id: ppanini_scatterplot.cwl
 inputs:
 - id: in_p_panini_output
   doc: PPANINI output table

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../add_track_json.pl.cwl
+id: add_track_json.pl.cwl
 inputs:
 - id: in_file_dot
   doc: For example, if you wanted to add a sequence track to

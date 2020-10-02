@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minimap.cwl
+id: minimap.cwl
 inputs:
 - id: in_kmer_size
   doc: k-mer size [15]

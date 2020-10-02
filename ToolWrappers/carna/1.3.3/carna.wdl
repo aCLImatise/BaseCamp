@@ -29,12 +29,14 @@ task Carna {
     String? ub
     Int? c_d
     Int? time_limit
-    Boolean? var_27
-    String rna_sequences_pair
+    Boolean? verbose
+    File file_one
+    File file_two
   }
   command <<<
     carna \
-      ~{rna_sequences_pair} \
+      ~{file_one} \
+      ~{file_two} \
       ~{if defined(match) then ("--match " +  '"' + match + '"') else ""} \
       ~{if defined(mismatch) then ("--mismatch " +  '"' + mismatch + '"') else ""} \
       ~{if defined(ribo_sum_file) then ("--ribosum-file " +  '"' + ribo_sum_file + '"') else ""} \
@@ -62,7 +64,7 @@ task Carna {
       ~{if defined(ub) then ("--ub " +  '"' + ub + '"') else ""} \
       ~{if defined(c_d) then ("--c_d " +  '"' + c_d + '"') else ""} \
       ~{if defined(time_limit) then ("--time-limit " +  '"' + time_limit + '"') else ""} \
-      ~{if (var_27) then "--verbose" else ""}
+      ~{if (verbose) then "--verbose" else ""}
   >>>
   parameter_meta {
     match: "(50)\\nMatch score"
@@ -92,8 +94,9 @@ task Carna {
     ub: "Upper score bound"
     c_d: "(1)\\nRecomputation distance"
     time_limit: "(300000)\\nTime limit in ms (always search first solution; turn off by 0)."
-    var_27: ""
-    rna_sequences_pair: "RNA sequences and pair probabilities:"
+    verbose: "Verbose"
+    file_one: ""
+    file_two: ""
   }
   output {
     File out_stdout = stdout()

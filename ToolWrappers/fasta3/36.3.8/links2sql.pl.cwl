@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../links2sql.pl.cwl
+id: links2sql.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

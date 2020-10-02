@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../halIndels.cwl
+id: halIndels.cwl
 inputs:
 - id: in_adjacent_bases
   doc: ":       # of adjacent bases to examine while filtering\n[default = 5]"

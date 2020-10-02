@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clipprimer.pl.cwl
+id: clipprimer.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

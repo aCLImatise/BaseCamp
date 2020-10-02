@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pancake_create.cwl
+id: pancake_create.cwl
 inputs:
 - id: in_sequences
   doc: "fasta or multiple fasta file providing input\nchromosome sequences"

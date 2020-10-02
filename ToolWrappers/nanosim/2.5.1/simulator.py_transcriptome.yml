@@ -1,4 +1,4 @@
-&id001 !Command
+!Command
 command:
 - simulator.py
 - transcriptome
@@ -94,8 +94,8 @@ named:
   - --basecaller
   args: !ChoiceFlagArg
     choices: !!set
-      ? albacore
-      ? guppy
+      albacore:
+      guppy:
   optional: true
 - !Flag
   description: "Simulate homopolymers with respect to chosen read\ntype: dRNA, cDNA_1D\
@@ -105,9 +105,9 @@ named:
   - --read_type
   args: !ChoiceFlagArg
     choices: !!set
-      ? cDNA_1D2
-      ? dRNA
-      ? cDNA_1D
+      dRNA:
+      cDNA_1D:
+      cDNA_1D2:
   optional: true
 - !Flag
   description: "Percentage of antisense sequences. Overrides the value\nprofiled in\
@@ -145,49 +145,7 @@ named:
   - --uracil
   args: !EmptyFlagArg {}
   optional: true
-parent: !Command
-  command:
-  - simulator.py
-  positional: []
-  named:
-  - !Flag
-    description: ''
-    synonyms:
-    - -v
-    args: !EmptyFlagArg {}
-    optional: true
-  parent:
-  subcommands:
-  - *id001
-  usage: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag: !Flag
-    description: show program's version number and exit
-    synonyms:
-    - -v
-    - --version
-    args: !EmptyFlagArg {}
-    optional: true
-  help_text: "usage: simulator.py [-h] [-v] {genome,transcriptome} ...\n\nSimulation\
-    \ step\n-----------------------------------------------------------\nGiven error\
-    \ profiles, reference genome and/or transcriptome,\nsimulate ONT DNA or RNA reads\n\
-    \noptional arguments:\n  -h, --help            show this help message and exit\n\
-    \  -v, --version         show program's version number and exit\n\nsubcommands:\n\
-    \  \n  There are two modes in read_analysis.\n  For detailed usage of each mode:\n\
-    \      simulator.py mode -h\n  -------------------------------------------------------\n\
-    \n  {genome,transcriptome}\n                        You may run the simulator\
-    \ on transcriptome or genome\n                        mode.\n    genome      \
-    \        Run the simulator on genome mode\n    transcriptome       Run the simulator\
-    \ on transcriptome mode\n"
-  generated_using: &id002
-  - --help
+parent:
 subcommands: []
 usage: []
 help_flag: !Flag
@@ -235,4 +193,5 @@ help_text: "usage: simulator.py transcriptome [-h] -rt REF_T [-rg REF_G] -e EXP\
   \ reads\n  -t NUM_THREADS, --num_threads NUM_THREADS\n                        Number\
   \ of threads for simulation (Default = 1)\n  --uracil              Converts the\
   \ thymine (T) bases to uracil (U) in the\n                        output fasta format\n"
-generated_using: *id002
+generated_using:
+- --help

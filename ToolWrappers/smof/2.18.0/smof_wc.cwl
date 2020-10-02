@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../smof_wc.cwl
+id: smof_wc.cwl
 inputs:
 - id: in_chars
   doc: writes the summed length of all sequences

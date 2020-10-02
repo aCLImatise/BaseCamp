@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agp2amos.cwl
+id: agp2amos.cwl
 inputs: []
 outputs:
 - id: out_stdout

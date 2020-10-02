@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../closest_features_megarow.cwl
+id: closest_features_megarow.cwl
 inputs:
 - id: in_chrom
   doc: Jump to and process data for given <chromosome> only.

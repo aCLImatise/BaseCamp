@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htseq_count_barcodes.cwl
+id: htseq_count_barcodes.cwl
 inputs:
 - id: in_format
   doc: "Type of <alignment_file> data. DEPRECATED: file format\nis detected automatically.\

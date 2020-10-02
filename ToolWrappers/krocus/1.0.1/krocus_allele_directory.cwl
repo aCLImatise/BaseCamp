@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../krocus_allele_directory.cwl
+id: krocus_allele_directory.cwl
 inputs:
 - id: in_input_dot_fast_q
   doc: ''

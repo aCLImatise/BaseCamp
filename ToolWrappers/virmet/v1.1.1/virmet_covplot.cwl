@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../virmet_covplot.cwl
+id: virmet_covplot.cwl
 inputs:
 - id: in_outdir
   doc: path to sample results directory

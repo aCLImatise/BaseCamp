@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cthreepo.cwl
+id: cthreepo.cwl
 inputs:
 - id: in_in_file
   doc: input file

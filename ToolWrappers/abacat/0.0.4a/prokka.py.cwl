@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prokka.py.cwl
+id: prokka.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

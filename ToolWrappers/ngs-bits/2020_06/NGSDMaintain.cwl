@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGSDMaintain.cwl
+id: NGSDMaintain.cwl
 inputs:
 - id: in_out
   doc: "Output file. If unset, writes to STDOUT.\nDefault value: ''"

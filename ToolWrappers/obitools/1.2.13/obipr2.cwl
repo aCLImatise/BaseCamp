@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obipr2.cwl
+id: obipr2.cwl
 inputs:
 - id: in_debug
   doc: Set logging in debug mode

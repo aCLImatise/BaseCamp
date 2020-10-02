@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bam2starch_float128.cwl
+id: bam2starch_float128.cwl
 inputs:
 - id: in_keep_header
   doc: to preserve the header data from the SAM input as

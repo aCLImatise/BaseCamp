@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fs.cwl
+id: fs.cwl
 inputs:
 - id: in_h_slash_help
   doc: ':    Show this help.'

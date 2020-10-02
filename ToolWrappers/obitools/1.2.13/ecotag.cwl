@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../ecotag.cwl
+id: ecotag.cwl
 inputs:
-- id: in_sort
-  doc: '> seq_tag.fasta'
-  type: string
-  inputBinding:
-    prefix: --sort
 - id: in_debug
   doc: Set logging in debug mode
   type: boolean
@@ -158,11 +153,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --uppercase
-- id: in_bash
-  doc: '> ecotag -d embl_r113  -R ReferenceDB.fasta \'
-  type: string
-  inputBinding:
-    position: 0
 - id: in_identification
   doc: --sort=SORT           Sort output on input sequence tag
   type: string

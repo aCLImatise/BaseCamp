@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../transterm.cwl
+id: transterm.cwl
 inputs: []
 outputs:
 - id: out_stdout

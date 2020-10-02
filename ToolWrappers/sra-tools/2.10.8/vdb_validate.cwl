@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vdb_validate.cwl
+id: vdb_validate.cwl
 inputs:
 - id: in_blob_crc
   doc: 'Check blobs CRC32 (default: yes)'

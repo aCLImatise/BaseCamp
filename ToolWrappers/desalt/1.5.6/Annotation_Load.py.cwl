@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Annotation_Load.py.cwl
+id: Annotation_Load.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

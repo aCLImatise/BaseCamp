@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../guppy_visualization.cwl
+id: guppy_visualization.cwl
 inputs:
 - id: in_visualization
   doc: fat                     makes trees with edges fattened in proportion to the

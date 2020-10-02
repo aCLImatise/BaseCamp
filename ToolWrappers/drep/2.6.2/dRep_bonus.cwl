@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dRep_bonus.cwl
+id: dRep_bonus.cwl
 inputs:
 - id: in_processors
   doc: 'threads (default: 6)'

@@ -1,21 +1,16 @@
 class: CommandLineTool
-id: ../../../sam_to_gff3.py.cwl
+id: sam_to_gff3.py.cwl
 inputs:
 - id: in_input_fast_a
   doc: "(Optional) input fasta. If given, coverage will be\ncalculated."
   type: string
   inputBinding:
     prefix: --input_fasta
-- id: in_source_name_ex
+- id: in_source
   doc: "source name (ex: hg38, mm10)\n"
   type: long
   inputBinding:
     prefix: --source
-- id: in_samfilename
-  doc: sam_filename
-  type: string
-  inputBinding:
-    position: 0
 - id: in_sam_filename
   doc: 'optional arguments:'
   type: string

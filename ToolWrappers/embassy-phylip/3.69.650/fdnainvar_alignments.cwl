@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fdnainvar_alignments.cwl
+id: fdnainvar_alignments.cwl
 inputs:
 - id: in_weights
   doc: properties Phylip weights file (optional)

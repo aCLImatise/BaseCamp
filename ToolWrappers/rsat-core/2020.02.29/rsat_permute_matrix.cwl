@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_permute_matrix.cwl
+id: rsat_permute_matrix.cwl
 inputs:
 - id: in_permute_matrix
   doc: "\e[1mVERSION\e[0m"

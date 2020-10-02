@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ldHgGene.cwl
+id: ldHgGene.cwl
 inputs:
 - id: in_bin
   doc: Add bin column (now the default)

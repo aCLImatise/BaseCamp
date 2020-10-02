@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stride_overlap.cwl
+id: stride_overlap.cwl
 inputs:
 - id: in_verbose
   doc: display verbose output

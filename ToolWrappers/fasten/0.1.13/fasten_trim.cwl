@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasten_trim.cwl
+id: fasten_trim.cwl
 inputs:
 - id: in_num_cpus
   doc: 'Number of CPUs (default: 1)'

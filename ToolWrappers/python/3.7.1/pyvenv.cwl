@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pyvenv.cwl
+id: pyvenv.cwl
 inputs:
 - id: in_system_site_packages
   doc: "Give the virtual environment access to the system\nsite-packages dir."

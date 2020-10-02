@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cellprofiler.cwl
+id: cellprofiler.cwl
 inputs:
 - id: in_pipeline
   doc: "Load this pipeline file or project on startup. If\nspecifying a pipeline file\

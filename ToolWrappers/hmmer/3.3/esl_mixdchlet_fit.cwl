@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../esl_mixdchlet_fit.cwl
+id: esl_mixdchlet_fit.cwl
 inputs:
 - id: in_set_random_seed
   doc: ': set random number seed to <n>  [0]'

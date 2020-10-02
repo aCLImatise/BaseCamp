@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ftx.py.cwl
+id: ftx.py.cwl
 inputs:
 - id: in_output
   doc: Output file name. Output will be in CSV format

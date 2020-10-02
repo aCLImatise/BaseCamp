@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../analyze.cwl
+id: analyze.cwl
 inputs:
 - id: in_report_wrong_classified
   doc: ': report wrong classified patterns (default)'

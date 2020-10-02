@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fasta2genefile.pl.cwl
+id: fasta2genefile.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

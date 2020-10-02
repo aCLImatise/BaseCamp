@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stride_all.cwl
+id: stride_all.cwl
 inputs:
 - id: in_read_length
   doc: median read length (if there are multiple libraries, set to the max read length)

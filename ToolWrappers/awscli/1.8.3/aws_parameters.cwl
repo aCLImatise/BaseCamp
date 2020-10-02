@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../aws_parameters.cwl
+id: aws_parameters.cwl
 inputs:
 - id: in_aws
   doc: ''

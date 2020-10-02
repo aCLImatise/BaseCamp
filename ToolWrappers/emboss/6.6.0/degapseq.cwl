@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../degapseq.cwl
+id: degapseq.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../ParseDb.py_update.cwl
+id: ParseDb.py_update.cwl
 inputs:
-- id: in_t
-  doc: ''
-  type: string[]
-  inputBinding:
-    prefix: -t
 - id: in_list_tab_defaultnone
   doc: "A list of tab delimited database files. (default:\nNone)"
   type: string[]
@@ -40,6 +35,11 @@ inputs:
   type: string[]
   inputBinding:
     prefix: -u
+- id: in_new_value_assign
+  doc: "The new value to assign to each selected row.\n(default: None)\n"
+  type: string[]
+  inputBinding:
+    prefix: -t
 outputs:
 - id: out_stdout
   doc: Standard output stream

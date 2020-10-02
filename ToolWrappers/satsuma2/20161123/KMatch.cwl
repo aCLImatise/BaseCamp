@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../KMatch.cwl
+id: KMatch.cwl
 inputs:
 - id: in_query_dot_fa
   doc: ''

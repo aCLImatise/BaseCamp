@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spades_bwa_pemerge.cwl
+id: spades_bwa_pemerge.cwl
 inputs:
 - id: in_output_merged_reads
   doc: output merged reads only

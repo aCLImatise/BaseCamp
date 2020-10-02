@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spades_init.py.cwl
+id: spades_init.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

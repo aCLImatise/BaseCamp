@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cs_OUTBASE_gene.positions.cwl
+id: cs_OUTBASE_gene.positions.cwl
 inputs:
 - id: in_cs
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../haphpipe_model_test.cwl
+id: haphpipe_model_test.cwl
 inputs:
 - id: in_seqs
   doc: Alignment in FASTA or PHYLIP format

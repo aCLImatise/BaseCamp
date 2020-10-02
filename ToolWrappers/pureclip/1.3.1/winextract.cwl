@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../winextract.cwl
+id: winextract.cwl
 inputs:
 - id: in_genome
   doc: 'Genome reference file. Valid filetypes are: .fa and .fasta.'

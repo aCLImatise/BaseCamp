@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../espoca.cwl
+id: espoca.cwl
 inputs:
 - id: in_var_0
   doc: ''

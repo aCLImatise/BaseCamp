@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_workflow_edit.cwl
+id: planemo_workflow_edit.cwl
 inputs:
 - id: in_galaxy_root
   doc: "Root of development galaxy directory to\nexecute command with."
@@ -229,52 +229,28 @@ inputs:
   inputBinding:
     prefix: --postgres_database_user
 - id: in_database_connection
-  doc: Database connection string to use for
+  doc: "Database connection string to use for\nGalaxy."
   type: string
   inputBinding:
     prefix: --database_connection
-- id: in_shed_tool_path
-  doc: Location of shed tools directory for Galaxy.
-  type: Directory
-  inputBinding:
-    prefix: --shed_tool_path
-- id: in_galaxy_single_user
-  doc: "/ --no_galaxy_single_user\nBy default Planemo will configure Galaxy to\nrun\
-    \ in single-user mode where there is just\none user and this user is automatically\n\
-    logged it. Use --no_galaxy_single_user to\nprevent Galaxy from running this way."
-  type: boolean
-  inputBinding:
-    prefix: --galaxy_single_user
-- id: in_daemon
-  doc: Serve Galaxy process as a daemon.
-  type: boolean
-  inputBinding:
-    prefix: --daemon
-- id: in_pid_file
-  doc: Location of pid file is executed with
+- id: in_shed_tool_conf
+  doc: "Location of shed tools conf file for Galaxy.\n--shed_tool_path TEXT      \
+    \     Location of shed tools directory for Galaxy.\n--galaxy_single_user / --no_galaxy_single_user\n\
+    By default Planemo will configure Galaxy to\nrun in single-user mode where there\
+    \ is just\none user and this user is automatically\nlogged it. Use --no_galaxy_single_user\
+    \ to\nprevent Galaxy from running this way.\n--daemon                        Serve\
+    \ Galaxy process as a daemon.\n--pid_file FILE                 Location of pid\
+    \ file is executed with\n--daemon.\n--ignore_dependency_problems    When installing\
+    \ shed repositories for\nworkflows, ignore dependency issues. These\nlikely indicate\
+    \ a problem but in some cases\nmay not prevent a workflow from successfully\n\
+    executing.\n--shed_install / --no_shed_install\nBy default Planemo will attempt\
+    \ to install\nrepositories needed for workflow testing.\nThis may not be appropriate\
+    \ for production\nservers and so this can disabled by calling\nplanemo with --no_shed_install.\n\
+    --help                          Show this message and exit.\n"
   type: File
   inputBinding:
-    prefix: --pid_file
-- id: in_daemon_dot
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --daemon.
-- id: in_ignore_dependency_problems
-  doc: "When installing shed repositories for\nworkflows, ignore dependency issues.\
-    \ These\nlikely indicate a problem but in some cases\nmay not prevent a workflow\
-    \ from successfully\nexecuting."
-  type: boolean
-  inputBinding:
-    prefix: --ignore_dependency_problems
-- id: in_shed_install
-  doc: "/ --no_shed_install\nBy default Planemo will attempt to install\nrepositories\
-    \ needed for workflow testing.\nThis may not be appropriate for production\nservers\
-    \ and so this can disabled by calling\nplanemo with --no_shed_install."
-  type: boolean
-  inputBinding:
-    prefix: --shed_install
-- id: in__galaxyemail_text
+    prefix: --shed_tool_conf
+- id: in_galaxy_dot
   doc: --galaxy_email TEXT             E-mail address to use when launching single-
   type: string
   inputBinding:
@@ -289,11 +265,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in__shedtoolconf_text
-  doc: --shed_tool_conf TEXT           Location of shed tools conf file for Galaxy.
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

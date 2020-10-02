@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sort.cwl
+id: sort.cwl
 inputs:
 - id: in_ignore_leading_blanks
   doc: ignore leading blanks

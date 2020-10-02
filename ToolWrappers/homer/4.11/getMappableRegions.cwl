@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getMappableRegions.cwl
+id: getMappableRegions.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FilterAndScaffold.py.cwl
+id: FilterAndScaffold.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

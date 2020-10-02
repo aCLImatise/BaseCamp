@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cdbg_ops.cwl
+id: cdbg_ops.cwl
 inputs:
 - id: in_graph
   doc: Prefix of graph files

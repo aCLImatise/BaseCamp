@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../afetch_alignment database.cwl
+id: afetch_alignment database.cwl
 inputs:
 - id: in_options
   doc: ''

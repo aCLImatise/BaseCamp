@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../velveth.cwl
+id: velveth.cwl
 inputs:
-- id: in_fast_a
-  doc: -fasta.gz       -fastq.gz       -raw.gz -sam    -bam    -fmtAuto
-  type: boolean
-  inputBinding:
-    prefix: -fasta
 - id: in_interleaved
   doc: ': File contains paired reads interleaved in the one file (default)'
   type: boolean
@@ -17,35 +12,11 @@ inputs:
   inputBinding:
     prefix: -separate
 - id: in_short_paired
-  doc: ''
+  doc: "-short2 -shortPaired2\n-short3 -shortPaired3\n-short4 -shortPaired4\n-long\
+    \   -longPaired\n-reference"
   type: boolean
   inputBinding:
     prefix: -shortPaired
-- id: in_short_paired_two
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -shortPaired2
-- id: in_short_paired_three
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -shortPaired3
-- id: in_short_paired_four
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -shortPaired4
-- id: in_long
-  doc: -longPaired
-  type: boolean
-  inputBinding:
-    prefix: -long
-- id: in_reference
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -reference
 - id: in_strand_specific
   doc: ': for strand specific transcriptome sequencing data (default: off)'
   type: boolean

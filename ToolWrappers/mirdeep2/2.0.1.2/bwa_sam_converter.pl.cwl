@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwa_sam_converter.pl.cwl
+id: bwa_sam_converter.pl.cwl
 inputs:
 - id: in_file_read_mappings
   doc: file with read mappings in sam format

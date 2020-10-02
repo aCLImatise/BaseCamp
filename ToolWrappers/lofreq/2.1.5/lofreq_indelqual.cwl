@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lofreq_indelqual.cwl
+id: lofreq_indelqual.cwl
 inputs:
 - id: in__uniform_int
   doc: "| --uniform INT[,INT]  Add this indel quality uniformly to all bases.\nUse\

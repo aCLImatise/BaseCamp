@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_order.cwl
+id: nw_order.cwl
 inputs:
 - id: in_specify_order_criterion
   doc: ": specify order criterion. Possible criteria are 'a'\n(alphanumeric oder of\

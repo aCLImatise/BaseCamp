@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../abyss_tofastq.cwl
+id: abyss_tofastq.cwl
 inputs:
 - id: in_cat
   doc: concatenate the records [default]

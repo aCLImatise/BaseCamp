@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastq_anonymous.cwl
+id: fastq_anonymous.cwl
 inputs:
 - id: in_mask
   doc: Mask all nucleotides using N

@@ -26,10 +26,10 @@ task Bunwarpj {
     String curl_weight
     String image_weight
     String consistency_weight
-    String landmark_weight
-    String landmark_file
     Int affine_file_one
     Int affine_file_two
+    String var_26
+    String var_27
     String var_28
     String var_29
     String var_30
@@ -48,8 +48,6 @@ task Bunwarpj {
     String var_43
     String var_44
     String var_45
-    String var_46
-    String var_47
   }
   command <<<
     bunwarpj \
@@ -65,10 +63,10 @@ task Bunwarpj {
       ~{curl_weight} \
       ~{image_weight} \
       ~{consistency_weight} \
-      ~{landmark_weight} \
-      ~{landmark_file} \
       ~{affine_file_one} \
       ~{affine_file_two} \
+      ~{var_26} \
+      ~{var_27} \
       ~{var_28} \
       ~{var_29} \
       ~{var_30} \
@@ -87,8 +85,6 @@ task Bunwarpj {
       ~{var_43} \
       ~{var_44} \
       ~{var_45} \
-      ~{var_46} \
-      ~{var_47} \
       ~{if (align) then "-align" else ""} \
       ~{if (landmarks) then "-landmarks" else ""} \
       ~{if (elastic_transform) then "-elastic_transform" else ""} \
@@ -104,7 +100,7 @@ task Bunwarpj {
   >>>
   parameter_meta {
     align: ": ALIGN TWO IMAGES"
-    landmarks: ""
+    landmarks: "Landmark_weight  : Weight of the landmarks\\nLandmark_file    : Landmark file"
     elastic_transform: ": TRANSFORM A SOURCE IMAGE WITH A GIVEN ELASTIC DEFORMATION"
     raw_transform: ": TRANSFORM A SOURCE IMAGE WITH A GIVEN RAW DEFORMATION"
     compare_elastic: ": COMPARE 2 OPPOSITE ELASTIC DEFORMATIONS (BY WARPING INDEX)"
@@ -127,10 +123,10 @@ task Bunwarpj {
     curl_weight: ": Weight of the curl term"
     image_weight: ": Weight of the image term"
     consistency_weight: ": Weight of the deformation consistency"
-    landmark_weight: ": Weight of the landmarks"
-    landmark_file: ": Landmark file"
     affine_file_one: ": Initial source affine matrix transformation"
     affine_file_two: ": Initial target affine matrix transformation"
+    var_26: ": In any image format"
+    var_27: ": In any image format"
     var_28: ": In any image format"
     var_29: ": In any image format"
     var_30: ": In any image format"
@@ -149,8 +145,6 @@ task Bunwarpj {
     var_43: ": In any image format"
     var_44: ": In any image format"
     var_45: ": In any image format"
-    var_46: ": In any image format"
-    var_47: ": In any image format"
   }
   output {
     File out_stdout = stdout()

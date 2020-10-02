@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../clip_adapters.pl.orig.cwl
+id: clip_adapters.pl.orig.cwl
 inputs: []
 outputs:
 - id: out_stdout

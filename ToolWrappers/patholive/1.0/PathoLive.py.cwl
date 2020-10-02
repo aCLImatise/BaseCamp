@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../PathoLive.py.cwl
+id: PathoLive.py.cwl
 inputs:
 - id: in_bcl_dir
   doc: "Illumina BaseCalls directory which contains the\nsequence information of the\

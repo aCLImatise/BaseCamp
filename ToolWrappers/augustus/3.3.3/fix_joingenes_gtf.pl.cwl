@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fix_joingenes_gtf.pl.cwl
+id: fix_joingenes_gtf.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

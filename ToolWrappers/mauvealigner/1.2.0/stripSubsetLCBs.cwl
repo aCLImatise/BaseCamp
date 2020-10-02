@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stripSubsetLCBs.cwl
+id: stripSubsetLCBs.cwl
 inputs:
 - id: in_input_x_mfa
   doc: ''

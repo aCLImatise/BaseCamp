@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sixgill_makefasta.cwl
+id: sixgill_makefasta.cwl
 inputs:
 - id: in_out
   doc: output file

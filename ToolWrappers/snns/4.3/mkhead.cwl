@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mkhead.cwl
+id: mkhead.cwl
 inputs: []
 outputs:
 - id: out_stdout

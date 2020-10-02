@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gxw2consensus.pl.cwl
+id: gxw2consensus.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

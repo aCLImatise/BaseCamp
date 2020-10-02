@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../TsvInfo.cwl
+id: TsvInfo.cwl
 inputs:
 - id: in_in
   doc: "Input TSV file. If unset, reads from STDIN.\nDefault value: ''"

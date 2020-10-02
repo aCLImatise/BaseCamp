@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwa_aln.pl.cwl
+id: bwa_aln.pl.cwl
 inputs:
 - id: in_outdir
   doc: -o   Folder to output result to.

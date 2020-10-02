@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_version..cwl
+id: hca_dss_version..cwl
 inputs:
 - id: in_hca
   doc: ''

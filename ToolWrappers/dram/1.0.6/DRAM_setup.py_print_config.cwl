@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../DRAM_setup.py_print_config.cwl
+id: DRAM_setup.py_print_config.cwl
 inputs:
 - id: in_dram_setup_do_tpy
   doc: ''

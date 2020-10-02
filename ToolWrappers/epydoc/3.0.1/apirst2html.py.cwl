@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../apirst2html.py.cwl
+id: apirst2html.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

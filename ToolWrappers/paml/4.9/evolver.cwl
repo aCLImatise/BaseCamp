@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../evolver.cwl
+id: evolver.cwl
 inputs:
 - id: in_evolver
   doc: evolver option# MyDataFile

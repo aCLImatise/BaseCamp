@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gotree_prune.cwl
+id: gotree_prune.cwl
 inputs:
 - id: in_comp
   doc: Input compared tree  (default "none")

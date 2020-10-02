@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../igdiscover_clonotypes.cwl
+id: igdiscover_clonotypes.cwl
 inputs:
 - id: in_sort
   doc: "Sort by group size (largest first). Default: Sort by\nV/D/J gene names"

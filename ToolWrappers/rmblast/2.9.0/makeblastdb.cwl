@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../makeblastdb.cwl
+id: makeblastdb.cwl
 inputs:
 - id: in_dbtype
   doc: '[-title database_title] [-parse_seqids]'

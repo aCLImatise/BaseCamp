@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../byobu_ulevel.cwl
+id: byobu_ulevel.cwl
 inputs:
 - id: in_accessibility_mode_enabled
   doc: ": Accessibility mode: only output ASCII.\n(Also enabled if variable 'BYOBU_A11Y'\

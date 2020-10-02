@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../medpy_morphology.py.cwl
+id: medpy_morphology.py.cwl
 inputs:
 - id: in_type
   doc: The type of the morphological operation.

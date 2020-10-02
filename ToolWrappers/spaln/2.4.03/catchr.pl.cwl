@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../catchr.pl.cwl
+id: catchr.pl.cwl
 inputs:
 - id: in_o
   doc: ''

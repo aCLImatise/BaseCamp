@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../multigit.cwl
+id: multigit.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htmlCheck.cwl
+id: htmlCheck.cwl
 inputs:
 - id: in_not_valid_option
   doc: not a valid option

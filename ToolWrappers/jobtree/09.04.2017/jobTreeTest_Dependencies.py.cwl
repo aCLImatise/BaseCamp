@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jobTreeTest_Dependencies.py.cwl
+id: jobTreeTest_Dependencies.py.cwl
 inputs:
 - id: in_sleep_time
   doc: sleep [default=5] seconds

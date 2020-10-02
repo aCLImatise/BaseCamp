@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../make_pscores.pl.cwl
+id: make_pscores.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

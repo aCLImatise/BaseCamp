@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../template_for_cfg.cwl
+id: template_for_cfg.cwl
 inputs: []
 outputs:
 - id: out_stdout

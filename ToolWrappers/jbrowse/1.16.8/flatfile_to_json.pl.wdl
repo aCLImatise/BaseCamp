@@ -2,9 +2,7 @@ version 1.0
 
 task Flatfiletojsonpl {
   input {
-    File? bed
-    File? gbk
-    String? track_label
+    File? gff
     Boolean? key
     Directory? out
     String? track_type
@@ -23,21 +21,15 @@ task Flatfiletojsonpl {
     Int? sort_mem
     String? thick_type
     String flat_file_to_json_do_tpl
-    String required
-    String optional
     Int gff_three_specific
     String bed_specific
   }
   command <<<
     flatfile_to_json_pl \
       ~{flat_file_to_json_do_tpl} \
-      ~{required} \
-      ~{optional} \
       ~{gff_three_specific} \
       ~{bed_specific} \
-      ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
-      ~{if defined(gbk) then ("--gbk " +  '"' + gbk + '"') else ""} \
-      ~{if defined(track_label) then ("--trackLabel " +  '"' + track_label + '"') else ""} \
+      ~{if defined(gff) then ("--gff " +  '"' + gff + '"') else ""} \
       ~{if (key) then "--key" else ""} \
       ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
       ~{if defined(track_type) then ("--trackType " +  '"' + track_type + '"') else ""} \
@@ -57,9 +49,7 @@ task Flatfiletojsonpl {
       ~{if defined(thick_type) then ("--thickType " +  '"' + thick_type + '"') else ""}
   >>>
   parameter_meta {
-    bed: ""
-    gbk: "Process a GFF3, BED, or GenBank file containing annotation data.\\nThis script does not support GFF version 2 or GTF (GFF 2.5) input.\\nGenBank input is limited to handling records for single genes."
-    track_label: "Unique identifier for this track. Required."
+    gff: "--bed <BED file>\\n--gbk <GenBank file>\\nProcess a GFF3, BED, or GenBank file containing annotation data.\\nThis script does not support GFF version 2 or GTF (GFF 2.5) input.\\nGenBank input is limited to handling records for single genes.\\n--trackLabel <track identifier>\\nUnique identifier for this track. Required."
     key: "'<text>'\\nHuman-readable track name."
     out: "Output directory to write to. Defaults to \\\"data/\\\"."
     track_type: "Optional JavaScript class to use to display this track. For backward\\ncompatibility, this defaults to \\\"HTMLFeatures\\\".\\nUnless you have some reason to use HTMLFeatures tracks, though, it's\\nrecommended to set this to \\\"CanvasFeatures\\\" to use the newer\\ncanvas-based feature track type."
@@ -78,8 +68,6 @@ task Flatfiletojsonpl {
     sort_mem: "Bytes of RAM to use for sorting features. Default 512MB.\\nThe JSON NCList generation has to sort the features by reference\\nsequence, start coordinate, and end coordinate. This is how much RAM\\nin bytes the sorting process is allowed to use."
     thick_type: "Correspond to \\\"<-thin_type\\\"> and \\\"<-thick_type\\\"> in\\nBio::FeatureIO::bed. Do \\\"<perldoc Bio::FeatureIO::bed\\\"> for details."
     flat_file_to_json_do_tpl: "\\\\n( --gff <GFF3 file> | --bed <BED file> | --gbk <GenBank file> )         \\\\n--trackLabel <track identifier>                                         \\\\n[ --trackType <JS Class> ]                                              \\\\n[ --out <output directory> ]                                            \\\\n[ --key <human-readable track name> ]                                   \\\\n[ --className <CSS class name for displaying features> ]                \\\\n[ --urltemplate \\\"http://example.com/idlookup?id={id}\\\" ]                 \\\\n[ --arrowheadClass <CSS class> ]                                        \\\\n[ --noSubfeatures ]                                                     \\\\n[ --subfeatureClasses '{ JSON-format subfeature class map }' ]          \\\\n[ --clientConfig '{ JSON-format style configuration for this track }' ] \\\\n[ --config '{ JSON-format extra configuration for this track }' ]       \\\\n[ --thinType <BAM -thin_type> ]                                         \\\\n[ --thicktype <BAM -thick_type>]                                        \\\\n[ --type <feature types to process> ]                                   \\\\n[ --nclChunk <chunk size for generated NCLs> ]                          \\\\n[ --compress ]                                                          \\\\n[ --sortMem <memory in bytes to use for sorting> ]                      \\\\n[ --maxLookback <maximum number of features to buffer in gff3 files> ]  \\\\n[ --nameAttributes \\\"name,alias,id\\\" ]                                    \\"
-    required: "--gff <GFF3 file>"
-    optional: "--help | -h | -?\\nDisplay an extended help screen."
     gff_three_specific: "--maxLookback <integer>\\nMaximum number of features to keep in memory when parsing GFF3\\nfiles. Defaults to 10000.\\nIf you receive \\\"orphan features\\\" errors when parsing a GFF3 file\\nthat doesn't contain enough '###' directives (which are important\\nfor parsing), you can try setting this higher if your machine has\\nenough memory."
     bed_specific: "--thinType <type>"
   }

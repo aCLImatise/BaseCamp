@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../random_split.cwl
+id: random_split.cwl
 inputs:
 - id: in_probability_that_line_goes_to_output_file
   doc: ''

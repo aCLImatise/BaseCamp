@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktGetTaxInfo.cwl
+id: ktGetTaxInfo.cwl
 inputs:
 - id: in_a_zero_zero_zero_zero_one_dot_one
   doc: ''

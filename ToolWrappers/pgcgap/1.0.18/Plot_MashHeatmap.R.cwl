@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../Plot_MashHeatmap.R.cwl
+id: Plot_MashHeatmap.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

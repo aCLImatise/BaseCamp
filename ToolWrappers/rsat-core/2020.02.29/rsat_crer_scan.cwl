@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_crer_scan.cwl
+id: rsat_crer_scan.cwl
 inputs:
 - id: in_specified_input_read
   doc: If not specified, input is read from STDIN

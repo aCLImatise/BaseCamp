@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../vdb_copy.2.cwl
+id: vdb_copy.2.cwl
 inputs:
 - id: in_table
   doc: table-name

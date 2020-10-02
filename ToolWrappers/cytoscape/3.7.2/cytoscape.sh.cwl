@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cytoscape.sh.cwl
+id: cytoscape.sh.cwl
 inputs:
 - id: in_session
   doc: Load a cytoscape session (.cys) file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hitac.py_test.cwl
+id: hitac.py_test.cwl
 inputs:
 - id: in_threads
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../.t_coffee_post_link.sh.cwl
+id: .t_coffee_post_link.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

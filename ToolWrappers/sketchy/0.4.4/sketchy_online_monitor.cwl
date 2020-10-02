@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sketchy_online_monitor.cwl
+id: sketchy_online_monitor.cwl
 inputs:
 - id: in_interval
   doc: Interval in seconds to check on resource usage

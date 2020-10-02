@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../recalladapters.cwl
+id: recalladapters.cwl
 inputs:
 - id: in_prefix_output_filenames
   doc: Prefix of output filenames
@@ -33,50 +33,12 @@ inputs:
   inputBinding:
     prefix: --silent
 - id: in_disable_adapter_finding
-  doc: ''
+  doc: "--adapters=adapterSequences.fasta\n--globalAlnFlanking\n--flankLength=INT\n\
+    --minSoftAccuracy=FLOAT\n--minHardAccuracy=FLOAT\n--minFlankingScore=FLOAT\n--disableAdapterCorrection\n\
+    --adpqc"
   type: boolean
   inputBinding:
     prefix: --disableAdapterFinding
-- id: in_adapters
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --adapters
-- id: in_global_aln_flanking
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --globalAlnFlanking
-- id: in_flank_length
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: --flankLength
-- id: in_min_soft_accuracy
-  doc: ''
-  type: double
-  inputBinding:
-    prefix: --minSoftAccuracy
-- id: in_min_hard_accuracy
-  doc: ''
-  type: double
-  inputBinding:
-    prefix: --minHardAccuracy
-- id: in_min_flanking_score
-  doc: ''
-  type: double
-  inputBinding:
-    prefix: --minFlankingScore
-- id: in_disable_adapter_correction
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --disableAdapterCorrection
-- id: in_adp_qc
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --adpqc
 - id: in_min_adapter_score
   doc: Minimal score for an adapter
   type: long

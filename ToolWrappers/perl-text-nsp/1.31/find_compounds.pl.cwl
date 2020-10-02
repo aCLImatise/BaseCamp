@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../find_compounds.pl.cwl
+id: find_compounds.pl.cwl
 inputs:
 - id: in_new_line
   doc: Find compound words in one line.

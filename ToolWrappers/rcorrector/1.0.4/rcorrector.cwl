@@ -1,39 +1,15 @@
 class: CommandLineTool
-id: ../../../rcorrector.cwl
+id: rcorrector.cwl
 inputs:
 - id: in_seqfile_path_sequence
-  doc: ': seq_file is the path to the sequence file. Can use multiple -r to specifiy
-    multiple sequence files'
+  doc: ": seq_file is the path to the sequence file. Can use multiple -r to specifiy\
+    \ multiple sequence files\n-p seq_file_left seq_file_right: the paths to the paired-end\
+    \ data set. Can use multiple -p to specifiy multiple sequence files\n-i seq_file:\
+    \ seq_file is the path to the interleaved mate-pair sequence file. Can use multiple\
+    \ -i\n-c jf_dump: the kmer counts dumped by JellyFish\n-k kmer_length"
   type: File
   inputBinding:
     prefix: -r
-- id: in_paths_pairedend_data
-  doc: 'seq_file_right: the paths to the paired-end data set. Can use multiple -p
-    to specifiy multiple sequence files'
-  type: File
-  inputBinding:
-    prefix: -p
-- id: in_seqfile_path_interleaved
-  doc: ': seq_file is the path to the interleaved mate-pair sequence file. Can use
-    multiple -i'
-  type: File
-  inputBinding:
-    prefix: -i
-- id: in_kmer_counts_dumped
-  doc: ': the kmer counts dumped by JellyFish'
-  type: string
-  inputBinding:
-    prefix: -c
-- id: in_k
-  doc: ''
-  type: long
-  inputBinding:
-    prefix: -k
-- id: in_od
-  doc: '(default: ./)'
-  type: File
-  inputBinding:
-    prefix: -od
 - id: in_threads_use_default
   doc: 'of threads to use (default: 1)'
   type: long
@@ -69,11 +45,6 @@ outputs:
 - id: out_stdout
   doc: Standard output stream
   type: stdout
-- id: out_od
-  doc: '(default: ./)'
-  type: File
-  outputBinding:
-    glob: $(inputs.in_od)
 cwlVersion: v1.1
 baseCommand:
 - rcorrector

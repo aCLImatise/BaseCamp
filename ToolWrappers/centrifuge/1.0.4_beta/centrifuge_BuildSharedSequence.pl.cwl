@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../centrifuge_BuildSharedSequence.pl.cwl
+id: centrifuge_BuildSharedSequence.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

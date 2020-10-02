@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cds_subgraphs.cwl
+id: cds_subgraphs.cwl
 inputs:
 - id: in_output_folder
   doc: output folder to use for GFA files

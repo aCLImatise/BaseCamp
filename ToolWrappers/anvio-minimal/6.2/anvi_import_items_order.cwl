@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_import_items_order.cwl
+id: anvi_import_items_order.cwl
 inputs:
 - id: in_input_order
   doc: "One of the two important things you must provide: the\nfile that contains\

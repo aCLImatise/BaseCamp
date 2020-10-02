@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../basenc.cwl
+id: basenc.cwl
 inputs:
 - id: in_base_six_four
   doc: same as 'base64' program (RFC4648 section 4)

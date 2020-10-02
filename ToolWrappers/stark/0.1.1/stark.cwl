@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stark.cwl
+id: stark.cwl
 inputs:
 - id: in__inputfile_use
   doc: ',      --input=FILE           use FILE for input'

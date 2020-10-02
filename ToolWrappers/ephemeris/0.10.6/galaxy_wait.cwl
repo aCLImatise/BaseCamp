@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../galaxy_wait.cwl
+id: galaxy_wait.cwl
 inputs:
 - id: in_timeout
   doc: "Galaxy startup timeout in seconds. The default value\nof 0 waits forever"

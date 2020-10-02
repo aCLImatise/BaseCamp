@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cryfa.cwl
+id: cryfa.cwl
 inputs:
 - id: in_key_file_name
   doc: "[KEY_FILE],  --key [KEY_FILE]\nkey file name -- MANDATORY\nThe KEY_FILE would\

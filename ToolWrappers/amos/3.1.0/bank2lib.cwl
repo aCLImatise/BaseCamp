@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bank2lib.cwl
+id: bank2lib.cwl
 inputs:
 - id: in_bank
   doc: bank where assembly is stored

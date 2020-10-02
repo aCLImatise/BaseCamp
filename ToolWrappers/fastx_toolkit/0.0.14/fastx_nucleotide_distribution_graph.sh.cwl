@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fastx_nucleotide_distribution_graph.sh.cwl
+id: fastx_nucleotide_distribution_graph.sh.cwl
 inputs: []
 outputs:
 - id: out_stdout

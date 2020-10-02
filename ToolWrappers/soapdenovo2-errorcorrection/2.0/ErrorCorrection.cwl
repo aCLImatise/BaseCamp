@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ErrorCorrection.cwl
+id: ErrorCorrection.cwl
 inputs: []
 outputs:
 - id: out_stdout

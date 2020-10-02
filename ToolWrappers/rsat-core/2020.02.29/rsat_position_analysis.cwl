@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rsat_position_analysis.cwl
+id: rsat_position_analysis.cwl
 inputs:
 - id: in_specified_standard_input
   doc: "if not specified, the standard input is used.\nThis allows to place the command\

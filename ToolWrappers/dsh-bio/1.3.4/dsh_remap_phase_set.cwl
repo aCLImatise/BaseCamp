@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dsh_remap_phase_set.cwl
+id: dsh_remap_phase_set.cwl
 inputs:
 - id: in_about
   doc: display about message [optional]

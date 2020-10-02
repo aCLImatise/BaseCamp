@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../transeq.cwl
+id: transeq.cwl
 inputs:
 - id: in_frame
   doc: "menu       [1] Frame(s) to translate (Values: 1 (1); 2\n(2); 3 (3); F (Forward\

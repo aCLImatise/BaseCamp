@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FastML_Wrapper.pl.cwl
+id: FastML_Wrapper.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

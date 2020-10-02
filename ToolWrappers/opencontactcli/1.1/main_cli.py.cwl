@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../main_cli.py.cwl
+id: main_cli.py.cwl
 inputs:
 - id: in_prot_a
   doc: Path to proteinA.pdb

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bioconda_utils_visualization.cwl
+id: bioconda_utils_visualization.cwl
 inputs:
 - id: in_biocon_da_utils
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../enumerate_paths.py.cwl
+id: enumerate_paths.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -12,7 +12,7 @@ task FastxBarcodeSplitterpl {
     String? partial
     Boolean? quiet
     Boolean? debug
-    Boolean? var_10
+    Boolean? gatct__mismatch
     String gatct__mismatches
   }
   command <<<
@@ -28,7 +28,7 @@ task FastxBarcodeSplitterpl {
       ~{if defined(partial) then ("--partial " +  '"' + partial + '"') else ""} \
       ~{if (quiet) then "--quiet" else ""} \
       ~{if (debug) then "--debug" else ""} \
-      ~{if (var_10) then "-ATTTACTATGTAAAGATAGAAGGAATAAGGTGAAG" else ""}
+      ~{if (gatct__mismatch) then "-ATTTACTATGTAAAGATAGAAGGAATAAGGTGAAG" else ""}
   >>>
   parameter_meta {
     bc_file: "- Barcodes file name. (see explanation below.)"
@@ -41,7 +41,7 @@ task FastxBarcodeSplitterpl {
     partial: "- Allow partial overlap of barcodes. (see explanation below.)\\n(Default is not partial matching)"
     quiet: "- Don't print counts and summary at the end of the run.\\n(Default is to print.)"
     debug: "- Print lots of useless debug information to STDERR."
-    var_10: ""
+    gatct__mismatch: "GATCT (1 mismatch)"
     gatct__mismatches: "GATCT (4 mismatches)"
   }
   output {

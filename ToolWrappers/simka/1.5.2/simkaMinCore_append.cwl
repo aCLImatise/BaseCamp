@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simkaMinCore_append.cwl
+id: simkaMinCore_append.cwl
 inputs:
 - id: in_in_one
   doc: '(1 arg) :    first sketch file to merge (this file will be overwritten)'

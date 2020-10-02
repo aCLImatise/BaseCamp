@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BedReadCount.cwl
+id: BedReadCount.cwl
 inputs:
 - id: in_bam
   doc: Input BAM file.

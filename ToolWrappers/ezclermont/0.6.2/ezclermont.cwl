@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ezclermont.cwl
+id: ezclermont.cwl
 inputs:
 - id: in_min_length
   doc: 'minimum contig length to consider.default: 500'

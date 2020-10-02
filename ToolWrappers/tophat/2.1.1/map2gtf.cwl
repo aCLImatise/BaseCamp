@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../map2gtf.cwl
+id: map2gtf.cwl
 inputs:
 - id: in_annotation_do_ttl_st
   doc: ''

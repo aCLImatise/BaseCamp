@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../upgradeprj.pl.cwl
+id: upgradeprj.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

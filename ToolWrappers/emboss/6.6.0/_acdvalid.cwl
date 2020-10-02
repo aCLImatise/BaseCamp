@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_acdvalid.cwl
+id: _acdvalid.cwl
 inputs: []
 outputs:
 - id: out_stdout

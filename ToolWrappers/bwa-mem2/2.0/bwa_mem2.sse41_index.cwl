@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bwa_mem2.sse41_index.cwl
+id: bwa_mem2.sse41_index.cwl
 inputs:
 - id: in_p
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../rna2meme.cwl
+id: rna2meme.cwl
 inputs:
 - id: in_output_rna_motifs
   doc: Output RNA motifs (default).

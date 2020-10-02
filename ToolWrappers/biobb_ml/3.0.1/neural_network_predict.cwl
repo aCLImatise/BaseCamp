@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../neural_network_predict.cwl
+id: neural_network_predict.cwl
 inputs: []
 outputs:
 - id: out_stdout

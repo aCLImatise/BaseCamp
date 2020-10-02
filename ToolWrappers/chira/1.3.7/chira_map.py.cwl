@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../chira_map.py.cwl
+id: chira_map.py.cwl
 inputs:
 - id: in__aligner_alignment
   doc: ', --aligner        Alignment program to use, bwa or clan (default: bwa)'

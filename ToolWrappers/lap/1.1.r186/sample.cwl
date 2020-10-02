@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sample.cwl
+id: sample.cwl
 inputs:
 - id: in_format
   doc: "The format ('fasta' or 'fastq' or 'lines') of the\nsequences (default=fastq)"

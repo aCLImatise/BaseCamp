@@ -3,9 +3,6 @@ version 1.0
 task MosaikAligner {
   input {
     File? in
-    File? out
-    File? ibs
-    File? an_npe
     Int? hs
     String? ls
     String? mhp
@@ -36,9 +33,6 @@ task MosaikAligner {
       ~{references} \
       ~{one_zero_dot_zero_zero} \
       ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
-      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
-      ~{if defined(ibs) then ("-ibs " +  '"' + ibs + '"') else ""} \
-      ~{if defined(an_npe) then ("-annpe " +  '"' + an_npe + '"') else ""} \
       ~{if defined(hs) then ("-hs " +  '"' + hs + '"') else ""} \
       ~{if defined(ls) then ("-ls " +  '"' + ls + '"') else ""} \
       ~{if defined(mhp) then ("-mhp " +  '"' + mhp + '"') else ""} \
@@ -61,10 +55,7 @@ task MosaikAligner {
       ~{if defined(h_gop) then ("-hgop " +  '"' + h_gop + '"') else ""}
   >>>
   parameter_meta {
-    in: "the input read file"
-    out: "the output alignment file"
-    ibs: "enables colorspace to basespace conversion\\nusing the supplied BASESPACE reference\\narchive"
-    an_npe: ""
+    in: "the input read file\\n-out <MOSAIK alignment filename>  the output alignment file\\n-ibs <MOSAIK reference filename>  enables colorspace to basespace conversion\\nusing the supplied BASESPACE reference\\narchive\\n-annpe <Neural network filename>\\n-annse <Neural network filename>"
     hs: "hash size [4 - 32]. def: 15"
     ls: "enable local alignment search for PE reads"
     mhp: "the maximum # of positions stored per seed"
@@ -91,6 +82,5 @@ task MosaikAligner {
   }
   output {
     File out_stdout = stdout()
-    File out_out = "${in_out}"
   }
 }

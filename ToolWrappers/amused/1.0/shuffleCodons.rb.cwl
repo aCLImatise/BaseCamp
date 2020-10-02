@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../shuffleCodons.rb.cwl
+id: shuffleCodons.rb.cwl
 inputs: []
 outputs:
 - id: out_stdout

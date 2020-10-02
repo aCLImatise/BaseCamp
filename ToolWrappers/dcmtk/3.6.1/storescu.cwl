@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../storescu.cwl
+id: storescu.cwl
 inputs:
 - id: in_arguments
   doc: print expanded command line arguments

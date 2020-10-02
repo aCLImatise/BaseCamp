@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../homePage.Rmd.cwl
+id: homePage.Rmd.cwl
 inputs: []
 outputs:
 - id: out_stdout

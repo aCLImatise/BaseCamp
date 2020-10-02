@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../heavychains.cwl
+id: heavychains.cwl
 inputs: []
 outputs:
 - id: out_stdout

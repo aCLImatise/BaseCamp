@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../parmed.cwl
+id: parmed.cwl
 inputs:
 - id: in_input
   doc: "Script with ParmEd commands to execute. Default reads\nfrom stdin. Can be\

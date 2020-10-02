@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mapMers_depth.cwl
+id: mapMers_depth.cwl
 inputs:
 - id: in_count
   doc: "- report the count (c) of the single kmer that starts at position (p).\nFormat:\

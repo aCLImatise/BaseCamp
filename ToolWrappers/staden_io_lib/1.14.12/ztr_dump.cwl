@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ztr_dump.cwl
+id: ztr_dump.cwl
 inputs: []
 outputs:
 - id: out_stdout

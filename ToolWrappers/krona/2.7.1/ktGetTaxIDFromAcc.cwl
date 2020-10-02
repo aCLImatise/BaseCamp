@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../ktGetTaxIDFromAcc.cwl
+id: ktGetTaxIDFromAcc.cwl
 inputs:
 - id: in_prepend_tax_ids
   doc: Prepend tax IDs to the original lines (separated by tabs).

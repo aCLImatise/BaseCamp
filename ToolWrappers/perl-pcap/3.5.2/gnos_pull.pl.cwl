@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gnos_pull.pl.cwl
+id: gnos_pull.pl.cwl
 inputs:
 - id: in_analysis
   doc: (-a)  ALIGNMENTS or CALLS

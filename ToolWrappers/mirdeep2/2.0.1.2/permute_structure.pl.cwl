@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../permute_structure.pl.cwl
+id: permute_structure.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

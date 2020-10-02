@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../FCSstats_txt.py.cwl
+id: FCSstats_txt.py.cwl
 inputs:
 - id: in_file_location_text
   doc: File location for the text file.

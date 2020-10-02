@@ -1,11 +1,16 @@
 class: CommandLineTool
-id: ../../../locarna_rnafold_pp.cwl
+id: locarna_rnafold_pp.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_verbose
+  doc: Verbose
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: in_use_struct_constraints
+  doc: Use structural constraints
+  type: boolean
+  inputBinding:
+    prefix: --use-struct-constraints
 - id: in_no_lp
   doc: No lonely pairs
   type: boolean
@@ -56,16 +61,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force-alifold
-- id: in_help
-  doc: -V,--version
-  type: string
-  inputBinding:
-    position: 0
-- id: in_cusestructconstraints
-  doc: -C,--use-struct-constraints
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

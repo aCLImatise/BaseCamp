@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../extractCoding.cwl
+id: extractCoding.cwl
 inputs: []
 outputs:
 - id: out_stdout

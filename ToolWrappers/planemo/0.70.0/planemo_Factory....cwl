@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../planemo_Factory....cwl
+id: planemo_Factory....cwl
 inputs:
 - id: in_plane_mo
   doc: ''

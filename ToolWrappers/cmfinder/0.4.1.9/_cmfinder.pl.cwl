@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_cmfinder.pl.cwl
+id: _cmfinder.pl.cwl
 inputs:
 - id: in_use_blast_search
   doc: Do not use BLAST search to locate anchors

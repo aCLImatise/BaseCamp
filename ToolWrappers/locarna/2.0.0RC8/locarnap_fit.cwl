@@ -1,11 +1,16 @@
 class: CommandLineTool
-id: ../../../locarnap_fit.cwl
+id: locarnap_fit.cwl
 inputs:
-- id: in_var_0
-  doc: ''
+- id: in_verbose
+  doc: Verbose
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: in_delta
+  doc: "(0.5)\nPenalty for state change"
+  type: double
+  inputBinding:
+    prefix: --delta
 - id: in_beta
   doc: "(6)\nInverse temperature"
   type: double
@@ -26,11 +31,6 @@ inputs:
   type: File
   inputBinding:
     prefix: --penalties
-- id: in_ddeltafloat
-  doc: -d,--delta=<float>(0.5)
-  type: string
-  inputBinding:
-    position: 0
 outputs:
 - id: out_stdout
   doc: Standard output stream

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hapflk.cwl
+id: hapflk.cwl
 inputs:
 - id: in_prefix
   doc: 'prefix for output files (default: hapflk)'

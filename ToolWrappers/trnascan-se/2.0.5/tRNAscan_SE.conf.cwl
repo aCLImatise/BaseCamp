@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../tRNAscan_SE.conf.cwl
+id: tRNAscan_SE.conf.cwl
 inputs: []
 outputs:
 - id: out_stdout

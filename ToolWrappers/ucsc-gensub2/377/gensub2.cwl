@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gensub2.cwl
+id: gensub2.cwl
 inputs:
 - id: in_group_one
   doc: '- write elements in order Aa Ab Ac Ba Bb Bc Ca Cb Cc'

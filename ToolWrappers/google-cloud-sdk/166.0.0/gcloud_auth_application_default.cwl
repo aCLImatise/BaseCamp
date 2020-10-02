@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ../../../gcloud_auth_application_default.cwl
+id: gcloud_auth_application_default.cwl
 inputs:
 - id: in_i_am_account
-  doc: ''
+  doc: "$ export GOOGLE_APPLICATION_CREDENTIALS=key.json\n$ ./my_application.sh"
   type: string
   inputBinding:
     prefix: --iam-account

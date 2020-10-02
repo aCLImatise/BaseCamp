@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../combineKmers.cwl
+id: combineKmers.cwl
 inputs:
 - id: in_arg_file_tab
   doc: '[ --samples ] arg    file with tab separated sample name and kmer file'

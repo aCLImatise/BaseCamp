@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BtToxin_Digger.cwl
+id: BtToxin_Digger.cwl
 inputs:
 - id: in_example
   doc: ''

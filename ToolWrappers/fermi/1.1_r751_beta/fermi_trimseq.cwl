@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../fermi_trimseq.cwl
+id: fermi_trimseq.cwl
 inputs:
 - id: in_n
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../beauti.cwl
+id: beauti.cwl
 inputs:
 - id: in_advanced
   doc: advanced & developer features

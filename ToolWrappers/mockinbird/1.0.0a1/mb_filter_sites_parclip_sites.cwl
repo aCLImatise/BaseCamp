@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mb_filter_sites_parclip_sites.cwl
+id: mb_filter_sites_parclip_sites.cwl
 inputs:
 - id: in_padding_bp
   doc: ''

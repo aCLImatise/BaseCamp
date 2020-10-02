@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../panaroo_gene_neighbourhood.cwl
+id: panaroo_gene_neighbourhood.cwl
 inputs:
 - id: in_graph
   doc: '[--expand_no EXPAND_NO]'

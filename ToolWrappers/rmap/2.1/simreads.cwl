@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../simreads.cwl
+id: simreads.cwl
 inputs:
 - id: in_output
   doc: 'Name of output file (default: stdout)'

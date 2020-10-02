@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../stringiphy.cwl
+id: stringiphy.cwl
 inputs:
 - id: in_exons_dot_gff
   doc: ''

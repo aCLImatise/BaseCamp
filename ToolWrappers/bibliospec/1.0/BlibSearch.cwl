@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../BlibSearch.cwl
+id: BlibSearch.cwl
 inputs:
 - id: in_arg_remove_peaks
   doc: "[ --clear-precursor ] arg (=1)  Remove the peaks in a X m/z window around\n\

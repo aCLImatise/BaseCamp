@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../jcmd.cwl
+id: jcmd.cwl
 inputs:
 - id: in_read_execute_commands
   doc: read and execute commands from the file

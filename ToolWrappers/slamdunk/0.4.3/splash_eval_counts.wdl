@@ -2,23 +2,23 @@ version 1.0
 
 task SplashEvalcounts {
   input {
-    String? simulated
-    String? slam_dun
-    File? output_file
+    File? o
+    String? d
+    String? s
   }
   command <<<
     splash eval_counts \
-      ~{if defined(simulated) then ("--simulated " +  '"' + simulated + '"') else ""} \
-      ~{if defined(slam_dun) then ("--slamdun " +  '"' + slam_dun + '"') else ""} \
-      ~{if defined(output_file) then ("--outputFile " +  '"' + output_file + '"') else ""}
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
   parameter_meta {
-    simulated: ""
-    slam_dun: ""
-    output_file: ""
+    o: ""
+    d: ""
+    s: ""
   }
   output {
     File out_stdout = stdout()
-    File out_output_file = "${in_output_file}"
+    File out_o = "${in_o}"
   }
 }

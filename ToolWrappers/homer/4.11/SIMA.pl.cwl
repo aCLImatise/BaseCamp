@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../SIMA.pl.cwl
+id: SIMA.pl.cwl
 inputs:
 - id: in_domains_perform_analysis
   doc: (Domains to perform analysis on)

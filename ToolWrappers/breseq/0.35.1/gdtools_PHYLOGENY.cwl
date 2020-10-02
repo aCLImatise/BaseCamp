@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../gdtools_PHYLOGENY.cwl
+id: gdtools_PHYLOGENY.cwl
 inputs:
 - id: in_verbose
   doc: produce output for each mutation counted.

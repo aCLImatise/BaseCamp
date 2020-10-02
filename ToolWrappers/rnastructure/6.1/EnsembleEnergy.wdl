@@ -5,11 +5,11 @@ task EnsembleEnergy {
     Boolean? dna
     Boolean? silent
     Boolean? sequence
-    String specified_dot
+    File input_file
   }
   command <<<
     EnsembleEnergy \
-      ~{specified_dot} \
+      ~{input_file} \
       ~{if (dna) then "--DNA" else ""} \
       ~{if (silent) then "--silent" else ""} \
       ~{if (sequence) then "--sequence" else ""}
@@ -18,7 +18,7 @@ task EnsembleEnergy {
     dna: "This flag only matters if the input file is a sequence file and has been\\nspecified as such. Specify that the sequence is DNA, and DNA parameters are\\nto be used.\\nDefault is to use RNA parameters."
     silent: "Suppress all progress messages except the final ensemble energy result.\\nNote that this does NOT suppress errors."
     sequence: "Identify the input file format as a sequence file."
-    specified_dot: "========================================="
+    input_file: ""
   }
   output {
     File out_stdout = stdout()

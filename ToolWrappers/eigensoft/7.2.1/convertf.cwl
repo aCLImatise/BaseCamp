@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../convertf.cwl
+id: convertf.cwl
 inputs:
 - id: in_bad
   doc: ''

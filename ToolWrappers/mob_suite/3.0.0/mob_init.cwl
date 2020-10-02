@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mob_init.cwl
+id: mob_init.cwl
 inputs:
 - id: in_database_directory
   doc: "Directory to download databases to. Defaults to\n/usr/local/lib/python3.8/site-\n\

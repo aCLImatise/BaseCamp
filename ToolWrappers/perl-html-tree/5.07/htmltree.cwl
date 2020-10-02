@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../htmltree.cwl
+id: htmltree.cwl
 inputs:
 - id: in_sets_htmltreebuilderdebug_figure
   doc: '[number]  sets HTML::TreeBuilder::Debug to that figure.'

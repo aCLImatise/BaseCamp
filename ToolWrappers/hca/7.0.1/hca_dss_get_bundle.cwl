@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hca_dss_get_bundle.cwl
+id: hca_dss_get_bundle.cwl
 inputs:
 - id: in_uuid
   doc: Bundle unique ID.

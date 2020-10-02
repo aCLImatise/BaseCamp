@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../transposcope_align_index.cwl
+id: transposcope_align_index.cwl
 inputs:
 - id: in_group_one
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lorikeet_multi_type.cwl
+id: lorikeet_multi_type.cwl
 inputs:
 - id: in__input_valueinput
   doc: "| --input <value>\nInput directory that contains all spoligotype files. You\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../byobu_select_profile.cwl
+id: byobu_select_profile.cwl
 inputs:
 - id: in_list
   doc: list available profiles

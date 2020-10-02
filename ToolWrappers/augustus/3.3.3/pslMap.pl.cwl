@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslMap.pl.cwl
+id: pslMap.pl.cwl
 inputs:
 - id: in_in
   doc: psl input file, e.g. from an alignment of transcript reads against mRNA sequences

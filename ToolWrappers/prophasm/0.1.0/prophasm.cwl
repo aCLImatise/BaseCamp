@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../prophasm.cwl
+id: prophasm.cwl
 inputs:
 - id: in_kmer_size
   doc: K-mer size.

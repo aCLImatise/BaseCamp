@@ -2,34 +2,17 @@ version 1.0
 
 task ProcessClusterOutputsh {
   input {
-    File? file
-    File? with_coverage_info
-    File? directory_optional_default
-    String? value_filter_values
-    File? ad_end_outputted
-    String? v
-    String? usage_message
+    File? fileb_file_directory
   }
   command <<<
     process_cluster_output_sh \
-      ~{if defined(file) then ("-i " +  '"' + file + '"') else ""} \
-      ~{if defined(with_coverage_info) then ("-b " +  '"' + with_coverage_info + '"') else ""} \
-      ~{if defined(directory_optional_default) then ("-o " +  '"' + directory_optional_default + '"') else ""} \
-      ~{if defined(value_filter_values) then ("-c " +  '"' + value_filter_values + '"') else ""} \
-      ~{if defined(ad_end_outputted) then ("-s " +  '"' + ad_end_outputted + '"') else ""} \
-      ~{if defined(v) then ("-v " +  '"' + v + '"') else ""} \
-      ~{if defined(usage_message) then ("-h " +  '"' + usage_message + '"') else ""}
+      ~{if defined(fileb_file_directory) then ("-i " +  '"' + fileb_file_directory + '"') else ""}
   >>>
   parameter_meta {
-    file: "file"
-    with_coverage_info: "with coverage info"
-    directory_optional_default: "directory (optional). By default the file is replaced in the same location"
-    value_filter_values: "value to filter >= values. If not supplied, all records will be outputted"
-    ad_end_outputted: "to ad at the end of the outputted file (list of accession numbers)"
-    v: ""
-    usage_message: "usage message"
+    fileb_file_directory: "file\\n-b file with coverage info\\n-o output directory (optional). By default the file is replaced in the same location\\n-c percentage value to filter >= values. If not supplied, all records will be outputted\\n-s string to ad at the end of the outputted file (list of accession numbers)\\n-v version\\n-h display usage message"
   }
   output {
     File out_stdout = stdout()
+    File out_fileb_file_directory = "${in_fileb_file_directory}"
   }
 }

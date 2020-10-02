@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../anvi_display_contigs_stats.cwl
+id: anvi_display_contigs_stats.cwl
 inputs:
 - id: in_report_as_text
   doc: "If you give this flag, Anvi'o will not open new\nbrowser to show Contigs database\

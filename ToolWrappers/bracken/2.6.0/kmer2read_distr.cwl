@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../kmer2read_distr.cwl
+id: kmer2read_distr.cwl
 inputs: []
 outputs:
 - id: out_stdout

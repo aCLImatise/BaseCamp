@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../obprop.cwl
+id: obprop.cwl
 inputs: []
 outputs:
 - id: out_stdout

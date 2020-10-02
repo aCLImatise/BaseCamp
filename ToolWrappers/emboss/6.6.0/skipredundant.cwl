@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../skipredundant.cwl
+id: skipredundant.cwl
 inputs:
 - id: in_mode
   doc: "menu       [1] This option specifies whether to remove\nredundancy at a single\

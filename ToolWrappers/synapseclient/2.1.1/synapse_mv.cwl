@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../synapse_mv.cwl
+id: synapse_mv.cwl
 inputs:
 - id: in_id
   doc: Id of entity in Synapse to be moved.

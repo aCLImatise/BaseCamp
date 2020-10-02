@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../mergeCounts.cwl
+id: mergeCounts.cwl
 inputs:
 - id: in_count_one
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hansel.cwl
+id: hansel.cwl
 inputs:
 - id: in_scheme
   doc: "Scheme to use for subtyping (built-in: \"heidelberg\",\n\"enteritidis\", \"\

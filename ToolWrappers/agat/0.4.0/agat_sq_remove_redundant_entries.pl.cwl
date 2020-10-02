@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../agat_sq_remove_redundant_entries.pl.cwl
+id: agat_sq_remove_redundant_entries.pl.cwl
 inputs:
 - id: in_input
   doc: 'STRING: Input GTF/GFF file.'

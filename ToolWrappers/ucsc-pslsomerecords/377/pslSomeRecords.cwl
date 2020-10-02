@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pslSomeRecords.cwl
+id: pslSomeRecords.cwl
 inputs:
 - id: in_not
   doc: '- include psl if name is NOT in list'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../validateManifest.cwl
+id: validateManifest.cwl
 inputs:
 - id: in_enc_val_data
   doc: ', relative to workingDir, defaults to encValData.'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../msstitch_concat.cwl
+id: msstitch_concat.cwl
 inputs:
 - id: in_directory_to_output
   doc: Directory to output in

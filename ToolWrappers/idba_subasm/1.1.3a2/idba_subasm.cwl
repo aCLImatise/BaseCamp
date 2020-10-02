@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../idba_subasm.cwl
+id: idba_subasm.cwl
 inputs:
 - id: in_out
   doc: (=out)                   output directory

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../albatradis_presence_absence.cwl
+id: albatradis_presence_absence.cwl
 inputs:
 - id: in_prefix
   doc: 'Output directory prefix (default: output)'

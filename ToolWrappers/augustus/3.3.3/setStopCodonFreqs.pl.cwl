@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../setStopCodonFreqs.pl.cwl
+id: setStopCodonFreqs.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

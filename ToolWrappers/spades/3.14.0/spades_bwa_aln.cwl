@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../spades_bwa_aln.cwl
+id: spades_bwa_aln.cwl
 inputs:
 - id: in_max_diff_int
   doc: 'max #diff (int) or missing prob under 0.02 err rate (float) [0.04]'

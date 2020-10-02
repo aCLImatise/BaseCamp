@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../lasso_enet.R.cwl
+id: lasso_enet.R.cwl
 inputs: []
 outputs:
 - id: out_stdout

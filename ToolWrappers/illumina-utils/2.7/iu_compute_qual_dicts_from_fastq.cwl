@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../iu_compute_qual_dicts_from_fastq.cwl
+id: iu_compute_qual_dicts_from_fastq.cwl
 inputs: []
 outputs:
 - id: out_stdout

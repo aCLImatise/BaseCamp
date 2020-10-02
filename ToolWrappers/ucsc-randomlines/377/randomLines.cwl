@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../randomLines.cwl
+id: randomLines.cwl
 inputs:
 - id: in_seed
   doc: '- Set seed used for randomizing, useful for debugging.'

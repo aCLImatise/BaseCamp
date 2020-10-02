@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../remuRNA.cwl
+id: remuRNA.cwl
 inputs:
 - id: in_na
   doc: =RNA (default) | DNA

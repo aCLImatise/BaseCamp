@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_add_library_datasets.cwl
+id: nebulizer_add_library_datasets.cwl
 inputs:
 - id: in_file_type
   doc: "Galaxy data type to assign the files to (default is\n'auto'). Must be a valid\

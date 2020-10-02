@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../reconciliate_mega_reads.maximal.nucmer.pl.cwl
+id: reconciliate_mega_reads.maximal.nucmer.pl.cwl
 inputs: []
 outputs:
 - id: out_stdout

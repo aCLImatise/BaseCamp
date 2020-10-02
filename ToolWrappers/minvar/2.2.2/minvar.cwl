@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../minvar.cwl
+id: minvar.cwl
 inputs:
 - id: in_fast_q
   doc: input reads in fastq format

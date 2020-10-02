@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nextflow_kuberun.cwl
+id: nextflow_kuberun.cwl
 inputs:
 - id: in_exports_current_system
   doc: "Exports all current system environment\nDefault: false"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bcbio_vm.py_template.cwl
+id: bcbio_vm.py_template.cwl
 inputs:
 - id: in_only_metadata
   doc: Ignore samples not present in metadata CSV file

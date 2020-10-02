@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../hhmake.cwl
+id: hhmake.cwl
 inputs:
 - id: in_query_alignment_am
   doc: query alignment (A2M, A3M, or FASTA), or query HMM

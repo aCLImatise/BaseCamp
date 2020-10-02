@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../eaddress.cwl
+id: eaddress.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../dicey_mappability.cwl
+id: dicey_mappability.cwl
 inputs:
 - id: in_arg_gzipped_file
   doc: '[ --outfile ] arg (="map.fa.gz")   gzipped output file'

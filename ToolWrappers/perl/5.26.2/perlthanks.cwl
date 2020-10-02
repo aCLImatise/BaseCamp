@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../perlthanks.cwl
+id: perlthanks.cwl
 inputs:
 - id: in_include_verbose_data
   doc: Include Verbose configuration data in the report

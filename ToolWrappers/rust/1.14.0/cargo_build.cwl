@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../cargo_build.cwl
+id: cargo_build.cwl
 inputs:
 - id: in_package
   doc: to build

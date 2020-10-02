@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bactopia_search.py.cwl
+id: bactopia_search.py.cwl
 inputs:
 - id: in_exact_tax_on
   doc: Exclude Taxon ID descendents.
@@ -42,6 +42,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --min_coverage
+- id: in_genome_size
+  doc: Genome size to estimate coverage (requires --coverage)
+  type: long
+  inputBinding:
+    prefix: --genome_size
 - id: in_bac_topia
   doc: ''
   type: string

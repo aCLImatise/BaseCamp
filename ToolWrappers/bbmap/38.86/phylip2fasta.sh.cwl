@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../phylip2fasta.sh.cwl
+id: phylip2fasta.sh.cwl
 inputs:
 - id: in_x_mx
   doc: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g will\

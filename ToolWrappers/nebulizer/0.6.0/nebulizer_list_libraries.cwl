@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nebulizer_list_libraries.cwl
+id: nebulizer_list_libraries.cwl
 inputs:
 - id: in_use_long_format
   doc: "use a long listing format that includes descriptions, file sizes,\ndbkeys\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../readCounter.cwl
+id: readCounter.cwl
 inputs:
 - id: in_seg
   doc: Outputs in SEG format

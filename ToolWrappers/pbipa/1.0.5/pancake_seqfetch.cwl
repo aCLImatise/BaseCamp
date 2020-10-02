@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pancake_seqfetch.cwl
+id: pancake_seqfetch.cwl
 inputs:
 - id: in_out_fmt
   doc: "STR   Output format. If an input file is FASTA and out format is FASTQ, dummy\

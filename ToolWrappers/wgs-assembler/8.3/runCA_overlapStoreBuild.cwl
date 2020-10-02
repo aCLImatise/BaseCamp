@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../runCA_overlapStoreBuild.cwl
+id: runCA_overlapStoreBuild.cwl
 inputs:
 - id: in_path_location_created
   doc: path to location where store should be created

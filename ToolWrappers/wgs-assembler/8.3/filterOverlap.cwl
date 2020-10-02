@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../filterOverlap.cwl
+id: filterOverlap.cwl
 inputs:
 - id: in_ovl
   doc: -- overlaps are OVL

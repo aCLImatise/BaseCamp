@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bismark2report.cwl
+id: bismark2report.cwl
 inputs:
 - id: in_oslash_output
   doc: "Name of the output file (optional). If not specified explicitly, the output\

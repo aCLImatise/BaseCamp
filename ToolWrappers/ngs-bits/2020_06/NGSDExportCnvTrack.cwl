@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../NGSDExportCnvTrack.cwl
+id: NGSDExportCnvTrack.cwl
 inputs:
 - id: in_out
   doc: Output IGV file.

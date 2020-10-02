@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pisces.cwl
+id: pisces.cwl
 inputs: []
 outputs:
 - id: out_stdout

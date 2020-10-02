@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../frestdist.cwl
+id: frestdist.cwl
 inputs: []
 outputs:
 - id: out_stdout

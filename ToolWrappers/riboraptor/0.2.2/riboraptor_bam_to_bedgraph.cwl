@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../riboraptor_bam_to_bedgraph.cwl
+id: riboraptor_bam_to_bedgraph.cwl
 inputs:
 - id: in_bam
   doc: Path to BAM file  [required]

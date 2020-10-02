@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../nw_clade.cwl
+id: nw_clade.cwl
 inputs:
 - id: in_levels_int_give
   doc: "<levels (int)>: give context, i.e. start the subtree not at the last\ncommon\

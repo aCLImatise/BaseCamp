@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../bedtools_links.cwl
+id: bedtools_links.cwl
 inputs:
 - id: in_base
   doc: 'The browser basename.  Default: http://genome.ucsc.edu'

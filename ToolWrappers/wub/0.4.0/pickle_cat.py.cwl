@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../pickle_cat.py.cwl
+id: pickle_cat.py.cwl
 inputs:
 - id: in_pickle_file
   doc: Input pickle file.

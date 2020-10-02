@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../MakeDb.py_vdj_score.cwl
+id: MakeDb.py_vdj_score.cwl
 inputs:
 - id: in_make_db_do_tpy
   doc: ''

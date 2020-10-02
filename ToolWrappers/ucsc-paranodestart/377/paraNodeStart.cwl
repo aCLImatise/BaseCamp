@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ../../../paraNodeStart.cwl
+id: paraNodeStart.cwl
 inputs:
-- id: in_exe
-  doc: =/path/to/paraNode
-  type: boolean
-  inputBinding:
-    prefix: -exe
 - id: in_log_facility
   doc: Log to the specified syslog facility - default local0.
   type: long

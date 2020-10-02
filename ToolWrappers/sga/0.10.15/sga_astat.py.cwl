@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../sga_astat.py.cwl
+id: sga_astat.py.cwl
 inputs: []
 outputs:
 - id: out_stdout

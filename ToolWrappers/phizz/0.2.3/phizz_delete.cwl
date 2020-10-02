@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: ../../../phizz_delete.cwl
+id: phizz_delete.cwl
 inputs:
 - id: in_db_name
-  doc: ''
+  doc: "--path TEXT\n--help          Show this message and exit.\n"
   type: File
   inputBinding:
     prefix: --db_name
-- id: in_path
-  doc: ''
-  type: File
-  inputBinding:
-    prefix: --path
 outputs:
 - id: out_stdout
   doc: Standard output stream

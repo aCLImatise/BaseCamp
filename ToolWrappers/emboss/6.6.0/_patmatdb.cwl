@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../_patmatdb.cwl
+id: _patmatdb.cwl
 inputs: []
 outputs:
 - id: out_stdout

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../QCExporter.cwl
+id: QCExporter.cwl
 inputs:
 - id: in_in
   doc: "*        Input qcml file (valid formats: 'qcML')"

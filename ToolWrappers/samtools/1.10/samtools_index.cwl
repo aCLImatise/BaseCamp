@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../samtools_index.cwl
+id: samtools_index.cwl
 inputs:
 - id: in_generate_baiformat_index
   doc: Generate BAI-format index for BAM files [default]

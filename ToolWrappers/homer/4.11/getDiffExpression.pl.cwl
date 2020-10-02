@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ../../../getDiffExpression.pl.cwl
+id: getDiffExpression.pl.cwl
 inputs:
 - id: in_rna
   doc: (for analyzeRNA.pl formatted input, default)
