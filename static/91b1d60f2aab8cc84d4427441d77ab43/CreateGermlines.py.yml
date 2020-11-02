@@ -1,0 +1,234 @@
+!Command
+command:
+- CreateGermlines.py
+positional:
+- !Positional
+  description: database with assigned germline sequences.
+  position: 0
+  name: germ-pass
+  optional: false
+- !Positional
+  description: database with records failing germline assignment.
+  position: 1
+  name: germ-fail
+  optional: false
+- !Positional
+  description: 'output fields:'
+  position: 0
+  name: clone_id
+  optional: false
+named:
+- !Flag
+  description: "A list of tab delimited database files. (default:\nNone)"
+  synonyms:
+  - -d
+  args: !RepeatFlagArg
+    name: DB_FILES
+  optional: true
+- !Flag
+  description: "Explicit output file name. Note, this argument cannot\nbe used with\
+    \ the --failed, --outdir, or --outname\narguments. If unspecified, then the output\
+    \ filename\nwill be based on the input filename(s). (default:\nNone)"
+  synonyms:
+  - -o
+  args: !RepeatFlagArg
+    name: OUT_FILES
+  optional: true
+- !Flag
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  synonyms:
+  - --outname
+  args: !SimpleFlagArg
+    name: OUT_NAME
+  optional: true
+- !Flag
+  description: "Specify to write verbose logging to a file. May not be\nspecified\
+    \ with multiple input files. (default: None)"
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: LOG_FILE
+  optional: true
+- !Flag
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
+  synonyms:
+  - --failed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify input and output format. (default: airr)'
+  synonyms:
+  - --format
+  args: !ChoiceFlagArg
+    choices: !!set
+      airr:
+      changeo:
+  optional: true
+- !Flag
+  description: "List of folders and/or fasta files (with .fasta, .fna\nor .fa extension)\
+    \ with germline sequences. When using\nthe default Change-O sequence and coordinate\
+    \ fields,\nthese reference sequences must contain IMGT-numbering\nspacers (gaps)\
+    \ in the V segment. Alternative numbering\nschemes, or no numbering, may work\
+    \ for alternative\nsequence and coordinate definitions that define a\nvalid alignment,\
+    \ but a warning will be issued.\n(default: None)"
+  synonyms:
+  - -r
+  args: !RepeatFlagArg
+    name: REFERENCES
+  optional: true
+- !Flag
+  description: "[{full,dmask,vonly,regions} ...]\nSpecify type(s) of germlines to\
+    \ include full germline,\ngermline with D segment masked, or germline for V\n\
+    segment only. (default: ['dmask'])"
+  synonyms:
+  - -g
+  args: !ChoiceFlagArg
+    choices: !!set
+      regions:
+      dmask:
+      full:
+      vonly:
+  optional: true
+- !Flag
+  description: "Specify to create only one germline per clone. Note,\nif allele calls\
+    \ are ambiguous within a clonal group,\nthis will place the germline call used\
+    \ for the entire\nclone within the germline_v_call, germline_d_call and\ngermline_j_call\
+    \ fields. (default: False)"
+  synonyms:
+  - --cloned
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Field containing the aligned sequence. Defaults to\nsequence_alignment\
+    \ (airr) or SEQUENCE_IMGT (changeo).\n(default: None)"
+  synonyms:
+  - --sf
+  args: !SimpleFlagArg
+    name: SEQ_FIELD
+  optional: true
+- !Flag
+  description: "Field containing the germline V segment call. Defaults\nto v_call\
+    \ (airr) or V_CALL (changeo). (default: None)"
+  synonyms:
+  - --vf
+  args: !SimpleFlagArg
+    name: V_FIELD
+  optional: true
+- !Flag
+  description: "Field containing the germline D segment call. Defaults\nto d_call\
+    \ (airr) or D_CALL (changeo). (default: None)"
+  synonyms:
+  - --df
+  args: !SimpleFlagArg
+    name: D_FIELD
+  optional: true
+- !Flag
+  description: "Field containing the germline J segment call. Defaults\nto j_call\
+    \ (airr) or J_CALL (changeo). (default: None)"
+  synonyms:
+  - --jf
+  args: !SimpleFlagArg
+    name: J_FIELD
+  optional: true
+- !Flag
+  description: Field containing clone identifiers. Ignored if
+  synonyms:
+  - --cf
+  args: !SimpleFlagArg
+    name: CLONE_FIELD
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: CreateGermlines.py [--version] [-h] -d DB_FILES [DB_FILES ...]\n\
+  \                          [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n \
+  \                         [--outname OUT_NAME] [--log LOG_FILE] [--failed]\n   \
+  \                       [--format {airr,changeo}] -r REFERENCES\n              \
+  \            [REFERENCES ...]\n                          [-g {full,dmask,vonly,regions}\
+  \ [{full,dmask,vonly,regions} ...]]\n                          [--cloned] [--sf\
+  \ SEQ_FIELD] [--vf V_FIELD]\n                          [--df D_FIELD] [--jf J_FIELD]\
+  \ [--cf CLONE_FIELD]\n\nReconstructs germline sequences from alignment data\n\n\
+  help:\n  --version             show program's version number and exit\n  -h, --help\
+  \            show this help message and exit\n\nstandard arguments:\n  -d DB_FILES\
+  \ [DB_FILES ...]\n                        A list of tab delimited database files.\
+  \ (default:\n                        None)\n  -o OUT_FILES [OUT_FILES ...]\n   \
+  \                     Explicit output file name. Note, this argument cannot\n  \
+  \                      be used with the --failed, --outdir, or --outname\n     \
+  \                   arguments. If unspecified, then the output filename\n      \
+  \                  will be based on the input filename(s). (default:\n         \
+  \               None)\n  --outdir OUT_DIR      Specify to changes the output directory\
+  \ to the\n                        location specified. The input file directory is\
+  \ used\n                        if this is not specified. (default: None)\n  --outname\
+  \ OUT_NAME    Changes the prefix of the successfully processed\n               \
+  \         output file to the string specified. May not be\n                    \
+  \    specified with multiple input files. (default: None)\n  --log LOG_FILE    \
+  \    Specify to write verbose logging to a file. May not be\n                  \
+  \      specified with multiple input files. (default: None)\n  --failed        \
+  \      If specified create files containing records that fail\n                \
+  \        processing. (default: False)\n  --format {airr,changeo}\n             \
+  \           Specify input and output format. (default: airr)\n\ngermline construction\
+  \ arguments:\n  -r REFERENCES [REFERENCES ...]\n                        List of\
+  \ folders and/or fasta files (with .fasta, .fna\n                        or .fa\
+  \ extension) with germline sequences. When using\n                        the default\
+  \ Change-O sequence and coordinate fields,\n                        these reference\
+  \ sequences must contain IMGT-numbering\n                        spacers (gaps)\
+  \ in the V segment. Alternative numbering\n                        schemes, or no\
+  \ numbering, may work for alternative\n                        sequence and coordinate\
+  \ definitions that define a\n                        valid alignment, but a warning\
+  \ will be issued.\n                        (default: None)\n  -g {full,dmask,vonly,regions}\
+  \ [{full,dmask,vonly,regions} ...]\n                        Specify type(s) of germlines\
+  \ to include full germline,\n                        germline with D segment masked,\
+  \ or germline for V\n                        segment only. (default: ['dmask'])\n\
+  \  --cloned              Specify to create only one germline per clone. Note,\n\
+  \                        if allele calls are ambiguous within a clonal group,\n\
+  \                        this will place the germline call used for the entire\n\
+  \                        clone within the germline_v_call, germline_d_call and\n\
+  \                        germline_j_call fields. (default: False)\n  --sf SEQ_FIELD\
+  \        Field containing the aligned sequence. Defaults to\n                  \
+  \      sequence_alignment (airr) or SEQUENCE_IMGT (changeo).\n                 \
+  \       (default: None)\n  --vf V_FIELD          Field containing the germline V\
+  \ segment call. Defaults\n                        to v_call (airr) or V_CALL (changeo).\
+  \ (default: None)\n  --df D_FIELD          Field containing the germline D segment\
+  \ call. Defaults\n                        to d_call (airr) or D_CALL (changeo).\
+  \ (default: None)\n  --jf J_FIELD          Field containing the germline J segment\
+  \ call. Defaults\n                        to j_call (airr) or J_CALL (changeo).\
+  \ (default: None)\n  --cf CLONE_FIELD      Field containing clone identifiers. Ignored\
+  \ if\n                        --cloned is not also specified. Defaults to clone_id\n\
+  \                        (airr) or CLONE (changeo). (default: None)\n\noutput files:\n\
+  \    germ-pass\n       database with assigned germline sequences.\n    germ-fail\n\
+  \       database with records failing germline assignment.\n\nrequired fields:\n\
+  \    sequence_id, sequence_alignment, v_call, d_call, j_call, \n    v_sequence_start,\
+  \ v_sequence_end, v_germline_start, v_germline_end,\n    d_sequence_start, d_sequence_end,\
+  \ d_germline_start, d_germline_end,\n    j_sequence_start, j_sequence_end, j_germline_start,\
+  \ j_germline_end,\n    np1_length, np2_length\n\noptional fields:\n    n1_length,\
+  \ n2_length, p3v_length, p5d_length, p3d_length, p5j_length,\n    clone_id\n\noutput\
+  \ fields:\n    germline_v_call, germline_d_call, germline_j_call,\n    germline_alignment,\
+  \ germline_alignment_d_mask, \n    germline_alignment_v_region, germline_regions,\
+  \ \n"
+generated_using:
+- --help

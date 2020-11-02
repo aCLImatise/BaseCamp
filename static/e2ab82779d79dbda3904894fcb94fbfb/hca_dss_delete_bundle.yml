@@ -1,0 +1,58 @@
+!Command
+command:
+- hca
+- dss
+- delete-bundle
+positional: []
+named:
+- !Flag
+  description: User-friendly reason for the bundle or timestamp-specfic bundle deletion.
+  synonyms:
+  - --reason
+  args: !SimpleFlagArg
+    name: REASON
+  optional: true
+- !Flag
+  description: A RFC4122-compliant ID for the bundle.
+  synonyms:
+  - --uuid
+  args: !SimpleFlagArg
+    name: UUID
+  optional: true
+- !Flag
+  description: Replica to write to.
+  synonyms:
+  - --replica
+  args: !ChoiceFlagArg
+    choices: !!set
+      gcp:
+      aws:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Timestamp of bundle creation in DSS_VERSION format.
+  synonyms:
+  - --version
+  args: !SimpleFlagArg
+    name: VERSION
+  optional: true
+help_text: "usage: hca dss delete-bundle [-h] --reason REASON --uuid UUID --replica\n\
+  \                             {aws,gcp} [--version VERSION]\n\nDelete the bundle\
+  \ with the given UUID. This deletion is applied across replicas.\n\nOptional Arguments:\n\
+  \  -h, --help           show this help message and exit\n\nRequired Arguments:\n\
+  \  --reason REASON      User-friendly reason for the bundle or timestamp-specfic\
+  \ bundle deletion.\n  --uuid UUID          A RFC4122-compliant ID for the bundle.\n\
+  \  --replica {aws,gcp}  Replica to write to.\n  --version VERSION    Timestamp of\
+  \ bundle creation in DSS_VERSION format.\n\n"
+generated_using:
+- --help

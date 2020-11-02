@@ -1,0 +1,54 @@
+!Command
+command:
+- hailctl
+- dev
+- config
+positional:
+- !Positional
+  description: "Default namespace. Show the current configuration if\nnot specified."
+  position: 0
+  name: namespace
+  optional: false
+named:
+- !Flag
+  description: 'Location. (default: external)'
+  synonyms:
+  - --location
+  - -l
+  args: !ChoiceFlagArg
+    choices: !!set
+      external:
+      k8s:
+      gce:
+  optional: true
+- !Flag
+  description: "List of comma-separated service=namespace overrides.\n(default: none)\n"
+  synonyms:
+  - --override
+  - -o
+  args: !SimpleFlagArg
+    name: OVERRIDE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: hailctl dev config [-h] [--location {external,gce,k8s}]\n     \
+  \                     [--override OVERRIDE]\n                          [namespace]\n\
+  \nConfigure deployment\n\npositional arguments:\n  namespace             Default\
+  \ namespace. Show the current configuration if\n                        not specified.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --location {external,gce,k8s}, -l {external,gce,k8s}\n                      \
+  \  Location. (default: external)\n  --override OVERRIDE, -o OVERRIDE\n         \
+  \               List of comma-separated service=namespace overrides.\n         \
+  \               (default: none)\n"
+generated_using:
+- --help

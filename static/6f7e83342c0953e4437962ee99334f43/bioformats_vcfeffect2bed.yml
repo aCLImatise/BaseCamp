@@ -1,0 +1,79 @@
+!Command
+command:
+- bioformats
+- vcfeffect2bed
+positional:
+- !Positional
+  description: an snpEff-annotated VCF file
+  position: 0
+  name: vcf_file
+  optional: false
+- !Positional
+  description: the output BED3+ file of sample effects
+  position: 1
+  name: output_file
+  optional: false
+named:
+- !Flag
+  description: "[{HIGH,MODERATE,LOW,MODIFIER} ...], --impacts {HIGH,MODERATE,LOW,MODIFIER}\
+    \ [{HIGH,MODERATE,LOW,MODIFIER} ...]\nimpacts of effects to be reported"
+  synonyms:
+  - -i
+  args: !ChoiceFlagArg
+    choices: !!set
+      MODERATE:
+      MODIFIER:
+      LOW:
+      HIGH:
+  optional: true
+- !Flag
+  description: '[{REFHET,COMHET,ALTHOM} ...], --genotypes {REFHET,COMHET,ALTHOM} [{REFHET,COMHET,ALTHOM}
+    ...]'
+  synonyms:
+  - -g
+  args: !ChoiceFlagArg
+    choices: !!set
+      COMHET:
+      ALTHOM:
+      REFHET:
+  optional: true
+- !Flag
+  description: ignore errors in an input file
+  synonyms:
+  - --ignore_errors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: bioformats [command] [-h] [-v]\nPlease specify the command or use\
+  \ -h to view the help message. vcfeffect2bed\n       [-h]\n       [-i {HIGH,MODERATE,LOW,MODIFIER}\
+  \ [{HIGH,MODERATE,LOW,MODIFIER} ...]]\n       [-g {REFHET,COMHET,ALTHOM} [{REFHET,COMHET,ALTHOM}\
+  \ ...]]\n       [--ignore_errors]\n       vcf_file output_file\n\nGiven an snpEff-annotated\
+  \ VCF file, extract its sample genotype effects.\n\npositional arguments:\n  vcf_file\
+  \              an snpEff-annotated VCF file\n  output_file           the output\
+  \ BED3+ file of sample effects\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -i {HIGH,MODERATE,LOW,MODIFIER} [{HIGH,MODERATE,LOW,MODIFIER}\
+  \ ...], --impacts {HIGH,MODERATE,LOW,MODIFIER} [{HIGH,MODERATE,LOW,MODIFIER} ...]\n\
+  \                        impacts of effects to be reported\n  -g {REFHET,COMHET,ALTHOM}\
+  \ [{REFHET,COMHET,ALTHOM} ...], --genotypes {REFHET,COMHET,ALTHOM} [{REFHET,COMHET,ALTHOM}\
+  \ ...]\n  --ignore_errors       ignore errors in an input file\n\nGenotype values:\n\
+  \tREFHET - a heterozygote with one reference allele\n\tCOMHET - a heterozygote with\
+  \ both alternative alleles\n\tALTHOM - an alternative homozygote\n"
+generated_using:
+- --help

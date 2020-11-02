@@ -1,0 +1,117 @@
+!Command
+command:
+- ribo
+- scan
+positional:
+- !Positional
+  description: -c CORES, --cores CORES
+  position: 0
+  name: file
+  optional: false
+named:
+- !Flag
+  description: 'output directory; default: /'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "whether to look for eukaryotic, archaeal, or bacterial\nrDNA; default:\
+    \ bac"
+  synonyms:
+  - -k
+  - --kingdom
+  args: !ChoiceFlagArg
+    choices: !!set
+      euk:
+      arc:
+      bac:
+      mito:
+  optional: true
+- !Flag
+  description: "partial rRNA hits below this threshold will be\nignored. default:\
+    \ 0.5"
+  synonyms:
+  - -t
+  - --id_thresh
+  args: !SimpleFlagArg
+    name: ID_THRESH
+  optional: true
+- !Flag
+  description: 'path to barrnap executable; default: barrnap'
+  synonyms:
+  - -b
+  - --barrnap_exe
+  args: !SimpleFlagArg
+    name: BARRNAP_EXE
+  optional: true
+- !Flag
+  description: 'name to give the contig files; default: infered from'
+  synonyms:
+  - -n
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: 'skip the scaffold if its shorter than this default: 0'
+  synonyms:
+  - -m
+  - --min_length
+  args: !SimpleFlagArg
+    name: MIN_LENGTH
+  optional: true
+- !Flag
+  description: "Logger writes debug to file in output dir; this sets\nverbosity level\
+    \ sent to stderr. 1 = debug(), 2 =\ninfo(), 3 = warning(), 4 = error() and 5 =\
+    \ critical();\ndefault: 2"
+  synonyms:
+  - -v
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      '2':
+      '1':
+      '4':
+      '3':
+      '5':
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Displays this help message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: ribo scan -o OUTPUT [-k {bac,euk,arc,mito}] [-t ID_THRESH]\n  \
+  \               [-b BARRNAP_EXE] [-n NAME] [-c CORES] [-m MIN_LENGTH]\n        \
+  \         [-v {1,2,3,4,5}] [-h]\n                 contigs\n\nGiven a directory of\
+  \ one or more chromosomes as fasta files, this facilitates\nreannotation of rDNA\
+  \ regions with Barrnap and outputs all sequences as a\nsingle, annotated genbank\
+  \ file\n\npositional arguments:\n  contigs               either a (multi)fasta or\
+  \ a directory containing one or\n                        more chromosomal sequences\
+  \ in fasta format\n\nrequired named arguments:\n  -o OUTPUT, --output OUTPUT\n \
+  \                       output directory; default: /\n\noptional arguments:\n  -k\
+  \ {bac,euk,arc,mito}, --kingdom {bac,euk,arc,mito}\n                        whether\
+  \ to look for eukaryotic, archaeal, or bacterial\n                        rDNA;\
+  \ default: bac\n  -t ID_THRESH, --id_thresh ID_THRESH\n                        partial\
+  \ rRNA hits below this threshold will be\n                        ignored. default:\
+  \ 0.5\n  -b BARRNAP_EXE, --barrnap_exe BARRNAP_EXE\n                        path\
+  \ to barrnap executable; default: barrnap\n  -n NAME, --name NAME  name to give\
+  \ the contig files; default: infered from\n                        file\n  -c CORES,\
+  \ --cores CORES\n                        number of threads/cores to use; default:\
+  \ 2\n  -m MIN_LENGTH, --min_length MIN_LENGTH\n                        skip the\
+  \ scaffold if its shorter than this default: 0\n  -v {1,2,3,4,5}, --verbosity {1,2,3,4,5}\n\
+  \                        Logger writes debug to file in output dir; this sets\n\
+  \                        verbosity level sent to stderr. 1 = debug(), 2 =\n    \
+  \                    info(), 3 = warning(), 4 = error() and 5 = critical();\n  \
+  \                      default: 2\n  -h, --help            Displays this help message\n"
+generated_using:
+- --help

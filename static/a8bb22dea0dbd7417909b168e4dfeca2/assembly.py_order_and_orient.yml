@@ -1,0 +1,184 @@
+!Command
+command:
+- assembly.py
+- order_and_orient
+positional:
+- !Positional
+  description: Input de novo assembly/contigs, FASTA format.
+  position: 0
+  name: inFasta
+  optional: false
+- !Positional
+  description: "Reference genome for ordering, orienting, and merging\ncontigs, FASTA\
+    \ format."
+  position: 1
+  name: inReference
+  optional: false
+- !Positional
+  description: "Output assembly, FASTA format, with the same number of\nchromosomes\
+    \ as inReference, and in the same order."
+  position: 2
+  name: outFasta
+  optional: false
+named:
+- !Flag
+  description: "Output sequences (FASTA format) from alternative\ncontigs that mapped,\
+    \ but were not chosen for the final\noutput."
+  synonyms:
+  - --outAlternateContigs
+  args: !SimpleFlagArg
+    name: OUTALTERNATECONTIGS
+  optional: true
+- !Flag
+  description: "Amount to extend alignment clusters by (if --extend).\nnucmer default\
+    \ 200, promer default 60."
+  synonyms:
+  - --breaklen
+  - -b
+  args: !SimpleFlagArg
+    name: BREAKLEN
+  optional: true
+- !Flag
+  description: "Maximum gap between two adjacent matches in a cluster.\nOur default\
+    \ is 200. nucmer default 90, promer default\n30. Manual suggests going to 1000."
+  synonyms:
+  - --maxgap
+  - -g
+  args: !SimpleFlagArg
+    name: MAXGAP
+  optional: true
+- !Flag
+  description: "Minimum length of an maximal exact match. Our default\nis 10. nucmer\
+    \ default 20, promer default 6."
+  synonyms:
+  - --minmatch
+  - -l
+  args: !SimpleFlagArg
+    name: MINMATCH
+  optional: true
+- !Flag
+  description: "Minimum cluster length. nucmer default 65, promer\ndefault 20."
+  synonyms:
+  - --mincluster
+  - -c
+  args: !SimpleFlagArg
+    name: MINCLUSTER
+  optional: true
+- !Flag
+  description: "show-tiling: minimum percent identity for contig\nalignment (0.0 -\
+    \ 1.0, default: 0.6)"
+  synonyms:
+  - --min_pct_id
+  - -i
+  args: !SimpleFlagArg
+    name: MIN_PCT_ID
+  optional: true
+- !Flag
+  description: "show-tiling: reject contigs smaller than this\n(default: 200)"
+  synonyms:
+  - --min_contig_len
+  args: !SimpleFlagArg
+    name: MIN_CONTIG_LEN
+  optional: true
+- !Flag
+  description: "show-tiling: minimum percent of contig length in\nalignment (0.0 -\
+    \ 1.0, default: 0.3)"
+  synonyms:
+  - --min_pct_contig_aligned
+  - -v
+  args: !SimpleFlagArg
+    name: MIN_PCT_CONTIG_ALIGNED
+  optional: true
+- !Flag
+  description: 'Verboseness of output. [default: DEBUG]'
+  synonyms:
+  - --loglevel
+  args: !ChoiceFlagArg
+    choices: !!set
+      CRITICAL:
+      ERROR:
+      INFO:
+      WARNING:
+      DEBUG:
+      EXCEPTION:
+  optional: true
+- !Flag
+  description: 'Base directory for temp files. [default: /tmp]'
+  synonyms:
+  - --tmp_dir
+  args: !SimpleFlagArg
+    name: TMP_DIR
+  optional: true
+- !Flag
+  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
+    \ to delete all temp files at the end, even\nif there's a failure.\n"
+  synonyms:
+  - --tmp_dirKeep
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: assembly.py subcommand order_and_orient [-h]\n                \
+  \                               [--outAlternateContigs OUTALTERNATECONTIGS]\n  \
+  \                                             [--breaklen BREAKLEN]\n          \
+  \                                     [--maxgap MAXGAP]\n                      \
+  \                         [--minmatch MINMATCH]\n                              \
+  \                 [--mincluster MINCLUSTER]\n                                  \
+  \             [--min_pct_id MIN_PCT_ID]\n                                      \
+  \         [--min_contig_len MIN_CONTIG_LEN]\n                                  \
+  \             [--min_pct_contig_aligned MIN_PCT_CONTIG_ALIGNED]\n              \
+  \                                 [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+  \                                               [--version] [--tmp_dir TMP_DIR]\n\
+  \                                               [--tmp_dirKeep]\n              \
+  \                                 inFasta inReference outFasta\n\nThis step cleans\
+  \ up the de novo assembly with a known reference genome. Uses\nMUMmer (nucmer or\
+  \ promer) to create a reference-based consensus sequence of\naligned contigs (with\
+  \ runs of N's in between the de novo contigs).\n\npositional arguments:\n  inFasta\
+  \               Input de novo assembly/contigs, FASTA format.\n  inReference   \
+  \        Reference genome for ordering, orienting, and merging\n               \
+  \         contigs, FASTA format.\n  outFasta              Output assembly, FASTA\
+  \ format, with the same number of\n                        chromosomes as inReference,\
+  \ and in the same order.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --outAlternateContigs OUTALTERNATECONTIGS\n         \
+  \               Output sequences (FASTA format) from alternative\n             \
+  \           contigs that mapped, but were not chosen for the final\n           \
+  \             output.\n  --breaklen BREAKLEN, -b BREAKLEN\n                    \
+  \    Amount to extend alignment clusters by (if --extend).\n                   \
+  \     nucmer default 200, promer default 60.\n  --maxgap MAXGAP, -g MAXGAP\n   \
+  \                     Maximum gap between two adjacent matches in a cluster.\n \
+  \                       Our default is 200. nucmer default 90, promer default\n\
+  \                        30. Manual suggests going to 1000.\n  --minmatch MINMATCH,\
+  \ -l MINMATCH\n                        Minimum length of an maximal exact match.\
+  \ Our default\n                        is 10. nucmer default 20, promer default\
+  \ 6.\n  --mincluster MINCLUSTER, -c MINCLUSTER\n                        Minimum\
+  \ cluster length. nucmer default 65, promer\n                        default 20.\n\
+  \  --min_pct_id MIN_PCT_ID, -i MIN_PCT_ID\n                        show-tiling:\
+  \ minimum percent identity for contig\n                        alignment (0.0 -\
+  \ 1.0, default: 0.6)\n  --min_contig_len MIN_CONTIG_LEN\n                      \
+  \  show-tiling: reject contigs smaller than this\n                        (default:\
+  \ 200)\n  --min_pct_contig_aligned MIN_PCT_CONTIG_ALIGNED, -v MIN_PCT_CONTIG_ALIGNED\n\
+  \                        show-tiling: minimum percent of contig length in\n    \
+  \                    alignment (0.0 - 1.0, default: 0.3)\n  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+  \                        Verboseness of output. [default: DEBUG]\n  --version, -V\
+  \         show program's version number and exit\n  --tmp_dir TMP_DIR     Base directory\
+  \ for temp files. [default: /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an\
+  \ exception occurs while running.\n                        Default is to delete\
+  \ all temp files at the end, even\n                        if there's a failure.\n"
+generated_using:
+- --help

@@ -1,0 +1,146 @@
+!Command
+command:
+- SeqSero2_package.py
+positional:
+- !Positional
+  description: 'optional arguments:'
+  position: 0
+  name: v1.1.1
+  optional: false
+- !Positional
+  description: '-d D              <string>: optional, to specify an output directory
+    name,'
+  position: 1
+  name: output
+  optional: false
+- !Positional
+  description: -v, --version     show program's version number and exit
+  position: 0
+  name: dependencies
+  optional: false
+named:
+- !Flag
+  description: '<string>: path/to/input_data'
+  synonyms:
+  - -i
+  args: !RepeatFlagArg
+    name: I
+  optional: true
+- !Flag
+  description: "<int>: '1' for interleaved paired-end reads, '2' for\nseparated paired-end\
+    \ reads, '3' for single reads, '4' for\ngenome assembly, '5' for nanopore fasta,\
+    \ '6' for nanopore\nfastq"
+  synonyms:
+  - -t
+  args: !ChoiceFlagArg
+    choices: !!set
+      '6':
+      '2':
+      '1':
+      '4':
+      '3':
+      '5':
+  optional: true
+- !Flag
+  description: "<string>: algorithms for bwa mapping for allele mode;\n'mem' for mem,\
+    \ 'sam' for samse/sampe; default=mem;\noptional; for now we only optimized for\
+    \ default 'mem' mode"
+  synonyms:
+  - -b
+  args: !ChoiceFlagArg
+    choices: !!set
+      mem:
+      sam:
+  optional: true
+- !Flag
+  description: "<int>: number of threads for allele mode, if p >4, only 4\nthreads\
+    \ will be used for assembly since the amount of\nextracted reads is small, default=1"
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: P
+  optional: true
+- !Flag
+  description: "<string>: which workflow to apply, 'a'(raw reads allele\nmicro-assembly),\
+    \ 'k'(raw reads and genome assembly k-mer),\ndefault=a"
+  synonyms:
+  - -m
+  args: !ChoiceFlagArg
+    choices: !!set
+      a:
+      k:
+  optional: true
+- !Flag
+  description: '<string>: optional, to specify a sample name in the report'
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "<flag>: if '-c' was flagged, SeqSero2 will only output\nserotype prediction\
+    \ without the directory containing log\nfiles"
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<flag>: if '-s' was flagged, SeqSero2 will not output\nheader in SeqSero_result.tsv"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<flag>: use '--check' flag to check the required"
+  synonyms:
+  - --check
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: output_directory
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: SeqSero2_package.py -t <data_type> -m <mode> -i <input_data> [-d\
+  \ <output_directory>] [-p <number of threads>] [-b <BWA_algorithm>]\n\nDevelopper:\
+  \ Shaokang Zhang (zskzsk@uga.edu), Hendrik C Den-Bakker (Hendrik.DenBakker@uga.edu)\
+  \ and Xiangyu Deng (xdeng@uga.edu)\n\nContact email:seqsero@gmail.com\n\nVersion:\
+  \ v1.1.1\n\noptional arguments:\n  -h, --help        show this help message and\
+  \ exit\n  -i I [I ...]      <string>: path/to/input_data\n  -t {1,2,3,4,5,6}  <int>:\
+  \ '1' for interleaved paired-end reads, '2' for\n                    separated paired-end\
+  \ reads, '3' for single reads, '4' for\n                    genome assembly, '5'\
+  \ for nanopore fasta, '6' for nanopore\n                    fastq\n  -b {sam,mem}\
+  \      <string>: algorithms for bwa mapping for allele mode;\n                 \
+  \   'mem' for mem, 'sam' for samse/sampe; default=mem;\n                    optional;\
+  \ for now we only optimized for default 'mem' mode\n  -p P              <int>: number\
+  \ of threads for allele mode, if p >4, only 4\n                    threads will\
+  \ be used for assembly since the amount of\n                    extracted reads\
+  \ is small, default=1\n  -m {k,a}          <string>: which workflow to apply, 'a'(raw\
+  \ reads allele\n                    micro-assembly), 'k'(raw reads and genome assembly\
+  \ k-mer),\n                    default=a\n  -n N              <string>: optional,\
+  \ to specify a sample name in the report\n                    output\n  -d D   \
+  \           <string>: optional, to specify an output directory name,\n         \
+  \           if not set, the output directory would be\n                    'SeqSero_result_'+time\
+  \ stamp+one random number\n  -c                <flag>: if '-c' was flagged, SeqSero2\
+  \ will only output\n                    serotype prediction without the directory\
+  \ containing log\n                    files\n  -s                <flag>: if '-s'\
+  \ was flagged, SeqSero2 will not output\n                    header in SeqSero_result.tsv\n\
+  \  --check           <flag>: use '--check' flag to check the required\n        \
+  \            dependencies\n  -v, --version     show program's version number and\
+  \ exit\n"
+generated_using:
+- --help

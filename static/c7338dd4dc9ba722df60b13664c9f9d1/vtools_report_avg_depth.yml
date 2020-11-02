@@ -1,0 +1,89 @@
+!Command
+command:
+- vtools_report
+- avg_depth
+positional: []
+named:
+- !Flag
+  description: "Name of the field that holds sample variant count,\nwhich is the field\
+    \ name for command 'vtools update\ntable --from_stat \"num=#(alt)\"'."
+  synonyms:
+  - -n
+  - --num_field
+  - --num-field
+  args: !SimpleFlagArg
+    name: NUM_FIELD
+  optional: true
+- !Flag
+  description: "Name of the field that holds average depth of each\nvariant, which\
+    \ is the field name for command 'vtools\nupdate table --from_stat \"meanDP=avg(DP_geno)\"\
+    '."
+  synonyms:
+  - -d
+  - --depth_field
+  - --depth-field
+  args: !SimpleFlagArg
+    name: DEPTH_FIELD
+  optional: true
+- !Flag
+  description: "[GROUP_BY [GROUP_BY ...]], --group-by [GROUP_BY [GROUP_BY ...]]\n\
+    Output average depth for each group, for example, '--\ngroup_by NUM_FIELD to output\
+    \ depth for each sample\nvariant frequency (count)."
+  synonyms:
+  - --group_by
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1).\n"
+  synonyms:
+  - -v
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      '2':
+      '0':
+      '3':
+      '1':
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: vtools_report avg_depth [-h] -n NUM_FIELD -d DEPTH_FIELD\n    \
+  \                           [--group_by [GROUP_BY [GROUP_BY ...]]]\n           \
+  \                    [-v {0,1,2,3}]\n                               table\n\nCommand\
+  \ 'vtools update table --from_stat \"meanDP=avg(DP_geno)\"' calculates the\naverage\
+  \ depth of variants across sample (e.g. average depth of three variants\nif the\
+  \ variant appears three times in the sample). This command report average\ndepth\
+  \ of all variants, or variants divided by sample allele count (output\ncount, number\
+  \ of variant, and average depth for count from 1 to 2*#sample).\nThis command requires\
+  \ a field that stores the sample count for each variant\nand a field to store average\
+  \ depth of each variant, which should be prepared\nusing command 'vtools update\
+  \ table --from_stat \"num=#(alt)\"\n\"meanDP=avg(DP_geno)\"'.\n\npositional arguments:\n\
+  \  table                 Variant table for which average depth are calculated.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -n NUM_FIELD, --num_field NUM_FIELD, --num-field NUM_FIELD\n                \
+  \        Name of the field that holds sample variant count,\n                  \
+  \      which is the field name for command 'vtools update\n                    \
+  \    table --from_stat \"num=#(alt)\"'.\n  -d DEPTH_FIELD, --depth_field DEPTH_FIELD,\
+  \ --depth-field DEPTH_FIELD\n                        Name of the field that holds\
+  \ average depth of each\n                        variant, which is the field name\
+  \ for command 'vtools\n                        update table --from_stat \"meanDP=avg(DP_geno)\"\
+  '.\n  --group_by [GROUP_BY [GROUP_BY ...]], --group-by [GROUP_BY [GROUP_BY ...]]\n\
+  \                        Output average depth for each group, for example, '--\n\
+  \                        group_by NUM_FIELD to output depth for each sample\n  \
+  \                      variant frequency (count).\n  -v {0,1,2,3}, --verbosity {0,1,2,3}\n\
+  \                        Output error and warning (0), info (1), debug (2) and\n\
+  \                        trace (3) information to standard output (default to\n\
+  \                        1).\n"
+generated_using:
+- --help

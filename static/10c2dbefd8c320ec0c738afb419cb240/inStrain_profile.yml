@@ -1,0 +1,328 @@
+!Command
+command:
+- inStrain
+- profile
+positional:
+- !Positional
+  description: Sorted .bam file
+  position: 0
+  name: bam
+  optional: false
+- !Positional
+  description: Fasta file the bam is mapped to
+  position: 1
+  name: fasta
+  optional: false
+named:
+- !Flag
+  description: 'Output prefix (default: inStrain)'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "Instead of using the fasta ID (space in header before\nspace), use\
+    \ the full header. Needed for some mapping\ntools (including bbMap) (default:\
+    \ False)"
+  synonyms:
+  - --use_full_fasta_header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of processes to use (default: 6)'
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: 'Make extra debugging output (default: False)'
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum percent identity of read pairs to consensus to\nuse the reads.\
+    \ Must be >, not >= (default: 0.95)"
+  synonyms:
+  - -l
+  - --filter_cutoff
+  args: !SimpleFlagArg
+    name: FILTER_CUTOFF
+  optional: true
+- !Flag
+  description: "Minimum mapq score of EITHER read in a pair to use\nthat pair. Must\
+    \ be >, not >= (default: -1)"
+  synonyms:
+  - --min_mapq
+  args: !SimpleFlagArg
+    name: MIN_MAPQ
+  optional: true
+- !Flag
+  description: "Multiplier to determine maximum insert size between\ntwo reads - default\
+    \ is to use 3x median insert size.\nMust be >, not >= (default: 3)"
+  synonyms:
+  - --max_insert_relative
+  args: !SimpleFlagArg
+    name: MAX_INSERT_RELATIVE
+  optional: true
+- !Flag
+  description: "Minimum insert size between two reads - default is 50\nbp. If two\
+    \ reads are 50bp each and overlap completely,\ntheir insert will be 50. Must be\
+    \ >, not >= (default:\n50)"
+  synonyms:
+  - --min_insert
+  args: !SimpleFlagArg
+    name: MIN_INSERT
+  optional: true
+- !Flag
+  description: "How should paired reads be handled?\npaired_only = Only paired reads\
+    \ are retained\nnon_discordant = Keep all paired reads and singleton reads that\
+    \ map to a single scaffold\nall_reads = Keep all reads regardless of pairing status\
+    \ (NOT RECOMMENDED; See documentation for deatils)\n(default: paired_only)"
+  synonyms:
+  - --pairing_filter
+  args: !ChoiceFlagArg
+    choices: !!set
+      paired_only:
+      all_reads:
+      non_discordant:
+  optional: true
+- !Flag
+  description: "The location of a list of reads that should be\nretained regardless\
+    \ of pairing status (for example\nlong reads or merged reads). This can be a .fastq\
+    \ file\nor text file with list of read names (will assume file\nis compressed\
+    \ if ends in .gz (default: None)"
+  synonyms:
+  - --priority_reads
+  args: !SimpleFlagArg
+    name: PRIORITY_READS
+  optional: true
+- !Flag
+  description: "Store read filtering info for each scaffold (default:\nFalse)"
+  synonyms:
+  - --scaffold_level_read_report
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Make a detailed read report indicating deatils about\neach individual\
+    \ mapped read (default: False)"
+  synonyms:
+  - --deatiled_read_report
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minimum coverage to call an variant (default: 5)'
+  synonyms:
+  - -c
+  - --min_cov
+  args: !SimpleFlagArg
+    name: MIN_COV
+  optional: true
+- !Flag
+  description: "Minimum SNP frequency to confirm a SNV (both this AND\nthe FDR snp\
+    \ count cutoff must be true to call a SNP).\n(default: 0.05)"
+  synonyms:
+  - -f
+  - --min_freq
+  args: !SimpleFlagArg
+    name: MIN_FREQ
+  optional: true
+- !Flag
+  description: "SNP false discovery rate- based on simulation data\nwith a 0.1 percent\
+    \ error rate (Q30) (default: 1e-06)"
+  synonyms:
+  - -fdr
+  - --fdr
+  args: !SimpleFlagArg
+    name: FDR
+  optional: true
+- !Flag
+  description: "Path to prodigal .fna genes file. If file ends in .gb\nor .gbk, will\
+    \ treat as a genbank file (EXPERIMENTAL;\nthe name of the gene must be in the\
+    \ gene qualifier)\n(default: None)"
+  synonyms:
+  - -g
+  - --gene_file
+  args: !SimpleFlagArg
+    name: GENE_FILE
+  optional: true
+- !Flag
+  description: "[STB [STB ...]], --stb [STB [STB ...]]\nScaffold to bin. This can\
+    \ be a file with each line\nlisting a scaffold and a bin name, tab-seperated.\
+    \ This\ncan also be a space-seperated list of .fasta files,\nwith one genome per\
+    \ .fasta file. If nothing is\nprovided, all scaffolds will be treated as belonging\n\
+    to the same genome (default: [])"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Create files on the mm level (see documentation for\ninfo) (default:\
+    \ False)"
+  synonyms:
+  - --mm_level
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Absolute minimum number of reads connecting two SNPs\nto calculate\
+    \ LD between them. (default: 20)"
+  synonyms:
+  - --min_snp
+  args: !SimpleFlagArg
+    name: MIN_SNP
+  optional: true
+- !Flag
+  description: "Minimum number of reads mapping to a scaffold to\nproceed with profiling\
+    \ it (default: 0)"
+  synonyms:
+  - --min_fasta_reads
+  args: !SimpleFlagArg
+    name: MIN_FASTA_READS
+  optional: true
+- !Flag
+  description: "Store intermediate dictionaries in the pickle file;\nwill result in\
+    \ significantly more RAM and disk usage\n(default: False)"
+  synonyms:
+  - --store_everything
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Dont perform analysis on an mm level; saves RAM and\ntime (default:\
+    \ False)"
+  synonyms:
+  - --skip_mm_profiling
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Path to a file containing a list of scaffolds to\nprofile- if provided\
+    \ will ONLY profile those scaffolds\n(default: None)"
+  synonyms:
+  - --scaffolds_to_profile
+  args: !SimpleFlagArg
+    name: SCAFFOLDS_TO_PROFILE
+  optional: true
+- !Flag
+  description: "When calculating nucleotide diversity, also calculate\na rarefied\
+    \ version with this much coverage (default:\n50)"
+  synonyms:
+  - --rarefied_coverage
+  args: !SimpleFlagArg
+    name: RAREFIED_COVERAGE
+  optional: true
+- !Flag
+  description: "Do not generate tables that consider groups of\nscaffolds belonging\
+    \ to genomes (default: False)"
+  synonyms:
+  - --skip_genome_wide
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not make plots (default: False)\n"
+  synonyms:
+  - --skip_plot_generation
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: inStrain profile [-o OUTPUT] [--use_full_fasta_header] [-p PROCESSES]\n\
+  \                        [-d] [-h] [-l FILTER_CUTOFF] [--min_mapq MIN_MAPQ]\n  \
+  \                      [--max_insert_relative MAX_INSERT_RELATIVE]\n           \
+  \             [--min_insert MIN_INSERT]\n                        [--pairing_filter\
+  \ {paired_only,all_reads,non_discordant}]\n                        [--priority_reads\
+  \ PRIORITY_READS]\n                        [--scaffold_level_read_report]\n    \
+  \                    [--deatiled_read_report] [-c MIN_COV] [-f MIN_FREQ]\n     \
+  \                   [-fdr FDR] [-g GENE_FILE] [-s [STB [STB ...]]]\n           \
+  \             [--mm_level] [--min_snp MIN_SNP]\n                        [--min_fasta_reads\
+  \ MIN_FASTA_READS]\n                        [--store_everything] [--skip_mm_profiling]\n\
+  \                        [--scaffolds_to_profile SCAFFOLDS_TO_PROFILE]\n       \
+  \                 [--rarefied_coverage RAREFIED_COVERAGE]\n                    \
+  \    [--skip_genome_wide] [--skip_plot_generation]\n                        bam\
+  \ fasta\n\nREQUIRED:\n  bam                   Sorted .bam file\n  fasta        \
+  \         Fasta file the bam is mapped to\n\nI/O PARAMETERS:\n  -o OUTPUT, --output\
+  \ OUTPUT\n                        Output prefix (default: inStrain)\n  --use_full_fasta_header\n\
+  \                        Instead of using the fasta ID (space in header before\n\
+  \                        space), use the full header. Needed for some mapping\n\
+  \                        tools (including bbMap) (default: False)\n\nSYSTEM PARAMETERS:\n\
+  \  -p PROCESSES, --processes PROCESSES\n                        Number of processes\
+  \ to use (default: 6)\n  -d, --debug           Make extra debugging output (default:\
+  \ False)\n  -h, --help            show this help message and exit\n\nREAD FILTERING\
+  \ OPTIONS:\n  -l FILTER_CUTOFF, --filter_cutoff FILTER_CUTOFF\n                \
+  \        Minimum percent identity of read pairs to consensus to\n              \
+  \          use the reads. Must be >, not >= (default: 0.95)\n  --min_mapq MIN_MAPQ\
+  \   Minimum mapq score of EITHER read in a pair to use\n                       \
+  \ that pair. Must be >, not >= (default: -1)\n  --max_insert_relative MAX_INSERT_RELATIVE\n\
+  \                        Multiplier to determine maximum insert size between\n \
+  \                       two reads - default is to use 3x median insert size.\n \
+  \                       Must be >, not >= (default: 3)\n  --min_insert MIN_INSERT\n\
+  \                        Minimum insert size between two reads - default is 50\n\
+  \                        bp. If two reads are 50bp each and overlap completely,\n\
+  \                        their insert will be 50. Must be >, not >= (default:\n\
+  \                        50)\n  --pairing_filter {paired_only,all_reads,non_discordant}\n\
+  \                        How should paired reads be handled?\n                 \
+  \       paired_only = Only paired reads are retained\n                        non_discordant\
+  \ = Keep all paired reads and singleton reads that map to a single scaffold\n  \
+  \                      all_reads = Keep all reads regardless of pairing status (NOT\
+  \ RECOMMENDED; See documentation for deatils)\n                         (default:\
+  \ paired_only)\n  --priority_reads PRIORITY_READS\n                        The location\
+  \ of a list of reads that should be\n                        retained regardless\
+  \ of pairing status (for example\n                        long reads or merged reads).\
+  \ This can be a .fastq file\n                        or text file with list of read\
+  \ names (will assume file\n                        is compressed if ends in .gz\
+  \ (default: None)\n\nREAD OUTPUT OPTIONS:\n  --scaffold_level_read_report\n    \
+  \                    Store read filtering info for each scaffold (default:\n   \
+  \                     False)\n  --deatiled_read_report\n                       \
+  \ Make a detailed read report indicating deatils about\n                       \
+  \ each individual mapped read (default: False)\n\nVARIANT CALLING OPTIONS:\n  -c\
+  \ MIN_COV, --min_cov MIN_COV\n                        Minimum coverage to call an\
+  \ variant (default: 5)\n  -f MIN_FREQ, --min_freq MIN_FREQ\n                   \
+  \     Minimum SNP frequency to confirm a SNV (both this AND\n                  \
+  \      the FDR snp count cutoff must be true to call a SNP).\n                 \
+  \       (default: 0.05)\n  -fdr FDR, --fdr FDR   SNP false discovery rate- based\
+  \ on simulation data\n                        with a 0.1 percent error rate (Q30)\
+  \ (default: 1e-06)\n\nGENE PROFILING OPTIONS:\n  -g GENE_FILE, --gene_file GENE_FILE\n\
+  \                        Path to prodigal .fna genes file. If file ends in .gb\n\
+  \                        or .gbk, will treat as a genbank file (EXPERIMENTAL;\n\
+  \                        the name of the gene must be in the gene qualifier)\n \
+  \                       (default: None)\n\nGENOME WIDE OPTIONS:\n  -s [STB [STB\
+  \ ...]], --stb [STB [STB ...]]\n                        Scaffold to bin. This can\
+  \ be a file with each line\n                        listing a scaffold and a bin\
+  \ name, tab-seperated. This\n                        can also be a space-seperated\
+  \ list of .fasta files,\n                        with one genome per .fasta file.\
+  \ If nothing is\n                        provided, all scaffolds will be treated\
+  \ as belonging\n                        to the same genome (default: [])\n  --mm_level\
+  \            Create files on the mm level (see documentation for\n             \
+  \           info) (default: False)\n\nPROFILE OPTIONS:\n  --min_snp MIN_SNP    \
+  \ Absolute minimum number of reads connecting two SNPs\n                       \
+  \ to calculate LD between them. (default: 20)\n  --min_fasta_reads MIN_FASTA_READS\n\
+  \                        Minimum number of reads mapping to a scaffold to\n    \
+  \                    proceed with profiling it (default: 0)\n  --store_everything\
+  \    Store intermediate dictionaries in the pickle file;\n                     \
+  \   will result in significantly more RAM and disk usage\n                     \
+  \   (default: False)\n  --skip_mm_profiling   Dont perform analysis on an mm level;\
+  \ saves RAM and\n                        time (default: False)\n  --scaffolds_to_profile\
+  \ SCAFFOLDS_TO_PROFILE\n                        Path to a file containing a list\
+  \ of scaffolds to\n                        profile- if provided will ONLY profile\
+  \ those scaffolds\n                        (default: None)\n  --rarefied_coverage\
+  \ RAREFIED_COVERAGE\n                        When calculating nucleotide diversity,\
+  \ also calculate\n                        a rarefied version with this much coverage\
+  \ (default:\n                        50)\n\nOTHER  OPTIONS:\n  --skip_genome_wide\
+  \    Do not generate tables that consider groups of\n                        scaffolds\
+  \ belonging to genomes (default: False)\n  --skip_plot_generation\n            \
+  \            Do not make plots (default: False)\n"
+generated_using:
+- --help

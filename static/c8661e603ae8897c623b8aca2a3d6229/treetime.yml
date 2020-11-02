@@ -1,0 +1,377 @@
+!Command
+command:
+- treetime
+positional: []
+named:
+- !Flag
+  description: "Name of file containing the tree in newick, nexus, or\nphylip format.\
+    \ If none is provided, treetime will\nattempt to build a tree from the alignment\
+    \ using\nfasttree, iqtree, or raxml (assuming they are\ninstalled)"
+  synonyms:
+  - --tree
+  args: !SimpleFlagArg
+    name: TREE
+  optional: true
+- !Flag
+  description: "length of the sequence, used to calculate expected\nvariation in branch\
+    \ length. Not required if alignment\nis provided."
+  synonyms:
+  - --sequence-length
+  args: !SimpleFlagArg
+    name: SEQUENCE_LENGTH
+  optional: true
+- !Flag
+  description: alignment file (fasta)
+  synonyms:
+  - --aln
+  args: !SimpleFlagArg
+    name: ALN
+  optional: true
+- !Flag
+  description: "only for vcf input: fasta file of the sequence the VCF\nwas mapped\
+    \ to."
+  synonyms:
+  - --vcf-reference
+  args: !SimpleFlagArg
+    name: VCF_REFERENCE
+  optional: true
+- !Flag
+  description: "csv file with dates for nodes with 'node_name, date'\nwhere date is\
+    \ float (as in 2012.15)"
+  synonyms:
+  - --dates
+  args: !SimpleFlagArg
+    name: DATES
+  optional: true
+- !Flag
+  description: label of the column to be used as taxon name
+  synonyms:
+  - --name-column
+  args: !SimpleFlagArg
+    name: NAME_COLUMN
+  optional: true
+- !Flag
+  description: label of the column to be used as sampling date
+  synonyms:
+  - --date-column
+  args: !SimpleFlagArg
+    name: DATE_COLUMN
+  optional: true
+- !Flag
+  description: "ignore tips that don't follow a loose clock, 'clock-\nfilter=number\
+    \ of interquartile ranges from\nregression'. Default=3.0, set to 0 to switch off."
+  synonyms:
+  - --clock-filter
+  args: !SimpleFlagArg
+    name: CLOCK_FILTER
+  optional: true
+- !Flag
+  description: "Reroot the tree using root-to-tip regression. Valid\nchoices are 'min_dev',\
+    \ 'least-squares', and 'oldest'.\n'least-squares' adjusts the root to minimize\
+    \ residuals\nof the root-to-tip vs sampling time regression,\n'min_dev' minimizes\
+    \ variance of root-to-tip distances.\n'least-squares' can be combined with --covariation\
+    \ to\naccount for shared ancestry. Alternatively, you can\nspecify a node name\
+    \ or a list of node names to be used\nas outgroup or use 'oldest' to reroot to\
+    \ the oldest\nnode. By default, TreeTime will reroot using 'least-\nsquares'.\
+    \ Use --keep-root to keep the current root."
+  synonyms:
+  - --reroot
+  args: !RepeatFlagArg
+    name: REROOT
+  optional: true
+- !Flag
+  description: "don't reroot the tree. Otherwise, reroot to minimize\nthe the residual\
+    \ of the regression of root-to-tip\ndistance and sampling time"
+  synonyms:
+  - --keep-root
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "excess variance associated with terminal nodes\naccounting for overdisperion\
+    \ of the molecular clock"
+  synonyms:
+  - --tip-slack
+  args: !SimpleFlagArg
+    name: TIP_SLACK
+  optional: true
+- !Flag
+  description: "Account for covariation when estimating rates or\nrerooting using\
+    \ root-to-tip regression, default False."
+  synonyms:
+  - --covariation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "GTR model to use. '--gtr infer' will infer a model\nfrom the data.\
+    \ Alternatively, specify the model type.\nIf the specified model requires additional\
+    \ options,\nuse '--gtr-params' to specify those."
+  synonyms:
+  - --gtr
+  args: !SimpleFlagArg
+    name: GTR
+  optional: true
+- !Flag
+  description: "GTR parameters for the model specified by the --gtr\nargument. The\
+    \ parameters should be feed as 'key=value'\nlist of parameters. Example: '--gtr\
+    \ K80 --gtr-params\nkappa=0.2 pis=0.25,0.25,0.25,0.25'. See the exact\ndefinitions\
+    \ of the parameters in the GTR creation\nmethods in treetime/nuc_models.py or\n\
+    treetime/aa_models.py"
+  synonyms:
+  - --gtr-params
+  args: !RepeatFlagArg
+    name: GTR_PARAMS
+  optional: true
+- !Flag
+  description: use aminoacid alphabet
+  synonyms:
+  - --aa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "if specified, the rate of the molecular clock won't be\noptimized."
+  synonyms:
+  - --clock-rate
+  args: !SimpleFlagArg
+    name: CLOCK_RATE
+  optional: true
+- !Flag
+  description: standard deviation of the provided clock rate estimate
+  synonyms:
+  - --clock-std-dev
+  args: !SimpleFlagArg
+    name: CLOCK_STD_DEV
+  optional: true
+- !Flag
+  description: "If set to 'input', the provided branch length will be\nused without\
+    \ modification. Note that branch lengths\noptimized by treetime are only accurate\
+    \ at short\nevolutionary distances."
+  synonyms:
+  - --branch-length-mode
+  args: !ChoiceFlagArg
+    choices: !!set
+      joint:
+      marginal:
+      auto:
+      input:
+  optional: true
+- !Flag
+  description: estimate confidence intervals of divergence times.
+  synonyms:
+  - --confidence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't resolve polytomies using temporal information.
+  synonyms:
+  - --keep-polytomies
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "RELAX   use an autocorrelated molecular clock. Strength of the\ngaussian\
+    \ priors on branch specific rate deviation and\nthe coupling of parent and offspring\
+    \ rates can be\nspecified e.g. as --relax 1.0 0.5. Values around 1.0\ncorrespond\
+    \ to weak priors, larger values constrain\nrate deviations more strongly. Coupling\
+    \ 0 (--relax 1.0\n0) corresponds to an un-correlated clock."
+  synonyms:
+  - --relax
+  args: !SimpleFlagArg
+    name: RELAX
+  optional: true
+- !Flag
+  description: "maximal number of iterations the inference cycle is\nrun. Note that\
+    \ for polytomy resolution and coalescence\nmodels max_iter should be at least\
+    \ 2"
+  synonyms:
+  - --max-iter
+  args: !SimpleFlagArg
+    name: MAX_ITER
+  optional: true
+- !Flag
+  description: "coalescent time scale -- sensible values are on the\norder of the\
+    \ average hamming distance of\ncontemporaneous sequences. In addition, 'opt'\n\
+    'skyline' are valid options and estimate a constant\ncoalescent rate or a piecewise\
+    \ linear coalescent rate\nhistory"
+  synonyms:
+  - --coalescent
+  args: !SimpleFlagArg
+    name: COALESCENT
+  optional: true
+- !Flag
+  description: number of grid points in skyline coalescent model
+  synonyms:
+  - --n-skyline
+  args: !SimpleFlagArg
+    name: N_SKYLINE
+  optional: true
+- !Flag
+  description: "filename to save the plot to. Suffix will determine\nformat (choices\
+    \ pdf, png, svg, default=pdf)"
+  synonyms:
+  - --plot-tree
+  args: !SimpleFlagArg
+    name: PLOT_TREE
+  optional: true
+- !Flag
+  description: "filename to save the plot to. Suffix will determine\nformat (choices\
+    \ pdf, png, svg, default=pdf)"
+  synonyms:
+  - --plot-rtt
+  args: !SimpleFlagArg
+    name: PLOT_RTT
+  optional: true
+- !Flag
+  description: "add tip labels (default for small trees with <30\nleaves)"
+  synonyms:
+  - --tip-labels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "don't show tip labels (default for small trees with\n>=30 leaves)"
+  synonyms:
+  - --no-tip-labels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not fill terminal gaps
+  synonyms:
+  - --keep-overhangs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: zero based mutation indexing
+  synonyms:
+  - --zero-based
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "overwrite ambiguous states on tips with the most\nlikely inferred\
+    \ state"
+  synonyms:
+  - --reconstruct-tip-states
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: include transitions involving ambiguous states
+  synonyms:
+  - --report-ambiguous
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: verbosity of output 0-6
+  synonyms:
+  - --verbose
+  args: !SimpleFlagArg
+    name: VERBOSE
+  optional: true
+- !Flag
+  description: directory to write the output to
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: TreeTime: Maximum Likelihood Phylodynamics\n\npositional arguments:\n\
+  \  {homoplasy,ancestral,mugration,clock,version}\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --tree TREE           Name of file\
+  \ containing the tree in newick, nexus, or\n                        phylip format.\
+  \ If none is provided, treetime will\n                        attempt to build a\
+  \ tree from the alignment using\n                        fasttree, iqtree, or raxml\
+  \ (assuming they are\n                        installed)\n  --sequence-length SEQUENCE_LENGTH\n\
+  \                        length of the sequence, used to calculate expected\n  \
+  \                      variation in branch length. Not required if alignment\n \
+  \                       is provided.\n  --aln ALN             alignment file (fasta)\n\
+  \  --vcf-reference VCF_REFERENCE\n                        only for vcf input: fasta\
+  \ file of the sequence the VCF\n                        was mapped to.\n  --dates\
+  \ DATES         csv file with dates for nodes with 'node_name, date'\n         \
+  \               where date is float (as in 2012.15)\n  --name-column NAME_COLUMN\n\
+  \                        label of the column to be used as taxon name\n  --date-column\
+  \ DATE_COLUMN\n                        label of the column to be used as sampling\
+  \ date\n  --clock-filter CLOCK_FILTER\n                        ignore tips that\
+  \ don't follow a loose clock, 'clock-\n                        filter=number of\
+  \ interquartile ranges from\n                        regression'. Default=3.0, set\
+  \ to 0 to switch off.\n  --reroot REROOT [REROOT ...]\n                        Reroot\
+  \ the tree using root-to-tip regression. Valid\n                        choices\
+  \ are 'min_dev', 'least-squares', and 'oldest'.\n                        'least-squares'\
+  \ adjusts the root to minimize residuals\n                        of the root-to-tip\
+  \ vs sampling time regression,\n                        'min_dev' minimizes variance\
+  \ of root-to-tip distances.\n                        'least-squares' can be combined\
+  \ with --covariation to\n                        account for shared ancestry. Alternatively,\
+  \ you can\n                        specify a node name or a list of node names to\
+  \ be used\n                        as outgroup or use 'oldest' to reroot to the\
+  \ oldest\n                        node. By default, TreeTime will reroot using 'least-\n\
+  \                        squares'. Use --keep-root to keep the current root.\n \
+  \ --keep-root           don't reroot the tree. Otherwise, reroot to minimize\n \
+  \                       the the residual of the regression of root-to-tip\n    \
+  \                    distance and sampling time\n  --tip-slack TIP_SLACK\n     \
+  \                   excess variance associated with terminal nodes\n           \
+  \             accounting for overdisperion of the molecular clock\n  --covariation\
+  \         Account for covariation when estimating rates or\n                   \
+  \     rerooting using root-to-tip regression, default False.\n  --gtr GTR      \
+  \       GTR model to use. '--gtr infer' will infer a model\n                   \
+  \     from the data. Alternatively, specify the model type.\n                  \
+  \      If the specified model requires additional options,\n                   \
+  \     use '--gtr-params' to specify those.\n  --gtr-params GTR_PARAMS [GTR_PARAMS\
+  \ ...]\n                        GTR parameters for the model specified by the --gtr\n\
+  \                        argument. The parameters should be feed as 'key=value'\n\
+  \                        list of parameters. Example: '--gtr K80 --gtr-params\n\
+  \                        kappa=0.2 pis=0.25,0.25,0.25,0.25'. See the exact\n   \
+  \                     definitions of the parameters in the GTR creation\n      \
+  \                  methods in treetime/nuc_models.py or\n                      \
+  \  treetime/aa_models.py\n  --aa                  use aminoacid alphabet\n  --clock-rate\
+  \ CLOCK_RATE\n                        if specified, the rate of the molecular clock\
+  \ won't be\n                        optimized.\n  --clock-std-dev CLOCK_STD_DEV\n\
+  \                        standard deviation of the provided clock rate estimate\n\
+  \  --branch-length-mode {auto,input,joint,marginal}\n                        If\
+  \ set to 'input', the provided branch length will be\n                        used\
+  \ without modification. Note that branch lengths\n                        optimized\
+  \ by treetime are only accurate at short\n                        evolutionary distances.\n\
+  \  --confidence          estimate confidence intervals of divergence times.\n  --keep-polytomies\
+  \     Don't resolve polytomies using temporal information.\n  --relax RELAX RELAX\
+  \   use an autocorrelated molecular clock. Strength of the\n                   \
+  \     gaussian priors on branch specific rate deviation and\n                  \
+  \      the coupling of parent and offspring rates can be\n                     \
+  \   specified e.g. as --relax 1.0 0.5. Values around 1.0\n                     \
+  \   correspond to weak priors, larger values constrain\n                       \
+  \ rate deviations more strongly. Coupling 0 (--relax 1.0\n                     \
+  \   0) corresponds to an un-correlated clock.\n  --max-iter MAX_ITER   maximal number\
+  \ of iterations the inference cycle is\n                        run. Note that for\
+  \ polytomy resolution and coalescence\n                        models max_iter should\
+  \ be at least 2\n  --coalescent COALESCENT\n                        coalescent time\
+  \ scale -- sensible values are on the\n                        order of the average\
+  \ hamming distance of\n                        contemporaneous sequences. In addition,\
+  \ 'opt'\n                        'skyline' are valid options and estimate a constant\n\
+  \                        coalescent rate or a piecewise linear coalescent rate\n\
+  \                        history\n  --n-skyline N_SKYLINE\n                    \
+  \    number of grid points in skyline coalescent model\n  --plot-tree PLOT_TREE\n\
+  \                        filename to save the plot to. Suffix will determine\n \
+  \                       format (choices pdf, png, svg, default=pdf)\n  --plot-rtt\
+  \ PLOT_RTT   filename to save the plot to. Suffix will determine\n             \
+  \           format (choices pdf, png, svg, default=pdf)\n  --tip-labels        \
+  \  add tip labels (default for small trees with <30\n                        leaves)\n\
+  \  --no-tip-labels       don't show tip labels (default for small trees with\n \
+  \                       >=30 leaves)\n  --keep-overhangs      do not fill terminal\
+  \ gaps\n  --zero-based          zero based mutation indexing\n  --reconstruct-tip-states\n\
+  \                        overwrite ambiguous states on tips with the most\n    \
+  \                    likely inferred state\n  --report-ambiguous    include transitions\
+  \ involving ambiguous states\n  --verbose VERBOSE     verbosity of output 0-6\n\
+  \  --outdir OUTDIR       directory to write the output to\n  --version         \
+  \    show program's version number and exit\n"
+generated_using:
+- --help

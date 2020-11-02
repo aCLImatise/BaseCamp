@@ -1,0 +1,209 @@
+!Command
+command:
+- macs2
+- filterdup
+positional: []
+named:
+- !Flag
+  description: "Alignment file. If multiple files are given as '-t A B\nC', then they\
+    \ will all be read and combined. Note that\npair-end data is not supposed to work\
+    \ with this\ncommand. REQUIRED."
+  synonyms:
+  - -i
+  - --ifile
+  args: !RepeatFlagArg
+    name: IFILE
+  optional: true
+- !Flag
+  description: "Format of tag file, \"AUTO\", \"BED\" or \"ELAND\" or\n\"ELANDMULTI\"\
+    \ or \"ELANDEXPORT\" or \"SAM\" or \"BAM\" or\n\"BOWTIE\" or \"BAMPE\" or \"BEDPE\"\
+    . The default AUTO\noption will let 'macs2 filterdup' decide which format\nthe\
+    \ file is. Please check the definition in README\nfile if you choose\nELAND/ELANDMULTI/ELANDEXPORT/SAM/BAM/BOWTIE\
+    \ or\nBAMPE/BEDPE. DEFAULT: \"AUTO\""
+  synonyms:
+  - -f
+  - --format
+  args: !ChoiceFlagArg
+    choices: !!set
+      SAM:
+      AUTO:
+      ELAND:
+      BAMPE:
+      BOWTIE:
+      BAM:
+      ELANDMULTI:
+      BEDPE:
+      ELANDEXPORT:
+      BED:
+  optional: true
+- !Flag
+  description: "Effective genome size. It can be 1.0e+9 or 1000000000,\nor shortcuts:'hs'\
+    \ for human (2.7e9), 'mm' for mouse\n(1.87e9), 'ce' for C. elegans (9e7) and 'dm'\
+    \ for\nfruitfly (1.2e8), DEFAULT:hs"
+  synonyms:
+  - -g
+  - --gsize
+  args: !SimpleFlagArg
+    name: GSIZE
+  optional: true
+- !Flag
+  description: "Tag size. This will override the auto detected tag\nsize. DEFAULT:\
+    \ Not set"
+  synonyms:
+  - -s
+  - --tsize
+  args: !SimpleFlagArg
+    name: TSIZE
+  optional: true
+- !Flag
+  description: "Pvalue cutoff for binomial distribution test.\nDEFAULT:1e-5"
+  synonyms:
+  - -p
+  - --pvalue
+  args: !SimpleFlagArg
+    name: PVALUE
+  optional: true
+- !Flag
+  description: "It controls the 'macs2 filterdup' behavior towards\nduplicate tags/pairs\
+    \ at the exact same location -- the\nsame coordination and the same strand. The\
+    \ 'auto'\noption makes 'macs2 filterdup' calculate the maximum\ntags at the exact\
+    \ same location based on binomal\ndistribution using given -p as pvalue cutoff;\
+    \ and the\n'all' option keeps every tags (useful if you only want\nto convert\
+    \ formats). If an integer is given, at most\nthis number of tags will be kept\
+    \ at the same location.\nNote, MACS2 callpeak function uses KEEPDUPLICATES=1 as\n\
+    default. Note, if you've used samtools or picard to\nflag reads as 'PCR/Optical\
+    \ duplicate' in bit 1024,\nMACS2 will still read them although the reads may be\n\
+    decided by MACS2 as duplicate later. Default: auto"
+  synonyms:
+  - --keep-dup
+  args: !SimpleFlagArg
+    name: KEEPDUPLICATES
+  optional: true
+- !Flag
+  description: "Buffer size for incrementally increasing internal\narray size to store\
+    \ reads alignment information. In\nmost cases, you don't have to change this parameter.\n\
+    However, if there are large number of\nchromosomes/contigs/scaffolds in your alignment,\
+    \ it's\nrecommended to specify a smaller buffer size in order\nto decrease memory\
+    \ usage (but it will take longer time\nto read alignment files). Minimum memory\
+    \ requested for\nreading an alignment file is about # of CHROMOSOME *\nBUFFER_SIZE\
+    \ * 8 Bytes. DEFAULT: 100000"
+  synonyms:
+  - --buffer-size
+  args: !SimpleFlagArg
+    name: BUFFER_SIZE
+  optional: true
+- !Flag
+  description: "Set verbose level. 0: only show critical message, 1:\nshow additional\
+    \ warning message, 2: show process\ninformation, 3: show debug messages. If you\
+    \ want to\nknow where are the duplicate reads, use 3. DEFAULT:2"
+  synonyms:
+  - --verbose
+  args: !SimpleFlagArg
+    name: VERBOSE
+  optional: true
+- !Flag
+  description: "If specified all output files will be written to that\ndirectory.\
+    \ Default: the current working directory"
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: "Output BED file name. If not specified, will write to\nstandard output.\
+    \ Note, if the input format is BAMPE or\nBEDPE, the output will be in BEDPE format.\
+    \ DEFAULT:\nstdout"
+  synonyms:
+  - -o
+  - --ofile
+  args: !SimpleFlagArg
+    name: OUTPUTFILE
+  optional: true
+- !Flag
+  description: "When set, filterdup will only output numbers instead\nof writing output\
+    \ files, including maximum allowable\nduplicates, total number of reads before\
+    \ filtering,\ntotal number of reads after filtering, and redundant\nrate. Default:\
+    \ not set\n"
+  synonyms:
+  - -d
+  - --dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: macs2 filterdup [-h] -i IFILE [IFILE ...]\n                   \
+  \    [-f {AUTO,BAM,SAM,BED,ELAND,ELANDMULTI,ELANDEXPORT,BOWTIE,BAMPE,BEDPE}]\n \
+  \                      [-g GSIZE] [-s TSIZE] [-p PVALUE]\n                     \
+  \  [--keep-dup KEEPDUPLICATES] [--buffer-size BUFFER_SIZE]\n                   \
+  \    [--verbose VERBOSE] [--outdir OUTDIR] [-o OUTPUTFILE]\n                   \
+  \    [-d]\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -i IFILE [IFILE ...], --ifile IFILE [IFILE ...]\n                \
+  \        Alignment file. If multiple files are given as '-t A B\n              \
+  \          C', then they will all be read and combined. Note that\n            \
+  \            pair-end data is not supposed to work with this\n                 \
+  \       command. REQUIRED.\n  -f {AUTO,BAM,SAM,BED,ELAND,ELANDMULTI,ELANDEXPORT,BOWTIE,BAMPE,BEDPE},\
+  \ --format {AUTO,BAM,SAM,BED,ELAND,ELANDMULTI,ELANDEXPORT,BOWTIE,BAMPE,BEDPE}\n\
+  \                        Format of tag file, \"AUTO\", \"BED\" or \"ELAND\" or\n\
+  \                        \"ELANDMULTI\" or \"ELANDEXPORT\" or \"SAM\" or \"BAM\"\
+  \ or\n                        \"BOWTIE\" or \"BAMPE\" or \"BEDPE\". The default\
+  \ AUTO\n                        option will let 'macs2 filterdup' decide which format\n\
+  \                        the file is. Please check the definition in README\n  \
+  \                      file if you choose\n                        ELAND/ELANDMULTI/ELANDEXPORT/SAM/BAM/BOWTIE\
+  \ or\n                        BAMPE/BEDPE. DEFAULT: \"AUTO\"\n  -g GSIZE, --gsize\
+  \ GSIZE\n                        Effective genome size. It can be 1.0e+9 or 1000000000,\n\
+  \                        or shortcuts:'hs' for human (2.7e9), 'mm' for mouse\n \
+  \                       (1.87e9), 'ce' for C. elegans (9e7) and 'dm' for\n     \
+  \                   fruitfly (1.2e8), DEFAULT:hs\n  -s TSIZE, --tsize TSIZE\n  \
+  \                      Tag size. This will override the auto detected tag\n    \
+  \                    size. DEFAULT: Not set\n  -p PVALUE, --pvalue PVALUE\n    \
+  \                    Pvalue cutoff for binomial distribution test.\n           \
+  \             DEFAULT:1e-5\n  --keep-dup KEEPDUPLICATES\n                      \
+  \  It controls the 'macs2 filterdup' behavior towards\n                        duplicate\
+  \ tags/pairs at the exact same location -- the\n                        same coordination\
+  \ and the same strand. The 'auto'\n                        option makes 'macs2 filterdup'\
+  \ calculate the maximum\n                        tags at the exact same location\
+  \ based on binomal\n                        distribution using given -p as pvalue\
+  \ cutoff; and the\n                        'all' option keeps every tags (useful\
+  \ if you only want\n                        to convert formats). If an integer is\
+  \ given, at most\n                        this number of tags will be kept at the\
+  \ same location.\n                        Note, MACS2 callpeak function uses KEEPDUPLICATES=1\
+  \ as\n                        default. Note, if you've used samtools or picard to\n\
+  \                        flag reads as 'PCR/Optical duplicate' in bit 1024,\n  \
+  \                      MACS2 will still read them although the reads may be\n  \
+  \                      decided by MACS2 as duplicate later. Default: auto\n  --buffer-size\
+  \ BUFFER_SIZE\n                        Buffer size for incrementally increasing\
+  \ internal\n                        array size to store reads alignment information.\
+  \ In\n                        most cases, you don't have to change this parameter.\n\
+  \                        However, if there are large number of\n               \
+  \         chromosomes/contigs/scaffolds in your alignment, it's\n              \
+  \          recommended to specify a smaller buffer size in order\n             \
+  \           to decrease memory usage (but it will take longer time\n           \
+  \             to read alignment files). Minimum memory requested for\n         \
+  \               reading an alignment file is about # of CHROMOSOME *\n         \
+  \               BUFFER_SIZE * 8 Bytes. DEFAULT: 100000\n  --verbose VERBOSE    \
+  \ Set verbose level. 0: only show critical message, 1:\n                       \
+  \ show additional warning message, 2: show process\n                        information,\
+  \ 3: show debug messages. If you want to\n                        know where are\
+  \ the duplicate reads, use 3. DEFAULT:2\n  --outdir OUTDIR       If specified all\
+  \ output files will be written to that\n                        directory. Default:\
+  \ the current working directory\n  -o OUTPUTFILE, --ofile OUTPUTFILE\n         \
+  \               Output BED file name. If not specified, will write to\n        \
+  \                standard output. Note, if the input format is BAMPE or\n      \
+  \                  BEDPE, the output will be in BEDPE format. DEFAULT:\n       \
+  \                 stdout\n  -d, --dry-run         When set, filterdup will only\
+  \ output numbers instead\n                        of writing output files, including\
+  \ maximum allowable\n                        duplicates, total number of reads before\
+  \ filtering,\n                        total number of reads after filtering, and\
+  \ redundant\n                        rate. Default: not set\n"
+generated_using:
+- --help

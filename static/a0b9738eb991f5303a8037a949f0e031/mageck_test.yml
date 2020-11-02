@@ -1,0 +1,334 @@
+!Command
+command:
+- mageck
+- test
+positional: []
+named:
+- !Flag
+  description: "Provide a tab-separated count table instead of sam\nfiles. Each line\
+    \ in the table should include sgRNA\nname (1st column), gene name (2nd column)\
+    \ and read\ncounts in each sample."
+  synonyms:
+  - -k
+  - --count-table
+  args: !SimpleFlagArg
+    name: COUNT_TABLE
+  optional: true
+- !Flag
+  description: "Sample label or sample index (0 as the first sample)\nin the count\
+    \ table as treatment experiments, separated\nby comma (,). If sample label is\
+    \ provided, the labels\nmust match the labels in the first line of the count\n\
+    table; for example, \"HL60.final,KBM7.final\". For\nsample index, \"0,2\" means\
+    \ the 1st and 3rd samples are\ntreatment experiments."
+  synonyms:
+  - -t
+  - --treatment-id
+  args: !SimpleFlagArg
+    name: TREATMENT_ID
+  optional: true
+- !Flag
+  description: "Specify the label for control sample (usually day 0 or\nplasmid).\
+    \ For every other sample label, the module\nwill treat it as a treatment condition\
+    \ and compare\nwith control sample."
+  synonyms:
+  - --day0-label
+  args: !SimpleFlagArg
+    name: DAY0_LABEL
+  optional: true
+- !Flag
+  description: "Sample label or sample index in the count table as\ncontrol experiments,\
+    \ separated by comma (,). Default\nis all the samples not specified in treatment\n\
+    experiments."
+  synonyms:
+  - -c
+  - --control-id
+  args: !SimpleFlagArg
+    name: CONTROL_ID
+  optional: true
+- !Flag
+  description: "Paired sample comparisons. In this mode, the number of\nsamples in\
+    \ -t and -c must match and have an exactly\nthe same order in terms of samples.\
+    \ For example, \"-t\ntreatment_r1,treatment_r2 -c control_r1,control_r2\"."
+  synonyms:
+  - --paired
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Method for normalization, including \"none\" (no\nnormalization),\
+    \ \"median\" (median normalization,\ndefault), \"total\" (normalization by total\
+    \ read\ncounts), \"control\" (normalization by control sgRNAs\nspecified by the\
+    \ --control-sgrna option)."
+  synonyms:
+  - --norm-method
+  args: !ChoiceFlagArg
+    choices: !!set
+      median:
+      total:
+      none:
+      control:
+  optional: true
+- !Flag
+  description: "p value threshold to determine the alpha value of RRA\nin gene test\
+    \ (-p option in RRA), default 0.25."
+  synonyms:
+  - --gene-test-fdr-threshold
+  args: !SimpleFlagArg
+    name: GENE_TEST_FDR_THRESHOLD
+  optional: true
+- !Flag
+  description: "Method for sgrna-level p-value adjustment, including\nfalse discovery\
+    \ rate (fdr), holm's method (holm), or\npounds's method (pounds)."
+  synonyms:
+  - --adjust-method
+  args: !ChoiceFlagArg
+    choices: !!set
+      pounds:
+      fdr:
+      holm:
+  optional: true
+- !Flag
+  description: "Sample label or sample index for estimating variances,\nseparated\
+    \ by comma (,). See -t/--treatment-id option\nfor specifying samples."
+  synonyms:
+  - --variance-estimation-samples
+  args: !SimpleFlagArg
+    name: VARIANCE_ESTIMATION_SAMPLES
+  optional: true
+- !Flag
+  description: "Sorting criteria, either by negative selection (neg)\nor positive\
+    \ selection (pos). Default negative\nselection."
+  synonyms:
+  - --sort-criteria
+  args: !ChoiceFlagArg
+    choices: !!set
+      pos:
+      neg:
+  optional: true
+- !Flag
+  description: "Remove sgRNAs whose mean value is zero in control,\ntreatment, both\
+    \ control/treatment, or any\ncontrol/treatment sample. Default: both (remove those\n\
+    sgRNAs that are zero in both control and treatment\nsamples)."
+  synonyms:
+  - --remove-zero
+  args: !ChoiceFlagArg
+    choices: !!set
+      any:
+      treatment:
+      none:
+      control:
+      both:
+  optional: true
+- !Flag
+  description: "sgRNA normalized count threshold to be considered\nremoved in the\
+    \ --remove-zero option. Default 0."
+  synonyms:
+  - --remove-zero-threshold
+  args: !SimpleFlagArg
+    name: REMOVE_ZERO_THRESHOLD
+  optional: true
+- !Flag
+  description: Generate pdf report of the analysis.
+  synonyms:
+  - --pdf-report
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Method to calculate gene log fold changes (LFC) from\nsgRNA LFCs.\
+    \ Available methods include the median/mean\nof all sgRNAs (median/mean), or the\
+    \ median/mean sgRNAs\nthat are ranked in front of the alpha cutoff in RRA\n(alphamedian/alphamean),\
+    \ or the sgRNA that has the\nsecond strongest LFC (secondbest). In the\nalphamedian/alphamean\
+    \ case, the number of sgRNAs\ncorrespond to the \"goodsgrna\" column in the output,\n\
+    and the gene LFC will be set to 0 if no sgRNA is in\nfront of the alpha cutoff.\
+    \ Default median."
+  synonyms:
+  - --gene-lfc-method
+  args: !ChoiceFlagArg
+    choices: !!set
+      alphamean:
+      median:
+      secondbest:
+      alphamedian:
+      mean:
+  optional: true
+- !Flag
+  description: The prefix of the output file(s). Default sample1.
+  synonyms:
+  - -n
+  - --output-prefix
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+  optional: true
+- !Flag
+  description: "A list of control sgRNAs for normalization and for\ngenerating the\
+    \ null distribution of RRA."
+  synonyms:
+  - --control-sgrna
+  args: !SimpleFlagArg
+    name: CONTROL_SGRNA
+  optional: true
+- !Flag
+  description: "A list of genes whose sgRNAs are used as control\nsgRNAs for normalization\
+    \ and for generating the null\ndistribution of RRA."
+  synonyms:
+  - --control-gene
+  args: !SimpleFlagArg
+    name: CONTROL_GENE
+  optional: true
+- !Flag
+  description: "Write normalized read counts to file ([output-\nprefix].normalized.txt)."
+  synonyms:
+  - --normcounts-to-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Skip genes in the report. By default, \"NA\" or \"na\"\nwill be skipped."
+  synonyms:
+  - --skip-gene
+  args: !SimpleFlagArg
+    name: SKIP_GENE
+  optional: true
+- !Flag
+  description: Keep intermediate files.
+  synonyms:
+  - --keep-tmp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Additional arguments to run RRA. They will be appended\nto the command\
+    \ line for calling RRA."
+  synonyms:
+  - --additional-rra-parameters
+  args: !SimpleFlagArg
+    name: ADDITIONAL_RRA_PARAMETERS
+  optional: true
+- !Flag
+  description: "A matrix of copy number variation data across cell\nlines to normalize\
+    \ CNV-biased sgRNA scores prior to\ngene ranking."
+  synonyms:
+  - --cnv-norm
+  args: !SimpleFlagArg
+    name: CNV_NORM
+  optional: true
+- !Flag
+  description: "The name of the cell line to be used for copy number\nvariation normalization."
+  synonyms:
+  - --cell-line
+  args: !SimpleFlagArg
+    name: CELL_LINE
+  optional: true
+- !Flag
+  description: "Estimate CNV profiles from screening data. A BED file\nwith gene positions\
+    \ are required as input. The CNVs of\nthese genes are to be estimated and used\
+    \ for copy\nnumber bias correction.\n"
+  synonyms:
+  - --cnv-est
+  args: !SimpleFlagArg
+    name: CNV_EST
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: mageck test [-h] -k COUNT_TABLE\n                   (-t TREATMENT_ID\
+  \ | --day0-label DAY0_LABEL) [-c CONTROL_ID]\n                   [--paired] [--norm-method\
+  \ {none,median,total,control}]\n                   [--gene-test-fdr-threshold GENE_TEST_FDR_THRESHOLD]\n\
+  \                   [--adjust-method {fdr,holm,pounds}]\n                   [--variance-estimation-samples\
+  \ VARIANCE_ESTIMATION_SAMPLES]\n                   [--sort-criteria {neg,pos}]\n\
+  \                   [--remove-zero {none,control,treatment,both,any}]\n        \
+  \           [--remove-zero-threshold REMOVE_ZERO_THRESHOLD]\n                  \
+  \ [--pdf-report]\n                   [--gene-lfc-method {median,alphamedian,mean,alphamean,secondbest}]\n\
+  \                   [-n OUTPUT_PREFIX]\n                   [--control-sgrna CONTROL_SGRNA\
+  \ | --control-gene CONTROL_GENE]\n                   [--normcounts-to-file] [--skip-gene\
+  \ SKIP_GENE] [--keep-tmp]\n                   [--additional-rra-parameters ADDITIONAL_RRA_PARAMETERS]\n\
+  \                   [--cnv-norm CNV_NORM] [--cell-line CELL_LINE]\n            \
+  \       [--cnv-est CNV_EST]\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n\nRequired arguments:\n\n  -k COUNT_TABLE, --count-table\
+  \ COUNT_TABLE\n                        Provide a tab-separated count table instead\
+  \ of sam\n                        files. Each line in the table should include sgRNA\n\
+  \                        name (1st column), gene name (2nd column) and read\n  \
+  \                      counts in each sample.\n  -t TREATMENT_ID, --treatment-id\
+  \ TREATMENT_ID\n                        Sample label or sample index (0 as the first\
+  \ sample)\n                        in the count table as treatment experiments,\
+  \ separated\n                        by comma (,). If sample label is provided,\
+  \ the labels\n                        must match the labels in the first line of\
+  \ the count\n                        table; for example, \"HL60.final,KBM7.final\"\
+  . For\n                        sample index, \"0,2\" means the 1st and 3rd samples\
+  \ are\n                        treatment experiments.\n  --day0-label DAY0_LABEL\n\
+  \                        Specify the label for control sample (usually day 0 or\n\
+  \                        plasmid). For every other sample label, the module\n  \
+  \                      will treat it as a treatment condition and compare\n    \
+  \                    with control sample.\n\nOptional general arguments:\n\n  -c\
+  \ CONTROL_ID, --control-id CONTROL_ID\n                        Sample label or sample\
+  \ index in the count table as\n                        control experiments, separated\
+  \ by comma (,). Default\n                        is all the samples not specified\
+  \ in treatment\n                        experiments.\n  --paired              Paired\
+  \ sample comparisons. In this mode, the number of\n                        samples\
+  \ in -t and -c must match and have an exactly\n                        the same\
+  \ order in terms of samples. For example, \"-t\n                        treatment_r1,treatment_r2\
+  \ -c control_r1,control_r2\".\n  --norm-method {none,median,total,control}\n   \
+  \                     Method for normalization, including \"none\" (no\n       \
+  \                 normalization), \"median\" (median normalization,\n          \
+  \              default), \"total\" (normalization by total read\n              \
+  \          counts), \"control\" (normalization by control sgRNAs\n             \
+  \           specified by the --control-sgrna option).\n  --gene-test-fdr-threshold\
+  \ GENE_TEST_FDR_THRESHOLD\n                        p value threshold to determine\
+  \ the alpha value of RRA\n                        in gene test (-p option in RRA),\
+  \ default 0.25.\n  --adjust-method {fdr,holm,pounds}\n                        Method\
+  \ for sgrna-level p-value adjustment, including\n                        false discovery\
+  \ rate (fdr), holm's method (holm), or\n                        pounds's method\
+  \ (pounds).\n  --variance-estimation-samples VARIANCE_ESTIMATION_SAMPLES\n     \
+  \                   Sample label or sample index for estimating variances,\n   \
+  \                     separated by comma (,). See -t/--treatment-id option\n   \
+  \                     for specifying samples.\n  --sort-criteria {neg,pos}\n   \
+  \                     Sorting criteria, either by negative selection (neg)\n   \
+  \                     or positive selection (pos). Default negative\n          \
+  \              selection.\n  --remove-zero {none,control,treatment,both,any}\n \
+  \                       Remove sgRNAs whose mean value is zero in control,\n   \
+  \                     treatment, both control/treatment, or any\n              \
+  \          control/treatment sample. Default: both (remove those\n             \
+  \           sgRNAs that are zero in both control and treatment\n               \
+  \         samples).\n  --remove-zero-threshold REMOVE_ZERO_THRESHOLD\n         \
+  \               sgRNA normalized count threshold to be considered\n            \
+  \            removed in the --remove-zero option. Default 0.\n  --pdf-report   \
+  \       Generate pdf report of the analysis.\n  --gene-lfc-method {median,alphamedian,mean,alphamean,secondbest}\n\
+  \                        Method to calculate gene log fold changes (LFC) from\n\
+  \                        sgRNA LFCs. Available methods include the median/mean\n\
+  \                        of all sgRNAs (median/mean), or the median/mean sgRNAs\n\
+  \                        that are ranked in front of the alpha cutoff in RRA\n \
+  \                       (alphamedian/alphamean), or the sgRNA that has the\n   \
+  \                     second strongest LFC (secondbest). In the\n              \
+  \          alphamedian/alphamean case, the number of sgRNAs\n                  \
+  \      correspond to the \"goodsgrna\" column in the output,\n                 \
+  \       and the gene LFC will be set to 0 if no sgRNA is in\n                  \
+  \      front of the alpha cutoff. Default median.\n\nOptional arguments for input\
+  \ and output:\n\n  -n OUTPUT_PREFIX, --output-prefix OUTPUT_PREFIX\n           \
+  \             The prefix of the output file(s). Default sample1.\n  --control-sgrna\
+  \ CONTROL_SGRNA\n                        A list of control sgRNAs for normalization\
+  \ and for\n                        generating the null distribution of RRA.\n  --control-gene\
+  \ CONTROL_GENE\n                        A list of genes whose sgRNAs are used as\
+  \ control\n                        sgRNAs for normalization and for generating the\
+  \ null\n                        distribution of RRA.\n  --normcounts-to-file  Write\
+  \ normalized read counts to file ([output-\n                        prefix].normalized.txt).\n\
+  \  --skip-gene SKIP_GENE\n                        Skip genes in the report. By default,\
+  \ \"NA\" or \"na\"\n                        will be skipped.\n  --keep-tmp     \
+  \       Keep intermediate files.\n  --additional-rra-parameters ADDITIONAL_RRA_PARAMETERS\n\
+  \                        Additional arguments to run RRA. They will be appended\n\
+  \                        to the command line for calling RRA.\n\nOptional arguments\
+  \ for CNV correction:\n\n  --cnv-norm CNV_NORM   A matrix of copy number variation\
+  \ data across cell\n                        lines to normalize CNV-biased sgRNA\
+  \ scores prior to\n                        gene ranking.\n  --cell-line CELL_LINE\n\
+  \                        The name of the cell line to be used for copy number\n\
+  \                        variation normalization.\n  --cnv-est CNV_EST     Estimate\
+  \ CNV profiles from screening data. A BED file\n                        with gene\
+  \ positions are required as input. The CNVs of\n                        these genes\
+  \ are to be estimated and used for copy\n                        number bias correction.\n"
+generated_using:
+- --help

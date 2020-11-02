@@ -1,0 +1,96 @@
+!Command
+command:
+- genometreetk
+- jk_taxa
+positional:
+- !Positional
+  description: tree inferred from original data
+  position: 0
+  name: input_tree
+  optional: false
+- !Positional
+  description: file containing multiple sequence alignment
+  position: 1
+  name: msa_file
+  optional: false
+- !Positional
+  description: output directory
+  position: 2
+  name: output_dir
+  optional: false
+named:
+- !Flag
+  description: file indicating outgroup taxa
+  synonyms:
+  - --outgroup_ids
+  args: !SimpleFlagArg
+    name: OUTGROUP_IDS
+  optional: true
+- !Flag
+  description: 'model of evolution to use (default: wag)'
+  synonyms:
+  - -m
+  - --model
+  args: !ChoiceFlagArg
+    choices: !!set
+      wag:
+      jtt:
+  optional: true
+- !Flag
+  description: 'percentage of taxa to keep (default: 0.5)'
+  synonyms:
+  - -p
+  - --perc_taxa
+  args: !SimpleFlagArg
+    name: PERC_TAXA
+  optional: true
+- !Flag
+  description: "number of jackknife replicates to perform (default:\n100)"
+  synonyms:
+  - -r
+  - --num_replicates
+  args: !SimpleFlagArg
+    name: NUM_REPLICATES
+  optional: true
+- !Flag
+  description: 'number of cpus (default: 1)'
+  synonyms:
+  - -c
+  - --cpus
+  args: !SimpleFlagArg
+    name: CPUS
+  optional: true
+- !Flag
+  description: suppress output
+  synonyms:
+  - --silent
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: genometreetk jk_taxa [-h] [--outgroup_ids OUTGROUP_IDS] [-m {wag,jtt}]\n\
+  \                            [-p PERC_TAXA] [-r NUM_REPLICATES] [-c CPUS]\n    \
+  \                        [--silent]\n                            input_tree msa_file\
+  \ output_dir\n\nJackknife ingroup taxa.\n\npositional arguments:\n  input_tree \
+  \           tree inferred from original data\n  msa_file              file containing\
+  \ multiple sequence alignment\n  output_dir            output directory\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --outgroup_ids\
+  \ OUTGROUP_IDS\n                        file indicating outgroup taxa\n  -m, --model\
+  \ {wag,jtt}\n                        model of evolution to use (default: wag)\n\
+  \  -p, --perc_taxa PERC_TAXA\n                        percentage of taxa to keep\
+  \ (default: 0.5)\n  -r, --num_replicates NUM_REPLICATES\n                      \
+  \  number of jackknife replicates to perform (default:\n                       \
+  \ 100)\n  -c, --cpus CPUS       number of cpus (default: 1)\n  --silent        \
+  \      suppress output\n"
+generated_using:
+- --help

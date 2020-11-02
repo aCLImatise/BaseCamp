@@ -1,0 +1,92 @@
+!Command
+command:
+- compare_genes.py
+positional:
+- !Positional
+  description: "Path to output from `merge_midas.py genes` for one species\ndirectory\
+    \ should be named according to a species_id and contains files 'genes_*.txt')"
+  position: 0
+  name: PATH
+  optional: false
+named:
+- !Flag
+  description: Path to output file
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Maximum number of genes to use. Useful for quick tests (use all)
+  synonyms:
+  - --max_genes
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Maximum number of samples to use. Useful for quick tests (use all)
+  synonyms:
+  - --max_samples
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Metric to use for computing distances (jaccard)
+  synonyms:
+  - --distance
+  args: !ChoiceFlagArg
+    choices: !!set
+      euclidean:
+      jaccard:
+      manhattan:
+  optional: true
+- !Flag
+  description: Data type to use for comparing genes (presabs)
+  synonyms:
+  - --dtype
+  args: !ChoiceFlagArg
+    choices: !!set
+      presabs:
+      copynum:
+  optional: true
+- !Flag
+  description: Cutoff to use for determining presence absence (0.35)
+  synonyms:
+  - --cutoff
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Description:\nThis script will compare the gene content between all pairs\
+  \ of samples\nBefore running this script, you'll need to have run: merge_midas.py\
+  \ genes\n\nUsage: compare_genes.py indir [options]\n\npositional arguments:\n  PATH\
+  \                  Path to output from `merge_midas.py genes` for one species\n\
+  \                        directory should be named according to a species_id and\
+  \ contains files 'genes_*.txt')\n\noptional arguments:\n  -h, --help           \
+  \ show this help message and exit\n  --out PATH            Path to output file\n\
+  \  --max_genes INT       Maximum number of genes to use. Useful for quick tests\
+  \ (use all)\n  --max_samples INT     Maximum number of samples to use. Useful for\
+  \ quick tests (use all)\n  --distance {jaccard,euclidean,manhattan}\n          \
+  \              Metric to use for computing distances (jaccard)\n  --dtype {presabs,copynum}\n\
+  \                        Data type to use for comparing genes (presabs)\n  --cutoff\
+  \ FLOAT        Cutoff to use for determining presence absence (0.35)\n\nExamples:\n\
+  1) Run with defaults:\ncompare_genes.py /path/to/genes --out distances.txt\n\n2)\
+  \ Run a quick test:\ncompare_genes.py /path/to/genes --out distances.txt --max_genes\
+  \ 1000 --max_samples 10\n\n3) Use a different distance metric:\ncompare_genes.py\
+  \ /path/to/genes --out distances.txt --distance manhattan\n\n4) Use a lenient cutoff\
+  \ for determining gene presence absence:\ncompare_genes.py /path/to/genes --out\
+  \ distances.txt --cutoff 0.10\n\n5) Use a strict cutoff for determining gene presence\
+  \ absence:\ncompare_genes.py /path/to/genes --out distances.txt --cutoff 0.75\n"
+generated_using:
+- --help

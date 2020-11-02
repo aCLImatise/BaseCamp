@@ -1,0 +1,191 @@
+!Command
+command:
+- hint
+- pre
+positional: []
+named:
+- !Flag
+  description: "Hi-C raw data with fastq format, two mates seperate\nwith a comma\
+    \ ',', or bam file after alignment."
+  synonyms:
+  - -d
+  - --data
+  args: !SimpleFlagArg
+    name: HICDATA
+  optional: true
+- !Flag
+  description: "the reference directory that downloaded from dropbox\ndropbox. (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A\n\
+    ABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)"
+  synonyms:
+  - --refdir
+  args: !SimpleFlagArg
+    name: REFERENCEDIR
+  optional: true
+- !Flag
+  description: "Path to samtools,\ne.g./n/app/samtools/1.3.1/bin/samtools"
+  synonyms:
+  - --samtoolspath
+  args: !SimpleFlagArg
+    name: SAMTOOLSPATH
+  optional: true
+- !Flag
+  description: "Path to your BWA aligner, required when your input\nfile(s) is in\
+    \ fastq format, ignore when you input a\nbam file."
+  synonyms:
+  - -a
+  - --alignerbwa
+  args: !SimpleFlagArg
+    name: BWAPATH
+  optional: true
+- !Flag
+  description: "Path to BWA Index if your input file is fastq format,\nignore if your\
+    \ input is bam file."
+  synonyms:
+  - -i
+  - --bwaIndex
+  args: !SimpleFlagArg
+    name: BWAINDEX
+  optional: true
+- !Flag
+  description: "Specify your species, choose from hg38, hg19, and\nmm10. DEFAULT:\
+    \ hg19"
+  synonyms:
+  - -g
+  - --genome
+  args: !ChoiceFlagArg
+    choices: !!set
+      hg19:
+      hg38:
+      mm10:
+  optional: true
+- !Flag
+  description: "Format for the Hi-C input data, choose from 'fastq'\nand 'bam', DEFAULT:\
+    \ fastq"
+  synonyms:
+  - --informat
+  args: !ChoiceFlagArg
+    choices: !!set
+      fastq:
+      bam:
+  optional: true
+- !Flag
+  description: "Format for the output contact matrix, choose from\n'cooler' and 'juicer',\
+    \ DEFAULT: cooler"
+  synonyms:
+  - --outformat
+  args: !ChoiceFlagArg
+    choices: !!set
+      cooler:
+      juicer:
+  optional: true
+- !Flag
+  description: "Generate Hi-C contact matrix in user specified\nresolution. If not\
+    \ set, HiNT will only output Hi-C\ncontact matrix in 50kb, 100kb, and 1Mb"
+  synonyms:
+  - -r
+  - --resolution
+  args: !SimpleFlagArg
+    name: RESOLUTION
+  optional: true
+- !Flag
+  description: "Path to cooler tool, required when the format is cool\nvia cooler"
+  synonyms:
+  - --coolerpath
+  args: !SimpleFlagArg
+    name: COOLERPATH
+  optional: true
+- !Flag
+  description: "Path to juicer tools, required when the format is hic\nvia juicer\
+    \ tools"
+  synonyms:
+  - --juicerpath
+  args: !SimpleFlagArg
+    name: JUICERPATH
+  optional: true
+- !Flag
+  description: Path to pairtools
+  synonyms:
+  - --pairtoolspath
+  args: !SimpleFlagArg
+    name: PAIRSAMPATH
+  optional: true
+- !Flag
+  description: "Prefix for the result files. If not set, 'NA' will be\nused instead"
+  synonyms:
+  - -n
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Path to the output directory, where you want to store\nall the output\
+    \ files, if not set, the current\ndirectory will be used"
+  synonyms:
+  - -o
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: "Number of threads for running BWA, DEFAULT: 16\n"
+  synonyms:
+  - -p
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: hint pre [-h] -d HICDATA --refdir REFERENCEDIR --samtoolspath\n\
+  \                SAMTOOLSPATH [-a BWAPATH] [-i BWAINDEX] [-g {hg38,hg19,mm10}]\n\
+  \                [--informat {fastq,bam}] [--outformat {cooler,juicer}]\n      \
+  \          [-r RESOLUTION] [--coolerpath COOLERPATH]\n                [--juicerpath\
+  \ JUICERPATH] --pairtoolspath PAIRSAMPATH\n                [-n NAME] [-o OUTDIR]\
+  \ [-p THREADS]\n\nHiNT-pre: Preprocessing Hi-C data, alignment, create contact matrices,\
+  \ and\nnormalization. EXAMPLE: hint pre -d\n/path/to/hic_1.fastq.gz,/path/to/hic_2.fastq.gz\
+  \ --refdir\n/path/to/HiNT_reference_dir/hg19/ -i /path/to/bwaIndex/hg19/hg19.fa\
+  \ --informat\nfastq --outformat cooler -g hg19 -n test -o /path/to/outputdir --\n\
+  pairtoolspath /path/to/pairtools\n\noptional arguments:\n  -h, --help          \
+  \  show this help message and exit\n  -d HICDATA, --data HICDATA\n             \
+  \           Hi-C raw data with fastq format, two mates seperate\n              \
+  \          with a comma ',', or bam file after alignment.\n  --refdir REFERENCEDIR\n\
+  \                        the reference directory that downloaded from dropbox\n\
+  \                        dropbox. (https://www.dropbox.com/sh/2ufsyu4wvrboxxp/A\n\
+  \                        ABk5-_Fwy7jdM_t0vIsgYf4a?dl=0.)\n  --samtoolspath SAMTOOLSPATH\n\
+  \                        Path to samtools,\n                        e.g./n/app/samtools/1.3.1/bin/samtools\n\
+  \  -a BWAPATH, --alignerbwa BWAPATH\n                        Path to your BWA aligner,\
+  \ required when your input\n                        file(s) is in fastq format,\
+  \ ignore when you input a\n                        bam file.\n  -i BWAINDEX, --bwaIndex\
+  \ BWAINDEX\n                        Path to BWA Index if your input file is fastq\
+  \ format,\n                        ignore if your input is bam file.\n  -g {hg38,hg19,mm10},\
+  \ --genome {hg38,hg19,mm10}\n                        Specify your species, choose\
+  \ from hg38, hg19, and\n                        mm10. DEFAULT: hg19\n  --informat\
+  \ {fastq,bam}\n                        Format for the Hi-C input data, choose from\
+  \ 'fastq'\n                        and 'bam', DEFAULT: fastq\n  --outformat {cooler,juicer}\n\
+  \                        Format for the output contact matrix, choose from\n   \
+  \                     'cooler' and 'juicer', DEFAULT: cooler\n  -r RESOLUTION, --resolution\
+  \ RESOLUTION\n                        Generate Hi-C contact matrix in user specified\n\
+  \                        resolution. If not set, HiNT will only output Hi-C\n  \
+  \                      contact matrix in 50kb, 100kb, and 1Mb\n  --coolerpath COOLERPATH\n\
+  \                        Path to cooler tool, required when the format is cool\n\
+  \                        via cooler\n  --juicerpath JUICERPATH\n               \
+  \         Path to juicer tools, required when the format is hic\n              \
+  \          via juicer tools\n  --pairtoolspath PAIRSAMPATH\n                   \
+  \     Path to pairtools\n  -n NAME, --name NAME  Prefix for the result files. If\
+  \ not set, 'NA' will be\n                        used instead\n  -o OUTDIR, --outdir\
+  \ OUTDIR\n                        Path to the output directory, where you want to\
+  \ store\n                        all the output files, if not set, the current\n\
+  \                        directory will be used\n  -p THREADS, --threads THREADS\n\
+  \                        Number of threads for running BWA, DEFAULT: 16\n"
+generated_using:
+- --help

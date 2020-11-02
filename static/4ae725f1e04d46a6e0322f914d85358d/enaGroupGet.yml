@@ -1,0 +1,161 @@
+!Command
+command:
+- enaGroupGet
+positional:
+- !Positional
+  description: 'optional arguments:'
+  position: 1
+  name: for
+  optional: false
+named:
+- !Flag
+  description: "Data group to be downloaded for this\nstudy/sample/taxon (default\
+    \ is read)"
+  synonyms:
+  - -g
+  - --group
+  args: !ChoiceFlagArg
+    choices: !!set
+      analysis:
+      sequence:
+      assembly:
+      wgs:
+      read:
+  optional: true
+- !Flag
+  description: "File format required. Format requested must be\npermitted for data\
+    \ group selected. sequence, assembly\nand wgs groups: embl and fasta formats.\
+    \ read group:\nsubmitted, fastq and sra formats. analysis group:\nsubmitted only."
+  synonyms:
+  - -f
+  - --format
+  args: !ChoiceFlagArg
+    choices: !!set
+      fastq:
+      embl:
+      fasta:
+      submitted:
+      sra:
+  optional: true
+- !Flag
+  description: "Destination directory (default is current running\ndirectory)"
+  synonyms:
+  - -d
+  - --dest
+  args: !SimpleFlagArg
+    name: DEST
+  optional: true
+- !Flag
+  description: "Download WGS set for each assembly if available\n(default is false)"
+  synonyms:
+  - -w
+  - --wgs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Extract WGS scaffolds for each assembly if available\n(default is\
+    \ false)"
+  synonyms:
+  - -e
+  - --extract-wgs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Expand CON scaffolds when downloading embl format\n(default is false)"
+  synonyms:
+  - -exp
+  - --expanded
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Download read or analysis XML in addition to data\nfiles (default\
+    \ is false)"
+  synonyms:
+  - -m
+  - --meta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Download CRAM index files with submitted CRAM files,\nif any (default\
+    \ is false). This flag is ignored for\nfastq and sra format options."
+  synonyms:
+  - -i
+  - --index
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use the aspera command line client to download,\ninstead of FTP."
+  synonyms:
+  - -a
+  - --aspera
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use the provided settings file, will otherwise check\nfor environment\
+    \ variable or default settings file\nlocation."
+  synonyms:
+  - -as
+  - --aspera-settings
+  args: !SimpleFlagArg
+    name: ASPERA_SETTINGS
+  optional: true
+- !Flag
+  description: "Include subordinate taxa (taxon subtree) when querying\nwith NCBI\
+    \ tax ID (default is false)"
+  synonyms:
+  - -t
+  - --subtree
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: enaGroupGet [-h] [-g {sequence,wgs,assembly,read,analysis}]\n \
+  \                  [-f {embl,fasta,submitted,fastq,sra}] [-d DEST] [-w] [-e]\n \
+  \                  [-exp] [-m] [-i] [-a] [-as ASPERA_SETTINGS] [-t] [-v]\n     \
+  \              accession\n\nDownload data for a given study or sample, or (for sequence\
+  \ and assembly)\ntaxon\n\npositional arguments:\n  accession             Study or\
+  \ sample accession or NCBI tax ID to fetch data\n                        for\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ -g {sequence,wgs,assembly,read,analysis}, --group {sequence,wgs,assembly,read,analysis}\n\
+  \                        Data group to be downloaded for this\n                \
+  \        study/sample/taxon (default is read)\n  -f {embl,fasta,submitted,fastq,sra},\
+  \ --format {embl,fasta,submitted,fastq,sra}\n                        File format\
+  \ required. Format requested must be\n                        permitted for data\
+  \ group selected. sequence, assembly\n                        and wgs groups: embl\
+  \ and fasta formats. read group:\n                        submitted, fastq and sra\
+  \ formats. analysis group:\n                        submitted only.\n  -d DEST,\
+  \ --dest DEST  Destination directory (default is current running\n             \
+  \           directory)\n  -w, --wgs             Download WGS set for each assembly\
+  \ if available\n                        (default is false)\n  -e, --extract-wgs\
+  \     Extract WGS scaffolds for each assembly if available\n                   \
+  \     (default is false)\n  -exp, --expanded      Expand CON scaffolds when downloading\
+  \ embl format\n                        (default is false)\n  -m, --meta        \
+  \    Download read or analysis XML in addition to data\n                       \
+  \ files (default is false)\n  -i, --index           Download CRAM index files with\
+  \ submitted CRAM files,\n                        if any (default is false). This\
+  \ flag is ignored for\n                        fastq and sra format options.\n \
+  \ -a, --aspera          Use the aspera command line client to download,\n      \
+  \                  instead of FTP.\n  -as ASPERA_SETTINGS, --aspera-settings ASPERA_SETTINGS\n\
+  \                        Use the provided settings file, will otherwise check\n\
+  \                        for environment variable or default settings file\n   \
+  \                     location.\n  -t, --subtree         Include subordinate taxa\
+  \ (taxon subtree) when querying\n                        with NCBI tax ID (default\
+  \ is false)\n  -v, --version         show program's version number and exit\n"
+generated_using:
+- --help

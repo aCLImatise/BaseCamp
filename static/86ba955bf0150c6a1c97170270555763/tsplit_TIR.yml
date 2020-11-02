@@ -1,0 +1,167 @@
+!Command
+command:
+- tsplit-TIR
+positional:
+- !Positional
+  description: --keeptemp            If set do not remove temp directory on completion.
+  position: 0
+  name: TIRs.
+  optional: false
+named:
+- !Flag
+  description: Multifasta containing complete elements.
+  synonyms:
+  - -i
+  - --infile
+  args: !SimpleFlagArg
+    name: INFILE
+  optional: true
+- !Flag
+  description: "All output files begin with this string. (Default:\n[infile name])"
+  synonyms:
+  - -p
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: 'Write output files to this directory. (Default: cwd)'
+  synonyms:
+  - -d
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: "all= Report input sequence as well as internal and\nexternal segments.\
+    \ split= Report internal and external\nsegments after splitting. internal = Report\
+    \ only\ninternal segments external = Report only terminal\nrepeat segments. If\
+    \ set to \"None\" then only synthetic\nMITES will be reported if --makemites is\
+    \ also set.\n(Default: split)"
+  synonyms:
+  - --splitmode
+  args: !ChoiceFlagArg
+    choices: !!set
+      split:
+      external:
+      internal:
+      all:
+      None:
+  optional: true
+- !Flag
+  description: Attempt to construct synthetic MITE sequences from
+  synonyms:
+  - --makemites
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If set, report progress.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Terminal repeat candidates must be no more than this\nmany bases from\
+    \ end of input element. (Default: 2)\nNote: Increase this value if you suspect\
+    \ that your\nelement is nested within some flanking sequence."
+  synonyms:
+  - -m
+  - --maxdist
+  args: !SimpleFlagArg
+    name: MAXDIST
+  optional: true
+- !Flag
+  description: "Minimum identity between terminal repeat pairs. As\nfloat. (Default:\
+    \ 80.0)"
+  synonyms:
+  - --minid
+  args: !SimpleFlagArg
+    name: MINID
+  optional: true
+- !Flag
+  description: "Minimum length for a terminal repeat to be considered.\nEquivalent\
+    \ to nucmer \"--mincluster\" (Default: 10)"
+  synonyms:
+  - --minterm
+  args: !SimpleFlagArg
+    name: MINTERM
+  optional: true
+- !Flag
+  description: "Minimum length of a maximal exact match to be included\nin final match\
+    \ cluster. Equivalent to nucmer \"--\nminmatch\". (Default: 5)"
+  synonyms:
+  - --minseed
+  args: !SimpleFlagArg
+    name: MINSEED
+  optional: true
+- !Flag
+  description: "Maximum diagonal difference factor for clustering of\nmatches within\
+    \ nucmer, i.e. diagonal difference /\nmatch separation (default 0.20) Note: Increase\
+    \ value\nfor greater tolerance of indels between terminal\nrepeats."
+  synonyms:
+  - --diagfactor
+  args: !SimpleFlagArg
+    name: DIAGFACTOR
+  optional: true
+- !Flag
+  description: "Select alignment method: \"blastn\" or\n\"nucmer\".(Default: nucmer)\n"
+  synonyms:
+  - --method
+  args: !ChoiceFlagArg
+    choices: !!set
+      nucmer:
+      blastn:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: exterminate [-h] -i INFILE [-p PREFIX] [-d OUTDIR]\n          \
+  \         [--splitmode {all,split,internal,external,None}]\n                   [--makemites]\
+  \ [--keeptemp] [-v] [-m MAXDIST]\n                   [--minid MINID] [--minterm\
+  \ MINTERM] [--minseed MINSEED]\n                   [--diagfactor DIAGFACTOR] [--method\
+  \ {blastn,nucmer}]\n\nExtract terminal repeats from retrotransposons (LTRs) or DNA\
+  \ transposons\n(TIRs). Optionally, compose synthetic MITES from complete DNA transposons.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -i INFILE, --infile INFILE\n                        Multifasta containing complete\
+  \ elements.\n  -p PREFIX, --prefix PREFIX\n                        All output files\
+  \ begin with this string. (Default:\n                        [infile name])\n  -d\
+  \ OUTDIR, --outdir OUTDIR\n                        Write output files to this directory.\
+  \ (Default: cwd)\n  --splitmode {all,split,internal,external,None}\n           \
+  \             all= Report input sequence as well as internal and\n             \
+  \           external segments. split= Report internal and external\n           \
+  \             segments after splitting. internal = Report only\n               \
+  \         internal segments external = Report only terminal\n                  \
+  \      repeat segments. If set to \"None\" then only synthetic\n               \
+  \         MITES will be reported if --makemites is also set.\n                 \
+  \       (Default: split)\n  --makemites           Attempt to construct synthetic\
+  \ MITE sequences from\n                        TIRs.\n  --keeptemp            If\
+  \ set do not remove temp directory on completion.\n  -v, --verbose         If set,\
+  \ report progress.\n  -m MAXDIST, --maxdist MAXDIST\n                        Terminal\
+  \ repeat candidates must be no more than this\n                        many bases\
+  \ from end of input element. (Default: 2)\n                        Note: Increase\
+  \ this value if you suspect that your\n                        element is nested\
+  \ within some flanking sequence.\n  --minid MINID         Minimum identity between\
+  \ terminal repeat pairs. As\n                        float. (Default: 80.0)\n  --minterm\
+  \ MINTERM     Minimum length for a terminal repeat to be considered.\n         \
+  \               Equivalent to nucmer \"--mincluster\" (Default: 10)\n  --minseed\
+  \ MINSEED     Minimum length of a maximal exact match to be included\n         \
+  \               in final match cluster. Equivalent to nucmer \"--\n            \
+  \            minmatch\". (Default: 5)\n  --diagfactor DIAGFACTOR\n             \
+  \           Maximum diagonal difference factor for clustering of\n             \
+  \           matches within nucmer, i.e. diagonal difference /\n                \
+  \        match separation (default 0.20) Note: Increase value\n                \
+  \        for greater tolerance of indels between terminal\n                    \
+  \    repeats.\n  --method {blastn,nucmer}\n                        Select alignment\
+  \ method: \"blastn\" or\n                        \"nucmer\".(Default: nucmer)\n"
+generated_using:
+- --help

@@ -1,0 +1,355 @@
+!Command
+command:
+- kneaddata
+positional: []
+named:
+- !Flag
+  description: additional output is printed
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: input FASTQ file (add a second argument instance to run with paired
+    input files)
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: directory to write output files
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: location of reference database (additional arguments add databases)
+  synonyms:
+  - -db
+  - --reference-db
+  args: !SimpleFlagArg
+    name: REFERENCE_DB
+  optional: true
+- !Flag
+  description: bypass the trim step
+  synonyms:
+  - --bypass-trim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "prefix for all output files\n[ DEFAULT : $SAMPLE_kneaddata ]"
+  synonyms:
+  - --output-prefix
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+  optional: true
+- !Flag
+  description: "number of threads\n[ Default : 1 ]"
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: '1'
+  optional: true
+- !Flag
+  description: "number of processes\n[ Default : 1 ]"
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: '1'
+  optional: true
+- !Flag
+  description: "quality scores\n[ DEFAULT : phred33 ]"
+  synonyms:
+  - -q
+  - --quality-scores
+  args: !ChoiceFlagArg
+    choices: !!set
+      phred64:
+      phred33:
+  optional: true
+- !Flag
+  description: run BMTagger instead of Bowtie2 to identify contaminant reads
+  synonyms:
+  - --run-bmtagger
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: run TRF to remove tandem repeats
+  synonyms:
+  - --run-trf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: run fastqc at the beginning of the workflow
+  synonyms:
+  - --run-fastqc-start
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: run fastqc at the end of the workflow
+  synonyms:
+  - --run-fastqc-end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "store temp output files\n[ DEFAULT : temp output files are removed\
+    \ ]"
+  synonyms:
+  - --store-temp-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "remove intermediate output files\n[ DEFAULT : intermediate output\
+    \ files are stored ]"
+  synonyms:
+  - --remove-intermediate-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "concatenate all final output files\n[ DEFAULT : final output is not\
+    \ concatenated ]"
+  synonyms:
+  - --cat-final-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "level of log messages\n[ DEFAULT : DEBUG ]"
+  synonyms:
+  - --log-level
+  args: !ChoiceFlagArg
+    choices: !!set
+      CRITICAL:
+      ERROR:
+      INFO:
+      WARNING:
+      DEBUG:
+  optional: true
+- !Flag
+  description: "log file\n[ DEFAULT : $OUTPUT_DIR/$SAMPLE_kneaddata.log ]"
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: LOG
+  optional: true
+- !Flag
+  description: "path to trimmomatic\n[ DEFAULT : $PATH ]"
+  synonyms:
+  - --trimmomatic
+  args: !SimpleFlagArg
+    name: TRIMMOMATIC_PATH
+  optional: true
+- !Flag
+  description: "max amount of memory\n[ DEFAULT : 500m ]"
+  synonyms:
+  - --max-memory
+  args: !SimpleFlagArg
+    name: MAX_MEMORY
+  optional: true
+- !Flag
+  description: "options for trimmomatic\n[ DEFAULT : ILLUMINACLIP:/TruSeq3-SE.fa:2:30:10\
+    \ SLIDINGWINDOW:4:20 MINLEN:50 ]\nMINLEN is set to 50 percent of total input read\
+    \ length"
+  synonyms:
+  - --trimmomatic-options
+  args: !SimpleFlagArg
+    name: TRIMMOMATIC_OPTIONS
+  optional: true
+- !Flag
+  description: "path to bowtie2\n[ DEFAULT : $PATH ]"
+  synonyms:
+  - --bowtie2
+  args: !SimpleFlagArg
+    name: BOWTIE2_PATH
+  optional: true
+- !Flag
+  description: "options for bowtie2\n[ DEFAULT : --very-sensitive ]"
+  synonyms:
+  - --bowtie2-options
+  args: !SimpleFlagArg
+    name: BOWTIE2_OPTIONS
+  optional: true
+- !Flag
+  description: "do not include discordant alignments for pairs (ie one of the two\
+    \ pairs aligns)\n[ DEFAULT : Discordant alignments are included ]"
+  synonyms:
+  - --no-discordant
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "order the sequences in the same order as the input\n[ DEFAULT : With\
+    \ discordant paired alignments sequences are not ordered ]"
+  synonyms:
+  - --reorder
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: filter the input in serial for multiple databases so a subset of reads
+    are processed in each database search
+  synonyms:
+  - --serial
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "path to BMTagger\n[ DEFAULT : $PATH ]"
+  synonyms:
+  - --bmtagger
+  args: !SimpleFlagArg
+    name: BMTAGGER_PATH
+  optional: true
+- !Flag
+  description: "path to TRF\n[ DEFAULT : $PATH ]"
+  synonyms:
+  - --trf
+  args: !SimpleFlagArg
+    name: TRF_PATH
+  optional: true
+- !Flag
+  description: "matching weight\n[ DEFAULT : 2 ]"
+  synonyms:
+  - --match
+  args: !SimpleFlagArg
+    name: MATCH
+  optional: true
+- !Flag
+  description: "mismatching penalty\n[ DEFAULT : 7 ]"
+  synonyms:
+  - --mismatch
+  args: !SimpleFlagArg
+    name: MISMATCH
+  optional: true
+- !Flag
+  description: "indel penalty\n[ DEFAULT : 7 ]"
+  synonyms:
+  - --delta
+  args: !SimpleFlagArg
+    name: DELTA
+  optional: true
+- !Flag
+  description: "match probability\n[ DEFAULT : 80 ]"
+  synonyms:
+  - --pm
+  args: !SimpleFlagArg
+    name: PM
+  optional: true
+- !Flag
+  description: "indel probability\n[ DEFAULT : 10 ]"
+  synonyms:
+  - --pi
+  args: !SimpleFlagArg
+    name: PI
+  optional: true
+- !Flag
+  description: "minimum alignment score to report\n[ DEFAULT : 50 ]"
+  synonyms:
+  - --minscore
+  args: !SimpleFlagArg
+    name: MINSCORE
+  optional: true
+- !Flag
+  description: "maximum period size to report\n[ DEFAULT : 500 ]"
+  synonyms:
+  - --maxperiod
+  args: !SimpleFlagArg
+    name: MAXPERIOD
+  optional: true
+- !Flag
+  description: "path to fastqc\n[ DEFAULT : $PATH ]\n"
+  synonyms:
+  - --fastqc
+  args: !SimpleFlagArg
+    name: FASTQC_PATH
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: kneaddata [-h] [--version] [-v] -i INPUT -o OUTPUT_DIR\n      \
+  \           [-db REFERENCE_DB] [--bypass-trim]\n                 [--output-prefix\
+  \ OUTPUT_PREFIX] [-t <1>] [-p <1>]\n                 [-q {phred33,phred64}] [--run-bmtagger]\
+  \ [--run-trf]\n                 [--run-fastqc-start] [--run-fastqc-end] [--store-temp-output]\n\
+  \                 [--remove-intermediate-output] [--cat-final-output]\n        \
+  \         [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [--log LOG]\n      \
+  \           [--trimmomatic TRIMMOMATIC_PATH] [--max-memory MAX_MEMORY]\n       \
+  \          [--trimmomatic-options TRIMMOMATIC_OPTIONS]\n                 [--bowtie2\
+  \ BOWTIE2_PATH] [--bowtie2-options BOWTIE2_OPTIONS]\n                 [--no-discordant]\
+  \ [--reorder] [--serial]\n                 [--bmtagger BMTAGGER_PATH] [--trf TRF_PATH]\
+  \ [--match MATCH]\n                 [--mismatch MISMATCH] [--delta DELTA] [--pm\
+  \ PM] [--pi PI]\n                 [--minscore MINSCORE] [--maxperiod MAXPERIOD]\n\
+  \                 [--fastqc FASTQC_PATH]\n\nKneadData\n\noptional arguments:\n \
+  \ -h, --help            show this help message and exit\n  -v, --verbose       \
+  \  additional output is printed\n\nglobal options:\n  --version             show\
+  \ program's version number and exit\n  -i INPUT, --input INPUT\n               \
+  \         input FASTQ file (add a second argument instance to run with paired input\
+  \ files)\n  -o OUTPUT_DIR, --output OUTPUT_DIR\n                        directory\
+  \ to write output files\n  -db REFERENCE_DB, --reference-db REFERENCE_DB\n     \
+  \                   location of reference database (additional arguments add databases)\n\
+  \  --bypass-trim         bypass the trim step\n  --output-prefix OUTPUT_PREFIX\n\
+  \                        prefix for all output files\n                        [\
+  \ DEFAULT : $SAMPLE_kneaddata ]\n  -t <1>, --threads <1>\n                     \
+  \   number of threads\n                        [ Default : 1 ]\n  -p <1>, --processes\
+  \ <1>\n                        number of processes\n                        [ Default\
+  \ : 1 ]\n  -q {phred33,phred64}, --quality-scores {phred33,phred64}\n          \
+  \              quality scores\n                        [ DEFAULT : phred33 ]\n \
+  \ --run-bmtagger        run BMTagger instead of Bowtie2 to identify contaminant\
+  \ reads\n  --run-trf             run TRF to remove tandem repeats\n  --run-fastqc-start\
+  \    run fastqc at the beginning of the workflow\n  --run-fastqc-end      run fastqc\
+  \ at the end of the workflow\n  --store-temp-output   store temp output files\n\
+  \                        [ DEFAULT : temp output files are removed ]\n  --remove-intermediate-output\n\
+  \                        remove intermediate output files\n                    \
+  \    [ DEFAULT : intermediate output files are stored ]\n  --cat-final-output  \
+  \  concatenate all final output files\n                        [ DEFAULT : final\
+  \ output is not concatenated ]\n  --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\n\
+  \                        level of log messages\n                        [ DEFAULT\
+  \ : DEBUG ]\n  --log LOG             log file\n                        [ DEFAULT\
+  \ : $OUTPUT_DIR/$SAMPLE_kneaddata.log ]\n\ntrimmomatic arguments:\n  --trimmomatic\
+  \ TRIMMOMATIC_PATH\n                        path to trimmomatic\n              \
+  \          [ DEFAULT : $PATH ]\n  --max-memory MAX_MEMORY\n                    \
+  \    max amount of memory\n                        [ DEFAULT : 500m ]\n  --trimmomatic-options\
+  \ TRIMMOMATIC_OPTIONS\n                        options for trimmomatic\n       \
+  \                 [ DEFAULT : ILLUMINACLIP:/TruSeq3-SE.fa:2:30:10 SLIDINGWINDOW:4:20\
+  \ MINLEN:50 ]\n                        MINLEN is set to 50 percent of total input\
+  \ read length\n\nbowtie2 arguments:\n  --bowtie2 BOWTIE2_PATH\n                \
+  \        path to bowtie2\n                        [ DEFAULT : $PATH ]\n  --bowtie2-options\
+  \ BOWTIE2_OPTIONS\n                        options for bowtie2\n               \
+  \         [ DEFAULT : --very-sensitive ]\n  --no-discordant       do not include\
+  \ discordant alignments for pairs (ie one of the two pairs aligns)\n           \
+  \             [ DEFAULT : Discordant alignments are included ]\n  --reorder    \
+  \         order the sequences in the same order as the input\n                 \
+  \       [ DEFAULT : With discordant paired alignments sequences are not ordered\
+  \ ]\n  --serial              filter the input in serial for multiple databases so\
+  \ a subset of reads are processed in each database search\n\nbmtagger arguments:\n\
+  \  --bmtagger BMTAGGER_PATH\n                        path to BMTagger\n        \
+  \                [ DEFAULT : $PATH ]\n\ntrf arguments:\n  --trf TRF_PATH       \
+  \ path to TRF\n                        [ DEFAULT : $PATH ]\n  --match MATCH    \
+  \     matching weight\n                        [ DEFAULT : 2 ]\n  --mismatch MISMATCH\
+  \   mismatching penalty\n                        [ DEFAULT : 7 ]\n  --delta DELTA\
+  \         indel penalty\n                        [ DEFAULT : 7 ]\n  --pm PM    \
+  \           match probability\n                        [ DEFAULT : 80 ]\n  --pi\
+  \ PI               indel probability\n                        [ DEFAULT : 10 ]\n\
+  \  --minscore MINSCORE   minimum alignment score to report\n                   \
+  \     [ DEFAULT : 50 ]\n  --maxperiod MAXPERIOD\n                        maximum\
+  \ period size to report\n                        [ DEFAULT : 500 ]\n\nfastqc arguments:\n\
+  \  --fastqc FASTQC_PATH  path to fastqc\n                        [ DEFAULT : $PATH\
+  \ ]\n"
+generated_using:
+- --help

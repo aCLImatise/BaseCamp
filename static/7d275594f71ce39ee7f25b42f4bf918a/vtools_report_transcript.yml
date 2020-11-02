@@ -1,0 +1,93 @@
+!Command
+command:
+- vtools_report
+- transcript
+positional:
+- !Positional
+  description: "'One or more chromosome regions in the format of\nchr:start-end (e.g.\
+    \ chr21:33,031,597-33,041,570),\nField:Value from a region-based annotation database\n\
+    (e.g. refGene.name2:TRIM2 or\nrefGene_exon.name:NM_000947), or set options of\n\
+    several regions (&, |, -, and ^ for intersection,\nunion, difference, and symmetric\
+    \ difference)."
+  position: 0
+  name: regions
+  optional: false
+named:
+- !Flag
+  description: "[BUILD]       Output sequence at specified build of reference\ngenome.\
+    \ The primary reference genome of the project\nwill be used if by default."
+  synonyms:
+  - --build
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only output strand of genes that covers the region.
+  synonyms:
+  - --strand_only
+  - --strand-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If set, only display the first transcript of RNA or\nProtein sequence"
+  synonyms:
+  - --first_transcript
+  - --first-transcript
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If set, user input is zero based and will be\ntranslated to 1-based\
+    \ coordinates before query. The\noutput is always 1-based"
+  synonyms:
+  - --zero_based
+  - --zero-based
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output error and warning (0), info (1), debug (2) and\ntrace (3) information\
+    \ to standard output (default to\n1).\n"
+  synonyms:
+  - -v
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      '2':
+      '0':
+      '3':
+      '1':
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: vtools_report transcript [-h] [--build [BUILD]] [--strand_only]\n\
+  \                                [--first_transcript] [--zero_based]\n         \
+  \                       [-v {0,1,2,3}]\n                                regions\
+  \ [regions ...]\n\npositional arguments:\n  regions               'One or more chromosome\
+  \ regions in the format of\n                        chr:start-end (e.g. chr21:33,031,597-33,041,570),\n\
+  \                        Field:Value from a region-based annotation database\n \
+  \                       (e.g. refGene.name2:TRIM2 or\n                        refGene_exon.name:NM_000947),\
+  \ or set options of\n                        several regions (&, |, -, and ^ for\
+  \ intersection,\n                        union, difference, and symmetric difference).\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --build [BUILD]       Output sequence at specified build of reference\n     \
+  \                   genome. The primary reference genome of the project\n      \
+  \                  will be used if by default.\n  --strand_only, --strand-only\n\
+  \                        Only output strand of genes that covers the region.\n \
+  \ --first_transcript, --first-transcript\n                        If set, only display\
+  \ the first transcript of RNA or\n                        Protein sequence\n  --zero_based,\
+  \ --zero-based\n                        If set, user input is zero based and will\
+  \ be\n                        translated to 1-based coordinates before query. The\n\
+  \                        output is always 1-based\n  -v {0,1,2,3}, --verbosity {0,1,2,3}\n\
+  \                        Output error and warning (0), info (1), debug (2) and\n\
+  \                        trace (3) information to standard output (default to\n\
+  \                        1).\n"
+generated_using:
+- --help

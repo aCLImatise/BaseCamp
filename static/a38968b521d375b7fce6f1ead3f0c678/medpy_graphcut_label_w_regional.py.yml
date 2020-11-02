@@ -1,0 +1,137 @@
+!Command
+command:
+- medpy_graphcut_label_w_regional.py
+positional:
+- !Positional
+  description: The additional image required by the boundary term. See there for details.
+  position: 0
+  name: badditional
+  optional: false
+- !Positional
+  description: The region image of the image to segment.
+  position: 1
+  name: region
+  optional: false
+- !Positional
+  description: Binary image containing the foreground (=1) and background (=2) markers.
+  position: 2
+  name: markers
+  optional: false
+- !Positional
+  description: The output image containing the segmentation.
+  position: 3
+  name: output
+  optional: false
+named:
+- !Flag
+  description: The boundary term to use. Note that difference of means (means) requires
+    the original image, while stawiaski requires the gradient image of the original
+    image to be passed to badditional.
+  synonyms:
+  - --boundary
+  args: !ChoiceFlagArg
+    choices: !!set
+      means:
+      stawiaski:
+  optional: true
+- !Flag
+  description: The regional term to use. Note that the atlas requires to provide an
+    atlas image.
+  synonyms:
+  - --regional
+  args: !ChoiceFlagArg
+    choices: !!set
+      none:
+      atlas:
+  optional: true
+- !Flag
+  description: The additional image required by the regional term. See there for details.
+  synonyms:
+  - --radditional
+  args: !SimpleFlagArg
+    name: RADDITIONAL
+  optional: true
+- !Flag
+  description: The weight of the regional term compared to the boundary term.
+  synonyms:
+  - --alpha
+  args: !SimpleFlagArg
+    name: ALPHA
+  optional: true
+- !Flag
+  description: Set this flag to silently override files that exist.
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display more information.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display debug information.
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: medpy_graphcut_label_w_regional.py [-h] [--boundary {means,stawiaski}]\n\
+  \                                          [--regional {none,atlas}]\n         \
+  \                                 [--radditional RADDITIONAL]\n                \
+  \                          [--alpha ALPHA] [-f] [-v] [-d]\n                    \
+  \                      badditional region markers output\n\n                  Perform\
+  \ a binary graph cut using Boykov's max-flow/min-cut algorithm.\n              \
+  \    \n                  This implementation does not only compute a boundary term\
+  \ but also a\n                  regional term which. The only available implementation\
+  \ up till now is\n                  the use of an atalas (i.e. a probability image\
+  \ of float values). The\n                  pixel values have to lie between 0 and\
+  \ 1, whereas 1 denounces a sure\n                  probability that the object is\
+  \ situated at this position.  The desired\n                  boundary term can be\
+  \ selected via the --boundary argument. Depending on\n                  the selected\
+  \ term, an additional image has to be supplied as badditional.\n               \
+  \   \n                  In the case of the stawiaski boundary term, this is the\
+  \ gradient image.\n                  In the case of the difference of means, it\
+  \ is the original image.\n                  \n                  Furthermore the\
+  \ algorithm requires the region map of the original\n                  image and\
+  \ an integer image with foreground and background markers.\n                  \n\
+  \                  Additionally a filename for the created binary mask marking foreground\n\
+  \                  and background has to be supplied.\n                  \n    \
+  \              Note that the input images must be of the same dimensionality,\n\
+  \                  otherwise an exception is thrown.\n                  Note to\
+  \ take into account the input images orientation.\n                  Note that the\
+  \ quality of the resulting segmentations depends also on\n                  the\
+  \ quality of the supplied markers.\n                  \n                  Copyright\
+  \ (C) 2013 Oskar Maier\n                  This program comes with ABSOLUTELY NO\
+  \ WARRANTY; This is free software,\n                  and you are welcome to redistribute\
+  \ it under certain conditions; see\n                  the LICENSE file or <http://www.gnu.org/licenses/>\
+  \ for details.   \n                  \n\npositional arguments:\n  badditional  \
+  \         The additional image required by the boundary term. See there for details.\n\
+  \  region                The region image of the image to segment.\n  markers  \
+  \             Binary image containing the foreground (=1) and background (=2) markers.\n\
+  \  output                The output image containing the segmentation.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --boundary\
+  \ {means,stawiaski}\n                        The boundary term to use. Note that\
+  \ difference of means (means) requires the original image, while stawiaski requires\
+  \ the gradient image of the original image to be passed to badditional.\n  --regional\
+  \ {none,atlas}\n                        The regional term to use. Note that the\
+  \ atlas requires to provide an atlas image.\n  --radditional RADDITIONAL\n     \
+  \                   The additional image required by the regional term. See there\
+  \ for details.\n  --alpha ALPHA         The weight of the regional term compared\
+  \ to the boundary term.\n  -f                    Set this flag to silently override\
+  \ files that exist.\n  -v                    Display more information.\n  -d   \
+  \                 Display debug information.\n"
+generated_using:
+- --help

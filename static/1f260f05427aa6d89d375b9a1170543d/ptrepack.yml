@@ -1,0 +1,229 @@
+!Command
+command:
+- ptrepack
+positional:
+- !Positional
+  description: --propindexes         propagate the indexes existing in original tables.
+    The
+  position: 0
+  name: column
+  optional: false
+named:
+- !Flag
+  description: show verbose information
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: overwrite destination file
+  synonyms:
+  - -o
+  - --overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "select a RANGE of rows (in the form \"start,stop,step\")\nduring the\
+    \ copy of *all* the leaves. Default values\nare \"None,None,1\", which means a\
+    \ copy of all the rows."
+  synonyms:
+  - -R
+  - --range
+  args: !SimpleFlagArg
+    name: RANGE
+  optional: true
+- !Flag
+  description: do not do a recursive copy. Default is to do it
+  synonyms:
+  - --non-recursive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "title for the new file (if not specified, the source\nis copied)"
+  synonyms:
+  - --dest-title
+  args: !SimpleFlagArg
+    name: TITLE
+  optional: true
+- !Flag
+  description: do not create sys attrs (default is to do it)
+  synonyms:
+  - --dont-create-sysattrs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not copy the user attrs (default is to do it)
+  synonyms:
+  - --dont-copy-userattrs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "overwrite destination nodes if they exist. Default is\nto not overwrite\
+    \ them"
+  synonyms:
+  - --overwrite-nodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "set a compression level (0 for no compression, which\nis the default)"
+  synonyms:
+  - --complevel
+  args: !SimpleFlagArg
+    name: COMPLEVEL
+  optional: true
+- !Flag
+  description: "{zlib,lzo,bzip2,blosc,blosc:blosclz,blosc:lz4,blosc:lz4hc,blosc:snappy,blosc:zlib,blosc:zstd}\n\
+    set the compression library to be used during the\ncopy. Defaults to zlib"
+  synonyms:
+  - --complib
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "activate or not the shuffle filter (default is active\nif complevel\
+    \ > 0)"
+  synonyms:
+  - --shuffle
+  args: !ChoiceFlagArg
+    choices: !!set
+      '0':
+      '1':
+  optional: true
+- !Flag
+  description: "activate or not the bitshuffle filter (not active by\ndefault)"
+  synonyms:
+  - --bitshuffle
+  args: !ChoiceFlagArg
+    choices: !!set
+      '0':
+      '1':
+  optional: true
+- !Flag
+  description: "whether to activate or not the fletcher32 filter (not\nactive by default)"
+  synonyms:
+  - --fletcher32
+  args: !ChoiceFlagArg
+    choices: !!set
+      '0':
+      '1':
+  optional: true
+- !Flag
+  description: "use the original filters in source files. The default\nis not doing\
+    \ that if any of --complevel, --complib,\n--shuffle --bitshuffle or --fletcher32\
+    \ option is\nspecified"
+  synonyms:
+  - --keep-source-filters
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "set a chunkshape. Possible options are: \"keep\" |\n\"auto\" | int\
+    \ | tuple. A value of \"auto\" computes a\nsensible value for the chunkshape of\
+    \ the leaves\ncopied. The default is to \"keep\" the original value"
+  synonyms:
+  - --chunkshape
+  args: !SimpleFlagArg
+    name: CHUNKSHAPE
+  optional: true
+- !Flag
+  description: "when repacking PyTables 1.x or PyTables 2.x files, the\nflavor of\
+    \ leaves will be unset. With this, such a\nleaves will be serialized as objects\
+    \ with the internal\nflavor ('numpy' for 3.x series)"
+  synonyms:
+  - --upgrade-flavors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "disable regenerating old indexes. The default is to\nregenerate old\
+    \ indexes as they are found"
+  synonyms:
+  - --dont-regenerate-old-indexes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "do a table copy sorted by the index in \"column\". For\nreversing\
+    \ the order, use a negative value in the\n\"step\" part of \"RANGE\" (see \"-r\"\
+    \ flag). Only applies\nto table objects"
+  synonyms:
+  - --sortby
+  args: !SimpleFlagArg
+    name: COLUMN
+  optional: true
+- !Flag
+  description: Force the check for a CSI index for the --sortby
+  synonyms:
+  - --checkCSI
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: ptrepack [-h] [-v] [-o] [-R RANGE] [--non-recursive]\n        \
+  \        [--dest-title TITLE] [--dont-create-sysattrs]\n                [--dont-copy-userattrs]\
+  \ [--overwrite-nodes]\n                [--complevel COMPLEVEL]\n               \
+  \ [--complib {zlib,lzo,bzip2,blosc,blosc:blosclz,blosc:lz4,blosc:lz4hc,blosc:snappy,blosc:zlib,blosc:zstd}]\n\
+  \                [--shuffle {0,1}] [--bitshuffle {0,1}] [--fletcher32 {0,1}]\n \
+  \               [--keep-source-filters] [--chunkshape CHUNKSHAPE]\n            \
+  \    [--upgrade-flavors] [--dont-regenerate-old-indexes]\n                [--sortby\
+  \ COLUMN] [--checkCSI] [--propindexes]\n                sourcefile:sourcegroup destfile:destgroup\n\
+  \nThis utility is very powerful and lets you copy any leaf, group or complete\n\
+  subtree into another file. During the copy process you are allowed to change\nthe\
+  \ filter properties if you want so. Also, in the case of duplicated\npathnames,\
+  \ you can decide if you want to overwrite already existing nodes on\nthe destination\
+  \ file. Generally speaking, ptrepack can be useful in may\nsituations, like replicating\
+  \ a subtree in another file, change the filters in\nobjects and see how affect this\
+  \ to the compression degree or I/O performance,\nconsolidating specific data in\
+  \ repositories or even *importing* generic HDF5\nfiles and create true PyTables\
+  \ counterparts.\n\npositional arguments:\n  sourcefile:sourcegroup\n           \
+  \             source file/group\n  destfile:destgroup    destination file/group\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -v, --verbose         show verbose information\n  -o, --overwrite       overwrite\
+  \ destination file\n  -R RANGE, --range RANGE\n                        select a\
+  \ RANGE of rows (in the form \"start,stop,step\")\n                        during\
+  \ the copy of *all* the leaves. Default values\n                        are \"None,None,1\"\
+  , which means a copy of all the rows.\n  --non-recursive       do not do a recursive\
+  \ copy. Default is to do it\n  --dest-title TITLE    title for the new file (if\
+  \ not specified, the source\n                        is copied)\n  --dont-create-sysattrs\n\
+  \                        do not create sys attrs (default is to do it)\n  --dont-copy-userattrs\n\
+  \                        do not copy the user attrs (default is to do it)\n  --overwrite-nodes\
+  \     overwrite destination nodes if they exist. Default is\n                  \
+  \      to not overwrite them\n  --complevel COMPLEVEL\n                        set\
+  \ a compression level (0 for no compression, which\n                        is the\
+  \ default)\n  --complib {zlib,lzo,bzip2,blosc,blosc:blosclz,blosc:lz4,blosc:lz4hc,blosc:snappy,blosc:zlib,blosc:zstd}\n\
+  \                        set the compression library to be used during the\n   \
+  \                     copy. Defaults to zlib\n  --shuffle {0,1}       activate or\
+  \ not the shuffle filter (default is active\n                        if complevel\
+  \ > 0)\n  --bitshuffle {0,1}    activate or not the bitshuffle filter (not active\
+  \ by\n                        default)\n  --fletcher32 {0,1}    whether to activate\
+  \ or not the fletcher32 filter (not\n                        active by default)\n\
+  \  --keep-source-filters\n                        use the original filters in source\
+  \ files. The default\n                        is not doing that if any of --complevel,\
+  \ --complib,\n                        --shuffle --bitshuffle or --fletcher32 option\
+  \ is\n                        specified\n  --chunkshape CHUNKSHAPE\n           \
+  \             set a chunkshape. Possible options are: \"keep\" |\n             \
+  \           \"auto\" | int | tuple. A value of \"auto\" computes a\n           \
+  \             sensible value for the chunkshape of the leaves\n                \
+  \        copied. The default is to \"keep\" the original value\n  --upgrade-flavors\
+  \     when repacking PyTables 1.x or PyTables 2.x files, the\n                 \
+  \       flavor of leaves will be unset. With this, such a\n                    \
+  \    leaves will be serialized as objects with the internal\n                  \
+  \      flavor ('numpy' for 3.x series)\n  --dont-regenerate-old-indexes\n      \
+  \                  disable regenerating old indexes. The default is to\n       \
+  \                 regenerate old indexes as they are found\n  --sortby COLUMN  \
+  \     do a table copy sorted by the index in \"column\". For\n                 \
+  \       reversing the order, use a negative value in the\n                     \
+  \   \"step\" part of \"RANGE\" (see \"-r\" flag). Only applies\n               \
+  \         to table objects\n  --checkCSI            Force the check for a CSI index\
+  \ for the --sortby\n                        column\n  --propindexes         propagate\
+  \ the indexes existing in original tables. The\n                        default\
+  \ is to not propagate them. Only applies to\n                        table objects\n"
+generated_using:
+- --help

@@ -1,0 +1,170 @@
+!Command
+command:
+- EstimateError.py
+- set
+positional: []
+named:
+- !Flag
+  description: "A list of FASTA/FASTQ files containing sequences to\nprocess. (default:\
+    \ None)"
+  synonyms:
+  - -s
+  args: !RepeatFlagArg
+    name: SEQ_FILES
+  optional: true
+- !Flag
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  synonyms:
+  - --outname
+  args: !SimpleFlagArg
+    name: OUT_NAME
+  optional: true
+- !Flag
+  description: "Specify to write verbose logging to a file. May not be\nspecified\
+    \ with multiple input files. (default: None)"
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: LOG_FILE
+  optional: true
+- !Flag
+  description: "DELIMITER DELIMITER\nA list of the three delimiters that separate\n\
+    annotation blocks, field names and values, and values\nwithin a field, respectively.\
+    \ (default: ('|', '=',\n','))"
+  synonyms:
+  - --delim
+  args: !SimpleFlagArg
+    name: DELIMITER
+  optional: true
+- !Flag
+  description: "The number of simultaneous computational processes to\nexecute (CPU\
+    \ cores to utilized). (default: 8)"
+  synonyms:
+  - --nproc
+  args: !SimpleFlagArg
+    name: NPROC
+  optional: true
+- !Flag
+  description: "The name of the annotation field to group sequences by\n(default:\
+    \ BARCODE)"
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: SET_FIELD
+  optional: true
+- !Flag
+  description: "The minimum number of sequences needed to consider a\nset (default:\
+    \ 20)"
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: MIN_COUNT
+  optional: true
+- !Flag
+  description: "Specifies which method to use to determine the\nconsensus sequence.\
+    \ The \"freq\" method will determine\nthe consensus by nucleotide frequency at\
+    \ each position\nand assign the most common value. The \"qual\" method\nwill weight\
+    \ values by their quality scores to\ndetermine the consensus nucleotide at each\
+    \ position.\n(default: freq)"
+  synonyms:
+  - --mode
+  args: !ChoiceFlagArg
+    choices: !!set
+      freq:
+      qual:
+  optional: true
+- !Flag
+  description: "Consensus quality score cut-off under which an\nambiguous character\
+    \ is assigned. (default: 0)"
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: MIN_QUAL
+  optional: true
+- !Flag
+  description: "Fraction of character occurrences under which an\nambiguous character\
+    \ is assigned. (default: 0.6)"
+  synonyms:
+  - --freq
+  args: !SimpleFlagArg
+    name: MIN_FREQ
+  optional: true
+- !Flag
+  description: "Specify to calculate the nucleotide diversity of each\nread group\
+    \ (average pairwise error rate) and exclude\ngroups which exceed the given diversity\
+    \ threshold.\n(default: None)\n"
+  synonyms:
+  - --maxdiv
+  args: !SimpleFlagArg
+    name: MAX_DIVERSITY
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: EstimateError.py set [--version] [-h] -s SEQ_FILES [SEQ_FILES ...]\n\
+  \                            [--outdir OUT_DIR] [--outname OUT_NAME]\n         \
+  \                   [--log LOG_FILE]\n                            [--delim DELIMITER\
+  \ DELIMITER DELIMITER]\n                            [--nproc NPROC] [-f SET_FIELD]\
+  \ [-n MIN_COUNT]\n                            [--mode {freq,qual}] [-q MIN_QUAL]\n\
+  \                            [--freq MIN_FREQ] [--maxdiv MAX_DIVERSITY]\n\nEstimates\
+  \ error statistics within annotation sets.\n\nhelp:\n  --version             show\
+  \ program's version number and exit\n  -h, --help            show this help message\
+  \ and exit\n\nstandard arguments:\n  -s SEQ_FILES [SEQ_FILES ...]\n            \
+  \            A list of FASTA/FASTQ files containing sequences to\n             \
+  \           process. (default: None)\n  --outdir OUT_DIR      Specify to changes\
+  \ the output directory to the\n                        location specified. The input\
+  \ file directory is used\n                        if this is not specified. (default:\
+  \ None)\n  --outname OUT_NAME    Changes the prefix of the successfully processed\n\
+  \                        output file to the string specified. May not be\n     \
+  \                   specified with multiple input files. (default: None)\n  --log\
+  \ LOG_FILE        Specify to write verbose logging to a file. May not be\n     \
+  \                   specified with multiple input files. (default: None)\n  --delim\
+  \ DELIMITER DELIMITER DELIMITER\n                        A list of the three delimiters\
+  \ that separate\n                        annotation blocks, field names and values,\
+  \ and values\n                        within a field, respectively. (default: ('|',\
+  \ '=',\n                        ','))\n  --nproc NPROC         The number of simultaneous\
+  \ computational processes to\n                        execute (CPU cores to utilized).\
+  \ (default: 8)\n\nerror profiling arguments:\n  -f SET_FIELD          The name of\
+  \ the annotation field to group sequences by\n                        (default:\
+  \ BARCODE)\n  -n MIN_COUNT          The minimum number of sequences needed to consider\
+  \ a\n                        set (default: 20)\n  --mode {freq,qual}    Specifies\
+  \ which method to use to determine the\n                        consensus sequence.\
+  \ The \"freq\" method will determine\n                        the consensus by nucleotide\
+  \ frequency at each position\n                        and assign the most common\
+  \ value. The \"qual\" method\n                        will weight values by their\
+  \ quality scores to\n                        determine the consensus nucleotide\
+  \ at each position.\n                        (default: freq)\n  -q MIN_QUAL    \
+  \       Consensus quality score cut-off under which an\n                       \
+  \ ambiguous character is assigned. (default: 0)\n  --freq MIN_FREQ       Fraction\
+  \ of character occurrences under which an\n                        ambiguous character\
+  \ is assigned. (default: 0.6)\n  --maxdiv MAX_DIVERSITY\n                      \
+  \  Specify to calculate the nucleotide diversity of each\n                     \
+  \   read group (average pairwise error rate) and exclude\n                     \
+  \   groups which exceed the given diversity threshold.\n                       \
+  \ (default: None)\n"
+generated_using:
+- --help

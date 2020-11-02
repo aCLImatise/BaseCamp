@@ -1,0 +1,187 @@
+!Command
+command:
+- msstitch
+- ensg
+positional:
+- !Positional
+  description: --isobquantcolpattern QUANTCOLPATTERN
+  position: 0
+  name: values.
+  optional: false
+named:
+- !Flag
+  description: Input file of {} format
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: FN
+  optional: true
+- !Flag
+  description: Directory to output in
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: Output file
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: Decoy peptide table input file
+  synonyms:
+  - --decoyfn
+  args: !SimpleFlagArg
+    name: DECOYFN
+  optional: true
+- !Flag
+  description: "Regular expression pattern to find column where score\nto use (e.g.\
+    \ percolator svm-score) is written."
+  synonyms:
+  - --scorecolpattern
+  args: !SimpleFlagArg
+    name: SCORECOLPATTERN
+  optional: true
+- !Flag
+  description: Score, e.g. q-values will be converted to -log10
+  synonyms:
+  - --logscore
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Intensity threshold of PSMs when calculating isobaric\nratios. Values\
+    \ below threshold will be set to NA."
+  synonyms:
+  - --minint
+  args: !SimpleFlagArg
+    name: MININT
+  optional: true
+- !Flag
+  description: "Column numbers of denominator channels when creating a\nsummarized\
+    \ feature table with isobaric ratios from\nPSMs"
+  synonyms:
+  - --denomcols
+  args: !RepeatFlagArg
+    name: DENOMCOLS
+  optional: true
+- !Flag
+  description: "Regex patterns to detect denominator channels in a PSM\ntable, when\
+    \ creating a table with summarized feature\nisobaric ratios. If both --denompatterns\
+    \ and\n--denomcol are given then column numbers are used.\nUsage e.g. --denompattern\
+    \ _126 _131. Also possible:\n--denompattern _12[6-7] to detect multiple columns."
+  synonyms:
+  - --denompatterns
+  args: !RepeatFlagArg
+    name: DENOMPATTERNS
+  optional: true
+- !Flag
+  description: "Specifies to add precursor quant data from lookup DB\nto output table"
+  synonyms:
+  - --ms1quant
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "PSM table file containing isobaric quant data to add\nto table."
+  synonyms:
+  - --psmtable
+  args: !SimpleFlagArg
+    name: PSMFILE
+  optional: true
+- !Flag
+  description: "Delimiter in FASTA header, used to parse gene names in\ncase of non-ENSEMBL/Uniprot"
+  synonyms:
+  - --fastadelim
+  args: !ChoiceFlagArg
+    choices: !!set
+      tab:
+      semicolon:
+      pipe:
+  optional: true
+- !Flag
+  description: "Field nr (first=1) in FASTA that contains gene name\nwhen using --fastadelim\
+    \ to parse the gene names"
+  synonyms:
+  - --genefield
+  args: !SimpleFlagArg
+    name: GENEFIELD
+  optional: true
+- !Flag
+  description: "FASTA file with target proteins to determine best\nscoring proteins\
+    \ of target/decoy pairs for picked FDR.\nIn case using --picktype ensg/genename"
+  synonyms:
+  - --targetfasta
+  args: !SimpleFlagArg
+    name: T_FASTA
+  optional: true
+- !Flag
+  description: "FASTA file with decoy proteins to determine best\nscoring proteins\
+    \ of target/decoy pairs for picked FDR.\nIn case using --picktype ensg/genename\n"
+  synonyms:
+  - --decoyfasta
+  args: !SimpleFlagArg
+    name: D_FASTA
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: msstitch ensg [-h] [--version] -i FN [-d OUTDIR] [-o OUTFILE] --decoyfn\n\
+  \                     DECOYFN --scorecolpattern SCORECOLPATTERN [--logscore]\n \
+  \                    [--isobquantcolpattern QUANTCOLPATTERN] [--minint MININT]\n\
+  \                     [--denomcols DENOMCOLS [DENOMCOLS ...]]\n                \
+  \     [--denompatterns DENOMPATTERNS [DENOMPATTERNS ...]]\n                    \
+  \ [--ms1quant] [--psmtable PSMFILE]\n                     [--fastadelim {tab,pipe,semicolon}]\n\
+  \                     [--genefield GENEFIELD] --targetfasta T_FASTA\n          \
+  \           --decoyfasta D_FASTA\n\noptional arguments:\n  -h, --help          \
+  \  show this help message and exit\n  --version             show program's version\
+  \ number and exit\n  -i FN                 Input file of {} format\n  -d OUTDIR\
+  \             Directory to output in\n  -o OUTFILE            Output file\n  --decoyfn\
+  \ DECOYFN     Decoy peptide table input file\n  --scorecolpattern SCORECOLPATTERN\n\
+  \                        Regular expression pattern to find column where score\n\
+  \                        to use (e.g. percolator svm-score) is written.\n  --logscore\
+  \            Score, e.g. q-values will be converted to -log10\n                \
+  \        values.\n  --isobquantcolpattern QUANTCOLPATTERN\n                    \
+  \    Unique text pattern to identify isobaric quant columns\n                  \
+  \      in input table.\n  --minint MININT       Intensity threshold of PSMs when\
+  \ calculating isobaric\n                        ratios. Values below threshold will\
+  \ be set to NA.\n  --denomcols DENOMCOLS [DENOMCOLS ...]\n                     \
+  \   Column numbers of denominator channels when creating a\n                   \
+  \     summarized feature table with isobaric ratios from\n                     \
+  \   PSMs\n  --denompatterns DENOMPATTERNS [DENOMPATTERNS ...]\n                \
+  \        Regex patterns to detect denominator channels in a PSM\n              \
+  \          table, when creating a table with summarized feature\n              \
+  \          isobaric ratios. If both --denompatterns and\n                      \
+  \  --denomcol are given then column numbers are used.\n                        Usage\
+  \ e.g. --denompattern _126 _131. Also possible:\n                        --denompattern\
+  \ _12[6-7] to detect multiple columns.\n  --ms1quant            Specifies to add\
+  \ precursor quant data from lookup DB\n                        to output table\n\
+  \  --psmtable PSMFILE    PSM table file containing isobaric quant data to add\n\
+  \                        to table.\n  --fastadelim {tab,pipe,semicolon}\n      \
+  \                  Delimiter in FASTA header, used to parse gene names in\n    \
+  \                    case of non-ENSEMBL/Uniprot\n  --genefield GENEFIELD\n    \
+  \                    Field nr (first=1) in FASTA that contains gene name\n     \
+  \                   when using --fastadelim to parse the gene names\n  --targetfasta\
+  \ T_FASTA\n                        FASTA file with target proteins to determine\
+  \ best\n                        scoring proteins of target/decoy pairs for picked\
+  \ FDR.\n                        In case using --picktype ensg/genename\n  --decoyfasta\
+  \ D_FASTA  FASTA file with decoy proteins to determine best\n                  \
+  \      scoring proteins of target/decoy pairs for picked FDR.\n                \
+  \        In case using --picktype ensg/genename\n"
+generated_using:
+- --help

@@ -1,0 +1,84 @@
+!Command
+command:
+- csb-test
+positional:
+- !Positional
+  description: "An optional list of CSB test dotted namespaces, from\nwhich to load\
+    \ tests. '__main__' and '.' are\ninterpreted as the current module. If a namespace\
+    \ ends\nwith an asterisk '.*', all sub-packages will be\nscanned as well. Examples:\
+    \ \"csb.test.cases.bio.*\"\n\"csb.test.cases.bio.io\" \"csb.test.cases.bio.utils\"\
+    \n\".\")"
+  position: 0
+  name: namespaces
+  optional: false
+named:
+- !Flag
+  description: "Type of tests to load from each namespace\n(default=any)"
+  synonyms:
+  - -t
+  - --type
+  args: !ChoiceFlagArg
+    choices: !!set
+      functional:
+      custom:
+      any:
+      regression:
+      unit:
+  optional: true
+- !Flag
+  description: "Verbosity level passed to unittest.TextTestRunner\n(default=1)."
+  synonyms:
+  - -v
+  - --verbosity
+  args: !SimpleFlagArg
+    name: VERBOSITY
+  optional: true
+- !Flag
+  description: "Force update of the test pickles in\n/usr/local/lib/python3.6/site-packages/csb/test/data"
+  synonyms:
+  - -u
+  - --update-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Generate, store and load additional test resources in\nthis directory\
+    \ (default=/usr/local/lib/python3.6/site-\npackages/csb/test/data)\n"
+  synonyms:
+  - -g
+  - --generated-resources
+  args: !SimpleFlagArg
+    name: GENERATED_RESOURCES
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: csb-test [-h] [-t {unit,functional,custom,any,regression}]\n  \
+  \              [-v VERBOSITY] [-u] [-g GENERATED_RESOURCES]\n                [namespaces\
+  \ [namespaces ...]]\n\nCSB Test Runner Console.\n\npositional arguments:\n  namespaces\
+  \            An optional list of CSB test dotted namespaces, from\n            \
+  \            which to load tests. '__main__' and '.' are\n                     \
+  \   interpreted as the current module. If a namespace ends\n                   \
+  \     with an asterisk '.*', all sub-packages will be\n                        scanned\
+  \ as well. Examples: \"csb.test.cases.bio.*\"\n                        \"csb.test.cases.bio.io\"\
+  \ \"csb.test.cases.bio.utils\"\n                        \".\")\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -t {unit,functional,custom,any,regression},\
+  \ --type {unit,functional,custom,any,regression}\n                        Type of\
+  \ tests to load from each namespace\n                        (default=any)\n  -v\
+  \ VERBOSITY, --verbosity VERBOSITY\n                        Verbosity level passed\
+  \ to unittest.TextTestRunner\n                        (default=1).\n  -u, --update-files\
+  \    Force update of the test pickles in\n                        /usr/local/lib/python3.6/site-packages/csb/test/data\n\
+  \  -g GENERATED_RESOURCES, --generated-resources GENERATED_RESOURCES\n         \
+  \               Generate, store and load additional test resources in\n        \
+  \                this directory (default=/usr/local/lib/python3.6/site-\n      \
+  \                  packages/csb/test/data)\n"
+generated_using:
+- --help

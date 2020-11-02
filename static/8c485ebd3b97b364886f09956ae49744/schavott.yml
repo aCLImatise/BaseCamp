@@ -1,0 +1,160 @@
+!Command
+command:
+- schavott
+positional: []
+named:
+- !Flag
+  description: Run scaffolding or assembly
+  synonyms:
+  - --run_mode
+  - -r
+  args: !ChoiceFlagArg
+    choices: !!set
+      scaffold:
+      assembly:
+  optional: true
+- !Flag
+  description: Which scaffolder to use.
+  synonyms:
+  - --scaffolder
+  - -s
+  args: !ChoiceFlagArg
+    choices: !!set
+      links:
+      sspace:
+  optional: true
+- !Flag
+  description: Path to SSPACE (Only for scaffolding)
+  synonyms:
+  - --sspace_path
+  - -p
+  args: !SimpleFlagArg
+    name: SSPACE_PATH
+  optional: true
+- !Flag
+  description: "Select input type: fastq, fast5 or fasta, this is also\nthe search\
+    \ pattern for shavott (*.read_type)"
+  synonyms:
+  - --read_type
+  - -rt
+  args: !ChoiceFlagArg
+    choices: !!set
+      fastq:
+      fasta:
+      fast5:
+  optional: true
+- !Flag
+  description: Minimum read length from MinION to use.
+  synonyms:
+  - --min_read_length
+  - -l
+  args: !SimpleFlagArg
+    name: MIN_READ_LENGTH
+  optional: true
+- !Flag
+  description: Minimum quality for reads from MinION to use.
+  synonyms:
+  - --min_quality
+  - -q
+  args: !SimpleFlagArg
+    name: MIN_QUALITY
+  optional: true
+- !Flag
+  description: Directory to watch for fast5 files
+  synonyms:
+  - --watch
+  - -w
+  args: !SimpleFlagArg
+    name: WATCH
+  optional: true
+- !Flag
+  description: Path to contig file (Only for scaffolding)
+  synonyms:
+  - --contig_file
+  - -c
+  args: !SimpleFlagArg
+    name: CONTIG_FILE
+  optional: true
+- !Flag
+  description: Use timer or read count. [reads]
+  synonyms:
+  - --trigger_mode
+  - -t
+  args: !ChoiceFlagArg
+    choices: !!set
+      time:
+      reads:
+  optional: true
+- !Flag
+  description: Skips the first j read of the sequencing
+  synonyms:
+  - --skip
+  - -j
+  args: !SimpleFlagArg
+    name: SKIP
+  optional: true
+- !Flag
+  description: "How often the scaffolding process should run. If run\nmode is set\
+    \ to reads, scaffolding will run every i:th\nread. If run mode is time, scaffolding\
+    \ will run every\ni:th second. [100 reads]"
+  synonyms:
+  - --intensity
+  - -i
+  args: !SimpleFlagArg
+    name: INTENSITY
+  optional: true
+- !Flag
+  description: Plot result in web-browser
+  synonyms:
+  - --plot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set output filename. (Defaut: schavott)\n"
+  synonyms:
+  - --output
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: schavott [-h] [--run_mode {scaffold,assembly}]\n              \
+  \  [--scaffolder {links,sspace}] [--sspace_path SSPACE_PATH]\n                [--read_type\
+  \ {fast5,fastq,fasta}]\n                [--min_read_length MIN_READ_LENGTH]\n  \
+  \              [--min_quality MIN_QUALITY] --watch WATCH\n                [--contig_file\
+  \ CONTIG_FILE] [--trigger_mode {time,reads}]\n                [--skip SKIP] [--intensity\
+  \ INTENSITY] [--plot]\n                [--output OUTPUT]\n\nScaffold genomes in\
+  \ real time\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --run_mode {scaffold,assembly}, -r {scaffold,assembly}\n         \
+  \               Run scaffolding or assembly\n  --scaffolder {links,sspace}, -s {links,sspace}\n\
+  \                        Which scaffolder to use.\n  --sspace_path SSPACE_PATH,\
+  \ -p SSPACE_PATH\n                        Path to SSPACE (Only for scaffolding)\n\
+  \  --read_type {fast5,fastq,fasta}, -rt {fast5,fastq,fasta}\n                  \
+  \      Select input type: fastq, fast5 or fasta, this is also\n                \
+  \        the search pattern for shavott (*.read_type)\n  --min_read_length MIN_READ_LENGTH,\
+  \ -l MIN_READ_LENGTH\n                        Minimum read length from MinION to\
+  \ use.\n  --min_quality MIN_QUALITY, -q MIN_QUALITY\n                        Minimum\
+  \ quality for reads from MinION to use.\n  --watch WATCH, -w WATCH\n           \
+  \             Directory to watch for fast5 files\n  --contig_file CONTIG_FILE, -c\
+  \ CONTIG_FILE\n                        Path to contig file (Only for scaffolding)\n\
+  \  --trigger_mode {time,reads}, -t {time,reads}\n                        Use timer\
+  \ or read count. [reads]\n  --skip SKIP, -j SKIP  Skips the first j read of the\
+  \ sequencing\n  --intensity INTENSITY, -i INTENSITY\n                        How\
+  \ often the scaffolding process should run. If run\n                        mode\
+  \ is set to reads, scaffolding will run every i:th\n                        read.\
+  \ If run mode is time, scaffolding will run every\n                        i:th\
+  \ second. [100 reads]\n  --plot                Plot result in web-browser\n  --output\
+  \ OUTPUT, -o OUTPUT\n                        Set output filename. (Defaut: schavott)\n"
+generated_using:
+- --help

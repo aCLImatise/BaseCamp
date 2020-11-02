@@ -1,0 +1,195 @@
+!Command
+command:
+- assembly.py
+- modify_contig
+positional:
+- !Positional
+  description: 'positional arguments:'
+  position: 0
+  name: rsealfon.
+  optional: false
+- !Positional
+  description: "input alignment of reference and contig (should\ncontain exactly 2\
+    \ sequences)"
+  position: 1
+  name: input
+  optional: false
+- !Positional
+  description: Destination file for modified contigs
+  position: 2
+  name: output
+  optional: false
+- !Positional
+  description: reference sequence name (exact match required)
+  position: 3
+  name: ref
+  optional: false
+named:
+- !Flag
+  description: 'fasta header output name (default: existing header)'
+  synonyms:
+  - -n
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "should the reference sequence be called if there is an\nN in the contig\
+    \ and a more specific base in the\nreference (default: False)"
+  synonyms:
+  - -cn
+  - --call-reference-ns
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "should ends of contig.fasta be trimmed to length of\nreference (default:\
+    \ False)"
+  synonyms:
+  - -t
+  - --trim-ends
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "should the 5'-end of contig.fasta be replaced by\nreference (default:\
+    \ False)"
+  synonyms:
+  - -r5
+  - --replace-5ends
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "should the 3'-end of contig.fasta be replaced by\nreference (default:\
+    \ False)"
+  synonyms:
+  - -r3
+  - --replace-3ends
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "length of ends to be replaced (if replace-ends is yes)\n(default:\
+    \ 10)"
+  synonyms:
+  - -l
+  - --replace-length
+  args: !SimpleFlagArg
+    name: REPLACE_LENGTH
+  optional: true
+- !Flag
+  description: 'Format for input alignment (default: fasta)'
+  synonyms:
+  - -f
+  - --format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: "Replace gaps at the beginning and end of the sequence\nwith reference\
+    \ sequence (default: False)"
+  synonyms:
+  - -r
+  - --replace-end-gaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Remove leading and trailing N's in the contig\n(default: False)"
+  synonyms:
+  - -rn
+  - --remove-end-ns
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "should the reference sequence be called if the contig\nseq is ambiguous\
+    \ and the reference sequence is more\ninformative & consistant with the ambiguous\
+    \ base (ie\nY->C) (default: False)"
+  synonyms:
+  - -ca
+  - --call-reference-ambiguous
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Base directory for temp files. [default: /tmp]'
+  synonyms:
+  - --tmp_dir
+  args: !SimpleFlagArg
+    name: TMP_DIR
+  optional: true
+- !Flag
+  description: "Keep the tmp_dir if an exception occurs while running.\nDefault is\
+    \ to delete all temp files at the end, even\nif there's a failure."
+  synonyms:
+  - --tmp_dirKeep
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Verboseness of output. [default: DEBUG]'
+  synonyms:
+  - --loglevel
+  args: !ChoiceFlagArg
+    choices: !!set
+      CRITICAL:
+      ERROR:
+      INFO:
+      WARNING:
+      DEBUG:
+      EXCEPTION:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: assembly.py subcommand modify_contig [-h] [-n NAME] [-cn] [-t]\
+  \ [-r5]\n                                            [-r3] [-l REPLACE_LENGTH]\n\
+  \                                            [-f FORMAT] [-r] [-rn] [-ca]\n    \
+  \                                        [--tmp_dir TMP_DIR]\n                 \
+  \                           [--tmp_dirKeep]\n                                  \
+  \          [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n        \
+  \                                    [--version]\n                             \
+  \               input output ref\n\nModifies an input contig. Depending on the options\
+  \ selected, can replace N\ncalls with reference calls, replace ambiguous calls with\
+  \ reference calls, trim\nto the length of the reference, replace contig ends with\
+  \ reference calls, and\ntrim leading and trailing Ns. Author: rsealfon.\n\npositional\
+  \ arguments:\n  input                 input alignment of reference and contig (should\n\
+  \                        contain exactly 2 sequences)\n  output                Destination\
+  \ file for modified contigs\n  ref                   reference sequence name (exact\
+  \ match required)\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -n NAME, --name NAME  fasta header output name (default: existing\
+  \ header)\n  -cn, --call-reference-ns\n                        should the reference\
+  \ sequence be called if there is an\n                        N in the contig and\
+  \ a more specific base in the\n                        reference (default: False)\n\
+  \  -t, --trim-ends       should ends of contig.fasta be trimmed to length of\n \
+  \                       reference (default: False)\n  -r5, --replace-5ends  should\
+  \ the 5'-end of contig.fasta be replaced by\n                        reference (default:\
+  \ False)\n  -r3, --replace-3ends  should the 3'-end of contig.fasta be replaced\
+  \ by\n                        reference (default: False)\n  -l REPLACE_LENGTH, --replace-length\
+  \ REPLACE_LENGTH\n                        length of ends to be replaced (if replace-ends\
+  \ is yes)\n                        (default: 10)\n  -f FORMAT, --format FORMAT\n\
+  \                        Format for input alignment (default: fasta)\n  -r, --replace-end-gaps\n\
+  \                        Replace gaps at the beginning and end of the sequence\n\
+  \                        with reference sequence (default: False)\n  -rn, --remove-end-ns\
+  \  Remove leading and trailing N's in the contig\n                        (default:\
+  \ False)\n  -ca, --call-reference-ambiguous\n                        should the\
+  \ reference sequence be called if the contig\n                        seq is ambiguous\
+  \ and the reference sequence is more\n                        informative & consistant\
+  \ with the ambiguous base (ie\n                        Y->C) (default: False)\n\
+  \  --tmp_dir TMP_DIR     Base directory for temp files. [default: /tmp]\n  --tmp_dirKeep\
+  \         Keep the tmp_dir if an exception occurs while running.\n             \
+  \           Default is to delete all temp files at the end, even\n             \
+  \           if there's a failure.\n  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+  \                        Verboseness of output. [default: DEBUG]\n  --version, -V\
+  \         show program's version number and exit\n"
+generated_using:
+- --help

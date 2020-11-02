@@ -1,0 +1,158 @@
+!Command
+command:
+- kraken-biom
+positional:
+- !Positional
+  description: Results files from the kraken-report tool.
+  position: 0
+  name: kraken_reports
+  optional: false
+named:
+- !Flag
+  description: "Assigned reads will be recorded only if they are at or\nbelow max\
+    \ rank. Default: O."
+  synonyms:
+  - --max
+  args: !ChoiceFlagArg
+    choices: !!set
+      P:
+      G:
+      S:
+      C:
+      D:
+      O:
+      F:
+  optional: true
+- !Flag
+  description: "Reads assigned at and below min rank will be recorded\nas being assigned\
+    \ to the min rank level. Default: S."
+  synonyms:
+  - --min
+  args: !ChoiceFlagArg
+    choices: !!set
+      P:
+      G:
+      S:
+      C:
+      D:
+      O:
+      F:
+  optional: true
+- !Flag
+  description: "Path to the BIOM-format file. By default, the table\nwill be in the\
+    \ HDF5 BIOM 2.x format. Users can output\nto a different format using the --fmt\
+    \ option. The\noutput can also be gzipped using the --gzip option.\nDefault path\
+    \ is: ./table.biom"
+  synonyms:
+  - -o
+  - --output_fp
+  args: !SimpleFlagArg
+    name: OUTPUT_FP
+  optional: true
+- !Flag
+  description: "Create a file containing just the (NCBI) OTU IDs for\nuse with a service\
+    \ such as phyloT\n(http://phylot.biobyte.de/) to generate a phylogenetic\ntree\
+    \ for use in downstream analysis such as UniFrac,\niTol (itol.embl.de), or PhyloToAST\
+    \ (phylotoast.org)."
+  synonyms:
+  - --otu_fp
+  args: !SimpleFlagArg
+    name: OTU_FP
+  optional: true
+- !Flag
+  description: "Set the output format of the BIOM table. Default is\nHDF5."
+  synonyms:
+  - --fmt
+  args: !ChoiceFlagArg
+    choices: !!set
+      json:
+      hdf5:
+      tsv:
+  optional: true
+- !Flag
+  description: "Compress the output BIOM table with gzip. HDF5 BIOM\n(v2.x) files\
+    \ are internally compressed by default, so\nthis option is not needed when specifying\
+    \ --fmt hdf5."
+  synonyms:
+  - --gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints status messages during program execution.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: kraken-biom [-h] [--max {D,P,C,O,F,G,S}] [--min {D,P,C,O,F,G,S}]\n\
+  \                   [-o OUTPUT_FP] [--otu_fp OTU_FP] [--fmt {hdf5,json,tsv}]\n \
+  \                  [--gzip] [--version] [-v]\n                   kraken_reports\
+  \ [kraken_reports ...]\n\nCreate BIOM-format tables (http://biom-format.org) from\
+  \ Kraken output \n(http://ccb.jhu.edu/software/kraken/).\n\nThe program takes as\
+  \ input, one or more files output from the kraken-report\ntool. Each file is parsed\
+  \ and the counts for each OTU (operational taxonomic\nunit) are recorded, along\
+  \ with database ID (e.g. NCBI), and lineage. The\nextracted data are then stored\
+  \ in a BIOM table where each count is linked\nto the Sample and OTU it belongs to.\
+  \ Sample IDs are extracted from the input\nfilenames (everything up to the '.').\n\
+  \nOTUs are defined by the --max and --min arguments. By default these are\nset to\
+  \ Order and Species respectively. This means that counts assigned\ndirectly to an\
+  \ Order, Family, or Genus are recorded under the associated\nOTU ID, and counts\
+  \ assigned at or below the Species level are assigned to\nthe OTU ID for the species.\
+  \ Setting a minimum rank below Species is not yet\navailable.\n\nThe BIOM format\
+  \ currently has two major versions. Version 1.0 uses the \nJSON (JavaScript Object\
+  \ Notation) format as a base. Version 2.x uses the\nHDF5 (Hierarchical Data Format\
+  \ v5) as a base. The output format can be\nspecified with the --fmt option. Note\
+  \ that a tab-separated (tsv) output\nformat is also available. The resulting file\
+  \ will not contain most of the\nmetadata, but can be opened by spreadsheet programs.\n\
+  \nVersion 2 of the BIOM format is used by default for output, but requires the\n\
+  Python library 'h5py'. If the library is not installed, kraken-biom will \nautomatically\
+  \ switch to using version 1.0. Note that the output can \noptionally be compressed\
+  \ with gzip (--gzip) for version 1.0 and TSV files. \nVersion 2 files are automatically\
+  \ compressed.\n\nUsage examples\n--------------\n1. Basic usage with default parameters:\n\
+  \n$ kraken-biom.py S1.txt S2.txt\n\n  This produces a compressed BIOM 2.1 file:\
+  \ table.biom\n\n2. BIOM v1.0 output:\n\n$ kraken-biom.py S1.txt S2.txt --fmt json\n\
+  \n  Produces a BIOM 1.0 file: table.biom\n\n3. Compressed TSV output:\n\n$ kraken-biom.py\
+  \ S1.txt S2.txt --fmt tsv --gzip -o table.tsv\n\n  Produces a TSV file: table.tsv.gz\n\
+  \n4. Change the max and min OTU levels to Class and Genus:\n\n$ kraken-biom.py S1.txt\
+  \ S2.txt --max C --min G\n\nProgram arguments\n-----------------\n\npositional arguments:\n\
+  \  kraken_reports        Results files from the kraken-report tool.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --max {D,P,C,O,F,G,S}\n\
+  \                        Assigned reads will be recorded only if they are at or\n\
+  \                        below max rank. Default: O.\n  --min {D,P,C,O,F,G,S}\n\
+  \                        Reads assigned at and below min rank will be recorded\n\
+  \                        as being assigned to the min rank level. Default: S.\n\
+  \  -o OUTPUT_FP, --output_fp OUTPUT_FP\n                        Path to the BIOM-format\
+  \ file. By default, the table\n                        will be in the HDF5 BIOM\
+  \ 2.x format. Users can output\n                        to a different format using\
+  \ the --fmt option. The\n                        output can also be gzipped using\
+  \ the --gzip option.\n                        Default path is: ./table.biom\n  --otu_fp\
+  \ OTU_FP       Create a file containing just the (NCBI) OTU IDs for\n          \
+  \              use with a service such as phyloT\n                        (http://phylot.biobyte.de/)\
+  \ to generate a phylogenetic\n                        tree for use in downstream\
+  \ analysis such as UniFrac,\n                        iTol (itol.embl.de), or PhyloToAST\
+  \ (phylotoast.org).\n  --fmt {hdf5,json,tsv}\n                        Set the output\
+  \ format of the BIOM table. Default is\n                        HDF5.\n  --gzip\
+  \                Compress the output BIOM table with gzip. HDF5 BIOM\n         \
+  \               (v2.x) files are internally compressed by default, so\n        \
+  \                this option is not needed when specifying --fmt hdf5.\n  --version\
+  \             show program's version number and exit\n  -v, --verbose         Prints\
+  \ status messages during program execution.\n"
+generated_using:
+- --help

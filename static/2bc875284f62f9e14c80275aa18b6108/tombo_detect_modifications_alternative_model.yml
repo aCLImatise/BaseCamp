@@ -1,0 +1,234 @@
+!Command
+command:
+- tombo
+- detect_modifications
+- alternative_model
+positional: []
+named:
+- !Flag
+  description: Directories containing fast5 files.
+  synonyms:
+  - --fast5-basedirs
+  args: !RepeatFlagArg
+    name: FAST5_BASEDIRS
+  optional: true
+- !Flag
+  description: "File base name to save base by base statistics from\ntesting. Filenames\
+    \ will be [--statistics-file-\nbasename].[--alternate-bases]?.tombo.stats"
+  synonyms:
+  - --statistics-file-basename
+  args: !SimpleFlagArg
+    name: STATISTICS_FILE_BASENAME
+  optional: true
+- !Flag
+  description: "[{dcm,5mC,6mA,dam,CpG} ...]\nDefault non-standard base model for testing\
+    \ (not\nrequired if user created --alternate-model-filenames\nis provided)."
+  synonyms:
+  - --alternate-bases
+  args: !ChoiceFlagArg
+    choices: !!set
+      6mA:
+      dam:
+      dcm:
+      5mC:
+      CpG:
+  optional: true
+- !Flag
+  description: Print available alternative models and exit.
+  synonyms:
+  - --print-available-models
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Explicitly select canonical DNA model. Default:\nAutomatically determine\
+    \ from FAST5s"
+  synonyms:
+  - --dna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Explicitly select canonical RNA model. Default:\nAutomatically determine\
+    \ from FAST5s"
+  synonyms:
+  - --rna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of reads required at a position to perform\nsignificance testing\
+    \ or contribute to model\nestimation. Default: 1"
+  synonyms:
+  - --minimum-test-reads
+  args: !SimpleFlagArg
+    name: MINIMUM_TEST_READS
+  optional: true
+- !Flag
+  description: "Log likelihood ratio threshold when computing fraction\nof significant\
+    \ reads at each genomic position. If two\nvalues are provided, statistics between\
+    \ these values\nare not considered. Default thresholds: DNA:-1.5-2.5 ,\nRNA:-2.5-2.5"
+  synonyms:
+  - --single-read-threshold
+  args: !RepeatFlagArg
+    name: SINGLE_READ_THRESHOLD
+  optional: true
+- !Flag
+  description: "Use a standard log likelihood ratio (LLR) statistic.\nDefault is to\
+    \ use an outlier-robust LLR-like\nstatistic. Detail in full online documentation."
+  synonyms:
+  - --standard-log-likelihood-ratio
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "COVERAGE_DAMPEN_COUNTS\nDampen fraction modified estimates for low\
+    \ coverage\nsites. Two parameters are unmodified and modified\npseudo read counts.\
+    \ This is equivalent to a beta prior\non the fraction estimate. Set to \"0 0\"\
+    \ to disable\ndampened fraction estimation. Default: [2, 0]"
+  synonyms:
+  - --coverage-dampen-counts
+  args: !SimpleFlagArg
+    name: COVERAGE_DAMPEN_COUNTS
+  optional: true
+- !Flag
+  description: "Base for binary files containing per-read statistics\nfrom statistical\
+    \ testing. Filenames will be [--per-\nread-statistics-basename].[--alternate-\n\
+    bases]?.tombo.per_read_stats"
+  synonyms:
+  - --per-read-statistics-basename
+  args: !SimpleFlagArg
+    name: PER_READ_STATISTICS_BASENAME
+  optional: true
+- !Flag
+  description: "Number of the most significant sites to store for\nfaster access.\
+    \ If a longer list of most significant\nsites is required the list must be re-computed\
+    \ from\nall batches. Very large values can increase RAM usage.\nDefault: 100000"
+  synonyms:
+  - --num-most-significant-stored
+  args: !SimpleFlagArg
+    name: NUM_MOST_SIGNIFICANT_STORED
+  optional: true
+- !Flag
+  description: "Size of regions over which to multiprocesses statistic\ncomputation.\
+    \ For very deep samples a smaller value is\nrecommmended in order to control memory\
+    \ consumption.\nDefault: 10000"
+  synonyms:
+  - --multiprocess-region-size
+  args: !SimpleFlagArg
+    name: MULTIPROCESS_REGION_SIZE
+  optional: true
+- !Flag
+  description: 'Number of processes. Default: 1'
+  synonyms:
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  synonyms:
+  - --corrected-group
+  args: !SimpleFlagArg
+    name: CORRECTED_GROUP
+  optional: true
+- !Flag
+  description: "FAST5 subgroup(s) (under /Analyses/[--basecall-\ngroup]/) containing\
+    \ basecalls and created within\n[--corrected-group] containing re-squiggle results.\n\
+    Default: ['BaseCalled_template']"
+  synonyms:
+  - --basecall-subgroups
+  args: !RepeatFlagArg
+    name: BASECALL_SUBGROUPS
+  optional: true
+- !Flag
+  description: Don't print status information.
+  synonyms:
+  - --quiet
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: tombo detect_modifications alternative_model\n                \
+  \                                    [--fast5-basedirs FAST5_BASEDIRS [FAST5_BASEDIRS\
+  \ ...]]\n                                                    [--statistics-file-basename\
+  \ STATISTICS_FILE_BASENAME]\n                                                  \
+  \  [--alternate-bases {dcm,5mC,6mA,dam,CpG} [{dcm,5mC,6mA,dam,CpG} ...]]\n     \
+  \                                               [--print-available-models]\n   \
+  \                                                 [--dna] [--rna]\n            \
+  \                                        [--minimum-test-reads MINIMUM_TEST_READS]\n\
+  \                                                    [--single-read-threshold SINGLE_READ_THRESHOLD\
+  \ [SINGLE_READ_THRESHOLD ...]]\n                                               \
+  \     [--standard-log-likelihood-ratio]\n                                      \
+  \              [--coverage-dampen-counts COVERAGE_DAMPEN_COUNTS COVERAGE_DAMPEN_COUNTS]\n\
+  \                                                    [--per-read-statistics-basename\
+  \ PER_READ_STATISTICS_BASENAME]\n                                              \
+  \      [--num-most-significant-stored NUM_MOST_SIGNIFICANT_STORED]\n           \
+  \                                         [--multiprocess-region-size MULTIPROCESS_REGION_SIZE]\n\
+  \                                                    [--processes PROCESSES]\n \
+  \                                                   [--corrected-group CORRECTED_GROUP]\n\
+  \                                                    [--basecall-subgroups BASECALL_SUBGROUPS\
+  \ [BASECALL_SUBGROUPS ...]]\n                                                  \
+  \  [--quiet] [--help]\n\nRequired Argument:\n  --fast5-basedirs FAST5_BASEDIRS [FAST5_BASEDIRS\
+  \ ...]\n                        Directories containing fast5 files.\n  --statistics-file-basename\
+  \ STATISTICS_FILE_BASENAME\n                        File base name to save base\
+  \ by base statistics from\n                        testing. Filenames will be [--statistics-file-\n\
+  \                        basename].[--alternate-bases]?.tombo.stats\n  --alternate-bases\
+  \ {dcm,5mC,6mA,dam,CpG} [{dcm,5mC,6mA,dam,CpG} ...]\n                        Default\
+  \ non-standard base model for testing (not\n                        required if\
+  \ user created --alternate-model-filenames\n                        is provided).\n\
+  \nComparison Arguments:\n  --print-available-models\n                        Print\
+  \ available alternative models and exit.\n  --dna                 Explicitly select\
+  \ canonical DNA model. Default:\n                        Automatically determine\
+  \ from FAST5s\n  --rna                 Explicitly select canonical RNA model. Default:\n\
+  \                        Automatically determine from FAST5s\n\nSignificance Test\
+  \ Arguments:\n  --minimum-test-reads MINIMUM_TEST_READS\n                      \
+  \  Number of reads required at a position to perform\n                        significance\
+  \ testing or contribute to model\n                        estimation. Default: 1\n\
+  \  --single-read-threshold SINGLE_READ_THRESHOLD [SINGLE_READ_THRESHOLD ...]\n \
+  \                       Log likelihood ratio threshold when computing fraction\n\
+  \                        of significant reads at each genomic position. If two\n\
+  \                        values are provided, statistics between these values\n\
+  \                        are not considered. Default thresholds: DNA:-1.5-2.5 ,\n\
+  \                        RNA:-2.5-2.5\n  --standard-log-likelihood-ratio\n     \
+  \                   Use a standard log likelihood ratio (LLR) statistic.\n     \
+  \                   Default is to use an outlier-robust LLR-like\n             \
+  \           statistic. Detail in full online documentation.\n  --coverage-dampen-counts\
+  \ COVERAGE_DAMPEN_COUNTS COVERAGE_DAMPEN_COUNTS\n                        Dampen\
+  \ fraction modified estimates for low coverage\n                        sites. Two\
+  \ parameters are unmodified and modified\n                        pseudo read counts.\
+  \ This is equivalent to a beta prior\n                        on the fraction estimate.\
+  \ Set to \"0 0\" to disable\n                        dampened fraction estimation.\
+  \ Default: [2, 0]\n\nOutput Argument:\n  --per-read-statistics-basename PER_READ_STATISTICS_BASENAME\n\
+  \                        Base for binary files containing per-read statistics\n\
+  \                        from statistical testing. Filenames will be [--per-\n \
+  \                       read-statistics-basename].[--alternate-\n              \
+  \          bases]?.tombo.per_read_stats\n  --num-most-significant-stored NUM_MOST_SIGNIFICANT_STORED\n\
+  \                        Number of the most significant sites to store for\n   \
+  \                     faster access. If a longer list of most significant\n    \
+  \                    sites is required the list must be re-computed from\n     \
+  \                   all batches. Very large values can increase RAM usage.\n   \
+  \                     Default: 100000\n\nMultiprocessing Arguments:\n  --multiprocess-region-size\
+  \ MULTIPROCESS_REGION_SIZE\n                        Size of regions over which to\
+  \ multiprocesses statistic\n                        computation. For very deep samples\
+  \ a smaller value is\n                        recommmended in order to control memory\
+  \ consumption.\n                        Default: 10000\n  --processes PROCESSES\n\
+  \                        Number of processes. Default: 1\n\nFAST5 Data Arguments:\n\
+  \  --corrected-group CORRECTED_GROUP\n                        FAST5 group created\
+  \ by resquiggle command. Default:\n                        RawGenomeCorrected_000\n\
+  \  --basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]\n          \
+  \              FAST5 subgroup(s) (under /Analyses/[--basecall-\n               \
+  \         group]/) containing basecalls and created within\n                   \
+  \     [--corrected-group] containing re-squiggle results.\n                    \
+  \    Default: ['BaseCalled_template']\n\nMiscellaneous Arguments:\n  --quiet, -q\
+  \           Don't print status information.\n  --help, -h            Print this\
+  \ help message and exit\n"
+generated_using:
+- --help

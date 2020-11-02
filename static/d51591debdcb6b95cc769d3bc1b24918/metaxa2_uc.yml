@@ -1,0 +1,221 @@
+!Command
+command:
+- metaxa2_uc
+positional: []
+named:
+- !Flag
+  description: ': Input count table (e.g. derived from metaxa2_dc)'
+  synonyms:
+  - -i
+  args: !ChoiceFlagArg
+    choices: !!set
+      file:
+  optional: true
+- !Flag
+  description: ': Base for the names of output file(s)'
+  synonyms:
+  - -o
+  args: !ChoiceFlagArg
+    choices: !!set
+      file:
+  optional: true
+- !Flag
+  description: ": A file or string describing the sample group division,\nor 'auto'\
+    \ if the groups should be guessed from sample names,\nor 'none' if all samples\
+    \ should be treated individually,\nor 'all' if all samples should be treated as\
+    \ they come from the same group, default = 'all'"
+  synonyms:
+  - -g
+  args: !ChoiceFlagArg
+    choices: !!set
+      string:
+      file:
+      none:
+      all:
+      auto:
+  optional: true
+- !Flag
+  description: ': Number of resampling rounds for each sample, default = 10000'
+  synonyms:
+  - -r
+  args: !ChoiceFlagArg
+    choices: !!set
+      value:
+  optional: true
+- !Flag
+  description: ": Number of entries sampled in each resampling round for each sample,\
+    \ 'min' will set this number to the number of entries in the smallest sample,\
+    \ default = 1000"
+  synonyms:
+  - -s
+  args: !ChoiceFlagArg
+    choices: !!set
+      value:
+      min:
+  optional: true
+- !Flag
+  description: ": Sample to compare to, leave blank to compare to all samples, use\
+    \ 'groups' to compare groups instead of samples, default is blank"
+  synonyms:
+  - -c
+  args: !ChoiceFlagArg
+    choices: !!set
+      string:
+  optional: true
+- !Flag
+  description: ': Within-sample variation cutoff to compare to (proportion of all
+    resampling values included), default = 0.99'
+  synonyms:
+  - -w
+  args: !ChoiceFlagArg
+    choices: !!set
+      value:
+  optional: true
+- !Flag
+  description: ": Resampling model to use, default = model\nEmpirical uses the empirical\
+    \ distribution from each sample within the group, which gives large variance (not\
+    \ statistical good-practice)\nAverage assumes that all samples are drawn directly\
+    \ from the group average, which gives very small variance (unrealistic)\nModel\
+    \ assumes a model that take sample variation into account when drawing from the\
+    \ group average, which gives very variance (more realistic)"
+  synonyms:
+  - -m
+  args: !ChoiceFlagArg
+    choices: !!set
+      model:
+      average:
+      empirical:
+  optional: true
+- !Flag
+  description: ': Distance/dissimilarity measure to use when comparing samples and
+    groups, default = bray'
+  synonyms:
+  - -d
+  args: !ChoiceFlagArg
+    choices: !!set
+      euclidean:
+      bray:
+      jaccard:
+  optional: true
+- !Flag
+  description: ': Use presence/absence for distance/dissimilarity rather than taking
+    abundances into account, off (F) by default'
+  synonyms:
+  - --binary
+  args: !ChoiceFlagArg
+    choices: !!set
+      T:
+      or:
+      F:
+  optional: true
+- !Flag
+  description: ': Filter out abundance values below this cutoff, default = 0'
+  synonyms:
+  - --filter
+  args: !ChoiceFlagArg
+    choices: !!set
+      value:
+  optional: true
+- !Flag
+  description: ': Outputs a readable summary file of the results, on (T) by default'
+  synonyms:
+  - --summary
+  args: !ChoiceFlagArg
+    choices: !!set
+      T:
+      or:
+      F:
+  optional: true
+- !Flag
+  description: ': Outputs a tab-separated table of the results, off (F) by default'
+  synonyms:
+  - --table
+  args: !ChoiceFlagArg
+    choices: !!set
+      T:
+      or:
+      F:
+  optional: true
+- !Flag
+  description: ': Outputs a results in a matrix format, off (F) by default'
+  synonyms:
+  - --matrix
+  args: !ChoiceFlagArg
+    choices: !!set
+      T:
+      or:
+      F:
+  optional: true
+- !Flag
+  description: ': Outputs the resampling table (can be huge), off (F) by default'
+  synonyms:
+  - --resampling_table
+  args: !ChoiceFlagArg
+    choices: !!set
+      T:
+      or:
+      F:
+  optional: true
+- !Flag
+  description: ': displays this help message'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': displays the bug fixes and known bugs in this version of Metaxa'
+  synonyms:
+  - --bugs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': displays licensing information'
+  synonyms:
+  - --license
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ': displays short usage information'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: metaxa2_uc -i <input file> -o <output file>\nOptions:\n-i {file}\
+  \ : Input count table (e.g. derived from metaxa2_dc)\n-o {file} : Base for the names\
+  \ of output file(s)\n-g {file,string,auto,none,all} : A file or string describing\
+  \ the sample group division,\n                             or 'auto' if the groups\
+  \ should be guessed from sample names,\n                             or 'none' if\
+  \ all samples should be treated individually,\n                             or 'all'\
+  \ if all samples should be treated as they come from the same group, default = 'all'\n\
+  \n-r {value} : Number of resampling rounds for each sample, default = 10000\n-s\
+  \ {value,min} : Number of entries sampled in each resampling round for each sample,\
+  \ 'min' will set this number to the number of entries in the smallest sample, default\
+  \ = 1000\n-c {string} : Sample to compare to, leave blank to compare to all samples,\
+  \ use 'groups' to compare groups instead of samples, default is blank\n-w {value}\
+  \ : Within-sample variation cutoff to compare to (proportion of all resampling values\
+  \ included), default = 0.99\n-m {empirical,average,model} : Resampling model to\
+  \ use, default = model\n                               Empirical uses the empirical\
+  \ distribution from each sample within the group, which gives large variance (not\
+  \ statistical good-practice)\n                               Average assumes that\
+  \ all samples are drawn directly from the group average, which gives very small\
+  \ variance (unrealistic)\n                               Model assumes a model that\
+  \ take sample variation into account when drawing from the group average, which\
+  \ gives very variance (more realistic)\n-d {bray,jaccard,euclidean} : Distance/dissimilarity\
+  \ measure to use when comparing samples and groups, default = bray\n--binary {T\
+  \ or F} : Use presence/absence for distance/dissimilarity rather than taking abundances\
+  \ into account, off (F) by default\n--filter {value} : Filter out abundance values\
+  \ below this cutoff, default = 0\n\n--summary {T or F} : Outputs a readable summary\
+  \ file of the results, on (T) by default\n--table {T or F} : Outputs a tab-separated\
+  \ table of the results, off (F) by default\n--matrix {T or F} : Outputs a results\
+  \ in a matrix format, off (F) by default\n--resampling_table {T or F} : Outputs\
+  \ the resampling table (can be huge), off (F) by default\n\n-h : displays short\
+  \ usage information\n--help : displays this help message\n--bugs : displays the\
+  \ bug fixes and known bugs in this version of Metaxa\n--license : displays licensing\
+  \ information\n-----------------------------------------------------------------\n"
+generated_using:
+- --help
