@@ -31,7 +31,7 @@ subcommands:
     args: !SimpleFlagArg
       name: output dir
     optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -61,7 +61,7 @@ subcommands:
         args: !SimpleFlagArg
           name: output dir
         optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -92,7 +92,7 @@ subcommands:
             args: !SimpleFlagArg
               name: output dir
             optional: true
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
             named: []
@@ -108,102 +108,320 @@ subcommands:
                 optional: false
               named:
               - !Flag
-                description: '(default: momo_out)'
+                description: "(default: momo_out)\n--oc <output dir> (default: momo_out)\n\
+                  --psm-type comet|ms-gf+|tide|percolator\n--sequence-column [column\
+                  \ name]\n--width [positive odd integer] (default: 7)\n--protein-database\
+                  \ <protein sequence file> (default: None)\n--filter [field],lt|le|eq|ge|gt,[threshold]\
+                  \ (default: no filter)\n--remove-unknowns T|F (default: F)\n--eliminate-repeats\
+                  \ [positive odd integer or 0 for no elimination] (default: width)\n\
+                  --min-occurrences [non-negative] (default: 5)\n--single-motif-per-mass\n\
+                  --hash-fasta [positive integer or 0 for linear search] (default:\
+                  \ 0)\n--verbosity 1|2|3|4|5 (default: 2)\n--version (print the version\
+                  \ and exit)\n"
                 synonyms:
                 - --o
                 args: !SimpleFlagArg
                   name: output dir
                 optional: true
-              - !Flag
-                description: '(default: momo_out)'
-                synonyms:
-                - --oc
-                args: !SimpleFlagArg
-                  name: output dir
-                optional: true
-              - !Flag
-                description: '|ms-gf+|tide|percolator'
-                synonyms:
-                - --psm-type
-                args: !SimpleFlagArg
-                  name: comet
-                optional: true
-              - !Flag
-                description: '[column name]'
-                synonyms:
-                - --sequence-column
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '[positive odd integer] (default: 7)'
-                synonyms:
-                - --width
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '(default: None)'
-                synonyms:
-                - --protein-database
-                args: !SimpleFlagArg
-                  name: protein sequence file
-                optional: true
-              - !Flag
-                description: '[field],lt|le|eq|ge|gt,[threshold] (default: no filter)'
-                synonyms:
-                - --filter
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '|F (default: F)'
-                synonyms:
-                - --remove-unknowns
-                args: !SimpleFlagArg
-                  name: T
-                optional: true
-              - !Flag
-                description: '[positive odd integer or 0 for no elimination] (default:
-                  width)'
-                synonyms:
-                - --eliminate-repeats
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '[non-negative] (default: 5)'
-                synonyms:
-                - --min-occurrences
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: ''
-                synonyms:
-                - --single-motif-per-mass
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '[positive integer or 0 for linear search] (default:
-                  0)'
-                synonyms:
-                - --hash-fasta
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '|2|3|4|5 (default: 2)'
-                synonyms:
-                - --verbosity
-                args: !SimpleFlagArg
-                  name: '1'
-                optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: ptm file
+                    optional: false
+                  named:
+                  - !Flag
+                    description: '(default: momo_out)'
+                    synonyms:
+                    - --o
+                    args: !SimpleFlagArg
+                      name: output dir
+                    optional: true
+                  - !Flag
+                    description: '(default: momo_out)'
+                    synonyms:
+                    - --oc
+                    args: !SimpleFlagArg
+                      name: output dir
+                    optional: true
+                  - !Flag
+                    description: '|ms-gf+|tide|percolator'
+                    synonyms:
+                    - --psm-type
+                    args: !SimpleFlagArg
+                      name: comet
+                    optional: true
+                  - !Flag
+                    description: '[column name]'
+                    synonyms:
+                    - --sequence-column
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '[positive odd integer] (default: 7)'
+                    synonyms:
+                    - --width
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '(default: None)'
+                    synonyms:
+                    - --protein-database
+                    args: !SimpleFlagArg
+                      name: protein sequence file
+                    optional: true
+                  - !Flag
+                    description: '[field],lt|le|eq|ge|gt,[threshold] (default: no
+                      filter)'
+                    synonyms:
+                    - --filter
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '|F (default: F)'
+                    synonyms:
+                    - --remove-unknowns
+                    args: !SimpleFlagArg
+                      name: T
+                    optional: true
+                  - !Flag
+                    description: '[positive odd integer or 0 for no elimination] (default:
+                      width)'
+                    synonyms:
+                    - --eliminate-repeats
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '[non-negative] (default: 5)'
+                    synonyms:
+                    - --min-occurrences
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --single-motif-per-mass
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '[positive integer or 0 for linear search] (default:
+                      0)'
+                    synonyms:
+                    - --hash-fasta
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '|2|3|4|5 (default: 2)'
+                    synonyms:
+                    - --verbosity
+                    args: !SimpleFlagArg
+                      name: '1'
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag: !Flag
+                    description: (print the version and exit)
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "\nYou must specify at least one PTM file!\n\nUsage:\
+                    \ momo simple [options] <ptm file>+\n\n   Options:\n     --o <output\
+                    \ dir> (default: momo_out)\n     --oc <output dir> (default: momo_out)\n\
+                    \     --psm-type comet|ms-gf+|tide|percolator\n     --sequence-column\
+                    \ [column name]\n     --width [positive odd integer] (default:\
+                    \ 7)\n     --protein-database <protein sequence file> (default:\
+                    \ None)\n     --filter [field],lt|le|eq|ge|gt,[threshold] (default:\
+                    \ no filter)\n     --remove-unknowns T|F (default: F)\n     --eliminate-repeats\
+                    \ [positive odd integer or 0 for no elimination] (default: width)\n\
+                    \     --min-occurrences [non-negative] (default: 5)\n     --single-motif-per-mass\n\
+                    \     --hash-fasta [positive integer or 0 for linear search] (default:\
+                    \ 0)\n     --verbosity 1|2|3|4|5 (default: 2)\n     --version\
+                    \ (print the version and exit)\n\n"
+                  generated_using: &id004 []
+                - !Command
+                  command: &id005
+                  - momo
+                  - modl
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: ptm file
+                    optional: false
+                  named:
+                  - !Flag
+                    description: '(default: momo_out)'
+                    synonyms:
+                    - --o
+                    args: !SimpleFlagArg
+                      name: output dir
+                    optional: true
+                  - !Flag
+                    description: '(default: momo_out)'
+                    synonyms:
+                    - --oc
+                    args: !SimpleFlagArg
+                      name: output dir
+                    optional: true
+                  - !Flag
+                    description: '|ms-gf+|tide|percolator'
+                    synonyms:
+                    - --psm-type
+                    args: !SimpleFlagArg
+                      name: comet
+                    optional: true
+                  - !Flag
+                    description: '[column name]'
+                    synonyms:
+                    - --sequence-column
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '[positive odd integer] (default: 7)'
+                    synonyms:
+                    - --width
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '(default: None)'
+                    synonyms:
+                    - --protein-database
+                    args: !SimpleFlagArg
+                      name: protein sequence file
+                    optional: true
+                  - !Flag
+                    description: '[field],lt|le|eq|ge|gt,[threshold] (default: no
+                      filter)'
+                    synonyms:
+                    - --filter
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '|F (default: F)'
+                    synonyms:
+                    - --remove-unknowns
+                    args: !SimpleFlagArg
+                      name: T
+                    optional: true
+                  - !Flag
+                    description: '[positive odd integer or 0 for no elimination] (default:
+                      width)'
+                    synonyms:
+                    - --eliminate-repeats
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '[non-negative] (default: 5)'
+                    synonyms:
+                    - --min-occurrences
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --single-motif-per-mass
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '[positive integer or 0 for linear search] (default:
+                      0)'
+                    synonyms:
+                    - --hash-fasta
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '[non-negative integer]'
+                    synonyms:
+                    - --seed
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --db-background
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '[positive integer] (default: 100)'
+                    synonyms:
+                    - --max-motifs
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '[positive integer] (default: 50)'
+                    synonyms:
+                    - --max-iterations
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '[positive integer] (default: 10)'
+                    synonyms:
+                    - --max-no-decrease
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '|2|3|4|5 (default: 2)'
+                    synonyms:
+                    - --verbosity
+                    args: !SimpleFlagArg
+                      name: '1'
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag: !Flag
+                    description: (print the version and exit)
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "\nYou must specify at least one PTM file!\n\nUsage:\
+                    \ momo modl [options] <ptm file>+\n\n   Options:\n     --o <output\
+                    \ dir> (default: momo_out)\n     --oc <output dir> (default: momo_out)\n\
+                    \     --psm-type comet|ms-gf+|tide|percolator\n     --sequence-column\
+                    \ [column name]\n     --width [positive odd integer] (default:\
+                    \ 7)\n     --protein-database <protein sequence file> (default:\
+                    \ None)\n     --filter [field],lt|le|eq|ge|gt,[threshold] (default:\
+                    \ no filter)\n     --remove-unknowns T|F (default: F)\n     --eliminate-repeats\
+                    \ [positive odd integer or 0 for no elimination] (default: width)\n\
+                    \     --min-occurrences [non-negative] (default: 5)\n     --single-motif-per-mass\n\
+                    \     --hash-fasta [positive integer or 0 for linear search] (default:\
+                    \ 0)\n     --seed [non-negative integer]\n     --db-background\n\
+                    \     --max-motifs [positive integer] (default: 100)\n     --max-iterations\
+                    \ [positive integer] (default: 50)\n     --max-no-decrease [positive\
+                    \ integer] (default: 10)\n     --verbosity 1|2|3|4|5 (default:\
+                    \ 2)\n     --version (print the version and exit)\n\n"
+                  generated_using: *id004
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "\nYou must specify one of the known algorithms!\n\nUsage:\
+                  \ momo <algorithm> [options] <arguments>\n\nMoMo supports the following\
+                  \ algorithms:\n  simple\n  motifx\n  modl\n\nOptions and arguments\
+                  \ are specific to each command.\n\nType 'momo <command>' for details.\n\
+                  \n"
+                generated_using: &id006
+                - --help
               subcommands: []
               usage: []
               help_flag:
               usage_flag:
-              version_flag: !Flag
-                description: (print the version and exit)
-                synonyms:
-                - --version
-                args: !EmptyFlagArg {}
-                optional: true
+              version_flag:
               help_text: "\nYou must specify at least one PTM file!\n\nUsage: momo\
                 \ simple [options] <ptm file>+\n\n   Options:\n     --o <output dir>\
                 \ (default: momo_out)\n     --oc <output dir> (default: momo_out)\n\
@@ -217,11 +435,9 @@ subcommands:
                 \     --hash-fasta [positive integer or 0 for linear search] (default:\
                 \ 0)\n     --verbosity 1|2|3|4|5 (default: 2)\n     --version (print\
                 \ the version and exit)\n\n"
-              generated_using: &id004 []
+              generated_using: *id004
             - !Command
-              command: &id005
-              - momo
-              - modl
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -230,132 +446,30 @@ subcommands:
                 optional: false
               named:
               - !Flag
-                description: '(default: momo_out)'
+                description: "(default: momo_out)\n--oc <output dir> (default: momo_out)\n\
+                  --psm-type comet|ms-gf+|tide|percolator\n--sequence-column [column\
+                  \ name]\n--width [positive odd integer] (default: 7)\n--protein-database\
+                  \ <protein sequence file> (default: None)\n--filter [field],lt|le|eq|ge|gt,[threshold]\
+                  \ (default: no filter)\n--remove-unknowns T|F (default: F)\n--eliminate-repeats\
+                  \ [positive odd integer or 0 for no elimination] (default: width)\n\
+                  --min-occurrences [non-negative] (default: 5)\n--single-motif-per-mass\n\
+                  --hash-fasta [positive integer or 0 for linear search] (default:\
+                  \ 0)\n--seed [non-negative integer]\n--db-background\n--max-motifs\
+                  \ [positive integer] (default: 100)\n--max-iterations [positive\
+                  \ integer] (default: 50)\n--max-no-decrease [positive integer] (default:\
+                  \ 10)\n--verbosity 1|2|3|4|5 (default: 2)\n--version (print the\
+                  \ version and exit)\n"
                 synonyms:
                 - --o
                 args: !SimpleFlagArg
                   name: output dir
-                optional: true
-              - !Flag
-                description: '(default: momo_out)'
-                synonyms:
-                - --oc
-                args: !SimpleFlagArg
-                  name: output dir
-                optional: true
-              - !Flag
-                description: '|ms-gf+|tide|percolator'
-                synonyms:
-                - --psm-type
-                args: !SimpleFlagArg
-                  name: comet
-                optional: true
-              - !Flag
-                description: '[column name]'
-                synonyms:
-                - --sequence-column
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '[positive odd integer] (default: 7)'
-                synonyms:
-                - --width
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '(default: None)'
-                synonyms:
-                - --protein-database
-                args: !SimpleFlagArg
-                  name: protein sequence file
-                optional: true
-              - !Flag
-                description: '[field],lt|le|eq|ge|gt,[threshold] (default: no filter)'
-                synonyms:
-                - --filter
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '|F (default: F)'
-                synonyms:
-                - --remove-unknowns
-                args: !SimpleFlagArg
-                  name: T
-                optional: true
-              - !Flag
-                description: '[positive odd integer or 0 for no elimination] (default:
-                  width)'
-                synonyms:
-                - --eliminate-repeats
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '[non-negative] (default: 5)'
-                synonyms:
-                - --min-occurrences
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: ''
-                synonyms:
-                - --single-motif-per-mass
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '[positive integer or 0 for linear search] (default:
-                  0)'
-                synonyms:
-                - --hash-fasta
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '[non-negative integer]'
-                synonyms:
-                - --seed
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: ''
-                synonyms:
-                - --db-background
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '[positive integer] (default: 100)'
-                synonyms:
-                - --max-motifs
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '[positive integer] (default: 50)'
-                synonyms:
-                - --max-iterations
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '[positive integer] (default: 10)'
-                synonyms:
-                - --max-no-decrease
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: '|2|3|4|5 (default: 2)'
-                synonyms:
-                - --verbosity
-                args: !SimpleFlagArg
-                  name: '1'
                 optional: true
               parent: *id003
               subcommands: []
               usage: []
               help_flag:
               usage_flag:
-              version_flag: !Flag
-                description: (print the version and exit)
-                synonyms:
-                - --version
-                args: !EmptyFlagArg {}
-                optional: true
+              version_flag:
               help_text: "\nYou must specify at least one PTM file!\n\nUsage: momo\
                 \ modl [options] <ptm file>+\n\n   Options:\n     --o <output dir>\
                 \ (default: momo_out)\n     --oc <output dir> (default: momo_out)\n\
@@ -381,8 +495,7 @@ subcommands:
               \ momo <algorithm> [options] <arguments>\n\nMoMo supports the following\
               \ algorithms:\n  simple\n  motifx\n  modl\n\nOptions and arguments are\
               \ specific to each command.\n\nType 'momo <command>' for details.\n\n"
-            generated_using: &id006
-            - --help
+            generated_using: *id006
           subcommands: []
           usage: []
           help_flag:
@@ -428,7 +541,7 @@ subcommands:
             args: !SimpleFlagArg
               name: output dir
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag:
@@ -503,7 +616,7 @@ subcommands:
         args: !SimpleFlagArg
           name: output dir
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag:
@@ -576,7 +689,7 @@ subcommands:
     args: !SimpleFlagArg
       name: output dir
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:

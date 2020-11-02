@@ -32,7 +32,7 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -63,7 +63,7 @@ subcommands:
         - -options
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -94,30 +94,10 @@ subcommands:
             - -options
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: ': specify that both alignments are in format <s> (SELEX,
-                for instance)'
-              synonyms:
-              - --informat
-              args: !SimpleFlagArg
-                name: s
-              optional: true
-            - !Flag
-              description: ': suppress verbose header (used in regression testing)'
-              synonyms:
-              - --quiet
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: ''
-              synonyms:
-              - -options
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -145,7 +125,133 @@ subcommands:
                 - -options
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: ': specify that both alignments are in format <s> (SELEX,
+                    for instance)'
+                  synonyms:
+                  - --informat
+                  args: !SimpleFlagArg
+                    name: s
+                  optional: true
+                - !Flag
+                  description: ': suppress verbose header (used in regression testing)'
+                  synonyms:
+                  - --quiet
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -options
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: compstruct
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: trusted file
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: test file
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -options
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ': print short help and usage info'
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "\nFATAL: Incorrect number of command line arguments.\n\
+                    Usage: compstruct [-options] <trusted file> <test file>\n  Both\
+                    \ files must contain secondary structure markup (e.g. Stockholm,\
+                    \ SQUID,\n  SELEX formats), and sequences must occur in the same\
+                    \ order in the two files.\n\n  Available options are:\n   -h :\
+                    \ print short help and usage info\n\n\n"
+                  generated_using: &id004 []
+                - !Command
+                  command: &id005
+                  - compstruct
+                  - trusted file
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: test file
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -options
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ': print short help and usage info'
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "\nFATAL: Incorrect number of command line arguments.\n\
+                    Usage: compstruct [-options] <trusted file> <test file>\n  Both\
+                    \ files must contain secondary structure markup (e.g. Stockholm,\
+                    \ SQUID,\n  SELEX formats), and sequences must occur in the same\
+                    \ order in the two files.\n\n  Available options are:\n   -h :\
+                    \ print short help and usage info\n\n\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: ': print short help and usage info'
+                  synonyms:
+                  - -h
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "compalign - compare test RNA secondary structure predictions\
+                  \ to trusted set\nSQUID 1.9g (Oct 2002)\nCopyright (C) 1992-2002\
+                  \ HHMI/Washington University School of Medicine\nFreely distributed\
+                  \ under the GNU General Public License (GPL)\n- - - - - - - - -\
+                  \ - - - - - - - - - - - - - - - - - - - - - - - - - - -\nUsage:\
+                  \ compstruct [-options] <trusted file> <test file>\n  Both files\
+                  \ must contain secondary structure markup (e.g. Stockholm, SQUID,\n\
+                  \  SELEX formats), and sequences must occur in the same order in\
+                  \ the two files.\n\n  Available options are:\n   -h : print short\
+                  \ help and usage info\n\n   --informat <s> : specify that both alignments\
+                  \ are in format <s> (SELEX, for instance)\n   --quiet        : suppress\
+                  \ verbose header (used in regression testing)\n\n"
+                generated_using: &id006
+                - -h
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -162,11 +268,9 @@ subcommands:
                 \ formats), and sequences must occur in the same order in the two\
                 \ files.\n\n  Available options are:\n   -h : print short help and\
                 \ usage info\n\n\n"
-              generated_using: &id004 []
+              generated_using: *id004
             - !Command
-              command: &id005
-              - compstruct
-              - trusted file
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -199,12 +303,7 @@ subcommands:
                 \ usage info\n\n\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: ': print short help and usage info'
-              synonyms:
-              - -h
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "compalign - compare test RNA secondary structure predictions\
@@ -218,8 +317,7 @@ subcommands:
               \   -h : print short help and usage info\n\n   --informat <s> : specify\
               \ that both alignments are in format <s> (SELEX, for instance)\n   --quiet\
               \        : suppress verbose header (used in regression testing)\n\n"
-            generated_using: &id006
-            - -h
+            generated_using: *id006
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -252,7 +350,7 @@ subcommands:
             - -options
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -317,7 +415,7 @@ subcommands:
         - -options
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -380,7 +478,7 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag

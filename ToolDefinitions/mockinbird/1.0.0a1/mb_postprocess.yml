@@ -23,7 +23,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PREFIX
     optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -45,7 +45,7 @@ subcommands:
         args: !SimpleFlagArg
           name: PREFIX
         optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -67,29 +67,10 @@ subcommands:
             args: !SimpleFlagArg
               name: PREFIX
             optional: true
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: "preprocessing filename prefix - only required if there\n\
-                are multiple table files in the specified preprocess\ndirectory"
-              synonyms:
-              - --prefix
-              args: !SimpleFlagArg
-                name: PREFIX
-              optional: true
-            - !Flag
-              description: verbosity level of the logger
-              synonyms:
-              - --log_level
-              args: !ChoiceFlagArg
-                choices: !!set
-                  ? debug
-                  ? info
-                  ? warn
-                  ? error
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -108,7 +89,169 @@ subcommands:
                 args: !SimpleFlagArg
                   name: PREFIX
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: "preprocessing filename prefix - only required if there\n\
+                    are multiple table files in the specified preprocess\ndirectory"
+                  synonyms:
+                  - --prefix
+                  args: !SimpleFlagArg
+                    name: PREFIX
+                  optional: true
+                - !Flag
+                  description: verbosity level of the logger
+                  synonyms:
+                  - --log_level
+                  args: !ChoiceFlagArg
+                    choices: !!set
+                      ? debug
+                      ? info
+                      ? warn
+                      ? error
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: mockinbird-postprocess
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --prefix
+                    args: !SimpleFlagArg
+                      name: PREFIX
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: mockinbird-postprocess [-h] [--prefix PREFIX]\n\
+                    \                              [--log_level {debug,info,warn,error}]\n\
+                    \                              [--version]\n                 \
+                    \             preprocess_dir output_dir config_file\nmockinbird-postprocess:\
+                    \ error: argument preprocess_dir: 'output_dir' is not an existing\
+                    \ directory\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - mb-postprocess
+                  - exist
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: mockinbird-postprocess
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --prefix
+                    args: !SimpleFlagArg
+                      name: PREFIX
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: mockinbird-postprocess [-h] [--prefix PREFIX]\n\
+                    \                              [--log_level {debug,info,warn,error}]\n\
+                    \                              [--version]\n                 \
+                    \             preprocess_dir output_dir config_file\nmockinbird-postprocess:\
+                    \ error: argument preprocess_dir: 'exist' is not an existing directory\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - mb-postprocess
+                  - preprocess_dir
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: mockinbird-postprocess
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --prefix
+                    args: !SimpleFlagArg
+                      name: PREFIX
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: mockinbird-postprocess [-h] [--prefix PREFIX]\n\
+                    \                              [--log_level {debug,info,warn,error}]\n\
+                    \                              [--version]\n                 \
+                    \             preprocess_dir output_dir config_file\nmockinbird-postprocess:\
+                    \ error: argument preprocess_dir: 'preprocess_dir' is not an existing\
+                    \ directory\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: show program's version number and exit
+                  synonyms:
+                  - --version
+                  - -v
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "usage: mockinbird-postprocess [-h] [--prefix PREFIX]\n\
+                  \                              [--log_level {debug,info,warn,error}]\n\
+                  \                              [--version]\n                   \
+                  \           preprocess_dir output_dir config_file\n\nrun the PAR-CLIP\
+                  \ postprocessing pipeline\n\npositional arguments:\n  preprocess_dir\
+                  \        folder to files created by the preprocessing\n  output_dir\
+                  \            output directory - will be created if it does not\n\
+                  \                        exist\n  config_file           path to\
+                  \ the postprocessing config file\n\noptional arguments:\n  -h, --help\
+                  \            show this help message and exit\n  --prefix PREFIX\
+                  \       preprocessing filename prefix - only required if there\n\
+                  \                        are multiple table files in the specified\
+                  \ preprocess\n                        directory\n  --log_level {debug,info,warn,error}\n\
+                  \                        verbosity level of the logger\n  --version,\
+                  \ -v         show program's version number and exit\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -125,12 +268,9 @@ subcommands:
                 \         preprocess_dir output_dir config_file\nmockinbird-postprocess:\
                 \ error: argument preprocess_dir: 'output_dir' is not an existing\
                 \ directory\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - mb-postprocess
-              - exist
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -163,9 +303,7 @@ subcommands:
                 \ error: argument preprocess_dir: 'exist' is not an existing directory\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - mb-postprocess
-              - preprocess_dir
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -199,21 +337,9 @@ subcommands:
                 \ directory\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: show program's version number and exit
-              synonyms:
-              - --version
-              - -v
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "usage: mockinbird-postprocess [-h] [--prefix PREFIX]\n   \
               \                           [--log_level {debug,info,warn,error}]\n\
               \                              [--version]\n                       \
@@ -262,7 +388,7 @@ subcommands:
             args: !SimpleFlagArg
               name: PREFIX
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -295,7 +421,7 @@ subcommands:
             args: !SimpleFlagArg
               name: PREFIX
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -363,7 +489,7 @@ subcommands:
         args: !SimpleFlagArg
           name: PREFIX
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -396,7 +522,7 @@ subcommands:
         args: !SimpleFlagArg
           name: PREFIX
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -463,7 +589,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PREFIX
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -496,7 +622,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PREFIX
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag

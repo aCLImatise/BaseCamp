@@ -67,17 +67,10 @@ subcommands:
             args: !SimpleFlagArg
               name: L
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: ''
-              synonyms:
-              - -l
-              args: !SimpleFlagArg
-                name: L
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -96,7 +89,66 @@ subcommands:
                 args: !SimpleFlagArg
                   name: L
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -l
+                  args: !SimpleFlagArg
+                    name: L
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: outfile
+                    position: 0
+                    name: infile
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Length of minimal suffix for node merging
+                    synonyms:
+                    - -l
+                    args: !SimpleFlagArg
+                      name: L
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: graph_simplification.py [-h] [-l L] infile outfile\n\
+                    \npositional arguments:\n  infile\n  outfile\n\noptional arguments:\n\
+                    \  -h, --help  show this help message and exit\n  -l L       \
+                    \ Length of minimal suffix for node merging\n"
+                  generated_using: &id004
+                  - --help
+                usage: []
+                help_flag: !Flag
+                  description: ''
+                  synonyms:
+                  - -h
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: graph_simplification.py [-h] [-l L] infile outfile\n\
+                  graph_simplification.py: error: the following arguments are required:\
+                  \ infile, outfile\n"
+                generated_using: &id005 []
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -112,21 +164,15 @@ subcommands:
                 \npositional arguments:\n  infile\n  outfile\n\noptional arguments:\n\
                 \  -h, --help  show this help message and exit\n  -l L        Length\
                 \ of minimal suffix for node merging\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: ''
-              synonyms:
-              - -h
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage: graph_simplification.py [-h] [-l L] infile outfile\n\
               graph_simplification.py: error: the following arguments are required:\
               \ infile, outfile\n"
-            generated_using: &id005 []
+            generated_using: *id005
           subcommands: []
           usage: []
           help_flag: !Flag

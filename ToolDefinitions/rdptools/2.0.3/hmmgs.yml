@@ -41,7 +41,7 @@ subcommands:
     args: !SimpleFlagArg
       name: n_nodes
     optional: true
-  parent: &id012 !Command
+  parent: &id013 !Command
     command: *id001
     positional: []
     named: []
@@ -82,7 +82,7 @@ subcommands:
         args: !SimpleFlagArg
           name: n_nodes
         optional: true
-      parent: &id011 !Command
+      parent: &id012 !Command
         command: *id001
         positional: []
         named: []
@@ -123,7 +123,7 @@ subcommands:
             args: !SimpleFlagArg
               name: n_nodes
             optional: true
-          parent: &id003 !Command
+          parent: &id011 !Command
             command: *id001
             positional: []
             named: []
@@ -164,7 +164,279 @@ subcommands:
                 args: !SimpleFlagArg
                   name: n_nodes
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: dtime limit for individual searches (conservative
+                      suggestion = 100)
+                    position: 0
+                    name: limit_in_seconds
+                    optional: false
+                  - !Positional
+                    description: bloom filter built using hmmgs build
+                    position: 1
+                    name: bloom_filter
+                    optional: false
+                  - !Positional
+                    description: starting kmers (can use KmerFilter's fast_kmer_filter
+                      to identify starting kmers)
+                    position: 0
+                    name: kmers
+                    optional: false
+                  named:
+                  - !Flag
+                    description: don't normalize the hmm input
+                    synonyms:
+                    - -u
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: prune the search if the score does not improve after
+                      n_nodes (default 20, set to 0 to disable pruning)
+                    synonyms:
+                    - -p
+                    args: !SimpleFlagArg
+                      name: n_nodes
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: print this help information
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "USAGE: TimeLimitedSearch [-h] [-u] [-p <n_nodes>] <k>\
+                    \ <limit_in_seconds> <bloom_filter> <for_hmm> <rev_hmm> <kmers>\n\
+                    \nOptions:\n\t-h\n\t\tprint this help information\n\t-u\n\t\t\
+                    don't normalize the hmm input\n\t-p n_nodes\n\t\tprune the search\
+                    \ if the score does not improve after n_nodes (default 20, set\
+                    \ to 0 to disable pruning)\n\tk\n\t\tnumber of best local assemblies\
+                    \ to return for each kmer\n\tlimit_in_seconds\n\t\tdtime limit\
+                    \ for individual searches (conservative suggestion = 100)\n\t\
+                    bloom_filter\n\t\tbloom filter built using hmmgs build\n\tfor_hmm,\
+                    \ rev_hmm\n\t\tforward and reverse hidden markov models, HMMER3\
+                    \ format\n\tkmers\n\t\tstarting kmers (can use KmerFilter's fast_kmer_filter\
+                    \ to identify starting kmers)\n"
+                  generated_using: &id005
+                  - -h
+                - !Command
+                  command: &id006
+                  - hmmgs
+                  - stats
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: BloomFilterStats
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: bloom_filter
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "USAGE: BloomFilterStats <bloom_filter>\n"
+                  generated_using: &id007 []
+                - !Command
+                  command: &id008
+                  - hmmgs
+                  - find-cuts
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: CutFinder
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: kmer size
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: bloom filter
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 3
+                    name: query files
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "USAGE: CutFinder <kmer size> <bloom filter> <query files>\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id009
+                  - hmmgs
+                  - build
+                  positional:
+                  - !Positional
+                    description: 'fasta or fastq files containing the reads to build
+                      the graph from '
+                    position: 0
+                    name: read_file
+                    optional: false
+                  - !Positional
+                    description: 'file to write the bloom filter to '
+                    position: 1
+                    name: bloom_out
+                    optional: false
+                  - !Positional
+                    description: 'should be multiple of 3, (recommend 45, maximum
+                      63) '
+                    position: 2
+                    name: kmerSize
+                    optional: false
+                  - !Positional
+                    description: the size of the bloom filter (or memory needed) is
+                      2^bloomSizeLog2 bits, increase if the predicted false positive
+                      rate is greater than 1%
+                    position: 3
+                    name: bloomSizeLog2
+                    optional: false
+                  - !Positional
+                    description: minimum number of times a kmer has to be observed
+                      in SEQFILE to be included in the final bloom filter
+                    position: 4
+                    name: cutoff
+                    optional: false
+                  - !Positional
+                    description: number of hash functions, default 4
+                    position: 5
+                    name: hashCount
+                    optional: false
+                  - !Positional
+                    description: the size of one bitSet 2^bitsetSizeLog2, recommend
+                      30, usually not changed
+                    position: 6
+                    name: bitsetSizeLog2
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "USAGE: BloomFilterBuilder <read_file> <bloom_out> <kmerSize>\
+                    \ <bloomSizeLog2> [cutoff = 1] [# hashCount = 4] [bitsetSizeLog2\
+                    \ = 30]\n\tread_file\n\t\tfasta or fastq files containing the\
+                    \ reads to build the graph from \n\tbloom_out\n\t\tfile to write\
+                    \ the bloom filter to \n\tkmerSize\n\t\tshould be multiple of\
+                    \ 3, (recommend 45, maximum 63) \n\tbloomSizeLog2\n\t\tthe size\
+                    \ of the bloom filter (or memory needed) is 2^bloomSizeLog2 bits,\
+                    \ increase if the predicted false positive rate is greater than\
+                    \ 1%\n\tcutoff\n\t\tminimum number of times a kmer has to be observed\
+                    \ in SEQFILE to be included in the final bloom filter\n\thashCount\n\
+                    \t\tnumber of hash functions, default 4\n\tbitsetSizeLog2\n\t\t\
+                    the size of one bitSet 2^bitsetSizeLog2, recommend 30, usually\
+                    \ not changed\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id010
+                  - hmmgs
+                  - merge
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: USAGE
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "Generate all combinations for multiple\npaths, instead\
+                      \ of just the best"
+                    synonyms:
+                    - -a
+                    - --all
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Minimum bits score
+                    synonyms:
+                    - -b
+                    - --min-bits
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Minimum length
+                    synonyms:
+                    - -l
+                    - --min-length
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Write output to file instead of stdout
+                    synonyms:
+                    - -o
+                    - --out
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: "short sample name, to be used as part of\ncontig\
+                      \ identifiers. This allow analyzing\ncontigs together from different\
+                      \ samples in\ndownstream analysis\n"
+                    synonyms:
+                    - -s
+                    - --short_samplename
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: USAGE: ContigMerger [options] <hmm> <hmmgs_file>\
+                    \ <nucl_contig>\n -a,--all                      Generate all combinations\
+                    \ for multiple\n                               paths, instead\
+                    \ of just the best\n -b,--min-bits <arg>           Minimum bits\
+                    \ score\n -l,--min-length <arg>         Minimum length\n -o,--out\
+                    \ <arg>                Write output to file instead of stdout\n\
+                    \ -s,--short_samplename <arg>   short sample name, to be used\
+                    \ as part of\n                               contig identifiers.\
+                    \ This allow analyzing\n                               contigs\
+                    \ together from different samples in\n                       \
+                    \        downstream analysis\n"
+                  generated_using: *id004
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "USAGE: HMMgs <command> <options>\n\tbuild       - Build\
+                  \ a bloom filter\n\tstats       - Display bloom filter stats\n\t\
+                  search      - Search a bloom filter with an hmm\n\tmerge       -\
+                  \ Merge HMMgs left and right fragments\n\tlicense     - Print the\
+                  \ license\n\tfind-cuts   - Search bloom filter for cuts\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -186,12 +458,9 @@ subcommands:
                 \tfor_hmm, rev_hmm\n\t\tforward and reverse hidden markov models,\
                 \ HMMER3 format\n\tkmers\n\t\tstarting kmers (can use KmerFilter's\
                 \ fast_kmer_filter to identify starting kmers)\n"
-              generated_using: &id005
-              - -h
+              generated_using: *id005
             - !Command
-              command: &id006
-              - hmmgs
-              - stats
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -211,11 +480,9 @@ subcommands:
               usage_flag:
               version_flag:
               help_text: "USAGE: BloomFilterStats <bloom_filter>\n"
-              generated_using: &id007 []
+              generated_using: *id007
             - !Command
-              command: &id008
-              - hmmgs
-              - find-cuts
+              command: *id008
               positional:
               - !Positional
                 description: ''
@@ -245,12 +512,9 @@ subcommands:
               usage_flag:
               version_flag:
               help_text: "USAGE: CutFinder <kmer size> <bloom filter> <query files>\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id009
-              - hmmgs
-              - build
+              command: *id009
               positional:
               - !Positional
                 description: 'fasta or fastq files containing the reads to build the
@@ -313,9 +577,7 @@ subcommands:
                 \ recommend 30, usually not changed\n"
               generated_using: *id004
             - !Command
-              command: &id010
-              - hmmgs
-              - merge
+              command: *id010
               positional:
               - !Positional
                 description: ''
@@ -427,7 +689,7 @@ subcommands:
             name: bloom_filter
             optional: false
           named: []
-          parent: *id003
+          parent: *id011
           subcommands: []
           usage: []
           help_flag:
@@ -459,7 +721,7 @@ subcommands:
             name: query files
             optional: false
           named: []
-          parent: *id003
+          parent: *id011
           subcommands: []
           usage: []
           help_flag:
@@ -511,7 +773,7 @@ subcommands:
             name: bitsetSizeLog2
             optional: false
           named: []
-          parent: *id003
+          parent: *id011
           subcommands: []
           usage: []
           help_flag:
@@ -581,7 +843,7 @@ subcommands:
             args: !SimpleFlagArg
               name: arg
             optional: true
-          parent: *id003
+          parent: *id011
           subcommands: []
           usage: []
           help_flag:
@@ -642,7 +904,7 @@ subcommands:
         name: bloom_filter
         optional: false
       named: []
-      parent: *id011
+      parent: *id012
       subcommands: []
       usage: []
       help_flag:
@@ -674,7 +936,7 @@ subcommands:
         name: query files
         optional: false
       named: []
-      parent: *id011
+      parent: *id012
       subcommands: []
       usage: []
       help_flag:
@@ -725,7 +987,7 @@ subcommands:
         name: bitsetSizeLog2
         optional: false
       named: []
-      parent: *id011
+      parent: *id012
       subcommands: []
       usage: []
       help_flag:
@@ -794,7 +1056,7 @@ subcommands:
         args: !SimpleFlagArg
           name: arg
         optional: true
-      parent: *id011
+      parent: *id012
       subcommands: []
       usage: []
       help_flag:
@@ -854,7 +1116,7 @@ subcommands:
     name: bloom_filter
     optional: false
   named: []
-  parent: *id012
+  parent: *id013
   subcommands: []
   usage: []
   help_flag:
@@ -886,7 +1148,7 @@ subcommands:
     name: query files
     optional: false
   named: []
-  parent: *id012
+  parent: *id013
   subcommands: []
   usage: []
   help_flag:
@@ -936,7 +1198,7 @@ subcommands:
     name: bitsetSizeLog2
     optional: false
   named: []
-  parent: *id012
+  parent: *id013
   subcommands: []
   usage: []
   help_flag:
@@ -1003,7 +1265,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id012
+  parent: *id013
   subcommands: []
   usage: []
   help_flag:

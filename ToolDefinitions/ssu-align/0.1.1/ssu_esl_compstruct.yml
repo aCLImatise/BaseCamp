@@ -32,7 +32,7 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -63,7 +63,7 @@ subcommands:
         - -options
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -94,35 +94,10 @@ subcommands:
             - -options
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: ": use Mathews'relaxed criterion for correctness; allow\
-                \ +/-1 slip"
-              synonyms:
-              - -m
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: ': count pseudoknotted base pairs'
-              synonyms:
-              - -p
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: ': suppress verbose header'
-              synonyms:
-              - --quiet
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: ''
-              synonyms:
-              - -options
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -150,7 +125,128 @@ subcommands:
                 - -options
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: ": use Mathews'relaxed criterion for correctness; allow\
+                    \ +/-1 slip"
+                  synonyms:
+                  - -m
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: ': count pseudoknotted base pairs'
+                  synonyms:
+                  - -p
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: ': suppress verbose header'
+                  synonyms:
+                  - --quiet
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -options
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: ssu-esl-compstruct
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: trusted file
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: test file
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -options
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "Incorrect number of command line arguments.\nUsage:\
+                    \ ssu-esl-compstruct [-options] <trusted file> <test file>\n \
+                    \ Both files must be in Stockholm format with secondary structure\
+                    \ markup.\n  Sequences must occur in the same order in the two\
+                    \ files.\n  The markup must be in WUSS notation.\n\n\n\nTo see\
+                    \ more help on available options, do ssu-esl-compstruct -h\n\n"
+                  generated_using: &id004 []
+                - !Command
+                  command: &id005
+                  - ssu-esl-compstruct
+                  - trusted file
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: test file
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -options
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "Incorrect number of command line arguments.\nUsage:\
+                    \ ssu-esl-compstruct [-options] <trusted file> <test file>\n \
+                    \ Both files must be in Stockholm format with secondary structure\
+                    \ markup.\n  Sequences must occur in the same order in the two\
+                    \ files.\n  The markup must be in WUSS notation.\n\n\n\nTo see\
+                    \ more help on available options, do ssu-esl-compstruct -h\n\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: ': help; show brief info on version and usage'
+                  synonyms:
+                  - -h
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "# ssu-esl-compstruct :: calculate accuracy of RNA secondary\
+                  \ structure predictions\n# Easel s0.1.1 (Feb 2016)\n# Copyright\
+                  \ (C) 2016 HHMI Janelia Farm Research Campus\n# Freely distributed\
+                  \ under the BSD open source license.\n# - - - - - - - - - - - -\
+                  \ - - - - - - - - - - - - - - - - - - - - - - - -\nUsage: ssu-esl-compstruct\
+                  \ [-options] <trusted file> <test file>\n  Both files must be in\
+                  \ Stockholm format with secondary structure markup.\n  Sequences\
+                  \ must occur in the same order in the two files.\n  The markup must\
+                  \ be in WUSS notation.\n\n\n\n where options are:\n  -h      : help;\
+                  \ show brief info on version and usage\n  -m      : use Mathews'relaxed\
+                  \ criterion for correctness; allow +/-1 slip\n  -p      : count\
+                  \ pseudoknotted base pairs\n  --quiet : suppress verbose header\n"
+                generated_using: &id006
+                - -h
               subcommands: []
               usage: []
               help_flag:
@@ -162,11 +258,9 @@ subcommands:
                 \ in the same order in the two files.\n  The markup must be in WUSS\
                 \ notation.\n\n\n\nTo see more help on available options, do ssu-esl-compstruct\
                 \ -h\n\n"
-              generated_using: &id004 []
+              generated_using: *id004
             - !Command
-              command: &id005
-              - ssu-esl-compstruct
-              - trusted file
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -194,12 +288,7 @@ subcommands:
                 \ -h\n\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: ': help; show brief info on version and usage'
-              synonyms:
-              - -h
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "# ssu-esl-compstruct :: calculate accuracy of RNA secondary\
@@ -214,8 +303,7 @@ subcommands:
               \ and usage\n  -m      : use Mathews'relaxed criterion for correctness;\
               \ allow +/-1 slip\n  -p      : count pseudoknotted base pairs\n  --quiet\
               \ : suppress verbose header\n"
-            generated_using: &id006
-            - -h
+            generated_using: *id006
           subcommands: []
           usage: []
           help_flag:
@@ -243,7 +331,7 @@ subcommands:
             - -options
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag:
@@ -298,7 +386,7 @@ subcommands:
         - -options
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag:
@@ -352,7 +440,7 @@ subcommands:
     - -options
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:

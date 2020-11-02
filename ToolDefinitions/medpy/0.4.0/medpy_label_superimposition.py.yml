@@ -49,7 +49,7 @@ subcommands:
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -97,7 +97,7 @@ subcommands:
         - -v
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -145,28 +145,10 @@ subcommands:
             - -v
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: Display more information.
-              synonyms:
-              - -v
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Display debug information.
-              synonyms:
-              - -d
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Silently override existing output images.
-              synonyms:
-              - -f
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -211,7 +193,173 @@ subcommands:
                 - -v
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: Display more information.
+                  synonyms:
+                  - -v
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Display debug information.
+                  synonyms:
+                  - -d
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Silently override existing output images.
+                  synonyms:
+                  - -f
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: medpy_label_superimposition.py
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: image1
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: image2
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 3
+                    name: output
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -f
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -d
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -v
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: medpy_label_superimposition.py [-h] [-v] [-d]\
+                    \ [-f] image1 image2 output\nmedpy_label_superimposition.py: error:\
+                    \ the following arguments are required: image2, output\n"
+                  generated_using: &id004 []
+                - !Command
+                  command: &id005
+                  - medpy_label_superimposition.py
+                  - image2
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: medpy_label_superimposition.py
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: image1
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: image2
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 3
+                    name: output
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -f
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -d
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -v
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: medpy_label_superimposition.py [-h] [-v] [-d]\
+                    \ [-f] image1 image2 output\nmedpy_label_superimposition.py: error:\
+                    \ the following arguments are required: image2, output\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: medpy_label_superimposition.py [-h] [-v] [-d] [-f]\
+                  \ image1 image2 output\n\nTakes two label images as input and creates\
+                  \ their superimposition i.e. all the\nregions borders are preserved\
+                  \ and the resulting image contains more or the\nsame number of regions\
+                  \ as the respective input images. The resulting image has\nthe same\
+                  \ name as the first input image, just with a '_superimp' suffix.\n\
+                  Copyright (C) 2013 Oskar Maier This program comes with ABSOLUTELY\
+                  \ NO WARRANTY;\nThis is free software, and you are welcome to redistribute\
+                  \ it under certain\nconditions; see the LICENSE file or <http://www.gnu.org/licenses/>\
+                  \ for\ndetails.\n\npositional arguments:\n  image1      The first\
+                  \ input label image.\n  image2      The second input label image.\n\
+                  \  output      The output image.\n\noptional arguments:\n  -h, --help\
+                  \  show this help message and exit\n  -v          Display more information.\n\
+                  \  -d          Display debug information.\n  -f          Silently\
+                  \ override existing output images.\n"
+                generated_using: &id006
+                - --help
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -225,11 +373,9 @@ subcommands:
               help_text: "usage: medpy_label_superimposition.py [-h] [-v] [-d] [-f]\
                 \ image1 image2 output\nmedpy_label_superimposition.py: error: the\
                 \ following arguments are required: image2, output\n"
-              generated_using: &id004 []
+              generated_using: *id004
             - !Command
-              command: &id005
-              - medpy_label_superimposition.py
-              - image2
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -286,13 +432,7 @@ subcommands:
                 \ following arguments are required: image2, output\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage: medpy_label_superimposition.py [-h] [-v] [-d] [-f]\
@@ -310,8 +450,7 @@ subcommands:
               \ this help message and exit\n  -v          Display more information.\n\
               \  -d          Display debug information.\n  -f          Silently override\
               \ existing output images.\n"
-            generated_using: &id006
-            - --help
+            generated_using: *id006
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -368,7 +507,7 @@ subcommands:
             - -v
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -458,7 +597,7 @@ subcommands:
         - -v
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -547,7 +686,7 @@ subcommands:
     - -v
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag

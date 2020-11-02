@@ -39,7 +39,7 @@ subcommands:
     - --list
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id010 !Command
+  parent: &id011 !Command
     command: *id001
     positional: []
     named: []
@@ -77,7 +77,7 @@ subcommands:
         - --list
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id009 !Command
+      parent: &id010 !Command
         command: *id001
         positional: []
         named: []
@@ -116,7 +116,7 @@ subcommands:
             - --list
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id009 !Command
             command: *id001
             positional: []
             named: []
@@ -155,7 +155,235 @@ subcommands:
                 - --list
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: input1
+                    optional: false
+                  named:
+                  - !Flag
+                    description: agg will output output_prefix.bcf and output_prefix.dpt
+                    synonyms:
+                    - -o
+                    - --output
+                    args: !SimpleFlagArg
+                      name: output_prefix
+                    optional: true
+                  - !Flag
+                    description: number of compression threads [0]
+                    synonyms:
+                    - -@
+                    - --thread
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  - !Flag
+                    description: files.txt             plain text file listing agg
+                      chunks to merge]
+                    synonyms:
+                    - -l
+                    - --list
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "\nAbout:   merges single sample agg files into an agg\
+                    \ chunk\nUsage:   agg ingest2 input1 [input2 [...]] -o output_prefix\n\
+                    \nRequired options:\n    -o, --output <output_prefix>       agg\
+                    \ will output output_prefix.bcf and output_prefix.dpt\nOptional\
+                    \ options:\n    -@, --thread INT                   number of compression\
+                    \ threads [0]\n    -l, --list   files.txt             plain text\
+                    \ file listing agg chunks to merge]\n\n\n"
+                  generated_using: &id004 []
+                - !Command
+                  command: &id005
+                  - agg
+                  - ingest1
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: input_gvcf
+                    optional: false
+                  named:
+                  - !Flag
+                    description: agg will output output_prefix.bcf and output_prefix.tmp
+                    synonyms:
+                    - -o
+                    - --output
+                    args: !SimpleFlagArg
+                      name: output_prefix
+                    optional: true
+                  - !Flag
+                    description: reference sequence
+                    synonyms:
+                    - -f
+                    - --fasta-ref
+                    args: !SimpleFlagArg
+                      name: file
+                    optional: true
+                  - !Flag
+                    description: skip non-matching ref alleles (will warn)
+                    synonyms:
+                    - --ignore-non-matching-ref
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "\nAbout:   ingests a single sample gvcf into a variant-only\
+                    \ .bcf and tempory depth interval (.tmp)\nUsage:   agg ingest1\
+                    \ <input_gvcf>\n\nRequired options:\n    -o, --output <output_prefix>\
+                    \      agg will output output_prefix.bcf and output_prefix.tmp\n\
+                    \    -f, --fasta-ref <file>            reference sequence\n  \
+                    \      --ignore-non-matching-ref     skip non-matching ref alleles\
+                    \ (will warn)\n\n\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - agg
+                  - genotype
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: chunk1
+                    optional: false
+                  named:
+                  - !Flag
+                    description: region to genotype eg. chr1 or chr20:5000000-6000000
+                    synonyms:
+                    - -r
+                    - --regions
+                    args: !SimpleFlagArg
+                      name: region
+                    optional: true
+                  - !Flag
+                    description: ',   --output-file <file>          output file name
+                      [stdout]'
+                    synonyms:
+                    - -o
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ',   --output-type <b|u|z|v>       b: compressed
+                      BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed
+                      VCF [v]'
+                    synonyms:
+                    - -O
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: number of threads [0]
+                    synonyms:
+                    - -@
+                    - --thread
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "agg: unrecognized option '--help'\n\nAbout:   genotypes\
+                    \ samples from agg chunks\nUsage:   agg genotype chunk1 [chunk2\
+                    \ [...]]\n\nRequired options:\n    -r, --regions <region>    \
+                    \          region to genotype eg. chr1 or chr20:5000000-6000000\n\
+                    \nOutput options:\n    -o,   --output-file <file>          output\
+                    \ file name [stdout]\n    -O,   --output-type <b|u|z|v>      \
+                    \ b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v:\
+                    \ uncompressed VCF [v]\n    -@, --thread INT                 \
+                    \   number of threads [0]\n\n"
+                  generated_using: &id007
+                  - --help
+                - !Command
+                  command: &id008
+                  - agg
+                  - anno
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: input.bcf
+                    optional: false
+                  named:
+                  - !Flag
+                    description: filters to apply eg. -i 'QUAL>=10 && DP<100000 &&
+                      HWE<10'
+                    synonyms:
+                    - -i
+                    - --include
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: a set of variants that are trusted (eg. 1000G)
+                    synonyms:
+                    - -R
+                    - --regions
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: output file name [stdout]
+                    synonyms:
+                    - -o
+                    - --output-file
+                    args: !SimpleFlagArg
+                      name: file
+                    optional: true
+                  - !Flag
+                    description: 'b: compressed BCF, u: uncompressed BCF, z: compressed
+                      VCF, v: uncompressed'
+                    synonyms:
+                    - -O
+                    - --output-type
+                    args: !SimpleFlagArg
+                      name: b|u|z|v
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "\nUsage:   agg anno input.bcf\n\nOptions:\n    -i, --include\
+                    \      filters to apply eg. -i 'QUAL>=10 && DP<100000 && HWE<10'\
+                    \ \n    -R, --regions      a set of variants that are trusted\
+                    \ (eg. 1000G) \n    -o, --output-file <file>          output file\
+                    \ name [stdout]\n    -O, --output-type <b|u|z|v>       b: compressed\
+                    \ BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed\n\
+                    \n"
+                  generated_using: *id004
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "\nProgram:\tagg (aggregation tool for multiple gvcfs)\n\
+                  Version:\t0.3.6\nContact:\tjoconnell@illumina.com\n\nCopyright (c)\
+                  \ 2016, Illumina, Inc. All rights reserved. See LICENSE for further\
+                  \ details.\n\nUsage:\tagg <command> [options]\n\nCommands:\n\tingest1\t\
+                  \tconverts gvcfs to input suitable for agg ingest2\n\tingest2\t\t\
+                  uses output files from ingest1 to build an agg chunk\n\tgenotype\t\
+                  genotypes and merges agg chunks into a multi-sample bcf/vcf\n\t\
+                  anno\t\tannotates some QC metrics\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag:
@@ -168,11 +396,9 @@ subcommands:
                 \ -@, --thread INT                   number of compression threads\
                 \ [0]\n    -l, --list   files.txt             plain text file listing\
                 \ agg chunks to merge]\n\n\n"
-              generated_using: &id004 []
+              generated_using: *id004
             - !Command
-              command: &id005
-              - agg
-              - ingest1
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -216,9 +442,7 @@ subcommands:
                 \     skip non-matching ref alleles (will warn)\n\n\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - agg
-              - genotype
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -269,12 +493,9 @@ subcommands:
                 \    -O,   --output-type <b|u|z|v>       b: compressed BCF, u: uncompressed\
                 \ BCF, z: compressed VCF, v: uncompressed VCF [v]\n    -@, --thread\
                 \ INT                    number of threads [0]\n\n"
-              generated_using: &id007
-              - --help
+              generated_using: *id007
             - !Command
-              command: &id008
-              - agg
-              - anno
+              command: *id008
               positional:
               - !Positional
                 description: ''
@@ -381,7 +602,7 @@ subcommands:
             - --ignore-non-matching-ref
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -432,7 +653,7 @@ subcommands:
             args: !SimpleFlagArg
               name: INT
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -487,7 +708,7 @@ subcommands:
             args: !SimpleFlagArg
               name: b|u|z|v
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -555,7 +776,7 @@ subcommands:
         - --ignore-non-matching-ref
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -606,7 +827,7 @@ subcommands:
         args: !SimpleFlagArg
           name: INT
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -661,7 +882,7 @@ subcommands:
         args: !SimpleFlagArg
           name: b|u|z|v
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -729,7 +950,7 @@ subcommands:
     - --ignore-non-matching-ref
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:
@@ -780,7 +1001,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:
@@ -833,7 +1054,7 @@ subcommands:
     args: !SimpleFlagArg
       name: b|u|z|v
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:

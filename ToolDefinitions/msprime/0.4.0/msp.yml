@@ -24,7 +24,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PRECISION
     optional: true
-  parent: &id022 !Command
+  parent: &id025 !Command
     command: *id001
     positional: []
     named: []
@@ -47,7 +47,7 @@ subcommands:
         args: !SimpleFlagArg
           name: PRECISION
         optional: true
-      parent: &id019 !Command
+      parent: &id022 !Command
         command: *id001
         positional: []
         named: []
@@ -70,16 +70,10 @@ subcommands:
             args: !SimpleFlagArg
               name: PRECISION
             optional: true
-          parent: &id003 !Command
+          parent: &id019 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: ''
-              synonyms:
-              - -V
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -99,7 +93,541 @@ subcommands:
                 args: !SimpleFlagArg
                   name: PRECISION
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -V
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: The msprime history file in HDF5 format
+                    position: 0
+                    name: history_file
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "The number of decimal places in branch lengths\n"
+                    synonyms:
+                    - --precision
+                    - -p
+                    args: !SimpleFlagArg
+                      name: PRECISION
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: msp newick [-h] [--precision PRECISION] history_file\n\
+                    \npositional arguments:\n  history_file          The msprime history\
+                    \ file in HDF5 format\n\noptional arguments:\n  -h, --help   \
+                    \         show this help message and exit\n  --precision PRECISION,\
+                    \ -p PRECISION\n                        The number of decimal\
+                    \ places in branch lengths\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id007
+                  - msp
+                  - mutations
+                  positional:
+                  - !Positional
+                    description: The msprime history file in HDF5 format
+                    position: 0
+                    name: history_file
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Print a header line in the output.
+                    synonyms:
+                    - --header
+                    - -H
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "The number of decimal places to print in records\n"
+                    synonyms:
+                    - --precision
+                    - -p
+                    args: !SimpleFlagArg
+                      name: PRECISION
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: msp mutations [-h] [--header] [--precision PRECISION]\
+                    \ history_file\n\npositional arguments:\n  history_file      \
+                    \    The msprime history file in HDF5 format\n\noptional arguments:\n\
+                    \  -h, --help            show this help message and exit\n  --header,\
+                    \ -H          Print a header line in the output.\n  --precision\
+                    \ PRECISION, -p PRECISION\n                        The number\
+                    \ of decimal places to print in records\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - msp
+                  - variants
+                  positional:
+                  - !Positional
+                    description: The msprime history file in HDF5 format
+                    position: 0
+                    name: history_file
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: msp variants [-h] history_file\n\npositional\
+                    \ arguments:\n  history_file  The msprime history file in HDF5\
+                    \ format\n\noptional arguments:\n  -h, --help    show this help\
+                    \ message and exit\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id009
+                  - msp
+                  - macs
+                  positional:
+                  - !Positional
+                    description: The msprime history file in HDF5 format
+                    position: 0
+                    name: history_file
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: msp macs [-h] history_file\n\npositional arguments:\n\
+                    \  history_file  The msprime history file in HDF5 format\n\noptional\
+                    \ arguments:\n  -h, --help    show this help message and exit\n"
+                  generated_using: *id004
+                - &id005 !Command
+                  command: &id010
+                  - msp
+                  - simulate
+                  positional: []
+                  named:
+                  - !Flag
+                    description: The length of the simulated region in base pairs.
+                    synonyms:
+                    - --length
+                    - -L
+                    args: !SimpleFlagArg
+                      name: LENGTH
+                    optional: true
+                  - !Flag
+                    description: The recombination rate per base per generation
+                    synonyms:
+                    - --recombination-rate
+                    - -r
+                    args: !SimpleFlagArg
+                      name: RECOMBINATION_RATE
+                    optional: true
+                  - !Flag
+                    description: The mutation rate per base per generation
+                    synonyms:
+                    - --mutation-rate
+                    - -u
+                    args: !SimpleFlagArg
+                      name: MUTATION_RATE
+                    optional: true
+                  - !Flag
+                    description: The effective population size Ne
+                    synonyms:
+                    - --effective-population-size
+                    - -N
+                    args: !SimpleFlagArg
+                      name: EFFECTIVE_POPULATION_SIZE
+                    optional: true
+                  - !Flag
+                    description: "The random seed. If not specified one is chosen\n\
+                      randomly"
+                    synonyms:
+                    - --random-seed
+                    - -s
+                    args: !SimpleFlagArg
+                      name: RANDOM_SEED
+                    optional: true
+                  - !Flag
+                    description: Enable HDF5's transparent zlib compression
+                    synonyms:
+                    - --compress
+                    - -z
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands:
+                  - !Command
+                    command: &id011
+                    - msp
+                    - simulate
+                    - sample_size
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: msp
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 1
+                      name: simulate
+                      optional: false
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --length
+                      args: !SimpleFlagArg
+                        name: LENGTH
+                      optional: true
+                    parent: *id005
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: ''
+                      synonyms:
+                      - -h
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: msp simulate [-h] [--length LENGTH]\n     \
+                      \               [--recombination-rate RECOMBINATION_RATE]\n\
+                      \                    [--mutation-rate MUTATION_RATE]\n     \
+                      \               [--effective-population-size EFFECTIVE_POPULATION_SIZE]\n\
+                      \                    [--random-seed RANDOM_SEED] [--compress]\n\
+                      \                    sample_size history_file\nmsp simulate:\
+                      \ error: argument sample_size: invalid positive_int value: 'sample_size'\n"
+                    generated_using: *id004
+                  - !Command
+                    command: &id012
+                    - msp
+                    - simulate
+                    - history_file
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: msp
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 1
+                      name: simulate
+                      optional: false
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --length
+                      args: !SimpleFlagArg
+                        name: LENGTH
+                      optional: true
+                    parent: *id005
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: ''
+                      synonyms:
+                      - -h
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: msp simulate [-h] [--length LENGTH]\n     \
+                      \               [--recombination-rate RECOMBINATION_RATE]\n\
+                      \                    [--mutation-rate MUTATION_RATE]\n     \
+                      \               [--effective-population-size EFFECTIVE_POPULATION_SIZE]\n\
+                      \                    [--random-seed RANDOM_SEED] [--compress]\n\
+                      \                    sample_size history_file\nmsp simulate:\
+                      \ error: argument sample_size: invalid positive_int value: 'history_file'\n"
+                    generated_using: *id004
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: msp simulate [-h] [--length LENGTH]\n       \
+                    \             [--recombination-rate RECOMBINATION_RATE]\n    \
+                    \                [--mutation-rate MUTATION_RATE]\n           \
+                    \         [--effective-population-size EFFECTIVE_POPULATION_SIZE]\n\
+                    \                    [--random-seed RANDOM_SEED] [--compress]\n\
+                    \                    sample_size history_file\n\npositional arguments:\n\
+                    \  sample_size           The number of individuals in the sample\n\
+                    \  history_file          The msprime history file in HDF5 format\n\
+                    \noptional arguments:\n  -h, --help            show this help\
+                    \ message and exit\n  --length LENGTH, -L LENGTH\n           \
+                    \             The length of the simulated region in base pairs.\n\
+                    \  --recombination-rate RECOMBINATION_RATE, -r RECOMBINATION_RATE\n\
+                    \                        The recombination rate per base per generation\n\
+                    \  --mutation-rate MUTATION_RATE, -u MUTATION_RATE\n         \
+                    \               The mutation rate per base per generation\n  --effective-population-size\
+                    \ EFFECTIVE_POPULATION_SIZE, -N EFFECTIVE_POPULATION_SIZE\n  \
+                    \                      The effective population size Ne\n  --random-seed\
+                    \ RANDOM_SEED, -s RANDOM_SEED\n                        The random\
+                    \ seed. If not specified one is chosen\n                     \
+                    \   randomly\n  --compress, -z        Enable HDF5's transparent\
+                    \ zlib compression\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id013
+                  - msp
+                  - vcf
+                  positional:
+                  - !Positional
+                    description: The msprime history file in HDF5 format
+                    position: 0
+                    name: history_file
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "The ploidy level of samples\n"
+                    synonyms:
+                    - --ploidy
+                    - -P
+                    args: !SimpleFlagArg
+                      name: PLOIDY
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: msp vcf [-h] [--ploidy PLOIDY] history_file\n\
+                    \npositional arguments:\n  history_file          The msprime history\
+                    \ file in HDF5 format\n\noptional arguments:\n  -h, --help   \
+                    \         show this help message and exit\n  --ploidy PLOIDY,\
+                    \ -P PLOIDY\n                        The ploidy level of samples\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id014
+                  - msp
+                  - haplotypes
+                  positional:
+                  - !Positional
+                    description: The msprime history file in HDF5 format
+                    position: 0
+                    name: history_file
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: msp haplotypes [-h] history_file\n\npositional\
+                    \ arguments:\n  history_file  The msprime history file in HDF5\
+                    \ format\n\noptional arguments:\n  -h, --help    show this help\
+                    \ message and exit\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id015
+                  - msp
+                  - records
+                  positional:
+                  - !Positional
+                    description: The msprime history file in HDF5 format
+                    position: 0
+                    name: history_file
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Print a header line in the output.
+                    synonyms:
+                    - --header
+                    - -H
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "The number of decimal places to print in records\n"
+                    synonyms:
+                    - --precision
+                    - -p
+                    args: !SimpleFlagArg
+                      name: PRECISION
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: msp records [-h] [--header] [--precision PRECISION]\
+                    \ history_file\n\npositional arguments:\n  history_file      \
+                    \    The msprime history file in HDF5 format\n\noptional arguments:\n\
+                    \  -h, --help            show this help message and exit\n  --header,\
+                    \ -H          Print a header line in the output.\n  --precision\
+                    \ PRECISION, -p PRECISION\n                        The number\
+                    \ of decimal places to print in records\n"
+                  generated_using: *id004
+                - &id006 !Command
+                  command: &id016
+                  - msp
+                  - upgrade
+                  positional: []
+                  named: []
+                  parent: *id003
+                  subcommands:
+                  - !Command
+                    command: &id017
+                    - msp
+                    - upgrade
+                    - destination
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: msp
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 1
+                      name: upgrade
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 2
+                      name: source
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 3
+                      name: destination
+                      optional: false
+                    named: []
+                    parent: *id006
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: ''
+                      synonyms:
+                      - -h
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: msp upgrade [-h] source destination\nmsp upgrade:\
+                      \ error: the following arguments are required: destination\n"
+                    generated_using: &id018 []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: msp upgrade [-h] source destination\n\npositional\
+                    \ arguments:\n  source       The source msprime history file in\
+                    \ legacy HDF5 format\n  destination  The filename of the upgraded\
+                    \ copy.\n\noptional arguments:\n  -h, --help   show this help\
+                    \ message and exit\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: show program's version number and exit
+                  synonyms:
+                  - -V
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "usage: msp [-h] [-V]\n           {simulate,vcf,records,mutations,haplotypes,variants,macs,newick,upgrade}\n\
+                  \           ...\n\nCommand line interface for msprime.\n\npositional\
+                  \ arguments:\n  {simulate,vcf,records,mutations,haplotypes,variants,macs,newick,upgrade}\n\
+                  \    simulate            Run the simulation\n    vcf           \
+                  \      Write the tree sequence out in VCF format.\n    records \
+                  \            Dump records in tabular format.\n    mutations    \
+                  \       Dump mutations in tabular format.\n    haplotypes      \
+                  \    Dump haplotypes in text format.\n    variants            Dump\
+                  \ variants in text format.\n    macs                Dump results\
+                  \ in MaCS format.\n    newick              Dump results in newick\
+                  \ format.\n    upgrade             Upgrade legacy HDF5 files to\
+                  \ the latest version.\n\noptional arguments:\n  -h, --help     \
+                  \       show this help message and exit\n  -V, --version       \
+                  \  show program's version number and exit\n\nIf you use msprime\
+                  \ in your work, please cite the following paper: Jerome\nKelleher,\
+                  \ Alison M Etheridge and Gilean McVean (2016), \"Efficient Coalescent\n\
+                  Simulation and Genealogical Analysis for Large Sample Sizes\", PLoS\
+                  \ Comput Biol\n12(5): e1004842. doi: 10.1371/journal.pcbi.1004842\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -117,12 +645,9 @@ subcommands:
                 \     show this help message and exit\n  --precision PRECISION, -p\
                 \ PRECISION\n                        The number of decimal places\
                 \ in branch lengths\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id007
-              - msp
-              - mutations
+              command: *id007
               positional:
               - !Positional
                 description: The msprime history file in HDF5 format
@@ -166,9 +691,7 @@ subcommands:
                 \ to print in records\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - msp
-              - variants
+              command: *id008
               positional:
               - !Positional
                 description: The msprime history file in HDF5 format
@@ -193,9 +716,7 @@ subcommands:
                 \ arguments:\n  -h, --help    show this help message and exit\n"
               generated_using: *id004
             - !Command
-              command: &id009
-              - msp
-              - macs
+              command: *id009
               positional:
               - !Positional
                 description: The msprime history file in HDF5 format
@@ -219,66 +740,14 @@ subcommands:
                 \  history_file  The msprime history file in HDF5 format\n\noptional\
                 \ arguments:\n  -h, --help    show this help message and exit\n"
               generated_using: *id004
-            - &id005 !Command
-              command: &id010
-              - msp
-              - simulate
+            - &id020 !Command
+              command: *id010
               positional: []
-              named:
-              - !Flag
-                description: The length of the simulated region in base pairs.
-                synonyms:
-                - --length
-                - -L
-                args: !SimpleFlagArg
-                  name: LENGTH
-                optional: true
-              - !Flag
-                description: The recombination rate per base per generation
-                synonyms:
-                - --recombination-rate
-                - -r
-                args: !SimpleFlagArg
-                  name: RECOMBINATION_RATE
-                optional: true
-              - !Flag
-                description: The mutation rate per base per generation
-                synonyms:
-                - --mutation-rate
-                - -u
-                args: !SimpleFlagArg
-                  name: MUTATION_RATE
-                optional: true
-              - !Flag
-                description: The effective population size Ne
-                synonyms:
-                - --effective-population-size
-                - -N
-                args: !SimpleFlagArg
-                  name: EFFECTIVE_POPULATION_SIZE
-                optional: true
-              - !Flag
-                description: "The random seed. If not specified one is chosen\nrandomly"
-                synonyms:
-                - --random-seed
-                - -s
-                args: !SimpleFlagArg
-                  name: RANDOM_SEED
-                optional: true
-              - !Flag
-                description: Enable HDF5's transparent zlib compression
-                synonyms:
-                - --compress
-                - -z
-                args: !EmptyFlagArg {}
-                optional: true
+              named: []
               parent: *id003
               subcommands:
               - !Command
-                command: &id011
-                - msp
-                - simulate
-                - sample_size
+                command: *id011
                 positional:
                 - !Positional
                   description: ''
@@ -318,10 +787,7 @@ subcommands:
                   \ argument sample_size: invalid positive_int value: 'sample_size'\n"
                 generated_using: *id004
               - !Command
-                command: &id012
-                - msp
-                - simulate
-                - history_file
+                command: *id012
                 positional:
                 - !Positional
                   description: ''
@@ -361,13 +827,7 @@ subcommands:
                   \ argument sample_size: invalid positive_int value: 'history_file'\n"
                 generated_using: *id004
               usage: []
-              help_flag: !Flag
-                description: show this help message and exit
-                synonyms:
-                - -h
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "usage: msp simulate [-h] [--length LENGTH]\n           \
@@ -391,9 +851,7 @@ subcommands:
                 \  --compress, -z        Enable HDF5's transparent zlib compression\n"
               generated_using: *id004
             - !Command
-              command: &id013
-              - msp
-              - vcf
+              command: *id013
               positional:
               - !Positional
                 description: The msprime history file in HDF5 format
@@ -428,9 +886,7 @@ subcommands:
                 \                   The ploidy level of samples\n"
               generated_using: *id004
             - !Command
-              command: &id014
-              - msp
-              - haplotypes
+              command: *id014
               positional:
               - !Positional
                 description: The msprime history file in HDF5 format
@@ -455,9 +911,7 @@ subcommands:
                 \ arguments:\n  -h, --help    show this help message and exit\n"
               generated_using: *id004
             - !Command
-              command: &id015
-              - msp
-              - records
+              command: *id015
               positional:
               - !Positional
                 description: The msprime history file in HDF5 format
@@ -500,19 +954,14 @@ subcommands:
                 \ -p PRECISION\n                        The number of decimal places\
                 \ to print in records\n"
               generated_using: *id004
-            - &id006 !Command
-              command: &id016
-              - msp
-              - upgrade
+            - &id021 !Command
+              command: *id016
               positional: []
               named: []
               parent: *id003
               subcommands:
               - !Command
-                command: &id017
-                - msp
-                - upgrade
-                - destination
+                command: *id017
                 positional:
                 - !Positional
                   description: ''
@@ -548,15 +997,9 @@ subcommands:
                 version_flag:
                 help_text: "usage: msp upgrade [-h] source destination\nmsp upgrade:\
                   \ error: the following arguments are required: destination\n"
-                generated_using: &id018 []
+                generated_using: *id018
               usage: []
-              help_flag: !Flag
-                description: show this help message and exit
-                synonyms:
-                - -h
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "usage: msp upgrade [-h] source destination\n\npositional\
@@ -565,21 +1008,9 @@ subcommands:
                 \noptional arguments:\n  -h, --help   show this help message and exit\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: show program's version number and exit
-              synonyms:
-              - -V
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "usage: msp [-h] [-V]\n           {simulate,vcf,records,mutations,haplotypes,variants,macs,newick,upgrade}\n\
               \           ...\n\nCommand line interface for msprime.\n\npositional\
               \ arguments:\n  {simulate,vcf,records,mutations,haplotypes,variants,macs,newick,upgrade}\n\
@@ -639,7 +1070,7 @@ subcommands:
             args: !SimpleFlagArg
               name: PRECISION
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -667,7 +1098,7 @@ subcommands:
             name: history_file
             optional: false
           named: []
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -692,7 +1123,7 @@ subcommands:
             name: history_file
             optional: false
           named: []
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -708,11 +1139,11 @@ subcommands:
             \  history_file  The msprime history file in HDF5 format\n\noptional arguments:\n\
             \  -h, --help    show this help message and exit\n"
           generated_using: *id004
-        - &id020 !Command
+        - &id023 !Command
           command: *id010
           positional: []
           named: []
-          parent: *id003
+          parent: *id019
           subcommands:
           - !Command
             command: *id011
@@ -735,7 +1166,7 @@ subcommands:
               args: !SimpleFlagArg
                 name: LENGTH
               optional: true
-            parent: *id005
+            parent: *id020
             subcommands: []
             usage: []
             help_flag: !Flag
@@ -774,7 +1205,7 @@ subcommands:
               args: !SimpleFlagArg
                 name: LENGTH
               optional: true
-            parent: *id005
+            parent: *id020
             subcommands: []
             usage: []
             help_flag: !Flag
@@ -832,7 +1263,7 @@ subcommands:
             args: !SimpleFlagArg
               name: PLOIDY
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -859,7 +1290,7 @@ subcommands:
             name: history_file
             optional: false
           named: []
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -899,7 +1330,7 @@ subcommands:
             args: !SimpleFlagArg
               name: PRECISION
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -918,11 +1349,11 @@ subcommands:
             \ in the output.\n  --precision PRECISION, -p PRECISION\n            \
             \            The number of decimal places to print in records\n"
           generated_using: *id004
-        - &id021 !Command
+        - &id024 !Command
           command: *id016
           positional: []
           named: []
-          parent: *id003
+          parent: *id019
           subcommands:
           - !Command
             command: *id017
@@ -948,7 +1379,7 @@ subcommands:
               name: destination
               optional: false
             named: []
-            parent: *id006
+            parent: *id021
             subcommands: []
             usage: []
             help_flag: !Flag
@@ -1033,7 +1464,7 @@ subcommands:
         args: !SimpleFlagArg
           name: PRECISION
         optional: true
-      parent: *id019
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1061,7 +1492,7 @@ subcommands:
         name: history_file
         optional: false
       named: []
-      parent: *id019
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1086,7 +1517,7 @@ subcommands:
         name: history_file
         optional: false
       named: []
-      parent: *id019
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1102,11 +1533,11 @@ subcommands:
         \  The msprime history file in HDF5 format\n\noptional arguments:\n  -h, --help\
         \    show this help message and exit\n"
       generated_using: *id004
-    - &id023 !Command
+    - &id026 !Command
       command: *id010
       positional: []
       named: []
-      parent: *id019
+      parent: *id022
       subcommands:
       - !Command
         command: *id011
@@ -1129,7 +1560,7 @@ subcommands:
           args: !SimpleFlagArg
             name: LENGTH
           optional: true
-        parent: *id020
+        parent: *id023
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -1168,7 +1599,7 @@ subcommands:
           args: !SimpleFlagArg
             name: LENGTH
           optional: true
-        parent: *id020
+        parent: *id023
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -1226,7 +1657,7 @@ subcommands:
         args: !SimpleFlagArg
           name: PLOIDY
         optional: true
-      parent: *id019
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1253,7 +1684,7 @@ subcommands:
         name: history_file
         optional: false
       named: []
-      parent: *id019
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1293,7 +1724,7 @@ subcommands:
         args: !SimpleFlagArg
           name: PRECISION
         optional: true
-      parent: *id019
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1312,11 +1743,11 @@ subcommands:
         \ output.\n  --precision PRECISION, -p PRECISION\n                       \
         \ The number of decimal places to print in records\n"
       generated_using: *id004
-    - &id024 !Command
+    - &id027 !Command
       command: *id016
       positional: []
       named: []
-      parent: *id019
+      parent: *id022
       subcommands:
       - !Command
         command: *id017
@@ -1342,7 +1773,7 @@ subcommands:
           name: destination
           optional: false
         named: []
-        parent: *id021
+        parent: *id024
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -1427,7 +1858,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PRECISION
     optional: true
-  parent: *id022
+  parent: *id025
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1455,7 +1886,7 @@ subcommands:
     name: history_file
     optional: false
   named: []
-  parent: *id022
+  parent: *id025
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1480,7 +1911,7 @@ subcommands:
     name: history_file
     optional: false
   named: []
-  parent: *id022
+  parent: *id025
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1500,7 +1931,7 @@ subcommands:
   command: *id010
   positional: []
   named: []
-  parent: *id022
+  parent: *id025
   subcommands:
   - !Command
     command: *id011
@@ -1523,7 +1954,7 @@ subcommands:
       args: !SimpleFlagArg
         name: LENGTH
       optional: true
-    parent: *id023
+    parent: *id026
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1562,7 +1993,7 @@ subcommands:
       args: !SimpleFlagArg
         name: LENGTH
       optional: true
-    parent: *id023
+    parent: *id026
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1619,7 +2050,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PLOIDY
     optional: true
-  parent: *id022
+  parent: *id025
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1645,7 +2076,7 @@ subcommands:
     name: history_file
     optional: false
   named: []
-  parent: *id022
+  parent: *id025
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1685,7 +2116,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PRECISION
     optional: true
-  parent: *id022
+  parent: *id025
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1708,7 +2139,7 @@ subcommands:
   command: *id016
   positional: []
   named: []
-  parent: *id022
+  parent: *id025
   subcommands:
   - !Command
     command: *id017
@@ -1734,7 +2165,7 @@ subcommands:
       name: destination
       optional: false
     named: []
-    parent: *id024
+    parent: *id027
     subcommands: []
     usage: []
     help_flag: !Flag

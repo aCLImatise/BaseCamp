@@ -196,59 +196,10 @@ subcommands:
             args: !SimpleFlagArg
               name: database
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: ': [A]ll enable the search on all alternative names and
-                not only scientific names.'
-              synonyms:
-              - -a
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: ": [D]atabase containing the taxonomy.\nTo match the expected\
-                \ format, the database\nhas to be formated first by the ecoPCRFormat.py\n\
-                program located in the tools directory.\nWrite the database radical\
-                \ without any extension."
-              synonyms:
-              - -d
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: ': [L]ist all taxonomic rank available for -r option'
-              synonyms:
-              - -l
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: ': [P]ath : add a column containing the full path for each
-                displayed taxon'
-              synonyms:
-              - -P
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: ": [P]arents : specifiying this option displays all parental\
-                \ tree's information for the given taxid."
-              synonyms:
-              - -p
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: ': [R]estrict to given taxonomic rank'
-              synonyms:
-              - -r
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: ": [S]ons: specifiying this option displays all subtree's\
-                \ information for the given taxid."
-              synonyms:
-              - -s
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -310,7 +261,166 @@ subcommands:
                 args: !SimpleFlagArg
                   name: database
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: ': [A]ll enable the search on all alternative names
+                    and not only scientific names.'
+                  synonyms:
+                  - -a
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: ": [D]atabase containing the taxonomy.\nTo match the\
+                    \ expected format, the database\nhas to be formated first by the\
+                    \ ecoPCRFormat.py\nprogram located in the tools directory.\nWrite\
+                    \ the database radical without any extension."
+                  synonyms:
+                  - -d
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: ': [L]ist all taxonomic rank available for -r option'
+                  synonyms:
+                  - -l
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: ': [P]ath : add a column containing the full path for
+                    each displayed taxon'
+                  synonyms:
+                  - -P
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: ": [P]arents : specifiying this option displays all\
+                    \ parental tree's information for the given taxid."
+                  synonyms:
+                  - -p
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: ': [R]estrict to given taxonomic rank'
+                  synonyms:
+                  - -r
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: ": [S]ons: specifiying this option displays all subtree's\
+                    \ information for the given taxid."
+                  synonyms:
+                  - -s
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: ecofind
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: rank
+                    optional: true
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: type
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -s
+                    args: !SimpleFlagArg
+                      name: taxid
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -p
+                    args: !SimpleFlagArg
+                      name: taxid
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -r
+                    args: !SimpleFlagArg
+                      name: taxonomic
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -P
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -l
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -d
+                    args: !SimpleFlagArg
+                      name: database
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: ecofind [-d database] [-h] [-l] [-P] [-r taxonomic\
+                    \ rank] [-p taxid] [-s taxid] <taxon name pattern> ... \ntype\
+                    \ \"ecofind -h\" for help\n"
+                  generated_using: &id004 []
+                usage: []
+                help_flag: !Flag
+                  description: ': [H]elp - print <this> help'
+                  synonyms:
+                  - -h
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "------------------------------------------\n ecofind Version\
+                  \ 0.1\n------------------------------------------\nsynopsis : searching\
+                  \ for taxonomic and rank and\n           taxonomy id for given regular\
+                  \  expression patterns\n\nusage: ecofind [options] <patterns>\n\
+                  ------------------------------------------\noptions:\n-a : [A]ll\
+                  \ enable the search on all alternative names and not only scientific\
+                  \ names.\n\n-d : [D]atabase containing the taxonomy.\n     To match\
+                  \ the expected format, the database\n     has to be formated first\
+                  \ by the ecoPCRFormat.py\n     program located in the tools directory.\n\
+                  \     Write the database radical without any extension.\n\n-h :\
+                  \ [H]elp - print <this> help\n\n-l : [L]ist all taxonomic rank available\
+                  \ for -r option\n\n-P : [P]ath : add a column containing the full\
+                  \ path for each displayed taxon\n\n-p : [P]arents : specifiying\
+                  \ this option displays all parental tree's information for the given\
+                  \ taxid.\n\n-r : [R]estrict to given taxonomic rank\n\n-s : [S]ons:\
+                  \ specifiying this option displays all subtree's information for\
+                  \ the given taxid.\n\n-P : Display taxonomic [P]ath as suplementary\
+                  \ column in output\n\narguments:\n<taxon> name pattern bearing regular\
+                  \ expressions\n\n------------------------------------------\n http://www.grenoble.prabi.fr/trac/ecoPCR/\n\
+                  ------------------------------------------\n\n"
+                generated_using: &id005
+                - --help
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -324,14 +434,9 @@ subcommands:
               help_text: "usage: ecofind [-d database] [-h] [-l] [-P] [-r taxonomic\
                 \ rank] [-p taxid] [-s taxid] <taxon name pattern> ... \ntype \"ecofind\
                 \ -h\" for help\n"
-              generated_using: &id004 []
+              generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: ': [H]elp - print <this> help'
-              synonyms:
-              - -h
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "------------------------------------------\n ecofind Version\
@@ -353,8 +458,7 @@ subcommands:
               \ pattern bearing regular expressions\n\n------------------------------------------\n\
               \ http://www.grenoble.prabi.fr/trac/ecoPCR/\n------------------------------------------\n\
               \n"
-            generated_using: &id005
-            - --help
+            generated_using: *id005
           subcommands: []
           usage: []
           help_flag: !Flag

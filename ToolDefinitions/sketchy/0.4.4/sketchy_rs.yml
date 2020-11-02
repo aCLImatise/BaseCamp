@@ -31,7 +31,7 @@ subcommands:
     name: try
     optional: false
   named: []
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -61,7 +61,7 @@ subcommands:
         name: try
         optional: false
       named: []
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -91,7 +91,7 @@ subcommands:
             name: try
             optional: false
           named: []
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
             named: []
@@ -121,7 +121,193 @@ subcommands:
                 name: try
                 optional: false
               named: []
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: For
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: more
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: information
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 3
+                    name: try
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "error: The subcommand '--help' wasn't recognized\n\n\
+                    USAGE:\n\tsketchy-rs help <subcommands>...\n\nFor more information\
+                    \ try --help\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - sketchy-rs
+                  - compute
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: sketchy-rs
+                    optional: false
+                  named:
+                  - !Flag
+                    description: progress switch > 0
+                    synonyms:
+                    - -p
+                    - --progress
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  - !Flag
+                    description: max ranks per read
+                    synonyms:
+                    - -r
+                    - --ranks
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  - !Flag
+                    description: reference sketch
+                    synonyms:
+                    - -s
+                    - --sketch
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: max threads for mash
+                    synonyms:
+                    - -t
+                    - --threads
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Prints help information
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: Prints version information
+                    synonyms:
+                    - -V
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "sketchy-rs-compute 0.4.4\n\ncompute sum of shared hashes\
+                    \ from fasta/q on stdin\n\nUSAGE:\n    sketchy-rs compute [OPTIONS]\n\
+                    \nFLAGS:\n    -h, --help       Prints help information\n    -V,\
+                    \ --version    Prints version information\n\nOPTIONS:\n    -p,\
+                    \ --progress <INT>    progress switch > 0\n    -r, --ranks <INT>\
+                    \       max ranks per read\n    -s, --sketch <FILE>     reference\
+                    \ sketch\n    -t, --threads <INT>     max threads for mash\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - sketchy-rs
+                  - evaluate
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: sketchy-rs
+                    optional: false
+                  named:
+                  - !Flag
+                    description: genotype feature index
+                    synonyms:
+                    - -f
+                    - --features
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: reads to stable breakpoint
+                    synonyms:
+                    - -s
+                    - --stable
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Prints help information
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: Prints version information
+                    synonyms:
+                    - -V
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "sketchy-rs-evaluate 0.4.4\n\nevaluate sum of shared\
+                    \ hashes from sketchy compute on stdin\n\nUSAGE:\n    sketchy-rs\
+                    \ evaluate [OPTIONS]\n\nFLAGS:\n    -h, --help       Prints help\
+                    \ information\n    -V, --version    Prints version information\n\
+                    \nOPTIONS:\n    -f, --features <FILE>    genotype feature index\n\
+                    \    -s, --stable <INT>       reads to stable breakpoint\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: Prints help information
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: Prints version information
+                  synonyms:
+                  - -V
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "sketchy 0.4.4\n\nNanopore lineage calling and genotyping\
+                  \ of bacterial pathogens\n\nUSAGE:\n    sketchy-rs [SUBCOMMAND]\n\
+                  \nFLAGS:\n    -h, --help       Prints help information\n    -V,\
+                  \ --version    Prints version information\n\nSUBCOMMANDS:\n    compute\
+                  \     \n                compute sum of shared hashes from fasta/q\
+                  \ on stdin\n    evaluate    \n                evaluate sum of shared\
+                  \ hashes from sketchy compute on stdin\n    help        Prints this\
+                  \ message or the help of the given subcommand(s)\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag:
@@ -129,12 +315,9 @@ subcommands:
               version_flag:
               help_text: "error: The subcommand '--help' wasn't recognized\n\nUSAGE:\n\
                 \tsketchy-rs help <subcommands>...\n\nFor more information try --help\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - sketchy-rs
-              - compute
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -201,9 +384,7 @@ subcommands:
                 \ <INT>     max threads for mash\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - sketchy-rs
-              - evaluate
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -253,21 +434,9 @@ subcommands:
                 \ <INT>       reads to stable breakpoint\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: Prints help information
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: Prints version information
-              synonyms:
-              - -V
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "sketchy 0.4.4\n\nNanopore lineage calling and genotyping of\
               \ bacterial pathogens\n\nUSAGE:\n    sketchy-rs [SUBCOMMAND]\n\nFLAGS:\n\
               \    -h, --help       Prints help information\n    -V, --version   \
@@ -326,7 +495,7 @@ subcommands:
             args: !SimpleFlagArg
               name: INT
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -377,7 +546,7 @@ subcommands:
             args: !SimpleFlagArg
               name: INT
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -463,7 +632,7 @@ subcommands:
         args: !SimpleFlagArg
           name: INT
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -513,7 +682,7 @@ subcommands:
         args: !SimpleFlagArg
           name: INT
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -598,7 +767,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -648,7 +817,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag

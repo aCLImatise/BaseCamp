@@ -23,7 +23,7 @@ subcommands:
     args: !SimpleFlagArg
       name: COL1
     optional: true
-  parent: &id010 !Command
+  parent: &id011 !Command
     command: *id001
     positional: []
     named: []
@@ -45,7 +45,7 @@ subcommands:
         args: !SimpleFlagArg
           name: COL1
         optional: true
-      parent: &id009 !Command
+      parent: &id010 !Command
         command: *id001
         positional: []
         named: []
@@ -67,81 +67,10 @@ subcommands:
             args: !SimpleFlagArg
               name: COL1
             optional: true
-          parent: &id003 !Command
+          parent: &id009 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: the input BAM file [stdin]
-              synonyms:
-              - -in
-              args: !SimpleFlagArg
-                name: BAM filename
-              optional: true
-            - !Flag
-              description: "<Library ID's for short  identifies the libraries that\n\
-                contain short reads (e.g. Illumina) []"
-              synonyms:
-              - -LBShort
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "<Library ID's for long si identifies the libraries with\n\
-                long single molecule reads []"
-              synonyms:
-              - -LBLong
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "the output file as alternative\nto stdout. [stdout]"
-              synonyms:
-              - -out
-              args: !SimpleFlagArg
-                name: filename
-              optional: true
-            - !Flag
-              description: "genomic region\n(chr:99..[chr:]999). Index file is\nrecommended\
-                \ for better performance, and is\nused automatically if it exists.\
-                \ See\n'bamtools help index' for more details on\ncreating one"
-              synonyms:
-              - -region
-              args: !SimpleFlagArg
-                name: REGION
-              optional: true
-            - !Flag
-              description: The contigs to be polished.
-              synonyms:
-              - -fasta
-              args: !SimpleFlagArg
-                name: FASTA filename
-              optional: true
-            - !Flag
-              description: "Output is in FASTQ, Default is\nFASTA format."
-              synonyms:
-              - -fq
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "Assumed phred scaled base\nquality for fasta input. [30]"
-              synonyms:
-              - -baseq
-              args: !SimpleFlagArg
-                name: unsigned int
-              optional: true
-            - !Flag
-              description: "Minimum quality for a\ncorrection. [30]"
-              synonyms:
-              - -minq
-              args: !SimpleFlagArg
-                name: unsigned int
-              optional: true
-            - !Flag
-              description: "Minimum MAPQ for using a read\nin pileup. [2]"
-              synonyms:
-              - -minMAPQ
-              args: !SimpleFlagArg
-                name: unsigned int
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -160,7 +89,267 @@ subcommands:
                 args: !SimpleFlagArg
                   name: COL1
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: the input BAM file [stdin]
+                  synonyms:
+                  - -in
+                  args: !SimpleFlagArg
+                    name: BAM filename
+                  optional: true
+                - !Flag
+                  description: "<Library ID's for short  identifies the libraries\
+                    \ that\ncontain short reads (e.g. Illumina) []"
+                  synonyms:
+                  - -LBShort
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "<Library ID's for long si identifies the libraries\
+                    \ with\nlong single molecule reads []"
+                  synonyms:
+                  - -LBLong
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "the output file as alternative\nto stdout. [stdout]"
+                  synonyms:
+                  - -out
+                  args: !SimpleFlagArg
+                    name: filename
+                  optional: true
+                - !Flag
+                  description: "genomic region\n(chr:99..[chr:]999). Index file is\n\
+                    recommended for better performance, and is\nused automatically\
+                    \ if it exists. See\n'bamtools help index' for more details on\n\
+                    creating one"
+                  synonyms:
+                  - -region
+                  args: !SimpleFlagArg
+                    name: REGION
+                  optional: true
+                - !Flag
+                  description: The contigs to be polished.
+                  synonyms:
+                  - -fasta
+                  args: !SimpleFlagArg
+                    name: FASTA filename
+                  optional: true
+                - !Flag
+                  description: "Output is in FASTQ, Default is\nFASTA format."
+                  synonyms:
+                  - -fq
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Assumed phred scaled base\nquality for fasta input.\
+                    \ [30]"
+                  synonyms:
+                  - -baseq
+                  args: !SimpleFlagArg
+                    name: unsigned int
+                  optional: true
+                - !Flag
+                  description: "Minimum quality for a\ncorrection. [30]"
+                  synonyms:
+                  - -minq
+                  args: !SimpleFlagArg
+                    name: unsigned int
+                  optional: true
+                - !Flag
+                  description: "Minimum MAPQ for using a read\nin pileup. [2]"
+                  synonyms:
+                  - -minMAPQ
+                  args: !SimpleFlagArg
+                    name: unsigned int
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: ps
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ',COL2=HEADER     Select columns for display'
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: COL1
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "ps: invalid option -- 'p'\nBusyBox v1.22.1 (2014-05-23\
+                    \ 01:24:27 UTC) multi-call binary.\n\nUsage: ps [-o COL1,COL2=HEADER]\n\
+                    \nShow list of processes\n\n\t-o COL1,COL2=HEADER\tSelect columns\
+                    \ for display\n\nError: novolrpolish requires a valid NovoLR license.\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - novolrpolish
+                  - Novocraft
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: ps
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ',COL2=HEADER     Select columns for display'
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: COL1
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "ps: invalid option -- 'p'\nBusyBox v1.22.1 (2014-05-23\
+                    \ 01:24:27 UTC) multi-call binary.\n\nUsage: ps [-o COL1,COL2=HEADER]\n\
+                    \nShow list of processes\n\n\t-o COL1,COL2=HEADER\tSelect columns\
+                    \ for display\n\nError: novolrpolish requires a valid NovoLR license.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - novolrpolish
+                  - Long
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: ps
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ',COL2=HEADER     Select columns for display'
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: COL1
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "ps: invalid option -- 'p'\nBusyBox v1.22.1 (2014-05-23\
+                    \ 01:24:27 UTC) multi-call binary.\n\nUsage: ps [-o COL1,COL2=HEADER]\n\
+                    \nShow list of processes\n\n\t-o COL1,COL2=HEADER\tSelect columns\
+                    \ for display\n\nError: novolrpolish requires a valid NovoLR license.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - novolrpolish
+                  - format-specific
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: ps
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ',COL2=HEADER     Select columns for display'
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: COL1
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "ps: invalid option -- 'p'\nBusyBox v1.22.1 (2014-05-23\
+                    \ 01:24:27 UTC) multi-call binary.\n\nUsage: ps [-o COL1,COL2=HEADER]\n\
+                    \nShow list of processes\n\n\t-o COL1,COL2=HEADER\tSelect columns\
+                    \ for display\n\nError: novolrpolish requires a valid NovoLR license.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - novolrpolish
+                  - Polisher
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: ps
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ',COL2=HEADER     Select columns for display'
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: COL1
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "ps: invalid option -- 'p'\nBusyBox v1.22.1 (2014-05-23\
+                    \ 01:24:27 UTC) multi-call binary.\n\nUsage: ps [-o COL1,COL2=HEADER]\n\
+                    \nShow list of processes\n\n\t-o COL1,COL2=HEADER\tSelect columns\
+                    \ for display\n\nError: novolrpolish requires a valid NovoLR license.\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: shows this help text
+                  synonyms:
+                  - --help
+                  - -h
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Description: Polishes assemblies using short & long read\
+                  \ alignments..\n\nUsage: Novocraft Long Read Polisher [-in <filename>]\
+                  \ [-out <filename>]  [-region <REGION>] [format-specific options]\n\
+                  \nOptions::\n  -in <BAM filename>                the input BAM file\
+                  \ [stdin]\n  -LBShort <Library ID's for short  identifies the libraries\
+                  \ that\n                                    contain short reads\
+                  \ (e.g. Illumina) []\n  -LBLong <Library ID's for long si identifies\
+                  \ the libraries with\n                                    long single\
+                  \ molecule reads []\n  -out <filename>                   the output\
+                  \ file as alternative\n                                    to stdout.\
+                  \ [stdout]\n  -region <REGION>                  genomic region\n\
+                  \                                    (chr:99..[chr:]999). Index\
+                  \ file is\n                                    recommended for better\
+                  \ performance, and is\n                                    used\
+                  \ automatically if it exists. See\n                            \
+                  \        'bamtools help index' for more details on\n           \
+                  \                         creating one\n  -fasta <FASTA filename>\
+                  \           The contigs to be polished.\n  -fq                 \
+                  \              Output is in FASTQ, Default is\n                \
+                  \                    FASTA format.\n  -baseq <unsigned int>    \
+                  \         Assumed phred scaled base\n                          \
+                  \          quality for fasta input. [30]\n  -minq <unsigned int>\
+                  \              Minimum quality for a\n                         \
+                  \           correction. [30]\n  -minMAPQ <unsigned int>        \
+                  \   Minimum MAPQ for using a read\n                            \
+                  \        in pileup. [2]\n\nHelp:\n  --help, -h                 \
+                  \       shows this help text\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag:
@@ -170,12 +359,9 @@ subcommands:
                 \ UTC) multi-call binary.\n\nUsage: ps [-o COL1,COL2=HEADER]\n\nShow\
                 \ list of processes\n\n\t-o COL1,COL2=HEADER\tSelect columns for display\n\
                 \nError: novolrpolish requires a valid NovoLR license.\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - novolrpolish
-              - Novocraft
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -202,9 +388,7 @@ subcommands:
                 \nError: novolrpolish requires a valid NovoLR license.\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - novolrpolish
-              - Long
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -231,9 +415,7 @@ subcommands:
                 \nError: novolrpolish requires a valid NovoLR license.\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - novolrpolish
-              - format-specific
+              command: *id007
               positional:
               - !Positional
                 description: ''
@@ -260,9 +442,7 @@ subcommands:
                 \nError: novolrpolish requires a valid NovoLR license.\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - novolrpolish
-              - Polisher
+              command: *id008
               positional:
               - !Positional
                 description: ''
@@ -289,13 +469,7 @@ subcommands:
                 \nError: novolrpolish requires a valid NovoLR license.\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: shows this help text
-              synonyms:
-              - --help
-              - -h
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "Description: Polishes assemblies using short & long read alignments..\n\
@@ -350,7 +524,7 @@ subcommands:
             args: !SimpleFlagArg
               name: COL1
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -377,7 +551,7 @@ subcommands:
             args: !SimpleFlagArg
               name: COL1
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -404,7 +578,7 @@ subcommands:
             args: !SimpleFlagArg
               name: COL1
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -431,7 +605,7 @@ subcommands:
             args: !SimpleFlagArg
               name: COL1
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag:
@@ -497,7 +671,7 @@ subcommands:
         args: !SimpleFlagArg
           name: COL1
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -524,7 +698,7 @@ subcommands:
         args: !SimpleFlagArg
           name: COL1
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -551,7 +725,7 @@ subcommands:
         args: !SimpleFlagArg
           name: COL1
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -578,7 +752,7 @@ subcommands:
         args: !SimpleFlagArg
           name: COL1
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag:
@@ -643,7 +817,7 @@ subcommands:
     args: !SimpleFlagArg
       name: COL1
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:
@@ -670,7 +844,7 @@ subcommands:
     args: !SimpleFlagArg
       name: COL1
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:
@@ -697,7 +871,7 @@ subcommands:
     args: !SimpleFlagArg
       name: COL1
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:
@@ -724,7 +898,7 @@ subcommands:
     args: !SimpleFlagArg
       name: COL1
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag:

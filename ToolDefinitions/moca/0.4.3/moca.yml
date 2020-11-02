@@ -83,7 +83,7 @@ subcommands:
     - --show-progress
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id007 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -165,7 +165,7 @@ subcommands:
         - --show-progress
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id006 !Command
+      parent: &id007 !Command
         command: *id001
         positional: []
         named: []
@@ -248,7 +248,7 @@ subcommands:
             - --show-progress
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id006 !Command
             command: *id001
             positional: []
             named: []
@@ -331,7 +331,259 @@ subcommands:
                 - --show-progress
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: Bed file input  [required]
+                    synonyms:
+                    - -i
+                    - --bedfile
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Output Directory  [required]
+                    synonyms:
+                    - -o
+                    - --oc
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Configuration file  [required]
+                    synonyms:
+                    - -c
+                    - --configuration
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Flanking sequence length
+                    synonyms:
+                    - -s
+                    - --slop-length
+                    - --slop_length
+                    args: !SimpleFlagArg
+                      name: INTEGER
+                    optional: true
+                  - !Flag
+                    description: Length of sequence flanking motif
+                    synonyms:
+                    - -f
+                    - --flank-motif
+                    - --flank_motif
+                    args: !SimpleFlagArg
+                      name: INTEGER
+                    optional: true
+                  - !Flag
+                    description: Number of motifs
+                    synonyms:
+                    - --n-motif
+                    args: !SimpleFlagArg
+                      name: INTEGER
+                    optional: true
+                  - !Flag
+                    description: Number of parallel MEME jobs  [required]
+                    synonyms:
+                    - -t
+                    - --cores
+                    args: !SimpleFlagArg
+                      name: INTEGER
+                    optional: true
+                  - !Flag
+                    description: "Key denoting genome build to use in\nconfiguration\
+                      \ file  [required]"
+                    synonyms:
+                    - -g
+                    - -gb
+                    - --genome-build
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Print progress
+                    synonyms:
+                    - --show-progress
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: moca find_motifs [OPTIONS]\n\n  Search motifs\
+                    \ and create conservation plots\n\nOptions:\n  -i, --bedfile TEXT\
+                    \              Bed file input  [required]\n  -o, --oc TEXT   \
+                    \                Output Directory  [required]\n  -c, --configuration\
+                    \ TEXT        Configuration file  [required]\n  -s, --slop-length,\
+                    \ --slop_length INTEGER\n                                  Flanking\
+                    \ sequence length\n  -f, --flank-motif, --flank_motif INTEGER\n\
+                    \                                  Length of sequence flanking\
+                    \ motif\n  --n-motif INTEGER               Number of motifs\n\
+                    \  -t, --cores INTEGER             Number of parallel MEME jobs\
+                    \  [required]\n  -g, -gb, --genome-build TEXT    Key denoting\
+                    \ genome build to use in\n                                  configuration\
+                    \ file  [required]\n  --show-progress                 Print progress\n\
+                    \  -h, --help                      Show this message and exit.\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - moca
+                  - plot
+                  positional: []
+                  named:
+                  - !Flag
+                    description: MEME output directory  [required]
+                    synonyms:
+                    - --meme-dir
+                    - --meme_dir
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Centrimo output directory  [required]
+                    synonyms:
+                    - --centrimo-dir
+                    - --centrimo_dir
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Sample fimo.txt  [required]
+                    synonyms:
+                    - --fimo-dir-sample
+                    - --fimo_dir_sample
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Control fimo.txt  [required]
+                    synonyms:
+                    - --fimo-dir-control
+                    - --fimo_dir_control
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Plot title
+                    synonyms:
+                    - --name
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: "Length of sequence flanking motif\n[required]"
+                    synonyms:
+                    - --flank-motif
+                    args: !SimpleFlagArg
+                      name: INTEGER
+                    optional: true
+                  - !Flag
+                    description: Motif number
+                    synonyms:
+                    - --motif
+                    args: !SimpleFlagArg
+                      name: INTEGER
+                    optional: true
+                  - !Flag
+                    description: Output Directory  [required]
+                    synonyms:
+                    - -o
+                    - --oc
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Configuration file  [required]
+                    synonyms:
+                    - -c
+                    - --configuration
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Print progress
+                    synonyms:
+                    - --show-progress
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Key denoting genome build to use in\nconfiguration\
+                      \ file  [required]"
+                    synonyms:
+                    - -g
+                    - -gb
+                    - --genome-build
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: moca plot [OPTIONS]\n\n  Create conservation\
+                    \ plots\n\nOptions:\n  --meme-dir, --meme_dir TEXT     MEME output\
+                    \ directory  [required]\n  --centrimo-dir, --centrimo_dir TEXT\n\
+                    \                                  Centrimo output directory \
+                    \ [required]\n  --fimo-dir-sample, --fimo_dir_sample TEXT\n  \
+                    \                                Sample fimo.txt  [required]\n\
+                    \  --fimo-dir-control, --fimo_dir_control TEXT\n             \
+                    \                     Control fimo.txt  [required]\n  --name TEXT\
+                    \                     Plot title\n  --flank-motif INTEGER    \
+                    \       Length of sequence flanking motif\n                  \
+                    \                [required]\n  --motif INTEGER               \
+                    \  Motif number\n  -o, --oc TEXT                   Output Directory\
+                    \  [required]\n  -c, --configuration TEXT        Configuration\
+                    \ file  [required]\n  --show-progress                 Print progress\n\
+                    \  -g, -gb, --genome-build TEXT    Key denoting genome build to\
+                    \ use in\n                                  configuration file\
+                    \  [required]\n  -h, --help                      Show this message\
+                    \ and exit.\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: Show the version and exit.
+                  synonyms:
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "Usage: moca [OPTIONS] COMMAND [ARGS]...\n\n  moca: Motif\
+                  \ Conservation Analysis\n\nOptions:\n  --version  Show the version\
+                  \ and exit.\n  --help     Show this message and exit.\n\nCommands:\n\
+                  \  find_motifs  Search motifs and create conservation plots\n  plot\
+                  \         Create conservation plots\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -357,12 +609,9 @@ subcommands:
                 \                configuration file  [required]\n  --show-progress\
                 \                 Print progress\n  -h, --help                   \
                 \   Show this message and exit.\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - moca
-              - plot
+              command: *id005
               positional: []
               named:
               - !Flag
@@ -480,19 +729,9 @@ subcommands:
                 \                  Show this message and exit.\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: Show this message and exit.
-              synonyms:
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: Show the version and exit.
-              synonyms:
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "Usage: moca [OPTIONS] COMMAND [ARGS]...\n\n  moca: Motif Conservation\
               \ Analysis\n\nOptions:\n  --version  Show the version and exit.\n  --help\
               \     Show this message and exit.\n\nCommands:\n  find_motifs  Search\
@@ -613,7 +852,7 @@ subcommands:
             args: !SimpleFlagArg
               name: TEXT
             optional: true
-          parent: *id003
+          parent: *id006
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -762,7 +1001,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TEXT
         optional: true
-      parent: *id006
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -909,7 +1148,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

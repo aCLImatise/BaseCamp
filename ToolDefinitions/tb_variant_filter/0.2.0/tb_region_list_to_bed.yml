@@ -67,17 +67,10 @@ subcommands:
             args: !SimpleFlagArg
               name: CHROMOSOME_NAME
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: "Chromosome name to use in BED\n"
-              synonyms:
-              - --chromosome_name
-              args: !SimpleFlagArg
-                name: CHROMOSOME_NAME
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -96,7 +89,72 @@ subcommands:
                 args: !SimpleFlagArg
                   name: CHROMOSOME_NAME
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: "Chromosome name to use in BED\n"
+                  synonyms:
+                  - --chromosome_name
+                  args: !SimpleFlagArg
+                    name: CHROMOSOME_NAME
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: tb_region_list_to_bed
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --chromosome_name
+                    args: !SimpleFlagArg
+                      name: CHROMOSOME_NAME
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: tb_region_list_to_bed [-h] [--chromosome_name\
+                    \ CHROMOSOME_NAME]\n                             {mtbseq,pe_ppe,tbprofiler,uvp}\
+                    \ [output_file]\ntb_region_list_to_bed: error: argument region_list_name:\
+                    \ invalid choice: 'output_file' (choose from 'mtbseq', 'pe_ppe',\
+                    \ 'tbprofiler', 'uvp')\n"
+                  generated_using: &id004
+                  - --help
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: tb_region_list_to_bed [-h] [--chromosome_name CHROMOSOME_NAME]\n\
+                  \                             {mtbseq,pe_ppe,tbprofiler,uvp} [output_file]\n\
+                  \nOutput region filter in BED format\n\npositional arguments:\n\
+                  \  {mtbseq,pe_ppe,tbprofiler,uvp}\n                        Name\
+                  \ of region list\n  output_file           File to write output to\n\
+                  \noptional arguments:\n  -h, --help            show this help message\
+                  \ and exit\n  --chromosome_name CHROMOSOME_NAME\n              \
+                  \          Chromosome name to use in BED\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -111,16 +169,9 @@ subcommands:
                 \                             {mtbseq,pe_ppe,tbprofiler,uvp} [output_file]\n\
                 tb_region_list_to_bed: error: argument region_list_name: invalid choice:\
                 \ 'output_file' (choose from 'mtbseq', 'pe_ppe', 'tbprofiler', 'uvp')\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage: tb_region_list_to_bed [-h] [--chromosome_name CHROMOSOME_NAME]\n\

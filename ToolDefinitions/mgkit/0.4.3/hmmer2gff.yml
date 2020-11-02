@@ -53,7 +53,7 @@ subcommands:
     - -o
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id007 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -105,7 +105,7 @@ subcommands:
         - -o
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id006 !Command
+      parent: &id007 !Command
         command: *id001
         positional: []
         named: []
@@ -157,91 +157,10 @@ subcommands:
             - -o
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id006 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: 'more verbose - includes debug messages (default: 20)'
-              synonyms:
-              - -v
-              - --verbose
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "less verbose - only error and critical messages\n(default:\
-                \ None)"
-              synonyms:
-              - --quiet
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Show citation for the framework
-              synonyms:
-              - --cite
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Show the script manual
-              synonyms:
-              - --manual
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "Evalue over which an hit will be discarded (default:\n\
-                0.05)"
-              synonyms:
-              - -t
-              - --discard
-              args: !SimpleFlagArg
-                name: DISCARD
-              optional: true
-            - !Flag
-              description: 'Disable Evalue filter (default: False)'
-              synonyms:
-              - -d
-              - --disable-evalue
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "Profiles names are not in the custom format (default:\n\
-                True)"
-              synonyms:
-              - -c
-              - --no-custom-profiles
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "Database from which the profiles are generated \" +\"\n\
-                (e.g. PFAM) (default: CUSTOM)"
-              synonyms:
-              - -db
-              - --database
-              args: !SimpleFlagArg
-                name: DATABASE
-              optional: true
-            - !Flag
-              description: 'Type of feature (e.g. gene) (default: gene)'
-              synonyms:
-              - -f
-              - --feature-type
-              args: !SimpleFlagArg
-                name: FEATURE_TYPE
-              optional: true
-            - !Flag
-              description: "Set if the sequences were not translated with\ntranslate_seq\
-                \ (default: False)\n"
-              synonyms:
-              - -n
-              - --no-frame
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: ''
-              synonyms:
-              - -o
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -290,7 +209,266 @@ subcommands:
                 - -o
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: 'more verbose - includes debug messages (default: 20)'
+                  synonyms:
+                  - -v
+                  - --verbose
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "less verbose - only error and critical messages\n\
+                    (default: None)"
+                  synonyms:
+                  - --quiet
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Show citation for the framework
+                  synonyms:
+                  - --cite
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Show the script manual
+                  synonyms:
+                  - --manual
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Evalue over which an hit will be discarded (default:\n\
+                    0.05)"
+                  synonyms:
+                  - -t
+                  - --discard
+                  args: !SimpleFlagArg
+                    name: DISCARD
+                  optional: true
+                - !Flag
+                  description: 'Disable Evalue filter (default: False)'
+                  synonyms:
+                  - -d
+                  - --disable-evalue
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Profiles names are not in the custom format (default:\n\
+                    True)"
+                  synonyms:
+                  - -c
+                  - --no-custom-profiles
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Database from which the profiles are generated \"\
+                    \ +\"\n(e.g. PFAM) (default: CUSTOM)"
+                  synonyms:
+                  - -db
+                  - --database
+                  args: !SimpleFlagArg
+                    name: DATABASE
+                  optional: true
+                - !Flag
+                  description: 'Type of feature (e.g. gene) (default: gene)'
+                  synonyms:
+                  - -f
+                  - --feature-type
+                  args: !SimpleFlagArg
+                    name: FEATURE_TYPE
+                  optional: true
+                - !Flag
+                  description: "Set if the sequences were not translated with\ntranslate_seq\
+                    \ (default: False)\n"
+                  synonyms:
+                  - -n
+                  - --no-frame
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -o
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: hmmer2gff
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: OUTPUT_FILE
+                    optional: true
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -db
+                    args: !SimpleFlagArg
+                      name: DATABASE
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -c
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -d
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -t
+                    args: !SimpleFlagArg
+                      name: DISCARD
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -o
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: hmmer2gff [-h] [-o [OUTPUT_FILE]] [-t DISCARD]\
+                    \ [-d] [-c] [-db DATABASE]\n                 [-f FEATURE_TYPE]\
+                    \ [-n] [-v | --quiet] [--cite] [--manual]\n                 [--version]\n\
+                    \                 aa_file [hmmer_file]\nhmmer2gff: error: argument\
+                    \ aa_file: can't open 'aa_file': [Errno 2] No such file or directory:\
+                    \ 'aa_file'\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - hmmer2gff
+                  - hmmer_file
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: hmmer2gff
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: OUTPUT_FILE
+                    optional: true
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -db
+                    args: !SimpleFlagArg
+                      name: DATABASE
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -c
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -d
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -t
+                    args: !SimpleFlagArg
+                      name: DISCARD
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -o
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: hmmer2gff [-h] [-o [OUTPUT_FILE]] [-t DISCARD]\
+                    \ [-d] [-c] [-db DATABASE]\n                 [-f FEATURE_TYPE]\
+                    \ [-n] [-v | --quiet] [--cite] [--manual]\n                 [--version]\n\
+                    \                 aa_file [hmmer_file]\nhmmer2gff: error: argument\
+                    \ aa_file: can't open 'hmmer_file': [Errno 2] No such file or\
+                    \ directory: 'hmmer_file'\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: show program's version number and exit
+                  synonyms:
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "usage: hmmer2gff [-h] [-o [OUTPUT_FILE]] [-t DISCARD]\
+                  \ [-d] [-c] [-db DATABASE]\n                 [-f FEATURE_TYPE] [-n]\
+                  \ [-v | --quiet] [--cite] [--manual]\n                 [--version]\n\
+                  \                 aa_file [hmmer_file]\n\nConvert HMMER data to\
+                  \ GFF file\n\noptional arguments:\n  -h, --help            show\
+                  \ this help message and exit\n  -v, --verbose         more verbose\
+                  \ - includes debug messages (default: 20)\n  --quiet           \
+                  \    less verbose - only error and critical messages\n         \
+                  \               (default: None)\n  --cite                Show citation\
+                  \ for the framework\n  --manual              Show the script manual\n\
+                  \  --version             show program's version number and exit\n\
+                  \nFile options:\n  aa_file               Fasta file containing contigs\
+                  \ translated to aa (used\n                        by HMMER)\n  hmmer_file\n\
+                  \  -o [OUTPUT_FILE], --output-file [OUTPUT_FILE]\n\nFilters:\n \
+                  \ -t DISCARD, --discard DISCARD\n                        Evalue\
+                  \ over which an hit will be discarded (default:\n              \
+                  \          0.05)\n  -d, --disable-evalue  Disable Evalue filter\
+                  \ (default: False)\n\nGFF:\n  -c, --no-custom-profiles\n       \
+                  \                 Profiles names are not in the custom format (default:\n\
+                  \                        True)\n  -db DATABASE, --database DATABASE\n\
+                  \                        Database from which the profiles are generated\
+                  \ \" +\"\n                        (e.g. PFAM) (default: CUSTOM)\n\
+                  \  -f FEATURE_TYPE, --feature-type FEATURE_TYPE\n              \
+                  \          Type of feature (e.g. gene) (default: gene)\n  -n, --no-frame\
+                  \        Set if the sequences were not translated with\n       \
+                  \                 translate_seq (default: False)\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -307,12 +485,9 @@ subcommands:
                 \                aa_file [hmmer_file]\nhmmer2gff: error: argument\
                 \ aa_file: can't open 'aa_file': [Errno 2] No such file or directory:\
                 \ 'aa_file'\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - hmmer2gff
-              - hmmer_file
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -376,20 +551,9 @@ subcommands:
                 \ 'hmmer_file'\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: show program's version number and exit
-              synonyms:
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "usage: hmmer2gff [-h] [-o [OUTPUT_FILE]] [-t DISCARD] [-d]\
               \ [-c] [-db DATABASE]\n                 [-f FEATURE_TYPE] [-n] [-v |\
               \ --quiet] [--cite] [--manual]\n                 [--version]\n     \
@@ -478,7 +642,7 @@ subcommands:
             - -o
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id006
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -585,7 +749,7 @@ subcommands:
         - -o
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id006
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -691,7 +855,7 @@ subcommands:
     - -o
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

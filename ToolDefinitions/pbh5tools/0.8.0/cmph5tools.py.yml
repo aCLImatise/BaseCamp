@@ -21,7 +21,7 @@ subcommands:
     name: cmp.h5.2
     optional: false
   named: []
-  parent: &id020 !Command
+  parent: &id023 !Command
     command: *id001
     positional: []
     named: []
@@ -41,7 +41,7 @@ subcommands:
         name: cmp.h5.2
         optional: false
       named: []
-      parent: &id017 !Command
+      parent: &id020 !Command
         command: *id001
         positional: []
         named: []
@@ -61,30 +61,10 @@ subcommands:
             name: cmp.h5.2
             optional: false
           named: []
-          parent: &id003 !Command
+          parent: &id017 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: 'Set the verbosity level (default: None)'
-              synonyms:
-              - --verbose
-              - -v
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: 'Print runtime profile at exit (default: False)'
-              synonyms:
-              - --profile
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "Catch exceptions in debugger (requires ipdb) (default:\n\
-                False)\n"
-              synonyms:
-              - --debug
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -101,7 +81,572 @@ subcommands:
                 name: cmp.h5.2
                 optional: false
               named: []
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: 'Set the verbosity level (default: None)'
+                  synonyms:
+                  - --verbose
+                  - -v
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: 'Print runtime profile at exit (default: False)'
+                  synonyms:
+                  - --profile
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Catch exceptions in debugger (requires ipdb) (default:\n\
+                    False)\n"
+                  synonyms:
+                  - --debug
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: filename 1
+                    position: 0
+                    name: cmp.h5.1
+                    optional: false
+                  - !Positional
+                    description: filename 2
+                    position: 1
+                    name: cmp.h5.2
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: cmph5tools.py equal [-h] cmp.h5.1 cmp.h5.2\n\n\
+                    Compare two cmp.h5 files for equivalence.\n\npositional arguments:\n\
+                    \  cmp.h5.1    filename 1\n  cmp.h5.2    filename 2\n\noptional\
+                    \ arguments:\n  -h, --help  show this help message and exit\n"
+                  generated_using: &id005
+                  - --help
+                - &id004 !Command
+                  command: &id008
+                  - cmph5tools.py
+                  - validate
+                  positional: []
+                  named: []
+                  parent: *id003
+                  subcommands:
+                  - !Command
+                    command: &id009
+                    - cmph5tools.py
+                    - validate
+                    - input.cmp.h5
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: cmph5tools.py
+                      optional: false
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --debug
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --profile
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --verbose
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: ''
+                      synonyms:
+                      - -h
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag: !Flag
+                      description: ''
+                      synonyms:
+                      - --version
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    help_text: "usage: cmph5tools.py [-h] [--verbose] [--version]\
+                      \ [--profile] [--debug]\n                     {select,merge,sort,equal,summarize,stats,listMetrics,validate}\n\
+                      \                     ...\ncmph5tools.py: error: unrecognized\
+                      \ arguments: --usage\n"
+                    generated_using: &id006
+                    - --usage
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: cmph5tools.py validate [-h] input.cmp.h5\n\n\
+                    Validate a cmp.h5 file\n\npositional arguments:\n  input.cmp.h5\
+                    \  input filename\n\noptional arguments:\n  -h, --help    show\
+                    \ this help message and exit\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id010
+                  - cmph5tools.py
+                  - stats
+                  positional: []
+                  named:
+                  - !Flag
+                    description: output csv filename
+                    synonyms:
+                    - --outFile
+                    args: !SimpleFlagArg
+                      name: OUTCSV
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --what
+                    args: !SimpleFlagArg
+                      name: what-expression
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --where
+                    args: !SimpleFlagArg
+                      name: where-expression
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --groupBy
+                    args: !SimpleFlagArg
+                      name: groupBy-expression
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --sortBy
+                    args: !SimpleFlagArg
+                      name: sortBy-expression
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --limit
+                    args: !SimpleFlagArg
+                      name: maximum-records
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: cmph5tools.py stats [-h] [--outFile OUTCSV] [--what\
+                    \ what-expression]\n                           [--where where-expression]\n\
+                    \                           [--groupBy groupBy-expression]\n \
+                    \                          [--sortBy sortBy-expression]\n    \
+                    \                       [--limit maximum-records]\n          \
+                    \                 input.cmp.h5\n\nEmit statistics from a cmp.h5\
+                    \ file.\n\npositional arguments:\n  input.cmp.h5          input\
+                    \ filename\n\noptional arguments:\n  -h, --help            show\
+                    \ this help message and exit\n  --outFile OUTCSV      output csv\
+                    \ filename\n  --what what-expression\n  --where where-expression\n\
+                    \  --groupBy groupBy-expression\n  --sortBy sortBy-expression\n\
+                    \  --limit maximum-records\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id011
+                  - cmph5tools.py
+                  - input.cmp.h5
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: cmph5tools.py
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --debug
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --profile
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --verbose
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: cmph5tools.py [-h] [--verbose] [--version] [--profile]\
+                    \ [--debug]\n                     {select,merge,sort,equal,summarize,stats,listMetrics,validate}\n\
+                    \                     ...\ncmph5tools.py: error: argument subCommand:\
+                    \ invalid choice: 'input.cmp.h5' (choose from 'select', 'merge',\
+                    \ 'sort', 'equal', 'summarize', 'stats', 'listMetrics', 'validate')\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id012
+                  - cmph5tools.py
+                  - listMetrics
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: cmph5tools.py
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --debug
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --profile
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --verbose
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: cmph5tools.py [-h] [--verbose] [--version] [--profile]\
+                    \ [--debug]\n                     {select,merge,sort,equal,summarize,stats,listMetrics,validate}\n\
+                    \                     ...\ncmph5tools.py: error: unrecognized\
+                    \ arguments: --usage\n"
+                  generated_using: *id006
+                - &id007 !Command
+                  command: &id013
+                  - cmph5tools.py
+                  - summarize
+                  positional: []
+                  named: []
+                  parent: *id003
+                  subcommands:
+                  - !Command
+                    command: &id014
+                    - cmph5tools.py
+                    - summarize
+                    - input.cmp.h5
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: cmph5tools.py
+                      optional: false
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --debug
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --profile
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --verbose
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    parent: *id007
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: ''
+                      synonyms:
+                      - -h
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag: !Flag
+                      description: ''
+                      synonyms:
+                      - --version
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    help_text: "usage: cmph5tools.py [-h] [--verbose] [--version]\
+                      \ [--profile] [--debug]\n                     {select,merge,sort,equal,summarize,stats,listMetrics,validate}\n\
+                      \                     ...\ncmph5tools.py: error: unrecognized\
+                      \ arguments: --usage\n"
+                    generated_using: *id006
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: cmph5tools.py summarize [-h] input.cmp.h5 [input.cmp.h5\
+                    \ ...]\n\nSummarize cmp.h5 files.\n\npositional arguments:\n \
+                    \ input.cmp.h5  cmp.h5 files to summarize\n\noptional arguments:\n\
+                    \  -h, --help    show this help message and exit\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id015
+                  - cmph5tools.py
+                  - sort
+                  positional: []
+                  named:
+                  - !Flag
+                    description: output filename
+                    synonyms:
+                    - --outFile
+                    args: !SimpleFlagArg
+                      name: OUTCMP
+                    optional: true
+                  - !Flag
+                    description: "whether a deep sorting should be conducted, i.e.\
+                      \ sort\ntheAlignmentArrays [False]"
+                    synonyms:
+                    - --deep
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: temporary directory to use when sorting in-place
+                      [/tmp]
+                    synonyms:
+                    - --tmpDir
+                    args: !SimpleFlagArg
+                      name: TMPDIR
+                    optional: true
+                  - !Flag
+                    description: Whether to use native indexing [False].
+                    synonyms:
+                    - --usePythonIndexer
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Whether to make a temporary copy of the original\
+                      \ cmp.h5\nfile before sorting.\n"
+                    synonyms:
+                    - --inPlace
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: cmph5tools.py sort [-h] [--outFile OUTCMP] [--deep]\
+                    \ [--tmpDir TMPDIR]\n                          [--usePythonIndexer]\
+                    \ [--inPlace]\n                          input.cmp.h5\n\nSort\
+                    \ cmp.h5 files. If output-file is unspecified the input-file is\
+                    \ overwritten\n\npositional arguments:\n  input.cmp.h5       \
+                    \ input filename\n\noptional arguments:\n  -h, --help        \
+                    \  show this help message and exit\n  --outFile OUTCMP    output\
+                    \ filename\n  --deep              whether a deep sorting should\
+                    \ be conducted, i.e. sort\n                      theAlignmentArrays\
+                    \ [False]\n  --tmpDir TMPDIR     temporary directory to use when\
+                    \ sorting in-place [/tmp]\n  --usePythonIndexer  Whether to use\
+                    \ native indexing [False].\n  --inPlace           Whether to make\
+                    \ a temporary copy of the original cmp.h5\n                  \
+                    \    file before sorting.\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id016
+                  - cmph5tools.py
+                  - select
+                  positional: []
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --groupBy
+                    args: !SimpleFlagArg
+                      name: Reference
+                    optional: true
+                  - !Flag
+                    description: Either a pattern string or a filename
+                    synonyms:
+                    - --outFile
+                    args: !SimpleFlagArg
+                      name: out.cmp.h5
+                    optional: true
+                  - !Flag
+                    description: indices to select
+                    synonyms:
+                    - --idxs
+                    args: !RepeatFlagArg
+                      name: N
+                    optional: true
+                  - !Flag
+                    description: "groupByCsv file, e.g.\nGroup,Movie,Barcode\\ngroupname,movie,barcode"
+                    synonyms:
+                    - --groupByCsv
+                    args: !SimpleFlagArg
+                      name: groupByCsv
+                    optional: true
+                  - !Flag
+                    description: where expression, e.g., ReadLength > 500
+                    synonyms:
+                    - --where
+                    args: !SimpleFlagArg
+                      name: where-expression
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --outDir
+                    args: !SimpleFlagArg
+                      name: outputDir
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: cmph5tools.py select [-h] [--outFile out.cmp.h5]\
+                    \ [--idxs N [N ...]]\n                            [--groupBy groupBy-expression]\n\
+                    \                            [--groupByCsv groupByCsv]\n     \
+                    \                       [--where where-expression] [--outDir outputDir]\n\
+                    \                            input.cmp.h5\n\nCreate a new cmp.h5\
+                    \ file by selecting alignments. Users can specify indices\nusing\
+                    \ the idx argument to select particular alignments. Alternatively,\
+                    \ users\ncan specify a where expression which chooses the alignments\
+                    \ which the\npredicate is true. If a groupBy expression is specified\
+                    \ then mulitple cmp.h5\nfiles are generated according to the expression.\
+                    \ For instance, if a user\nwantedto generate a cmp.h5 file for\
+                    \ each reference sequence then\n--groupBy=Reference\n\npositional\
+                    \ arguments:\n  input.cmp.h5\n\noptional arguments:\n  -h, --help\
+                    \            show this help message and exit\n  --outFile out.cmp.h5\
+                    \  Either a pattern string or a filename\n  --idxs N [N ...] \
+                    \     indices to select\n  --groupBy groupBy-expression\n    \
+                    \                    groupBy expression, e.g., Movie*Barcode\n\
+                    \  --groupByCsv groupByCsv\n                        groupByCsv\
+                    \ file, e.g.\n                        Group,Movie,Barcode\\ngroupname,movie,barcode\n\
+                    \  --where where-expression\n                        where expression,\
+                    \ e.g., ReadLength > 500\n  --outDir outputDir\n"
+                  generated_using: *id005
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: show program's version number and exit
+                  synonyms:
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "usage: cmph5tools.py [-h] [--verbose] [--version] [--profile]\
+                  \ [--debug]\n                     {select,merge,sort,equal,summarize,stats,listMetrics,validate}\n\
+                  \                     ...\n\nToolkit for command-line tools associated\
+                  \ with cmp.h5 file processing. Notes:\nFor all command-line arguments,\
+                  \ default values are listed in [].\n\npositional arguments:\n  {select,merge,sort,equal,summarize,stats,listMetrics,validate}\n\
+                  \    select              Create new cmp.h5 files from selections\
+                  \ of\n                        input.cmp.h5\n    merge          \
+                  \     Merge input.cmp.h5 files into out.cmp.h5\n    sort       \
+                  \         Sort input.cmp.h5 file\n    equal               Compare\
+                  \ two cmp.h5 files for equivalence\n    summarize           Summarize\
+                  \ contents of cmp.h5 files\n    stats               Compute statistics\
+                  \ from input.cmp.h5\n    listMetrics         List available metrics\n\
+                  \    validate            Validate input.cmp.h5\n\noptional arguments:\n\
+                  \  -h, --help            show this help message and exit\n  --verbose,\
+                  \ -v         Set the verbosity level (default: None)\n  --version\
+                  \             show program's version number and exit\n  --profile\
+                  \             Print runtime profile at exit (default: False)\n \
+                  \ --debug               Catch exceptions in debugger (requires ipdb)\
+                  \ (default:\n                        False)\n"
+                generated_using: *id005
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -117,21 +662,15 @@ subcommands:
                 \ two cmp.h5 files for equivalence.\n\npositional arguments:\n  cmp.h5.1\
                 \    filename 1\n  cmp.h5.2    filename 2\n\noptional arguments:\n\
                 \  -h, --help  show this help message and exit\n"
-              generated_using: &id005
-              - --help
-            - &id004 !Command
-              command: &id008
-              - cmph5tools.py
-              - validate
+              generated_using: *id005
+            - &id018 !Command
+              command: *id008
               positional: []
               named: []
               parent: *id003
               subcommands:
               - !Command
-                command: &id009
-                - cmph5tools.py
-                - validate
-                - input.cmp.h5
+                command: *id009
                 positional:
                 - !Positional
                   description: ''
@@ -177,16 +716,9 @@ subcommands:
                   \ [--debug]\n                     {select,merge,sort,equal,summarize,stats,listMetrics,validate}\n\
                   \                     ...\ncmph5tools.py: error: unrecognized arguments:\
                   \ --usage\n"
-                generated_using: &id006
-                - --usage
+                generated_using: *id006
               usage: []
-              help_flag: !Flag
-                description: show this help message and exit
-                synonyms:
-                - -h
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "usage: cmph5tools.py validate [-h] input.cmp.h5\n\nValidate\
@@ -195,18 +727,9 @@ subcommands:
                 \ exit\n"
               generated_using: *id005
             - !Command
-              command: &id010
-              - cmph5tools.py
-              - stats
+              command: *id010
               positional: []
               named:
-              - !Flag
-                description: output csv filename
-                synonyms:
-                - --outFile
-                args: !SimpleFlagArg
-                  name: OUTCSV
-                optional: true
               - !Flag
                 description: ''
                 synonyms:
@@ -217,36 +740,18 @@ subcommands:
               - !Flag
                 description: ''
                 synonyms:
-                - --where
+                - --outFile
                 args: !SimpleFlagArg
-                  name: where-expression
-                optional: true
-              - !Flag
-                description: ''
-                synonyms:
-                - --groupBy
-                args: !SimpleFlagArg
-                  name: groupBy-expression
-                optional: true
-              - !Flag
-                description: ''
-                synonyms:
-                - --sortBy
-                args: !SimpleFlagArg
-                  name: sortBy-expression
-                optional: true
-              - !Flag
-                description: ''
-                synonyms:
-                - --limit
-                args: !SimpleFlagArg
-                  name: maximum-records
+                  name: OUTCSV
                 optional: true
               parent: *id003
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                description: "show this help message and exit\n--outFile OUTCSV  \
+                  \    output csv filename\n--what what-expression\n--where where-expression\n\
+                  --groupBy groupBy-expression\n--sortBy sortBy-expression\n--limit\
+                  \ maximum-records\n"
                 synonyms:
                 - -h
                 - --help
@@ -267,9 +772,7 @@ subcommands:
                 \  --limit maximum-records\n"
               generated_using: *id005
             - !Command
-              command: &id011
-              - cmph5tools.py
-              - input.cmp.h5
+              command: *id011
               positional:
               - !Positional
                 description: ''
@@ -318,9 +821,7 @@ subcommands:
                 \ 'equal', 'summarize', 'stats', 'listMetrics', 'validate')\n"
               generated_using: *id005
             - !Command
-              command: &id012
-              - cmph5tools.py
-              - listMetrics
+              command: *id012
               positional:
               - !Positional
                 description: ''
@@ -367,19 +868,14 @@ subcommands:
                 \                     ...\ncmph5tools.py: error: unrecognized arguments:\
                 \ --usage\n"
               generated_using: *id006
-            - &id007 !Command
-              command: &id013
-              - cmph5tools.py
-              - summarize
+            - &id019 !Command
+              command: *id013
               positional: []
               named: []
               parent: *id003
               subcommands:
               - !Command
-                command: &id014
-                - cmph5tools.py
-                - summarize
-                - input.cmp.h5
+                command: *id014
                 positional:
                 - !Positional
                   description: ''
@@ -427,13 +923,7 @@ subcommands:
                   \ --usage\n"
                 generated_using: *id006
               usage: []
-              help_flag: !Flag
-                description: show this help message and exit
-                synonyms:
-                - -h
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "usage: cmph5tools.py summarize [-h] input.cmp.h5 [input.cmp.h5\
@@ -442,9 +932,7 @@ subcommands:
                 \    show this help message and exit\n"
               generated_using: *id005
             - !Command
-              command: &id015
-              - cmph5tools.py
-              - sort
+              command: *id015
               positional: []
               named:
               - !Flag
@@ -508,58 +996,39 @@ subcommands:
                 \                file before sorting.\n"
               generated_using: *id005
             - !Command
-              command: &id016
-              - cmph5tools.py
-              - select
-              positional: []
+              command: *id016
+              positional:
+              - !Positional
+                description: Create a new cmp.h5 file by selecting alignments. Users
+                  can specify indices
+                position: 0
+                name: input.cmp.h5
+                optional: false
               named:
               - !Flag
                 description: ''
-                synonyms:
-                - --groupBy
-                args: !SimpleFlagArg
-                  name: Reference
-                optional: true
-              - !Flag
-                description: Either a pattern string or a filename
-                synonyms:
-                - --outFile
-                args: !SimpleFlagArg
-                  name: out.cmp.h5
-                optional: true
-              - !Flag
-                description: indices to select
                 synonyms:
                 - --idxs
                 args: !RepeatFlagArg
                   name: N
                 optional: true
               - !Flag
-                description: "groupByCsv file, e.g.\nGroup,Movie,Barcode\\ngroupname,movie,barcode"
-                synonyms:
-                - --groupByCsv
-                args: !SimpleFlagArg
-                  name: groupByCsv
-                optional: true
-              - !Flag
-                description: where expression, e.g., ReadLength > 500
-                synonyms:
-                - --where
-                args: !SimpleFlagArg
-                  name: where-expression
-                optional: true
-              - !Flag
                 description: ''
                 synonyms:
-                - --outDir
+                - --outFile
                 args: !SimpleFlagArg
-                  name: outputDir
+                  name: out.cmp.h5
                 optional: true
               parent: *id003
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                description: "show this help message and exit\n--outFile out.cmp.h5\
+                  \  Either a pattern string or a filename\n--idxs N [N ...]     \
+                  \ indices to select\n--groupBy groupBy-expression\ngroupBy expression,\
+                  \ e.g., Movie*Barcode\n--groupByCsv groupByCsv\ngroupByCsv file,\
+                  \ e.g.\nGroup,Movie,Barcode\\ngroupname,movie,barcode\n--where where-expression\n\
+                  where expression, e.g., ReadLength > 500\n--outDir outputDir\n"
                 synonyms:
                 - -h
                 - --help
@@ -590,20 +1059,9 @@ subcommands:
                 \ outputDir\n"
               generated_using: *id005
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: show program's version number and exit
-              synonyms:
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "usage: cmph5tools.py [-h] [--verbose] [--version] [--profile]\
               \ [--debug]\n                     {select,merge,sort,equal,summarize,stats,listMetrics,validate}\n\
               \                     ...\n\nToolkit for command-line tools associated\
@@ -639,11 +1097,11 @@ subcommands:
             \    filename 1\n  cmp.h5.2    filename 2\n\noptional arguments:\n  -h,\
             \ --help  show this help message and exit\n"
           generated_using: *id005
-        - &id018 !Command
+        - &id021 !Command
           command: *id008
           positional: []
           named: []
-          parent: *id003
+          parent: *id017
           subcommands:
           - !Command
             command: *id009
@@ -672,7 +1130,7 @@ subcommands:
               - --verbose
               args: !EmptyFlagArg {}
               optional: true
-            parent: *id004
+            parent: *id018
             subcommands: []
             usage: []
             help_flag: !Flag
@@ -719,7 +1177,7 @@ subcommands:
             args: !SimpleFlagArg
               name: OUTCSV
             optional: true
-          parent: *id003
+          parent: *id017
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -771,7 +1229,7 @@ subcommands:
             - --verbose
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id017
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -820,7 +1278,7 @@ subcommands:
             - --verbose
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id017
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -841,11 +1299,11 @@ subcommands:
             \                     ...\ncmph5tools.py: error: unrecognized arguments:\
             \ --usage\n"
           generated_using: *id006
-        - &id019 !Command
+        - &id022 !Command
           command: *id013
           positional: []
           named: []
-          parent: *id003
+          parent: *id017
           subcommands:
           - !Command
             command: *id014
@@ -874,7 +1332,7 @@ subcommands:
               - --verbose
               args: !EmptyFlagArg {}
               optional: true
-            parent: *id007
+            parent: *id019
             subcommands: []
             usage: []
             help_flag: !Flag
@@ -942,7 +1400,7 @@ subcommands:
             - --inPlace
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id017
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -991,7 +1449,7 @@ subcommands:
             args: !SimpleFlagArg
               name: out.cmp.h5
             optional: true
-          parent: *id003
+          parent: *id017
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1067,11 +1525,11 @@ subcommands:
         \ 1\n  cmp.h5.2    filename 2\n\noptional arguments:\n  -h, --help  show this\
         \ help message and exit\n"
       generated_using: *id005
-    - &id021 !Command
+    - &id024 !Command
       command: *id008
       positional: []
       named: []
-      parent: *id017
+      parent: *id020
       subcommands:
       - !Command
         command: *id009
@@ -1100,7 +1558,7 @@ subcommands:
           - --verbose
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id018
+        parent: *id021
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -1147,7 +1605,7 @@ subcommands:
         args: !SimpleFlagArg
           name: OUTCSV
         optional: true
-      parent: *id017
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1199,7 +1657,7 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id017
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1248,7 +1706,7 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id017
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1268,11 +1726,11 @@ subcommands:
         \                     {select,merge,sort,equal,summarize,stats,listMetrics,validate}\n\
         \                     ...\ncmph5tools.py: error: unrecognized arguments: --usage\n"
       generated_using: *id006
-    - &id022 !Command
+    - &id025 !Command
       command: *id013
       positional: []
       named: []
-      parent: *id017
+      parent: *id020
       subcommands:
       - !Command
         command: *id014
@@ -1301,7 +1759,7 @@ subcommands:
           - --verbose
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id019
+        parent: *id022
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -1369,7 +1827,7 @@ subcommands:
         - --inPlace
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id017
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1418,7 +1876,7 @@ subcommands:
         args: !SimpleFlagArg
           name: out.cmp.h5
         optional: true
-      parent: *id017
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1496,7 +1954,7 @@ subcommands:
   command: *id008
   positional: []
   named: []
-  parent: *id020
+  parent: *id023
   subcommands:
   - !Command
     command: *id009
@@ -1525,7 +1983,7 @@ subcommands:
       - --verbose
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id021
+    parent: *id024
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1571,7 +2029,7 @@ subcommands:
     args: !SimpleFlagArg
       name: OUTCSV
     optional: true
-  parent: *id020
+  parent: *id023
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1622,7 +2080,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id020
+  parent: *id023
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1671,7 +2129,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id020
+  parent: *id023
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1695,7 +2153,7 @@ subcommands:
   command: *id013
   positional: []
   named: []
-  parent: *id020
+  parent: *id023
   subcommands:
   - !Command
     command: *id014
@@ -1724,7 +2182,7 @@ subcommands:
       - --verbose
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id022
+    parent: *id025
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -1791,7 +2249,7 @@ subcommands:
     - --inPlace
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id020
+  parent: *id023
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1839,7 +2297,7 @@ subcommands:
     args: !SimpleFlagArg
       name: out.cmp.h5
     optional: true
-  parent: *id020
+  parent: *id023
   subcommands: []
   usage: []
   help_flag: !Flag

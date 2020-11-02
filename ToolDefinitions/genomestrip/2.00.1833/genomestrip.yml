@@ -365,7 +365,7 @@ subcommands:
             args: !SimpleFlagArg
               name: SVToolkit.jar
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
             named: []
@@ -487,7 +487,222 @@ subcommands:
                 args: !SimpleFlagArg
                   name: SVToolkit.jar
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: -log,--log_to_file <log_to_file>                                                         Set
+                      the logging location
+                    position: 0
+                    name: logging
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Input file (vcf)
+                    synonyms:
+                    - -vcf
+                    - --vcfFile
+                    args: !SimpleFlagArg
+                      name: vcfFile
+                    optional: true
+                  - !Flag
+                    description: Output file (vcf)
+                    synonyms:
+                    - -O
+                    - --outputFile
+                    args: !SimpleFlagArg
+                      name: outputFile
+                    optional: true
+                  - !Flag
+                    description: Reference fasta file
+                    synonyms:
+                    - -R
+                    - --referenceFile
+                    args: !SimpleFlagArg
+                      name: referenceFile
+                    optional: true
+                  - !Flag
+                    description: Print extra debugging output
+                    synonyms:
+                    - -debug
+                    - --debug
+                    args: !SimpleFlagArg
+                      name: debug
+                    optional: true
+                  - !Flag
+                    description: Enable verbose output
+                    synonyms:
+                    - -verbose
+                    - --verbose
+                    args: !SimpleFlagArg
+                      name: verbose
+                    optional: true
+                  - !Flag
+                    description: "Ploidy map specifying\ngender-dependent ploidy for\n\
+                      each region of the reference"
+                    synonyms:
+                    - -ploidyMapFile
+                    - --ploidyMapFile
+                    args: !SimpleFlagArg
+                      name: ploidyMapFile
+                    optional: true
+                  - !Flag
+                    description: "Map file or files containing\nthe gender for each\
+                      \ sample"
+                    synonyms:
+                    - -genderMapFile
+                    - --genderMapFile
+                    args: !SimpleFlagArg
+                      name: genderMapFile
+                    optional: true
+                  - !Flag
+                    description: "Map file or files containing\nthe assigned population\
+                      \ for\neach sample"
+                    synonyms:
+                    - -populationMapFile
+                    - --populationMapFile
+                    args: !SimpleFlagArg
+                      name: populationMapFile
+                    optional: true
+                  - !Flag
+                    description: "List (or .list file) of CNV\nsites to be included\
+                      \ in the\noutput"
+                    synonyms:
+                    - -site
+                    - --site
+                    args: !SimpleFlagArg
+                      name: site
+                    optional: true
+                  - !Flag
+                    description: "Whether to estimate and use\npopulation-based frequency\n\
+                      priors at diploid sites\n(default true)"
+                    synonyms:
+                    - -estimateAlleleFrequencies
+                    - --estimateAlleleFrequencies
+                    args: !SimpleFlagArg
+                      name: estimateAlleleFrequencies
+                    optional: true
+                  - !Flag
+                    description: Threshold at which to consider
+                    synonyms:
+                    - -genotypeLikelihoodThreshold
+                    - --genotypeLikelihoodThreshold
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Set the minimum level of
+                    synonyms:
+                    - -l
+                    - --logging_level
+                    args: !SimpleFlagArg
+                      name: logging_level
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -jar
+                    args: !SimpleFlagArg
+                      name: SVToolkit.jar
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Generate the help message
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: Output version information
+                    synonyms:
+                    - -version
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "--------------------------------------------------------------------\n\
+                    Program Name: org.broadinstitute.sv.apps.GenerateHaploidCNVGenotypes\n\
+                    --------------------------------------------------------------------\n\
+                    --------------------------------------------------------------------\n\
+                    usage: java -jar SVToolkit.jar -vcf <vcfFile> -O <outputFile>\
+                    \ -R <referenceFile> [-debug <debug>] [-verbose <verbose>] \n\
+                    \       [-ploidyMapFile <ploidyMapFile>] [-genderMapFile <genderMapFile>]\
+                    \ [-populationMapFile <populationMapFile>] [-site \n       <site>]\
+                    \ [-estimateAlleleFrequencies <estimateAlleleFrequencies>] [-genotypeLikelihoodThreshold\
+                    \ \n       <genotypeLikelihoodThreshold>] [-l <logging_level>]\
+                    \ [-log <log_to_file>] [-h] [-version]\n\n -vcf,--vcfFile <vcfFile>\
+                    \                                                            \
+                    \     Input file (vcf)\n -O,--outputFile <outputFile>        \
+                    \                                                     Output file\
+                    \ (vcf)\n -R,--referenceFile <referenceFile>                 \
+                    \                                      Reference fasta file\n\
+                    \ -debug,--debug <debug>                                     \
+                    \                              Print extra debugging output\n\
+                    \ -verbose,--verbose <verbose>                               \
+                    \                              Enable verbose output\n -ploidyMapFile,--ploidyMapFile\
+                    \ <ploidyMapFile>                                           Ploidy\
+                    \ map specifying \n                                          \
+                    \                                                gender-dependent\
+                    \ ploidy for \n                                              \
+                    \                                            each region of the\
+                    \ reference\n -genderMapFile,--genderMapFile <genderMapFile> \
+                    \                                          Map file or files containing\
+                    \ \n                                                         \
+                    \                                 the gender for each sample\n\
+                    \ -populationMapFile,--populationMapFile <populationMapFile> \
+                    \                              Map file or files containing \n\
+                    \                                                            \
+                    \                              the assigned population for \n\
+                    \                                                            \
+                    \                              each sample\n -site,--site <site>\
+                    \                                                            \
+                    \          List (or .list file) of CNV \n                    \
+                    \                                                            \
+                    \          sites to be included in the \n                    \
+                    \                                                            \
+                    \          output\n -estimateAlleleFrequencies,--estimateAlleleFrequencies\
+                    \ <estimateAlleleFrequencies>       Whether to estimate and use\
+                    \ \n                                                         \
+                    \                                 population-based frequency \n\
+                    \                                                            \
+                    \                              priors at diploid sites \n    \
+                    \                                                            \
+                    \                          (default true)\n -genotypeLikelihoodThreshold,--genotypeLikelihoodThreshold\
+                    \                               Threshold at which to consider\
+                    \ \n<genotypeLikelihoodThreshold>                            \
+                    \                                 a copy number class as \n  \
+                    \                                                            \
+                    \                            possible (default zero)\n -l,--logging_level\
+                    \ <logging_level>                                            \
+                    \           Set the minimum level of \n                      \
+                    \                                                            \
+                    \        logging\n -log,--log_to_file <log_to_file>          \
+                    \                                               Set the logging\
+                    \ location\n -h,--help                                       \
+                    \                                         Generate the help message\n\
+                    \ -version,--version                                         \
+                    \                              Output version information\n\n\n"
+                  generated_using: &id004
+                  - --help
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "usage: genomestrip [java_options] <subcommand> [<subcommand\
+                  \ args>]\n\nPossible subcommands include:\n\nPipelines (Queue Scripts)\n\
+                  \  SVPreprocess\n  SVDiscovery\n  SVGenotyper\n  CNVDiscoveryPipeline\n\
+                  \  LCNVDiscoveryPipeline\n\nVariant Annotation\n  SVAnnotator\n\n\
+                  Utilities\n  GenerateHaploidCNVGenotypes\n  PlotGenotypingResults\n\
+                  \  GenerateDepthProfiles\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -564,8 +779,7 @@ subcommands:
                 \ the help message\n -version,--version                          \
                 \                                             Output version information\n\
                 \n\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             usage: []
             help_flag:
             usage_flag:

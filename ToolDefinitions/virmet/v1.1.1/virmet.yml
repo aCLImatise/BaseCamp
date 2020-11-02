@@ -40,7 +40,7 @@ subcommands:
     args: !SimpleFlagArg
       name: FILE
     optional: true
-  parent: &id011 !Command
+  parent: &id012 !Command
     command: *id001
     positional: []
     named: []
@@ -79,7 +79,7 @@ subcommands:
         args: !SimpleFlagArg
           name: FILE
         optional: true
-      parent: &id010 !Command
+      parent: &id011 !Command
         command: *id001
         positional: []
         named: []
@@ -118,7 +118,7 @@ subcommands:
             args: !SimpleFlagArg
               name: FILE
             optional: true
-          parent: &id003 !Command
+          parent: &id010 !Command
             command: *id001
             positional: []
             named: []
@@ -157,7 +157,402 @@ subcommands:
                 args: !SimpleFlagArg
                   name: FILE
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: virmet
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: command
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: wolfpack
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Miseq run directory
+                    synonyms:
+                    - --run
+                    args: !SimpleFlagArg
+                      name: RUN
+                    optional: true
+                  - !Flag
+                    description: single fastq file
+                    synonyms:
+                    - --file
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: virmet <command> [options] wolfpack [-h] [--run\
+                    \ RUN] [--file FILE]\n\noptional arguments:\n  -h, --help   show\
+                    \ this help message and exit\n  --run RUN    Miseq run directory\n\
+                    \  --file FILE  single fastq file\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - virmet
+                  - covplot
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: virmet
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: command
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: covplot
+                    optional: false
+                  named:
+                  - !Flag
+                    description: path to sample results directory
+                    synonyms:
+                    - --outdir
+                    args: !SimpleFlagArg
+                      name: OUTDIR
+                    optional: true
+                  - !Flag
+                    description: name of the organism as reported in orgs_list.tsv
+                      file
+                    synonyms:
+                    - --organism
+                    args: !SimpleFlagArg
+                      name: ORGANISM
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: virmet <command> [options] covplot [-h] [--outdir\
+                    \ OUTDIR]\n                                          [--organism\
+                    \ ORGANISM]\n\noptional arguments:\n  -h, --help           show\
+                    \ this help message and exit\n  --outdir OUTDIR      path to sample\
+                    \ results directory\n  --organism ORGANISM  name of the organism\
+                    \ as reported in orgs_list.tsv file\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - virmet
+                  - tidytable
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: virmet
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: command
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: tidytable
+                    optional: false
+                  named:
+                  - !Flag
+                    description: path to run results directory (virmet_output_...)
+                    synonyms:
+                    - --outdir
+                    args: !SimpleFlagArg
+                      name: OUTDIR
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: virmet <command> [options] tidytable [-h] [--outdir\
+                    \ OUTDIR]\n\noptional arguments:\n  -h, --help       show this\
+                    \ help message and exit\n  --outdir OUTDIR  path to run results\
+                    \ directory (virmet_output_...)\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - virmet
+                  - fetch
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: virmet
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: command
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: fetch
+                    optional: false
+                  named:
+                  - !Flag
+                    description: viral [nucleic acids/proteins]
+                    synonyms:
+                    - --viral
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? p
+                        ? n
+                    optional: true
+                  - !Flag
+                    description: human
+                    synonyms:
+                    - --human
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: bacterial (RefSeq)
+                    synonyms:
+                    - --bact
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: fungal (RefSeq)
+                    synonyms:
+                    - --fungal
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: bovine (Bos taurus)
+                    synonyms:
+                    - --bovine
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: virmet <command> [options] fetch [-h] [--viral\
+                    \ {n,p}] [--human]\n                                        [--bact]\
+                    \ [--fungal] [--bovine]\n\noptional arguments:\n  -h, --help \
+                    \    show this help message and exit\n  --viral {n,p}  viral [nucleic\
+                    \ acids/proteins]\n  --human        human\n  --bact         bacterial\
+                    \ (RefSeq)\n  --fungal       fungal (RefSeq)\n  --bovine     \
+                    \  bovine (Bos taurus)\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - virmet
+                  - update
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: virmet
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: command
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: update
+                    optional: false
+                  named:
+                  - !Flag
+                    description: update viral [n]ucleic/[p]rotein
+                    synonyms:
+                    - --viral
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? p
+                        ? n
+                    optional: true
+                  - !Flag
+                    description: update bacterial database
+                    synonyms:
+                    - --bact
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: update fungal database
+                    synonyms:
+                    - --fungal
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: file with additional sequences, one GI per line
+                    synonyms:
+                    - --picked
+                    args: !SimpleFlagArg
+                      name: PICKED
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: virmet <command> [options] update [-h] [--viral\
+                    \ {n,p}] [--bact]\n                                         [--fungal]\
+                    \ [--picked PICKED]\n\noptional arguments:\n  -h, --help     \
+                    \  show this help message and exit\n  --viral {n,p}    update\
+                    \ viral [n]ucleic/[p]rotein\n  --bact           update bacterial\
+                    \ database\n  --fungal         update fungal database\n  --picked\
+                    \ PICKED  file with additional sequences, one GI per line\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id009
+                  - virmet
+                  - index
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: virmet
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: command
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: index
+                    optional: false
+                  named:
+                  - !Flag
+                    description: make blast index of viral database
+                    synonyms:
+                    - --viral
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? p
+                        ? n
+                    optional: true
+                  - !Flag
+                    description: make bwa index of human database
+                    synonyms:
+                    - --human
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: make bwa index of bacterial database
+                    synonyms:
+                    - --bact
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: make bwa index of fungal database
+                    synonyms:
+                    - --fungal
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: make bwa index of bovine database
+                    synonyms:
+                    - --bovine
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: virmet <command> [options] index [-h] [--viral\
+                    \ {n,p}] [--human]\n                                        [--bact]\
+                    \ [--fungal] [--bovine]\n\noptional arguments:\n  -h, --help \
+                    \    show this help message and exit\n  --viral {n,p}  make blast\
+                    \ index of viral database\n  --human        make bwa index of\
+                    \ human database\n  --bact         make bwa index of bacterial\
+                    \ database\n  --fungal       make bwa index of fungal database\n\
+                    \  --bovine       make bwa index of bovine database\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: virmet <command> [options]\n\npositional arguments:\n\
+                  \  {fetch,update,index,wolfpack,tidytable,covplot}\n           \
+                  \             available sub-commands\n    fetch               download\
+                  \ genomes\n    update              update viral/bacterial database\n\
+                  \    index               index genomes\n    wolfpack           \
+                  \ analyze a Miseq run\n    tidytable           make tables summarising\
+                  \ the whole run\n    covplot             plot coverage for a specific\
+                  \ organism\n\noptional arguments:\n  -h, --help            show\
+                  \ this help message and exit\n\nRun `virmet subcommand -h` for more\
+                  \ help\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -173,12 +568,9 @@ subcommands:
                 \ [--file FILE]\n\noptional arguments:\n  -h, --help   show this help\
                 \ message and exit\n  --run RUN    Miseq run directory\n  --file FILE\
                 \  single fastq file\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - virmet
-              - covplot
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -230,9 +622,7 @@ subcommands:
                 \ file\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - virmet
-              - tidytable
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -275,9 +665,7 @@ subcommands:
                 \ (virmet_output_...)\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - virmet
-              - fetch
+              command: *id007
               positional:
               - !Positional
                 description: ''
@@ -348,9 +736,7 @@ subcommands:
                 \       fungal (RefSeq)\n  --bovine       bovine (Bos taurus)\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - virmet
-              - update
+              command: *id008
               positional:
               - !Positional
                 description: ''
@@ -417,9 +803,7 @@ subcommands:
                 \ sequences, one GI per line\n"
               generated_using: *id004
             - !Command
-              command: &id009
-              - virmet
-              - index
+              command: *id009
               positional:
               - !Positional
                 description: ''
@@ -492,13 +876,7 @@ subcommands:
                 \ database\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage: virmet <command> [options]\n\npositional arguments:\n\
@@ -560,7 +938,7 @@ subcommands:
             args: !SimpleFlagArg
               name: ORGANISM
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -604,7 +982,7 @@ subcommands:
             args: !SimpleFlagArg
               name: OUTDIR
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -645,8 +1023,8 @@ subcommands:
             - --viral
             args: !ChoiceFlagArg
               choices: !!set
-                ? p
                 ? n
+                ? p
             optional: true
           - !Flag
             description: human
@@ -672,7 +1050,7 @@ subcommands:
             - --bovine
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -716,8 +1094,8 @@ subcommands:
             - --viral
             args: !ChoiceFlagArg
               choices: !!set
-                ? p
                 ? n
+                ? p
             optional: true
           - !Flag
             description: update bacterial database
@@ -738,7 +1116,7 @@ subcommands:
             args: !SimpleFlagArg
               name: PICKED
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -783,8 +1161,8 @@ subcommands:
             - --viral
             args: !ChoiceFlagArg
               choices: !!set
-                ? p
                 ? n
+                ? p
             optional: true
           - !Flag
             description: make bwa index of human database
@@ -810,7 +1188,7 @@ subcommands:
             - --bovine
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -892,7 +1270,7 @@ subcommands:
         args: !SimpleFlagArg
           name: ORGANISM
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -936,7 +1314,7 @@ subcommands:
         args: !SimpleFlagArg
           name: OUTDIR
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1004,7 +1382,7 @@ subcommands:
         - --bovine
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1070,7 +1448,7 @@ subcommands:
         args: !SimpleFlagArg
           name: PICKED
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1141,7 +1519,7 @@ subcommands:
         - --bovine
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1222,7 +1600,7 @@ subcommands:
     args: !SimpleFlagArg
       name: ORGANISM
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1266,7 +1644,7 @@ subcommands:
     args: !SimpleFlagArg
       name: OUTDIR
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1307,8 +1685,8 @@ subcommands:
     - --viral
     args: !ChoiceFlagArg
       choices: !!set
-        n:
         p:
+        n:
     optional: true
   - !Flag
     description: human
@@ -1334,7 +1712,7 @@ subcommands:
     - --bovine
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1377,8 +1755,8 @@ subcommands:
     - --viral
     args: !ChoiceFlagArg
       choices: !!set
-        n:
         p:
+        n:
     optional: true
   - !Flag
     description: update bacterial database
@@ -1399,7 +1777,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PICKED
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1443,8 +1821,8 @@ subcommands:
     - --viral
     args: !ChoiceFlagArg
       choices: !!set
-        n:
         p:
+        n:
     optional: true
   - !Flag
     description: make bwa index of human database
@@ -1470,7 +1848,7 @@ subcommands:
     - --bovine
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag

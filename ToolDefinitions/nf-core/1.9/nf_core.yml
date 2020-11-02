@@ -63,7 +63,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TEXT
     optional: true
-  parent: &id013 !Command
+  parent: &id014 !Command
     command: *id001
     positional: []
     named: []
@@ -125,7 +125,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TEXT
         optional: true
-      parent: &id012 !Command
+      parent: &id013 !Command
         command: *id001
         positional: []
         named: []
@@ -187,17 +187,10 @@ subcommands:
             args: !SimpleFlagArg
               name: TEXT
             optional: true
-          parent: &id003 !Command
+          parent: &id012 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: Verbose output (print debug statements)
-              synonyms:
-              - -v
-              - --verbose
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -257,7 +250,465 @@ subcommands:
                 args: !SimpleFlagArg
                   name: TEXT
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: Verbose output (print debug statements)
+                  synonyms:
+                  - -v
+                  - --verbose
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: The name of your new pipeline  [required]
+                    synonyms:
+                    - -n
+                    - --name
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: A short description of your pipeline  [required]
+                    synonyms:
+                    - -d
+                    - --description
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Name of the main author(s)  [required]
+                    synonyms:
+                    - -a
+                    - --author
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: The initial version number to use
+                    synonyms:
+                    - --new-version
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Do not initialise pipeline as new git repository
+                    synonyms:
+                    - --no-git
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Overwrite output directory if it already exists
+                    synonyms:
+                    - -f
+                    - --force
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Output directory for new pipeline (default: pipeline\n\
+                      name)"
+                    synonyms:
+                    - -o
+                    - --outdir
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: nf-core create [OPTIONS]\n\n  Create a new pipeline\
+                    \ using the template\n\nOptions:\n  -n, --name TEXT         The\
+                    \ name of your new pipeline  [required]\n  -d, --description TEXT\
+                    \  A short description of your pipeline  [required]\n  -a, --author\
+                    \ TEXT       Name of the main author(s)  [required]\n  --new-version\
+                    \ TEXT      The initial version number to use\n  --no-git    \
+                    \            Do not initialise pipeline as new git repository\n\
+                    \  -f, --force             Overwrite output directory if it already\
+                    \ exists\n  -o, --outdir TEXT       Output directory for new pipeline\
+                    \ (default: pipeline\n                          name)\n  --help\
+                    \                  Show this message and exit.\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - nf-core
+                  - licences
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: pipeline name
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Print output in JSON
+                    synonyms:
+                    - --json
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: nf-core licences [OPTIONS] <pipeline name>\n\n\
+                    \  List software licences for a given workflow\n\nOptions:\n \
+                    \ --json  Print output in JSON\n  --help  Show this message and\
+                    \ exit.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - nf-core
+                  - launch
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: pipeline name
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Local parameter settings file in JSON.
+                    synonyms:
+                    - -p
+                    - --params
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Uses given values from the parameter file directly.
+                    synonyms:
+                    - -d
+                    - --direct
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: nf-core launch [OPTIONS] <pipeline name>\n\n\
+                    \  Run pipeline, interactive parameter prompts\n\nOptions:\n \
+                    \ -p, --params TEXT  Local parameter settings file in JSON.\n\
+                    \  -d, --direct       Uses given values from the parameter file\
+                    \ directly.\n  --help             Show this message and exit.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - nf-core
+                  - sync
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: pipeline directory
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Create a TEMPLATE branch if none is found.
+                    synonyms:
+                    - -t
+                    - --make-template-branch
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: The git branch to use to fetch workflow vars.
+                    synonyms:
+                    - -b
+                    - --from-branch
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Make a GitHub pull-request with the changes.
+                    synonyms:
+                    - -p
+                    - --pull-request
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: GitHub username for the PR.
+                    synonyms:
+                    - -u
+                    - --username
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: GitHub repository name for the PR.
+                    synonyms:
+                    - -r
+                    - --repository
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: GitHub API personal access token.
+                    synonyms:
+                    - -a
+                    - --auth-token
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Sync template for all nf-core pipelines.
+                    synonyms:
+                    - --all
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: nf-core sync [OPTIONS] <pipeline directory>\n\
+                    \n  Sync a pipeline TEMPLATE branch with the nf-core template\n\
+                    \nOptions:\n  -t, --make-template-branch  Create a TEMPLATE branch\
+                    \ if none is found.\n  -b, --from-branch TEXT      The git branch\
+                    \ to use to fetch workflow vars.\n  -p, --pull-request       \
+                    \   Make a GitHub pull-request with the changes.\n  -u, --username\
+                    \ TEXT         GitHub username for the PR.\n  -r, --repository\
+                    \ TEXT       GitHub repository name for the PR.\n  -a, --auth-token\
+                    \ TEXT       GitHub API personal access token.\n  --all      \
+                    \                 Sync template for all nf-core pipelines.\n \
+                    \ --help                      Show this message and exit.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - nf-core
+                  - list
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: filter keywords
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "[release|pulled|name|stars]\nHow to sort listed\
+                      \ pipelines"
+                    synonyms:
+                    - -s
+                    - --sort
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Print full output as JSON
+                    synonyms:
+                    - --json
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: nf-core list [OPTIONS] <filter keywords>\n\n\
+                    \  List nf-core pipelines with local info\n\nOptions:\n  -s, --sort\
+                    \ [release|pulled|name|stars]\n                              \
+                    \    How to sort listed pipelines\n  --json                  \
+                    \        Print full output as JSON\n  --help                 \
+                    \         Show this message and exit.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id009
+                  - nf-core
+                  - lint
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: pipeline directory
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Execute additional checks for release-ready workflows.
+                    synonyms:
+                    - --release
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: nf-core lint [OPTIONS] <pipeline directory>\n\
+                    \n  Check pipeline against nf-core guidelines\n\nOptions:\n  --release\
+                    \  Execute additional checks for release-ready workflows.\n  --help\
+                    \     Show this message and exit.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id010
+                  - nf-core
+                  - bump-version
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: pipeline directory
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: new version
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Bump required nextflow version instead of pipeline
+                      version
+                    synonyms:
+                    - -n
+                    - --nextflow
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: nf-core bump-version [OPTIONS] <pipeline directory>\
+                    \ <new version>\n\n  Update nf-core pipeline version number\n\n\
+                    Options:\n  -n, --nextflow  Bump required nextflow version instead\
+                    \ of pipeline version\n  --help          Show this message and\
+                    \ exit.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id011
+                  - nf-core
+                  - download
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: pipeline name
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Pipeline release
+                    synonyms:
+                    - -r
+                    - --release
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: Download singularity containers
+                    synonyms:
+                    - -s
+                    - --singularity
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Output directory
+                    synonyms:
+                    - -o
+                    - --outdir
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: "[tar.gz|tar.bz2|zip|none]\nCompression type"
+                    synonyms:
+                    - -c
+                    - --compress
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: nf-core download [OPTIONS] <pipeline name>\n\n\
+                    \  Download a pipeline and singularity container\n\nOptions:\n\
+                    \  -r, --release TEXT              Pipeline release\n  -s, --singularity\
+                    \               Download singularity containers\n  -o, --outdir\
+                    \ TEXT               Output directory\n  -c, --compress [tar.gz|tar.bz2|zip|none]\n\
+                    \                                  Compression type\n  --help\
+                    \                          Show this message and exit.\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: Show the version and exit.
+                  synonyms:
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "Usage: nf-core [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n\
+                  \  --version      Show the version and exit.\n  -v, --verbose  Verbose\
+                  \ output (print debug statements)\n  --help         Show this message\
+                  \ and exit.\n\nCommands:\n  list          List nf-core pipelines\
+                  \ with local info\n  launch        Run pipeline, interactive parameter\
+                  \ prompts\n  download      Download a pipeline and singularity container\n\
+                  \  licences      List software licences for a given workflow\n \
+                  \ create        Create a new pipeline using the template\n  lint\
+                  \          Check pipeline against nf-core guidelines\n  bump-version\
+                  \  Update nf-core pipeline version number\n  sync          Sync\
+                  \ a pipeline TEMPLATE branch with the nf-core template\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -279,12 +730,9 @@ subcommands:
                 \ --outdir TEXT       Output directory for new pipeline (default:\
                 \ pipeline\n                          name)\n  --help            \
                 \      Show this message and exit.\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - nf-core
-              - licences
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -314,9 +762,7 @@ subcommands:
                 \ output in JSON\n  --help  Show this message and exit.\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - nf-core
-              - launch
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -357,9 +803,7 @@ subcommands:
                 \             Show this message and exit.\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - nf-core
-              - sync
+              command: *id007
               positional:
               - !Positional
                 description: ''
@@ -443,9 +887,7 @@ subcommands:
                 \ exit.\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - nf-core
-              - list
+              command: *id008
               positional:
               - !Positional
                 description: ''
@@ -484,9 +926,7 @@ subcommands:
                 \                          Show this message and exit.\n"
               generated_using: *id004
             - !Command
-              command: &id009
-              - nf-core
-              - lint
+              command: *id009
               positional:
               - !Positional
                 description: ''
@@ -517,9 +957,7 @@ subcommands:
                 \     Show this message and exit.\n"
               generated_using: *id004
             - !Command
-              command: &id010
-              - nf-core
-              - bump-version
+              command: *id010
               positional:
               - !Positional
                 description: ''
@@ -556,9 +994,7 @@ subcommands:
                 \ version\n  --help          Show this message and exit.\n"
               generated_using: *id004
             - !Command
-              command: &id011
-              - nf-core
-              - download
+              command: *id011
               positional:
               - !Positional
                 description: ''
@@ -616,19 +1052,9 @@ subcommands:
                 \                      Show this message and exit.\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: Show this message and exit.
-              synonyms:
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: Show the version and exit.
-              synonyms:
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "Usage: nf-core [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n \
               \ --version      Show the version and exit.\n  -v, --verbose  Verbose\
               \ output (print debug statements)\n  --help         Show this message\
@@ -677,7 +1103,7 @@ subcommands:
             - --json
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -716,7 +1142,7 @@ subcommands:
             - --direct
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -794,7 +1220,7 @@ subcommands:
             - --all
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -838,7 +1264,7 @@ subcommands:
             - --json
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -870,7 +1296,7 @@ subcommands:
             - --release
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -907,7 +1333,7 @@ subcommands:
             - --nextflow
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -962,7 +1388,7 @@ subcommands:
             - --compress
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1032,7 +1458,7 @@ subcommands:
         - --json
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1071,7 +1497,7 @@ subcommands:
         - --direct
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1148,7 +1574,7 @@ subcommands:
         - --all
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1191,7 +1617,7 @@ subcommands:
         - --json
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1223,7 +1649,7 @@ subcommands:
         - --release
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1260,7 +1686,7 @@ subcommands:
         - --nextflow
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1315,7 +1741,7 @@ subcommands:
         - --compress
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1384,7 +1810,7 @@ subcommands:
     - --json
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1423,7 +1849,7 @@ subcommands:
     - --direct
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1500,7 +1926,7 @@ subcommands:
     - --all
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1543,7 +1969,7 @@ subcommands:
     - --json
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1575,7 +2001,7 @@ subcommands:
     - --release
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1611,7 +2037,7 @@ subcommands:
     - --nextflow
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1666,7 +2092,7 @@ subcommands:
     - --compress
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag

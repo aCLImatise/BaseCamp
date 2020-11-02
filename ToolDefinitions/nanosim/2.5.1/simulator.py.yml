@@ -101,8 +101,8 @@ subcommands:
     - --basecaller
     args: !ChoiceFlagArg
       choices: !!set
-        albacore:
         guppy:
+        albacore:
     optional: true
   - !Flag
     description: "Simulate homopolymers with respect to chosen read\ntype: dRNA, cDNA_1D\
@@ -113,8 +113,8 @@ subcommands:
     args: !ChoiceFlagArg
       choices: !!set
         dRNA:
-        cDNA_1D:
         cDNA_1D2:
+        cDNA_1D:
     optional: true
   - !Flag
     description: "Percentage of antisense sequences. Overrides the value\nprofiled\
@@ -253,8 +253,8 @@ subcommands:
         - --basecaller
         args: !ChoiceFlagArg
           choices: !!set
-            ? guppy
             ? albacore
+            ? guppy
         optional: true
       - !Flag
         description: "Simulate homopolymers with respect to chosen read\ntype: dRNA,\
@@ -406,8 +406,8 @@ subcommands:
             - --basecaller
             args: !ChoiceFlagArg
               choices: !!set
-                ? albacore
                 ? guppy
+                ? albacore
             optional: true
           - !Flag
             description: "Simulate homopolymers with respect to chosen read\ntype:\
@@ -417,9 +417,9 @@ subcommands:
             - --read_type
             args: !ChoiceFlagArg
               choices: !!set
-                ? cDNA_1D2
-                ? cDNA_1D
                 ? dRNA
+                ? cDNA_1D
+                ? cDNA_1D2
             optional: true
           - !Flag
             description: "Percentage of antisense sequences. Overrides the value\n\
@@ -457,16 +457,10 @@ subcommands:
             - --uracil
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: ''
-              synonyms:
-              - -v
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -578,8 +572,8 @@ subcommands:
                 args: !ChoiceFlagArg
                   choices: !!set
                     ? cDNA_1D2
-                    ? dRNA
                     ? cDNA_1D
+                    ? dRNA
                 optional: true
               - !Flag
                 description: "Percentage of antisense sequences. Overrides the value\n\
@@ -617,7 +611,258 @@ subcommands:
                 - --uracil
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -v
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: Input reference transcriptome
+                    synonyms:
+                    - -rt
+                    - --ref_t
+                    args: !SimpleFlagArg
+                      name: REF_T
+                    optional: true
+                  - !Flag
+                    description: "Input reference genome, required if intron retention\n\
+                      simulatin is on"
+                    synonyms:
+                    - -rg
+                    - --ref_g
+                    args: !SimpleFlagArg
+                      name: REF_G
+                    optional: true
+                  - !Flag
+                    description: "Expression profile in the specified format as\n\
+                      described in README"
+                    synonyms:
+                    - -e
+                    - --exp
+                    args: !SimpleFlagArg
+                      name: EXP
+                    optional: true
+                  - !Flag
+                    description: "Location and prefix of error profiles generated\
+                      \ from\ncharacterization step (Default = training)"
+                    synonyms:
+                    - -c
+                    - --model_prefix
+                    args: !SimpleFlagArg
+                      name: MODEL_PREFIX
+                    optional: true
+                  - !Flag
+                    description: "Output location and prefix for simulated reads\n\
+                      (Default = simulated)"
+                    synonyms:
+                    - -o
+                    - --output
+                    args: !SimpleFlagArg
+                      name: OUTPUT
+                    optional: true
+                  - !Flag
+                    description: Number of reads to be simulated (Default = 20000)
+                    synonyms:
+                    - -n
+                    - --number
+                    args: !SimpleFlagArg
+                      name: NUMBER
+                    optional: true
+                  - !Flag
+                    description: "The maximum length for simulated reads (Default\
+                      \ =\nInfinity)"
+                    synonyms:
+                    - -max
+                    - --max_len
+                    args: !SimpleFlagArg
+                      name: MAX_LEN
+                    optional: true
+                  - !Flag
+                    description: The minimum length for simulated reads (Default =
+                      50)
+                    synonyms:
+                    - -min
+                    - --min_len
+                    args: !SimpleFlagArg
+                      name: MIN_LEN
+                    optional: true
+                  - !Flag
+                    description: Manually seeds the pseudo-random number generator
+                    synonyms:
+                    - --seed
+                    args: !SimpleFlagArg
+                      name: SEED
+                    optional: true
+                  - !Flag
+                    description: "Minimum homopolymer length to simulate homopolymer\n\
+                      contraction and expansion events in"
+                    synonyms:
+                    - -k
+                    - --KmerBias
+                    args: !SimpleFlagArg
+                      name: KMERBIAS
+                    optional: true
+                  - !Flag
+                    description: "Simulate homopolymers with respect to chosen\nbasecaller:\
+                      \ albacore or guppy"
+                    synonyms:
+                    - -b
+                    - --basecaller
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? albacore
+                        ? guppy
+                    optional: true
+                  - !Flag
+                    description: "Simulate homopolymers with respect to chosen read\n\
+                      type: dRNA, cDNA_1D or cDNA_1D2"
+                    synonyms:
+                    - -r
+                    - --read_type
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? cDNA_1D2
+                        ? dRNA
+                        ? cDNA_1D
+                    optional: true
+                  - !Flag
+                    description: "Percentage of antisense sequences. Overrides the\
+                      \ value\nprofiled in characterization stage. Should be between\n\
+                      0 and 1"
+                    synonyms:
+                    - -s
+                    - --strandness
+                    args: !SimpleFlagArg
+                      name: STRANDNESS
+                    optional: true
+                  - !Flag
+                    description: Ignore simulating intron retention events
+                    synonyms:
+                    - --no_model_ir
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Ignore profiles and simulate perfect reads
+                    synonyms:
+                    - --perfect
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Number of threads for simulation (Default = 1)
+                    synonyms:
+                    - -t
+                    - --num_threads
+                    args: !SimpleFlagArg
+                      name: NUM_THREADS
+                    optional: true
+                  - !Flag
+                    description: "Converts the thymine (T) bases to uracil (U) in\
+                      \ the\noutput fasta format\n"
+                    synonyms:
+                    - --uracil
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: simulator.py transcriptome [-h] -rt REF_T [-rg\
+                    \ REF_G] -e EXP\n                                  [-c MODEL_PREFIX]\
+                    \ [-o OUTPUT] [-n NUMBER]\n                                  [-max\
+                    \ MAX_LEN] [-min MIN_LEN] [--seed SEED]\n                    \
+                    \              [-k KMERBIAS] [-b {albacore,guppy}]\n         \
+                    \                         [-r {dRNA,cDNA_1D,cDNA_1D2}] [-s STRANDNESS]\n\
+                    \                                  [--no_model_ir] [--perfect]\
+                    \ [-t NUM_THREADS]\n                                  [--uracil]\n\
+                    \noptional arguments:\n  -h, --help            show this help\
+                    \ message and exit\n  -rt REF_T, --ref_t REF_T\n             \
+                    \           Input reference transcriptome\n  -rg REF_G, --ref_g\
+                    \ REF_G\n                        Input reference genome, required\
+                    \ if intron retention\n                        simulatin is on\n\
+                    \  -e EXP, --exp EXP     Expression profile in the specified format\
+                    \ as\n                        described in README\n  -c MODEL_PREFIX,\
+                    \ --model_prefix MODEL_PREFIX\n                        Location\
+                    \ and prefix of error profiles generated from\n              \
+                    \          characterization step (Default = training)\n  -o OUTPUT,\
+                    \ --output OUTPUT\n                        Output location and\
+                    \ prefix for simulated reads\n                        (Default\
+                    \ = simulated)\n  -n NUMBER, --number NUMBER\n               \
+                    \         Number of reads to be simulated (Default = 20000)\n\
+                    \  -max MAX_LEN, --max_len MAX_LEN\n                        The\
+                    \ maximum length for simulated reads (Default =\n            \
+                    \            Infinity)\n  -min MIN_LEN, --min_len MIN_LEN\n  \
+                    \                      The minimum length for simulated reads\
+                    \ (Default = 50)\n  --seed SEED           Manually seeds the pseudo-random\
+                    \ number generator\n  -k KMERBIAS, --KmerBias KMERBIAS\n     \
+                    \                   Minimum homopolymer length to simulate homopolymer\n\
+                    \                        contraction and expansion events in\n\
+                    \  -b {albacore,guppy}, --basecaller {albacore,guppy}\n      \
+                    \                  Simulate homopolymers with respect to chosen\n\
+                    \                        basecaller: albacore or guppy\n  -r {dRNA,cDNA_1D,cDNA_1D2},\
+                    \ --read_type {dRNA,cDNA_1D,cDNA_1D2}\n                      \
+                    \  Simulate homopolymers with respect to chosen read\n       \
+                    \                 type: dRNA, cDNA_1D or cDNA_1D2\n  -s STRANDNESS,\
+                    \ --strandness STRANDNESS\n                        Percentage\
+                    \ of antisense sequences. Overrides the value\n              \
+                    \          profiled in characterization stage. Should be between\n\
+                    \                        0 and 1\n  --no_model_ir         Ignore\
+                    \ simulating intron retention events\n  --perfect            \
+                    \ Ignore profiles and simulate perfect reads\n  -t NUM_THREADS,\
+                    \ --num_threads NUM_THREADS\n                        Number of\
+                    \ threads for simulation (Default = 1)\n  --uracil           \
+                    \   Converts the thymine (T) bases to uracil (U) in the\n    \
+                    \                    output fasta format\n"
+                  generated_using: &id004
+                  - --help
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: show program's version number and exit
+                  synonyms:
+                  - -v
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "usage: simulator.py [-h] [-v] {genome,transcriptome} ...\n\
+                  \nSimulation step\n-----------------------------------------------------------\n\
+                  Given error profiles, reference genome and/or transcriptome,\nsimulate\
+                  \ ONT DNA or RNA reads\n\noptional arguments:\n  -h, --help    \
+                  \        show this help message and exit\n  -v, --version      \
+                  \   show program's version number and exit\n\nsubcommands:\n  \n\
+                  \  There are two modes in read_analysis.\n  For detailed usage of\
+                  \ each mode:\n      simulator.py mode -h\n  -------------------------------------------------------\n\
+                  \n  {genome,transcriptome}\n                        You may run\
+                  \ the simulator on transcriptome or genome\n                   \
+                  \     mode.\n    genome              Run the simulator on genome\
+                  \ mode\n    transcriptome       Run the simulator on transcriptome\
+                  \ mode\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -672,24 +917,11 @@ subcommands:
                 \ for simulation (Default = 1)\n  --uracil              Converts the\
                 \ thymine (T) bases to uracil (U) in the\n                       \
                 \ output fasta format\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: show program's version number and exit
-              synonyms:
-              - -v
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "usage: simulator.py [-h] [-v] {genome,transcriptome} ...\n\
               \nSimulation step\n-----------------------------------------------------------\n\
               Given error profiles, reference genome and/or transcriptome,\nsimulate\

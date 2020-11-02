@@ -102,1051 +102,11 @@ subcommands:
             args: !SimpleFlagArg
               name: SNAP_FILE
             optional: true
-          parent: &id005 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: 'snap file. (default: None)'
-              synonyms:
-              - --snap-file
-              args: !SimpleFlagArg
-                name: SNAP_FILE
-              optional: true
-            - !Flag
-              description: "session to be deleted in snap file. 'AM': cell-by-bin\n\
-                matrix. All cell-by-bin matrices will be removed.\n'PM': cell-by-peak\
-                \ matrix. 'GM': cell-by-gene matrix.\n(default: None)\n"
-              synonyms:
-              - --session-name
-              args: !SimpleFlagArg
-                name: SESSION_NAME
-              optional: true
-            parent: &id003 !Command
-              command:
-              - snaptools
-              positional: []
-              named: []
-              parent:
-              subcommands:
-              - !Command
-                command:
-                - snaptools
-                - index-genome
-                positional: []
-                named:
-                - !Flag
-                  description: "genome fasta file to build the index from (default:\n\
-                    None)"
-                  synonyms:
-                  - --input-fasta
-                  args: !SimpleFlagArg
-                    name: INPUT_FASTA
-                  optional: true
-                - !Flag
-                  description: 'prefix of indexed file (default: None)'
-                  synonyms:
-                  - --output-prefix
-                  args: !SimpleFlagArg
-                    name: OUTPUT_PREFIX
-                  optional: true
-                - !Flag
-                  description: "aligner to use. Currently, snaptools supports bwa,\n\
-                    bowtie, bowtie2 and minimap2. (default: bwa)"
-                  synonyms:
-                  - --aligner
-                  args: !SimpleFlagArg
-                    name: ALIGNER
-                  optional: true
-                - !Flag
-                  description: 'path to fold that contains bwa (default: None)'
-                  synonyms:
-                  - --path-to-aligner
-                  args: !SimpleFlagArg
-                    name: PATH_TO_ALIGNER
-                  optional: true
-                - !Flag
-                  description: "=number of indexing threads (default: 3)\n"
-                  synonyms:
-                  - --num-threads
-                  args: !SimpleFlagArg
-                    name: NUM_THREADS
-                  optional: true
-                parent: *id003
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "usage: snaptools index-genome [-h] --input-fasta INPUT_FASTA\n\
-                  \                              [--output-prefix OUTPUT_PREFIX]\n\
-                  \                              [--aligner ALIGNER]\n           \
-                  \                   [--path-to-aligner PATH_TO_ALIGNER]\n      \
-                  \                        [--num-threads NUM_THREADS]\n\noptional\
-                  \ arguments:\n  -h, --help            show this help message and\
-                  \ exit\n\nrequired inputs:\n  --input-fasta INPUT_FASTA\n      \
-                  \                  genome fasta file to build the index from (default:\n\
-                  \                        None)\n\noptional inputs:\n  --output-prefix\
-                  \ OUTPUT_PREFIX\n                        prefix of indexed file\
-                  \ (default: None)\n  --aligner ALIGNER     aligner to use. Currently,\
-                  \ snaptools supports bwa,\n                        bowtie, bowtie2\
-                  \ and minimap2. (default: bwa)\n  --path-to-aligner PATH_TO_ALIGNER\n\
-                  \                        path to fold that contains bwa (default:\
-                  \ None)\n  --num-threads NUM_THREADS\n                        =number\
-                  \ of indexing threads (default: 3)\n"
-                generated_using: &id004
-                - --help
-              - !Command
-                command:
-                - snaptools
-                - snap-add-pmat
-                positional: []
-                named:
-                - !Flag
-                  description: 'snap file. (default: None)'
-                  synonyms:
-                  - --snap-file
-                  args: !SimpleFlagArg
-                    name: SNAP_FILE
-                  optional: true
-                - !Flag
-                  description: 'bed file contains peaks. (default: None)'
-                  synonyms:
-                  - --peak-file
-                  args: !SimpleFlagArg
-                    name: PEAK_FILE
-                  optional: true
-                - !Flag
-                  description: "max number of barcodes be stored in the memory.\n\
-                    (default: 1000)"
-                  synonyms:
-                  - --buffer-size
-                  args: !SimpleFlagArg
-                    name: BUFFER_SIZE
-                  optional: true
-                - !Flag
-                  description: "a directory to store temporary files. If not given,\n\
-                    snaptools will automatically generate a temporary\nlocation to\
-                    \ store temporary files. (default: None)"
-                  synonyms:
-                  - --tmp-folder
-                  args: !SimpleFlagArg
-                    name: TMP_FOLDER
-                  optional: true
-                - !Flag
-                  description: "a boolen tag indicates output the progress. (default:\n\
-                    True)\n"
-                  synonyms:
-                  - --verbose
-                  args: !SimpleFlagArg
-                    name: VERBOSE
-                  optional: true
-                parent: *id003
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "usage: snaptools snap-add-pmat [-h] --snap-file SNAP_FILE\
-                  \ --peak-file\n                               PEAK_FILE [--buffer-size\
-                  \ BUFFER_SIZE]\n                               [--tmp-folder TMP_FOLDER]\
-                  \ [--verbose VERBOSE]\n\noptional arguments:\n  -h, --help     \
-                  \       show this help message and exit\n\nrequired inputs:\n  --snap-file\
-                  \ SNAP_FILE\n                        snap file. (default: None)\n\
-                  \  --peak-file PEAK_FILE\n                        bed file contains\
-                  \ peaks. (default: None)\n\noptional inputs:\n  --buffer-size BUFFER_SIZE\n\
-                  \                        max number of barcodes be stored in the\
-                  \ memory.\n                        (default: 1000)\n  --tmp-folder\
-                  \ TMP_FOLDER\n                        a directory to store temporary\
-                  \ files. If not given,\n                        snaptools will automatically\
-                  \ generate a temporary\n                        location to store\
-                  \ temporary files. (default: None)\n  --verbose VERBOSE     a boolen\
-                  \ tag indicates output the progress. (default:\n               \
-                  \         True)\n"
-                generated_using: *id004
-              - !Command
-                command:
-                - snaptools
-                - snap-add-gmat
-                positional: []
-                named:
-                - !Flag
-                  description: 'snap file. (default: None)'
-                  synonyms:
-                  - --snap-file
-                  args: !SimpleFlagArg
-                    name: SNAP_FILE
-                  optional: true
-                - !Flag
-                  description: 'bed file contains genes. (default: None)'
-                  synonyms:
-                  - --gene-file
-                  args: !SimpleFlagArg
-                    name: GENE_FILE
-                  optional: true
-                - !Flag
-                  description: "max number of barcodes be stored in the memory.\n\
-                    (default: 1000)"
-                  synonyms:
-                  - --buffer-size
-                  args: !SimpleFlagArg
-                    name: BUFFER_SIZE
-                  optional: true
-                - !Flag
-                  description: "a directory to store temporary files. If not given,\n\
-                    snaptools will automatically generate a temporary\nlocation to\
-                    \ store temporary files. (default: None)"
-                  synonyms:
-                  - --tmp-folder
-                  args: !SimpleFlagArg
-                    name: TMP_FOLDER
-                  optional: true
-                - !Flag
-                  description: "a boolen tag indicates output the progress. (default:\n\
-                    True)\n"
-                  synonyms:
-                  - --verbose
-                  args: !SimpleFlagArg
-                    name: VERBOSE
-                  optional: true
-                parent: *id003
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "usage: snaptools snap-add-gmat [-h] --snap-file SNAP_FILE\
-                  \ --gene-file\n                               GENE_FILE [--buffer-size\
-                  \ BUFFER_SIZE]\n                               [--tmp-folder TMP_FOLDER]\
-                  \ [--verbose VERBOSE]\n\noptional arguments:\n  -h, --help     \
-                  \       show this help message and exit\n\nrequired inputs:\n  --snap-file\
-                  \ SNAP_FILE\n                        snap file. (default: None)\n\
-                  \  --gene-file GENE_FILE\n                        bed file contains\
-                  \ genes. (default: None)\n\noptional inputs:\n  --buffer-size BUFFER_SIZE\n\
-                  \                        max number of barcodes be stored in the\
-                  \ memory.\n                        (default: 1000)\n  --tmp-folder\
-                  \ TMP_FOLDER\n                        a directory to store temporary\
-                  \ files. If not given,\n                        snaptools will automatically\
-                  \ generate a temporary\n                        location to store\
-                  \ temporary files. (default: None)\n  --verbose VERBOSE     a boolen\
-                  \ tag indicates output the progress. (default:\n               \
-                  \         True)\n"
-                generated_using: *id004
-              - !Command
-                command:
-                - snaptools
-                - dex-fastq
-                positional: []
-                named:
-                - !Flag
-                  description: "fastq file contains the sequencing reads (default:\n\
-                    None)"
-                  synonyms:
-                  - --input-fastq
-                  args: !SimpleFlagArg
-                    name: INPUT_FASTQ
-                  optional: true
-                - !Flag
-                  description: 'output decomplexed fastq file (default: None)'
-                  synonyms:
-                  - --output-fastq
-                  args: !SimpleFlagArg
-                    name: OUTPUT_FASTQ
-                  optional: true
-                - !Flag
-                  description: "a list of fastq files that contain the cell indices.\n\
-                    (default: None)\n"
-                  synonyms:
-                  - --index-fastq-list
-                  args: !RepeatFlagArg
-                    name: INDEX_FASTQ_LIST
-                  optional: true
-                parent: *id003
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "usage: snaptools dex-fastq [-h] --input-fastq INPUT_FASTQ\
-                  \ --output-fastq\n                           OUTPUT_FASTQ --index-fastq-list\
-                  \ INDEX_FASTQ_LIST\n                           [INDEX_FASTQ_LIST\
-                  \ ...]\n\noptional arguments:\n  -h, --help            show this\
-                  \ help message and exit\n\nrequired inputs:\n  --input-fastq INPUT_FASTQ\n\
-                  \                        fastq file contains the sequencing reads\
-                  \ (default:\n                        None)\n  --output-fastq OUTPUT_FASTQ\n\
-                  \                        output decomplexed fastq file (default:\
-                  \ None)\n  --index-fastq-list INDEX_FASTQ_LIST [INDEX_FASTQ_LIST\
-                  \ ...]\n                        a list of fastq files that contain\
-                  \ the cell indices.\n                        (default: None)\n"
-                generated_using: *id004
-              - *id005
-              - !Command
-                command:
-                - snaptools
-                - r4fang@gmail.com
-                positional:
-                - !Positional
-                  description: ''
-                  position: 0
-                  name: snaptools
-                  optional: false
-                named: []
-                parent: *id003
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: ''
-                  synonyms:
-                  - -h
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "usage: snaptools [-h]  ...\nsnaptools: error: argument\
-                  \ : invalid choice: 'r4fang@gmail.com' (choose from 'dex-fastq',\
-                  \ 'index-genome', 'align-paired-end', 'align-single-end', 'snap-pre',\
-                  \ 'snap-add-bmat', 'snap-add-pmat', 'snap-add-gmat', 'dump-fragment',\
-                  \ 'dump-barcode', 'call-peak', 'louvain', 'snap-del')\n"
-                generated_using: *id004
-              - !Command
-                command:
-                - snaptools
-                - align-paired-end
-                positional: []
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --input-fastq1
-                  - --input-fastq2
-                  args: !SimpleFlagArg
-                    name: INPUT_FASTQ1
-                  optional: true
-                - !Flag
-                  description: "reference genome file contains the reference genome\n\
-                    that reads are mapped against, the genome index must\nbe under\
-                    \ the same folder (default: None)"
-                  synonyms:
-                  - --input-reference
-                  args: !SimpleFlagArg
-                    name: INPUT_REFERENCE
-                  optional: true
-                - !Flag
-                  description: "output bam file contains unfiltered alignments\n(default:\
-                    \ None)"
-                  synonyms:
-                  - --output-bam
-                  args: !SimpleFlagArg
-                    name: OUTPUT_BAM
-                  optional: true
-                - !Flag
-                  description: "aligner to use. Currently, snaptools supports bwa,\n\
-                    bowtie, bowtie2 and minimap2. (default: bwa)"
-                  synonyms:
-                  - --aligner
-                  args: !SimpleFlagArg
-                    name: ALIGNER
-                  optional: true
-                - !Flag
-                  description: 'path to fold that contains bwa (default: None)'
-                  synonyms:
-                  - --path-to-aligner
-                  args: !SimpleFlagArg
-                    name: PATH_TO_ALIGNER
-                  optional: true
-                - !Flag
-                  description: "list of strings indicating options you would like\n\
-                    passed to alignerstrongly do not recommand to change\nunless you\
-                    \ know what you are doing. the default is to\nalign reads without\
-                    \ filteration. (default: None)"
-                  synonyms:
-                  - --aligner-options
-                  args: !RepeatFlagArg
-                    name: ALIGNER_OPTIONS
-                  optional: true
-                - !Flag
-                  description: "command line to execute for each of the input file.\n\
-                    This command should generate FASTQ text and send it to\nstdout.\
-                    \ For example, --read-fastq-command should be\nzcat, bzcat and\
-                    \ cat for .gz, .bz2 and plain fastq file\nrespectively (default:\
-                    \ None)"
-                  synonyms:
-                  - --read-fastq-command
-                  args: !SimpleFlagArg
-                    name: READ_FASTQ_COMMAND
-                  optional: true
-                - !Flag
-                  description: "min number of fragments per barcode. barcodes of total\n\
-                    fragments less than --min-cov will be filreted before\nalingment.\
-                    \ Note: though this feature is included, we\nfound it barely benefit\
-                    \ anything, recommand to set it\n0. (default: 0)"
-                  synonyms:
-                  - --min-cov
-                  args: !SimpleFlagArg
-                    name: MIN_COV
-                  optional: true
-                - !Flag
-                  description: "number of alignment threads, also number of threads\n\
-                    for sorting a bam file. (default: 1)"
-                  synonyms:
-                  - --num-threads
-                  args: !SimpleFlagArg
-                    name: NUM_THREADS
-                  optional: true
-                - !Flag
-                  description: "weather to sort the bam file based on the read name\n\
-                    (default: True)"
-                  synonyms:
-                  - --if-sort
-                  args: !SimpleFlagArg
-                    name: IF_SORT
-                  optional: true
-                - !Flag
-                  description: "directory to store temporary files. If not given,\n\
-                    snaptools will automaticallygenerate a temporary\nlocation to\
-                    \ store temporary files (default: None)"
-                  synonyms:
-                  - --tmp-folder
-                  args: !SimpleFlagArg
-                    name: TMP_FOLDER
-                  optional: true
-                - !Flag
-                  description: "whether to overwrite the output file if it already\n\
-                    exists (default: False)"
-                  synonyms:
-                  - --overwrite
-                  args: !SimpleFlagArg
-                    name: OVERWRITE
-                  optional: true
-                - !Flag
-                  description: "a boolen tag indicates output the progress. (default:\n\
-                    True)\n"
-                  synonyms:
-                  - --verbose
-                  args: !SimpleFlagArg
-                    name: VERBOSE
-                  optional: true
-                parent: *id003
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "usage: snaptools align-paired-end [-h] --input-reference\
-                  \ INPUT_REFERENCE\n                                  --input-fastq1\
-                  \ INPUT_FASTQ1 --input-fastq2\n                                \
-                  \  INPUT_FASTQ2 --output-bam OUTPUT_BAM\n                      \
-                  \            [--aligner ALIGNER]\n                             \
-                  \     [--path-to-aligner PATH_TO_ALIGNER]\n                    \
-                  \              [--aligner-options ALIGNER_OPTIONS [ALIGNER_OPTIONS\
-                  \ ...]]\n                                  [--read-fastq-command\
-                  \ READ_FASTQ_COMMAND]\n                                  [--min-cov\
-                  \ MIN_COV]\n                                  [--num-threads NUM_THREADS]\n\
-                  \                                  [--if-sort IF_SORT]\n       \
-                  \                           [--tmp-folder TMP_FOLDER]\n        \
-                  \                          [--overwrite OVERWRITE] [--verbose VERBOSE]\n\
-                  \noptional arguments:\n  -h, --help            show this help message\
-                  \ and exit\n\nrequired inputs:\n  --input-reference INPUT_REFERENCE\n\
-                  \                        reference genome file contains the reference\
-                  \ genome\n                        that reads are mapped against,\
-                  \ the genome index must\n                        be under the same\
-                  \ folder (default: None)\n  --input-fastq1 INPUT_FASTQ1\n      \
-                  \                  fastq file contains R1 reads, currently supports\n\
-                  \                        fastq, gz, bz2 file (default: None)\n \
-                  \ --input-fastq2 INPUT_FASTQ2\n                        fastq file\
-                  \ contains R2 reads, currently supports\n                      \
-                  \  fastq, gz, bz2 file (default: None)\n  --output-bam OUTPUT_BAM\n\
-                  \                        output bam file contains unfiltered alignments\n\
-                  \                        (default: None)\n\noptional inputs:\n \
-                  \ --aligner ALIGNER     aligner to use. Currently, snaptools supports\
-                  \ bwa,\n                        bowtie, bowtie2 and minimap2. (default:\
-                  \ bwa)\n  --path-to-aligner PATH_TO_ALIGNER\n                  \
-                  \      path to fold that contains bwa (default: None)\n  --aligner-options\
-                  \ ALIGNER_OPTIONS [ALIGNER_OPTIONS ...]\n                      \
-                  \  list of strings indicating options you would like\n         \
-                  \               passed to alignerstrongly do not recommand to change\n\
-                  \                        unless you know what you are doing. the\
-                  \ default is to\n                        align reads without filteration.\
-                  \ (default: None)\n  --read-fastq-command READ_FASTQ_COMMAND\n \
-                  \                       command line to execute for each of the\
-                  \ input file.\n                        This command should generate\
-                  \ FASTQ text and send it to\n                        stdout. For\
-                  \ example, --read-fastq-command should be\n                    \
-                  \    zcat, bzcat and cat for .gz, .bz2 and plain fastq file\n  \
-                  \                      respectively (default: None)\n  --min-cov\
-                  \ MIN_COV     min number of fragments per barcode. barcodes of total\n\
-                  \                        fragments less than --min-cov will be filreted\
-                  \ before\n                        alingment. Note: though this feature\
-                  \ is included, we\n                        found it barely benefit\
-                  \ anything, recommand to set it\n                        0. (default:\
-                  \ 0)\n  --num-threads NUM_THREADS\n                        number\
-                  \ of alignment threads, also number of threads\n               \
-                  \         for sorting a bam file. (default: 1)\n  --if-sort IF_SORT\
-                  \     weather to sort the bam file based on the read name\n    \
-                  \                    (default: True)\n  --tmp-folder TMP_FOLDER\n\
-                  \                        directory to store temporary files. If\
-                  \ not given,\n                        snaptools will automaticallygenerate\
-                  \ a temporary\n                        location to store temporary\
-                  \ files (default: None)\n  --overwrite OVERWRITE\n             \
-                  \           whether to overwrite the output file if it already\n\
-                  \                        exists (default: False)\n  --verbose VERBOSE\
-                  \     a boolen tag indicates output the progress. (default:\n  \
-                  \                      True)\n"
-                generated_using: *id004
-              - !Command
-                command:
-                - snaptools
-                - snap-pre
-                positional: []
-                named:
-                - !Flag
-                  description: 'input bam, bed or bed.gz file. (default: None)'
-                  synonyms:
-                  - --input-file
-                  args: !SimpleFlagArg
-                    name: INPUT_FILE
-                  optional: true
-                - !Flag
-                  description: 'output snap file. (default: None)'
-                  synonyms:
-                  - --output-snap
-                  args: !SimpleFlagArg
-                    name: OUTPUT_SNAP
-                  optional: true
-                - !Flag
-                  description: "genome identifier (i.e. hg19, mm10). This tag does\
-                    \ not\nchange anything unless merge or compare multiple snap\n\
-                    files. (default: None)"
-                  synonyms:
-                  - --genome-name
-                  args: !SimpleFlagArg
-                    name: GENOME_NAME
-                  optional: true
-                - !Flag
-                  description: "a txt file contains corresponding genome sizes. It\n\
-                    must be in the following format with the first column\nthe chromsome\
-                    \ name and the second column as chromsome\nlength. This tag does\
-                    \ not change anything unless merge\nor compare multiple snap files.\
-                    \ (default: None)"
-                  synonyms:
-                  - --genome-size
-                  args: !SimpleFlagArg
-                    name: GENOME_SIZE
-                  optional: true
-                - !Flag
-                  description: "a txt file contains pre-selected cell barcodes. If\n\
-                    --barcode-file is given, snaptools will ignore any\nbarcodes not\
-                    \ present in the --barcode-file. If it is\nNone, snaptools will\
-                    \ automatically identify barcodes\nfrom bam file. The first column\
-                    \ of --barcode-file must\nbe the selected barcodes and the other\
-                    \ columns could\nbe any attributes of the barcode as desired\n\
-                    (`ATGCTCTACTAC attr1 att2`). The attributes, however,\nwill not\
-                    \ be kept in the snap file. This tag will be\nignored if the output\
-                    \ snap file already exists.\n(default: None)"
-                  synonyms:
-                  - --barcode-file
-                  args: !SimpleFlagArg
-                    name: BARCODE_FILE
-                  optional: true
-                - !Flag
-                  description: "min mappability score. Fargments with mappability\n\
-                    score less than --min-mapq will be filtered. (default:\n10)"
-                  synonyms:
-                  - --min-mapq
-                  args: !SimpleFlagArg
-                    name: MIN_MAPQ
-                  optional: true
-                - !Flag
-                  description: "min number of fragments per barcode. barcodes of total\n\
-                    fragments fewer than --min-cov will be considered when\ncreating\
-                    \ the cell x bin count matrix. Note: because\nthe vast majority\
-                    \ of barcodes contains very few reads,\nwe found by setting --min-cov,\
-                    \ one can remove barcodes\nof low coverage without wasting time\
-                    \ and storage.\nPlease note that this is not selection of good\n\
-                    barcodes for downstream clustering analysis, it is\nonly filterationof\
-                    \ very low-quality barcodes.\n(default: 0)"
-                  synonyms:
-                  - --min-cov
-                  args: !SimpleFlagArg
-                    name: MIN_COV
-                  optional: true
-                - !Flag
-                  description: "max number of barcodes to store. Barcodes are sorted\n\
-                    based on the coverage and only the top --max-num\nbarcodes will\
-                    \ be stored. (default: 1000000)"
-                  synonyms:
-                  - --max-num
-                  args: !SimpleFlagArg
-                    name: MAX_NUM
-                  optional: true
-                - !Flag
-                  description: "a boolen tag indicates whether to keep fragments\n\
-                    mapped to chrM. If set Fasle, fragments aligned to the\nmitochondrial\
-                    \ sequence will be filtered. (default:\nTrue)"
-                  synonyms:
-                  - --keep-chrm
-                  args: !SimpleFlagArg
-                    name: KEEP_CHRM
-                  optional: true
-                - !Flag
-                  description: "a boolen tag indicates whether to keep those reads\n\
-                    whose mates are not mapped or missing. If False,\nunpaired reads\
-                    \ will be filtered. If True, unpaired\nreads will be simply treated\
-                    \ as a fragment. Note: for\nsingle-end such as scTHS-seq, --keep-single\
-                    \ must be\nTrue. (default: True)"
-                  synonyms:
-                  - --keep-single
-                  args: !SimpleFlagArg
-                    name: KEEP_SINGLE
-                  optional: true
-                - !Flag
-                  description: "a boolen tag indicates whether to keep secondary\n\
-                    alignments. If False, secondary alignments will be\nfiltered.\
-                    \ If True, a secondary alignments will be\ntreated as fragments\
-                    \ just single-end. (default: False)"
-                  synonyms:
-                  - --keep-secondary
-                  args: !SimpleFlagArg
-                    name: KEEP_SECONDARY
-                  optional: true
-                - !Flag
-                  description: "a boolen tag indicates whether to keep discordant\
-                    \ read\npairs. (default: False)"
-                  synonyms:
-                  - --keep-discordant
-                  args: !SimpleFlagArg
-                    name: KEEP_DISCORDANT
-                  optional: true
-                - !Flag
-                  description: "a directory to store temporary files. If not given,\n\
-                    snaptools will automatically generate a temporary\nlocation to\
-                    \ store temporary files. (default: None)"
-                  synonyms:
-                  - --tmp-folder
-                  args: !SimpleFlagArg
-                    name: TMP_FOLDER
-                  optional: true
-                - !Flag
-                  description: "a boolen tag indicates whether to overwrite the matrix\n\
-                    session if it already exists. (default: False)"
-                  synonyms:
-                  - --overwrite
-                  args: !SimpleFlagArg
-                    name: OVERWRITE
-                  optional: true
-                - !Flag
-                  description: "a boolen tag indicates whether to create a master\
-                    \ qc\nfile. This .qc file contains basic quality control\nmetrics\
-                    \ at the bulk level. Quality control is only\nestimated by selected\
-                    \ barcodes only. (default: True)"
-                  synonyms:
-                  - --qc-file
-                  args: !SimpleFlagArg
-                    name: QC_FILE
-                  optional: true
-                - !Flag
-                  description: "a boolen tag indicates output the progress. (default:\n\
-                    True)\n"
-                  synonyms:
-                  - --verbose
-                  args: !SimpleFlagArg
-                    name: VERBOSE
-                  optional: true
-                parent: *id003
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "usage: snaptools snap-pre [-h] --input-file INPUT_FILE\
-                  \ --output-snap\n                          OUTPUT_SNAP --genome-name\
-                  \ GENOME_NAME --genome-size\n                          GENOME_SIZE\
-                  \ [--barcode-file BARCODE_FILE]\n                          [--min-mapq\
-                  \ MIN_MAPQ] [--min-flen MIN_FLEN]\n                          [--max-flen\
-                  \ MAX_FLEN] [--min-cov MIN_COV]\n                          [--max-num\
-                  \ MAX_NUM] [--keep-chrm KEEP_CHRM]\n                          [--keep-single\
-                  \ KEEP_SINGLE]\n                          [--keep-secondary KEEP_SECONDARY]\n\
-                  \                          [--keep-discordant KEEP_DISCORDANT]\n\
-                  \                          [--tmp-folder TMP_FOLDER] [--overwrite\
-                  \ OVERWRITE]\n                          [--qc-file QC_FILE] [--verbose\
-                  \ VERBOSE]\n\noptional arguments:\n  -h, --help            show\
-                  \ this help message and exit\n\nrequired inputs:\n  --input-file\
-                  \ INPUT_FILE\n                        input bam, bed or bed.gz file.\
-                  \ (default: None)\n  --output-snap OUTPUT_SNAP\n               \
-                  \         output snap file. (default: None)\n  --genome-name GENOME_NAME\n\
-                  \                        genome identifier (i.e. hg19, mm10). This\
-                  \ tag does not\n                        change anything unless merge\
-                  \ or compare multiple snap\n                        files. (default:\
-                  \ None)\n  --genome-size GENOME_SIZE\n                        a\
-                  \ txt file contains corresponding genome sizes. It\n           \
-                  \             must be in the following format with the first column\n\
-                  \                        the chromsome name and the second column\
-                  \ as chromsome\n                        length. This tag does not\
-                  \ change anything unless merge\n                        or compare\
-                  \ multiple snap files. (default: None)\n\noptional inputs:\n  --barcode-file\
-                  \ BARCODE_FILE\n                        a txt file contains pre-selected\
-                  \ cell barcodes. If\n                        --barcode-file is given,\
-                  \ snaptools will ignore any\n                        barcodes not\
-                  \ present in the --barcode-file. If it is\n                    \
-                  \    None, snaptools will automatically identify barcodes\n    \
-                  \                    from bam file. The first column of --barcode-file\
-                  \ must\n                        be the selected barcodes and the\
-                  \ other columns could\n                        be any attributes\
-                  \ of the barcode as desired\n                        (`ATGCTCTACTAC\
-                  \ attr1 att2`). The attributes, however,\n                     \
-                  \   will not be kept in the snap file. This tag will be\n      \
-                  \                  ignored if the output snap file already exists.\n\
-                  \                        (default: None)\n  --min-mapq MIN_MAPQ\
-                  \   min mappability score. Fargments with mappability\n        \
-                  \                score less than --min-mapq will be filtered. (default:\n\
-                  \                        10)\n  --min-flen MIN_FLEN   min fragment\
-                  \ length. Fragments of length shorted than\n                   \
-                  \     --min-flen will be filtered. (default: 0)\n  --max-flen MAX_FLEN\
-                  \   max fragment length. Fragments of length longer than\n     \
-                  \                   --max-flen will be filtered. (default: 1000)\n\
-                  \  --min-cov MIN_COV     min number of fragments per barcode. barcodes\
-                  \ of total\n                        fragments fewer than --min-cov\
-                  \ will be considered when\n                        creating the\
-                  \ cell x bin count matrix. Note: because\n                     \
-                  \   the vast majority of barcodes contains very few reads,\n   \
-                  \                     we found by setting --min-cov, one can remove\
-                  \ barcodes\n                        of low coverage without wasting\
-                  \ time and storage.\n                        Please note that this\
-                  \ is not selection of good\n                        barcodes for\
-                  \ downstream clustering analysis, it is\n                      \
-                  \  only filterationof very low-quality barcodes.\n             \
-                  \           (default: 0)\n  --max-num MAX_NUM     max number of\
-                  \ barcodes to store. Barcodes are sorted\n                     \
-                  \   based on the coverage and only the top --max-num\n         \
-                  \               barcodes will be stored. (default: 1000000)\n  --keep-chrm\
-                  \ KEEP_CHRM\n                        a boolen tag indicates whether\
-                  \ to keep fragments\n                        mapped to chrM. If\
-                  \ set Fasle, fragments aligned to the\n                        mitochondrial\
-                  \ sequence will be filtered. (default:\n                       \
-                  \ True)\n  --keep-single KEEP_SINGLE\n                        a\
-                  \ boolen tag indicates whether to keep those reads\n           \
-                  \             whose mates are not mapped or missing. If False,\n\
-                  \                        unpaired reads will be filtered. If True,\
-                  \ unpaired\n                        reads will be simply treated\
-                  \ as a fragment. Note: for\n                        single-end such\
-                  \ as scTHS-seq, --keep-single must be\n                        True.\
-                  \ (default: True)\n  --keep-secondary KEEP_SECONDARY\n         \
-                  \               a boolen tag indicates whether to keep secondary\n\
-                  \                        alignments. If False, secondary alignments\
-                  \ will be\n                        filtered. If True, a secondary\
-                  \ alignments will be\n                        treated as fragments\
-                  \ just single-end. (default: False)\n  --keep-discordant KEEP_DISCORDANT\n\
-                  \                        a boolen tag indicates whether to keep\
-                  \ discordant read\n                        pairs. (default: False)\n\
-                  \  --tmp-folder TMP_FOLDER\n                        a directory\
-                  \ to store temporary files. If not given,\n                    \
-                  \    snaptools will automatically generate a temporary\n       \
-                  \                 location to store temporary files. (default: None)\n\
-                  \  --overwrite OVERWRITE\n                        a boolen tag indicates\
-                  \ whether to overwrite the matrix\n                        session\
-                  \ if it already exists. (default: False)\n  --qc-file QC_FILE  \
-                  \   a boolen tag indicates whether to create a master qc\n     \
-                  \                   file. This .qc file contains basic quality control\n\
-                  \                        metrics at the bulk level. Quality control\
-                  \ is only\n                        estimated by selected barcodes\
-                  \ only. (default: True)\n  --verbose VERBOSE     a boolen tag indicates\
-                  \ output the progress. (default:\n                        True)\n"
-                generated_using: *id004
-              - !Command
-                command:
-                - snaptools
-                - align-single-end
-                positional: []
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --input-fastq1
-                  - --output-bam
-                  args: !SimpleFlagArg
-                    name: INPUT_FASTQ1
-                  optional: true
-                - !Flag
-                  description: "reference genome file contains the reference genome\n\
-                    that reads are mapped against, the genome index must\nbe under\
-                    \ the same folder (default: None)"
-                  synonyms:
-                  - --input-reference
-                  args: !SimpleFlagArg
-                    name: INPUT_REFERENCE
-                  optional: true
-                - !Flag
-                  description: "aligner to use. Currently, snaptools supports bwa,\n\
-                    bowtie, bowtie2 and minimap2. (default: bwa)"
-                  synonyms:
-                  - --aligner
-                  args: !SimpleFlagArg
-                    name: ALIGNER
-                  optional: true
-                - !Flag
-                  description: 'path to fold that contains bwa (default: None)'
-                  synonyms:
-                  - --path-to-aligner
-                  args: !SimpleFlagArg
-                    name: PATH_TO_ALIGNER
-                  optional: true
-                - !Flag
-                  description: "list of strings indicating options you would like\n\
-                    passed to alignerstrongly do not recommand to change\nunless you\
-                    \ know what you are doing. (default: None)"
-                  synonyms:
-                  - --aligner-options
-                  args: !RepeatFlagArg
-                    name: ALIGNER_OPTIONS
-                  optional: true
-                - !Flag
-                  description: "command line to execute for each of the input file.\n\
-                    This commandshould generate FASTA or FASTQ text and\nsend it to\
-                    \ stdout (default: None)"
-                  synonyms:
-                  - --read-fastq-command
-                  args: !SimpleFlagArg
-                    name: READ_FASTQ_COMMAND
-                  optional: true
-                - !Flag
-                  description: 'number of alignment threads (default: 1)'
-                  synonyms:
-                  - --num-threads
-                  args: !SimpleFlagArg
-                    name: NUM_THREADS
-                  optional: true
-                - !Flag
-                  description: "min number of fragments per barcode. barcodes of total\n\
-                    fragments less than --min-cov will be filreted before\nalingment.\
-                    \ Note: though this feature is included, we\nfound it barely speed\
-                    \ up the process, so recommand to\nset it to be 0. (default: 0)"
-                  synonyms:
-                  - --min-cov
-                  args: !SimpleFlagArg
-                    name: MIN_COV
-                  optional: true
-                - !Flag
-                  description: "weather to sort the bam file based on the read name\n\
-                    (default: True)"
-                  synonyms:
-                  - --if-sort
-                  args: !SimpleFlagArg
-                    name: IF_SORT
-                  optional: true
-                - !Flag
-                  description: "directory to store temporary files. If not given,\n\
-                    snaptools will automaticallygenerate a temporary\nlocation to\
-                    \ store temporary files (default: None)"
-                  synonyms:
-                  - --tmp-folder
-                  args: !SimpleFlagArg
-                    name: TMP_FOLDER
-                  optional: true
-                - !Flag
-                  description: "whether to overwrite the output file if it already\n\
-                    exists (default: False)\n"
-                  synonyms:
-                  - --overwrite
-                  args: !SimpleFlagArg
-                    name: OVERWRITE
-                  optional: true
-                parent: *id003
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "usage: snaptools align-single-end [-h] --input-reference\
-                  \ INPUT_REFERENCE\n                                  --input-fastq1\
-                  \ INPUT_FASTQ1 --output-bam\n                                  OUTPUT_BAM\
-                  \ [--aligner ALIGNER]\n                                  [--path-to-aligner\
-                  \ PATH_TO_ALIGNER]\n                                  [--aligner-options\
-                  \ ALIGNER_OPTIONS [ALIGNER_OPTIONS ...]]\n                     \
-                  \             [--read-fastq-command READ_FASTQ_COMMAND]\n      \
-                  \                            [--num-threads NUM_THREADS]\n     \
-                  \                             [--min-cov MIN_COV] [--if-sort IF_SORT]\n\
-                  \                                  [--tmp-folder TMP_FOLDER]\n \
-                  \                                 [--overwrite OVERWRITE]\n\noptional\
-                  \ arguments:\n  -h, --help            show this help message and\
-                  \ exit\n\nrequired inputs:\n  --input-reference INPUT_REFERENCE\n\
-                  \                        reference genome file contains the reference\
-                  \ genome\n                        that reads are mapped against,\
-                  \ the genome index must\n                        be under the same\
-                  \ folder (default: None)\n  --input-fastq1 INPUT_FASTQ1\n      \
-                  \                  fastq file contains R1 reads, currently supports\n\
-                  \                        fastq, gz, bz2 file (default: None)\n \
-                  \ --output-bam OUTPUT_BAM\n                        output bam file\
-                  \ contains unfiltered alignments\n                        (default:\
-                  \ None)\n\noptional inputs:\n  --aligner ALIGNER     aligner to\
-                  \ use. Currently, snaptools supports bwa,\n                    \
-                  \    bowtie, bowtie2 and minimap2. (default: bwa)\n  --path-to-aligner\
-                  \ PATH_TO_ALIGNER\n                        path to fold that contains\
-                  \ bwa (default: None)\n  --aligner-options ALIGNER_OPTIONS [ALIGNER_OPTIONS\
-                  \ ...]\n                        list of strings indicating options\
-                  \ you would like\n                        passed to alignerstrongly\
-                  \ do not recommand to change\n                        unless you\
-                  \ know what you are doing. (default: None)\n  --read-fastq-command\
-                  \ READ_FASTQ_COMMAND\n                        command line to execute\
-                  \ for each of the input file.\n                        This commandshould\
-                  \ generate FASTA or FASTQ text and\n                        send\
-                  \ it to stdout (default: None)\n  --num-threads NUM_THREADS\n  \
-                  \                      number of alignment threads (default: 1)\n\
-                  \  --min-cov MIN_COV     min number of fragments per barcode. barcodes\
-                  \ of total\n                        fragments less than --min-cov\
-                  \ will be filreted before\n                        alingment. Note:\
-                  \ though this feature is included, we\n                        found\
-                  \ it barely speed up the process, so recommand to\n            \
-                  \            set it to be 0. (default: 0)\n  --if-sort IF_SORT \
-                  \    weather to sort the bam file based on the read name\n     \
-                  \                   (default: True)\n  --tmp-folder TMP_FOLDER\n\
-                  \                        directory to store temporary files. If\
-                  \ not given,\n                        snaptools will automaticallygenerate\
-                  \ a temporary\n                        location to store temporary\
-                  \ files (default: None)\n  --overwrite OVERWRITE\n             \
-                  \           whether to overwrite the output file if it already\n\
-                  \                        exists (default: False)\n"
-                generated_using: *id004
-              - !Command
-                command:
-                - snaptools
-                - snap-add-bmat
-                positional: []
-                named:
-                - !Flag
-                  description: 'snap file. (default: None)'
-                  synonyms:
-                  - --snap-file
-                  args: !SimpleFlagArg
-                    name: SNAP_FILE
-                  optional: true
-                - !Flag
-                  description: "a list of bin size(s) to create the cell-by-bin count\n\
-                    matrix. The genome will be divided into bins of the\nequal size\
-                    \ of --bin-size-list to create the cell x bin\ncount matrix. If\
-                    \ more than one bin size are given,\nsnaptools will generate a\
-                    \ list of cell x bin matrices\nof different resolutions and stored\
-                    \ in the same snap\nfile. (default: [5000])"
-                  synonyms:
-                  - --bin-size-list
-                  args: !RepeatFlagArg
-                    name: BIN_SIZE_LIST
-                  optional: true
-                - !Flag
-                  description: "a directory to store temporary files. If not given,\n\
-                    snaptools will automatically generate a temporary\nlocation to\
-                    \ store temporary files. (default: None)"
-                  synonyms:
-                  - --tmp-folder
-                  args: !SimpleFlagArg
-                    name: TMP_FOLDER
-                  optional: true
-                - !Flag
-                  description: "a boolen tag indicates output the progress. (default:\n\
-                    True)\n"
-                  synonyms:
-                  - --verbose
-                  args: !SimpleFlagArg
-                    name: VERBOSE
-                  optional: true
-                parent: *id003
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: show this help message and exit
-                  synonyms:
-                  - -h
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "usage: snaptools snap-add-bmat [-h] --snap-file SNAP_FILE\n\
-                  \                               [--bin-size-list BIN_SIZE_LIST [BIN_SIZE_LIST\
-                  \ ...]]\n                               [--tmp-folder TMP_FOLDER]\
-                  \ [--verbose VERBOSE]\n\noptional arguments:\n  -h, --help     \
-                  \       show this help message and exit\n\nrequired inputs:\n  --snap-file\
-                  \ SNAP_FILE\n                        snap file. (default: None)\n\
-                  \noptional inputs:\n  --bin-size-list BIN_SIZE_LIST [BIN_SIZE_LIST\
-                  \ ...]\n                        a list of bin size(s) to create\
-                  \ the cell-by-bin count\n                        matrix. The genome\
-                  \ will be divided into bins of the\n                        equal\
-                  \ size of --bin-size-list to create the cell x bin\n           \
-                  \             count matrix. If more than one bin size are given,\n\
-                  \                        snaptools will generate a list of cell\
-                  \ x bin matrices\n                        of different resolutions\
-                  \ and stored in the same snap\n                        file. (default:\
-                  \ [5000])\n  --tmp-folder TMP_FOLDER\n                        a\
-                  \ directory to store temporary files. If not given,\n          \
-                  \              snaptools will automatically generate a temporary\n\
-                  \                        location to store temporary files. (default:\
-                  \ None)\n  --verbose VERBOSE     a boolen tag indicates output the\
-                  \ progress. (default:\n                        True)\n"
-                generated_using: *id004
-              usage: []
-              help_flag: !Flag
-                description: show this help message and exit
-                synonyms:
-                - -h
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
-              usage_flag:
-              version_flag:
-              help_text: "usage: snaptools [-h]  ...\n\nProgram: snaptools (A module\
-                \ for working with snap files in Python)\nVersion: 1.4.8\nContact:\
-                \ Rongxin Fang\nE-mail:  r4fang@gmail.com\n\noptional arguments:\n\
-                \  -h, --help        show this help message and exit\n\nfunctions:\n\
-                \  \n    dex-fastq       De-multicomplex fastq file.\n    index-genome\
-                \    Index reference genome.\n    align-paired-end\n             \
-                \       Align paired-end reads.\n    align-single-end\n          \
-                \          Align single-end reads.\n    snap-pre        Create a snap\
-                \ file from bam or bed file.\n    snap-add-bmat   Add cell x bin count\
-                \ matrix to snap file.\n    snap-add-pmat   Add cell x peak count\
-                \ matrix to snap file.\n    snap-add-gmat   Add cell x gene count\
-                \ matrix to snap file.\n    snap-del        Delete a session.\n"
-              generated_using: *id004
+            named: []
+            parent:
             subcommands:
             - !Command
               command: *id002
@@ -1175,7 +135,1143 @@ subcommands:
                 args: !SimpleFlagArg
                   name: SNAP_FILE
                 optional: true
-              parent: *id005
+              parent: &id005 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: 'snap file. (default: None)'
+                  synonyms:
+                  - --snap-file
+                  args: !SimpleFlagArg
+                    name: SNAP_FILE
+                  optional: true
+                - !Flag
+                  description: "session to be deleted in snap file. 'AM': cell-by-bin\n\
+                    matrix. All cell-by-bin matrices will be removed.\n'PM': cell-by-peak\
+                    \ matrix. 'GM': cell-by-gene matrix.\n(default: None)\n"
+                  synonyms:
+                  - --session-name
+                  args: !SimpleFlagArg
+                    name: SESSION_NAME
+                  optional: true
+                parent: &id003 !Command
+                  command:
+                  - snaptools
+                  positional: []
+                  named: []
+                  parent:
+                  subcommands:
+                  - !Command
+                    command:
+                    - snaptools
+                    - index-genome
+                    positional: []
+                    named:
+                    - !Flag
+                      description: "genome fasta file to build the index from (default:\n\
+                        None)"
+                      synonyms:
+                      - --input-fasta
+                      args: !SimpleFlagArg
+                        name: INPUT_FASTA
+                      optional: true
+                    - !Flag
+                      description: 'prefix of indexed file (default: None)'
+                      synonyms:
+                      - --output-prefix
+                      args: !SimpleFlagArg
+                        name: OUTPUT_PREFIX
+                      optional: true
+                    - !Flag
+                      description: "aligner to use. Currently, snaptools supports\
+                        \ bwa,\nbowtie, bowtie2 and minimap2. (default: bwa)"
+                      synonyms:
+                      - --aligner
+                      args: !SimpleFlagArg
+                        name: ALIGNER
+                      optional: true
+                    - !Flag
+                      description: 'path to fold that contains bwa (default: None)'
+                      synonyms:
+                      - --path-to-aligner
+                      args: !SimpleFlagArg
+                        name: PATH_TO_ALIGNER
+                      optional: true
+                    - !Flag
+                      description: "=number of indexing threads (default: 3)\n"
+                      synonyms:
+                      - --num-threads
+                      args: !SimpleFlagArg
+                        name: NUM_THREADS
+                      optional: true
+                    parent: *id003
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: show this help message and exit
+                      synonyms:
+                      - -h
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: snaptools index-genome [-h] --input-fasta INPUT_FASTA\n\
+                      \                              [--output-prefix OUTPUT_PREFIX]\n\
+                      \                              [--aligner ALIGNER]\n       \
+                      \                       [--path-to-aligner PATH_TO_ALIGNER]\n\
+                      \                              [--num-threads NUM_THREADS]\n\
+                      \noptional arguments:\n  -h, --help            show this help\
+                      \ message and exit\n\nrequired inputs:\n  --input-fasta INPUT_FASTA\n\
+                      \                        genome fasta file to build the index\
+                      \ from (default:\n                        None)\n\noptional\
+                      \ inputs:\n  --output-prefix OUTPUT_PREFIX\n               \
+                      \         prefix of indexed file (default: None)\n  --aligner\
+                      \ ALIGNER     aligner to use. Currently, snaptools supports\
+                      \ bwa,\n                        bowtie, bowtie2 and minimap2.\
+                      \ (default: bwa)\n  --path-to-aligner PATH_TO_ALIGNER\n    \
+                      \                    path to fold that contains bwa (default:\
+                      \ None)\n  --num-threads NUM_THREADS\n                     \
+                      \   =number of indexing threads (default: 3)\n"
+                    generated_using: &id004
+                    - --help
+                  - !Command
+                    command:
+                    - snaptools
+                    - snap-add-pmat
+                    positional: []
+                    named:
+                    - !Flag
+                      description: 'snap file. (default: None)'
+                      synonyms:
+                      - --snap-file
+                      args: !SimpleFlagArg
+                        name: SNAP_FILE
+                      optional: true
+                    - !Flag
+                      description: 'bed file contains peaks. (default: None)'
+                      synonyms:
+                      - --peak-file
+                      args: !SimpleFlagArg
+                        name: PEAK_FILE
+                      optional: true
+                    - !Flag
+                      description: "max number of barcodes be stored in the memory.\n\
+                        (default: 1000)"
+                      synonyms:
+                      - --buffer-size
+                      args: !SimpleFlagArg
+                        name: BUFFER_SIZE
+                      optional: true
+                    - !Flag
+                      description: "a directory to store temporary files. If not given,\n\
+                        snaptools will automatically generate a temporary\nlocation\
+                        \ to store temporary files. (default: None)"
+                      synonyms:
+                      - --tmp-folder
+                      args: !SimpleFlagArg
+                        name: TMP_FOLDER
+                      optional: true
+                    - !Flag
+                      description: "a boolen tag indicates output the progress. (default:\n\
+                        True)\n"
+                      synonyms:
+                      - --verbose
+                      args: !SimpleFlagArg
+                        name: VERBOSE
+                      optional: true
+                    parent: *id003
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: show this help message and exit
+                      synonyms:
+                      - -h
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: snaptools snap-add-pmat [-h] --snap-file SNAP_FILE\
+                      \ --peak-file\n                               PEAK_FILE [--buffer-size\
+                      \ BUFFER_SIZE]\n                               [--tmp-folder\
+                      \ TMP_FOLDER] [--verbose VERBOSE]\n\noptional arguments:\n \
+                      \ -h, --help            show this help message and exit\n\n\
+                      required inputs:\n  --snap-file SNAP_FILE\n                \
+                      \        snap file. (default: None)\n  --peak-file PEAK_FILE\n\
+                      \                        bed file contains peaks. (default:\
+                      \ None)\n\noptional inputs:\n  --buffer-size BUFFER_SIZE\n \
+                      \                       max number of barcodes be stored in\
+                      \ the memory.\n                        (default: 1000)\n  --tmp-folder\
+                      \ TMP_FOLDER\n                        a directory to store temporary\
+                      \ files. If not given,\n                        snaptools will\
+                      \ automatically generate a temporary\n                     \
+                      \   location to store temporary files. (default: None)\n  --verbose\
+                      \ VERBOSE     a boolen tag indicates output the progress. (default:\n\
+                      \                        True)\n"
+                    generated_using: *id004
+                  - !Command
+                    command:
+                    - snaptools
+                    - snap-add-gmat
+                    positional: []
+                    named:
+                    - !Flag
+                      description: 'snap file. (default: None)'
+                      synonyms:
+                      - --snap-file
+                      args: !SimpleFlagArg
+                        name: SNAP_FILE
+                      optional: true
+                    - !Flag
+                      description: 'bed file contains genes. (default: None)'
+                      synonyms:
+                      - --gene-file
+                      args: !SimpleFlagArg
+                        name: GENE_FILE
+                      optional: true
+                    - !Flag
+                      description: "max number of barcodes be stored in the memory.\n\
+                        (default: 1000)"
+                      synonyms:
+                      - --buffer-size
+                      args: !SimpleFlagArg
+                        name: BUFFER_SIZE
+                      optional: true
+                    - !Flag
+                      description: "a directory to store temporary files. If not given,\n\
+                        snaptools will automatically generate a temporary\nlocation\
+                        \ to store temporary files. (default: None)"
+                      synonyms:
+                      - --tmp-folder
+                      args: !SimpleFlagArg
+                        name: TMP_FOLDER
+                      optional: true
+                    - !Flag
+                      description: "a boolen tag indicates output the progress. (default:\n\
+                        True)\n"
+                      synonyms:
+                      - --verbose
+                      args: !SimpleFlagArg
+                        name: VERBOSE
+                      optional: true
+                    parent: *id003
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: show this help message and exit
+                      synonyms:
+                      - -h
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: snaptools snap-add-gmat [-h] --snap-file SNAP_FILE\
+                      \ --gene-file\n                               GENE_FILE [--buffer-size\
+                      \ BUFFER_SIZE]\n                               [--tmp-folder\
+                      \ TMP_FOLDER] [--verbose VERBOSE]\n\noptional arguments:\n \
+                      \ -h, --help            show this help message and exit\n\n\
+                      required inputs:\n  --snap-file SNAP_FILE\n                \
+                      \        snap file. (default: None)\n  --gene-file GENE_FILE\n\
+                      \                        bed file contains genes. (default:\
+                      \ None)\n\noptional inputs:\n  --buffer-size BUFFER_SIZE\n \
+                      \                       max number of barcodes be stored in\
+                      \ the memory.\n                        (default: 1000)\n  --tmp-folder\
+                      \ TMP_FOLDER\n                        a directory to store temporary\
+                      \ files. If not given,\n                        snaptools will\
+                      \ automatically generate a temporary\n                     \
+                      \   location to store temporary files. (default: None)\n  --verbose\
+                      \ VERBOSE     a boolen tag indicates output the progress. (default:\n\
+                      \                        True)\n"
+                    generated_using: *id004
+                  - !Command
+                    command:
+                    - snaptools
+                    - dex-fastq
+                    positional: []
+                    named:
+                    - !Flag
+                      description: "fastq file contains the sequencing reads (default:\n\
+                        None)"
+                      synonyms:
+                      - --input-fastq
+                      args: !SimpleFlagArg
+                        name: INPUT_FASTQ
+                      optional: true
+                    - !Flag
+                      description: 'output decomplexed fastq file (default: None)'
+                      synonyms:
+                      - --output-fastq
+                      args: !SimpleFlagArg
+                        name: OUTPUT_FASTQ
+                      optional: true
+                    - !Flag
+                      description: "a list of fastq files that contain the cell indices.\n\
+                        (default: None)\n"
+                      synonyms:
+                      - --index-fastq-list
+                      args: !RepeatFlagArg
+                        name: INDEX_FASTQ_LIST
+                      optional: true
+                    parent: *id003
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: show this help message and exit
+                      synonyms:
+                      - -h
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: snaptools dex-fastq [-h] --input-fastq INPUT_FASTQ\
+                      \ --output-fastq\n                           OUTPUT_FASTQ --index-fastq-list\
+                      \ INDEX_FASTQ_LIST\n                           [INDEX_FASTQ_LIST\
+                      \ ...]\n\noptional arguments:\n  -h, --help            show\
+                      \ this help message and exit\n\nrequired inputs:\n  --input-fastq\
+                      \ INPUT_FASTQ\n                        fastq file contains the\
+                      \ sequencing reads (default:\n                        None)\n\
+                      \  --output-fastq OUTPUT_FASTQ\n                        output\
+                      \ decomplexed fastq file (default: None)\n  --index-fastq-list\
+                      \ INDEX_FASTQ_LIST [INDEX_FASTQ_LIST ...]\n                \
+                      \        a list of fastq files that contain the cell indices.\n\
+                      \                        (default: None)\n"
+                    generated_using: *id004
+                  - *id005
+                  - !Command
+                    command:
+                    - snaptools
+                    - r4fang@gmail.com
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: snaptools
+                      optional: false
+                    named: []
+                    parent: *id003
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: ''
+                      synonyms:
+                      - -h
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: snaptools [-h]  ...\nsnaptools: error: argument\
+                      \ : invalid choice: 'r4fang@gmail.com' (choose from 'dex-fastq',\
+                      \ 'index-genome', 'align-paired-end', 'align-single-end', 'snap-pre',\
+                      \ 'snap-add-bmat', 'snap-add-pmat', 'snap-add-gmat', 'dump-fragment',\
+                      \ 'dump-barcode', 'call-peak', 'louvain', 'snap-del')\n"
+                    generated_using: *id004
+                  - !Command
+                    command:
+                    - snaptools
+                    - align-paired-end
+                    positional: []
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --input-fastq1
+                      - --input-fastq2
+                      args: !SimpleFlagArg
+                        name: INPUT_FASTQ1
+                      optional: true
+                    - !Flag
+                      description: "reference genome file contains the reference genome\n\
+                        that reads are mapped against, the genome index must\nbe under\
+                        \ the same folder (default: None)"
+                      synonyms:
+                      - --input-reference
+                      args: !SimpleFlagArg
+                        name: INPUT_REFERENCE
+                      optional: true
+                    - !Flag
+                      description: "output bam file contains unfiltered alignments\n\
+                        (default: None)"
+                      synonyms:
+                      - --output-bam
+                      args: !SimpleFlagArg
+                        name: OUTPUT_BAM
+                      optional: true
+                    - !Flag
+                      description: "aligner to use. Currently, snaptools supports\
+                        \ bwa,\nbowtie, bowtie2 and minimap2. (default: bwa)"
+                      synonyms:
+                      - --aligner
+                      args: !SimpleFlagArg
+                        name: ALIGNER
+                      optional: true
+                    - !Flag
+                      description: 'path to fold that contains bwa (default: None)'
+                      synonyms:
+                      - --path-to-aligner
+                      args: !SimpleFlagArg
+                        name: PATH_TO_ALIGNER
+                      optional: true
+                    - !Flag
+                      description: "list of strings indicating options you would like\n\
+                        passed to alignerstrongly do not recommand to change\nunless\
+                        \ you know what you are doing. the default is to\nalign reads\
+                        \ without filteration. (default: None)"
+                      synonyms:
+                      - --aligner-options
+                      args: !RepeatFlagArg
+                        name: ALIGNER_OPTIONS
+                      optional: true
+                    - !Flag
+                      description: "command line to execute for each of the input\
+                        \ file.\nThis command should generate FASTQ text and send\
+                        \ it to\nstdout. For example, --read-fastq-command should\
+                        \ be\nzcat, bzcat and cat for .gz, .bz2 and plain fastq file\n\
+                        respectively (default: None)"
+                      synonyms:
+                      - --read-fastq-command
+                      args: !SimpleFlagArg
+                        name: READ_FASTQ_COMMAND
+                      optional: true
+                    - !Flag
+                      description: "min number of fragments per barcode. barcodes\
+                        \ of total\nfragments less than --min-cov will be filreted\
+                        \ before\nalingment. Note: though this feature is included,\
+                        \ we\nfound it barely benefit anything, recommand to set it\n\
+                        0. (default: 0)"
+                      synonyms:
+                      - --min-cov
+                      args: !SimpleFlagArg
+                        name: MIN_COV
+                      optional: true
+                    - !Flag
+                      description: "number of alignment threads, also number of threads\n\
+                        for sorting a bam file. (default: 1)"
+                      synonyms:
+                      - --num-threads
+                      args: !SimpleFlagArg
+                        name: NUM_THREADS
+                      optional: true
+                    - !Flag
+                      description: "weather to sort the bam file based on the read\
+                        \ name\n(default: True)"
+                      synonyms:
+                      - --if-sort
+                      args: !SimpleFlagArg
+                        name: IF_SORT
+                      optional: true
+                    - !Flag
+                      description: "directory to store temporary files. If not given,\n\
+                        snaptools will automaticallygenerate a temporary\nlocation\
+                        \ to store temporary files (default: None)"
+                      synonyms:
+                      - --tmp-folder
+                      args: !SimpleFlagArg
+                        name: TMP_FOLDER
+                      optional: true
+                    - !Flag
+                      description: "whether to overwrite the output file if it already\n\
+                        exists (default: False)"
+                      synonyms:
+                      - --overwrite
+                      args: !SimpleFlagArg
+                        name: OVERWRITE
+                      optional: true
+                    - !Flag
+                      description: "a boolen tag indicates output the progress. (default:\n\
+                        True)\n"
+                      synonyms:
+                      - --verbose
+                      args: !SimpleFlagArg
+                        name: VERBOSE
+                      optional: true
+                    parent: *id003
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: show this help message and exit
+                      synonyms:
+                      - -h
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: snaptools align-paired-end [-h] --input-reference\
+                      \ INPUT_REFERENCE\n                                  --input-fastq1\
+                      \ INPUT_FASTQ1 --input-fastq2\n                            \
+                      \      INPUT_FASTQ2 --output-bam OUTPUT_BAM\n              \
+                      \                    [--aligner ALIGNER]\n                 \
+                      \                 [--path-to-aligner PATH_TO_ALIGNER]\n    \
+                      \                              [--aligner-options ALIGNER_OPTIONS\
+                      \ [ALIGNER_OPTIONS ...]]\n                                 \
+                      \ [--read-fastq-command READ_FASTQ_COMMAND]\n              \
+                      \                    [--min-cov MIN_COV]\n                 \
+                      \                 [--num-threads NUM_THREADS]\n            \
+                      \                      [--if-sort IF_SORT]\n               \
+                      \                   [--tmp-folder TMP_FOLDER]\n            \
+                      \                      [--overwrite OVERWRITE] [--verbose VERBOSE]\n\
+                      \noptional arguments:\n  -h, --help            show this help\
+                      \ message and exit\n\nrequired inputs:\n  --input-reference\
+                      \ INPUT_REFERENCE\n                        reference genome\
+                      \ file contains the reference genome\n                     \
+                      \   that reads are mapped against, the genome index must\n \
+                      \                       be under the same folder (default: None)\n\
+                      \  --input-fastq1 INPUT_FASTQ1\n                        fastq\
+                      \ file contains R1 reads, currently supports\n             \
+                      \           fastq, gz, bz2 file (default: None)\n  --input-fastq2\
+                      \ INPUT_FASTQ2\n                        fastq file contains\
+                      \ R2 reads, currently supports\n                        fastq,\
+                      \ gz, bz2 file (default: None)\n  --output-bam OUTPUT_BAM\n\
+                      \                        output bam file contains unfiltered\
+                      \ alignments\n                        (default: None)\n\noptional\
+                      \ inputs:\n  --aligner ALIGNER     aligner to use. Currently,\
+                      \ snaptools supports bwa,\n                        bowtie, bowtie2\
+                      \ and minimap2. (default: bwa)\n  --path-to-aligner PATH_TO_ALIGNER\n\
+                      \                        path to fold that contains bwa (default:\
+                      \ None)\n  --aligner-options ALIGNER_OPTIONS [ALIGNER_OPTIONS\
+                      \ ...]\n                        list of strings indicating options\
+                      \ you would like\n                        passed to alignerstrongly\
+                      \ do not recommand to change\n                        unless\
+                      \ you know what you are doing. the default is to\n         \
+                      \               align reads without filteration. (default: None)\n\
+                      \  --read-fastq-command READ_FASTQ_COMMAND\n               \
+                      \         command line to execute for each of the input file.\n\
+                      \                        This command should generate FASTQ\
+                      \ text and send it to\n                        stdout. For example,\
+                      \ --read-fastq-command should be\n                        zcat,\
+                      \ bzcat and cat for .gz, .bz2 and plain fastq file\n       \
+                      \                 respectively (default: None)\n  --min-cov\
+                      \ MIN_COV     min number of fragments per barcode. barcodes\
+                      \ of total\n                        fragments less than --min-cov\
+                      \ will be filreted before\n                        alingment.\
+                      \ Note: though this feature is included, we\n              \
+                      \          found it barely benefit anything, recommand to set\
+                      \ it\n                        0. (default: 0)\n  --num-threads\
+                      \ NUM_THREADS\n                        number of alignment threads,\
+                      \ also number of threads\n                        for sorting\
+                      \ a bam file. (default: 1)\n  --if-sort IF_SORT     weather\
+                      \ to sort the bam file based on the read name\n            \
+                      \            (default: True)\n  --tmp-folder TMP_FOLDER\n  \
+                      \                      directory to store temporary files. If\
+                      \ not given,\n                        snaptools will automaticallygenerate\
+                      \ a temporary\n                        location to store temporary\
+                      \ files (default: None)\n  --overwrite OVERWRITE\n         \
+                      \               whether to overwrite the output file if it already\n\
+                      \                        exists (default: False)\n  --verbose\
+                      \ VERBOSE     a boolen tag indicates output the progress. (default:\n\
+                      \                        True)\n"
+                    generated_using: *id004
+                  - !Command
+                    command:
+                    - snaptools
+                    - snap-pre
+                    positional: []
+                    named:
+                    - !Flag
+                      description: 'input bam, bed or bed.gz file. (default: None)'
+                      synonyms:
+                      - --input-file
+                      args: !SimpleFlagArg
+                        name: INPUT_FILE
+                      optional: true
+                    - !Flag
+                      description: 'output snap file. (default: None)'
+                      synonyms:
+                      - --output-snap
+                      args: !SimpleFlagArg
+                        name: OUTPUT_SNAP
+                      optional: true
+                    - !Flag
+                      description: "genome identifier (i.e. hg19, mm10). This tag\
+                        \ does not\nchange anything unless merge or compare multiple\
+                        \ snap\nfiles. (default: None)"
+                      synonyms:
+                      - --genome-name
+                      args: !SimpleFlagArg
+                        name: GENOME_NAME
+                      optional: true
+                    - !Flag
+                      description: "a txt file contains corresponding genome sizes.\
+                        \ It\nmust be in the following format with the first column\n\
+                        the chromsome name and the second column as chromsome\nlength.\
+                        \ This tag does not change anything unless merge\nor compare\
+                        \ multiple snap files. (default: None)"
+                      synonyms:
+                      - --genome-size
+                      args: !SimpleFlagArg
+                        name: GENOME_SIZE
+                      optional: true
+                    - !Flag
+                      description: "a txt file contains pre-selected cell barcodes.\
+                        \ If\n--barcode-file is given, snaptools will ignore any\n\
+                        barcodes not present in the --barcode-file. If it is\nNone,\
+                        \ snaptools will automatically identify barcodes\nfrom bam\
+                        \ file. The first column of --barcode-file must\nbe the selected\
+                        \ barcodes and the other columns could\nbe any attributes\
+                        \ of the barcode as desired\n(`ATGCTCTACTAC attr1 att2`).\
+                        \ The attributes, however,\nwill not be kept in the snap file.\
+                        \ This tag will be\nignored if the output snap file already\
+                        \ exists.\n(default: None)"
+                      synonyms:
+                      - --barcode-file
+                      args: !SimpleFlagArg
+                        name: BARCODE_FILE
+                      optional: true
+                    - !Flag
+                      description: "min mappability score. Fargments with mappability\n\
+                        score less than --min-mapq will be filtered. (default:\n10)"
+                      synonyms:
+                      - --min-mapq
+                      args: !SimpleFlagArg
+                        name: MIN_MAPQ
+                      optional: true
+                    - !Flag
+                      description: "min number of fragments per barcode. barcodes\
+                        \ of total\nfragments fewer than --min-cov will be considered\
+                        \ when\ncreating the cell x bin count matrix. Note: because\n\
+                        the vast majority of barcodes contains very few reads,\nwe\
+                        \ found by setting --min-cov, one can remove barcodes\nof\
+                        \ low coverage without wasting time and storage.\nPlease note\
+                        \ that this is not selection of good\nbarcodes for downstream\
+                        \ clustering analysis, it is\nonly filterationof very low-quality\
+                        \ barcodes.\n(default: 0)"
+                      synonyms:
+                      - --min-cov
+                      args: !SimpleFlagArg
+                        name: MIN_COV
+                      optional: true
+                    - !Flag
+                      description: "max number of barcodes to store. Barcodes are\
+                        \ sorted\nbased on the coverage and only the top --max-num\n\
+                        barcodes will be stored. (default: 1000000)"
+                      synonyms:
+                      - --max-num
+                      args: !SimpleFlagArg
+                        name: MAX_NUM
+                      optional: true
+                    - !Flag
+                      description: "a boolen tag indicates whether to keep fragments\n\
+                        mapped to chrM. If set Fasle, fragments aligned to the\nmitochondrial\
+                        \ sequence will be filtered. (default:\nTrue)"
+                      synonyms:
+                      - --keep-chrm
+                      args: !SimpleFlagArg
+                        name: KEEP_CHRM
+                      optional: true
+                    - !Flag
+                      description: "a boolen tag indicates whether to keep those reads\n\
+                        whose mates are not mapped or missing. If False,\nunpaired\
+                        \ reads will be filtered. If True, unpaired\nreads will be\
+                        \ simply treated as a fragment. Note: for\nsingle-end such\
+                        \ as scTHS-seq, --keep-single must be\nTrue. (default: True)"
+                      synonyms:
+                      - --keep-single
+                      args: !SimpleFlagArg
+                        name: KEEP_SINGLE
+                      optional: true
+                    - !Flag
+                      description: "a boolen tag indicates whether to keep secondary\n\
+                        alignments. If False, secondary alignments will be\nfiltered.\
+                        \ If True, a secondary alignments will be\ntreated as fragments\
+                        \ just single-end. (default: False)"
+                      synonyms:
+                      - --keep-secondary
+                      args: !SimpleFlagArg
+                        name: KEEP_SECONDARY
+                      optional: true
+                    - !Flag
+                      description: "a boolen tag indicates whether to keep discordant\
+                        \ read\npairs. (default: False)"
+                      synonyms:
+                      - --keep-discordant
+                      args: !SimpleFlagArg
+                        name: KEEP_DISCORDANT
+                      optional: true
+                    - !Flag
+                      description: "a directory to store temporary files. If not given,\n\
+                        snaptools will automatically generate a temporary\nlocation\
+                        \ to store temporary files. (default: None)"
+                      synonyms:
+                      - --tmp-folder
+                      args: !SimpleFlagArg
+                        name: TMP_FOLDER
+                      optional: true
+                    - !Flag
+                      description: "a boolen tag indicates whether to overwrite the\
+                        \ matrix\nsession if it already exists. (default: False)"
+                      synonyms:
+                      - --overwrite
+                      args: !SimpleFlagArg
+                        name: OVERWRITE
+                      optional: true
+                    - !Flag
+                      description: "a boolen tag indicates whether to create a master\
+                        \ qc\nfile. This .qc file contains basic quality control\n\
+                        metrics at the bulk level. Quality control is only\nestimated\
+                        \ by selected barcodes only. (default: True)"
+                      synonyms:
+                      - --qc-file
+                      args: !SimpleFlagArg
+                        name: QC_FILE
+                      optional: true
+                    - !Flag
+                      description: "a boolen tag indicates output the progress. (default:\n\
+                        True)\n"
+                      synonyms:
+                      - --verbose
+                      args: !SimpleFlagArg
+                        name: VERBOSE
+                      optional: true
+                    parent: *id003
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: show this help message and exit
+                      synonyms:
+                      - -h
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: snaptools snap-pre [-h] --input-file INPUT_FILE\
+                      \ --output-snap\n                          OUTPUT_SNAP --genome-name\
+                      \ GENOME_NAME --genome-size\n                          GENOME_SIZE\
+                      \ [--barcode-file BARCODE_FILE]\n                          [--min-mapq\
+                      \ MIN_MAPQ] [--min-flen MIN_FLEN]\n                        \
+                      \  [--max-flen MAX_FLEN] [--min-cov MIN_COV]\n             \
+                      \             [--max-num MAX_NUM] [--keep-chrm KEEP_CHRM]\n\
+                      \                          [--keep-single KEEP_SINGLE]\n   \
+                      \                       [--keep-secondary KEEP_SECONDARY]\n\
+                      \                          [--keep-discordant KEEP_DISCORDANT]\n\
+                      \                          [--tmp-folder TMP_FOLDER] [--overwrite\
+                      \ OVERWRITE]\n                          [--qc-file QC_FILE]\
+                      \ [--verbose VERBOSE]\n\noptional arguments:\n  -h, --help \
+                      \           show this help message and exit\n\nrequired inputs:\n\
+                      \  --input-file INPUT_FILE\n                        input bam,\
+                      \ bed or bed.gz file. (default: None)\n  --output-snap OUTPUT_SNAP\n\
+                      \                        output snap file. (default: None)\n\
+                      \  --genome-name GENOME_NAME\n                        genome\
+                      \ identifier (i.e. hg19, mm10). This tag does not\n        \
+                      \                change anything unless merge or compare multiple\
+                      \ snap\n                        files. (default: None)\n  --genome-size\
+                      \ GENOME_SIZE\n                        a txt file contains corresponding\
+                      \ genome sizes. It\n                        must be in the following\
+                      \ format with the first column\n                        the\
+                      \ chromsome name and the second column as chromsome\n      \
+                      \                  length. This tag does not change anything\
+                      \ unless merge\n                        or compare multiple\
+                      \ snap files. (default: None)\n\noptional inputs:\n  --barcode-file\
+                      \ BARCODE_FILE\n                        a txt file contains\
+                      \ pre-selected cell barcodes. If\n                        --barcode-file\
+                      \ is given, snaptools will ignore any\n                    \
+                      \    barcodes not present in the --barcode-file. If it is\n\
+                      \                        None, snaptools will automatically\
+                      \ identify barcodes\n                        from bam file.\
+                      \ The first column of --barcode-file must\n                \
+                      \        be the selected barcodes and the other columns could\n\
+                      \                        be any attributes of the barcode as\
+                      \ desired\n                        (`ATGCTCTACTAC attr1 att2`).\
+                      \ The attributes, however,\n                        will not\
+                      \ be kept in the snap file. This tag will be\n             \
+                      \           ignored if the output snap file already exists.\n\
+                      \                        (default: None)\n  --min-mapq MIN_MAPQ\
+                      \   min mappability score. Fargments with mappability\n    \
+                      \                    score less than --min-mapq will be filtered.\
+                      \ (default:\n                        10)\n  --min-flen MIN_FLEN\
+                      \   min fragment length. Fragments of length shorted than\n\
+                      \                        --min-flen will be filtered. (default:\
+                      \ 0)\n  --max-flen MAX_FLEN   max fragment length. Fragments\
+                      \ of length longer than\n                        --max-flen\
+                      \ will be filtered. (default: 1000)\n  --min-cov MIN_COV   \
+                      \  min number of fragments per barcode. barcodes of total\n\
+                      \                        fragments fewer than --min-cov will\
+                      \ be considered when\n                        creating the cell\
+                      \ x bin count matrix. Note: because\n                      \
+                      \  the vast majority of barcodes contains very few reads,\n\
+                      \                        we found by setting --min-cov, one\
+                      \ can remove barcodes\n                        of low coverage\
+                      \ without wasting time and storage.\n                      \
+                      \  Please note that this is not selection of good\n        \
+                      \                barcodes for downstream clustering analysis,\
+                      \ it is\n                        only filterationof very low-quality\
+                      \ barcodes.\n                        (default: 0)\n  --max-num\
+                      \ MAX_NUM     max number of barcodes to store. Barcodes are\
+                      \ sorted\n                        based on the coverage and\
+                      \ only the top --max-num\n                        barcodes will\
+                      \ be stored. (default: 1000000)\n  --keep-chrm KEEP_CHRM\n \
+                      \                       a boolen tag indicates whether to keep\
+                      \ fragments\n                        mapped to chrM. If set\
+                      \ Fasle, fragments aligned to the\n                        mitochondrial\
+                      \ sequence will be filtered. (default:\n                   \
+                      \     True)\n  --keep-single KEEP_SINGLE\n                 \
+                      \       a boolen tag indicates whether to keep those reads\n\
+                      \                        whose mates are not mapped or missing.\
+                      \ If False,\n                        unpaired reads will be\
+                      \ filtered. If True, unpaired\n                        reads\
+                      \ will be simply treated as a fragment. Note: for\n        \
+                      \                single-end such as scTHS-seq, --keep-single\
+                      \ must be\n                        True. (default: True)\n \
+                      \ --keep-secondary KEEP_SECONDARY\n                        a\
+                      \ boolen tag indicates whether to keep secondary\n         \
+                      \               alignments. If False, secondary alignments will\
+                      \ be\n                        filtered. If True, a secondary\
+                      \ alignments will be\n                        treated as fragments\
+                      \ just single-end. (default: False)\n  --keep-discordant KEEP_DISCORDANT\n\
+                      \                        a boolen tag indicates whether to keep\
+                      \ discordant read\n                        pairs. (default:\
+                      \ False)\n  --tmp-folder TMP_FOLDER\n                      \
+                      \  a directory to store temporary files. If not given,\n   \
+                      \                     snaptools will automatically generate\
+                      \ a temporary\n                        location to store temporary\
+                      \ files. (default: None)\n  --overwrite OVERWRITE\n        \
+                      \                a boolen tag indicates whether to overwrite\
+                      \ the matrix\n                        session if it already\
+                      \ exists. (default: False)\n  --qc-file QC_FILE     a boolen\
+                      \ tag indicates whether to create a master qc\n            \
+                      \            file. This .qc file contains basic quality control\n\
+                      \                        metrics at the bulk level. Quality\
+                      \ control is only\n                        estimated by selected\
+                      \ barcodes only. (default: True)\n  --verbose VERBOSE     a\
+                      \ boolen tag indicates output the progress. (default:\n    \
+                      \                    True)\n"
+                    generated_using: *id004
+                  - !Command
+                    command:
+                    - snaptools
+                    - align-single-end
+                    positional: []
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --input-fastq1
+                      - --output-bam
+                      args: !SimpleFlagArg
+                        name: INPUT_FASTQ1
+                      optional: true
+                    - !Flag
+                      description: "reference genome file contains the reference genome\n\
+                        that reads are mapped against, the genome index must\nbe under\
+                        \ the same folder (default: None)"
+                      synonyms:
+                      - --input-reference
+                      args: !SimpleFlagArg
+                        name: INPUT_REFERENCE
+                      optional: true
+                    - !Flag
+                      description: "aligner to use. Currently, snaptools supports\
+                        \ bwa,\nbowtie, bowtie2 and minimap2. (default: bwa)"
+                      synonyms:
+                      - --aligner
+                      args: !SimpleFlagArg
+                        name: ALIGNER
+                      optional: true
+                    - !Flag
+                      description: 'path to fold that contains bwa (default: None)'
+                      synonyms:
+                      - --path-to-aligner
+                      args: !SimpleFlagArg
+                        name: PATH_TO_ALIGNER
+                      optional: true
+                    - !Flag
+                      description: "list of strings indicating options you would like\n\
+                        passed to alignerstrongly do not recommand to change\nunless\
+                        \ you know what you are doing. (default: None)"
+                      synonyms:
+                      - --aligner-options
+                      args: !RepeatFlagArg
+                        name: ALIGNER_OPTIONS
+                      optional: true
+                    - !Flag
+                      description: "command line to execute for each of the input\
+                        \ file.\nThis commandshould generate FASTA or FASTQ text and\n\
+                        send it to stdout (default: None)"
+                      synonyms:
+                      - --read-fastq-command
+                      args: !SimpleFlagArg
+                        name: READ_FASTQ_COMMAND
+                      optional: true
+                    - !Flag
+                      description: 'number of alignment threads (default: 1)'
+                      synonyms:
+                      - --num-threads
+                      args: !SimpleFlagArg
+                        name: NUM_THREADS
+                      optional: true
+                    - !Flag
+                      description: "min number of fragments per barcode. barcodes\
+                        \ of total\nfragments less than --min-cov will be filreted\
+                        \ before\nalingment. Note: though this feature is included,\
+                        \ we\nfound it barely speed up the process, so recommand to\n\
+                        set it to be 0. (default: 0)"
+                      synonyms:
+                      - --min-cov
+                      args: !SimpleFlagArg
+                        name: MIN_COV
+                      optional: true
+                    - !Flag
+                      description: "weather to sort the bam file based on the read\
+                        \ name\n(default: True)"
+                      synonyms:
+                      - --if-sort
+                      args: !SimpleFlagArg
+                        name: IF_SORT
+                      optional: true
+                    - !Flag
+                      description: "directory to store temporary files. If not given,\n\
+                        snaptools will automaticallygenerate a temporary\nlocation\
+                        \ to store temporary files (default: None)"
+                      synonyms:
+                      - --tmp-folder
+                      args: !SimpleFlagArg
+                        name: TMP_FOLDER
+                      optional: true
+                    - !Flag
+                      description: "whether to overwrite the output file if it already\n\
+                        exists (default: False)\n"
+                      synonyms:
+                      - --overwrite
+                      args: !SimpleFlagArg
+                        name: OVERWRITE
+                      optional: true
+                    parent: *id003
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: show this help message and exit
+                      synonyms:
+                      - -h
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: snaptools align-single-end [-h] --input-reference\
+                      \ INPUT_REFERENCE\n                                  --input-fastq1\
+                      \ INPUT_FASTQ1 --output-bam\n                              \
+                      \    OUTPUT_BAM [--aligner ALIGNER]\n                      \
+                      \            [--path-to-aligner PATH_TO_ALIGNER]\n         \
+                      \                         [--aligner-options ALIGNER_OPTIONS\
+                      \ [ALIGNER_OPTIONS ...]]\n                                 \
+                      \ [--read-fastq-command READ_FASTQ_COMMAND]\n              \
+                      \                    [--num-threads NUM_THREADS]\n         \
+                      \                         [--min-cov MIN_COV] [--if-sort IF_SORT]\n\
+                      \                                  [--tmp-folder TMP_FOLDER]\n\
+                      \                                  [--overwrite OVERWRITE]\n\
+                      \noptional arguments:\n  -h, --help            show this help\
+                      \ message and exit\n\nrequired inputs:\n  --input-reference\
+                      \ INPUT_REFERENCE\n                        reference genome\
+                      \ file contains the reference genome\n                     \
+                      \   that reads are mapped against, the genome index must\n \
+                      \                       be under the same folder (default: None)\n\
+                      \  --input-fastq1 INPUT_FASTQ1\n                        fastq\
+                      \ file contains R1 reads, currently supports\n             \
+                      \           fastq, gz, bz2 file (default: None)\n  --output-bam\
+                      \ OUTPUT_BAM\n                        output bam file contains\
+                      \ unfiltered alignments\n                        (default: None)\n\
+                      \noptional inputs:\n  --aligner ALIGNER     aligner to use.\
+                      \ Currently, snaptools supports bwa,\n                     \
+                      \   bowtie, bowtie2 and minimap2. (default: bwa)\n  --path-to-aligner\
+                      \ PATH_TO_ALIGNER\n                        path to fold that\
+                      \ contains bwa (default: None)\n  --aligner-options ALIGNER_OPTIONS\
+                      \ [ALIGNER_OPTIONS ...]\n                        list of strings\
+                      \ indicating options you would like\n                      \
+                      \  passed to alignerstrongly do not recommand to change\n  \
+                      \                      unless you know what you are doing. (default:\
+                      \ None)\n  --read-fastq-command READ_FASTQ_COMMAND\n       \
+                      \                 command line to execute for each of the input\
+                      \ file.\n                        This commandshould generate\
+                      \ FASTA or FASTQ text and\n                        send it to\
+                      \ stdout (default: None)\n  --num-threads NUM_THREADS\n    \
+                      \                    number of alignment threads (default: 1)\n\
+                      \  --min-cov MIN_COV     min number of fragments per barcode.\
+                      \ barcodes of total\n                        fragments less\
+                      \ than --min-cov will be filreted before\n                 \
+                      \       alingment. Note: though this feature is included, we\n\
+                      \                        found it barely speed up the process,\
+                      \ so recommand to\n                        set it to be 0. (default:\
+                      \ 0)\n  --if-sort IF_SORT     weather to sort the bam file based\
+                      \ on the read name\n                        (default: True)\n\
+                      \  --tmp-folder TMP_FOLDER\n                        directory\
+                      \ to store temporary files. If not given,\n                \
+                      \        snaptools will automaticallygenerate a temporary\n\
+                      \                        location to store temporary files (default:\
+                      \ None)\n  --overwrite OVERWRITE\n                        whether\
+                      \ to overwrite the output file if it already\n             \
+                      \           exists (default: False)\n"
+                    generated_using: *id004
+                  - !Command
+                    command:
+                    - snaptools
+                    - snap-add-bmat
+                    positional: []
+                    named:
+                    - !Flag
+                      description: 'snap file. (default: None)'
+                      synonyms:
+                      - --snap-file
+                      args: !SimpleFlagArg
+                        name: SNAP_FILE
+                      optional: true
+                    - !Flag
+                      description: "a list of bin size(s) to create the cell-by-bin\
+                        \ count\nmatrix. The genome will be divided into bins of the\n\
+                        equal size of --bin-size-list to create the cell x bin\ncount\
+                        \ matrix. If more than one bin size are given,\nsnaptools\
+                        \ will generate a list of cell x bin matrices\nof different\
+                        \ resolutions and stored in the same snap\nfile. (default:\
+                        \ [5000])"
+                      synonyms:
+                      - --bin-size-list
+                      args: !RepeatFlagArg
+                        name: BIN_SIZE_LIST
+                      optional: true
+                    - !Flag
+                      description: "a directory to store temporary files. If not given,\n\
+                        snaptools will automatically generate a temporary\nlocation\
+                        \ to store temporary files. (default: None)"
+                      synonyms:
+                      - --tmp-folder
+                      args: !SimpleFlagArg
+                        name: TMP_FOLDER
+                      optional: true
+                    - !Flag
+                      description: "a boolen tag indicates output the progress. (default:\n\
+                        True)\n"
+                      synonyms:
+                      - --verbose
+                      args: !SimpleFlagArg
+                        name: VERBOSE
+                      optional: true
+                    parent: *id003
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: show this help message and exit
+                      synonyms:
+                      - -h
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: snaptools snap-add-bmat [-h] --snap-file SNAP_FILE\n\
+                      \                               [--bin-size-list BIN_SIZE_LIST\
+                      \ [BIN_SIZE_LIST ...]]\n                               [--tmp-folder\
+                      \ TMP_FOLDER] [--verbose VERBOSE]\n\noptional arguments:\n \
+                      \ -h, --help            show this help message and exit\n\n\
+                      required inputs:\n  --snap-file SNAP_FILE\n                \
+                      \        snap file. (default: None)\n\noptional inputs:\n  --bin-size-list\
+                      \ BIN_SIZE_LIST [BIN_SIZE_LIST ...]\n                      \
+                      \  a list of bin size(s) to create the cell-by-bin count\n \
+                      \                       matrix. The genome will be divided into\
+                      \ bins of the\n                        equal size of --bin-size-list\
+                      \ to create the cell x bin\n                        count matrix.\
+                      \ If more than one bin size are given,\n                   \
+                      \     snaptools will generate a list of cell x bin matrices\n\
+                      \                        of different resolutions and stored\
+                      \ in the same snap\n                        file. (default:\
+                      \ [5000])\n  --tmp-folder TMP_FOLDER\n                     \
+                      \   a directory to store temporary files. If not given,\n  \
+                      \                      snaptools will automatically generate\
+                      \ a temporary\n                        location to store temporary\
+                      \ files. (default: None)\n  --verbose VERBOSE     a boolen tag\
+                      \ indicates output the progress. (default:\n               \
+                      \         True)\n"
+                    generated_using: *id004
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: snaptools [-h]  ...\n\nProgram: snaptools (A\
+                    \ module for working with snap files in Python)\nVersion: 1.4.8\n\
+                    Contact: Rongxin Fang\nE-mail:  r4fang@gmail.com\n\noptional arguments:\n\
+                    \  -h, --help        show this help message and exit\n\nfunctions:\n\
+                    \  \n    dex-fastq       De-multicomplex fastq file.\n    index-genome\
+                    \    Index reference genome.\n    align-paired-end\n         \
+                    \           Align paired-end reads.\n    align-single-end\n  \
+                    \                  Align single-end reads.\n    snap-pre     \
+                    \   Create a snap file from bam or bed file.\n    snap-add-bmat\
+                    \   Add cell x bin count matrix to snap file.\n    snap-add-pmat\
+                    \   Add cell x peak count matrix to snap file.\n    snap-add-gmat\
+                    \   Add cell x gene count matrix to snap file.\n    snap-del \
+                    \       Delete a session.\n"
+                  generated_using: *id004
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: snaptools
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: snap-del
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --session-name
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --snap-file
+                    args: !SimpleFlagArg
+                      name: SNAP_FILE
+                    optional: true
+                  parent: *id005
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: snaptools snap-del [-h] --snap-file SNAP_FILE\
+                    \ --session-name\n                          SESSION_NAME\nsnaptools\
+                    \ snap-del: error: the following arguments are required: --snap-file,\
+                    \ --session-name\n"
+                  generated_using: &id006 []
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: snaptools snap-del [-h] --snap-file SNAP_FILE --session-name\n\
+                  \                          SESSION_NAME\n\noptional arguments:\n\
+                  \  -h, --help            show this help message and exit\n\nrequired\
+                  \ inputs:\n  --snap-file SNAP_FILE\n                        snap\
+                  \ file. (default: None)\n  --session-name SESSION_NAME\n       \
+                  \                 session to be deleted in snap file. 'AM': cell-by-bin\n\
+                  \                        matrix. All cell-by-bin matrices will be\
+                  \ removed.\n                        'PM': cell-by-peak matrix. 'GM':\
+                  \ cell-by-gene matrix.\n                        (default: None)\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -1189,15 +1285,9 @@ subcommands:
               help_text: "usage: snaptools snap-del [-h] --snap-file SNAP_FILE --session-name\n\
                 \                          SESSION_NAME\nsnaptools snap-del: error:\
                 \ the following arguments are required: --snap-file, --session-name\n"
-              generated_using: &id006 []
+              generated_using: *id006
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage: snaptools snap-del [-h] --snap-file SNAP_FILE --session-name\n\

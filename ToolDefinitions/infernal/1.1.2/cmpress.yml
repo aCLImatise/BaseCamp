@@ -49,22 +49,10 @@ subcommands:
             - -options
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: ': force: overwrite any previous pressed files'
-              synonyms:
-              - -F
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: ''
-              synonyms:
-              - -options
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -77,7 +65,63 @@ subcommands:
                 - -options
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: ': force: overwrite any previous pressed files'
+                  synonyms:
+                  - -F
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -options
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -options
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "Incorrect number of command line arguments.\nUsage:\
+                    \ cmpress [-options] <cmfile>\n\nTo see more help on available\
+                    \ options, do cmpress -h\n\n"
+                  generated_using: &id004
+                  - --help
+                usage: []
+                help_flag: !Flag
+                  description: ': show brief help on version and usage'
+                  synonyms:
+                  - -h
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "# cmpress :: prepare an CM database for faster cmscan\
+                  \ searches\n# INFERNAL 1.1.2 (July 2016)\n# Copyright (C) 2016 Howard\
+                  \ Hughes Medical Institute.\n# Freely distributed under a BSD open\
+                  \ source license.\n# - - - - - - - - - - - - - - - - - - - - - -\
+                  \ - - - - - - - - - - - - - -\nUsage: cmpress [-options] <cmfile>\n\
+                  \nOptions:\n  -h : show brief help on version and usage\n  -F :\
+                  \ force: overwrite any previous pressed files\n"
+                generated_using: &id005
+                - -h
               subcommands: []
               usage: []
               help_flag:
@@ -86,15 +130,9 @@ subcommands:
               help_text: "Incorrect number of command line arguments.\nUsage: cmpress\
                 \ [-options] <cmfile>\n\nTo see more help on available options, do\
                 \ cmpress -h\n\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: ': show brief help on version and usage'
-              synonyms:
-              - -h
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "# cmpress :: prepare an CM database for faster cmscan searches\n\
@@ -104,8 +142,7 @@ subcommands:
               \ - - -\nUsage: cmpress [-options] <cmfile>\n\nOptions:\n  -h : show\
               \ brief help on version and usage\n  -F : force: overwrite any previous\
               \ pressed files\n"
-            generated_using: &id005
-            - -h
+            generated_using: *id005
           subcommands: []
           usage: []
           help_flag:

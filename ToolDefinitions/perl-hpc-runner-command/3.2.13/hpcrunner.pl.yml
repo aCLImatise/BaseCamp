@@ -73,63 +73,10 @@ subcommands:
             - --ip
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: Options for application plugins [Key-Value]
-              synonyms:
-              - --plugins_opts
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Load aplication plugins [Multiple; Split by ","]
-              synonyms:
-              - --plugins
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Basename of config files [Default:".hpcrunner"]
-              synonyms:
-              - --config_base
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "Search for config files in ~/.config.(ext) and in\nyour\
-                \ current working directory. [Flag]"
-              synonyms:
-              - --search
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Override the search paths and supply your own
-              synonyms:
-              - --config
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "--no_configs tells HPC::Runner not to load any\nconfigs\
-                \ [Flag]"
-              synonyms:
-              - --no_configs
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "Give your jobnames an additional project name. #HPC\n\
-                jobname=gzip will be submitted as 001_project_gzip"
-              synonyms:
-              - --project
-              - --pr
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "Opt out of writing the tar archive of JSON stats.\nThis\
-                \ may be desirable for especially large\nworkflows. [Flag]"
-              synonyms:
-              - --no_log_json
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -142,36 +89,179 @@ subcommands:
                 optional: false
               named:
               - !Flag
-                description: Include files or directories [Multiple]
+                description: "Include files or directories [Multiple]\n--exclude_paths\
+                  \ --ep  Files or directories to exclude [Multiple]\n--archive\n\
+                  --help -h --usage -?  Prints this usage information. [Flag]"
                 synonyms:
                 - --include_paths
                 - --ip
                 args: !EmptyFlagArg {}
                 optional: true
-              - !Flag
-                description: Files or directories to exclude [Multiple]
-                synonyms:
-                - --exclude_paths
-                - --ep
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: ''
-                synonyms:
-                - --archive
-                args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: Options for application plugins [Key-Value]
+                  synonyms:
+                  - --plugins_opts
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Load aplication plugins [Multiple; Split by ","]
+                  synonyms:
+                  - --plugins
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Basename of config files [Default:".hpcrunner"]
+                  synonyms:
+                  - --config_base
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Search for config files in ~/.config.(ext) and in\n\
+                    your current working directory. [Flag]"
+                  synonyms:
+                  - --search
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Override the search paths and supply your own
+                  synonyms:
+                  - --config
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "--no_configs tells HPC::Runner not to load any\nconfigs\
+                    \ [Flag]"
+                  synonyms:
+                  - --no_configs
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Give your jobnames an additional project name. #HPC\n\
+                    jobname=gzip will be submitted as 001_project_gzip"
+                  synonyms:
+                  - --project
+                  - --pr
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Opt out of writing the tar archive of JSON stats.\n\
+                    This may be desirable for especially large\nworkflows. [Flag]"
+                  synonyms:
+                  - --no_log_json
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: Prints this usage information
+                    position: 0
+                    name: help
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Include files or directories [Multiple]
+                    synonyms:
+                    - --include_paths
+                    - --ip
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Files or directories to exclude [Multiple]
+                    synonyms:
+                    - --exclude_paths
+                    - --ep
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --archive
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: -?  Prints this usage information. [Flag]
+                    synonyms:
+                    - --help
+                    - -h
+                    - --usage
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage:\n    hpcrunner.pl archive [long options...]\n\
+                    \    hpcrunner.pl help\n    hpcrunner.pl archive --help\n\ndescription:\n\
+                    \    Create an archive of results. Default is to add all files\
+                    \ in your current\n    working directory.Include or exclude with\
+                    \ --include_paths and --exclude_\n    paths. This requires tar\
+                    \ to be installed\n\noptions:\n    --include_paths --ip  Include\
+                    \ files or directories [Multiple]\n    --exclude_paths --ep  Files\
+                    \ or directories to exclude [Multiple]\n    --archive        \
+                    \     \n    --help -h --usage -?  Prints this usage information.\
+                    \ [Flag]\n\navailable subcommands:\n    help  Prints this usage\
+                    \ information\n\n"
+                  generated_using: &id004
+                  - --help
+                usage: []
+                help_flag: !Flag
+                  description: -?  Prints this usage information. [Flag]
+                  synonyms:
+                  - --help
+                  - -h
+                  - --usage
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage:\n    To create a new project\n    \n        hpcrunner.pl\
+                  \ new MyNewProject\n    \n    To submit jobs to a cluster\n    \n\
+                  \        hpcrunner.pl submit_jobs --infile my_submission.sh\n  \
+                  \  \n    To run jobs on an interactive queue or workstation\n  \
+                  \  \n        hpcrunner.pl single_node --infile my_submission.sh\n\
+                  \ndescription:\n    HPC::Runner::Command is a set of libraries for\
+                  \ scaffolding data analysis\n    projects, submitting and executing\
+                  \ jobs on an HPC cluster or workstation,\n    and obsessively logging\
+                  \ results.\n    \n    Get help by heading on over to github and\
+                  \ raising an issue. GitHub | https\n    ://github.com/biosails/HPC-Runner-Command/issues.\n\
+                  \    \n    Please see the complete documentation at HPC::Runner::Command\
+                  \ GitBooks |\n    https://biosails.gitbooks.io/hpc-runner-command-docs/content/.\n\
+                  \nglobal options:\n    --plugins_opts        Options for application\
+                  \ plugins [Key-Value]\n    --plugins             Load aplication\
+                  \ plugins [Multiple; Split by \",\"]\n    --config_base        \
+                  \ Basename of config files [Default:\".hpcrunner\"]\n    --search\
+                  \              Search for config files in ~/.config.(ext) and in\n\
+                  \                          your current working directory. [Flag]\n\
+                  \    --config              Override the search paths and supply\
+                  \ your own\n                          config.\n    --search_path\
+                  \         Enable a search path for configs. Default is the\n   \
+                  \                       home dir and your cwd. [Multiple]\n    --no_configs\
+                  \          --no_configs tells HPC::Runner not to load any\n    \
+                  \                      configs [Flag]\n    --project --pr      \
+                  \  Give your jobnames an additional project name. #HPC\n       \
+                  \                   jobname=gzip will be submitted as 001_project_gzip\n\
+                  \    --no_log_json         Opt out of writing the tar archive of\
+                  \ JSON stats.\n                          This may be desirable for\
+                  \ especially large\n                          workflows. [Flag]\n\
+                  \    --help -h --usage -?  Prints this usage information. [Flag]\n\
+                  \navailable commands:\n    archive        Create an archive of results.\n\
+                  \    execute_array  Execute commands\n    execute_job    Execute\
+                  \ commands\n    new            Create a new project\n    single_node\
+                  \    Execute commands\n    stats          Query submissions by project,\
+                  \ or jobname\n    submit_jobs    Submit jobs to the HPC system\n\
+                  \    help           Prints this usage information\n\n"
+                generated_using: *id004
               subcommands: []
               usage: []
-              help_flag: !Flag
-                description: -?  Prints this usage information. [Flag]
-                synonyms:
-                - --help
-                - -h
-                - --usage
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "usage:\n    hpcrunner.pl archive [long options...]\n   \
@@ -184,17 +274,9 @@ subcommands:
                 \    --archive             \n    --help -h --usage -?  Prints this\
                 \ usage information. [Flag]\n\navailable subcommands:\n    help  Prints\
                 \ this usage information\n\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: -?  Prints this usage information. [Flag]
-              synonyms:
-              - --help
-              - -h
-              - --usage
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage:\n    To create a new project\n    \n        hpcrunner.pl\

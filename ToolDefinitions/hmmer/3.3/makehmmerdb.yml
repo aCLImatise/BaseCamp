@@ -26,7 +26,7 @@ subcommands:
     name: binaryfile
     optional: false
   named: []
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -51,7 +51,7 @@ subcommands:
         name: binaryfile
         optional: false
       named: []
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -76,38 +76,10 @@ subcommands:
             name: binaryfile
             optional: false
           named: []
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: ': specify that input file is in format <s>'
-              synonyms:
-              - --informat
-              args: !SimpleFlagArg
-                name: s
-              optional: true
-            - !Flag
-              description: ': bin length (power of 2;  32<=b<=4096)  [256]'
-              synonyms:
-              - --bin_length
-              args: !SimpleFlagArg
-                name: n
-              optional: true
-            - !Flag
-              description: ': suffix array sample rate (power of 2)  [8]'
-              synonyms:
-              - --sa_freq
-              args: !SimpleFlagArg
-                name: n
-              optional: true
-            - !Flag
-              description: ': input sequence broken into blocks this size (Mbases)  [50]'
-              synonyms:
-              - --block_size
-              args: !SimpleFlagArg
-                name: n
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -129,7 +101,125 @@ subcommands:
                 name: binaryfile
                 optional: false
               named: []
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: ': specify that input file is in format <s>'
+                  synonyms:
+                  - --informat
+                  args: !SimpleFlagArg
+                    name: s
+                  optional: true
+                - !Flag
+                  description: ': bin length (power of 2;  32<=b<=4096)  [256]'
+                  synonyms:
+                  - --bin_length
+                  args: !SimpleFlagArg
+                    name: n
+                  optional: true
+                - !Flag
+                  description: ': suffix array sample rate (power of 2)  [8]'
+                  synonyms:
+                  - --sa_freq
+                  args: !SimpleFlagArg
+                    name: n
+                  optional: true
+                - !Flag
+                  description: ': input sequence broken into blocks this size (Mbases)  [50]'
+                  synonyms:
+                  - --block_size
+                  args: !SimpleFlagArg
+                    name: n
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: makehmmerdb
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: seqfile
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: binaryfile
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ': show brief help on version and usage'
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Incorrect number of command line arguments.\nUsage:\
+                    \ makehmmerdb [options] <seqfile> <binaryfile>\n\nwhere basic\
+                    \ options are:\n  -h : show brief help on version and usage\n\n\
+                    To see more help on available options, do makehmmerdb -h\n\n"
+                  generated_using: &id004 []
+                - !Command
+                  command: &id005
+                  - makehmmerdb
+                  - seqfile
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: binaryfile
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ': show brief help on version and usage'
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Incorrect number of command line arguments.\nUsage:\
+                    \ makehmmerdb [options] <seqfile> <binaryfile>\n\nwhere basic\
+                    \ options are:\n  -h : show brief help on version and usage\n\n\
+                    To see more help on available options, do makehmmerdb -h\n\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: ': show brief help on version and usage'
+                  synonyms:
+                  - -h
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "# makehmmerdb :: build a HMMER binary-formatted database\
+                  \ from an input sequence file\n# HMMER 3.3 (Nov 2019); http://hmmer.org/\n\
+                  # Copyright (C) 2019 Howard Hughes Medical Institute.\n# Freely\
+                  \ distributed under the BSD open source license.\n# - - - - - -\
+                  \ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\
+                  Usage: makehmmerdb [options] <seqfile> <binaryfile>\n\nBasic options:\n\
+                  \  -h : show brief help on version and usage\n\nSpecial options:\n\
+                  \  --informat <s>   : specify that input file is in format <s>\n\
+                  \  --bin_length <n> : bin length (power of 2;  32<=b<=4096)  [256]\n\
+                  \  --sa_freq <n>    : suffix array sample rate (power of 2)  [8]\n\
+                  \  --block_size <n> : input sequence broken into blocks this size\
+                  \ (Mbases)  [50]\n"
+                generated_using: &id006
+                - -h
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -144,11 +234,9 @@ subcommands:
                 \ [options] <seqfile> <binaryfile>\n\nwhere basic options are:\n \
                 \ -h : show brief help on version and usage\n\nTo see more help on\
                 \ available options, do makehmmerdb -h\n\n"
-              generated_using: &id004 []
+              generated_using: *id004
             - !Command
-              command: &id005
-              - makehmmerdb
-              - seqfile
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -173,12 +261,7 @@ subcommands:
                 \ available options, do makehmmerdb -h\n\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: ': show brief help on version and usage'
-              synonyms:
-              - -h
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "# makehmmerdb :: build a HMMER binary-formatted database from\
@@ -192,8 +275,7 @@ subcommands:
               \ (power of 2;  32<=b<=4096)  [256]\n  --sa_freq <n>    : suffix array\
               \ sample rate (power of 2)  [8]\n  --block_size <n> : input sequence\
               \ broken into blocks this size (Mbases)  [50]\n"
-            generated_using: &id006
-            - -h
+            generated_using: *id006
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -218,7 +300,7 @@ subcommands:
             name: binaryfile
             optional: false
           named: []
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -274,7 +356,7 @@ subcommands:
         name: binaryfile
         optional: false
       named: []
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -329,7 +411,7 @@ subcommands:
     name: binaryfile
     optional: false
   named: []
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag

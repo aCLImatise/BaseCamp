@@ -40,7 +40,7 @@ subcommands:
     - --progress
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id013 !Command
+  parent: &id014 !Command
     command: *id001
     positional: []
     named: []
@@ -79,7 +79,7 @@ subcommands:
         - --progress
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id012 !Command
+      parent: &id013 !Command
         command: *id001
         positional: []
         named: []
@@ -118,7 +118,7 @@ subcommands:
             - --progress
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id012 !Command
             command: *id001
             positional: []
             named: []
@@ -145,23 +145,400 @@ subcommands:
                 optional: false
               named:
               - !Flag
-                description: show progress bars
-                synonyms:
-                - --progress
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
                 description: ''
                 synonyms:
                 - --stages
                 args: !SimpleFlagArg
                   name: STAGES
                 optional: true
-              parent: *id003
+              - !Flag
+                description: ''
+                synonyms:
+                - --progress
+                args: !EmptyFlagArg {}
+                optional: true
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: "the base directory to store input data, reference\n\
+                      annotations, and analysis output for a project"
+                    position: 0
+                    name: project_directory
+                    optional: false
+                  - !Positional
+                    description: group name
+                    position: 1
+                    name: group
+                    optional: false
+                  - !Positional
+                    description: sample name
+                    position: 2
+                    name: sample
+                    optional: false
+                  named:
+                  - !Flag
+                    description: show progress bars
+                    synonyms:
+                    - --progress
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --stages
+                    args: !SimpleFlagArg
+                      name: STAGES
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: knock-knock process [-h] [--progress] [--stages\
+                    \ STAGES]\n                           project_directory group\
+                    \ sample\n\npositional arguments:\n  project_directory  the base\
+                    \ directory to store input data, reference\n                 \
+                    \    annotations, and analysis output for a project\n  group \
+                    \             group name\n  sample             sample name\n\n\
+                    optional arguments:\n  -h, --help         show this help message\
+                    \ and exit\n  --progress         show progress bars\n  --stages\
+                    \ STAGES\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - knock-knock
+                  - parallel
+                  positional:
+                  - !Positional
+                    description: "the base directory to store input data, reference\n\
+                      annotations, and analysis output for a project"
+                    position: 0
+                    name: project_directory
+                    optional: false
+                  - !Positional
+                    description: maximum number of samples to process at once
+                    position: 1
+                    name: max_procs
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "if specified, the single group name to process;\
+                      \ if not\nspecified, all groups will be processed"
+                    synonyms:
+                    - --group
+                    args: !SimpleFlagArg
+                      name: GROUP
+                    optional: true
+                  - !Flag
+                    description: "if specified, conditions that samples must satisfy\
+                      \ to\nbe processed, given as yaml; if not specified, all\nsamples\
+                      \ will be processed"
+                    synonyms:
+                    - --conditions
+                    args: !SimpleFlagArg
+                      name: CONDITIONS
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --stages
+                    args: !SimpleFlagArg
+                      name: STAGES
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: knock-knock parallel [-h] [--group GROUP] [--conditions\
+                    \ CONDITIONS]\n                            [--stages STAGES]\n\
+                    \                            project_directory max_procs\n\npositional\
+                    \ arguments:\n  project_directory     the base directory to store\
+                    \ input data, reference\n                        annotations,\
+                    \ and analysis output for a project\n  max_procs             maximum\
+                    \ number of samples to process at once\n\noptional arguments:\n\
+                    \  -h, --help            show this help message and exit\n  --group\
+                    \ GROUP         if specified, the single group name to process;\
+                    \ if not\n                        specified, all groups will be\
+                    \ processed\n  --conditions CONDITIONS\n                     \
+                    \   if specified, conditions that samples must satisfy to\n  \
+                    \                      be processed, given as yaml; if not specified,\
+                    \ all\n                        samples will be processed\n  --stages\
+                    \ STAGES\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - knock-knock
+                  - table
+                  positional:
+                  - !Positional
+                    description: "the base directory to store input data, reference\n\
+                      annotations, and analysis output for a project"
+                    position: 0
+                    name: project_directory
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "if specified, the single group name to generate\
+                      \ tables\nfor; if not specified, all groups will be generated\n"
+                    synonyms:
+                    - --group
+                    args: !SimpleFlagArg
+                      name: GROUP
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: knock-knock table [-h] [--group GROUP] project_directory\n\
+                    \npositional arguments:\n  project_directory  the base directory\
+                    \ to store input data, reference\n                     annotations,\
+                    \ and analysis output for a project\n\noptional arguments:\n \
+                    \ -h, --help         show this help message and exit\n  --group\
+                    \ GROUP      if specified, the single group name to generate tables\n\
+                    \                     for; if not specified, all groups will be\
+                    \ generated\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - knock-knock
+                  - indices
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: knock-knock
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: knock-knock [-h] [--version]\n              \
+                    \     {process,parallel,table,build-targets,design-primers,build-indices,install-example-data,whos-there}\n\
+                    \                   ...\nknock-knock: error: argument subcommand:\
+                    \ invalid choice: 'indices' (choose from 'process', 'parallel',\
+                    \ 'table', 'build-targets', 'design-primers', 'build-indices',\
+                    \ 'install-example-data', 'whos-there')\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - knock-knock
+                  - build-targets
+                  positional:
+                  - !Positional
+                    description: "the base directory to store input data, reference\n\
+                      annotations, and analysis output for a project"
+                    position: 0
+                    name: project_directory
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: knock-knock build-targets [-h] project_directory\n\
+                    \npositional arguments:\n  project_directory  the base directory\
+                    \ to store input data, reference\n                     annotations,\
+                    \ and analysis output for a project\n\noptional arguments:\n \
+                    \ -h, --help         show this help message and exit\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id009
+                  - knock-knock
+                  - directory
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: knock-knock
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: knock-knock [-h] [--version]\n              \
+                    \     {process,parallel,table,build-targets,design-primers,build-indices,install-example-data,whos-there}\n\
+                    \                   ...\nknock-knock: error: argument subcommand:\
+                    \ invalid choice: 'directory' (choose from 'process', 'parallel',\
+                    \ 'table', 'build-targets', 'design-primers', 'build-indices',\
+                    \ 'install-example-data', 'whos-there')\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id010
+                  - knock-knock
+                  - design-primers
+                  positional:
+                  - !Positional
+                    description: "the base directory to store input data, reference\n\
+                      annotations, and analysis output for a project"
+                    position: 0
+                    name: project_directory
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: knock-knock design-primers [-h] project_directory\n\
+                    \npositional arguments:\n  project_directory  the base directory\
+                    \ to store input data, reference\n                     annotations,\
+                    \ and analysis output for a project\n\noptional arguments:\n \
+                    \ -h, --help         show this help message and exit\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id011
+                  - knock-knock
+                  - build-indices
+                  positional:
+                  - !Positional
+                    description: "the base directory to store input data, reference\n\
+                      annotations, and analysis output for a project"
+                    position: 0
+                    name: project_directory
+                    optional: false
+                  - !Positional
+                    description: name of genome to download
+                    position: 1
+                    name: genome_name
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "number of threads to use for index building\n"
+                    synonyms:
+                    - --num-threads
+                    args: !SimpleFlagArg
+                      name: NUM_THREADS
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: knock-knock build-indices [-h] [--num-threads\
+                    \ NUM_THREADS]\n                                 project_directory\
+                    \ genome_name\n\npositional arguments:\n  project_directory  \
+                    \   the base directory to store input data, reference\n      \
+                    \                  annotations, and analysis output for a project\n\
+                    \  genome_name           name of genome to download\n\noptional\
+                    \ arguments:\n  -h, --help            show this help message and\
+                    \ exit\n  --num-threads NUM_THREADS\n                        number\
+                    \ of threads to use for index building\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: show program's version number and exit
+                  synonyms:
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "usage: knock-knock [-h] [--version]\n                \
+                  \   {process,parallel,table,build-targets,design-primers,build-indices,install-example-data,whos-there}\n\
+                  \                   ...\n\noptional arguments:\n  -h, --help   \
+                  \         show this help message and exit\n  --version         \
+                  \    show program's version number and exit\n\nsubcommands:\n  {process,parallel,table,build-targets,design-primers,build-indices,install-example-data,whos-there}\n\
+                  \    process             process a single sample\n    parallel \
+                  \           process multiple samples in parallel\n    table    \
+                  \           generate tables of outcome frequencies\n    build-targets\
+                  \       build annotations of target locii\n    design-primers  \
+                  \    design amplicon primers for sgRNAs\n    build-indices     \
+                  \  download a reference genome and build alignment\n           \
+                  \             indices\n    install-example-data\n              \
+                  \          install example data into user-specified project\n  \
+                  \                      directory\n    whos-there          print\
+                  \ citation information\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                description: "show this help message and exit\n--progress        \
+                  \ show progress bars\n--stages STAGES\n"
                 synonyms:
                 - -h
                 - --help
@@ -177,12 +554,9 @@ subcommands:
                 \             sample name\n\noptional arguments:\n  -h, --help   \
                 \      show this help message and exit\n  --progress         show\
                 \ progress bars\n  --stages STAGES\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - knock-knock
-              - parallel
+              command: *id005
               positional:
               - !Positional
                 description: "the base directory to store input data, reference\n\
@@ -197,17 +571,7 @@ subcommands:
                 optional: false
               named:
               - !Flag
-                description: "if specified, the single group name to process; if not\n\
-                  specified, all groups will be processed"
-                synonyms:
-                - --group
-                args: !SimpleFlagArg
-                  name: GROUP
-                optional: true
-              - !Flag
-                description: "if specified, conditions that samples must satisfy to\n\
-                  be processed, given as yaml; if not specified, all\nsamples will\
-                  \ be processed"
+                description: ''
                 synonyms:
                 - --conditions
                 args: !SimpleFlagArg
@@ -216,15 +580,20 @@ subcommands:
               - !Flag
                 description: ''
                 synonyms:
-                - --stages
+                - --group
                 args: !SimpleFlagArg
-                  name: STAGES
+                  name: GROUP
                 optional: true
               parent: *id003
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                description: "show this help message and exit\n--group GROUP     \
+                  \    if specified, the single group name to process; if not\nspecified,\
+                  \ all groups will be processed\n--conditions CONDITIONS\nif specified,\
+                  \ conditions that samples must satisfy to\nbe processed, given as\
+                  \ yaml; if not specified, all\nsamples will be processed\n--stages\
+                  \ STAGES\n"
                 synonyms:
                 - -h
                 - --help
@@ -248,9 +617,7 @@ subcommands:
                 \ will be processed\n  --stages STAGES\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - knock-knock
-              - table
+              command: *id006
               positional:
               - !Positional
                 description: "the base directory to store input data, reference\n\
@@ -288,9 +655,7 @@ subcommands:
                 \           for; if not specified, all groups will be generated\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - knock-knock
-              - indices
+              command: *id007
               positional:
               - !Positional
                 description: ''
@@ -322,9 +687,7 @@ subcommands:
                 \ 'whos-there')\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - knock-knock
-              - build-targets
+              command: *id008
               positional:
               - !Positional
                 description: "the base directory to store input data, reference\n\
@@ -352,9 +715,7 @@ subcommands:
                 \         show this help message and exit\n"
               generated_using: *id004
             - !Command
-              command: &id009
-              - knock-knock
-              - directory
+              command: *id009
               positional:
               - !Positional
                 description: ''
@@ -386,9 +747,7 @@ subcommands:
                 \ 'whos-there')\n"
               generated_using: *id004
             - !Command
-              command: &id010
-              - knock-knock
-              - design-primers
+              command: *id010
               positional:
               - !Positional
                 description: "the base directory to store input data, reference\n\
@@ -416,9 +775,7 @@ subcommands:
                 \         show this help message and exit\n"
               generated_using: *id004
             - !Command
-              command: &id011
-              - knock-knock
-              - build-indices
+              command: *id011
               positional:
               - !Positional
                 description: "the base directory to store input data, reference\n\
@@ -461,20 +818,9 @@ subcommands:
                 \                        number of threads to use for index building\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: show program's version number and exit
-              synonyms:
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "usage: knock-knock [-h] [--version]\n                   {process,parallel,table,build-targets,design-primers,build-indices,install-example-data,whos-there}\n\
               \                   ...\n\noptional arguments:\n  -h, --help       \
               \     show this help message and exit\n  --version             show\
@@ -538,7 +884,7 @@ subcommands:
             args: !SimpleFlagArg
               name: GROUP
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -586,7 +932,7 @@ subcommands:
             args: !SimpleFlagArg
               name: GROUP
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -615,7 +961,7 @@ subcommands:
             name: knock-knock
             optional: false
           named: []
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -646,7 +992,7 @@ subcommands:
             name: project_directory
             optional: false
           named: []
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -673,7 +1019,7 @@ subcommands:
             name: knock-knock
             optional: false
           named: []
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -704,7 +1050,7 @@ subcommands:
             name: project_directory
             optional: false
           named: []
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -744,7 +1090,7 @@ subcommands:
             args: !SimpleFlagArg
               name: NUM_THREADS
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -831,7 +1177,7 @@ subcommands:
         args: !SimpleFlagArg
           name: GROUP
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -879,7 +1225,7 @@ subcommands:
         args: !SimpleFlagArg
           name: GROUP
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -908,7 +1254,7 @@ subcommands:
         name: knock-knock
         optional: false
       named: []
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -939,7 +1285,7 @@ subcommands:
         name: project_directory
         optional: false
       named: []
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -965,7 +1311,7 @@ subcommands:
         name: knock-knock
         optional: false
       named: []
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -996,7 +1342,7 @@ subcommands:
         name: project_directory
         optional: false
       named: []
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1035,7 +1381,7 @@ subcommands:
         args: !SimpleFlagArg
           name: NUM_THREADS
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1122,7 +1468,7 @@ subcommands:
     args: !SimpleFlagArg
       name: GROUP
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1168,7 +1514,7 @@ subcommands:
     args: !SimpleFlagArg
       name: GROUP
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1196,7 +1542,7 @@ subcommands:
     name: knock-knock
     optional: false
   named: []
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1227,7 +1573,7 @@ subcommands:
     name: project_directory
     optional: false
   named: []
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1253,7 +1599,7 @@ subcommands:
     name: knock-knock
     optional: false
   named: []
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1284,7 +1630,7 @@ subcommands:
     name: project_directory
     optional: false
   named: []
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1323,7 +1669,7 @@ subcommands:
     args: !SimpleFlagArg
       name: NUM_THREADS
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag

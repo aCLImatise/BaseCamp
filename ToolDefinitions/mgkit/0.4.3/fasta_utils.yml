@@ -26,7 +26,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -51,7 +51,7 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -76,16 +76,10 @@ subcommands:
             - --verbose
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: ''
-              synonyms:
-              - --cite
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -98,45 +92,221 @@ subcommands:
                 optional: true
               named:
               - !Flag
-                description: ''
+                description: "-p, --prefix TEXT     Prefix for the file name in output\
+                  \  [default: split]\n-n, --number INTEGER  Number of chunks into\
+                  \ which split the FASTA file\n[default: 10]\n-z, --gzip        \
+                  \    gzip output files\n--help                Show this message\
+                  \ and exit.\n"
                 synonyms:
                 - -v
                 - --verbose
                 args: !EmptyFlagArg {}
                 optional: true
-              - !Flag
-                description: 'Prefix for the file name in output  [default: split]'
-                synonyms:
-                - -p
-                - --prefix
-                args: !SimpleFlagArg
-                  name: TEXT
-                optional: true
-              - !Flag
-                description: "Number of chunks into which split the FASTA file\n[default:\
-                  \ 10]"
-                synonyms:
-                - -n
-                - --number
-                args: !SimpleFlagArg
-                  name: INTEGER
-                optional: true
-              - !Flag
-                description: gzip output files
-                synonyms:
-                - -z
-                - --gzip
-                args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - --cite
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: FASTA_FILE
+                    optional: true
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -v
+                    - --verbose
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Prefix for the file name in output  [default: split]'
+                    synonyms:
+                    - -p
+                    - --prefix
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: "Number of chunks into which split the FASTA file\n\
+                      [default: 10]"
+                    synonyms:
+                    - -n
+                    - --number
+                    args: !SimpleFlagArg
+                      name: INTEGER
+                    optional: true
+                  - !Flag
+                    description: gzip output files
+                    synonyms:
+                    - -z
+                    - --gzip
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: fasta-utils split [OPTIONS] [FASTA_FILE]\n\n\
+                    \  Splits a FASTA file [fasta-file] in a number of fragments\n\
+                    \nOptions:\n  -v, --verbose\n  -p, --prefix TEXT     Prefix for\
+                    \ the file name in output  [default: split]\n  -n, --number INTEGER\
+                    \  Number of chunks into which split the FASTA file\n        \
+                    \                [default: 10]\n\n  -z, --gzip            gzip\
+                    \ output files\n  --help                Show this message and\
+                    \ exit.\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - fasta-utils
+                  - uid
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: FASTA_FILE
+                    optional: true
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: OUTPUT_FILE
+                    optional: true
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -v
+                    - --verbose
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Filename of a table to record the changes (by default\n\
+                      discards it)"
+                    synonyms:
+                    - -t
+                    - --table
+                    args: !SimpleFlagArg
+                      name: FILENAME
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: fasta-utils uid [OPTIONS] [FASTA_FILE] [OUTPUT_FILE]\n\
+                    \n  Changes each header of a FASTA file [file-file] to a uid (unique\
+                    \ ID)\n\nOptions:\n  -v, --verbose\n  -t, --table FILENAME  Filename\
+                    \ of a table to record the changes (by default\n             \
+                    \           discards it)\n\n  --help                Show this\
+                    \ message and exit.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - fasta-utils
+                  - translate
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: FASTA_FILE
+                    optional: true
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: OUTPUT_FILE
+                    optional: true
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -v
+                    - --verbose
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "[bac_plt|drs_mit|inv_mit|prt_mit|universal|vt_mit|yst_alt|yst_mit]\n\
+                      translation table  [default: universal]"
+                    synonyms:
+                    - -t
+                    - --trans-table
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Shows Progress Bar
+                    synonyms:
+                    - --progress
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: fasta-utils translate [OPTIONS] [FASTA_FILE]\
+                    \ [OUTPUT_FILE]\n\n  Translate FASTA file [fasta-file] in all\
+                    \ 6 frames to [output-file]\n\nOptions:\n  -v, --verbose\n  -t,\
+                    \ --trans-table [bac_plt|drs_mit|inv_mit|prt_mit|universal|vt_mit|yst_alt|yst_mit]\n\
+                    \                                  translation table  [default:\
+                    \ universal]\n  --progress                      Shows Progress\
+                    \ Bar\n  --help                          Show this message and\
+                    \ exit.\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: Show the version and exit.
+                  synonyms:
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "Usage: fasta-utils [OPTIONS] COMMAND [ARGS]...\n\n  Main\
+                  \ function\n\nOptions:\n  --version  Show the version and exit.\n\
+                  \  --cite\n  --help     Show this message and exit.\n\nCommands:\n\
+                  \  split      Splits a FASTA file [fasta-file] in a number of fragments\n\
+                  \  translate  Translate FASTA file [fasta-file] in all 6 frames\
+                  \ to...\n  uid        Changes each header of a FASTA file [file-file]\
+                  \ to a uid...\n"
+                generated_using: *id004
               subcommands: []
               usage: []
-              help_flag: !Flag
-                description: Show this message and exit.
-                synonyms:
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "Usage: fasta-utils split [OPTIONS] [FASTA_FILE]\n\n  Splits\
@@ -146,12 +316,9 @@ subcommands:
                 \ into which split the FASTA file\n                        [default:\
                 \ 10]\n\n  -z, --gzip            gzip output files\n  --help     \
                 \           Show this message and exit.\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - fasta-utils
-              - uid
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -165,30 +332,18 @@ subcommands:
                 optional: true
               named:
               - !Flag
-                description: ''
+                description: "-t, --table FILENAME  Filename of a table to record\
+                  \ the changes (by default\ndiscards it)\n--help                Show\
+                  \ this message and exit.\n"
                 synonyms:
                 - -v
                 - --verbose
                 args: !EmptyFlagArg {}
                 optional: true
-              - !Flag
-                description: "Filename of a table to record the changes (by default\n\
-                  discards it)"
-                synonyms:
-                - -t
-                - --table
-                args: !SimpleFlagArg
-                  name: FILENAME
-                optional: true
               parent: *id003
               subcommands: []
               usage: []
-              help_flag: !Flag
-                description: Show this message and exit.
-                synonyms:
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "Usage: fasta-utils uid [OPTIONS] [FASTA_FILE] [OUTPUT_FILE]\n\
@@ -199,9 +354,7 @@ subcommands:
                 \ and exit.\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - fasta-utils
-              - translate
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -215,35 +368,19 @@ subcommands:
                 optional: true
               named:
               - !Flag
-                description: ''
+                description: "-t, --trans-table [bac_plt|drs_mit|inv_mit|prt_mit|universal|vt_mit|yst_alt|yst_mit]\n\
+                  translation table  [default: universal]\n--progress            \
+                  \          Shows Progress Bar\n--help                          Show\
+                  \ this message and exit.\n"
                 synonyms:
                 - -v
                 - --verbose
                 args: !EmptyFlagArg {}
                 optional: true
-              - !Flag
-                description: "[bac_plt|drs_mit|inv_mit|prt_mit|universal|vt_mit|yst_alt|yst_mit]\n\
-                  translation table  [default: universal]"
-                synonyms:
-                - -t
-                - --trans-table
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: Shows Progress Bar
-                synonyms:
-                - --progress
-                args: !EmptyFlagArg {}
-                optional: true
               parent: *id003
               subcommands: []
               usage: []
-              help_flag: !Flag
-                description: Show this message and exit.
-                synonyms:
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "Usage: fasta-utils translate [OPTIONS] [FASTA_FILE] [OUTPUT_FILE]\n\
@@ -254,19 +391,9 @@ subcommands:
                 \                        Show this message and exit.\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: Show this message and exit.
-              synonyms:
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: Show the version and exit.
-              synonyms:
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "Usage: fasta-utils [OPTIONS] COMMAND [ARGS]...\n\n  Main function\n\
               \nOptions:\n  --version  Show the version and exit.\n  --cite\n  --help\
               \     Show this message and exit.\n\nCommands:\n  split      Splits\
@@ -310,7 +437,7 @@ subcommands:
             - --verbose
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag:
@@ -346,7 +473,7 @@ subcommands:
             - --verbose
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag:
@@ -405,7 +532,7 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag:
@@ -441,7 +568,7 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag:
@@ -499,7 +626,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:
@@ -534,7 +661,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:

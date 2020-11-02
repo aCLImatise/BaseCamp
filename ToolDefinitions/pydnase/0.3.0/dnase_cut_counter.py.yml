@@ -37,7 +37,7 @@ subcommands:
     - -A
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -73,7 +73,7 @@ subcommands:
         - -A
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -109,16 +109,10 @@ subcommands:
             - -A
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: 'ATAC-seq mode (default: False)'
-              synonyms:
-              - -A
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -151,7 +145,129 @@ subcommands:
                 - -A
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: 'ATAC-seq mode (default: False)'
+                  synonyms:
+                  - -A
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: dnase_cut_counter.py
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: regions
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: reads
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 3
+                    name: output
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -A
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: dnase_cut_counter.py [-h] [-A] regions reads\
+                    \ output\ndnase_cut_counter.py: error: the following arguments\
+                    \ are required: reads, output\n"
+                  generated_using: &id004 []
+                - !Command
+                  command: &id005
+                  - dnase_cut_counter.py
+                  - reads
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: dnase_cut_counter.py
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: regions
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: reads
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 3
+                    name: output
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -A
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: dnase_cut_counter.py [-h] [-A] regions reads\
+                    \ output\ndnase_cut_counter.py: error: the following arguments\
+                    \ are required: reads, output\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: dnase_cut_counter.py [-h] [-A] regions reads output\n\
+                  \nAnnotates a BED file with with the number of DNase cuts in it\n\
+                  \npositional arguments:\n  regions     BED file\n  reads       The\
+                  \ BAM file containing the DNase-seq data\n  output      filename\
+                  \ to write the output to\n\noptional arguments:\n  -h, --help  show\
+                  \ this help message and exit\n  -A          ATAC-seq mode (default:\
+                  \ False)\n"
+                generated_using: &id006
+                - --help
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -165,11 +281,9 @@ subcommands:
               help_text: "usage: dnase_cut_counter.py [-h] [-A] regions reads output\n\
                 dnase_cut_counter.py: error: the following arguments are required:\
                 \ reads, output\n"
-              generated_using: &id004 []
+              generated_using: *id004
             - !Command
-              command: &id005
-              - dnase_cut_counter.py
-              - reads
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -214,13 +328,7 @@ subcommands:
                 \ reads, output\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage: dnase_cut_counter.py [-h] [-A] regions reads output\n\
@@ -229,8 +337,7 @@ subcommands:
               \ file containing the DNase-seq data\n  output      filename to write\
               \ the output to\n\noptional arguments:\n  -h, --help  show this help\
               \ message and exit\n  -A          ATAC-seq mode (default: False)\n"
-            generated_using: &id006
-            - --help
+            generated_using: *id006
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -275,7 +382,7 @@ subcommands:
             - -A
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -344,7 +451,7 @@ subcommands:
         - -A
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -412,7 +519,7 @@ subcommands:
     - -A
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag

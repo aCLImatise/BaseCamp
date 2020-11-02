@@ -138,7 +138,7 @@ subcommands:
     - --debug
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id010 !Command
+  parent: &id011 !Command
     command: *id001
     positional: []
     named: []
@@ -275,7 +275,7 @@ subcommands:
         - --debug
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id009 !Command
+      parent: &id010 !Command
         command: *id001
         positional: []
         named: []
@@ -413,16 +413,10 @@ subcommands:
             - --debug
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id009 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: Prints verbose text while running
-              synonyms:
-              - --verbose
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -558,7 +552,843 @@ subcommands:
                 - --debug
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: Prints verbose text while running
+                  synonyms:
+                  - --verbose
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: 1st pair of read in PER or SER
+                    synonyms:
+                    - '-1'
+                    args: !SimpleFlagArg
+                      name: QC_READ1
+                    optional: true
+                  - !Flag
+                    description: 2nd pair of read in PER
+                    synonyms:
+                    - '-2'
+                    args: !SimpleFlagArg
+                      name: QC_READ2
+                    optional: true
+                  - !Flag
+                    description: "let us know a mean read length (0:ignore. [1]:I\
+                      \ want\nto know the range of read length after trimming,\ni:user_specified_mean_read_length)"
+                    synonyms:
+                    - -r
+                    args: !SimpleFlagArg
+                      name: QC_READL
+                    optional: true
+                  - !Flag
+                    description: "specify a phred offset used in encoding base\nquality(0:not\
+                      \ sure?, [33]:phred+33, 64:phred+64)"
+                    synonyms:
+                    - -t
+                    args: !SimpleFlagArg
+                      name: QC_PHRED_OFFSET
+                    optional: true
+                  - !Flag
+                    description: specify output directory in full path
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: QC_OUTDIR
+                    optional: true
+                  - !Flag
+                    description: "tell us which sequencer generates the reads\n([Illumina],\
+                      \ PacBio, Roche454, IonTorrent)"
+                    synonyms:
+                    - -s
+                    args: !SimpleFlagArg
+                      name: QC_SEQUENCER
+                    optional: true
+                  - !Flag
+                    description: specify the min read length cutoff[35]
+                    synonyms:
+                    - -m
+                    args: !SimpleFlagArg
+                      name: QC_LEN_CUTOFF
+                    optional: true
+                  - !Flag
+                    description: "specify an adaptor (Y:have pathoQC detect it,\n\
+                      [N]:ignore, ACGT:adaptor)"
+                    synonyms:
+                    - -a
+                    args: !SimpleFlagArg
+                      name: QC_ADAPTOR
+                    optional: true
+                  - !Flag
+                    description: "specify a second adaptor if it is different from\
+                      \ the\nfirst one (Y:have pathoQC detect it, [N]:ignore,\nACGT:adaptor)"
+                    synonyms:
+                    - -a2
+                    args: !SimpleFlagArg
+                      name: QC_ADAPTOR2
+                    optional: true
+                  - !Flag
+                    description: "specify a cutoff of base quality value to trim at\
+                      \ the\nend of reads([0]:ignore, 1:let pathoQC take care of\n\
+                      it, i:user_specified_cutoff_value)"
+                    synonyms:
+                    - -q
+                    args: !SimpleFlagArg
+                      name: QC_QUAL_CUTOFF
+                    optional: true
+                  - !Flag
+                    description: "set to 1 if you want to mask all lower case bases\
+                      \ that\nmay correspond to sequence tag or adaptor in Roche454\n\
+                      or IonTorrent"
+                    synonyms:
+                    - -R
+                    args: !SimpleFlagArg
+                      name: QC_LOWER454
+                    optional: true
+                  - !Flag
+                    description: "specify a cutoff of entropy of low sequence complexity\n\
+                      to filter out[0..100],default:30, set 0 to disable"
+                    synonyms:
+                    - -e
+                    args: !SimpleFlagArg
+                      name: QC_COFF_ENTROPY
+                    optional: true
+                  - !Flag
+                    description: "filtering duplicates: [1] (exact duplicate), 2 (5'\n\
+                      duplicate), 3 (3' duplicate), 4 (reverse complement\nexact duplicate),\
+                      \ 5 (reverse complement 5'/3'\nduplicate)"
+                    synonyms:
+                    - -d
+                    args: !SimpleFlagArg
+                      name: QC_DEREP
+                    optional: true
+                  - !Flag
+                    description: "Set to 1 if you want to add a valid single read\
+                      \ into a\nreduced valid PER set. Note that this option works\n\
+                      only with PER"
+                    synonyms:
+                    - -g
+                    args: !SimpleFlagArg
+                      name: QC_ADD_VALID_SINGLE
+                    optional: true
+                  - !Flag
+                    description: to force to skip prinseq module
+                    synonyms:
+                    - --no_prinseq
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: specify a total number of cpus to use[1]
+                    synonyms:
+                    - -p
+                    args: !SimpleFlagArg
+                      name: QC_NUM_THREADS
+                    optional: true
+                  - !Flag
+                    description: working on debug mode
+                    synonyms:
+                    - --debug
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "Running without mySQLdb library\nusage: pathoscope QC\
+                    \ [-h] -1 QC_READ1 [-2 QC_READ2] [-r QC_READL]\n             \
+                    \        [-t QC_PHRED_OFFSET] [-o QC_OUTDIR] [-s QC_SEQUENCER]\n\
+                    \                     [-m QC_LEN_CUTOFF] [-a QC_ADAPTOR] [-a2\
+                    \ QC_ADAPTOR2]\n                     [-q QC_QUAL_CUTOFF] [-R QC_LOWER454]\
+                    \ [-e QC_COFF_ENTROPY]\n                     [-d QC_DEREP] [-g\
+                    \ QC_ADD_VALID_SINGLE] [--no_prinseq]\n                     [-p\
+                    \ QC_NUM_THREADS] [--debug] [--version]\n\noptional arguments:\n\
+                    \  -h, --help            show this help message and exit\n  -1\
+                    \ QC_READ1           1st pair of read in PER or SER\n  -2 QC_READ2\
+                    \           2nd pair of read in PER\n  -r QC_READL           let\
+                    \ us know a mean read length (0:ignore. [1]:I want\n         \
+                    \               to know the range of read length after trimming,\n\
+                    \                        i:user_specified_mean_read_length)\n\
+                    \  -t QC_PHRED_OFFSET    specify a phred offset used in encoding\
+                    \ base\n                        quality(0:not sure?, [33]:phred+33,\
+                    \ 64:phred+64)\n  -o QC_OUTDIR          specify output directory\
+                    \ in full path\n  -s QC_SEQUENCER       tell us which sequencer\
+                    \ generates the reads\n                        ([Illumina], PacBio,\
+                    \ Roche454, IonTorrent)\n  -m QC_LEN_CUTOFF      specify the min\
+                    \ read length cutoff[35]\n  -a QC_ADAPTOR         specify an adaptor\
+                    \ (Y:have pathoQC detect it,\n                        [N]:ignore,\
+                    \ ACGT:adaptor)\n  -a2 QC_ADAPTOR2       specify a second adaptor\
+                    \ if it is different from the\n                        first one\
+                    \ (Y:have pathoQC detect it, [N]:ignore,\n                   \
+                    \     ACGT:adaptor)\n  -q QC_QUAL_CUTOFF     specify a cutoff\
+                    \ of base quality value to trim at the\n                     \
+                    \   end of reads([0]:ignore, 1:let pathoQC take care of\n    \
+                    \                    it, i:user_specified_cutoff_value)\n  -R\
+                    \ QC_LOWER454        set to 1 if you want to mask all lower case\
+                    \ bases that\n                        may correspond to sequence\
+                    \ tag or adaptor in Roche454\n                        or IonTorrent\n\
+                    \  -e QC_COFF_ENTROPY    specify a cutoff of entropy of low sequence\
+                    \ complexity\n                        to filter out[0..100],default:30,\
+                    \ set 0 to disable\n  -d QC_DEREP           filtering duplicates:\
+                    \ [1] (exact duplicate), 2 (5'\n                        duplicate),\
+                    \ 3 (3' duplicate), 4 (reverse complement\n                  \
+                    \      exact duplicate), 5 (reverse complement 5'/3'\n       \
+                    \                 duplicate)\n  -g QC_ADD_VALID_SINGLE\n     \
+                    \                   Set to 1 if you want to add a valid single\
+                    \ read into a\n                        reduced valid PER set.\
+                    \ Note that this option works\n                        only with\
+                    \ PER\n  --no_prinseq          to force to skip prinseq module\n\
+                    \  -p QC_NUM_THREADS     specify a total number of cpus to use[1]\n\
+                    \  --debug               working on debug mode\n  --version  \
+                    \           show program's version number and exit\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - pathoscope
+                  - LIB
+                  positional: []
+                  named:
+                  - !Flag
+                    description: "Specify reference genome(Download\nftp://ftp.ncbi.nih.gov/blast/db/FASTA/nt.gz)"
+                    synonyms:
+                    - -genomeFile
+                    args: !SimpleFlagArg
+                      name: LIB_REFERENCE
+                    optional: true
+                  - !Flag
+                    description: "Specify taxon ids of your interest with comma\n\
+                      separated (if you have multiple taxon ids). If you do\nnot specify\
+                      \ this option, it will work on all entries\nin the reference\
+                      \ file. For taxonomy id lookup, refer\nto http://www.ncbi.nlm.nih.gov/taxonomy"
+                    synonyms:
+                    - -taxonIds
+                    args: !SimpleFlagArg
+                      name: LIB_TAXON_IDS
+                    optional: true
+                  - !Flag
+                    description: "Specify taxon ids to exclude with comma separated\
+                      \ (if\nyou have multiple taxon ids to exclude)."
+                    synonyms:
+                    - -excludeTaxonIds
+                    args: !SimpleFlagArg
+                      name: LIB_EXCLUDE_TAXON_IDS
+                    optional: true
+                  - !Flag
+                    description: "Do not keep an additional description in original\n\
+                      fasta seq header.Depending on NGS aligner, a long\nsequence\
+                      \ header may slow down its mapping process."
+                    synonyms:
+                    - --noDesc
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "To include all sub taxonomies under the query taxonomy\n\
+                      id. e.g., if you set -t 4751 --subtax, it will cover\nall sub\
+                      \ taxonomies under taxon id 4751 (fungi)."
+                    synonyms:
+                    - --subTax
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "To enable online searching in case you cannot find\
+                      \ a\ncorrect taxonomy id for a given gi. When there are\nmany\
+                      \ entries in nt whose gi is invalid, this option\nmay slow down\
+                      \ the overall process."
+                    synonyms:
+                    - --online
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "specify hostname running mysql if you want to use\n\
+                      mysql instead of hash method in mapping gi to taxonomy\nid"
+                    synonyms:
+                    - -dbhost
+                    args: !SimpleFlagArg
+                      name: LIB_DBHOST
+                    optional: true
+                  - !Flag
+                    description: "provide mysql server port if different from default\n\
+                      (3306)"
+                    synonyms:
+                    - -dbport
+                    args: !SimpleFlagArg
+                      name: LIB_DBPORT
+                    optional: true
+                  - !Flag
+                    description: user name to access mysql
+                    synonyms:
+                    - -dbuser
+                    args: !SimpleFlagArg
+                      name: LIB_DBUSER
+                    optional: true
+                  - !Flag
+                    description: provide password associate with user
+                    synonyms:
+                    - -dbpasswd
+                    args: !SimpleFlagArg
+                      name: LIB_DBPASSWD
+                    optional: true
+                  - !Flag
+                    description: 'mysql pathoscope database name (default: pathodb)'
+                    synonyms:
+                    - -db
+                    args: !SimpleFlagArg
+                      name: LIB_DB
+                    optional: true
+                  - !Flag
+                    description: Output Directory (Default=. (current directory))
+                    synonyms:
+                    - -outDir
+                    args: !SimpleFlagArg
+                      name: LIB_OUTDIR
+                    optional: true
+                  - !Flag
+                    description: "specify an output prefix to name your target database\n"
+                    synonyms:
+                    - -outPrefix
+                    args: !SimpleFlagArg
+                      name: LIB_OUTPREFIX
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Running without mySQLdb library\nusage: pathoscope LIB\
+                    \ [-h] -genomeFile LIB_REFERENCE [-taxonIds LIB_TAXON_IDS]\n \
+                    \                     [-excludeTaxonIds LIB_EXCLUDE_TAXON_IDS]\
+                    \ [--noDesc]\n                      [--subTax] [--online] [-dbhost\
+                    \ LIB_DBHOST]\n                      [-dbport LIB_DBPORT] [-dbuser\
+                    \ LIB_DBUSER]\n                      [-dbpasswd LIB_DBPASSWD]\
+                    \ [-db LIB_DB]\n                      [-outDir LIB_OUTDIR] -outPrefix\
+                    \ LIB_OUTPREFIX\n\noptional arguments:\n  -h, --help         \
+                    \   show this help message and exit\n  -genomeFile LIB_REFERENCE\n\
+                    \                        Specify reference genome(Download\n \
+                    \                       ftp://ftp.ncbi.nih.gov/blast/db/FASTA/nt.gz)\n\
+                    \  -taxonIds LIB_TAXON_IDS\n                        Specify taxon\
+                    \ ids of your interest with comma\n                        separated\
+                    \ (if you have multiple taxon ids). If you do\n              \
+                    \          not specify this option, it will work on all entries\n\
+                    \                        in the reference file. For taxonomy id\
+                    \ lookup, refer\n                        to http://www.ncbi.nlm.nih.gov/taxonomy\n\
+                    \  -excludeTaxonIds LIB_EXCLUDE_TAXON_IDS\n                  \
+                    \      Specify taxon ids to exclude with comma separated (if\n\
+                    \                        you have multiple taxon ids to exclude).\n\
+                    \  --noDesc              Do not keep an additional description\
+                    \ in original\n                        fasta seq header.Depending\
+                    \ on NGS aligner, a long\n                        sequence header\
+                    \ may slow down its mapping process.\n  --subTax             \
+                    \ To include all sub taxonomies under the query taxonomy\n   \
+                    \                     id. e.g., if you set -t 4751 --subtax, it\
+                    \ will cover\n                        all sub taxonomies under\
+                    \ taxon id 4751 (fungi).\n  --online              To enable online\
+                    \ searching in case you cannot find a\n                      \
+                    \  correct taxonomy id for a given gi. When there are\n      \
+                    \                  many entries in nt whose gi is invalid, this\
+                    \ option\n                        may slow down the overall process.\n\
+                    \  -dbhost LIB_DBHOST    specify hostname running mysql if you\
+                    \ want to use\n                        mysql instead of hash method\
+                    \ in mapping gi to taxonomy\n                        id\n  -dbport\
+                    \ LIB_DBPORT    provide mysql server port if different from default\n\
+                    \                        (3306)\n  -dbuser LIB_DBUSER    user\
+                    \ name to access mysql\n  -dbpasswd LIB_DBPASSWD\n           \
+                    \             provide password associate with user\n  -db LIB_DB\
+                    \            mysql pathoscope database name (default: pathodb)\n\
+                    \  -outDir LIB_OUTDIR    Output Directory (Default=. (current\
+                    \ directory))\n  -outPrefix LIB_OUTPREFIX\n                  \
+                    \      specify an output prefix to name your target database\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - pathoscope
+                  - REP
+                  positional: []
+                  named:
+                  - !Flag
+                    description: "Full Path to samtools binary directory (Default:\
+                      \ Uses\nsamtools in system path)"
+                    synonyms:
+                    - -samtoolsHome
+                    args: !SimpleFlagArg
+                      name: REP_SAMTOOLSHOME
+                    optional: true
+                  - !Flag
+                    description: "specify hostname running mysql if you want to use\n\
+                      mysql instead of hash method in mapping gi to taxonomy\nid"
+                    synonyms:
+                    - -dbhost
+                    args: !SimpleFlagArg
+                      name: REP_DBHOST
+                    optional: true
+                  - !Flag
+                    description: "provide mysql server port if different from default\n\
+                      (3306)"
+                    synonyms:
+                    - -dbport
+                    args: !SimpleFlagArg
+                      name: REP_DBPORT
+                    optional: true
+                  - !Flag
+                    description: user name to access mysql
+                    synonyms:
+                    - -dbuser
+                    args: !SimpleFlagArg
+                      name: REP_DBUSER
+                    optional: true
+                  - !Flag
+                    description: provide password associate with user
+                    synonyms:
+                    - -dbpasswd
+                    args: !SimpleFlagArg
+                      name: REP_DBPASSWD
+                    optional: true
+                  - !Flag
+                    description: 'mysql pathoscope database name (default: pathodb)'
+                    synonyms:
+                    - -db
+                    args: !SimpleFlagArg
+                      name: REP_DB
+                    optional: true
+                  - !Flag
+                    description: Output Directory
+                    synonyms:
+                    - -outDir
+                    args: !SimpleFlagArg
+                      name: REP_OUTDIR
+                    optional: true
+                  - !Flag
+                    description: "Generate Contig Information (Needs samtools package\n\
+                      installed)"
+                    synonyms:
+                    - --contig
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: SAM Alignment file path
+                    synonyms:
+                    - -samfile
+                    args: !SimpleFlagArg
+                      name: REP_ALI_FILE
+                    optional: true
+                  - !Flag
+                    description: "Do not cutoff display of genomes, even if it is\n\
+                      insignificant\n"
+                    synonyms:
+                    - --noDisplayCutoff
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Running without mySQLdb library\nusage: pathoscope REP\
+                    \ [-h] [-samtoolsHome REP_SAMTOOLSHOME]\n                    \
+                    \  [-dbhost REP_DBHOST] [-dbport REP_DBPORT]\n               \
+                    \       [-dbuser REP_DBUSER] [-dbpasswd REP_DBPASSWD]\n      \
+                    \                [-db REP_DB] [-outDir REP_OUTDIR] [--contig]\
+                    \ -samfile\n                      REP_ALI_FILE [--noDisplayCutoff]\n\
+                    \noptional arguments:\n  -h, --help            show this help\
+                    \ message and exit\n  -samtoolsHome REP_SAMTOOLSHOME\n       \
+                    \                 Full Path to samtools binary directory (Default:\
+                    \ Uses\n                        samtools in system path)\n  -dbhost\
+                    \ REP_DBHOST    specify hostname running mysql if you want to\
+                    \ use\n                        mysql instead of hash method in\
+                    \ mapping gi to taxonomy\n                        id\n  -dbport\
+                    \ REP_DBPORT    provide mysql server port if different from default\n\
+                    \                        (3306)\n  -dbuser REP_DBUSER    user\
+                    \ name to access mysql\n  -dbpasswd REP_DBPASSWD\n           \
+                    \             provide password associate with user\n  -db REP_DB\
+                    \            mysql pathoscope database name (default: pathodb)\n\
+                    \  -outDir REP_OUTDIR    Output Directory\n  --contig        \
+                    \      Generate Contig Information (Needs samtools package\n \
+                    \                       installed)\n  -samfile REP_ALI_FILE\n\
+                    \                        SAM Alignment file path\n  --noDisplayCutoff\
+                    \     Do not cutoff display of genomes, even if it is\n      \
+                    \                  insignificant\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - pathoscope
+                  - ID
+                  positional:
+                  - !Positional
+                    description: -scoreCutoff ID_SCORE_CUTOFF
+                    position: 0
+                    name: insignificant
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Output alignment matrix
+                    synonyms:
+                    - --outMatrix
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Do not generate an updated alignment file
+                    synonyms:
+                    - --noUpdatedAlignFile
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Do not cutoff display of genomes, even if it is
+                    synonyms:
+                    - --noDisplayCutoff
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: EM Algorithm Epsilon cutoff
+                    synonyms:
+                    - -emEpsilon
+                    args: !SimpleFlagArg
+                      name: ID_EMEPSILON
+                    optional: true
+                  - !Flag
+                    description: EM Algorithm maximum iterations
+                    synonyms:
+                    - -maxIter
+                    args: !SimpleFlagArg
+                      name: ID_MAXITER
+                    optional: true
+                  - !Flag
+                    description: "EM Algorithm Pi Prior equivalent to adding n unique\n\
+                      reads (Default: n=0)"
+                    synonyms:
+                    - -piPrior
+                    args: !SimpleFlagArg
+                      name: ID_PIPRIOR
+                    optional: true
+                  - !Flag
+                    description: "EM Algorithm Theta Prior equivalent to adding n\
+                      \ non-\nunique reads (Default: n=0)"
+                    synonyms:
+                    - -thetaPrior
+                    args: !SimpleFlagArg
+                      name: ID_THETAPRIOR
+                    optional: true
+                  - !Flag
+                    description: "Experiment tag added to output file for easy\nidentification\
+                      \ (Default: pathoid)"
+                    synonyms:
+                    - -expTag
+                    args: !SimpleFlagArg
+                      name: ID_EXP_TAG
+                    optional: true
+                  - !Flag
+                    description: Output Directory (Default=. (current directory))
+                    synonyms:
+                    - -outDir
+                    args: !SimpleFlagArg
+                      name: ID_OUTDIR
+                    optional: true
+                  - !Flag
+                    description: 'Alignment Format: sam/bl8/gnu-sam (Default: sam)'
+                    synonyms:
+                    - -fileType
+                    args: !SimpleFlagArg
+                      name: ID_ALI_FORMAT
+                    optional: true
+                  - !Flag
+                    description: "Alignment file path\n"
+                    synonyms:
+                    - -alignFile
+                    args: !SimpleFlagArg
+                      name: ID_ALI_FILE
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Running without mySQLdb library\nusage: pathoscope ID\
+                    \ [-h] [--outMatrix] [--noUpdatedAlignFile]\n                \
+                    \     [--noDisplayCutoff] [-scoreCutoff ID_SCORE_CUTOFF]\n   \
+                    \                  [-emEpsilon ID_EMEPSILON] [-maxIter ID_MAXITER]\n\
+                    \                     [-piPrior ID_PIPRIOR] [-thetaPrior ID_THETAPRIOR]\n\
+                    \                     [-expTag ID_EXP_TAG] [-outDir ID_OUTDIR]\n\
+                    \                     [-fileType ID_ALI_FORMAT] -alignFile ID_ALI_FILE\n\
+                    \noptional arguments:\n  -h, --help            show this help\
+                    \ message and exit\n  --outMatrix           Output alignment matrix\n\
+                    \  --noUpdatedAlignFile  Do not generate an updated alignment\
+                    \ file\n  --noDisplayCutoff     Do not cutoff display of genomes,\
+                    \ even if it is\n                        insignificant\n  -scoreCutoff\
+                    \ ID_SCORE_CUTOFF\n                        Score Cutoff\n  -emEpsilon\
+                    \ ID_EMEPSILON\n                        EM Algorithm Epsilon cutoff\n\
+                    \  -maxIter ID_MAXITER   EM Algorithm maximum iterations\n  -piPrior\
+                    \ ID_PIPRIOR   EM Algorithm Pi Prior equivalent to adding n unique\n\
+                    \                        reads (Default: n=0)\n  -thetaPrior ID_THETAPRIOR\n\
+                    \                        EM Algorithm Theta Prior equivalent to\
+                    \ adding n non-\n                        unique reads (Default:\
+                    \ n=0)\n  -expTag ID_EXP_TAG    Experiment tag added to output\
+                    \ file for easy\n                        identification (Default:\
+                    \ pathoid)\n  -outDir ID_OUTDIR     Output Directory (Default=.\
+                    \ (current directory))\n  -fileType ID_ALI_FORMAT\n          \
+                    \              Alignment Format: sam/bl8/gnu-sam (Default: sam)\n\
+                    \  -alignFile ID_ALI_FILE\n                        Alignment file\
+                    \ path\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - pathoscope
+                  - MAP
+                  positional: []
+                  named:
+                  - !Flag
+                    description: Input Read Fastq File (Unpaired/Single-end)
+                    synonyms:
+                    - -U
+                    args: !SimpleFlagArg
+                      name: MAP_INPUTREAD
+                    optional: true
+                  - !Flag
+                    description: Input Read Fastq File (Pair 1)
+                    synonyms:
+                    - '-1'
+                    args: !SimpleFlagArg
+                      name: MAP_INPUTREAD1
+                    optional: true
+                  - !Flag
+                    description: Input Read Fastq File (Pair 2)
+                    synonyms:
+                    - '-2'
+                    args: !SimpleFlagArg
+                      name: MAP_INPUTREAD2
+                    optional: true
+                  - !Flag
+                    description: "Target Reference Genome Fasta Files Full Path (Comma\n\
+                      Separated)"
+                    synonyms:
+                    - -targetRefFiles
+                    args: !SimpleFlagArg
+                      name: MAP_TARGETREF
+                    optional: true
+                  - !Flag
+                    description: "Filter Reference Genome Fasta Files Full Path (Comma\n\
+                      Separated)"
+                    synonyms:
+                    - -filterRefFiles
+                    args: !SimpleFlagArg
+                      name: MAP_FILTERREF
+                    optional: true
+                  - !Flag
+                    description: "Target Mapping Bowtie2 Parameters (Default: Pathoscope\n\
+                      chosen best parameters)"
+                    synonyms:
+                    - -targetAlignParams
+                    args: !SimpleFlagArg
+                      name: MAP_TARGETALIGNPARAMS
+                    optional: true
+                  - !Flag
+                    description: "Filter Mapping Bowtie2 Parameters (Default: Use\
+                      \ the\nsame Target Mapping Bowtie2 parameters)"
+                    synonyms:
+                    - -filterAlignParams
+                    args: !SimpleFlagArg
+                      name: MAP_FILTERALIGNPARAMS
+                    optional: true
+                  - !Flag
+                    description: Output Directory (Default=. (current directory))
+                    synonyms:
+                    - -outDir
+                    args: !SimpleFlagArg
+                      name: MAP_OUTDIR
+                    optional: true
+                  - !Flag
+                    description: Output Alignment File Name (Default=outalign.sam)
+                    synonyms:
+                    - -outAlign
+                    args: !SimpleFlagArg
+                      name: MAP_OUTALIGN
+                    optional: true
+                  - !Flag
+                    description: Index Directory (Default=. (current directory))
+                    synonyms:
+                    - -indexDir
+                    args: !SimpleFlagArg
+                      name: MAP_INDEXDIR
+                    optional: true
+                  - !Flag
+                    description: Target Index Prefixes (Comma Separated)
+                    synonyms:
+                    - -targetIndexPrefixes
+                    args: !SimpleFlagArg
+                      name: MAP_TARGETINDEX
+                    optional: true
+                  - !Flag
+                    description: Filter Index Prefixes (Comma Separated)
+                    synonyms:
+                    - -filterIndexPrefixes
+                    args: !SimpleFlagArg
+                      name: MAP_FILTERINDEX
+                    optional: true
+                  - !Flag
+                    description: Target Alignment Files Full Path (Comma Separated)
+                    synonyms:
+                    - -targetAlignFiles
+                    args: !SimpleFlagArg
+                      name: MAP_TARGETALIGN
+                    optional: true
+                  - !Flag
+                    description: Filter Alignment Files Full Path (Comma Separated)
+                    synonyms:
+                    - -filterAlignFiles
+                    args: !SimpleFlagArg
+                      name: MAP_FILTERALIGN
+                    optional: true
+                  - !Flag
+                    description: "Full Path to Bowtie2 binary directory (Default:\
+                      \ Uses\nbowtie2 in system path)"
+                    synonyms:
+                    - -btHome
+                    args: !SimpleFlagArg
+                      name: MAP_BTHOME
+                    optional: true
+                  - !Flag
+                    description: "Number of threads to use by aligner (bowtie2) if\n\
+                      different from default (8)"
+                    synonyms:
+                    - -numThreads
+                    args: !SimpleFlagArg
+                      name: MAP_NUMTHREADS
+                    optional: true
+                  - !Flag
+                    description: "Experiment Tag added to files generated for\nidentification\
+                      \ (Default: pathomap)\n"
+                    synonyms:
+                    - -expTag
+                    args: !SimpleFlagArg
+                      name: MAP_EXP_TAG
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Running without mySQLdb library\nusage: pathoscope MAP\
+                    \ [-h] [-U MAP_INPUTREAD] [-1 MAP_INPUTREAD1]\n              \
+                    \        [-2 MAP_INPUTREAD2] [-targetRefFiles MAP_TARGETREF]\n\
+                    \                      [-filterRefFiles MAP_FILTERREF]\n     \
+                    \                 [-targetAlignParams MAP_TARGETALIGNPARAMS]\n\
+                    \                      [-filterAlignParams MAP_FILTERALIGNPARAMS]\n\
+                    \                      [-outDir MAP_OUTDIR] [-outAlign MAP_OUTALIGN]\n\
+                    \                      [-indexDir MAP_INDEXDIR]\n            \
+                    \          [-targetIndexPrefixes MAP_TARGETINDEX]\n          \
+                    \            [-filterIndexPrefixes MAP_FILTERINDEX]\n        \
+                    \              [-targetAlignFiles MAP_TARGETALIGN]\n         \
+                    \             [-filterAlignFiles MAP_FILTERALIGN] [-btHome MAP_BTHOME]\n\
+                    \                      [-numThreads MAP_NUMTHREADS] [-expTag MAP_EXP_TAG]\n\
+                    \noptional arguments:\n  -h, --help            show this help\
+                    \ message and exit\n  -U MAP_INPUTREAD      Input Read Fastq File\
+                    \ (Unpaired/Single-end)\n  -1 MAP_INPUTREAD1     Input Read Fastq\
+                    \ File (Pair 1)\n  -2 MAP_INPUTREAD2     Input Read Fastq File\
+                    \ (Pair 2)\n  -targetRefFiles MAP_TARGETREF\n                \
+                    \        Target Reference Genome Fasta Files Full Path (Comma\n\
+                    \                        Separated)\n  -filterRefFiles MAP_FILTERREF\n\
+                    \                        Filter Reference Genome Fasta Files Full\
+                    \ Path (Comma\n                        Separated)\n  -targetAlignParams\
+                    \ MAP_TARGETALIGNPARAMS\n                        Target Mapping\
+                    \ Bowtie2 Parameters (Default: Pathoscope\n                  \
+                    \      chosen best parameters)\n  -filterAlignParams MAP_FILTERALIGNPARAMS\n\
+                    \                        Filter Mapping Bowtie2 Parameters (Default:\
+                    \ Use the\n                        same Target Mapping Bowtie2\
+                    \ parameters)\n  -outDir MAP_OUTDIR    Output Directory (Default=.\
+                    \ (current directory))\n  -outAlign MAP_OUTALIGN\n           \
+                    \             Output Alignment File Name (Default=outalign.sam)\n\
+                    \  -indexDir MAP_INDEXDIR\n                        Index Directory\
+                    \ (Default=. (current directory))\n  -targetIndexPrefixes MAP_TARGETINDEX\n\
+                    \                        Target Index Prefixes (Comma Separated)\n\
+                    \  -filterIndexPrefixes MAP_FILTERINDEX\n                    \
+                    \    Filter Index Prefixes (Comma Separated)\n  -targetAlignFiles\
+                    \ MAP_TARGETALIGN\n                        Target Alignment Files\
+                    \ Full Path (Comma Separated)\n  -filterAlignFiles MAP_FILTERALIGN\n\
+                    \                        Filter Alignment Files Full Path (Comma\
+                    \ Separated)\n  -btHome MAP_BTHOME    Full Path to Bowtie2 binary\
+                    \ directory (Default: Uses\n                        bowtie2 in\
+                    \ system path)\n  -numThreads MAP_NUMTHREADS\n               \
+                    \         Number of threads to use by aligner (bowtie2) if\n \
+                    \                       different from default (8)\n  -expTag\
+                    \ MAP_EXP_TAG   Experiment Tag added to files generated for\n\
+                    \                        identification (Default: pathomap)\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: show program's version number and exit
+                  synonyms:
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "Running without mySQLdb library\nusage: pathoscope [-h]\
+                  \ [--version] [--verbose] {LIB,MAP,ID,REP,QC} ...\n\nPathoscope\n\
+                  \npositional arguments:\n  {LIB,MAP,ID,REP,QC}  Select one of the\
+                  \ following sub-commands\n    LIB                Pathoscope taxon\
+                  \ level reference genome Library\n                       creation\
+                  \ Module\n    MAP                Pathoscope MAP Module\n    ID \
+                  \                Pathoscope ID Module\n    REP                Pathoscope\
+                  \ Report Module\n    QC                 PathoQC: Quality control\
+                  \ program for high throughput\n                       sequencing\
+                  \ reads\n\noptional arguments:\n  -h, --help           show this\
+                  \ help message and exit\n  --version            show program's version\
+                  \ number and exit\n  --verbose            Prints verbose text while\
+                  \ running\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -618,12 +1448,9 @@ subcommands:
                 \     specify a total number of cpus to use[1]\n  --debug        \
                 \       working on debug mode\n  --version             show program's\
                 \ version number and exit\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - pathoscope
-              - LIB
+              command: *id005
               positional: []
               named:
               - !Flag
@@ -782,9 +1609,7 @@ subcommands:
                 \ database\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - pathoscope
-              - REP
+              command: *id006
               positional: []
               named:
               - !Flag
@@ -896,9 +1721,7 @@ subcommands:
                 \   insignificant\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - pathoscope
-              - ID
+              command: *id007
               positional:
               - !Positional
                 description: -scoreCutoff ID_SCORE_CUTOFF
@@ -1022,9 +1845,7 @@ subcommands:
                 \   Alignment file path\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - pathoscope
-              - MAP
+              command: *id008
               positional: []
               named:
               - !Flag
@@ -1209,20 +2030,9 @@ subcommands:
                 \        identification (Default: pathomap)\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: show program's version number and exit
-              synonyms:
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "Running without mySQLdb library\nusage: pathoscope [-h] [--version]\
               \ [--verbose] {LIB,MAP,ID,REP,QC} ...\n\nPathoscope\n\npositional arguments:\n\
               \  {LIB,MAP,ID,REP,QC}  Select one of the following sub-commands\n \
@@ -1397,7 +2207,7 @@ subcommands:
             args: !SimpleFlagArg
               name: LIB_OUTPREFIX
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1523,7 +2333,7 @@ subcommands:
             - --noDisplayCutoff
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1643,7 +2453,7 @@ subcommands:
             args: !SimpleFlagArg
               name: ID_ALI_FILE
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1807,7 +2617,7 @@ subcommands:
             args: !SimpleFlagArg
               name: MAP_EXP_TAG
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2034,7 +2844,7 @@ subcommands:
         args: !SimpleFlagArg
           name: LIB_OUTPREFIX
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2157,7 +2967,7 @@ subcommands:
         - --noDisplayCutoff
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2276,7 +3086,7 @@ subcommands:
         args: !SimpleFlagArg
           name: ID_ALI_FILE
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2439,7 +3249,7 @@ subcommands:
         args: !SimpleFlagArg
           name: MAP_EXP_TAG
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2661,7 +3471,7 @@ subcommands:
     args: !SimpleFlagArg
       name: LIB_OUTPREFIX
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2783,7 +3593,7 @@ subcommands:
     - --noDisplayCutoff
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2901,7 +3711,7 @@ subcommands:
     args: !SimpleFlagArg
       name: ID_ALI_FILE
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -3063,7 +3873,7 @@ subcommands:
     args: !SimpleFlagArg
       name: MAP_EXP_TAG
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag

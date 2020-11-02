@@ -136,7 +136,7 @@ subcommands:
     - --with-stats
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id011 !Command
+  parent: &id012 !Command
     command: *id001
     positional: []
     named: []
@@ -271,7 +271,7 @@ subcommands:
         - --with-stats
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id010 !Command
+      parent: &id011 !Command
         command: *id001
         positional: []
         named: []
@@ -408,16 +408,10 @@ subcommands:
             - --with-stats
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id010 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: 'More verbose logging (default: turned off).'
-              synonyms:
-              - --debug
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -551,7 +545,879 @@ subcommands:
                 - --with-stats
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: 'More verbose logging (default: turned off).'
+                  synonyms:
+                  - --debug
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: "Path to the maxtrix output file in given format.\n\
+                      [REQUIRED. default format is tab separated. use\n--format to\
+                      \ change format]"
+                    synonyms:
+                    - --out
+                    - -o
+                    args: !SimpleFlagArg
+                      name: OUT
+                    optional: true
+                  - !Flag
+                    description: Path to the directory with .vcf files. Input option
+                      1.
+                    synonyms:
+                    - --directory
+                    - -d
+                    args: !SimpleFlagArg
+                      name: DIRECTORY
+                    optional: true
+                  - !Flag
+                    description: List of VCF files to process. Input option 2.
+                    synonyms:
+                    - --input
+                    - -i
+                    args: !RepeatFlagArg
+                      name: INPUT
+                    optional: true
+                  - !Flag
+                    description: "FASTA FILE, -a MULTI FASTA FILE\nMulti fasta file\
+                      \ with whole genome input alignment.\nInput option 3."
+                    synonyms:
+                    - --alignment-input
+                    args: !SimpleFlagArg
+                      name: MULTI
+                    optional: true
+                  - !Flag
+                    description: "Method of recombination filtering. Either 'pairwise'\n\
+                      or 'complete' ['pairwise']"
+                    synonyms:
+                    - --deletion
+                    args: !SimpleFlagArg
+                      name: STRING
+                    optional: true
+                  - !Flag
+                    description: "Substituition model. Either 'number_of_differences',\n\
+                      'jc69', 'k80', 'tn84' or 't93'\n['number_of_differences']"
+                    synonyms:
+                    - --substitution
+                    args: !SimpleFlagArg
+                      name: STRING
+                    optional: true
+                  - !Flag
+                    description: FILE    Only include positions in BED file in the
+                      FASTA
+                    synonyms:
+                    - --include
+                    args: !SimpleFlagArg
+                      name: BED
+                    optional: true
+                  - !Flag
+                    description: FILE    Exclude any positions specified in the BED
+                      file.
+                    synonyms:
+                    - --exclude
+                    args: !SimpleFlagArg
+                      name: BED
+                    optional: true
+                  - !Flag
+                    description: "Attempt to remove recombination from distance matrix.\n\
+                      [don't]"
+                    synonyms:
+                    - --remove-recombination
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "FILE, -g FASTA FILE\nReference genome used for SNP\
+                      \ calling [Required for\nrecombination removal]."
+                    synonyms:
+                    - --refgenome
+                    args: !SimpleFlagArg
+                      name: FASTA
+                    optional: true
+                  - !Flag
+                    description: "Name of reference genome in input alignment [Required\n\
+                      if input option 3 is used and reference is not named\n'reference']."
+                    synonyms:
+                    - --refgenomename
+                    - -n
+                    args: !SimpleFlagArg
+                      name: STRING
+                    optional: true
+                  - !Flag
+                    description: "Density tyhreshold above mean density for relevant\n\
+                      pair. [1.0]."
+                    synonyms:
+                    - --threshold
+                    - -k
+                    args: !SimpleFlagArg
+                      name: FLOAT
+                    optional: true
+                  - !Flag
+                    description: Number of threads to use. [1].
+                    synonyms:
+                    - --threads
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  - !Flag
+                    description: "Change format for output file. Available options\
+                      \ csv,\ntsv and mega. [tsv]"
+                    synonyms:
+                    - --format
+                    args: !SimpleFlagArg
+                      name: STRING
+                    optional: true
+                  - !Flag
+                    description: "Make an NJ tree and write it to the given file in\n\
+                      newick format. [Default: Don't make tree, only matrix]"
+                    synonyms:
+                    - --tree
+                    - -t
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: "Write additional files with information on removed\n\
+                      recombinant SNPs. [don't]\n"
+                    synonyms:
+                    - --with-stats
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: phenix.py vcf2distancematrix [-h]\n         \
+                    \                           (--directory DIRECTORY | --input INPUT\
+                    \ [INPUT ...] | --alignment-input MULTI FASTA FILE)\n        \
+                    \                            --out OUT [--deletion STRING]\n \
+                    \                                   [--substitution STRING]\n\
+                    \                                    [--include BED FILE | --exclude\
+                    \ BED FILE]\n                                    [--remove-recombination]\n\
+                    \                                    [--refgenome FASTA FILE]\n\
+                    \                                    [--refgenomename STRING]\n\
+                    \                                    [--threshold FLOAT] [--threads\
+                    \ INT]\n                                    [--format STRING]\
+                    \ [--tree FILE]\n                                    [--with-stats]\n\
+                    \nCombine multiple VCFs into a distance matrix. Distance measures\
+                    \ according to\nfive different models are available: * Number\
+                    \ of differences * Jukes-Cantor\ndistance (jc69) * Tajima-Nei\
+                    \ distance (k80) * Kimura 2-parameter distance\n(tn84) * Tamura\
+                    \ 3-parameter distance (t93)\n\noptional arguments:\n  -h, --help\
+                    \            show this help message and exit\n  --directory DIRECTORY,\
+                    \ -d DIRECTORY\n                        Path to the directory\
+                    \ with .vcf files. Input option 1.\n  --input INPUT [INPUT ...],\
+                    \ -i INPUT [INPUT ...]\n                        List of VCF files\
+                    \ to process. Input option 2.\n  --alignment-input MULTI FASTA\
+                    \ FILE, -a MULTI FASTA FILE\n                        Multi fasta\
+                    \ file with whole genome input alignment.\n                  \
+                    \      Input option 3.\n  --out OUT, -o OUT     Path to the maxtrix\
+                    \ output file in given format.\n                        [REQUIRED.\
+                    \ default format is tab separated. use\n                     \
+                    \   --format to change format]\n  --deletion STRING     Method\
+                    \ of recombination filtering. Either 'pairwise'\n            \
+                    \            or 'complete' ['pairwise']\n  --substitution STRING\n\
+                    \                        Substituition model. Either 'number_of_differences',\n\
+                    \                        'jc69', 'k80', 'tn84' or 't93'\n    \
+                    \                    ['number_of_differences']\n  --include BED\
+                    \ FILE    Only include positions in BED file in the FASTA\n  --exclude\
+                    \ BED FILE    Exclude any positions specified in the BED file.\n\
+                    \  --remove-recombination\n                        Attempt to\
+                    \ remove recombination from distance matrix.\n               \
+                    \         [don't]\n  --refgenome FASTA FILE, -g FASTA FILE\n \
+                    \                       Reference genome used for SNP calling\
+                    \ [Required for\n                        recombination removal].\n\
+                    \  --refgenomename STRING, -n STRING\n                       \
+                    \ Name of reference genome in input alignment [Required\n    \
+                    \                    if input option 3 is used and reference is\
+                    \ not named\n                        'reference'].\n  --threshold\
+                    \ FLOAT, -k FLOAT\n                        Density tyhreshold\
+                    \ above mean density for relevant\n                        pair.\
+                    \ [1.0].\n  --threads INT         Number of threads to use. [1].\n\
+                    \  --format STRING       Change format for output file. Available\
+                    \ options csv,\n                        tsv and mega. [tsv]\n\
+                    \  --tree FILE, -t FILE  Make an NJ tree and write it to the given\
+                    \ file in\n                        newick format. [Default: Don't\
+                    \ make tree, only matrix]\n  --with-stats          Write additional\
+                    \ files with information on removed\n                        recombinant\
+                    \ SNPs. [don't]\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - phenix.py
+                  - filter_vcf
+                  positional: []
+                  named:
+                  - !Flag
+                    description: VCF file to (re)filter.
+                    synonyms:
+                    - --vcf
+                    - -v
+                    args: !SimpleFlagArg
+                      name: VCF
+                    optional: true
+                  - !Flag
+                    description: "Filter(s) to apply as key:threshold pairs, separated\n\
+                      by comma. Recommendations: GATK:\nmq_score:30,min_depth:10,ad_ratio:0.9\
+                      \ Mpileup:\nmq_score:30,min_depth:10,dp4_ratio:0.9"
+                    synonyms:
+                    - --filters
+                    - -f
+                    args: !SimpleFlagArg
+                      name: FILTERS
+                    optional: true
+                  - !Flag
+                    description: "Config with filters in YAML format.\nE.g.filters:-key:value"
+                    synonyms:
+                    - --config
+                    - -c
+                    args: !SimpleFlagArg
+                      name: CONFIG
+                    optional: true
+                  - !Flag
+                    description: Location for filtered VCF to be written.
+                    synonyms:
+                    - --output
+                    - -o
+                    args: !SimpleFlagArg
+                      name: OUTPUT
+                    optional: true
+                  - !Flag
+                    description: "mpileup version <= 1.3 do not output all positions.\n\
+                      This is required to fix rfrence base in VCF."
+                    synonyms:
+                    - --reference
+                    - -r
+                    args: !SimpleFlagArg
+                      name: REFERENCE
+                    optional: true
+                  - !Flag
+                    description: "Write only variants that PASS all filters (default\
+                      \ all\nvariants are written).\n"
+                    synonyms:
+                    - --only-good
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: phenix.py filter_vcf [-h] --vcf VCF\n       \
+                    \                     [--filters FILTERS | --config CONFIG] --output\n\
+                    \                            OUTPUT [--reference REFERENCE] [--only-good]\n\
+                    \nFilter the VCF using provided filters.\n\noptional arguments:\n\
+                    \  -h, --help            show this help message and exit\n  --vcf\
+                    \ VCF, -v VCF     VCF file to (re)filter.\n  --filters FILTERS,\
+                    \ -f FILTERS\n                        Filter(s) to apply as key:threshold\
+                    \ pairs, separated\n                        by comma. Recommendations:\
+                    \ GATK:\n                        mq_score:30,min_depth:10,ad_ratio:0.9\
+                    \ Mpileup:\n                        mq_score:30,min_depth:10,dp4_ratio:0.9\n\
+                    \  --config CONFIG, -c CONFIG\n                        Config\
+                    \ with filters in YAML format.\n                        E.g.filters:-key:value\n\
+                    \  --output OUTPUT, -o OUTPUT\n                        Location\
+                    \ for filtered VCF to be written.\n  --reference REFERENCE, -r\
+                    \ REFERENCE\n                        mpileup version <= 1.3 do\
+                    \ not output all positions.\n                        This is required\
+                    \ to fix rfrence base in VCF.\n  --only-good           Write only\
+                    \ variants that PASS all filters (default all\n              \
+                    \          variants are written).\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - phenix.py
+                  - vcf2json
+                  positional: []
+                  named:
+                  - !Flag
+                    description: path to a VCF file
+                    synonyms:
+                    - --input
+                    - -i
+                    args: !SimpleFlagArg
+                      name: INPUT
+                    optional: true
+                  - !Flag
+                    description: "Path to the json output file (without file extension).\n\
+                      Default: sample_name"
+                    synonyms:
+                    - --output_file_prefix
+                    - -o
+                    args: !SimpleFlagArg
+                      name: OUTPUT_FILE_PREFIX
+                    optional: true
+                  - !Flag
+                    description: "Do not gzip json when writing file. (default: Yes,\n\
+                      gzip it.)"
+                    synonyms:
+                    - --nozip
+                    - -z
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Required: Confirm that the input vcf is filtered.\
+                      \ It\nis stronglyrecommended to filter the file with Phenix\n\
+                      using the sameparameters that are used throughout the\ndatabase\
+                      \ this jason file is meant for."
+                    synonyms:
+                    - --vcf_is_filtered
+                    - -f
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Print summary of the json string
+                    synonyms:
+                    - --summary_info
+                    - -s
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: phenix.py vcf2json [-h] --input INPUT\n     \
+                    \                     [--output_file_prefix OUTPUT_FILE_PREFIX]\
+                    \ [--nozip]\n                          [--vcf_is_filtered] [--summary_info]\n\
+                    \nConverts the postions of variants and ignored/missing positions\
+                    \ in either a\n'raw' or filtered VCF file to a json string and\
+                    \ writes it to a file. The json\ncontains 6 arrays for each chromosome\
+                    \ in the VCF file: g_positions,\na_positions, t_positions, c_positions,\
+                    \ gap_positions, n_positions\n\noptional arguments:\n  -h, --help\
+                    \            show this help message and exit\n  --input INPUT,\
+                    \ -i INPUT\n                        path to a VCF file\n  --output_file_prefix\
+                    \ OUTPUT_FILE_PREFIX, -o OUTPUT_FILE_PREFIX\n                \
+                    \        Path to the json output file (without file extension).\n\
+                    \                        Default: sample_name\n  --nozip, -z \
+                    \          Do not gzip json when writing file. (default: Yes,\n\
+                    \                        gzip it.)\n  --vcf_is_filtered, -f\n\
+                    \                        Required: Confirm that the input vcf\
+                    \ is filtered. It\n                        is stronglyrecommended\
+                    \ to filter the file with Phenix\n                        using\
+                    \ the sameparameters that are used throughout the\n          \
+                    \              database this jason file is meant for.\n  --summary_info,\
+                    \ -s    Print summary of the json string\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - phenix.py
+                  - prepare_reference
+                  positional: []
+                  named:
+                  - !Flag
+                    description: Path to reference file to prepare.
+                    synonyms:
+                    - --reference
+                    - -r
+                    args: !SimpleFlagArg
+                      name: REFERENCE
+                    optional: true
+                  - !Flag
+                    description: "Available mappers: ['bwa', 'bowtie2']"
+                    synonyms:
+                    - --mapper
+                    args: !SimpleFlagArg
+                      name: MAPPER
+                    optional: true
+                  - !Flag
+                    description: "Available variants: ['mpileup', 'gatk']"
+                    synonyms:
+                    - --variant
+                    args: !SimpleFlagArg
+                      name: VARIANT
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: phenix.py prepare_reference [-h] --reference\
+                    \ REFERENCE\n                                   [--mapper MAPPER]\
+                    \ [--variant VARIANT]\n\nPrepare reference for SNP pipeline by\
+                    \ generating required aux files.\n\noptional arguments:\n  -h,\
+                    \ --help            show this help message and exit\n  --reference\
+                    \ REFERENCE, -r REFERENCE\n                        Path to reference\
+                    \ file to prepare.\n  --mapper MAPPER       Available mappers:\
+                    \ ['bwa', 'bowtie2']\n  --variant VARIANT     Available variants:\
+                    \ ['mpileup', 'gatk']\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - phenix.py
+                  - run_snp_pipeline
+                  positional: []
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --workflow
+                    - -w
+                    args: !SimpleFlagArg
+                      name: WORKFLOW
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --input
+                    - -i
+                    args: !SimpleFlagArg
+                      name: INPUT
+                    optional: true
+                  - !Flag
+                    description: R1/Forward read in Fastq format.
+                    synonyms:
+                    - -r1
+                    args: !SimpleFlagArg
+                      name: R1
+                    optional: true
+                  - !Flag
+                    description: R2/Reverse read in Fastq format.
+                    synonyms:
+                    - -r2
+                    args: !SimpleFlagArg
+                      name: R2
+                    optional: true
+                  - !Flag
+                    description: Rerefence to use for mapping.
+                    synonyms:
+                    - --reference
+                    - -r
+                    args: !SimpleFlagArg
+                      name: REFERENCE
+                    optional: true
+                  - !Flag
+                    description: Name of the sample for mapper to include as read
+                      groups.
+                    synonyms:
+                    - --sample-name
+                    args: !SimpleFlagArg
+                      name: SAMPLE_NAME
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --outdir
+                    - -o
+                    args: !SimpleFlagArg
+                      name: OUTDIR
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --config
+                    - -c
+                    args: !SimpleFlagArg
+                      name: CONFIG
+                    optional: true
+                  - !Flag
+                    description: "Available mappers: ['bwa', 'bowtie2']"
+                    synonyms:
+                    - --mapper
+                    - -m
+                    args: !SimpleFlagArg
+                      name: MAPPER
+                    optional: true
+                  - !Flag
+                    description: Custom maper options (advanced)
+                    synonyms:
+                    - --mapper-options
+                    args: !SimpleFlagArg
+                      name: MAPPER_OPTIONS
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --bam
+                    args: !SimpleFlagArg
+                      name: BAM
+                    optional: true
+                  - !Flag
+                    description: "Available variant callers: ['mpileup', 'gatk']"
+                    synonyms:
+                    - --variant
+                    - -v
+                    args: !SimpleFlagArg
+                      name: VARIANT
+                    optional: true
+                  - !Flag
+                    description: Custom variant options (advanced)
+                    synonyms:
+                    - --variant-options
+                    args: !SimpleFlagArg
+                      name: VARIANT_OPTIONS
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --vcf
+                    args: !SimpleFlagArg
+                      name: VCF
+                    optional: true
+                  - !Flag
+                    description: "Filters to be applied to the VCF in key:value pairs,\
+                      \ separated by comma (,). Available_filters: ['gq_score', 'dp4_ratio',\
+                      \ 'ad_ratio', 'min_depth', 'mq_score', 'mq0_ratio', 'uncall_gt',\
+                      \ 'qual_score', 'mq0f_ratio']. Recommendations: GATK: mq_score:30,min_depth:10,ad_ratio:0.9\
+                      \ Mpileup: mq_score:30,min_depth:10,dp4_ratio:0.9"
+                    synonyms:
+                    - --filters
+                    args: !SimpleFlagArg
+                      name: FILTERS
+                    optional: true
+                  - !Flag
+                    description: "List of annotators to run before filters. Available:\
+                      \ ['coverage']"
+                    synonyms:
+                    - --annotators
+                    args: !RepeatFlagArg
+                      name: ANNOTATORS
+                    optional: true
+                  - !Flag
+                    description: 'Keep intermediate files like BAMs and VCFs (default:
+                      False).'
+                    synonyms:
+                    - --keep-temp
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Also write variant positions in filtered vcf as
+                      json file (default: False).'
+                    synonyms:
+                    - --json
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'When writing a json file, log some stats to stdout.
+                      (default: False).'
+                    synonyms:
+                    - --json-info
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: phenix.py run_snp_pipeline [-h] [--workflow WORKFLOW]\
+                    \ [--input INPUT]\n                                  [-r1 R1]\
+                    \ [-r2 R2] [--reference REFERENCE]\n                         \
+                    \         [--sample-name SAMPLE_NAME]\n                      \
+                    \            [--outdir OUTDIR] [--config CONFIG]\n           \
+                    \                       [--mapper MAPPER]\n                  \
+                    \                [--mapper-options MAPPER_OPTIONS]\n         \
+                    \                         [--bam BAM] [--variant VARIANT]\n  \
+                    \                                [--variant-options VARIANT_OPTIONS]\n\
+                    \                                  [--vcf VCF] [--filters FILTERS]\n\
+                    \                                  [--annotators ANNOTATORS [ANNOTATORS\
+                    \ ...]]\n                                  [--keep-temp] [--json]\
+                    \ [--json-info]\n\nRun the snp pipeline with specified mapper,\
+                    \ variant caller and some filters.\n\nAvailable mappers: ['bwa',\
+                    \ 'bowtie2']\n\nAvailable variant callers: ['mpileup', 'gatk']\n\
+                    \nAvailable filters: ['gq_score', 'dp4_ratio', 'ad_ratio', 'min_depth',\
+                    \ 'mq_score', 'mq0_ratio', 'uncall_gt', 'qual_score', 'mq0f_ratio']\n\
+                    \nAvailable annotators: ['coverage']\n\noptional arguments:\n\
+                    \  -h, --help            show this help message and exit\n  --workflow\
+                    \ WORKFLOW, -w WORKFLOW\n  --input INPUT, -i INPUT\n  -r1 R1 \
+                    \               R1/Forward read in Fastq format.\n  -r2 R2   \
+                    \             R2/Reverse read in Fastq format.\n  --reference\
+                    \ REFERENCE, -r REFERENCE\n                        Rerefence to\
+                    \ use for mapping.\n  --sample-name SAMPLE_NAME\n            \
+                    \            Name of the sample for mapper to include as read\
+                    \ groups.\n  --outdir OUTDIR, -o OUTDIR\n  --config CONFIG, -c\
+                    \ CONFIG\n  --mapper MAPPER, -m MAPPER\n                     \
+                    \   Available mappers: ['bwa', 'bowtie2']\n  --mapper-options\
+                    \ MAPPER_OPTIONS\n                        Custom maper options\
+                    \ (advanced)\n  --bam BAM\n  --variant VARIANT, -v VARIANT\n \
+                    \                       Available variant callers: ['mpileup',\
+                    \ 'gatk']\n  --variant-options VARIANT_OPTIONS\n             \
+                    \           Custom variant options (advanced)\n  --vcf VCF\n \
+                    \ --filters FILTERS     Filters to be applied to the VCF in key:value\
+                    \ pairs, separated by comma (,). Available_filters: ['gq_score',\
+                    \ 'dp4_ratio', 'ad_ratio', 'min_depth', 'mq_score', 'mq0_ratio',\
+                    \ 'uncall_gt', 'qual_score', 'mq0f_ratio']. Recommendations: GATK:\
+                    \ mq_score:30,min_depth:10,ad_ratio:0.9 Mpileup: mq_score:30,min_depth:10,dp4_ratio:0.9\n\
+                    \  --annotators ANNOTATORS [ANNOTATORS ...]\n                \
+                    \        List of annotators to run before filters. Available:\
+                    \ ['coverage']\n  --keep-temp           Keep intermediate files\
+                    \ like BAMs and VCFs (default: False).\n  --json             \
+                    \   Also write variant positions in filtered vcf as json file\
+                    \ (default: False).\n  --json-info           When writing a json\
+                    \ file, log some stats to stdout. (default: False).\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id009
+                  - phenix.py
+                  - vcf2fasta
+                  positional: []
+                  named:
+                  - !Flag
+                    description: Path to the directory with .vcf files.
+                    synonyms:
+                    - --directory
+                    - -d
+                    args: !SimpleFlagArg
+                      name: DIRECTORY
+                    optional: true
+                  - !Flag
+                    description: List of VCF files to process.
+                    synonyms:
+                    - --input
+                    - -i
+                    args: !RepeatFlagArg
+                      name: INPUT
+                    optional: true
+                  - !Flag
+                    description: Regular expression for finding VCFs in a directory.
+                    synonyms:
+                    - --regexp
+                    args: !SimpleFlagArg
+                      name: REGEXP
+                    optional: true
+                  - !Flag
+                    description: Path to the output FASTA file.
+                    synonyms:
+                    - --out
+                    - -o
+                    args: !SimpleFlagArg
+                      name: OUT
+                    optional: true
+                  - !Flag
+                    description: "Specify this option with a threshold to output\n\
+                      mixtures above this threshold."
+                    synonyms:
+                    - --with-mixtures
+                    args: !SimpleFlagArg
+                      name: WITH_MIXTURES
+                    optional: true
+                  - !Flag
+                    description: "Keeps columns with fraction of Ns below specified\n\
+                      threshold."
+                    synonyms:
+                    - --column-Ns
+                    args: !SimpleFlagArg
+                      name: COLUMN_NS
+                    optional: true
+                  - !Flag
+                    description: "Keeps columns with fraction of Ns below specified\n\
+                      threshold."
+                    synonyms:
+                    - --column-gaps
+                    args: !SimpleFlagArg
+                      name: COLUMN_GAPS
+                    optional: true
+                  - !Flag
+                    description: "Keeps samples with fraction of Ns below specified\n\
+                      threshold or put 'auto'.Fraction expressed as fraction\nof genome.\
+                      \ Requires --reflength or --reference."
+                    synonyms:
+                    - --sample-Ns
+                    args: !SimpleFlagArg
+                      name: SAMPLE_NS
+                    optional: true
+                  - !Flag
+                    description: "Keeps samples with fraction of gaps below specified\n\
+                      threshold or put 'auto'.Fraction expressed as fraction\nof genome.\
+                      \ Requires --reflength or --reference."
+                    synonyms:
+                    - --sample-gaps
+                    args: !SimpleFlagArg
+                      name: SAMPLE_GAPS
+                    optional: true
+                  - !Flag
+                    description: "When using 'auto' option for --sample-gaps or\n\
+                      --sample-Ns, remove sample that havegaps or Ns this\nmany times\
+                      \ above the stddev of all samples. [Default:\n2.0]"
+                    synonyms:
+                    - --sample-Ns-gaps-auto-factor
+                    args: !SimpleFlagArg
+                      name: SAMPLE_NS_GAPS_AUTO_FACTOR
+                    optional: true
+                  - !Flag
+                    description: "If path to reference specified (FASTA), then whole\n\
+                      genome will be written to alignment."
+                    synonyms:
+                    - --reference
+                    args: !SimpleFlagArg
+                      name: REFERENCE
+                    optional: true
+                  - !Flag
+                    description: "Remove all positions that invariant apart from N\n\
+                      positions."
+                    synonyms:
+                    - --remove-invariant-npos
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Length of reference. Either as int or can be worked\n\
+                      out from fasta file. Ignored if --reference is used."
+                    synonyms:
+                    - --reflength
+                    args: !SimpleFlagArg
+                      name: REFLENGTH
+                    optional: true
+                  - !Flag
+                    description: Only include positions in BED file in the FASTA
+                    synonyms:
+                    - --include
+                    args: !SimpleFlagArg
+                      name: INCLUDE
+                    optional: true
+                  - !Flag
+                    description: Exclude any positions specified in the BED file.
+                    synonyms:
+                    - --exclude
+                    args: !SimpleFlagArg
+                      name: EXCLUDE
+                    optional: true
+                  - !Flag
+                    description: "If a path is specified, then position of the outputed\n\
+                      SNPs is stored in this file.\n"
+                    synonyms:
+                    - --with-stats
+                    args: !SimpleFlagArg
+                      name: WITH_STATS
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: phenix.py vcf2fasta [-h]\n                  \
+                    \         (--directory DIRECTORY | --input INPUT [INPUT ...])\n\
+                    \                           [--regexp REGEXP] --out OUT\n    \
+                    \                       [--with-mixtures WITH_MIXTURES]\n    \
+                    \                       [--column-Ns COLUMN_NS] [--column-gaps\
+                    \ COLUMN_GAPS]\n                           [--sample-Ns SAMPLE_NS]\
+                    \ [--sample-gaps SAMPLE_GAPS]\n                           [--sample-Ns-gaps-auto-factor\
+                    \ SAMPLE_NS_GAPS_AUTO_FACTOR]\n                           [--reference\
+                    \ REFERENCE | --remove-invariant-npos]\n                     \
+                    \      [--reflength REFLENGTH]\n                           [--include\
+                    \ INCLUDE | --exclude EXCLUDE]\n                           [--with-stats\
+                    \ WITH_STATS]\n\nCombine multiple VCFs into a single FASTA file.\n\
+                    \noptional arguments:\n  -h, --help            show this help\
+                    \ message and exit\n  --directory DIRECTORY, -d DIRECTORY\n  \
+                    \                      Path to the directory with .vcf files.\n\
+                    \  --input INPUT [INPUT ...], -i INPUT [INPUT ...]\n         \
+                    \               List of VCF files to process.\n  --regexp REGEXP\
+                    \       Regular expression for finding VCFs in a directory.\n\
+                    \  --out OUT, -o OUT     Path to the output FASTA file.\n  --with-mixtures\
+                    \ WITH_MIXTURES\n                        Specify this option with\
+                    \ a threshold to output\n                        mixtures above\
+                    \ this threshold.\n  --column-Ns COLUMN_NS\n                 \
+                    \       Keeps columns with fraction of Ns below specified\n  \
+                    \                      threshold.\n  --column-gaps COLUMN_GAPS\n\
+                    \                        Keeps columns with fraction of Ns below\
+                    \ specified\n                        threshold.\n  --sample-Ns\
+                    \ SAMPLE_NS\n                        Keeps samples with fraction\
+                    \ of Ns below specified\n                        threshold or\
+                    \ put 'auto'.Fraction expressed as fraction\n                \
+                    \        of genome. Requires --reflength or --reference.\n  --sample-gaps\
+                    \ SAMPLE_GAPS\n                        Keeps samples with fraction\
+                    \ of gaps below specified\n                        threshold or\
+                    \ put 'auto'.Fraction expressed as fraction\n                \
+                    \        of genome. Requires --reflength or --reference.\n  --sample-Ns-gaps-auto-factor\
+                    \ SAMPLE_NS_GAPS_AUTO_FACTOR\n                        When using\
+                    \ 'auto' option for --sample-gaps or\n                       \
+                    \ --sample-Ns, remove sample that havegaps or Ns this\n      \
+                    \                  many times above the stddev of all samples.\
+                    \ [Default:\n                        2.0]\n  --reference REFERENCE\n\
+                    \                        If path to reference specified (FASTA),\
+                    \ then whole\n                        genome will be written to\
+                    \ alignment.\n  --remove-invariant-npos\n                    \
+                    \    Remove all positions that invariant apart from N\n      \
+                    \                  positions.\n  --reflength REFLENGTH\n     \
+                    \                   Length of reference. Either as int or can\
+                    \ be worked\n                        out from fasta file. Ignored\
+                    \ if --reference is used.\n  --include INCLUDE     Only include\
+                    \ positions in BED file in the FASTA\n  --exclude EXCLUDE    \
+                    \ Exclude any positions specified in the BED file.\n  --with-stats\
+                    \ WITH_STATS\n                        If a path is specified,\
+                    \ then position of the outputed\n                        SNPs\
+                    \ is stored in this file.\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: show program's version number and exit
+                  synonyms:
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "usage: phenix.py [-h] [--debug] [--version]\n        \
+                  \         {run_snp_pipeline,filter_vcf,prepare_reference,vcf2fasta,vcf2distancematrix,vcf2json}\n\
+                  \                 ...\n\npositional arguments:\n  {run_snp_pipeline,filter_vcf,prepare_reference,vcf2fasta,vcf2distancematrix,vcf2json}\n\
+                  \    run_snp_pipeline    Run SNP pipeline.\n    filter_vcf     \
+                  \     Filter a VCF.\n    prepare_reference   Create aux files for\
+                  \ reference.\n    vcf2fasta           Convert VCFs to FASTA.\n \
+                  \   vcf2distancematrix  Convert VCFs to a distance matrix.\n   \
+                  \ vcf2json            Convert VCFs to a JSON file containing variants\
+                  \ and\n                        ignored positions as arrays of positions\
+                  \ relative to\n                        reference chromosomes.\n\n\
+                  optional arguments:\n  -h, --help            show this help message\
+                  \ and exit\n  --debug               More verbose logging (default:\
+                  \ turned off).\n  --version             show program's version number\
+                  \ and exit\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -613,12 +1479,9 @@ subcommands:
                 \             newick format. [Default: Don't make tree, only matrix]\n\
                 \  --with-stats          Write additional files with information on\
                 \ removed\n                        recombinant SNPs. [don't]\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - phenix.py
-              - filter_vcf
+              command: *id005
               positional: []
               named:
               - !Flag
@@ -703,9 +1566,7 @@ subcommands:
                 \ all filters (default all\n                        variants are written).\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - phenix.py
-              - vcf2json
+              command: *id006
               positional: []
               named:
               - !Flag
@@ -785,9 +1646,7 @@ subcommands:
                 \ json string\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - phenix.py
-              - prepare_reference
+              command: *id007
               positional: []
               named:
               - !Flag
@@ -834,161 +1693,49 @@ subcommands:
                 \     Available variants: ['mpileup', 'gatk']\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - phenix.py
-              - run_snp_pipeline
+              command: *id008
               positional: []
               named:
               - !Flag
                 description: ''
                 synonyms:
-                - --workflow
-                - -w
-                args: !SimpleFlagArg
-                  name: WORKFLOW
-                optional: true
-              - !Flag
-                description: ''
-                synonyms:
                 - --input
-                - -i
                 args: !SimpleFlagArg
                   name: INPUT
                 optional: true
               - !Flag
-                description: R1/Forward read in Fastq format.
-                synonyms:
-                - -r1
-                args: !SimpleFlagArg
-                  name: R1
-                optional: true
-              - !Flag
-                description: R2/Reverse read in Fastq format.
-                synonyms:
-                - -r2
-                args: !SimpleFlagArg
-                  name: R2
-                optional: true
-              - !Flag
-                description: Rerefence to use for mapping.
-                synonyms:
-                - --reference
-                - -r
-                args: !SimpleFlagArg
-                  name: REFERENCE
-                optional: true
-              - !Flag
-                description: Name of the sample for mapper to include as read groups.
-                synonyms:
-                - --sample-name
-                args: !SimpleFlagArg
-                  name: SAMPLE_NAME
-                optional: true
-              - !Flag
                 description: ''
                 synonyms:
-                - --outdir
-                - -o
+                - --workflow
                 args: !SimpleFlagArg
-                  name: OUTDIR
-                optional: true
-              - !Flag
-                description: ''
-                synonyms:
-                - --config
-                - -c
-                args: !SimpleFlagArg
-                  name: CONFIG
-                optional: true
-              - !Flag
-                description: "Available mappers: ['bwa', 'bowtie2']"
-                synonyms:
-                - --mapper
-                - -m
-                args: !SimpleFlagArg
-                  name: MAPPER
-                optional: true
-              - !Flag
-                description: Custom maper options (advanced)
-                synonyms:
-                - --mapper-options
-                args: !SimpleFlagArg
-                  name: MAPPER_OPTIONS
-                optional: true
-              - !Flag
-                description: ''
-                synonyms:
-                - --bam
-                args: !SimpleFlagArg
-                  name: BAM
-                optional: true
-              - !Flag
-                description: "Available variant callers: ['mpileup', 'gatk']"
-                synonyms:
-                - --variant
-                - -v
-                args: !SimpleFlagArg
-                  name: VARIANT
-                optional: true
-              - !Flag
-                description: Custom variant options (advanced)
-                synonyms:
-                - --variant-options
-                args: !SimpleFlagArg
-                  name: VARIANT_OPTIONS
-                optional: true
-              - !Flag
-                description: ''
-                synonyms:
-                - --vcf
-                args: !SimpleFlagArg
-                  name: VCF
-                optional: true
-              - !Flag
-                description: "Filters to be applied to the VCF in key:value pairs,\
-                  \ separated by comma (,). Available_filters: ['gq_score', 'dp4_ratio',\
-                  \ 'ad_ratio', 'min_depth', 'mq_score', 'mq0_ratio', 'uncall_gt',\
-                  \ 'qual_score', 'mq0f_ratio']. Recommendations: GATK: mq_score:30,min_depth:10,ad_ratio:0.9\
-                  \ Mpileup: mq_score:30,min_depth:10,dp4_ratio:0.9"
-                synonyms:
-                - --filters
-                args: !SimpleFlagArg
-                  name: FILTERS
-                optional: true
-              - !Flag
-                description: "List of annotators to run before filters. Available:\
-                  \ ['coverage']"
-                synonyms:
-                - --annotators
-                args: !RepeatFlagArg
-                  name: ANNOTATORS
-                optional: true
-              - !Flag
-                description: 'Keep intermediate files like BAMs and VCFs (default:
-                  False).'
-                synonyms:
-                - --keep-temp
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: 'Also write variant positions in filtered vcf as json
-                  file (default: False).'
-                synonyms:
-                - --json
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: 'When writing a json file, log some stats to stdout.
-                  (default: False).'
-                synonyms:
-                - --json-info
-                args: !EmptyFlagArg {}
+                  name: WORKFLOW
                 optional: true
               parent: *id003
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                description: "show this help message and exit\n--workflow WORKFLOW,\
+                  \ -w WORKFLOW\n--input INPUT, -i INPUT\n-r1 R1                R1/Forward\
+                  \ read in Fastq format.\n-r2 R2                R2/Reverse read in\
+                  \ Fastq format.\n--reference REFERENCE, -r REFERENCE\nRerefence\
+                  \ to use for mapping.\n--sample-name SAMPLE_NAME\nName of the sample\
+                  \ for mapper to include as read groups.\n--outdir OUTDIR, -o OUTDIR\n\
+                  --config CONFIG, -c CONFIG\n--mapper MAPPER, -m MAPPER\nAvailable\
+                  \ mappers: ['bwa', 'bowtie2']\n--mapper-options MAPPER_OPTIONS\n\
+                  Custom maper options (advanced)\n--bam BAM\n--variant VARIANT, -v\
+                  \ VARIANT\nAvailable variant callers: ['mpileup', 'gatk']\n--variant-options\
+                  \ VARIANT_OPTIONS\nCustom variant options (advanced)\n--vcf VCF\n\
+                  --filters FILTERS     Filters to be applied to the VCF in key:value\
+                  \ pairs, separated by comma (,). Available_filters: ['gq_score',\
+                  \ 'dp4_ratio', 'ad_ratio', 'min_depth', 'mq_score', 'mq0_ratio',\
+                  \ 'uncall_gt', 'qual_score', 'mq0f_ratio']. Recommendations: GATK:\
+                  \ mq_score:30,min_depth:10,ad_ratio:0.9 Mpileup: mq_score:30,min_depth:10,dp4_ratio:0.9\n\
+                  --annotators ANNOTATORS [ANNOTATORS ...]\nList of annotators to\
+                  \ run before filters. Available: ['coverage']\n--keep-temp     \
+                  \      Keep intermediate files like BAMs and VCFs (default: False).\n\
+                  --json                Also write variant positions in filtered vcf\
+                  \ as json file (default: False).\n--json-info           When writing\
+                  \ a json file, log some stats to stdout. (default: False).\n"
                 synonyms:
                 - -h
                 - --help
@@ -1039,9 +1786,7 @@ subcommands:
                 \ writing a json file, log some stats to stdout. (default: False).\n"
               generated_using: *id004
             - !Command
-              command: &id009
-              - phenix.py
-              - vcf2fasta
+              command: *id009
               positional: []
               named:
               - !Flag
@@ -1233,20 +1978,9 @@ subcommands:
                 \                        SNPs is stored in this file.\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: show program's version number and exit
-              synonyms:
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "usage: phenix.py [-h] [--debug] [--version]\n            \
               \     {run_snp_pipeline,filter_vcf,prepare_reference,vcf2fasta,vcf2distancematrix,vcf2json}\n\
               \                 ...\n\npositional arguments:\n  {run_snp_pipeline,filter_vcf,prepare_reference,vcf2fasta,vcf2distancematrix,vcf2json}\n\
@@ -1375,7 +2109,7 @@ subcommands:
             - --only-good
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1451,7 +2185,7 @@ subcommands:
             - -s
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1509,7 +2243,7 @@ subcommands:
             args: !SimpleFlagArg
               name: VARIANT
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1548,7 +2282,7 @@ subcommands:
             args: !SimpleFlagArg
               name: WORKFLOW
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1749,7 +2483,7 @@ subcommands:
             args: !SimpleFlagArg
               name: WITH_STATS
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1937,7 +2671,7 @@ subcommands:
         - --only-good
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2010,7 +2744,7 @@ subcommands:
         - -s
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2067,7 +2801,7 @@ subcommands:
         args: !SimpleFlagArg
           name: VARIANT
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2105,7 +2839,7 @@ subcommands:
         args: !SimpleFlagArg
           name: WORKFLOW
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2302,7 +3036,7 @@ subcommands:
         args: !SimpleFlagArg
           name: WITH_STATS
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2483,7 +3217,7 @@ subcommands:
     - --only-good
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2556,7 +3290,7 @@ subcommands:
     - -s
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2612,7 +3346,7 @@ subcommands:
     args: !SimpleFlagArg
       name: VARIANT
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2650,7 +3384,7 @@ subcommands:
     args: !SimpleFlagArg
       name: WORKFLOW
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2845,7 +3579,7 @@ subcommands:
     args: !SimpleFlagArg
       name: WITH_STATS
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag: !Flag

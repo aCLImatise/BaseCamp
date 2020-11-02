@@ -36,7 +36,7 @@ subcommands:
     name: archive_name
     optional: false
   named: []
-  parent: &id017 !Command
+  parent: &id019 !Command
     command: *id001
     positional: []
     named: []
@@ -71,7 +71,7 @@ subcommands:
         name: archive_name
         optional: false
       named: []
-      parent: &id015 !Command
+      parent: &id017 !Command
         command: *id001
         positional: []
         named: []
@@ -106,16 +106,10 @@ subcommands:
             name: archive_name
             optional: false
           named: []
-          parent: &id003 !Command
+          parent: &id015 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: ''
-              synonyms:
-              - -v
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -147,7 +141,664 @@ subcommands:
                 name: archive_name
                 optional: false
               named: []
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -v
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: directory with phenotype models to be included
+                    position: 0
+                    name: models_dir
+                    optional: false
+                  - !Positional
+                    description: a mapping between Pfam families and phenotype ids
+                      to
+                    position: 1
+                    name: pf_acc2desc
+                    optional: false
+                  - !Positional
+                    description: pt_id2acc_desc  a mapping between phenotype ids and
+                      descriptions
+                    position: 2
+                    name: accessions
+                    optional: false
+                  - !Positional
+                    description: hmm database compatible with the phenotype archive
+                    position: 0
+                    name: hmm_model_f
+                    optional: false
+                  - !Positional
+                    description: name of the model, which is created
+                    position: 1
+                    name: archive_name
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: traitar new [-h]\n                   models_dir\
+                    \ pf_acc2desc pt_id2acc_desc {dbcan,pfam}\n                  \
+                    \ hmm_model_f archive_name\n\npositional arguments:\n  models_dir\
+                    \      directory with phenotype models to be included\n  pf_acc2desc\
+                    \     a mapping between Pfam families and phenotype ids to\n \
+                    \                 accessions\n  pt_id2acc_desc  a mapping between\
+                    \ phenotype ids and descriptions\n  {dbcan,pfam}    hmm database\
+                    \ used\n  hmm_model_f     hmm database compatible with the phenotype\
+                    \ archive\n  archive_name    name of the model, which is created\n\
+                    \noptional arguments:\n  -h, --help      show this help message\
+                    \ and exit\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id007
+                  - traitar
+                  - annotate
+                  positional:
+                  - !Positional
+                    description: 'positional arguments:'
+                    position: 0
+                    name: output_dir
+                    optional: false
+                  - !Positional
+                    description: directory with the input data
+                    position: 1
+                    name: input_dir
+                    optional: false
+                  - !Positional
+                    description: "mapping from samples to fasta files (also see gitHub\n\
+                      help): sample1_file_name{tab}sample1_name\nsample2_file_name{tab}sample2_name"
+                    position: 2
+                    name: sample2file
+                    optional: false
+                  - !Positional
+                    description: "directory for the output; will be created if it\n\
+                      doesn't exist yet"
+                    position: 0
+                    name: output_dir
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "if the input is amino acids the type of gene\nprediction\
+                      \ GFF file can be specified for mapping the\nphenotype predictions\
+                      \ to the genes"
+                    synonyms:
+                    - -g
+                    - --gene_gff_type
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? genbank
+                        ? img
+                        ? metagenemark
+                        ? refseq
+                        ? prodigal
+                    optional: true
+                  - !Flag
+                    description: "number of cpus used for the individual steps; maximum\n\
+                      is number of samples; needs parallel\n"
+                    synonyms:
+                    - -c
+                    - --cpus
+                    args: !SimpleFlagArg
+                      name: CPUS
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: traitar annotate [-h] [-g {genbank,refseq,img,prodigal,metagenemark}]\n\
+                    \                        [-c CPUS]\n                        input_dir\
+                    \ sample2file\n                        {from_genes,from_nucleotides,from_annotation_summary}\n\
+                    \                        output_dir\n\npositional arguments:\n\
+                    \  input_dir             directory with the input data\n  sample2file\
+                    \           mapping from samples to fasta files (also see gitHub\n\
+                    \                        help): sample1_file_name{tab}sample1_name\n\
+                    \                        sample2_file_name{tab}sample2_name\n\
+                    \  {from_genes,from_nucleotides,from_annotation_summary}\n   \
+                    \                     either from_genes if gene prediction amino\
+                    \ acid fasta\n                        is available in input_dir\
+                    \ otherwise from_nucleotides\n                        in this\
+                    \ case Prodigal is used to determine the ORFs\n              \
+                    \          from the nucleotide fasta files in input_dir\n  output_dir\
+                    \            directory for the output; will be created if it\n\
+                    \                        doesn't exist yet\n\noptional arguments:\n\
+                    \  -h, --help            show this help message and exit\n  -g\
+                    \ {genbank,refseq,img,prodigal,metagenemark}, --gene_gff_type\
+                    \ {genbank,refseq,img,prodigal,metagenemark}\n               \
+                    \         if the input is amino acids the type of gene\n     \
+                    \                   prediction GFF file can be specified for mapping\
+                    \ the\n                        phenotype predictions to the genes\n\
+                    \  -c CPUS, --cpus CPUS  number of cpus used for the individual\
+                    \ steps; maximum\n                        is number of samples;\
+                    \ needs parallel\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - traitar
+                  - show
+                  positional: []
+                  named:
+                  - !Flag
+                    description: "{phypat,phypat+PGL}\npick phypat or phypat+PGL classifier"
+                    synonyms:
+                    - --predictor
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --strategy
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? majority
+                        ? non-zero
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -i
+                    - --include_negative
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "phenotype models archive; if set, look for the target\n\
+                      in the phenotype in the given phenotype collection\n"
+                    synonyms:
+                    - -p
+                    - --models_f
+                    args: !SimpleFlagArg
+                      name: MODELS_F
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: traitar show [-h] [--predictor {phypat,phypat+PGL}]\n\
+                    \                    [--strategy {non-zero,majority}] [-i] [-p\
+                    \ MODELS_F]\n                    phenotype\n\npositional arguments:\n\
+                    \  phenotype             phenotype under investigation\n\noptional\
+                    \ arguments:\n  -h, --help            show this help message and\
+                    \ exit\n  --predictor {phypat,phypat+PGL}\n                  \
+                    \      pick phypat or phypat+PGL classifier\n  --strategy {non-zero,majority}\n\
+                    \  -i, --include_negative\n  -p MODELS_F, --models_f MODELS_F\n\
+                    \                        phenotype models archive; if set, look\
+                    \ for the target\n                        in the phenotype in\
+                    \ the given phenotype collection\n"
+                  generated_using: *id004
+                - &id005 !Command
+                  command: &id009
+                  - traitar
+                  - remove
+                  positional: []
+                  named:
+                  - !Flag
+                    description: "instead of remove the given phenotypes, keep them\
+                      \ and forget the\nrest\n"
+                    synonyms:
+                    - --keep
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands:
+                  - !Command
+                    command: &id010
+                    - traitar
+                    - remove
+                    - phenotypes
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: traitar
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 1
+                      name: remove
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 2
+                      name: archive_f
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 3
+                      name: phenotypes
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 4
+                      name: out_f
+                      optional: false
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --keep
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    parent: *id005
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: ''
+                      synonyms:
+                      - -h
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: traitar remove [-h] [--keep] archive_f phenotypes\
+                      \ out_f\ntraitar remove: error: too few arguments\n"
+                    generated_using: &id006 []
+                  - !Command
+                    command: &id011
+                    - traitar
+                    - remove
+                    - out_f
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: traitar
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 1
+                      name: remove
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 2
+                      name: archive_f
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 3
+                      name: phenotypes
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 4
+                      name: out_f
+                      optional: false
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --keep
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    parent: *id005
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: ''
+                      synonyms:
+                      - -h
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: traitar remove [-h] [--keep] archive_f phenotypes\
+                      \ out_f\ntraitar remove: error: too few arguments\n"
+                    generated_using: *id006
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: traitar remove [-h] [--keep] archive_f phenotypes\
+                    \ out_f\n\npositional arguments:\n  archive_f   phenotype model\
+                    \ archive file, which shall be modified\n  phenotypes  phenotypes\
+                    \ to be removed\n  out_f       out file for the modified phenotype\
+                    \ tar archive\n\noptional arguments:\n  -h, --help  show this\
+                    \ help message and exit\n  --keep      instead of remove the given\
+                    \ phenotypes, keep them and forget the\n              rest\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id012
+                  - traitar
+                  - phenotype
+                  positional:
+                  - !Positional
+                    description: 'positional arguments:'
+                    position: 0
+                    name: output_dir
+                    optional: false
+                  - !Positional
+                    description: directory with the input data
+                    position: 1
+                    name: input_dir
+                    optional: false
+                  - !Positional
+                    description: "mapping from samples to fasta files (also see gitHub\n\
+                      help): sample1_file_name{tab}sample1_name\nsample2_file_name{tab}sample2_name"
+                    position: 2
+                    name: sample2file
+                    optional: false
+                  - !Positional
+                    description: "directory for the output; will be created if it\n\
+                      doesn't exist yet"
+                    position: 0
+                    name: output_dir
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "if the input is amino acids the type of gene\nprediction\
+                      \ GFF file can be specified for mapping the\nphenotype predictions\
+                      \ to the genes"
+                    synonyms:
+                    - -g
+                    - --gene_gff_type
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? genbank
+                        ? img
+                        ? metagenemark
+                        ? refseq
+                        ? prodigal
+                    optional: true
+                  - !Flag
+                    description: "number of cpus used for the individual steps; maximum\n\
+                      is number of samples; needs parallel"
+                    synonyms:
+                    - -c
+                    - --cpus
+                    args: !SimpleFlagArg
+                      name: CPUS
+                    optional: true
+                  - !Flag
+                    description: primary phenotype models archive
+                    synonyms:
+                    - -p
+                    - --primary_models
+                    args: !SimpleFlagArg
+                      name: PRIMARY_MODELS
+                    optional: true
+                  - !Flag
+                    description: secondary phenotype models archive
+                    synonyms:
+                    - -s
+                    - --secondary_models
+                    args: !SimpleFlagArg
+                      name: SECONDARY_MODELS
+                    optional: true
+                  - !Flag
+                    description: "recompute the phenotype heatmaps based on a subset\
+                      \ of\npreviously annotated and phenotyped samples"
+                    synonyms:
+                    - -r
+                    - --rearrange_heatmap
+                    args: !SimpleFlagArg
+                      name: REARRANGE_HEATMAP
+                    optional: true
+                  - !Flag
+                    description: "if option is set, don't cluster the phenotype heatmaps\n\
+                      by samples and keep input ordering"
+                    synonyms:
+                    - --no_heatmap_sample_clustering
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "if option is set, don't cluster the heatmaps by\n\
+                      phenotype and keep input ordering"
+                    synonyms:
+                    - --no_heatmap_phenotype_clustering
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "choose file format for the heatmap\n"
+                    synonyms:
+                    - -f
+                    - --heatmap_format
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? jpg
+                        ? png
+                        ? svg
+                        ? pdf
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: traitar phenotype [-h] [-g {genbank,refseq,img,prodigal,metagenemark}]\n\
+                    \                         [-c CPUS] [-p PRIMARY_MODELS] [-s SECONDARY_MODELS]\n\
+                    \                         [-r REARRANGE_HEATMAP]\n           \
+                    \              [--no_heatmap_sample_clustering]\n            \
+                    \             [--no_heatmap_phenotype_clustering]\n          \
+                    \               [-f {png,pdf,svg,jpg}]\n                     \
+                    \    input_dir sample2file\n                         {from_genes,from_nucleotides,from_annotation_summary}\n\
+                    \                         output_dir\n\npositional arguments:\n\
+                    \  input_dir             directory with the input data\n  sample2file\
+                    \           mapping from samples to fasta files (also see gitHub\n\
+                    \                        help): sample1_file_name{tab}sample1_name\n\
+                    \                        sample2_file_name{tab}sample2_name\n\
+                    \  {from_genes,from_nucleotides,from_annotation_summary}\n   \
+                    \                     either from_genes if gene prediction amino\
+                    \ acid fasta\n                        is available in input_dir\
+                    \ otherwise from_nucleotides\n                        in this\
+                    \ case Prodigal is used to determine the ORFs\n              \
+                    \          from the nucleotide fasta files in input_dir\n  output_dir\
+                    \            directory for the output; will be created if it\n\
+                    \                        doesn't exist yet\n\noptional arguments:\n\
+                    \  -h, --help            show this help message and exit\n  -g\
+                    \ {genbank,refseq,img,prodigal,metagenemark}, --gene_gff_type\
+                    \ {genbank,refseq,img,prodigal,metagenemark}\n               \
+                    \         if the input is amino acids the type of gene\n     \
+                    \                   prediction GFF file can be specified for mapping\
+                    \ the\n                        phenotype predictions to the genes\n\
+                    \  -c CPUS, --cpus CPUS  number of cpus used for the individual\
+                    \ steps; maximum\n                        is number of samples;\
+                    \ needs parallel\n  -p PRIMARY_MODELS, --primary_models PRIMARY_MODELS\n\
+                    \                        primary phenotype models archive\n  -s\
+                    \ SECONDARY_MODELS, --secondary_models SECONDARY_MODELS\n    \
+                    \                    secondary phenotype models archive\n  -r\
+                    \ REARRANGE_HEATMAP, --rearrange_heatmap REARRANGE_HEATMAP\n \
+                    \                       recompute the phenotype heatmaps based\
+                    \ on a subset of\n                        previously annotated\
+                    \ and phenotyped samples\n  --no_heatmap_sample_clustering\n \
+                    \                       if option is set, don't cluster the phenotype\
+                    \ heatmaps\n                        by samples and keep input\
+                    \ ordering\n  --no_heatmap_phenotype_clustering\n            \
+                    \            if option is set, don't cluster the heatmaps by\n\
+                    \                        phenotype and keep input ordering\n \
+                    \ -f {png,pdf,svg,jpg}, --heatmap_format {png,pdf,svg,jpg}\n \
+                    \                       choose file format for the heatmap\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id013
+                  - traitar
+                  - pfam
+                  positional:
+                  - !Positional
+                    description: "download Pfam HMMs into the given download directory\
+                      \ and untar\nand unzip it"
+                    position: 0
+                    name: download
+                    optional: false
+                  named:
+                  - !Flag
+                    description: the Pfam HMMs are in the above directory with name
+                      'Pfam-A.hmm'
+                    synonyms:
+                    - --local
+                    - -l
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: traitar pfam [-h] [--local] download\n\npositional\
+                    \ arguments:\n  download     download Pfam HMMs into the given\
+                    \ download directory and untar\n               and unzip it\n\n\
+                    optional arguments:\n  -h, --help   show this help message and\
+                    \ exit\n  --local, -l  the Pfam HMMs are in the above directory\
+                    \ with name 'Pfam-A.hmm'\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id014
+                  - traitar
+                  - evaluate
+                  positional:
+                  - !Positional
+                    description: phenotype prediction matrix as return by Traitar
+                    position: 0
+                    name: traitar_pred_f
+                    optional: false
+                  - !Positional
+                    description: phenotype matrix with standard of truth
+                    position: 1
+                    name: gold_standard_f
+                    optional: false
+                  - !Positional
+                    description: output directory
+                    position: 2
+                    name: out
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "set if the gold standard phenotype are index via\n\
+                      phenotype ids rather than accessions"
+                    synonyms:
+                    - --are_pt_ids
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "need if gold standard uses an accession index for\n\
+                      mapping"
+                    synonyms:
+                    - --phenotype_archive
+                    args: !SimpleFlagArg
+                      name: PHENOTYPE_ARCHIVE
+                    optional: true
+                  - !Flag
+                    description: "minimum number of positive and negative samples\
+                      \ to\nconsider phenotypes for calculation of the macro\naccuracy\n"
+                    synonyms:
+                    - --min_samples
+                    - -m
+                    args: !SimpleFlagArg
+                      name: MIN_SAMPLES
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: traitar evaluate [-h] [--are_pt_ids]\n      \
+                    \                  [--phenotype_archive PHENOTYPE_ARCHIVE]\n \
+                    \                       [--min_samples MIN_SAMPLES]\n        \
+                    \                traitar_pred_f gold_standard_f out\n\npositional\
+                    \ arguments:\n  traitar_pred_f        phenotype prediction matrix\
+                    \ as return by Traitar\n  gold_standard_f       phenotype matrix\
+                    \ with standard of truth\n  out                   output directory\n\
+                    \noptional arguments:\n  -h, --help            show this help\
+                    \ message and exit\n  --are_pt_ids          set if the gold standard\
+                    \ phenotype are index via\n                        phenotype ids\
+                    \ rather than accessions\n  --phenotype_archive PHENOTYPE_ARCHIVE\n\
+                    \                        need if gold standard uses an accession\
+                    \ index for\n                        mapping\n  --min_samples\
+                    \ MIN_SAMPLES, -m MIN_SAMPLES\n                        minimum\
+                    \ number of positive and negative samples to\n               \
+                    \         consider phenotypes for calculation of the macro\n \
+                    \                       accuracy\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: show program's version number and exit
+                  synonyms:
+                  - -v
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "usage: traitar [-h] [-v]\n               {phenotype,pfam,annotate,show,new,remove,evaluate}\
+                  \ ...\n\npositional arguments:\n  {phenotype,pfam,annotate,show,new,remove,evaluate}\n\
+                  \    phenotype           run annotation and prediction\n    pfam\
+                  \                download or set Pfam HMMs\n    annotate       \
+                  \     run annotation\n    show                show features important\
+                  \ for classification\n    new                 create a new phenotype\
+                  \ model archive\n    remove              remove phenotypes from\
+                  \ a given phenotype archive\n    evaluate            compare Traitar\
+                  \ predictions against a given standard\n                       \
+                  \ of truth\n\noptional arguments:\n  -h, --help            show\
+                  \ this help message and exit\n  -v, --version         show program's\
+                  \ version number and exit\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -169,12 +820,9 @@ subcommands:
                 \ with the phenotype archive\n  archive_name    name of the model,\
                 \ which is created\n\noptional arguments:\n  -h, --help      show\
                 \ this help message and exit\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id007
-              - traitar
-              - annotate
+              command: *id007
               positional:
               - !Positional
                 description: 'positional arguments:'
@@ -210,9 +858,9 @@ subcommands:
                   choices: !!set
                     ? genbank
                     ? img
-                    ? metagenemark
                     ? refseq
                     ? prodigal
+                    ? metagenemark
                 optional: true
               - !Flag
                 description: "number of cpus used for the individual steps; maximum\n\
@@ -260,50 +908,22 @@ subcommands:
                 \ parallel\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - traitar
-              - show
+              command: *id008
               positional: []
               named:
               - !Flag
-                description: "{phypat,phypat+PGL}\npick phypat or phypat+PGL classifier"
+                description: '{phypat,phypat+PGL}'
                 synonyms:
                 - --predictor
                 args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: ''
-                synonyms:
-                - --strategy
-                args: !ChoiceFlagArg
-                  choices: !!set
-                    ? majority
-                    ? non-zero
-                optional: true
-              - !Flag
-                description: ''
-                synonyms:
-                - -i
-                - --include_negative
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: "phenotype models archive; if set, look for the target\n\
-                  in the phenotype in the given phenotype collection\n"
-                synonyms:
-                - -p
-                - --models_f
-                args: !SimpleFlagArg
-                  name: MODELS_F
                 optional: true
               parent: *id003
               subcommands: []
               usage: []
               help_flag: !Flag
-                description: show this help message and exit
+                description: ''
                 synonyms:
                 - -h
-                - --help
                 args: !EmptyFlagArg {}
                 optional: true
               usage_flag:
@@ -319,26 +939,14 @@ subcommands:
                 \ models archive; if set, look for the target\n                  \
                 \      in the phenotype in the given phenotype collection\n"
               generated_using: *id004
-            - &id005 !Command
-              command: &id009
-              - traitar
-              - remove
+            - &id016 !Command
+              command: *id009
               positional: []
-              named:
-              - !Flag
-                description: "instead of remove the given phenotypes, keep them and\
-                  \ forget the\nrest\n"
-                synonyms:
-                - --keep
-                args: !EmptyFlagArg {}
-                optional: true
+              named: []
               parent: *id003
               subcommands:
               - !Command
-                command: &id010
-                - traitar
-                - remove
-                - phenotypes
+                command: *id010
                 positional:
                 - !Positional
                   description: ''
@@ -385,12 +993,9 @@ subcommands:
                 version_flag:
                 help_text: "usage: traitar remove [-h] [--keep] archive_f phenotypes\
                   \ out_f\ntraitar remove: error: too few arguments\n"
-                generated_using: &id006 []
+                generated_using: *id006
               - !Command
-                command: &id011
-                - traitar
-                - remove
-                - out_f
+                command: *id011
                 positional:
                 - !Positional
                   description: ''
@@ -439,13 +1044,7 @@ subcommands:
                   \ out_f\ntraitar remove: error: too few arguments\n"
                 generated_using: *id006
               usage: []
-              help_flag: !Flag
-                description: show this help message and exit
-                synonyms:
-                - -h
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "usage: traitar remove [-h] [--keep] archive_f phenotypes\
@@ -457,9 +1056,7 @@ subcommands:
                 \ forget the\n              rest\n"
               generated_using: *id004
             - !Command
-              command: &id012
-              - traitar
-              - phenotype
+              command: *id012
               positional:
               - !Positional
                 description: 'positional arguments:'
@@ -495,9 +1092,9 @@ subcommands:
                   choices: !!set
                     ? genbank
                     ? img
-                    ? metagenemark
                     ? refseq
                     ? prodigal
+                    ? metagenemark
                 optional: true
               - !Flag
                 description: "number of cpus used for the individual steps; maximum\n\
@@ -554,10 +1151,10 @@ subcommands:
                 - --heatmap_format
                 args: !ChoiceFlagArg
                   choices: !!set
-                    ? jpg
-                    ? png
                     ? svg
                     ? pdf
+                    ? png
+                    ? jpg
                 optional: true
               parent: *id003
               subcommands: []
@@ -613,9 +1210,7 @@ subcommands:
                 \ the heatmap\n"
               generated_using: *id004
             - !Command
-              command: &id013
-              - traitar
-              - pfam
+              command: *id013
               positional:
               - !Positional
                 description: "download Pfam HMMs into the given download directory\
@@ -650,9 +1245,7 @@ subcommands:
                 \ Pfam HMMs are in the above directory with name 'Pfam-A.hmm'\n"
               generated_using: *id004
             - !Command
-              command: &id014
-              - traitar
-              - evaluate
+              command: *id014
               positional:
               - !Positional
                 description: phenotype prediction matrix as return by Traitar
@@ -724,21 +1317,9 @@ subcommands:
                 \                        accuracy\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: show program's version number and exit
-              synonyms:
-              - -v
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "usage: traitar [-h] [-v]\n               {phenotype,pfam,annotate,show,new,remove,evaluate}\
               \ ...\n\npositional arguments:\n  {phenotype,pfam,annotate,show,new,remove,evaluate}\n\
               \    phenotype           run annotation and prediction\n    pfam   \
@@ -807,11 +1388,11 @@ subcommands:
             - --gene_gff_type
             args: !ChoiceFlagArg
               choices: !!set
-                ? genbank
-                ? img
                 ? refseq
                 ? prodigal
                 ? metagenemark
+                ? img
+                ? genbank
             optional: true
           - !Flag
             description: "number of cpus used for the individual steps; maximum\n\
@@ -822,7 +1403,7 @@ subcommands:
             args: !SimpleFlagArg
               name: CPUS
             optional: true
-          parent: *id003
+          parent: *id015
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -866,7 +1447,7 @@ subcommands:
             - --predictor
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id015
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -888,11 +1469,11 @@ subcommands:
             \ look for the target\n                        in the phenotype in the\
             \ given phenotype collection\n"
           generated_using: *id004
-        - &id016 !Command
+        - &id018 !Command
           command: *id009
           positional: []
           named: []
-          parent: *id003
+          parent: *id015
           subcommands:
           - !Command
             command: *id010
@@ -929,7 +1510,7 @@ subcommands:
               - --keep
               args: !EmptyFlagArg {}
               optional: true
-            parent: *id005
+            parent: *id016
             subcommands: []
             usage: []
             help_flag: !Flag
@@ -978,7 +1559,7 @@ subcommands:
               - --keep
               args: !EmptyFlagArg {}
               optional: true
-            parent: *id005
+            parent: *id016
             subcommands: []
             usage: []
             help_flag: !Flag
@@ -1039,11 +1620,11 @@ subcommands:
             - --gene_gff_type
             args: !ChoiceFlagArg
               choices: !!set
-                ? genbank
-                ? img
                 ? refseq
                 ? prodigal
                 ? metagenemark
+                ? img
+                ? genbank
             optional: true
           - !Flag
             description: "number of cpus used for the individual steps; maximum\n\
@@ -1100,12 +1681,12 @@ subcommands:
             - --heatmap_format
             args: !ChoiceFlagArg
               choices: !!set
+                ? jpg
+                ? png
                 ? svg
                 ? pdf
-                ? png
-                ? jpg
             optional: true
-          parent: *id003
+          parent: *id015
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1171,7 +1752,7 @@ subcommands:
             - -l
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id015
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1231,7 +1812,7 @@ subcommands:
             args: !SimpleFlagArg
               name: MIN_SAMPLES
             optional: true
-          parent: *id003
+          parent: *id015
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1331,10 +1912,10 @@ subcommands:
         args: !ChoiceFlagArg
           choices: !!set
             ? refseq
-            ? prodigal
-            ? metagenemark
             ? img
             ? genbank
+            ? metagenemark
+            ? prodigal
         optional: true
       - !Flag
         description: "number of cpus used for the individual steps; maximum\nis number\
@@ -1345,7 +1926,7 @@ subcommands:
         args: !SimpleFlagArg
           name: CPUS
         optional: true
-      parent: *id015
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1389,7 +1970,7 @@ subcommands:
         - --predictor
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id015
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1411,11 +1992,11 @@ subcommands:
         \ for the target\n                        in the phenotype in the given phenotype\
         \ collection\n"
       generated_using: *id004
-    - &id018 !Command
+    - &id020 !Command
       command: *id009
       positional: []
       named: []
-      parent: *id015
+      parent: *id017
       subcommands:
       - !Command
         command: *id010
@@ -1452,7 +2033,7 @@ subcommands:
           - --keep
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id016
+        parent: *id018
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -1501,7 +2082,7 @@ subcommands:
           - --keep
           args: !EmptyFlagArg {}
           optional: true
-        parent: *id016
+        parent: *id018
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -1561,10 +2142,10 @@ subcommands:
         args: !ChoiceFlagArg
           choices: !!set
             ? refseq
-            ? prodigal
-            ? metagenemark
             ? img
             ? genbank
+            ? metagenemark
+            ? prodigal
         optional: true
       - !Flag
         description: "number of cpus used for the individual steps; maximum\nis number\
@@ -1621,12 +2202,12 @@ subcommands:
         - --heatmap_format
         args: !ChoiceFlagArg
           choices: !!set
-            ? jpg
             ? png
             ? svg
+            ? jpg
             ? pdf
         optional: true
-      parent: *id015
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1692,7 +2273,7 @@ subcommands:
         - -l
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id015
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1752,7 +2333,7 @@ subcommands:
         args: !SimpleFlagArg
           name: MIN_SAMPLES
         optional: true
-      parent: *id015
+      parent: *id017
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1848,11 +2429,11 @@ subcommands:
     - --gene_gff_type
     args: !ChoiceFlagArg
       choices: !!set
-        refseq:
         img:
-        genbank:
         metagenemark:
         prodigal:
+        refseq:
+        genbank:
     optional: true
   - !Flag
     description: "number of cpus used for the individual steps; maximum\nis number\
@@ -1863,7 +2444,7 @@ subcommands:
     args: !SimpleFlagArg
       name: CPUS
     optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1906,7 +2487,7 @@ subcommands:
     - --predictor
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1931,7 +2512,7 @@ subcommands:
   command: *id009
   positional: []
   named: []
-  parent: *id017
+  parent: *id019
   subcommands:
   - !Command
     command: *id010
@@ -1968,7 +2549,7 @@ subcommands:
       - --keep
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id018
+    parent: *id020
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2017,7 +2598,7 @@ subcommands:
       - --keep
       args: !EmptyFlagArg {}
       optional: true
-    parent: *id018
+    parent: *id020
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2075,11 +2656,11 @@ subcommands:
     - --gene_gff_type
     args: !ChoiceFlagArg
       choices: !!set
-        refseq:
         img:
-        genbank:
         metagenemark:
         prodigal:
+        refseq:
+        genbank:
     optional: true
   - !Flag
     description: "number of cpus used for the individual steps; maximum\nis number\
@@ -2138,10 +2719,10 @@ subcommands:
       choices: !!set
         png:
         svg:
-        jpg:
         pdf:
+        jpg:
     optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2205,7 +2786,7 @@ subcommands:
     - -l
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2265,7 +2846,7 @@ subcommands:
     args: !SimpleFlagArg
       name: MIN_SAMPLES
     optional: true
-  parent: *id017
+  parent: *id019
   subcommands: []
   usage: []
   help_flag: !Flag

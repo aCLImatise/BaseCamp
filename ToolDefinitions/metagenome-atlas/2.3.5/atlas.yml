@@ -32,7 +32,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INTEGER
     optional: true
-  parent: &id009 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
     named: []
@@ -63,7 +63,7 @@ subcommands:
         args: !SimpleFlagArg
           name: INTEGER
         optional: true
-      parent: &id008 !Command
+      parent: &id009 !Command
         command: *id001
         positional: []
         named: []
@@ -94,7 +94,7 @@ subcommands:
             args: !SimpleFlagArg
               name: INTEGER
             optional: true
-          parent: &id003 !Command
+          parent: &id008 !Command
             command: *id001
             positional: []
             named: []
@@ -125,7 +125,271 @@ subcommands:
                 args: !SimpleFlagArg
                   name: INTEGER
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: SNAKEMAKE_ARGS
+                    optional: true
+                  named:
+                  - !Flag
+                    description: location to store databases  [required]
+                    synonyms:
+                    - -d
+                    - --db-dir
+                    args: !SimpleFlagArg
+                      name: PATH
+                    optional: true
+                  - !Flag
+                    description: 'number of simultaneous downloads  [default: 1]'
+                    synonyms:
+                    - -j
+                    - --jobs
+                    args: !SimpleFlagArg
+                      name: INTEGER
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: atlas download [OPTIONS] [SNAKEMAKE_ARGS]...\n\
+                    \n  Executes a snakemake workflow to download reference database\
+                    \ files and\n  validate based on their MD5 checksum.\n\nOptions:\n\
+                    \  -d, --db-dir PATH   location to store databases  [required]\n\
+                    \  -j, --jobs INTEGER  number of simultaneous downloads  [default:\
+                    \ 1]\n  -h, --help          Show this message and exit.\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - atlas
+                  - atlas/atlas
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: atlas
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: COMMAND
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: ARGS
+                    optional: true
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: atlas [OPTIONS] COMMAND [ARGS]...\nTry 'atlas\
+                    \ -h' for help.\n\nError: No such command 'atlas/atlas'.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - atlas
+                  - init
+                  positional:
+                  - !Positional
+                    description: --skip-qc                       Skip QC, if reads
+                      are already pre-processed
+                    position: 0
+                    name: job
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "location to store databases (need ~50GB)\n[default:\
+                      \ /databases]"
+                    synonyms:
+                    - -d
+                    - --db-dir
+                    args: !SimpleFlagArg
+                      name: PATH
+                    optional: true
+                  - !Flag
+                    description: location to run atlas
+                    synonyms:
+                    - -w
+                    - --working-dir
+                    args: !SimpleFlagArg
+                      name: PATH
+                    optional: true
+                  - !Flag
+                    description: '[megahit|spades]    assembler  [default: spades]'
+                    synonyms:
+                    - --assembler
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "[metagenome|metatranscriptome]\nsample data type\
+                      \  [default: metagenome]"
+                    synonyms:
+                    - --data-type
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "fastq files are paired-end in one files\n(interleaved)"
+                    synonyms:
+                    - --interleaved-fastq
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: number of threads to use per multi-threaded
+                    synonyms:
+                    - --threads
+                    args: !SimpleFlagArg
+                      name: INTEGER
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: atlas init [OPTIONS] PATH_TO_FASTQ\n\n  Write\
+                    \ the file CONFIG and complete the sample names and paths for\
+                    \ all\n  FASTQ files in PATH.\n\n  PATH is traversed recursively\
+                    \ and adds any file with '.fastq' or '.fq' in\n  the file name\
+                    \ with the file name minus extension as the sample ID.\n\nOptions:\n\
+                    \  -d, --db-dir PATH               location to store databases\
+                    \ (need ~50GB)\n                                  [default: /databases]\n\
+                    \n  -w, --working-dir PATH          location to run atlas\n  --assembler\
+                    \ [megahit|spades]    assembler  [default: spades]\n  --data-type\
+                    \ [metagenome|metatranscriptome]\n                           \
+                    \       sample data type  [default: metagenome]\n  --interleaved-fastq\
+                    \             fastq files are paired-end in one files\n      \
+                    \                            (interleaved)\n\n  --threads INTEGER\
+                    \               number of threads to use per multi-threaded\n\
+                    \                                  job\n\n  --skip-qc        \
+                    \               Skip QC, if reads are already pre-processed\n\
+                    \  -h, --help                      Show this message and exit.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - atlas
+                  - run
+                  positional: []
+                  named:
+                  - !Flag
+                    description: location to run atlas.
+                    synonyms:
+                    - -w
+                    - --working-dir
+                    args: !SimpleFlagArg
+                      name: PATH
+                    optional: true
+                  - !Flag
+                    description: config-file generated with 'atlas init'
+                    synonyms:
+                    - -c
+                    - --config-file
+                    args: !SimpleFlagArg
+                      name: PATH
+                    optional: true
+                  - !Flag
+                    description: "use at most this many jobs in parallel (see cluster\n\
+                      submission for mor details).  [default: 8]"
+                    synonyms:
+                    - -j
+                    - --jobs
+                    args: !SimpleFlagArg
+                      name: INTEGER
+                    optional: true
+                  - !Flag
+                    description: snakemake profile e.g. for cluster execution.
+                    synonyms:
+                    - --profile
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: 'Test execution.  [default: False]'
+                    synonyms:
+                    - -n
+                    - --dryrun
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: atlas run [OPTIONS]\n                 [[qc|assembly|binning|genomes|genecatalog|None|all]]\n\
+                    \                 [SNAKEMAKE_ARGS]...\n\n  Runs the ATLAS pipline\n\
+                    \n  By default all steps are executed but a sub-workflow can be\
+                    \ specified.\n  Needs a config-file and expects to find a sample\
+                    \ table in the working-\n  directory. Both can be generated with\
+                    \ 'atlas init'\n\n  Most snakemake arguments can be appended to\
+                    \ the command for more info see\n  'snakemake --help'\n\n  For\
+                    \ more details, see: https://metagenome-atlas.readthedocs.io\n\
+                    \nOptions:\n  -w, --working-dir PATH  location to run atlas.\n\
+                    \  -c, --config-file PATH  config-file generated with 'atlas init'\n\
+                    \  -j, --jobs INTEGER      use at most this many jobs in parallel\
+                    \ (see cluster\n                          submission for mor details).\
+                    \  [default: 8]\n\n  --profile TEXT          snakemake profile\
+                    \ e.g. for cluster execution.\n  -n, --dryrun            Test\
+                    \ execution.  [default: False]\n  -h, --help              Show\
+                    \ this message and exit.\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: Show the version and exit.
+                  synonyms:
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "Usage: atlas [OPTIONS] COMMAND [ARGS]...\n\n  ATLAS -\
+                  \ workflows for assembly, annotation, and genomic binning of\n \
+                  \ metagenomic and metatranscriptomic data.\n\n  For updates and\
+                  \ reporting issues, see: https://github.com/metagenome-\n  atlas/atlas\n\
+                  \nOptions:\n  --version   Show the version and exit.\n  -h, --help\
+                  \  Show this message and exit.\n\nCommands:\n  download  download\
+                  \ reference files (need ~50GB)\n  init      prepare configuration\
+                  \ file and sample table for atlas run\n  run       run atlas main\
+                  \ workflow\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -143,12 +407,9 @@ subcommands:
                 \ --db-dir PATH   location to store databases  [required]\n  -j, --jobs\
                 \ INTEGER  number of simultaneous downloads  [default: 1]\n  -h, --help\
                 \          Show this message and exit.\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - atlas
-              - atlas/atlas
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -176,9 +437,7 @@ subcommands:
                 \ for help.\n\nError: No such command 'atlas/atlas'.\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - atlas
-              - init
+              command: *id006
               positional:
               - !Positional
                 description: --skip-qc                       Skip QC, if reads are
@@ -260,9 +519,7 @@ subcommands:
                 \                      Show this message and exit.\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - atlas
-              - run
+              command: *id007
               positional: []
               named:
               - !Flag
@@ -333,20 +590,9 @@ subcommands:
                 \ exit.\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: Show this message and exit.
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: Show the version and exit.
-              synonyms:
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "Usage: atlas [OPTIONS] COMMAND [ARGS]...\n\n  ATLAS - workflows\
               \ for assembly, annotation, and genomic binning of\n  metagenomic and\
               \ metatranscriptomic data.\n\n  For updates and reporting issues, see:\
@@ -393,7 +639,7 @@ subcommands:
             name: ARGS
             optional: true
           named: []
-          parent: *id003
+          parent: *id008
           subcommands: []
           usage: []
           help_flag:
@@ -454,7 +700,7 @@ subcommands:
             args: !SimpleFlagArg
               name: INTEGER
             optional: true
-          parent: *id003
+          parent: *id008
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -526,7 +772,7 @@ subcommands:
             - --dryrun
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id008
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -601,7 +847,7 @@ subcommands:
         name: ARGS
         optional: true
       named: []
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag:
@@ -662,7 +908,7 @@ subcommands:
         args: !SimpleFlagArg
           name: INTEGER
         optional: true
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -733,7 +979,7 @@ subcommands:
         - --dryrun
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -808,7 +1054,7 @@ subcommands:
     name: ARGS
     optional: true
   named: []
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag:
@@ -867,7 +1113,7 @@ subcommands:
     args: !SimpleFlagArg
       name: INTEGER
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -937,7 +1183,7 @@ subcommands:
     - --dryrun
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag

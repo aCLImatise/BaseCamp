@@ -690,7 +690,7 @@ subcommands:
             - -n
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
             named: []
@@ -700,15 +700,7 @@ subcommands:
               command: *id002
               positional:
               - !Positional
-                description: "-i <path> [-1 <path>] [-2 <path>] [-r <path>] [-o <path>]\
-                  \ [-x]\n[-t <positive integer>] [-s] [--mimicBT2] [--mimicStrictBT2]\n\
-                  [--minScoreFrac <ratio in (0,1]>] [--maxMMPExtension <positive\n\
-                  integer > 1>] [--consensusSlack <ratio in (0,1]>] [--ma\n<positive\
-                  \ integer>] [--mm <negative integer>] [--go <positive\ninteger>]\
-                  \ [--ge <positive integer>] [--dpBandwidth <positive\ninteger>]\
-                  \ [--noOrphans] [--noDovetail] [--recoverOrphans]\n[--hardFilter]\
-                  \ [-u] [-q] [-c] [-f] [--noStrictCheck]\n[--noSensitive] [-z <double\
-                  \ in [0,1]>] [-m <positive integer>]\n[-n] [--] [--version] [-h]"
+                description: ''
                 position: 0
                 name: rapmap
                 optional: false
@@ -934,7 +926,343 @@ subcommands:
                 - -n
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: "-i <path> [-1 <path>] [-2 <path>] [-r <path>] [-o\
+                      \ <path>] [-x]\n[-t <positive integer>] [-s] [--mimicBT2] [--mimicStrictBT2]\n\
+                      [--minScoreFrac <ratio in (0,1]>] [--maxMMPExtension <positive\n\
+                      integer > 1>] [--consensusSlack <ratio in (0,1]>] [--ma\n<positive\
+                      \ integer>] [--mm <negative integer>] [--go <positive\ninteger>]\
+                      \ [--ge <positive integer>] [--dpBandwidth <positive\ninteger>]\
+                      \ [--noOrphans] [--noDovetail] [--recoverOrphans]\n[--hardFilter]\
+                      \ [-u] [-q] [-c] [-f] [--noStrictCheck]\n[--noSensitive] [-z\
+                      \ <double in [0,1]>] [-m <positive integer>]\n[-n] [--] [--version]\
+                      \ [-h]"
+                    position: 0
+                    name: rapmap
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ",  --index <path>\n(required)  The location of the\
+                      \ quasiindex"
+                    synonyms:
+                    - -i
+                    args: !SimpleFlagArg
+                      name: path
+                    optional: true
+                  - !Flag
+                    description: ",  --leftMates <path>\nThe location of the left\
+                      \ paired-end reads"
+                    synonyms:
+                    - '-1'
+                    args: !SimpleFlagArg
+                      name: path
+                    optional: true
+                  - !Flag
+                    description: ",  --rightMates <path>\nThe location of the right\
+                      \ paired-end reads"
+                    synonyms:
+                    - '-2'
+                    args: !SimpleFlagArg
+                      name: path
+                    optional: true
+                  - !Flag
+                    description: ",  --unmatedReads <path>\nThe location of single-end\
+                      \ reads"
+                    synonyms:
+                    - -r
+                    args: !SimpleFlagArg
+                      name: path
+                    optional: true
+                  - !Flag
+                    description: ",  --output <path>\nThe output file (default: stdout)"
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: path
+                    optional: true
+                  - !Flag
+                    description: ",  --compressed\nCompress the output SAM file using\
+                      \ zlib"
+                    synonyms:
+                    - -x
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ",  --numThreads <positive integer>\nNumber of threads\
+                      \ to use"
+                    synonyms:
+                    - -t
+                    args: !SimpleFlagArg
+                      name: positive integer
+                    optional: true
+                  - !Flag
+                    description: ",  --selAln\nPerform selective alignment to validate\
+                      \ mapping hits"
+                    synonyms:
+                    - -s
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "[only with selAln]: mimic Bowtie2-like default params\
+                      \ but with\n--no-mixed and --no-discordant"
+                    synonyms:
+                    - --mimicBT2
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "[only with selAln]: mimic strict Bowtie2-like default\
+                      \ params (e.g.\nlike those recommended for running RSEM)"
+                    synonyms:
+                    - --mimicStrictBT2
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "<ratio in (0,1]>\n[only with selAln]: minimum score\
+                      \ fraction for a valid alignment"
+                    synonyms:
+                    - --minScoreFrac
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "1>\n[only with selAln or with chaining]: maximum\
+                      \ allowable MMP extension"
+                    synonyms:
+                    - --maxMMPExtension
+                    args: !SimpleFlagArg
+                      name: 'positive integer '
+                    optional: true
+                  - !Flag
+                    description: "<ratio in (0,1]>\n[only with selAln]: consensus\
+                      \ slack to apply during mapping"
+                    synonyms:
+                    - --consensusSlack
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: '[only with selAln]: match score'
+                    synonyms:
+                    - --ma
+                    args: !SimpleFlagArg
+                      name: positive integer
+                    optional: true
+                  - !Flag
+                    description: '[only with selAln]: mismatch penalty'
+                    synonyms:
+                    - --mm
+                    args: !SimpleFlagArg
+                      name: negative integer
+                    optional: true
+                  - !Flag
+                    description: '[only with selAln]: gap open penalty'
+                    synonyms:
+                    - --go
+                    args: !SimpleFlagArg
+                      name: positive integer
+                    optional: true
+                  - !Flag
+                    description: '[only with selAln]: gap extend penalty'
+                    synonyms:
+                    - --ge
+                    args: !SimpleFlagArg
+                      name: positive integer
+                    optional: true
+                  - !Flag
+                    description: '[only with selAln]: bandwidth to use in extension
+                      alignment'
+                    synonyms:
+                    - --dpBandwidth
+                    args: !SimpleFlagArg
+                      name: positive integer
+                    optional: true
+                  - !Flag
+                    description: discard orphaned mappings
+                    synonyms:
+                    - --noOrphans
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: discard dovetailing mappings
+                    synonyms:
+                    - --noDovetail
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: perform orphan recovery to try and recover endpoints
+                      of orphaned reads
+                    synonyms:
+                    - --recoverOrphans
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "[only with selAln]: apply hard filter to only return\
+                      \ best alignments\nfor each read"
+                    synonyms:
+                    - --hardFilter
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ",  --writeUnmapped\ninclude unmapped reads in the\
+                      \ output SAM records"
+                    synonyms:
+                    - -u
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ",  --quiet\nDisable all console output apart from\
+                      \ warnings and errors"
+                    synonyms:
+                    - -q
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ",  --chaining\nScore the hits to find the best chain"
+                    synonyms:
+                    - -c
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ",  --fuzzyIntersection\nFind paired-end mapping\
+                      \ locations using fuzzy intersection"
+                    synonyms:
+                    - -f
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Don't perform extra checks to try and assure that\
+                      \ only equally \"best\"\nmappings for a read are reported"
+                    synonyms:
+                    - --noStrictCheck
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Perform a less sensitive quasi-mapping by enabling
+                      NIP skipping
+                    synonyms:
+                    - --noSensitive
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "<double in [0,1]>,  --quasiCoverage <double in [0,1]>\n\
+                      Require that this fraction of a read is covered by MMPs before\
+                      \ it is\nconsidered mappable."
+                    synonyms:
+                    - -z
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ",  --maxNumHits <positive integer>\nReads mapping\
+                      \ to more than this many loci are discarded"
+                    synonyms:
+                    - -m
+                    args: !SimpleFlagArg
+                      name: positive integer
+                    optional: true
+                  - !Flag
+                    description: ",  --noOutput\nDon't write out any alignments (for\
+                      \ speed testing purposes)"
+                    synonyms:
+                    - -n
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ",  --help\nDisplays usage information and exits."
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: Displays version information and exits.
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "\nUSAGE: \n\n   rapmap  -i <path> [-1 <path>] [-2 <path>]\
+                    \ [-r <path>] [-o <path>] [-x]\n           [-t <positive integer>]\
+                    \ [-s] [--mimicBT2] [--mimicStrictBT2]\n           [--minScoreFrac\
+                    \ <ratio in (0,1]>] [--maxMMPExtension <positive\n           integer\
+                    \ > 1>] [--consensusSlack <ratio in (0,1]>] [--ma\n          \
+                    \ <positive integer>] [--mm <negative integer>] [--go <positive\n\
+                    \           integer>] [--ge <positive integer>] [--dpBandwidth\
+                    \ <positive\n           integer>] [--noOrphans] [--noDovetail]\
+                    \ [--recoverOrphans]\n           [--hardFilter] [-u] [-q] [-c]\
+                    \ [-f] [--noStrictCheck]\n           [--noSensitive] [-z <double\
+                    \ in [0,1]>] [-m <positive integer>]\n           [-n] [--] [--version]\
+                    \ [-h]\n\n\nWhere: \n\n   -i <path>,  --index <path>\n     (required)\
+                    \  The location of the quasiindex\n\n   -1 <path>,  --leftMates\
+                    \ <path>\n     The location of the left paired-end reads\n\n \
+                    \  -2 <path>,  --rightMates <path>\n     The location of the right\
+                    \ paired-end reads\n\n   -r <path>,  --unmatedReads <path>\n \
+                    \    The location of single-end reads\n\n   -o <path>,  --output\
+                    \ <path>\n     The output file (default: stdout)\n\n   -x,  --compressed\n\
+                    \     Compress the output SAM file using zlib\n\n   -t <positive\
+                    \ integer>,  --numThreads <positive integer>\n     Number of threads\
+                    \ to use\n\n   -s,  --selAln\n     Perform selective alignment\
+                    \ to validate mapping hits\n\n   --mimicBT2\n     [only with selAln]:\
+                    \ mimic Bowtie2-like default params but with\n     --no-mixed\
+                    \ and --no-discordant\n\n   --mimicStrictBT2\n     [only with\
+                    \ selAln]: mimic strict Bowtie2-like default params (e.g.\n  \
+                    \   like those recommended for running RSEM)\n\n   --minScoreFrac\
+                    \ <ratio in (0,1]>\n     [only with selAln]: minimum score fraction\
+                    \ for a valid alignment\n\n   --maxMMPExtension <positive integer\
+                    \ > 1>\n     [only with selAln or with chaining]: maximum allowable\
+                    \ MMP extension\n\n   --consensusSlack <ratio in (0,1]>\n    \
+                    \ [only with selAln]: consensus slack to apply during mapping\n\
+                    \n   --ma <positive integer>\n     [only with selAln]: match score\n\
+                    \n   --mm <negative integer>\n     [only with selAln]: mismatch\
+                    \ penalty\n\n   --go <positive integer>\n     [only with selAln]:\
+                    \ gap open penalty\n\n   --ge <positive integer>\n     [only with\
+                    \ selAln]: gap extend penalty\n\n   --dpBandwidth <positive integer>\n\
+                    \     [only with selAln]: bandwidth to use in extension alignment\n\
+                    \n   --noOrphans\n     discard orphaned mappings\n\n   --noDovetail\n\
+                    \     discard dovetailing mappings\n\n   --recoverOrphans\n  \
+                    \   perform orphan recovery to try and recover endpoints of orphaned\
+                    \ reads\n\n   --hardFilter\n     [only with selAln]: apply hard\
+                    \ filter to only return best alignments\n     for each read\n\n\
+                    \   -u,  --writeUnmapped\n     include unmapped reads in the output\
+                    \ SAM records\n\n   -q,  --quiet\n     Disable all console output\
+                    \ apart from warnings and errors\n\n   -c,  --chaining\n     Score\
+                    \ the hits to find the best chain\n\n   -f,  --fuzzyIntersection\n\
+                    \     Find paired-end mapping locations using fuzzy intersection\n\
+                    \n   --noStrictCheck\n     Don't perform extra checks to try and\
+                    \ assure that only equally \"best\"\n     mappings for a read\
+                    \ are reported\n\n   --noSensitive\n     Perform a less sensitive\
+                    \ quasi-mapping by enabling NIP skipping\n\n   -z <double in [0,1]>,\
+                    \  --quasiCoverage <double in [0,1]>\n     Require that this fraction\
+                    \ of a read is covered by MMPs before it is\n     considered mappable.\n\
+                    \n   -m <positive integer>,  --maxNumHits <positive integer>\n\
+                    \     Reads mapping to more than this many loci are discarded\n\
+                    \n   -n,  --noOutput\n     Don't write out any alignments (for\
+                    \ speed testing purposes)\n\n   --,  --ignore_rest\n     Ignores\
+                    \ the rest of the labeled arguments following this flag.\n\n \
+                    \  --version\n     Displays version information and exits.\n\n\
+                    \   -h,  --help\n     Displays usage information and exits.\n\n\
+                    \n   RapMap Mapper\n\n"
+                  generated_using: &id004
+                  - --help
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "rapmap v0.6.0\n=====================================\n\
+                  \nThere are currently 2 rapmap subcommands\n    quasiindex --- builds\
+                  \ a quasi-mapping index on the reference\n    quasimap   --- maps\
+                  \ reads to a quasi-mapping index\n\nRun a corresponding command\
+                  \ \"rapmap <cmd> -h\" for\nmore information on each of the possible\
+                  \ RapMap\ncommands.\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -1008,8 +1336,7 @@ subcommands:
                 \     Displays version information and exits.\n\n   -h,  --help\n\
                 \     Displays usage information and exits.\n\n\n   RapMap Mapper\n\
                 \n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             usage: []
             help_flag:
             usage_flag:

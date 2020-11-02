@@ -52,17 +52,10 @@ subcommands:
             args: !SimpleFlagArg
               name: is
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: "- If true ignore first species in each maf, useful when\
-                \ this\nis a mafFrags result that puts gene id there.\n"
-              synonyms:
-              - -ignoreFirst
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -76,15 +69,56 @@ subcommands:
                 args: !SimpleFlagArg
                   name: is
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: "- If true ignore first species in each maf, useful\
+                    \ when this\nis a mafFrags result that puts gene id there.\n"
+                  synonyms:
+                  - -ignoreFirst
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: not a valid option
+                    synonyms:
+                    - -h
+                    args: !SimpleFlagArg
+                      name: is
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "-h is not a valid option\n"
+                  generated_using: &id004
+                  - -h
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "mafSpeciesList - Scan maf and output all species used\
+                  \ in it.\nusage:\n   mafSpeciesList in.maf out.lst\noptions:\n \
+                  \  -ignoreFirst - If true ignore first species in each maf, useful\
+                  \ when this\n                  is a mafFrags result that puts gene\
+                  \ id there.\n\n"
+                generated_using: &id005 []
               subcommands: []
               usage: []
               help_flag:
               usage_flag:
               version_flag:
               help_text: "-h is not a valid option\n"
-              generated_using: &id004
-              - -h
+              generated_using: *id004
             usage: []
             help_flag:
             usage_flag:
@@ -93,7 +127,7 @@ subcommands:
               usage:\n   mafSpeciesList in.maf out.lst\noptions:\n   -ignoreFirst\
               \ - If true ignore first species in each maf, useful when this\n   \
               \               is a mafFrags result that puts gene id there.\n\n"
-            generated_using: &id005 []
+            generated_using: *id005
           subcommands: []
           usage: []
           help_flag:

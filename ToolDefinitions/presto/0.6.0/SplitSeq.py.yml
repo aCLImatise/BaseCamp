@@ -54,7 +54,7 @@ subcommands:
     args: !SimpleFlagArg
       name: MAX_COUNT
     optional: true
-  parent: &id013 !Command
+  parent: &id014 !Command
     command: *id001
     positional: []
     named: []
@@ -109,7 +109,7 @@ subcommands:
         args: !SimpleFlagArg
           name: MAX_COUNT
         optional: true
-      parent: &id012 !Command
+      parent: &id013 !Command
         command: *id001
         positional: []
         named: []
@@ -165,7 +165,7 @@ subcommands:
             args: !SimpleFlagArg
               name: MAX_COUNT
             optional: true
-          parent: &id003 !Command
+          parent: &id012 !Command
             command: *id001
             positional: []
             named: []
@@ -221,7 +221,900 @@ subcommands:
                 args: !SimpleFlagArg
                   name: MAX_COUNT
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: Splits sequences files by number of records.
+                    position: 0
+                    name: MAX_COUNT
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "A list of FASTA/FASTQ files containing sequences\
+                      \ to\nprocess. (default: None)"
+                    synonyms:
+                    - -s
+                    args: !RepeatFlagArg
+                      name: SEQ_FILES
+                    optional: true
+                  - !Flag
+                    description: "Specify to changes the output directory to the\n\
+                      location specified. The input file directory is used\nif this\
+                      \ is not specified. (default: None)"
+                    synonyms:
+                    - --outdir
+                    args: !SimpleFlagArg
+                      name: OUT_DIR
+                    optional: true
+                  - !Flag
+                    description: "Changes the prefix of the successfully processed\n\
+                      output file to the string specified. May not be\nspecified with\
+                      \ multiple input files. (default: None)"
+                    synonyms:
+                    - --outname
+                    args: !SimpleFlagArg
+                      name: OUT_NAME
+                    optional: true
+                  - !Flag
+                    description: "Specify to force output as FASTA rather than FASTQ.\n\
+                      (default: None)"
+                    synonyms:
+                    - --fasta
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Maximum number of sequences in each new file (default:\n\
+                      None)\n"
+                    synonyms:
+                    - -n
+                    args: !SimpleFlagArg
+                      name: MAX_COUNT
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: SplitSeq.py count [--version] [-h] -s SEQ_FILES\
+                    \ [SEQ_FILES ...]\n                         [--outdir OUT_DIR]\
+                    \ [--outname OUT_NAME] [--fasta] -n\n                        \
+                    \ MAX_COUNT\n\nSplits sequences files by number of records.\n\n\
+                    help:\n  --version             show program's version number and\
+                    \ exit\n  -h, --help            show this help message and exit\n\
+                    \nstandard arguments:\n  -s SEQ_FILES [SEQ_FILES ...]\n      \
+                    \                  A list of FASTA/FASTQ files containing sequences\
+                    \ to\n                        process. (default: None)\n  --outdir\
+                    \ OUT_DIR      Specify to changes the output directory to the\n\
+                    \                        location specified. The input file directory\
+                    \ is used\n                        if this is not specified. (default:\
+                    \ None)\n  --outname OUT_NAME    Changes the prefix of the successfully\
+                    \ processed\n                        output file to the string\
+                    \ specified. May not be\n                        specified with\
+                    \ multiple input files. (default: None)\n  --fasta           \
+                    \    Specify to force output as FASTA rather than FASTQ.\n   \
+                    \                     (default: None)\n\nsplitting arguments:\n\
+                    \  -n MAX_COUNT          Maximum number of sequences in each new\
+                    \ file (default:\n                        None)\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - SplitSeq.py
+                  - group
+                  positional: []
+                  named:
+                  - !Flag
+                    description: "A list of FASTA/FASTQ files containing sequences\
+                      \ to\nprocess. (default: None)"
+                    synonyms:
+                    - -s
+                    args: !RepeatFlagArg
+                      name: SEQ_FILES
+                    optional: true
+                  - !Flag
+                    description: "Specify to changes the output directory to the\n\
+                      location specified. The input file directory is used\nif this\
+                      \ is not specified. (default: None)"
+                    synonyms:
+                    - --outdir
+                    args: !SimpleFlagArg
+                      name: OUT_DIR
+                    optional: true
+                  - !Flag
+                    description: "Changes the prefix of the successfully processed\n\
+                      output file to the string specified. May not be\nspecified with\
+                      \ multiple input files. (default: None)"
+                    synonyms:
+                    - --outname
+                    args: !SimpleFlagArg
+                      name: OUT_NAME
+                    optional: true
+                  - !Flag
+                    description: "Specify to force output as FASTA rather than FASTQ.\n\
+                      (default: None)"
+                    synonyms:
+                    - --fasta
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "DELIMITER DELIMITER\nA list of the three delimiters\
+                      \ that separate\nannotation blocks, field names and values,\
+                      \ and values\nwithin a field, respectively. (default: ('|',\
+                      \ '=',\n','))"
+                    synonyms:
+                    - --delim
+                    args: !SimpleFlagArg
+                      name: DELIMITER
+                    optional: true
+                  - !Flag
+                    description: "Annotation field to split sequence files by (default:\n\
+                      None)"
+                    synonyms:
+                    - -f
+                    args: !SimpleFlagArg
+                      name: FIELD
+                    optional: true
+                  - !Flag
+                    description: "Specify to define the split field as numeric and\
+                      \ group\nsequences by value. (default: None)\n"
+                    synonyms:
+                    - --num
+                    args: !SimpleFlagArg
+                      name: THRESHOLD
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: SplitSeq.py group [--version] [-h] -s SEQ_FILES\
+                    \ [SEQ_FILES ...]\n                         [--outdir OUT_DIR]\
+                    \ [--outname OUT_NAME] [--fasta]\n                         [--delim\
+                    \ DELIMITER DELIMITER DELIMITER] -f FIELD\n                  \
+                    \       [--num THRESHOLD]\n\nSplits sequences files by annotation.\n\
+                    \nhelp:\n  --version             show program's version number\
+                    \ and exit\n  -h, --help            show this help message and\
+                    \ exit\n\nstandard arguments:\n  -s SEQ_FILES [SEQ_FILES ...]\n\
+                    \                        A list of FASTA/FASTQ files containing\
+                    \ sequences to\n                        process. (default: None)\n\
+                    \  --outdir OUT_DIR      Specify to changes the output directory\
+                    \ to the\n                        location specified. The input\
+                    \ file directory is used\n                        if this is not\
+                    \ specified. (default: None)\n  --outname OUT_NAME    Changes\
+                    \ the prefix of the successfully processed\n                 \
+                    \       output file to the string specified. May not be\n    \
+                    \                    specified with multiple input files. (default:\
+                    \ None)\n  --fasta               Specify to force output as FASTA\
+                    \ rather than FASTQ.\n                        (default: None)\n\
+                    \  --delim DELIMITER DELIMITER DELIMITER\n                   \
+                    \     A list of the three delimiters that separate\n         \
+                    \               annotation blocks, field names and values, and\
+                    \ values\n                        within a field, respectively.\
+                    \ (default: ('|', '=',\n                        ','))\n\nsplitting\
+                    \ arguments:\n  -f FIELD              Annotation field to split\
+                    \ sequence files by (default:\n                        None)\n\
+                    \  --num THRESHOLD       Specify to define the split field as\
+                    \ numeric and group\n                        sequences by value.\
+                    \ (default: None)\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - SplitSeq.py
+                  - sorted
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: SplitSeq.py
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: SplitSeq.py [--version] [-h]  ...\nSplitSeq.py:\
+                    \ error: argument : invalid choice: 'sorted' (choose from 'count',\
+                    \ 'group', 'sample', 'samplepair', 'sort', 'select')\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - SplitSeq.py
+                  - sample
+                  positional: []
+                  named:
+                  - !Flag
+                    description: "A list of FASTA/FASTQ files containing sequences\
+                      \ to\nprocess. (default: None)"
+                    synonyms:
+                    - -s
+                    args: !RepeatFlagArg
+                      name: SEQ_FILES
+                    optional: true
+                  - !Flag
+                    description: "Specify to changes the output directory to the\n\
+                      location specified. The input file directory is used\nif this\
+                      \ is not specified. (default: None)"
+                    synonyms:
+                    - --outdir
+                    args: !SimpleFlagArg
+                      name: OUT_DIR
+                    optional: true
+                  - !Flag
+                    description: "Changes the prefix of the successfully processed\n\
+                      output file to the string specified. May not be\nspecified with\
+                      \ multiple input files. (default: None)"
+                    synonyms:
+                    - --outname
+                    args: !SimpleFlagArg
+                      name: OUT_NAME
+                    optional: true
+                  - !Flag
+                    description: "Specify to force output as FASTA rather than FASTQ.\n\
+                      (default: None)"
+                    synonyms:
+                    - --fasta
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "DELIMITER DELIMITER\nA list of the three delimiters\
+                      \ that separate\nannotation blocks, field names and values,\
+                      \ and values\nwithin a field, respectively. (default: ('|',\
+                      \ '=',\n','))"
+                    synonyms:
+                    - --delim
+                    args: !SimpleFlagArg
+                      name: DELIMITER
+                    optional: true
+                  - !Flag
+                    description: "Maximum number of sequences to sample from each\
+                      \ file,\nfield or annotation set. The default behavior, without\n\
+                      the -f argument, is to sample from the complete set of\nsequences\
+                      \ in the input file. (default: None)"
+                    synonyms:
+                    - -n
+                    args: !RepeatFlagArg
+                      name: MAX_COUNT
+                    optional: true
+                  - !Flag
+                    description: "The annotation field for sampling criteria. If the\
+                      \ -u\nargument is not also specified, then sampling will be\n\
+                      performed for each unique annotation value in the\ndeclared\
+                      \ field separately. (default: None)"
+                    synonyms:
+                    - -f
+                    args: !SimpleFlagArg
+                      name: FIELD
+                    optional: true
+                  - !Flag
+                    description: "If specified, sampling will be restricted to sequences\n\
+                      that contain one of the declared annotation values in\nthe specified\
+                      \ field. Requires the -f argument.\n(default: None)\n"
+                    synonyms:
+                    - -u
+                    args: !RepeatFlagArg
+                      name: VALUES
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: SplitSeq.py sample [--version] [-h] -s SEQ_FILES\
+                    \ [SEQ_FILES ...]\n                          [--outdir OUT_DIR]\
+                    \ [--outname OUT_NAME] [--fasta]\n                          [--delim\
+                    \ DELIMITER DELIMITER DELIMITER] -n MAX_COUNT\n              \
+                    \            [MAX_COUNT ...] [-f FIELD] [-u VALUES [VALUES ...]]\n\
+                    \nRandomly samples from unpaired sequences files.\n\nhelp:\n \
+                    \ --version             show program's version number and exit\n\
+                    \  -h, --help            show this help message and exit\n\nstandard\
+                    \ arguments:\n  -s SEQ_FILES [SEQ_FILES ...]\n               \
+                    \         A list of FASTA/FASTQ files containing sequences to\n\
+                    \                        process. (default: None)\n  --outdir\
+                    \ OUT_DIR      Specify to changes the output directory to the\n\
+                    \                        location specified. The input file directory\
+                    \ is used\n                        if this is not specified. (default:\
+                    \ None)\n  --outname OUT_NAME    Changes the prefix of the successfully\
+                    \ processed\n                        output file to the string\
+                    \ specified. May not be\n                        specified with\
+                    \ multiple input files. (default: None)\n  --fasta           \
+                    \    Specify to force output as FASTA rather than FASTQ.\n   \
+                    \                     (default: None)\n  --delim DELIMITER DELIMITER\
+                    \ DELIMITER\n                        A list of the three delimiters\
+                    \ that separate\n                        annotation blocks, field\
+                    \ names and values, and values\n                        within\
+                    \ a field, respectively. (default: ('|', '=',\n              \
+                    \          ','))\n\nsplitting arguments:\n  -n MAX_COUNT [MAX_COUNT\
+                    \ ...]\n                        Maximum number of sequences to\
+                    \ sample from each file,\n                        field or annotation\
+                    \ set. The default behavior, without\n                       \
+                    \ the -f argument, is to sample from the complete set of\n   \
+                    \                     sequences in the input file. (default: None)\n\
+                    \  -f FIELD              The annotation field for sampling criteria.\
+                    \ If the -u\n                        argument is not also specified,\
+                    \ then sampling will be\n                        performed for\
+                    \ each unique annotation value in the\n                      \
+                    \  declared field separately. (default: None)\n  -u VALUES [VALUES\
+                    \ ...]\n                        If specified, sampling will be\
+                    \ restricted to sequences\n                        that contain\
+                    \ one of the declared annotation values in\n                 \
+                    \       the specified field. Requires the -f argument.\n     \
+                    \                   (default: None)\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - SplitSeq.py
+                  - samplepair
+                  positional: []
+                  named:
+                  - !Flag
+                    description: "An ordered list of FASTA/FASTQ files containing\n\
+                      head/primary sequences. (default: None)"
+                    synonyms:
+                    - '-1'
+                    args: !RepeatFlagArg
+                      name: SEQ_FILES_1
+                    optional: true
+                  - !Flag
+                    description: "An ordered list of FASTA/FASTQ files containing\n\
+                      tail/secondary sequences. (default: None)"
+                    synonyms:
+                    - '-2'
+                    args: !RepeatFlagArg
+                      name: SEQ_FILES_2
+                    optional: true
+                  - !Flag
+                    description: "Specify to changes the output directory to the\n\
+                      location specified. The input file directory is used\nif this\
+                      \ is not specified. (default: None)"
+                    synonyms:
+                    - --outdir
+                    args: !SimpleFlagArg
+                      name: OUT_DIR
+                    optional: true
+                  - !Flag
+                    description: "Changes the prefix of the successfully processed\n\
+                      output file to the string specified. May not be\nspecified with\
+                      \ multiple input files. (default: None)"
+                    synonyms:
+                    - --outname
+                    args: !SimpleFlagArg
+                      name: OUT_NAME
+                    optional: true
+                  - !Flag
+                    description: "Specify to force output as FASTA rather than FASTQ.\n\
+                      (default: None)"
+                    synonyms:
+                    - --fasta
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "DELIMITER DELIMITER\nA list of the three delimiters\
+                      \ that separate\nannotation blocks, field names and values,\
+                      \ and values\nwithin a field, respectively. (default: ('|',\
+                      \ '=',\n','))"
+                    synonyms:
+                    - --delim
+                    args: !SimpleFlagArg
+                      name: DELIMITER
+                    optional: true
+                  - !Flag
+                    description: "Maximum number of paired sequences to sample from\
+                      \ each\nset of files, fields or annotations. The default\nbehavior,\
+                      \ without the -f argument, is to sample from\nthe complete set\
+                      \ of paired sequences in the input\nfiles. (default: None)"
+                    synonyms:
+                    - -n
+                    args: !RepeatFlagArg
+                      name: MAX_COUNT
+                    optional: true
+                  - !Flag
+                    description: "The annotation field for sampling criteria. If the\
+                      \ -u\nargument is not also specified, then sampling will be\n\
+                      performed for each unique annotation value in the\ndeclared\
+                      \ field separately. (default: None)"
+                    synonyms:
+                    - -f
+                    args: !SimpleFlagArg
+                      name: FIELD
+                    optional: true
+                  - !Flag
+                    description: "If specified, sampling will be restricted to sequences\n\
+                      that contain one of the declared annotation values in\nthe specified\
+                      \ field. Requires the -f argument.\n(default: None)"
+                    synonyms:
+                    - -u
+                    args: !RepeatFlagArg
+                      name: VALUES
+                    optional: true
+                  - !Flag
+                    description: "The format of the sequence identifier which defines\n\
+                      shared coordinate information across paired read\nfiles. (default:\
+                      \ presto)\n"
+                    synonyms:
+                    - --coord
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? presto
+                        ? "454"
+                        ? sra
+                        ? illumina
+                        ? solexa
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: SplitSeq.py samplepair [--version] [-h] -1 SEQ_FILES_1\n\
+                    \                              [SEQ_FILES_1 ...] -2 SEQ_FILES_2\n\
+                    \                              [SEQ_FILES_2 ...] [--outdir OUT_DIR]\n\
+                    \                              [--outname OUT_NAME] [--fasta]\n\
+                    \                              [--delim DELIMITER DELIMITER DELIMITER]\
+                    \ -n\n                              MAX_COUNT [MAX_COUNT ...]\
+                    \ [-f FIELD]\n                              [-u VALUES [VALUES\
+                    \ ...]]\n                              [--coord {illumina,solexa,sra,454,presto}]\n\
+                    \nRandomly samples from paired-end sequences files.\n\nhelp:\n\
+                    \  --version             show program's version number and exit\n\
+                    \  -h, --help            show this help message and exit\n\nstandard\
+                    \ arguments:\n  -1 SEQ_FILES_1 [SEQ_FILES_1 ...]\n           \
+                    \             An ordered list of FASTA/FASTQ files containing\n\
+                    \                        head/primary sequences. (default: None)\n\
+                    \  -2 SEQ_FILES_2 [SEQ_FILES_2 ...]\n                        An\
+                    \ ordered list of FASTA/FASTQ files containing\n             \
+                    \           tail/secondary sequences. (default: None)\n  --outdir\
+                    \ OUT_DIR      Specify to changes the output directory to the\n\
+                    \                        location specified. The input file directory\
+                    \ is used\n                        if this is not specified. (default:\
+                    \ None)\n  --outname OUT_NAME    Changes the prefix of the successfully\
+                    \ processed\n                        output file to the string\
+                    \ specified. May not be\n                        specified with\
+                    \ multiple input files. (default: None)\n  --fasta           \
+                    \    Specify to force output as FASTA rather than FASTQ.\n   \
+                    \                     (default: None)\n  --delim DELIMITER DELIMITER\
+                    \ DELIMITER\n                        A list of the three delimiters\
+                    \ that separate\n                        annotation blocks, field\
+                    \ names and values, and values\n                        within\
+                    \ a field, respectively. (default: ('|', '=',\n              \
+                    \          ','))\n\nsampling arguments:\n  -n MAX_COUNT [MAX_COUNT\
+                    \ ...]\n                        Maximum number of paired sequences\
+                    \ to sample from each\n                        set of files, fields\
+                    \ or annotations. The default\n                        behavior,\
+                    \ without the -f argument, is to sample from\n               \
+                    \         the complete set of paired sequences in the input\n\
+                    \                        files. (default: None)\n  -f FIELD  \
+                    \            The annotation field for sampling criteria. If the\
+                    \ -u\n                        argument is not also specified,\
+                    \ then sampling will be\n                        performed for\
+                    \ each unique annotation value in the\n                      \
+                    \  declared field separately. (default: None)\n  -u VALUES [VALUES\
+                    \ ...]\n                        If specified, sampling will be\
+                    \ restricted to sequences\n                        that contain\
+                    \ one of the declared annotation values in\n                 \
+                    \       the specified field. Requires the -f argument.\n     \
+                    \                   (default: None)\n  --coord {illumina,solexa,sra,454,presto}\n\
+                    \                        The format of the sequence identifier\
+                    \ which defines\n                        shared coordinate information\
+                    \ across paired read\n                        files. (default:\
+                    \ presto)\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id009
+                  - SplitSeq.py
+                  - selected
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: SplitSeq.py
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: SplitSeq.py [--version] [-h]  ...\nSplitSeq.py:\
+                    \ error: argument : invalid choice: 'selected' (choose from 'count',\
+                    \ 'group', 'sample', 'samplepair', 'sort', 'select')\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id010
+                  - SplitSeq.py
+                  - sort
+                  positional: []
+                  named:
+                  - !Flag
+                    description: "A list of FASTA/FASTQ files containing sequences\
+                      \ to\nprocess. (default: None)"
+                    synonyms:
+                    - -s
+                    args: !RepeatFlagArg
+                      name: SEQ_FILES
+                    optional: true
+                  - !Flag
+                    description: "Specify to changes the output directory to the\n\
+                      location specified. The input file directory is used\nif this\
+                      \ is not specified. (default: None)"
+                    synonyms:
+                    - --outdir
+                    args: !SimpleFlagArg
+                      name: OUT_DIR
+                    optional: true
+                  - !Flag
+                    description: "Changes the prefix of the successfully processed\n\
+                      output file to the string specified. May not be\nspecified with\
+                      \ multiple input files. (default: None)"
+                    synonyms:
+                    - --outname
+                    args: !SimpleFlagArg
+                      name: OUT_NAME
+                    optional: true
+                  - !Flag
+                    description: "Specify to force output as FASTA rather than FASTQ.\n\
+                      (default: None)"
+                    synonyms:
+                    - --fasta
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "DELIMITER DELIMITER\nA list of the three delimiters\
+                      \ that separate\nannotation blocks, field names and values,\
+                      \ and values\nwithin a field, respectively. (default: ('|',\
+                      \ '=',\n','))"
+                    synonyms:
+                    - --delim
+                    args: !SimpleFlagArg
+                      name: DELIMITER
+                    optional: true
+                  - !Flag
+                    description: "The annotation field to sort sequences by. (default:\n\
+                      None)"
+                    synonyms:
+                    - -f
+                    args: !SimpleFlagArg
+                      name: FIELD
+                    optional: true
+                  - !Flag
+                    description: "Maximum number of sequences in each new file.\n\
+                      (default: None)"
+                    synonyms:
+                    - -n
+                    args: !SimpleFlagArg
+                      name: MAX_COUNT
+                    optional: true
+                  - !Flag
+                    description: "Specify to define the sort field as numeric rather\n\
+                      than textual. (default: False)\n"
+                    synonyms:
+                    - --num
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: SplitSeq.py sort [--version] [-h] -s SEQ_FILES\
+                    \ [SEQ_FILES ...]\n                        [--outdir OUT_DIR]\
+                    \ [--outname OUT_NAME] [--fasta]\n                        [--delim\
+                    \ DELIMITER DELIMITER DELIMITER] -f FIELD\n                  \
+                    \      [-n MAX_COUNT] [--num]\n\nSorts sequences files by annotation.\n\
+                    \nhelp:\n  --version             show program's version number\
+                    \ and exit\n  -h, --help            show this help message and\
+                    \ exit\n\nstandard arguments:\n  -s SEQ_FILES [SEQ_FILES ...]\n\
+                    \                        A list of FASTA/FASTQ files containing\
+                    \ sequences to\n                        process. (default: None)\n\
+                    \  --outdir OUT_DIR      Specify to changes the output directory\
+                    \ to the\n                        location specified. The input\
+                    \ file directory is used\n                        if this is not\
+                    \ specified. (default: None)\n  --outname OUT_NAME    Changes\
+                    \ the prefix of the successfully processed\n                 \
+                    \       output file to the string specified. May not be\n    \
+                    \                    specified with multiple input files. (default:\
+                    \ None)\n  --fasta               Specify to force output as FASTA\
+                    \ rather than FASTQ.\n                        (default: None)\n\
+                    \  --delim DELIMITER DELIMITER DELIMITER\n                   \
+                    \     A list of the three delimiters that separate\n         \
+                    \               annotation blocks, field names and values, and\
+                    \ values\n                        within a field, respectively.\
+                    \ (default: ('|', '=',\n                        ','))\n\nsorting\
+                    \ arguments:\n  -f FIELD              The annotation field to\
+                    \ sort sequences by. (default:\n                        None)\n\
+                    \  -n MAX_COUNT          Maximum number of sequences in each new\
+                    \ file.\n                        (default: None)\n  --num    \
+                    \             Specify to define the sort field as numeric rather\n\
+                    \                        than textual. (default: False)\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id011
+                  - SplitSeq.py
+                  - select
+                  positional: []
+                  named:
+                  - !Flag
+                    description: "A list of FASTA/FASTQ files containing sequences\
+                      \ to\nprocess. (default: None)"
+                    synonyms:
+                    - -s
+                    args: !RepeatFlagArg
+                      name: SEQ_FILES
+                    optional: true
+                  - !Flag
+                    description: "Explicit output file name(s). Note, this argument\n\
+                      cannot be used with the --failed, --outdir, or\n--outname arguments.\
+                      \ If unspecified, then the output\nfilename will be based on\
+                      \ the input filename(s).\n(default: None)"
+                    synonyms:
+                    - -o
+                    args: !RepeatFlagArg
+                      name: OUT_FILES
+                    optional: true
+                  - !Flag
+                    description: "Specify to changes the output directory to the\n\
+                      location specified. The input file directory is used\nif this\
+                      \ is not specified. (default: None)"
+                    synonyms:
+                    - --outdir
+                    args: !SimpleFlagArg
+                      name: OUT_DIR
+                    optional: true
+                  - !Flag
+                    description: "Changes the prefix of the successfully processed\n\
+                      output file to the string specified. May not be\nspecified with\
+                      \ multiple input files. (default: None)"
+                    synonyms:
+                    - --outname
+                    args: !SimpleFlagArg
+                      name: OUT_NAME
+                    optional: true
+                  - !Flag
+                    description: "Specify to force output as FASTA rather than FASTQ.\n\
+                      (default: None)"
+                    synonyms:
+                    - --fasta
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "DELIMITER DELIMITER\nA list of the three delimiters\
+                      \ that separate\nannotation blocks, field names and values,\
+                      \ and values\nwithin a field, respectively. (default: ('|',\
+                      \ '=',\n','))"
+                    synonyms:
+                    - --delim
+                    args: !SimpleFlagArg
+                      name: DELIMITER
+                    optional: true
+                  - !Flag
+                    description: "The annotation field for selection criteria. (default:\n\
+                      None)"
+                    synonyms:
+                    - -f
+                    args: !SimpleFlagArg
+                      name: FIELD
+                    optional: true
+                  - !Flag
+                    description: "A list of values to select for in the specified\
+                      \ field.\nMutually exclusive with -t. (default: None)"
+                    synonyms:
+                    - -u
+                    args: !RepeatFlagArg
+                      name: VALUE_LIST
+                    optional: true
+                  - !Flag
+                    description: "A tab delimited file specifying values to select\
+                      \ for\nin the specified field. The file must be formatted\n\
+                      with the given field name in the header row. Values\nwill be\
+                      \ taken from that column. Mutually exclusive\nwith -u. (default:\
+                      \ None)"
+                    synonyms:
+                    - -t
+                    args: !SimpleFlagArg
+                      name: VALUE_FILE
+                    optional: true
+                  - !Flag
+                    description: "If specified, will perform negative matching. Meaning,\n\
+                      sequences will be selected if they fail to match for\nall specified\
+                      \ values. (default: False)\n"
+                    synonyms:
+                    - --not
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: SplitSeq.py select [--version] [-h] -s SEQ_FILES\
+                    \ [SEQ_FILES ...]\n                          [-o OUT_FILES [OUT_FILES\
+                    \ ...]] [--outdir OUT_DIR]\n                          [--outname\
+                    \ OUT_NAME] [--fasta]\n                          [--delim DELIMITER\
+                    \ DELIMITER DELIMITER] -f FIELD\n                          [-u\
+                    \ VALUE_LIST [VALUE_LIST ...] | -t VALUE_FILE]\n             \
+                    \             [--not]\n\nSelects sequences from sequence files\
+                    \ by annotation.\n\nhelp:\n  --version             show program's\
+                    \ version number and exit\n  -h, --help            show this help\
+                    \ message and exit\n\nstandard arguments:\n  -s SEQ_FILES [SEQ_FILES\
+                    \ ...]\n                        A list of FASTA/FASTQ files containing\
+                    \ sequences to\n                        process. (default: None)\n\
+                    \  -o OUT_FILES [OUT_FILES ...]\n                        Explicit\
+                    \ output file name(s). Note, this argument\n                 \
+                    \       cannot be used with the --failed, --outdir, or\n     \
+                    \                   --outname arguments. If unspecified, then\
+                    \ the output\n                        filename will be based on\
+                    \ the input filename(s).\n                        (default: None)\n\
+                    \  --outdir OUT_DIR      Specify to changes the output directory\
+                    \ to the\n                        location specified. The input\
+                    \ file directory is used\n                        if this is not\
+                    \ specified. (default: None)\n  --outname OUT_NAME    Changes\
+                    \ the prefix of the successfully processed\n                 \
+                    \       output file to the string specified. May not be\n    \
+                    \                    specified with multiple input files. (default:\
+                    \ None)\n  --fasta               Specify to force output as FASTA\
+                    \ rather than FASTQ.\n                        (default: None)\n\
+                    \  --delim DELIMITER DELIMITER DELIMITER\n                   \
+                    \     A list of the three delimiters that separate\n         \
+                    \               annotation blocks, field names and values, and\
+                    \ values\n                        within a field, respectively.\
+                    \ (default: ('|', '=',\n                        ','))\n\nsplitting\
+                    \ arguments:\n  -f FIELD              The annotation field for\
+                    \ selection criteria. (default:\n                        None)\n\
+                    \  -u VALUE_LIST [VALUE_LIST ...]\n                        A list\
+                    \ of values to select for in the specified field.\n          \
+                    \              Mutually exclusive with -t. (default: None)\n \
+                    \ -t VALUE_FILE         A tab delimited file specifying values\
+                    \ to select for\n                        in the specified field.\
+                    \ The file must be formatted\n                        with the\
+                    \ given field name in the header row. Values\n               \
+                    \         will be taken from that column. Mutually exclusive\n\
+                    \                        with -u. (default: None)\n  --not   \
+                    \              If specified, will perform negative matching. Meaning,\n\
+                    \                        sequences will be selected if they fail\
+                    \ to match for\n                        all specified values.\
+                    \ (default: False)\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: show program's version number and exit
+                  synonyms:
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "usage: SplitSeq.py [--version] [-h]  ...\n\nSorts, samples\
+                  \ and splits FASTA/FASTQ sequence files\n\nhelp:\n  --version  \
+                  \ show program's version number and exit\n  -h, --help  show this\
+                  \ help message and exit\n\nsubcommands:\n              Sequence\
+                  \ file operation\n    count     Splits sequences files by number\
+                  \ of records.\n    group     Splits sequences files by annotation.\n\
+                  \    sample    Randomly samples from unpaired sequences files.\n\
+                  \    samplepair\n              Randomly samples from paired-end\
+                  \ sequences files.\n    sort      Sorts sequences files by annotation.\n\
+                  \    select    Selects sequences from sequence files by annotation.\n\
+                  \noutput files:\n    part<part>\n        reads partitioned by count,\
+                  \ where <part> is the partition number.\n    <field>-<value>\n \
+                  \       reads partitioned by annotation <field> and <value>.\n \
+                  \   under-<number>\n        reads partitioned by numeric threshold\
+                  \ where the annotation value is\n        strictly less than the\
+                  \ threshold <number>.\n    atleast-<number>\n        reads partitioned\
+                  \ by numeric threshold where the annotation value is\n        greater\
+                  \ than or equal to the threshold <number>.\n    sorted\n       \
+                  \ reads sorted by annotation value.\n    sorted-part<part>\n   \
+                  \     reads sorted by annotation value and partitioned by count,\
+                  \ where\n        <part> is the partition number.\n    sample<i>-n<count>\n\
+                  \        randomly sampled reads where <i> is a number specifying\
+                  \ the sampling\n        instance and <count> is the number of sampled\
+                  \ reads.\n    selected\n        reads passing selection criteria.\n\
+                  \noutput annotation fields:\n    None\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -257,12 +1150,9 @@ subcommands:
                 \                  (default: None)\n\nsplitting arguments:\n  -n MAX_COUNT\
                 \          Maximum number of sequences in each new file (default:\n\
                 \                        None)\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - SplitSeq.py
-              - group
+              command: *id005
               positional: []
               named:
               - !Flag
@@ -369,9 +1259,7 @@ subcommands:
                 \      sequences by value. (default: None)\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - SplitSeq.py
-              - sorted
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -400,9 +1288,7 @@ subcommands:
                 \ 'sample', 'samplepair', 'sort', 'select')\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - SplitSeq.py
-              - sample
+              command: *id007
               positional: []
               named:
               - !Flag
@@ -533,9 +1419,7 @@ subcommands:
                 \           (default: None)\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - SplitSeq.py
-              - samplepair
+              command: *id008
               positional: []
               named:
               - !Flag
@@ -625,10 +1509,10 @@ subcommands:
                 - --coord
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? illumina
                     ? presto
                     ? "454"
                     ? sra
-                    ? illumina
                     ? solexa
                 optional: true
               parent: *id003
@@ -698,9 +1582,7 @@ subcommands:
                 \                        files. (default: presto)\n"
               generated_using: *id004
             - !Command
-              command: &id009
-              - SplitSeq.py
-              - selected
+              command: *id009
               positional:
               - !Positional
                 description: ''
@@ -729,9 +1611,7 @@ subcommands:
                 \ 'sample', 'samplepair', 'sort', 'select')\n"
               generated_using: *id004
             - !Command
-              command: &id010
-              - SplitSeq.py
-              - sort
+              command: *id010
               positional: []
               named:
               - !Flag
@@ -847,9 +1727,7 @@ subcommands:
                 \ False)\n"
               generated_using: *id004
             - !Command
-              command: &id011
-              - SplitSeq.py
-              - select
+              command: *id011
               positional: []
               named:
               - !Flag
@@ -1001,20 +1879,9 @@ subcommands:
                 \ (default: False)\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: show program's version number and exit
-              synonyms:
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "usage: SplitSeq.py [--version] [-h]  ...\n\nSorts, samples\
               \ and splits FASTA/FASTQ sequence files\n\nhelp:\n  --version   show\
               \ program's version number and exit\n  -h, --help  show this help message\
@@ -1137,7 +2004,7 @@ subcommands:
             args: !SimpleFlagArg
               name: THRESHOLD
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1189,7 +2056,7 @@ subcommands:
             name: SplitSeq.py
             optional: false
           named: []
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1284,7 +2151,7 @@ subcommands:
             args: !RepeatFlagArg
               name: VALUES
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1427,13 +2294,13 @@ subcommands:
             - --coord
             args: !ChoiceFlagArg
               choices: !!set
+                ? solexa
+                ? sra
                 ? illumina
                 ? presto
                 ? "454"
-                ? sra
-                ? solexa
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1506,7 +2373,7 @@ subcommands:
             name: SplitSeq.py
             optional: false
           named: []
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1594,7 +2461,7 @@ subcommands:
             - --num
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1728,7 +2595,7 @@ subcommands:
             - --not
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1910,7 +2777,7 @@ subcommands:
         args: !SimpleFlagArg
           name: THRESHOLD
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1961,7 +2828,7 @@ subcommands:
         name: SplitSeq.py
         optional: false
       named: []
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2055,7 +2922,7 @@ subcommands:
         args: !RepeatFlagArg
           name: VALUES
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2196,13 +3063,13 @@ subcommands:
         - --coord
         args: !ChoiceFlagArg
           choices: !!set
-            ? solexa
-            ? sra
-            ? illumina
             ? presto
+            ? solexa
+            ? illumina
             ? "454"
+            ? sra
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2272,7 +3139,7 @@ subcommands:
         name: SplitSeq.py
         optional: false
       named: []
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2359,7 +3226,7 @@ subcommands:
         - --num
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2491,7 +3358,7 @@ subcommands:
         - --not
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id012
+      parent: *id013
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2666,7 +3533,7 @@ subcommands:
     args: !SimpleFlagArg
       name: THRESHOLD
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2716,7 +3583,7 @@ subcommands:
     name: SplitSeq.py
     optional: false
   named: []
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2807,7 +3674,7 @@ subcommands:
     args: !RepeatFlagArg
       name: VALUES
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2944,13 +3811,13 @@ subcommands:
     - --coord
     args: !ChoiceFlagArg
       choices: !!set
-        presto:
         solexa:
         illumina:
         '454':
         sra:
+        presto:
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -3018,7 +3885,7 @@ subcommands:
     name: SplitSeq.py
     optional: false
   named: []
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -3103,7 +3970,7 @@ subcommands:
     - --num
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -3231,7 +4098,7 @@ subcommands:
     - --not
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id013
+  parent: *id014
   subcommands: []
   usage: []
   help_flag: !Flag

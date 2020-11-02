@@ -1,172 +1,91 @@
 !Command
 command:
-- medaka
-- consensus
-positional:
-- !Positional
-  description: Input alignments.
-  position: 0
-  name: bam
-  optional: false
-- !Positional
-  description: Output file.
-  position: 1
-  name: output
-  optional: false
+- medaka_consensus
+positional: []
 named:
 - !Flag
-  description: 'Verbose logging of debug information. (default: 20)'
+  description: fastx input basecalls (required).
   synonyms:
-  - --debug
+  - -i
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Minimal logging; warnings only). (default: 20)'
+  description: fasta input assembly (required).
   synonyms:
-  - --quiet
+  - -d
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Inference batch size. (default: 100)'
+  description: 'output folder (default: medaka).'
   synonyms:
-  - --batch_size
-  args: !SimpleFlagArg
-    name: BATCH_SIZE
-  optional: true
-- !Flag
-  description: "Genomic regions to analyse, or a bed file. (default:\nNone)"
-  synonyms:
-  - --regions
-  args: !RepeatFlagArg
-    name: REGIONS
-  optional: true
-- !Flag
-  description: 'Chunk length of samples. (default: 10000)'
-  synonyms:
-  - --chunk_len
-  args: !SimpleFlagArg
-    name: CHUNK_LEN
-  optional: true
-- !Flag
-  description: 'Overlap of chunks. (default: 1000)'
-  synonyms:
-  - --chunk_ovlp
-  args: !SimpleFlagArg
-    name: CHUNK_OVLP
-  optional: true
-- !Flag
-  description: "Model to use. {r103_min_high_g345, r103_min_high_g360,\nr103_prom_high_g360,\
-    \ r103_prom_snp_g3210,\nr103_prom_variant_g3210, r10_min_high_g303,\nr10_min_high_g340,\
-    \ r941_min_fast_g303,\nr941_min_high_g303, r941_min_high_g330,\nr941_min_high_g340_rle,\
-    \ r941_min_high_g344,\nr941_min_high_g351, r941_min_high_g360,\nr941_prom_fast_g303,\
-    \ r941_prom_high_g303,\nr941_prom_high_g330, r941_prom_high_g344,\nr941_prom_high_g360,\
-    \ r941_prom_snp_g303,\nr941_prom_snp_g322, r941_prom_snp_g360,\nr941_prom_variant_g303,\
-    \ r941_prom_variant_g322,\nr941_prom_variant_g360} (default: r941_min_high_g360)"
-  synonyms:
-  - --model
-  args: !SimpleFlagArg
-    name: MODEL
-  optional: true
-- !Flag
-  description: 'Disable use of cuDNN model layers. (default: False)'
-  synonyms:
-  - --disable_cudnn
+  - -o
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Number of threads used by inference. (default: 1)'
+  description: "output vcf of changes, and bed file of polished regions.\n(note that\
+    \ this slows down consensus calculation)."
   synonyms:
-  - --threads
-  args: !SimpleFlagArg
-    name: THREADS
-  optional: true
-- !Flag
-  description: "Verify integrity of output file after inference.\n(default: False)"
-  synonyms:
-  - --check_output
+  - -v
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "Save features with consensus probabilities. (default:\nFalse)"
+  description: "medaka model, (default: r941_min_high_g360).\nAvailable: r103_min_high_g345,\
+    \ r103_min_high_g360, r103_prom_high_g360, r103_prom_snp_g3210, r103_prom_variant_g3210,\
+    \ r10_min_high_g303, r10_min_high_g340, r941_min_fast_g303, r941_min_high_g303,\
+    \ r941_min_high_g330, r941_min_high_g340_rle, r941_min_high_g344, r941_min_high_g351,\
+    \ r941_min_high_g360, r941_prom_fast_g303, r941_prom_high_g303, r941_prom_high_g330,\
+    \ r941_prom_high_g344, r941_prom_high_g360, r941_prom_snp_g303, r941_prom_snp_g322,\
+    \ r941_prom_snp_g360, r941_prom_variant_g303, r941_prom_variant_g322, r941_prom_variant_g360.\n\
+    Alternatively a .hdf file from 'medaka train'."
   synonyms:
-  - --save_features
+  - -m
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Read group to select. (default: None)'
+  description: Force overwrite of outputs (default will reuse existing outputs).
   synonyms:
-  - --RG
-  args: !SimpleFlagArg
-    name: READGROUP
+  - -f
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Two-letter tag name. (default: None)'
+  description: 'number of threads with which to create features (default: 1).'
   synonyms:
-  - --tag_name
-  args: !SimpleFlagArg
-    name: TAG_NAME
+  - -t
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Value of tag. (default: None)'
+  description: 'batchsize, controls memory use (default: 100).'
   synonyms:
-  - --tag_value
-  args: !SimpleFlagArg
-    name: TAG_VALUE
-  optional: true
-- !Flag
-  description: 'Keep alignments when tag is missing. (default: False)'
-  synonyms:
-  - --tag_keep_missing
+  - -b
   args: !EmptyFlagArg {}
   optional: true
 parent:
 subcommands: []
 usage: []
 help_flag: !Flag
-  description: show this help message and exit
+  description: show this help text.
   synonyms:
   - -h
-  - --help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
 version_flag:
-help_text: "usage: medaka consensus [-h] [--debug | --quiet] [--batch_size BATCH_SIZE]\n\
-  \                        [--regions REGIONS [REGIONS ...]]\n                   \
-  \     [--chunk_len CHUNK_LEN] [--chunk_ovlp CHUNK_OVLP]\n                      \
-  \  [--model MODEL] [--disable_cudnn] [--RG READGROUP]\n                        [--threads\
-  \ THREADS] [--check_output] [--save_features]\n                        [--tag_name\
-  \ TAG_NAME] [--tag_value TAG_VALUE]\n                        [--tag_keep_missing]\n\
-  \                        bam output\n\npositional arguments:\n  bam            \
-  \       Input alignments.\n  output                Output file.\n\noptional arguments:\n\
-  \  -h, --help            show this help message and exit\n  --debug            \
-  \   Verbose logging of debug information. (default: 20)\n  --quiet             \
-  \  Minimal logging; warnings only). (default: 20)\n  --batch_size BATCH_SIZE\n \
-  \                       Inference batch size. (default: 100)\n  --regions REGIONS\
-  \ [REGIONS ...]\n                        Genomic regions to analyse, or a bed file.\
-  \ (default:\n                        None)\n  --chunk_len CHUNK_LEN\n          \
-  \              Chunk length of samples. (default: 10000)\n  --chunk_ovlp CHUNK_OVLP\n\
-  \                        Overlap of chunks. (default: 1000)\n  --model MODEL   \
-  \      Model to use. {r103_min_high_g345, r103_min_high_g360,\n                \
-  \        r103_prom_high_g360, r103_prom_snp_g3210,\n                        r103_prom_variant_g3210,\
-  \ r10_min_high_g303,\n                        r10_min_high_g340, r941_min_fast_g303,\n\
-  \                        r941_min_high_g303, r941_min_high_g330,\n             \
-  \           r941_min_high_g340_rle, r941_min_high_g344,\n                      \
-  \  r941_min_high_g351, r941_min_high_g360,\n                        r941_prom_fast_g303,\
-  \ r941_prom_high_g303,\n                        r941_prom_high_g330, r941_prom_high_g344,\n\
-  \                        r941_prom_high_g360, r941_prom_snp_g303,\n            \
-  \            r941_prom_snp_g322, r941_prom_snp_g360,\n                        r941_prom_variant_g303,\
-  \ r941_prom_variant_g322,\n                        r941_prom_variant_g360} (default:\
-  \ r941_min_high_g360)\n  --disable_cudnn       Disable use of cuDNN model layers.\
-  \ (default: False)\n  --threads THREADS     Number of threads used by inference.\
-  \ (default: 1)\n  --check_output        Verify integrity of output file after inference.\n\
-  \                        (default: False)\n  --save_features       Save features\
-  \ with consensus probabilities. (default:\n                        False)\n\nread\
-  \ group:\n  Filtering alignments the read group (RG) tag, expected to be string\
-  \ value.\n\n  --RG READGROUP        Read group to select. (default: None)\n\nfilter\
-  \ tag:\n  Filtering alignments by an integer valued tag.\n\n  --tag_name TAG_NAME\
-  \   Two-letter tag name. (default: None)\n  --tag_value TAG_VALUE\n            \
-  \            Value of tag. (default: None)\n  --tag_keep_missing    Keep alignments\
-  \ when tag is missing. (default: False)\n"
+help_text: "\nmedaka 1.0.3\n------------\n\nAssembly polishing via neural networks.\
+  \ The input assembly should be\npreprocessed with racon.\n\nmedaka_consensus [-h]\
+  \ -i <fastx>\n\n    -h  show this help text.\n    -i  fastx input basecalls (required).\n\
+  \    -d  fasta input assembly (required).\n    -o  output folder (default: medaka).\n\
+  \    -v  output vcf of changes, and bed file of polished regions.\n        (note\
+  \ that this slows down consensus calculation).\n    -m  medaka model, (default:\
+  \ r941_min_high_g360).\n        Available: r103_min_high_g345, r103_min_high_g360,\
+  \ r103_prom_high_g360, r103_prom_snp_g3210, r103_prom_variant_g3210, r10_min_high_g303,\
+  \ r10_min_high_g340, r941_min_fast_g303, r941_min_high_g303, r941_min_high_g330,\
+  \ r941_min_high_g340_rle, r941_min_high_g344, r941_min_high_g351, r941_min_high_g360,\
+  \ r941_prom_fast_g303, r941_prom_high_g303, r941_prom_high_g330, r941_prom_high_g344,\
+  \ r941_prom_high_g360, r941_prom_snp_g303, r941_prom_snp_g322, r941_prom_snp_g360,\
+  \ r941_prom_variant_g303, r941_prom_variant_g322, r941_prom_variant_g360.\n    \
+  \    Alternatively a .hdf file from 'medaka train'.\n    -f  Force overwrite of\
+  \ outputs (default will reuse existing outputs).\n    -t  number of threads with\
+  \ which to create features (default: 1).\n    -b  batchsize, controls memory use\
+  \ (default: 100).\n"
 generated_using:
-- --help
+- -h

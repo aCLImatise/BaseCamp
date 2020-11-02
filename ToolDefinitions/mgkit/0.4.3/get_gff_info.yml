@@ -26,7 +26,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id011 !Command
+  parent: &id012 !Command
     command: *id001
     positional: []
     named: []
@@ -51,7 +51,7 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id010 !Command
+      parent: &id011 !Command
         command: *id001
         positional: []
         named: []
@@ -76,16 +76,10 @@ subcommands:
             - --verbose
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id010 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: ''
-              synonyms:
-              - --cite
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -98,45 +92,450 @@ subcommands:
                 optional: true
               named:
               - !Flag
-                description: ''
+                description: "-p, --prefix TEXT     Prefix for the file name in output\
+                  \  [default: split]\n-n, --number INTEGER  Number of chunks into\
+                  \ which split the GFF file\n[default: 10]\n-z, --gzip          \
+                  \  gzip output files\n--help                Show this message and\
+                  \ exit.\n"
                 synonyms:
                 - -v
                 - --verbose
                 args: !EmptyFlagArg {}
                 optional: true
-              - !Flag
-                description: 'Prefix for the file name in output  [default: split]'
-                synonyms:
-                - -p
-                - --prefix
-                args: !SimpleFlagArg
-                  name: TEXT
-                optional: true
-              - !Flag
-                description: "Number of chunks into which split the GFF file\n[default:\
-                  \ 10]"
-                synonyms:
-                - -n
-                - --number
-                args: !SimpleFlagArg
-                  name: INTEGER
-                optional: true
-              - !Flag
-                description: gzip output files
-                synonyms:
-                - -z
-                - --gzip
-                args: !EmptyFlagArg {}
-                optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - --cite
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: GFF_FILE
+                    optional: true
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -v
+                    - --verbose
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Prefix for the file name in output  [default: split]'
+                    synonyms:
+                    - -p
+                    - --prefix
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  - !Flag
+                    description: "Number of chunks into which split the GFF file\n\
+                      [default: 10]"
+                    synonyms:
+                    - -n
+                    - --number
+                    args: !SimpleFlagArg
+                      name: INTEGER
+                    optional: true
+                  - !Flag
+                    description: gzip output files
+                    synonyms:
+                    - -z
+                    - --gzip
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: get-gff-info split [OPTIONS] [GFF_FILE]\n\n \
+                    \ Split annotations from a GFF file [gff-file] to several files\
+                    \ starting\n  with [prefix]\n\nOptions:\n  -v, --verbose\n  -p,\
+                    \ --prefix TEXT     Prefix for the file name in output  [default:\
+                    \ split]\n  -n, --number INTEGER  Number of chunks into which\
+                    \ split the GFF file\n                        [default: 10]\n\n\
+                    \  -z, --gzip            gzip output files\n  --help         \
+                    \       Show this message and exit.\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - get-gff-info
+                  - mongodb
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: GFF_FILE
+                    optional: true
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: OUTPUT_FILE
+                    optional: true
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -v
+                    - --verbose
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Taxonomy used to populate the lineage
+                    synonyms:
+                    - -t
+                    - --taxonomy
+                    args: !SimpleFlagArg
+                      name: FILENAME
+                    optional: true
+                  - !Flag
+                    description: No cache for the lineage function
+                    synonyms:
+                    - -c
+                    - --no-cache
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "If used, the json will be written in a human\nreadble\
+                      \ form"
+                    synonyms:
+                    - -i
+                    - --indent
+                    args: !SimpleFlagArg
+                      name: INTEGER
+                    optional: true
+                  - !Flag
+                    description: Shows Progress Bar
+                    synonyms:
+                    - --progress
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: get-gff-info mongodb [OPTIONS] [GFF_FILE] [OUTPUT_FILE]\n\
+                    \n  Extract annotations from a GFF [gff-file] file and makes output\
+                    \ for\n  MongoDB [output-file]\n\nOptions:\n  -v, --verbose\n\
+                    \  -t, --taxonomy FILENAME  Taxonomy used to populate the lineage\n\
+                    \  -c, --no-cache           No cache for the lineage function\n\
+                    \  -i, --indent INTEGER     If used, the json will be written\
+                    \ in a human\n                           readble form\n\n  --progress\
+                    \               Shows Progress Bar\n  --help                 \
+                    \  Show this message and exit.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - get-gff-info
+                  - cov
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: GFF_FILE
+                    optional: true
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: OUTPUT_FILE
+                    optional: true
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -v
+                    - --verbose
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Reference FASTA file for the GFF  [required]
+                    synonyms:
+                    - -f
+                    - --reference
+                    args: !SimpleFlagArg
+                      name: FILENAME
+                    optional: true
+                  - !Flag
+                    description: The output will be a JSON dictionary
+                    synonyms:
+                    - -j
+                    - --json-out
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: If the coverage must be calculated on each strand
+                    synonyms:
+                    - -s
+                    - --strand-specific
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Emulate BLAST output (use only the header part\n\
+                      before the first space)"
+                    synonyms:
+                    - -r
+                    - --rename
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Shows Progress Bar
+                    synonyms:
+                    - --progress
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: get-gff-info cov [OPTIONS] [GFF_FILE] [OUTPUT_FILE]\n\
+                    \n  Report on how much a sequence length is covered by annotations\
+                    \ in [gff-\n  file]\n\nOptions:\n  -v, --verbose\n  -f, --reference\
+                    \ FILENAME  Reference FASTA file for the GFF  [required]\n  -j,\
+                    \ --json-out            The output will be a JSON dictionary\n\
+                    \  -s, --strand-specific     If the coverage must be calculated\
+                    \ on each strand\n  -r, --rename              Emulate BLAST output\
+                    \ (use only the header part\n                            before\
+                    \ the first space)\n\n  --progress                Shows Progress\
+                    \ Bar\n  --help                    Show this message and exit.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - get-gff-info
+                  - gtf
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: GFF_FILE
+                    optional: true
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: GTF_FILE
+                    optional: true
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -v
+                    - --verbose
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "GFF attribute to use for the GTF *gene_id* attribute\n\
+                      [default: gene_id]"
+                    synonyms:
+                    - -g
+                    - --gene-id
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: get-gff-info gtf [OPTIONS] [GFF_FILE] [GTF_FILE]\n\
+                    \n  Extract annotations from a GFF file [gff-file] to a GTF file\
+                    \ [gtf-file]\n\nOptions:\n  -v, --verbose\n  -g, --gene-id TEXT\
+                    \  GFF attribute to use for the GTF *gene_id* attribute\n    \
+                    \                  [default: gene_id]\n\n  --help            \
+                    \  Show this message and exit.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - get-gff-info
+                  - dbm
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: GFF_FILE
+                    optional: true
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -v
+                    - --verbose
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Directory for the database  [default: gff-dbm]'
+                    synonyms:
+                    - -d
+                    - --output-dir
+                    args: !SimpleFlagArg
+                      name: TEXT
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: get-gff-info dbm [OPTIONS] [GFF_FILE]\n\n  Creates\
+                    \ a dbm database with annotations from file [gff-file] into db\n\
+                    \  [output-dir]\n\nOptions:\n  -v, --verbose\n  -d, --output-dir\
+                    \ TEXT  Directory for the database  [default: gff-dbm]\n  --help\
+                    \                 Show this message and exit.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id009
+                  - get-gff-info
+                  - sequence
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: GFF_FILE
+                    optional: true
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: FASTA_FILE
+                    optional: true
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -v
+                    - --verbose
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Reverse complement sequences on the - strand
+                    synonyms:
+                    - -r
+                    - --reverse
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Write the sequences on one line
+                    synonyms:
+                    - -w
+                    - --no-wrap
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Split the sequence header of the reference at the\n\
+                      first space, to emulate BLAST behaviour"
+                    synonyms:
+                    - -s
+                    - --split
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Fasta file containing the reference sequences of\n\
+                      the GFF file"
+                    synonyms:
+                    - -f
+                    - --reference
+                    args: !SimpleFlagArg
+                      name: FILENAME
+                    optional: true
+                  - !Flag
+                    description: Shows Progress Bar
+                    synonyms:
+                    - --progress
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: get-gff-info sequence [OPTIONS] [GFF_FILE] [FASTA_FILE]\n\
+                    \n  Extract the nucleotidic sequences of annotations from [gff-file]\
+                    \ to\n  [fasta-file]\n\nOptions:\n  -v, --verbose\n  -r, --reverse\
+                    \             Reverse complement sequences on the - strand\n \
+                    \ -w, --no-wrap             Write the sequences on one line\n\
+                    \  -s, --split               Split the sequence header of the\
+                    \ reference at the\n                            first space, to\
+                    \ emulate BLAST behaviour\n\n  -f, --reference FILENAME  Fasta\
+                    \ file containing the reference sequences of\n               \
+                    \             the GFF file\n\n  --progress                Shows\
+                    \ Progress Bar\n  --help                    Show this message\
+                    \ and exit.\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: Show the version and exit.
+                  synonyms:
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "Usage: get-gff-info [OPTIONS] COMMAND [ARGS]...\n\n  Main\
+                  \ function\n\nOptions:\n  --version  Show the version and exit.\n\
+                  \  --cite\n  --help     Show this message and exit.\n\nCommands:\n\
+                  \  cov       Report on how much a sequence length is covered by\
+                  \ annotations...\n  dbm       Creates a dbm database with annotations\
+                  \ from file [gff-file]...\n  gtf       Extract annotations from\
+                  \ a GFF file [gff-file] to a GTF file...\n  mongodb   Extract annotations\
+                  \ from a GFF [gff-file] file and makes output...\n  sequence  Extract\
+                  \ the nucleotidic sequences of annotations from [gff-\n        \
+                  \    file]...\n\n  split     Split annotations from a GFF file [gff-file]\
+                  \ to several files...\n"
+                generated_using: *id004
               subcommands: []
               usage: []
-              help_flag: !Flag
-                description: Show this message and exit.
-                synonyms:
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "Usage: get-gff-info split [OPTIONS] [GFF_FILE]\n\n  Split\
@@ -147,12 +546,9 @@ subcommands:
                 \                        [default: 10]\n\n  -z, --gzip           \
                 \ gzip output files\n  --help                Show this message and\
                 \ exit.\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - get-gff-info
-              - mongodb
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -166,51 +562,20 @@ subcommands:
                 optional: true
               named:
               - !Flag
-                description: ''
+                description: "-t, --taxonomy FILENAME  Taxonomy used to populate the\
+                  \ lineage\n-c, --no-cache           No cache for the lineage function\n\
+                  -i, --indent INTEGER     If used, the json will be written in a\
+                  \ human\nreadble form\n--progress               Shows Progress Bar\n\
+                  --help                   Show this message and exit.\n"
                 synonyms:
                 - -v
                 - --verbose
                 args: !EmptyFlagArg {}
                 optional: true
-              - !Flag
-                description: Taxonomy used to populate the lineage
-                synonyms:
-                - -t
-                - --taxonomy
-                args: !SimpleFlagArg
-                  name: FILENAME
-                optional: true
-              - !Flag
-                description: No cache for the lineage function
-                synonyms:
-                - -c
-                - --no-cache
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: "If used, the json will be written in a human\nreadble\
-                  \ form"
-                synonyms:
-                - -i
-                - --indent
-                args: !SimpleFlagArg
-                  name: INTEGER
-                optional: true
-              - !Flag
-                description: Shows Progress Bar
-                synonyms:
-                - --progress
-                args: !EmptyFlagArg {}
-                optional: true
               parent: *id003
               subcommands: []
               usage: []
-              help_flag: !Flag
-                description: Show this message and exit.
-                synonyms:
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "Usage: get-gff-info mongodb [OPTIONS] [GFF_FILE] [OUTPUT_FILE]\n\
@@ -224,9 +589,7 @@ subcommands:
                 \ and exit.\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - get-gff-info
-              - cov
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -240,57 +603,22 @@ subcommands:
                 optional: true
               named:
               - !Flag
-                description: ''
+                description: "-f, --reference FILENAME  Reference FASTA file for the\
+                  \ GFF  [required]\n-j, --json-out            The output will be\
+                  \ a JSON dictionary\n-s, --strand-specific     If the coverage must\
+                  \ be calculated on each strand\n-r, --rename              Emulate\
+                  \ BLAST output (use only the header part\nbefore the first space)\n\
+                  --progress                Shows Progress Bar\n--help           \
+                  \         Show this message and exit.\n"
                 synonyms:
                 - -v
                 - --verbose
                 args: !EmptyFlagArg {}
                 optional: true
-              - !Flag
-                description: Reference FASTA file for the GFF  [required]
-                synonyms:
-                - -f
-                - --reference
-                args: !SimpleFlagArg
-                  name: FILENAME
-                optional: true
-              - !Flag
-                description: The output will be a JSON dictionary
-                synonyms:
-                - -j
-                - --json-out
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: If the coverage must be calculated on each strand
-                synonyms:
-                - -s
-                - --strand-specific
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: "Emulate BLAST output (use only the header part\nbefore\
-                  \ the first space)"
-                synonyms:
-                - -r
-                - --rename
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: Shows Progress Bar
-                synonyms:
-                - --progress
-                args: !EmptyFlagArg {}
-                optional: true
               parent: *id003
               subcommands: []
               usage: []
-              help_flag: !Flag
-                description: Show this message and exit.
-                synonyms:
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "Usage: get-gff-info cov [OPTIONS] [GFF_FILE] [OUTPUT_FILE]\n\
@@ -305,9 +633,7 @@ subcommands:
                 \ this message and exit.\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - get-gff-info
-              - gtf
+              command: *id007
               positional:
               - !Positional
                 description: ''
@@ -321,30 +647,18 @@ subcommands:
                 optional: true
               named:
               - !Flag
-                description: ''
+                description: "-g, --gene-id TEXT  GFF attribute to use for the GTF\
+                  \ *gene_id* attribute\n[default: gene_id]\n--help              Show\
+                  \ this message and exit.\n"
                 synonyms:
                 - -v
                 - --verbose
                 args: !EmptyFlagArg {}
                 optional: true
-              - !Flag
-                description: "GFF attribute to use for the GTF *gene_id* attribute\n\
-                  [default: gene_id]"
-                synonyms:
-                - -g
-                - --gene-id
-                args: !SimpleFlagArg
-                  name: TEXT
-                optional: true
               parent: *id003
               subcommands: []
               usage: []
-              help_flag: !Flag
-                description: Show this message and exit.
-                synonyms:
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "Usage: get-gff-info gtf [OPTIONS] [GFF_FILE] [GTF_FILE]\n\
@@ -354,9 +668,7 @@ subcommands:
                 \ gene_id]\n\n  --help              Show this message and exit.\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - get-gff-info
-              - dbm
+              command: *id008
               positional:
               - !Positional
                 description: ''
@@ -365,29 +677,17 @@ subcommands:
                 optional: true
               named:
               - !Flag
-                description: ''
+                description: "-d, --output-dir TEXT  Directory for the database  [default:\
+                  \ gff-dbm]\n--help                 Show this message and exit.\n"
                 synonyms:
                 - -v
                 - --verbose
                 args: !EmptyFlagArg {}
                 optional: true
-              - !Flag
-                description: 'Directory for the database  [default: gff-dbm]'
-                synonyms:
-                - -d
-                - --output-dir
-                args: !SimpleFlagArg
-                  name: TEXT
-                optional: true
               parent: *id003
               subcommands: []
               usage: []
-              help_flag: !Flag
-                description: Show this message and exit.
-                synonyms:
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "Usage: get-gff-info dbm [OPTIONS] [GFF_FILE]\n\n  Creates\
@@ -397,9 +697,7 @@ subcommands:
                 \           Show this message and exit.\n"
               generated_using: *id004
             - !Command
-              command: &id009
-              - get-gff-info
-              - sequence
+              command: *id009
               positional:
               - !Positional
                 description: ''
@@ -413,58 +711,22 @@ subcommands:
                 optional: true
               named:
               - !Flag
-                description: ''
+                description: "-r, --reverse             Reverse complement sequences\
+                  \ on the - strand\n-w, --no-wrap             Write the sequences\
+                  \ on one line\n-s, --split               Split the sequence header\
+                  \ of the reference at the\nfirst space, to emulate BLAST behaviour\n\
+                  -f, --reference FILENAME  Fasta file containing the reference sequences\
+                  \ of\nthe GFF file\n--progress                Shows Progress Bar\n\
+                  --help                    Show this message and exit.\n"
                 synonyms:
                 - -v
                 - --verbose
                 args: !EmptyFlagArg {}
                 optional: true
-              - !Flag
-                description: Reverse complement sequences on the - strand
-                synonyms:
-                - -r
-                - --reverse
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: Write the sequences on one line
-                synonyms:
-                - -w
-                - --no-wrap
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: "Split the sequence header of the reference at the\n\
-                  first space, to emulate BLAST behaviour"
-                synonyms:
-                - -s
-                - --split
-                args: !EmptyFlagArg {}
-                optional: true
-              - !Flag
-                description: "Fasta file containing the reference sequences of\nthe\
-                  \ GFF file"
-                synonyms:
-                - -f
-                - --reference
-                args: !SimpleFlagArg
-                  name: FILENAME
-                optional: true
-              - !Flag
-                description: Shows Progress Bar
-                synonyms:
-                - --progress
-                args: !EmptyFlagArg {}
-                optional: true
               parent: *id003
               subcommands: []
               usage: []
-              help_flag: !Flag
-                description: Show this message and exit.
-                synonyms:
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "Usage: get-gff-info sequence [OPTIONS] [GFF_FILE] [FASTA_FILE]\n\
@@ -480,19 +742,9 @@ subcommands:
                 \ this message and exit.\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: Show this message and exit.
-              synonyms:
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: Show the version and exit.
-              synonyms:
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "Usage: get-gff-info [OPTIONS] COMMAND [ARGS]...\n\n  Main\
               \ function\n\nOptions:\n  --version  Show the version and exit.\n  --cite\n\
               \  --help     Show this message and exit.\n\nCommands:\n  cov      \
@@ -542,7 +794,7 @@ subcommands:
             - --verbose
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag:
@@ -583,7 +835,7 @@ subcommands:
             - --verbose
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag:
@@ -623,7 +875,7 @@ subcommands:
             - --verbose
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag:
@@ -652,7 +904,7 @@ subcommands:
             - --verbose
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag:
@@ -691,7 +943,7 @@ subcommands:
             - --verbose
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag:
@@ -761,7 +1013,7 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -802,7 +1054,7 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -841,7 +1093,7 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -870,7 +1122,7 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -908,7 +1160,7 @@ subcommands:
         - --verbose
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -976,7 +1228,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -1016,7 +1268,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -1054,7 +1306,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -1083,7 +1335,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -1120,7 +1372,7 @@ subcommands:
     - --verbose
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:

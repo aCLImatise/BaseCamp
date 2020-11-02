@@ -38,7 +38,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TAXDB_URL
     optional: true
-  parent: &id010 !Command
+  parent: &id011 !Command
     command: *id001
     positional: []
     named: []
@@ -75,7 +75,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TAXDB_URL
         optional: true
-      parent: &id009 !Command
+      parent: &id010 !Command
         command: *id001
         positional: []
         named: []
@@ -112,18 +112,10 @@ subcommands:
             args: !SimpleFlagArg
               name: TAXDB_URL
             optional: true
-          parent: &id003 !Command
+          parent: &id009 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: URL for SQLite taxonomy database
-              synonyms:
-              - -d
-              - --db
-              args: !SimpleFlagArg
-                name: TAXDB_URL
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -157,7 +149,286 @@ subcommands:
                 args: !SimpleFlagArg
                   name: TAXDB_URL
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: URL for SQLite taxonomy database
+                  synonyms:
+                  - -d
+                  - --db
+                  args: !SimpleFlagArg
+                    name: TAXDB_URL
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: FLAGS
+                    optional: true
+                  named:
+                  - !Flag
+                    description: Show taxon names, not just IDs
+                    synonyms:
+                    - -S
+                    - --show_names
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Delimiter for lineage string
+                    synonyms:
+                    - -D
+                    - --delimiter
+                    args: !SimpleFlagArg
+                      name: DELIMITER
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --db
+                    args: !SimpleFlagArg
+                      name: TAXDB_URL
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Prints help information
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: Prints version information
+                    synonyms:
+                    - -V
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "taxonomy_util-get_lineage \nget lineage for name\n\n\
+                    USAGE:\n    taxonomy_util --db <TAXDB_URL> get_lineage [FLAGS]\
+                    \ [OPTIONS] <NAME>\n\nFLAGS:\n    -S, --show_names    Show taxon\
+                    \ names, not just IDs\n    -h, --help          Prints help information\n\
+                    \    -V, --version       Prints version information\n\nOPTIONS:\n\
+                    \    -D, --delimiter <DELIMITER>    Delimiter for lineage string\n\
+                    \nARGS:\n    <NAME>    Name of taxon\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - taxonomy_util
+                  - to_sqlite
+                  positional: []
+                  named:
+                  - !Flag
+                    description: String to prepend to names of nodes.dmp and names.dmp
+                    synonyms:
+                    - -t
+                    - --tax_prefix
+                    args: !SimpleFlagArg
+                      name: TAXONOMY_FILENAME_PREFIX
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --db
+                    args: !SimpleFlagArg
+                      name: TAXDB_URL
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Prints help information
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: Prints version information
+                    synonyms:
+                    - -V
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "taxonomy_util-to_sqlite \nsave taxonomy database loaded\
+                    \ from files to SQLite database file\n\nUSAGE:\n    taxonomy_util\
+                    \ --db <TAXDB_URL> to_sqlite [OPTIONS] <TAXONOMY_DIR>\n\nFLAGS:\n\
+                    \    -h, --help       Prints help information\n    -V, --version\
+                    \    Prints version information\n\nOPTIONS:\n    -t, --tax_prefix\
+                    \ <TAXONOMY_FILENAME_PREFIX>    String to prepend to names of\
+                    \ nodes.dmp and names.dmp\n\nARGS:\n    <TAXONOMY_DIR>    Directory\
+                    \ containing the NCBI taxonomy nodes.dmp and names.dmp files\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - taxonomy_util
+                  - common_ancestor_distance
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: FLAGS
+                    optional: true
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: NAME1
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Only consider canonical taxonomic ranks
+                    synonyms:
+                    - --only_canonical
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --db
+                    args: !SimpleFlagArg
+                      name: TAXDB_URL
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Prints help information
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: Prints version information
+                    synonyms:
+                    - -V
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "taxonomy_util-common_ancestor_distance \nfind the tree\
+                    \ distance to te common ancestor between two taxa\n\nUSAGE:\n\
+                    \    taxonomy_util --db <TAXDB_URL> common_ancestor_distance [FLAGS]\
+                    \ <NAME1> <NAME2>\n\nFLAGS:\n        --only_canonical    Only\
+                    \ consider canonical taxonomic ranks\n    -h, --help         \
+                    \     Prints help information\n    -V, --version           Prints\
+                    \ version information\n\nARGS:\n    <NAME1>    Name of first taxon\n\
+                    \    <NAME2>    Name of second taxon\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - taxonomy_util
+                  - get_id
+                  positional: []
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --db
+                    args: !SimpleFlagArg
+                      name: TAXDB_URL
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Prints help information
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: Prints version information
+                    synonyms:
+                    - -V
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "taxonomy_util-get_id \nfind taxonomy ID for name\n\n\
+                    USAGE:\n    taxonomy_util --db <TAXDB_URL> get_id <NAME>\n\nFLAGS:\n\
+                    \    -h, --help       Prints help information\n    -V, --version\
+                    \    Prints version information\n\nARGS:\n    <NAME>    Name of\
+                    \ taxon\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - taxonomy_util
+                  - get_name
+                  positional: []
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --db
+                    args: !SimpleFlagArg
+                      name: TAXDB_URL
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Prints help information
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: Prints version information
+                    synonyms:
+                    - -V
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "taxonomy_util-get_name \nfind name for taxonomy ID\n\
+                    \nUSAGE:\n    taxonomy_util --db <TAXDB_URL> get_name <ID>\n\n\
+                    FLAGS:\n    -h, --help       Prints help information\n    -V,\
+                    \ --version    Prints version information\n\nARGS:\n    <ID> \
+                    \   Taxonomy ID to look up\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: Prints help information
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: Prints version information
+                  synonyms:
+                  - -V
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "taxonomy_util 1.0.7\nPeter van Heusden <pvh@sanbi.axc.za>\n\
+                  Utilities for working with the NCBI taxonomy database\n\nUSAGE:\n\
+                  \    taxonomy_util --db <TAXDB_URL> [SUBCOMMAND]\n\nFLAGS:\n   \
+                  \ -h, --help       Prints help information\n    -V, --version  \
+                  \  Prints version information\n\nOPTIONS:\n    -d, --db <TAXDB_URL>\
+                  \    URL for SQLite taxonomy database\n\nSUBCOMMANDS:\n    common_ancestor_distance\
+                  \    find the tree distance to te common ancestor between two taxa\n\
+                  \    get_id                      find taxonomy ID for name\n   \
+                  \ get_lineage                 get lineage for name\n    get_name\
+                  \                    find name for taxonomy ID\n    help       \
+                  \                 Prints this message or the help of the given subcommand(s)\n\
+                  \    to_sqlite                   save taxonomy database loaded from\
+                  \ files to SQLite database file\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -182,12 +453,9 @@ subcommands:
                 \ --version       Prints version information\n\nOPTIONS:\n    -D,\
                 \ --delimiter <DELIMITER>    Delimiter for lineage string\n\nARGS:\n\
                 \    <NAME>    Name of taxon\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - taxonomy_util
-              - to_sqlite
+              command: *id005
               positional: []
               named:
               - !Flag
@@ -233,9 +501,7 @@ subcommands:
                 \ and names.dmp files\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - taxonomy_util
-              - common_ancestor_distance
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -288,9 +554,7 @@ subcommands:
                 \  <NAME1>    Name of first taxon\n    <NAME2>    Name of second taxon\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - taxonomy_util
-              - get_id
+              command: *id007
               positional: []
               named:
               - !Flag
@@ -324,9 +588,7 @@ subcommands:
                 \ version information\n\nARGS:\n    <NAME>    Name of taxon\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - taxonomy_util
-              - get_name
+              command: *id008
               positional: []
               named:
               - !Flag
@@ -360,21 +622,9 @@ subcommands:
                 \ version information\n\nARGS:\n    <ID>    Taxonomy ID to look up\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: Prints help information
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: Prints version information
-              synonyms:
-              - -V
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "taxonomy_util 1.0.7\nPeter van Heusden <pvh@sanbi.axc.za>\n\
               Utilities for working with the NCBI taxonomy database\n\nUSAGE:\n  \
               \  taxonomy_util --db <TAXDB_URL> [SUBCOMMAND]\n\nFLAGS:\n    -h, --help\
@@ -432,7 +682,7 @@ subcommands:
             args: !SimpleFlagArg
               name: TAXDB_URL
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -485,7 +735,7 @@ subcommands:
             args: !SimpleFlagArg
               name: TAXDB_URL
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -522,7 +772,7 @@ subcommands:
             args: !SimpleFlagArg
               name: TAXDB_URL
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -556,7 +806,7 @@ subcommands:
             args: !SimpleFlagArg
               name: TAXDB_URL
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -639,7 +889,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TAXDB_URL
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -692,7 +942,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TAXDB_URL
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -729,7 +979,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TAXDB_URL
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -763,7 +1013,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TAXDB_URL
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -845,7 +1095,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TAXDB_URL
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -898,7 +1148,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TAXDB_URL
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -934,7 +1184,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TAXDB_URL
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -968,7 +1218,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TAXDB_URL
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag

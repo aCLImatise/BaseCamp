@@ -82,7 +82,7 @@ subcommands:
     - --debug
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id009 !Command
+  parent: &id010 !Command
     command: *id001
     positional: []
     named: []
@@ -163,7 +163,7 @@ subcommands:
         - --debug
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id008 !Command
+      parent: &id009 !Command
         command: *id001
         positional: []
         named: []
@@ -245,7 +245,7 @@ subcommands:
             - --debug
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id008 !Command
             command: *id001
             positional: []
             named: []
@@ -327,7 +327,831 @@ subcommands:
                 - --debug
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: The cache files for installed gems must exist to
+                      use the server as a source
+                    position: 0
+                    name: machines.
+                    optional: false
+                  named:
+                  - !Flag
+                    description: port to listen on
+                    synonyms:
+                    - -p
+                    - --port
+                    args: !SimpleFlagArg
+                      name: PORT
+                    optional: true
+                  - !Flag
+                    description: "directories from which to serve gems\nmultiple directories\
+                      \ may be provided\n--[no-]daemon                run as a daemon"
+                    synonyms:
+                    - -d
+                    - --dir
+                    args: !SimpleFlagArg
+                      name: GEMDIR
+                    optional: true
+                  - !Flag
+                    description: ',HOST             addresses to bind'
+                    synonyms:
+                    - -b
+                    - --bind
+                    args: !SimpleFlagArg
+                      name: HOST
+                    optional: true
+                  - !Flag
+                    description: "[=COMMAND]           launches a browser window\n\
+                      COMMAND defaults to 'start' on Windows\nand 'open' on all other\
+                      \ platforms"
+                    synonyms:
+                    - -l
+                    - --launch
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ', --[no-]verbose               Set the verbose level
+                      of output'
+                    synonyms:
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Silence commands
+                    synonyms:
+                    - -q
+                    - --quiet
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Use this config file instead of default
+                    synonyms:
+                    - --config-file
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: Show stack backtrace on errors
+                    synonyms:
+                    - --backtrace
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Turn on Ruby debugging
+                    synonyms:
+                    - --debug
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Get help on this command
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: gem server [options]\n\n  Options:\n    -p, --port=PORT\
+                    \                  port to listen on\n    -d, --dir=GEMDIR   \
+                    \              directories from which to serve gems\n        \
+                    \                             multiple directories may be provided\n\
+                    \        --[no-]daemon                run as a daemon\n    -b,\
+                    \ --bind=HOST,HOST             addresses to bind\n    -l, --launch[=COMMAND]\
+                    \           launches a browser window\n                      \
+                    \               COMMAND defaults to 'start' on Windows\n     \
+                    \                                and 'open' on all other platforms\n\
+                    \n\n  Common Options:\n    -h, --help                       Get\
+                    \ help on this command\n    -V, --[no-]verbose               Set\
+                    \ the verbose level of output\n    -q, --quiet               \
+                    \       Silence commands\n        --config-file FILE         \
+                    \  Use this config file instead of default\n        --backtrace\
+                    \                  Show stack backtrace on errors\n        --debug\
+                    \                      Turn on Ruby debugging\n\n\n  Summary:\n\
+                    \    Documentation and gem repository HTTP server\n\n  Description:\n\
+                    \    The server command starts up a web server that hosts the\
+                    \ RDoc for your\n    installed gems and can operate as a server\
+                    \ for installation of gems on other\n    machines.\n    \n   \
+                    \ The cache files for installed gems must exist to use the server\
+                    \ as a source\n    for gem installation.\n    \n    To install\
+                    \ gems from a running server, use `gem install GEMNAME --source\n\
+                    \    http://gem_server_host:8808`\n    \n    You can set up a\
+                    \ shortcut to gem server documentation using the URL:\n    \n\
+                    \      http://localhost:8808/rdoc?q=%s - Firefox\n      http://localhost:8808/rdoc?q=*\
+                    \ - LaunchBar\n\n  Defaults:\n    --port 8808 --dir /usr/local/lib/ruby/gems/2.2.0\
+                    \ --no-daemon\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - gem
+                  - build
+                  positional:
+                  - !Positional
+                    description: gemspec file name to build a gem for
+                    position: 0
+                    name: GEMSPEC_FILE
+                    optional: false
+                  named:
+                  - !Flag
+                    description: skip validation of the spec
+                    synonyms:
+                    - --force
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ', --[no-]verbose               Set the verbose level
+                      of output'
+                    synonyms:
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Silence commands
+                    synonyms:
+                    - -q
+                    - --quiet
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Use this config file instead of default
+                    synonyms:
+                    - --config-file
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: Show stack backtrace on errors
+                    synonyms:
+                    - --backtrace
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Turn on Ruby debugging
+                    synonyms:
+                    - --debug
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Get help on this command
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: gem build GEMSPEC_FILE [options]\n\n  Options:\n\
+                    \        --force                      skip validation of the spec\n\
+                    \n\n  Common Options:\n    -h, --help                       Get\
+                    \ help on this command\n    -V, --[no-]verbose               Set\
+                    \ the verbose level of output\n    -q, --quiet               \
+                    \       Silence commands\n        --config-file FILE         \
+                    \  Use this config file instead of default\n        --backtrace\
+                    \                  Show stack backtrace on errors\n        --debug\
+                    \                      Turn on Ruby debugging\n\n\n  Arguments:\n\
+                    \    GEMSPEC_FILE  gemspec file name to build a gem for\n\n  Summary:\n\
+                    \    Build a gem from a gemspec\n\n  Description:\n    The build\
+                    \ command allows you to create a gem from a ruby gemspec.\n  \
+                    \  \n    The best way to build a gem is to use a Rakefile and\
+                    \ the Gem::PackageTask\n    which ships with RubyGems.\n    \n\
+                    \    The gemspec can either be created by hand or extracted from\
+                    \ an existing gem\n    with gem spec:\n    \n      $ gem unpack\
+                    \ my_gem-1.0.gem\n      Unpacked gem: '.../my_gem-1.0'\n     \
+                    \ $ gem spec my_gem-1.0.gem --ruby > my_gem-1.0/my_gem-1.0.gemspec\n\
+                    \      $ cd my_gem-1.0\n      [edit gem contents]\n      $ gem\
+                    \ build my_gem-1.0.gemspec\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - gem
+                  - list
+                  positional:
+                  - !Positional
+                    description: regexp to look for in gem name
+                    position: 0
+                    name: REGEXP
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ', --[no-]installed             Check for installed
+                      gem'
+                    synonyms:
+                    - -i
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Equivalent to --no-installed
+                    synonyms:
+                    - -I
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ", --[no-]details               Display detailed\
+                      \ information of gem(s)\n--[no-]versions              Display\
+                      \ only gem names"
+                    synonyms:
+                    - -d
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Display all gem versions\n--[no-]prerelease    \
+                      \        Display prerelease versions"
+                    synonyms:
+                    - -a
+                    - --all
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ', --[no-]update-sources        Update local source
+                      cache'
+                    synonyms:
+                    - -u
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Restrict operations to the LOCAL domain
+                    synonyms:
+                    - -l
+                    - --local
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Restrict operations to the REMOTE domain
+                    synonyms:
+                    - -r
+                    - --remote
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Allow LOCAL and REMOTE operations
+                    synonyms:
+                    - -b
+                    - --both
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Threshold for switching to bulk\nsynchronization\
+                      \ (default 1000)"
+                    synonyms:
+                    - -B
+                    - --bulk-threshold
+                    args: !SimpleFlagArg
+                      name: COUNT
+                    optional: true
+                  - !Flag
+                    description: Clear the gem sources
+                    synonyms:
+                    - --clear-sources
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Append URL to list of remote gem sources
+                    synonyms:
+                    - -s
+                    - --source
+                    args: !SimpleFlagArg
+                      name: URL
+                    optional: true
+                  - !Flag
+                    description: ', --[no-]http-proxy [URL]      Use HTTP proxy for
+                      remote operations'
+                    synonyms:
+                    - -p
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ', --[no-]verbose               Set the verbose level
+                      of output'
+                    synonyms:
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Silence commands
+                    synonyms:
+                    - -q
+                    - --quiet
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Use this config file instead of default
+                    synonyms:
+                    - --config-file
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: Show stack backtrace on errors
+                    synonyms:
+                    - --backtrace
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Turn on Ruby debugging
+                    synonyms:
+                    - --debug
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --local
+                    - --no-details
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Get help on this command
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: "Specify version of gem to list\nfor use with --installed"
+                    synonyms:
+                    - -v
+                    - --version
+                    args: !SimpleFlagArg
+                      name: VERSION
+                    optional: true
+                  help_text: "Usage: gem list [STRING ...] [options]\n\n  Options:\n\
+                    \    -i, --[no-]installed             Check for installed gem\n\
+                    \    -I                               Equivalent to --no-installed\n\
+                    \    -v, --version VERSION            Specify version of gem to\
+                    \ list\n                                     for use with --installed\n\
+                    \    -d, --[no-]details               Display detailed information\
+                    \ of gem(s)\n        --[no-]versions              Display only\
+                    \ gem names\n    -a, --all                        Display all\
+                    \ gem versions\n        --[no-]prerelease            Display prerelease\
+                    \ versions\n\n\n  Deprecated Options:\n    -u, --[no-]update-sources\
+                    \        Update local source cache\n\n\n  Local/Remote Options:\n\
+                    \    -l, --local                      Restrict operations to the\
+                    \ LOCAL domain\n    -r, --remote                     Restrict\
+                    \ operations to the REMOTE domain\n    -b, --both            \
+                    \           Allow LOCAL and REMOTE operations\n    -B, --bulk-threshold\
+                    \ COUNT       Threshold for switching to bulk\n              \
+                    \                       synchronization (default 1000)\n     \
+                    \   --clear-sources              Clear the gem sources\n    -s,\
+                    \ --source URL                 Append URL to list of remote gem\
+                    \ sources\n    -p, --[no-]http-proxy [URL]      Use HTTP proxy\
+                    \ for remote operations\n\n\n  Common Options:\n    -h, --help\
+                    \                       Get help on this command\n    -V, --[no-]verbose\
+                    \               Set the verbose level of output\n    -q, --quiet\
+                    \                      Silence commands\n        --config-file\
+                    \ FILE           Use this config file instead of default\n   \
+                    \     --backtrace                  Show stack backtrace on errors\n\
+                    \        --debug                      Turn on Ruby debugging\n\
+                    \n\n  Arguments:\n    REGEXP        regexp to look for in gem\
+                    \ name\n\n  Summary:\n    Display local gems whose name matches\
+                    \ REGEXP\n\n  Description:\n    The list command is used to view\
+                    \ the gems you have installed locally.\n    \n    The --details\
+                    \ option displays additional details including the summary, the\n\
+                    \    homepage, the author, the locations of different versions\
+                    \ of the gem.\n    \n    To search for remote gems use the search\
+                    \ command.\n\n  Defaults:\n    --local --no-details\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - gem
+                  - install
+                  positional:
+                  - !Positional
+                    description: -n, --bindir DIR                 Directory where
+                      binary files are
+                    position: 0
+                    name: gems
+                    optional: false
+                  - !Positional
+                    description: --[no-]document [TYPES]      Generate documentation
+                      for installed gems
+                    position: 1
+                    name: located
+                    optional: false
+                  - !Positional
+                    description: 'For example: rdoc,ri'
+                    position: 0
+                    name: generate.
+                    optional: false
+                  - !Positional
+                    description: -w, --[no-]wrappers              Use bin wrappers
+                      for executables
+                    position: 1
+                    name: checks
+                    optional: false
+                  - !Positional
+                    description: --[no-]user-install          Install in user's home
+                      directory instead
+                    position: 0
+                    name: foo_exec18
+                    optional: false
+                  - !Positional
+                    description: --development-all            Install development
+                      dependencies for all
+                    position: 0
+                    name: dependencies
+                    optional: false
+                  - !Positional
+                    description: name of gem to install
+                    position: 0
+                    name: GEMNAME
+                    optional: false
+                  - !Positional
+                    description: You may need to specify the path to the library's
+                      headers and
+                    position: 0
+                    name: repository.
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Specify the platform of gem to install
+                    synonyms:
+                    - --platform
+                    args: !SimpleFlagArg
+                      name: PLATFORM
+                    optional: true
+                  - !Flag
+                    description: ', --[no-]update-sources        Update local source
+                      cache'
+                    synonyms:
+                    - -u
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Gem repository directory to get installed
+                    synonyms:
+                    - -i
+                    - --install-dir
+                    args: !SimpleFlagArg
+                      name: DIR
+                    optional: true
+                  - !Flag
+                    description: "Temporary installation root. Useful for building\n\
+                      packages. Do not use this when installing remote gems."
+                    synonyms:
+                    - --build-root
+                    args: !SimpleFlagArg
+                      name: DIR
+                    optional: true
+                  - !Flag
+                    description: "Install gem into the vendor directory.\nOnly for\
+                      \ use by gem repackagers."
+                    synonyms:
+                    - --vendor
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Disable documentation generation
+                    synonyms:
+                    - -N
+                    - --no-document
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ", --[no-]env-shebang           Rewrite the shebang\
+                      \ line on installed\nscripts to use /usr/bin/env"
+                    synonyms:
+                    - -E
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ', --[no-]force                 Force gem to install,
+                      bypassing dependency'
+                    synonyms:
+                    - -f
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Specify gem trust policy
+                    synonyms:
+                    - -P
+                    - --trust-policy
+                    args: !SimpleFlagArg
+                      name: POLICY
+                    optional: true
+                  - !Flag
+                    description: Do not install any required dependent gems
+                    synonyms:
+                    - --ignore-dependencies
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Install additional development
+                    synonyms:
+                    - --development
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Don't attempt to upgrade gems already\nmeeting version\
+                      \ requirement"
+                    synonyms:
+                    - --conservative
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Don't upgrade any dependencies that already\nmeet\
+                      \ version requirements"
+                    synonyms:
+                    - --minimal-deps
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "[FILE]                Read from a gem dependencies\
+                      \ API file and\ninstall the listed gems"
+                    synonyms:
+                    - -g
+                    - --file
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Omit the named groups (comma separated)\nwhen installing\
+                      \ from a gem dependencies\nfile"
+                    synonyms:
+                    - --without
+                    args: !SimpleFlagArg
+                      name: GROUPS
+                    optional: true
+                  - !Flag
+                    description: "Add the gem's full specification to\nspecifications/default\
+                      \ and extract only its bin"
+                    synonyms:
+                    - --default
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Rather than install the gems, indicate which would\n\
+                      be installed"
+                    synonyms:
+                    - --explain
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Restrict operations to the LOCAL domain
+                    synonyms:
+                    - -l
+                    - --local
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Restrict operations to the REMOTE domain
+                    synonyms:
+                    - -r
+                    - --remote
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Allow LOCAL and REMOTE operations
+                    synonyms:
+                    - -b
+                    - --both
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Threshold for switching to bulk\nsynchronization\
+                      \ (default 1000)"
+                    synonyms:
+                    - -B
+                    - --bulk-threshold
+                    args: !SimpleFlagArg
+                      name: COUNT
+                    optional: true
+                  - !Flag
+                    description: Clear the gem sources
+                    synonyms:
+                    - --clear-sources
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Append URL to list of remote gem sources
+                    synonyms:
+                    - -s
+                    - --source
+                    args: !SimpleFlagArg
+                      name: URL
+                    optional: true
+                  - !Flag
+                    description: ', --[no-]http-proxy [URL]      Use HTTP proxy for
+                      remote operations'
+                    synonyms:
+                    - -p
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ', --[no-]verbose               Set the verbose level
+                      of output'
+                    synonyms:
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Silence commands
+                    synonyms:
+                    - -q
+                    - --quiet
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Use this config file instead of default
+                    synonyms:
+                    - --config-file
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: Show stack backtrace on errors
+                    synonyms:
+                    - --backtrace
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Turn on Ruby debugging
+                    synonyms:
+                    - --debug
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Get help on this command
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: "'>= 0' --document --no-force"
+                    synonyms:
+                    - --both
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "Usage: gem install GEMNAME [GEMNAME ...] [options] --\
+                    \ --build-flags [options]\n\n  Options:\n        --platform PLATFORM\
+                    \          Specify the platform of gem to install\n    -v, --version\
+                    \ VERSION            Specify version of gem to install\n     \
+                    \   --[no-]prerelease            Allow prerelease versions of\
+                    \ a gem\n                                     to be installed.\
+                    \ (Only for listed gems)\n\n\n  Deprecated Options:\n        --[no-]rdoc\
+                    \                  Generate RDoc for installed gems\n        \
+                    \                             Use --document instead\n       \
+                    \ --[no-]ri                    Generate ri data for installed\
+                    \ gems.\n                                     Use --document instead\n\
+                    \    -u, --[no-]update-sources        Update local source cache\n\
+                    \n\n  Install/Update Options:\n    -i, --install-dir DIR     \
+                    \       Gem repository directory to get installed\n          \
+                    \                           gems\n    -n, --bindir DIR       \
+                    \          Directory where binary files are\n                \
+                    \                     located\n        --[no-]document [TYPES]\
+                    \      Generate documentation for installed gems\n           \
+                    \                          List the documentation types you wish\
+                    \ to\n                                     generate.  For example:\
+                    \ rdoc,ri\n        --build-root DIR             Temporary installation\
+                    \ root. Useful for building\n                                \
+                    \     packages. Do not use this when installing remote gems.\n\
+                    \        --vendor                     Install gem into the vendor\
+                    \ directory.\n                                     Only for use\
+                    \ by gem repackagers.\n    -N, --no-document                Disable\
+                    \ documentation generation\n    -E, --[no-]env-shebang       \
+                    \    Rewrite the shebang line on installed\n                 \
+                    \                    scripts to use /usr/bin/env\n    -f, --[no-]force\
+                    \                 Force gem to install, bypassing dependency\n\
+                    \                                     checks\n    -w, --[no-]wrappers\
+                    \              Use bin wrappers for executables\n            \
+                    \                         Not available on dosish platforms\n\
+                    \    -P, --trust-policy POLICY        Specify gem trust policy\n\
+                    \        --ignore-dependencies        Do not install any required\
+                    \ dependent gems\n        --[no-]format-executable     Make installed\
+                    \ executable names match ruby.\n                             \
+                    \        If ruby is ruby18, foo_exec will be\n               \
+                    \                      foo_exec18\n        --[no-]user-install\
+                    \          Install in user's home directory instead\n        \
+                    \                             of GEM_HOME.\n        --development\
+                    \                Install additional development\n            \
+                    \                         dependencies\n        --development-all\
+                    \            Install development dependencies for all\n      \
+                    \                               gems (including dev deps themselves)\n\
+                    \        --conservative               Don't attempt to upgrade\
+                    \ gems already\n                                     meeting version\
+                    \ requirement\n        --minimal-deps               Don't upgrade\
+                    \ any dependencies that already\n                            \
+                    \         meet version requirements\n    -g, --file [FILE]   \
+                    \             Read from a gem dependencies API file and\n    \
+                    \                                 install the listed gems\n  \
+                    \      --without GROUPS             Omit the named groups (comma\
+                    \ separated)\n                                     when installing\
+                    \ from a gem dependencies\n                                  \
+                    \   file\n        --default                    Add the gem's full\
+                    \ specification to\n                                     specifications/default\
+                    \ and extract only its bin\n        --explain                \
+                    \    Rather than install the gems, indicate which would\n    \
+                    \                                 be installed\n        --[no-]lock\
+                    \                  Create a lock file (when used with -g/--file)\n\
+                    \        --[no-]suggestions           Suggest alternates when\
+                    \ gems are not found\n\n\n  Local/Remote Options:\n    -l, --local\
+                    \                      Restrict operations to the LOCAL domain\n\
+                    \    -r, --remote                     Restrict operations to the\
+                    \ REMOTE domain\n    -b, --both                       Allow LOCAL\
+                    \ and REMOTE operations\n    -B, --bulk-threshold COUNT      \
+                    \ Threshold for switching to bulk\n                          \
+                    \           synchronization (default 1000)\n        --clear-sources\
+                    \              Clear the gem sources\n    -s, --source URL   \
+                    \              Append URL to list of remote gem sources\n    -p,\
+                    \ --[no-]http-proxy [URL]      Use HTTP proxy for remote operations\n\
+                    \n\n  Common Options:\n    -h, --help                       Get\
+                    \ help on this command\n    -V, --[no-]verbose               Set\
+                    \ the verbose level of output\n    -q, --quiet               \
+                    \       Silence commands\n        --config-file FILE         \
+                    \  Use this config file instead of default\n        --backtrace\
+                    \                  Show stack backtrace on errors\n        --debug\
+                    \                      Turn on Ruby debugging\n\n\n  Arguments:\n\
+                    \    GEMNAME       name of gem to install\n\n  Summary:\n    Install\
+                    \ a gem into the local repository\n\n  Description:\n    The install\
+                    \ command installs local or remote gem into a gem repository.\n\
+                    \    \n    For gems with executables ruby installs a wrapper file\
+                    \ into the executable\n    directory by default.  This can be\
+                    \ overridden with the --no-wrappers option.\n    The wrapper allows\
+                    \ you to choose among alternate gem versions using\n    _version_.\n\
+                    \    \n    For example `rake _0.7.3_ --version` will run rake\
+                    \ version 0.7.3 if a newer\n    version is also installed.\n \
+                    \   \n    Gem Dependency Files\n    ====================\n   \
+                    \ \n    RubyGems can install a consistent set of gems across multiple\
+                    \ environments\n    using `gem install -g` when a gem dependencies\
+                    \ file (gem.deps.rb, Gemfile or\n    Isolate) is present.  If\
+                    \ no explicit file is given RubyGems attempts to find\n    one\
+                    \ in the current directory.\n    \n    When the RUBYGEMS_GEMDEPS\
+                    \ environment variable is set to a gem dependencies\n    file\
+                    \ the gems from that file will be activated at startup time. \
+                    \ Set it to a\n    specific filename or to \"-\" to have RubyGems\
+                    \ automatically discover the gem\n    dependencies file by walking\
+                    \ up from the current directory.\n    \n    NOTE: Enabling automatic\
+                    \ discovery on multiuser systems can lead to\n    execution of\
+                    \ arbitrary code when used from directories outside your control.\n\
+                    \    \n    Extension Install Failures\n    ==========================\n\
+                    \    \n    If an extension fails to compile during gem installation\
+                    \ the gem\n    specification is not written out, but the gem remains\
+                    \ unpacked in the\n    repository.  You may need to specify the\
+                    \ path to the library's headers and\n    libraries to continue.\
+                    \  You can do this by adding a -- between RubyGems'\n    options\
+                    \ and the extension's build options:\n    \n      $ gem install\
+                    \ some_extension_gem\n      [build fails]\n      Gem files will\
+                    \ remain installed in \\\n      /path/to/gems/some_extension_gem-1.0\
+                    \ for inspection.\n      Results logged to /path/to/gems/some_extension_gem-1.0/gem_make.out\n\
+                    \      $ gem install some_extension_gem -- --with-extension-lib=/path/to/lib\n\
+                    \      [build succeeds]\n      $ gem list some_extension_gem\n\
+                    \    \n      *** LOCAL GEMS ***\n    \n      some_extension_gem\
+                    \ (1.0)\n      $\n    \n    If you correct the compilation errors\
+                    \ by editing the gem files you will need\n    to write the specification\
+                    \ by hand.  For example:\n    \n      $ gem install some_extension_gem\n\
+                    \      [build fails]\n      Gem files will remain installed in\
+                    \ \\\n      /path/to/gems/some_extension_gem-1.0 for inspection.\n\
+                    \      Results logged to /path/to/gems/some_extension_gem-1.0/gem_make.out\n\
+                    \      $ [cd /path/to/gems/some_extension_gem-1.0]\n      $ [edit\
+                    \ files or what-have-you and run make]\n      $ gem spec ../../cache/some_extension_gem-1.0.gem\
+                    \ --ruby > \\\n                 ../../specifications/some_extension_gem-1.0.gemspec\n\
+                    \      $ gem list some_extension_gem\n    \n      *** LOCAL GEMS\
+                    \ ***\n    \n      some_extension_gem (1.0)\n      $\n\n  Defaults:\n\
+                    \    --both --version '>= 0' --document --no-force\n    --install-dir\
+                    \ /usr/local/lib/ruby/gems/2.2.0 --lock\n"
+                  generated_using: *id004
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "RubyGems is a sophisticated package manager for Ruby.\
+                  \  This is a\nbasic help message containing pointers to more information.\n\
+                  \n  Usage:\n    gem -h/--help\n    gem -v/--version\n    gem command\
+                  \ [arguments...] [options...]\n\n  Examples:\n    gem install rake\n\
+                  \    gem list --local\n    gem build package.gemspec\n    gem help\
+                  \ install\n\n  Further help:\n    gem help commands            list\
+                  \ all 'gem' commands\n    gem help examples            show some\
+                  \ examples of usage\n    gem help gem_dependencies    gem dependencies\
+                  \ file guide\n    gem help platforms           gem platforms guide\n\
+                  \    gem help <COMMAND>           show help on COMMAND\n       \
+                  \                            (e.g. 'gem help install')\n    gem\
+                  \ server                   present a web page at\n             \
+                  \                    http://localhost:8808/\n                  \
+                  \               with info about installed gems\n  Further information:\n\
+                  \    http://guides.rubygems.org\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -365,12 +1189,9 @@ subcommands:
                 \ the URL:\n    \n      http://localhost:8808/rdoc?q=%s - Firefox\n\
                 \      http://localhost:8808/rdoc?q=* - LaunchBar\n\n  Defaults:\n\
                 \    --port 8808 --dir /usr/local/lib/ruby/gems/2.2.0 --no-daemon\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - gem
-              - build
+              command: *id005
               positional:
               - !Positional
                 description: gemspec file name to build a gem for
@@ -449,9 +1270,7 @@ subcommands:
                 \      [edit gem contents]\n      $ gem build my_gem-1.0.gemspec\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - gem
-              - list
+              command: *id006
               positional:
               - !Positional
                 description: regexp to look for in gem name
@@ -576,13 +1395,6 @@ subcommands:
                 - --debug
                 args: !EmptyFlagArg {}
                 optional: true
-              - !Flag
-                description: ''
-                synonyms:
-                - --local
-                - --no-details
-                args: !EmptyFlagArg {}
-                optional: true
               parent: *id003
               subcommands: []
               usage: []
@@ -637,9 +1449,7 @@ subcommands:
                 \ gems use the search command.\n\n  Defaults:\n    --local --no-details\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - gem
-              - install
+              command: *id007
               positional:
               - !Positional
                 description: -n, --bindir DIR                 Directory where binary
@@ -1137,7 +1947,7 @@ subcommands:
             - --debug
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id008
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1293,7 +2103,7 @@ subcommands:
             - --debug
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id008
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1596,7 +2406,7 @@ subcommands:
             - --debug
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id008
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1830,7 +2640,7 @@ subcommands:
         - --debug
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1982,7 +2792,7 @@ subcommands:
         - --debug
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2278,7 +3088,7 @@ subcommands:
         - --debug
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id008
+      parent: *id009
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2505,7 +3315,7 @@ subcommands:
     - --debug
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2656,7 +3466,7 @@ subcommands:
     - --debug
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2947,7 +3757,7 @@ subcommands:
     - --debug
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id009
+  parent: *id010
   subcommands: []
   usage: []
   help_flag: !Flag

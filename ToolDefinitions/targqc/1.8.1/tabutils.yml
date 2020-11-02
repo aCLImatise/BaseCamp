@@ -23,7 +23,7 @@ subcommands:
     args: !SimpleFlagArg
       name: file.txt
     optional: true
-  parent: &id011 !Command
+  parent: &id012 !Command
     command: *id001
     positional: []
     named: []
@@ -45,7 +45,7 @@ subcommands:
         args: !SimpleFlagArg
           name: file.txt
         optional: true
-      parent: &id010 !Command
+      parent: &id011 !Command
         command: *id001
         positional: []
         named: []
@@ -67,7 +67,7 @@ subcommands:
             args: !SimpleFlagArg
               name: file.txt
             optional: true
-          parent: &id003 !Command
+          parent: &id010 !Command
             command: *id001
             positional: []
             named: []
@@ -89,7 +89,247 @@ subcommands:
                 args: !SimpleFlagArg
                   name: file.txt
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: tab_filter.py
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -header
+                    args: !SimpleFlagArg
+                      name: file.txt
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "\nFilters a tab-delmited file based upon configurable\
+                    \ critera\n\nUsage: tab_filter.py -header file.txt {criteria}\n\
+                    \nWhere criteria is a set of operations in the form of:\ncol#\
+                    \ operation value\n\nEg: \n1 eq foo\nColumn 1 (first column) is\
+                    \ equal to 'foo'\n\n1 eq foo 2 lt 3\nColumn 1 (first column) is\
+                    \ equal to 'foo' and column 2 is less than 3\n\nValid operation:\n\
+                    eq\nne\nlt\nlte\ngt\ngte\ncontains\n\nAll comment lines are printed\
+                    \ as-is.\n\n"
+                  generated_using: &id005 []
+                - !Command
+                  command: &id006
+                  - tabutils
+                  - view
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: tab_view.py
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "The number of lines to read in to estimate the size\
+                      \ of a column.\n[default 100]"
+                    synonyms:
+                    - -l
+                    args: !SimpleFlagArg
+                      name: lines
+                    optional: true
+                  - !Flag
+                    description: Use this (opposed to a tab) for the delimiter
+                    synonyms:
+                    - -d
+                    args: !SimpleFlagArg
+                      name: delim
+                    optional: true
+                  - !Flag
+                    description: 'The maximum length of a column (default: unlimited)'
+                    synonyms:
+                    - -max
+                    args: !SimpleFlagArg
+                      name: size
+                    optional: true
+                  - !Flag
+                    description: 'The minimum length of a column (default: 0)'
+                    synonyms:
+                    - -min
+                    args: !SimpleFlagArg
+                      name: size
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "\nA data aware tab-delimited file viewer\n\nWorks by\
+                    \ reading in the first few lines to determine the appropriate\
+                    \ widths\nfor each of the columns.  It will then display the data\
+                    \ with the appropriate\nspacing to keep columns together.  If\
+                    \ a future cell is larger than the\npredetermined size, it is\
+                    \ truncated.\n\nThis can then be fed into something like 'less'\
+                    \ for paging\n\nUsage: tab_view.py {opts} filename.tab\n\nOptions:\n\
+                    -l lines    The number of lines to read in to estimate the size\
+                    \ of a column.\n            [default 100]\n-d delim    Use this\
+                    \ (opposed to a tab) for the delimiter\n\n-max size   The maximum\
+                    \ length of a column (default: unlimited)\n-min size   The minimum\
+                    \ length of a column (default: 0)\n\n\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id007
+                  - tabutils
+                  - merge
+                  positional:
+                  - !Positional
+                    description: 1-4,5
+                    position: 0
+                    name: 1-4
+                    optional: false
+                  named:
+                  - !Flag
+                    description: the header is last commented line ('#')
+                    synonyms:
+                    - -headercomment
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: the files have no header row
+                    synonyms:
+                    - -noheader
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: discard rows with missing values
+                    synonyms:
+                    - -nomissing
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: order uncommon values by file first, not column
+                    synonyms:
+                    - -collate
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: ",col   if there are missing values, use these columns\
+                      \ to\ndetermine which file has missing data.  If the col ends\n\
+                      in 'n', this is taken to be a number.\n(defaults to common cols,\
+                      \ in order)"
+                    synonyms:
+                    - -keycols
+                    args: !SimpleFlagArg
+                      name: col
+                    optional: true
+                  - !Flag
+                    description: "keys are sorted descending order\n(defaults to ascending)"
+                    synonyms:
+                    - -keydesc
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "\nMerges tab-delimited files together, combining common\
+                    \ columns\n\nUsage: tab_merge.py {opts} common_cols merge_cols\
+                    \ files\n\ncommon_cols and merge_cols should be a comma-separated\
+                    \ list of column numbers.\n\nFiles must be in the same sort order\
+                    \ (given as  if not ascending text).\nIf the case of extra rows\
+                    \ in one of the files, blank values will be \nsubstituted. New\
+                    \ column names will be guessed based upon the filenames. \nCommented\
+                    \ lines and blank lines are ignored, except for any commented\
+                    \ lines \nthat are at the begining of the file - these are kept.\
+                    \  This assumes that the \nfirst non-comment, non-blank row is\
+                    \ the header.\n\nOptions:\n    -headercomment     the header is\
+                    \ last commented line ('#')\n    -noheader          the files\
+                    \ have no header row\n    -nomissing         discard rows with\
+                    \ missing values\n    -collate           order uncommon values\
+                    \ by file first, not column\n    \n    -keycols col,col   if there\
+                    \ are missing values, use these columns to \n                \
+                    \       determine which file has missing data.  If the col ends\
+                    \ \n                       in 'n', this is taken to be a number.\n\
+                    \                       (defaults to common cols, in order)\n\
+                    \                       \n    -keydesc           keys are sorted\
+                    \ descending order\n                       (defaults to ascending)\n\
+                    \nValid column definitions:\n    1,2,3,4\n    1-4\n    1-4,5\n\
+                    \n\n"
+                  generated_using: &id008
+                  - -h
+                - !Command
+                  command: &id009
+                  - tabutils
+                  - less
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: less
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Quit once the end of a file is reached
+                    synonyms:
+                    - -E
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Display status line with line numbers\nand percentage\
+                      \ through the file"
+                    synonyms:
+                    - -M
+                    - -m
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Prefix line number to each line
+                    synonyms:
+                    - -N
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Ignore case in all searches
+                    synonyms:
+                    - -I
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "less: invalid option -- 'S'\nBusyBox v1.22.1 (2014-05-23\
+                    \ 01:24:27 UTC) multi-call binary.\n\nUsage: less [-EMmNh~I?]\
+                    \ [FILE]...\n\nView FILE (or stdin) one screenful at a time\n\n\
+                    \t-E\tQuit once the end of a file is reached\n\t-M,-m\tDisplay\
+                    \ status line with line numbers\n\t\tand percentage through the\
+                    \ file\n\t-N\tPrefix line number to each line\n\t-I\tIgnore case\
+                    \ in all searches\n\t-~\tSuppress ~s displayed past EOF\n\n"
+                  generated_using: *id004
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "Usage: tabutils COMMAND\n\nCommands\n    filter  - Filters\
+                  \ a tab-delmited file based upon critera\n    merge   - Merges tab-delimited\
+                  \ files together, combining common columns\n    reorder - Re-orders\
+                  \ columns in a tab-delimited file\n    view    - A data aware tab-delimited\
+                  \ file viewer\n\n    less   - view | less -S\n\nSee 'tabutils help\
+                  \ CMD' for more information about a specific command\n"
+                generated_using: *id005
               subcommands: []
               usage: []
               help_flag:
@@ -102,11 +342,9 @@ subcommands:
                 \ foo 2 lt 3\nColumn 1 (first column) is equal to 'foo' and column\
                 \ 2 is less than 3\n\nValid operation:\neq\nne\nlt\nlte\ngt\ngte\n\
                 contains\n\nAll comment lines are printed as-is.\n\n"
-              generated_using: &id005 []
+              generated_using: *id005
             - !Command
-              command: &id006
-              - tabutils
-              - view
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -160,17 +398,14 @@ subcommands:
                 -d delim    Use this (opposed to a tab) for the delimiter\n\n-max\
                 \ size   The maximum length of a column (default: unlimited)\n-min\
                 \ size   The minimum length of a column (default: 0)\n\n\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id007
-              - tabutils
-              - merge
+              command: *id007
               positional:
               - !Positional
-                description: 1-4,5
+                description: ''
                 position: 0
-                name: 1-4
+                name: tab_merge.py
                 optional: false
               named:
               - !Flag
@@ -240,12 +475,9 @@ subcommands:
                 \              \n    -keydesc           keys are sorted descending\
                 \ order\n                       (defaults to ascending)\n\nValid column\
                 \ definitions:\n    1,2,3,4\n    1-4\n    1-4,5\n\n\n"
-              generated_using: &id008
-              - -h
+              generated_using: *id008
             - !Command
-              command: &id009
-              - tabutils
-              - less
+              command: *id009
               positional:
               - !Positional
                 description: ''
@@ -355,7 +587,7 @@ subcommands:
             args: !SimpleFlagArg
               name: size
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag:
@@ -421,7 +653,7 @@ subcommands:
             - -keydesc
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag:
@@ -483,7 +715,7 @@ subcommands:
             - -I
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id010
           subcommands: []
           usage: []
           help_flag:
@@ -559,7 +791,7 @@ subcommands:
         args: !SimpleFlagArg
           name: size
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -624,7 +856,7 @@ subcommands:
         - -keydesc
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -685,7 +917,7 @@ subcommands:
         - -I
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id010
+      parent: *id011
       subcommands: []
       usage: []
       help_flag:
@@ -759,7 +991,7 @@ subcommands:
     args: !SimpleFlagArg
       name: size
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -824,7 +1056,7 @@ subcommands:
     - -keydesc
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:
@@ -884,7 +1116,7 @@ subcommands:
     - -I
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id011
+  parent: *id012
   subcommands: []
   usage: []
   help_flag:

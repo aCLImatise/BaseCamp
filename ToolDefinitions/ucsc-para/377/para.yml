@@ -18,7 +18,7 @@ subcommands:
     args: !SimpleFlagArg
       name: is
     optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -35,7 +35,7 @@ subcommands:
         args: !SimpleFlagArg
           name: is
         optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -52,135 +52,10 @@ subcommands:
             args: !SimpleFlagArg
               name: is
             optional: true
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: Number of CPUs used by the jobs, default 1.
-              synonyms:
-              - -cpu
-              args: !SimpleFlagArg
-                name: N
-              optional: true
-            - !Flag
-              description: "Number of bytes of RAM used by the jobs.\nDefault is RAM\
-                \ on node divided by number of cpus on node.\nShorthand expressions\
-                \ allow t,g,m,k for tera, giga, mega, kilo.\ne.g. 4g = 4 Gigabytes."
-              synonyms:
-              - -ram
-              args: !SimpleFlagArg
-                name: N
-              optional: true
-            - !Flag
-              description: "- specify the directory path that is used to store the\n\
-                batch control files.  The batchDir can be an absolute path or a path\n\
-                relative to the current directory.  The resulting path is use as the\n\
-                batch name.  The directory is created if it doesn't exist.  When\n\
-                creating a new batch, batchDir should not have been previously used\
-                \ as\na batch name.  The batchDir must be writable by the paraHub\
-                \ process.\nThis does not affect the working directory assigned to\
-                \ jobs.  It defaults\nto the directory where para is run.  If used,\
-                \ this option must be specified\non all para commands for the  batch.\
-                \  For example to run two batches in the\nsame directory:\npara -batch=b1\
-                \ make jobs1\npara -batch=b2 make jobs2"
-              synonyms:
-              - -batch
-              args: !SimpleFlagArg
-                name: batchDir
-              optional: true
-            - !Flag
-              description: Number of retries per job - default 4.
-              synonyms:
-              - -retries
-              args: !SimpleFlagArg
-                name: N
-              optional: true
-            - !Flag
-              description: "Number of jobs to allow on parasol queue.\nDefault 2000000."
-              synonyms:
-              - -maxQueue
-              args: !SimpleFlagArg
-                name: N
-              optional: true
-            - !Flag
-              description: "Minimum number of jobs to queue.\nDefault 1.  Overrides\
-                \ maxQueue."
-              synonyms:
-              - -minPush
-              args: !SimpleFlagArg
-                name: N
-              optional: true
-            - !Flag
-              description: Maximum number of jobs to queue - default 100000.
-              synonyms:
-              - -maxPush
-              args: !SimpleFlagArg
-                name: N
-              optional: true
-            - !Flag
-              description: "Number of minutes job runs before hang warning.\nDefault\
-                \ 4320 (3 days)."
-              synonyms:
-              - -warnTime
-              args: !SimpleFlagArg
-                name: N
-              optional: true
-            - !Flag
-              description: "Number of minutes hung job runs before push kills it.\n\
-                By default kill off for backwards compatibility."
-              synonyms:
-              - -killTime
-              args: !SimpleFlagArg
-                name: N
-              optional: true
-            - !Flag
-              description: "Number of seconds to delay before submitting next job\n\
-                to minimize i/o load at startup - default 0."
-              synonyms:
-              - -delayTime
-              args: !SimpleFlagArg
-                name: N
-              optional: true
-            - !Flag
-              description: "Set batch priority to high, medium, or low.\nDefault medium\
-                \ (use high only with approval).\nIf needed, use with make, push,\
-                \ create, shove, or try.\nOr, set batch priority to a specific numeric\
-                \ value - default 10.\n1 is emergency high priority,\n10 is normal\
-                \ medium,\n100 is low for bottomfeeders.\nSetting priority higher\
-                \ than normal (1-9) will be logged.\nPlease keep low priority jobs\
-                \ short, they won't be pre-empted."
-              synonyms:
-              - -priority
-              args: !SimpleFlagArg
-                name: x
-              optional: true
-            - !Flag
-              description: "Limit the number of jobs the batch can run.\nSpecify number\
-                \ of jobs, for example 10 or 'unlimited'.\nDefault unlimited displays\
-                \ as -1."
-              synonyms:
-              - -maxJob
-              args: !SimpleFlagArg
-                name: x
-              optional: true
-            - !Flag
-              description: "- specify the directory path to use as the current working\n\
-                directory for each job.  The dir can be an absolute path or a path\n\
-                relative to the current directory. It defaults to the directory where\n\
-                para is run."
-              synonyms:
-              - -jobCwd
-              args: !SimpleFlagArg
-                name: dir
-              optional: true
-            - !Flag
-              description: '- set verbosity level.'
-              synonyms:
-              - -verbose
-              args: !SimpleFlagArg
-                name: '1'
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -194,19 +69,282 @@ subcommands:
                 args: !SimpleFlagArg
                   name: is
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: Number of CPUs used by the jobs, default 1.
+                  synonyms:
+                  - -cpu
+                  args: !SimpleFlagArg
+                    name: N
+                  optional: true
+                - !Flag
+                  description: "Number of bytes of RAM used by the jobs.\nDefault\
+                    \ is RAM on node divided by number of cpus on node.\nShorthand\
+                    \ expressions allow t,g,m,k for tera, giga, mega, kilo.\ne.g.\
+                    \ 4g = 4 Gigabytes."
+                  synonyms:
+                  - -ram
+                  args: !SimpleFlagArg
+                    name: N
+                  optional: true
+                - !Flag
+                  description: "- specify the directory path that is used to store\
+                    \ the\nbatch control files.  The batchDir can be an absolute path\
+                    \ or a path\nrelative to the current directory.  The resulting\
+                    \ path is use as the\nbatch name.  The directory is created if\
+                    \ it doesn't exist.  When\ncreating a new batch, batchDir should\
+                    \ not have been previously used as\na batch name.  The batchDir\
+                    \ must be writable by the paraHub process.\nThis does not affect\
+                    \ the working directory assigned to jobs.  It defaults\nto the\
+                    \ directory where para is run.  If used, this option must be specified\n\
+                    on all para commands for the  batch.  For example to run two batches\
+                    \ in the\nsame directory:\npara -batch=b1 make jobs1\npara -batch=b2\
+                    \ make jobs2"
+                  synonyms:
+                  - -batch
+                  args: !SimpleFlagArg
+                    name: batchDir
+                  optional: true
+                - !Flag
+                  description: Number of retries per job - default 4.
+                  synonyms:
+                  - -retries
+                  args: !SimpleFlagArg
+                    name: N
+                  optional: true
+                - !Flag
+                  description: "Number of jobs to allow on parasol queue.\nDefault\
+                    \ 2000000."
+                  synonyms:
+                  - -maxQueue
+                  args: !SimpleFlagArg
+                    name: N
+                  optional: true
+                - !Flag
+                  description: "Minimum number of jobs to queue.\nDefault 1.  Overrides\
+                    \ maxQueue."
+                  synonyms:
+                  - -minPush
+                  args: !SimpleFlagArg
+                    name: N
+                  optional: true
+                - !Flag
+                  description: Maximum number of jobs to queue - default 100000.
+                  synonyms:
+                  - -maxPush
+                  args: !SimpleFlagArg
+                    name: N
+                  optional: true
+                - !Flag
+                  description: "Number of minutes job runs before hang warning.\n\
+                    Default 4320 (3 days)."
+                  synonyms:
+                  - -warnTime
+                  args: !SimpleFlagArg
+                    name: N
+                  optional: true
+                - !Flag
+                  description: "Number of minutes hung job runs before push kills\
+                    \ it.\nBy default kill off for backwards compatibility."
+                  synonyms:
+                  - -killTime
+                  args: !SimpleFlagArg
+                    name: N
+                  optional: true
+                - !Flag
+                  description: "Number of seconds to delay before submitting next\
+                    \ job\nto minimize i/o load at startup - default 0."
+                  synonyms:
+                  - -delayTime
+                  args: !SimpleFlagArg
+                    name: N
+                  optional: true
+                - !Flag
+                  description: "Set batch priority to high, medium, or low.\nDefault\
+                    \ medium (use high only with approval).\nIf needed, use with make,\
+                    \ push, create, shove, or try.\nOr, set batch priority to a specific\
+                    \ numeric value - default 10.\n1 is emergency high priority,\n\
+                    10 is normal medium,\n100 is low for bottomfeeders.\nSetting priority\
+                    \ higher than normal (1-9) will be logged.\nPlease keep low priority\
+                    \ jobs short, they won't be pre-empted."
+                  synonyms:
+                  - -priority
+                  args: !SimpleFlagArg
+                    name: x
+                  optional: true
+                - !Flag
+                  description: "Limit the number of jobs the batch can run.\nSpecify\
+                    \ number of jobs, for example 10 or 'unlimited'.\nDefault unlimited\
+                    \ displays as -1."
+                  synonyms:
+                  - -maxJob
+                  args: !SimpleFlagArg
+                    name: x
+                  optional: true
+                - !Flag
+                  description: "- specify the directory path to use as the current\
+                    \ working\ndirectory for each job.  The dir can be an absolute\
+                    \ path or a path\nrelative to the current directory. It defaults\
+                    \ to the directory where\npara is run."
+                  synonyms:
+                  - -jobCwd
+                  args: !SimpleFlagArg
+                    name: dir
+                  optional: true
+                - !Flag
+                  description: '- set verbosity level.'
+                  synonyms:
+                  - -verbose
+                  args: !SimpleFlagArg
+                    name: '1'
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: not a valid option
+                    synonyms:
+                    - -h
+                    args: !SimpleFlagArg
+                      name: is
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "-h is not a valid option\n"
+                  generated_using: &id004
+                  - -h
+                - !Command
+                  command: &id005
+                  - para
+                  - command-specific
+                  positional: []
+                  named:
+                  - !Flag
+                    description: not a valid option
+                    synonyms:
+                    - -h
+                    args: !SimpleFlagArg
+                      name: is
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "-h is not a valid option\n"
+                  generated_using: *id004
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "para - version 12.18\nManage a batch of jobs in parallel\
+                  \ on a compute cluster.\nNormal usage is to do a 'para create' followed\
+                  \ by 'para push' until\njob is done.  Use 'para check' to check\
+                  \ status.\nusage:\n\n   para [options] command [command-specific\
+                  \ arguments]\n\nThe commands are:\n\npara create jobList\n   This\
+                  \ makes the job-tracking database from a text file with the\n  \
+                  \ command line for each job on a separate line.\n   options:\n \
+                  \     -cpu=N  Number of CPUs used by the jobs, default 1.\n    \
+                  \  -ram=N  Number of bytes of RAM used by the jobs.\n         Default\
+                  \ is RAM on node divided by number of cpus on node.\n         Shorthand\
+                  \ expressions allow t,g,m,k for tera, giga, mega, kilo.\n      \
+                  \   e.g. 4g = 4 Gigabytes.\n      -batch=batchDir - specify the\
+                  \ directory path that is used to store the\n       batch control\
+                  \ files.  The batchDir can be an absolute path or a path\n     \
+                  \  relative to the current directory.  The resulting path is use\
+                  \ as the\n       batch name.  The directory is created if it doesn't\
+                  \ exist.  When\n       creating a new batch, batchDir should not\
+                  \ have been previously used as\n       a batch name.  The batchDir\
+                  \ must be writable by the paraHub process.\n       This does not\
+                  \ affect the working directory assigned to jobs.  It defaults\n\
+                  \       to the directory where para is run.  If used, this option\
+                  \ must be specified\n       on all para commands for the  batch.\
+                  \  For example to run two batches in the\n       same directory:\n\
+                  \          para -batch=b1 make jobs1\n          para -batch=b2 make\
+                  \ jobs2\npara push \n   This pushes forward the batch of jobs by\
+                  \ submitting jobs to parasol\n   It will limit parasol queue size\
+                  \ to something not too big and\n   retry failed jobs.\n   options:\n\
+                  \      -retries=N  Number of retries per job - default 4.\n    \
+                  \  -maxQueue=N  Number of jobs to allow on parasol queue. \n   \
+                  \      Default 2000000.\n      -minPush=N  Minimum number of jobs\
+                  \ to queue. \n         Default 1.  Overrides maxQueue.\n      -maxPush=N\
+                  \  Maximum number of jobs to queue - default 100000.\n      -warnTime=N\
+                  \  Number of minutes job runs before hang warning. \n         Default\
+                  \ 4320 (3 days).\n      -killTime=N  Number of minutes hung job\
+                  \ runs before push kills it.\n         By default kill off for backwards\
+                  \ compatibility.\n      -delayTime=N  Number of seconds to delay\
+                  \ before submitting next job \n         to minimize i/o load at\
+                  \ startup - default 0.\n      -priority=x  Set batch priority to\
+                  \ high, medium, or low.\n         Default medium (use high only\
+                  \ with approval).\n         If needed, use with make, push, create,\
+                  \ shove, or try.\n         Or, set batch priority to a specific\
+                  \ numeric value - default 10.\n         1 is emergency high priority,\
+                  \ \n         10 is normal medium, \n         100 is low for bottomfeeders.\n\
+                  \         Setting priority higher than normal (1-9) will be logged.\n\
+                  \         Please keep low priority jobs short, they won't be pre-empted.\n\
+                  \      -maxJob=x  Limit the number of jobs the batch can run.\n\
+                  \         Specify number of jobs, for example 10 or 'unlimited'.\n\
+                  \         Default unlimited displays as -1.\n      -jobCwd=dir -\
+                  \ specify the directory path to use as the current working\n   \
+                  \    directory for each job.  The dir can be an absolute path or\
+                  \ a path\n       relative to the current directory. It defaults\
+                  \ to the directory where\n       para is run.\npara try \n   This\
+                  \ is like para push, but only submits up to 10 jobs.\npara shove\n\
+                  \   Push jobs in this database until all are done or one fails after\
+                  \ N retries.\npara make jobList\n   Create database and run all\
+                  \ jobs in it if possible.  If one job\n   fails repeatedly this\
+                  \ will fail.  Suitable for inclusion in makefiles.\n   Same as a\
+                  \ 'create' followed by a 'shove'.\npara check\n   This checks on\
+                  \ the progress of the jobs.\npara stop\n   This stops all the jobs\
+                  \ in the batch.\npara chill\n   Tells system to not launch more\
+                  \ jobs in this batch, but\n   does not stop jobs that are already\
+                  \ running.\npara finished\n   List jobs that have finished.\npara\
+                  \ hung\n   List hung jobs in the batch (running > killTime).\npara\
+                  \ slow\n   List slow jobs in the batch (running > warnTime).\npara\
+                  \ crashed\n   List jobs that crashed or failed output checks the\
+                  \ last time they were run.\npara failed\n   List jobs that crashed\
+                  \ after repeated restarts.\npara status\n   List individual job\
+                  \ status, including times.\npara problems\n   List jobs that had\
+                  \ problems (even if successfully rerun).\n   Includes host info.\n\
+                  para running\n   Print info on currently running jobs.\npara hippos\
+                  \ time\n   Print info on currently running jobs taking > 'time'\
+                  \ (minutes) to run.\npara time\n   List timing information.\npara\
+                  \ recover jobList newJobList\n   Generate a job list by selecting\
+                  \ jobs from an existing list where\n   the `check out' tests fail.\n\
+                  para priority 999\n   Set batch priority. Values explained under\
+                  \ 'push' options above.\npara maxJob 999\n   Set batch maxJob. Values\
+                  \ explained under 'push' options above.\npara ram 999\n   Set batch\
+                  \ ram usage. Values explained under 'push' options above.\npara\
+                  \ cpu 999\n   Set batch cpu usage. Values explained under 'push'\
+                  \ options above.\npara resetCounts\n   Set batch done and crash\
+                  \ counters to 0.\npara flushResults\n   Flush results file.  Warns\
+                  \ if batch has jobs queued or running.\npara freeBatch\n   Free\
+                  \ all batch info on hub.  Works only if batch has nothing queued\
+                  \ or running.\npara showSickNodes\n   Show sick nodes which have\
+                  \ failed when running this batch.\npara clearSickNodes\n   Clear\
+                  \ sick nodes statistics and consecutive crash counts of batch.\n\
+                  \nCommon options\n   -verbose=1 - set verbosity level.\n\n"
+                generated_using: &id006 []
               subcommands: []
               usage: []
               help_flag:
               usage_flag:
               version_flag:
               help_text: "-h is not a valid option\n"
-              generated_using: &id004
-              - -h
+              generated_using: *id004
             - !Command
-              command: &id005
-              - para
-              - command-specific
+              command: *id005
               positional: []
               named:
               - !Flag
@@ -310,7 +448,7 @@ subcommands:
               \ when running this batch.\npara clearSickNodes\n   Clear sick nodes\
               \ statistics and consecutive crash counts of batch.\n\nCommon options\n\
               \   -verbose=1 - set verbosity level.\n\n"
-            generated_using: &id006 []
+            generated_using: *id006
           subcommands: []
           usage: []
           help_flag:
@@ -329,7 +467,7 @@ subcommands:
             args: !SimpleFlagArg
               name: is
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag:
@@ -437,7 +575,7 @@ subcommands:
         args: !SimpleFlagArg
           name: is
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag:
@@ -541,7 +679,7 @@ subcommands:
     args: !SimpleFlagArg
       name: is
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:

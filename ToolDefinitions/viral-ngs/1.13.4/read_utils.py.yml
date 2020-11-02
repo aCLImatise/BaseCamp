@@ -21,7 +21,7 @@ subcommands:
     name: subcommand
     optional: false
   named: []
-  parent: &id020 !Command
+  parent: &id021 !Command
     command: *id001
     positional: []
     named: []
@@ -41,7 +41,7 @@ subcommands:
         name: subcommand
         optional: false
       named: []
-      parent: &id019 !Command
+      parent: &id020 !Command
         command: *id001
         positional: []
         named: []
@@ -61,7 +61,7 @@ subcommands:
             name: subcommand
             optional: false
           named: []
-          parent: &id003 !Command
+          parent: &id019 !Command
             command: *id001
             positional: []
             named: []
@@ -81,7 +81,1631 @@ subcommands:
                 name: subcommand
                 optional: false
               named: []
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: read_utils.py
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: subcommand
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: read_utils.py subcommand\nread_utils.py: error:\
+                    \ argument \e[F: invalid choice: 'Picard/GATK.' (choose from 'purge_unmated',\
+                    \ 'fastq_to_fasta', 'index_fasta_samtools', 'index_fasta_picard',\
+                    \ 'mkdup_picard', 'revert_bam_picard', 'picard', 'sort_bam', 'merge_bams',\
+                    \ 'filter_bam', 'bam_to_fastq', 'fastq_to_bam', 'split_reads',\
+                    \ 'split_bam', 'reheader_bam', 'reheader_bams', 'rmdup_mvicuna_bam',\
+                    \ 'dup_remove_mvicuna', 'rmdup_prinseq_fastq', 'filter_bam_mapped_only',\
+                    \ 'novoalign', 'novoindex', 'gatk_ug', 'gatk_realign', 'align_and_fix',\
+                    \ 'bwamem_idxstats')\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - read_utils.py
+                  - gatk_ug
+                  positional:
+                  - !Positional
+                    description: Input reads, BAM format.
+                    position: 0
+                    name: inBam
+                    optional: false
+                  - !Positional
+                    description: Reference genome, FASTA format, pre-indexed by Picard.
+                    position: 1
+                    name: refFasta
+                    optional: false
+                  - !Positional
+                    description: "Output calls in VCF format. If this filename ends\
+                      \ with\n.gz, GATK will BGZIP compress the output and produce\
+                      \ a\nTabix index file as well."
+                    position: 2
+                    name: outVcf
+                    optional: false
+                  named:
+                  - !Flag
+                    description: 'UnifiedGenotyper options (default:'
+                    synonyms:
+                    - --options
+                    args: !SimpleFlagArg
+                      name: OPTIONS
+                    optional: true
+                  - !Flag
+                    description: )
+                    synonyms:
+                    - --min_base_quality_score
+                    - -ploidy
+                    args: !SimpleFlagArg
+                      name: '15'
+                    optional: true
+                  - !Flag
+                    description: 'JVM virtual memory size (default: 2g)'
+                    synonyms:
+                    - --JVMmemory
+                    args: !SimpleFlagArg
+                      name: JVMMEMORY
+                    optional: true
+                  - !Flag
+                    description: "A path containing the GATK jar file. This overrides\n\
+                      the GATK_ENV environment variable or the GATK conda\npackage.\
+                      \ (default: None)"
+                    synonyms:
+                    - --GATK_PATH
+                    args: !SimpleFlagArg
+                      name: GATK_PATH
+                    optional: true
+                  - !Flag
+                    description: 'Verboseness of output. [default: DEBUG]'
+                    synonyms:
+                    - --loglevel
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? ERROR
+                        ? EXCEPTION
+                        ? INFO
+                        ? DEBUG
+                        ? WARNING
+                        ? CRITICAL
+                    optional: true
+                  - !Flag
+                    description: 'Base directory for temp files. [default: /tmp]'
+                    synonyms:
+                    - --tmp_dir
+                    args: !SimpleFlagArg
+                      name: TMP_DIR
+                    optional: true
+                  - !Flag
+                    description: "Keep the tmp_dir if an exception occurs while running.\n\
+                      Default is to delete all temp files at the end, even\nif there's\
+                      \ a failure.\n"
+                    synonyms:
+                    - --tmp_dirKeep
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: read_utils.py subcommand gatk_ug [-h] [--options\
+                    \ OPTIONS]\n                                        [--JVMmemory\
+                    \ JVMMEMORY]\n                                        [--GATK_PATH\
+                    \ GATK_PATH]\n                                        [--loglevel\
+                    \ {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n           \
+                    \                             [--version] [--tmp_dir TMP_DIR]\n\
+                    \                                        [--tmp_dirKeep]\n   \
+                    \                                     inBam refFasta outVcf\n\n\
+                    Call genotypes using the GATK UnifiedGenotyper.\n\npositional\
+                    \ arguments:\n  inBam                 Input reads, BAM format.\n\
+                    \  refFasta              Reference genome, FASTA format, pre-indexed\
+                    \ by Picard.\n  outVcf                Output calls in VCF format.\
+                    \ If this filename ends with\n                        .gz, GATK\
+                    \ will BGZIP compress the output and produce a\n             \
+                    \           Tabix index file as well.\n\noptional arguments:\n\
+                    \  -h, --help            show this help message and exit\n  --options\
+                    \ OPTIONS     UnifiedGenotyper options (default:\n           \
+                    \             --min_base_quality_score 15 -ploidy 4)\n  --JVMmemory\
+                    \ JVMMEMORY\n                        JVM virtual memory size (default:\
+                    \ 2g)\n  --GATK_PATH GATK_PATH\n                        A path\
+                    \ containing the GATK jar file. This overrides\n             \
+                    \           the GATK_ENV environment variable or the GATK conda\n\
+                    \                        package. (default: None)\n  --loglevel\
+                    \ {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n            \
+                    \            Verboseness of output. [default: DEBUG]\n  --version,\
+                    \ -V         show program's version number and exit\n  --tmp_dir\
+                    \ TMP_DIR     Base directory for temp files. [default: /tmp]\n\
+                    \  --tmp_dirKeep         Keep the tmp_dir if an exception occurs\
+                    \ while running.\n                        Default is to delete\
+                    \ all temp files at the end, even\n                        if\
+                    \ there's a failure.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - read_utils.py
+                  - mkdup_picard
+                  positional:
+                  - !Positional
+                    description: Input reads, BAM format.
+                    position: 0
+                    name: inBams
+                    optional: false
+                  - !Positional
+                    description: Output reads, BAM format.
+                    position: 1
+                    name: outBam
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "Output metrics file. Default is to dump to a temp\n\
+                      file."
+                    synonyms:
+                    - --outMetrics
+                    args: !SimpleFlagArg
+                      name: OUTMETRICS
+                    optional: true
+                  - !Flag
+                    description: "Instead of marking duplicates, remove them entirely\n\
+                      (default: False)"
+                    synonyms:
+                    - --remove
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'JVM virtual memory size (default: 2g)'
+                    synonyms:
+                    - --JVMmemory
+                    args: !SimpleFlagArg
+                      name: JVMMEMORY
+                    optional: true
+                  - !Flag
+                    description: "[PICARDOPTIONS [PICARDOPTIONS ...]]\nOptional arguments\
+                      \ to Picard's MarkDuplicates,\nOPTIONNAME=value ..."
+                    synonyms:
+                    - --picardOptions
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Verboseness of output. [default: DEBUG]'
+                    synonyms:
+                    - --loglevel
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? ERROR
+                        ? EXCEPTION
+                        ? INFO
+                        ? DEBUG
+                        ? WARNING
+                        ? CRITICAL
+                    optional: true
+                  - !Flag
+                    description: 'Base directory for temp files. [default: /tmp]'
+                    synonyms:
+                    - --tmp_dir
+                    args: !SimpleFlagArg
+                      name: TMP_DIR
+                    optional: true
+                  - !Flag
+                    description: "Keep the tmp_dir if an exception occurs while running.\n\
+                      Default is to delete all temp files at the end, even\nif there's\
+                      \ a failure.\n"
+                    synonyms:
+                    - --tmp_dirKeep
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: read_utils.py subcommand mkdup_picard [-h] [--outMetrics\
+                    \ OUTMETRICS]\n                                             [--remove]\n\
+                    \                                             [--JVMmemory JVMMEMORY]\n\
+                    \                                             [--picardOptions\
+                    \ [PICARDOPTIONS [PICARDOPTIONS ...]]]\n                     \
+                    \                        [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+                    \                                             [--version] [--tmp_dir\
+                    \ TMP_DIR]\n                                             [--tmp_dirKeep]\n\
+                    \                                             inBams [inBams ...]\
+                    \ outBam\n\nMark or remove duplicate reads from BAM file.\n\n\
+                    positional arguments:\n  inBams                Input reads, BAM\
+                    \ format.\n  outBam                Output reads, BAM format.\n\
+                    \noptional arguments:\n  -h, --help            show this help\
+                    \ message and exit\n  --outMetrics OUTMETRICS\n              \
+                    \          Output metrics file. Default is to dump to a temp\n\
+                    \                        file.\n  --remove              Instead\
+                    \ of marking duplicates, remove them entirely\n              \
+                    \          (default: False)\n  --JVMmemory JVMMEMORY\n       \
+                    \                 JVM virtual memory size (default: 2g)\n  --picardOptions\
+                    \ [PICARDOPTIONS [PICARDOPTIONS ...]]\n                      \
+                    \  Optional arguments to Picard's MarkDuplicates,\n          \
+                    \              OPTIONNAME=value ...\n  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+                    \                        Verboseness of output. [default: DEBUG]\n\
+                    \  --version, -V         show program's version number and exit\n\
+                    \  --tmp_dir TMP_DIR     Base directory for temp files. [default:\
+                    \ /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an exception\
+                    \ occurs while running.\n                        Default is to\
+                    \ delete all temp files at the end, even\n                   \
+                    \     if there's a failure.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - read_utils.py
+                  - align_and_fix
+                  positional:
+                  - !Positional
+                    description: Input unaligned reads, BAM format.
+                    position: 0
+                    name: inBam
+                    optional: false
+                  - !Positional
+                    description: "Reference genome, FASTA format; will be indexed\
+                      \ by\nPicard and Novoalign."
+                    position: 1
+                    name: refFasta
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "Aligned, sorted, and indexed reads. Unmapped reads\
+                      \ are\nretained and duplicate reads are marked, not removed."
+                    synonyms:
+                    - --outBamAll
+                    args: !SimpleFlagArg
+                      name: OUTBAMALL
+                    optional: true
+                  - !Flag
+                    description: "Aligned, sorted, and indexed reads. Unmapped reads\
+                      \ and\nduplicate reads are removed from this file."
+                    synonyms:
+                    - --outBamFiltered
+                    args: !SimpleFlagArg
+                      name: OUTBAMFILTERED
+                    optional: true
+                  - !Flag
+                    description: "aligner options (default for novoalign: \"-r Random\"\
+                      ,\nbwa: \"-T 30\""
+                    synonyms:
+                    - --aligner_options
+                    args: !SimpleFlagArg
+                      name: ALIGNER_OPTIONS
+                    optional: true
+                  - !Flag
+                    description: 'aligner (default: novoalign)'
+                    synonyms:
+                    - --aligner
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? bwa
+                        ? novoalign
+                    optional: true
+                  - !Flag
+                    description: 'JVM virtual memory size (default: 4g)'
+                    synonyms:
+                    - --JVMmemory
+                    args: !SimpleFlagArg
+                      name: JVMMEMORY
+                    optional: true
+                  - !Flag
+                    description: 'Number of threads (default: 1)'
+                    synonyms:
+                    - --threads
+                    args: !SimpleFlagArg
+                      name: THREADS
+                    optional: true
+                  - !Flag
+                    description: "A path containing the GATK jar file. This overrides\n\
+                      the GATK_ENV environment variable or the GATK conda\npackage.\
+                      \ (default: None)"
+                    synonyms:
+                    - --GATK_PATH
+                    args: !SimpleFlagArg
+                      name: GATK_PATH
+                    optional: true
+                  - !Flag
+                    description: "A path to the novoalign.lic file. This overrides\
+                      \ the\nNOVOALIGN_LICENSE_PATH environment variable. (default:\n\
+                      None)"
+                    synonyms:
+                    - --NOVOALIGN_LICENSE_PATH
+                    args: !SimpleFlagArg
+                      name: NOVOALIGN_LICENSE_PATH
+                    optional: true
+                  - !Flag
+                    description: 'Verboseness of output. [default: DEBUG]'
+                    synonyms:
+                    - --loglevel
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? ERROR
+                        ? EXCEPTION
+                        ? INFO
+                        ? DEBUG
+                        ? WARNING
+                        ? CRITICAL
+                    optional: true
+                  - !Flag
+                    description: 'Base directory for temp files. [default: /tmp]'
+                    synonyms:
+                    - --tmp_dir
+                    args: !SimpleFlagArg
+                      name: TMP_DIR
+                    optional: true
+                  - !Flag
+                    description: "Keep the tmp_dir if an exception occurs while running.\n\
+                      Default is to delete all temp files at the end, even\nif there's\
+                      \ a failure.\n"
+                    synonyms:
+                    - --tmp_dirKeep
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: read_utils.py subcommand align_and_fix [-h] [--outBamAll\
+                    \ OUTBAMALL]\n                                              [--outBamFiltered\
+                    \ OUTBAMFILTERED]\n                                          \
+                    \    [--aligner_options ALIGNER_OPTIONS]\n                   \
+                    \                           [--aligner {novoalign,bwa}]\n    \
+                    \                                          [--JVMmemory JVMMEMORY]\n\
+                    \                                              [--threads THREADS]\n\
+                    \                                              [--GATK_PATH GATK_PATH]\n\
+                    \                                              [--NOVOALIGN_LICENSE_PATH\
+                    \ NOVOALIGN_LICENSE_PATH]\n                                  \
+                    \            [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+                    \                                              [--version] [--tmp_dir\
+                    \ TMP_DIR]\n                                              [--tmp_dirKeep]\n\
+                    \                                              inBam refFasta\n\
+                    \nTake reads, align to reference with Novoalign, mark duplicates\
+                    \ with Picard,\nrealign indels with GATK, and optionally filter\
+                    \ final file to mapped/non-dupe\nreads.\n\npositional arguments:\n\
+                    \  inBam                 Input unaligned reads, BAM format.\n\
+                    \  refFasta              Reference genome, FASTA format; will\
+                    \ be indexed by\n                        Picard and Novoalign.\n\
+                    \noptional arguments:\n  -h, --help            show this help\
+                    \ message and exit\n  --outBamAll OUTBAMALL\n                \
+                    \        Aligned, sorted, and indexed reads. Unmapped reads are\n\
+                    \                        retained and duplicate reads are marked,\
+                    \ not removed.\n  --outBamFiltered OUTBAMFILTERED\n          \
+                    \              Aligned, sorted, and indexed reads. Unmapped reads\
+                    \ and\n                        duplicate reads are removed from\
+                    \ this file.\n  --aligner_options ALIGNER_OPTIONS\n          \
+                    \              aligner options (default for novoalign: \"-r Random\"\
+                    ,\n                        bwa: \"-T 30\"\n  --aligner {novoalign,bwa}\n\
+                    \                        aligner (default: novoalign)\n  --JVMmemory\
+                    \ JVMMEMORY\n                        JVM virtual memory size (default:\
+                    \ 4g)\n  --threads THREADS     Number of threads (default: 1)\n\
+                    \  --GATK_PATH GATK_PATH\n                        A path containing\
+                    \ the GATK jar file. This overrides\n                        the\
+                    \ GATK_ENV environment variable or the GATK conda\n          \
+                    \              package. (default: None)\n  --NOVOALIGN_LICENSE_PATH\
+                    \ NOVOALIGN_LICENSE_PATH\n                        A path to the\
+                    \ novoalign.lic file. This overrides the\n                   \
+                    \     NOVOALIGN_LICENSE_PATH environment variable. (default:\n\
+                    \                        None)\n  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+                    \                        Verboseness of output. [default: DEBUG]\n\
+                    \  --version, -V         show program's version number and exit\n\
+                    \  --tmp_dir TMP_DIR     Base directory for temp files. [default:\
+                    \ /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an exception\
+                    \ occurs while running.\n                        Default is to\
+                    \ delete all temp files at the end, even\n                   \
+                    \     if there's a failure.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - read_utils.py
+                  - bam_to_fastq
+                  positional:
+                  - !Positional
+                    description: Input bam file.
+                    position: 0
+                    name: inBam
+                    optional: false
+                  - !Positional
+                    description: Output fastq file; 1st end of paired-end reads.
+                    position: 1
+                    name: outFastq1
+                    optional: false
+                  - !Positional
+                    description: Output fastq file; 2nd end of paired-end reads.
+                    position: 2
+                    name: outFastq2
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Optional text file name that will receive bam header.
+                    synonyms:
+                    - --outHeader
+                    args: !SimpleFlagArg
+                      name: OUTHEADER
+                    optional: true
+                  - !Flag
+                    description: 'JVM virtual memory size (default: 2g)'
+                    synonyms:
+                    - --JVMmemory
+                    args: !SimpleFlagArg
+                      name: JVMMEMORY
+                    optional: true
+                  - !Flag
+                    description: "[PICARDOPTIONS [PICARDOPTIONS ...]]\nOptional arguments\
+                      \ to Picard's SamToFastq,\nOPTIONNAME=value ..."
+                    synonyms:
+                    - --picardOptions
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Verboseness of output. [default: DEBUG]'
+                    synonyms:
+                    - --loglevel
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? ERROR
+                        ? EXCEPTION
+                        ? INFO
+                        ? DEBUG
+                        ? WARNING
+                        ? CRITICAL
+                    optional: true
+                  - !Flag
+                    description: 'Base directory for temp files. [default: /tmp]'
+                    synonyms:
+                    - --tmp_dir
+                    args: !SimpleFlagArg
+                      name: TMP_DIR
+                    optional: true
+                  - !Flag
+                    description: "Keep the tmp_dir if an exception occurs while running.\n\
+                      Default is to delete all temp files at the end, even\nif there's\
+                      \ a failure.\n"
+                    synonyms:
+                    - --tmp_dirKeep
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: read_utils.py subcommand bam_to_fastq [-h] [--outHeader\
+                    \ OUTHEADER]\n                                             [--JVMmemory\
+                    \ JVMMEMORY]\n                                             [--picardOptions\
+                    \ [PICARDOPTIONS [PICARDOPTIONS ...]]]\n                     \
+                    \                        [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+                    \                                             [--version] [--tmp_dir\
+                    \ TMP_DIR]\n                                             [--tmp_dirKeep]\n\
+                    \                                             inBam outFastq1\
+                    \ outFastq2\n\nConvert a bam file to a pair of fastq paired-end\
+                    \ read files and optional text\nheader.\n\npositional arguments:\n\
+                    \  inBam                 Input bam file.\n  outFastq1        \
+                    \     Output fastq file; 1st end of paired-end reads.\n  outFastq2\
+                    \             Output fastq file; 2nd end of paired-end reads.\n\
+                    \noptional arguments:\n  -h, --help            show this help\
+                    \ message and exit\n  --outHeader OUTHEADER\n                \
+                    \        Optional text file name that will receive bam header.\n\
+                    \  --JVMmemory JVMMEMORY\n                        JVM virtual\
+                    \ memory size (default: 2g)\n  --picardOptions [PICARDOPTIONS\
+                    \ [PICARDOPTIONS ...]]\n                        Optional arguments\
+                    \ to Picard's SamToFastq,\n                        OPTIONNAME=value\
+                    \ ...\n  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+                    \                        Verboseness of output. [default: DEBUG]\n\
+                    \  --version, -V         show program's version number and exit\n\
+                    \  --tmp_dir TMP_DIR     Base directory for temp files. [default:\
+                    \ /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an exception\
+                    \ occurs while running.\n                        Default is to\
+                    \ delete all temp files at the end, even\n                   \
+                    \     if there's a failure.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id009
+                  - read_utils.py
+                  - purge_unmated
+                  positional:
+                  - !Positional
+                    description: Use mergeShuffledFastqSeqs to purge unmated reads,
+                      and put corresponding reads
+                    position: 0
+                    name: outFastq2
+                    optional: false
+                  - !Positional
+                    description: Input fastq file; 1st end of paired-end reads.
+                    position: 0
+                    name: inFastq1
+                    optional: false
+                  - !Positional
+                    description: Input fastq file; 2nd end of paired-end reads.
+                    position: 1
+                    name: inFastq2
+                    optional: false
+                  - !Positional
+                    description: Output fastq file; 1st end of paired-end reads.
+                    position: 2
+                    name: outFastq1
+                    optional: false
+                  - !Positional
+                    description: Output fastq file; 2nd end of paired-end reads.
+                    position: 3
+                    name: outFastq2
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "Perl regular expression to parse paired read IDs\n\
+                      (default: ^@(\\S+)/[1|2]$)"
+                    synonyms:
+                    - --regex
+                    args: !SimpleFlagArg
+                      name: REGEX
+                    optional: true
+                  - !Flag
+                    description: 'Verboseness of output. [default: DEBUG]'
+                    synonyms:
+                    - --loglevel
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? ERROR
+                        ? EXCEPTION
+                        ? INFO
+                        ? DEBUG
+                        ? WARNING
+                        ? CRITICAL
+                    optional: true
+                  - !Flag
+                    description: 'Base directory for temp files. [default: /tmp]'
+                    synonyms:
+                    - --tmp_dir
+                    args: !SimpleFlagArg
+                      name: TMP_DIR
+                    optional: true
+                  - !Flag
+                    description: "Keep the tmp_dir if an exception occurs while running.\n\
+                      Default is to delete all temp files at the end, even\nif there's\
+                      \ a failure.\n"
+                    synonyms:
+                    - --tmp_dirKeep
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: read_utils.py subcommand purge_unmated [-h] [--regex\
+                    \ REGEX]\n                                              [--loglevel\
+                    \ {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n           \
+                    \                                   [--version] [--tmp_dir TMP_DIR]\n\
+                    \                                              [--tmp_dirKeep]\n\
+                    \                                              inFastq1 inFastq2\
+                    \ outFastq1\n                                              outFastq2\n\
+                    \nUse mergeShuffledFastqSeqs to purge unmated reads, and put corresponding\
+                    \ reads\nin the same order. Corresponding sequences must have\
+                    \ sequence identifiers of\nthe form SEQID/1 and SEQID/2.\n\npositional\
+                    \ arguments:\n  inFastq1              Input fastq file; 1st end\
+                    \ of paired-end reads.\n  inFastq2              Input fastq file;\
+                    \ 2nd end of paired-end reads.\n  outFastq1             Output\
+                    \ fastq file; 1st end of paired-end reads.\n  outFastq2      \
+                    \       Output fastq file; 2nd end of paired-end reads.\n\noptional\
+                    \ arguments:\n  -h, --help            show this help message and\
+                    \ exit\n  --regex REGEX         Perl regular expression to parse\
+                    \ paired read IDs\n                        (default: ^@(\\S+)/[1|2]$)\n\
+                    \  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+                    \                        Verboseness of output. [default: DEBUG]\n\
+                    \  --version, -V         show program's version number and exit\n\
+                    \  --tmp_dir TMP_DIR     Base directory for temp files. [default:\
+                    \ /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an exception\
+                    \ occurs while running.\n                        Default is to\
+                    \ delete all temp files at the end, even\n                   \
+                    \     if there's a failure.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id010
+                  - read_utils.py
+                  - merge_bams
+                  positional:
+                  - !Positional
+                    description: Input bam files.
+                    position: 0
+                    name: inBams
+                    optional: false
+                  - !Positional
+                    description: Output bam file.
+                    position: 1
+                    name: outBam
+                    optional: false
+                  named:
+                  - !Flag
+                    description: 'JVM virtual memory size (default: 2g)'
+                    synonyms:
+                    - --JVMmemory
+                    args: !SimpleFlagArg
+                      name: JVMMEMORY
+                    optional: true
+                  - !Flag
+                    description: "[PICARDOPTIONS [PICARDOPTIONS ...]]\nOptional arguments\
+                      \ to Picard's MergeSamFiles,\nOPTIONNAME=value ..."
+                    synonyms:
+                    - --picardOptions
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Verboseness of output. [default: DEBUG]'
+                    synonyms:
+                    - --loglevel
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? ERROR
+                        ? EXCEPTION
+                        ? INFO
+                        ? DEBUG
+                        ? WARNING
+                        ? CRITICAL
+                    optional: true
+                  - !Flag
+                    description: 'Base directory for temp files. [default: /tmp]'
+                    synonyms:
+                    - --tmp_dir
+                    args: !SimpleFlagArg
+                      name: TMP_DIR
+                    optional: true
+                  - !Flag
+                    description: "Keep the tmp_dir if an exception occurs while running.\n\
+                      Default is to delete all temp files at the end, even\nif there's\
+                      \ a failure.\n"
+                    synonyms:
+                    - --tmp_dirKeep
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: read_utils.py subcommand merge_bams [-h] [--JVMmemory\
+                    \ JVMMEMORY]\n                                           [--picardOptions\
+                    \ [PICARDOPTIONS [PICARDOPTIONS ...]]]\n                     \
+                    \                      [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+                    \                                           [--version] [--tmp_dir\
+                    \ TMP_DIR]\n                                           [--tmp_dirKeep]\n\
+                    \                                           inBams [inBams ...]\
+                    \ outBam\n\nMerge multiple BAMs into one\n\npositional arguments:\n\
+                    \  inBams                Input bam files.\n  outBam          \
+                    \      Output bam file.\n\noptional arguments:\n  -h, --help \
+                    \           show this help message and exit\n  --JVMmemory JVMMEMORY\n\
+                    \                        JVM virtual memory size (default: 2g)\n\
+                    \  --picardOptions [PICARDOPTIONS [PICARDOPTIONS ...]]\n     \
+                    \                   Optional arguments to Picard's MergeSamFiles,\n\
+                    \                        OPTIONNAME=value ...\n  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+                    \                        Verboseness of output. [default: DEBUG]\n\
+                    \  --version, -V         show program's version number and exit\n\
+                    \  --tmp_dir TMP_DIR     Base directory for temp files. [default:\
+                    \ /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an exception\
+                    \ occurs while running.\n                        Default is to\
+                    \ delete all temp files at the end, even\n                   \
+                    \     if there's a failure.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id011
+                  - read_utils.py
+                  - split_reads
+                  positional:
+                  - !Positional
+                    description: Input fastq or fasta file.
+                    position: 0
+                    name: inFileName
+                    optional: false
+                  - !Positional
+                    description: "Output files will be named ${outPrefix}01${outSuffix},\n\
+                      ${outPrefix}02${outSuffix}..."
+                    position: 1
+                    name: outPrefix
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "Maximum number of reads per chunk (default 1000\
+                      \ if\nneither maxReads nor numChunks is specified)."
+                    synonyms:
+                    - --maxReads
+                    args: !SimpleFlagArg
+                      name: MAXREADS
+                    optional: true
+                  - !Flag
+                    description: Number of output files, if maxReads is not specified.
+                    synonyms:
+                    - --numChunks
+                    args: !SimpleFlagArg
+                      name: NUMCHUNKS
+                    optional: true
+                  - !Flag
+                    description: "Number of characters to append to outputPrefix for\n\
+                      each output file (default 2). Number of files must not\nexceed\
+                      \ 10^INDEXLEN."
+                    synonyms:
+                    - --indexLen
+                    args: !SimpleFlagArg
+                      name: INDEXLEN
+                    optional: true
+                  - !Flag
+                    description: 'Input fastq or fasta file (default: fastq).'
+                    synonyms:
+                    - --format
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? fasta
+                        ? fastq
+                    optional: true
+                  - !Flag
+                    description: "Output filename suffix (e.g. .fastq or .fastq.gz).\
+                      \ A\nsuffix ending in .gz will cause the output file to be\n\
+                      gzip compressed. Default is no suffix.\n"
+                    synonyms:
+                    - --outSuffix
+                    args: !SimpleFlagArg
+                      name: OUTSUFFIX
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: read_utils.py subcommand split_reads [-h]\n \
+                    \                                           [--maxReads MAXREADS\
+                    \ | --numChunks NUMCHUNKS]\n                                 \
+                    \           [--indexLen INDEXLEN]\n                          \
+                    \                  [--format {fastq,fasta}]\n                \
+                    \                            [--outSuffix OUTSUFFIX]\n       \
+                    \                                     inFileName outPrefix\n\n\
+                    Split fasta or fastq file into chunks of maxReads reads or into\
+                    \ numChunks\nchunks named outPrefix01, outPrefix02, etc. If both\
+                    \ maxReads and numChunks are\nNone, use defaultMaxReads. The number\
+                    \ of characters in file names after\noutPrefix is indexLen; if\
+                    \ not specified, use defaultIndexLen.\n\npositional arguments:\n\
+                    \  inFileName            Input fastq or fasta file.\n  outPrefix\
+                    \             Output files will be named ${outPrefix}01${outSuffix},\n\
+                    \                        ${outPrefix}02${outSuffix}...\n\noptional\
+                    \ arguments:\n  -h, --help            show this help message and\
+                    \ exit\n  --maxReads MAXREADS   Maximum number of reads per chunk\
+                    \ (default 1000 if\n                        neither maxReads nor\
+                    \ numChunks is specified).\n  --numChunks NUMCHUNKS\n        \
+                    \                Number of output files, if maxReads is not specified.\n\
+                    \  --indexLen INDEXLEN   Number of characters to append to outputPrefix\
+                    \ for\n                        each output file (default 2). Number\
+                    \ of files must not\n                        exceed 10^INDEXLEN.\n\
+                    \  --format {fastq,fasta}\n                        Input fastq\
+                    \ or fasta file (default: fastq).\n  --outSuffix OUTSUFFIX\n \
+                    \                       Output filename suffix (e.g. .fastq or\
+                    \ .fastq.gz). A\n                        suffix ending in .gz\
+                    \ will cause the output file to be\n                        gzip\
+                    \ compressed. Default is no suffix.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id012
+                  - read_utils.py
+                  - novoalign
+                  positional:
+                  - !Positional
+                    description: Input reads, BAM format.
+                    position: 0
+                    name: inBam
+                    optional: false
+                  - !Positional
+                    description: Reference genome, FASTA format, pre-indexed by
+                    position: 1
+                    name: refFasta
+                    optional: false
+                  - !Positional
+                    description: outBam                Output reads, BAM format (aligned).
+                    position: 2
+                    name: Novoindex.
+                    optional: false
+                  named:
+                  - !Flag
+                    description: 'Novoalign options (default: -r Random)'
+                    synonyms:
+                    - --options
+                    args: !SimpleFlagArg
+                      name: OPTIONS
+                    optional: true
+                  - !Flag
+                    description: 'Filter outBam to minimum mapping quality (default:
+                      0)'
+                    synonyms:
+                    - --min_qual
+                    args: !SimpleFlagArg
+                      name: MIN_QUAL
+                    optional: true
+                  - !Flag
+                    description: 'JVM virtual memory size (default: 2g)'
+                    synonyms:
+                    - --JVMmemory
+                    args: !SimpleFlagArg
+                      name: JVMMEMORY
+                    optional: true
+                  - !Flag
+                    description: "A path to the novoalign.lic file. This overrides\
+                      \ the\nNOVOALIGN_LICENSE_PATH environment variable. (default:\n\
+                      None)"
+                    synonyms:
+                    - --NOVOALIGN_LICENSE_PATH
+                    args: !SimpleFlagArg
+                      name: NOVOALIGN_LICENSE_PATH
+                    optional: true
+                  - !Flag
+                    description: 'Verboseness of output. [default: DEBUG]'
+                    synonyms:
+                    - --loglevel
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? ERROR
+                        ? EXCEPTION
+                        ? INFO
+                        ? DEBUG
+                        ? WARNING
+                        ? CRITICAL
+                    optional: true
+                  - !Flag
+                    description: 'Base directory for temp files. [default: /tmp]'
+                    synonyms:
+                    - --tmp_dir
+                    args: !SimpleFlagArg
+                      name: TMP_DIR
+                    optional: true
+                  - !Flag
+                    description: "Keep the tmp_dir if an exception occurs while running.\n\
+                      Default is to delete all temp files at the end, even\nif there's\
+                      \ a failure.\n"
+                    synonyms:
+                    - --tmp_dirKeep
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: read_utils.py subcommand novoalign [-h] [--options\
+                    \ OPTIONS]\n                                          [--min_qual\
+                    \ MIN_QUAL]\n                                          [--JVMmemory\
+                    \ JVMMEMORY]\n                                          [--NOVOALIGN_LICENSE_PATH\
+                    \ NOVOALIGN_LICENSE_PATH]\n                                  \
+                    \        [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+                    \                                          [--version] [--tmp_dir\
+                    \ TMP_DIR]\n                                          [--tmp_dirKeep]\n\
+                    \                                          inBam refFasta outBam\n\
+                    \nAlign reads with Novoalign. Sort and index BAM output.\n\npositional\
+                    \ arguments:\n  inBam                 Input reads, BAM format.\n\
+                    \  refFasta              Reference genome, FASTA format, pre-indexed\
+                    \ by\n                        Novoindex.\n  outBam           \
+                    \     Output reads, BAM format (aligned).\n\noptional arguments:\n\
+                    \  -h, --help            show this help message and exit\n  --options\
+                    \ OPTIONS     Novoalign options (default: -r Random)\n  --min_qual\
+                    \ MIN_QUAL   Filter outBam to minimum mapping quality (default:\
+                    \ 0)\n  --JVMmemory JVMMEMORY\n                        JVM virtual\
+                    \ memory size (default: 2g)\n  --NOVOALIGN_LICENSE_PATH NOVOALIGN_LICENSE_PATH\n\
+                    \                        A path to the novoalign.lic file. This\
+                    \ overrides the\n                        NOVOALIGN_LICENSE_PATH\
+                    \ environment variable. (default:\n                        None)\n\
+                    \  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+                    \                        Verboseness of output. [default: DEBUG]\n\
+                    \  --version, -V         show program's version number and exit\n\
+                    \  --tmp_dir TMP_DIR     Base directory for temp files. [default:\
+                    \ /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an exception\
+                    \ occurs while running.\n                        Default is to\
+                    \ delete all temp files at the end, even\n                   \
+                    \     if there's a failure.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id013
+                  - read_utils.py
+                  - reads.
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: read_utils.py
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: subcommand
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: read_utils.py subcommand\nread_utils.py: error:\
+                    \ argument \e[F: invalid choice: 'reads.' (choose from 'purge_unmated',\
+                    \ 'fastq_to_fasta', 'index_fasta_samtools', 'index_fasta_picard',\
+                    \ 'mkdup_picard', 'revert_bam_picard', 'picard', 'sort_bam', 'merge_bams',\
+                    \ 'filter_bam', 'bam_to_fastq', 'fastq_to_bam', 'split_reads',\
+                    \ 'split_bam', 'reheader_bam', 'reheader_bams', 'rmdup_mvicuna_bam',\
+                    \ 'dup_remove_mvicuna', 'rmdup_prinseq_fastq', 'filter_bam_mapped_only',\
+                    \ 'novoalign', 'novoindex', 'gatk_ug', 'gatk_realign', 'align_and_fix',\
+                    \ 'bwamem_idxstats')\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id014
+                  - read_utils.py
+                  - rmdup_mvicuna_bam
+                  positional:
+                  - !Positional
+                    description: Input reads, BAM format.
+                    position: 0
+                    name: inBam
+                    optional: false
+                  - !Positional
+                    description: Output reads, BAM format.
+                    position: 1
+                    name: outBam
+                    optional: false
+                  named:
+                  - !Flag
+                    description: 'JVM virtual memory size (default: 4g)'
+                    synonyms:
+                    - --JVMmemory
+                    args: !SimpleFlagArg
+                      name: JVMMEMORY
+                    optional: true
+                  - !Flag
+                    description: 'Verboseness of output. [default: DEBUG]'
+                    synonyms:
+                    - --loglevel
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? ERROR
+                        ? EXCEPTION
+                        ? INFO
+                        ? DEBUG
+                        ? WARNING
+                        ? CRITICAL
+                    optional: true
+                  - !Flag
+                    description: 'Base directory for temp files. [default: /tmp]'
+                    synonyms:
+                    - --tmp_dir
+                    args: !SimpleFlagArg
+                      name: TMP_DIR
+                    optional: true
+                  - !Flag
+                    description: "Keep the tmp_dir if an exception occurs while running.\n\
+                      Default is to delete all temp files at the end, even\nif there's\
+                      \ a failure.\n"
+                    synonyms:
+                    - --tmp_dirKeep
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: read_utils.py subcommand rmdup_mvicuna_bam [-h]\
+                    \ [--JVMmemory JVMMEMORY]\n                                  \
+                    \                [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+                    \                                                  [--version]\n\
+                    \                                                  [--tmp_dir\
+                    \ TMP_DIR]\n                                                 \
+                    \ [--tmp_dirKeep]\n                                          \
+                    \        inBam outBam\n\nRemove duplicate reads from BAM file\
+                    \ using M-Vicuna. The primary advantage to\nthis approach over\
+                    \ Picard's MarkDuplicates tool is that Picard requires that\n\
+                    input reads are aligned to a reference, and M-Vicuna can operate\
+                    \ on unaligned\nreads.\n\npositional arguments:\n  inBam     \
+                    \            Input reads, BAM format.\n  outBam              \
+                    \  Output reads, BAM format.\n\noptional arguments:\n  -h, --help\
+                    \            show this help message and exit\n  --JVMmemory JVMMEMORY\n\
+                    \                        JVM virtual memory size (default: 4g)\n\
+                    \  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+                    \                        Verboseness of output. [default: DEBUG]\n\
+                    \  --version, -V         show program's version number and exit\n\
+                    \  --tmp_dir TMP_DIR     Base directory for temp files. [default:\
+                    \ /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an exception\
+                    \ occurs while running.\n                        Default is to\
+                    \ delete all temp files at the end, even\n                   \
+                    \     if there's a failure.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id015
+                  - read_utils.py
+                  - index_fasta_samtools
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: read_utils.py
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: subcommand
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: index_fasta_samtools
+                    optional: false
+                  named:
+                  - !Flag
+                    description: 'Verboseness of output. [default: DEBUG]'
+                    synonyms:
+                    - --loglevel
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? ERROR
+                        ? EXCEPTION
+                        ? INFO
+                        ? DEBUG
+                        ? WARNING
+                        ? CRITICAL
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: read_utils.py subcommand index_fasta_samtools\
+                    \ [-h]\n                                                     [--loglevel\
+                    \ {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n           \
+                    \                                          [--version]\n     \
+                    \                                                inFasta\n\nIndex\
+                    \ a reference genome for Samtools.\n\npositional arguments:\n\
+                    \  inFasta               Reference genome, FASTA format.\n\noptional\
+                    \ arguments:\n  -h, --help            show this help message and\
+                    \ exit\n  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+                    \                        Verboseness of output. [default: DEBUG]\n\
+                    \  --version, -V         show program's version number and exit\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id016
+                  - read_utils.py
+                  - reheader_bam
+                  positional:
+                  - !Positional
+                    description: Input reads, BAM format.
+                    position: 0
+                    name: inBam
+                    optional: false
+                  - !Positional
+                    description: 'Tabular file containing three columns: field, old,'
+                    position: 1
+                    name: rgMap
+                    optional: false
+                  - !Positional
+                    description: outBam                Output reads, BAM format.
+                    position: 2
+                    name: new.
+                    optional: false
+                  named:
+                  - !Flag
+                    description: 'Verboseness of output. [default: DEBUG]'
+                    synonyms:
+                    - --loglevel
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? ERROR
+                        ? EXCEPTION
+                        ? INFO
+                        ? DEBUG
+                        ? WARNING
+                        ? CRITICAL
+                    optional: true
+                  - !Flag
+                    description: 'Base directory for temp files. [default: /tmp]'
+                    synonyms:
+                    - --tmp_dir
+                    args: !SimpleFlagArg
+                      name: TMP_DIR
+                    optional: true
+                  - !Flag
+                    description: "Keep the tmp_dir if an exception occurs while running.\n\
+                      Default is to delete all temp files at the end, even\nif there's\
+                      \ a failure.\n"
+                    synonyms:
+                    - --tmp_dirKeep
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: read_utils.py subcommand reheader_bam [-h]\n\
+                    \                                             [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+                    \                                             [--version] [--tmp_dir\
+                    \ TMP_DIR]\n                                             [--tmp_dirKeep]\n\
+                    \                                             inBam rgMap outBam\n\
+                    \nCopy a BAM file (inBam to outBam) while renaming elements of\
+                    \ the BAM header.\nThe mapping file specifies which (key, old\
+                    \ value, new value) mappings. For\nexample: LB lib1 lib_one SM\
+                    \ sample1 Sample_1 SM sample2 Sample_2 SM sample3\nSample_3 CN\
+                    \ broad BI\n\npositional arguments:\n  inBam                 Input\
+                    \ reads, BAM format.\n  rgMap                 Tabular file containing\
+                    \ three columns: field, old,\n                        new.\n \
+                    \ outBam                Output reads, BAM format.\n\noptional\
+                    \ arguments:\n  -h, --help            show this help message and\
+                    \ exit\n  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+                    \                        Verboseness of output. [default: DEBUG]\n\
+                    \  --version, -V         show program's version number and exit\n\
+                    \  --tmp_dir TMP_DIR     Base directory for temp files. [default:\
+                    \ /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an exception\
+                    \ occurs while running.\n                        Default is to\
+                    \ delete all temp files at the end, even\n                   \
+                    \     if there's a failure.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id017
+                  - read_utils.py
+                  - rmdup_prinseq_fastq
+                  positional:
+                  - !Positional
+                    description: Input fastq file; 1st end of paired-end reads.
+                    position: 0
+                    name: inFastq1
+                    optional: false
+                  - !Positional
+                    description: Input fastq file; 2nd end of paired-end reads.
+                    position: 1
+                    name: inFastq2
+                    optional: false
+                  - !Positional
+                    description: Output fastq file; 1st end of paired-end reads.
+                    position: 2
+                    name: outFastq1
+                    optional: false
+                  - !Positional
+                    description: Output fastq file; 2nd end of paired-end reads.
+                    position: 3
+                    name: outFastq2
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "Include unmated reads in the main output fastq files\n\
+                      (default: False)"
+                    synonyms:
+                    - --includeUnmated
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "File name of output unpaired reads from 1st end\
+                      \ of\npaired-end reads (independent of --includeUnmated)"
+                    synonyms:
+                    - --unpairedOutFastq1
+                    args: !SimpleFlagArg
+                      name: UNPAIREDOUTFASTQ1
+                    optional: true
+                  - !Flag
+                    description: "File name of output unpaired reads from 2nd end\
+                      \ of\npaired-end reads (independent of --includeUnmated)"
+                    synonyms:
+                    - --unpairedOutFastq2
+                    args: !SimpleFlagArg
+                      name: UNPAIREDOUTFASTQ2
+                    optional: true
+                  - !Flag
+                    description: 'Verboseness of output. [default: DEBUG]'
+                    synonyms:
+                    - --loglevel
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? ERROR
+                        ? EXCEPTION
+                        ? INFO
+                        ? DEBUG
+                        ? WARNING
+                        ? CRITICAL
+                    optional: true
+                  - !Flag
+                    description: 'Base directory for temp files. [default: /tmp]'
+                    synonyms:
+                    - --tmp_dir
+                    args: !SimpleFlagArg
+                      name: TMP_DIR
+                    optional: true
+                  - !Flag
+                    description: "Keep the tmp_dir if an exception occurs while running.\n\
+                      Default is to delete all temp files at the end, even\nif there's\
+                      \ a failure.\n"
+                    synonyms:
+                    - --tmp_dirKeep
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: read_utils.py subcommand rmdup_prinseq_fastq\
+                    \ [-h] [--includeUnmated]\n                                  \
+                    \                  [--unpairedOutFastq1 UNPAIREDOUTFASTQ1]\n \
+                    \                                                   [--unpairedOutFastq2\
+                    \ UNPAIREDOUTFASTQ2]\n                                       \
+                    \             [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+                    \                                                    [--version]\n\
+                    \                                                    [--tmp_dir\
+                    \ TMP_DIR]\n                                                 \
+                    \   [--tmp_dirKeep]\n                                        \
+                    \            inFastq1 inFastq2\n                             \
+                    \                       outFastq1 outFastq2\n\nRun prinseq-lite's\
+                    \ duplicate removal operation on paired-end reads. Also\nremoves\
+                    \ reads with more than one N.\n\npositional arguments:\n  inFastq1\
+                    \              Input fastq file; 1st end of paired-end reads.\n\
+                    \  inFastq2              Input fastq file; 2nd end of paired-end\
+                    \ reads.\n  outFastq1             Output fastq file; 1st end of\
+                    \ paired-end reads.\n  outFastq2             Output fastq file;\
+                    \ 2nd end of paired-end reads.\n\noptional arguments:\n  -h, --help\
+                    \            show this help message and exit\n  --includeUnmated\
+                    \      Include unmated reads in the main output fastq files\n\
+                    \                        (default: False)\n  --unpairedOutFastq1\
+                    \ UNPAIREDOUTFASTQ1\n                        File name of output\
+                    \ unpaired reads from 1st end of\n                        paired-end\
+                    \ reads (independent of --includeUnmated)\n  --unpairedOutFastq2\
+                    \ UNPAIREDOUTFASTQ2\n                        File name of output\
+                    \ unpaired reads from 2nd end of\n                        paired-end\
+                    \ reads (independent of --includeUnmated)\n  --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n\
+                    \                        Verboseness of output. [default: DEBUG]\n\
+                    \  --version, -V         show program's version number and exit\n\
+                    \  --tmp_dir TMP_DIR     Base directory for temp files. [default:\
+                    \ /tmp]\n  --tmp_dirKeep         Keep the tmp_dir if an exception\
+                    \ occurs while running.\n                        Default is to\
+                    \ delete all temp files at the end, even\n                   \
+                    \     if there's a failure.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id018
+                  - read_utils.py
+                  - picard
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: read_utils.py
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: subcommand
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: picard
+                    optional: false
+                  named:
+                  - !Flag
+                    description: 'JVM virtual memory size (default: 2g)'
+                    synonyms:
+                    - --JVMmemory
+                    args: !SimpleFlagArg
+                      name: JVMMEMORY
+                    optional: true
+                  - !Flag
+                    description: "[PICARDOPTIONS [PICARDOPTIONS ...]]\nOptional arguments\
+                      \ to Picard, OPTIONNAME=value ..."
+                    synonyms:
+                    - --picardOptions
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Verboseness of output. [default: DEBUG]'
+                    synonyms:
+                    - --loglevel
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? ERROR
+                        ? EXCEPTION
+                        ? INFO
+                        ? DEBUG
+                        ? WARNING
+                        ? CRITICAL
+                    optional: true
+                  - !Flag
+                    description: 'Base directory for temp files. [default: /tmp]'
+                    synonyms:
+                    - --tmp_dir
+                    args: !SimpleFlagArg
+                      name: TMP_DIR
+                    optional: true
+                  - !Flag
+                    description: "Keep the tmp_dir if an exception occurs while running.\n\
+                      Default is to delete all temp files at the end, even\nif there's\
+                      \ a failure.\n"
+                    synonyms:
+                    - --tmp_dirKeep
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: show program's version number and exit
+                    synonyms:
+                    - --version
+                    - -V
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage: read_utils.py subcommand picard [-h] [--JVMmemory\
+                    \ JVMMEMORY]\n                                       [--picardOptions\
+                    \ [PICARDOPTIONS [PICARDOPTIONS ...]]]\n                     \
+                    \                  [--loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}]\n\
+                    \                                       [--version] [--tmp_dir\
+                    \ TMP_DIR]\n                                       [--tmp_dirKeep]\n\
+                    \                                       command\n\nGeneric Picard\
+                    \ runner.\n\npositional arguments:\n  command               picard\
+                    \ command\n\noptional arguments:\n  -h, --help            show\
+                    \ this help message and exit\n  --JVMmemory JVMMEMORY\n      \
+                    \                  JVM virtual memory size (default: 2g)\n  --picardOptions\
+                    \ [PICARDOPTIONS [PICARDOPTIONS ...]]\n                      \
+                    \  Optional arguments to Picard, OPTIONNAME=value ...\n  --loglevel\
+                    \ {DEBUG,INFO,WARNING,ERROR,CRITICAL,EXCEPTION}\n            \
+                    \            Verboseness of output. [default: DEBUG]\n  --version,\
+                    \ -V         show program's version number and exit\n  --tmp_dir\
+                    \ TMP_DIR     Base directory for temp files. [default: /tmp]\n\
+                    \  --tmp_dirKeep         Keep the tmp_dir if an exception occurs\
+                    \ while running.\n                        Default is to delete\
+                    \ all temp files at the end, even\n                        if\
+                    \ there's a failure.\n"
+                  generated_using: *id004
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "\nEnter a subcommand to view additional information:\n\
+                  \n     read_utils.py \e[1mpurge_unmated\e[0m [...]\n          Use\
+                  \ mergeShuffledFastqSeqs to purge unmated reads, and put\n     \
+                  \     corresponding reads in the same order.Corresponding\n    \
+                  \      sequences must have sequence identifiers of the form SEQID/1\n\
+                  \          and SEQID/2.\n\n     read_utils.py \e[1mfastq_to_fasta\e\
+                  [0m [...]\n          Convert from fastq format to fasta format.\
+                  \ Warning: output\n          reads might be split onto multiple\
+                  \ lines.\n\n     read_utils.py \e[1mindex_fasta_samtools\e[0m [...]\n\
+                  \          Index a reference genome for Samtools.\n\n     read_utils.py\
+                  \ \e[1mindex_fasta_picard\e[0m [...]\n          Create an index\
+                  \ file for a reference genome suitable for\n          Picard/GATK.\n\
+                  \n     read_utils.py \e[1mmkdup_picard\e[0m [...]\n          Mark\
+                  \ or remove duplicate reads from BAM file.\n\n     read_utils.py\
+                  \ \e[1mrevert_bam_picard\e[0m [...]\n          Revert BAM to raw\
+                  \ reads\n\n     read_utils.py \e[1mpicard\e[0m [...]\n         \
+                  \ Generic Picard runner.\n\n     read_utils.py \e[1msort_bam\e[0m\
+                  \ [...]\n          Sort BAM file\n\n     read_utils.py \e[1mmerge_bams\e\
+                  [0m [...]\n          Merge multiple BAMs into one\n\n     read_utils.py\
+                  \ \e[1mfilter_bam\e[0m [...]\n          Filter BAM file by read\
+                  \ name\n\n     read_utils.py \e[1mbam_to_fastq\e[0m [...]\n    \
+                  \      Convert a bam file to a pair of fastq paired-end read files\n\
+                  \          and optionaltext header.\n\n     read_utils.py \e[1mfastq_to_bam\e\
+                  [0m [...]\n          Convert a pair of fastq paired-end read files\
+                  \ and optional\n          text headerto a single bam file.\n\n \
+                  \    read_utils.py \e[1msplit_reads\e[0m [...]\n          Split\
+                  \ fasta or fastq file into chunks of maxReads reads or\n       \
+                  \   into numChunks chunks named outPrefix01, outPrefix02, etc.If\n\
+                  \          both maxReads and numChunks are None, use\n         \
+                  \ defaultMaxReads.The number of characters in file names after\n\
+                  \          outPrefix is indexLen;if not specified, use defaultIndexLen.\n\
+                  \n     read_utils.py \e[1msplit_bam\e[0m [...]\n          Split\
+                  \ BAM file equally into several output BAM files.\n\n     read_utils.py\
+                  \ \e[1mreheader_bam\e[0m [...]\n          Copy a BAM file (inBam\
+                  \ to outBam) while renaming elements of\n          the BAM header.\
+                  \ The mapping file specifies which (key, old\n          value, new\
+                  \ value) mappings.\n          Forexample:LBlib1lib_oneSMsample1\
+                  \ Sample_1SMsample2\n          Sample_2SMsample3 Sample_3CNbroad\
+                  \ BI\n\n     read_utils.py \e[1mreheader_bams\e[0m [...]\n     \
+                  \     Copy BAM files while renaming elements of the BAM header.\n\
+                  \          The mapping file specifies which (key, old value, new\
+                  \ value)\n          mappings. Forexample:LBlib1lib_oneSMsample1\n\
+                  \          Sample_1SMsample2 Sample_2SMsample3 Sample_3CNbroad\n\
+                  \          BIFNin1.bam out1.bamFNin2.bam out2.bam\n\n     read_utils.py\
+                  \ \e[1mrmdup_mvicuna_bam\e[0m [...]\n          Remove duplicate\
+                  \ reads from BAM file using M-Vicuna.\n          Theprimary advantage\
+                  \ to this approach over Picard's\n          MarkDuplicates toolis\
+                  \ that Picard requires that input reads\n          are aligned to\
+                  \ a reference,and M-Vicuna can operate on\n          unaligned reads.\n\
+                  \n     read_utils.py \e[1mdup_remove_mvicuna\e[0m [...]\n      \
+                  \    Run mvicuna's duplicate removal operation on paired-end\n \
+                  \         reads.\n\n     read_utils.py \e[1mrmdup_prinseq_fastq\e\
+                  [0m [...]\n          Run prinseq-lite's duplicate removal operation\
+                  \ on paired-\n          endreads. Also removes reads with more than\
+                  \ one N.\n\n     read_utils.py \e[1mfilter_bam_mapped_only\e[0m\
+                  \ [...]\n          Samtools to reduce a BAM file to only reads that\
+                  \ arealigned\n          (-F 4) with a non-zero mapping quality (-q\
+                  \ 1)and are not\n          marked as a PCR/optical duplicate (-F\
+                  \ 1024).\n\n     read_utils.py \e[1mnovoalign\e[0m [...]\n     \
+                  \     Align reads with Novoalign. Sort and index BAM output.\n\n\
+                  \     read_utils.py \e[1mnovoindex\e[0m [...]\n\n     read_utils.py\
+                  \ \e[1mgatk_ug\e[0m [...]\n          Call genotypes using the GATK\
+                  \ UnifiedGenotyper.\n\n     read_utils.py \e[1mgatk_realign\e[0m\
+                  \ [...]\n          Local realignment of BAM files with GATK IndelRealigner.\n\
+                  \n     read_utils.py \e[1malign_and_fix\e[0m [...]\n          Take\
+                  \ reads, align to reference with Novoalign, mark\n          duplicateswith\
+                  \ Picard, realign indels with GATK, and\n          optionally filterfinal\
+                  \ file to mapped/non-dupe reads.\n\n     read_utils.py \e[1mbwamem_idxstats\e\
+                  [0m [...]\n          Take reads, align to reference with BWA-MEM\
+                  \ and perform\n          samtools idxstats.\n\nusage: read_utils.py\
+                  \ subcommand\n\nUtilities for working with sequence reads, such\
+                  \ as converting formats and\nfixing mate pairs.\n\nsubcommands:\n\
+                  \  \e[F\n    purge_unmated\n    fastq_to_fasta\n    index_fasta_samtools\n\
+                  \    index_fasta_picard\n    mkdup_picard\n    revert_bam_picard\n\
+                  \    picard\n    sort_bam\n    merge_bams\n    filter_bam\n    bam_to_fastq\n\
+                  \    fastq_to_bam\n    split_reads\n    split_bam\n    reheader_bam\n\
+                  \    reheader_bams\n    rmdup_mvicuna_bam\n    dup_remove_mvicuna\n\
+                  \    rmdup_prinseq_fastq\n    filter_bam_mapped_only\n    novoalign\n\
+                  \    novoindex\n    gatk_ug\n    gatk_realign\n    align_and_fix\n\
+                  \    bwamem_idxstats\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag:
@@ -95,12 +1719,9 @@ subcommands:
                 \ 'reheader_bam', 'reheader_bams', 'rmdup_mvicuna_bam', 'dup_remove_mvicuna',\
                 \ 'rmdup_prinseq_fastq', 'filter_bam_mapped_only', 'novoalign', 'novoindex',\
                 \ 'gatk_ug', 'gatk_realign', 'align_and_fix', 'bwamem_idxstats')\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - read_utils.py
-              - gatk_ug
+              command: *id005
               positional:
               - !Positional
                 description: Input reads, BAM format.
@@ -128,14 +1749,6 @@ subcommands:
                   name: OPTIONS
                 optional: true
               - !Flag
-                description: )
-                synonyms:
-                - --min_base_quality_score
-                - -ploidy
-                args: !SimpleFlagArg
-                  name: '15'
-                optional: true
-              - !Flag
                 description: 'JVM virtual memory size (default: 2g)'
                 synonyms:
                 - --JVMmemory
@@ -157,12 +1770,12 @@ subcommands:
                 - --loglevel
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? DEBUG
                     ? ERROR
                     ? EXCEPTION
-                    ? INFO
-                    ? DEBUG
-                    ? WARNING
                     ? CRITICAL
+                    ? INFO
+                    ? WARNING
                 optional: true
               - !Flag
                 description: 'Base directory for temp files. [default: /tmp]'
@@ -227,9 +1840,7 @@ subcommands:
                 \ end, even\n                        if there's a failure.\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - read_utils.py
-              - mkdup_picard
+              command: *id006
               positional:
               - !Positional
                 description: Input reads, BAM format.
@@ -277,12 +1888,12 @@ subcommands:
                 - --loglevel
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? DEBUG
                     ? ERROR
                     ? EXCEPTION
-                    ? INFO
-                    ? DEBUG
-                    ? WARNING
                     ? CRITICAL
+                    ? INFO
+                    ? WARNING
                 optional: true
               - !Flag
                 description: 'Base directory for temp files. [default: /tmp]'
@@ -347,9 +1958,7 @@ subcommands:
                 \ a failure.\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - read_utils.py
-              - align_and_fix
+              command: *id007
               positional:
               - !Positional
                 description: Input unaligned reads, BAM format.
@@ -433,12 +2042,12 @@ subcommands:
                 - --loglevel
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? DEBUG
                     ? ERROR
                     ? EXCEPTION
-                    ? INFO
-                    ? DEBUG
-                    ? WARNING
                     ? CRITICAL
+                    ? INFO
+                    ? WARNING
                 optional: true
               - !Flag
                 description: 'Base directory for temp files. [default: /tmp]'
@@ -520,9 +2129,7 @@ subcommands:
                 \ end, even\n                        if there's a failure.\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - read_utils.py
-              - bam_to_fastq
+              command: *id008
               positional:
               - !Positional
                 description: Input bam file.
@@ -567,12 +2174,12 @@ subcommands:
                 - --loglevel
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? DEBUG
                     ? ERROR
                     ? EXCEPTION
-                    ? INFO
-                    ? DEBUG
-                    ? WARNING
                     ? CRITICAL
+                    ? INFO
+                    ? WARNING
                 optional: true
               - !Flag
                 description: 'Base directory for temp files. [default: /tmp]'
@@ -636,9 +2243,7 @@ subcommands:
                 \ a failure.\n"
               generated_using: *id004
             - !Command
-              command: &id009
-              - read_utils.py
-              - purge_unmated
+              command: *id009
               positional:
               - !Positional
                 description: Use mergeShuffledFastqSeqs to purge unmated reads, and
@@ -681,12 +2286,12 @@ subcommands:
                 - --loglevel
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? DEBUG
                     ? ERROR
                     ? EXCEPTION
-                    ? INFO
-                    ? DEBUG
-                    ? WARNING
                     ? CRITICAL
+                    ? INFO
+                    ? WARNING
                 optional: true
               - !Flag
                 description: 'Base directory for temp files. [default: /tmp]'
@@ -747,9 +2352,7 @@ subcommands:
                 \ end, even\n                        if there's a failure.\n"
               generated_using: *id004
             - !Command
-              command: &id010
-              - read_utils.py
-              - merge_bams
+              command: *id010
               positional:
               - !Positional
                 description: Input bam files.
@@ -782,12 +2385,12 @@ subcommands:
                 - --loglevel
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? DEBUG
                     ? ERROR
                     ? EXCEPTION
-                    ? INFO
-                    ? DEBUG
-                    ? WARNING
                     ? CRITICAL
+                    ? INFO
+                    ? WARNING
                 optional: true
               - !Flag
                 description: 'Base directory for temp files. [default: /tmp]'
@@ -846,9 +2449,7 @@ subcommands:
                 \ a failure.\n"
               generated_using: *id004
             - !Command
-              command: &id011
-              - read_utils.py
-              - split_reads
+              command: *id011
               positional:
               - !Positional
                 description: Input fastq or fasta file.
@@ -944,9 +2545,7 @@ subcommands:
                 \ to be\n                        gzip compressed. Default is no suffix.\n"
               generated_using: *id004
             - !Command
-              command: &id012
-              - read_utils.py
-              - novoalign
+              command: *id012
               positional:
               - !Positional
                 description: Input reads, BAM format.
@@ -999,12 +2598,12 @@ subcommands:
                 - --loglevel
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? DEBUG
                     ? ERROR
                     ? EXCEPTION
-                    ? INFO
-                    ? DEBUG
-                    ? WARNING
                     ? CRITICAL
+                    ? INFO
+                    ? WARNING
                 optional: true
               - !Flag
                 description: 'Base directory for temp files. [default: /tmp]'
@@ -1070,9 +2669,7 @@ subcommands:
                 \ end, even\n                        if there's a failure.\n"
               generated_using: *id004
             - !Command
-              command: &id013
-              - read_utils.py
-              - reads.
+              command: *id013
               positional:
               - !Positional
                 description: ''
@@ -1101,9 +2698,7 @@ subcommands:
                 \ 'align_and_fix', 'bwamem_idxstats')\n"
               generated_using: *id004
             - !Command
-              command: &id014
-              - read_utils.py
-              - rmdup_mvicuna_bam
+              command: *id014
               positional:
               - !Positional
                 description: Input reads, BAM format.
@@ -1129,12 +2724,12 @@ subcommands:
                 - --loglevel
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? DEBUG
                     ? ERROR
                     ? EXCEPTION
-                    ? INFO
-                    ? DEBUG
-                    ? WARNING
                     ? CRITICAL
+                    ? INFO
+                    ? WARNING
                 optional: true
               - !Flag
                 description: 'Base directory for temp files. [default: /tmp]'
@@ -1193,9 +2788,7 @@ subcommands:
                 \ end, even\n                        if there's a failure.\n"
               generated_using: *id004
             - !Command
-              command: &id015
-              - read_utils.py
-              - index_fasta_samtools
+              command: *id015
               positional:
               - !Positional
                 description: ''
@@ -1219,12 +2812,12 @@ subcommands:
                 - --loglevel
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? DEBUG
                     ? ERROR
                     ? EXCEPTION
-                    ? INFO
-                    ? DEBUG
-                    ? WARNING
                     ? CRITICAL
+                    ? INFO
+                    ? WARNING
                 optional: true
               parent: *id003
               subcommands: []
@@ -1257,9 +2850,7 @@ subcommands:
                 \         show program's version number and exit\n"
               generated_using: *id004
             - !Command
-              command: &id016
-              - read_utils.py
-              - reheader_bam
+              command: *id016
               positional:
               - !Positional
                 description: Input reads, BAM format.
@@ -1283,12 +2874,12 @@ subcommands:
                 - --loglevel
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? DEBUG
                     ? ERROR
                     ? EXCEPTION
-                    ? INFO
-                    ? DEBUG
-                    ? WARNING
                     ? CRITICAL
+                    ? INFO
+                    ? WARNING
                 optional: true
               - !Flag
                 description: 'Base directory for temp files. [default: /tmp]'
@@ -1346,9 +2937,7 @@ subcommands:
                 \ a failure.\n"
               generated_using: *id004
             - !Command
-              command: &id017
-              - read_utils.py
-              - rmdup_prinseq_fastq
+              command: *id017
               positional:
               - !Positional
                 description: Input fastq file; 1st end of paired-end reads.
@@ -1400,12 +2989,12 @@ subcommands:
                 - --loglevel
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? DEBUG
                     ? ERROR
                     ? EXCEPTION
-                    ? INFO
-                    ? DEBUG
-                    ? WARNING
                     ? CRITICAL
+                    ? INFO
+                    ? WARNING
                 optional: true
               - !Flag
                 description: 'Base directory for temp files. [default: /tmp]'
@@ -1474,9 +3063,7 @@ subcommands:
                 \ end, even\n                        if there's a failure.\n"
               generated_using: *id004
             - !Command
-              command: &id018
-              - read_utils.py
-              - picard
+              command: *id018
               positional:
               - !Positional
                 description: ''
@@ -1514,12 +3101,12 @@ subcommands:
                 - --loglevel
                 args: !ChoiceFlagArg
                   choices: !!set
+                    ? DEBUG
                     ? ERROR
                     ? EXCEPTION
-                    ? INFO
-                    ? DEBUG
-                    ? WARNING
                     ? CRITICAL
+                    ? INFO
+                    ? WARNING
                 optional: true
               - !Flag
                 description: 'Base directory for temp files. [default: /tmp]'
@@ -1718,12 +3305,12 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
-                ? DEBUG
-                ? ERROR
                 ? EXCEPTION
-                ? CRITICAL
-                ? INFO
                 ? WARNING
+                ? ERROR
+                ? INFO
+                ? CRITICAL
+                ? DEBUG
             optional: true
           - !Flag
             description: 'Base directory for temp files. [default: /tmp]'
@@ -1739,7 +3326,7 @@ subcommands:
             - --tmp_dirKeep
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1833,12 +3420,12 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
-                ? DEBUG
-                ? ERROR
                 ? EXCEPTION
-                ? CRITICAL
-                ? INFO
                 ? WARNING
+                ? ERROR
+                ? INFO
+                ? CRITICAL
+                ? DEBUG
             optional: true
           - !Flag
             description: 'Base directory for temp files. [default: /tmp]'
@@ -1854,7 +3441,7 @@ subcommands:
             - --tmp_dirKeep
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1985,12 +3572,12 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
-                ? DEBUG
-                ? ERROR
                 ? EXCEPTION
-                ? CRITICAL
-                ? INFO
                 ? WARNING
+                ? ERROR
+                ? INFO
+                ? CRITICAL
+                ? DEBUG
             optional: true
           - !Flag
             description: 'Base directory for temp files. [default: /tmp]'
@@ -2006,7 +3593,7 @@ subcommands:
             - --tmp_dirKeep
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2114,12 +3701,12 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
-                ? DEBUG
-                ? ERROR
                 ? EXCEPTION
-                ? CRITICAL
-                ? INFO
                 ? WARNING
+                ? ERROR
+                ? INFO
+                ? CRITICAL
+                ? DEBUG
             optional: true
           - !Flag
             description: 'Base directory for temp files. [default: /tmp]'
@@ -2135,7 +3722,7 @@ subcommands:
             - --tmp_dirKeep
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2223,12 +3810,12 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
-                ? DEBUG
-                ? ERROR
                 ? EXCEPTION
-                ? CRITICAL
-                ? INFO
                 ? WARNING
+                ? ERROR
+                ? INFO
+                ? CRITICAL
+                ? DEBUG
             optional: true
           - !Flag
             description: 'Base directory for temp files. [default: /tmp]'
@@ -2244,7 +3831,7 @@ subcommands:
             - --tmp_dirKeep
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2320,12 +3907,12 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
-                ? DEBUG
-                ? ERROR
                 ? EXCEPTION
-                ? CRITICAL
-                ? INFO
                 ? WARNING
+                ? ERROR
+                ? INFO
+                ? CRITICAL
+                ? DEBUG
             optional: true
           - !Flag
             description: 'Base directory for temp files. [default: /tmp]'
@@ -2341,7 +3928,7 @@ subcommands:
             - --tmp_dirKeep
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2424,8 +4011,8 @@ subcommands:
             - --format
             args: !ChoiceFlagArg
               choices: !!set
-                ? fasta
                 ? fastq
+                ? fasta
             optional: true
           - !Flag
             description: "Output filename suffix (e.g. .fastq or .fastq.gz). A\nsuffix\
@@ -2436,7 +4023,7 @@ subcommands:
             args: !SimpleFlagArg
               name: OUTSUFFIX
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2528,12 +4115,12 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
-                ? DEBUG
-                ? ERROR
                 ? EXCEPTION
-                ? CRITICAL
-                ? INFO
                 ? WARNING
+                ? ERROR
+                ? INFO
+                ? CRITICAL
+                ? DEBUG
             optional: true
           - !Flag
             description: 'Base directory for temp files. [default: /tmp]'
@@ -2549,7 +4136,7 @@ subcommands:
             - --tmp_dirKeep
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2609,7 +4196,7 @@ subcommands:
             name: subcommand
             optional: false
           named: []
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag:
@@ -2651,12 +4238,12 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
-                ? DEBUG
-                ? ERROR
                 ? EXCEPTION
-                ? CRITICAL
-                ? INFO
                 ? WARNING
+                ? ERROR
+                ? INFO
+                ? CRITICAL
+                ? DEBUG
             optional: true
           - !Flag
             description: 'Base directory for temp files. [default: /tmp]'
@@ -2672,7 +4259,7 @@ subcommands:
             - --tmp_dirKeep
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2737,14 +4324,14 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
-                ? DEBUG
-                ? ERROR
                 ? EXCEPTION
-                ? CRITICAL
-                ? INFO
                 ? WARNING
+                ? ERROR
+                ? INFO
+                ? CRITICAL
+                ? DEBUG
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2798,12 +4385,12 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
-                ? DEBUG
-                ? ERROR
                 ? EXCEPTION
-                ? CRITICAL
-                ? INFO
                 ? WARNING
+                ? ERROR
+                ? INFO
+                ? CRITICAL
+                ? DEBUG
             optional: true
           - !Flag
             description: 'Base directory for temp files. [default: /tmp]'
@@ -2819,7 +4406,7 @@ subcommands:
             - --tmp_dirKeep
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2911,12 +4498,12 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
-                ? DEBUG
-                ? ERROR
                 ? EXCEPTION
-                ? CRITICAL
-                ? INFO
                 ? WARNING
+                ? ERROR
+                ? INFO
+                ? CRITICAL
+                ? DEBUG
             optional: true
           - !Flag
             description: 'Base directory for temp files. [default: /tmp]'
@@ -2932,7 +4519,7 @@ subcommands:
             - --tmp_dirKeep
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -3021,12 +4608,12 @@ subcommands:
             - --loglevel
             args: !ChoiceFlagArg
               choices: !!set
-                ? DEBUG
-                ? ERROR
                 ? EXCEPTION
-                ? CRITICAL
-                ? INFO
                 ? WARNING
+                ? ERROR
+                ? INFO
+                ? CRITICAL
+                ? DEBUG
             optional: true
           - !Flag
             description: 'Base directory for temp files. [default: /tmp]'
@@ -3042,7 +4629,7 @@ subcommands:
             - --tmp_dirKeep
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id019
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -3216,12 +4803,12 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? EXCEPTION
             ? WARNING
-            ? ERROR
-            ? INFO
             ? CRITICAL
+            ? ERROR
             ? DEBUG
+            ? INFO
+            ? EXCEPTION
         optional: true
       - !Flag
         description: 'Base directory for temp files. [default: /tmp]'
@@ -3237,7 +4824,7 @@ subcommands:
         - --tmp_dirKeep
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id019
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -3330,12 +4917,12 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? EXCEPTION
             ? WARNING
-            ? ERROR
-            ? INFO
             ? CRITICAL
+            ? ERROR
             ? DEBUG
+            ? INFO
+            ? EXCEPTION
         optional: true
       - !Flag
         description: 'Base directory for temp files. [default: /tmp]'
@@ -3351,7 +4938,7 @@ subcommands:
         - --tmp_dirKeep
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id019
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -3440,8 +5027,8 @@ subcommands:
         - --aligner
         args: !ChoiceFlagArg
           choices: !!set
-            ? bwa
             ? novoalign
+            ? bwa
         optional: true
       - !Flag
         description: 'JVM virtual memory size (default: 4g)'
@@ -3479,12 +5066,12 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? EXCEPTION
             ? WARNING
-            ? ERROR
-            ? INFO
             ? CRITICAL
+            ? ERROR
             ? DEBUG
+            ? INFO
+            ? EXCEPTION
         optional: true
       - !Flag
         description: 'Base directory for temp files. [default: /tmp]'
@@ -3500,7 +5087,7 @@ subcommands:
         - --tmp_dirKeep
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id019
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -3605,12 +5192,12 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? EXCEPTION
             ? WARNING
-            ? ERROR
-            ? INFO
             ? CRITICAL
+            ? ERROR
             ? DEBUG
+            ? INFO
+            ? EXCEPTION
         optional: true
       - !Flag
         description: 'Base directory for temp files. [default: /tmp]'
@@ -3626,7 +5213,7 @@ subcommands:
         - --tmp_dirKeep
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id019
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -3713,12 +5300,12 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? EXCEPTION
             ? WARNING
-            ? ERROR
-            ? INFO
             ? CRITICAL
+            ? ERROR
             ? DEBUG
+            ? INFO
+            ? EXCEPTION
         optional: true
       - !Flag
         description: 'Base directory for temp files. [default: /tmp]'
@@ -3734,7 +5321,7 @@ subcommands:
         - --tmp_dirKeep
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id019
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -3809,12 +5396,12 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? EXCEPTION
             ? WARNING
-            ? ERROR
-            ? INFO
             ? CRITICAL
+            ? ERROR
             ? DEBUG
+            ? INFO
+            ? EXCEPTION
         optional: true
       - !Flag
         description: 'Base directory for temp files. [default: /tmp]'
@@ -3830,7 +5417,7 @@ subcommands:
         - --tmp_dirKeep
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id019
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -3924,7 +5511,7 @@ subcommands:
         args: !SimpleFlagArg
           name: OUTSUFFIX
         optional: true
-      parent: *id019
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -4016,12 +5603,12 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? EXCEPTION
             ? WARNING
-            ? ERROR
-            ? INFO
             ? CRITICAL
+            ? ERROR
             ? DEBUG
+            ? INFO
+            ? EXCEPTION
         optional: true
       - !Flag
         description: 'Base directory for temp files. [default: /tmp]'
@@ -4037,7 +5624,7 @@ subcommands:
         - --tmp_dirKeep
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id019
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -4095,7 +5682,7 @@ subcommands:
         name: subcommand
         optional: false
       named: []
-      parent: *id019
+      parent: *id020
       subcommands: []
       usage: []
       help_flag:
@@ -4136,12 +5723,12 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? EXCEPTION
             ? WARNING
-            ? ERROR
-            ? INFO
             ? CRITICAL
+            ? ERROR
             ? DEBUG
+            ? INFO
+            ? EXCEPTION
         optional: true
       - !Flag
         description: 'Base directory for temp files. [default: /tmp]'
@@ -4157,7 +5744,7 @@ subcommands:
         - --tmp_dirKeep
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id019
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -4221,14 +5808,14 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? EXCEPTION
             ? WARNING
-            ? ERROR
-            ? INFO
             ? CRITICAL
+            ? ERROR
             ? DEBUG
+            ? INFO
+            ? EXCEPTION
         optional: true
-      parent: *id019
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -4281,12 +5868,12 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? EXCEPTION
             ? WARNING
-            ? ERROR
-            ? INFO
             ? CRITICAL
+            ? ERROR
             ? DEBUG
+            ? INFO
+            ? EXCEPTION
         optional: true
       - !Flag
         description: 'Base directory for temp files. [default: /tmp]'
@@ -4302,7 +5889,7 @@ subcommands:
         - --tmp_dirKeep
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id019
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -4393,12 +5980,12 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? EXCEPTION
             ? WARNING
-            ? ERROR
-            ? INFO
             ? CRITICAL
+            ? ERROR
             ? DEBUG
+            ? INFO
+            ? EXCEPTION
         optional: true
       - !Flag
         description: 'Base directory for temp files. [default: /tmp]'
@@ -4414,7 +6001,7 @@ subcommands:
         - --tmp_dirKeep
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id019
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -4502,12 +6089,12 @@ subcommands:
         - --loglevel
         args: !ChoiceFlagArg
           choices: !!set
-            ? EXCEPTION
             ? WARNING
-            ? ERROR
-            ? INFO
             ? CRITICAL
+            ? ERROR
             ? DEBUG
+            ? INFO
+            ? EXCEPTION
         optional: true
       - !Flag
         description: 'Base directory for temp files. [default: /tmp]'
@@ -4523,7 +6110,7 @@ subcommands:
         - --tmp_dirKeep
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id019
+      parent: *id020
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -4691,11 +6278,11 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        WARNING:
         CRITICAL:
         ERROR:
-        DEBUG:
         INFO:
+        WARNING:
+        DEBUG:
         EXCEPTION:
     optional: true
   - !Flag
@@ -4712,7 +6299,7 @@ subcommands:
     - --tmp_dirKeep
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id020
+  parent: *id021
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -4802,11 +6389,11 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        WARNING:
         CRITICAL:
         ERROR:
-        DEBUG:
         INFO:
+        WARNING:
+        DEBUG:
         EXCEPTION:
     optional: true
   - !Flag
@@ -4823,7 +6410,7 @@ subcommands:
     - --tmp_dirKeep
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id020
+  parent: *id021
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -4910,8 +6497,8 @@ subcommands:
     - --aligner
     args: !ChoiceFlagArg
       choices: !!set
-        novoalign:
         bwa:
+        novoalign:
     optional: true
   - !Flag
     description: 'JVM virtual memory size (default: 4g)'
@@ -4949,11 +6536,11 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        WARNING:
         CRITICAL:
         ERROR:
-        DEBUG:
         INFO:
+        WARNING:
+        DEBUG:
         EXCEPTION:
     optional: true
   - !Flag
@@ -4970,7 +6557,7 @@ subcommands:
     - --tmp_dirKeep
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id020
+  parent: *id021
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -5074,11 +6661,11 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        WARNING:
         CRITICAL:
         ERROR:
-        DEBUG:
         INFO:
+        WARNING:
+        DEBUG:
         EXCEPTION:
     optional: true
   - !Flag
@@ -5095,7 +6682,7 @@ subcommands:
     - --tmp_dirKeep
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id020
+  parent: *id021
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -5180,11 +6767,11 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        WARNING:
         CRITICAL:
         ERROR:
-        DEBUG:
         INFO:
+        WARNING:
+        DEBUG:
         EXCEPTION:
     optional: true
   - !Flag
@@ -5201,7 +6788,7 @@ subcommands:
     - --tmp_dirKeep
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id020
+  parent: *id021
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -5275,11 +6862,11 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        WARNING:
         CRITICAL:
         ERROR:
-        DEBUG:
         INFO:
+        WARNING:
+        DEBUG:
         EXCEPTION:
     optional: true
   - !Flag
@@ -5296,7 +6883,7 @@ subcommands:
     - --tmp_dirKeep
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id020
+  parent: *id021
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -5387,7 +6974,7 @@ subcommands:
     args: !SimpleFlagArg
       name: OUTSUFFIX
     optional: true
-  parent: *id020
+  parent: *id021
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -5477,11 +7064,11 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        WARNING:
         CRITICAL:
         ERROR:
-        DEBUG:
         INFO:
+        WARNING:
+        DEBUG:
         EXCEPTION:
     optional: true
   - !Flag
@@ -5498,7 +7085,7 @@ subcommands:
     - --tmp_dirKeep
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id020
+  parent: *id021
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -5556,7 +7143,7 @@ subcommands:
     name: subcommand
     optional: false
   named: []
-  parent: *id020
+  parent: *id021
   subcommands: []
   usage: []
   help_flag:
@@ -5597,11 +7184,11 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        WARNING:
         CRITICAL:
         ERROR:
-        DEBUG:
         INFO:
+        WARNING:
+        DEBUG:
         EXCEPTION:
     optional: true
   - !Flag
@@ -5618,7 +7205,7 @@ subcommands:
     - --tmp_dirKeep
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id020
+  parent: *id021
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -5681,14 +7268,14 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        WARNING:
         CRITICAL:
         ERROR:
-        DEBUG:
         INFO:
+        WARNING:
+        DEBUG:
         EXCEPTION:
     optional: true
-  parent: *id020
+  parent: *id021
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -5741,11 +7328,11 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        WARNING:
         CRITICAL:
         ERROR:
-        DEBUG:
         INFO:
+        WARNING:
+        DEBUG:
         EXCEPTION:
     optional: true
   - !Flag
@@ -5762,7 +7349,7 @@ subcommands:
     - --tmp_dirKeep
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id020
+  parent: *id021
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -5852,11 +7439,11 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        WARNING:
         CRITICAL:
         ERROR:
-        DEBUG:
         INFO:
+        WARNING:
+        DEBUG:
         EXCEPTION:
     optional: true
   - !Flag
@@ -5873,7 +7460,7 @@ subcommands:
     - --tmp_dirKeep
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id020
+  parent: *id021
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -5958,11 +7545,11 @@ subcommands:
     - --loglevel
     args: !ChoiceFlagArg
       choices: !!set
-        WARNING:
         CRITICAL:
         ERROR:
-        DEBUG:
         INFO:
+        WARNING:
+        DEBUG:
         EXCEPTION:
     optional: true
   - !Flag
@@ -5979,7 +7566,7 @@ subcommands:
     - --tmp_dirKeep
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id020
+  parent: *id021
   subcommands: []
   usage: []
   help_flag: !Flag

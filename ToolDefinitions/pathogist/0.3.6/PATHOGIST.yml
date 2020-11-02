@@ -44,7 +44,7 @@ subcommands:
         ILP:
         C4:
     optional: true
-  parent: &id014 !Command
+  parent: &id016 !Command
     command: *id001
     positional: []
     named: []
@@ -84,10 +84,10 @@ subcommands:
         - --method
         args: !ChoiceFlagArg
           choices: !!set
-            ? C4
             ? ILP
+            ? C4
         optional: true
-      parent: &id012 !Command
+      parent: &id014 !Command
         command: *id001
         positional: []
         named: []
@@ -130,23 +130,10 @@ subcommands:
                 ? C4
                 ? ILP
             optional: true
-          parent: &id003 !Command
+          parent: &id012 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: "Set the logging level\n"
-              synonyms:
-              - -ll
-              - --loglevel
-              args: !ChoiceFlagArg
-                choices: !!set
-                  ? ERROR
-                  ? INFO
-                  ? DEBUG
-                  ? WARNING
-                  ? CRITICAL
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -186,7 +173,339 @@ subcommands:
                     ? C4
                     ? ILP
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: "Set the logging level\n"
+                  synonyms:
+                  - -ll
+                  - --loglevel
+                  args: !ChoiceFlagArg
+                    choices: !!set
+                      ? ERROR
+                      ? INFO
+                      ? DEBUG
+                      ? WARNING
+                      ? CRITICAL
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: path to the distance matrix file
+                    position: 0
+                    name: distance_matrix
+                    optional: false
+                  - !Positional
+                    description: threshold value for correlation
+                    position: 1
+                    name: threshold
+                    optional: false
+                  - !Positional
+                    description: path to write cluster output tsv file
+                    position: 2
+                    name: output_path
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "add all constraints to the optimization problem,\
+                      \ not\njust those with mixed signs."
+                    synonyms:
+                    - -a
+                    - --all_constraints
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Method for correlation clustering\n"
+                    synonyms:
+                    - -m
+                    - --method
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? C4
+                        ? ILP
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: PATHOGIST correlation [-h] [-a] [-m {C4,ILP}]\n\
+                    \                             distance_matrix threshold output_path\n\
+                    \npositional arguments:\n  distance_matrix       path to the distance\
+                    \ matrix file\n  threshold             threshold value for correlation\n\
+                    \  output_path           path to write cluster output tsv file\n\
+                    \noptional arguments:\n  -h, --help            show this help\
+                    \ message and exit\n  -a, --all_constraints\n                \
+                    \        add all constraints to the optimization problem, not\n\
+                    \                        just those with mixed signs.\n  -m {C4,ILP},\
+                    \ --method {C4,ILP}\n                        Method for correlation\
+                    \ clustering\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id006
+                  - PATHOGIST
+                  - distance
+                  positional:
+                  - !Positional
+                    description: "path to file containing paths to signal calls (e.g.\n\
+                      MLST calls, CNV calls, etc)"
+                    position: 0
+                    name: calls_path
+                    optional: false
+                  - !Positional
+                    description: path to output tsv file
+                    position: 0
+                    name: output_path
+                    optional: false
+                  named:
+                  - !Flag
+                    description: bed file of unwanted SNP positions in the genome
+                    synonyms:
+                    - --bed
+                    args: !SimpleFlagArg
+                      name: BED
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: PATHOGIST distance [-h] [--bed BED]\n       \
+                    \                   calls_path {MLST,CNV,SNP,Spoligotype} output_path\n\
+                    \npositional arguments:\n  calls_path            path to file\
+                    \ containing paths to signal calls (e.g.\n                   \
+                    \     MLST calls, CNV calls, etc)\n  {MLST,CNV,SNP,Spoligotype}\n\
+                    \                        genotyping data\n  output_path      \
+                    \     path to output tsv file\n\noptional arguments:\n  -h, --help\
+                    \            show this help message and exit\n  --bed BED    \
+                    \         bed file of unwanted SNP positions in the genome\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - PATHOGIST
+                  - run
+                  positional:
+                  - !Positional
+                    description: "path to input configuration file, or path to write\
+                      \ a new\nconfiguration file"
+                    position: 0
+                    name: CONFIG
+                    optional: false
+                  named:
+                  - !Flag
+                    description: write a blank configuration file at path given by
+                      CONFIG
+                    synonyms:
+                    - -n
+                    - --new_config
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: PATHOGIST run [-h] [-n] CONFIG\n\npositional\
+                    \ arguments:\n  CONFIG            path to input configuration\
+                    \ file, or path to write a new\n                    configuration\
+                    \ file\n\noptional arguments:\n  -h, --help        show this help\
+                    \ message and exit\n  -n, --new_config  write a blank configuration\
+                    \ file at path given by CONFIG\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - PATHOGIST
+                  - consensus
+                  positional:
+                  - !Positional
+                    description: 'positional arguments:'
+                    position: 0
+                    name: output_path
+                    optional: false
+                  - !Positional
+                    description: "path to file containing paths to distance matrices\
+                      \ for\ndifferent clusterings"
+                    position: 1
+                    name: distance_matrices
+                    optional: false
+                  - !Positional
+                    description: "path to file containing paths to clusterings,\n\
+                      represented as either matrices or lists of clustering\nassignments"
+                    position: 2
+                    name: clusterings
+                    optional: false
+                  - !Positional
+                    description: "path to file containing the names of the clusterings\n\
+                      which are the finest"
+                    position: 3
+                    name: fine_clusterings
+                    optional: false
+                  - !Positional
+                    description: path to output tsv file
+                    position: 4
+                    name: output_path
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "add all constraints to the optimization problem,\
+                      \ not\njust those with mixed signs."
+                    synonyms:
+                    - -a
+                    - --all_constraints
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Method for consensus clustering\n"
+                    synonyms:
+                    - -m
+                    - --method
+                    args: !ChoiceFlagArg
+                      choices: !!set
+                        ? C4
+                        ? ILP
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: PATHOGIST consensus [-h] [-a] [-m {C4,ILP}]\n\
+                    \                           distance_matrices clusterings fine_clusterings\n\
+                    \                           output_path\n\npositional arguments:\n\
+                    \  distance_matrices     path to file containing paths to distance\
+                    \ matrices for\n                        different clusterings\n\
+                    \  clusterings           path to file containing paths to clusterings,\n\
+                    \                        represented as either matrices or lists\
+                    \ of clustering\n                        assignments\n  fine_clusterings\
+                    \      path to file containing the names of the clusterings\n\
+                    \                        which are the finest\n  output_path \
+                    \          path to output tsv file\n\noptional arguments:\n  -h,\
+                    \ --help            show this help message and exit\n  -a, --all_constraints\n\
+                    \                        add all constraints to the optimization\
+                    \ problem, not\n                        just those with mixed\
+                    \ signs.\n  -m {C4,ILP}, --method {C4,ILP}\n                 \
+                    \       Method for consensus clustering\n"
+                  generated_using: *id004
+                - &id005 !Command
+                  command: &id009
+                  - PATHOGIST
+                  - visualize
+                  positional: []
+                  named: []
+                  parent: *id003
+                  subcommands:
+                  - !Command
+                    command: &id010
+                    - PATHOGIST
+                    - visualize
+                    - format
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: PATHOGIST
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 1
+                      name: visualize
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 2
+                      name: input
+                      optional: false
+                    named: []
+                    parent: *id005
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: ''
+                      synonyms:
+                      - -h
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: PATHOGIST visualize [-h] input {clustering,distances}\n\
+                      PATHOGIST visualize: error: the following arguments are required:\
+                      \ data_type\n"
+                    generated_using: &id011 []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: PATHOGIST visualize [-h] input {clustering,distances}\n\
+                    \npositional arguments:\n  input                 path to distance\
+                    \ matrix or clustering, all in tsv\n                        format\n\
+                    \  {clustering,distances}\n                        type of data\
+                    \ for the input\n\noptional arguments:\n  -h, --help         \
+                    \   show this help message and exit\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: PATHOGIST [-h] [-ll {DEBUG,INFO,WARNING,ERROR,CRITICAL}]\n\
+                  \                 {run,correlation,consensus,distance,visualize}\
+                  \ ...\n\nPathOGiST Version 0.3.6\nCopyright (C) 2018 Leonid Chindelevitch,\
+                  \ Cedric Chauve, William Hsiao\n\npositional arguments:\n  {run,correlation,consensus,distance,visualize}\n\
+                  \    run                 run entire PathOGiST pipeline, from genotyping\
+                  \ to clustering\n    correlation         perform correlation clustering\n\
+                  \    consensus           perform consensus clustering on multiple\
+                  \ clusterings\n    distance            construct distance matrix\
+                  \ from genotyping data\n    visualize           visualize distance\
+                  \ matrix or clustering\n\noptional arguments:\n  -h, --help    \
+                  \        show this help message and exit\n  -ll {DEBUG,INFO,WARNING,ERROR,CRITICAL},\
+                  \ --loglevel {DEBUG,INFO,WARNING,ERROR,CRITICAL}\n             \
+                  \           Set the logging level\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -208,12 +527,9 @@ subcommands:
                 \ constraints to the optimization problem, not\n                 \
                 \       just those with mixed signs.\n  -m {C4,ILP}, --method {C4,ILP}\n\
                 \                        Method for correlation clustering\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id006
-              - PATHOGIST
-              - distance
+              command: *id006
               positional:
               - !Positional
                 description: "path to file containing paths to signal calls (e.g.\n\
@@ -257,9 +573,7 @@ subcommands:
                 \ positions in the genome\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - PATHOGIST
-              - run
+              command: *id007
               positional:
               - !Positional
                 description: "path to input configuration file, or path to write a\
@@ -295,9 +609,7 @@ subcommands:
                 \ by CONFIG\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - PATHOGIST
-              - consensus
+              command: *id008
               positional:
               - !Positional
                 description: 'positional arguments:'
@@ -375,19 +687,14 @@ subcommands:
                 \ --method {C4,ILP}\n                        Method for consensus\
                 \ clustering\n"
               generated_using: *id004
-            - &id005 !Command
-              command: &id009
-              - PATHOGIST
-              - visualize
+            - &id013 !Command
+              command: *id009
               positional: []
               named: []
               parent: *id003
               subcommands:
               - !Command
-                command: &id010
-                - PATHOGIST
-                - visualize
-                - format
+                command: *id010
                 positional:
                 - !Positional
                   description: ''
@@ -419,15 +726,9 @@ subcommands:
                 help_text: "usage: PATHOGIST visualize [-h] input {clustering,distances}\n\
                   PATHOGIST visualize: error: the following arguments are required:\
                   \ data_type\n"
-                generated_using: &id011 []
+                generated_using: *id011
               usage: []
-              help_flag: !Flag
-                description: show this help message and exit
-                synonyms:
-                - -h
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
+              help_flag:
               usage_flag:
               version_flag:
               help_text: "usage: PATHOGIST visualize [-h] input {clustering,distances}\n\
@@ -438,13 +739,7 @@ subcommands:
                 \ help message and exit\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage: PATHOGIST [-h] [-ll {DEBUG,INFO,WARNING,ERROR,CRITICAL}]\n\
@@ -503,7 +798,7 @@ subcommands:
             args: !SimpleFlagArg
               name: BED
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -541,7 +836,7 @@ subcommands:
             - --new_config
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -609,7 +904,7 @@ subcommands:
                 ? C4
                 ? ILP
             optional: true
-          parent: *id003
+          parent: *id012
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -636,11 +931,11 @@ subcommands:
             \ not\n                        just those with mixed signs.\n  -m {C4,ILP},\
             \ --method {C4,ILP}\n                        Method for consensus clustering\n"
           generated_using: *id004
-        - &id013 !Command
+        - &id015 !Command
           command: *id009
           positional: []
           named: []
-          parent: *id003
+          parent: *id012
           subcommands:
           - !Command
             command: *id010
@@ -661,7 +956,7 @@ subcommands:
               name: input
               optional: false
             named: []
-            parent: *id005
+            parent: *id013
             subcommands: []
             usage: []
             help_flag: !Flag
@@ -745,7 +1040,7 @@ subcommands:
         args: !SimpleFlagArg
           name: BED
         optional: true
-      parent: *id012
+      parent: *id014
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -783,7 +1078,7 @@ subcommands:
         - --new_config
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id012
+      parent: *id014
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -848,10 +1143,10 @@ subcommands:
         - --method
         args: !ChoiceFlagArg
           choices: !!set
-            ? C4
             ? ILP
+            ? C4
         optional: true
-      parent: *id012
+      parent: *id014
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -878,11 +1173,11 @@ subcommands:
         \            just those with mixed signs.\n  -m {C4,ILP}, --method {C4,ILP}\n\
         \                        Method for consensus clustering\n"
       generated_using: *id004
-    - &id015 !Command
+    - &id017 !Command
       command: *id009
       positional: []
       named: []
-      parent: *id012
+      parent: *id014
       subcommands:
       - !Command
         command: *id010
@@ -903,7 +1198,7 @@ subcommands:
           name: input
           optional: false
         named: []
-        parent: *id013
+        parent: *id015
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -987,7 +1282,7 @@ subcommands:
     args: !SimpleFlagArg
       name: BED
     optional: true
-  parent: *id014
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1025,7 +1320,7 @@ subcommands:
     - --new_config
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id014
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1093,7 +1388,7 @@ subcommands:
         ILP:
         C4:
     optional: true
-  parent: *id014
+  parent: *id016
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1123,7 +1418,7 @@ subcommands:
   command: *id009
   positional: []
   named: []
-  parent: *id014
+  parent: *id016
   subcommands:
   - !Command
     command: *id010
@@ -1144,7 +1439,7 @@ subcommands:
       name: input
       optional: false
     named: []
-    parent: *id015
+    parent: *id017
     subcommands: []
     usage: []
     help_flag: !Flag

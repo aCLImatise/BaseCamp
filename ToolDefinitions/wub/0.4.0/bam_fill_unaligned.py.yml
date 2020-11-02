@@ -118,24 +118,10 @@ subcommands:
             args: !SimpleFlagArg
               name: format
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: Input/output format (SAM).
-              synonyms:
-              - -f
-              args: !SimpleFlagArg
-                name: format
-              optional: true
-            - !Flag
-              description: Input fastq.
-              synonyms:
-              - -q
-              args: !SimpleFlagArg
-                name: fastq
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -171,7 +157,93 @@ subcommands:
                 args: !SimpleFlagArg
                   name: format
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: Input/output format (SAM).
+                  synonyms:
+                  - -f
+                  args: !SimpleFlagArg
+                    name: format
+                  optional: true
+                - !Flag
+                  description: Input fastq.
+                  synonyms:
+                  - -q
+                  args: !SimpleFlagArg
+                    name: fastq
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: bam_fill_unaligned.py
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: input_file
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: output_file
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -q
+                    args: !SimpleFlagArg
+                      name: fastq
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -f
+                    args: !SimpleFlagArg
+                      name: format
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: bam_fill_unaligned.py [-h] [-f format] -q fastq\
+                    \ input_file output_file\nbam_fill_unaligned.py: error: the following\
+                    \ arguments are required: -q, output_file\n"
+                  generated_using: &id004 []
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: bam_fill_unaligned.py [-h] [-f format] -q fastq\
+                  \ input_file output_file\n\nGenerate SAM records for the reads present\
+                  \ in the input fastq but missing from\nthe input SAM/BAM.\n\npositional\
+                  \ arguments:\n  input_file   Input file.\n  output_file  Output\
+                  \ SAM file.\n\noptional arguments:\n  -h, --help   show this help\
+                  \ message and exit\n  -f format    Input/output format (SAM).\n\
+                  \  -q fastq     Input fastq.\n"
+                generated_using: &id005
+                - --help
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -185,15 +257,9 @@ subcommands:
               help_text: "usage: bam_fill_unaligned.py [-h] [-f format] -q fastq input_file\
                 \ output_file\nbam_fill_unaligned.py: error: the following arguments\
                 \ are required: -q, output_file\n"
-              generated_using: &id004 []
+              generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage: bam_fill_unaligned.py [-h] [-f format] -q fastq input_file\
@@ -202,8 +268,7 @@ subcommands:
               \  input_file   Input file.\n  output_file  Output SAM file.\n\noptional\
               \ arguments:\n  -h, --help   show this help message and exit\n  -f format\
               \    Input/output format (SAM).\n  -q fastq     Input fastq.\n"
-            generated_using: &id005
-            - --help
+            generated_using: *id005
           subcommands: []
           usage: []
           help_flag: !Flag

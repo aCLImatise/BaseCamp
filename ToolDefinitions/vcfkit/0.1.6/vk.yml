@@ -32,7 +32,7 @@ subcommands:
     - --frequency
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -63,7 +63,7 @@ subcommands:
         - --frequency
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -94,7 +94,7 @@ subcommands:
             - --frequency
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
             named: []
@@ -125,7 +125,170 @@ subcommands:
                 - --frequency
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: genotypes
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: sample_hom_gt
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: spectrum
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --frequency
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this screen.
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: Show version.
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage:\n  vk calc sample_hom_gt <vcf>\n  vk calc genotypes\
+                    \ [--frequency] <vcf>\n  vk calc spectrum <vcf>\n\nExample\n\n\
+                    options:\n  -h --help                   Show this screen.\n  --version\
+                    \                   Show version.\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - vk
+                  - genome
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: location
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: ncbi
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: wormbase
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Set Genome Directory
+                    synonyms:
+                    - --directory
+                    args: !SimpleFlagArg
+                      name: dir
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - --ref
+                    args: !SimpleFlagArg
+                      name: asm_name
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this screen.
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage:\n  vk genome location [<path>]\n  vk genome list\n\
+                    \  vk genome --search=<term>\n  vk genome ncbi [options] --ref=<asm_name>\
+                    \ [--accession-chrom-names]\n  vk genome wormbase [options] --ref=<asm_name>\n\
+                    \noptions:\n  -h --help                   Show this screen.\n\
+                    \  --directory=<dir>           Set Genome Directory\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - vk
+                  - phylo
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: fasta
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: tree
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: vcf
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this screen.
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: Show version.
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "usage:\n  vk phylo fasta <vcf> [<region>]\n  vk phylo\
+                    \ tree (nj|upgma) [--plot] <vcf> [<region>]\n\noptions:\n  -h\
+                    \ --help                   Show this screen.\n  --version    \
+                    \               Show version.\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: ''
+                  synonyms:
+                  - -h
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage:\n  vk <command> [<args>...] \n  vk setup\n  vk\
+                  \ -h | --help\n  vk --version\n\ncommands:\n  calc\n  call\n  filter\n\
+                  \  geno\n  genome\n  hmm\n  phylo\n  primer\n  rename\n  tajima\n\
+                  \  vcf2tsv\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -146,12 +309,9 @@ subcommands:
                 \ [--frequency] <vcf>\n  vk calc spectrum <vcf>\n\nExample\n\noptions:\n\
                 \  -h --help                   Show this screen.\n  --version    \
                 \               Show version.\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - vk
-              - genome
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -202,9 +362,7 @@ subcommands:
                 \           Set Genome Directory\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - vk
-              - phylo
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -245,12 +403,7 @@ subcommands:
                 \  Show version.\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: ''
-              synonyms:
-              - -h
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage:\n  vk <command> [<args>...] \n  vk setup\n  vk -h |\
@@ -311,7 +464,7 @@ subcommands:
             args: !SimpleFlagArg
               name: asm_name
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -348,7 +501,7 @@ subcommands:
             name: vcf
             optional: false
           named: []
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -430,7 +583,7 @@ subcommands:
         args: !SimpleFlagArg
           name: asm_name
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -467,7 +620,7 @@ subcommands:
         name: vcf
         optional: false
       named: []
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -549,7 +702,7 @@ subcommands:
     args: !SimpleFlagArg
       name: asm_name
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -585,7 +738,7 @@ subcommands:
     name: vcf
     optional: false
   named: []
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag

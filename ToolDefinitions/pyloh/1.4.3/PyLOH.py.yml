@@ -41,7 +41,7 @@ subcommands:
     args: !SimpleFlagArg
       name: STOP_VALUE
     optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -83,7 +83,7 @@ subcommands:
         args: !SimpleFlagArg
           name: STOP_VALUE
         optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -126,7 +126,7 @@ subcommands:
             args: !SimpleFlagArg
               name: STOP_VALUE
             optional: true
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
             named: []
@@ -169,7 +169,242 @@ subcommands:
                 args: !SimpleFlagArg
                   name: STOP_VALUE
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: "Maximum copy number of each allele allows to take.\n\
+                      Default is 2."
+                    synonyms:
+                    - --allelenumber_max
+                    args: !SimpleFlagArg
+                      name: ALLELENUMBER_MAX
+                    optional: true
+                  - !Flag
+                    description: "File of the prior distribution. If not provided,\
+                      \ use\nuniform prior. Default is None."
+                    synonyms:
+                    - --priors
+                    args: !SimpleFlagArg
+                      name: PRIORS
+                    optional: true
+                  - !Flag
+                    description: "Maximum number of iterations for training. Default\
+                      \ is\n100."
+                    synonyms:
+                    - --max_iters
+                    args: !SimpleFlagArg
+                      name: MAX_ITERS
+                    optional: true
+                  - !Flag
+                    description: "Stop value of the EM algorithm for training. If\
+                      \ the\nchange of log-likelihood is lower than this value,\n\
+                      stop training. Default is 1e-7.\n"
+                    synonyms:
+                    - --stop_value
+                    args: !SimpleFlagArg
+                      name: STOP_VALUE
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: PyLOH run_model [-h] [--allelenumber_max ALLELENUMBER_MAX]\n\
+                    \                       [--priors PRIORS] [--max_iters MAX_ITERS]\n\
+                    \                       [--stop_value STOP_VALUE]\n          \
+                    \             filename_base\n\npositional arguments:\n  filename_base\
+                    \         Base name of preprocessed files created.\n\noptional\
+                    \ arguments:\n  -h, --help            show this help message and\
+                    \ exit\n  --allelenumber_max ALLELENUMBER_MAX\n              \
+                    \          Maximum copy number of each allele allows to take.\n\
+                    \                        Default is 2.\n  --priors PRIORS    \
+                    \   File of the prior distribution. If not provided, use\n   \
+                    \                     uniform prior. Default is None.\n  --max_iters\
+                    \ MAX_ITERS\n                        Maximum number of iterations\
+                    \ for training. Default is\n                        100.\n  --stop_value\
+                    \ STOP_VALUE\n                        Stop value of the EM algorithm\
+                    \ for training. If the\n                        change of log-likelihood\
+                    \ is lower than this value,\n                        stop training.\
+                    \ Default is 1e-7.\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - PyLOH.py
+                  - BAF_heatmap
+                  positional:
+                  - !Positional
+                    description: Base name of preprocessed files created.
+                    position: 0
+                    name: filename_base
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: PyLOH BAF_heatmap [-h] filename_base\n\npositional\
+                    \ arguments:\n  filename_base  Base name of preprocessed files\
+                    \ created.\n\noptional arguments:\n  -h, --help     show this\
+                    \ help message and exit\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - PyLOH.py
+                  - preprocess
+                  positional:
+                  - !Positional
+                    description: FASTA file for reference genome.
+                    position: 0
+                    name: reference_genome
+                    optional: false
+                  - !Positional
+                    description: BAM file for normal sample.
+                    position: 1
+                    name: normal_bam
+                    optional: false
+                  - !Positional
+                    description: BAM file for tumor sample.
+                    position: 2
+                    name: tumor_bam
+                    optional: false
+                  - !Positional
+                    description: Base name of preprocessed files to be created.
+                    position: 3
+                    name: filename_base
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "BED file for segments. If not provided, use autosomes\n\
+                      as segments. Default is None."
+                    synonyms:
+                    - --segments_bed
+                    args: !SimpleFlagArg
+                      name: SEGMENTS_BED
+                    optional: true
+                  - !Flag
+                    description: "Flag indicating whether the BAM files are whole\
+                      \ exome\nsequencing(WES) or not. If not provided, the BAM files\n\
+                      are assumed to be whole genome sequencing(WGS).\nDefault is\
+                      \ False."
+                    synonyms:
+                    - --WES
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Minimum reads depth required for both normal and\
+                      \ tumor\nsamples. Default is 20."
+                    synonyms:
+                    - --min_depth
+                    args: !SimpleFlagArg
+                      name: MIN_DEPTH
+                    optional: true
+                  - !Flag
+                    description: Minimum base quality required. Default is 10.
+                    synonyms:
+                    - --min_base_qual
+                    args: !SimpleFlagArg
+                      name: MIN_BASE_QUAL
+                    optional: true
+                  - !Flag
+                    description: Minimum mapping quality required. Default is 10.
+                    synonyms:
+                    - --min_map_qual
+                    args: !SimpleFlagArg
+                      name: MIN_MAP_QUAL
+                    optional: true
+                  - !Flag
+                    description: "Number of processes to launch for preprocessing.\n\
+                      Default is 1.\n"
+                    synonyms:
+                    - --process_num
+                    args: !SimpleFlagArg
+                      name: PROCESS_NUM
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: PyLOH preprocess [-h] [--segments_bed SEGMENTS_BED]\
+                    \ [--WES]\n                        [--min_depth MIN_DEPTH]\n \
+                    \                       [--min_base_qual MIN_BASE_QUAL]\n    \
+                    \                    [--min_map_qual MIN_MAP_QUAL]\n         \
+                    \               [--process_num PROCESS_NUM]\n                \
+                    \        reference_genome normal_bam tumor_bam filename_base\n\
+                    \npositional arguments:\n  reference_genome      FASTA file for\
+                    \ reference genome.\n  normal_bam            BAM file for normal\
+                    \ sample.\n  tumor_bam             BAM file for tumor sample.\n\
+                    \  filename_base         Base name of preprocessed files to be\
+                    \ created.\n\noptional arguments:\n  -h, --help            show\
+                    \ this help message and exit\n  --segments_bed SEGMENTS_BED\n\
+                    \                        BED file for segments. If not provided,\
+                    \ use autosomes\n                        as segments. Default\
+                    \ is None.\n  --WES                 Flag indicating whether the\
+                    \ BAM files are whole exome\n                        sequencing(WES)\
+                    \ or not. If not provided, the BAM files\n                   \
+                    \     are assumed to be whole genome sequencing(WGS).\n      \
+                    \                  Default is False.\n  --min_depth MIN_DEPTH\n\
+                    \                        Minimum reads depth required for both\
+                    \ normal and tumor\n                        samples. Default is\
+                    \ 20.\n  --min_base_qual MIN_BASE_QUAL\n                     \
+                    \   Minimum base quality required. Default is 10.\n  --min_map_qual\
+                    \ MIN_MAP_QUAL\n                        Minimum mapping quality\
+                    \ required. Default is 10.\n  --process_num PROCESS_NUM\n    \
+                    \                    Number of processes to launch for preprocessing.\n\
+                    \                        Default is 1.\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: PyLOH [-h] {preprocess,run_model,BAF_heatmap} ...\n\
+                  \npositional arguments:\n  {preprocess,run_model,BAF_heatmap}\n\
+                  \    preprocess          Preprocess paired normal and tumor BAM\
+                  \ files\n    run_model           Run a probabilistic model based\
+                  \ analysis. Requires\n                        preprocessed counts\
+                  \ file and segments file that have\n                        been\
+                  \ created.\n    BAF_heatmap         Plot the BAF heat map for each\
+                  \ segment. Requires\n                        preprocessed heatmap\
+                  \ file that have been created.\n\noptional arguments:\n  -h, --help\
+                  \            show this help message and exit\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -197,12 +432,9 @@ subcommands:
                 \ Stop value of the EM algorithm for training. If the\n          \
                 \              change of log-likelihood is lower than this value,\n\
                 \                        stop training. Default is 1e-7.\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - PyLOH.py
-              - BAF_heatmap
+              command: *id005
               positional:
               - !Positional
                 description: Base name of preprocessed files created.
@@ -228,9 +460,7 @@ subcommands:
                 \ exit\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - PyLOH.py
-              - preprocess
+              command: *id006
               positional:
               - !Positional
                 description: FASTA file for reference genome.
@@ -338,13 +568,7 @@ subcommands:
                 \                Default is 1.\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage: PyLOH [-h] {preprocess,run_model,BAF_heatmap} ...\n\
@@ -393,7 +617,7 @@ subcommands:
             name: filename_base
             optional: false
           named: []
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -479,7 +703,7 @@ subcommands:
             args: !SimpleFlagArg
               name: PROCESS_NUM
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -566,7 +790,7 @@ subcommands:
         name: filename_base
         optional: false
       named: []
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -652,7 +876,7 @@ subcommands:
         args: !SimpleFlagArg
           name: PROCESS_NUM
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -736,7 +960,7 @@ subcommands:
     name: filename_base
     optional: false
   named: []
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -821,7 +1045,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PROCESS_NUM
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag

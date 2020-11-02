@@ -63,1666 +63,11 @@ subcommands:
             name: backpropagate
             optional: false
           named: []
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: Single run PyProphet input file.  [required]
-              synonyms:
-              - --in
-              args: !SimpleFlagArg
-                name: PATH
-              optional: true
-            - !Flag
-              description: Single run (with multi-run scores) PyProphet output
-              synonyms:
-              - --out
-              args: !SimpleFlagArg
-                name: PATH
-              optional: true
-            parent: &id004 !Command
-              command:
-              - pyprophet
-              positional: []
-              named: []
-              parent:
-              subcommands:
-              - *id003
-              - !Command
-                command:
-                - pyprophet
-                - export
-                positional: []
-                named:
-                - !Flag
-                  description: PyProphet input file.  [required]
-                  synonyms:
-                  - --in
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: "Output TSV/CSV (matrix, legacy_split,\nlegacy_merged)\
-                    \ file."
-                  synonyms:
-                  - --out
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: "[matrix|legacy_split|legacy_merged|score_plots]\n\
-                    Export format, either matrix,\nlegacy_split/legacy_merged\n(mProphet/PyProphet)\
-                    \ or score_plots format.\n[default: legacy_split]"
-                  synonyms:
-                  - --format
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-csv                Export CSV instead of TSV\
-                    \ file.  [default:\nFalse]"
-                  synonyms:
-                  - --csv
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-transition_quantification\n[format: legacy]\
-                    \ Report aggregated\ntransition-level quantification.  [default:\n\
-                    True]"
-                  synonyms:
-                  - --transition_quantification
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "[format: legacy] Maximum PEP to retain\nscored transitions\
-                    \ for quantification\n(requires transition-level scoring).\n[default:\
-                    \ 0.7]"
-                  synonyms:
-                  - --max_transition_pep
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "[peptidoform|augmented|disable]\n[format: matrix/legacy]\
-                    \ Should IPF results\nbe reported if present? \"peptidoform\"\
-                    :\nReport results on peptidoform-level,\n\"augmented\": Augment\
-                    \ OpenSWATH results with\nIPF scores, \"disable\": Ignore IPF\
-                    \ results\n[default: peptidoform]"
-                  synonyms:
-                  - --ipf
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "[format: matrix/legacy] IPF: Filter results\nto maximum\
-                    \ run-specific peptidoform-level\nPEP.  [default: 0.4]"
-                  synonyms:
-                  - --ipf_max_peptidoform_pep
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "[format: matrix/legacy] Filter results to\nmaximum\
-                    \ run-specific peak group-level\nq-value.  [default: 0.05]"
-                  synonyms:
-                  - --max_rs_peakgroup_qvalue
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: / --no-peptide        Append peptide-level error-rate
-                    estimates if
-                  synonyms:
-                  - --peptide
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "[format: matrix/legacy] Filter results to\nmaximum\
-                    \ global peptide-level q-value.\n[default: 0.01]"
-                  synonyms:
-                  - --max_global_peptide_qvalue
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: / --no-protein        Append protein-level error-rate
-                    estimates if
-                  synonyms:
-                  - --protein
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "[format: matrix/legacy] Filter results to\nmaximum\
-                    \ global protein-level q-value.\n[default: 0.01]"
-                  synonyms:
-                  - --max_global_protein_qvalue
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: pyprophet export [OPTIONS]\n\n  Export TSV/CSV\
-                  \ tables\n\nOptions:\n  --in PATH                       PyProphet\
-                  \ input file.  [required]\n  --out PATH                      Output\
-                  \ TSV/CSV (matrix, legacy_split,\n                             \
-                  \     legacy_merged) file.\n\n  --format [matrix|legacy_split|legacy_merged|score_plots]\n\
-                  \                                  Export format, either matrix,\n\
-                  \                                  legacy_split/legacy_merged\n\
-                  \                                  (mProphet/PyProphet) or score_plots\
-                  \ format.\n                                  [default: legacy_split]\n\
-                  \n  --csv / --no-csv                Export CSV instead of TSV file.\
-                  \  [default:\n                                  False]\n\n  --transition_quantification\
-                  \ / --no-transition_quantification\n                           \
-                  \       [format: legacy] Report aggregated\n                   \
-                  \               transition-level quantification.  [default:\n  \
-                  \                                True]\n\n  --max_transition_pep\
-                  \ FLOAT      [format: legacy] Maximum PEP to retain\n          \
-                  \                        scored transitions for quantification\n\
-                  \                                  (requires transition-level scoring).\n\
-                  \                                  [default: 0.7]\n\n  --ipf [peptidoform|augmented|disable]\n\
-                  \                                  [format: matrix/legacy] Should\
-                  \ IPF results\n                                  be reported if\
-                  \ present? \"peptidoform\":\n                                  Report\
-                  \ results on peptidoform-level,\n                              \
-                  \    \"augmented\": Augment OpenSWATH results with\n           \
-                  \                       IPF scores, \"disable\": Ignore IPF results\n\
-                  \                                  [default: peptidoform]\n\n  --ipf_max_peptidoform_pep\
-                  \ FLOAT\n                                  [format: matrix/legacy]\
-                  \ IPF: Filter results\n                                  to maximum\
-                  \ run-specific peptidoform-level\n                             \
-                  \     PEP.  [default: 0.4]\n\n  --max_rs_peakgroup_qvalue FLOAT\n\
-                  \                                  [format: matrix/legacy] Filter\
-                  \ results to\n                                  maximum run-specific\
-                  \ peak group-level\n                                  q-value. \
-                  \ [default: 0.05]\n\n  --peptide / --no-peptide        Append peptide-level\
-                  \ error-rate estimates if\n                                  available.\
-                  \  [default: True]\n\n  --max_global_peptide_qvalue FLOAT\n    \
-                  \                              [format: matrix/legacy] Filter results\
-                  \ to\n                                  maximum global peptide-level\
-                  \ q-value.\n                                  [default: 0.01]\n\n\
-                  \  --protein / --no-protein        Append protein-level error-rate\
-                  \ estimates if\n                                  available.  [default:\
-                  \ True]\n\n  --max_global_protein_qvalue FLOAT\n               \
-                  \                   [format: matrix/legacy] Filter results to\n\
-                  \                                  maximum global protein-level\
-                  \ q-value.\n                                  [default: 0.01]\n\n\
-                  \  --help                          Show this message and exit.\n"
-                generated_using: &id005
-                - --help
-              - !Command
-                command:
-                - pyprophet
-                - export-compound
-                positional: []
-                named:
-                - !Flag
-                  description: PyProphet input file.  [required]
-                  synonyms:
-                  - --in
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: Output TSV/CSV (matrix, legacy_merged) file.
-                  synonyms:
-                  - --out
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: "[matrix|legacy_merged|score_plots]\nExport format,\
-                    \ either matrix, legacy_merged\n(PyProphet) or score_plots format.\n\
-                    [default: legacy_merged]"
-                  synonyms:
-                  - --format
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-csv                Export CSV instead of TSV\
-                    \ file.  [default:\nFalse]"
-                  synonyms:
-                  - --csv
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "[format: matrix/legacy] Filter results to\nmaximum\
-                    \ run-specific peak group-level\nq-value.  [default: 0.05]"
-                  synonyms:
-                  - --max_rs_peakgroup_qvalue
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: pyprophet export-compound [OPTIONS]\n\n  Export\
-                  \ Compound TSV/CSV tables\n\nOptions:\n  --in PATH             \
-                  \          PyProphet input file.  [required]\n  --out PATH     \
-                  \                 Output TSV/CSV (matrix, legacy_merged) file.\n\
-                  \  --format [matrix|legacy_merged|score_plots]\n               \
-                  \                   Export format, either matrix, legacy_merged\n\
-                  \                                  (PyProphet) or score_plots format.\n\
-                  \                                  [default: legacy_merged]\n\n\
-                  \  --csv / --no-csv                Export CSV instead of TSV file.\
-                  \  [default:\n                                  False]\n\n  --max_rs_peakgroup_qvalue\
-                  \ FLOAT\n                                  [format: matrix/legacy]\
-                  \ Filter results to\n                                  maximum run-specific\
-                  \ peak group-level\n                                  q-value. \
-                  \ [default: 0.05]\n\n  --help                          Show this\
-                  \ message and exit.\n"
-                generated_using: *id005
-              - &id006 !Command
-                command:
-                - pyprophet
-                - score
-                positional: []
-                named:
-                - !Flag
-                  description: PyProphet input file.  [required]
-                  synonyms:
-                  - --in
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: PyProphet output file.
-                  synonyms:
-                  - --out
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: "[LDA|XGBoost]      Either a \"LDA\" or \"XGBoost\"\
-                    \ classifier is\nused for semi-supervised learning.\n[default:\
-                    \ LDA]"
-                  synonyms:
-                  - --classifier
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-xgb_autotune\nXGBoost: Autotune hyperparameters.\n\
-                    [default: False]"
-                  synonyms:
-                  - --xgb_autotune
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Apply PyProphet score weights file instead\nof semi-supervised\
-                    \ learning."
-                  synonyms:
-                  - --apply_weights
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: "Data fraction used for cross-validation of\nsemi-supervised\
-                    \ learning step.  [default:\n0.5]"
-                  synonyms:
-                  - --xeval_fraction
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "Number of iterations for cross-validation of\nsemi-supervised\
-                    \ learning step.  [default:\n10]"
-                  synonyms:
-                  - --xeval_num_iter
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                - !Flag
-                  description: "Initial FDR cutoff for best scoring targets.\n[default:\
-                    \ 0.15]"
-                  synonyms:
-                  - --ss_initial_fdr
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: Iteration FDR cutoff for best scoring
-                  synonyms:
-                  - --ss_iteration_fdr
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "Number of iterations for semi-supervised\nlearning\
-                    \ step.  [default: 10]"
-                  synonyms:
-                  - --ss_num_iter
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                - !Flag
-                  description: Main score to start semi-supervised-
-                  synonyms:
-                  - --ss_main_score
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: Group identifier for calculation of
-                  synonyms:
-                  - --group_id
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: "/ --no-parametric  Do parametric estimation of p-values.\n\
-                    [default: False]"
-                  synonyms:
-                  - --parametric
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-pfdr              Compute positive false discovery\
-                    \ rate (pFDR)\ninstead of FDR.  [default: False]"
-                  synonyms:
-                  - --pfdr
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "...\nUse non-parametric estimation of p-values.\n\
-                    Either use <START END STEPS>, e.g. 0.1, 1.0,\n0.1 or set to fixed\
-                    \ value, e.g. 0.4, 0, 0.\n[default: 0.1, 0.5, 0.05]"
-                  synonyms:
-                  - --pi0_lambda
-                  args: !SimpleFlagArg
-                    name: FLOAT FLOAT FLOAT
-                  optional: true
-                - !Flag
-                  description: "[smoother|bootstrap]\nEither \"smoother\" or \"bootstrap\"\
-                    ; the method\nfor automatically choosing tuning parameter\nin\
-                    \ the estimation of pi_0, the proportion of\ntrue null hypotheses.\
-                    \  [default: bootstrap]"
-                  synonyms:
-                  - --pi0_method
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Number of degrees-of-freedom to use when\nestimating\
-                    \ pi_0 with a smoother.  [default:\n3]"
-                  synonyms:
-                  - --pi0_smooth_df
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                - !Flag
-                  description: "/ --no-pi0_smooth_log_pi0\nIf True and pi0_method\
-                    \ = \"smoother\", pi0\nwill be estimated by applying a smoother\
-                    \ to\na scatterplot of log(pi0) estimates against\nthe tuning\
-                    \ parameter lambda.  [default:\nFalse]"
-                  synonyms:
-                  - --pi0_smooth_log_pi0
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-lfdr_truncate\nIf True, local FDR values >1\
-                    \ are set to 1.\n[default: True]"
-                  synonyms:
-                  - --lfdr_truncate
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-lfdr_monotone\nIf True, local FDR values are\
-                    \ non-decreasing\nwith increasing p-values.  [default: True]"
-                  synonyms:
-                  - --lfdr_monotone
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "[probit|logit]\nEither a \"probit\" or \"logit\" transformation\n\
-                    is applied to the p-values so that a local\nFDR estimate can be\
-                    \ formed that does not\ninvolve edge effects of the [0,1] interval\n\
-                    in which the p-values lie.  [default:\nprobit]"
-                  synonyms:
-                  - --lfdr_transformation
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Numeric value that is applied as a multiple\nof the\
-                    \ smoothing bandwidth used in the\ndensity estimation.  [default:\
-                    \ 1.5]"
-                  synonyms:
-                  - --lfdr_adj
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "Numeric value that is threshold for the\ntails of\
-                    \ the empirical p-value distribution.\n[default: 1e-08]"
-                  synonyms:
-                  - --lfdr_eps
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "[ms1|ms2|ms1ms2|transition]\nEither \"ms1\", \"ms2\"\
-                    , \"ms1ms2\" or\n\"transition\"; the data level selected for\n\
-                    scoring. \"ms1ms2 integrates both MS1- and\nMS2-level scores and\
-                    \ can be used instead of\n\"ms2\"-level results.\"  [default:\
-                    \ ms2]"
-                  synonyms:
-                  - --level
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Assess transitions only for candidate peak\ngroups\
-                    \ until maximum peak group rank.\n[default: 1]"
-                  synonyms:
-                  - --ipf_max_peakgroup_rank
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                - !Flag
-                  description: "Assess transitions only for candidate peak\ngroups\
-                    \ until maximum posterior error\nprobability.  [default: 0.7]"
-                  synonyms:
-                  - --ipf_max_peakgroup_pep
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "Maximum isotope overlap to consider\ntransitions in\
-                    \ IPF.  [default: 0.5]"
-                  synonyms:
-                  - --ipf_max_transition_isotope_overlap
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "Minimum log signal-to-noise level to\nconsider transitions\
-                    \ in IPF. Set -1 to\ndisable this filter.  [default: 0]"
-                  synonyms:
-                  - --ipf_min_transition_sn
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "/ --no-tric_chromprob\nWhether chromatogram probabilities\
-                    \ for TRIC\nshould be computed.  [default: False]"
-                  synonyms:
-                  - --tric_chromprob
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Number of threads used for semi-supervised\nlearning.\
-                    \ -1 means all available CPUs.\n[default: 1]"
-                  synonyms:
-                  - --threads
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                - !Flag
-                  description: "/ --no-test              Run in test mode with fixed\
-                    \ seed.  [default:\nFalse]"
-                  synonyms:
-                  - --test
-                  args: !EmptyFlagArg {}
-                  optional: true
-                parent: *id004
-                subcommands:
-                - !Command
-                  command:
-                  - pyprophet
-                  - score
-                  - learning.
-                  positional:
-                  - !Positional
-                    description: ''
-                    position: 0
-                    name: pyprophet
-                    optional: false
-                  - !Positional
-                    description: ''
-                    position: 1
-                    name: score
-                    optional: false
-                  named: []
-                  parent: *id006
-                  subcommands: []
-                  usage: []
-                  help_flag:
-                  usage_flag:
-                  version_flag:
-                  help_text: "Usage: pyprophet score [OPTIONS]\nTry 'pyprophet score\
-                    \ --help' for help.\n\nError: Missing option '--in'.\n"
-                  generated_using: *id005
-                - !Command
-                  command:
-                  - pyprophet
-                  - score
-                  - statistics.
-                  positional:
-                  - !Positional
-                    description: ''
-                    position: 0
-                    name: pyprophet
-                    optional: false
-                  - !Positional
-                    description: ''
-                    position: 1
-                    name: score
-                    optional: false
-                  named: []
-                  parent: *id006
-                  subcommands: []
-                  usage: []
-                  help_flag:
-                  usage_flag:
-                  version_flag:
-                  help_text: "Usage: pyprophet score [OPTIONS]\nTry 'pyprophet score\
-                    \ --help' for help.\n\nError: Missing option '--in'.\n"
-                  generated_using: *id005
-                - !Command
-                  command:
-                  - pyprophet
-                  - score
-                  - targets.
-                  positional:
-                  - !Positional
-                    description: ''
-                    position: 0
-                    name: pyprophet
-                    optional: false
-                  - !Positional
-                    description: ''
-                    position: 1
-                    name: score
-                    optional: false
-                  named: []
-                  parent: *id006
-                  subcommands: []
-                  usage: []
-                  help_flag:
-                  usage_flag:
-                  version_flag:
-                  help_text: "Usage: pyprophet score [OPTIONS]\nTry 'pyprophet score\
-                    \ --help' for help.\n\nError: Missing option '--in'.\n"
-                  generated_using: *id005
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: pyprophet score [OPTIONS]\n\n  Conduct semi-supervised\
-                  \ learning and error-rate estimation for MS1, MS2\n  and transition-level\
-                  \ data.\n\nOptions:\n  --in PATH                       PyProphet\
-                  \ input file.  [required]\n  --out PATH                      PyProphet\
-                  \ output file.\n  --classifier [LDA|XGBoost]      Either a \"LDA\"\
-                  \ or \"XGBoost\" classifier is\n                               \
-                  \   used for semi-supervised learning.\n                       \
-                  \           [default: LDA]\n\n  --xgb_autotune / --no-xgb_autotune\n\
-                  \                                  XGBoost: Autotune hyperparameters.\n\
-                  \                                  [default: False]\n\n  --apply_weights\
-                  \ PATH            Apply PyProphet score weights file instead\n \
-                  \                                 of semi-supervised learning.\n\
-                  \n  --xeval_fraction FLOAT          Data fraction used for cross-validation\
-                  \ of\n                                  semi-supervised learning\
-                  \ step.  [default:\n                                  0.5]\n\n \
-                  \ --xeval_num_iter INTEGER        Number of iterations for cross-validation\
-                  \ of\n                                  semi-supervised learning\
-                  \ step.  [default:\n                                  10]\n\n  --ss_initial_fdr\
-                  \ FLOAT          Initial FDR cutoff for best scoring targets.\n\
-                  \                                  [default: 0.15]\n\n  --ss_iteration_fdr\
-                  \ FLOAT        Iteration FDR cutoff for best scoring\n         \
-                  \                         targets.  [default: 0.05]\n\n  --ss_num_iter\
-                  \ INTEGER           Number of iterations for semi-supervised\n \
-                  \                                 learning step.  [default: 10]\n\
-                  \n  --ss_main_score TEXT            Main score to start semi-supervised-\n\
-                  \                                  learning.  [default: var_xcorr_shape]\n\
-                  \n  --group_id TEXT                 Group identifier for calculation\
-                  \ of\n                                  statistics.  [default: group_id]\n\
-                  \n  --parametric / --no-parametric  Do parametric estimation of\
-                  \ p-values.\n                                  [default: False]\n\
-                  \n  --pfdr / --no-pfdr              Compute positive false discovery\
-                  \ rate (pFDR)\n                                  instead of FDR.\
-                  \  [default: False]\n\n  --pi0_lambda <FLOAT FLOAT FLOAT>...\n \
-                  \                                 Use non-parametric estimation\
-                  \ of p-values.\n                                  Either use <START\
-                  \ END STEPS>, e.g. 0.1, 1.0,\n                                 \
-                  \ 0.1 or set to fixed value, e.g. 0.4, 0, 0.\n                 \
-                  \                 [default: 0.1, 0.5, 0.05]\n\n  --pi0_method [smoother|bootstrap]\n\
-                  \                                  Either \"smoother\" or \"bootstrap\"\
-                  ; the method\n                                  for automatically\
-                  \ choosing tuning parameter\n                                  in\
-                  \ the estimation of pi_0, the proportion of\n                  \
-                  \                true null hypotheses.  [default: bootstrap]\n\n\
-                  \  --pi0_smooth_df INTEGER         Number of degrees-of-freedom\
-                  \ to use when\n                                  estimating pi_0\
-                  \ with a smoother.  [default:\n                                \
-                  \  3]\n\n  --pi0_smooth_log_pi0 / --no-pi0_smooth_log_pi0\n    \
-                  \                              If True and pi0_method = \"smoother\"\
-                  , pi0\n                                  will be estimated by applying\
-                  \ a smoother to\n                                  a scatterplot\
-                  \ of log(pi0) estimates against\n                              \
-                  \    the tuning parameter lambda.  [default:\n                 \
-                  \                 False]\n\n  --lfdr_truncate / --no-lfdr_truncate\n\
-                  \                                  If True, local FDR values >1\
-                  \ are set to 1.\n                                  [default: True]\n\
-                  \n  --lfdr_monotone / --no-lfdr_monotone\n                     \
-                  \             If True, local FDR values are non-decreasing\n   \
-                  \                               with increasing p-values.  [default:\
-                  \ True]\n\n  --lfdr_transformation [probit|logit]\n            \
-                  \                      Either a \"probit\" or \"logit\" transformation\n\
-                  \                                  is applied to the p-values so\
-                  \ that a local\n                                  FDR estimate can\
-                  \ be formed that does not\n                                  involve\
-                  \ edge effects of the [0,1] interval\n                         \
-                  \         in which the p-values lie.  [default:\n              \
-                  \                    probit]\n\n  --lfdr_adj FLOAT             \
-                  \   Numeric value that is applied as a multiple\n              \
-                  \                    of the smoothing bandwidth used in the\n  \
-                  \                                density estimation.  [default:\
-                  \ 1.5]\n\n  --lfdr_eps FLOAT                Numeric value that is\
-                  \ threshold for the\n                                  tails of\
-                  \ the empirical p-value distribution.\n                        \
-                  \          [default: 1e-08]\n\n  --level [ms1|ms2|ms1ms2|transition]\n\
-                  \                                  Either \"ms1\", \"ms2\", \"ms1ms2\"\
-                  \ or\n                                  \"transition\"; the data\
-                  \ level selected for\n                                  scoring.\
-                  \ \"ms1ms2 integrates both MS1- and\n                          \
-                  \        MS2-level scores and can be used instead of\n         \
-                  \                         \"ms2\"-level results.\"  [default: ms2]\n\
-                  \n  --ipf_max_peakgroup_rank INTEGER\n                         \
-                  \         Assess transitions only for candidate peak\n         \
-                  \                         groups until maximum peak group rank.\n\
-                  \                                  [default: 1]\n\n  --ipf_max_peakgroup_pep\
-                  \ FLOAT   Assess transitions only for candidate peak\n         \
-                  \                         groups until maximum posterior error\n\
-                  \                                  probability.  [default: 0.7]\n\
-                  \n  --ipf_max_transition_isotope_overlap FLOAT\n               \
-                  \                   Maximum isotope overlap to consider\n      \
-                  \                            transitions in IPF.  [default: 0.5]\n\
-                  \n  --ipf_min_transition_sn FLOAT   Minimum log signal-to-noise\
-                  \ level to\n                                  consider transitions\
-                  \ in IPF. Set -1 to\n                                  disable this\
-                  \ filter.  [default: 0]\n\n  --tric_chromprob / --no-tric_chromprob\n\
-                  \                                  Whether chromatogram probabilities\
-                  \ for TRIC\n                                  should be computed.\
-                  \  [default: False]\n\n  --threads INTEGER               Number\
-                  \ of threads used for semi-supervised\n                        \
-                  \          learning. -1 means all available CPUs.\n            \
-                  \                      [default: 1]\n\n  --test / --no-test    \
-                  \          Run in test mode with fixed seed.  [default:\n      \
-                  \                            False]\n\n  --help                \
-                  \          Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - pyprophet
-                - gene
-                positional: []
-                named:
-                - !Flag
-                  description: PyProphet input file.  [required]
-                  synonyms:
-                  - --in
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: PyProphet output file.
-                  synonyms:
-                  - --out
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: "[run-specific|experiment-wide|global]\nContext to\
-                    \ estimate gene-level FDR control.\n[default: run-specific]"
-                  synonyms:
-                  - --context
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-parametric  Do parametric estimation of p-values.\n\
-                    [default: False]"
-                  synonyms:
-                  - --parametric
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-pfdr              Compute positive false discovery\
-                    \ rate (pFDR)\ninstead of FDR.  [default: False]"
-                  synonyms:
-                  - --pfdr
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "...\nUse non-parametric estimation of p-values.\n\
-                    Either use <START END STEPS>, e.g. 0.1, 1.0,\n0.1 or set to fixed\
-                    \ value, e.g. 0.4, 0, 0.\n[default: 0.1, 0.5, 0.05]"
-                  synonyms:
-                  - --pi0_lambda
-                  args: !SimpleFlagArg
-                    name: FLOAT FLOAT FLOAT
-                  optional: true
-                - !Flag
-                  description: "[smoother|bootstrap]\nEither \"smoother\" or \"bootstrap\"\
-                    ; the method\nfor automatically choosing tuning parameter\nin\
-                    \ the estimation of pi_0, the proportion of\ntrue null hypotheses.\
-                    \  [default: bootstrap]"
-                  synonyms:
-                  - --pi0_method
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Number of degrees-of-freedom to use when\nestimating\
-                    \ pi_0 with a smoother.  [default:\n3]"
-                  synonyms:
-                  - --pi0_smooth_df
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                - !Flag
-                  description: "/ --no-pi0_smooth_log_pi0\nIf True and pi0_method\
-                    \ = \"smoother\", pi0\nwill be estimated by applying a smoother\
-                    \ to\na scatterplot of log(pi0) estimates against\nthe tuning\
-                    \ parameter lambda.  [default:\nFalse]"
-                  synonyms:
-                  - --pi0_smooth_log_pi0
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-lfdr_truncate\nIf True, local FDR values >1\
-                    \ are set to 1.\n[default: True]"
-                  synonyms:
-                  - --lfdr_truncate
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-lfdr_monotone\nIf True, local FDR values are\
-                    \ non-decreasing\nwith increasing p-values.  [default: True]"
-                  synonyms:
-                  - --lfdr_monotone
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "[probit|logit]\nEither a \"probit\" or \"logit\" transformation\n\
-                    is applied to the p-values so that a local\nFDR estimate can be\
-                    \ formed that does not\ninvolve edge effects of the [0,1] interval\n\
-                    in which the p-values lie.  [default:\nprobit]"
-                  synonyms:
-                  - --lfdr_transformation
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Numeric value that is applied as a multiple\nof the\
-                    \ smoothing bandwidth used in the\ndensity estimation.  [default:\
-                    \ 1.5]"
-                  synonyms:
-                  - --lfdr_adj
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "Numeric value that is threshold for the\ntails of\
-                    \ the empirical p-value distribution.\n[default: 1e-08]"
-                  synonyms:
-                  - --lfdr_eps
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: pyprophet gene [OPTIONS]\n\n  Infer genes and conduct\
-                  \ error-rate estimation in different contexts.\n\nOptions:\n  --in\
-                  \ PATH                       PyProphet input file.  [required]\n\
-                  \  --out PATH                      PyProphet output file.\n  --context\
-                  \ [run-specific|experiment-wide|global]\n                      \
-                  \            Context to estimate gene-level FDR control.\n     \
-                  \                             [default: run-specific]\n\n  --parametric\
-                  \ / --no-parametric  Do parametric estimation of p-values.\n   \
-                  \                               [default: False]\n\n  --pfdr / --no-pfdr\
-                  \              Compute positive false discovery rate (pFDR)\n  \
-                  \                                instead of FDR.  [default: False]\n\
-                  \n  --pi0_lambda <FLOAT FLOAT FLOAT>...\n                      \
-                  \            Use non-parametric estimation of p-values.\n      \
-                  \                            Either use <START END STEPS>, e.g.\
-                  \ 0.1, 1.0,\n                                  0.1 or set to fixed\
-                  \ value, e.g. 0.4, 0, 0.\n                                  [default:\
-                  \ 0.1, 0.5, 0.05]\n\n  --pi0_method [smoother|bootstrap]\n     \
-                  \                             Either \"smoother\" or \"bootstrap\"\
-                  ; the method\n                                  for automatically\
-                  \ choosing tuning parameter\n                                  in\
-                  \ the estimation of pi_0, the proportion of\n                  \
-                  \                true null hypotheses.  [default: bootstrap]\n\n\
-                  \  --pi0_smooth_df INTEGER         Number of degrees-of-freedom\
-                  \ to use when\n                                  estimating pi_0\
-                  \ with a smoother.  [default:\n                                \
-                  \  3]\n\n  --pi0_smooth_log_pi0 / --no-pi0_smooth_log_pi0\n    \
-                  \                              If True and pi0_method = \"smoother\"\
-                  , pi0\n                                  will be estimated by applying\
-                  \ a smoother to\n                                  a scatterplot\
-                  \ of log(pi0) estimates against\n                              \
-                  \    the tuning parameter lambda.  [default:\n                 \
-                  \                 False]\n\n  --lfdr_truncate / --no-lfdr_truncate\n\
-                  \                                  If True, local FDR values >1\
-                  \ are set to 1.\n                                  [default: True]\n\
-                  \n  --lfdr_monotone / --no-lfdr_monotone\n                     \
-                  \             If True, local FDR values are non-decreasing\n   \
-                  \                               with increasing p-values.  [default:\
-                  \ True]\n\n  --lfdr_transformation [probit|logit]\n            \
-                  \                      Either a \"probit\" or \"logit\" transformation\n\
-                  \                                  is applied to the p-values so\
-                  \ that a local\n                                  FDR estimate can\
-                  \ be formed that does not\n                                  involve\
-                  \ edge effects of the [0,1] interval\n                         \
-                  \         in which the p-values lie.  [default:\n              \
-                  \                    probit]\n\n  --lfdr_adj FLOAT             \
-                  \   Numeric value that is applied as a multiple\n              \
-                  \                    of the smoothing bandwidth used in the\n  \
-                  \                                density estimation.  [default:\
-                  \ 1.5]\n\n  --lfdr_eps FLOAT                Numeric value that is\
-                  \ threshold for the\n                                  tails of\
-                  \ the empirical p-value distribution.\n                        \
-                  \          [default: 1e-08]\n\n  --help                        \
-                  \  Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - pyprophet
-                - filter
-                positional:
-                - !Positional
-                  description: ''
-                  position: 0
-                  name: SQMASSFILES
-                  optional: true
-                named:
-                - !Flag
-                  description: PyProphet input file.  [required]
-                  synonyms:
-                  - --in
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: Maximum PEP to retain scored precursors in
-                  synonyms:
-                  - --max_precursor_pep
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: Maximum PEP to retain scored peak groups in
-                  synonyms:
-                  - --max_peakgroup_pep
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: Maximum PEP to retain scored transitions in
-                  synonyms:
-                  - --max_transition_pep
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: pyprophet filter [OPTIONS] [SQMASSFILES]...\n\n\
-                  \  Filter sqMass files\n\nOptions:\n  --in PATH                \
-                  \   PyProphet input file.  [required]\n  --max_precursor_pep FLOAT\
-                  \   Maximum PEP to retain scored precursors in\n               \
-                  \               sqMass.  [default: 0.7]\n\n  --max_peakgroup_pep\
-                  \ FLOAT   Maximum PEP to retain scored peak groups in\n        \
-                  \                      sqMass.  [default: 0.7]\n\n  --max_transition_pep\
-                  \ FLOAT  Maximum PEP to retain scored transitions in\n         \
-                  \                     sqMass.  [default: 0.7]\n\n  --help      \
-                  \                Show this message and exit.\n"
-                generated_using: *id005
-              - &id007 !Command
-                command:
-                - pyprophet
-                - ipf
-                positional: []
-                named:
-                - !Flag
-                  description: PyProphet input file.  [required]
-                  synonyms:
-                  - --in
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: PyProphet output file.
-                  synonyms:
-                  - --out
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: "/ --no-ipf_ms1_scoring\nUse MS1 precursor data for\
-                    \ IPF.  [default:\nTrue]"
-                  synonyms:
-                  - --ipf_ms1_scoring
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-ipf_ms2_scoring\nUse MS2 precursor data for\
-                    \ IPF.  [default:\nTrue]"
-                  synonyms:
-                  - --ipf_ms2_scoring
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-ipf_h0          Include possibility that peak\
-                    \ groups are not\ncovered by peptidoform space.  [default:\nTrue]"
-                  synonyms:
-                  - --ipf_h0
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-ipf_grouped_fdr\n[Experimental] Compute grouped\
-                    \ FDR instead\nof pooled FDR to better support data where\npeak\
-                    \ groups are evaluated to originate from\nvery heterogeneous numbers\
-                    \ of peptidoforms.\n[default: False]"
-                  synonyms:
-                  - --ipf_grouped_fdr
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: Maximum PEP to consider scored precursors in
-                  synonyms:
-                  - --ipf_max_precursor_pep
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "Maximum PEP to consider scored peak groups\nin IPF.\
-                    \  [default: 0.7]"
-                  synonyms:
-                  - --ipf_max_peakgroup_pep
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "Maximum BHM layer 1 integrated precursor\npeakgroup\
-                    \ PEP to consider in IPF.  [default:\n0.4]"
-                  synonyms:
-                  - --ipf_max_precursor_peakgroup_pep
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "Maximum PEP to consider scored transitions\nin IPF.\
-                    \  [default: 0.6]"
-                  synonyms:
-                  - --ipf_max_transition_pep
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                parent: *id004
-                subcommands:
-                - !Command
-                  command:
-                  - pyprophet
-                  - ipf
-                  - IPF.
-                  positional:
-                  - !Positional
-                    description: ''
-                    position: 0
-                    name: pyprophet
-                    optional: false
-                  - !Positional
-                    description: ''
-                    position: 1
-                    name: ipf
-                    optional: false
-                  named: []
-                  parent: *id007
-                  subcommands: []
-                  usage: []
-                  help_flag:
-                  usage_flag:
-                  version_flag:
-                  help_text: "Usage: pyprophet ipf [OPTIONS]\nTry 'pyprophet ipf --help'\
-                    \ for help.\n\nError: Missing option '--in'.\n"
-                  generated_using: *id005
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: pyprophet ipf [OPTIONS]\n\n  Infer peptidoforms\
-                  \ after scoring of MS1, MS2 and transition-level data.\n\nOptions:\n\
-                  \  --in PATH                       PyProphet input file.  [required]\n\
-                  \  --out PATH                      PyProphet output file.\n  --ipf_ms1_scoring\
-                  \ / --no-ipf_ms1_scoring\n                                  Use\
-                  \ MS1 precursor data for IPF.  [default:\n                     \
-                  \             True]\n\n  --ipf_ms2_scoring / --no-ipf_ms2_scoring\n\
-                  \                                  Use MS2 precursor data for IPF.\
-                  \  [default:\n                                  True]\n\n  --ipf_h0\
-                  \ / --no-ipf_h0          Include possibility that peak groups are\
-                  \ not\n                                  covered by peptidoform\
-                  \ space.  [default:\n                                  True]\n\n\
-                  \  --ipf_grouped_fdr / --no-ipf_grouped_fdr\n                  \
-                  \                [Experimental] Compute grouped FDR instead\n  \
-                  \                                of pooled FDR to better support\
-                  \ data where\n                                  peak groups are\
-                  \ evaluated to originate from\n                                \
-                  \  very heterogeneous numbers of peptidoforms.\n               \
-                  \                   [default: False]\n\n  --ipf_max_precursor_pep\
-                  \ FLOAT   Maximum PEP to consider scored precursors in\n       \
-                  \                           IPF.  [default: 0.7]\n\n  --ipf_max_peakgroup_pep\
-                  \ FLOAT   Maximum PEP to consider scored peak groups\n         \
-                  \                         in IPF.  [default: 0.7]\n\n  --ipf_max_precursor_peakgroup_pep\
-                  \ FLOAT\n                                  Maximum BHM layer 1 integrated\
-                  \ precursor\n                                  peakgroup PEP to\
-                  \ consider in IPF.  [default:\n                                \
-                  \  0.4]\n\n  --ipf_max_transition_pep FLOAT  Maximum PEP to consider\
-                  \ scored transitions\n                                  in IPF.\
-                  \  [default: 0.6]\n\n  --help                          Show this\
-                  \ message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - pyprophet
-                - peptide
-                positional: []
-                named:
-                - !Flag
-                  description: PyProphet input file.  [required]
-                  synonyms:
-                  - --in
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: PyProphet output file.
-                  synonyms:
-                  - --out
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: "[run-specific|experiment-wide|global]\nContext to\
-                    \ estimate protein-level FDR\ncontrol.  [default: run-specific]"
-                  synonyms:
-                  - --context
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-parametric  Do parametric estimation of p-values.\n\
-                    [default: False]"
-                  synonyms:
-                  - --parametric
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-pfdr              Compute positive false discovery\
-                    \ rate (pFDR)\ninstead of FDR.  [default: False]"
-                  synonyms:
-                  - --pfdr
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "...\nUse non-parametric estimation of p-values.\n\
-                    Either use <START END STEPS>, e.g. 0.1, 1.0,\n0.1 or set to fixed\
-                    \ value, e.g. 0.4, 0, 0.\n[default: 0.1, 0.5, 0.05]"
-                  synonyms:
-                  - --pi0_lambda
-                  args: !SimpleFlagArg
-                    name: FLOAT FLOAT FLOAT
-                  optional: true
-                - !Flag
-                  description: "[smoother|bootstrap]\nEither \"smoother\" or \"bootstrap\"\
-                    ; the method\nfor automatically choosing tuning parameter\nin\
-                    \ the estimation of pi_0, the proportion of\ntrue null hypotheses.\
-                    \  [default: bootstrap]"
-                  synonyms:
-                  - --pi0_method
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Number of degrees-of-freedom to use when\nestimating\
-                    \ pi_0 with a smoother.  [default:\n3]"
-                  synonyms:
-                  - --pi0_smooth_df
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                - !Flag
-                  description: "/ --no-pi0_smooth_log_pi0\nIf True and pi0_method\
-                    \ = \"smoother\", pi0\nwill be estimated by applying a smoother\
-                    \ to\na scatterplot of log(pi0) estimates against\nthe tuning\
-                    \ parameter lambda.  [default:\nFalse]"
-                  synonyms:
-                  - --pi0_smooth_log_pi0
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-lfdr_truncate\nIf True, local FDR values >1\
-                    \ are set to 1.\n[default: True]"
-                  synonyms:
-                  - --lfdr_truncate
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-lfdr_monotone\nIf True, local FDR values are\
-                    \ non-decreasing\nwith increasing p-values.  [default: True]"
-                  synonyms:
-                  - --lfdr_monotone
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "[probit|logit]\nEither a \"probit\" or \"logit\" transformation\n\
-                    is applied to the p-values so that a local\nFDR estimate can be\
-                    \ formed that does not\ninvolve edge effects of the [0,1] interval\n\
-                    in which the p-values lie.  [default:\nprobit]"
-                  synonyms:
-                  - --lfdr_transformation
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Numeric value that is applied as a multiple\nof the\
-                    \ smoothing bandwidth used in the\ndensity estimation.  [default:\
-                    \ 1.5]"
-                  synonyms:
-                  - --lfdr_adj
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "Numeric value that is threshold for the\ntails of\
-                    \ the empirical p-value distribution.\n[default: 1e-08]"
-                  synonyms:
-                  - --lfdr_eps
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: pyprophet peptide [OPTIONS]\n\n  Infer peptides\
-                  \ and conduct error-rate estimation in different contexts.\n\nOptions:\n\
-                  \  --in PATH                       PyProphet input file.  [required]\n\
-                  \  --out PATH                      PyProphet output file.\n  --context\
-                  \ [run-specific|experiment-wide|global]\n                      \
-                  \            Context to estimate protein-level FDR\n           \
-                  \                       control.  [default: run-specific]\n\n  --parametric\
-                  \ / --no-parametric  Do parametric estimation of p-values.\n   \
-                  \                               [default: False]\n\n  --pfdr / --no-pfdr\
-                  \              Compute positive false discovery rate (pFDR)\n  \
-                  \                                instead of FDR.  [default: False]\n\
-                  \n  --pi0_lambda <FLOAT FLOAT FLOAT>...\n                      \
-                  \            Use non-parametric estimation of p-values.\n      \
-                  \                            Either use <START END STEPS>, e.g.\
-                  \ 0.1, 1.0,\n                                  0.1 or set to fixed\
-                  \ value, e.g. 0.4, 0, 0.\n                                  [default:\
-                  \ 0.1, 0.5, 0.05]\n\n  --pi0_method [smoother|bootstrap]\n     \
-                  \                             Either \"smoother\" or \"bootstrap\"\
-                  ; the method\n                                  for automatically\
-                  \ choosing tuning parameter\n                                  in\
-                  \ the estimation of pi_0, the proportion of\n                  \
-                  \                true null hypotheses.  [default: bootstrap]\n\n\
-                  \  --pi0_smooth_df INTEGER         Number of degrees-of-freedom\
-                  \ to use when\n                                  estimating pi_0\
-                  \ with a smoother.  [default:\n                                \
-                  \  3]\n\n  --pi0_smooth_log_pi0 / --no-pi0_smooth_log_pi0\n    \
-                  \                              If True and pi0_method = \"smoother\"\
-                  , pi0\n                                  will be estimated by applying\
-                  \ a smoother to\n                                  a scatterplot\
-                  \ of log(pi0) estimates against\n                              \
-                  \    the tuning parameter lambda.  [default:\n                 \
-                  \                 False]\n\n  --lfdr_truncate / --no-lfdr_truncate\n\
-                  \                                  If True, local FDR values >1\
-                  \ are set to 1.\n                                  [default: True]\n\
-                  \n  --lfdr_monotone / --no-lfdr_monotone\n                     \
-                  \             If True, local FDR values are non-decreasing\n   \
-                  \                               with increasing p-values.  [default:\
-                  \ True]\n\n  --lfdr_transformation [probit|logit]\n            \
-                  \                      Either a \"probit\" or \"logit\" transformation\n\
-                  \                                  is applied to the p-values so\
-                  \ that a local\n                                  FDR estimate can\
-                  \ be formed that does not\n                                  involve\
-                  \ edge effects of the [0,1] interval\n                         \
-                  \         in which the p-values lie.  [default:\n              \
-                  \                    probit]\n\n  --lfdr_adj FLOAT             \
-                  \   Numeric value that is applied as a multiple\n              \
-                  \                    of the smoothing bandwidth used in the\n  \
-                  \                                density estimation.  [default:\
-                  \ 1.5]\n\n  --lfdr_eps FLOAT                Numeric value that is\
-                  \ threshold for the\n                                  tails of\
-                  \ the empirical p-value distribution.\n                        \
-                  \          [default: 1e-08]\n\n  --help                        \
-                  \  Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - pyprophet
-                - reduce
-                positional: []
-                named:
-                - !Flag
-                  description: Scored PyProphet input file.  [required]
-                  synonyms:
-                  - --in
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: Reduced OSWR output file.
-                  synonyms:
-                  - --out
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: pyprophet reduce [OPTIONS]\n\n  Reduce scored PyProphet\
-                  \ file to minimum for global scoring\n\nOptions:\n  --in PATH  \
-                  \ Scored PyProphet input file.  [required]\n  --out PATH  Reduced\
-                  \ OSWR output file.\n  --help      Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - pyprophet
-                - subsample
-                positional: []
-                named:
-                - !Flag
-                  description: OpenSWATH input file.  [required]
-                  synonyms:
-                  - --in
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: Subsampled OSWS output file.
-                  synonyms:
-                  - --out
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: 'Subsample ratio used per input file.  [default: 1]'
-                  synonyms:
-                  - --subsample_ratio
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: '/ --no-test       Run in test mode with fixed seed.  [default:
-                    False]'
-                  synonyms:
-                  - --test
-                  args: !EmptyFlagArg {}
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: pyprophet subsample [OPTIONS]\n\n  Subsample OpenSWATH\
-                  \ file to minimum for integrated scoring\n\nOptions:\n  --in PATH\
-                  \                OpenSWATH input file.  [required]\n  --out PATH\
-                  \               Subsampled OSWS output file.\n  --subsample_ratio\
-                  \ FLOAT  Subsample ratio used per input file.  [default: 1]\n  --test\
-                  \ / --no-test       Run in test mode with fixed seed.  [default:\
-                  \ False]\n  --help                   Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - pyprophet
-                - merge
-                positional:
-                - !Positional
-                  description: ''
-                  position: 0
-                  name: INFILES
-                  optional: true
-                named:
-                - !Flag
-                  description: Merged OSW output file.  [required]
-                  synonyms:
-                  - --out
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: "/ --no-same_run  Assume input files are from same\
-                    \ run (deletes\nrun information)."
-                  synonyms:
-                  - --same_run
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: Template OSW file.  [required]
-                  synonyms:
-                  - --template
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: pyprophet merge [OPTIONS] [INFILES]...\n\n  Merge\
-                  \ multiple OSW files and (for large experiments, it is recommended\
-                  \ to\n  subsample first).\n\nOptions:\n  --out PATH            \
-                  \      Merged OSW output file.  [required]\n  --same_run / --no-same_run\
-                  \  Assume input files are from same run (deletes\n             \
-                  \                 run information).\n\n  --template PATH       \
-                  \      Template OSW file.  [required]\n  --help                \
-                  \      Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - pyprophet
-                - statistics
-                positional: []
-                named:
-                - !Flag
-                  description: PyProphet input file.  [required]
-                  synonyms:
-                  - --in
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: pyprophet statistics [OPTIONS]\n\n  Print PyProphet\
-                  \ statistics\n\nOptions:\n  --in PATH  PyProphet input file.  [required]\n\
-                  \  --help     Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - pyprophet
-                - protein
-                positional: []
-                named:
-                - !Flag
-                  description: PyProphet input file.  [required]
-                  synonyms:
-                  - --in
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: PyProphet output file.
-                  synonyms:
-                  - --out
-                  args: !SimpleFlagArg
-                    name: PATH
-                  optional: true
-                - !Flag
-                  description: "[run-specific|experiment-wide|global]\nContext to\
-                    \ estimate protein-level FDR\ncontrol.  [default: run-specific]"
-                  synonyms:
-                  - --context
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-parametric  Do parametric estimation of p-values.\n\
-                    [default: False]"
-                  synonyms:
-                  - --parametric
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-pfdr              Compute positive false discovery\
-                    \ rate (pFDR)\ninstead of FDR.  [default: False]"
-                  synonyms:
-                  - --pfdr
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "...\nUse non-parametric estimation of p-values.\n\
-                    Either use <START END STEPS>, e.g. 0.1, 1.0,\n0.1 or set to fixed\
-                    \ value, e.g. 0.4, 0, 0.\n[default: 0.1, 0.5, 0.05]"
-                  synonyms:
-                  - --pi0_lambda
-                  args: !SimpleFlagArg
-                    name: FLOAT FLOAT FLOAT
-                  optional: true
-                - !Flag
-                  description: "[smoother|bootstrap]\nEither \"smoother\" or \"bootstrap\"\
-                    ; the method\nfor automatically choosing tuning parameter\nin\
-                    \ the estimation of pi_0, the proportion of\ntrue null hypotheses.\
-                    \  [default: bootstrap]"
-                  synonyms:
-                  - --pi0_method
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Number of degrees-of-freedom to use when\nestimating\
-                    \ pi_0 with a smoother.  [default:\n3]"
-                  synonyms:
-                  - --pi0_smooth_df
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                - !Flag
-                  description: "/ --no-pi0_smooth_log_pi0\nIf True and pi0_method\
-                    \ = \"smoother\", pi0\nwill be estimated by applying a smoother\
-                    \ to\na scatterplot of log(pi0) estimates against\nthe tuning\
-                    \ parameter lambda.  [default:\nFalse]"
-                  synonyms:
-                  - --pi0_smooth_log_pi0
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-lfdr_truncate\nIf True, local FDR values >1\
-                    \ are set to 1.\n[default: True]"
-                  synonyms:
-                  - --lfdr_truncate
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "/ --no-lfdr_monotone\nIf True, local FDR values are\
-                    \ non-decreasing\nwith increasing p-values.  [default: True]"
-                  synonyms:
-                  - --lfdr_monotone
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "[probit|logit]\nEither a \"probit\" or \"logit\" transformation\n\
-                    is applied to the p-values so that a local\nFDR estimate can be\
-                    \ formed that does not\ninvolve edge effects of the [0,1] interval\n\
-                    in which the p-values lie.  [default:\nprobit]"
-                  synonyms:
-                  - --lfdr_transformation
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Numeric value that is applied as a multiple\nof the\
-                    \ smoothing bandwidth used in the\ndensity estimation.  [default:\
-                    \ 1.5]"
-                  synonyms:
-                  - --lfdr_adj
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "Numeric value that is threshold for the\ntails of\
-                    \ the empirical p-value distribution.\n[default: 1e-08]"
-                  synonyms:
-                  - --lfdr_eps
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: pyprophet protein [OPTIONS]\n\n  Infer proteins\
-                  \ and conduct error-rate estimation in different contexts.\n\nOptions:\n\
-                  \  --in PATH                       PyProphet input file.  [required]\n\
-                  \  --out PATH                      PyProphet output file.\n  --context\
-                  \ [run-specific|experiment-wide|global]\n                      \
-                  \            Context to estimate protein-level FDR\n           \
-                  \                       control.  [default: run-specific]\n\n  --parametric\
-                  \ / --no-parametric  Do parametric estimation of p-values.\n   \
-                  \                               [default: False]\n\n  --pfdr / --no-pfdr\
-                  \              Compute positive false discovery rate (pFDR)\n  \
-                  \                                instead of FDR.  [default: False]\n\
-                  \n  --pi0_lambda <FLOAT FLOAT FLOAT>...\n                      \
-                  \            Use non-parametric estimation of p-values.\n      \
-                  \                            Either use <START END STEPS>, e.g.\
-                  \ 0.1, 1.0,\n                                  0.1 or set to fixed\
-                  \ value, e.g. 0.4, 0, 0.\n                                  [default:\
-                  \ 0.1, 0.5, 0.05]\n\n  --pi0_method [smoother|bootstrap]\n     \
-                  \                             Either \"smoother\" or \"bootstrap\"\
-                  ; the method\n                                  for automatically\
-                  \ choosing tuning parameter\n                                  in\
-                  \ the estimation of pi_0, the proportion of\n                  \
-                  \                true null hypotheses.  [default: bootstrap]\n\n\
-                  \  --pi0_smooth_df INTEGER         Number of degrees-of-freedom\
-                  \ to use when\n                                  estimating pi_0\
-                  \ with a smoother.  [default:\n                                \
-                  \  3]\n\n  --pi0_smooth_log_pi0 / --no-pi0_smooth_log_pi0\n    \
-                  \                              If True and pi0_method = \"smoother\"\
-                  , pi0\n                                  will be estimated by applying\
-                  \ a smoother to\n                                  a scatterplot\
-                  \ of log(pi0) estimates against\n                              \
-                  \    the tuning parameter lambda.  [default:\n                 \
-                  \                 False]\n\n  --lfdr_truncate / --no-lfdr_truncate\n\
-                  \                                  If True, local FDR values >1\
-                  \ are set to 1.\n                                  [default: True]\n\
-                  \n  --lfdr_monotone / --no-lfdr_monotone\n                     \
-                  \             If True, local FDR values are non-decreasing\n   \
-                  \                               with increasing p-values.  [default:\
-                  \ True]\n\n  --lfdr_transformation [probit|logit]\n            \
-                  \                      Either a \"probit\" or \"logit\" transformation\n\
-                  \                                  is applied to the p-values so\
-                  \ that a local\n                                  FDR estimate can\
-                  \ be formed that does not\n                                  involve\
-                  \ edge effects of the [0,1] interval\n                         \
-                  \         in which the p-values lie.  [default:\n              \
-                  \                    probit]\n\n  --lfdr_adj FLOAT             \
-                  \   Numeric value that is applied as a multiple\n              \
-                  \                    of the smoothing bandwidth used in the\n  \
-                  \                                density estimation.  [default:\
-                  \ 1.5]\n\n  --lfdr_eps FLOAT                Numeric value that is\
-                  \ threshold for the\n                                  tails of\
-                  \ the empirical p-value distribution.\n                        \
-                  \          [default: 1e-08]\n\n  --help                        \
-                  \  Show this message and exit.\n"
-                generated_using: *id005
-              usage: []
-              help_flag: !Flag
-                description: Show this message and exit.
-                synonyms:
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
-              usage_flag:
-              version_flag: !Flag
-                description: Show the version and exit.
-                synonyms:
-                - --version
-                args: !EmptyFlagArg {}
-                optional: true
-              help_text: "Usage: pyprophet [OPTIONS] COMMAND1 [ARGS]... [COMMAND2\
-                \ [ARGS]...]...\n\n  PyProphet: Semi-supervised learning and scoring\
-                \ of OpenSWATH results.\n\n  Visit http://openswath.org for usage\
-                \ instructions and help.\n\nOptions:\n  --version  Show the version\
-                \ and exit.\n  --help     Show this message and exit.\n\nCommands:\n\
-                \  backpropagate    Backpropagate multi-run peptide and protein scores\
-                \ to...\n  export           Export TSV/CSV tables\n  export-compound\
-                \  Export Compound TSV/CSV tables\n  filter           Filter sqMass\
-                \ files\n  gene             Infer genes and conduct error-rate estimation\
-                \ in...\n  ipf              Infer peptidoforms after scoring of MS1,\
-                \ MS2 and...\n  merge            Merge multiple OSW files and (for\
-                \ large experiments, it...\n  peptide          Infer peptides and\
-                \ conduct error-rate estimation in...\n  protein          Infer proteins\
-                \ and conduct error-rate estimation in...\n  reduce           Reduce\
-                \ scored PyProphet file to minimum for global...\n  score        \
-                \    Conduct semi-supervised learning and error-rate...\n  statistics\
-                \       Print PyProphet statistics\n  subsample        Subsample OpenSWATH\
-                \ file to minimum for integrated...\n"
-              generated_using: *id005
+            named: []
+            parent:
             subcommands:
             - !Command
               command: *id002
@@ -1738,7 +83,1741 @@ subcommands:
                 name: backpropagate
                 optional: false
               named: []
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: Single run PyProphet input file.  [required]
+                  synonyms:
+                  - --in
+                  args: !SimpleFlagArg
+                    name: PATH
+                  optional: true
+                - !Flag
+                  description: Single run (with multi-run scores) PyProphet output
+                  synonyms:
+                  - --out
+                  args: !SimpleFlagArg
+                    name: PATH
+                  optional: true
+                parent: &id004 !Command
+                  command:
+                  - pyprophet
+                  positional: []
+                  named: []
+                  parent:
+                  subcommands:
+                  - *id003
+                  - !Command
+                    command:
+                    - pyprophet
+                    - export
+                    positional: []
+                    named:
+                    - !Flag
+                      description: PyProphet input file.  [required]
+                      synonyms:
+                      - --in
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: "Output TSV/CSV (matrix, legacy_split,\nlegacy_merged)\
+                        \ file."
+                      synonyms:
+                      - --out
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: "[matrix|legacy_split|legacy_merged|score_plots]\n\
+                        Export format, either matrix,\nlegacy_split/legacy_merged\n\
+                        (mProphet/PyProphet) or score_plots format.\n[default: legacy_split]"
+                      synonyms:
+                      - --format
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-csv                Export CSV instead of\
+                        \ TSV file.  [default:\nFalse]"
+                      synonyms:
+                      - --csv
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-transition_quantification\n[format: legacy]\
+                        \ Report aggregated\ntransition-level quantification.  [default:\n\
+                        True]"
+                      synonyms:
+                      - --transition_quantification
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "[format: legacy] Maximum PEP to retain\nscored\
+                        \ transitions for quantification\n(requires transition-level\
+                        \ scoring).\n[default: 0.7]"
+                      synonyms:
+                      - --max_transition_pep
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "[peptidoform|augmented|disable]\n[format: matrix/legacy]\
+                        \ Should IPF results\nbe reported if present? \"peptidoform\"\
+                        :\nReport results on peptidoform-level,\n\"augmented\": Augment\
+                        \ OpenSWATH results with\nIPF scores, \"disable\": Ignore\
+                        \ IPF results\n[default: peptidoform]"
+                      synonyms:
+                      - --ipf
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "[format: matrix/legacy] IPF: Filter results\n\
+                        to maximum run-specific peptidoform-level\nPEP.  [default:\
+                        \ 0.4]"
+                      synonyms:
+                      - --ipf_max_peptidoform_pep
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "[format: matrix/legacy] Filter results to\nmaximum\
+                        \ run-specific peak group-level\nq-value.  [default: 0.05]"
+                      synonyms:
+                      - --max_rs_peakgroup_qvalue
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: / --no-peptide        Append peptide-level error-rate
+                        estimates if
+                      synonyms:
+                      - --peptide
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "[format: matrix/legacy] Filter results to\nmaximum\
+                        \ global peptide-level q-value.\n[default: 0.01]"
+                      synonyms:
+                      - --max_global_peptide_qvalue
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: / --no-protein        Append protein-level error-rate
+                        estimates if
+                      synonyms:
+                      - --protein
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "[format: matrix/legacy] Filter results to\nmaximum\
+                        \ global protein-level q-value.\n[default: 0.01]"
+                      synonyms:
+                      - --max_global_protein_qvalue
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: pyprophet export [OPTIONS]\n\n  Export TSV/CSV\
+                      \ tables\n\nOptions:\n  --in PATH                       PyProphet\
+                      \ input file.  [required]\n  --out PATH                    \
+                      \  Output TSV/CSV (matrix, legacy_split,\n                 \
+                      \                 legacy_merged) file.\n\n  --format [matrix|legacy_split|legacy_merged|score_plots]\n\
+                      \                                  Export format, either matrix,\n\
+                      \                                  legacy_split/legacy_merged\n\
+                      \                                  (mProphet/PyProphet) or score_plots\
+                      \ format.\n                                  [default: legacy_split]\n\
+                      \n  --csv / --no-csv                Export CSV instead of TSV\
+                      \ file.  [default:\n                                  False]\n\
+                      \n  --transition_quantification / --no-transition_quantification\n\
+                      \                                  [format: legacy] Report aggregated\n\
+                      \                                  transition-level quantification.\
+                      \  [default:\n                                  True]\n\n  --max_transition_pep\
+                      \ FLOAT      [format: legacy] Maximum PEP to retain\n      \
+                      \                            scored transitions for quantification\n\
+                      \                                  (requires transition-level\
+                      \ scoring).\n                                  [default: 0.7]\n\
+                      \n  --ipf [peptidoform|augmented|disable]\n                \
+                      \                  [format: matrix/legacy] Should IPF results\n\
+                      \                                  be reported if present? \"\
+                      peptidoform\":\n                                  Report results\
+                      \ on peptidoform-level,\n                                  \"\
+                      augmented\": Augment OpenSWATH results with\n              \
+                      \                    IPF scores, \"disable\": Ignore IPF results\n\
+                      \                                  [default: peptidoform]\n\n\
+                      \  --ipf_max_peptidoform_pep FLOAT\n                       \
+                      \           [format: matrix/legacy] IPF: Filter results\n  \
+                      \                                to maximum run-specific peptidoform-level\n\
+                      \                                  PEP.  [default: 0.4]\n\n\
+                      \  --max_rs_peakgroup_qvalue FLOAT\n                       \
+                      \           [format: matrix/legacy] Filter results to\n    \
+                      \                              maximum run-specific peak group-level\n\
+                      \                                  q-value.  [default: 0.05]\n\
+                      \n  --peptide / --no-peptide        Append peptide-level error-rate\
+                      \ estimates if\n                                  available.\
+                      \  [default: True]\n\n  --max_global_peptide_qvalue FLOAT\n\
+                      \                                  [format: matrix/legacy] Filter\
+                      \ results to\n                                  maximum global\
+                      \ peptide-level q-value.\n                                 \
+                      \ [default: 0.01]\n\n  --protein / --no-protein        Append\
+                      \ protein-level error-rate estimates if\n                  \
+                      \                available.  [default: True]\n\n  --max_global_protein_qvalue\
+                      \ FLOAT\n                                  [format: matrix/legacy]\
+                      \ Filter results to\n                                  maximum\
+                      \ global protein-level q-value.\n                          \
+                      \        [default: 0.01]\n\n  --help                       \
+                      \   Show this message and exit.\n"
+                    generated_using: &id005
+                    - --help
+                  - !Command
+                    command:
+                    - pyprophet
+                    - export-compound
+                    positional: []
+                    named:
+                    - !Flag
+                      description: PyProphet input file.  [required]
+                      synonyms:
+                      - --in
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: Output TSV/CSV (matrix, legacy_merged) file.
+                      synonyms:
+                      - --out
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: "[matrix|legacy_merged|score_plots]\nExport format,\
+                        \ either matrix, legacy_merged\n(PyProphet) or score_plots\
+                        \ format.\n[default: legacy_merged]"
+                      synonyms:
+                      - --format
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-csv                Export CSV instead of\
+                        \ TSV file.  [default:\nFalse]"
+                      synonyms:
+                      - --csv
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "[format: matrix/legacy] Filter results to\nmaximum\
+                        \ run-specific peak group-level\nq-value.  [default: 0.05]"
+                      synonyms:
+                      - --max_rs_peakgroup_qvalue
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: pyprophet export-compound [OPTIONS]\n\n  Export\
+                      \ Compound TSV/CSV tables\n\nOptions:\n  --in PATH         \
+                      \              PyProphet input file.  [required]\n  --out PATH\
+                      \                      Output TSV/CSV (matrix, legacy_merged)\
+                      \ file.\n  --format [matrix|legacy_merged|score_plots]\n   \
+                      \                               Export format, either matrix,\
+                      \ legacy_merged\n                                  (PyProphet)\
+                      \ or score_plots format.\n                                 \
+                      \ [default: legacy_merged]\n\n  --csv / --no-csv           \
+                      \     Export CSV instead of TSV file.  [default:\n         \
+                      \                         False]\n\n  --max_rs_peakgroup_qvalue\
+                      \ FLOAT\n                                  [format: matrix/legacy]\
+                      \ Filter results to\n                                  maximum\
+                      \ run-specific peak group-level\n                          \
+                      \        q-value.  [default: 0.05]\n\n  --help             \
+                      \             Show this message and exit.\n"
+                    generated_using: *id005
+                  - &id006 !Command
+                    command:
+                    - pyprophet
+                    - score
+                    positional: []
+                    named:
+                    - !Flag
+                      description: PyProphet input file.  [required]
+                      synonyms:
+                      - --in
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: PyProphet output file.
+                      synonyms:
+                      - --out
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: "[LDA|XGBoost]      Either a \"LDA\" or \"XGBoost\"\
+                        \ classifier is\nused for semi-supervised learning.\n[default:\
+                        \ LDA]"
+                      synonyms:
+                      - --classifier
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-xgb_autotune\nXGBoost: Autotune hyperparameters.\n\
+                        [default: False]"
+                      synonyms:
+                      - --xgb_autotune
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Apply PyProphet score weights file instead\nof\
+                        \ semi-supervised learning."
+                      synonyms:
+                      - --apply_weights
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: "Data fraction used for cross-validation of\nsemi-supervised\
+                        \ learning step.  [default:\n0.5]"
+                      synonyms:
+                      - --xeval_fraction
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "Number of iterations for cross-validation of\n\
+                        semi-supervised learning step.  [default:\n10]"
+                      synonyms:
+                      - --xeval_num_iter
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    - !Flag
+                      description: "Initial FDR cutoff for best scoring targets.\n\
+                        [default: 0.15]"
+                      synonyms:
+                      - --ss_initial_fdr
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: Iteration FDR cutoff for best scoring
+                      synonyms:
+                      - --ss_iteration_fdr
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "Number of iterations for semi-supervised\nlearning\
+                        \ step.  [default: 10]"
+                      synonyms:
+                      - --ss_num_iter
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    - !Flag
+                      description: Main score to start semi-supervised-
+                      synonyms:
+                      - --ss_main_score
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: Group identifier for calculation of
+                      synonyms:
+                      - --group_id
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: "/ --no-parametric  Do parametric estimation of\
+                        \ p-values.\n[default: False]"
+                      synonyms:
+                      - --parametric
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-pfdr              Compute positive false\
+                        \ discovery rate (pFDR)\ninstead of FDR.  [default: False]"
+                      synonyms:
+                      - --pfdr
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "...\nUse non-parametric estimation of p-values.\n\
+                        Either use <START END STEPS>, e.g. 0.1, 1.0,\n0.1 or set to\
+                        \ fixed value, e.g. 0.4, 0, 0.\n[default: 0.1, 0.5, 0.05]"
+                      synonyms:
+                      - --pi0_lambda
+                      args: !SimpleFlagArg
+                        name: FLOAT FLOAT FLOAT
+                      optional: true
+                    - !Flag
+                      description: "[smoother|bootstrap]\nEither \"smoother\" or \"\
+                        bootstrap\"; the method\nfor automatically choosing tuning\
+                        \ parameter\nin the estimation of pi_0, the proportion of\n\
+                        true null hypotheses.  [default: bootstrap]"
+                      synonyms:
+                      - --pi0_method
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Number of degrees-of-freedom to use when\nestimating\
+                        \ pi_0 with a smoother.  [default:\n3]"
+                      synonyms:
+                      - --pi0_smooth_df
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    - !Flag
+                      description: "/ --no-pi0_smooth_log_pi0\nIf True and pi0_method\
+                        \ = \"smoother\", pi0\nwill be estimated by applying a smoother\
+                        \ to\na scatterplot of log(pi0) estimates against\nthe tuning\
+                        \ parameter lambda.  [default:\nFalse]"
+                      synonyms:
+                      - --pi0_smooth_log_pi0
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-lfdr_truncate\nIf True, local FDR values\
+                        \ >1 are set to 1.\n[default: True]"
+                      synonyms:
+                      - --lfdr_truncate
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-lfdr_monotone\nIf True, local FDR values\
+                        \ are non-decreasing\nwith increasing p-values.  [default:\
+                        \ True]"
+                      synonyms:
+                      - --lfdr_monotone
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "[probit|logit]\nEither a \"probit\" or \"logit\"\
+                        \ transformation\nis applied to the p-values so that a local\n\
+                        FDR estimate can be formed that does not\ninvolve edge effects\
+                        \ of the [0,1] interval\nin which the p-values lie.  [default:\n\
+                        probit]"
+                      synonyms:
+                      - --lfdr_transformation
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Numeric value that is applied as a multiple\n\
+                        of the smoothing bandwidth used in the\ndensity estimation.\
+                        \  [default: 1.5]"
+                      synonyms:
+                      - --lfdr_adj
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "Numeric value that is threshold for the\ntails\
+                        \ of the empirical p-value distribution.\n[default: 1e-08]"
+                      synonyms:
+                      - --lfdr_eps
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "[ms1|ms2|ms1ms2|transition]\nEither \"ms1\", \"\
+                        ms2\", \"ms1ms2\" or\n\"transition\"; the data level selected\
+                        \ for\nscoring. \"ms1ms2 integrates both MS1- and\nMS2-level\
+                        \ scores and can be used instead of\n\"ms2\"-level results.\"\
+                        \  [default: ms2]"
+                      synonyms:
+                      - --level
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Assess transitions only for candidate peak\ngroups\
+                        \ until maximum peak group rank.\n[default: 1]"
+                      synonyms:
+                      - --ipf_max_peakgroup_rank
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    - !Flag
+                      description: "Assess transitions only for candidate peak\ngroups\
+                        \ until maximum posterior error\nprobability.  [default: 0.7]"
+                      synonyms:
+                      - --ipf_max_peakgroup_pep
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "Maximum isotope overlap to consider\ntransitions\
+                        \ in IPF.  [default: 0.5]"
+                      synonyms:
+                      - --ipf_max_transition_isotope_overlap
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "Minimum log signal-to-noise level to\nconsider\
+                        \ transitions in IPF. Set -1 to\ndisable this filter.  [default:\
+                        \ 0]"
+                      synonyms:
+                      - --ipf_min_transition_sn
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "/ --no-tric_chromprob\nWhether chromatogram probabilities\
+                        \ for TRIC\nshould be computed.  [default: False]"
+                      synonyms:
+                      - --tric_chromprob
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Number of threads used for semi-supervised\nlearning.\
+                        \ -1 means all available CPUs.\n[default: 1]"
+                      synonyms:
+                      - --threads
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    - !Flag
+                      description: "/ --no-test              Run in test mode with\
+                        \ fixed seed.  [default:\nFalse]"
+                      synonyms:
+                      - --test
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    parent: *id004
+                    subcommands:
+                    - !Command
+                      command:
+                      - pyprophet
+                      - score
+                      - learning.
+                      positional:
+                      - !Positional
+                        description: ''
+                        position: 0
+                        name: pyprophet
+                        optional: false
+                      - !Positional
+                        description: ''
+                        position: 1
+                        name: score
+                        optional: false
+                      named: []
+                      parent: *id006
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: pyprophet score [OPTIONS]\nTry 'pyprophet\
+                        \ score --help' for help.\n\nError: Missing option '--in'.\n"
+                      generated_using: *id005
+                    - !Command
+                      command:
+                      - pyprophet
+                      - score
+                      - statistics.
+                      positional:
+                      - !Positional
+                        description: ''
+                        position: 0
+                        name: pyprophet
+                        optional: false
+                      - !Positional
+                        description: ''
+                        position: 1
+                        name: score
+                        optional: false
+                      named: []
+                      parent: *id006
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: pyprophet score [OPTIONS]\nTry 'pyprophet\
+                        \ score --help' for help.\n\nError: Missing option '--in'.\n"
+                      generated_using: *id005
+                    - !Command
+                      command:
+                      - pyprophet
+                      - score
+                      - targets.
+                      positional:
+                      - !Positional
+                        description: ''
+                        position: 0
+                        name: pyprophet
+                        optional: false
+                      - !Positional
+                        description: ''
+                        position: 1
+                        name: score
+                        optional: false
+                      named: []
+                      parent: *id006
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: pyprophet score [OPTIONS]\nTry 'pyprophet\
+                        \ score --help' for help.\n\nError: Missing option '--in'.\n"
+                      generated_using: *id005
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: pyprophet score [OPTIONS]\n\n  Conduct semi-supervised\
+                      \ learning and error-rate estimation for MS1, MS2\n  and transition-level\
+                      \ data.\n\nOptions:\n  --in PATH                       PyProphet\
+                      \ input file.  [required]\n  --out PATH                    \
+                      \  PyProphet output file.\n  --classifier [LDA|XGBoost]    \
+                      \  Either a \"LDA\" or \"XGBoost\" classifier is\n         \
+                      \                         used for semi-supervised learning.\n\
+                      \                                  [default: LDA]\n\n  --xgb_autotune\
+                      \ / --no-xgb_autotune\n                                  XGBoost:\
+                      \ Autotune hyperparameters.\n                              \
+                      \    [default: False]\n\n  --apply_weights PATH            Apply\
+                      \ PyProphet score weights file instead\n                   \
+                      \               of semi-supervised learning.\n\n  --xeval_fraction\
+                      \ FLOAT          Data fraction used for cross-validation of\n\
+                      \                                  semi-supervised learning\
+                      \ step.  [default:\n                                  0.5]\n\
+                      \n  --xeval_num_iter INTEGER        Number of iterations for\
+                      \ cross-validation of\n                                  semi-supervised\
+                      \ learning step.  [default:\n                              \
+                      \    10]\n\n  --ss_initial_fdr FLOAT          Initial FDR cutoff\
+                      \ for best scoring targets.\n                              \
+                      \    [default: 0.15]\n\n  --ss_iteration_fdr FLOAT        Iteration\
+                      \ FDR cutoff for best scoring\n                            \
+                      \      targets.  [default: 0.05]\n\n  --ss_num_iter INTEGER\
+                      \           Number of iterations for semi-supervised\n     \
+                      \                             learning step.  [default: 10]\n\
+                      \n  --ss_main_score TEXT            Main score to start semi-supervised-\n\
+                      \                                  learning.  [default: var_xcorr_shape]\n\
+                      \n  --group_id TEXT                 Group identifier for calculation\
+                      \ of\n                                  statistics.  [default:\
+                      \ group_id]\n\n  --parametric / --no-parametric  Do parametric\
+                      \ estimation of p-values.\n                                \
+                      \  [default: False]\n\n  --pfdr / --no-pfdr              Compute\
+                      \ positive false discovery rate (pFDR)\n                   \
+                      \               instead of FDR.  [default: False]\n\n  --pi0_lambda\
+                      \ <FLOAT FLOAT FLOAT>...\n                                 \
+                      \ Use non-parametric estimation of p-values.\n             \
+                      \                     Either use <START END STEPS>, e.g. 0.1,\
+                      \ 1.0,\n                                  0.1 or set to fixed\
+                      \ value, e.g. 0.4, 0, 0.\n                                 \
+                      \ [default: 0.1, 0.5, 0.05]\n\n  --pi0_method [smoother|bootstrap]\n\
+                      \                                  Either \"smoother\" or \"\
+                      bootstrap\"; the method\n                                  for\
+                      \ automatically choosing tuning parameter\n                \
+                      \                  in the estimation of pi_0, the proportion\
+                      \ of\n                                  true null hypotheses.\
+                      \  [default: bootstrap]\n\n  --pi0_smooth_df INTEGER       \
+                      \  Number of degrees-of-freedom to use when\n              \
+                      \                    estimating pi_0 with a smoother.  [default:\n\
+                      \                                  3]\n\n  --pi0_smooth_log_pi0\
+                      \ / --no-pi0_smooth_log_pi0\n                              \
+                      \    If True and pi0_method = \"smoother\", pi0\n          \
+                      \                        will be estimated by applying a smoother\
+                      \ to\n                                  a scatterplot of log(pi0)\
+                      \ estimates against\n                                  the tuning\
+                      \ parameter lambda.  [default:\n                           \
+                      \       False]\n\n  --lfdr_truncate / --no-lfdr_truncate\n \
+                      \                                 If True, local FDR values\
+                      \ >1 are set to 1.\n                                  [default:\
+                      \ True]\n\n  --lfdr_monotone / --no-lfdr_monotone\n        \
+                      \                          If True, local FDR values are non-decreasing\n\
+                      \                                  with increasing p-values.\
+                      \  [default: True]\n\n  --lfdr_transformation [probit|logit]\n\
+                      \                                  Either a \"probit\" or \"\
+                      logit\" transformation\n                                  is\
+                      \ applied to the p-values so that a local\n                \
+                      \                  FDR estimate can be formed that does not\n\
+                      \                                  involve edge effects of the\
+                      \ [0,1] interval\n                                  in which\
+                      \ the p-values lie.  [default:\n                           \
+                      \       probit]\n\n  --lfdr_adj FLOAT                Numeric\
+                      \ value that is applied as a multiple\n                    \
+                      \              of the smoothing bandwidth used in the\n    \
+                      \                              density estimation.  [default:\
+                      \ 1.5]\n\n  --lfdr_eps FLOAT                Numeric value that\
+                      \ is threshold for the\n                                  tails\
+                      \ of the empirical p-value distribution.\n                 \
+                      \                 [default: 1e-08]\n\n  --level [ms1|ms2|ms1ms2|transition]\n\
+                      \                                  Either \"ms1\", \"ms2\",\
+                      \ \"ms1ms2\" or\n                                  \"transition\"\
+                      ; the data level selected for\n                            \
+                      \      scoring. \"ms1ms2 integrates both MS1- and\n        \
+                      \                          MS2-level scores and can be used\
+                      \ instead of\n                                  \"ms2\"-level\
+                      \ results.\"  [default: ms2]\n\n  --ipf_max_peakgroup_rank INTEGER\n\
+                      \                                  Assess transitions only for\
+                      \ candidate peak\n                                  groups until\
+                      \ maximum peak group rank.\n                               \
+                      \   [default: 1]\n\n  --ipf_max_peakgroup_pep FLOAT   Assess\
+                      \ transitions only for candidate peak\n                    \
+                      \              groups until maximum posterior error\n      \
+                      \                            probability.  [default: 0.7]\n\n\
+                      \  --ipf_max_transition_isotope_overlap FLOAT\n            \
+                      \                      Maximum isotope overlap to consider\n\
+                      \                                  transitions in IPF.  [default:\
+                      \ 0.5]\n\n  --ipf_min_transition_sn FLOAT   Minimum log signal-to-noise\
+                      \ level to\n                                  consider transitions\
+                      \ in IPF. Set -1 to\n                                  disable\
+                      \ this filter.  [default: 0]\n\n  --tric_chromprob / --no-tric_chromprob\n\
+                      \                                  Whether chromatogram probabilities\
+                      \ for TRIC\n                                  should be computed.\
+                      \  [default: False]\n\n  --threads INTEGER               Number\
+                      \ of threads used for semi-supervised\n                    \
+                      \              learning. -1 means all available CPUs.\n    \
+                      \                              [default: 1]\n\n  --test / --no-test\
+                      \              Run in test mode with fixed seed.  [default:\n\
+                      \                                  False]\n\n  --help      \
+                      \                    Show this message and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - pyprophet
+                    - gene
+                    positional: []
+                    named:
+                    - !Flag
+                      description: PyProphet input file.  [required]
+                      synonyms:
+                      - --in
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: PyProphet output file.
+                      synonyms:
+                      - --out
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: "[run-specific|experiment-wide|global]\nContext\
+                        \ to estimate gene-level FDR control.\n[default: run-specific]"
+                      synonyms:
+                      - --context
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-parametric  Do parametric estimation of\
+                        \ p-values.\n[default: False]"
+                      synonyms:
+                      - --parametric
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-pfdr              Compute positive false\
+                        \ discovery rate (pFDR)\ninstead of FDR.  [default: False]"
+                      synonyms:
+                      - --pfdr
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "...\nUse non-parametric estimation of p-values.\n\
+                        Either use <START END STEPS>, e.g. 0.1, 1.0,\n0.1 or set to\
+                        \ fixed value, e.g. 0.4, 0, 0.\n[default: 0.1, 0.5, 0.05]"
+                      synonyms:
+                      - --pi0_lambda
+                      args: !SimpleFlagArg
+                        name: FLOAT FLOAT FLOAT
+                      optional: true
+                    - !Flag
+                      description: "[smoother|bootstrap]\nEither \"smoother\" or \"\
+                        bootstrap\"; the method\nfor automatically choosing tuning\
+                        \ parameter\nin the estimation of pi_0, the proportion of\n\
+                        true null hypotheses.  [default: bootstrap]"
+                      synonyms:
+                      - --pi0_method
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Number of degrees-of-freedom to use when\nestimating\
+                        \ pi_0 with a smoother.  [default:\n3]"
+                      synonyms:
+                      - --pi0_smooth_df
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    - !Flag
+                      description: "/ --no-pi0_smooth_log_pi0\nIf True and pi0_method\
+                        \ = \"smoother\", pi0\nwill be estimated by applying a smoother\
+                        \ to\na scatterplot of log(pi0) estimates against\nthe tuning\
+                        \ parameter lambda.  [default:\nFalse]"
+                      synonyms:
+                      - --pi0_smooth_log_pi0
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-lfdr_truncate\nIf True, local FDR values\
+                        \ >1 are set to 1.\n[default: True]"
+                      synonyms:
+                      - --lfdr_truncate
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-lfdr_monotone\nIf True, local FDR values\
+                        \ are non-decreasing\nwith increasing p-values.  [default:\
+                        \ True]"
+                      synonyms:
+                      - --lfdr_monotone
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "[probit|logit]\nEither a \"probit\" or \"logit\"\
+                        \ transformation\nis applied to the p-values so that a local\n\
+                        FDR estimate can be formed that does not\ninvolve edge effects\
+                        \ of the [0,1] interval\nin which the p-values lie.  [default:\n\
+                        probit]"
+                      synonyms:
+                      - --lfdr_transformation
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Numeric value that is applied as a multiple\n\
+                        of the smoothing bandwidth used in the\ndensity estimation.\
+                        \  [default: 1.5]"
+                      synonyms:
+                      - --lfdr_adj
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "Numeric value that is threshold for the\ntails\
+                        \ of the empirical p-value distribution.\n[default: 1e-08]"
+                      synonyms:
+                      - --lfdr_eps
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: pyprophet gene [OPTIONS]\n\n  Infer genes and\
+                      \ conduct error-rate estimation in different contexts.\n\nOptions:\n\
+                      \  --in PATH                       PyProphet input file.  [required]\n\
+                      \  --out PATH                      PyProphet output file.\n\
+                      \  --context [run-specific|experiment-wide|global]\n       \
+                      \                           Context to estimate gene-level FDR\
+                      \ control.\n                                  [default: run-specific]\n\
+                      \n  --parametric / --no-parametric  Do parametric estimation\
+                      \ of p-values.\n                                  [default:\
+                      \ False]\n\n  --pfdr / --no-pfdr              Compute positive\
+                      \ false discovery rate (pFDR)\n                            \
+                      \      instead of FDR.  [default: False]\n\n  --pi0_lambda <FLOAT\
+                      \ FLOAT FLOAT>...\n                                  Use non-parametric\
+                      \ estimation of p-values.\n                                \
+                      \  Either use <START END STEPS>, e.g. 0.1, 1.0,\n          \
+                      \                        0.1 or set to fixed value, e.g. 0.4,\
+                      \ 0, 0.\n                                  [default: 0.1, 0.5,\
+                      \ 0.05]\n\n  --pi0_method [smoother|bootstrap]\n           \
+                      \                       Either \"smoother\" or \"bootstrap\"\
+                      ; the method\n                                  for automatically\
+                      \ choosing tuning parameter\n                              \
+                      \    in the estimation of pi_0, the proportion of\n        \
+                      \                          true null hypotheses.  [default:\
+                      \ bootstrap]\n\n  --pi0_smooth_df INTEGER         Number of\
+                      \ degrees-of-freedom to use when\n                         \
+                      \         estimating pi_0 with a smoother.  [default:\n    \
+                      \                              3]\n\n  --pi0_smooth_log_pi0\
+                      \ / --no-pi0_smooth_log_pi0\n                              \
+                      \    If True and pi0_method = \"smoother\", pi0\n          \
+                      \                        will be estimated by applying a smoother\
+                      \ to\n                                  a scatterplot of log(pi0)\
+                      \ estimates against\n                                  the tuning\
+                      \ parameter lambda.  [default:\n                           \
+                      \       False]\n\n  --lfdr_truncate / --no-lfdr_truncate\n \
+                      \                                 If True, local FDR values\
+                      \ >1 are set to 1.\n                                  [default:\
+                      \ True]\n\n  --lfdr_monotone / --no-lfdr_monotone\n        \
+                      \                          If True, local FDR values are non-decreasing\n\
+                      \                                  with increasing p-values.\
+                      \  [default: True]\n\n  --lfdr_transformation [probit|logit]\n\
+                      \                                  Either a \"probit\" or \"\
+                      logit\" transformation\n                                  is\
+                      \ applied to the p-values so that a local\n                \
+                      \                  FDR estimate can be formed that does not\n\
+                      \                                  involve edge effects of the\
+                      \ [0,1] interval\n                                  in which\
+                      \ the p-values lie.  [default:\n                           \
+                      \       probit]\n\n  --lfdr_adj FLOAT                Numeric\
+                      \ value that is applied as a multiple\n                    \
+                      \              of the smoothing bandwidth used in the\n    \
+                      \                              density estimation.  [default:\
+                      \ 1.5]\n\n  --lfdr_eps FLOAT                Numeric value that\
+                      \ is threshold for the\n                                  tails\
+                      \ of the empirical p-value distribution.\n                 \
+                      \                 [default: 1e-08]\n\n  --help             \
+                      \             Show this message and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - pyprophet
+                    - filter
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: SQMASSFILES
+                      optional: true
+                    named:
+                    - !Flag
+                      description: PyProphet input file.  [required]
+                      synonyms:
+                      - --in
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: Maximum PEP to retain scored precursors in
+                      synonyms:
+                      - --max_precursor_pep
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: Maximum PEP to retain scored peak groups in
+                      synonyms:
+                      - --max_peakgroup_pep
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: Maximum PEP to retain scored transitions in
+                      synonyms:
+                      - --max_transition_pep
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: pyprophet filter [OPTIONS] [SQMASSFILES]...\n\
+                      \n  Filter sqMass files\n\nOptions:\n  --in PATH           \
+                      \        PyProphet input file.  [required]\n  --max_precursor_pep\
+                      \ FLOAT   Maximum PEP to retain scored precursors in\n     \
+                      \                         sqMass.  [default: 0.7]\n\n  --max_peakgroup_pep\
+                      \ FLOAT   Maximum PEP to retain scored peak groups in\n    \
+                      \                          sqMass.  [default: 0.7]\n\n  --max_transition_pep\
+                      \ FLOAT  Maximum PEP to retain scored transitions in\n     \
+                      \                         sqMass.  [default: 0.7]\n\n  --help\
+                      \                      Show this message and exit.\n"
+                    generated_using: *id005
+                  - &id007 !Command
+                    command:
+                    - pyprophet
+                    - ipf
+                    positional: []
+                    named:
+                    - !Flag
+                      description: PyProphet input file.  [required]
+                      synonyms:
+                      - --in
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: PyProphet output file.
+                      synonyms:
+                      - --out
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: "/ --no-ipf_ms1_scoring\nUse MS1 precursor data\
+                        \ for IPF.  [default:\nTrue]"
+                      synonyms:
+                      - --ipf_ms1_scoring
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-ipf_ms2_scoring\nUse MS2 precursor data\
+                        \ for IPF.  [default:\nTrue]"
+                      synonyms:
+                      - --ipf_ms2_scoring
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-ipf_h0          Include possibility that\
+                        \ peak groups are not\ncovered by peptidoform space.  [default:\n\
+                        True]"
+                      synonyms:
+                      - --ipf_h0
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-ipf_grouped_fdr\n[Experimental] Compute\
+                        \ grouped FDR instead\nof pooled FDR to better support data\
+                        \ where\npeak groups are evaluated to originate from\nvery\
+                        \ heterogeneous numbers of peptidoforms.\n[default: False]"
+                      synonyms:
+                      - --ipf_grouped_fdr
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: Maximum PEP to consider scored precursors in
+                      synonyms:
+                      - --ipf_max_precursor_pep
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "Maximum PEP to consider scored peak groups\nin\
+                        \ IPF.  [default: 0.7]"
+                      synonyms:
+                      - --ipf_max_peakgroup_pep
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "Maximum BHM layer 1 integrated precursor\npeakgroup\
+                        \ PEP to consider in IPF.  [default:\n0.4]"
+                      synonyms:
+                      - --ipf_max_precursor_peakgroup_pep
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "Maximum PEP to consider scored transitions\nin\
+                        \ IPF.  [default: 0.6]"
+                      synonyms:
+                      - --ipf_max_transition_pep
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    parent: *id004
+                    subcommands:
+                    - !Command
+                      command:
+                      - pyprophet
+                      - ipf
+                      - IPF.
+                      positional:
+                      - !Positional
+                        description: ''
+                        position: 0
+                        name: pyprophet
+                        optional: false
+                      - !Positional
+                        description: ''
+                        position: 1
+                        name: ipf
+                        optional: false
+                      named: []
+                      parent: *id007
+                      subcommands: []
+                      usage: []
+                      help_flag:
+                      usage_flag:
+                      version_flag:
+                      help_text: "Usage: pyprophet ipf [OPTIONS]\nTry 'pyprophet ipf\
+                        \ --help' for help.\n\nError: Missing option '--in'.\n"
+                      generated_using: *id005
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: pyprophet ipf [OPTIONS]\n\n  Infer peptidoforms\
+                      \ after scoring of MS1, MS2 and transition-level data.\n\nOptions:\n\
+                      \  --in PATH                       PyProphet input file.  [required]\n\
+                      \  --out PATH                      PyProphet output file.\n\
+                      \  --ipf_ms1_scoring / --no-ipf_ms1_scoring\n              \
+                      \                    Use MS1 precursor data for IPF.  [default:\n\
+                      \                                  True]\n\n  --ipf_ms2_scoring\
+                      \ / --no-ipf_ms2_scoring\n                                 \
+                      \ Use MS2 precursor data for IPF.  [default:\n             \
+                      \                     True]\n\n  --ipf_h0 / --no-ipf_h0    \
+                      \      Include possibility that peak groups are not\n      \
+                      \                            covered by peptidoform space. \
+                      \ [default:\n                                  True]\n\n  --ipf_grouped_fdr\
+                      \ / --no-ipf_grouped_fdr\n                                 \
+                      \ [Experimental] Compute grouped FDR instead\n             \
+                      \                     of pooled FDR to better support data where\n\
+                      \                                  peak groups are evaluated\
+                      \ to originate from\n                                  very\
+                      \ heterogeneous numbers of peptidoforms.\n                 \
+                      \                 [default: False]\n\n  --ipf_max_precursor_pep\
+                      \ FLOAT   Maximum PEP to consider scored precursors in\n   \
+                      \                               IPF.  [default: 0.7]\n\n  --ipf_max_peakgroup_pep\
+                      \ FLOAT   Maximum PEP to consider scored peak groups\n     \
+                      \                             in IPF.  [default: 0.7]\n\n  --ipf_max_precursor_peakgroup_pep\
+                      \ FLOAT\n                                  Maximum BHM layer\
+                      \ 1 integrated precursor\n                                 \
+                      \ peakgroup PEP to consider in IPF.  [default:\n           \
+                      \                       0.4]\n\n  --ipf_max_transition_pep FLOAT\
+                      \  Maximum PEP to consider scored transitions\n            \
+                      \                      in IPF.  [default: 0.6]\n\n  --help \
+                      \                         Show this message and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - pyprophet
+                    - peptide
+                    positional: []
+                    named:
+                    - !Flag
+                      description: PyProphet input file.  [required]
+                      synonyms:
+                      - --in
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: PyProphet output file.
+                      synonyms:
+                      - --out
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: "[run-specific|experiment-wide|global]\nContext\
+                        \ to estimate protein-level FDR\ncontrol.  [default: run-specific]"
+                      synonyms:
+                      - --context
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-parametric  Do parametric estimation of\
+                        \ p-values.\n[default: False]"
+                      synonyms:
+                      - --parametric
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-pfdr              Compute positive false\
+                        \ discovery rate (pFDR)\ninstead of FDR.  [default: False]"
+                      synonyms:
+                      - --pfdr
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "...\nUse non-parametric estimation of p-values.\n\
+                        Either use <START END STEPS>, e.g. 0.1, 1.0,\n0.1 or set to\
+                        \ fixed value, e.g. 0.4, 0, 0.\n[default: 0.1, 0.5, 0.05]"
+                      synonyms:
+                      - --pi0_lambda
+                      args: !SimpleFlagArg
+                        name: FLOAT FLOAT FLOAT
+                      optional: true
+                    - !Flag
+                      description: "[smoother|bootstrap]\nEither \"smoother\" or \"\
+                        bootstrap\"; the method\nfor automatically choosing tuning\
+                        \ parameter\nin the estimation of pi_0, the proportion of\n\
+                        true null hypotheses.  [default: bootstrap]"
+                      synonyms:
+                      - --pi0_method
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Number of degrees-of-freedom to use when\nestimating\
+                        \ pi_0 with a smoother.  [default:\n3]"
+                      synonyms:
+                      - --pi0_smooth_df
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    - !Flag
+                      description: "/ --no-pi0_smooth_log_pi0\nIf True and pi0_method\
+                        \ = \"smoother\", pi0\nwill be estimated by applying a smoother\
+                        \ to\na scatterplot of log(pi0) estimates against\nthe tuning\
+                        \ parameter lambda.  [default:\nFalse]"
+                      synonyms:
+                      - --pi0_smooth_log_pi0
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-lfdr_truncate\nIf True, local FDR values\
+                        \ >1 are set to 1.\n[default: True]"
+                      synonyms:
+                      - --lfdr_truncate
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-lfdr_monotone\nIf True, local FDR values\
+                        \ are non-decreasing\nwith increasing p-values.  [default:\
+                        \ True]"
+                      synonyms:
+                      - --lfdr_monotone
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "[probit|logit]\nEither a \"probit\" or \"logit\"\
+                        \ transformation\nis applied to the p-values so that a local\n\
+                        FDR estimate can be formed that does not\ninvolve edge effects\
+                        \ of the [0,1] interval\nin which the p-values lie.  [default:\n\
+                        probit]"
+                      synonyms:
+                      - --lfdr_transformation
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Numeric value that is applied as a multiple\n\
+                        of the smoothing bandwidth used in the\ndensity estimation.\
+                        \  [default: 1.5]"
+                      synonyms:
+                      - --lfdr_adj
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "Numeric value that is threshold for the\ntails\
+                        \ of the empirical p-value distribution.\n[default: 1e-08]"
+                      synonyms:
+                      - --lfdr_eps
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: pyprophet peptide [OPTIONS]\n\n  Infer peptides\
+                      \ and conduct error-rate estimation in different contexts.\n\
+                      \nOptions:\n  --in PATH                       PyProphet input\
+                      \ file.  [required]\n  --out PATH                      PyProphet\
+                      \ output file.\n  --context [run-specific|experiment-wide|global]\n\
+                      \                                  Context to estimate protein-level\
+                      \ FDR\n                                  control.  [default:\
+                      \ run-specific]\n\n  --parametric / --no-parametric  Do parametric\
+                      \ estimation of p-values.\n                                \
+                      \  [default: False]\n\n  --pfdr / --no-pfdr              Compute\
+                      \ positive false discovery rate (pFDR)\n                   \
+                      \               instead of FDR.  [default: False]\n\n  --pi0_lambda\
+                      \ <FLOAT FLOAT FLOAT>...\n                                 \
+                      \ Use non-parametric estimation of p-values.\n             \
+                      \                     Either use <START END STEPS>, e.g. 0.1,\
+                      \ 1.0,\n                                  0.1 or set to fixed\
+                      \ value, e.g. 0.4, 0, 0.\n                                 \
+                      \ [default: 0.1, 0.5, 0.05]\n\n  --pi0_method [smoother|bootstrap]\n\
+                      \                                  Either \"smoother\" or \"\
+                      bootstrap\"; the method\n                                  for\
+                      \ automatically choosing tuning parameter\n                \
+                      \                  in the estimation of pi_0, the proportion\
+                      \ of\n                                  true null hypotheses.\
+                      \  [default: bootstrap]\n\n  --pi0_smooth_df INTEGER       \
+                      \  Number of degrees-of-freedom to use when\n              \
+                      \                    estimating pi_0 with a smoother.  [default:\n\
+                      \                                  3]\n\n  --pi0_smooth_log_pi0\
+                      \ / --no-pi0_smooth_log_pi0\n                              \
+                      \    If True and pi0_method = \"smoother\", pi0\n          \
+                      \                        will be estimated by applying a smoother\
+                      \ to\n                                  a scatterplot of log(pi0)\
+                      \ estimates against\n                                  the tuning\
+                      \ parameter lambda.  [default:\n                           \
+                      \       False]\n\n  --lfdr_truncate / --no-lfdr_truncate\n \
+                      \                                 If True, local FDR values\
+                      \ >1 are set to 1.\n                                  [default:\
+                      \ True]\n\n  --lfdr_monotone / --no-lfdr_monotone\n        \
+                      \                          If True, local FDR values are non-decreasing\n\
+                      \                                  with increasing p-values.\
+                      \  [default: True]\n\n  --lfdr_transformation [probit|logit]\n\
+                      \                                  Either a \"probit\" or \"\
+                      logit\" transformation\n                                  is\
+                      \ applied to the p-values so that a local\n                \
+                      \                  FDR estimate can be formed that does not\n\
+                      \                                  involve edge effects of the\
+                      \ [0,1] interval\n                                  in which\
+                      \ the p-values lie.  [default:\n                           \
+                      \       probit]\n\n  --lfdr_adj FLOAT                Numeric\
+                      \ value that is applied as a multiple\n                    \
+                      \              of the smoothing bandwidth used in the\n    \
+                      \                              density estimation.  [default:\
+                      \ 1.5]\n\n  --lfdr_eps FLOAT                Numeric value that\
+                      \ is threshold for the\n                                  tails\
+                      \ of the empirical p-value distribution.\n                 \
+                      \                 [default: 1e-08]\n\n  --help             \
+                      \             Show this message and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - pyprophet
+                    - reduce
+                    positional: []
+                    named:
+                    - !Flag
+                      description: Scored PyProphet input file.  [required]
+                      synonyms:
+                      - --in
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: Reduced OSWR output file.
+                      synonyms:
+                      - --out
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: pyprophet reduce [OPTIONS]\n\n  Reduce scored\
+                      \ PyProphet file to minimum for global scoring\n\nOptions:\n\
+                      \  --in PATH   Scored PyProphet input file.  [required]\n  --out\
+                      \ PATH  Reduced OSWR output file.\n  --help      Show this message\
+                      \ and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - pyprophet
+                    - subsample
+                    positional: []
+                    named:
+                    - !Flag
+                      description: OpenSWATH input file.  [required]
+                      synonyms:
+                      - --in
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: Subsampled OSWS output file.
+                      synonyms:
+                      - --out
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: 'Subsample ratio used per input file.  [default:
+                        1]'
+                      synonyms:
+                      - --subsample_ratio
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: '/ --no-test       Run in test mode with fixed
+                        seed.  [default: False]'
+                      synonyms:
+                      - --test
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: pyprophet subsample [OPTIONS]\n\n  Subsample\
+                      \ OpenSWATH file to minimum for integrated scoring\n\nOptions:\n\
+                      \  --in PATH                OpenSWATH input file.  [required]\n\
+                      \  --out PATH               Subsampled OSWS output file.\n \
+                      \ --subsample_ratio FLOAT  Subsample ratio used per input file.\
+                      \  [default: 1]\n  --test / --no-test       Run in test mode\
+                      \ with fixed seed.  [default: False]\n  --help             \
+                      \      Show this message and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - pyprophet
+                    - merge
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: INFILES
+                      optional: true
+                    named:
+                    - !Flag
+                      description: Merged OSW output file.  [required]
+                      synonyms:
+                      - --out
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: "/ --no-same_run  Assume input files are from same\
+                        \ run (deletes\nrun information)."
+                      synonyms:
+                      - --same_run
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: Template OSW file.  [required]
+                      synonyms:
+                      - --template
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: pyprophet merge [OPTIONS] [INFILES]...\n\n\
+                      \  Merge multiple OSW files and (for large experiments, it is\
+                      \ recommended to\n  subsample first).\n\nOptions:\n  --out PATH\
+                      \                  Merged OSW output file.  [required]\n  --same_run\
+                      \ / --no-same_run  Assume input files are from same run (deletes\n\
+                      \                              run information).\n\n  --template\
+                      \ PATH             Template OSW file.  [required]\n  --help\
+                      \                      Show this message and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - pyprophet
+                    - statistics
+                    positional: []
+                    named:
+                    - !Flag
+                      description: PyProphet input file.  [required]
+                      synonyms:
+                      - --in
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: pyprophet statistics [OPTIONS]\n\n  Print PyProphet\
+                      \ statistics\n\nOptions:\n  --in PATH  PyProphet input file.\
+                      \  [required]\n  --help     Show this message and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - pyprophet
+                    - protein
+                    positional: []
+                    named:
+                    - !Flag
+                      description: PyProphet input file.  [required]
+                      synonyms:
+                      - --in
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: PyProphet output file.
+                      synonyms:
+                      - --out
+                      args: !SimpleFlagArg
+                        name: PATH
+                      optional: true
+                    - !Flag
+                      description: "[run-specific|experiment-wide|global]\nContext\
+                        \ to estimate protein-level FDR\ncontrol.  [default: run-specific]"
+                      synonyms:
+                      - --context
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-parametric  Do parametric estimation of\
+                        \ p-values.\n[default: False]"
+                      synonyms:
+                      - --parametric
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-pfdr              Compute positive false\
+                        \ discovery rate (pFDR)\ninstead of FDR.  [default: False]"
+                      synonyms:
+                      - --pfdr
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "...\nUse non-parametric estimation of p-values.\n\
+                        Either use <START END STEPS>, e.g. 0.1, 1.0,\n0.1 or set to\
+                        \ fixed value, e.g. 0.4, 0, 0.\n[default: 0.1, 0.5, 0.05]"
+                      synonyms:
+                      - --pi0_lambda
+                      args: !SimpleFlagArg
+                        name: FLOAT FLOAT FLOAT
+                      optional: true
+                    - !Flag
+                      description: "[smoother|bootstrap]\nEither \"smoother\" or \"\
+                        bootstrap\"; the method\nfor automatically choosing tuning\
+                        \ parameter\nin the estimation of pi_0, the proportion of\n\
+                        true null hypotheses.  [default: bootstrap]"
+                      synonyms:
+                      - --pi0_method
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Number of degrees-of-freedom to use when\nestimating\
+                        \ pi_0 with a smoother.  [default:\n3]"
+                      synonyms:
+                      - --pi0_smooth_df
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    - !Flag
+                      description: "/ --no-pi0_smooth_log_pi0\nIf True and pi0_method\
+                        \ = \"smoother\", pi0\nwill be estimated by applying a smoother\
+                        \ to\na scatterplot of log(pi0) estimates against\nthe tuning\
+                        \ parameter lambda.  [default:\nFalse]"
+                      synonyms:
+                      - --pi0_smooth_log_pi0
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-lfdr_truncate\nIf True, local FDR values\
+                        \ >1 are set to 1.\n[default: True]"
+                      synonyms:
+                      - --lfdr_truncate
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "/ --no-lfdr_monotone\nIf True, local FDR values\
+                        \ are non-decreasing\nwith increasing p-values.  [default:\
+                        \ True]"
+                      synonyms:
+                      - --lfdr_monotone
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "[probit|logit]\nEither a \"probit\" or \"logit\"\
+                        \ transformation\nis applied to the p-values so that a local\n\
+                        FDR estimate can be formed that does not\ninvolve edge effects\
+                        \ of the [0,1] interval\nin which the p-values lie.  [default:\n\
+                        probit]"
+                      synonyms:
+                      - --lfdr_transformation
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Numeric value that is applied as a multiple\n\
+                        of the smoothing bandwidth used in the\ndensity estimation.\
+                        \  [default: 1.5]"
+                      synonyms:
+                      - --lfdr_adj
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "Numeric value that is threshold for the\ntails\
+                        \ of the empirical p-value distribution.\n[default: 1e-08]"
+                      synonyms:
+                      - --lfdr_eps
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: pyprophet protein [OPTIONS]\n\n  Infer proteins\
+                      \ and conduct error-rate estimation in different contexts.\n\
+                      \nOptions:\n  --in PATH                       PyProphet input\
+                      \ file.  [required]\n  --out PATH                      PyProphet\
+                      \ output file.\n  --context [run-specific|experiment-wide|global]\n\
+                      \                                  Context to estimate protein-level\
+                      \ FDR\n                                  control.  [default:\
+                      \ run-specific]\n\n  --parametric / --no-parametric  Do parametric\
+                      \ estimation of p-values.\n                                \
+                      \  [default: False]\n\n  --pfdr / --no-pfdr              Compute\
+                      \ positive false discovery rate (pFDR)\n                   \
+                      \               instead of FDR.  [default: False]\n\n  --pi0_lambda\
+                      \ <FLOAT FLOAT FLOAT>...\n                                 \
+                      \ Use non-parametric estimation of p-values.\n             \
+                      \                     Either use <START END STEPS>, e.g. 0.1,\
+                      \ 1.0,\n                                  0.1 or set to fixed\
+                      \ value, e.g. 0.4, 0, 0.\n                                 \
+                      \ [default: 0.1, 0.5, 0.05]\n\n  --pi0_method [smoother|bootstrap]\n\
+                      \                                  Either \"smoother\" or \"\
+                      bootstrap\"; the method\n                                  for\
+                      \ automatically choosing tuning parameter\n                \
+                      \                  in the estimation of pi_0, the proportion\
+                      \ of\n                                  true null hypotheses.\
+                      \  [default: bootstrap]\n\n  --pi0_smooth_df INTEGER       \
+                      \  Number of degrees-of-freedom to use when\n              \
+                      \                    estimating pi_0 with a smoother.  [default:\n\
+                      \                                  3]\n\n  --pi0_smooth_log_pi0\
+                      \ / --no-pi0_smooth_log_pi0\n                              \
+                      \    If True and pi0_method = \"smoother\", pi0\n          \
+                      \                        will be estimated by applying a smoother\
+                      \ to\n                                  a scatterplot of log(pi0)\
+                      \ estimates against\n                                  the tuning\
+                      \ parameter lambda.  [default:\n                           \
+                      \       False]\n\n  --lfdr_truncate / --no-lfdr_truncate\n \
+                      \                                 If True, local FDR values\
+                      \ >1 are set to 1.\n                                  [default:\
+                      \ True]\n\n  --lfdr_monotone / --no-lfdr_monotone\n        \
+                      \                          If True, local FDR values are non-decreasing\n\
+                      \                                  with increasing p-values.\
+                      \  [default: True]\n\n  --lfdr_transformation [probit|logit]\n\
+                      \                                  Either a \"probit\" or \"\
+                      logit\" transformation\n                                  is\
+                      \ applied to the p-values so that a local\n                \
+                      \                  FDR estimate can be formed that does not\n\
+                      \                                  involve edge effects of the\
+                      \ [0,1] interval\n                                  in which\
+                      \ the p-values lie.  [default:\n                           \
+                      \       probit]\n\n  --lfdr_adj FLOAT                Numeric\
+                      \ value that is applied as a multiple\n                    \
+                      \              of the smoothing bandwidth used in the\n    \
+                      \                              density estimation.  [default:\
+                      \ 1.5]\n\n  --lfdr_eps FLOAT                Numeric value that\
+                      \ is threshold for the\n                                  tails\
+                      \ of the empirical p-value distribution.\n                 \
+                      \                 [default: 1e-08]\n\n  --help             \
+                      \             Show this message and exit.\n"
+                    generated_using: *id005
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag: !Flag
+                    description: Show the version and exit.
+                    synonyms:
+                    - --version
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  help_text: "Usage: pyprophet [OPTIONS] COMMAND1 [ARGS]... [COMMAND2\
+                    \ [ARGS]...]...\n\n  PyProphet: Semi-supervised learning and scoring\
+                    \ of OpenSWATH results.\n\n  Visit http://openswath.org for usage\
+                    \ instructions and help.\n\nOptions:\n  --version  Show the version\
+                    \ and exit.\n  --help     Show this message and exit.\n\nCommands:\n\
+                    \  backpropagate    Backpropagate multi-run peptide and protein\
+                    \ scores to...\n  export           Export TSV/CSV tables\n  export-compound\
+                    \  Export Compound TSV/CSV tables\n  filter           Filter sqMass\
+                    \ files\n  gene             Infer genes and conduct error-rate\
+                    \ estimation in...\n  ipf              Infer peptidoforms after\
+                    \ scoring of MS1, MS2 and...\n  merge            Merge multiple\
+                    \ OSW files and (for large experiments, it...\n  peptide     \
+                    \     Infer peptides and conduct error-rate estimation in...\n\
+                    \  protein          Infer proteins and conduct error-rate estimation\
+                    \ in...\n  reduce           Reduce scored PyProphet file to minimum\
+                    \ for global...\n  score            Conduct semi-supervised learning\
+                    \ and error-rate...\n  statistics       Print PyProphet statistics\n\
+                    \  subsample        Subsample OpenSWATH file to minimum for integrated...\n"
+                  generated_using: *id005
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: pyprophet
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: backpropagate
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: pyprophet backpropagate [OPTIONS]\nTry 'pyprophet\
+                    \ backpropagate --help' for help.\n\nError: Missing option '--in'.\n"
+                  generated_using: *id005
+                usage: []
+                help_flag: !Flag
+                  description: Show this message and exit.
+                  synonyms:
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "Usage: pyprophet backpropagate [OPTIONS]\n\n  Backpropagate\
+                  \ multi-run peptide and protein scores to single files\n\nOptions:\n\
+                  \  --in PATH            Single run PyProphet input file.  [required]\n\
+                  \  --out PATH           Single run (with multi-run scores) PyProphet\
+                  \ output\n                       file.\n\n  --apply_scores PATH\
+                  \  PyProphet multi-run scores file to apply.  [required]\n  --help\
+                  \               Show this message and exit.\n"
+                generated_using: *id005
               subcommands: []
               usage: []
               help_flag:
@@ -1748,12 +1827,7 @@ subcommands:
                 \ backpropagate --help' for help.\n\nError: Missing option '--in'.\n"
               generated_using: *id005
             usage: []
-            help_flag: !Flag
-              description: Show this message and exit.
-              synonyms:
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "Usage: pyprophet backpropagate [OPTIONS]\n\n  Backpropagate\

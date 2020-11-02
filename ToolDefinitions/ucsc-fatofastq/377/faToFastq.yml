@@ -52,18 +52,10 @@ subcommands:
             args: !SimpleFlagArg
               name: is
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: quality letter to use.  Default is '<' which is good I
-                think....
-              synonyms:
-              - -qual
-              args: !SimpleFlagArg
-                name: X
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -77,15 +69,56 @@ subcommands:
                 args: !SimpleFlagArg
                   name: is
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: quality letter to use.  Default is '<' which is good
+                    I think....
+                  synonyms:
+                  - -qual
+                  args: !SimpleFlagArg
+                    name: X
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: not a valid option
+                    synonyms:
+                    - -h
+                    args: !SimpleFlagArg
+                      name: is
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "-h is not a valid option\n"
+                  generated_using: &id004
+                  - -h
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "faToFastq - Convert fa to fastq format, just faking quality\
+                  \ values.\nusage:\n   faToFastq in.fa out.fastq\noptions:\n   -qual=X\
+                  \ quality letter to use.  Default is '<' which is good I think....\n\
+                  \n"
+                generated_using: &id005 []
               subcommands: []
               usage: []
               help_flag:
               usage_flag:
               version_flag:
               help_text: "-h is not a valid option\n"
-              generated_using: &id004
-              - -h
+              generated_using: *id004
             usage: []
             help_flag:
             usage_flag:
@@ -94,7 +127,7 @@ subcommands:
               \ values.\nusage:\n   faToFastq in.fa out.fastq\noptions:\n   -qual=X\
               \ quality letter to use.  Default is '<' which is good I think....\n\
               \n"
-            generated_using: &id005 []
+            generated_using: *id005
           subcommands: []
           usage: []
           help_flag:

@@ -151,50 +151,10 @@ subcommands:
             args: !SimpleFlagArg
               name: STR
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: field id
-              synonyms:
-              - -i
-              - --id
-              args: !SimpleFlagArg
-                name: STR
-              optional: true
-            - !Flag
-              description: INFO, FORMAT, FILTER
-              synonyms:
-              - -c
-              - --category
-              args: !SimpleFlagArg
-                name: STR
-              optional: true
-            - !Flag
-              description: Number, String, Float, Integer
-              synonyms:
-              - -t
-              - --type
-              args: !SimpleFlagArg
-                name: STR
-              optional: true
-            - !Flag
-              description: integer, A, R, G, or .
-              synonyms:
-              - -n
-              - --number
-              args: !SimpleFlagArg
-                name: STR
-              optional: true
-            - !Flag
-              description: "description\n"
-              synonyms:
-              - -d
-              - --description
-              args: !SimpleFlagArg
-                name: STR
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -241,7 +201,135 @@ subcommands:
                 args: !SimpleFlagArg
                   name: STR
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: field id
+                  synonyms:
+                  - -i
+                  - --id
+                  args: !SimpleFlagArg
+                    name: STR
+                  optional: true
+                - !Flag
+                  description: INFO, FORMAT, FILTER
+                  synonyms:
+                  - -c
+                  - --category
+                  args: !SimpleFlagArg
+                    name: STR
+                  optional: true
+                - !Flag
+                  description: Number, String, Float, Integer
+                  synonyms:
+                  - -t
+                  - --type
+                  args: !SimpleFlagArg
+                    name: STR
+                  optional: true
+                - !Flag
+                  description: integer, A, R, G, or .
+                  synonyms:
+                  - -n
+                  - --number
+                  args: !SimpleFlagArg
+                    name: STR
+                  optional: true
+                - !Flag
+                  description: "description\n"
+                  synonyms:
+                  - -d
+                  - --description
+                  args: !SimpleFlagArg
+                    name: STR
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: vcf_modify_header.py
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -d
+                    args: !SimpleFlagArg
+                      name: STR
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -n
+                    args: !SimpleFlagArg
+                      name: STR
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -t
+                    args: !SimpleFlagArg
+                      name: STR
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -c
+                    args: !SimpleFlagArg
+                      name: STR
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -i
+                    args: !SimpleFlagArg
+                      name: STR
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: vcf_modify_header.py [-h] [-i STR] [-c STR] [-t\
+                    \ STR] [-n STR] [-d STR]\n                            [vcf]\n\
+                    vcf_modify_header.py: error: argument vcf: can't open 'vcf': [Errno\
+                    \ 2] No such file or directory: 'vcf'\n"
+                  generated_using: &id004
+                  - --help
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: vcf_modify_header.py [-h] [-i STR] [-c STR] [-t\
+                  \ STR] [-n STR] [-d STR]\n                            [vcf]\n\n\
+                  vcf_modify_header.py\nauthor: Colby Chiang (cc2qe@virginia.edu)\n\
+                  version: $Revision: 0.0.1 $\ndescription: Add or remove lines from\
+                  \ the header\n\npositional arguments:\n  vcf                   VCF\
+                  \ input (default: stdin)\n\noptional arguments:\n  -h, --help  \
+                  \          show this help message and exit\n  -i STR, --id STR \
+                  \     field id\n  -c STR, --category STR\n                     \
+                  \   INFO, FORMAT, FILTER\n  -t STR, --type STR    Number, String,\
+                  \ Float, Integer\n  -n STR, --number STR  integer, A, R, G, or .\n\
+                  \  -d STR, --description STR\n                        description\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -256,16 +344,9 @@ subcommands:
                 \ [-n STR] [-d STR]\n                            [vcf]\nvcf_modify_header.py:\
                 \ error: argument vcf: can't open 'vcf': [Errno 2] No such file or\
                 \ directory: 'vcf'\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage: vcf_modify_header.py [-h] [-i STR] [-c STR] [-t STR]\

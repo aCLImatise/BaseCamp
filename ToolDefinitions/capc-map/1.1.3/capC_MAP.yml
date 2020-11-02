@@ -32,7 +32,7 @@ subcommands:
     args: !SimpleFlagArg
       name: OUTPUTBED
     optional: true
-  parent: &id010 !Command
+  parent: &id011 !Command
     command: *id001
     positional: []
     named: []
@@ -63,7 +63,7 @@ subcommands:
         args: !SimpleFlagArg
           name: OUTPUTBED
         optional: true
-      parent: &id009 !Command
+      parent: &id010 !Command
         command: *id001
         positional: []
         named: []
@@ -94,7 +94,7 @@ subcommands:
             args: !SimpleFlagArg
               name: OUTPUTBED
             optional: true
-          parent: &id003 !Command
+          parent: &id009 !Command
             command: *id001
             positional: []
             named: []
@@ -125,7 +125,249 @@ subcommands:
                 args: !SimpleFlagArg
                   name: OUTPUTBED
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: input fasta file of geneome
+                    synonyms:
+                    - -i
+                    args: !SimpleFlagArg
+                      name: INPUTFASTA
+                    optional: true
+                  - !Flag
+                    description: name of supported enzyme, or cutting sequence
+                    synonyms:
+                    - -r
+                    args: !SimpleFlagArg
+                      name: ENZYMENAME
+                    optional: true
+                  - !Flag
+                    description: output bed file of restriction fragments
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: OUTPUTBED
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: capC-MAP genomedigest [-h] -i INPUTFASTA -r ENZYMENAME\
+                    \ -o OUTPUTBED\n\noptional arguments:\n  -h, --help     show this\
+                    \ help message and exit\n  -i INPUTFASTA  input fasta file of\
+                    \ geneome\n  -r ENZYMENAME  name of supported enzyme, or cutting\
+                    \ sequence\n  -o OUTPUTBED   output bed file of restriction fragments\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - capC-MAP
+                  - getchromsizes
+                  positional: []
+                  named:
+                  - !Flag
+                    description: "bed file continaing list of restriction enzyme fragments\n\
+                      for genome"
+                    synonyms:
+                    - -f
+                    args: !SimpleFlagArg
+                      name: FRAGMENTSFILE
+                    optional: true
+                  - !Flag
+                    description: 'output file name (Default: chrom.sizes)'
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: OUTFILE
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: capC-MAP getchromsizes [-h] -f FRAGMENTSFILE\
+                    \ [-o OUTFILE]\n\noptional arguments:\n  -h, --help        show\
+                    \ this help message and exit\n  -f FRAGMENTSFILE  bed file continaing\
+                    \ list of restriction enzyme fragments\n                    for\
+                    \ genome\n  -o OUTFILE        output file name (Default: chrom.sizes)\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - capC-MAP
+                  - run
+                  positional: []
+                  named:
+                  - !Flag
+                    description: configuration file
+                    synonyms:
+                    - -c
+                    args: !SimpleFlagArg
+                      name: CONFIGFILE
+                    optional: true
+                  - !Flag
+                    description: directory to be created for output
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: OUTDIR
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: capC-MAP run [-h] -c CONFIGFILE -o OUTDIR\n\n\
+                    optional arguments:\n  -h, --help     show this help message and\
+                    \ exit\n  -c CONFIGFILE  configuration file\n  -o OUTDIR     \
+                    \ directory to be created for output\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - capC-MAP
+                  - combinereps
+                  positional: []
+                  named:
+                  - !Flag
+                    description: configuration file
+                    synonyms:
+                    - -c
+                    args: !SimpleFlagArg
+                      name: CONFIGFILE
+                    optional: true
+                  - !Flag
+                    description: "directory containing output from capC-MAP for a\
+                      \ replicate\n(option must appear multiple times)."
+                    synonyms:
+                    - -i
+                    args: !SimpleFlagArg
+                      name: INDIR
+                    optional: true
+                  - !Flag
+                    description: directory to be created for combined output
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: OUTDIR
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: capC-MAP combinereps [-h] -c CONFIGFILE -i INDIR\
+                    \ -o OUTDIR\n\noptional arguments:\n  -h, --help     show this\
+                    \ help message and exit\n  -c CONFIGFILE  configuration file\n\
+                    \  -i INDIR       directory containing output from capC-MAP for\
+                    \ a replicate\n                 (option must appear multiple times).\n\
+                    \  -o OUTDIR      directory to be created for combined output\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - capC-MAP
+                  - postprocess
+                  positional: []
+                  named:
+                  - !Flag
+                    description: configuration file
+                    synonyms:
+                    - -c
+                    args: !SimpleFlagArg
+                      name: CONFIGFILE
+                    optional: true
+                  - !Flag
+                    description: directory to be created for output
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: OUTDIR
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: capC-MAP postprocess [-h] -c CONFIGFILE -o OUTDIR\n\
+                    \noptional arguments:\n  -h, --help     show this help message\
+                    \ and exit\n  -c CONFIGFILE  configuration file\n  -o OUTDIR \
+                    \     directory to be created for output\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: capC-MAP [-h]\n                {genomedigest,run,postprocess,combinereps,getchromsizes}\
+                  \ ...\n\nCapture C analysis pipeline.\n\noptional arguments:\n \
+                  \ -h, --help            show this help message and exit\n\nsub-commands:\n\
+                  \  use one of the following sub-commands\n\n  {genomedigest,run,postprocess,combinereps,getchromsizes}\n\
+                  \    genomedigest        Generate list of restriction enzyme fragments\
+                  \ from a\n                        fasta file for the reference geneome.\
+                  \ Required inputs\n                        are a fasta file.\n \
+                  \   run                 Run full capture c processing pipeline.\
+                  \ Required\n                        inputs are a config file, and\
+                  \ a name for a new\n                        directory for the output.\n\
+                  \    postprocess         Run binning, smoothing or normalization\
+                  \ on capture c\n                        profiles. Required inputs\
+                  \ are a config file (only\n                        lines relating\
+                  \ to binning are read), and a name for\n                       \
+                  \ the directory containing raw pile-ups or validpairs\n        \
+                  \                files.\n    combinereps         Combine multiple\
+                  \ replicates into a single data set,\n                        and\
+                  \ run binning, smoothing or normalization. A single\n          \
+                  \              configuration file, and multiple processed data\n\
+                  \                        directories are required.\n    getchromsizes\
+                  \       Generate a chrom.sizes files from a list of\n          \
+                  \              restriction enzyme fragments.\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -142,12 +384,9 @@ subcommands:
                 \ help message and exit\n  -i INPUTFASTA  input fasta file of geneome\n\
                 \  -r ENZYMENAME  name of supported enzyme, or cutting sequence\n\
                 \  -o OUTPUTBED   output bed file of restriction fragments\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - capC-MAP
-              - getchromsizes
+              command: *id005
               positional: []
               named:
               - !Flag
@@ -184,9 +423,7 @@ subcommands:
                 \ -o OUTFILE        output file name (Default: chrom.sizes)\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - capC-MAP
-              - run
+              command: *id006
               positional: []
               named:
               - !Flag
@@ -221,9 +458,7 @@ subcommands:
                 \ be created for output\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - capC-MAP
-              - combinereps
+              command: *id007
               positional: []
               named:
               - !Flag
@@ -268,9 +503,7 @@ subcommands:
                 \      directory to be created for combined output\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - capC-MAP
-              - postprocess
+              command: *id008
               positional: []
               named:
               - !Flag
@@ -305,13 +538,7 @@ subcommands:
                 \ to be created for output\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage: capC-MAP [-h]\n                {genomedigest,run,postprocess,combinereps,getchromsizes}\
@@ -372,7 +599,7 @@ subcommands:
             args: !SimpleFlagArg
               name: OUTFILE
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -408,7 +635,7 @@ subcommands:
             args: !SimpleFlagArg
               name: OUTDIR
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -450,7 +677,7 @@ subcommands:
             args: !SimpleFlagArg
               name: OUTDIR
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -487,7 +714,7 @@ subcommands:
             args: !SimpleFlagArg
               name: OUTDIR
             optional: true
-          parent: *id003
+          parent: *id009
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -565,7 +792,7 @@ subcommands:
         args: !SimpleFlagArg
           name: OUTFILE
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -601,7 +828,7 @@ subcommands:
         args: !SimpleFlagArg
           name: OUTDIR
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -643,7 +870,7 @@ subcommands:
         args: !SimpleFlagArg
           name: OUTDIR
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -680,7 +907,7 @@ subcommands:
         args: !SimpleFlagArg
           name: OUTDIR
         optional: true
-      parent: *id009
+      parent: *id010
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -755,7 +982,7 @@ subcommands:
     args: !SimpleFlagArg
       name: OUTFILE
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -791,7 +1018,7 @@ subcommands:
     args: !SimpleFlagArg
       name: OUTDIR
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -833,7 +1060,7 @@ subcommands:
     args: !SimpleFlagArg
       name: OUTDIR
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -869,7 +1096,7 @@ subcommands:
     args: !SimpleFlagArg
       name: OUTDIR
     optional: true
-  parent: *id010
+  parent: *id011
   subcommands: []
   usage: []
   help_flag: !Flag

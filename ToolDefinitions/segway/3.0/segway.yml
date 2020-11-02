@@ -31,7 +31,7 @@ subcommands:
     name: args
     optional: true
   named: []
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -61,7 +61,7 @@ subcommands:
         name: args
         optional: true
       named: []
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -91,50 +91,10 @@ subcommands:
             name: args
             optional: true
           named: []
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: "try each float in PROGRESSION as the number of\ngibibytes\
-                \ of memory to allocate in turn (default\n2,3,4,6,8,10,12,14,15)"
-              synonyms:
-              - -m
-              - --mem-usage
-              args: !SimpleFlagArg
-                name: PROGRESSION
-              optional: true
-            - !Flag
-              description: "split up sequences that are larger than SIZE bp\n(default\
-                \ 2000000)"
-              synonyms:
-              - -S
-              - --split-sequences
-              args: !SimpleFlagArg
-                name: SIZE
-              optional: true
-            - !Flag
-              description: show messages with verbosity NUM (default 0)
-              synonyms:
-              - -v
-              - --verbosity
-              args: !SimpleFlagArg
-                name: NUM
-              optional: true
-            - !Flag
-              description: specify an option to be passed to the cluster manager
-              synonyms:
-              - --cluster-opt
-              args: !SimpleFlagArg
-                name: OPT
-              optional: true
-            - !Flag
-              description: write all files, but do not run any executables
-              synonyms:
-              - -n
-              - --dry-run
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -161,7 +121,252 @@ subcommands:
                 name: args
                 optional: true
               named: []
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: "try each float in PROGRESSION as the number of\ngibibytes\
+                    \ of memory to allocate in turn (default\n2,3,4,6,8,10,12,14,15)"
+                  synonyms:
+                  - -m
+                  - --mem-usage
+                  args: !SimpleFlagArg
+                    name: PROGRESSION
+                  optional: true
+                - !Flag
+                  description: "split up sequences that are larger than SIZE bp\n\
+                    (default 2000000)"
+                  synonyms:
+                  - -S
+                  - --split-sequences
+                  args: !SimpleFlagArg
+                    name: SIZE
+                  optional: true
+                - !Flag
+                  description: show messages with verbosity NUM (default 0)
+                  synonyms:
+                  - -v
+                  - --verbosity
+                  args: !SimpleFlagArg
+                    name: NUM
+                  optional: true
+                - !Flag
+                  description: specify an option to be passed to the cluster manager
+                  synonyms:
+                  - --cluster-opt
+                  args: !SimpleFlagArg
+                    name: OPT
+                  optional: true
+                - !Flag
+                  description: write all files, but do not run any executables
+                  synonyms:
+                  - -n
+                  - --dry-run
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: segway
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: global_args
+                    optional: true
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: COMMAND
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 3
+                    name: args
+                    optional: true
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: segway [global_args] COMMAND [args]...\nsegway:\
+                    \ error: argument \ntrain                   create a model with\
+                    \ learned parameters\n- train-init            prepare initial\
+                    \ models for parallel training\n- train-run             train\
+                    \ initial models to completion criterion, in parallel\n-- train-run-round\
+                    \      train models for one round, in parallel\n- train-finish\
+                    \          select best model and prepare for `annotate` \n\nannotate\
+                    \                label a genome using a model\n- annotate-init\
+                    \         prepare for parallel annotation\n- annotate-run    \
+                    \      annotate the genome, in parallel\n- annotate-finish   \
+                    \    concatenate parallel annotation results\n\nposterior    \
+                    \           infer posterior probabilities of each label across\
+                    \ a genome\n- posterior-init        prepare for parallel posterior\
+                    \ inference\n- posterior-run         infer posterior probabilities,\
+                    \ in parallel\n- posterior-finish      concatenate parallel posterior\
+                    \ inference results\n\nUse `segway COMMAND --help` for help specific\
+                    \ to command COMMAND.\n\n    : invalid choice: 'args' (choose\
+                    \ from '', 'train-init', 'train-run', 'train-finish', 'train-run-round',\
+                    \ 'annotate-init', 'annotate-run', 'annotate-finish', 'posterior-init',\
+                    \ 'posterior-run', 'posterior-finish', 'train', 'annotate', 'identify',\
+                    \ 'posterior', 'identify+posterior')\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - segway
+                  - COMMAND
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: segway
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: global_args
+                    optional: true
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: COMMAND
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 3
+                    name: args
+                    optional: true
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: segway [global_args] COMMAND [args]...\nsegway:\
+                    \ error: argument \ntrain                   create a model with\
+                    \ learned parameters\n- train-init            prepare initial\
+                    \ models for parallel training\n- train-run             train\
+                    \ initial models to completion criterion, in parallel\n-- train-run-round\
+                    \      train models for one round, in parallel\n- train-finish\
+                    \          select best model and prepare for `annotate` \n\nannotate\
+                    \                label a genome using a model\n- annotate-init\
+                    \         prepare for parallel annotation\n- annotate-run    \
+                    \      annotate the genome, in parallel\n- annotate-finish   \
+                    \    concatenate parallel annotation results\n\nposterior    \
+                    \           infer posterior probabilities of each label across\
+                    \ a genome\n- posterior-init        prepare for parallel posterior\
+                    \ inference\n- posterior-run         infer posterior probabilities,\
+                    \ in parallel\n- posterior-finish      concatenate parallel posterior\
+                    \ inference results\n\nUse `segway COMMAND --help` for help specific\
+                    \ to command COMMAND.\n\n    : invalid choice: 'COMMAND' (choose\
+                    \ from '', 'train-init', 'train-run', 'train-finish', 'train-run-round',\
+                    \ 'annotate-init', 'annotate-run', 'annotate-finish', 'posterior-init',\
+                    \ 'posterior-run', 'posterior-finish', 'train', 'annotate', 'identify',\
+                    \ 'posterior', 'identify+posterior')\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - segway
+                  - global_args
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: COMMAND
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: args
+                    optional: true
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: segway [global_args] COMMAND [args]...\nsegway:\
+                    \ error: argument \ntrain                   create a model with\
+                    \ learned parameters\n- train-init            prepare initial\
+                    \ models for parallel training\n- train-run             train\
+                    \ initial models to completion criterion, in parallel\n-- train-run-round\
+                    \      train models for one round, in parallel\n- train-finish\
+                    \          select best model and prepare for `annotate` \n\nannotate\
+                    \                label a genome using a model\n- annotate-init\
+                    \         prepare for parallel annotation\n- annotate-run    \
+                    \      annotate the genome, in parallel\n- annotate-finish   \
+                    \    concatenate parallel annotation results\n\nposterior    \
+                    \           infer posterior probabilities of each label across\
+                    \ a genome\n- posterior-init        prepare for parallel posterior\
+                    \ inference\n- posterior-run         infer posterior probabilities,\
+                    \ in parallel\n- posterior-finish      concatenate parallel posterior\
+                    \ inference results\n\nUse `segway COMMAND --help` for help specific\
+                    \ to command COMMAND.\n\n    : invalid choice: 'global_args' (choose\
+                    \ from '', 'train-init', 'train-run', 'train-finish', 'train-run-round',\
+                    \ 'annotate-init', 'annotate-run', 'annotate-finish', 'posterior-init',\
+                    \ 'posterior-run', 'posterior-finish', 'train', 'annotate', 'identify',\
+                    \ 'posterior', 'identify+posterior')\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: show program's version number and exit
+                  synonyms:
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "usage: segway [global_args] COMMAND [args]...\n\nSegmentation\
+                  \ and automated genome annotation.\n\noptional arguments:\n  -h,\
+                  \ --help            show this help message and exit\n  --version\
+                  \             show program's version number and exit\n\nlist of\
+                  \ commands:\n  \ntrain                   create a model with learned\
+                  \ parameters\n- train-init            prepare initial models for\
+                  \ parallel training\n- train-run             train initial models\
+                  \ to completion criterion, in parallel\n-- train-run-round     \
+                  \ train models for one round, in parallel\n- train-finish      \
+                  \    select best model and prepare for `annotate` \n\nannotate \
+                  \               label a genome using a model\n- annotate-init  \
+                  \       prepare for parallel annotation\n- annotate-run        \
+                  \  annotate the genome, in parallel\n- annotate-finish       concatenate\
+                  \ parallel annotation results\n\nposterior               infer posterior\
+                  \ probabilities of each label across a genome\n- posterior-init\
+                  \        prepare for parallel posterior inference\n- posterior-run\
+                  \         infer posterior probabilities, in parallel\n- posterior-finish\
+                  \      concatenate parallel posterior inference results\n\nUse `segway\
+                  \ COMMAND --help` for help specific to command COMMAND.\n\n    \n\
+                  \nTechnical variables:\n  -m PROGRESSION, --mem-usage PROGRESSION\n\
+                  \                        try each float in PROGRESSION as the number\
+                  \ of\n                        gibibytes of memory to allocate in\
+                  \ turn (default\n                        2,3,4,6,8,10,12,14,15)\n\
+                  \  -S SIZE, --split-sequences SIZE\n                        split\
+                  \ up sequences that are larger than SIZE bp\n                  \
+                  \      (default 2000000)\n  -v NUM, --verbosity NUM\n          \
+                  \              show messages with verbosity NUM (default 0)\n  --cluster-opt\
+                  \ OPT     specify an option to be passed to the cluster manager\n\
+                  \nFlags:\n  -n, --dry-run         write all files, but do not run\
+                  \ any executables\n\nCitation: Hoffman MM, Buske OJ, Wang J, Weng\
+                  \ Z, Bilmes J, Noble WS. 2012.\nUnsupervised pattern discovery in\
+                  \ human chromatin structure through genomic\nsegmentation. Nat Methods\
+                  \ 9:473-476. https://doi.org/10.1038/nmeth.1937\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag:
@@ -186,12 +391,9 @@ subcommands:
                 \ 'train-finish', 'train-run-round', 'annotate-init', 'annotate-run',\
                 \ 'annotate-finish', 'posterior-init', 'posterior-run', 'posterior-finish',\
                 \ 'train', 'annotate', 'identify', 'posterior', 'identify+posterior')\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - segway
-              - COMMAND
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -241,9 +443,7 @@ subcommands:
                 \ 'train', 'annotate', 'identify', 'posterior', 'identify+posterior')\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - segway
-              - global_args
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -284,20 +484,9 @@ subcommands:
                 \ 'identify+posterior')\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: show program's version number and exit
-              synonyms:
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "usage: segway [global_args] COMMAND [args]...\n\nSegmentation\
               \ and automated genome annotation.\n\noptional arguments:\n  -h, --help\
               \            show this help message and exit\n  --version          \
@@ -379,7 +568,7 @@ subcommands:
             name: args
             optional: true
           named: []
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag:
@@ -419,7 +608,7 @@ subcommands:
             name: args
             optional: true
           named: []
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag:
@@ -526,7 +715,7 @@ subcommands:
         name: args
         optional: true
       named: []
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag:
@@ -564,7 +753,7 @@ subcommands:
         name: args
         optional: true
       named: []
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag:
@@ -668,7 +857,7 @@ subcommands:
     name: args
     optional: true
   named: []
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:
@@ -706,7 +895,7 @@ subcommands:
     name: args
     optional: true
   named: []
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:

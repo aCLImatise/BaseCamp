@@ -48,809 +48,11 @@ subcommands:
             name: barcodes
             optional: false
           named: []
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
             named: []
-            parent: &id004 !Command
-              command:
-              - umis
-              positional: []
-              named: []
-              parent:
-              subcommands:
-              - *id003
-              - !Command
-                command:
-                - umis
-                - cb_histogram
-                positional:
-                - !Positional
-                  description: ''
-                  position: 0
-                  name: FASTQ
-                  optional: false
-                named:
-                - !Flag
-                  description: "Output a count of each UMI for each cellular barcode\n\
-                    to this file."
-                  synonyms:
-                  - --umi_histogram
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: umis cb_histogram [OPTIONS] FASTQ\n\n  Counts the\
-                  \ number of reads for each cellular barcode\n\n  Expects formatted\
-                  \ fastq files.\n\nOptions:\n  --umi_histogram TEXT  Output a count\
-                  \ of each UMI for each cellular barcode\n                      \
-                  \  to this file.\n\n  --help                Show this message and\
-                  \ exit.\n"
-                generated_using: &id005
-                - --help
-              - !Command
-                command:
-                - umis
-                - mb_filter
-                positional:
-                - !Positional
-                  description: ''
-                  position: 0
-                  name: FASTQ
-                  optional: false
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --cores
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: umis mb_filter [OPTIONS] FASTQ\n\n  Filters umis\
-                  \ with non-ACGT bases Expects formatted fastq files.\n\nOptions:\n\
-                  \  --cores INTEGER\n  --help           Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - umis
-                - demultiplex_samples
-                positional:
-                - !Positional
-                  description: 'Options:'
-                  position: 0
-                  name: sample.
-                  optional: false
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --out_dir
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --nedit
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --barcodes
-                  args: !SimpleFlagArg
-                    name: FILENAME
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: umis demultiplex_samples [OPTIONS] FASTQ\n\n  Demultiplex\
-                  \ a fastqtransformed FASTQ file into a FASTQ file for each\n  sample.\n\
-                  \nOptions:\n  --out_dir TEXT\n  --nedit INTEGER\n  --barcodes FILENAME\n\
-                  \  --help               Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - umis
-                - demultiplex_cells
-                positional:
-                - !Positional
-                  description: ''
-                  position: 0
-                  name: FASTQ
-                  optional: false
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --out_dir
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --readnumber
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --prefix
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --cb_histogram
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --cb_cutoff
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: umis demultiplex_cells [OPTIONS] FASTQ\n\n  Demultiplex\
-                  \ a fastqtransformed FASTQ file into a FASTQ file for each cell.\n\
-                  \nOptions:\n  --out_dir TEXT\n  --readnumber TEXT\n  --prefix TEXT\n\
-                  \  --cb_histogram TEXT\n  --cb_cutoff INTEGER\n  --help        \
-                  \       Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - umis
-                - fasttagcount
-                positional:
-                - !Positional
-                  description: ''
-                  position: 0
-                  name: SAM
-                  optional: false
-                - !Positional
-                  description: ''
-                  position: 1
-                  name: OUT
-                  optional: false
-                named:
-                - !Flag
-                  description: "A TSV file mapping transcript ids to gene ids. If\n\
-                    provided expression will be summarised to gene level\n(recommended)."
-                  synonyms:
-                  - --genemap
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --positional
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --minevidence
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "A TSV file with CBs and a count. If the counts are\
-                    \ are\nthe number of reads at a CB, the cb_cutoff option can\n\
-                    be used to filter out CBs to be counted."
-                  synonyms:
-                  - --cb_histogram
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: "Number of counts to filter cellular barcodes. Set\
-                    \ to\n'auto' to calculate a cutoff automatically."
-                  synonyms:
-                  - --cb_cutoff
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --subsample
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                - !Flag
-                  description: "Parse BAM tags in stead of read name. In this mode\
-                    \ the\noptional tags UM and CR will be used for UMI and cell\n\
-                    barcode, respetively."
-                  synonyms:
-                  - --parse_tags
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Use the optional TX and GX tags in the BAM file to\
-                    \ read\ngene mapping information in stead of the mapping target\n\
-                    nane. Useful if e.g. reads have been mapped to genome\nin stead\
-                    \ of transcriptome."
-                  synonyms:
-                  - --gene_tags
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Save a sparse matrix of counts without UMI deduping\
-                    \ to\nthis file."
-                  synonyms:
-                  - --umi_matrix
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: umis fasttagcount [OPTIONS] SAM OUT\n\n  Count\
-                  \ up evidence for tagged molecules, this implementation assumes\
-                  \ the\n  alignment file is coordinate sorted\n\nOptions:\n  --genemap\
-                  \ TEXT       A TSV file mapping transcript ids to gene ids. If\n\
-                  \                       provided expression will be summarised to\
-                  \ gene level\n                       (recommended).\n\n  --positional\n\
-                  \  --minevidence FLOAT\n  --cb_histogram TEXT  A TSV file with CBs\
-                  \ and a count. If the counts are are\n                       the\
-                  \ number of reads at a CB, the cb_cutoff option can\n          \
-                  \             be used to filter out CBs to be counted.\n\n  --cb_cutoff\
-                  \ TEXT     Number of counts to filter cellular barcodes. Set to\n\
-                  \                       'auto' to calculate a cutoff automatically.\n\
-                  \n  --subsample INTEGER\n  --parse_tags         Parse BAM tags in\
-                  \ stead of read name. In this mode the\n                       optional\
-                  \ tags UM and CR will be used for UMI and cell\n               \
-                  \        barcode, respetively.\n\n  --gene_tags          Use the\
-                  \ optional TX and GX tags in the BAM file to read\n            \
-                  \           gene mapping information in stead of the mapping target\n\
-                  \                       nane. Useful if e.g. reads have been mapped\
-                  \ to genome\n                       in stead of transcriptome.\n\
-                  \n  --umi_matrix TEXT    Save a sparse matrix of counts without\
-                  \ UMI deduping to\n                       this file.\n\n  --help\
-                  \               Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - umis
-                - bamtag
-                positional:
-                - !Positional
-                  description: ''
-                  position: 0
-                  name: SAM
-                  optional: false
-                named: []
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: umis bamtag [OPTIONS] SAM\n\n  Convert a BAM/SAM\
-                  \ with fastqtransformed read names to have UMI and\n  cellular barcode\
-                  \ tags\n\nOptions:\n  --help  Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - umis
-                - fastqtransform
-                positional:
-                - !Positional
-                  description: 'Options:'
-                  position: 0
-                  name: stdout.
-                  optional: false
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --keep_fastq_tags
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: Keep dual index barcodes separate.
-                  synonyms:
-                  - --separate_cb
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --demuxed_cb
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --cores
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --fastq1out
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --fastq2out
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: Minimum length of read to keep.
-                  synonyms:
-                  - --min_length
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: umis fastqtransform [OPTIONS] TRANSFORM FASTQ1\
-                  \ [FASTQ2] [FASTQ3]\n                           [FASTQ4]\n\n  Transform\
-                  \ input reads to the tagcounts compatible read layout using\n  regular\
-                  \ expressions as defined in a transform file. Outputs new format\
-                  \ to\n  stdout.\n\nOptions:\n  --keep_fastq_tags\n  --separate_cb\
-                  \         Keep dual index barcodes separate.\n  --demuxed_cb TEXT\n\
-                  \  --cores INTEGER\n  --fastq1out TEXT\n  --fastq2out TEXT\n  --min_length\
-                  \ INTEGER  Minimum length of read to keep.\n  --help           \
-                  \     Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - umis
-                - sb_filter
-                positional:
-                - !Positional
-                  description: 'Options:'
-                  position: 0
-                  name: files.
-                  optional: false
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --bc
-                  args: !SimpleFlagArg
-                    name: FILENAME
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --cores
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --nedit
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: umis sb_filter [OPTIONS] FASTQ\n\n  Filters reads\
-                  \ with non-matching sample barcodes Expects formatted fastq\n  files.\n\
-                  \nOptions:\n  --bc FILENAME\n  --cores INTEGER\n  --nedit INTEGER\n\
-                  \  --help           Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - umis
-                - to...
-                positional:
-                - !Positional
-                  description: ''
-                  position: 0
-                  name: umis
-                  optional: false
-                - !Positional
-                  description: ''
-                  position: 1
-                  name: COMMAND
-                  optional: false
-                - !Positional
-                  description: ''
-                  position: 2
-                  name: ARGS
-                  optional: true
-                named: []
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag:
-                usage_flag:
-                version_flag:
-                help_text: "Usage: umis [OPTIONS] COMMAND [ARGS]...\nTry 'umis --help'\
-                  \ for help.\n\nError: No such command 'to...'.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - umis
-                - sparse
-                positional:
-                - !Positional
-                  description: ''
-                  position: 0
-                  name: CSV
-                  optional: false
-                - !Positional
-                  description: ''
-                  position: 1
-                  name: SPARSE
-                  optional: false
-                named: []
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: umis sparse [OPTIONS] CSV SPARSE\n\n  Convert a\
-                  \ CSV file to a sparse matrix with rows and column names saved as\n\
-                  \  companion files.\n\nOptions:\n  --help  Show this message and\
-                  \ exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - umis
-                - umi_histogram
-                positional:
-                - !Positional
-                  description: ''
-                  position: 0
-                  name: FASTQ
-                  optional: false
-                named: []
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: umis umi_histogram [OPTIONS] FASTQ\n\n  Counts\
-                  \ the number of reads for each UMI\n\n  Expects formatted fastq\
-                  \ files.\n\nOptions:\n  --help  Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - umis
-                - tagcount
-                positional:
-                - !Positional
-                  description: ''
-                  position: 0
-                  name: SAM
-                  optional: false
-                - !Positional
-                  description: ''
-                  position: 1
-                  name: OUT
-                  optional: false
-                named:
-                - !Flag
-                  description: "A TSV file mapping transcript ids to gene ids.\nIf\
-                    \ provided expression will be summarised to\ngene level (recommended)."
-                  synonyms:
-                  - --genemap
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --output_evidence_table
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --positional
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --minevidence
-                  args: !SimpleFlagArg
-                    name: FLOAT
-                  optional: true
-                - !Flag
-                  description: "A TSV file with CBs and a count. If the counts\nare\
-                    \ are the number of reads at a CB, the\ncb_cutoff option can be\
-                    \ used to filter out CBs\nto be counted."
-                  synonyms:
-                  - --cb_histogram
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: "Number of counts to filter cellular barcodes.\nSet\
-                    \ to 'auto' to calculate a cutoff\nautomatically."
-                  synonyms:
-                  - --cb_cutoff
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --no_scale_evidence
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --subsample
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                - !Flag
-                  description: Ouput counts in MatrixMarket format.
-                  synonyms:
-                  - --sparse
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Parse BAM tags in stead of read name. In this\nmode\
-                    \ the optional tags UM and CR will be used\nfor UMI and cell barcode,\
-                    \ respetively."
-                  synonyms:
-                  - --parse_tags
-                  args: !EmptyFlagArg {}
-                  optional: true
-                - !Flag
-                  description: "Use the optional TX and GX tags in the BAM\nfile to\
-                    \ read gene mapping information in stead\nof the mapping target\
-                    \ nane. Useful if e.g.\nreads have been mapped to genome in stead\
-                    \ of\ntranscriptome."
-                  synonyms:
-                  - --gene_tags
-                  args: !EmptyFlagArg {}
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: umis tagcount [OPTIONS] SAM OUT\n\n  Count up evidence\
-                  \ for tagged molecules\n\nOptions:\n  --genemap TEXT           \
-                  \     A TSV file mapping transcript ids to gene ids.\n         \
-                  \                       If provided expression will be summarised\
-                  \ to\n                                gene level (recommended).\n\
-                  \n  --output_evidence_table TEXT\n  --positional\n  --minevidence\
-                  \ FLOAT\n  --cb_histogram TEXT           A TSV file with CBs and\
-                  \ a count. If the counts\n                                are are\
-                  \ the number of reads at a CB, the\n                           \
-                  \     cb_cutoff option can be used to filter out CBs\n         \
-                  \                       to be counted.\n\n  --cb_cutoff TEXT   \
-                  \           Number of counts to filter cellular barcodes.\n    \
-                  \                            Set to 'auto' to calculate a cutoff\n\
-                  \                                automatically.\n\n  --no_scale_evidence\n\
-                  \  --subsample INTEGER\n  --sparse                      Ouput counts\
-                  \ in MatrixMarket format.\n  --parse_tags                  Parse\
-                  \ BAM tags in stead of read name. In this\n                    \
-                  \            mode the optional tags UM and CR will be used\n   \
-                  \                             for UMI and cell barcode, respetively.\n\
-                  \n  --gene_tags                   Use the optional TX and GX tags\
-                  \ in the BAM\n                                file to read gene\
-                  \ mapping information in stead\n                               \
-                  \ of the mapping target nane. Useful if e.g.\n                 \
-                  \               reads have been mapped to genome in stead of\n \
-                  \                               transcriptome.\n\n  --help     \
-                  \                   Show this message and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - umis
-                - add_uid
-                positional:
-                - !Positional
-                  description: ''
-                  position: 0
-                  name: FASTQ
-                  optional: false
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --cores
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: umis add_uid [OPTIONS] FASTQ\n\n  Adds UID:[samplebc\
-                  \ cellbc umi] to readname for umi-tools deduplication\n  Expects\
-                  \ formatted fastq files with correct sample and cell barcodes.\n\
-                  \nOptions:\n  --cores INTEGER\n  --help           Show this message\
-                  \ and exit.\n"
-                generated_using: *id005
-              - !Command
-                command:
-                - umis
-                - kallisto
-                positional:
-                - !Positional
-                  description: ''
-                  position: 0
-                  name: FASTQ
-                  optional: false
-                named:
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --out_dir
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --cb_histogram
-                  args: !SimpleFlagArg
-                    name: TEXT
-                  optional: true
-                - !Flag
-                  description: ''
-                  synonyms:
-                  - --cb_cutoff
-                  args: !SimpleFlagArg
-                    name: INTEGER
-                  optional: true
-                parent: *id004
-                subcommands: []
-                usage: []
-                help_flag: !Flag
-                  description: Show this message and exit.
-                  synonyms:
-                  - --help
-                  args: !EmptyFlagArg {}
-                  optional: true
-                usage_flag:
-                version_flag:
-                help_text: "Usage: umis kallisto [OPTIONS] FASTQ\n\n  Convert fastqtransformed\
-                  \ file to output format compatible with kallisto.\n\nOptions:\n\
-                  \  --out_dir TEXT\n  --cb_histogram TEXT\n  --cb_cutoff INTEGER\n\
-                  \  --help               Show this message and exit.\n"
-                generated_using: *id005
-              usage: []
-              help_flag: !Flag
-                description: Show this message and exit.
-                synonyms:
-                - --help
-                args: !EmptyFlagArg {}
-                optional: true
-              usage_flag:
-              version_flag:
-              help_text: "Usage: umis [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --help\
-                \  Show this message and exit.\n\nCommands:\n  add_uid           \
-                \   Adds UID:[samplebc cellbc umi] to readname for...\n  bamtag  \
-                \             Convert a BAM/SAM with fastqtransformed read names\n\
-                \                       to...\n\n  cb_filter            Filters reads\
-                \ with non-matching barcodes Expects...\n  cb_histogram         Counts\
-                \ the number of reads for each cellular barcode...\n  demultiplex_cells\
-                \    Demultiplex a fastqtransformed FASTQ file into a...\n  demultiplex_samples\
-                \  Demultiplex a fastqtransformed FASTQ file into a...\n  fastqtransform\
-                \       Transform input reads to the tagcounts compatible...\n  fasttagcount\
-                \         Count up evidence for tagged molecules, this...\n  kallisto\
-                \             Convert fastqtransformed file to output format...\n\
-                \  mb_filter            Filters umis with non-ACGT bases Expects formatted...\n\
-                \  sb_filter            Filters reads with non-matching sample barcodes...\n\
-                \  sparse               Convert a CSV file to a sparse matrix with\
-                \ rows and...\n  subset_bamfile       Subset a SAM/BAM file, keeping\
-                \ only alignments from...\n  tagcount             Count up evidence\
-                \ for tagged molecules\n  umi_histogram        Counts the number of\
-                \ reads for each UMI Expects...\n  version\n"
-              generated_using: *id005
+            parent:
             subcommands:
             - !Command
               command: *id002
@@ -861,7 +63,855 @@ subcommands:
                 name: barcodes
                 optional: false
               named: []
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent: &id004 !Command
+                  command:
+                  - umis
+                  positional: []
+                  named: []
+                  parent:
+                  subcommands:
+                  - *id003
+                  - !Command
+                    command:
+                    - umis
+                    - cb_histogram
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: FASTQ
+                      optional: false
+                    named:
+                    - !Flag
+                      description: "Output a count of each UMI for each cellular barcode\n\
+                        to this file."
+                      synonyms:
+                      - --umi_histogram
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: umis cb_histogram [OPTIONS] FASTQ\n\n  Counts\
+                      \ the number of reads for each cellular barcode\n\n  Expects\
+                      \ formatted fastq files.\n\nOptions:\n  --umi_histogram TEXT\
+                      \  Output a count of each UMI for each cellular barcode\n  \
+                      \                      to this file.\n\n  --help           \
+                      \     Show this message and exit.\n"
+                    generated_using: &id005
+                    - --help
+                  - !Command
+                    command:
+                    - umis
+                    - mb_filter
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: FASTQ
+                      optional: false
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --cores
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: umis mb_filter [OPTIONS] FASTQ\n\n  Filters\
+                      \ umis with non-ACGT bases Expects formatted fastq files.\n\n\
+                      Options:\n  --cores INTEGER\n  --help           Show this message\
+                      \ and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - umis
+                    - demultiplex_samples
+                    positional:
+                    - !Positional
+                      description: 'Options:'
+                      position: 0
+                      name: sample.
+                      optional: false
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --out_dir
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --nedit
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --barcodes
+                      args: !SimpleFlagArg
+                        name: FILENAME
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: umis demultiplex_samples [OPTIONS] FASTQ\n\n\
+                      \  Demultiplex a fastqtransformed FASTQ file into a FASTQ file\
+                      \ for each\n  sample.\n\nOptions:\n  --out_dir TEXT\n  --nedit\
+                      \ INTEGER\n  --barcodes FILENAME\n  --help               Show\
+                      \ this message and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - umis
+                    - demultiplex_cells
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: FASTQ
+                      optional: false
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --out_dir
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --readnumber
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --prefix
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --cb_histogram
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --cb_cutoff
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: umis demultiplex_cells [OPTIONS] FASTQ\n\n\
+                      \  Demultiplex a fastqtransformed FASTQ file into a FASTQ file\
+                      \ for each cell.\n\nOptions:\n  --out_dir TEXT\n  --readnumber\
+                      \ TEXT\n  --prefix TEXT\n  --cb_histogram TEXT\n  --cb_cutoff\
+                      \ INTEGER\n  --help               Show this message and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - umis
+                    - fasttagcount
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: SAM
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 1
+                      name: OUT
+                      optional: false
+                    named:
+                    - !Flag
+                      description: "A TSV file mapping transcript ids to gene ids.\
+                        \ If\nprovided expression will be summarised to gene level\n\
+                        (recommended)."
+                      synonyms:
+                      - --genemap
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --positional
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --minevidence
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "A TSV file with CBs and a count. If the counts\
+                        \ are are\nthe number of reads at a CB, the cb_cutoff option\
+                        \ can\nbe used to filter out CBs to be counted."
+                      synonyms:
+                      - --cb_histogram
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: "Number of counts to filter cellular barcodes.\
+                        \ Set to\n'auto' to calculate a cutoff automatically."
+                      synonyms:
+                      - --cb_cutoff
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --subsample
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    - !Flag
+                      description: "Parse BAM tags in stead of read name. In this\
+                        \ mode the\noptional tags UM and CR will be used for UMI and\
+                        \ cell\nbarcode, respetively."
+                      synonyms:
+                      - --parse_tags
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Use the optional TX and GX tags in the BAM file\
+                        \ to read\ngene mapping information in stead of the mapping\
+                        \ target\nnane. Useful if e.g. reads have been mapped to genome\n\
+                        in stead of transcriptome."
+                      synonyms:
+                      - --gene_tags
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Save a sparse matrix of counts without UMI deduping\
+                        \ to\nthis file."
+                      synonyms:
+                      - --umi_matrix
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: umis fasttagcount [OPTIONS] SAM OUT\n\n  Count\
+                      \ up evidence for tagged molecules, this implementation assumes\
+                      \ the\n  alignment file is coordinate sorted\n\nOptions:\n \
+                      \ --genemap TEXT       A TSV file mapping transcript ids to\
+                      \ gene ids. If\n                       provided expression will\
+                      \ be summarised to gene level\n                       (recommended).\n\
+                      \n  --positional\n  --minevidence FLOAT\n  --cb_histogram TEXT\
+                      \  A TSV file with CBs and a count. If the counts are are\n\
+                      \                       the number of reads at a CB, the cb_cutoff\
+                      \ option can\n                       be used to filter out CBs\
+                      \ to be counted.\n\n  --cb_cutoff TEXT     Number of counts\
+                      \ to filter cellular barcodes. Set to\n                    \
+                      \   'auto' to calculate a cutoff automatically.\n\n  --subsample\
+                      \ INTEGER\n  --parse_tags         Parse BAM tags in stead of\
+                      \ read name. In this mode the\n                       optional\
+                      \ tags UM and CR will be used for UMI and cell\n           \
+                      \            barcode, respetively.\n\n  --gene_tags        \
+                      \  Use the optional TX and GX tags in the BAM file to read\n\
+                      \                       gene mapping information in stead of\
+                      \ the mapping target\n                       nane. Useful if\
+                      \ e.g. reads have been mapped to genome\n                  \
+                      \     in stead of transcriptome.\n\n  --umi_matrix TEXT    Save\
+                      \ a sparse matrix of counts without UMI deduping to\n      \
+                      \                 this file.\n\n  --help               Show\
+                      \ this message and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - umis
+                    - bamtag
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: SAM
+                      optional: false
+                    named: []
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: umis bamtag [OPTIONS] SAM\n\n  Convert a BAM/SAM\
+                      \ with fastqtransformed read names to have UMI and\n  cellular\
+                      \ barcode tags\n\nOptions:\n  --help  Show this message and\
+                      \ exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - umis
+                    - fastqtransform
+                    positional:
+                    - !Positional
+                      description: 'Options:'
+                      position: 0
+                      name: stdout.
+                      optional: false
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --keep_fastq_tags
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: Keep dual index barcodes separate.
+                      synonyms:
+                      - --separate_cb
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --demuxed_cb
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --cores
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --fastq1out
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --fastq2out
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: Minimum length of read to keep.
+                      synonyms:
+                      - --min_length
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: umis fastqtransform [OPTIONS] TRANSFORM FASTQ1\
+                      \ [FASTQ2] [FASTQ3]\n                           [FASTQ4]\n\n\
+                      \  Transform input reads to the tagcounts compatible read layout\
+                      \ using\n  regular expressions as defined in a transform file.\
+                      \ Outputs new format to\n  stdout.\n\nOptions:\n  --keep_fastq_tags\n\
+                      \  --separate_cb         Keep dual index barcodes separate.\n\
+                      \  --demuxed_cb TEXT\n  --cores INTEGER\n  --fastq1out TEXT\n\
+                      \  --fastq2out TEXT\n  --min_length INTEGER  Minimum length\
+                      \ of read to keep.\n  --help                Show this message\
+                      \ and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - umis
+                    - sb_filter
+                    positional:
+                    - !Positional
+                      description: 'Options:'
+                      position: 0
+                      name: files.
+                      optional: false
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --bc
+                      args: !SimpleFlagArg
+                        name: FILENAME
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --cores
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --nedit
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: umis sb_filter [OPTIONS] FASTQ\n\n  Filters\
+                      \ reads with non-matching sample barcodes Expects formatted\
+                      \ fastq\n  files.\n\nOptions:\n  --bc FILENAME\n  --cores INTEGER\n\
+                      \  --nedit INTEGER\n  --help           Show this message and\
+                      \ exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - umis
+                    - to...
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: umis
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 1
+                      name: COMMAND
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 2
+                      name: ARGS
+                      optional: true
+                    named: []
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: umis [OPTIONS] COMMAND [ARGS]...\nTry 'umis\
+                      \ --help' for help.\n\nError: No such command 'to...'.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - umis
+                    - sparse
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: CSV
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 1
+                      name: SPARSE
+                      optional: false
+                    named: []
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: umis sparse [OPTIONS] CSV SPARSE\n\n  Convert\
+                      \ a CSV file to a sparse matrix with rows and column names saved\
+                      \ as\n  companion files.\n\nOptions:\n  --help  Show this message\
+                      \ and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - umis
+                    - umi_histogram
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: FASTQ
+                      optional: false
+                    named: []
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: umis umi_histogram [OPTIONS] FASTQ\n\n  Counts\
+                      \ the number of reads for each UMI\n\n  Expects formatted fastq\
+                      \ files.\n\nOptions:\n  --help  Show this message and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - umis
+                    - tagcount
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: SAM
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 1
+                      name: OUT
+                      optional: false
+                    named:
+                    - !Flag
+                      description: "A TSV file mapping transcript ids to gene ids.\n\
+                        If provided expression will be summarised to\ngene level (recommended)."
+                      synonyms:
+                      - --genemap
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --output_evidence_table
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --positional
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --minevidence
+                      args: !SimpleFlagArg
+                        name: FLOAT
+                      optional: true
+                    - !Flag
+                      description: "A TSV file with CBs and a count. If the counts\n\
+                        are are the number of reads at a CB, the\ncb_cutoff option\
+                        \ can be used to filter out CBs\nto be counted."
+                      synonyms:
+                      - --cb_histogram
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: "Number of counts to filter cellular barcodes.\n\
+                        Set to 'auto' to calculate a cutoff\nautomatically."
+                      synonyms:
+                      - --cb_cutoff
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --no_scale_evidence
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --subsample
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    - !Flag
+                      description: Ouput counts in MatrixMarket format.
+                      synonyms:
+                      - --sparse
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Parse BAM tags in stead of read name. In this\n\
+                        mode the optional tags UM and CR will be used\nfor UMI and\
+                        \ cell barcode, respetively."
+                      synonyms:
+                      - --parse_tags
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    - !Flag
+                      description: "Use the optional TX and GX tags in the BAM\nfile\
+                        \ to read gene mapping information in stead\nof the mapping\
+                        \ target nane. Useful if e.g.\nreads have been mapped to genome\
+                        \ in stead of\ntranscriptome."
+                      synonyms:
+                      - --gene_tags
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: umis tagcount [OPTIONS] SAM OUT\n\n  Count\
+                      \ up evidence for tagged molecules\n\nOptions:\n  --genemap\
+                      \ TEXT                A TSV file mapping transcript ids to gene\
+                      \ ids.\n                                If provided expression\
+                      \ will be summarised to\n                                gene\
+                      \ level (recommended).\n\n  --output_evidence_table TEXT\n \
+                      \ --positional\n  --minevidence FLOAT\n  --cb_histogram TEXT\
+                      \           A TSV file with CBs and a count. If the counts\n\
+                      \                                are are the number of reads\
+                      \ at a CB, the\n                                cb_cutoff option\
+                      \ can be used to filter out CBs\n                          \
+                      \      to be counted.\n\n  --cb_cutoff TEXT              Number\
+                      \ of counts to filter cellular barcodes.\n                 \
+                      \               Set to 'auto' to calculate a cutoff\n      \
+                      \                          automatically.\n\n  --no_scale_evidence\n\
+                      \  --subsample INTEGER\n  --sparse                      Ouput\
+                      \ counts in MatrixMarket format.\n  --parse_tags           \
+                      \       Parse BAM tags in stead of read name. In this\n    \
+                      \                            mode the optional tags UM and CR\
+                      \ will be used\n                                for UMI and\
+                      \ cell barcode, respetively.\n\n  --gene_tags              \
+                      \     Use the optional TX and GX tags in the BAM\n         \
+                      \                       file to read gene mapping information\
+                      \ in stead\n                                of the mapping target\
+                      \ nane. Useful if e.g.\n                                reads\
+                      \ have been mapped to genome in stead of\n                 \
+                      \               transcriptome.\n\n  --help                 \
+                      \       Show this message and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - umis
+                    - add_uid
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: FASTQ
+                      optional: false
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --cores
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: umis add_uid [OPTIONS] FASTQ\n\n  Adds UID:[samplebc\
+                      \ cellbc umi] to readname for umi-tools deduplication\n  Expects\
+                      \ formatted fastq files with correct sample and cell barcodes.\n\
+                      \nOptions:\n  --cores INTEGER\n  --help           Show this\
+                      \ message and exit.\n"
+                    generated_using: *id005
+                  - !Command
+                    command:
+                    - umis
+                    - kallisto
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: FASTQ
+                      optional: false
+                    named:
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --out_dir
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --cb_histogram
+                      args: !SimpleFlagArg
+                        name: TEXT
+                      optional: true
+                    - !Flag
+                      description: ''
+                      synonyms:
+                      - --cb_cutoff
+                      args: !SimpleFlagArg
+                        name: INTEGER
+                      optional: true
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: Show this message and exit.
+                      synonyms:
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "Usage: umis kallisto [OPTIONS] FASTQ\n\n  Convert\
+                      \ fastqtransformed file to output format compatible with kallisto.\n\
+                      \nOptions:\n  --out_dir TEXT\n  --cb_histogram TEXT\n  --cb_cutoff\
+                      \ INTEGER\n  --help               Show this message and exit.\n"
+                    generated_using: *id005
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: umis [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n\
+                    \  --help  Show this message and exit.\n\nCommands:\n  add_uid\
+                    \              Adds UID:[samplebc cellbc umi] to readname for...\n\
+                    \  bamtag               Convert a BAM/SAM with fastqtransformed\
+                    \ read names\n                       to...\n\n  cb_filter    \
+                    \        Filters reads with non-matching barcodes Expects...\n\
+                    \  cb_histogram         Counts the number of reads for each cellular\
+                    \ barcode...\n  demultiplex_cells    Demultiplex a fastqtransformed\
+                    \ FASTQ file into a...\n  demultiplex_samples  Demultiplex a fastqtransformed\
+                    \ FASTQ file into a...\n  fastqtransform       Transform input\
+                    \ reads to the tagcounts compatible...\n  fasttagcount       \
+                    \  Count up evidence for tagged molecules, this...\n  kallisto\
+                    \             Convert fastqtransformed file to output format...\n\
+                    \  mb_filter            Filters umis with non-ACGT bases Expects\
+                    \ formatted...\n  sb_filter            Filters reads with non-matching\
+                    \ sample barcodes...\n  sparse               Convert a CSV file\
+                    \ to a sparse matrix with rows and...\n  subset_bamfile      \
+                    \ Subset a SAM/BAM file, keeping only alignments from...\n  tagcount\
+                    \             Count up evidence for tagged molecules\n  umi_histogram\
+                    \        Counts the number of reads for each UMI Expects...\n\
+                    \  version\n"
+                  generated_using: *id005
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: 'Options:'
+                    position: 0
+                    name: barcodes
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: Show this message and exit.
+                    synonyms:
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: umis subset_bamfile [OPTIONS] SAM BARCODES\n\n\
+                    \  Subset a SAM/BAM file, keeping only alignments from given cellular\n\
+                    \  barcodes\n\nOptions:\n  --help  Show this message and exit.\n"
+                  generated_using: *id005
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "Usage: umis subset_bamfile [OPTIONS] SAM BARCODES\nTry\
+                  \ 'umis subset_bamfile --help' for help.\n\nError: no such option:\
+                  \ -h\n"
+                generated_using: &id006
+                - -h
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -882,8 +932,7 @@ subcommands:
             version_flag:
             help_text: "Usage: umis subset_bamfile [OPTIONS] SAM BARCODES\nTry 'umis\
               \ subset_bamfile --help' for help.\n\nError: no such option: -h\n"
-            generated_using: &id006
-            - -h
+            generated_using: *id006
           subcommands: []
           usage: []
           help_flag: !Flag

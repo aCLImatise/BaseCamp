@@ -91,28 +91,10 @@ subcommands:
             name: pfs file
             optional: false
           named: []
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: "Specify that the sequence is DNA, and DNA parameters are\
-                \ to be used.\nDefault is to use RNA parameters."
-              synonyms:
-              - -d
-              - -D
-              - --DNA
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "Specify the temperature at which calculation takes place\
-                \ in Kelvin.\nDefault is 310.15 K, which is 37 degrees C.\n"
-              synonyms:
-              - -t
-              - -T
-              - --temperature
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -139,7 +121,103 @@ subcommands:
                 name: pfs file
                 optional: false
               named: []
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: "Specify that the sequence is DNA, and DNA parameters\
+                    \ are to be used.\nDefault is to use RNA parameters."
+                  synonyms:
+                  - -d
+                  - -D
+                  - --DNA
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "Specify the temperature at which calculation takes\
+                    \ place in Kelvin.\nDefault is 310.15 K, which is 37 degrees C.\n"
+                  synonyms:
+                  - -t
+                  - -T
+                  - --temperature
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: bipartition
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: seq file 1
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: seq file 2
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 3
+                    name: pfs file
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "Incorrect number of required parameters given. (Found\
+                    \ 1 but expected 3.)\nUSAGE: bipartition <seq file 1> <seq file\
+                    \ 2> <pfs file> [options]\nUse any of the following options to\
+                    \ get a help message: -h --help \n"
+                  generated_using: &id004 []
+                usage: []
+                help_flag: !Flag
+                  description: Display the usage details message.
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: Display version and copyright information for this
+                    interface.
+                  synonyms:
+                  - -v
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "USAGE: bipartition <seq file 1> <seq file 2> <pfs file>\
+                  \ [options]\nAll flags are case-insensitive, and grouping of flags\
+                  \ is not allowed.\n\n=============================\n==== Required\
+                  \ Parameters ====\n=============================\n<seq file 1>\n\
+                  \    The name of a file containing a first input sequence.\n\n<seq\
+                  \ file 2>\n    The name of a file containing a second input sequence.\n\
+                  \n<pfs file>\n    The name of a partition function save file to\
+                  \ which output will be\n    written.\n\n=========================================\n\
+                  ==== Option Flags Without Parameters ====\n=========================================\n\
+                  -d -D --DNA \n    Specify that the sequence is DNA, and DNA parameters\
+                  \ are to be used.\n    Default is to use RNA parameters.\n\n-h --help\
+                  \ \n    Display the usage details message.\n\n-v --version \n  \
+                  \  Display version and copyright information for this interface.\n\
+                  \n======================================\n==== Option Flags With\
+                  \ Parameters ====\n======================================\nAll parameters\
+                  \ must follow their associated flag directly.\nFailure to do so\
+                  \ may result in aberrant program behavior.\n\n-t -T --temperature\
+                  \ \n    Specify the temperature at which calculation takes place\
+                  \ in Kelvin.\n    Default is 310.15 K, which is 37 degrees C.\n\n"
+                generated_using: &id005
+                - --help
               subcommands: []
               usage: []
               help_flag:
@@ -149,23 +227,11 @@ subcommands:
                 \ but expected 3.)\nUSAGE: bipartition <seq file 1> <seq file 2> <pfs\
                 \ file> [options]\nUse any of the following options to get a help\
                 \ message: -h --help \n"
-              generated_using: &id004 []
+              generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: Display the usage details message.
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: Display version and copyright information for this interface.
-              synonyms:
-              - -v
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "USAGE: bipartition <seq file 1> <seq file 2> <pfs file> [options]\n\
               All flags are case-insensitive, and grouping of flags is not allowed.\n\
               \n=============================\n==== Required Parameters ====\n=============================\n\
@@ -183,8 +249,7 @@ subcommands:
               \ to do so may result in aberrant program behavior.\n\n-t -T --temperature\
               \ \n    Specify the temperature at which calculation takes place in\
               \ Kelvin.\n    Default is 310.15 K, which is 37 degrees C.\n\n"
-            generated_using: &id005
-            - --help
+            generated_using: *id005
           subcommands: []
           usage: []
           help_flag:

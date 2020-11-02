@@ -72,7 +72,7 @@ subcommands:
     args: !SimpleFlagArg
       name: lorikeet.jar
     optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -143,7 +143,7 @@ subcommands:
         args: !SimpleFlagArg
           name: lorikeet.jar
         optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -215,17 +215,10 @@ subcommands:
             args: !SimpleFlagArg
               name: lorikeet.jar
             optional: true
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: ''
-              synonyms:
-              - -jar
-              args: !SimpleFlagArg
-                name: lorikeet.jar
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -294,7 +287,266 @@ subcommands:
                 args: !SimpleFlagArg
                   name: lorikeet.jar
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: ''
+                  synonyms:
+                  - -jar
+                  args: !SimpleFlagArg
+                    name: lorikeet.jar
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: java
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: fix-lineages
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "| --input <value>\nInput lineage information. (Output\
+                      \ of merge-spoligotypes)"
+                    synonyms:
+                    - -i
+                    args: !SimpleFlagArg
+                      name: value
+                    optional: true
+                  - !Flag
+                    description: "| --output <value>\nOutput file."
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: value
+                    optional: true
+                  - !Flag
+                    description: "| --tree <value>\nPhylogenetic tree file in NWK\
+                      \ format."
+                    synonyms:
+                    - -t
+                    args: !SimpleFlagArg
+                      name: value
+                    optional: true
+                  - !Flag
+                    description: "| --snpmatrix <value>\nMatrix with pairwise SNP\
+                      \ distances (created with pelican)"
+                    synonyms:
+                    - -s
+                    args: !SimpleFlagArg
+                      name: value
+                    optional: true
+                  - !Flag
+                    description: Maximum distance to consider closest neighbors. [Default=500]
+                    synonyms:
+                    - --distance
+                    args: !SimpleFlagArg
+                      name: value
+                    optional: true
+                  - !Flag
+                    description: "Fraction of closest neighbors that need to agree\
+                      \ to perform change. [Default=0.6]\n"
+                    synonyms:
+                    - --fraction
+                    args: !SimpleFlagArg
+                      name: value
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -jar
+                    args: !SimpleFlagArg
+                      name: lorikeet.jar
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "Error: Unknown option --help\nError: Missing option\
+                    \ --input\nError: Missing option --output\nError: Missing option\
+                    \ --tree\nError: Missing option --snpmatrix\nUsage: java -jar\
+                    \ lorikeet.jar fix-lineages [options]\n\n  -i <value> | --input\
+                    \ <value>\n        Input lineage information. (Output of merge-spoligotypes)\n\
+                    \  -o <value> | --output <value>\n        Output file.\n  -t <value>\
+                    \ | --tree <value>\n        Phylogenetic tree file in NWK format.\n\
+                    \  -s <value> | --snpmatrix <value>\n        Matrix with pairwise\
+                    \ SNP distances (created with pelican)\n  --distance <value>\n\
+                    \        Maximum distance to consider closest neighbors. [Default=500]\n\
+                    \  --fraction <value>\n        Fraction of closest neighbors that\
+                    \ need to agree to perform change. [Default=0.6]\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - lorikeet
+                  - merge-spoligotypes
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: java
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: merge-spoligotypes
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "| --input <value>\nInput directory that contains\
+                      \ all spoligotype files. You can specify multiple -i arguments"
+                    synonyms:
+                    - -i
+                    args: !SimpleFlagArg
+                      name: value
+                    optional: true
+                  - !Flag
+                    description: "| --output <value>\nOutput prefix"
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: value
+                    optional: true
+                  - !Flag
+                    description: "| --recursive\nSearch input directories recursively\
+                      \ [Default=true]"
+                    synonyms:
+                    - -r
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "| --pattern <value>\nFile name pattern for the input\
+                      \ files. [Default=\".*.spoligotype]\"\n"
+                    synonyms:
+                    - -p
+                    args: !SimpleFlagArg
+                      name: value
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -jar
+                    args: !SimpleFlagArg
+                      name: lorikeet.jar
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "Error: Unknown option --help\nError: Missing option\
+                    \ --input\nUsage: java -jar lorikeet.jar merge-spoligotypes [options]\n\
+                    \n  -i <value> | --input <value>\n        Input directory that\
+                    \ contains all spoligotype files. You can specify multiple -i\
+                    \ arguments\n  -o <value> | --output <value>\n        Output prefix\n\
+                    \  -r | --recursive\n        Search input directories recursively\
+                    \ [Default=true]\n  -p <value> | --pattern <value>\n        File\
+                    \ name pattern for the input files. [Default=\".*.spoligotype]\"\
+                    \n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - lorikeet
+                  - multi-type
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: java
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: multi-typing
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "| --input <value>\nInput directory that contains\
+                      \ all spoligotype files. You can specify multiple -i arguments"
+                    synonyms:
+                    - -i
+                    args: !SimpleFlagArg
+                      name: value
+                    optional: true
+                  - !Flag
+                    description: "| --output <value>\nOutput prefix"
+                    synonyms:
+                    - -o
+                    args: !SimpleFlagArg
+                      name: value
+                    optional: true
+                  - !Flag
+                    description: "| --threshold <value>\nMinimum threshold"
+                    synonyms:
+                    - -t
+                    args: !SimpleFlagArg
+                      name: value
+                    optional: true
+                  - !Flag
+                    description: "| --recursive\nSearch input directories recursively\
+                      \ [Default=true]"
+                    synonyms:
+                    - -r
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "| --pattern <value>\nFile name pattern for the input\
+                      \ files. [Default=\".*.spoligotype]\"\n"
+                    synonyms:
+                    - -p
+                    args: !SimpleFlagArg
+                      name: value
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -jar
+                    args: !SimpleFlagArg
+                      name: lorikeet.jar
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "Error: Unknown option --help\nError: Missing option\
+                    \ --input\nError: Missing option --output\nUsage: java -jar lorikeet.jar\
+                    \ multi-typing [options]\n\n  -i <value> | --input <value>\n \
+                    \       Input directory that contains all spoligotype files. You\
+                    \ can specify multiple -i arguments\n  -o <value> | --output <value>\n\
+                    \        Output prefix\n  -t <value> | --threshold <value>\n \
+                    \       Minimum threshold\n  -r | --recursive\n        Search\
+                    \ input directories recursively [Default=true]\n  -p <value> |\
+                    \ --pattern <value>\n        File name pattern for the input files.\
+                    \ [Default=\".*.spoligotype]\"\n"
+                  generated_using: *id004
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "Usage:java -jar lorikeet.jar [instruction] [instruction\
+                  \ options...]\nInstructions:\n\tspoligotype            Spoligotype\
+                  \ BAM file based on digital spoligotyping\n\tmerge-spoligotypes\
+                  \     Merge multiple spoligotype files together in a single file\n\
+                  \tmulti-type             Merge multiple spoligotype files together\
+                  \ in a single file, renormalizing across multiple libraries when\
+                  \ needed.\n\tfix-lineages           Fix lineage annotations based\
+                  \ on phylogenetic tree and SNP distance matrix using a KNN classifier.\
+                  \ \n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag:
@@ -312,12 +564,9 @@ subcommands:
                 \ closest neighbors. [Default=500]\n  --fraction <value>\n       \
                 \ Fraction of closest neighbors that need to agree to perform change.\
                 \ [Default=0.6]\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - lorikeet
-              - merge-spoligotypes
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -383,9 +632,7 @@ subcommands:
                 \ files. [Default=\".*.spoligotype]\"\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - lorikeet
-              - multi-type
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -538,7 +785,7 @@ subcommands:
             args: !SimpleFlagArg
               name: lorikeet.jar
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag:
@@ -610,7 +857,7 @@ subcommands:
             args: !SimpleFlagArg
               name: lorikeet.jar
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag:
@@ -704,7 +951,7 @@ subcommands:
         args: !SimpleFlagArg
           name: lorikeet.jar
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag:
@@ -775,7 +1022,7 @@ subcommands:
         args: !SimpleFlagArg
           name: lorikeet.jar
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag:
@@ -868,7 +1115,7 @@ subcommands:
     args: !SimpleFlagArg
       name: lorikeet.jar
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:
@@ -939,7 +1186,7 @@ subcommands:
     args: !SimpleFlagArg
       name: lorikeet.jar
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag:

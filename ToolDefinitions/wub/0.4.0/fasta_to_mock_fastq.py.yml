@@ -23,7 +23,7 @@ subcommands:
     args: !SimpleFlagArg
       name: mock_quals
     optional: true
-  parent: &id007 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -45,7 +45,7 @@ subcommands:
         args: !SimpleFlagArg
           name: mock_quals
         optional: true
-      parent: &id006 !Command
+      parent: &id007 !Command
         command: *id001
         positional: []
         named: []
@@ -67,17 +67,10 @@ subcommands:
             args: !SimpleFlagArg
               name: mock_quals
             optional: true
-          parent: &id003 !Command
+          parent: &id006 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: Mock quality value (40).
-              synonyms:
-              - -q
-              args: !SimpleFlagArg
-                name: mock_quals
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -96,7 +89,104 @@ subcommands:
                 args: !SimpleFlagArg
                   name: mock_quals
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: Mock quality value (40).
+                  synonyms:
+                  - -q
+                  args: !SimpleFlagArg
+                    name: mock_quals
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: fasta_to_mock_fastq.py
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -q
+                    args: !SimpleFlagArg
+                      name: mock_quals
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: fasta_to_mock_fastq.py [-h] [-q mock_quals]\n\
+                    \                              [input_fasta] [output_fastq]\n\
+                    fasta_to_mock_fastq.py: error: argument input_fasta: can't open\
+                    \ 'input_fasta': [Errno 2] No such file or directory: 'input_fasta'\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - fasta_to_mock_fastq.py
+                  - output_fastq
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: fasta_to_mock_fastq.py
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -q
+                    args: !SimpleFlagArg
+                      name: mock_quals
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: fasta_to_mock_fastq.py [-h] [-q mock_quals]\n\
+                    \                              [input_fasta] [output_fastq]\n\
+                    fasta_to_mock_fastq.py: error: argument input_fasta: can't open\
+                    \ 'output_fastq': [Errno 2] No such file or directory: 'output_fastq'\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: fasta_to_mock_fastq.py [-h] [-q mock_quals]\n \
+                  \                             [input_fasta] [output_fastq]\n\nConvert\
+                  \ fasta file to fastq with mock qualities.\n\npositional arguments:\n\
+                  \  input_fasta    Input fasta (default: stdin).\n  output_fastq\
+                  \   Output fastq (default: stdout)\n\noptional arguments:\n  -h,\
+                  \ --help     show this help message and exit\n  -q mock_quals  Mock\
+                  \ quality value (40).\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -111,12 +201,9 @@ subcommands:
                 \                           [input_fasta] [output_fastq]\nfasta_to_mock_fastq.py:\
                 \ error: argument input_fasta: can't open 'input_fasta': [Errno 2]\
                 \ No such file or directory: 'input_fasta'\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - fasta_to_mock_fastq.py
-              - output_fastq
+              command: *id005
               positional:
               - !Positional
                 description: ''
@@ -148,13 +235,7 @@ subcommands:
                 \ No such file or directory: 'output_fastq'\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage: fasta_to_mock_fastq.py [-h] [-q mock_quals]\n     \
@@ -195,7 +276,7 @@ subcommands:
             args: !SimpleFlagArg
               name: mock_quals
             optional: true
-          parent: *id003
+          parent: *id006
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -253,7 +334,7 @@ subcommands:
         args: !SimpleFlagArg
           name: mock_quals
         optional: true
-      parent: *id006
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -311,7 +392,7 @@ subcommands:
     args: !SimpleFlagArg
       name: mock_quals
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

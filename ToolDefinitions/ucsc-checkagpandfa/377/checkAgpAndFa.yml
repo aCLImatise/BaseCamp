@@ -52,18 +52,10 @@ subcommands:
             args: !SimpleFlagArg
               name: is
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: "- Ignore seq (e.g. chrM for which we usually get\nsequence\
-                \ from GenBank but don't have AGP)"
-              synonyms:
-              - -exclude
-              args: !SimpleFlagArg
-                name: seq
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -77,15 +69,58 @@ subcommands:
                 args: !SimpleFlagArg
                   name: is
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: "- Ignore seq (e.g. chrM for which we usually get\n\
+                    sequence from GenBank but don't have AGP)"
+                  synonyms:
+                  - -exclude
+                  args: !SimpleFlagArg
+                    name: seq
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: not a valid option
+                    synonyms:
+                    - -h
+                    args: !SimpleFlagArg
+                      name: is
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "-h is not a valid option\n"
+                  generated_using: &id004
+                  - -h
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "\ncheckAgpAndFa - takes a .agp file and .fa file and ensures\
+                  \ that they are in synch\nusage:\n\n   checkAgpAndFa in.agp in.fa\n\
+                  \noptions:\n   -exclude=seq - Ignore seq (e.g. chrM for which we\
+                  \ usually get\n                  sequence from GenBank but don't\
+                  \ have AGP)\nin.fa can be a .2bit file.  If it is .fa then sequences\
+                  \ must appear\nin the same order in .agp and .fa.\n\n\n"
+                generated_using: &id005 []
               subcommands: []
               usage: []
               help_flag:
               usage_flag:
               version_flag:
               help_text: "-h is not a valid option\n"
-              generated_using: &id004
-              - -h
+              generated_using: *id004
             usage: []
             help_flag:
             usage_flag:
@@ -96,7 +131,7 @@ subcommands:
               \ get\n                  sequence from GenBank but don't have AGP)\n\
               in.fa can be a .2bit file.  If it is .fa then sequences must appear\n\
               in the same order in .agp and .fa.\n\n\n"
-            generated_using: &id005 []
+            generated_using: *id005
           subcommands: []
           usage: []
           help_flag:

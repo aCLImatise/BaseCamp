@@ -87,7 +87,7 @@ subcommands:
     - --profiling
     args: !EmptyFlagArg {}
     optional: true
-  parent: &id007 !Command
+  parent: &id008 !Command
     command: *id001
     positional: []
     named: []
@@ -173,7 +173,7 @@ subcommands:
         - --profiling
         args: !EmptyFlagArg {}
         optional: true
-      parent: &id006 !Command
+      parent: &id007 !Command
         command: *id001
         positional: []
         named: []
@@ -261,49 +261,10 @@ subcommands:
             - --profiling
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: &id006 !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: minimizer k-mer length (default 21)
-              synonyms:
-              - -k
-              - --kmerSize
-              args: !SimpleFlagArg
-                name: uint
-              optional: true
-            - !Flag
-              description: filename for log file, if omitted then STDOUT used by default
-              synonyms:
-              - --log
-              args: !SimpleFlagArg
-                name: string
-              optional: true
-            - !Flag
-              description: directory and basename for saving the outfile(s) (default
-                "./hulk-20200909212820")
-              synonyms:
-              - -o
-              - --outFile
-              args: !SimpleFlagArg
-                name: string
-              optional: true
-            - !Flag
-              description: number of processors to use (default 1)
-              synonyms:
-              - -p
-              - --processors
-              args: !SimpleFlagArg
-                name: int
-              optional: true
-            - !Flag
-              description: create the files needed to profile HULK using the go tool
-                pprof
-              synonyms:
-              - --profiling
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -389,7 +350,362 @@ subcommands:
                 - --profiling
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: minimizer k-mer length (default 21)
+                  synonyms:
+                  - -k
+                  - --kmerSize
+                  args: !SimpleFlagArg
+                    name: uint
+                  optional: true
+                - !Flag
+                  description: filename for log file, if omitted then STDOUT used
+                    by default
+                  synonyms:
+                  - --log
+                  args: !SimpleFlagArg
+                    name: string
+                  optional: true
+                - !Flag
+                  description: directory and basename for saving the outfile(s) (default
+                    "./hulk-20200909212820")
+                  synonyms:
+                  - -o
+                  - --outFile
+                  args: !SimpleFlagArg
+                    name: string
+                  optional: true
+                - !Flag
+                  description: number of processors to use (default 1)
+                  synonyms:
+                  - -p
+                  - --processors
+                  args: !SimpleFlagArg
+                    name: int
+                  optional: true
+                - !Flag
+                  description: create the files needed to profile HULK using the go
+                    tool pprof
+                  synonyms:
+                  - --profiling
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: tells HULK which sketching algorithm to use [histosketch
+                      kmv khf] (default "histosketch")
+                    synonyms:
+                    - -a
+                    - --algorithm
+                    args: !SimpleFlagArg
+                      name: string
+                    optional: true
+                  - !Flag
+                    description: write a matrix file for banner
+                    synonyms:
+                    - --bannerMatrix
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: tells HULK which distance metric to use [jaccard
+                      weightedjaccard] (default "jaccard")
+                    synonyms:
+                    - -m
+                    - --metric
+                    args: !SimpleFlagArg
+                      name: string
+                    optional: true
+                  - !Flag
+                    description: recursively search the supplied sketch directory
+                      (-d)
+                    synonyms:
+                    - --recursive
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: the directory containing the sketches to smash (compare)...
+                      (default "./")
+                    synonyms:
+                    - -d
+                    - --sketchDir
+                    args: !SimpleFlagArg
+                      name: string
+                    optional: true
+                  - !Flag
+                    description: minimizer k-mer length (default 21)
+                    synonyms:
+                    - -k
+                    - --kmerSize
+                    args: !SimpleFlagArg
+                      name: uint
+                    optional: true
+                  - !Flag
+                    description: filename for log file, if omitted then STDOUT used
+                      by default
+                    synonyms:
+                    - --log
+                    args: !SimpleFlagArg
+                      name: string
+                    optional: true
+                  - !Flag
+                    description: directory and basename for saving the outfile(s)
+                      (default "./hulk-20200909212823")
+                    synonyms:
+                    - -o
+                    - --outFile
+                    args: !SimpleFlagArg
+                      name: string
+                    optional: true
+                  - !Flag
+                    description: number of processors to use (default 1)
+                    synonyms:
+                    - -p
+                    - --processors
+                    args: !SimpleFlagArg
+                      name: int
+                    optional: true
+                  - !Flag
+                    description: create the files needed to profile HULK using the
+                      go tool pprof
+                    synonyms:
+                    - --profiling
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: help for smash
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "\n\t\tSmash a bunch of sketches and return a distance\
+                    \ matrix.\n\n\t\tThis subcommand performs pairwise comparisons\
+                    \ of sketches and then writes a distance matrix.\n\nUsage:\n \
+                    \ hulk smash [flags]\n\nFlags:\n  -a, --algorithm string   tells\
+                    \ HULK which sketching algorithm to use [histosketch kmv khf]\
+                    \ (default \"histosketch\")\n      --bannerMatrix       write\
+                    \ a matrix file for banner\n  -h, --help               help for\
+                    \ smash\n  -m, --metric string      tells HULK which distance\
+                    \ metric to use [jaccard weightedjaccard] (default \"jaccard\"\
+                    )\n      --recursive          recursively search the supplied\
+                    \ sketch directory (-d)\n  -d, --sketchDir string   the directory\
+                    \ containing the sketches to smash (compare)... (default \"./\"\
+                    )\n\nGlobal Flags:\n  -k, --kmerSize uint    minimizer k-mer length\
+                    \ (default 21)\n      --log string       filename for log file,\
+                    \ if omitted then STDOUT used by default\n  -o, --outFile string\
+                    \   directory and basename for saving the outfile(s) (default\
+                    \ \"./hulk-20200909212823\")\n  -p, --processors int   number\
+                    \ of processors to use (default 1)\n      --profiling        create\
+                    \ the files needed to profile HULK using the go tool pprof\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - hulk
+                  - sketch
+                  positional: []
+                  named:
+                  - !Flag
+                    description: FASTQ file(s) to sketch (can also pipe in STDIN)
+                    synonyms:
+                    - -f
+                    - --fastq
+                    args: !SimpleFlagArg
+                      name: strings
+                    optional: true
+                  - !Flag
+                    description: tells HULK that the input file is actually FASTA
+                      format (.fna/.fasta/.fa), not FASTQ (experimental feature)
+                    synonyms:
+                    - --fasta
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: minimizer window size (default 9)
+                    synonyms:
+                    - -w
+                    - --windowSize
+                    args: !SimpleFlagArg
+                      name: uint
+                    optional: true
+                  - !Flag
+                    description: size of k-mer sampling interval (default 0 (= no
+                      interval))
+                    synonyms:
+                    - -i
+                    - --interval
+                    args: !SimpleFlagArg
+                      name: uint
+                    optional: true
+                  - !Flag
+                    description: size of sketch (default 50)
+                    synonyms:
+                    - -s
+                    - --sketchSize
+                    args: !SimpleFlagArg
+                      name: uint
+                    optional: true
+                  - !Flag
+                    description: decay ratio used for concept drift (1.0 = concept
+                      drift disabled) (default 1)
+                    synonyms:
+                    - -x
+                    - --decayRatio
+                    args: !SimpleFlagArg
+                      name: float
+                    optional: true
+                  - !Flag
+                    description: prints the sketches to STDOUT after every interval
+                      is reached, whilst still writting them to disk (log file is
+                      redirected to disk))
+                    synonyms:
+                    - --stream
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: adds a label to the sketch object, for use with BANNER
+                      (default "blank")
+                    synonyms:
+                    - -b
+                    - --bannerLabel
+                    args: !SimpleFlagArg
+                      name: string
+                    optional: true
+                  - !Flag
+                    description: also generate a MinHash K-Hash Functions sketch
+                    synonyms:
+                    - --khf
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: also generate a MinHash K-Minimum Values (bottom-k)
+                      sketch
+                    synonyms:
+                    - --kmv
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: minimizer k-mer length (default 21)
+                    synonyms:
+                    - -k
+                    - --kmerSize
+                    args: !SimpleFlagArg
+                      name: uint
+                    optional: true
+                  - !Flag
+                    description: filename for log file, if omitted then STDOUT used
+                      by default
+                    synonyms:
+                    - --log
+                    args: !SimpleFlagArg
+                      name: string
+                    optional: true
+                  - !Flag
+                    description: directory and basename for saving the outfile(s)
+                      (default "./hulk-20200909212826")
+                    synonyms:
+                    - -o
+                    - --outFile
+                    args: !SimpleFlagArg
+                      name: string
+                    optional: true
+                  - !Flag
+                    description: number of processors to use (default 1)
+                    synonyms:
+                    - -p
+                    - --processors
+                    args: !SimpleFlagArg
+                      name: int
+                    optional: true
+                  - !Flag
+                    description: create the files needed to profile HULK using the
+                      go tool pprof
+                    synonyms:
+                    - --profiling
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: help for sketch
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "\n\t\tCreate a sketch from a set of reads.\n\t\t\n\t\
+                    \tThe sketch subcommand can be used to create a histosketch, minhash\
+                    \ or count min sketch.\n\nUsage:\n  hulk sketch [flags]\n\nFlags:\n\
+                    \  -f, --fastq strings        FASTQ file(s) to sketch (can also\
+                    \ pipe in STDIN)\n      --fasta                tells HULK that\
+                    \ the input file is actually FASTA format (.fna/.fasta/.fa), not\
+                    \ FASTQ (experimental feature)\n  -w, --windowSize uint      minimizer\
+                    \ window size (default 9)\n  -i, --interval uint        size of\
+                    \ k-mer sampling interval (default 0 (= no interval))\n  -s, --sketchSize\
+                    \ uint      size of sketch (default 50)\n  -x, --decayRatio float\
+                    \     decay ratio used for concept drift (1.0 = concept drift\
+                    \ disabled) (default 1)\n      --stream               prints the\
+                    \ sketches to STDOUT after every interval is reached, whilst still\
+                    \ writting them to disk (log file is redirected to disk))\n  -b,\
+                    \ --bannerLabel string   adds a label to the sketch object, for\
+                    \ use with BANNER (default \"blank\")\n      --khf           \
+                    \       also generate a MinHash K-Hash Functions sketch\n    \
+                    \  --kmv                  also generate a MinHash K-Minimum Values\
+                    \ (bottom-k) sketch\n  -h, --help                 help for sketch\n\
+                    \nGlobal Flags:\n  -k, --kmerSize uint    minimizer k-mer length\
+                    \ (default 21)\n      --log string       filename for log file,\
+                    \ if omitted then STDOUT used by default\n  -o, --outFile string\
+                    \   directory and basename for saving the outfile(s) (default\
+                    \ \"./hulk-20200909212826\")\n  -p, --processors int   number\
+                    \ of processors to use (default 1)\n      --profiling        create\
+                    \ the files needed to profile HULK using the go tool pprof\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: help for hulk
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "\n\tHULK is a tool that creates small, fixed-size sketches\
+                  \ from streaming microbiome sequencing data,\n\tenabling rapid metagenomic\
+                  \ dissimilarity analysis. HULK generates an approximate k-mer spectrum\
+                  \ from\n\ta FASTQ data stream, incrementally sketches it and makes\
+                  \ similarity search queries against other microbiome sketches.\n\
+                  \nUsage:\n  hulk [command]\n\nAvailable Commands:\n  help      \
+                  \  Help about any command\n  sketch      Create a sketch from a\
+                  \ set of reads\n  smash       Smash a bunch of sketches and return\
+                  \ a distance matrix\n  version     Prints the current version and\
+                  \ exits\n\nFlags:\n  -h, --help             help for hulk\n  -k,\
+                  \ --kmerSize uint    minimizer k-mer length (default 21)\n     \
+                  \ --log string       filename for log file, if omitted then STDOUT\
+                  \ used by default\n  -o, --outFile string   directory and basename\
+                  \ for saving the outfile(s) (default \"./hulk-20200909212820\")\n\
+                  \  -p, --processors int   number of processors to use (default 1)\n\
+                  \      --profiling        create the files needed to profile HULK\
+                  \ using the go tool pprof\n\nUse \"hulk [command] --help\" for more\
+                  \ information about a command.\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -419,12 +735,9 @@ subcommands:
                 \  -p, --processors int   number of processors to use (default 1)\n\
                 \      --profiling        create the files needed to profile HULK\
                 \ using the go tool pprof\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - hulk
-              - sketch
+              command: *id005
               positional: []
               named:
               - !Flag
@@ -583,13 +896,7 @@ subcommands:
                 \ using the go tool pprof\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: help for hulk
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "\n\tHULK is a tool that creates small, fixed-size sketches\
@@ -758,7 +1065,7 @@ subcommands:
             - --profiling
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id006
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -960,7 +1267,7 @@ subcommands:
         - --profiling
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id006
+      parent: *id007
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1159,7 +1466,7 @@ subcommands:
     - --profiling
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id007
+  parent: *id008
   subcommands: []
   usage: []
   help_flag: !Flag

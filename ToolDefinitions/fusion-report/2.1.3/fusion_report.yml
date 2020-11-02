@@ -32,7 +32,7 @@ subcommands:
     args: !SimpleFlagArg
       name: COSMIC_TOKEN
     optional: true
-  parent: &id008 !Command
+  parent: &id009 !Command
     command: *id001
     positional: []
     named: []
@@ -63,7 +63,7 @@ subcommands:
         args: !SimpleFlagArg
           name: COSMIC_TOKEN
         optional: true
-      parent: &id007 !Command
+      parent: &id008 !Command
         command: *id001
         positional: []
         named: []
@@ -94,7 +94,7 @@ subcommands:
             args: !SimpleFlagArg
               name: COSMIC_TOKEN
             optional: true
-          parent: &id003 !Command
+          parent: &id007 !Command
             command: *id001
             positional: []
             named: []
@@ -125,7 +125,348 @@ subcommands:
                 args: !SimpleFlagArg
                   name: COSMIC_TOKEN
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: COSMIC username
+                    synonyms:
+                    - --cosmic_usr
+                    args: !SimpleFlagArg
+                      name: COSMIC_USR
+                    optional: true
+                  - !Flag
+                    description: COSMIC password
+                    synonyms:
+                    - --cosmic_passwd
+                    args: !SimpleFlagArg
+                      name: COSMIC_PASSWD
+                    optional: true
+                  - !Flag
+                    description: "COSMIC token\n"
+                    synonyms:
+                    - --cosmic_token
+                    args: !SimpleFlagArg
+                      name: COSMIC_TOKEN
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: fusion_report download [-h] [--cosmic_usr COSMIC_USR]\n\
+                    \                              [--cosmic_passwd COSMIC_PASSWD]\n\
+                    \                              [--cosmic_token COSMIC_TOKEN]\n\
+                    \                              output\n\npositional arguments:\n\
+                    \  output                Output directory\n\noptional arguments:\n\
+                    \  -h, --help            show this help message and exit\n\nCOSMIC:\n\
+                    \  Option credential parameters. You can either provide username\
+                    \ and password\n  which will be used to generate base64 token\
+                    \ or the token itself.\n\n  --cosmic_usr COSMIC_USR\n        \
+                    \                COSMIC username\n  --cosmic_passwd COSMIC_PASSWD\n\
+                    \                        COSMIC password\n  --cosmic_token COSMIC_TOKEN\n\
+                    \                        COSMIC token\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - fusion_report
+                  - sync
+                  positional: []
+                  named:
+                  - !Flag
+                    description: COSMIC username
+                    synonyms:
+                    - --cosmic_usr
+                    args: !SimpleFlagArg
+                      name: COSMIC_USR
+                    optional: true
+                  - !Flag
+                    description: COSMIC password
+                    synonyms:
+                    - --cosmic_passwd
+                    args: !SimpleFlagArg
+                      name: COSMIC_PASSWD
+                    optional: true
+                  - !Flag
+                    description: "COSMIC token\n"
+                    synonyms:
+                    - --cosmic_token
+                    args: !SimpleFlagArg
+                      name: COSMIC_TOKEN
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: fusion_report sync [-h] [--cosmic_usr COSMIC_USR]\n\
+                    \                          [--cosmic_passwd COSMIC_PASSWD]\n \
+                    \                         [--cosmic_token COSMIC_TOKEN]\n    \
+                    \                      output\n\npositional arguments:\n  output\
+                    \                Output directory\n\noptional arguments:\n  -h,\
+                    \ --help            show this help message and exit\n\nCOSMIC:\n\
+                    \  Option credential parameters. You can either provide username\
+                    \ and password\n  which will be used to generate base64 token\
+                    \ or the token itself.\n\n  --cosmic_usr COSMIC_USR\n        \
+                    \                COSMIC username\n  --cosmic_passwd COSMIC_PASSWD\n\
+                    \                        COSMIC password\n  --cosmic_token COSMIC_TOKEN\n\
+                    \                        COSMIC token\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - fusion_report
+                  - run
+                  positional:
+                  - !Positional
+                    description: Sample name
+                    position: 0
+                    name: sample
+                    optional: false
+                  - !Positional
+                    description: Output directory
+                    position: 1
+                    name: output
+                    optional: false
+                  - !Positional
+                    description: Path to folder where all databases are stored.
+                    position: 2
+                    name: db_path
+                    optional: false
+                  named:
+                  - !Flag
+                    description: EricScript output file
+                    synonyms:
+                    - --ericscript
+                    args: !SimpleFlagArg
+                      name: ERICSCRIPT
+                    optional: true
+                  - !Flag
+                    description: EricScript output file
+                    synonyms:
+                    - --ericscript_weight
+                    args: !SimpleFlagArg
+                      name: ERICSCRIPT_WEIGHT
+                    optional: true
+                  - !Flag
+                    description: Fusioncatcher output file
+                    synonyms:
+                    - --fusioncatcher
+                    args: !SimpleFlagArg
+                      name: FUSIONCATCHER
+                    optional: true
+                  - !Flag
+                    description: Fusioncatcher output file
+                    synonyms:
+                    - --fusioncatcher_weight
+                    args: !SimpleFlagArg
+                      name: FUSIONCATCHER_WEIGHT
+                    optional: true
+                  - !Flag
+                    description: STAR-Fusion output file
+                    synonyms:
+                    - --starfusion
+                    args: !SimpleFlagArg
+                      name: STARFUSION
+                    optional: true
+                  - !Flag
+                    description: STAR-Fusion output file
+                    synonyms:
+                    - --starfusion_weight
+                    args: !SimpleFlagArg
+                      name: STARFUSION_WEIGHT
+                    optional: true
+                  - !Flag
+                    description: Pizzly output file
+                    synonyms:
+                    - --pizzly
+                    args: !SimpleFlagArg
+                      name: PIZZLY
+                    optional: true
+                  - !Flag
+                    description: Pizzly output file
+                    synonyms:
+                    - --pizzly_weight
+                    args: !SimpleFlagArg
+                      name: PIZZLY_WEIGHT
+                    optional: true
+                  - !Flag
+                    description: Squid output file
+                    synonyms:
+                    - --squid
+                    args: !SimpleFlagArg
+                      name: SQUID
+                    optional: true
+                  - !Flag
+                    description: Squid output file
+                    synonyms:
+                    - --squid_weight
+                    args: !SimpleFlagArg
+                      name: SQUID_WEIGHT
+                    optional: true
+                  - !Flag
+                    description: Illumina Dragen Bio-IT Platform output file
+                    synonyms:
+                    - --dragen
+                    args: !SimpleFlagArg
+                      name: DRAGEN
+                    optional: true
+                  - !Flag
+                    description: Illumina Dragen Bio-IT Platform output file
+                    synonyms:
+                    - --dragen_weight
+                    args: !SimpleFlagArg
+                      name: DRAGEN_WEIGHT
+                    optional: true
+                  - !Flag
+                    description: Arriba output file
+                    synonyms:
+                    - --arriba
+                    args: !SimpleFlagArg
+                      name: ARRIBA
+                    optional: true
+                  - !Flag
+                    description: Arriba output file
+                    synonyms:
+                    - --arriba_weight
+                    args: !SimpleFlagArg
+                      name: ARRIBA_WEIGHT
+                    optional: true
+                  - !Flag
+                    description: "Case when fusion gene symbol can't be determined\
+                      \ and\nmultiple fusion options are provided. By default\nprovide\
+                      \ the fist proposed fusion."
+                    synonyms:
+                    - --allow-multiple-gene-symbols
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Input config file
+                    synonyms:
+                    - -c
+                    - --config
+                    args: !SimpleFlagArg
+                      name: CONFIG
+                    optional: true
+                  - !Flag
+                    description: Number of tools required to detect a fusion
+                    synonyms:
+                    - -t
+                    - --tool-cutoff
+                    args: !SimpleFlagArg
+                      name: TOOL_CUTOFF
+                    optional: true
+                  - !Flag
+                    description: "Export fusions in different formats. Currently\n\
+                      supported: json, csv.\n"
+                    synonyms:
+                    - --export
+                    args: !SimpleFlagArg
+                      name: EXPORT
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: fusion_report run [-h] [--ericscript ERICSCRIPT]\n\
+                    \                         [--ericscript_weight ERICSCRIPT_WEIGHT]\n\
+                    \                         [--fusioncatcher FUSIONCATCHER]\n  \
+                    \                       [--fusioncatcher_weight FUSIONCATCHER_WEIGHT]\n\
+                    \                         [--starfusion STARFUSION]\n        \
+                    \                 [--starfusion_weight STARFUSION_WEIGHT]\n  \
+                    \                       [--pizzly PIZZLY] [--pizzly_weight PIZZLY_WEIGHT]\n\
+                    \                         [--squid SQUID] [--squid_weight SQUID_WEIGHT]\n\
+                    \                         [--dragen DRAGEN] [--dragen_weight DRAGEN_WEIGHT]\n\
+                    \                         [--arriba ARRIBA] [--arriba_weight ARRIBA_WEIGHT]\n\
+                    \                         [--allow-multiple-gene-symbols] [-c\
+                    \ CONFIG]\n                         [-t TOOL_CUTOFF] [--export\
+                    \ EXPORT]\n                         sample output db_path\n\n\
+                    optional arguments:\n  -h, --help            show this help message\
+                    \ and exit\n\nMandatory arguments:\n  Required arguments to run\
+                    \ app.\n\n  sample                Sample name\n  output      \
+                    \          Output directory\n  db_path               Path to folder\
+                    \ where all databases are stored.\n\nTools:\n  List of all supported\
+                    \ tools with their weights.\n\n  --ericscript ERICSCRIPT\n   \
+                    \                     EricScript output file\n  --ericscript_weight\
+                    \ ERICSCRIPT_WEIGHT\n                        EricScript output\
+                    \ file\n  --fusioncatcher FUSIONCATCHER\n                    \
+                    \    Fusioncatcher output file\n  --fusioncatcher_weight FUSIONCATCHER_WEIGHT\n\
+                    \                        Fusioncatcher output file\n  --starfusion\
+                    \ STARFUSION\n                        STAR-Fusion output file\n\
+                    \  --starfusion_weight STARFUSION_WEIGHT\n                   \
+                    \     STAR-Fusion output file\n  --pizzly PIZZLY       Pizzly\
+                    \ output file\n  --pizzly_weight PIZZLY_WEIGHT\n             \
+                    \           Pizzly output file\n  --squid SQUID         Squid\
+                    \ output file\n  --squid_weight SQUID_WEIGHT\n               \
+                    \         Squid output file\n  --dragen DRAGEN       Illumina\
+                    \ Dragen Bio-IT Platform output file\n  --dragen_weight DRAGEN_WEIGHT\n\
+                    \                        Illumina Dragen Bio-IT Platform output\
+                    \ file\n  --arriba ARRIBA       Arriba output file\n  --arriba_weight\
+                    \ ARRIBA_WEIGHT\n                        Arriba output file\n\n\
+                    Optionals:\n  List of optional configuration parameters.\n\n \
+                    \ --allow-multiple-gene-symbols\n                        Case\
+                    \ when fusion gene symbol can't be determined and\n          \
+                    \              multiple fusion options are provided. By default\n\
+                    \                        provide the fist proposed fusion.\n \
+                    \ -c CONFIG, --config CONFIG\n                        Input config\
+                    \ file\n  -t TOOL_CUTOFF, --tool-cutoff TOOL_CUTOFF\n        \
+                    \                Number of tools required to detect a fusion\n\
+                    \  --export EXPORT       Export fusions in different formats.\
+                    \ Currently\n                        supported: json, csv.\n"
+                  generated_using: *id004
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: show program's version number and exit
+                  synonyms:
+                  - --version
+                  - -v
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "usage: fusion_report [-h] [--version] {run,download,sync}\
+                  \ ...\n\nTool for generating friendly UI custom report.\n\npositional\
+                  \ arguments:\n  {run,download,sync}\n    run                Run\
+                  \ application\n    download           Download required databases\n\
+                  \    sync               Synchronize databases\n\noptional arguments:\n\
+                  \  -h, --help           show this help message and exit\n  --version,\
+                  \ -v        show program's version number and exit\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -148,12 +489,9 @@ subcommands:
                 \n  --cosmic_usr COSMIC_USR\n                        COSMIC username\n\
                 \  --cosmic_passwd COSMIC_PASSWD\n                        COSMIC password\n\
                 \  --cosmic_token COSMIC_TOKEN\n                        COSMIC token\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - fusion_report
-              - sync
+              command: *id005
               positional: []
               named:
               - !Flag
@@ -202,9 +540,7 @@ subcommands:
                 \  --cosmic_token COSMIC_TOKEN\n                        COSMIC token\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - fusion_report
-              - run
+              command: *id006
               positional:
               - !Positional
                 description: Sample name
@@ -408,21 +744,9 @@ subcommands:
                 \                      supported: json, csv.\n"
               generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: show program's version number and exit
-              synonyms:
-              - --version
-              - -v
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "usage: fusion_report [-h] [--version] {run,download,sync}\
               \ ...\n\nTool for generating friendly UI custom report.\n\npositional\
               \ arguments:\n  {run,download,sync}\n    run                Run application\n\
@@ -479,7 +803,7 @@ subcommands:
             args: !SimpleFlagArg
               name: COSMIC_TOKEN
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -652,7 +976,7 @@ subcommands:
             args: !SimpleFlagArg
               name: EXPORT
             optional: true
-          parent: *id003
+          parent: *id007
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -765,7 +1089,7 @@ subcommands:
         args: !SimpleFlagArg
           name: COSMIC_TOKEN
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -936,7 +1260,7 @@ subcommands:
         args: !SimpleFlagArg
           name: EXPORT
         optional: true
-      parent: *id007
+      parent: *id008
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1045,7 +1369,7 @@ subcommands:
     args: !SimpleFlagArg
       name: COSMIC_TOKEN
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -1216,7 +1540,7 @@ subcommands:
     args: !SimpleFlagArg
       name: EXPORT
     optional: true
-  parent: *id008
+  parent: *id009
   subcommands: []
   usage: []
   help_flag: !Flag

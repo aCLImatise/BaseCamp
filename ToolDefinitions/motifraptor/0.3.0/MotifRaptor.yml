@@ -27,7 +27,7 @@ subcommands:
     args: !SimpleFlagArg
       name: MOTIFFILE
     optional: true
-  parent: &id022 !Command
+  parent: &id024 !Command
     command: *id001
     positional: []
     named: []
@@ -53,7 +53,7 @@ subcommands:
         args: !SimpleFlagArg
           name: MOTIFFILE
         optional: true
-      parent: &id020 !Command
+      parent: &id022 !Command
         command: *id001
         positional: []
         named: []
@@ -79,7 +79,7 @@ subcommands:
             args: !SimpleFlagArg
               name: MOTIFFILE
             optional: true
-          parent: &id003 !Command
+          parent: &id020 !Command
             command: *id001
             positional: []
             named: []
@@ -105,7 +105,810 @@ subcommands:
                 args: !SimpleFlagArg
                   name: MOTIFFILE
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: Working directory
+                    synonyms:
+                    - -wd
+                    - --workdir
+                    args: !SimpleFlagArg
+                      name: WORKDIR
+                    optional: true
+                  - !Flag
+                    description: "Motif Summary File, usually from step2\n"
+                    synonyms:
+                    - -ms
+                    - --motif_summary
+                    args: !SimpleFlagArg
+                      name: MOTIFFILE
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: MotifRaptor motiffilter [-h] [-wd WORKDIR] [-ms\
+                    \ MOTIFFILE]\n\noptional arguments:\n  -h, --help            show\
+                    \ this help message and exit\n  -wd WORKDIR, --workdir WORKDIR\n\
+                    \                        Working directory\n  -ms MOTIFFILE, --motif_summary\
+                    \ MOTIFFILE\n                        Motif Summary File, usually\
+                    \ from step2\n"
+                  generated_using: &id005
+                  - --help
+                - &id004 !Command
+                  command: &id006
+                  - MotifRaptor
+                  - info
+                  positional: []
+                  named: []
+                  parent: *id003
+                  subcommands:
+                  - !Command
+                    command: &id007
+                    - MotifRaptor
+                    - info
+                    - para
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: MotifRaptor
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 1
+                      name: info
+                      optional: false
+                    named: []
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag: !Flag
+                      description: show this help message and exit
+                      synonyms:
+                      - -h
+                      - --help
+                      args: !EmptyFlagArg {}
+                      optional: true
+                    usage_flag:
+                    version_flag:
+                    help_text: "usage: MotifRaptor info [-h]\n\noptional arguments:\n\
+                      \  -h, --help  show this help message and exit\n"
+                    generated_using: *id005
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "Namespace(command='info')\nMotif-Raptor version: 0.3.0\n\
+                    package path: /usr/local/lib/python3.6/site-packages/MotifRaptor\n\
+                    Global Parameters : \n               para                    \
+                    \                          value\n0       databasedir  /usr/local/lib/python3.6/site-packages/MotifRa...\n\
+                    1  motifdatabasedir  /usr/local/lib/python3.6/site-packages/MotifRa...\n"
+                  generated_using: &id008 []
+                - !Command
+                  command: &id009
+                  - MotifRaptor
+                  - motifspecific
+                  positional: []
+                  named:
+                  - !Flag
+                    description: Working directory
+                    synonyms:
+                    - -wd
+                    - --workdir
+                    args: !SimpleFlagArg
+                      name: WORKDIR
+                    optional: true
+                  - !Flag
+                    description: SNP motif pair-wise list File, usually from step2
+                    synonyms:
+                    - -sm
+                    - --snp_motif_file
+                    args: !SimpleFlagArg
+                      name: SNP_MOTIF_FILE
+                    optional: true
+                  - !Flag
+                    description: motif id with name, in the format of motifID__NAME
+                    synonyms:
+                    - -md
+                    - --motif_id
+                    args: !SimpleFlagArg
+                      name: MOTIF_ID_NAME
+                    optional: true
+                  - !Flag
+                    description: "background score folder, usually from step2\n"
+                    synonyms:
+                    - -bs
+                    - --bg_score_folder
+                    args: !SimpleFlagArg
+                      name: BG_SCORE_FOLDER
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: MotifRaptor motifspecific [-h] [-wd WORKDIR]\
+                    \ [-sm SNP_MOTIF_FILE]\n                                 [-md\
+                    \ MOTIF_ID_NAME] [-bs BG_SCORE_FOLDER]\n\noptional arguments:\n\
+                    \  -h, --help            show this help message and exit\n  -wd\
+                    \ WORKDIR, --workdir WORKDIR\n                        Working\
+                    \ directory\n  -sm SNP_MOTIF_FILE, --snp_motif_file SNP_MOTIF_FILE\n\
+                    \                        SNP motif pair-wise list File, usually\
+                    \ from step2\n  -md MOTIF_ID_NAME, --motif_id MOTIF_ID_NAME\n\
+                    \                        motif id with name, in the format of\
+                    \ motifID__NAME\n  -bs BG_SCORE_FOLDER, --bg_score_folder BG_SCORE_FOLDER\n\
+                    \                        background score folder, usually from\
+                    \ step2\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id010
+                  - MotifRaptor
+                  - preprocess_ukbb_v3
+                  positional: []
+                  named:
+                  - !Flag
+                    description: GWAS summary statistic - UKBB v3 tsv filename
+                    synonyms:
+                    - -gwas
+                    - --gwas_summary
+                    args: !SimpleFlagArg
+                      name: SUMMARYSTATSFILE
+                    optional: true
+                  - !Flag
+                    description: "threads for pvalue - default 5E-8\n"
+                    synonyms:
+                    - -th
+                    - --threshold
+                    args: !SimpleFlagArg
+                      name: SCORE_PVALUE_THRESHOLD
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: MotifRaptor preprocess_ukbb_v3 [-h] [-gwas SUMMARYSTATSFILE]\n\
+                    \                                      [-th SCORE_PVALUE_THRESHOLD]\n\
+                    \noptional arguments:\n  -h, --help            show this help\
+                    \ message and exit\n  -gwas SUMMARYSTATSFILE, --gwas_summary SUMMARYSTATSFILE\n\
+                    \                        GWAS summary statistic - UKBB v3 tsv\
+                    \ filename\n  -th SCORE_PVALUE_THRESHOLD, --threshold SCORE_PVALUE_THRESHOLD\n\
+                    \                        threads for pvalue - default 5E-8\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id011
+                  - MotifRaptor
+                  - set
+                  positional: []
+                  named:
+                  - !Flag
+                    description: Parameter Name
+                    synonyms:
+                    - -pn
+                    - --parametername
+                    args: !SimpleFlagArg
+                      name: PARAMETERNAME
+                    optional: true
+                  - !Flag
+                    description: "Parameter Value\n"
+                    synonyms:
+                    - -pv
+                    - --parametervalue
+                    args: !SimpleFlagArg
+                      name: PARAMETERVALUE
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: MotifRaptor set [-h] [-pn PARAMETERNAME] [-pv\
+                    \ PARAMETERVALUE]\n\noptional arguments:\n  -h, --help       \
+                    \     show this help message and exit\n  -pn PARAMETERNAME, --parametername\
+                    \ PARAMETERNAME\n                        Parameter Name\n  -pv\
+                    \ PARAMETERVALUE, --parametervalue PARAMETERVALUE\n          \
+                    \              Parameter Value\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id012
+                  - MotifRaptor
+                  - celltype
+                  positional: []
+                  named:
+                  - !Flag
+                    description: "need header and columns in this text file with\n\
+                      sequence (CHR is only a number): ID CHR POS REF ALT"
+                    synonyms:
+                    - -vcf
+                    - --snp_hit_withseq
+                    args: !SimpleFlagArg
+                      name: SNP_HIT_VCF
+                    optional: true
+                  - !Flag
+                    description: "need header and columns in this text file (CHR is\
+                      \ only\na number): ID CHR POS"
+                    synonyms:
+                    - -sh
+                    - --snp_hit
+                    args: !SimpleFlagArg
+                      name: SNP_HIT
+                    optional: true
+                  - !Flag
+                    description: "need header and columns in this text file (CHR is\
+                      \ only\na number): ID CHR POS"
+                    synonyms:
+                    - -snh
+                    - --snp_non_hit
+                    args: !SimpleFlagArg
+                      name: SNP_NON_HIT
+                    optional: true
+                  - !Flag
+                    description: Working directory
+                    synonyms:
+                    - -wd
+                    - --workdir
+                    args: !SimpleFlagArg
+                      name: WORKDIR
+                    optional: true
+                  - !Flag
+                    description: "number of threads\n"
+                    synonyms:
+                    - -p
+                    - --threads
+                    args: !SimpleFlagArg
+                      name: THREAD_NUM
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: MotifRaptor celltype [-h] [-vcf SNP_HIT_VCF]\
+                    \ [-sh SNP_HIT]\n                            [-snh SNP_NON_HIT]\
+                    \ [-wd WORKDIR] [-p THREAD_NUM]\n\noptional arguments:\n  -h,\
+                    \ --help            show this help message and exit\n  -vcf SNP_HIT_VCF,\
+                    \ --snp_hit_withseq SNP_HIT_VCF\n                        need\
+                    \ header and columns in this text file with\n                \
+                    \        sequence (CHR is only a number): ID CHR POS REF ALT\n\
+                    \  -sh SNP_HIT, --snp_hit SNP_HIT\n                        need\
+                    \ header and columns in this text file (CHR is only\n        \
+                    \                a number): ID CHR POS\n  -snh SNP_NON_HIT, --snp_non_hit\
+                    \ SNP_NON_HIT\n                        need header and columns\
+                    \ in this text file (CHR is only\n                        a number):\
+                    \ ID CHR POS\n  -wd WORKDIR, --workdir WORKDIR\n             \
+                    \           Working directory\n  -p THREAD_NUM, --threads THREAD_NUM\n\
+                    \                        number of threads\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id013
+                  - MotifRaptor
+                  - snpindex
+                  positional: []
+                  named:
+                  - !Flag
+                    description: "input - VCF file for SNPs, first five columns need\
+                      \ to\nbe CHR,POS,ID,REF,ALT"
+                    synonyms:
+                    - -vcf
+                    - --vcf_filename
+                    args: !SimpleFlagArg
+                      name: VCF_FILENAME
+                    optional: true
+                  - !Flag
+                    description: output - indexed genome_database_folder
+                    synonyms:
+                    - -gi
+                    - --indexed_genome_db
+                    args: !SimpleFlagArg
+                      name: INDEXED_GENOME_DB
+                    optional: true
+                  - !Flag
+                    description: Mksary program path
+                    synonyms:
+                    - -mk
+                    - --mksary
+                    args: !SimpleFlagArg
+                      name: MKSARY_PATH
+                    optional: true
+                  - !Flag
+                    description: "number of threads\n"
+                    synonyms:
+                    - -p
+                    - --threads
+                    args: !SimpleFlagArg
+                      name: THREAD_NUM
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: MotifRaptor snpindex [-h] [-vcf VCF_FILENAME]\
+                    \ [-gi INDEXED_GENOME_DB]\n                            [-mk MKSARY_PATH]\
+                    \ [-p THREAD_NUM]\n\noptional arguments:\n  -h, --help       \
+                    \     show this help message and exit\n  -vcf VCF_FILENAME, --vcf_filename\
+                    \ VCF_FILENAME\n                        input - VCF file for SNPs,\
+                    \ first five columns need to\n                        be CHR,POS,ID,REF,ALT\n\
+                    \  -gi INDEXED_GENOME_DB, --indexed_genome_db INDEXED_GENOME_DB\n\
+                    \                        output - indexed genome_database_folder\n\
+                    \  -mk MKSARY_PATH, --mksary MKSARY_PATH\n                   \
+                    \     Mksary program path\n  -p THREAD_NUM, --threads THREAD_NUM\n\
+                    \                        number of threads\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id014
+                  - MotifRaptor
+                  - preprocess
+                  positional: []
+                  named:
+                  - !Flag
+                    description: GWAS summary statistic file
+                    synonyms:
+                    - -gwas
+                    - --gwas_summary
+                    args: !SimpleFlagArg
+                      name: SUMMARYSTATSFILE
+                    optional: true
+                  - !Flag
+                    description: "provide six column numbers for information in such\n\
+                      order: ID,CHR,POS,A1,A2,SCORE eg. 1,2,3,4,5,6"
+                    synonyms:
+                    - -cn
+                    - --column_numbers
+                    args: !SimpleFlagArg
+                      name: COLUMN_NUMBERS
+                    optional: true
+                  - !Flag
+                    description: "Score type in GWAS summary statistic file: pvalue\
+                      \ or\nzscore or chisquare"
+                    synonyms:
+                    - -st
+                    - --score_type
+                    args: !SimpleFlagArg
+                      name: SCORE_TYPE
+                    optional: true
+                  - !Flag
+                    description: "threads for pvalue - default 5E-8\n"
+                    synonyms:
+                    - -th
+                    - --threshold
+                    args: !SimpleFlagArg
+                      name: SCORE_PVALUE_THRESHOLD
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: MotifRaptor preprocess [-h] [-gwas SUMMARYSTATSFILE]\n\
+                    \                              [-cn COLUMN_NUMBERS] [-st SCORE_TYPE]\n\
+                    \                              [-th SCORE_PVALUE_THRESHOLD]\n\n\
+                    optional arguments:\n  -h, --help            show this help message\
+                    \ and exit\n  -gwas SUMMARYSTATSFILE, --gwas_summary SUMMARYSTATSFILE\n\
+                    \                        GWAS summary statistic file\n  -cn COLUMN_NUMBERS,\
+                    \ --column_numbers COLUMN_NUMBERS\n                        provide\
+                    \ six column numbers for information in such\n               \
+                    \         order: ID,CHR,POS,A1,A2,SCORE eg. 1,2,3,4,5,6\n  -st\
+                    \ SCORE_TYPE, --score_type SCORE_TYPE\n                      \
+                    \  Score type in GWAS summary statistic file: pvalue or\n    \
+                    \                    zscore or chisquare\n  -th SCORE_PVALUE_THRESHOLD,\
+                    \ --threshold SCORE_PVALUE_THRESHOLD\n                       \
+                    \ threads for pvalue - default 5E-8\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id015
+                  - MotifRaptor
+                  - snpfeature
+                  positional: []
+                  named:
+                  - !Flag
+                    description: Working directory
+                    synonyms:
+                    - -wd
+                    - --workdir
+                    args: !SimpleFlagArg
+                      name: WORKDIR
+                    optional: true
+                  - !Flag
+                    description: Cell type or Tissue type ID
+                    synonyms:
+                    - -c
+                    - --cell_type
+                    args: !SimpleFlagArg
+                      name: CELL_TYPE
+                    optional: true
+                  - !Flag
+                    description: "SNP cell type bed file folder, usually from step1\n"
+                    synonyms:
+                    - -cb
+                    - --snp_bed_files
+                    args: !SimpleFlagArg
+                      name: SNP_BED_FILES
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: MotifRaptor snpfeature [-h] [-wd WORKDIR] [-c\
+                    \ CELL_TYPE]\n                              [-cb SNP_BED_FILES]\n\
+                    \noptional arguments:\n  -h, --help            show this help\
+                    \ message and exit\n  -wd WORKDIR, --workdir WORKDIR\n       \
+                    \                 Working directory\n  -c CELL_TYPE, --cell_type\
+                    \ CELL_TYPE\n                        Cell type or Tissue type\
+                    \ ID\n  -cb SNP_BED_FILES, --snp_bed_files SNP_BED_FILES\n   \
+                    \                     SNP cell type bed file folder, usually from\
+                    \ step1\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id016
+                  - MotifRaptor
+                  - snpscan
+                  positional: []
+                  named:
+                  - !Flag
+                    description: indexed genome_database_folder
+                    synonyms:
+                    - -gi
+                    - --indexed_genome_db
+                    args: !SimpleFlagArg
+                      name: INDEXED_GENOME_DB
+                    optional: true
+                  - !Flag
+                    description: motif pmf files folder
+                    synonyms:
+                    - -pfm
+                    - --pfm_folder
+                    args: !SimpleFlagArg
+                      name: PFM_FOLDER
+                    optional: true
+                  - !Flag
+                    description: Motif Scan Ouput Folder
+                    synonyms:
+                    - -mo
+                    - --motifscan_output
+                    args: !SimpleFlagArg
+                      name: OUTPUTMOTIFSCANDIR
+                    optional: true
+                  - !Flag
+                    description: "number of threads\n"
+                    synonyms:
+                    - -p
+                    - --threads
+                    args: !SimpleFlagArg
+                      name: THREAD_NUM
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: MotifRaptor snpscan [-h] [-gi INDEXED_GENOME_DB]\
+                    \ [-pfm PFM_FOLDER]\n                           [-mo OUTPUTMOTIFSCANDIR]\
+                    \ [-p THREAD_NUM]\n\noptional arguments:\n  -h, --help       \
+                    \     show this help message and exit\n  -gi INDEXED_GENOME_DB,\
+                    \ --indexed_genome_db INDEXED_GENOME_DB\n                    \
+                    \    indexed genome_database_folder\n  -pfm PFM_FOLDER, --pfm_folder\
+                    \ PFM_FOLDER\n                        motif pmf files folder\n\
+                    \  -mo OUTPUTMOTIFSCANDIR, --motifscan_output OUTPUTMOTIFSCANDIR\n\
+                    \                        Motif Scan Ouput Folder\n  -p THREAD_NUM,\
+                    \ --threads THREAD_NUM\n                        number of threads\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id017
+                  - MotifRaptor
+                  - snpspecific
+                  positional: []
+                  named:
+                  - !Flag
+                    description: Working directory
+                    synonyms:
+                    - -wd
+                    - --workdir
+                    args: !SimpleFlagArg
+                      name: WORKDIR
+                    optional: true
+                  - !Flag
+                    description: SNP motif pair-wise list File, usually from step2
+                    synonyms:
+                    - -sm
+                    - --snp_motif_file
+                    args: !SimpleFlagArg
+                      name: SNP_MOTIF_FILE
+                    optional: true
+                  - !Flag
+                    description: "SNP id\n"
+                    synonyms:
+                    - -snp
+                    - --snp_id
+                    args: !SimpleFlagArg
+                      name: SNP_ID
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: MotifRaptor snpspecific [-h] [-wd WORKDIR] [-sm\
+                    \ SNP_MOTIF_FILE]\n                               [-snp SNP_ID]\n\
+                    \noptional arguments:\n  -h, --help            show this help\
+                    \ message and exit\n  -wd WORKDIR, --workdir WORKDIR\n       \
+                    \                 Working directory\n  -sm SNP_MOTIF_FILE, --snp_motif_file\
+                    \ SNP_MOTIF_FILE\n                        SNP motif pair-wise\
+                    \ list File, usually from step2\n  -snp SNP_ID, --snp_id SNP_ID\n\
+                    \                        SNP id\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id018
+                  - MotifRaptor
+                  - snpmotifradar
+                  positional: []
+                  named:
+                  - !Flag
+                    description: Working directory
+                    synonyms:
+                    - -wd
+                    - --workdir
+                    args: !SimpleFlagArg
+                      name: WORKDIR
+                    optional: true
+                  - !Flag
+                    description: SNP motif pair-wise list File, usually from step2
+                    synonyms:
+                    - -sm
+                    - --snp_motif_file
+                    args: !SimpleFlagArg
+                      name: SNP_MOTIF_FILE
+                    optional: true
+                  - !Flag
+                    description: SNP feature file, usually from step2
+                    synonyms:
+                    - -sf
+                    - --snp_feature_file
+                    args: !SimpleFlagArg
+                      name: SNP_FEATURE_FILE
+                    optional: true
+                  - !Flag
+                    description: "SNP motif pair-wise ID\n"
+                    synonyms:
+                    - -pid
+                    - --snp_motif_id
+                    args: !SimpleFlagArg
+                      name: SNP_MOTIF_ID
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: MotifRaptor snpmotifradar [-h] [-wd WORKDIR]\
+                    \ [-sm SNP_MOTIF_FILE]\n                                 [-sf\
+                    \ SNP_FEATURE_FILE] [-pid SNP_MOTIF_ID]\n\noptional arguments:\n\
+                    \  -h, --help            show this help message and exit\n  -wd\
+                    \ WORKDIR, --workdir WORKDIR\n                        Working\
+                    \ directory\n  -sm SNP_MOTIF_FILE, --snp_motif_file SNP_MOTIF_FILE\n\
+                    \                        SNP motif pair-wise list File, usually\
+                    \ from step2\n  -sf SNP_FEATURE_FILE, --snp_feature_file SNP_FEATURE_FILE\n\
+                    \                        SNP feature file, usually from step2\n\
+                    \  -pid SNP_MOTIF_ID, --snp_motif_id SNP_MOTIF_ID\n          \
+                    \              SNP motif pair-wise ID\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id019
+                  - MotifRaptor
+                  - snpmotif
+                  positional: []
+                  named:
+                  - !Flag
+                    description: Working directory
+                    synonyms:
+                    - -wd
+                    - --workdir
+                    args: !SimpleFlagArg
+                      name: WORKDIR
+                    optional: true
+                  - !Flag
+                    description: Cell type or Tissue type ID
+                    synonyms:
+                    - -c
+                    - --cell_type
+                    args: !SimpleFlagArg
+                      name: CELL_TYPE
+                    optional: true
+                  - !Flag
+                    description: hit snps on union bed file, usually from step1
+                    synonyms:
+                    - -sb
+                    - --snp_hit_bed
+                    args: !SimpleFlagArg
+                      name: HIT_SNP_UNION_BED
+                    optional: true
+                  - !Flag
+                    description: hit snps with sequence information, usually from
+                      step1
+                    synonyms:
+                    - -se
+                    - --snp_hit_seq
+                    args: !SimpleFlagArg
+                      name: HIT_SNP_UNION
+                    optional: true
+                  - !Flag
+                    description: background snp list file or (genome)
+                    synonyms:
+                    - -bg
+                    - --bg_snp
+                    args: !SimpleFlagArg
+                      name: BG_SNPS
+                    optional: true
+                  - !Flag
+                    description: motif list file, no header, or (all)
+                    synonyms:
+                    - -m
+                    - --motifs
+                    args: !SimpleFlagArg
+                      name: MOTIF_LIST
+                    optional: true
+                  - !Flag
+                    description: "number of threads\n"
+                    synonyms:
+                    - -p
+                    - --threads
+                    args: !SimpleFlagArg
+                      name: THREAD_NUM
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: MotifRaptor snpmotif [-h] [-wd WORKDIR] [-c CELL_TYPE]\n\
+                    \                            [-sb HIT_SNP_UNION_BED] [-se HIT_SNP_UNION]\n\
+                    \                            [-bg BG_SNPS] [-m MOTIF_LIST] [-p\
+                    \ THREAD_NUM]\n\noptional arguments:\n  -h, --help           \
+                    \ show this help message and exit\n  -wd WORKDIR, --workdir WORKDIR\n\
+                    \                        Working directory\n  -c CELL_TYPE, --cell_type\
+                    \ CELL_TYPE\n                        Cell type or Tissue type\
+                    \ ID\n  -sb HIT_SNP_UNION_BED, --snp_hit_bed HIT_SNP_UNION_BED\n\
+                    \                        hit snps on union bed file, usually from\
+                    \ step1\n  -se HIT_SNP_UNION, --snp_hit_seq HIT_SNP_UNION\n  \
+                    \                      hit snps with sequence information, usually\
+                    \ from step1\n  -bg BG_SNPS, --bg_snp BG_SNPS\n              \
+                    \          background snp list file or (genome)\n  -m MOTIF_LIST,\
+                    \ --motifs MOTIF_LIST\n                        motif list file,\
+                    \ no header, or (all)\n  -p THREAD_NUM, --threads THREAD_NUM\n\
+                    \                        number of threads\n"
+                  generated_using: *id005
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag: !Flag
+                  description: show program's version number and exit
+                  synonyms:
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "usage: MotifRaptor [-h] [--version]\n                \
+                  \   {preprocess,preprocess_ukbb_v3,celltype,snpmotif,snpfeature,motiffilter,motifspecific,snpspecific,snpmotifradar,snpindex,snpscan,set,info}\n\
+                  \                   ...\n\nAnalyze motifs and SNPs in the dataset.\n\
+                  \npositional arguments:\n  {preprocess,preprocess_ukbb_v3,celltype,snpmotif,snpfeature,motiffilter,motifspecific,snpspecific,snpmotifradar,snpindex,snpscan,set,info}\n\
+                  \                        help for subcommand: celltype, snpmotif,\
+                  \ snpfeature,\n                        motiffilter, motifspecific,\
+                  \ snpspecific\n    preprocess          Pre-process the summary statistics\n\
+                  \    preprocess_ukbb_v3  Pre-process the summary statistics from\
+                  \ UKBB version 3\n                        TSV files\n    celltype\
+                  \            cell type or tissue type analysis help\n    snpmotif\
+                  \            snp motif test help\n    snpfeature          snp feature\
+                  \ help\n    motiffilter         motifs filtering help\n    motifspecific\
+                  \       motifs specific analysis help\n    snpspecific         SNP\
+                  \ specific analysis help\n    snpmotifradar       SNP motif radar\
+                  \ plot help\n    snpindex            index the SNPs (with flanking\
+                  \ sequences) help\n    snpscan             scan SNP database (already\
+                  \ indexed) help\n    set                 Set Path and Global Values\n\
+                  \    info                Get Informationa and Print Global Values\n\
+                  \noptional arguments:\n  -h, --help            show this help message\
+                  \ and exit\n  --version             show program's version number\
+                  \ and exit\n"
+                generated_using: *id005
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -122,21 +925,15 @@ subcommands:
                 \ and exit\n  -wd WORKDIR, --workdir WORKDIR\n                   \
                 \     Working directory\n  -ms MOTIFFILE, --motif_summary MOTIFFILE\n\
                 \                        Motif Summary File, usually from step2\n"
-              generated_using: &id005
-              - --help
-            - &id004 !Command
-              command: &id006
-              - MotifRaptor
-              - info
+              generated_using: *id005
+            - &id021 !Command
+              command: *id006
               positional: []
               named: []
               parent: *id003
               subcommands:
               - !Command
-                command: &id007
-                - MotifRaptor
-                - info
-                - para
+                command: *id007
                 positional:
                 - !Positional
                   description: ''
@@ -173,11 +970,9 @@ subcommands:
                 Global Parameters : \n               para                        \
                 \                      value\n0       databasedir  /usr/local/lib/python3.6/site-packages/MotifRa...\n\
                 1  motifdatabasedir  /usr/local/lib/python3.6/site-packages/MotifRa...\n"
-              generated_using: &id008 []
+              generated_using: *id008
             - !Command
-              command: &id009
-              - MotifRaptor
-              - motifspecific
+              command: *id009
               positional: []
               named:
               - !Flag
@@ -237,9 +1032,7 @@ subcommands:
                 \ usually from step2\n"
               generated_using: *id005
             - !Command
-              command: &id010
-              - MotifRaptor
-              - preprocess_ukbb_v3
+              command: *id010
               positional: []
               named:
               - !Flag
@@ -279,9 +1072,7 @@ subcommands:
                 \                        threads for pvalue - default 5E-8\n"
               generated_using: *id005
             - !Command
-              command: &id011
-              - MotifRaptor
-              - set
+              command: *id011
               positional: []
               named:
               - !Flag
@@ -319,9 +1110,7 @@ subcommands:
                 \ PARAMETERVALUE\n                        Parameter Value\n"
               generated_using: *id005
             - !Command
-              command: &id012
-              - MotifRaptor
-              - celltype
+              command: *id012
               positional: []
               named:
               - !Flag
@@ -395,9 +1184,7 @@ subcommands:
                 \ --threads THREAD_NUM\n                        number of threads\n"
               generated_using: *id005
             - !Command
-              command: &id013
-              - MotifRaptor
-              - snpindex
+              command: *id013
               positional: []
               named:
               - !Flag
@@ -458,9 +1245,7 @@ subcommands:
                 \                     number of threads\n"
               generated_using: *id005
             - !Command
-              command: &id014
-              - MotifRaptor
-              - preprocess
+              command: *id014
               positional: []
               named:
               - !Flag
@@ -524,9 +1309,7 @@ subcommands:
                 \                        threads for pvalue - default 5E-8\n"
               generated_using: *id005
             - !Command
-              command: &id015
-              - MotifRaptor
-              - snpfeature
+              command: *id015
               positional: []
               named:
               - !Flag
@@ -575,9 +1358,7 @@ subcommands:
                 \ step1\n"
               generated_using: *id005
             - !Command
-              command: &id016
-              - MotifRaptor
-              - snpscan
+              command: *id016
               positional: []
               named:
               - !Flag
@@ -636,9 +1417,7 @@ subcommands:
                 \ of threads\n"
               generated_using: *id005
             - !Command
-              command: &id017
-              - MotifRaptor
-              - snpspecific
+              command: *id017
               positional: []
               named:
               - !Flag
@@ -686,9 +1465,7 @@ subcommands:
                 \  -snp SNP_ID, --snp_id SNP_ID\n                        SNP id\n"
               generated_using: *id005
             - !Command
-              command: &id018
-              - MotifRaptor
-              - snpmotifradar
+              command: *id018
               positional: []
               named:
               - !Flag
@@ -747,9 +1524,7 @@ subcommands:
                 \ SNP_MOTIF_ID\n                        SNP motif pair-wise ID\n"
               generated_using: *id005
             - !Command
-              command: &id019
-              - MotifRaptor
-              - snpmotif
+              command: *id019
               positional: []
               named:
               - !Flag
@@ -837,20 +1612,9 @@ subcommands:
                 \                  number of threads\n"
               generated_using: *id005
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: show program's version number and exit
-              synonyms:
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "usage: MotifRaptor [-h] [--version]\n                   {preprocess,preprocess_ukbb_v3,celltype,snpmotif,snpfeature,motiffilter,motifspecific,snpspecific,snpmotifradar,snpindex,snpscan,set,info}\n\
               \                   ...\n\nAnalyze motifs and SNPs in the dataset.\n\
               \npositional arguments:\n  {preprocess,preprocess_ukbb_v3,celltype,snpmotif,snpfeature,motiffilter,motifspecific,snpspecific,snpmotifradar,snpindex,snpscan,set,info}\n\
@@ -888,11 +1652,11 @@ subcommands:
             \ Working directory\n  -ms MOTIFFILE, --motif_summary MOTIFFILE\n    \
             \                    Motif Summary File, usually from step2\n"
           generated_using: *id005
-        - &id021 !Command
+        - &id023 !Command
           command: *id006
           positional: []
           named: []
-          parent: *id003
+          parent: *id020
           subcommands:
           - !Command
             command: *id007
@@ -908,7 +1672,7 @@ subcommands:
               name: info
               optional: false
             named: []
-            parent: *id004
+            parent: *id021
             subcommands: []
             usage: []
             help_flag: !Flag
@@ -969,7 +1733,7 @@ subcommands:
             args: !SimpleFlagArg
               name: BG_SCORE_FOLDER
             optional: true
-          parent: *id003
+          parent: *id020
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1012,7 +1776,7 @@ subcommands:
             args: !SimpleFlagArg
               name: SCORE_PVALUE_THRESHOLD
             optional: true
-          parent: *id003
+          parent: *id020
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1052,7 +1816,7 @@ subcommands:
             args: !SimpleFlagArg
               name: PARAMETERVALUE
             optional: true
-          parent: *id003
+          parent: *id020
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1117,7 +1881,7 @@ subcommands:
             args: !SimpleFlagArg
               name: THREAD_NUM
             optional: true
-          parent: *id003
+          parent: *id020
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1180,7 +1944,7 @@ subcommands:
             args: !SimpleFlagArg
               name: THREAD_NUM
             optional: true
-          parent: *id003
+          parent: *id020
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1241,7 +2005,7 @@ subcommands:
             args: !SimpleFlagArg
               name: SCORE_PVALUE_THRESHOLD
             optional: true
-          parent: *id003
+          parent: *id020
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1295,7 +2059,7 @@ subcommands:
             args: !SimpleFlagArg
               name: SNP_BED_FILES
             optional: true
-          parent: *id003
+          parent: *id020
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1351,7 +2115,7 @@ subcommands:
             args: !SimpleFlagArg
               name: THREAD_NUM
             optional: true
-          parent: *id003
+          parent: *id020
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1401,7 +2165,7 @@ subcommands:
             args: !SimpleFlagArg
               name: SNP_ID
             optional: true
-          parent: *id003
+          parent: *id020
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1457,7 +2221,7 @@ subcommands:
             args: !SimpleFlagArg
               name: SNP_MOTIF_ID
             optional: true
-          parent: *id003
+          parent: *id020
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1540,7 +2304,7 @@ subcommands:
             args: !SimpleFlagArg
               name: THREAD_NUM
             optional: true
-          parent: *id003
+          parent: *id020
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -1608,11 +2372,11 @@ subcommands:
         \ directory\n  -ms MOTIFFILE, --motif_summary MOTIFFILE\n                \
         \        Motif Summary File, usually from step2\n"
       generated_using: *id005
-    - &id023 !Command
+    - &id025 !Command
       command: *id006
       positional: []
       named: []
-      parent: *id020
+      parent: *id022
       subcommands:
       - !Command
         command: *id007
@@ -1628,7 +2392,7 @@ subcommands:
           name: info
           optional: false
         named: []
-        parent: *id021
+        parent: *id023
         subcommands: []
         usage: []
         help_flag: !Flag
@@ -1689,7 +2453,7 @@ subcommands:
         args: !SimpleFlagArg
           name: BG_SCORE_FOLDER
         optional: true
-      parent: *id020
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1732,7 +2496,7 @@ subcommands:
         args: !SimpleFlagArg
           name: SCORE_PVALUE_THRESHOLD
         optional: true
-      parent: *id020
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1772,7 +2536,7 @@ subcommands:
         args: !SimpleFlagArg
           name: PARAMETERVALUE
         optional: true
-      parent: *id020
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1837,7 +2601,7 @@ subcommands:
         args: !SimpleFlagArg
           name: THREAD_NUM
         optional: true
-      parent: *id020
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1899,7 +2663,7 @@ subcommands:
         args: !SimpleFlagArg
           name: THREAD_NUM
         optional: true
-      parent: *id020
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -1959,7 +2723,7 @@ subcommands:
         args: !SimpleFlagArg
           name: SCORE_PVALUE_THRESHOLD
         optional: true
-      parent: *id020
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2012,7 +2776,7 @@ subcommands:
         args: !SimpleFlagArg
           name: SNP_BED_FILES
         optional: true
-      parent: *id020
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2068,7 +2832,7 @@ subcommands:
         args: !SimpleFlagArg
           name: THREAD_NUM
         optional: true
-      parent: *id020
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2118,7 +2882,7 @@ subcommands:
         args: !SimpleFlagArg
           name: SNP_ID
         optional: true
-      parent: *id020
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2174,7 +2938,7 @@ subcommands:
         args: !SimpleFlagArg
           name: SNP_MOTIF_ID
         optional: true
-      parent: *id020
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2256,7 +3020,7 @@ subcommands:
         args: !SimpleFlagArg
           name: THREAD_NUM
         optional: true
-      parent: *id020
+      parent: *id022
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -2326,7 +3090,7 @@ subcommands:
   command: *id006
   positional: []
   named: []
-  parent: *id022
+  parent: *id024
   subcommands:
   - !Command
     command: *id007
@@ -2342,7 +3106,7 @@ subcommands:
       name: info
       optional: false
     named: []
-    parent: *id023
+    parent: *id025
     subcommands: []
     usage: []
     help_flag: !Flag
@@ -2403,7 +3167,7 @@ subcommands:
     args: !SimpleFlagArg
       name: BG_SCORE_FOLDER
     optional: true
-  parent: *id022
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2445,7 +3209,7 @@ subcommands:
     args: !SimpleFlagArg
       name: SCORE_PVALUE_THRESHOLD
     optional: true
-  parent: *id022
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2485,7 +3249,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PARAMETERVALUE
     optional: true
-  parent: *id022
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2550,7 +3314,7 @@ subcommands:
     args: !SimpleFlagArg
       name: THREAD_NUM
     optional: true
-  parent: *id022
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2611,7 +3375,7 @@ subcommands:
     args: !SimpleFlagArg
       name: THREAD_NUM
     optional: true
-  parent: *id022
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2671,7 +3435,7 @@ subcommands:
     args: !SimpleFlagArg
       name: SCORE_PVALUE_THRESHOLD
     optional: true
-  parent: *id022
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2723,7 +3487,7 @@ subcommands:
     args: !SimpleFlagArg
       name: SNP_BED_FILES
     optional: true
-  parent: *id022
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2779,7 +3543,7 @@ subcommands:
     args: !SimpleFlagArg
       name: THREAD_NUM
     optional: true
-  parent: *id022
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2828,7 +3592,7 @@ subcommands:
     args: !SimpleFlagArg
       name: SNP_ID
     optional: true
-  parent: *id022
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2883,7 +3647,7 @@ subcommands:
     args: !SimpleFlagArg
       name: SNP_MOTIF_ID
     optional: true
-  parent: *id022
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -2965,7 +3729,7 @@ subcommands:
     args: !SimpleFlagArg
       name: THREAD_NUM
     optional: true
-  parent: *id022
+  parent: *id024
   subcommands: []
   usage: []
   help_flag: !Flag

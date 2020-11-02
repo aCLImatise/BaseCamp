@@ -145,7 +145,7 @@ subcommands:
     args: !SimpleFlagArg
       name: TITLE
     optional: true
-  parent: &id014 !Command
+  parent: &id015 !Command
     command: *id001
     positional: []
     named: []
@@ -291,7 +291,7 @@ subcommands:
         args: !SimpleFlagArg
           name: TITLE
         optional: true
-      parent: &id013 !Command
+      parent: &id014 !Command
         command: *id001
         positional: []
         named: []
@@ -441,7 +441,7 @@ subcommands:
             args: !SimpleFlagArg
               name: TITLE
             optional: true
-          parent: &id003 !Command
+          parent: &id013 !Command
             command: *id001
             positional: []
             named: []
@@ -591,7 +591,1382 @@ subcommands:
                 args: !SimpleFlagArg
                   name: TITLE
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional: []
+                  named:
+                  - !Flag
+                    description: FASTA file of assembly. Headers are split at whitespaces.
+                    synonyms:
+                    - -i
+                    - --infile
+                    args: !SimpleFlagArg
+                      name: FASTA
+                    optional: true
+                  - !Flag
+                    description: "Assembly program used to create FASTA. If specified,\n\
+                      coverage will be parsed from FASTA header.\n(Parsing supported\
+                      \ for 'spades', 'velvet', 'platanus')"
+                    synonyms:
+                    - -y
+                    - --type
+                    args: !SimpleFlagArg
+                      name: FASTATYPE
+                    optional: true
+                  - !Flag
+                    description: "Hits file in format (qseqid\\ttaxid\\tbitscore)\n\
+                      (e.g. BLAST output \"--outfmt '6 qseqid staxids bitscore'\"\
+                      )\nCan be specified multiple times"
+                    synonyms:
+                    - -t
+                    - --hitsfile
+                    args: !SimpleFlagArg
+                      name: HITS...
+                    optional: true
+                  - !Flag
+                    description: "...      Taxrule determines how taxonomy of blobs\n\
+                      is computed (by default both are calculated)\n\"bestsum\"  \
+                      \     : sum bitscore across all\nhits for each taxonomic rank\n\
+                      \"bestsumorder\"  : sum bitscore across all\nhits for each taxonomic\
+                      \ rank.\n- If first <TAX> file supplies hits, bestsum is calculated.\n\
+                      - If no hit is found, the next <TAX> file is used."
+                    synonyms:
+                    - -x
+                    - --taxrule
+                    args: !SimpleFlagArg
+                      name: TAXRULE
+                    optional: true
+                  - !Flag
+                    description: "Minimal score necessary to be considered for taxonomy\
+                      \ calculaton, otherwise set to 'no-hit'\n[default: 0.0]"
+                    synonyms:
+                    - -m
+                    - --min_score
+                    args: !SimpleFlagArg
+                      name: FLOAT
+                    optional: true
+                  - !Flag
+                    description: "Minimal score difference between highest scoring\n\
+                      taxonomies (otherwise \"unresolved\") [default: 0.0]"
+                    synonyms:
+                    - -d
+                    - --min_diff
+                    args: !SimpleFlagArg
+                      name: FLOAT
+                    optional: true
+                  - !Flag
+                    description: "Random allocation of taxonomy if highest scoring\n\
+                      taxonomies have equal scores (otherwise \"unresolved\") [default:\
+                      \ False]"
+                    synonyms:
+                    - --tax_collision_random
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: NCBI nodes.dmp file. Not required if '--db'
+                    synonyms:
+                    - --nodes
+                    args: !SimpleFlagArg
+                      name: NODES
+                    optional: true
+                  - !Flag
+                    description: NCBI names.dmp file. Not required if '--db'
+                    synonyms:
+                    - --names
+                    args: !SimpleFlagArg
+                      name: NAMES
+                    optional: true
+                  - !Flag
+                    description: "NodesDB file (default: $BLOBTOOLS/data/nodesDB.txt).\
+                      \  If --nodes, --names and --db\nare all given and NODESDB does\
+                      \ not exist, create it from NODES and NAMES."
+                    synonyms:
+                    - --db
+                    args: !SimpleFlagArg
+                      name: NODESDB
+                    optional: true
+                  - !Flag
+                    description: '...              BAM file(s), can be specified multiple
+                      times'
+                    synonyms:
+                    - -b
+                    - --bam
+                    args: !SimpleFlagArg
+                      name: BAM
+                    optional: true
+                  - !Flag
+                    description: '...              CAS file(s) (requires clc_mapping_info
+                      in $PATH), can be specified multiple times'
+                    synonyms:
+                    - -a
+                    - --cas
+                    args: !SimpleFlagArg
+                      name: CAS
+                    optional: true
+                  - !Flag
+                    description: '...              COV file(s), can be specified multiple
+                      times'
+                    synonyms:
+                    - -c
+                    - --cov
+                    args: !SimpleFlagArg
+                      name: COV
+                    optional: true
+                  - !Flag
+                    description: "Legacy coverage when getting coverage from BAM (does\
+                      \ not apply to COV parsing).\nNew default is to estimate coverages\
+                      \ which is faster,"
+                    synonyms:
+                    - -C
+                    - --calculate_cov
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: BlobDB output prefix
+                    synonyms:
+                    - -o
+                    - --out
+                    args: !SimpleFlagArg
+                      name: PREFIX
+                    optional: true
+                  - !Flag
+                    description: 'Title of BlobDB [default: output prefix)'
+                    synonyms:
+                    - --title
+                    args: !SimpleFlagArg
+                      name: TITLE
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: blobtools create     -i FASTA [-y FASTATYPE]\
+                    \ [-o PREFIX] [--title TITLE]\n                              [-b\
+                    \ BAM...] [-C] [-a CAS...] [-c COV...]\n                     \
+                    \         [--nodes <NODES>] [--names <NAMES>] [--db <NODESDB>]\n\
+                    \                              [-t HITS...] [-x TAXRULE...] [-m\
+                    \ FLOAT] [-d FLOAT] [--tax_collision_random]\n               \
+                    \               [-h|--help]\n\n    Options:\n        -h --help\
+                    \                       show this\n        -i, --infile FASTA\
+                    \              FASTA file of assembly. Headers are split at whitespaces.\n\
+                    \        -y, --type FASTATYPE            Assembly program used\
+                    \ to create FASTA. If specified,\n                           \
+                    \             coverage will be parsed from FASTA header.\n   \
+                    \                                     (Parsing supported for 'spades',\
+                    \ 'velvet', 'platanus')\n        -t, --hitsfile HITS...      \
+                    \    Hits file in format (qseqid\\ttaxid\\tbitscore)\n       \
+                    \                                 (e.g. BLAST output \"--outfmt\
+                    \ '6 qseqid staxids bitscore'\")\n                           \
+                    \             Can be specified multiple times\n        -x, --taxrule\
+                    \ <TAXRULE>...      Taxrule determines how taxonomy of blobs\n\
+                    \                                        is computed (by default\
+                    \ both are calculated)\n                                     \
+                    \   \"bestsum\"       : sum bitscore across all\n            \
+                    \                                              hits for each taxonomic\
+                    \ rank\n                                        \"bestsumorder\"\
+                    \  : sum bitscore across all\n                               \
+                    \                           hits for each taxonomic rank.\n  \
+                    \                                                - If first <TAX>\
+                    \ file supplies hits, bestsum is calculated.\n               \
+                    \                                   - If no hit is found, the\
+                    \ next <TAX> file is used.\n        -m, --min_score <FLOAT>  \
+                    \       Minimal score necessary to be considered for taxonomy\
+                    \ calculaton, otherwise set to 'no-hit'\n                    \
+                    \                    [default: 0.0]\n        -d, --min_diff <FLOAT>\
+                    \          Minimal score difference between highest scoring\n\
+                    \                                        taxonomies (otherwise\
+                    \ \"unresolved\") [default: 0.0]\n        --tax_collision_random\
+                    \          Random allocation of taxonomy if highest scoring\n\
+                    \                                        taxonomies have equal\
+                    \ scores (otherwise \"unresolved\") [default: False]\n       \
+                    \ --nodes <NODES>                 NCBI nodes.dmp file. Not required\
+                    \ if '--db'\n        --names <NAMES>                 NCBI names.dmp\
+                    \ file. Not required if '--db'\n        --db <NODESDB>       \
+                    \           NodesDB file (default: $BLOBTOOLS/data/nodesDB.txt).\
+                    \  If --nodes, --names and --db\n                            \
+                    \            are all given and NODESDB does not exist, create\
+                    \ it from NODES and NAMES.\n        -b, --bam <BAM>...       \
+                    \       BAM file(s), can be specified multiple times\n       \
+                    \ -a, --cas <CAS>...              CAS file(s) (requires clc_mapping_info\
+                    \ in $PATH), can be specified multiple times\n        -c, --cov\
+                    \ <COV>...              COV file(s), can be specified multiple\
+                    \ times\n        -C, --calculate_cov             Legacy coverage\
+                    \ when getting coverage from BAM (does not apply to COV parsing).\
+                    \ \n                                            New default is\
+                    \ to estimate coverages which is faster,\n        -o, --out <PREFIX>\
+                    \              BlobDB output prefix\n        --title TITLE   \
+                    \                Title of BlobDB [default: output prefix)\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id005
+                  - blobtools
+                  - map2cov
+                  positional: []
+                  named:
+                  - !Flag
+                    description: FASTA file of assembly. Headers are split at whitespaces.
+                    synonyms:
+                    - -i
+                    - --infile
+                    args: !SimpleFlagArg
+                      name: FASTA
+                    optional: true
+                  - !Flag
+                    description: '...          BAM file (requires pysam)'
+                    synonyms:
+                    - -b
+                    - --bam
+                    args: !SimpleFlagArg
+                      name: BAM
+                    optional: true
+                  - !Flag
+                    description: '...          CAS file (requires clc_mapping_info
+                      in $PATH)'
+                    synonyms:
+                    - -a
+                    - --cas
+                    args: !SimpleFlagArg
+                      name: CAS
+                    optional: true
+                  - !Flag
+                    description: Output prefix
+                    synonyms:
+                    - -o
+                    - --output
+                    args: !SimpleFlagArg
+                      name: PREFIX
+                    optional: true
+                  - !Flag
+                    description: "Legacy coverage, slower. New default is to estimate\
+                      \ coverages\nbased on read lengths of first 10K reads.\n"
+                    synonyms:
+                    - -c
+                    - --calculate_cov
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: blobtools map2cov         -i FASTA [-b BAM...]\
+                    \ [-a CAS...]\n                                    [-o PREFIX]\
+                    \ [-c]\n                                    [-h|--help]\n\n  \
+                    \  Options:\n        -h --help                   show this\n \
+                    \       -i, --infile FASTA          FASTA file of assembly. Headers\
+                    \ are split at whitespaces.\n        -b, --bam <BAM>...      \
+                    \    BAM file (requires pysam)\n        -a, --cas <CAS>...   \
+                    \       CAS file (requires clc_mapping_info in $PATH)\n      \
+                    \  -o, --output <PREFIX>       Output prefix\n        -c, --calculate_cov\
+                    \         Legacy coverage, slower. New default is to estimate\
+                    \ coverages \n                                        based on\
+                    \ read lengths of first 10K reads.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id006
+                  - blobtools
+                  - plot
+                  positional: []
+                  named:
+                  - !Flag
+                    description: BlobDB file (created with "blobtools create")
+                    synonyms:
+                    - -i
+                    - --infile
+                    args: !SimpleFlagArg
+                      name: BLOBDB
+                    optional: true
+                  - !Flag
+                    description: Plot only certain covlib(s). Separated by ","
+                    synonyms:
+                    - --lib
+                    args: !SimpleFlagArg
+                      name: COVLIB
+                    optional: true
+                  - !Flag
+                    description: Do not add filename as title to plot
+                    synonyms:
+                    - --notitle
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Label axis based on filenames
+                    synonyms:
+                    - --filelabel
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Number of (taxonomic) groups to plot, remaining\n\
+                      groups are placed in 'other' [default: 8]"
+                    synonyms:
+                    - -p
+                    - --plotgroups
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  - !Flag
+                    description: 'Minimum sequence length considered for plotting
+                      [default: 100]'
+                    synonyms:
+                    - -l
+                    - --length
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  - !Flag
+                    description: "Colour blobs by 'c index' [default: False]"
+                    synonyms:
+                    - --cindex
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Hide sequences without taxonomic annotation [default:
+                      False]'
+                    synonyms:
+                    - -n
+                    - --nohit
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Do not scale sequences by length [default: False]'
+                    synonyms:
+                    - -s
+                    - --noscale
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Plot legend of blobplot in separate figure
+                    synonyms:
+                    - --legend
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Multi-plot. Print blobplot for each (taxonomic) group
+                      separately
+                    synonyms:
+                    - -m
+                    - --multiplot
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Print plot after addition of each (taxonomic) group
+                    synonyms:
+                    - --cumulative
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Sort order for plotting [default: span]'
+                    synonyms:
+                    - --sort
+                    args: !SimpleFlagArg
+                      name: ORDER
+                    optional: true
+                  - !Flag
+                    description: "<L1,L2,...>    Labels that should always be plotted\
+                      \ first, regardless of sort order\n(\"no-hit,other,undef\" is\
+                      \ often a useful setting)"
+                    synonyms:
+                    - --sort_first
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Data for histograms [default: span]'
+                    synonyms:
+                    - --hist
+                    args: !SimpleFlagArg
+                      name: HIST
+                    optional: true
+                  - !Flag
+                    description: "Taxonomic rank used for colouring of blobs [default:\
+                      \ phylum]\n(Supported: species, genus, family, order,\nphylum,\
+                      \ superkingdom)"
+                    synonyms:
+                    - -r
+                    - --rank
+                    args: !SimpleFlagArg
+                      name: RANK
+                    optional: true
+                  - !Flag
+                    description: "Taxrule which has been used for computing taxonomy\n\
+                      (Supported: bestsum, bestsumorder) [default: bestsum]"
+                    synonyms:
+                    - -x
+                    - --taxrule
+                    args: !SimpleFlagArg
+                      name: TAXRULE
+                    optional: true
+                  - !Flag
+                    description: "Figure format for plot (png, pdf, eps, jpeg,\nps,\
+                      \ svg, svgz, tiff) [default: png]"
+                    synonyms:
+                    - --format
+                    args: !SimpleFlagArg
+                      name: FORMAT
+                    optional: true
+                  - !Flag
+                    description: 'Omit blobplot [default: False]'
+                    synonyms:
+                    - --noblobs
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Omit plot of reads mapping [default: False]'
+                    synonyms:
+                    - --noreads
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Output prefix
+                    synonyms:
+                    - -o
+                    - --out
+                    args: !SimpleFlagArg
+                      name: PREFIX
+                    optional: true
+                  - !Flag
+                    description: "Relabel (taxonomic) groups, can be used several\
+                      \ times.\ne.g. \"A=Actinobacteria,Proteobacteria\""
+                    synonyms:
+                    - --label
+                    args: !SimpleFlagArg
+                      name: GROUPS...
+                    optional: true
+                  - !Flag
+                    description: File containing colours for (taxonomic) groups. This
+                      allows having more than 9 colours.
+                    synonyms:
+                    - --colours
+                    args: !SimpleFlagArg
+                      name: COLOURFILE
+                    optional: true
+                  - !Flag
+                    description: "Exclude these (taxonomic) groups (also works for\
+                      \ 'other')\ne.g. \"Actinobacteria,Proteobacteria,other\""
+                    synonyms:
+                    - --exclude
+                    args: !SimpleFlagArg
+                      name: GROUPS
+                    optional: true
+                  - !Flag
+                    description: "File containing number of \"total\" and \"mapped\"\
+                      \ reads\nper coverage file. (e.g.: bam0,900,100). If provided,\
+                      \ info\nwill be used in read coverage plot(s)."
+                    synonyms:
+                    - --refcov
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: "Colour plot based on categories from FILE\n(format\
+                      \ : \"seq     category\").\n"
+                    synonyms:
+                    - --catcolour
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: blobtools plot -i <BLOBDB>\n                \
+                    \                [-p INT] [-l INT] [--cindex] [-n] [-s]\n    \
+                    \                            [-r RANK] [-x TAXRULE] [--label GROUPS...]\n\
+                    \                                [--lib COVLIB] [-o PREFIX] [-m]\n\
+                    \                                [--sort ORDER] [--sort_first\
+                    \ LABELS] [--hist HIST] [--notitle] [--filelabel]\n          \
+                    \                      [--colours FILE] [--exclude FILE]\n   \
+                    \                             [--refcov FILE] [--catcolour FILE]\n\
+                    \                                [--format FORMAT] [--noblobs]\
+                    \ [--noreads] [--legend]\n                                [--cumulative]\
+                    \ [--multiplot]\n                                [-h|--help]\n\
+                    \n    Options:\n        -h --help                   show this\n\
+                    \        -i, --infile BLOBDB         BlobDB file (created with\
+                    \ \"blobtools create\")\n        --lib COVLIB                Plot\
+                    \ only certain covlib(s). Separated by \",\"\n        --notitle\
+                    \                   Do not add filename as title to plot\n   \
+                    \     --filelabel                 Label axis based on filenames\n\
+                    \        -p, --plotgroups INT        Number of (taxonomic) groups\
+                    \ to plot, remaining\n                                     groups\
+                    \ are placed in 'other' [default: 8]\n        -l, --length INT\
+                    \            Minimum sequence length considered for plotting [default:\
+                    \ 100]\n        --cindex                    Colour blobs by 'c\
+                    \ index' [default: False]\n        -n, --nohit               \
+                    \  Hide sequences without taxonomic annotation [default: False]\n\
+                    \        -s, --noscale               Do not scale sequences by\
+                    \ length [default: False]\n        --legend                  \
+                    \  Plot legend of blobplot in separate figure\n        -m, --multiplot\
+                    \             Multi-plot. Print blobplot for each (taxonomic)\
+                    \ group separately\n        --cumulative                Print\
+                    \ plot after addition of each (taxonomic) group\n        --sort\
+                    \ <ORDER>              Sort order for plotting [default: span]\n\
+                    \                                     span  : plot with decreasing\
+                    \ span\n                                     count : plot with\
+                    \ decreasing count\n        --sort_first <L1,L2,...>    Labels\
+                    \ that should always be plotted first, regardless of sort order\n\
+                    \                                     (\"no-hit,other,undef\"\
+                    \ is often a useful setting)\n        --hist <HIST>          \
+                    \     Data for histograms [default: span]\n                  \
+                    \                   span  : span-weighted histograms\n       \
+                    \                              count : count histograms\n    \
+                    \    -r, --rank <RANK>           Taxonomic rank used for colouring\
+                    \ of blobs [default: phylum]\n                               \
+                    \      (Supported: species, genus, family, order,\n          \
+                    \                              phylum, superkingdom)\n       \
+                    \ -x, --taxrule <TAXRULE>     Taxrule which has been used for\
+                    \ computing taxonomy\n                                     (Supported:\
+                    \ bestsum, bestsumorder) [default: bestsum]\n        --format\
+                    \ FORMAT             Figure format for plot (png, pdf, eps, jpeg,\n\
+                    \                                        ps, svg, svgz, tiff)\
+                    \ [default: png]\n        --noblobs                   Omit blobplot\
+                    \ [default: False]\n        --noreads                   Omit plot\
+                    \ of reads mapping [default: False]\n\n        -o, --out PREFIX\
+                    \            Output prefix\n\n        --label GROUPS...      \
+                    \     Relabel (taxonomic) groups, can be used several times.\n\
+                    \                                     e.g. \"A=Actinobacteria,Proteobacteria\"\
+                    \n        --colours COLOURFILE        File containing colours\
+                    \ for (taxonomic) groups. This allows having more than 9 colours.\n\
+                    \        --exclude GROUPS            Exclude these (taxonomic)\
+                    \ groups (also works for 'other')\n                          \
+                    \           e.g. \"Actinobacteria,Proteobacteria,other\"\n   \
+                    \     --refcov <FILE>               File containing number of\
+                    \ \"total\" and \"mapped\" reads\n                           \
+                    \          per coverage file. (e.g.: bam0,900,100). If provided,\
+                    \ info\n                                     will be used in read\
+                    \ coverage plot(s).\n        --catcolour <FILE>            Colour\
+                    \ plot based on categories from FILE\n                       \
+                    \              (format : \"seq\tcategory\").\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - blobtools
+                  - covplot
+                  positional: []
+                  named:
+                  - !Flag
+                    description: BlobDB file
+                    synonyms:
+                    - -i
+                    - --infile
+                    args: !SimpleFlagArg
+                      name: BLOBDB
+                    optional: true
+                  - !Flag
+                    description: COV file to be used in y-axis
+                    synonyms:
+                    - -c
+                    - --cov
+                    args: !SimpleFlagArg
+                      name: COV
+                    optional: true
+                  - !Flag
+                    description: Label for x-axis
+                    synonyms:
+                    - --xlabel
+                    args: !SimpleFlagArg
+                      name: XLABEL
+                    optional: true
+                  - !Flag
+                    description: Label for y-axis
+                    synonyms:
+                    - --ylabel
+                    args: !SimpleFlagArg
+                      name: YLABEL
+                    optional: true
+                  - !Flag
+                    description: 'Maximum values for x/y-axis [default: 1e10]'
+                    synonyms:
+                    - --max
+                    args: !SimpleFlagArg
+                      name: FLOAT
+                    optional: true
+                  - !Flag
+                    description: Plot only certain covlib(s). Separated by ","
+                    synonyms:
+                    - --lib
+                    args: !SimpleFlagArg
+                      name: COVLIB
+                    optional: true
+                  - !Flag
+                    description: Do not add filename as title to plot
+                    synonyms:
+                    - --notitle
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Number of (taxonomic) groups to plot, remaining\n\
+                      groups are placed in 'other' [default: 7]"
+                    synonyms:
+                    - -p
+                    - --plotgroups
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  - !Flag
+                    description: 'Minimum sequence length considered for plotting
+                      [default: 100]'
+                    synonyms:
+                    - -l
+                    - --length
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  - !Flag
+                    description: "Colour blobs by 'c index' [default: False]"
+                    synonyms:
+                    - --cindex
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Hide sequences without taxonomic annotation [default:
+                      False]'
+                    synonyms:
+                    - -n
+                    - --nohit
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Do not scale sequences by length [default: False]'
+                    synonyms:
+                    - -s
+                    - --noscale
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Plot legend of blobplot in separate figure
+                    synonyms:
+                    - --legend
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Multi-plot. Print blobplot for each (taxonomic) group
+                      separately
+                    synonyms:
+                    - -m
+                    - --multiplot
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Print plot after addition of each (taxonomic) group
+                    synonyms:
+                    - --cumulative
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Sort order for plotting [default: span]'
+                    synonyms:
+                    - --sort
+                    args: !SimpleFlagArg
+                      name: ORDER
+                    optional: true
+                  - !Flag
+                    description: "<L1,L2,...>    Labels that should always be plotted\
+                      \ first, regardless of sort order\n(\"no-hit,other,undef\" is\
+                      \ often a useful setting)"
+                    synonyms:
+                    - --sort_first
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Data for histograms [default: span]'
+                    synonyms:
+                    - --hist
+                    args: !SimpleFlagArg
+                      name: HIST
+                    optional: true
+                  - !Flag
+                    description: "Taxonomic rank used for colouring of blobs [default:\
+                      \ phylum]\n(Supported: species, genus, family, order,\nphylum,\
+                      \ superkingdom)"
+                    synonyms:
+                    - -r
+                    - --rank
+                    args: !SimpleFlagArg
+                      name: RANK
+                    optional: true
+                  - !Flag
+                    description: "Taxrule which has been used for computing taxonomy\n\
+                      (Supported: bestsum, bestsumorder) [default: bestsum]"
+                    synonyms:
+                    - -x
+                    - --taxrule
+                    args: !SimpleFlagArg
+                      name: TAXRULE
+                    optional: true
+                  - !Flag
+                    description: "Figure format for plot (png, pdf, eps, jpeg,\nps,\
+                      \ svg, svgz, tiff) [default: png]"
+                    synonyms:
+                    - --format
+                    args: !SimpleFlagArg
+                      name: FORMAT
+                    optional: true
+                  - !Flag
+                    description: 'Omit blobplot [default: False]'
+                    synonyms:
+                    - --noblobs
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Omit plot of reads mapping [default: False]'
+                    synonyms:
+                    - --noreads
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Output prefix
+                    synonyms:
+                    - -o
+                    - --out
+                    args: !SimpleFlagArg
+                      name: PREFIX
+                    optional: true
+                  - !Flag
+                    description: "Relabel (taxonomic) groups, can be used several\
+                      \ times.\ne.g. \"A=Actinobacteria,Proteobacteria\""
+                    synonyms:
+                    - --label
+                    args: !SimpleFlagArg
+                      name: GROUPS...
+                    optional: true
+                  - !Flag
+                    description: File containing colours for (taxonomic) groups
+                    synonyms:
+                    - --colours
+                    args: !SimpleFlagArg
+                      name: COLOURFILE
+                    optional: true
+                  - !Flag
+                    description: "Exclude these (taxonomic) groups (also works for\
+                      \ 'other')\ne.g. \"Actinobacteria,Proteobacteria,other\""
+                    synonyms:
+                    - --exclude
+                    args: !SimpleFlagArg
+                      name: GROUPS
+                    optional: true
+                  - !Flag
+                    description: "File containing number of \"total\" and \"mapped\"\
+                      \ reads\nper coverage file. (e.g.: bam0,900,100). If provided,\
+                      \ info\nwill be used in read coverage plot(s)."
+                    synonyms:
+                    - --refcov
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: "Colour plot based on categories from FILE\n(format\
+                      \ : \"seq,category\").\n"
+                    synonyms:
+                    - --catcolour
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: blobtools covplot  -i BLOBDB -c COV [--max FLOAT]\n\
+                    \                                [--xlabel XLABEL] [--ylabel YLABEL]\n\
+                    \                                [--lib COVLIB] [-o PREFIX] [-m]\n\
+                    \                                [-p INT] [-l INT] [--cindex]\
+                    \ [-n] [-s]\n                                [-r RANK] [-x TAXRULE]\
+                    \ [--label GROUPS...]\n                                [--sort\
+                    \ ORDER] [--sort_first LABELS]\n                             \
+                    \   [--hist HIST] [--notitle]\n                              \
+                    \  [--colours FILE] [--exclude FILE]\n                       \
+                    \         [--refcov FILE] [--catcolour FILE]\n               \
+                    \                 [--format FORMAT] [--noblobs] [--noreads] [--legend]\n\
+                    \                                [--cumulative]\n            \
+                    \                    [-h|--help]\n\n    Options:\n        -h --help\
+                    \                   show this\n        -i, --infile BLOBDB   \
+                    \      BlobDB file\n        -c, --cov COV               COV file\
+                    \ to be used in y-axis\n\n        --xlabel XLABEL            \
+                    \ Label for x-axis\n        --ylabel YLABEL             Label\
+                    \ for y-axis\n        --max FLOAT                 Maximum values\
+                    \ for x/y-axis [default: 1e10]\n\n        --lib COVLIB       \
+                    \         Plot only certain covlib(s). Separated by \",\"\n  \
+                    \      --notitle                   Do not add filename as title\
+                    \ to plot\n        -p, --plotgroups INT        Number of (taxonomic)\
+                    \ groups to plot, remaining\n                                \
+                    \     groups are placed in 'other' [default: 7]\n        -l, --length\
+                    \ INT            Minimum sequence length considered for plotting\
+                    \ [default: 100]\n        --cindex                    Colour blobs\
+                    \ by 'c index' [default: False]\n        -n, --nohit         \
+                    \        Hide sequences without taxonomic annotation [default:\
+                    \ False]\n        -s, --noscale               Do not scale sequences\
+                    \ by length [default: False]\n        --legend               \
+                    \     Plot legend of blobplot in separate figure\n        -m,\
+                    \ --multiplot             Multi-plot. Print blobplot for each\
+                    \ (taxonomic) group separately\n        --cumulative         \
+                    \       Print plot after addition of each (taxonomic) group\n\
+                    \        --sort <ORDER>              Sort order for plotting [default:\
+                    \ span]\n                                     span  : plot with\
+                    \ decreasing span\n                                     count\
+                    \ : plot with decreasing count\n        --sort_first <L1,L2,...>\
+                    \    Labels that should always be plotted first, regardless of\
+                    \ sort order\n                                     (\"no-hit,other,undef\"\
+                    \ is often a useful setting)\n        --hist <HIST>          \
+                    \     Data for histograms [default: span]\n                  \
+                    \                   span  : span-weighted histograms\n       \
+                    \                              count : count histograms\n    \
+                    \    -r, --rank <RANK>           Taxonomic rank used for colouring\
+                    \ of blobs [default: phylum]\n                               \
+                    \      (Supported: species, genus, family, order,\n          \
+                    \                              phylum, superkingdom)\n       \
+                    \ -x, --taxrule <TAXRULE>     Taxrule which has been used for\
+                    \ computing taxonomy\n                                     (Supported:\
+                    \ bestsum, bestsumorder) [default: bestsum]\n        --format\
+                    \ FORMAT             Figure format for plot (png, pdf, eps, jpeg,\n\
+                    \                                        ps, svg, svgz, tiff)\
+                    \ [default: png]\n        --noblobs                   Omit blobplot\
+                    \ [default: False]\n        --noreads                   Omit plot\
+                    \ of reads mapping [default: False]\n        -o, --out PREFIX\
+                    \            Output prefix\n        --label GROUPS...        \
+                    \   Relabel (taxonomic) groups, can be used several times.\n \
+                    \                                    e.g. \"A=Actinobacteria,Proteobacteria\"\
+                    \n        --colours COLOURFILE        File containing colours\
+                    \ for (taxonomic) groups\n        --exclude GROUPS           \
+                    \ Exclude these (taxonomic) groups (also works for 'other')\n\
+                    \                                     e.g. \"Actinobacteria,Proteobacteria,other\"\
+                    \n        --refcov <FILE>               File containing number\
+                    \ of \"total\" and \"mapped\" reads\n                        \
+                    \             per coverage file. (e.g.: bam0,900,100). If provided,\
+                    \ info\n                                     will be used in read\
+                    \ coverage plot(s).\n        --catcolour <FILE>            Colour\
+                    \ plot based on categories from FILE\n                       \
+                    \              (format : \"seq,category\").\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id008
+                  - blobtools
+                  - seqfilter
+                  positional: []
+                  named:
+                  - !Flag
+                    description: FASTA file of sequences (Headers are split at whitespaces)
+                    synonyms:
+                    - -i
+                    - --infile
+                    args: !SimpleFlagArg
+                      name: FASTA
+                    optional: true
+                  - !Flag
+                    description: TXT file containing headers of sequences to keep
+                    synonyms:
+                    - -l
+                    - --list
+                    args: !SimpleFlagArg
+                      name: LIST
+                    optional: true
+                  - !Flag
+                    description: Output prefix
+                    synonyms:
+                    - -o
+                    - --out
+                    args: !SimpleFlagArg
+                      name: PREFIX
+                    optional: true
+                  - !Flag
+                    description: Invert filtering (Sequences w/ headers NOT in list)
+                    synonyms:
+                    - -v
+                    - --invert
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: blobtools seqfilter       -i FASTA -l LIST [-o\
+                    \ PREFIX] [-v]\n                                    [-h|--help]\n\
+                    \n    Options:\n        -h --help                   show this\n\
+                    \n        -i, --infile <FASTA>        FASTA file of sequences\
+                    \ (Headers are split at whitespaces)\n        -l, --list <LIST>\
+                    \           TXT file containing headers of sequences to keep\n\
+                    \        -o, --out <PREFIX>          Output prefix\n        -v,\
+                    \ --invert                Invert filtering (Sequences w/ headers\
+                    \ NOT in list)\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id009
+                  - blobtools
+                  - nodesdb
+                  positional: []
+                  named:
+                  - !Flag
+                    description: NCBI nodes.dmp file.
+                    synonyms:
+                    - --nodes
+                    args: !SimpleFlagArg
+                      name: NODES
+                    optional: true
+                  - !Flag
+                    description: NCBI names.dmp file.
+                    synonyms:
+                    - --names
+                    args: !SimpleFlagArg
+                      name: NAMES
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: blobtools nodesdb             --nodes <NODES>\
+                    \ --names <NAMES>\n                                        [-h|--help]\n\
+                    \n    Options:\n        -h --help                       show this\n\
+                    \        --nodes <NODES>                 NCBI nodes.dmp file.\n\
+                    \        --names <NAMES>                 NCBI names.dmp file.\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id010
+                  - blobtools
+                  - view
+                  positional: []
+                  named:
+                  - !Flag
+                    description: BlobDB file (created with "blobtools create")
+                    synonyms:
+                    - -i
+                    - --input
+                    args: !SimpleFlagArg
+                      name: BLOBDB
+                    optional: true
+                  - !Flag
+                    description: Output prefix
+                    synonyms:
+                    - -o
+                    - --out
+                    args: !SimpleFlagArg
+                      name: OUT
+                    optional: true
+                  - !Flag
+                    description: List of sequence names (file).
+                    synonyms:
+                    - -l
+                    - --list
+                    args: !SimpleFlagArg
+                      name: LIST
+                    optional: true
+                  - !Flag
+                    description: "Taxrule used for computing taxonomy\n(supported:\
+                      \ \"bestsum\", \"bestsumorder\")\n[default: bestsum]"
+                    synonyms:
+                    - -x
+                    - --taxrule
+                    args: !SimpleFlagArg
+                      name: TAXRULE
+                    optional: true
+                  - !Flag
+                    description: "...     Taxonomic rank(s) at which output will be\
+                      \ written.\n(supported: 'species', 'genus', 'family', 'order',\n\
+                      'phylum', 'superkingdom', 'all') [default: phylum]"
+                    synonyms:
+                    - -r
+                    - --rank
+                    args: !SimpleFlagArg
+                      name: TAXRANK
+                    optional: true
+                  - !Flag
+                    description: "Displays taxonomic hits from tax files\nthat contributed\
+                      \ to the taxonomy."
+                    synonyms:
+                    - -b
+                    - --hits
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Generate concoct files [default: False]'
+                    synonyms:
+                    - --concoct
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Generate cov files [default: False]'
+                    synonyms:
+                    - --cov
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'Experimental output [default: False]'
+                    synonyms:
+                    - --experimental
+                    args: !SimpleFlagArg
+                      name: META
+                    optional: true
+                  - !Flag
+                    description: 'Do not generate table view [default: False]'
+                    synonyms:
+                    - -n
+                    - --notable
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this
+                    synonyms:
+                    - --h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: blobtools view    -i <BLOBDB> [-x <TAXRULE>]\
+                    \ [--rank <TAXRANK>...] [--hits]\n                           \
+                    \ [--list <LIST>] [--out <OUT>] [--notable]\n                \
+                    \            [--concoct] [--cov] [--experimental <META>]\n   \
+                    \                         [--h|--help]\n\n    Options:\n     \
+                    \   --h --help                  show this\n        -i, --input\
+                    \ <BLOBDB>        BlobDB file (created with \"blobtools create\"\
+                    )\n        -o, --out <OUT>             Output prefix\n       \
+                    \ -l, --list <LIST>           List of sequence names (file).\n\
+                    \        -x, --taxrule <TAXRULE>     Taxrule used for computing\
+                    \ taxonomy\n                                    (supported: \"\
+                    bestsum\", \"bestsumorder\")\n                               \
+                    \     [default: bestsum]\n        -r, --rank <TAXRANK>...    \
+                    \ Taxonomic rank(s) at which output will be written.\n       \
+                    \                             (supported: 'species', 'genus',\
+                    \ 'family', 'order',\n                                    'phylum',\
+                    \ 'superkingdom', 'all') [default: phylum]\n        -b, --hits\
+                    \                  Displays taxonomic hits from tax files\n  \
+                    \                                  that contributed to the taxonomy.\n\
+                    \        --concoct                   Generate concoct files [default:\
+                    \ False]\n        --cov                       Generate cov files\
+                    \ [default: False]\n        --experimental <META>       Experimental\
+                    \ output [default: False]\n        -n, --notable             \
+                    \  Do not generate table view [default: False]\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id011
+                  - blobtools
+                  - bamfilter
+                  positional: []
+                  named:
+                  - !Flag
+                    description: BAM file (sorted by name)
+                    synonyms:
+                    - -b
+                    - --bam
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: "List of contigs whose reads are included\n- writes\
+                      \ FASTAs of pairs where at least\none read maps sequences in\
+                      \ list\n(InUn.fq, InIn.fq, ExIn.fq)"
+                    synonyms:
+                    - -i
+                    - --include
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: "List of contigs whose reads are excluded (outputs\
+                      \ reads that do not map to sequences in list)\n- writes FASTAs\
+                      \ of pairs where at least\none read does not maps to sequences\
+                      \ in list\n(InUn.fq, InIn.fq, ExIn.fq)"
+                    synonyms:
+                    - -e
+                    - --exclude
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: Include pairs where both reads are unmapped
+                    synonyms:
+                    - -U
+                    - --exclude_unmapped
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Use if fw and rev reads should be in separate files
+                    synonyms:
+                    - -n
+                    - --noninterleaved
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: 'FASTQ = fq, FASTA = fa [default: fa]'
+                    synonyms:
+                    - -f
+                    - --read_format
+                    args: !SimpleFlagArg
+                      name: FORMAT
+                    optional: true
+                  - !Flag
+                    description: Output prefix
+                    synonyms:
+                    - -o
+                    - --out
+                    args: !SimpleFlagArg
+                      name: PREFIX
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: blobtools bamfilter  -b FILE [-i FILE] [-e FILE]\
+                    \ [-U] [-n] [-o PREFIX] [-f FORMAT]\n                        \
+                    \        [-h|--help]\n\n    Options:\n        -h --help      \
+                    \             show this\n        -b, --bam FILE              BAM\
+                    \ file (sorted by name)\n        -i, --include FILE          List\
+                    \ of contigs whose reads are included\n                      \
+                    \              - writes FASTAs of pairs where at least\n     \
+                    \                                   one read maps sequences in\
+                    \ list\n                                        (InUn.fq, InIn.fq,\
+                    \ ExIn.fq)\n        -e, --exclude FILE          List of contigs\
+                    \ whose reads are excluded (outputs reads that do not map to sequences\
+                    \ in list)\n                                    - writes FASTAs\
+                    \ of pairs where at least\n                                  \
+                    \      one read does not maps to sequences in list\n         \
+                    \                               (InUn.fq, InIn.fq, ExIn.fq)\n\
+                    \        -U, --exclude_unmapped      Include pairs where both\
+                    \ reads are unmapped\n        -n, --noninterleaved        Use\
+                    \ if fw and rev reads should be in separate files  \n        -f,\
+                    \ --read_format FORMAT    FASTQ = fq, FASTA = fa [default: fa]\
+                    \      \n        -o, --out PREFIX            Output prefix\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id012
+                  - blobtools
+                  - taxify
+                  positional:
+                  - !Positional
+                    description: -o, --out <PREFIX>                  Output prefix
+                    position: 0
+                    name: General
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "BLAST/Diamond similarity search result (TSV format).\n\
+                      Defaults assume \"-outfmt '6 qseqid sseqid pident length mismatch\
+                      \ gapopen qstart qend sstart send evalue bitscore'\""
+                    synonyms:
+                    - -f
+                    - --hit_file
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: "Zero-based column of qseqid in similarity search\
+                      \ result [default: 0]\nChange if different format than (-outfmt\
+                      \ '6')"
+                    synonyms:
+                    - -a
+                    - --hit_column_qseqid
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  - !Flag
+                    description: "Zero-based column of sseqid in similarity search\
+                      \ result [default: 1]\nChange if different format than (-outfmt\
+                      \ '6')"
+                    synonyms:
+                    - -b
+                    - --hit_column_sseqid
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  - !Flag
+                    description: "Zero-based column of (bit)score in similarity search\
+                      \ result [default: 11]\nChange if different format than (-outfmt\
+                      \ '6')"
+                    synonyms:
+                    - -c
+                    - --hit_column_score
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  - !Flag
+                    description: TaxID mapping file (contains seqid and taxid)
+                    synonyms:
+                    - -m
+                    - --taxid_mapping_file
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: Zero-based column of sseqid in TaxID mapping file
+                      (it will search for sseqid in this column)
+                    synonyms:
+                    - -s
+                    - --map_col_sseqid
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  - !Flag
+                    description: Zero-based Column of taxid in TaxID mapping file
+                      (it will extract for taxid from this column)
+                    synonyms:
+                    - -t
+                    - --map_col_taxid
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  - !Flag
+                    description: File containing list of sequence IDs
+                    synonyms:
+                    - -i
+                    - --custom
+                    args: !SimpleFlagArg
+                      name: FILE
+                    optional: true
+                  - !Flag
+                    description: TaxID to assign to all sequence IDs in list
+                    synonyms:
+                    - -x
+                    - --custom_taxid
+                    args: !SimpleFlagArg
+                      name: INT
+                    optional: true
+                  - !Flag
+                    description: Score to assign to all sequence IDs in list
+                    synonyms:
+                    - -v
+                    - --custom_score
+                    args: !SimpleFlagArg
+                      name: FLOAT
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: blobtools taxify          -f FILE [-a INT] [-b\
+                    \ INT] [-c INT]\n                                    [-m FILE]\
+                    \ [-s INT] [-t INT]\n                                    [-i FILE]\
+                    \ [-x INT] [-v FLOAT]\n                                    [-o\
+                    \ PREFIX] [-h|--help]\n\n    Options:\n        -h --help     \
+                    \                      show this\n\n    Options for similarity\
+                    \ search input\n        -f, --hit_file <FILE>               BLAST/Diamond\
+                    \ similarity search result (TSV format).\n                   \
+                    \                             Defaults assume \"-outfmt '6 qseqid\
+                    \ sseqid pident length mismatch gapopen qstart qend sstart send\
+                    \ evalue bitscore'\"\n        -a, --hit_column_qseqid <INT>  \
+                    \     Zero-based column of qseqid in similarity search result\
+                    \ [default: 0]\n                                             \
+                    \   Change if different format than (-outfmt '6')\n        -b,\
+                    \ --hit_column_sseqid <INT>       Zero-based column of sseqid\
+                    \ in similarity search result [default: 1]\n                 \
+                    \                               Change if different format than\
+                    \ (-outfmt '6')\n        -c, --hit_column_score <INT>        Zero-based\
+                    \ column of (bit)score in similarity search result [default: 11]\n\
+                    \                                                Change if different\
+                    \ format than (-outfmt '6')\n    Options for TaxID mapping file\n\
+                    \        -m, --taxid_mapping_file <FILE>     TaxID mapping file\
+                    \ (contains seqid and taxid)\n        -s, --map_col_sseqid <INT>\
+                    \          Zero-based column of sseqid in TaxID mapping file (it\
+                    \ will search for sseqid in this column)\n        -t, --map_col_taxid\
+                    \ <INT>           Zero-based Column of taxid in TaxID mapping\
+                    \ file (it will extract for taxid from this column)\n\n    Options\
+                    \ for custom input\n        -i, --custom <FILE>              \
+                    \   File containing list of sequence IDs\n        -x, --custom_taxid\
+                    \ <INT>            TaxID to assign to all sequence IDs in list\n\
+                    \        -v, --custom_score <FLOAT>          Score to assign to\
+                    \ all sequence IDs in list\n\n    General\n        -o, --out <PREFIX>\
+                    \                  Output prefix\n"
+                  generated_using: *id004
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag: !Flag
+                  description: show version number
+                  synonyms:
+                  - -v
+                  - --version
+                  args: !EmptyFlagArg {}
+                  optional: true
+                help_text: "blobtools\n\n    Usage:\n        ./blobtools [<module>]\
+                  \ [<args>...] [-h] [-v]        \n\n    Modules:\n        create\
+                  \        create a BlobDB\n        view          generate tabular\
+                  \ view, CONCOCT input or COV files from BlobDB\n        plot   \
+                  \       generate a BlobPlot from a BlobDB\n        covplot     \
+                  \  generate a CovPlot from a BlobDB and a COV file\n    \n     \
+                  \   map2cov       generate a COV file from BAM file\n        taxify\
+                  \        generate a BlobTools compatible HITS file (TSV)\n     \
+                  \   bamfilter     subset paired-end reads from a BAM file\n    \
+                  \    seqfilter     subset sequences in FASTA file based sequence\
+                  \ IDs in list\n        nodesdb       create nodesdb based on NCBI\
+                  \ Taxdump's names.dmp and nodes.dmp\n\n    Options\n        -h,\
+                  \ --help      show this\n        -v, --version   show version number\n\
+                  \n    See 'blobtools <command> --help' for more information on a\
+                  \ specific command.\n\n    Further documentation is available at\
+                  \ https://blobtools.readme.io/\n\n    Examples:\n\n        # 1.\
+                  \ Create a BlobDB\n        ./blobtools create -i example/assembly.fna\
+                  \ -b example/mapping_1.bam -t example/blast.out -o example/test\n\
+                  \    \n        # 2. Generate a tabular view\n        ./blobtools\
+                  \ view -i example/test.blobDB.json\n    \n        # 3. Generate\
+                  \ a blobplot\n        ./blobtools plot -i example/test.blobDB.json\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -656,12 +2031,9 @@ subcommands:
                 \        -o, --out <PREFIX>              BlobDB output prefix\n  \
                 \      --title TITLE                   Title of BlobDB [default: output\
                 \ prefix)\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id005
-              - blobtools
-              - map2cov
+              command: *id005
               positional: []
               named:
               - !Flag
@@ -730,9 +2102,7 @@ subcommands:
                 \    based on read lengths of first 10K reads.\n"
               generated_using: *id004
             - !Command
-              command: &id006
-              - blobtools
-              - plot
+              command: *id006
               positional: []
               named:
               - !Flag
@@ -1007,9 +2377,7 @@ subcommands:
                 \                                   (format : \"seq\tcategory\").\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - blobtools
-              - covplot
+              command: *id007
               positional: []
               named:
               - !Flag
@@ -1309,9 +2677,7 @@ subcommands:
                 \ : \"seq,category\").\n"
               generated_using: *id004
             - !Command
-              command: &id008
-              - blobtools
-              - seqfilter
+              command: *id008
               positional: []
               named:
               - !Flag
@@ -1367,9 +2733,7 @@ subcommands:
                 \ headers NOT in list)\n"
               generated_using: *id004
             - !Command
-              command: &id009
-              - blobtools
-              - nodesdb
+              command: *id009
               positional: []
               named:
               - !Flag
@@ -1405,9 +2769,7 @@ subcommands:
                 \      --names <NAMES>                 NCBI names.dmp file.\n"
               generated_using: *id004
             - !Command
-              command: &id010
-              - blobtools
-              - view
+              command: *id010
               positional: []
               named:
               - !Flag
@@ -1523,9 +2885,7 @@ subcommands:
                 \ table view [default: False]\n"
               generated_using: *id004
             - !Command
-              command: &id011
-              - blobtools
-              - bamfilter
+              command: *id011
               positional: []
               named:
               - !Flag
@@ -1620,9 +2980,7 @@ subcommands:
                 \ --out PREFIX            Output prefix\n"
               generated_using: *id004
             - !Command
-              command: &id012
-              - blobtools
-              - taxify
+              command: *id012
               positional:
               - !Positional
                 description: -o, --out <PREFIX>                  Output prefix
@@ -1764,13 +3122,7 @@ subcommands:
             usage: []
             help_flag:
             usage_flag:
-            version_flag: !Flag
-              description: show version number
-              synonyms:
-              - -v
-              - --version
-              args: !EmptyFlagArg {}
-              optional: true
+            version_flag:
             help_text: "blobtools\n\n    Usage:\n        ./blobtools [<module>] [<args>...]\
               \ [-h] [-v]        \n\n    Modules:\n        create        create a\
               \ BlobDB\n        view          generate tabular view, CONCOCT input\
@@ -1897,7 +3249,7 @@ subcommands:
             - --calculate_cov
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id013
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2118,7 +3470,7 @@ subcommands:
             args: !SimpleFlagArg
               name: FILE
             optional: true
-          parent: *id003
+          parent: *id013
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2409,7 +3761,7 @@ subcommands:
             args: !SimpleFlagArg
               name: FILE
             optional: true
-          parent: *id003
+          parent: *id013
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2519,7 +3871,7 @@ subcommands:
             - --invert
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id013
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2558,7 +3910,7 @@ subcommands:
             args: !SimpleFlagArg
               name: NAMES
             optional: true
-          parent: *id003
+          parent: *id013
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2657,7 +4009,7 @@ subcommands:
             - --notable
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id013
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2754,7 +4106,7 @@ subcommands:
             args: !SimpleFlagArg
               name: PREFIX
             optional: true
-          parent: *id003
+          parent: *id013
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -2881,7 +4233,7 @@ subcommands:
             args: !SimpleFlagArg
               name: FLOAT
             optional: true
-          parent: *id003
+          parent: *id013
           subcommands: []
           usage: []
           help_flag: !Flag
@@ -3050,7 +4402,7 @@ subcommands:
         - --calculate_cov
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id013
+      parent: *id014
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -3268,7 +4620,7 @@ subcommands:
         args: !SimpleFlagArg
           name: FILE
         optional: true
-      parent: *id013
+      parent: *id014
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -3555,7 +4907,7 @@ subcommands:
         args: !SimpleFlagArg
           name: FILE
         optional: true
-      parent: *id013
+      parent: *id014
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -3662,7 +5014,7 @@ subcommands:
         - --invert
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id013
+      parent: *id014
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -3700,7 +5052,7 @@ subcommands:
         args: !SimpleFlagArg
           name: NAMES
         optional: true
-      parent: *id013
+      parent: *id014
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -3799,7 +5151,7 @@ subcommands:
         - --notable
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id013
+      parent: *id014
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -3894,7 +5246,7 @@ subcommands:
         args: !SimpleFlagArg
           name: PREFIX
         optional: true
-      parent: *id013
+      parent: *id014
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -4020,7 +5372,7 @@ subcommands:
         args: !SimpleFlagArg
           name: FLOAT
         optional: true
-      parent: *id013
+      parent: *id014
       subcommands: []
       usage: []
       help_flag: !Flag
@@ -4183,7 +5535,7 @@ subcommands:
     - --calculate_cov
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -4400,7 +5752,7 @@ subcommands:
     args: !SimpleFlagArg
       name: FILE
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -4684,7 +6036,7 @@ subcommands:
     args: !SimpleFlagArg
       name: FILE
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -4788,7 +6140,7 @@ subcommands:
     - --invert
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -4826,7 +6178,7 @@ subcommands:
     args: !SimpleFlagArg
       name: NAMES
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -4925,7 +6277,7 @@ subcommands:
     - --notable
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -5018,7 +6370,7 @@ subcommands:
     args: !SimpleFlagArg
       name: PREFIX
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag: !Flag
@@ -5143,7 +6495,7 @@ subcommands:
     args: !SimpleFlagArg
       name: FLOAT
     optional: true
-  parent: *id014
+  parent: *id015
   subcommands: []
   usage: []
   help_flag: !Flag

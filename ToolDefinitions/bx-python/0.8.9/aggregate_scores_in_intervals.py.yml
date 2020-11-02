@@ -70,7 +70,7 @@ subcommands:
             - --binned
             args: !EmptyFlagArg {}
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
             named: []
@@ -93,7 +93,58 @@ subcommands:
                 - --binned
                 args: !EmptyFlagArg {}
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: -m MASK, --mask=MASK  bed file containing regions
+                      not to consider valid
+                    position: 0
+                    name: files
+                    optional: false
+                  named:
+                  - !Flag
+                    description: "'score_file' is actually a directory of binned array"
+                    synonyms:
+                    - -b
+                    - --binned
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: show this help message and exit
+                    synonyms:
+                    - -h
+                    - --help
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "Usage: aggregate_scores_in_intervals.py score_file interval_file\
+                    \ [out_file] [options]\n\nOptions:\n  -h, --help            show\
+                    \ this help message and exit\n  -b, --binned          'score_file'\
+                    \ is actually a directory of binned array\n                  \
+                    \      files\n  -m MASK, --mask=MASK  bed file containing regions\
+                    \ not to consider valid\n"
+                  generated_using: &id004
+                  - --help
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "Usage: aggregate_scores_in_intervals.py score_file interval_file\
+                  \ [out_file] [options]\n\naggregate_scores_in_intervals.py: error:\
+                  \ no such option: --usage\n"
+                generated_using: &id005
+                - --usage
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -110,8 +161,7 @@ subcommands:
                 \ help message and exit\n  -b, --binned          'score_file' is actually\
                 \ a directory of binned array\n                        files\n  -m\
                 \ MASK, --mask=MASK  bed file containing regions not to consider valid\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             usage: []
             help_flag:
             usage_flag:
@@ -119,8 +169,7 @@ subcommands:
             help_text: "Usage: aggregate_scores_in_intervals.py score_file interval_file\
               \ [out_file] [options]\n\naggregate_scores_in_intervals.py: error: no\
               \ such option: --usage\n"
-            generated_using: &id005
-            - --usage
+            generated_using: *id005
           subcommands: []
           usage: []
           help_flag: !Flag

@@ -97,17 +97,10 @@ subcommands:
             args: !SimpleFlagArg
               name: in_trs
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: Input transcriptome.
-              synonyms:
-              - -f
-              args: !SimpleFlagArg
-                name: in_trs
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -136,7 +129,78 @@ subcommands:
                 args: !SimpleFlagArg
                   name: in_trs
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: Input transcriptome.
+                  synonyms:
+                  - -f
+                  args: !SimpleFlagArg
+                    name: in_trs
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: length_normalise_counts.py
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: input_counts
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: output_count
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -f
+                    args: !SimpleFlagArg
+                      name: in_trs
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: length_normalise_counts.py [-h] -f in_trs input_counts\
+                    \ output_count\nlength_normalise_counts.py: error: the following\
+                    \ arguments are required: -f, output_count\n"
+                  generated_using: &id004 []
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: length_normalise_counts.py [-h] -f in_trs input_counts\
+                  \ output_count\n\nCalculate RPKM values from raw counts and a transcriptome\
+                  \ reference.\n\npositional arguments:\n  input_counts  Input count\
+                  \ file.\n  output_count  Output RPKM file.\n\noptional arguments:\n\
+                  \  -h, --help    show this help message and exit\n  -f in_trs  \
+                  \   Input transcriptome.\n"
+                generated_using: &id005
+                - --help
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -150,15 +214,9 @@ subcommands:
               help_text: "usage: length_normalise_counts.py [-h] -f in_trs input_counts\
                 \ output_count\nlength_normalise_counts.py: error: the following arguments\
                 \ are required: -f, output_count\n"
-              generated_using: &id004 []
+              generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage: length_normalise_counts.py [-h] -f in_trs input_counts\
@@ -166,8 +224,7 @@ subcommands:
               \ reference.\n\npositional arguments:\n  input_counts  Input count file.\n\
               \  output_count  Output RPKM file.\n\noptional arguments:\n  -h, --help\
               \    show this help message and exit\n  -f in_trs     Input transcriptome.\n"
-            generated_using: &id005
-            - --help
+            generated_using: *id005
           subcommands: []
           usage: []
           help_flag: !Flag

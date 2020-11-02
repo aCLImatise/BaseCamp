@@ -41,7 +41,7 @@ subcommands:
     name: output_directory
     optional: false
   named: []
-  parent: &id019 !Command
+  parent: &id020 !Command
     command: *id001
     positional: []
     named: []
@@ -81,7 +81,7 @@ subcommands:
         name: output_directory
         optional: false
       named: []
-      parent: &id018 !Command
+      parent: &id019 !Command
         command: *id001
         positional: []
         named: []
@@ -121,7 +121,7 @@ subcommands:
             name: output_directory
             optional: false
           named: []
-          parent: &id003 !Command
+          parent: &id018 !Command
             command: *id001
             positional: []
             named: []
@@ -161,7 +161,701 @@ subcommands:
                 name: output_directory
                 optional: false
               named: []
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named: []
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: demultiplex
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: id-mapping
+                    optional: true
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: sample-mapping
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 3
+                    name: result_file
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 4
+                    name: tab_index
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 5
+                    name: output_directory
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "USAGE: demultiplex [id-mapping] <sample-mapping> <result_file>\
+                    \ <tab_index> <output_directory>\n"
+                  generated_using: &id004
+                  - --help
+                - !Command
+                  command: &id006
+                  - Clustering
+                  - filter-seqs
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: ids_file
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: seq_file
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: remove
+                    optional: true
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "USAGE: <ids_file> <seq_file> [remove]\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id007
+                  - Clustering
+                  - to-unaligned-fasta
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: input-file
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "USAGE: to-unaligned-fasta <input-file>...\n"
+                  generated_using: &id005 []
+                - !Command
+                  command: &id008
+                  - Clustering
+                  - tree
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: TreeBuilder
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: idmapping
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: merges.bin
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 3
+                    name: newick_out
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "USAGE: TreeBuilder <idmapping> <merges.bin> <newick_out>\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id009
+                  - Clustering
+                  - rep-seqs
+                  positional:
+                  - !Positional
+                    description: -m,--mask-seq <arg>      Mask sequence id
+                    position: 0
+                    name: squared
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Use the cluster id as the seq id.
+                    synonyms:
+                    - -c
+                    - --use-cluster-id
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Invert preferential sequence id (give preference\n\
+                      to seqids not in the file)"
+                    synonyms:
+                    - -i
+                    - --invert
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Id mapping used when clustering [required if\nusing\
+                      \ dereplicated seq file]"
+                    synonyms:
+                    - -I
+                    - --id-mapping
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Select longest sequences instead of least dist
+                    synonyms:
+                    - -l
+                    - --longest
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Output directory (default=.)
+                    synonyms:
+                    - -o
+                    - --out
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Preferential sequence id file
+                    synonyms:
+                    - -p
+                    - --pref-seqids
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: "One representative sequence for each OTU.\nDefault\
+                      \ is false. The default returns one rep\nseq for each sample\
+                      \ at each OTU"
+                    synonyms:
+                    - -s
+                    - --one-rep-per-otu
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: RepresenativeSeqs [options] <clust_file> <cutoff>\
+                    \ <seq_file>\n -c,--use-cluster-id      Use the cluster id as\
+                    \ the seq id.\n -i,--invert              Invert preferential sequence\
+                    \ id (give preference\n                          to seqids not\
+                    \ in the file)\n -I,--id-mapping <arg>    Id mapping used when\
+                    \ clustering [required if\n                          using dereplicated\
+                    \ seq file]\n -l,--longest             Select longest sequences\
+                    \ instead of least dist\n                          squared\n -m,--mask-seq\
+                    \ <arg>      Mask sequence id\n -o,--out <arg>           Output\
+                    \ directory (default=.)\n -p,--pref-seqids <arg>   Preferential\
+                    \ sequence id file\n -s,--one-rep-per-otu     One representative\
+                    \ sequence for each OTU.\n                          Default is\
+                    \ false. The default returns one rep\n                       \
+                    \   seq for each sample at each OTU\nError: Unrecognized option:\
+                    \ --help\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id010
+                  - Clustering
+                  - square-matrix
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: column matrix
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: idmapping
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: output matrix
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "USAGE: <column matrix> <idmapping> <output matrix>\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id011
+                  - Clustering
+                  - replay-cluster
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: ClusterReplay
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: idmapping
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: sample_mapping
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 3
+                    name: merges_file
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 4
+                    name: cluster_out
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "USAGE: ClusterReplay <idmapping> <sample_mapping> <merges_file>\
+                    \ <cluster_out> [step = .01]\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id012
+                  - Clustering
+                  - derep
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: Dereplicator
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: id-mapping-out
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: sample-mapping-out
+                    optional: false
+                  named:
+                  - !Flag
+                    description: Dereplicate aligned sequences
+                    synonyms:
+                    - -a
+                    - --aligned
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: "Dereplicate formated (uppercase/- = comparable,\n\
+                      lowercase/. = non-comparable) aligned sequences"
+                    synonyms:
+                    - -f
+                    - --formatted
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Don't remove common gaps in output sequences
+                    synonyms:
+                    - -g
+                    - --keep-common-gaps
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Dereplicate aligned sequences using mask sequence
+                    synonyms:
+                    - -m
+                    - --model-only
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Write sequences to this file
+                    synonyms:
+                    - -o
+                    - --out
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Write quality sequences to this file
+                    synonyms:
+                    - -q
+                    - --qual-out
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Sort sequence by number of members represented
+                    synonyms:
+                    - -s
+                    - --sorted
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Dereplicate unaligned sequences
+                    synonyms:
+                    - -u
+                    - --unaligned
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: Dereplicator [options] <id-mapping-out> <sample-mapping-out>\n\
+                    \                    <seq-file>[,<qual-file>] ...\n -a,--aligned\
+                    \            Dereplicate aligned sequences\n -f,--formatted  \
+                    \        Dereplicate formated (uppercase/- = comparable,\n   \
+                    \                      lowercase/. = non-comparable) aligned sequences\n\
+                    \ -g,--keep-common-gaps   Don't remove common gaps in output sequences\n\
+                    \ -m,--model-only <arg>   Dereplicate aligned sequences using\
+                    \ mask sequence\n -o,--out <arg>          Write sequences to this\
+                    \ file\n -q,--qual-out <arg>     Write quality sequences to this\
+                    \ file\n -s,--sorted             Sort sequence by number of members\
+                    \ represented\n -u,--unaligned          Dereplicate unaligned\
+                    \ sequences\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id013
+                  - Clustering
+                  - to-fasta
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: to-fasta
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: input-file
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: mask-seqid
+                    optional: true
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "USAGE: to-fasta <input-file> [mask-seqid]\n"
+                  generated_using: *id005
+                - !Command
+                  command: &id014
+                  - Clustering
+                  - cluster-to-biom
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: cluster_file
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: cutoff
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "USAGE: <cluster_file> <cutoff>\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id015
+                  - Clustering
+                  - cluster
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: Clustering
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: arg
+                    optional: true
+                  named:
+                  - !Flag
+                    description: Don't write out clustering
+                    synonyms:
+                    - -C
+                    - --no-clust-out
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  - !Flag
+                    description: Sorted column distance matrix file
+                    synonyms:
+                    - -d
+                    - --dist-file
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Id mapping file
+                    synonyms:
+                    - -i
+                    - --id-mapping
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: "Clustering method to use (default=complete,\nothers={upgma,single})"
+                    synonyms:
+                    - -m
+                    - --method
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Output file
+                    synonyms:
+                    - -o
+                    - --outfile
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Psi value (optional)
+                    synonyms:
+                    - -p
+                    - --psi
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Sample mapping file
+                    synonyms:
+                    - -s
+                    - --sample-mapping
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Step value (default=.01 [1%])
+                    synonyms:
+                    - -S
+                    - --step
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Write out merges to file
+                    synonyms:
+                    - -t
+                    - --tree-file
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: Clustering [-C] [-d <arg>] [-i <arg>] [-m <arg>]\
+                    \ [-o <arg>] [-p\n       <arg>] [-s <arg>] [-S <arg>] [-t <arg>]\n\
+                    \ -C,--no-clust-out           Don't write out clustering\n -d,--dist-file\
+                    \ <arg>        Sorted column distance matrix file\n -i,--id-mapping\
+                    \ <arg>       Id mapping file\n -m,--method <arg>           Clustering\
+                    \ method to use (default=complete,\n                         \
+                    \    others={upgma,single})\n -o,--outfile <arg>          Output\
+                    \ file\n -p,--psi <arg>              Psi value (optional)\n -s,--sample-mapping\
+                    \ <arg>   Sample mapping file\n -S,--step <arg>             Step\
+                    \ value (default=.01 [1%])\n -t,--tree-file <arg>        Write\
+                    \ out merges to file\nError: Unrecognized option: --help\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id016
+                  - Clustering
+                  - dmatrix
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: DistanceCalculator
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: arg
+                    optional: true
+                  named:
+                  - !Flag
+                    description: Only save distances below the cutoff
+                    synonyms:
+                    - -c
+                    - --dist-cutoff
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Input fasta file
+                    synonyms:
+                    - -I
+                    - --in
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Id mapping file
+                    synonyms:
+                    - -i
+                    - --id-mapping
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: "Minium number of comparable positions (default =\n\
+                      100)"
+                    synonyms:
+                    - -l
+                    - --min-overlap
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Mask sequence
+                    synonyms:
+                    - -m
+                    - --mask
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: File to write sorted column matrix to
+                    synonyms:
+                    - -o
+                    - --outfile
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  - !Flag
+                    description: Working directory where temp files are stored
+                    synonyms:
+                    - -w
+                    - --workdir
+                    args: !SimpleFlagArg
+                      name: arg
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "Error: Unrecognized option: --help\nusage: DistanceCalculator\
+                    \ [-c <arg>] [-I <arg>] [-i <arg>] [-l <arg>] [-m\n       <arg>]\
+                    \ [-o <arg>] [-w <arg>]\n -c,--dist-cutoff <arg>   Only save distances\
+                    \ below the cutoff\n -I,--in <arg>            Input fasta file\n\
+                    \ -i,--id-mapping <arg>    Id mapping file\n -l,--min-overlap\
+                    \ <arg>   Minium number of comparable positions (default =\n \
+                    \                         100)\n -m,--mask <arg>          Mask\
+                    \ sequence\n -o,--outfile <arg>       File to write sorted column\
+                    \ matrix to\n -w,--workdir <arg>       Working directory where\
+                    \ temp files are stored\n"
+                  generated_using: *id004
+                - !Command
+                  command: &id017
+                  - Clustering
+                  - align-seq-match
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: idmapping
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 1
+                    name: seed_seqs
+                    optional: false
+                  - !Positional
+                    description: ''
+                    position: 2
+                    name: query_seqs
+                    optional: false
+                  named: []
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "USAGE: <idmapping> <seed_seqs> <query_seqs> [metric?=true]\n"
+                  generated_using: *id004
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "USAGE: Main <command name> command args...\n\tCommands:\
+                  \ derep, dmatrix, cluster, dump-edges, convert-column-matrix hadoop-distance\n\
+                  \tderep            - Dereplicate sequence file\n\tdmatrix      \
+                  \    - Compute distance matrix from aligned sequence file\n\tpairwise\
+                  \         - Compute distance matrix from unaligned sequence file\
+                  \ (very slow, limited to 4k sequences)\n\tcluster          - Cluster\
+                  \ a distance file\n\talign-seq-match  - Aligned sequence match\n\
+                  \trep-seqs         - Get represenative sequences from a cluster\
+                  \ file\n\texplode-mappings - Explode a dereplicated sequence file\
+                  \ back to sample replicated files\n\tdemultiplex      - Demultiplex\
+                  \ a tab-delimited result file using an id and sample mapping\n\t\
+                  refresh-mappings - Remove mapping entries for sequences externally\
+                  \ filtered\n\tdump-edges       - Dumps a binary distance file to\
+                  \ flat text (stdout)\n\tsquare-matrix    - Dumps a binary distance\
+                  \ file to a square matrix\n\ttree             - Converts a merges\
+                  \ file to a newick tree\n\treplay-cluster   - Replays a merge file\
+                  \ to create a cluster file\n\tto-fasta         - Convert a sequence\
+                  \ file to fasta format\n\tto-unaligned-fasta         - Convert a\
+                  \ sequence file to fasta format\n\tfilter-seqs      - Remove sequences\
+                  \ from a file\n\tcluster-to-biom  - Convert a cluster file to a\
+                  \ biom otu table\n\tcluster_to_Rformat  - Convert a cluster file\
+                  \ to a R compatible community data matrix file\n\thadoop - Calculate\
+                  \ distances using hadoop distance calculator\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag:
@@ -169,12 +863,9 @@ subcommands:
               version_flag:
               help_text: "USAGE: demultiplex [id-mapping] <sample-mapping> <result_file>\
                 \ <tab_index> <output_directory>\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             - !Command
-              command: &id006
-              - Clustering
-              - filter-seqs
+              command: *id006
               positional:
               - !Positional
                 description: ''
@@ -201,9 +892,7 @@ subcommands:
               help_text: "USAGE: <ids_file> <seq_file> [remove]\n"
               generated_using: *id004
             - !Command
-              command: &id007
-              - Clustering
-              - to-unaligned-fasta
+              command: *id007
               positional:
               - !Positional
                 description: ''
@@ -218,11 +907,9 @@ subcommands:
               usage_flag:
               version_flag:
               help_text: "USAGE: to-unaligned-fasta <input-file>...\n"
-              generated_using: &id005 []
+              generated_using: *id005
             - !Command
-              command: &id008
-              - Clustering
-              - tree
+              command: *id008
               positional:
               - !Positional
                 description: ''
@@ -254,9 +941,7 @@ subcommands:
               help_text: "USAGE: TreeBuilder <idmapping> <merges.bin> <newick_out>\n"
               generated_using: *id004
             - !Command
-              command: &id009
-              - Clustering
-              - rep-seqs
+              command: *id009
               positional:
               - !Positional
                 description: -m,--mask-seq <arg>      Mask sequence id
@@ -342,9 +1027,7 @@ subcommands:
                 \ each OTU\nError: Unrecognized option: --help\n"
               generated_using: *id004
             - !Command
-              command: &id010
-              - Clustering
-              - square-matrix
+              command: *id010
               positional:
               - !Positional
                 description: ''
@@ -371,9 +1054,7 @@ subcommands:
               help_text: "USAGE: <column matrix> <idmapping> <output matrix>\n"
               generated_using: *id004
             - !Command
-              command: &id011
-              - Clustering
-              - replay-cluster
+              command: *id011
               positional:
               - !Positional
                 description: ''
@@ -411,9 +1092,7 @@ subcommands:
                 \ <cluster_out> [step = .01]\n"
               generated_using: *id004
             - !Command
-              command: &id012
-              - Clustering
-              - derep
+              command: *id012
               positional:
               - !Positional
                 description: ''
@@ -510,9 +1189,7 @@ subcommands:
                 \          Dereplicate unaligned sequences\n"
               generated_using: *id004
             - !Command
-              command: &id013
-              - Clustering
-              - to-fasta
+              command: *id013
               positional:
               - !Positional
                 description: ''
@@ -539,9 +1216,7 @@ subcommands:
               help_text: "USAGE: to-fasta <input-file> [mask-seqid]\n"
               generated_using: *id005
             - !Command
-              command: &id014
-              - Clustering
-              - cluster-to-biom
+              command: *id014
               positional:
               - !Positional
                 description: ''
@@ -563,9 +1238,7 @@ subcommands:
               help_text: "USAGE: <cluster_file> <cutoff>\n"
               generated_using: *id004
             - !Command
-              command: &id015
-              - Clustering
-              - cluster
+              command: *id015
               positional:
               - !Positional
                 description: ''
@@ -668,9 +1341,7 @@ subcommands:
                 \ Unrecognized option: --help\n"
               generated_using: *id004
             - !Command
-              command: &id016
-              - Clustering
-              - dmatrix
+              command: *id016
               positional:
               - !Positional
                 description: ''
@@ -756,9 +1427,7 @@ subcommands:
                 \    Working directory where temp files are stored\n"
               generated_using: *id004
             - !Command
-              command: &id017
-              - Clustering
-              - align-seq-match
+              command: *id017
               positional:
               - !Positional
                 description: ''
@@ -838,7 +1507,7 @@ subcommands:
             name: remove
             optional: true
           named: []
-          parent: *id003
+          parent: *id018
           subcommands: []
           usage: []
           help_flag:
@@ -855,7 +1524,7 @@ subcommands:
             name: input-file
             optional: false
           named: []
-          parent: *id003
+          parent: *id018
           subcommands: []
           usage: []
           help_flag:
@@ -887,7 +1556,7 @@ subcommands:
             name: newick_out
             optional: false
           named: []
-          parent: *id003
+          parent: *id018
           subcommands: []
           usage: []
           help_flag:
@@ -959,7 +1628,7 @@ subcommands:
             - --one-rep-per-otu
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id018
           subcommands: []
           usage: []
           help_flag:
@@ -998,7 +1667,7 @@ subcommands:
             name: output matrix
             optional: false
           named: []
-          parent: *id003
+          parent: *id018
           subcommands: []
           usage: []
           help_flag:
@@ -1035,7 +1704,7 @@ subcommands:
             name: cluster_out
             optional: false
           named: []
-          parent: *id003
+          parent: *id018
           subcommands: []
           usage: []
           help_flag:
@@ -1123,7 +1792,7 @@ subcommands:
             - --unaligned
             args: !EmptyFlagArg {}
             optional: true
-          parent: *id003
+          parent: *id018
           subcommands: []
           usage: []
           help_flag:
@@ -1159,7 +1828,7 @@ subcommands:
             name: mask-seqid
             optional: true
           named: []
-          parent: *id003
+          parent: *id018
           subcommands: []
           usage: []
           help_flag:
@@ -1181,7 +1850,7 @@ subcommands:
             name: cutoff
             optional: false
           named: []
-          parent: *id003
+          parent: *id018
           subcommands: []
           usage: []
           help_flag:
@@ -1274,7 +1943,7 @@ subcommands:
             args: !SimpleFlagArg
               name: arg
             optional: true
-          parent: *id003
+          parent: *id018
           subcommands: []
           usage: []
           help_flag:
@@ -1361,7 +2030,7 @@ subcommands:
             args: !SimpleFlagArg
               name: arg
             optional: true
-          parent: *id003
+          parent: *id018
           subcommands: []
           usage: []
           help_flag:
@@ -1396,7 +2065,7 @@ subcommands:
             name: query_seqs
             optional: false
           named: []
-          parent: *id003
+          parent: *id018
           subcommands: []
           usage: []
           help_flag:
@@ -1457,7 +2126,7 @@ subcommands:
         name: remove
         optional: true
       named: []
-      parent: *id018
+      parent: *id019
       subcommands: []
       usage: []
       help_flag:
@@ -1474,7 +2143,7 @@ subcommands:
         name: input-file
         optional: false
       named: []
-      parent: *id018
+      parent: *id019
       subcommands: []
       usage: []
       help_flag:
@@ -1506,7 +2175,7 @@ subcommands:
         name: newick_out
         optional: false
       named: []
-      parent: *id018
+      parent: *id019
       subcommands: []
       usage: []
       help_flag:
@@ -1578,7 +2247,7 @@ subcommands:
         - --one-rep-per-otu
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id018
+      parent: *id019
       subcommands: []
       usage: []
       help_flag:
@@ -1616,7 +2285,7 @@ subcommands:
         name: output matrix
         optional: false
       named: []
-      parent: *id018
+      parent: *id019
       subcommands: []
       usage: []
       help_flag:
@@ -1653,7 +2322,7 @@ subcommands:
         name: cluster_out
         optional: false
       named: []
-      parent: *id018
+      parent: *id019
       subcommands: []
       usage: []
       help_flag:
@@ -1741,7 +2410,7 @@ subcommands:
         - --unaligned
         args: !EmptyFlagArg {}
         optional: true
-      parent: *id018
+      parent: *id019
       subcommands: []
       usage: []
       help_flag:
@@ -1777,7 +2446,7 @@ subcommands:
         name: mask-seqid
         optional: true
       named: []
-      parent: *id018
+      parent: *id019
       subcommands: []
       usage: []
       help_flag:
@@ -1799,7 +2468,7 @@ subcommands:
         name: cutoff
         optional: false
       named: []
-      parent: *id018
+      parent: *id019
       subcommands: []
       usage: []
       help_flag:
@@ -1892,7 +2561,7 @@ subcommands:
         args: !SimpleFlagArg
           name: arg
         optional: true
-      parent: *id018
+      parent: *id019
       subcommands: []
       usage: []
       help_flag:
@@ -1979,7 +2648,7 @@ subcommands:
         args: !SimpleFlagArg
           name: arg
         optional: true
-      parent: *id018
+      parent: *id019
       subcommands: []
       usage: []
       help_flag:
@@ -2013,7 +2682,7 @@ subcommands:
         name: query_seqs
         optional: false
       named: []
-      parent: *id018
+      parent: *id019
       subcommands: []
       usage: []
       help_flag:
@@ -2072,7 +2741,7 @@ subcommands:
     name: remove
     optional: true
   named: []
-  parent: *id019
+  parent: *id020
   subcommands: []
   usage: []
   help_flag:
@@ -2089,7 +2758,7 @@ subcommands:
     name: input-file
     optional: false
   named: []
-  parent: *id019
+  parent: *id020
   subcommands: []
   usage: []
   help_flag:
@@ -2121,7 +2790,7 @@ subcommands:
     name: newick_out
     optional: false
   named: []
-  parent: *id019
+  parent: *id020
   subcommands: []
   usage: []
   help_flag:
@@ -2193,7 +2862,7 @@ subcommands:
     - --one-rep-per-otu
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id019
+  parent: *id020
   subcommands: []
   usage: []
   help_flag:
@@ -2231,7 +2900,7 @@ subcommands:
     name: output matrix
     optional: false
   named: []
-  parent: *id019
+  parent: *id020
   subcommands: []
   usage: []
   help_flag:
@@ -2268,7 +2937,7 @@ subcommands:
     name: cluster_out
     optional: false
   named: []
-  parent: *id019
+  parent: *id020
   subcommands: []
   usage: []
   help_flag:
@@ -2356,7 +3025,7 @@ subcommands:
     - --unaligned
     args: !EmptyFlagArg {}
     optional: true
-  parent: *id019
+  parent: *id020
   subcommands: []
   usage: []
   help_flag:
@@ -2392,7 +3061,7 @@ subcommands:
     name: mask-seqid
     optional: true
   named: []
-  parent: *id019
+  parent: *id020
   subcommands: []
   usage: []
   help_flag:
@@ -2414,7 +3083,7 @@ subcommands:
     name: cutoff
     optional: false
   named: []
-  parent: *id019
+  parent: *id020
   subcommands: []
   usage: []
   help_flag:
@@ -2507,7 +3176,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id019
+  parent: *id020
   subcommands: []
   usage: []
   help_flag:
@@ -2593,7 +3262,7 @@ subcommands:
     args: !SimpleFlagArg
       name: arg
     optional: true
-  parent: *id019
+  parent: *id020
   subcommands: []
   usage: []
   help_flag:
@@ -2627,7 +3296,7 @@ subcommands:
     name: query_seqs
     optional: false
   named: []
-  parent: *id019
+  parent: *id020
   subcommands: []
   usage: []
   help_flag:

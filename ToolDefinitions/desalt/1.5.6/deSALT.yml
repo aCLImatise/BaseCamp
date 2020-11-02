@@ -17,7 +17,7 @@ subcommands:
     named: []
     parent:
     subcommands:
-    - &id009 !Command
+    - &id010 !Command
       command: *id002
       positional: []
       named: []
@@ -27,260 +27,438 @@ subcommands:
         named: []
         parent:
         subcommands:
-        - &id008 !Command
+        - &id009 !Command
           command: *id002
           positional: []
           named: []
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: "The temporary file for storing alignment skeletons in\
-                \ first pass.\nIf users run two deSALT program in the same time, -f\
-                \ option is necessary."
-              synonyms:
-              - -f
-              args: !SimpleFlagArg
-                name: temporary file
-              optional: true
-            - !Flag
-              description: '[INT]    Number of threads. [4]'
-              synonyms:
-              - -t
-              - --thread
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    K-mer length of RdBG-index. [22]'
-              synonyms:
-              - -k
-              - --index-kmer
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    K-mer length of seeding process (no long than
-                RdBG-index). [15]'
-              synonyms:
-              - -l
-              - --seeding-lmer
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    K-mer length of local hash process. [8]'
-              synonyms:
-              - -a
-              - --local-hash-kmer
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    The interval of seeding. [5]'
-              synonyms:
-              - -s
-              - --seed-step
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    The number of reads to be processed in one loop.
-                [100000]'
-              synonyms:
-              - -B
-              - --batch-size
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    Maximum allowed number of hits per seed. [50]'
-              synonyms:
-              - -n
-              - --max-uni-pos
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    Maximum allowed read length. [1000000]'
-              synonyms:
-              - -L
-              - --max-readlen
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    Maximum allowed distance of two fragment can
-                be connect. [20]'
-              synonyms:
-              - -i
-              - --min-frag-dis
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    maximum allowed intron length. [200000]'
-              synonyms:
-              - -I
-              - --max-intron-len
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    minimal skeleton score(match bases minus gap
-                penalty). [20]'
-              synonyms:
-              - -c
-              - --min-chain-score
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    The minimal difference of dp score by two strand
-                to make sure the transcript strand. [20]'
-              synonyms:
-              - -d
-              - --strand-diff
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    Maximum allowed gap in read when chaining. [2000]'
-              synonyms:
-              - -g
-              - --max-read-gap
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[FLOAT]  Min secondary-to-primary score ratio. [0.90]'
-              synonyms:
-              - -p
-              - --secondary-ratio
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    The number of downstream (upstream) exons will
-                be processed when left (right) extension. [5]'
-              synonyms:
-              - -e
-              - --e-shift
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Find splicing sites according to transcript strand
-              synonyms:
-              - -T
-              - --trans-strand
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "[STR]    Provided annotation information for precise intron\
-                \ donor and acceptor sites.\nConvert GTF file(now support GTF format\
-                \ only) to fixed format of deSALT by Annotation_Load.py"
-              synonyms:
-              - -G
-              - --gtf
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "[STR]    Specifiy the type of reads and set multiple paramters\
-                \ unless overriden.\n[null] default parameters.\nccs (PacBio SMRT\
-                \ CCS reads): error rate 1%\nclr (PacBio SMRT CLR reads): error rate\
-                \ 15%\nont1d (Oxford Nanopore 1D reads): error rate > 20%\nont2d (Oxford\
-                \ Nanopore 2D reads): error rate > 12%"
-              synonyms:
-              - -x
-              - --read-type
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "[INT(,INT)]\nGap open penealty. [2,32]"
-              synonyms:
-              - -O
-              - --open-pen
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "[INT(,INT)]\nGap extension penalty; a k-long gap costs\
-                \ min{O1+k*E1,O2+k*E2}. [1,0]"
-              synonyms:
-              - -E
-              - --ext-pen
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    Match score for SW-alginment. [1]'
-              synonyms:
-              - -m
-              - --match-score
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    Mismatch score for SW-alignment. [2]'
-              synonyms:
-              - -M
-              - --mis-score
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "[INT(,INT)]\nZ-drop score for splice/non-splice alignment.\
-                \ [400]"
-              synonyms:
-              - -z
-              - --zdrop
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    Bandwidth used in chaining and DP-based alignment.
-                [500]'
-              synonyms:
-              - -w
-              - --band-width
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    Penalty score for non-canonical splice junction
-                sites. [9]'
-              synonyms:
-              - -R
-              - --noncan
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[INT]    Max allowed number of secondary alignment. [4]'
-              synonyms:
-              - -N
-              - --top-num-aln
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: Don't output base quality in SAM
-              synonyms:
-              - -Q
-              - --without-qual
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: "[STR]    Route of temporary files after the first-pass\
-                \ alignment. [1pass_anchor]\nIf you run more than one deSALT program\
-                \ in the same time,\nyou must point out different routes of temporary\
-                \ files for each program!!!\nIf no, every deSALT program will write\
-                \ temporary data to the same file which\nwill cause crash of program\
-                \ in 2-pass alignment due to inconsistent temporary data."
-              synonyms:
-              - -f
-              - --temp-file-perfix
-              args: !EmptyFlagArg {}
-              optional: true
-            - !Flag
-              description: '[STR]    Output file (SAM format). [./aln.sam]'
-              synonyms:
-              - -o
-              - --output
-              args: !EmptyFlagArg {}
-              optional: true
+            named: []
             parent:
             subcommands:
-            - &id004 !Command
+            - &id008 !Command
               command: *id002
               positional: []
               named: []
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: "The temporary file for storing alignment skeletons\
+                    \ in first pass.\nIf users run two deSALT program in the same\
+                    \ time, -f option is necessary."
+                  synonyms:
+                  - -f
+                  args: !SimpleFlagArg
+                    name: temporary file
+                  optional: true
+                - !Flag
+                  description: '[INT]    Number of threads. [4]'
+                  synonyms:
+                  - -t
+                  - --thread
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    K-mer length of RdBG-index. [22]'
+                  synonyms:
+                  - -k
+                  - --index-kmer
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    K-mer length of seeding process (no long
+                    than RdBG-index). [15]'
+                  synonyms:
+                  - -l
+                  - --seeding-lmer
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    K-mer length of local hash process. [8]'
+                  synonyms:
+                  - -a
+                  - --local-hash-kmer
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    The interval of seeding. [5]'
+                  synonyms:
+                  - -s
+                  - --seed-step
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    The number of reads to be processed in one
+                    loop. [100000]'
+                  synonyms:
+                  - -B
+                  - --batch-size
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    Maximum allowed number of hits per seed.
+                    [50]'
+                  synonyms:
+                  - -n
+                  - --max-uni-pos
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    Maximum allowed read length. [1000000]'
+                  synonyms:
+                  - -L
+                  - --max-readlen
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    Maximum allowed distance of two fragment
+                    can be connect. [20]'
+                  synonyms:
+                  - -i
+                  - --min-frag-dis
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    maximum allowed intron length. [200000]'
+                  synonyms:
+                  - -I
+                  - --max-intron-len
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    minimal skeleton score(match bases minus
+                    gap penalty). [20]'
+                  synonyms:
+                  - -c
+                  - --min-chain-score
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    The minimal difference of dp score by two
+                    strand to make sure the transcript strand. [20]'
+                  synonyms:
+                  - -d
+                  - --strand-diff
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    Maximum allowed gap in read when chaining.
+                    [2000]'
+                  synonyms:
+                  - -g
+                  - --max-read-gap
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[FLOAT]  Min secondary-to-primary score ratio. [0.90]'
+                  synonyms:
+                  - -p
+                  - --secondary-ratio
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    The number of downstream (upstream) exons
+                    will be processed when left (right) extension. [5]'
+                  synonyms:
+                  - -e
+                  - --e-shift
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Find splicing sites according to transcript strand
+                  synonyms:
+                  - -T
+                  - --trans-strand
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "[STR]    Provided annotation information for precise\
+                    \ intron donor and acceptor sites.\nConvert GTF file(now support\
+                    \ GTF format only) to fixed format of deSALT by Annotation_Load.py"
+                  synonyms:
+                  - -G
+                  - --gtf
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "[STR]    Specifiy the type of reads and set multiple\
+                    \ paramters unless overriden.\n[null] default parameters.\nccs\
+                    \ (PacBio SMRT CCS reads): error rate 1%\nclr (PacBio SMRT CLR\
+                    \ reads): error rate 15%\nont1d (Oxford Nanopore 1D reads): error\
+                    \ rate > 20%\nont2d (Oxford Nanopore 2D reads): error rate > 12%"
+                  synonyms:
+                  - -x
+                  - --read-type
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "[INT(,INT)]\nGap open penealty. [2,32]"
+                  synonyms:
+                  - -O
+                  - --open-pen
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "[INT(,INT)]\nGap extension penalty; a k-long gap costs\
+                    \ min{O1+k*E1,O2+k*E2}. [1,0]"
+                  synonyms:
+                  - -E
+                  - --ext-pen
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    Match score for SW-alginment. [1]'
+                  synonyms:
+                  - -m
+                  - --match-score
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    Mismatch score for SW-alignment. [2]'
+                  synonyms:
+                  - -M
+                  - --mis-score
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "[INT(,INT)]\nZ-drop score for splice/non-splice alignment.\
+                    \ [400]"
+                  synonyms:
+                  - -z
+                  - --zdrop
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    Bandwidth used in chaining and DP-based alignment.
+                    [500]'
+                  synonyms:
+                  - -w
+                  - --band-width
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    Penalty score for non-canonical splice junction
+                    sites. [9]'
+                  synonyms:
+                  - -R
+                  - --noncan
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[INT]    Max allowed number of secondary alignment.
+                    [4]'
+                  synonyms:
+                  - -N
+                  - --top-num-aln
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: Don't output base quality in SAM
+                  synonyms:
+                  - -Q
+                  - --without-qual
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: "[STR]    Route of temporary files after the first-pass\
+                    \ alignment. [1pass_anchor]\nIf you run more than one deSALT program\
+                    \ in the same time,\nyou must point out different routes of temporary\
+                    \ files for each program!!!\nIf no, every deSALT program will\
+                    \ write temporary data to the same file which\nwill cause crash\
+                    \ of program in 2-pass alignment due to inconsistent temporary\
+                    \ data."
+                  synonyms:
+                  - -f
+                  - --temp-file-perfix
+                  args: !EmptyFlagArg {}
+                  optional: true
+                - !Flag
+                  description: '[STR]    Output file (SAM format). [./aln.sam]'
+                  synonyms:
+                  - -o
+                  - --output
+                  args: !EmptyFlagArg {}
+                  optional: true
+                parent:
+                subcommands:
+                - &id004 !Command
+                  command: *id002
+                  positional: []
+                  named: []
+                  parent: *id003
+                  subcommands:
+                  - !Command
+                    command: &id006
+                    - deSALT
+                    - index
+                    - index_route
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: deBGA
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 1
+                      name: index
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 2
+                      name: reference.fasta
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 3
+                      name: index_route
+                      optional: false
+                    named: []
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "[desalt_index] Executing deBGA index ...\n\nProgram:\
+                      \ de Brijn Graph-based mapping system index building\nVersion:\
+                      \ 0.1\nContact: Hongzhe Guo <hzguo@hit.edu>\n\nUsage:   deBGA\
+                      \ index [options] reference.fasta <index_route> \n\nOptions:\
+                      \ -k INT      the k-mer length of the vertices of RdBG [20-28]\n\
+                      \n[desalt_index] Done!\n[Main] Real time: 0.005 sec; CPU: 0.215\
+                      \ sec, Memory peak: 0.01 GB\n"
+                    generated_using: &id005
+                    - --help
+                  - !Command
+                    command: &id007
+                    - deSALT
+                    - index
+                    - ref.fa
+                    positional:
+                    - !Positional
+                      description: ''
+                      position: 0
+                      name: deBGA
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 1
+                      name: index
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 2
+                      name: reference.fasta
+                      optional: false
+                    - !Positional
+                      description: ''
+                      position: 3
+                      name: index_route
+                      optional: false
+                    named: []
+                    parent: *id004
+                    subcommands: []
+                    usage: []
+                    help_flag:
+                    usage_flag:
+                    version_flag:
+                    help_text: "[desalt_index] Executing deBGA index ...\n\nProgram:\
+                      \ de Brijn Graph-based mapping system index building\nVersion:\
+                      \ 0.1\nContact: Hongzhe Guo <hzguo@hit.edu>\n\nUsage:   deBGA\
+                      \ index [options] reference.fasta <index_route> \n\nOptions:\
+                      \ -k INT      the k-mer length of the vertices of RdBG [20-28]\n\
+                      \n[desalt_index] Done!\n[Main] Real time: 0.011 sec; CPU: 0.227\
+                      \ sec, Memory peak: 0.01 GB\n"
+                    generated_using: *id005
+                  usage: []
+                  help_flag:
+                  usage_flag:
+                  version_flag:
+                  help_text: "\nUsage:\tdeSALT index <ref.fa> <index_route>\n\t\t\
+                    build deBGA index file with default 22-kmer. You can get more\
+                    \ deBGA information from https://github.com/HongzheGuo/deBGA\n"
+                  generated_using: *id005
+                usage: []
+                help_flag:
+                usage_flag:
+                version_flag:
+                help_text: "\nProgram:\tdeSALT (Third generation RNA sequence alignment)\n\
+                  Usage:\t\tdeSALT <command> [options]\n\nCommand: \n\t\tindex\t\t\
+                  index reference sequence\n\t\taln\t\talign long RNA sequence to\
+                  \ reference\n\nUsage:\tdeSALT index <ref.fa> <index_route>\n\t\t\
+                  build deBGA index file using default k-mer length of deBGA. You\
+                  \ can get more deBGA information from https://github.com/HongzheGuo/deBGA\n\
+                  \nUsage:\tdeSALT aln [options] -f <temporary file> <index_route>\
+                  \ <read.fa/fq>\n\n    -f <temporary file>           The temporary\
+                  \ file for storing alignment skeletons in first pass.\n        \
+                  \                          If users run two deSALT program in the\
+                  \ same time, -f option is necessary.\n    <index_route>        \
+                  \         The path of RdBG index.\n    <read.fq/fa>            \
+                  \      The input reads in fasta or fastq format.\n\nAlgorithm options:\n\
+                  \n    -t --thread           [INT]    Number of threads. [4]\n  \
+                  \  -k --index-kmer       [INT]    K-mer length of RdBG-index. [22]\n\
+                  \    -l --seeding-lmer     [INT]    K-mer length of seeding process\
+                  \ (no long than RdBG-index). [15]\n    -a --local-hash-kmer  [INT]\
+                  \    K-mer length of local hash process. [8]\n    -s --seed-step\
+                  \        [INT]    The interval of seeding. [5]\n    -B --batch-size\
+                  \       [INT]    The number of reads to be processed in one loop.\
+                  \ [100000]\n    -n --max-uni-pos      [INT]    Maximum allowed number\
+                  \ of hits per seed. [50]\n    -L --max-readlen      [INT]    Maximum\
+                  \ allowed read length. [1000000]\n    -i --min-frag-dis     [INT]\
+                  \    Maximum allowed distance of two fragment can be connect. [20]\n\
+                  \    -I --max-intron-len   [INT]    maximum allowed intron length.\
+                  \ [200000]\n    -c --min-chain-score  [INT]    minimal skeleton\
+                  \ score(match bases minus gap penalty). [20]\n    -d --strand-diff\
+                  \      [INT]    The minimal difference of dp score by two strand\
+                  \ to make sure the transcript strand. [20]\n    -g --max-read-gap\
+                  \     [INT]    Maximum allowed gap in read when chaining. [2000]\n\
+                  \    -p --secondary-ratio  [FLOAT]  Min secondary-to-primary score\
+                  \ ratio. [0.90]\n    -e --e-shift          [INT]    The number of\
+                  \ downstream (upstream) exons will be processed when left (right)\
+                  \ extension. [5]\n    -T --trans-strand              Find splicing\
+                  \ sites according to transcript strand\n    -G --gtf           \
+                  \   [STR]    Provided annotation information for precise intron\
+                  \ donor and acceptor sites.\n                                  \
+                  \ Convert GTF file(now support GTF format only) to fixed format\
+                  \ of deSALT by Annotation_Load.py \n    -x --read-type        [STR]\
+                  \    Specifiy the type of reads and set multiple paramters unless\
+                  \ overriden.\n                                   [null] default\
+                  \ parameters.\n                                   ccs (PacBio SMRT\
+                  \ CCS reads): error rate 1%\n                                  \
+                  \ clr (PacBio SMRT CLR reads): error rate 15%\n                \
+                  \                   ont1d (Oxford Nanopore 1D reads): error rate\
+                  \ > 20%\n                                   ont2d (Oxford Nanopore\
+                  \ 2D reads): error rate > 12%\n\nScoring options\n\n    -O --open-pen\
+                  \         [INT(,INT)]\n                                   Gap open\
+                  \ penealty. [2,32]\n    -E --ext-pen          [INT(,INT)]\n    \
+                  \                               Gap extension penalty; a k-long\
+                  \ gap costs min{O1+k*E1,O2+k*E2}. [1,0]\n    -m --match-score  \
+                  \    [INT]    Match score for SW-alginment. [1]\n    -M --mis-score\
+                  \        [INT]    Mismatch score for SW-alignment. [2]\n    -z --zdrop\
+                  \            [INT(,INT)]\n                                   Z-drop\
+                  \ score for splice/non-splice alignment. [400]\n    -w --band-width\
+                  \       [INT]    Bandwidth used in chaining and DP-based alignment.\
+                  \ [500]\n    -R --noncan           [INT]    Penalty score for non-canonical\
+                  \ splice junction sites. [9]\n\nOutput options\n\n    -N --top-num-aln\
+                  \      [INT]    Max allowed number of secondary alignment. [4]\n\
+                  \    -Q --without-qual              Don't output base quality in\
+                  \ SAM\n    -f --temp-file-perfix [STR]    Route of temporary files\
+                  \ after the first-pass alignment. [1pass_anchor]\n             \
+                  \                      If you run more than one deSALT program in\
+                  \ the same time, \n                                   you must point\
+                  \ out different routes of temporary files for each program!!!\n\
+                  \                                   If no, every deSALT program\
+                  \ will write temporary data to the same file which \n          \
+                  \                         will cause crash of program in 2-pass\
+                  \ alignment due to inconsistent temporary data.\n    -o --output\
+                  \           [STR]    Output file (SAM format). [./aln.sam]\n"
+                generated_using: *id005
               subcommands:
               - !Command
-                command: &id006
-                - deSALT
-                - index
-                - index_route
+                command: *id006
                 positional:
                 - !Positional
                   description: ''
@@ -315,13 +493,9 @@ subcommands:
                   \ reference.fasta <index_route> \n\nOptions: -k INT      the k-mer\
                   \ length of the vertices of RdBG [20-28]\n\n[desalt_index] Done!\n\
                   [Main] Real time: 0.005 sec; CPU: 0.215 sec, Memory peak: 0.01 GB\n"
-                generated_using: &id005
-                - --help
+                generated_using: *id005
               - !Command
-                command: &id007
-                - deSALT
-                - index
-                - ref.fa
+                command: *id007
                 positional:
                 - !Positional
                   description: ''
@@ -461,7 +635,7 @@ subcommands:
               name: index_route
               optional: false
             named: []
-            parent: *id004
+            parent: *id008
             subcommands: []
             usage: []
             help_flag:
@@ -498,7 +672,7 @@ subcommands:
               name: index_route
               optional: false
             named: []
-            parent: *id004
+            parent: *id008
             subcommands: []
             usage: []
             help_flag:
@@ -610,7 +784,7 @@ subcommands:
           name: index_route
           optional: false
         named: []
-        parent: *id008
+        parent: *id009
         subcommands: []
         usage: []
         help_flag:
@@ -647,7 +821,7 @@ subcommands:
           name: index_route
           optional: false
         named: []
-        parent: *id008
+        parent: *id009
         subcommands: []
         usage: []
         help_flag:
@@ -756,7 +930,7 @@ subcommands:
       name: index_route
       optional: false
     named: []
-    parent: *id009
+    parent: *id010
     subcommands: []
     usage: []
     help_flag:
@@ -792,7 +966,7 @@ subcommands:
       name: index_route
       optional: false
     named: []
-    parent: *id009
+    parent: *id010
     subcommands: []
     usage: []
     help_flag:

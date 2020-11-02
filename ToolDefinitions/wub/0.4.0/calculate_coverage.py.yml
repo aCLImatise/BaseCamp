@@ -88,31 +88,10 @@ subcommands:
             args: !SimpleFlagArg
               name: format
             optional: true
-          parent: &id003 !Command
+          parent: !Command
             command: *id001
             positional: []
-            named:
-            - !Flag
-              description: Input format (fastq).
-              synonyms:
-              - -f
-              args: !SimpleFlagArg
-                name: format
-              optional: true
-            - !Flag
-              description: Genome size (None).
-              synonyms:
-              - -s
-              args: !SimpleFlagArg
-                name: genome_size
-              optional: true
-            - !Flag
-              description: Save pickled results in this file.
-              synonyms:
-              - -p
-              args: !SimpleFlagArg
-                name: results_pickle
-              optional: true
+            named: []
             parent:
             subcommands:
             - !Command
@@ -138,7 +117,93 @@ subcommands:
                 args: !SimpleFlagArg
                   name: format
                 optional: true
-              parent: *id003
+              parent: &id003 !Command
+                command: *id001
+                positional: []
+                named:
+                - !Flag
+                  description: Input format (fastq).
+                  synonyms:
+                  - -f
+                  args: !SimpleFlagArg
+                    name: format
+                  optional: true
+                - !Flag
+                  description: Genome size (None).
+                  synonyms:
+                  - -s
+                  args: !SimpleFlagArg
+                    name: genome_size
+                  optional: true
+                - !Flag
+                  description: Save pickled results in this file.
+                  synonyms:
+                  - -p
+                  args: !SimpleFlagArg
+                    name: results_pickle
+                  optional: true
+                parent:
+                subcommands:
+                - !Command
+                  command: *id002
+                  positional:
+                  - !Positional
+                    description: ''
+                    position: 0
+                    name: calculate_coverage.py
+                    optional: false
+                  named:
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -s
+                    args: !SimpleFlagArg
+                      name: genome_size
+                    optional: true
+                  - !Flag
+                    description: ''
+                    synonyms:
+                    - -f
+                    args: !SimpleFlagArg
+                      name: format
+                    optional: true
+                  parent: *id003
+                  subcommands: []
+                  usage: []
+                  help_flag: !Flag
+                    description: ''
+                    synonyms:
+                    - -h
+                    args: !EmptyFlagArg {}
+                    optional: true
+                  usage_flag:
+                  version_flag:
+                  help_text: "usage: calculate_coverage.py [-h] [-f format] [-s genome_size]\n\
+                    \                             [-p results_pickle]\n          \
+                    \                   [input_fastx]\ncalculate_coverage.py: error:\
+                    \ argument input_fastx: can't open 'input_fastx': [Errno 2] No\
+                    \ such file or directory: 'input_fastx'\n"
+                  generated_using: &id004
+                  - --help
+                usage: []
+                help_flag: !Flag
+                  description: show this help message and exit
+                  synonyms:
+                  - -h
+                  - --help
+                  args: !EmptyFlagArg {}
+                  optional: true
+                usage_flag:
+                version_flag:
+                help_text: "usage: calculate_coverage.py [-h] [-f format] [-s genome_size]\n\
+                  \                             [-p results_pickle]\n            \
+                  \                 [input_fastx]\n\nCalculate total number of bases\
+                  \ and genome coverage if genome size is given.\n\npositional arguments:\n\
+                  \  input_fastx        Input (default: stdin).\n\noptional arguments:\n\
+                  \  -h, --help         show this help message and exit\n  -f format\
+                  \          Input format (fastq).\n  -s genome_size     Genome size\
+                  \ (None).\n  -p results_pickle  Save pickled results in this file.\n"
+                generated_using: *id004
               subcommands: []
               usage: []
               help_flag: !Flag
@@ -154,16 +219,9 @@ subcommands:
                 \               [input_fastx]\ncalculate_coverage.py: error: argument\
                 \ input_fastx: can't open 'input_fastx': [Errno 2] No such file or\
                 \ directory: 'input_fastx'\n"
-              generated_using: &id004
-              - --help
+              generated_using: *id004
             usage: []
-            help_flag: !Flag
-              description: show this help message and exit
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
+            help_flag:
             usage_flag:
             version_flag:
             help_text: "usage: calculate_coverage.py [-h] [-f format] [-s genome_size]\n\
