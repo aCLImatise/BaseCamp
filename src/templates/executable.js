@@ -16,6 +16,7 @@ import {
   faDownload,
   faAngleDown,
   faAngleUp,
+  faLink,
 } from "@fortawesome/free-solid-svg-icons"
 
 import Layout from "../components/layout"
@@ -79,18 +80,21 @@ export const query = graphql`
       }
       wrappers {
         id
-        relativePath
-        publicURL
-        extension
+        stableUrl
+        file {
+          relativePath
+          publicURL
+          extension
+        }
       }
     }
   }
 `
 
-function Wrapper({ file }) {
+function Wrapper({ wrapper }) {
   const [collapseToggle, collapseStyle, collapseVisible] = useCollapse()
   const data = useAxios({
-    url: file.publicURL,
+    url: wrapper.file.publicURL,
     method: "get",
     responseType: "text",
   })
@@ -112,10 +116,26 @@ function Wrapper({ file }) {
             <FontAwesomeIcon icon={collapseVisible ? faAngleUp : faAngleDown} />
           </Icon>
         </Card.Header.Icon>
-        <Card.Header.Title>{file.extension}</Card.Header.Title>
+        <Card.Header.Title>{wrapper.file.extension}</Card.Header.Title>
         <Card.Header.Icon>
           <a
-            href={file.publicURL}
+            title={"Copy stable link"}
+            onClick={e => {
+              navigator.clipboard.writeText(
+                `${window.location.origin}${wrapper.stableUrl}`
+              )
+              e.stopPropagation()
+            }}
+          >
+            <Icon>
+              <FontAwesomeIcon icon={faLink} />
+            </Icon>
+          </a>
+        </Card.Header.Icon>
+        <Card.Header.Icon>
+          <a
+            title={"Download tool definition"}
+            href={wrapper.file.publicURL}
             download
             onClick={e => {
               e.stopPropagation()
@@ -130,7 +150,7 @@ function Wrapper({ file }) {
       <Card.Content style={collapseStyle}>
         <SyntaxHighlighter
           style={dark}
-          language={chooseLanguage(file.extension)}
+          language={chooseLanguage(wrapper.file.extension)}
         >
           {data}
         </SyntaxHighlighter>
@@ -170,7 +190,7 @@ export default function Executable({ data }) {
           <Heading level={2}>{title}</Heading>
           <Heading level={3}>Wrappers</Heading>
           {exe.wrappers.map(wrapper => {
-            return <Wrapper file={wrapper} />
+            return <Wrapper wrapper={wrapper} />
           })}
         </Container>
       </Section>
