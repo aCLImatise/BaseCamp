@@ -1,0 +1,230 @@
+!Command
+command:
+- fastdist
+positional: []
+named:
+- !Flag
+  description: "output filename. If not specifed, output is\nwritten to stdout"
+  synonyms:
+  - -o
+  - --outfile
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "input format. xml means the Fastphylo sequence\nXML format  (possible\
+    \ values=\"fasta\",\n\"phylip\", \"xml\" default=`fasta')"
+  synonyms:
+  - -I
+  - --input-format
+  args: !SimpleFlagArg
+    name: ENUM
+  optional: true
+- !Flag
+  description: "memory efficient. Use less memory space and\nfast implementation.\
+    \ Only used with fasta and\nphylip format  (default=off)"
+  synonyms:
+  - -e
+  - --memory-efficient
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "output format. xml means the Fastphylo distance\nmatrix XML format\
+    \  (possible\nvalues=\"phylip\", \"xml\", \"binary\"\ndefault=`xml')"
+  synonyms:
+  - -O
+  - --output-format
+  args: !SimpleFlagArg
+    name: ENUM
+  optional: true
+- !Flag
+  description: "Distance function  (possible values=\"JC\",\n\"K2P\", \"TN93\", \"\
+    HAMMING\" default=`K2P')"
+  synonyms:
+  - -D
+  - --distance-function
+  args: !SimpleFlagArg
+    name: ENUM
+  optional: true
+- !Flag
+  description: "Bootstrap num times and create matrix for each\n(default=`0')"
+  synonyms:
+  - -b
+  - --bootstraps
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "If the distance matrix from the original\nsequences should not be\
+    \ included\n(default=off)"
+  synonyms:
+  - -k
+  - --no-incl-orig
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Random seed. If not specified the current\ntimestamp will be used"
+  synonyms:
+  - -s
+  - --seed
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Ignore ambiguities  (default=off)
+  synonyms:
+  - -A
+  - --no-ambiguities
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specifies that ambigious symbols should not be\nresolved by nearest\
+    \ neighbor  (default=off)"
+  synonyms:
+  - -R
+  - --no-ambig-resolve
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specifies that the transition probabilities\nshould not be used in\
+    \ the ambiguity model\n(default=off)"
+  synonyms:
+  - -t
+  - --no-transprob
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Ambiguity frequency model  (possible\nvalues=\"UNI\", \"BASE\" default=`UNI')"
+  synonyms:
+  - -a
+  - --ambiguity-frequency-model
+  args: !SimpleFlagArg
+    name: ENUM
+  optional: true
+- !Flag
+  description: "Transition/transvertion ratio for purine\ntransitions (for the TN\
+    \ model)\n(default=`2.0')"
+  synonyms:
+  - -T
+  - --tstvratio
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Transition/transvertion ratio for  pyrimidines\ntransitions (for the\
+    \ TN model)\n(default=`2.0')"
+  synonyms:
+  - -P
+  - --pyrtvratio
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "If given fixed ts/tv ratios will not be used\n(default=off)"
+  synonyms:
+  - -N
+  - --no-tstvratio
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Float specifying what factor to use for\nsaturated data. If not given\
+    \ -1 in the entry.\n(default=`1')"
+  synonyms:
+  - -F
+  - --fixfactor
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "nr of runs (datasets) in input. This option is\nonly used if the input\
+    \ format is\nphylip_multialignment.  (default=`1')"
+  synonyms:
+  - -r
+  - --number-of-runs
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "print the Relax NG schema for the XML input\nformat (Fastphylo sequence\
+    \ XML format) and\nthen exit  (default=off)"
+  synonyms:
+  - -p
+  - --print-relaxng-input
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "print the Relax NG schema for the XML output\nformat (Fastphylo distance\
+    \ matrix XML format)\nand then exit.  (default=off)"
+  synonyms:
+  - -w
+  - --print-relaxng-output
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "fastdist 1.0.0\n\nUsage: fastdist [OPTIONS]... [FILE]...\n\nComputes distance\
+  \ matrices out of multialignments\n\n  -h, --help                    Print help\
+  \ and exit\n  -V, --version                 Print version and exit\nIf FILE is not\
+  \ specified the input is read from stdin \n  -o, --outfile=filename        output\
+  \ filename. If not specifed, output is \n                                  written\
+  \ to stdout\n  -I, --input-format=ENUM       input format. xml means the Fastphylo\
+  \ sequence \n                                  XML format  (possible values=\"fasta\"\
+  , \n                                  \"phylip\", \"xml\" default=`fasta')\n  -e,\
+  \ --memory-efficient         memory efficient. Use less memory space and \n    \
+  \                              fast implementation. Only used with fasta and \n\
+  \                                  phylip format  (default=off)\n  -O, --output-format=ENUM\
+  \      output format. xml means the Fastphylo distance \n                      \
+  \            matrix XML format  (possible \n                                  values=\"\
+  phylip\", \"xml\", \"binary\" \n                                  default=`xml')\n\
+  \  -D, --distance-function=ENUM  Distance function  (possible values=\"JC\", \n\
+  \                                  \"K2P\", \"TN93\", \"HAMMING\" default=`K2P')\n\
+  \  -b, --bootstraps=INT          Bootstrap num times and create matrix for each\
+  \  \n                                  (default=`0')\n  -k, --no-incl-orig     \
+  \       If the distance matrix from the original \n                            \
+  \      sequences should not be included  \n                                  (default=off)\n\
+  \  -s, --seed=INT                Random seed. If not specified the current \n  \
+  \                                timestamp will be used\n  -A, --no-ambiguities\
+  \          Ignore ambiguities  (default=off)\n  -R, --no-ambig-resolve        Specifies\
+  \ that ambigious symbols should not be \n                                  resolved\
+  \ by nearest neighbor  (default=off)\n  -t, --no-transprob            Specifies\
+  \ that the transition probabilities \n                                  should not\
+  \ be used in the ambiguity model  \n                                  (default=off)\n\
+  \  -a, --ambiguity-frequency-model=ENUM\n                                Ambiguity\
+  \ frequency model  (possible \n                                  values=\"UNI\"\
+  , \"BASE\" default=`UNI')\n  -T, --tstvratio=FLOAT         Transition/transvertion\
+  \ ratio for purine \n                                  transitions (for the TN model)\
+  \  \n                                  (default=`2.0')\n  -P, --pyrtvratio=FLOAT\
+  \        Transition/transvertion ratio for  pyrimidines \n                     \
+  \             transitions (for the TN model)  \n                               \
+  \   (default=`2.0')\n  -N, --no-tstvratio            If given fixed ts/tv ratios\
+  \ will not be used  \n                                  (default=off)\n  -F, --fixfactor=FLOAT\
+  \         Float specifying what factor to use for \n                           \
+  \       saturated data. If not given -1 in the entry. \n                       \
+  \            (default=`1')\n  -r, --number-of-runs=INT      nr of runs (datasets)\
+  \ in input. This option is \n                                  only used if the\
+  \ input format is \n                                  phylip_multialignment.  (default=`1')\n\
+  \  -p, --print-relaxng-input     print the Relax NG schema for the XML input \n\
+  \                                  format (Fastphylo sequence XML format) and \n\
+  \                                  then exit  (default=off)\n  -w, --print-relaxng-output\
+  \    print the Relax NG schema for the XML output \n                           \
+  \       format (Fastphylo distance matrix XML format) \n                       \
+  \           and then exit.  (default=off)\n\nExample usage of this program can be\
+  \ found at its home page\nhttp://fastphylo.sourceforge.net/\n\n\n"
+generated_using:
+- --help

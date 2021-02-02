@@ -1,0 +1,110 @@
+!Command
+command:
+- n50
+positional: []
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n    n50 - A script to calculate N50 from one or multiple FASTA/FASTQ\
+  \ files.\n\nVERSION\n    version 1.3.0\n\nSYNOPSIS\n      n50.pl [options] [FILE1\
+  \ FILE2 FILE3...]\n\nDESCRIPTION\n    This program parses a list of FASTA/FASTQ\
+  \ files calculating for each one\n    the number of sequences, the sum of sequences\
+  \ lengths and the N50, N75,\n    N90 and auN*. It will print the result in different\
+  \ formats, by default\n    only the N50 is printed for a single file and all metrics\
+  \ in TSV format\n    for multiple files.\n\n    ***: See\n    <https://lh3.github.io/2020/04/08/a-new-metric-on-assembly-contiguity>\n\
+  \nPARAMETERS\n    *-o, --sortby*\n                Sort by field: 'N50' (default),\
+  \ 'min', 'max', 'seqs',\n                'size', 'path'. By default will be descending\
+  \ for numeric\n                fields, ascending for 'path'. See \"-r, --reverse\"\
+  .\n\n    *-r, --reverse*\n                Reverse sort (see: \"-o\");\n\n    *-f,\
+  \ --format*\n                Output format: default, tsv, json, custom, screen.\
+  \ See below\n                for format specific switches. Specify \"list\" to list\n\
+  \                available formats.\n\n    *-e*        Also calculate a custom N{e}\
+  \ metric. Expecting an integer 0\n                < e < 100.\n\n    *-s, --separator*\n\
+  \                Separator to be used in 'tsv' output. Default: tab. The\n     \
+  \           'tsv' format will print a header line, followed by a line\n        \
+  \        for each file given as input with: file path, as received,\n          \
+  \      total number of sequences, total size in bp, and finally\n              \
+  \  N50.\n\n    *-b, --basename*\n                Instead of printing the path of\
+  \ each file, will only print\n                the filename, stripping relative or\
+  \ absolute paths to it.\n                See \"-a\". Warning: if you are reading\
+  \ multiple files with\n                the same basename, only one will be printed.\
+  \ This is the\n                intended behaviour and you will only receive a warning.\n\
+  \n    *-a, --abspath*\n                Instead of printing the path of each file,\
+  \ as supplied by\n                the user (can be relative), it will the absolute\
+  \ path. Will\n                override -b (basename). See \"-b\".\n\n    *-u, --noheader*\n\
+  \                When used with 'tsv' output format, will suppress header\n    \
+  \            line.\n\n    *-n, --nonewline*\n                If used with 'default'\
+  \ (or 'csv' output format), will NOT\n                print the newline character\
+  \ after the N50 for a single file.\n                Useful in bash scripting:\n\n\
+  \                  n50=$(n50.pl filename);\n\n    *-t, --template*\n           \
+  \     String to be used with 'custom' format. Will be used as\n                template\
+  \ string for each sample, replacing {new} with\n                newlines, {tab}\
+  \ with tab and {N50}, {seqs}, {size}, {path}\n                with sample's N50,\
+  \ number of sequences, total size in bp and\n                file path respectively\
+  \ (the latter will respect --basename\n                if used).\n\n    *-q, --thousands-sep*\n\
+  \                Add the thousands separator in all the printed numbers.\n     \
+  \           Enabled by default with --format screen (-x).\n\n    *-p, --pretty*\n\
+  \                If used with 'json' output format, will format the JSON in\n  \
+  \              pretty print mode. Example:\n\n                 {\n             \
+  \      \"file1.fa\" : {\n                     \"size\" : 290,\n                \
+  \     \"N50\"  : 290,\n                     \"seqs\" : 2\n                  },\n\
+  \                   \"file2.fa\" : {\n                     \"N50\"  : 456,\n   \
+  \                  \"size\" : 456,\n                     \"seqs\" : 2\n        \
+  \          }\n                 }\n\n    *-h, --help*\n                Will display\
+  \ this full help message and quit, even if other\n                arguments are\
+  \ supplied.\n\n  Output formats\n    These are the values for \"--format\".\n\n\
+  \    *tsv* (tab separated values)\n          #path       seqs  size  N50   min \
+  \  max\n          test2.fa    8     825   189   4     256\n          reads.fa  \
+  \  5     247   100   6     102\n          small.fa    6     130   65    4     65\n\
+  \n    *csv* (comma separated values)\n        Same as \"--format tsv\" and \"--separator\
+  \ ,\":\n\n          #path,seqs,size,N50,min,max\n          test.fa,8,825,189,4,256\n\
+  \          reads.fa,5,247,100,6,102\n          small_test.fa,6,130,65,4,65\n\n \
+  \   *screen* (screen friendly)\n        Use \"-x\" as shortcut for \"--format screen\"\
+  . Enables --thousands-sep\n        (-q) by default.\n\n          .-----------------------------------------------------------------------------------------.\n\
+  \          | File          | Seqs | Total bp | N50    | min   | max    | N75   |\
+  \ N90   | auN         |\n          +---------------+------+----------+--------+-------+--------+-------+-------+-------------+\n\
+  \          | big.fa        |    4 |   18,359 | 11,840 | 2,167 | 11,840 | 2,176 |\
+  \ 2,167 | 8923.21,984 |\n          | sim1.fa       |   39 |   18,864 |    679 |\
+  \    20 |    971 |   408 |   313 |  733.51,389 |\n          | sim2.fa       |  \
+  \ 21 |    7,530 |    493 |    68 |    989 |   330 |   174 |  575.47,012 |\n    \
+  \      | test.fa       |    8 |      825 |    189 |     4 |    256 |   168 |   168\
+  \ |  260.99,515 |\n          '---------------+------+----------+--------+-------+--------+-------+-------+-------------'\n\
+  \n    *json* (JSON)\n        Use \"-j\" as shortcut for \"--format json\".\n\n \
+  \           {\n               \"data/sim1.fa\" : {\n                  \"seqs\" :\
+  \ 39,\n                  \"N50\" : 679,\n                  \"max\" : 971,\n    \
+  \              \"N90\" : 313,\n                  \"min\" : 20,\n               \
+  \   \"size\" : 18864,\n                  \"auN\" : 733.51389,\n                \
+  \  \"N75\" : 408\n               },\n               \"data/sim2.fa\" : {\n     \
+  \             \"max\" : 989,\n                  \"seqs\" : 21,\n               \
+  \   \"N50\" : 493,\n                  \"N90\" : 174,\n                  \"min\"\
+  \ : 68,\n                  \"auN\" : 575.47012,\n                  \"N75\" : 330,\n\
+  \                  \"size\" : 7530\n               }\n            }\n\n    *custom*\n\
+  \        Will print the output using the template string provided with -t\n    \
+  \    TEMPLATE. Fields are in the \"{field_name}\" format.\n        \"{new}\"/\"\
+  {n}\"/\"\\n\" is the newline, \"{tab}\"/\"{t}\"/\"\\t\" is a tab. All\n        the\
+  \ keys of the JSON object are valid fields: \"{seqs}\", \"{N50}\",\n        \"{min}\"\
+  , \"{max}\", \"{size}\".\n\nEXAMPLE USAGES\n    Screen friendly table (\"-x\" is\
+  \ a shortcut for \"--format screen\"), sorted\n    by N50 descending (default):\n\
+  \n      n50.pl -x files/*.fa\n\n    Screen friendly table, sorted by total contig\
+  \ length (\"--sortby max\")\n    ascending (\"--reverse\"):\n\n      n50.pl -x -o\
+  \ max -r files/*.fa\n\n    Tabular (tsv) output is default:\n\n      n50.pl -o max\
+  \ -r files/*.fa\n\n    A custom output format:\n\n      n50.pl data/*.fa -f custom\
+  \ -t '{path}{tab}N50={N50};Sum={size}{new}'\n\nCOPYRIGHT\n    Copyright (C) 2017-2019\
+  \ Andrea Telatin\n\n    This program is free software: you can redistribute it and/or\
+  \ modify it\n    under the terms of the GNU General Public License as published\
+  \ by the\n    Free Software Foundation, either version 3 of the License, or (at\
+  \ your\n    option) any later version.\n\n    This program is distributed in the\
+  \ hope that it will be useful, but\n    WITHOUT ANY WARRANTY; without even the implied\
+  \ warranty of\n    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\
+  \ GNU General\n    Public License for more details.\n\n    You should have received\
+  \ a copy of the GNU General Public License along\n    with this program. If not,\
+  \ see <http://www.gnu.org/licenses/>.\n\nAUTHOR\n    Andrea Telatin <andrea@telatin.com>\n\
+  \nCOPYRIGHT AND LICENSE\n    This software is Copyright (c) 2018-2020 by Andrea\
+  \ Telatin.\n\n    This is free software, licensed under:\n\n      The MIT (X11)\
+  \ License\n\n"
+generated_using:
+- --help

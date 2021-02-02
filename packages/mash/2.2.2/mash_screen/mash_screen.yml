@@ -1,0 +1,78 @@
+!Command
+command:
+- mash
+- screen
+positional:
+- !Positional
+  description: Description (range) [default]
+  position: 0
+  name: Option
+  optional: false
+named:
+- !Flag
+  description: Parallelism. This many threads will be spawned for processing. [1]
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Winner-takes-all strategy for identity estimates. After counting\n\
+    hashes for each query, hashes that appear in multiple queries will\nbe removed\
+    \ from all except the one with the best identity (ties\nbroken by larger query),\
+    \ and other identities will be reduced. This\nremoves output redundancy, providing\
+    \ a rough compositional outline."
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum identity to report. Inclusive unless set to zero, in which\n\
+    case only identities greater than zero (i.e. with at least one\nshared hash) will\
+    \ be reported. Set to -1 to output everything.\n(-1-1) [0]"
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Maximum p-value to report. (0-1) [1.0]
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Help
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nVersion: 2.2.2\n\nUsage:\n\n  mash screen [options] <queries>.msh <mixture>\
+  \ [<mixture>] ...\n\nDescription:\n\n  Determine how well query sequences are contained\
+  \ within a mixture of sequences. The queries must be formatted as a single Mash\
+  \ sketch file (.msh), created with the `mash sketch` command. The <mixture> files\
+  \ can be contigs or reads, in fasta or fastq, gzipped or not, and \"-\" can be given\
+  \ for <mixture> to read from standard input. The <mixture> sequences are assumed\
+  \ to be nucleotides, and will be 6-frame translated if the <queries> are amino acids.\
+  \ The output fields are [identity, shared-hashes, median-multiplicity, p-value,\
+  \ query-ID, query-comment], where median-multiplicity is computed for shared hashes,\
+  \ based on the number of observations of those hashes within the mixture.\n\nOptions:\n\
+  \n  Option    Description (range) [default]\n\n  -h        Help\n\n  -p <int>  Parallelism.\
+  \ This many threads will be spawned for processing. [1]\n\n  -w        Winner-takes-all\
+  \ strategy for identity estimates. After counting\n            hashes for each query,\
+  \ hashes that appear in multiple queries will\n            be removed from all except\
+  \ the one with the best identity (ties\n            broken by larger query), and\
+  \ other identities will be reduced. This\n            removes output redundancy,\
+  \ providing a rough compositional outline.\n\n...Output...\n\n  -i <num>  Minimum\
+  \ identity to report. Inclusive unless set to zero, in which\n            case only\
+  \ identities greater than zero (i.e. with at least one\n            shared hash)\
+  \ will be reported. Set to -1 to output everything.\n            (-1-1) [0]\n\n\
+  \  -v <num>  Maximum p-value to report. (0-1) [1.0]\n\n"
+generated_using:
+- -h

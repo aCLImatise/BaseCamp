@@ -1,0 +1,153 @@
+!Command
+command:
+- rsat
+- infer-operons
+positional:
+- !Positional
+  description: "\e[1mDESCRIPTION\e[0m"
+  position: 0
+  name: infer-operons
+  optional: false
+- !Positional
+  description: "\e[1mCATEGORY\e[0m"
+  position: 0
+  name: Jacques.van-Helden\@univ-amu.fr
+  optional: false
+- !Positional
+  description: "\e[1mMETHOD\e[0m"
+  position: 1
+  name: genomics
+  optional: false
+- !Positional
+  description: infer-operons -v 1 -org Escherichia_coli_GCF_000005845.2_ASM584v2 -q
+  position: 0
+  name: genes.
+  optional: false
+- !Positional
+  description: neighbour-genes
+  position: 0
+  name: retrieve-seq
+  optional: false
+named:
+- !Flag
+  description: ',leader,operon'
+  synonyms:
+  - -all
+  - -return
+  args: !SimpleFlagArg
+    name: up_info
+  optional: true
+- !Flag
+  description: "\e[1mExample 5\e[0m\nNote that operons can contain non-coding genes.\
+    \ For example, the\nmetT operon contains a series of tRNA genes for methionine,\
+    \ leucine\nand glutamina, respectively.\ninfer-operons -org Escherichia_coli_GCF_000005845.2_ASM584v2\
+    \ -q glnV\n-q metU -q ileV \\ -return q_info,up_info,operon"
+  synonyms:
+  - -org
+  - -noorf
+  args: !SimpleFlagArg
+    name: Escherichia_coli_GCF_000005845.2_ASM584v2
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    infer-operons\n\n\e[1mDESCRIPTION\e[0m\n    Given\
+  \ a list of input genes, infer the operon to which each of these\n    genes belong.\n\
+  \n    The inferrence is based on a \e[1mvery\e[0m simplistic distance-based method,\n\
+  \    inspired from the method developed by Salgado, Moreno et al. (Proc Natl\n \
+  \   Acad Sci U S A. 2000;97:6652-7). The Salgado-Moreno method classifies\n    intergenic\
+  \ distances as TUB (transcription unit border) or OP (inside\n    operon), and infers\
+  \ operons by iteratively collecting genes until a TUB\n    is found. In the original\
+  \ method, the TUB or OP assignation relies on a\n    log-likelihood score calculated\
+  \ from a training set.\n\n    The difference is that we do not use the log-likelihood\
+  \ (which presents\n    risks of over-fitting), but a simple threshold on distance.\
+  \ Thus, we\n    infer that the region upstream of a gene is TUB if its size is larger\n\
+  \    than a given distance threshold, and OP otherwise. Our validations\n    (Rekins'\
+  \ Janky and Jacques van Helden, unpublished results) show that a\n    simple threshold\
+  \ on distance raises a similar accuracy as the\n    log-likelihood score (Acc ~\
+  \ 78% for a threshold t=55).\n\n\e[1mAUTHORS\e[0m\n    Jacques.van-Helden\\@univ-amu.fr\n\
+  \n\e[1mCATEGORY\e[0m\n    genomics\n\n\e[1mMETHOD\e[0m\n    The method relies on\
+  \ three simple rules, depending on the relative\n    orientation of the adjacent\
+  \ genes.\n\n    Rule 1: divergently transcribed genes\n        If the gene found\
+  \ upstream of a query gene is transcribed in the\n        opposite direction, then\
+  \ the intergenic region is considered as a\n        TUB, and the two flanking genes\
+  \ are labelled as operon leaders. This\n        prediction is reliable (as far as\
+  \ genome annotation is correct),\n        since operons only contain genes on the\
+  \ same strand.\n\n    Rule 2: convergently transcribed genes\n        If the gene\
+  \ found downstream of a query gene is transcribed in the\n        opposite direction,\
+  \ then the intergenic region is considered as a\n        TUB, and the two flanking\
+  \ genes are labelled as operon trailers.\n        This prediction is reliable (as\
+  \ far as genome annotation is\n        correct), since operons only contain genes\
+  \ on the same strand.\n\n    Rule 3: tandem genes (adjacent genes on the same strand)\n\
+  \        If two adjacent genes are on the same strand, then a distance\n       \
+  \ threshold (option -dist) is applied to decide whether they belong to\n       \
+  \ the same operon (dist <= thredhold) or not (dist > threshold). If\n        they\
+  \ are predicted to be in distinct operon, the upstream gene is\n        labelled\
+  \ as operon trailer, and the downstream gene as leader of the\n        next operon.\n\
+  \n\e[1mUSAGE\e[0m\n    infer-operons [-i inputfile] [-o outputfile] [-v] [options]\n\
+  \n    \e[1mExample 1\e[0m\n        With the following command, we infer the operon\
+  \ for a set of input\n        genes.\n\n        infer-operons -v 1 -org Escherichia_coli_GCF_000005845.2_ASM584v2\
+  \ -q\n        hisD -q mhpR -q mhpA -q mhpD\n\n    \e[1mExample 2\e[0m\n        We\
+  \ now specify different return fields\n\n        infer-operons -v 1 -org Escherichia_coli_GCF_000005845.2_ASM584v2\
+  \ -q\n        hisD -q lacI \\ -return leader,trailer,up_info,down_info,operon\n\n\
+  \    \e[1mExample 3\e[0m\n        Infer operons for all the genes of an organism.\n\
+  \n        infer-operons -v 1 -org Escherichia_coli_GCF_000005845.2_ASM584v2\n  \
+  \      -all -return up_info,leader,operon\n\n    \e[1mExample 4\e[0m\n        Infer\
+  \ operon from a set of query genes, and retrieve the upstream\n        sequence\
+  \ of the inferred leader gene. Note that two of the input\n        genes (lacZ,\
+  \ lacY) belong to the same operon. to avoid including\n        twice their leader,\
+  \ we use the unix command sort -u (unique).\n\n        infer-operons -org Escherichia_coli_GCF_000005845.2_ASM584v2\
+  \ -return\n        leader,operon \\ -q lacI -q lacZ -q lacY | sort -u \\ | retrieve-seq\n\
+  \        -org Escherichia_coli_GCF_000005845.2_ASM584v2 -noorf\n\n    \e[1mExample\
+  \ 5\e[0m\n        Note that operons can contain non-coding genes. For example, the\n\
+  \        metT operon contains a series of tRNA genes for methionine, leucine\n \
+  \       and glutamina, respectively.\n\n        infer-operons -org Escherichia_coli_GCF_000005845.2_ASM584v2\
+  \ -q glnV\n        -q metU -q ileV \\ -return q_info,up_info,operon\n\n\e[1mINPUT\
+  \ FORMAT\e[0m\n    Each row of the input file specifies one query gene. The first\
+  \ word of a\n    gene is the query, the rest of the row is ignored.\n\n\e[1mOUTPUT\
+  \ FORMAT\e[0m\n    Tab-delimited text file, with one row per query gene, and one\
+  \ column per\n    selected output field.\n\n\e[1mRELATED REFERENCES\e[0m\n    Salgado,\
+  \ H., Moreno-Hagelsieb, G., Smith, T., and Collado-Vides, J.\n    (2000). Operons\
+  \ in Escherichia coli: genomic analyses and predictions.\n    Proc Natl Acad Sci\
+  \ USA 97, 6652-6657.\n\n\e[1mOPTIONS\e[0m\n    \e[1m-v #\e[0m\n        Level of\
+  \ verbosity (detail in the warning messages during execution)\n\n    \e[1m-h\e[0m\
+  \  Display full help message\n\n    \e[1m-help\e[0m\n        Same as -h\n\n    \e\
+  [1m-i inputfile\e[0m\n        If no input file is specified, the standard input\
+  \ is used. This\n        allows to use the command within a pipe.\n\n    \e[1m-org\
+  \ organism\e[0m\n        Organism name.\n\n    \e[1m-all\e[0m\n        Infer operons\
+  \ for all the genes of the query organism.\n\n    \e[1m-q query_gene\e[0m\n    \
+  \    Query gene. This option can be used iteratively on the same command\n     \
+  \   line to specify several query genes. Example:\n\n        infer-operons -org\
+  \ Escherischia_coli_K12 -q LACZ -q hisA\n\n    \e[1m-o outputfile\e[0m\n       \
+  \ If no output file is specified, the standard output is used. This\n        allows\
+  \ to use the command within a pipe.\n\n    \e[1m-dist #\e[0m\n        Distance threshold.\n\
+  \n    \e[1m-sep \e[0m\n        Specify the separator for multi-value fields (e.g.:\
+  \ genes) in the\n        output table. By default, multi-value fields are exported\
+  \ in a\n        single column with a semicolon (\";\") as separator.\n\n    \e[1m-min_gene_nb\
+  \ #\e[0m\n        Specify a threshold on the number of genes in the operon. This\n\
+  \        option is generally used when predicting all operons (option -all),\n \
+  \       in order to only return predicted polycistronic transcription units\n  \
+  \      (-min_gene_nb 2) or restrict the output to operons\n        containingpredicted\
+  \ to contain at least a given number of genes\n        (e.g. -min_gene_nb 4).\n\n\
+  \    \e[1m-return return_fields\e[0m\n        List of fields to return.\n\n    \
+  \    Supported fields:\n        leader,trailer,operon,query,name,upstr_dist,q_info,up_info,down_info\n\
+  \n        \e[1mleader\e[0m\n            Predicted operon leader gene (first gene).\n\
+  \n        \e[1mtrailer\e[0m\n            Predicted operon trailer gene (last gene).\n\
+  \n        \e[1moperon\e[0m\n            Full composition of the operon. The names\
+  \ of member genes are\n            separated by a semi-column \";\" (note that the\
+  \ gene separator can\n            be changed using the option -sep).\n\n       \
+  \ \e[1mquery\e[0m\n            Identifier of the query gene(s).\n\n        \e[1mname\e\
+  [0m\n            Name of the query gene(s).\n\n        \e[1mq_info\e[0m\n      \
+  \      Detailed info on the query gene(s).\n\n        \e[1mupstr_dist\e[0m\n   \
+  \         Distance betwene query gene and its first upstream neighbour.\n      \
+  \      Note that this distance can be negative, in case of mutually\n          \
+  \  overlapping genes.\n\n        \e[1mup_info\e[0m\n            Detailed info on\
+  \ the upstream gene.\n\n        \e[1mdown_info\e[0m\n            Detailed info on\
+  \ the downstream gene.\n\n        \e[1mgene_nb\e[0m\n            Number of genes\
+  \ in the predicted operon.\n\n\e[1mSEE ALSO\e[0m\n    retrieve-seq\n    neighbour-genes\n\
+  \    add-gene-info\n\n"
+generated_using:
+- -h

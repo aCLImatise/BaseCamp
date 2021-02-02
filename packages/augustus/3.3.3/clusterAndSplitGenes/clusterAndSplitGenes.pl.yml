@@ -1,0 +1,85 @@
+!Command
+command:
+- clusterAndSplitGenes.pl
+positional: []
+named:
+- !Flag
+  description: "threshold: minimal number of dependencies between two genes\nin order\
+    \ to force them into same cluster (default: 10)"
+  synonyms:
+  - --verbose
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "commonfile holds transcript ids instead of gene ids\nthe mapping given\
+    \ by the --genes file is used to map transcript ids to gene ids"
+  synonyms:
+  - --txformat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'number of genes per chunk (default: 3000)'
+  synonyms:
+  - --chunksize
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: gene set in GTF format that is split accoring to clustering
+  synonyms:
+  - --genes
+  args: !SimpleFlagArg
+    name: genes.gtf
+  optional: true
+- !Flag
+  description: 'prefix for GTF output, can include directory (default: value of --genes)'
+  synonyms:
+  - --genesprefix
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: 'prefix for short alignment output (default: value of --filtermap)'
+  synonyms:
+  - --filtermap
+  - --mapprefix
+  args: !SimpleFlagArg
+    name: ali.psl
+  optional: true
+- !Flag
+  description: output file with clusters
+  synonyms:
+  - --clusters
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: 'maximal size of cluster (default: 50)'
+  synonyms:
+  - --maxclustersize
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "/usr/local/bin/clusterAndSplitGenes.pl -- read in a file with inter-gene\
+  \ dependencies and create clusters without\ninter-cluster dependencies. Optionally\
+  \ split transcript-based files to smaller chunks\n\nUsage: /usr/local/bin/clusterAndSplitGenes.pl\
+  \ < commonfile\nOptions\n --verbose  \n   -t                     threshold: minimal\
+  \ number of dependencies between two genes\n                          in order to\
+  \ force them into same cluster (default: 10)\n   --txformat             commonfile\
+  \ holds transcript ids instead of gene ids\n                          the mapping\
+  \ given by the --genes file is used to map transcript ids to gene ids\n   --chunksize=n\
+  \          number of genes per chunk (default: 3000)\n   --genes=genes.gtf     \
+  \ gene set in GTF format that is split accoring to clustering\n   --genesprefix=s\
+  \        prefix for GTF output, can include directory (default: value of --genes)\n\
+  \   --filtermap=ali.psl  \n   --mapprefix=s          prefix for short alignment\
+  \ output (default: value of --filtermap)\n   --clusters=s           output file\
+  \ with clusters \n   --maxclustersize=n     maximal size of cluster (default: 50)\n"
+generated_using:
+- --help

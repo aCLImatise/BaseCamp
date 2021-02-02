@@ -1,0 +1,161 @@
+!Command
+command:
+- motifscan
+- motif
+positional:
+- !Positional
+  description: --uninstall NAME      Uninstall a motif set.
+  position: 0
+  name: assembly.
+  optional: false
+named:
+- !Flag
+  description: Enable verbose log messages.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display installed motif sets.
+  synonyms:
+  - --list
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display available remote motif sets.
+  synonyms:
+  - --list-remote
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Install a new motif set with PFMs.
+  synonyms:
+  - --install
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Build an installed motif set for additional genome
+  synonyms:
+  - --build
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: Name of the motif set (PFMs) to be installed.
+  synonyms:
+  - -n
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: Local motif PFMs file(s) to be installed.
+  synonyms:
+  - -i
+  args: !RepeatFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Download a remote motif PFMs set.
+  synonyms:
+  - -r
+  - --remote
+  args: !SimpleFlagArg
+    name: PFMs
+  optional: true
+- !Flag
+  description: "Write to a given directory instead of the default\ndirectory."
+  synonyms:
+  - -o
+  - --output-dir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: "Which remote database is used to list/install motif\nset (PFMs). Default:\
+    \ jaspar_core"
+  synonyms:
+  - --database
+  args: !ChoiceFlagArg
+    choices: !!set
+      jaspar_core:
+      jaspar_collections:
+  optional: true
+- !Flag
+  description: Genome assembly to build the motif set (PFMs) for.
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: "Generate N random background sequences to calculate\nmotif score cutoffs.\
+    \ Default: 1,000,000"
+  synonyms:
+  - --n-random
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Random seed used to generate background sequences.
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: motifscan motif [-h]\n                       (--list | --list-remote\
+  \ | --install | --build NAME | --uninstall NAME)\n                       [-n NAME]\
+  \ [-i FILE [FILE ...]] [-r PFMs] [-o DIR]\n                       [--database {jaspar_core,jaspar_collections}]\n\
+  \                       [-g GENOME] [--n-random N] [--seed SEED] [--verbose]\n\n\
+  Motif set (PFMs/PWMs) commands.\n\nMotifScan only detects the binding sites of known\
+  \ motifs. Before scanning, \nthe motif set should be installed and built with PFMs\
+  \ (Position Frequency \nMatrices). Since different assemblies have different genome\
+  \ contents, it \nis necessary to build the PFMs and get proper motif score cutoffs\
+  \ for every \ngenome assembly you want to scan later. \n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --verbose          \
+  \   Enable verbose log messages.\n\nMotif Subcommands:\n  --list               \
+  \ Display installed motif sets.\n  --list-remote         Display available remote\
+  \ motif sets.\n  --install             Install a new motif set with PFMs.\n  --build\
+  \ NAME          Build an installed motif set for additional genome\n           \
+  \             assembly.\n  --uninstall NAME      Uninstall a motif set.\n\nInstall\
+  \ Options:\n  -n NAME, --name NAME  Name of the motif set (PFMs) to be installed.\n\
+  \  -i FILE [FILE ...]    Local motif PFMs file(s) to be installed.\n  -r PFMs, --remote\
+  \ PFMs\n                        Download a remote motif PFMs set.\n  -o DIR, --output-dir\
+  \ DIR\n                        Write to a given directory instead of the default\n\
+  \                        directory.\n\nRemote Database Options:\n  --database {jaspar_core,jaspar_collections}\n\
+  \                        Which remote database is used to list/install motif\n \
+  \                       set (PFMs). Default: jaspar_core\n\nBuild Options:\n  -g\
+  \ GENOME, --genome GENOME\n                        Genome assembly to build the\
+  \ motif set (PFMs) for.\n  --n-random N          Generate N random background sequences\
+  \ to calculate\n                        motif score cutoffs. Default: 1,000,000\n\
+  \  --seed SEED           Random seed used to generate background sequences.\n\n\
+  Examples:\n---------        \n1) Display installed motif sets:\n\n    motifscan\
+  \ motif --list\n\n2) Display all available motif sets in a remote database:\n\n\
+  \    motifscan motif --list-remote\n\n3) Install a motif set from a remote database\
+  \ and build for genome 'hg19':\n\n    motifscan motif --install -n <motif_set> -r\
+  \ <remote_PFMs> -g hg19\n\n4） Install a motif set with local PFMs file(s) and build\
+  \ for genome 'mm9':\n\n    motifscan motif --install -n <motif_set> -i <pfms.jaspar>\
+  \ -g mm9\n\n5) Build an installed motif set (PFMs) for additional assembly 'hg38':\n\
+  \n    motifscan motif --build <motif_set> -g hg38\n\n6) Uninstall a motif set:\n\
+  \n    motifscan motif --uninstall <motif_set>\n\nNotes:\n------\n1) When installing\
+  \ a motif set by `--install`, you can append a `-g` option \nto build the PFMs for\
+  \ the specified assembly after installation.\n\n2) The genome assembly specified\
+  \ by `-g` should be pre-installed by command \n`motifscan genome --install`.\n\n\
+  3) The path of newly installed motif set will be automatically saved and \nall the\
+  \ built PWMs files are stored under the directory. If you move it \nto a new path,\
+  \ please reconfigure it:\n\n    motifscan config --set-motif <motif_set> <new_path>\n"
+generated_using:
+- --help

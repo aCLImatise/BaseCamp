@@ -1,0 +1,194 @@
+!Command
+command:
+- amap
+positional: []
+named:
+- !Flag
+  description: use CLUSTALW output format instead of MFA
+  synonyms:
+  - -clustalw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'use 0 <= REPS <= 5 (default: 0) passes of consistency transformation'
+  synonyms:
+  - -c
+  - --consistency
+  args: !SimpleFlagArg
+    name: REPS
+  optional: true
+- !Flag
+  description: 'use 0 <= REPS <= 1000 (default: 0) passes of iterative-refinement'
+  synonyms:
+  - -ir
+  - --iterative-refinement
+  args: !SimpleFlagArg
+    name: REPS
+  optional: true
+- !Flag
+  description: 'use 0 <= REPS <= 20 (default: 0) rounds of pretraining'
+  synonyms:
+  - -pre
+  - --pre-training
+  args: !SimpleFlagArg
+    name: REPS
+  optional: true
+- !Flag
+  description: generate all-pairs pairwise alignments
+  synonyms:
+  - -pairs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use Viterbi algorithm to generate all pairs (automatically enables
+    -pairs)
+  synonyms:
+  - -viterbi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'report progress while aligning (default: off)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write annotation for multiple alignment to FILENAME
+  synonyms:
+  - -annot
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: 'compute EM transition probabilities, store in FILENAME (default: no
+    training)'
+  synonyms:
+  - -t
+  - --train
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: 'also reestimate emission probabilities (default: off)'
+  synonyms:
+  - -e
+  - --emissions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'read parameters from FILENAME (default: )'
+  synonyms:
+  - -p
+  - --paramfile
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: 'print sequences in alignment order rather than input order (default:
+    off)'
+  synonyms:
+  - -a
+  - --alignment-order
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'use GF as the gap-factor parameter, set to 0 for best sensitivity,
+    higher values for better specificity (default: 1)'
+  synonyms:
+  - -g
+  - --gap-factor
+  args: !SimpleFlagArg
+    name: GF
+  optional: true
+- !Flag
+  description: "stop the sequence annealing process when best edge has lower weight\
+    \ than W,\nset to 0 for best sensitivity, higher values for better specificity\
+    \ (default: 0)"
+  synonyms:
+  - -w
+  - --edge-weight-threshold
+  args: !SimpleFlagArg
+    name: W
+  optional: true
+- !Flag
+  description: 'use progresive alignment instead of sequence annealing alignment (default:
+    off)'
+  synonyms:
+  - -prog
+  - --progressive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'disable reordring of edges during sequence annealing alignment (default:
+    off)'
+  synonyms:
+  - -noreorder
+  - --no-edge-reordering
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'use maximum improvement step size instead of tGf edge ranking (default:
+    off)'
+  synonyms:
+  - -maxstep
+  - --use-max-stepsize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'only print the posterior probability matrices (default: off)'
+  synonyms:
+  - -print
+  - --print-posteriors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[START] [STEP]\nprint output for the AMAP Display Java based GUI (default:\
+    \ off)\nstarting at weight START (default: infinity) with step size STEP (default:\
+    \ 1)\n"
+  synonyms:
+  - -gui
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nAMAP version AMAP.2.2 - align multiple protein sequences and print to\
+  \ standard output\nPROBCONS Written by Chuong Do\nAMAP algorithm implemented by\
+  \ Ariel Schwartz\n\nAMAP comes with ABSOLUTELY NO WARRANTY.  This is free software,\
+  \ and\nyou are welcome to redistribute it under certain conditions.  See the\nfiles\
+  \ README and README.PROBCONS for details.\n\nUsage:\n       amap [OPTION]... [MFAFILE]...\n\
+  \nDescription:\n       Align sequences in MFAFILE(s) and print result to standard\
+  \ output\n\n       -clustalw\n              use CLUSTALW output format instead of\
+  \ MFA\n\n       -c, --consistency REPS\n              use 0 <= REPS <= 5 (default:\
+  \ 0) passes of consistency transformation\n\n       -ir, --iterative-refinement\
+  \ REPS\n              use 0 <= REPS <= 1000 (default: 0) passes of iterative-refinement\n\
+  \n       -pre, --pre-training REPS\n              use 0 <= REPS <= 20 (default:\
+  \ 0) rounds of pretraining\n\n       -pairs\n              generate all-pairs pairwise\
+  \ alignments\n\n       -viterbi\n              use Viterbi algorithm to generate\
+  \ all pairs (automatically enables -pairs)\n\n       -v, --verbose\n           \
+  \   report progress while aligning (default: off)\n\n       -annot FILENAME\n  \
+  \            write annotation for multiple alignment to FILENAME\n\n       -t, --train\
+  \ FILENAME\n              compute EM transition probabilities, store in FILENAME\
+  \ (default: no training)\n\n       -e, --emissions\n              also reestimate\
+  \ emission probabilities (default: off)\n\n       -p, --paramfile FILENAME\n   \
+  \           read parameters from FILENAME (default: )\n\n       -a, --alignment-order\n\
+  \              print sequences in alignment order rather than input order (default:\
+  \ off)\n\n       -g, --gap-factor GF\n              use GF as the gap-factor parameter,\
+  \ set to 0 for best sensitivity, higher values for better specificity (default:\
+  \ 1)\n\n       -w, --edge-weight-threshold W\n              stop the sequence annealing\
+  \ process when best edge has lower weight than W,\n              set to 0 for best\
+  \ sensitivity, higher values for better specificity (default: 0)\n\n       -prog,\
+  \ --progressive\n              use progresive alignment instead of sequence annealing\
+  \ alignment (default: off)\n\n       -noreorder, --no-edge-reordering\n        \
+  \      disable reordring of edges during sequence annealing alignment (default:\
+  \ off)\n\n       -maxstep, --use-max-stepsize\n              use maximum improvement\
+  \ step size instead of tGf edge ranking (default: off)\n\n       -print, --print-posteriors\n\
+  \              only print the posterior probability matrices (default: off)\n\n\
+  \       -gui [START] [STEP]\n              print output for the AMAP Display Java\
+  \ based GUI (default: off) \n              starting at weight START (default: infinity)\
+  \ with step size STEP (default: 1)\n\n"
+generated_using: []

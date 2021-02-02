@@ -1,0 +1,179 @@
+!Command
+command:
+- pauvre
+- synplot
+positional:
+- !Positional
+  description: --center_on CENTER_ON
+  position: 0
+  name: contained.
+  optional: false
+- !Positional
+  description: --fileform {png,pdf,eps,jpeg,jpg,pdf,pgf,ps,raw,rgba,svg,svgz,tif,tiff}
+    [{png,pdf,eps,jpeg,jpg,pdf,pgf,ps,raw,rgba,svg,svgz,tif,tiff} ...]
+  position: 0
+  name: higher
+  optional: false
+named:
+- !Flag
+  description: Do not output warnings to stderr
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The directory where all the fasta alignments are
+  synonyms:
+  - --aln_dir
+  args: !SimpleFlagArg
+    name: aln_dir
+  optional: true
+- !Flag
+  description: Change the dpi from the default 600 if you need it
+  synonyms:
+  - --dpi
+  args: !SimpleFlagArg
+    name: dpi
+  optional: true
+- !Flag
+  description: "The input filepath. for the gff annotation to plot.\nIndividual filepaths\
+    \ separated by spaces. For example,\n--gff_paths sp1.gff sp2.gff sp3.gff"
+  synonyms:
+  - --gff_paths
+  args: !RepeatFlagArg
+    name: gff_paths
+  optional: true
+- !Flag
+  description: "In case the gff names and sequence names don't match,\nchange the\
+    \ labels that will appear over the text."
+  synonyms:
+  - --gff_labels
+  args: !RepeatFlagArg
+    name: gff_labels
+  optional: true
+- !Flag
+  description: Turn off time stamps in the filename output.
+  synonyms:
+  - --no_timestamp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If selected, this doesn't plot the optimum arrangement\nof things\
+    \ as they are input into gff_paths. Instead,\nit uses the first gff file as the\
+    \ top-most sequence in\nthe plot, and reorganizes the remaining gff files to\n\
+    minimize the number of intersections."
+  synonyms:
+  - --optimum_order
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify a base name for the output file(s). The input\nfile base name\
+    \ is the default."
+  synonyms:
+  - -o
+  - --output-basename
+  args: !SimpleFlagArg
+    name: BASENAME
+  optional: true
+- !Flag
+  description: "Enter the dimensions (arbitrary units) to plot the\nfigure. For example\
+    \ a figure that is seven times wider\nthan tall is: --ratio 7 1"
+  synonyms:
+  - --ratio
+  args: !RepeatFlagArg
+    name: RATIO
+  optional: true
+- !Flag
+  description: "Put an additional copy of the first gff file on the\nbottom of the\
+    \ plot for comparison."
+  synonyms:
+  - --sandwich
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimizes the number of intersections but only selects\ncombos where\
+    \ the first gene in each sequence is\naligned."
+  synonyms:
+  - --start_with_aligned_genes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Performs some internal corrections if the gff\nannotation includes\
+    \ the stop codons in the coding\nsequences."
+  synonyms:
+  - --stop_codons
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify this option if you DON'T want a transparent\nbackground. Default\
+    \ is on.\n"
+  synonyms:
+  - -T
+  - --transparent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --center_on
+  args: !SimpleFlagArg
+    name: CENTER_ON
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: pauvre synplot [-h] [-q] [--aln_dir aln_dir] [--center_on CENTER_ON]\n\
+  \                      [--dpi dpi]\n                      [--fileform {png,pdf,eps,jpeg,jpg,pdf,pgf,ps,raw,rgba,svg,svgz,tif,tiff}\
+  \ [{png,pdf,eps,jpeg,jpg,pdf,pgf,ps,raw,rgba,svg,svgz,tif,tiff} ...]]\n        \
+  \              [--gff_paths gff_paths [gff_paths ...]]\n                      [--gff_labels\
+  \ gff_labels [gff_labels ...]]\n                      [--no_timestamp] [--optimum_order]\
+  \ [-o BASENAME]\n                      [--ratio RATIO [RATIO ...]] [--sandwich]\n\
+  \                      [--start_with_aligned_genes] [--stop_codons] [-T]\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -q, --quiet\
+  \           Do not output warnings to stderr\n  --aln_dir aln_dir     The directory\
+  \ where all the fasta alignments are\n                        contained.\n  --center_on\
+  \ CENTER_ON\n                        Centers the plot around the gene that you pass\
+  \ as an\n                        argument. For example, if there is a locus called\n\
+  \                        'COI' in the gff file and in the alignments directory,\n\
+  \                        center using: --center_on COI\n  --dpi dpi            \
+  \ Change the dpi from the default 600 if you need it\n                        higher\n\
+  \  --fileform {png,pdf,eps,jpeg,jpg,pdf,pgf,ps,raw,rgba,svg,svgz,tif,tiff} [{png,pdf,eps,jpeg,jpg,pdf,pgf,ps,raw,rgba,svg,svgz,tif,tiff}\
+  \ ...]\n                        Which output format would you like? Def.=png\n \
+  \ --gff_paths gff_paths [gff_paths ...]\n                        The input filepath.\
+  \ for the gff annotation to plot.\n                        Individual filepaths\
+  \ separated by spaces. For example,\n                        --gff_paths sp1.gff\
+  \ sp2.gff sp3.gff\n  --gff_labels gff_labels [gff_labels ...]\n                \
+  \        In case the gff names and sequence names don't match,\n               \
+  \         change the labels that will appear over the text.\n  --no_timestamp  \
+  \      Turn off time stamps in the filename output.\n  --optimum_order       If\
+  \ selected, this doesn't plot the optimum arrangement\n                        of\
+  \ things as they are input into gff_paths. Instead,\n                        it\
+  \ uses the first gff file as the top-most sequence in\n                        the\
+  \ plot, and reorganizes the remaining gff files to\n                        minimize\
+  \ the number of intersections.\n  -o BASENAME, --output-basename BASENAME\n    \
+  \                    Specify a base name for the output file(s). The input\n   \
+  \                     file base name is the default.\n  --ratio RATIO [RATIO ...]\n\
+  \                        Enter the dimensions (arbitrary units) to plot the\n  \
+  \                      figure. For example a figure that is seven times wider\n\
+  \                        than tall is: --ratio 7 1\n  --sandwich            Put\
+  \ an additional copy of the first gff file on the\n                        bottom\
+  \ of the plot for comparison.\n  --start_with_aligned_genes\n                  \
+  \      Minimizes the number of intersections but only selects\n                \
+  \        combos where the first gene in each sequence is\n                     \
+  \   aligned.\n  --stop_codons         Performs some internal corrections if the\
+  \ gff\n                        annotation includes the stop codons in the coding\n\
+  \                        sequences.\n  -T, --transparent     Specify this option\
+  \ if you DON'T want a transparent\n                        background. Default is\
+  \ on.\n"
+generated_using:
+- --help

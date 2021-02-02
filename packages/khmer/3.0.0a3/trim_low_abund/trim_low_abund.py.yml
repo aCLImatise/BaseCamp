@@ -1,0 +1,120 @@
+!Command
+command:
+- trim-low-abund.py
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: KSIZE
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --info
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: "show program's version number and exit\n--info                print\
+    \ citation information\n-h, --help            show this help message and exit\n\
+    -k KSIZE, --ksize KSIZE\nk-mer size to use (default: 32)\n-U UNIQUE_KMERS, --unique-kmers\
+    \ UNIQUE_KMERS\napproximate number of unique kmers in the input set\n(default:\
+    \ 0)\n--fp-rate FP_RATE     Override the automatic FP rate setting for the current\n\
+    script (default: None)\n-M MAX_MEMORY_USAGE, --max-memory-usage MAX_MEMORY_USAGE\n\
+    maximum amount of memory to use for data structure\n(default: None)\n--small-count\
+    \         Reduce memory usage by using a smaller counter for\nindividual kmers.\
+    \ (default: False)\n-C CUTOFF, --cutoff CUTOFF\nremove k-mers below this abundance\
+    \ (default: 2)\n-Z TRIM_AT_COVERAGE, --trim-at-coverage TRIM_AT_COVERAGE, --normalize-to\
+    \ TRIM_AT_COVERAGE\ntrim reads when entire read above this coverage\n(default:\
+    \ 20)\n-o output_filename, --output output_filename\nonly output a single file\
+    \ with the specified filename;\nuse a single dash \"-\" to specify that output\
+    \ should go\nto STDOUT (the terminal) (default: None)\n-V, --variable-coverage\n\
+    Only trim low-abundance k-mers from sequences that\nhave high coverage. (default:\
+    \ False)\n-l filename, --loadgraph filename\nload a precomputed k-mer graph from\
+    \ disk (default:\nNone)\n-s filename, --savegraph filename\nsave the k-mer countgraph\
+    \ to disk after allreads are\nloaded. (default: )\n-q, --quiet\n--summary-info\
+    \ FORMAT\nWhat format should the machine readable run summary be\nin? (`json`\
+    \ or `tsv`, disabled by default) (default:\nNone)\n--force\n--ignore-pairs   \
+    \     treat all reads as if they were singletons (default:\nFalse)\n-T TEMPDIR,\
+    \ --tempdir TEMPDIR\nSet location of temporary directory for second pass\n(default:\
+    \ ./)\n--gzip                Compress output using gzip (default: False)\n--bzip\
+    \                Compress output using bzip2 (default: False)\n--diginorm    \
+    \        Eliminate high-coverage reads altogether (digital\nnormalization). (default:\
+    \ False)\n--diginorm-coverage DIGINORM_COVERAGE\nCoverage threshold for --diginorm\
+    \ (default: 20)\n--single-pass         Do not do a second pass across the low\
+    \ coverage data\n(default: False)"
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: trim-low-abund.py [--version] [--info] [-h] [-k KSIZE]\n      \
+  \                   [-U UNIQUE_KMERS] [--fp-rate FP_RATE]\n                    \
+  \     [-M MAX_MEMORY_USAGE] [--small-count] [-C CUTOFF]\n                      \
+  \   [-Z TRIM_AT_COVERAGE] [-o output_filename] [-V]\n                         [-l\
+  \ filename] [-s filename] [-q]\n                         [--summary-info FORMAT]\
+  \ [--force] [--ignore-pairs]\n                         [-T TEMPDIR] [--gzip | --bzip]\
+  \ [--diginorm]\n                         [--diginorm-coverage DIGINORM_COVERAGE]\n\
+  \                         [--single-pass]\n                         input_filenames\
+  \ [input_filenames ...]\n\nTrim low-abundance k-mers using a streaming algorithm.\n\
+  \npositional arguments:\n  input_filenames\n\noptional arguments:\n  --version \
+  \            show program's version number and exit\n  --info                print\
+  \ citation information\n  -h, --help            show this help message and exit\n\
+  \  -k KSIZE, --ksize KSIZE\n                        k-mer size to use (default:\
+  \ 32)\n  -U UNIQUE_KMERS, --unique-kmers UNIQUE_KMERS\n                        approximate\
+  \ number of unique kmers in the input set\n                        (default: 0)\n\
+  \  --fp-rate FP_RATE     Override the automatic FP rate setting for the current\n\
+  \                        script (default: None)\n  -M MAX_MEMORY_USAGE, --max-memory-usage\
+  \ MAX_MEMORY_USAGE\n                        maximum amount of memory to use for\
+  \ data structure\n                        (default: None)\n  --small-count     \
+  \    Reduce memory usage by using a smaller counter for\n                      \
+  \  individual kmers. (default: False)\n  -C CUTOFF, --cutoff CUTOFF\n          \
+  \              remove k-mers below this abundance (default: 2)\n  -Z TRIM_AT_COVERAGE,\
+  \ --trim-at-coverage TRIM_AT_COVERAGE, --normalize-to TRIM_AT_COVERAGE\n       \
+  \                 trim reads when entire read above this coverage\n            \
+  \            (default: 20)\n  -o output_filename, --output output_filename\n   \
+  \                     only output a single file with the specified filename;\n \
+  \                       use a single dash \"-\" to specify that output should go\n\
+  \                        to STDOUT (the terminal) (default: None)\n  -V, --variable-coverage\n\
+  \                        Only trim low-abundance k-mers from sequences that\n  \
+  \                      have high coverage. (default: False)\n  -l filename, --loadgraph\
+  \ filename\n                        load a precomputed k-mer graph from disk (default:\n\
+  \                        None)\n  -s filename, --savegraph filename\n          \
+  \              save the k-mer countgraph to disk after allreads are\n          \
+  \              loaded. (default: )\n  -q, --quiet\n  --summary-info FORMAT\n   \
+  \                     What format should the machine readable run summary be\n \
+  \                       in? (`json` or `tsv`, disabled by default) (default:\n \
+  \                       None)\n  --force\n  --ignore-pairs        treat all reads\
+  \ as if they were singletons (default:\n                        False)\n  -T TEMPDIR,\
+  \ --tempdir TEMPDIR\n                        Set location of temporary directory\
+  \ for second pass\n                        (default: ./)\n  --gzip             \
+  \   Compress output using gzip (default: False)\n  --bzip                Compress\
+  \ output using bzip2 (default: False)\n  --diginorm            Eliminate high-coverage\
+  \ reads altogether (digital\n                        normalization). (default: False)\n\
+  \  --diginorm-coverage DIGINORM_COVERAGE\n                        Coverage threshold\
+  \ for --diginorm (default: 20)\n  --single-pass         Do not do a second pass\
+  \ across the low coverage data\n                        (default: False)\n\nThe\
+  \ output is one file for each input file, \"<input file>.abundtrim\", placed in\n\
+  the current directory.  This output contains the input sequences trimmed at\nlow-abundance\
+  \ k-mers.\n\nThe `-V`/`--variable-coverage` parameter will, if specified, prevent\n\
+  elimination of low-abundance reads by only trimming low-abundance k-mers from\n\
+  high-abundance reads; use this for non-genomic data sets that may have variable\n\
+  coverage.\n\nNote that the output reads will not necessarily be in the same order\
+  \ as the\nreads in the input files; if this is an important consideration, use `load-\n\
+  into-counting.py` and `filter-abund.py`. However, read pairs will be kept\ntogether,\
+  \ in \"broken-paired\" format; you can use `extract-paired-reads.py` to\nextract\
+  \ read pairs and orphans.\n\nExample:\n\n    trim-low-abund.py -x 5e7 -k 20 -C 2\
+  \ data/100k-filtered.fa\n"
+generated_using:
+- --help

@@ -1,0 +1,176 @@
+!Command
+command:
+- rsat
+- variation-info
+positional:
+- !Positional
+  description: "\e[1mVERSION\e[0m"
+  position: 0
+  name: variation-info
+  optional: false
+- !Positional
+  description: "\e[1mUSAGE\e[0m"
+  position: 0
+  name: util
+  optional: false
+- !Positional
+  description: The definition of the BED format is provided on the UCSC Genome Browser
+  position: 0
+  name: ignored.
+  optional: false
+- !Positional
+  description: "\e[1mWISH LIST\e[0m"
+  position: 0
+  name: matrices.
+  optional: false
+- !Positional
+  description: variations specified either by their IDs or by a set of genomic
+  position: 0
+  name: get
+  optional: false
+- !Positional
+  description: 'Supported formats:'
+  position: 1
+  name: regions.
+  optional: false
+- !Positional
+  description: "\e[33mdeletion\e[0m"
+  position: 0
+  name: '0001483'
+  optional: false
+- !Positional
+  description: http://www.sequenceontology.org/browser/release_2.5/term/SO:0000159
+  position: 1
+  name: Deletion
+  optional: false
+named:
+- !Flag
+  description: "Example 2: only accept deletions and insertions\n-type insertion,deletion"
+  synonyms:
+  - -type
+  args: !SimpleFlagArg
+    name: SNV
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    variation-info\n\n\e[1mVERSION\e[0m\n    $program_version\n\
+  \n\e[1mDESCRIPTION\e[0m\n    Taking as input a set of either variation IDs (rs numbers)\
+  \ or genomic\n    regions (bed format), retrieve information about matching variants.\n\
+  \n    The collected information is reported in varBed format, which is a\n    specific\
+  \ type of bed format for variations (see \e[33mconvert-variations\e[0m for\n   \
+  \ info).\n\n\e[1mAUTHORS\e[0m\n    \e[1mAlejandra Medina Rivera\e[0m <amedina@lcg.unam.mx>\n\
+  \    \e[1mJacques van Helden\e[0m <Jacques.van-Helden\\@univ-amu.fr>\n    \e[1mWalter\
+  \ Santana Garcia\e[0m revised the code and made useful suggestions to\n    enhance\
+  \ the efficiency. =item \e[1mJeremy Delerce\e[0m wrote a first prototype of\n  \
+  \  the variation tools in 2012 (1st-year Master project)\n\n\e[1mCATEGORY\e[0m\n\
+  \    util\n\n\e[1mUSAGE\e[0m\n    variation-info [-i inputfile] [-o outputfile]\
+  \ [-v #] [-format\n    variatio_format] [- col ID_column ] [-mml #] [-o output_file]\
+  \ [...]\n\n\e[1mINPUT FORMAT\e[0m\n  \e[1mGenomic coordinate file\e[0m\n    The\
+  \ option \e[33m-i\e[0m allows to specify a genomic coordinate file (in bed\n   \
+  \ format). The program only takes into account the 3 first columns of the\n    bed\
+  \ file, which specify the genomic coordinates. Additional columns are\n    ignored.\n\
+  \n    The definition of the BED format is provided on the UCSC Genome Browser\n\
+  \    web site (http://genome.ucsc.edu/FAQ/FAQformat#format1).\n\n  \e[1mExample\
+  \ of bed coordinates\e[0m\n     chr1   3473041 3473370\n     chr1   4380371 4380650\n\
+  \     chr1   4845581 4845781\n     chr1   4845801 4846260\n\n  \e[1mInterpretation\
+  \ of bed coordinates\e[0m\n    \e[1mBeware\e[0m: input bed files are expected to\
+  \ follow the UCSC convention:\n\n    \e[33mzero-based coordinates\e[0m: coordinates\
+  \ start at 0, i.e. position 0\n    corresponds to the first nucleotide of a contig,\
+  \ position i to the\n    (i+1)th nucleotide.\n    \e[33msemi-open interval\e[0m:\
+  \ coordinates are specified as semi-open interval\n    [start:end[. The interval\
+  \ thus includes the start position, but not the\n    end position.\n\n    For example,\
+  \ the following line in a bed file:\n\n     chr1   27 28\n\n    corresponds to the\
+  \ interval [28,28[ i.e. the 28th nucleotide on\n    chromosome 1.\n\n    1. chrom\n\
+  \        The name of the chromosome (e.g. chr3, chrY, chr2_random) or\n        scaffold\
+  \ (e.g. scaffold10671).\n\n    2. chromStart\n        The starting position of the\
+  \ feature in the chromosome or scaffold,\n        specified according to the UCSC-specific\
+  \ zero-based notation for the\n        start: the first position of a sequence has\
+  \ coordinate 0.\n\n    3. chromEnd\n        The ending position of the feature in\
+  \ the chromosome or scaffold,\n        according to UCSC convention for bed files:\
+  \ zero-based specification\n        of the coordinates, but the ending position\
+  \ is the first one <after>\n        the feature.\n\n        For example, a feature\
+  \ extending from positions 10 to 20 of the\n        sequence will have a chromStart\
+  \ of 9 (zero-based specification of\n        the first position of the feature)\
+  \ and a chromEnd of 20 (zero-based\n        position of the first nucleotide after\
+  \ the feature).\n\n  \e[1mVariation file\e[0m\n    See \e[33mdownload-ensembl-variation\e\
+  [0m output format.\n\n  \e[1mVariation ID list\e[0m\n    A text file where the first\
+  \ word of each row indicates a query,\n    specified in the form of a variation\
+  \ ID. Tab-separated value files can\n    be provided, but the first column will\
+  \ be considerded to contain qury\n    IDs, and the subsequent columns are ignored.\n\
+  \n\e[1mOUTPUT FORMAT\e[0m\n    varBed format is a tab-separated value with the first\
+  \ 3 columns\n    corresponding to bed-specified coordinates, and additional columns\n\
+  \    providing additional informatiion specific to variants.\n\n    The file includes\
+  \ the following columns:\n\n    1. \e[1mchr\e[0m: Chromosome name.\n    2. \e[1mstart\e\
+  [0m: start position of the variant.\n    3. \e[1mend\e[0m: end position of the variant.\n\
+  \    4. \e[1mstrand\e[0m: strand of the variation.\n    5. \e[1mID\e[0m: variant\
+  \ identifier (rs number).\n    6. \e[1mref\e[0m: sequence of the reference allele.\n\
+  \    7. \e[1malt\e[0m: sequence of the alternative allele.\n    8. \e[1mso_term\e\
+  [0m: \"Sequence ontology\" (so) term, indicating the type of\n    variation (SNP,\
+  \ insertion, deletion).\n    9. \e[1mvalidated\e[0m: Boolean value indicating whether\
+  \ the variation has been\n    validated (1) or not (0).\n    10. \e[1mminor_allele_freq\e\
+  [0m: frequency of the minor allele.\n    11. \e[1mis_supvar\e[0m: 1 if this variant\
+  \ is a \"super-variation\", i.e. was build\n    by merging overlapping variants.\n\
+  \    12. \e[1min_supvar\e[0m: a value of 1 indicates that this variant overlaps\
+  \ with\n    other annotated variants.\n\n\e[1mSEE ALSO\e[0m\n  \e[1mdownload-ensembl-genome\e\
+  [0m\n    Install organims from Ensembl or EnsemblGenomes.\n\n  \e[1mdownload-ensembl-variations\e\
+  [0m\n    Get variation coordiantes from Ensembl or EnsemblGenomes.\n\n    Variant\
+  \ information obtained with this tool can then be retrived by\n    \e[33mvariation-info\e\
+  [0m.\n\n  \e[1mconvert-variations\e[0m\n    Interconversions between different file\
+  \ formats used to describe\n    polymorphic variations.\n\n    \e[33mvariation-info\e\
+  [0m exports variants in varBed format, <convert-variations>\n    can be used to\
+  \ convert to VCF and GVF formats.\n\n  \e[1mretrieve-variations-seq\e[0m\n    Given\
+  \ a set of regions, variant IDs (rsNumber) or variants in varBed\n    format <retrieve-variation-seq>\
+  \ will retrive the corresponding genomic\n    sequence surrounding the genetic variants.\n\
+  \n  \e[1mvariation-scan\e[0m\n    Scan variation sequences with one or several position-specific\
+  \ scoring\n    matrices.\n\n\e[1mWISH LIST\e[0m\n    \e[1mdirect retrieval from\
+  \ Ensembl or BioMart\e[0m\n        Ensembl presents several application-programmatic\
+  \ interfaces (APIs)\n        that should enable us to retrieve variation info by\
+  \ remote queries\n        rather than having to install the (heavy) variation files\
+  \ on the\n        RSAT server.\n\n\e[1mOPTIONS\e[0m\n    \e[1m-v #\e[0m\n      \
+  \  Level of verbosity (detail in the warning messages during execution)\n\n    \e\
+  [1m-h\e[0m  Display full help message\n\n    \e[1m-help\e[0m\n        Same as -h\n\
+  \n    \e[1m-org organism\e[0m\n        Organism name. This name must correspond\
+  \ to the species of the\n        variation/bed/id file if provided.\n\n    \e[1m-i\
+  \ inputfile\e[0m\n        If no input file is specified, the standard input is used.\
+  \ This\n        allows to use the command within a pipe.\n\n    \e[1m-format query_format\e\
+  [0m\n        Format of the input query file. The different formats actually\n  \
+  \      correspond to different modalities of usage of the tool: get\n        variations\
+  \ specified either by their IDs or by a set of genomic\n        regions.\n\n   \
+  \     Supported formats:\n\n        \e[33mvarBed\e[0m\n            Format of variation\
+  \ files used by all RSAT scripts.\n\n        \e[33mid\e[0m  tab-delimited file with\
+  \ all variation IDs in a given column,\n            which can be specified by the\
+  \ option \e[33m-col\e[0m.\n\n        \e[33mbed\e[0m General format for the description\
+  \ of genomic features (see\n            https://genome.ucsc.edu/FAQ/FAQformat.html#format1).\n\
+  \n    \e[1m-type accepted_variation_types\e[0m\n        Specify one or several accepted\
+  \ types of variation.\n\n        Variation types are specified according to the\
+  \ Sequence Ontology\n        (\"SO term\" column of the output file).\n\n      \
+  \  Several types can be specified separated by commas.\n\n        Supported variation\
+  \ types:\n\n        \e[33mSNV\e[0m Single Nucleotide Variant (=SNP, Single Nucleotide\
+  \ Polymorphism)\n\n             http://www.sequenceontology.org/miso/release_2.5/term/SO:0001483\n\
+  \n        \e[33mdeletion\e[0m\n            Deletion\n\n             http://www.sequenceontology.org/browser/release_2.5/term/SO:0000159\n\
+  \n        \e[33mdeletion\e[0m\n            Insertion\n\n             http://www.sequenceontology.org/browser/release_2.5/term/SO:0000667\n\
+  \n        \e[33msequence_alteration\e[0m\n\n        Example 1: only accept single\
+  \ nucleotide variations\n\n          -type SNV\n\n        Example 2: only accept\
+  \ deletions and insertions\n\n          -type insertion,deletion\n\n    \e[1m-col\
+  \ id_column_nb\e[0m\n        Number of the column containing the variation IDs with\
+  \ the input\n        format \"id\".\n\n        Default : 1\n\n    \e[1m-chunk_size\e\
+  [0m\n        Default: 500\n\n        Maximal number of IDs to submit to grep for\
+  \ the selection of query\n        variations from VCF files.\n\n        In order\
+  \ to avoid loading all the variant files in Perl memory (tens\n        of millions\
+  \ of lines) variation-scan runs the Unix command grep to\n        select lines containing\
+  \ the ID strings. This works fine for queries\n        encompassing a few hundreds\
+  \ IDs, but may fail for large queries\n        (e.g. 20,000 IDs), probably due to\
+  \ a problem with the complexity of\n        the grep pattern.\n\n        To circumvent\
+  \ this, queries are teated by chunks.\n\n    \e[1m-skip\e[0m\n        Skip the N\
+  \ first variations of the input file. This option is useful\n        for quick tests,\
+  \ or to split an analysis in separate tasks.\n\n    \e[1m-last\e[0m\n        Stop\
+  \ after the N first variations of the list. This option is useful\n        for quick\
+  \ tests, or to split an analysis in separate tasks.\n\n    \e[1m-o outputfile\e\
+  [0m\n        If no output file is specified, the standard output is used. This\n\
+  \        allows to use the command within a pipe.\n\n"
+generated_using:
+- -h

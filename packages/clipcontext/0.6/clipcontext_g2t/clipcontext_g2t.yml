@@ -1,0 +1,184 @@
+!Command
+command:
+- clipcontext
+- g2t
+positional: []
+named:
+- !Flag
+  description: "Site score threshold for filtering --in BED file\n(default: None)"
+  synonyms:
+  - --thr
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Reverse filtering (keep values <= threshold and prefer\nsites with\
+    \ smaller values) (default: False)"
+  synonyms:
+  - --rev-filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum input site length for filtering --in BED file\n(default: False)"
+  synonyms:
+  - --min-len
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Maximum input site length for filtering --in BED file\n(default: False)"
+  synonyms:
+  - --max-len
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Minimum exon overlap of a site to be reported as\ntranscript hit (intersectBed\
+    \ -f parameter) (default:\n0.9)"
+  synonyms:
+  - --min-exon-ol
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Defines how to merge overlapping transcript sites\n(overlap controlled\
+    \ by --merge-ext). (1) only merge\nsites overlapping at exon borders, (2) merge\
+    \ all\noverlapping sites, (3) do NOT merge overlapping sites\n(default: 1)"
+  synonyms:
+  - --merge-mode
+  args: !ChoiceFlagArg
+    choices: !!set
+      '2':
+      '3':
+      '1':
+  optional: true
+- !Flag
+  description: "Extend regions mapped to transcripts by --merge-ext\nbefore running\
+    \ mergeBed to merge overlapping regions\n(default: 10)"
+  synonyms:
+  - --merge-ext
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Output centered and extended sites and sequences for\nall transcript\
+    \ matches (unique + non-unique) (default:\nFalse)"
+  synonyms:
+  - --add-out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Up- and downstream extension of centered sites for\ncontext sequence\
+    \ extraction (default: 30)"
+  synonyms:
+  - --seq-ext
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Output all centered and extended genomic regions,\ninstead of only\
+    \ the ones with unique transcript\nmatches (default: False)"
+  synonyms:
+  - --all-gen-out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Generate unique column 4 IDs for --in BED file entries\n(default:\
+    \ False)"
+  synonyms:
+  - --gen-uniq-ids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output an .html report with statistics and plots\ncomparing transcript\
+    \ and genomic sequences (default:\nFalse)"
+  synonyms:
+  - --report
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Genomic regions (hg38) BED file (6-column format)
+  synonyms:
+  - --in
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: Output results folder
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: "Transcript sequence IDs list file to define\ntranscripts to map on"
+  synonyms:
+  - --tr
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: Genomic annotations (hg38) GTF file (.gtf or .gtf.gz)
+  synonyms:
+  - --gtf
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: Genomic sequences (hg38) .2bit file
+  synonyms:
+  - --gen
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: clipcontext g2t [-h] --in str --out str --tr str --gtf str --gen\
+  \ str\n                       [--thr float] [--rev-filter] [--min-len int]\n   \
+  \                    [--max-len int] [--min-exon-ol float]\n                   \
+  \    [--merge-mode {1,2,3}] [--merge-ext int] [--add-out]\n                    \
+  \   [--seq-ext int] [--all-gen-out] [--gen-uniq-ids]\n                       [--report]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --thr float           Site score threshold for filtering --in BED file\n    \
+  \                    (default: None)\n  --rev-filter          Reverse filtering\
+  \ (keep values <= threshold and prefer\n                        sites with smaller\
+  \ values) (default: False)\n  --min-len int         Minimum input site length for\
+  \ filtering --in BED file\n                        (default: False)\n  --max-len\
+  \ int         Maximum input site length for filtering --in BED file\n          \
+  \              (default: False)\n  --min-exon-ol float   Minimum exon overlap of\
+  \ a site to be reported as\n                        transcript hit (intersectBed\
+  \ -f parameter) (default:\n                        0.9)\n  --merge-mode {1,2,3}\
+  \  Defines how to merge overlapping transcript sites\n                        (overlap\
+  \ controlled by --merge-ext). (1) only merge\n                        sites overlapping\
+  \ at exon borders, (2) merge all\n                        overlapping sites, (3)\
+  \ do NOT merge overlapping sites\n                        (default: 1)\n  --merge-ext\
+  \ int       Extend regions mapped to transcripts by --merge-ext\n              \
+  \          before running mergeBed to merge overlapping regions\n              \
+  \          (default: 10)\n  --add-out             Output centered and extended sites\
+  \ and sequences for\n                        all transcript matches (unique + non-unique)\
+  \ (default:\n                        False)\n  --seq-ext int         Up- and downstream\
+  \ extension of centered sites for\n                        context sequence extraction\
+  \ (default: 30)\n  --all-gen-out         Output all centered and extended genomic\
+  \ regions,\n                        instead of only the ones with unique transcript\n\
+  \                        matches (default: False)\n  --gen-uniq-ids        Generate\
+  \ unique column 4 IDs for --in BED file entries\n                        (default:\
+  \ False)\n  --report              Output an .html report with statistics and plots\n\
+  \                        comparing transcript and genomic sequences (default:\n\
+  \                        False)\n\nrequired arguments:\n  --in str             \
+  \ Genomic regions (hg38) BED file (6-column format)\n  --out str             Output\
+  \ results folder\n  --tr str              Transcript sequence IDs list file to define\n\
+  \                        transcripts to map on\n  --gtf str             Genomic\
+  \ annotations (hg38) GTF file (.gtf or .gtf.gz)\n  --gen str             Genomic\
+  \ sequences (hg38) .2bit file\n"
+generated_using:
+- --help

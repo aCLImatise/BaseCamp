@@ -1,0 +1,81 @@
+!Command
+command:
+- phyluce_align_get_indels_from_alignments
+positional: []
+named:
+- !Flag
+  description: "OUTGROUP\n[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\n\
+    [--trim {absolute,relative,none}]\n[--cores CORES]"
+  synonyms:
+  - --output
+  - --outgroup
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: The directory containing the alignment files
+  synonyms:
+  - --alignments
+  args: !SimpleFlagArg
+    name: ALIGNMENTS
+  optional: true
+- !Flag
+  description: The input alignment format
+  synonyms:
+  - --input-format
+  args: !ChoiceFlagArg
+    choices: !!set
+      clustal:
+      stockholm:
+      phylip:
+      fasta:
+      emboss:
+      nexus:
+  optional: true
+- !Flag
+  description: "Count indels only after removing gaps/missing data\nfrom alignment\
+    \ ends"
+  synonyms:
+  - --trim
+  args: !ChoiceFlagArg
+    choices: !!set
+      none:
+      absolute:
+      relative:
+  optional: true
+- !Flag
+  description: The number of cores to use.
+  synonyms:
+  - --cores
+  args: !SimpleFlagArg
+    name: CORES
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: phyluce_align_get_indels_from_alignments [-h] --alignments ALIGNMENTS\n\
+  \                                                --output OUTPUT --outgroup\n  \
+  \                                              OUTGROUP\n                      \
+  \                          [--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\n\
+  \                                                [--trim {absolute,relative,none}]\n\
+  \                                                [--cores CORES]\n\nCount indels\
+  \ in alignments, relative to (but excluding) the outgroup\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --alignments ALIGNMENTS\n\
+  \                        The directory containing the alignment files\n  --output\
+  \ OUTPUT       The output filename (without extension - code will add\n        \
+  \                .sqlite)\n  --outgroup OUTGROUP   The outgroup taxon\n  --input-format\
+  \ {fasta,nexus,phylip,clustal,emboss,stockholm}\n                        The input\
+  \ alignment format\n  --trim {absolute,relative,none}\n                        Count\
+  \ indels only after removing gaps/missing data\n                        from alignment\
+  \ ends\n  --cores CORES         The number of cores to use.\n"
+generated_using:
+- --help

@@ -1,0 +1,376 @@
+!Command
+command:
+- runBESST
+positional:
+- !Positional
+  description: --no_score            Statistical scoring is not performed. BESST instead
+  position: 0
+  name: contigs.
+  optional: false
+- !Positional
+  description: -b HAPLTHRESHOLD      Number of standard deviations over mean/2 of
+    coverage
+  position: 0
+  name: regions.
+  optional: false
+named:
+- !Flag
+  description: Deactivate pathfinder module for including smaller
+  synonyms:
+  - -y
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Fasta file containing contigs.
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: CONTIGFILE
+  optional: true
+- !Flag
+  description: Path(s) to bamfile(s).
+  synonyms:
+  - -f
+  args: !RepeatFlagArg
+    name: BAMFILES
+  optional: true
+- !Flag
+  description: "Mapped orientation for each library given with -f\noption. Valid input\
+    \ is either fr (forward reverse\norientation) or rf (reverse forward orientation)."
+  synonyms:
+  - -orientation
+  args: !RepeatFlagArg
+    name: ORIENTATION
+  optional: true
+- !Flag
+  description: Mean read length of libraries.
+  synonyms:
+  - -r
+  args: !RepeatFlagArg
+    name: READLEN
+  optional: true
+- !Flag
+  description: Mean insert size of libraries.
+  synonyms:
+  - -m
+  args: !RepeatFlagArg
+    name: MEAN
+  optional: true
+- !Flag
+  description: Estimated standard deviation of libraries.
+  synonyms:
+  - -s
+  args: !RepeatFlagArg
+    name: STDDEV
+  optional: true
+- !Flag
+  description: "User specified coverage cutoff. (Manually filter out\ncontigs with\
+    \ coverage over this value)"
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: COVCUTOFF
+  optional: true
+- !Flag
+  description: "User specified coverage cutoff. (Manually filter out\ncontigs with\
+    \ coverage under this value)"
+  synonyms:
+  - -z_min
+  args: !SimpleFlagArg
+    name: LOWER_COVCUTOFF
+  optional: true
+- !Flag
+  description: Maximum length ratio for merging of haplotypic
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: HAPLRATIO
+  optional: true
+- !Flag
+  description: Haplotype detection function, default = off
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Threshold value filter out reads that are mapped too\nfar apart given\
+    \ insert size."
+  synonyms:
+  - -T
+  args: !RepeatFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: "Threshold value for the least nr of links that is\nneeded to create\
+    \ an edge. Default for all libs:\nInferred by BESST (see value in output in\n\
+    Statistics.txt)."
+  synonyms:
+  - -e
+  args: !RepeatFlagArg
+    name: EDGESUPPORT
+  optional: true
+- !Flag
+  description: "Contig size threshold for the library (all contigs\nbelow this size\
+    \ is discarded from the 'large contigs'\nscaffolding, but included in pathfinding).\
+    \ Default:\nSet to same as -T parameter"
+  synonyms:
+  - -k
+  args: !RepeatFlagArg
+    name: MINSIZE
+  optional: true
+- !Flag
+  description: "Contigs under this size is discarded from all\nscaffolding (including\
+    \ pathfinding). they are also not\nincluded in the resulting scaffold output fasta\
+    \ file\nand any of the other files as well as all statistics.\nDefault: All contigs\
+    \ are included"
+  synonyms:
+  - -filter_contigs
+  args: !SimpleFlagArg
+    name: CONTIG_FILTER_LENGTH
+  optional: true
+- !Flag
+  description: "Lowest mapping quality allowed in order to use the\nread pair (both\
+    \ reads needs to have equal or bigger\nmapq than this value). This value is compared\
+    \ to the\nmapping quality column in the BAM file."
+  synonyms:
+  - --min_mapq
+  args: !SimpleFlagArg
+    name: MIN_MAPQ
+  optional: true
+- !Flag
+  description: "The number of iterations performed in breadth first\nsearch for placing\
+    \ smaller contigs."
+  synonyms:
+  - --iter
+  args: !SimpleFlagArg
+    name: PATH_THRESHOLD
+  optional: true
+- !Flag
+  description: Only store paths with score larger than score_cutoff.
+  synonyms:
+  - --score_cutoff
+  args: !SimpleFlagArg
+    name: SCORE_CUTOFF
+  optional: true
+- !Flag
+  description: "Maximum number of (large) scaffolds to search for\npaths extensions\
+    \ with."
+  synonyms:
+  - --max_extensions
+  args: !SimpleFlagArg
+    name: MAX_EXTENSIONS
+  optional: true
+- !Flag
+  description: "Warning: Do not use this option! This option is\nincluded only for\
+    \ benchmarking purposes of old BESST\nalgorithm. This option will give poor results\
+    \ as it\nmimics earlier versions of BESST."
+  synonyms:
+  - --NO_ILP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Faster but worse performing heuristic solution to\nsolving ILPs. May\
+    \ be used if BESST is too slow.\nHowever, lowering --iter is usually more effective\
+    \ to\nreduce scaffolding time."
+  synonyms:
+  - --FASTER_ILP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print BESST scores on edges in the Scaffolding graph.
+  synonyms:
+  - --print_scores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "k-mer size used in de brujin graph for obtaining\ncontigs in assembly,\
+    \ default 50"
+  synonyms:
+  - -K
+  args: !SimpleFlagArg
+    name: KMER
+  optional: true
+- !Flag
+  description: "m-mer usted for creating connection graph. Should be\nset lower than\
+    \ k-mer size"
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: MMER
+  optional: true
+- !Flag
+  description: "Path to output directory. BESST will create a folder\nnamed 'BESST_output'\
+    \ in the directory given by the\npath."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Deactivate sequencing duplicates detection
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Parallellize work load of path finder module in case\nof multiple\
+    \ processors available."
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Run in development mode (bug checking and memory usage\netc.)"
+  synonyms:
+  - -devel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Plot coverage, histograms of scores e.t.c.
+  synonyms:
+  - -plots
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Separates contigs classified as repeats by BESST into\na file 'repeats.fa'.\
+    \ They are not included in the main\nscaffolding output file with this flag specified."
+  synonyms:
+  - --separate_repeats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Depth first search with DP in the contig graph\n(default)."
+  synonyms:
+  - --dfs_traversal
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Choose a breadth first search in the contig graph.\nDefault is the\
+    \ new depth first search with a DP\napproch that seems to outperform previous\
+    \ traversals.\nThis option is kept for evaluation but is not\nreccomended to specify."
+  synonyms:
+  - --bfs_traversal
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "BESST checks for overlapping ends in contigs that are\nadjacent in\
+    \ a scaffold. This parameter sets the\nmaximum identical overlap to search for,\
+    \ default is\n200."
+  synonyms:
+  - -max_contig_overlap
+  args: !SimpleFlagArg
+    name: MAX_CONTIG_OVERLAP
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: BESST [-h] -c CONTIGFILE -f BAMFILES [BAMFILES ...] -orientation\n\
+  \             ORIENTATION [ORIENTATION ...] [-r READLEN [READLEN ...]]\n       \
+  \      [-m MEAN [MEAN ...]] [-s STDDEV [STDDEV ...]] [-z COVCUTOFF]\n          \
+  \   [-z_min LOWER_COVCUTOFF] [-T THRESHOLD [THRESHOLD ...]]\n             [-e EDGESUPPORT\
+  \ [EDGESUPPORT ...]] [-k MINSIZE [MINSIZE ...]]\n             [-filter_contigs CONTIG_FILTER_LENGTH]\
+  \ [--min_mapq MIN_MAPQ]\n             [--iter PATH_THRESHOLD] [--score_cutoff SCORE_CUTOFF]\n\
+  \             [--max_extensions MAX_EXTENSIONS] [-a HAPLRATIO]\n             [-b\
+  \ HAPLTHRESHOLD] [-K KMER] [-M MMER] [-g] [-o OUTPUT] [-d] [-y]\n             [-q]\
+  \ [--no_score] [-devel] [-plots] [--separate_repeats]\n             [--NO_ILP] [--FASTER_ILP]\
+  \ [--print_scores] [--dfs_traversal]\n             [--bfs_traversal] [-max_contig_overlap\
+  \ MAX_CONTIG_OVERLAP]\n             [--version]\n\nBESST - scaffolder for genomic\
+  \ assemblies.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -y                    Deactivate pathfinder module for including smaller\n\
+  \                        contigs.\n  --no_score            Statistical scoring is\
+  \ not performed. BESST instead\n                        searches for paths between\
+  \ contigs.\n\nRequired arguments:\n  -c CONTIGFILE         Fasta file containing\
+  \ contigs.\n  -f BAMFILES [BAMFILES ...]\n                        Path(s) to bamfile(s).\n\
+  \  -orientation ORIENTATION [ORIENTATION ...]\n                        Mapped orientation\
+  \ for each library given with -f\n                        option. Valid input is\
+  \ either fr (forward reverse\n                        orientation) or rf (reverse\
+  \ forward orientation).\n\nLibrary information:\n  Library parameters that can be\
+  \ set, e.g., read length, insert size mean/std_dev, coverage etc.\n\n  -r READLEN\
+  \ [READLEN ...]\n                        Mean read length of libraries.\n  -m MEAN\
+  \ [MEAN ...]    Mean insert size of libraries.\n  -s STDDEV [STDDEV ...]\n     \
+  \                   Estimated standard deviation of libraries.\n  -z COVCUTOFF \
+  \         User specified coverage cutoff. (Manually filter out\n               \
+  \         contigs with coverage over this value)\n  -z_min LOWER_COVCUTOFF\n   \
+  \                     User specified coverage cutoff. (Manually filter out\n   \
+  \                     contigs with coverage under this value)\n\nPloidy:\n  Options\
+  \ involving detection of split allele contigs in diploid assemblies.\n\n  -a HAPLRATIO\
+  \          Maximum length ratio for merging of haplotypic\n                    \
+  \    regions.\n  -b HAPLTHRESHOLD      Number of standard deviations over mean/2\
+  \ of coverage\n                        to allow for clasification of haplotype.\
+  \ Example:\n                        contigs with under mean/2 + 3sigma are indicated\
+  \ as\n                        potential haplotypes (tested later) if -b 3\n  -g\
+  \                    Haplotype detection function, default = off\n\nParameters/variables/threshold\
+  \ involved in BESST.:\n  -T THRESHOLD [THRESHOLD ...]\n                        Threshold\
+  \ value filter out reads that are mapped too\n                        far apart\
+  \ given insert size.\n  -e EDGESUPPORT [EDGESUPPORT ...]\n                     \
+  \   Threshold value for the least nr of links that is\n                        needed\
+  \ to create an edge. Default for all libs:\n                        Inferred by\
+  \ BESST (see value in output in\n                        Statistics.txt).\n  -k\
+  \ MINSIZE [MINSIZE ...]\n                        Contig size threshold for the library\
+  \ (all contigs\n                        below this size is discarded from the 'large\
+  \ contigs'\n                        scaffolding, but included in pathfinding). Default:\n\
+  \                        Set to same as -T parameter\n  -filter_contigs CONTIG_FILTER_LENGTH\n\
+  \                        Contigs under this size is discarded from all\n       \
+  \                 scaffolding (including pathfinding). they are also not\n     \
+  \                   included in the resulting scaffold output fasta file\n     \
+  \                   and any of the other files as well as all statistics.\n    \
+  \                    Default: All contigs are included\n  --min_mapq MIN_MAPQ  \
+  \ Lowest mapping quality allowed in order to use the\n                        read\
+  \ pair (both reads needs to have equal or bigger\n                        mapq than\
+  \ this value). This value is compared to the\n                        mapping quality\
+  \ column in the BAM file.\n  --iter PATH_THRESHOLD\n                        The\
+  \ number of iterations performed in breadth first\n                        search\
+  \ for placing smaller contigs.\n  --score_cutoff SCORE_CUTOFF\n                \
+  \        Only store paths with score larger than score_cutoff.\n  --max_extensions\
+  \ MAX_EXTENSIONS\n                        Maximum number of (large) scaffolds to\
+  \ search for\n                        paths extensions with.\n  --NO_ILP       \
+  \       Warning: Do not use this option! This option is\n                      \
+  \  included only for benchmarking purposes of old BESST\n                      \
+  \  algorithm. This option will give poor results as it\n                       \
+  \ mimics earlier versions of BESST.\n  --FASTER_ILP          Faster but worse performing\
+  \ heuristic solution to\n                        solving ILPs. May be used if BESST\
+  \ is too slow.\n                        However, lowering --iter is usually more\
+  \ effective to\n                        reduce scaffolding time.\n  --print_scores\
+  \        Print BESST scores on edges in the Scaffolding graph.\n\nVarious other\
+  \ parameters:\n  -K KMER               k-mer size used in de brujin graph for obtaining\n\
+  \                        contigs in assembly, default 50\n  -M MMER            \
+  \   m-mer usted for creating connection graph. Should be\n                     \
+  \   set lower than k-mer size\n  -o OUTPUT             Path to output directory.\
+  \ BESST will create a folder\n                        named 'BESST_output' in the\
+  \ directory given by the\n                        path.\n  -d                  \
+  \  Deactivate sequencing duplicates detection\n  -q                    Parallellize\
+  \ work load of path finder module in case\n                        of multiple processors\
+  \ available.\n  -devel                Run in development mode (bug checking and\
+  \ memory usage\n                        etc.)\n  -plots                Plot coverage,\
+  \ histograms of scores e.t.c.\n  --separate_repeats    Separates contigs classified\
+  \ as repeats by BESST into\n                        a file 'repeats.fa'. They are\
+  \ not included in the main\n                        scaffolding output file with\
+  \ this flag specified.\n  --dfs_traversal       Depth first search with DP in the\
+  \ contig graph\n                        (default).\n  --bfs_traversal       Choose\
+  \ a breadth first search in the contig graph.\n                        Default is\
+  \ the new depth first search with a DP\n                        approch that seems\
+  \ to outperform previous traversals.\n                        This option is kept\
+  \ for evaluation but is not\n                        reccomended to specify.\n \
+  \ -max_contig_overlap MAX_CONTIG_OVERLAP\n                        BESST checks for\
+  \ overlapping ends in contigs that are\n                        adjacent in a scaffold.\
+  \ This parameter sets the\n                        maximum identical overlap to\
+  \ search for, default is\n                        200.\n  --version            \
+  \ show program's version number and exit\n\nSource code and manual: http://github.com/ksahlin/BESST\n\
+  \nPlease cite:\nSahlin K, Vezzi F, Nystedt B, Lundeberg J, Arvestad L (2014) BESST--efficient\
+  \ scaffolding of large fragmented assemblies. BMC Bioinformatics 15, 281\n"
+generated_using:
+- --help

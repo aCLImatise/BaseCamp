@@ -1,0 +1,310 @@
+!Command
+command:
+- homer
+positional: []
+named:
+- !Flag
+  description: ': Sequence type (-dna)'
+  synonyms:
+  - -dna
+  - -prot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Sequence File'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ': Group/Stat File'
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ': Mer File'
+  synonyms:
+  - -mer
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ': PSSM Motif File'
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ': output file prefix'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ': seed file'
+  synonyms:
+  - -seed
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: '<#> : offset of sequence from TSS (-2000)'
+  synonyms:
+  - -offset
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': remember mapping between mers and genes (default: approx)'
+  synonyms:
+  - -exact
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Weight sequences (according to addition columns in group file: 1st-gene
+    2nd-sequence)'
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Test all sequences as candidate motifs (default: only test target
+    sequences)'
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Do not autoscale sequences to be equal in foreground and background'
+  synonyms:
+  - -noautoscale
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Compute log-odds using frequency, default (0.25)'
+  synonyms:
+  - -freqAdjust
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': find dual motifs in the form A<gap>B where A and B can be rev-opposites'
+  synonyms:
+  - -dual
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': find dual motifs in the form A<gap>B or B<gap>A'
+  synonyms:
+  - -flip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<OFF,#(max to count)> : (counts multiple motifs per sequence | default:
+    2)'
+  synonyms:
+  - -zoopsapprox
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": don't search opposite strand (default->DNA:yes, Protein:no)"
+  synonyms:
+  - -norevopp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : min mer size (6)'
+  synonyms:
+  - -min
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : max mer size [also standard mer size] (10)'
+  synonyms:
+  - -max
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : Find motifs of length # (default=10)'
+  synonyms:
+  - -len
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<#,#,#-#> : Find motifs with gaps(0)(i.e. -gap 3 -gap 2,4,5 -gap 1-10\n\
+    Gaps will only be in the center of motif and will only use even lengthed motifs"
+  synonyms:
+  - -gap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : # of mismatches to check for degeneracy (1)'
+  synonyms:
+  - -mis
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : # of IUPAC codes per mer that can be used during global optimization
+    (0)'
+  synonyms:
+  - -IUPAC
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<1,2,or3> : Type of IUPAC symbols used\n1: (default) Only N is used\n\
+    2: Only N and 2 bp symbols are used (i.e. R = A or G\n3: Full IUPAC code is used\
+    \ (includes 3-way symbols)"
+  synonyms:
+  - -iupactype
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : number of seeds to check during profile optimization(50)'
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : sets depth of optimization (closer to zero the more sensitive
+    (0.5))'
+  synonyms:
+  - -branch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : maximum number of iterations during optimization (5)'
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': DO NOT remove aligned seeds'
+  synonyms:
+  - -rmalign
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: maximum percentage of negative genes that can contain the motif
+  synonyms:
+  - -maxneg
+  args: !SimpleFlagArg
+    name: 0 to 1
+  optional: true
+- !Flag
+  description: ": Program will heuristically avoid performing exhaustive\ncalculations\
+    \ (default: FAST)"
+  synonyms:
+  - -speed
+  args: !SimpleFlagArg
+    name: NORMAL|FAST
+  optional: true
+- !Flag
+  description: ": scoring algorithm (default: hypergeo)\nhypergeo - hypergeometric\
+    \ scoring (ZOOPS)\nbinomial - binomical scoring [for variable length seq] (ZOOPS)\
+    \ (requires exact)\napproxbinomial - binomical scoring [for variable length seq]\
+    \ (ZOOPS) (requires exact)\nsitehypergeo - hypergeometric scoring across seq positions\
+    \ (very slow)\nsitebinomial - binomial scoring across seq positions\nfisher <#>\
+    \ - fisher exact test (slow, # scales exponentially)\n<# = largest repetition\
+    \ to consider [default=2]>\nrank - group file must have sortable numeric value\n\
+    freqdiff - used by most bayesian/nnet programs\nlogit - used by most bayesian/nnet\
+    \ programs"
+  synonyms:
+  - -alg
+  args: !SimpleFlagArg
+    name: method
+  optional: true
+- !Flag
+  description: "[method options...]\nmarkov <#> - generate hmm from target sequences\
+    \ using a hmm of order #\nbmarkov <#> - generate hmm from background sequences\
+    \ using a hmm of order #\nmosaic - generate mosaic hmm from background sequences\
+    \ **coming soon**"
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: method
+  optional: true
+- !Flag
+  description: ": filtering cutoff for ratio of N's in sequence (0.9)"
+  synonyms:
+  - -N
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: '<#> : filter sequences shorter than #'
+  synonyms:
+  - -seqless
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> : filter sequences longer than #'
+  synonyms:
+  - -seqmore
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "homer : Empirical Motif Optimizer\nusage: ./homer [data] [parameters]\
+  \ -a [action]\nThis program is meant to be called from other programs (i.e. findMotifsGenome.pl),\
+  \ and not used directly\nData options:\n\t-dna|-prot : Sequence type (-dna)\n\t\
+  -s <file> : Sequence File\n\t-g <file> : Group/Stat File\n\t-mer <file> : Mer File\n\
+  \t-m <file> : PSSM Motif File\n\t-o <file> : output file prefix\n\t-seed <file>\
+  \ : seed file\n\t-offset <#> : offset of sequence from TSS (-2000)\nParameter options:\n\
+  \t-exact : remember mapping between mers and genes (default: approx)\n\t-w : Weight\
+  \ sequences (according to addition columns in group file: 1st-gene 2nd-sequence)\n\
+  \t-T : Test all sequences as candidate motifs (default: only test target sequences)\n\
+  \t-noautoscale : Do not autoscale sequences to be equal in foreground and background\n\
+  \t-freqAdjust : Compute log-odds using frequency, default (0.25)\n\t-dual : find\
+  \ dual motifs in the form A<gap>B where A and B can be rev-opposites\n\t-flip :\
+  \ find dual motifs in the form A<gap>B or B<gap>A\n\t-zoopsapprox <OFF,#(max to\
+  \ count)> : (counts multiple motifs per sequence | default: 2)\n\t-norevopp : don't\
+  \ search opposite strand (default->DNA:yes, Protein:no)\n\t-min <#> : min mer size\
+  \ (6)\n\t-max <#> : max mer size [also standard mer size] (10)\n\t-len <#> : Find\
+  \ motifs of length # (default=10)\n\t-gap <#,#,#-#> : Find motifs with gaps(0)(i.e.\
+  \ -gap 3 -gap 2,4,5 -gap 1-10\n\t    Gaps will only be in the center of motif and\
+  \ will only use even lengthed motifs\n\t-mis <#> : # of mismatches to check for\
+  \ degeneracy (1)\n\t-IUPAC <#> : # of IUPAC codes per mer that can be used during\
+  \ global optimization (0)\n\t-iupactype <1,2,or3> : Type of IUPAC symbols used\n\
+  \t\t1: (default) Only N is used\n\t\t2: Only N and 2 bp symbols are used (i.e. R\
+  \ = A or G\n\t\t3: Full IUPAC code is used (includes 3-way symbols)\n\t-S <#> :\
+  \ number of seeds to check during profile optimization(50)\n\t-branch <#> : sets\
+  \ depth of optimization (closer to zero the more sensitive (0.5))\n\t-I <#> : maximum\
+  \ number of iterations during optimization (5)\n\t-rmalign : DO NOT remove aligned\
+  \ seeds\n\t-maxneg <0 to 1> maximum percentage of negative genes that can contain\
+  \ the motif\n\t-speed <NORMAL|FAST>: Program will heuristically avoid performing\
+  \ exhaustive\n\t    calculations (default: FAST)\nScoring Functions:\n\t-alg <method>\
+  \ : scoring algorithm (default: hypergeo)\n\t    hypergeo - hypergeometric scoring\
+  \ (ZOOPS)\n\t    binomial - binomical scoring [for variable length seq] (ZOOPS)\
+  \ (requires exact)\n\t    approxbinomial - binomical scoring [for variable length\
+  \ seq] (ZOOPS) (requires exact)\n\t    sitehypergeo - hypergeometric scoring across\
+  \ seq positions (very slow)\n\t    sitebinomial - binomial scoring across seq positions\n\
+  \t    fisher <#> - fisher exact test (slow, # scales exponentially)\n\t      <#\
+  \ = largest repetition to consider [default=2]>\n\t    rank - group file must have\
+  \ sortable numeric value\n\t    freqdiff - used by most bayesian/nnet programs\n\
+  \t    logit - used by most bayesian/nnet programs\nBackground Modeling options (this\
+  \ forces a binomial style scoring function):\n\t-b <method> [method options...]\n\
+  \t    markov <#> - generate hmm from target sequences using a hmm of order #\n\t\
+  \    bmarkov <#> - generate hmm from background sequences using a hmm of order #\n\
+  \t    mosaic - generate mosaic hmm from background sequences **coming soon**\nFilter\
+  \ Options:\n\t-N <float> : filtering cutoff for ratio of N's in sequence (0.9)\n\
+  \t-seqless <#> : filter sequences shorter than #\n\t-seqmore <#> : filter sequences\
+  \ longer than #\nActions (-a):\n\tMOTIFS - Find motifs <outfile>.motifs# where #\
+  \ = motif length\n\tMERS - Create mer file (low memory) <stdout>\n\tDMERS - Create\
+  \ degenerate mer file <stdout>\n\tFIND - find motifs in sequence <stdout>\n\tOPTPVALUE\
+  \ - optimize motif threshold and pvalue (exact)<stdout>\n\tGETPVALUE - get the p-value\
+  \ enrichment for a given motif(exact)<stdout>\n\tGENESCORE - returns highest motif\
+  \ score for each gene <stdout>\n\tREFINE - optimize motif PSSM profile, threshold,\
+  \ and pvalue <stdout>\n\tREFINETHRESH - optimize motif PSSM threshold and pvalue\
+  \ <stdout>\n\tCLUSTER - cluster mers from seed file (can't use exact scoring) <outfile>\n\
+  \tSORTMERS - sort a mer file according to pvalue <stdout>\n\tREMOVE - removes motif\
+  \ from sequence (replaces with N's) <stdout>\n\nThis program is meant to be called\
+  \ from other programs (i.e. findMotifsGenome.pl), and not used directly\n\n"
+generated_using:
+- --help

@@ -1,0 +1,182 @@
+!Command
+command:
+- bcftools
+- isec
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: A.vcf.gz
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: B.vcf.gz
+  optional: false
+named:
+- !Flag
+  description: treat as identical records with <snps|indels|both|all|some|none>, see
+    man page for details [none]
+  synonyms:
+  - -c
+  - --collapse
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: output positions present only in the first file but missing in the
+    others
+  synonyms:
+  - -C
+  - --complement
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: exclude sites for which the expression is true
+  synonyms:
+  - -e
+  - --exclude
+  args: !SimpleFlagArg
+    name: expr
+  optional: true
+- !Flag
+  description: require at least one of the listed FILTER strings (e.g. "PASS,.")
+  synonyms:
+  - -f
+  - --apply-filters
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+- !Flag
+  description: include only sites for which the expression is true
+  synonyms:
+  - -i
+  - --include
+  args: !SimpleFlagArg
+    name: expr
+  optional: true
+- !Flag
+  description: do not append version and command line to the header
+  synonyms:
+  - --no-version
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[+-=~]<int>      output positions present in this many (=), this many
+    or more (+), this many or fewer (-), the exact (~) files'
+  synonyms:
+  - -n
+  - --nfiles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write output to a file [standard output]
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: 'b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed
+    VCF [v]'
+  synonyms:
+  - -O
+  - --output-type
+  args: !SimpleFlagArg
+    name: b|u|z|v
+  optional: true
+- !Flag
+  description: if given, subset each of the input files accordingly, see also -w
+  synonyms:
+  - -p
+  - --prefix
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: restrict to comma-separated list of regions
+  synonyms:
+  - -r
+  - --regions
+  args: !SimpleFlagArg
+    name: region
+  optional: true
+- !Flag
+  description: restrict to regions listed in a file
+  synonyms:
+  - -R
+  - --regions-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: similar to -r but streams rather than index-jumps
+  synonyms:
+  - -t
+  - --targets
+  args: !SimpleFlagArg
+    name: region
+  optional: true
+- !Flag
+  description: similar to -R but streams rather than index-jumps
+  synonyms:
+  - -T
+  - --targets-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: use multithreading with <int> worker threads [0]
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: list of files to write with -p given as 1-based indexes. By default,
+    all files are written
+  synonyms:
+  - -w
+  - --write
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nAbout:   Create intersections, unions and complements of VCF files.\n\
+  Usage:   bcftools isec [options] <A.vcf.gz> <B.vcf.gz> [...]\n\nOptions:\n    -c,\
+  \ --collapse <string>       treat as identical records with <snps|indels|both|all|some|none>,\
+  \ see man page for details [none]\n    -C, --complement              output positions\
+  \ present only in the first file but missing in the others\n    -e, --exclude <expr>\
+  \          exclude sites for which the expression is true\n    -f, --apply-filters\
+  \ <list>    require at least one of the listed FILTER strings (e.g. \"PASS,.\")\n\
+  \    -i, --include <expr>          include only sites for which the expression is\
+  \ true\n        --no-version                  do not append version and command\
+  \ line to the header\n    -n, --nfiles [+-=~]<int>      output positions present\
+  \ in this many (=), this many or more (+), this many or fewer (-), the exact (~)\
+  \ files\n    -o, --output <file>           write output to a file [standard output]\n\
+  \    -O, --output-type <b|u|z|v>   b: compressed BCF, u: uncompressed BCF, z: compressed\
+  \ VCF, v: uncompressed VCF [v]\n    -p, --prefix <dir>            if given, subset\
+  \ each of the input files accordingly, see also -w\n    -r, --regions <region> \
+  \       restrict to comma-separated list of regions\n    -R, --regions-file <file>\
+  \     restrict to regions listed in a file\n    -t, --targets <region>        similar\
+  \ to -r but streams rather than index-jumps\n    -T, --targets-file <file>     similar\
+  \ to -R but streams rather than index-jumps\n        --threads <int>           use\
+  \ multithreading with <int> worker threads [0]\n    -w, --write <list>         \
+  \   list of files to write with -p given as 1-based indexes. By default, all files\
+  \ are written\n\nExamples:\n   # Create intersection and complements of two sets\
+  \ saving the output in dir/*\n   bcftools isec A.vcf.gz B.vcf.gz -p dir\n\n   #\
+  \ Filter sites in A and B (but not in C) and create intersection\n   bcftools isec\
+  \ -e'MAF<0.01' -i'dbSNP=1' -e - A.vcf.gz B.vcf.gz C.vcf.gz -p dir\n\n   # Extract\
+  \ and write records from A shared by both A and B using exact allele match\n   bcftools\
+  \ isec A.vcf.gz B.vcf.gz -p dir -n =2 -w 1\n\n   # Extract and write records from\
+  \ C found in A and C but not in B\n   bcftools isec A.vcf.gz B.vcf.gz C.vcf.gz -p\
+  \ dir -n~101 -w 3\n\n   # Extract records private to A or B comparing by position\
+  \ only\n   bcftools isec A.vcf.gz B.vcf.gz -p dir -n -1 -c all\n\n"
+generated_using:
+- --help

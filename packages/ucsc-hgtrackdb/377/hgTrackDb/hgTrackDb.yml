@@ -1,0 +1,75 @@
+!Command
+command:
+- hgTrackDb
+positional:
+- !Positional
+  description: '- name of table to create, usually trackDb, or trackDb_${USER}'
+  position: 0
+  name: trackDb
+  optional: false
+- !Positional
+  description: "- SQL definition of the table to create, typically from\n- the source\
+    \ tree file: src/hg/lib/trackDb.sql\n- the table name in the CREATE statement\
+    \ is replaced by the\n- table name specified on this command line."
+  position: 1
+  name: trackDb.sql
+  optional: false
+named:
+- !Flag
+  description: '- only include tables that exist (and complain about missing html
+    files).'
+  synonyms:
+  - -strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Specify a file name to use other than trackDb.ra\nfor the ra files."
+  synonyms:
+  - -raName
+  args: !SimpleFlagArg
+    name: trackDb.ra
+  optional: true
+- !Flag
+  description: '|beta|public - Include trackDb entries with this release tag only.'
+  synonyms:
+  - -release
+  args: !SimpleFlagArg
+    name: alpha
+  optional: true
+- !Flag
+  description: "- for trackDb scanning, output table name, type line,\n-  and settings\
+    \ hash to stderr while loading everything.\n"
+  synonyms:
+  - -settings
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "hgTrackDb - Create trackDb table from text files.\n\nNote that the browser\
+  \ supports multiple trackDb tables, usually\nin the form: trackDb_YourUserName.\
+  \ Which particular trackDb\ntable the browser uses is specified in the hg.conf file\
+  \ found\neither in your home directory file '.hg.conf' or in the web server's\n\
+  cgi-bin/hg.conf configuration file with the setting: db.trackDb=trackDb\nsee also:\
+  \ src/product/ex.hg.conf discussion of this setting.\nusage:\n   hgTrackDb [options]\
+  \ org database trackDb trackDb.sql hgRoot\n\nOptions:\n  org - a directory name\
+  \ with a hierarchy of trackDb.ra files to examine\n      - in the case of a single\
+  \ directory with a single trackDb.ra file use .\n  database - name of database to\
+  \ create the trackDb table in\n  trackDb  - name of table to create, usually trackDb,\
+  \ or trackDb_${USER}\n  trackDb.sql  - SQL definition of the table to create, typically\
+  \ from\n               - the source tree file: src/hg/lib/trackDb.sql\n        \
+  \       - the table name in the CREATE statement is replaced by the\n          \
+  \     - table name specified on this command line.\n  hgRoot - a directory name\
+  \ to prepend to org to locate the hierarchy:\n           hgRoot/trackDb.ra - top\
+  \ level trackDb.ra file processed first\n           hgRoot/org/trackDb.ra - second\
+  \ level file processed second\n           hgRoot/org/database/trackDb.ra - third\
+  \ level file processed last\n         - for no directory hierarchy use .\n  -strict\
+  \ - only include tables that exist (and complain about missing html files).\n  -raName=trackDb.ra\
+  \ - Specify a file name to use other than trackDb.ra\n   for the ra files.\n  -release=alpha|beta|public\
+  \ - Include trackDb entries with this release tag only.\n  -settings - for trackDb\
+  \ scanning, output table name, type line,\n            -  and settings hash to stderr\
+  \ while loading everything.\n"
+generated_using: []

@@ -1,0 +1,191 @@
+!Command
+command:
+- XS
+positional: []
+named:
+- !Flag
+  description: verbose mode
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<sequencingType>     type: 1=Roche-454, 2=Illumina, 3=ABI SOLiD, 4=Ion
+    Torrent'
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'header format: 1=Length appendix, 2=Pair End'
+  synonyms:
+  - -hf
+  args: !SimpleFlagArg
+    name: headerFormat
+  optional: true
+- !Flag
+  description: n=<instrumentName>   the unique instrument name (use n= before name)
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use the same header in third line of the read
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: static line (bases/quality scores) size
+  synonyms:
+  - -ls
+  args: !SimpleFlagArg
+    name: lineSize
+  optional: true
+- !Flag
+  description: :<maxSize>  dynamic line (bases/quality scores) size
+  synonyms:
+  - -ld
+  args: !SimpleFlagArg
+    name: minSize
+  optional: true
+- !Flag
+  description: <numberOfReads>      number of reads per file
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <A>,<C>,<G>,<T>,<N>  symbols frequency
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'repeats: number (default: 0)'
+  synonyms:
+  - -rn
+  args: !SimpleFlagArg
+    name: numberOfRepeats
+  optional: true
+- !Flag
+  description: 'repeats: minimum size'
+  synonyms:
+  - -ri
+  args: !SimpleFlagArg
+    name: repeatsMinSize
+  optional: true
+- !Flag
+  description: 'repeats: maximum size'
+  synonyms:
+  - -ra
+  args: !SimpleFlagArg
+    name: repeatsMaxSize
+  optional: true
+- !Flag
+  description: 'repeats: mutation frequency'
+  synonyms:
+  - -rm
+  args: !SimpleFlagArg
+    name: mutationRate
+  optional: true
+- !Flag
+  description: 'repeats: use reverse complement repeats'
+  synonyms:
+  - -rr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'quality scores distribution: 1=uniform, 2=gaussian'
+  synonyms:
+  - -qt
+  args: !SimpleFlagArg
+    name: assignmentType
+  optional: true
+- !Flag
+  description: 'load file: mean, standard deviation (when: -qt 2)'
+  synonyms:
+  - -qf
+  args: !SimpleFlagArg
+    name: statsFile
+  optional: true
+- !Flag
+  description: custom template ascii alphabet
+  synonyms:
+  - -qc
+  args: !SimpleFlagArg
+    name: template
+  optional: true
+- !Flag
+  description: excludes the use of headers from output
+  synonyms:
+  - -eh
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: excludes the use of optional headers (+) from output
+  synonyms:
+  - -eo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: excludes the use of DNA bases from output
+  synonyms:
+  - -ed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: excludes '\n' when DNA bases line size is reached
+  synonyms:
+  - -edb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: excludes the use of quality scores from output
+  synonyms:
+  - -es
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <seed>               generation seed
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: give this help
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: XS   [OPTION]... [FILE] \n\nSystem options:\n -h              \
+  \         give this help\n -v                       verbose mode\n\nMain FASTQ options:\n\
+  \ -t  <sequencingType>     type: 1=Roche-454, 2=Illumina, 3=ABI SOLiD, 4=Ion Torrent\n\
+  \ -hf <headerFormat>       header format: 1=Length appendix, 2=Pair End\n -i  n=<instrumentName>\
+  \   the unique instrument name (use n= before name)\n -o                       use\
+  \ the same header in third line of the read\n -ls <lineSize>           static line\
+  \ (bases/quality scores) size\n -ld <minSize>:<maxSize>  dynamic line (bases/quality\
+  \ scores) size\n -n  <numberOfReads>      number of reads per file\n\nDNA options:\n\
+  \ -f  <A>,<C>,<G>,<T>,<N>  symbols frequency\n -rn <numberOfRepeats>    repeats:\
+  \ number (default: 0)\n -ri <repeatsMinSize>     repeats: minimum size\n -ra <repeatsMaxSize>\
+  \     repeats: maximum size\n -rm <mutationRate>       repeats: mutation frequency\n\
+  \ -rr                      repeats: use reverse complement repeats\n\nQuality scores\
+  \ options:\n -qt <assignmentType>     quality scores distribution: 1=uniform, 2=gaussian\n\
+  \ -qf <statsFile>          load file: mean, standard deviation (when: -qt 2)\n -qc\
+  \ <template>           custom template ascii alphabet\n\nFiltering options:\n -eh\
+  \                      excludes the use of headers from output\n -eo           \
+  \           excludes the use of optional headers (+) from output\n -ed         \
+  \             excludes the use of DNA bases from output\n -edb                 \
+  \    excludes '\\n' when DNA bases line size is reached\n -es                  \
+  \    excludes the use of quality scores from output\n\nStochastic options:\n -s\
+  \  <seed>               generation seed\n\n<genFile>                 simulated output\
+  \ file\n\nCommon usage:\n ./XS -v -t 1 -i n=MySeq -ld 30:80 -n 20000 -qt=1 -qc 33,36,39:43\
+  \ File\n ./XS -v -ls 100 -n 10000 -eh -eo -es -edb -f 0.3,0.2,0.2,0.3,0.0 -rn 50\
+  \ -ri 300 -ra 3000 -rm 0.1 File\n\nReport bugs to {pratas,ap,jmr}@ua.pt\n"
+generated_using:
+- -h

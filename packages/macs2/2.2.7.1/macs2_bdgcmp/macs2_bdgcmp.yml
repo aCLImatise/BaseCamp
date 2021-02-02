@@ -1,0 +1,157 @@
+!Command
+command:
+- macs2
+- bdgcmp
+positional: []
+named:
+- !Flag
+  description: "Treatment bedGraph file, e.g. *_treat_pileup.bdg from\nMACSv2. REQUIRED"
+  synonyms:
+  - -t
+  - --tfile
+  args: !SimpleFlagArg
+    name: TFILE
+  optional: true
+- !Flag
+  description: "Control bedGraph file, e.g. *_control_lambda.bdg from\nMACSv2. REQUIRED"
+  synonyms:
+  - -c
+  - --cfile
+  args: !SimpleFlagArg
+    name: CFILE
+  optional: true
+- !Flag
+  description: "Scaling factor for treatment and control track. Keep\nit as 1.0 or\
+    \ default in most cases. Set it ONLY while\nyou have SPMR output from MACS2 callpeak,\
+    \ and plan to\ncalculate scores as MACS2 callpeak module. If you want\nto simulate\
+    \ 'callpeak' w/o '--to-large', calculate\neffective smaller sample size after\
+    \ filtering redudant\nreads in million (e.g., put 31.415926 if effective\nreads\
+    \ are 31,415,926) and input it for '-S'; for\n'callpeak --to-large', calculate\
+    \ effective reads in\nlarger sample. DEFAULT: 1.0"
+  synonyms:
+  - -S
+  - --scaling-factor
+  args: !SimpleFlagArg
+    name: SFACTOR
+  optional: true
+- !Flag
+  description: "The pseudocount used for calculating logLR, logFE or\nFE. The count\
+    \ will be applied after normalization of\nsequencing depth. DEFAULT: 0.0, no pseudocount\
+    \ is\napplied."
+  synonyms:
+  - -p
+  - --pseudocount
+  args: !SimpleFlagArg
+    name: PSEUDOCOUNT
+  optional: true
+- !Flag
+  description: "[{ppois,qpois,subtract,logFE,FE,logLR,slogLR,max} ...], --method {ppois,qpois,subtract,logFE,FE,logLR,slogLR,max}\
+    \ [{ppois,qpois,subtract,logFE,FE,logLR,slogLR,max} ...]\nMethod to use while\
+    \ calculating a score in any bin by\ncomparing treatment value and control value.\
+    \ Available\nchoices are: ppois, qpois, subtract, logFE, logLR, and\nslogLR. They\
+    \ represent Poisson Pvalue (-log10(pvalue)\nform) using control as lambda and\
+    \ treatment as\nobservation, q-value through a BH process for poisson\npvalues,\
+    \ subtraction from treatment, linear scale fold\nenrichment, log10 fold enrichment(need\
+    \ to set\npseudocount), log10 likelihood between ChIP-enriched\nmodel and open\
+    \ chromatin model(need to set\npseudocount), symmetric log10 likelihood between\
+    \ two\nChIP-enrichment models, or maximum value between the\ntwo tracks. Default\
+    \ option is ppois."
+  synonyms:
+  - -m
+  args: !ChoiceFlagArg
+    choices: !!set
+      slogLR:
+      subtract:
+      FE:
+      logFE:
+      ppois:
+      max:
+      qpois:
+      logLR:
+  optional: true
+- !Flag
+  description: "If specified all output files will be written to that\ndirectory.\
+    \ Default: the current working directory"
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: "The PREFIX of output bedGraph file to write scores. If\nit is given\
+    \ as A, and method is 'ppois', output file\nwill be A_ppois.bdg. Mutually exclusive\
+    \ with\n-o/--ofile."
+  synonyms:
+  - --o-prefix
+  args: !SimpleFlagArg
+    name: OPREFIX
+  optional: true
+- !Flag
+  description: "Output filename. Mutually exclusive with --o-prefix.\nThe number and\
+    \ the order of arguments for --ofile must\nbe the same as for -m.\n"
+  synonyms:
+  - -o
+  - --ofile
+  args: !RepeatFlagArg
+    name: OFILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: macs2 bdgcmp [-h] -t TFILE -c CFILE [-S SFACTOR] [-p PSEUDOCOUNT]\n\
+  \                    [-m {ppois,qpois,subtract,logFE,FE,logLR,slogLR,max} [{ppois,qpois,subtract,logFE,FE,logLR,slogLR,max}\
+  \ ...]]\n                    [--outdir OUTDIR]\n                    (--o-prefix\
+  \ OPREFIX | -o OFILE [OFILE ...])\n\noptional arguments:\n  -h, --help         \
+  \   show this help message and exit\n  -t TFILE, --tfile TFILE\n               \
+  \         Treatment bedGraph file, e.g. *_treat_pileup.bdg from\n              \
+  \          MACSv2. REQUIRED\n  -c CFILE, --cfile CFILE\n                       \
+  \ Control bedGraph file, e.g. *_control_lambda.bdg from\n                      \
+  \  MACSv2. REQUIRED\n  -S SFACTOR, --scaling-factor SFACTOR\n                  \
+  \      Scaling factor for treatment and control track. Keep\n                  \
+  \      it as 1.0 or default in most cases. Set it ONLY while\n                 \
+  \       you have SPMR output from MACS2 callpeak, and plan to\n                \
+  \        calculate scores as MACS2 callpeak module. If you want\n              \
+  \          to simulate 'callpeak' w/o '--to-large', calculate\n                \
+  \        effective smaller sample size after filtering redudant\n              \
+  \          reads in million (e.g., put 31.415926 if effective\n                \
+  \        reads are 31,415,926) and input it for '-S'; for\n                    \
+  \    'callpeak --to-large', calculate effective reads in\n                     \
+  \   larger sample. DEFAULT: 1.0\n  -p PSEUDOCOUNT, --pseudocount PSEUDOCOUNT\n \
+  \                       The pseudocount used for calculating logLR, logFE or\n \
+  \                       FE. The count will be applied after normalization of\n \
+  \                       sequencing depth. DEFAULT: 0.0, no pseudocount is\n    \
+  \                    applied.\n  -m {ppois,qpois,subtract,logFE,FE,logLR,slogLR,max}\
+  \ [{ppois,qpois,subtract,logFE,FE,logLR,slogLR,max} ...], --method {ppois,qpois,subtract,logFE,FE,logLR,slogLR,max}\
+  \ [{ppois,qpois,subtract,logFE,FE,logLR,slogLR,max} ...]\n                     \
+  \   Method to use while calculating a score in any bin by\n                    \
+  \    comparing treatment value and control value. Available\n                  \
+  \      choices are: ppois, qpois, subtract, logFE, logLR, and\n                \
+  \        slogLR. They represent Poisson Pvalue (-log10(pvalue)\n               \
+  \         form) using control as lambda and treatment as\n                     \
+  \   observation, q-value through a BH process for poisson\n                    \
+  \    pvalues, subtraction from treatment, linear scale fold\n                  \
+  \      enrichment, log10 fold enrichment(need to set\n                        pseudocount),\
+  \ log10 likelihood between ChIP-enriched\n                        model and open\
+  \ chromatin model(need to set\n                        pseudocount), symmetric log10\
+  \ likelihood between two\n                        ChIP-enrichment models, or maximum\
+  \ value between the\n                        two tracks. Default option is ppois.\n\
+  \  --outdir OUTDIR       If specified all output files will be written to that\n\
+  \                        directory. Default: the current working directory\n  --o-prefix\
+  \ OPREFIX    The PREFIX of output bedGraph file to write scores. If\n          \
+  \              it is given as A, and method is 'ppois', output file\n          \
+  \              will be A_ppois.bdg. Mutually exclusive with\n                  \
+  \      -o/--ofile.\n  -o OFILE [OFILE ...], --ofile OFILE [OFILE ...]\n        \
+  \                Output filename. Mutually exclusive with --o-prefix.\n        \
+  \                The number and the order of arguments for --ofile must\n      \
+  \                  be the same as for -m.\n"
+generated_using:
+- --help

@@ -1,0 +1,225 @@
+!Command
+command:
+- ppanggolin
+- rarefaction
+positional: []
+named:
+- !Flag
+  description: 'The pangenome .h5 file (default: None)'
+  synonyms:
+  - -p
+  - --pangenome
+  args: !SimpleFlagArg
+    name: PANGENOME
+  optional: true
+- !Flag
+  description: "beta is the strength of the smoothing using the graph\ntopology during\
+    \ partitionning. 0 will deactivate\nspatial smoothing. (default: 2.5)"
+  synonyms:
+  - -b
+  - --beta
+  args: !SimpleFlagArg
+    name: BETA
+  optional: true
+- !Flag
+  description: "Number of samplings at each sampling point (default:\n30)"
+  synonyms:
+  - --depth
+  args: !SimpleFlagArg
+    name: DEPTH
+  optional: true
+- !Flag
+  description: 'Minimum number of organisms in a sample (default: 1)'
+  synonyms:
+  - --min
+  args: !SimpleFlagArg
+    name: MIN
+  optional: true
+- !Flag
+  description: "Maximum number of organisms in a sample (if above the\nnumber of provided\
+    \ organisms, the provided organisms\nwill be the maximum) (default: 100)"
+  synonyms:
+  - --max
+  args: !SimpleFlagArg
+    name: MAX
+  optional: true
+- !Flag
+  description: "max. degree of the nodes to be included in the\nsmoothing process.\
+    \ (default: 10)"
+  synonyms:
+  - -ms
+  - --max_degree_smoothing
+  args: !SimpleFlagArg
+    name: MAX_DEGREE_SMOOTHING
+  optional: true
+- !Flag
+  description: "Output directory (default:\nppanggolin_output_DATE2020-09-09_HOUR23.41.24_PID2017)"
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "use if the dispersion around the centroid vector of\neach partition\
+    \ during must be free. It will be the\nsame for all organisms by default. (default:\
+    \ False)"
+  synonyms:
+  - -fd
+  - --free_dispersion
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Size of the chunks when performing partitionning using\nchunks of\
+    \ organisms. Chunk partitionning will be used\nautomatically if the number of\
+    \ genomes is above this\nnumber. (default: 500)"
+  synonyms:
+  - -ck
+  - --chunk_size
+  args: !SimpleFlagArg
+    name: CHUNK_SIZE
+  optional: true
+- !Flag
+  description: "Number of partitions to use. Must be at least 3. By\ndefault reuse\
+    \ K if it exists else compute it.\n(default: -1)"
+  synonyms:
+  - -K
+  - --nb_of_partitions
+  args: !SimpleFlagArg
+    name: NB_OF_PARTITIONS
+  optional: true
+- !Flag
+  description: "Will recompute the number of partitions for each\nsample (between\
+    \ the values provided by --krange) (VERY\nintensive. Can take a long time.) (default:\
+    \ False)"
+  synonyms:
+  - --reestimate_K
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "KRANGE, --krange KRANGE KRANGE\nRange of K values to test when detecting\
+    \ K\nautomatically. Default between 3 and the K previously\ncomputed if there\
+    \ is one, or 20 if there are none.\n(default: [3, -1])"
+  synonyms:
+  - -Kmm
+  args: !SimpleFlagArg
+    name: KRANGE
+  optional: true
+- !Flag
+  description: 'Soft core threshold (default: 0.95)'
+  synonyms:
+  - --soft_core
+  args: !SimpleFlagArg
+    name: SOFT_CORE
+  optional: true
+- !Flag
+  description: 'seed used to generate random numbers (default: 42)'
+  synonyms:
+  - -se
+  - --seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: 'directory for storing temporary files (default: /tmp)'
+  synonyms:
+  - --tmpdir
+  args: !SimpleFlagArg
+    name: TMPDIR
+  optional: true
+- !Flag
+  description: "Indicate verbose level (0 for warning and errors only,\n1 for info,\
+    \ 2 for debug) (default: 1)"
+  synonyms:
+  - --verbose
+  args: !ChoiceFlagArg
+    choices: !!set
+      '2':
+      '0':
+      '1':
+  optional: true
+- !Flag
+  description: 'log output file (default: stdout)'
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: LOG
+  optional: true
+- !Flag
+  description: 'Number of available cpus (default: 1)'
+  synonyms:
+  - -c
+  - --cpu
+  args: !SimpleFlagArg
+    name: CPU
+  optional: true
+- !Flag
+  description: "Force writing in output directory and in pangenome\noutput file. (default:\
+    \ False)\n"
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: ppanggolin rarefaction [-h] -p PANGENOME [-b BETA] [--depth DEPTH]\n\
+  \                              [--min MIN] [--max MAX]\n                       \
+  \       [-ms MAX_DEGREE_SMOOTHING] [-o OUTPUT] [-fd]\n                         \
+  \     [-ck CHUNK_SIZE] [-K NB_OF_PARTITIONS]\n                              [--reestimate_K]\
+  \ [-Kmm KRANGE KRANGE]\n                              [--soft_core SOFT_CORE] [-se\
+  \ SEED]\n                              [--tmpdir TMPDIR] [--verbose {0,1,2}]\n \
+  \                             [--log LOG] [-c CPU] [-f]\n\nRequired arguments:\n\
+  \  One of the following arguments is required :\n\n  -p PANGENOME, --pangenome PANGENOME\n\
+  \                        The pangenome .h5 file (default: None)\n\nOptional arguments:\n\
+  \  -b BETA, --beta BETA  beta is the strength of the smoothing using the graph\n\
+  \                        topology during partitionning. 0 will deactivate\n    \
+  \                    spatial smoothing. (default: 2.5)\n  --depth DEPTH        \
+  \ Number of samplings at each sampling point (default:\n                       \
+  \ 30)\n  --min MIN             Minimum number of organisms in a sample (default:\
+  \ 1)\n  --max MAX             Maximum number of organisms in a sample (if above\
+  \ the\n                        number of provided organisms, the provided organisms\n\
+  \                        will be the maximum) (default: 100)\n  -ms MAX_DEGREE_SMOOTHING,\
+  \ --max_degree_smoothing MAX_DEGREE_SMOOTHING\n                        max. degree\
+  \ of the nodes to be included in the\n                        smoothing process.\
+  \ (default: 10)\n  -o OUTPUT, --output OUTPUT\n                        Output directory\
+  \ (default:\n                        ppanggolin_output_DATE2020-09-09_HOUR23.41.24_PID2017)\n\
+  \  -fd, --free_dispersion\n                        use if the dispersion around\
+  \ the centroid vector of\n                        each partition during must be\
+  \ free. It will be the\n                        same for all organisms by default.\
+  \ (default: False)\n  -ck CHUNK_SIZE, --chunk_size CHUNK_SIZE\n                \
+  \        Size of the chunks when performing partitionning using\n              \
+  \          chunks of organisms. Chunk partitionning will be used\n             \
+  \           automatically if the number of genomes is above this\n             \
+  \           number. (default: 500)\n  -K NB_OF_PARTITIONS, --nb_of_partitions NB_OF_PARTITIONS\n\
+  \                        Number of partitions to use. Must be at least 3. By\n \
+  \                       default reuse K if it exists else compute it.\n        \
+  \                (default: -1)\n  --reestimate_K        Will recompute the number\
+  \ of partitions for each\n                        sample (between the values provided\
+  \ by --krange) (VERY\n                        intensive. Can take a long time.)\
+  \ (default: False)\n  -Kmm KRANGE KRANGE, --krange KRANGE KRANGE\n             \
+  \           Range of K values to test when detecting K\n                       \
+  \ automatically. Default between 3 and the K previously\n                      \
+  \  computed if there is one, or 20 if there are none.\n                        (default:\
+  \ [3, -1])\n  --soft_core SOFT_CORE\n                        Soft core threshold\
+  \ (default: 0.95)\n  -se SEED, --seed SEED\n                        seed used to\
+  \ generate random numbers (default: 42)\n\nCommon arguments:\n  -h, --help     \
+  \       show this help message and exit\n  --tmpdir TMPDIR       directory for storing\
+  \ temporary files (default: /tmp)\n  --verbose {0,1,2}     Indicate verbose level\
+  \ (0 for warning and errors only,\n                        1 for info, 2 for debug)\
+  \ (default: 1)\n  --log LOG             log output file (default: stdout)\n  -c\
+  \ CPU, --cpu CPU     Number of available cpus (default: 1)\n  -f, --force      \
+  \     Force writing in output directory and in pangenome\n                     \
+  \   output file. (default: False)\n"
+generated_using:
+- --help

@@ -1,0 +1,206 @@
+!Command
+command:
+- metaxa2_ttt
+positional: []
+named:
+- !Flag
+  description: ': Metaxa taxonomy output file to process (*.taxonomy.txt)'
+  synonyms:
+  - -i
+  args: !ChoiceFlagArg
+    choices: !!set
+      file:
+  optional: true
+- !Flag
+  description: ': Base for the name of output file(s)'
+  synonyms:
+  - -o
+  args: !ChoiceFlagArg
+    choices: !!set
+      file:
+  optional: true
+- !Flag
+  description: ": Include only classifications of this type(s)\n(several can be comma-separated),\
+    \ default is all"
+  synonyms:
+  - -t
+  args: !ChoiceFlagArg
+    choices: !!set
+      mitochondrial:
+      A:
+      c:
+      all:
+      chloroplast:
+      archaea:
+      b:
+      bacteria:
+      a:
+      e:
+      eukaryota:
+      o:
+      other:
+      m:
+  optional: true
+- !Flag
+  description: ": Reliability cutoff, entries below cutoff will be classified as 'unknown',\
+    \ default = 0"
+  synonyms:
+  - -r
+  args: !ChoiceFlagArg
+    choices: !!set
+      value:
+  optional: true
+- !Flag
+  description: ": Length cutoff (in bp) of best hit, entries below cutoff will be\
+    \ classified as 'unknown', default = 50"
+  synonyms:
+  - -l
+  args: !ChoiceFlagArg
+    choices: !!set
+      value:
+  optional: true
+- !Flag
+  description: ": Identity cutoff of best hit (in percent), entries below cutoff will\
+    \ be classified as 'unknown', default = 0"
+  synonyms:
+  - -d
+  args: !ChoiceFlagArg
+    choices: !!set
+      value:
+  optional: true
+- !Flag
+  description: ': Maximum resolution level for taxonomic traversal, zero is unlimited,
+    default = 0'
+  synonyms:
+  - -m
+  args: !ChoiceFlagArg
+    choices: !!set
+      integer:
+  optional: true
+- !Flag
+  description: ': Minimum resolution level for taxonomic traversal, starting at level
+    1, default = 1'
+  synonyms:
+  - -n
+  args: !ChoiceFlagArg
+    choices: !!set
+      integer:
+  optional: true
+- !Flag
+  description: ': Investigate only the last taxonomic level (in good cases species
+    resolution), default is off (F)'
+  synonyms:
+  - -s
+  args: !ChoiceFlagArg
+    choices: !!set
+      T:
+      or:
+      F:
+  optional: true
+- !Flag
+  description: ": Set sequence entries with no blast hits to 'Unknown', default is\
+    \ on (T)"
+  synonyms:
+  - --remove_na
+  args: !ChoiceFlagArg
+    choices: !!set
+      T:
+      or:
+      F:
+  optional: true
+- !Flag
+  description: ': Summary of results output, on (T) by default'
+  synonyms:
+  - --summary
+  args: !ChoiceFlagArg
+    choices: !!set
+      T:
+      or:
+      F:
+  optional: true
+- !Flag
+  description: ': Output lists of counts for different taxa, one for each traversal
+    level, on (T) by default'
+  synonyms:
+  - --lists
+  args: !ChoiceFlagArg
+    choices: !!set
+      T:
+      or:
+      F:
+  optional: true
+- !Flag
+  description: ': Outputs the taxonomy file, but separated for the different origins,
+    off (F) by default'
+  synonyms:
+  - --separate
+  args: !ChoiceFlagArg
+    choices: !!set
+      T:
+      or:
+      F:
+  optional: true
+- !Flag
+  description: ': Outputs a list of entries designated as unknowns, with their statistics,
+    off (F) by default'
+  synonyms:
+  - --unknown
+  args: !ChoiceFlagArg
+    choices: !!set
+      T:
+      or:
+      F:
+  optional: true
+- !Flag
+  description: ': displays this help message'
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': displays the bug fixes and known bugs in this version of Metaxa'
+  synonyms:
+  - --bugs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': displays licensing information'
+  synonyms:
+  - --license
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ': displays this help message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: metaxa2_ttt -i <input file> -o <output file>\nOptions:\n-i {file}\
+  \ : Metaxa taxonomy output file to process (*.taxonomy.txt)\n-o {file} : Base for\
+  \ the name of output file(s)\n\nSequence selection options:\n-t {b, bacteria, a,\
+  \ archaea, e, eukaryota, m, mitochondrial, c, chloroplast, A, all, o, other} : Include\
+  \ only classifications of this type(s)\n             (several can be comma-separated),\
+  \ default is all\n-r {value} : Reliability cutoff, entries below cutoff will be\
+  \ classified as 'unknown', default = 0\n-l {value} : Length cutoff (in bp) of best\
+  \ hit, entries below cutoff will be classified as 'unknown', default = 50\n-d {value}\
+  \ : Identity cutoff of best hit (in percent), entries below cutoff will be classified\
+  \ as 'unknown', default = 0\n-m {integer} : Maximum resolution level for taxonomic\
+  \ traversal, zero is unlimited, default = 0\n-n {integer} : Minimum resolution level\
+  \ for taxonomic traversal, starting at level 1, default = 1\n-s {T or F} : Investigate\
+  \ only the last taxonomic level (in good cases species resolution), default is off\
+  \ (F)\n--remove_na {T or F} : Set sequence entries with no blast hits to 'Unknown',\
+  \ default is on (T)\n\nOutput options:\n--summary {T or F} : Summary of results\
+  \ output, on (T) by default\n--lists {T or F} : Output lists of counts for different\
+  \ taxa, one for each traversal level, on (T) by default\n--separate {T or F} : Outputs\
+  \ the taxonomy file, but separated for the different origins, off (F) by default\n\
+  --unknown {T or F} : Outputs a list of entries designated as unknowns, with their\
+  \ statistics, off (F) by default\n\n-h : displays this help message\n--help : displays\
+  \ this help message\n--bugs : displays the bug fixes and known bugs in this version\
+  \ of Metaxa\n--license : displays licensing information\n-----------------------------------------------------------------\n"
+generated_using:
+- --help

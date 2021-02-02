@@ -1,0 +1,261 @@
+!Command
+command:
+- mut_annotate
+positional: []
+named:
+- !Flag
+  description: '[-s SCORE_DIR] [-p PROCESSES] [-n NUM_ITERATIONS]'
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: "Write a log file (--log-level=DEBUG for debug mode,\n--log-level=INFO\
+    \ for info mode)"
+  synonyms:
+  - -ll
+  - --log-level
+  args: !SimpleFlagArg
+    name: LOG_LEVEL
+  optional: true
+- !Flag
+  description: Path to log file. (accepts "stdout")
+  synonyms:
+  - -l
+  - --log
+  args: !SimpleFlagArg
+    name: LOG
+  optional: true
+- !Flag
+  description: Flag for more verbose log output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: gene FASTA file from extract_gene_seq script
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: DNA mutations file (MAF file)
+  synonyms:
+  - -m
+  - --mutations
+  args: !SimpleFlagArg
+    name: MUTATIONS
+  optional: true
+- !Flag
+  description: BED file annotation of genes
+  synonyms:
+  - -b
+  - --bed
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: "Directory containing pre-compute score information in\nfor VEST and\
+    \ evolutionary conservation in pickle\nformat (Default: None)."
+  synonyms:
+  - -s
+  - --score-dir
+  args: !SimpleFlagArg
+    name: SCORE_DIR
+  optional: true
+- !Flag
+  description: "Number of processes to use. 0 indicates using a single\nprocess without\
+    \ using a multiprocessing pool (more\nmeans Faster, default: 0)."
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: "Number of iterations for null model simulations. If\nzero is specified\
+    \ then output represents a result from\nactually observed mutations (provided\
+    \ by -m\nparameter), otherwise results will be from simulated\nmutations. (Default:\
+    \ 0)."
+  synonyms:
+  - -n
+  - --num-iterations
+  args: !SimpleFlagArg
+    name: NUM_ITERATIONS
+  optional: true
+- !Flag
+  description: "Number of DNA bases to use as context. 0 indicates no\ncontext. 1\
+    \ indicates only use the mutated base. 1.5\nindicates using the base context used\
+    \ in CHASM (http:/\n/wiki.chasmsoftware.org/index.php/CHASM_Overview). 2\nindicates\
+    \ using the mutated base and the upstream\nbase. 3 indicates using the mutated\
+    \ base and both the\nupstream and downstream bases. (Default: 1.5)"
+  synonyms:
+  - -c
+  - --context
+  args: !SimpleFlagArg
+    name: CONTEXT
+  optional: true
+- !Flag
+  description: "Flag for saving results as summarized features used\n(Default: True)."
+  synonyms:
+  - --summary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Flag for saving results in MAF format (Default:\nFalse)."
+  synonyms:
+  - --maf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use mutations that are not mapped to the the single\nreference transcript\
+    \ for a gene specified in the bed\nfile indicated by the -b option."
+  synonyms:
+  - -u
+  - --use-unmapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Path to the genome fasta file. Required if --use-\nunmapped flag is\
+    \ used. (Default: None)"
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: "Minimum number of mutations at a position for it to be\nconsidered\
+    \ a recurrently mutated position (Default:\n3)."
+  synonyms:
+  - -r
+  - --recurrent
+  args: !SimpleFlagArg
+    name: RECURRENT
+  optional: true
+- !Flag
+  description: "Fraction of total mutations in a gene. This define the\nminimumm number\
+    \ of mutations for a position to be\ndefined as recurrently mutated (Default:\
+    \ .02)."
+  synonyms:
+  - -f
+  - --fraction
+  args: !SimpleFlagArg
+    name: FRACTION
+  optional: true
+- !Flag
+  description: "Only keep unique mutations for each tumor\nsample.Mutations reproted\
+    \ from heterogeneous sources\nmay contain duplicates, e.g. a tumor sample was\n\
+    sequenced twice."
+  synonyms:
+  - --unique
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Drop silent mutations in simulations. Useful if\nprovided mutations\
+    \ don't include silent mutations"
+  synonyms:
+  - --drop-silent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Important option for gene panels. Restrict simulated\nindels to only\
+    \ occur within the same set of genes as\nprovied in the mutation file."
+  synonyms:
+  - --restrict-genes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the seed for the pseudo random number\ngenerator. By default,\
+    \ the seed is randomly chosen\nbased. The seed will be used for the monte carlo\n\
+    simulations (Default: 101)."
+  synonyms:
+  - -seed
+  - --seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: "Output text file of results\n"
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: mut_annotate [-h] [-ll LOG_LEVEL] [-l LOG] [-v] -i INPUT -m MUTATIONS\n\
+  \                    -b BED [-s SCORE_DIR] [-p PROCESSES] [-n NUM_ITERATIONS]\n\
+  \                    [-c CONTEXT] (--summary | --maf) [-u] [-g GENOME]\n       \
+  \             [-r RECURRENT] [-f FRACTION] [--unique] [--drop-silent]\n        \
+  \            [--restrict-genes] [-seed SEED] -o OUTPUT\n\nEither simulates or summarizes\
+  \ observed mutation data.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -ll LOG_LEVEL, --log-level LOG_LEVEL\n              \
+  \          Write a log file (--log-level=DEBUG for debug mode,\n               \
+  \         --log-level=INFO for info mode)\n  -l LOG, --log LOG     Path to log file.\
+  \ (accepts \"stdout\")\n  -v, --verbose         Flag for more verbose log output\n\
+  \  -i INPUT, --input INPUT\n                        gene FASTA file from extract_gene_seq\
+  \ script\n  -m MUTATIONS, --mutations MUTATIONS\n                        DNA mutations\
+  \ file (MAF file)\n  -b BED, --bed BED     BED file annotation of genes\n  -s SCORE_DIR,\
+  \ --score-dir SCORE_DIR\n                        Directory containing pre-compute\
+  \ score information in\n                        for VEST and evolutionary conservation\
+  \ in pickle\n                        format (Default: None).\n  -p PROCESSES, --processes\
+  \ PROCESSES\n                        Number of processes to use. 0 indicates using\
+  \ a single\n                        process without using a multiprocessing pool\
+  \ (more\n                        means Faster, default: 0).\n  -n NUM_ITERATIONS,\
+  \ --num-iterations NUM_ITERATIONS\n                        Number of iterations\
+  \ for null model simulations. If\n                        zero is specified then\
+  \ output represents a result from\n                        actually observed mutations\
+  \ (provided by -m\n                        parameter), otherwise results will be\
+  \ from simulated\n                        mutations. (Default: 0).\n  -c CONTEXT,\
+  \ --context CONTEXT\n                        Number of DNA bases to use as context.\
+  \ 0 indicates no\n                        context. 1 indicates only use the mutated\
+  \ base. 1.5\n                        indicates using the base context used in CHASM\
+  \ (http:/\n                        /wiki.chasmsoftware.org/index.php/CHASM_Overview).\
+  \ 2\n                        indicates using the mutated base and the upstream\n\
+  \                        base. 3 indicates using the mutated base and both the\n\
+  \                        upstream and downstream bases. (Default: 1.5)\n  --summary\
+  \             Flag for saving results as summarized features used\n            \
+  \            (Default: True).\n  --maf                 Flag for saving results in\
+  \ MAF format (Default:\n                        False).\n  -u, --use-unmapped  \
+  \  Use mutations that are not mapped to the the single\n                       \
+  \ reference transcript for a gene specified in the bed\n                       \
+  \ file indicated by the -b option.\n  -g GENOME, --genome GENOME\n             \
+  \           Path to the genome fasta file. Required if --use-\n                \
+  \        unmapped flag is used. (Default: None)\n  -r RECURRENT, --recurrent RECURRENT\n\
+  \                        Minimum number of mutations at a position for it to be\n\
+  \                        considered a recurrently mutated position (Default:\n \
+  \                       3).\n  -f FRACTION, --fraction FRACTION\n              \
+  \          Fraction of total mutations in a gene. This define the\n            \
+  \            minimumm number of mutations for a position to be\n               \
+  \         defined as recurrently mutated (Default: .02).\n  --unique           \
+  \   Only keep unique mutations for each tumor\n                        sample.Mutations\
+  \ reproted from heterogeneous sources\n                        may contain duplicates,\
+  \ e.g. a tumor sample was\n                        sequenced twice.\n  --drop-silent\
+  \         Drop silent mutations in simulations. Useful if\n                    \
+  \    provided mutations don't include silent mutations\n  --restrict-genes     \
+  \ Important option for gene panels. Restrict simulated\n                       \
+  \ indels to only occur within the same set of genes as\n                       \
+  \ provied in the mutation file.\n  -seed SEED, --seed SEED\n                   \
+  \     Specify the seed for the pseudo random number\n                        generator.\
+  \ By default, the seed is randomly chosen\n                        based. The seed\
+  \ will be used for the monte carlo\n                        simulations (Default:\
+  \ 101).\n  -o OUTPUT, --output OUTPUT\n                        Output text file\
+  \ of results\n"
+generated_using:
+- --help

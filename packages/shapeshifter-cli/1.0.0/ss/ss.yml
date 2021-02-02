@@ -1,0 +1,127 @@
+!Command
+command:
+- ss
+positional:
+- !Positional
+  description: Data file to be imported, filtered, and/or transformed
+  position: 0
+  name: input_file
+  optional: false
+- !Positional
+  description: File path to which results are exported
+  position: 1
+  name: output_file
+  optional: false
+named:
+- !Flag
+  description: "Type of file to be imported. If not specified, file\ntype will be\
+    \ determined by the file extension given.\nAvailable choices are: CSV, TSV, JSON,\
+    \ Excel, HDF5,\nParquet, MsgPack, Stata, Pickle, SQLite, ARFF, GCT,\nKallisto,\
+    \ GEO, Salmon"
+  synonyms:
+  - -i
+  - --input_file_type
+  args: !SimpleFlagArg
+    name: File_Type
+  optional: true
+- !Flag
+  description: "Type of file to which results are exported. If not\nspecified, file\
+    \ type will be determined by the file\nextension given. Available choices are:\
+    \ CSV, TSV,\nJSON, Excel, HDF5, Parquet, MsgPack, Stata, Pickle,\nSQLite, ARFF,\
+    \ GCT, RMarkdown, JupyterNotebook"
+  synonyms:
+  - -o
+  - --output_file_type
+  args: !SimpleFlagArg
+    name: File_Type
+  optional: true
+- !Flag
+  description: Transpose index and columns in the output file
+  synonyms:
+  - -t
+  - --transpose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "\"FILTER\", --filter \"FILTER\"\nFilter data using python logical\
+    \ syntax. Your filter\nmust be surrounded by quotes. For example: -f\n\"ColumnName1\
+    \ > 12.5 and (ColumnName2 == 'x' or\nColumnName2 =='y')\""
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "List of additional column names to include in the\noutput file. Column\
+    \ names must be seperated by commas\nand without spaces. For example: -c\nColumnName1,ColumnName2,ColumnName3"
+  synonyms:
+  - -c
+  - --columns
+  args: !SimpleFlagArg
+    name: COLUMNS
+  optional: true
+- !Flag
+  description: "Includes all columns in the output file. Overrides the\n\"--columns\"\
+    \ flag"
+  synonyms:
+  - -a
+  - --all_columns
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Gzips the output file
+  synonyms:
+  - -g
+  - --gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Sets the given column to become the index column,\nwhere appropriate.\n"
+  synonyms:
+  - -s
+  - --set_index
+  args: !SimpleFlagArg
+    name: SET_INDEX
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: ss [-h] [-i File_Type] [-o File_Type] [-t] [-f \"FILTER\"] [-c\
+  \ COLUMNS]\n          [-a] [-g] [-s SET_INDEX]\n          input_file output_file\n\
+  \nImport, filter, and transform data into a format of your choice!\n\npositional\
+  \ arguments:\n  input_file            Data file to be imported, filtered, and/or\
+  \ transformed\n  output_file           File path to which results are exported\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -i File_Type, --input_file_type File_Type\n                        Type of file\
+  \ to be imported. If not specified, file\n                        type will be determined\
+  \ by the file extension given.\n                        Available choices are: CSV,\
+  \ TSV, JSON, Excel, HDF5,\n                        Parquet, MsgPack, Stata, Pickle,\
+  \ SQLite, ARFF, GCT,\n                        Kallisto, GEO, Salmon\n  -o File_Type,\
+  \ --output_file_type File_Type\n                        Type of file to which results\
+  \ are exported. If not\n                        specified, file type will be determined\
+  \ by the file\n                        extension given. Available choices are: CSV,\
+  \ TSV,\n                        JSON, Excel, HDF5, Parquet, MsgPack, Stata, Pickle,\n\
+  \                        SQLite, ARFF, GCT, RMarkdown, JupyterNotebook\n  -t, --transpose\
+  \       Transpose index and columns in the output file\n  -f \"FILTER\", --filter\
+  \ \"FILTER\"\n                        Filter data using python logical syntax. Your\
+  \ filter\n                        must be surrounded by quotes. For example: -f\n\
+  \                        \"ColumnName1 > 12.5 and (ColumnName2 == 'x' or\n     \
+  \                   ColumnName2 =='y')\"\n  -c COLUMNS, --columns COLUMNS\n    \
+  \                    List of additional column names to include in the\n       \
+  \                 output file. Column names must be seperated by commas\n      \
+  \                  and without spaces. For example: -c\n                       \
+  \ ColumnName1,ColumnName2,ColumnName3\n  -a, --all_columns     Includes all columns\
+  \ in the output file. Overrides the\n                        \"--columns\" flag\n\
+  \  -g, --gzip            Gzips the output file\n  -s SET_INDEX, --set_index SET_INDEX\n\
+  \                        Sets the given column to become the index column,\n   \
+  \                     where appropriate.\n"
+generated_using:
+- --help

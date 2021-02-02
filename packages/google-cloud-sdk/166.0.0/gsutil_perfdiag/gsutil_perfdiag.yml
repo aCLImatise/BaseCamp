@@ -1,0 +1,216 @@
+!Command
+command:
+- gsutil
+- perfdiag
+positional: []
+named:
+- !Flag
+  description: "Sets the number of objects to use when downloading and uploading\n\
+    files during tests. Defaults to 5."
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Sets the number of processes to use while running throughput\nexperiments.\
+    \ The default value is 1."
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Sets the number of threads per process to use while running\nthroughput\
+    \ experiments. Each process will receive an equal number\nof threads. The default\
+    \ value is 1.\nNote: All specified threads and processes will be created, but\
+    \ may\nnot by saturated with work if too few objects (specified with -n)\nand\
+    \ too few components (specified with -y) are specified."
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Sets the type of parallelism to be used (only applicable when\nthreads\
+    \ or processes are specified and threads * processes > 1).\nThe default is to\
+    \ use fan. Must be one of the following:\nfan\nUse one thread per object. This\
+    \ is akin to using gsutil -m cp,\nwith sliced object download / parallel composite\
+    \ upload\ndisabled.\nslice\nUse Y (specified with -y) threads for each object,\
+    \ transferring\none object at a time. This is akin to using parallel object\n\
+    download / parallel composite upload, without -m. Sliced\nuploads not supported\
+    \ for s3.\nboth\nUse Y (specified with -y) threads for each object, transferring\n\
+    multiple objects at a time. This is akin to simultaneously\nusing sliced object\
+    \ download / parallel composite upload and\ngsutil -m cp. Sliced uploads not supported\
+    \ for s3."
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Sets the number of slices to divide each file/object into while\n\
+    transferring data. Only applicable with the slice (or both)\nparallelism type.\
+    \ The default is 4 slices."
+  synonyms:
+  - -y
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Sets the size (in bytes) for each of the N (set with -n) objects\n\
+    used in the read and write throughput tests. The default is 1 MiB.\nThis can also\
+    \ be specified using byte suffixes such as 500K or 1M.\nNote: these values are\
+    \ interpreted as multiples of 1024 (K=1024,\nM=1024*1024, etc.)\nNote: If rthru_file\
+    \ or wthru_file are performed, N (set with -n)\ntimes as much disk space as specified\
+    \ will be required for the\noperation."
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Sets the directory to store temporary local files in. If not\nspecified,\
+    \ a default temporary directory will be used."
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Sets the list of diagnostic tests to perform. The default is to\n\
+    run the lat, rthru, and wthru diagnostic tests. Must be a\ncomma-separated list\
+    \ containing one or more of the following:\nlat\nFor N (set with -n) objects,\
+    \ write the object, retrieve its\nmetadata, read the object, and finally delete\
+    \ the object.\nRecord the latency of each operation.\nlist\nWrite N (set with\
+    \ -n) objects to the bucket, record how long\nit takes for the eventually consistent\
+    \ listing call to return\nthe N objects in its result, delete the N objects, then\
+    \ record\nhow long it takes listing to stop returning the N objects.\nrthru\n\
+    Runs N (set with -n) read operations, with at most C\n(set with -c) reads outstanding\
+    \ at any given time.\nrthru_file\nThe same as rthru, but simultaneously writes\
+    \ data to the disk,\nto gauge the performance impact of the local disk on downloads.\n\
+    wthru\nRuns N (set with -n) write operations, with at most C\n(set with -c) writes\
+    \ outstanding at any given time.\nwthru_file\nThe same as wthru, but simultaneously\
+    \ reads data from the disk,\nto gauge the performance impact of the local disk\
+    \ on uploads."
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Adds metadata to the result JSON file. Multiple -m values can be\n\
+    specified. Example:\ngsutil perfdiag -m \"key1:val1\" -m \"key2:val2\" gs://bucketname\n\
+    Each metadata key will be added to the top-level \"metadata\"\ndictionary in the\
+    \ output JSON file."
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Writes the results of the diagnostic to an output file. The output\n\
+    is a JSON file containing system information and performance\ndiagnostic results.\
+    \ The file can be read and reported later using\nthe -i option."
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Reads the JSON output file created using the -o command and prints\n\
+    a formatted description of the results."
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n  perfdiag - Run performance diagnostic\n\n\nSYNOPSIS\n\n  gsutil\
+  \ perfdiag [-i in.json]\n  gsutil perfdiag [-o out.json] [-n objects] [-c processes]\n\
+  \      [-k threads] [-p parallelism type] [-y slices] [-s size] [-d directory]\n\
+  \      [-t tests] url...\n\n\n\nDESCRIPTION\n  The perfdiag command runs a suite\
+  \ of diagnostic tests for a given Google\n  Storage bucket.\n\n  The 'url' parameter\
+  \ must name an existing bucket (e.g. gs://foo) to which\n  the user has write permission.\
+  \ Several test files will be uploaded to and\n  downloaded from this bucket. All\
+  \ test files will be deleted at the completion\n  of the diagnostic if it finishes\
+  \ successfully.\n\n  gsutil performance can be impacted by many factors at the client,\
+  \ server,\n  and in-between, such as: CPU speed; available memory; the access path\
+  \ to the\n  local disk; network bandwidth; contention and error rates along the\
+  \ path\n  between gsutil and Google; operating system buffering configuration; and\n\
+  \  firewalls and other network elements. The perfdiag command is provided so\n \
+  \ that customers can run a known measurement suite when troubleshooting\n  performance\
+  \ problems.\n\n\nPROVIDING DIAGNOSTIC OUTPUT TO GOOGLE CLOUD STORAGE TEAM\n  If\
+  \ the Google Cloud Storage Team asks you to run a performance diagnostic\n  please\
+  \ use the following command, and email the output file (output.json)\n  to gs-team@google.com:\n\
+  \n    gsutil perfdiag -o output.json gs://your-bucket\n\n\nOPTIONS\n  -n       \
+  \   Sets the number of objects to use when downloading and uploading\n         \
+  \     files during tests. Defaults to 5.\n\n  -c          Sets the number of processes\
+  \ to use while running throughput\n              experiments. The default value\
+  \ is 1.\n\n  -k          Sets the number of threads per process to use while running\n\
+  \              throughput experiments. Each process will receive an equal number\n\
+  \              of threads. The default value is 1.\n\n              Note: All specified\
+  \ threads and processes will be created, but may\n              not by saturated\
+  \ with work if too few objects (specified with -n)\n              and too few components\
+  \ (specified with -y) are specified.\n\n  -p          Sets the type of parallelism\
+  \ to be used (only applicable when\n              threads or processes are specified\
+  \ and threads * processes > 1).\n              The default is to use fan. Must be\
+  \ one of the following:\n\n              fan\n                 Use one thread per\
+  \ object. This is akin to using gsutil -m cp,\n                 with sliced object\
+  \ download / parallel composite upload\n                 disabled.\n\n         \
+  \     slice\n                 Use Y (specified with -y) threads for each object,\
+  \ transferring\n                 one object at a time. This is akin to using parallel\
+  \ object\n                 download / parallel composite upload, without -m. Sliced\n\
+  \                 uploads not supported for s3.\n\n              both\n        \
+  \         Use Y (specified with -y) threads for each object, transferring\n    \
+  \             multiple objects at a time. This is akin to simultaneously\n     \
+  \            using sliced object download / parallel composite upload and\n    \
+  \             gsutil -m cp. Sliced uploads not supported for s3.\n\n  -y       \
+  \   Sets the number of slices to divide each file/object into while\n          \
+  \    transferring data. Only applicable with the slice (or both)\n             \
+  \ parallelism type. The default is 4 slices.\n\n  -s          Sets the size (in\
+  \ bytes) for each of the N (set with -n) objects\n              used in the read\
+  \ and write throughput tests. The default is 1 MiB.\n              This can also\
+  \ be specified using byte suffixes such as 500K or 1M.\n              Note: these\
+  \ values are interpreted as multiples of 1024 (K=1024,\n              M=1024*1024,\
+  \ etc.)\n              Note: If rthru_file or wthru_file are performed, N (set with\
+  \ -n)\n              times as much disk space as specified will be required for\
+  \ the\n              operation.\n\n  -d          Sets the directory to store temporary\
+  \ local files in. If not\n              specified, a default temporary directory\
+  \ will be used.\n\n  -t          Sets the list of diagnostic tests to perform. The\
+  \ default is to\n              run the lat, rthru, and wthru diagnostic tests. Must\
+  \ be a\n              comma-separated list containing one or more of the following:\n\
+  \n              lat\n                 For N (set with -n) objects, write the object,\
+  \ retrieve its\n                 metadata, read the object, and finally delete the\
+  \ object.\n                 Record the latency of each operation.\n\n          \
+  \    list\n                 Write N (set with -n) objects to the bucket, record\
+  \ how long\n                 it takes for the eventually consistent listing call\
+  \ to return\n                 the N objects in its result, delete the N objects,\
+  \ then record\n                 how long it takes listing to stop returning the\
+  \ N objects.\n\n              rthru\n                 Runs N (set with -n) read\
+  \ operations, with at most C\n                 (set with -c) reads outstanding at\
+  \ any given time.\n\n              rthru_file\n                 The same as rthru,\
+  \ but simultaneously writes data to the disk,\n                 to gauge the performance\
+  \ impact of the local disk on downloads.\n\n              wthru\n              \
+  \   Runs N (set with -n) write operations, with at most C\n                 (set\
+  \ with -c) writes outstanding at any given time.\n\n              wthru_file\n \
+  \                The same as wthru, but simultaneously reads data from the disk,\n\
+  \                 to gauge the performance impact of the local disk on uploads.\n\
+  \n  -m          Adds metadata to the result JSON file. Multiple -m values can be\n\
+  \              specified. Example:\n\n                  gsutil perfdiag -m \"key1:val1\"\
+  \ -m \"key2:val2\" gs://bucketname\n\n              Each metadata key will be added\
+  \ to the top-level \"metadata\"\n              dictionary in the output JSON file.\n\
+  \n  -o          Writes the results of the diagnostic to an output file. The output\n\
+  \              is a JSON file containing system information and performance\n  \
+  \            diagnostic results. The file can be read and reported later using\n\
+  \              the -i option.\n\n  -i          Reads the JSON output file created\
+  \ using the -o command and prints\n              a formatted description of the\
+  \ results.\n\n\nMEASURING AVAILABILITY\n  The perfdiag command ignores the boto\
+  \ num_retries configuration parameter.\n  Instead, it always retries on HTTP errors\
+  \ in the 500 range and keeps track of\n  how many 500 errors were encountered during\
+  \ the test. The availability\n  measurement is reported at the end of the test.\n\
+  \n  Note that HTTP responses are only recorded when the request was made in a\n\
+  \  single process. When using multiple processes or threads, read and write\n  throughput\
+  \ measurements are performed in an external process, so the\n  availability numbers\
+  \ reported won't include the throughput measurements.\n\n\nNOTE\n  The perfdiag\
+  \ command collects system information. It collects your IP address,\n  executes\
+  \ DNS queries to Google servers and collects the results, and collects\n  network\
+  \ statistics information from the output of netstat -s. It will also\n  attempt\
+  \ to connect to your proxy server if you have one configured. None of\n  this information\
+  \ will be sent to Google unless you choose to send it.\n"
+generated_using:
+- --help

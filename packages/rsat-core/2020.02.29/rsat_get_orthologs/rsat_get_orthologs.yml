@@ -1,0 +1,255 @@
+!Command
+command:
+- rsat
+- get-orthologs
+positional:
+- !Positional
+  description: "\e[1mDESCRIPTION\e[0m"
+  position: 0
+  name: get-orthologs
+  optional: false
+- !Positional
+  description: ID of the reference (target) gene
+  position: 0
+  name: ref_id
+  optional: false
+- !Positional
+  description: Name of the reference (target) organism
+  position: 1
+  name: ref_organism
+  optional: false
+- !Positional
+  description: ID of the query gene
+  position: 2
+  name: query_id
+  optional: false
+- !Positional
+  description: Common name of the query gene
+  position: 3
+  name: query_name
+  optional: false
+- !Positional
+  description: "Common name of the gene found in the reference genome.\n\e[1mBeware:\e\
+    [0m this output field requires to load synonym tables\nfor all the organisms of\
+    \ the reference taxon, which\nincreases the running time (a few seconds per taxon)."
+  position: 4
+  name: ref_name
+  optional: false
+- !Positional
+  description: Name of the query organism
+  position: 5
+  name: query_organism
+  optional: false
+- !Positional
+  description: Percent of identity (a number between 0 and 100)
+  position: 6
+  name: ident
+  optional: false
+- !Positional
+  description: Alignment lengths (in residues)
+  position: 7
+  name: ali_len
+  optional: false
+- !Positional
+  description: Number of mismatches
+  position: 8
+  name: mismat
+  optional: false
+- !Positional
+  description: Number of gap openings
+  position: 9
+  name: gap_open
+  optional: false
+- !Positional
+  description: E-value (expected number of false positives)
+  position: 10
+  name: e_value
+  optional: false
+- !Positional
+  description: Bit score
+  position: 11
+  name: bit_sc
+  optional: false
+- !Positional
+  description: Rank
+  position: 12
+  name: rank
+  optional: false
+- !Positional
+  description: Source rank (rank of the hit for the query organism).
+  position: 13
+  name: s_rank
+  optional: false
+named:
+- !Flag
+  description: ', but at the level of the genus. At this level we'
+  synonyms:
+  - -unique_species
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -return query_id,e_value,rank
+  synonyms:
+  - -return
+  - -return
+  - -return
+  args: !SimpleFlagArg
+    name: query_id
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    get-orthologs\n\n\e[1mDESCRIPTION\e[0m\n    Return\
+  \ orthologs or paralogs for a set of gene of a given organism\n    (query organism)\
+  \ in all organisms belonging to a given taxon (reference\n    taxon).\n\n\e[1mAUTHORS\e\
+  [0m\n    Rekin's Janky <Rekins.Janky\\@vib.be>\n    Jacques van Helden <jvhelden@ulb.ac.be>\n\
+  \n\e[1mCATEGORY\e[0m\n    comparative genomics\n\n\e[1mUSAGE\e[0m\n    get-orthologs\
+  \ -org query_organism -q GENE1 -q GENE2 ... -taxon ref_taxon\n    [other options]\n\
+  \n\e[1mORTHOLOGY CRITERIA\e[0m\n    \e[1mSemantic remark:\e[0m the appropriate criteria\
+  \ for establishing \e[1morthology\e[0m or\n    \e[1mparalogy\e[0m relationship require\
+  \ to reconciliate the species tree with the\n    molecular tree. For practical reasons,\
+  \ we cannot do this for all the\n    species supported in RSAT. Pragmatically, \e\
+  [33mget-orthologs\e[0m is thus based on\n    a very rudimentary (but widely used)\
+  \ criterion to decide whether a gene\n    is or not ortholog: we run BLAST for all\
+  \ proteins of the query genome\n    against all proteins of the reference taxon,\
+  \ and maintain lists of hits\n    in subdirectories $RSAT/data/genome/[Organism_name]/blast_hits.\n\
+  \n    The program filters the matches of these tables depending on the\n    user-specified\
+  \ homology criteria and thresholds on all the fields.\n\n    Actually, this program\
+  \ allows to retrieve supposed \e[1morthologs\e[0m (options\n    \e[1m-type BBH\e\
+  [0m, and to some extent option \e[33m-type BH\e[0m), but also \e[1mparalogs\e[0m\n\
+  \    (option -type all).\n\n\e[1mINPUT FORMAT\e[0m\n    Query genes can be directly\
+  \ entered on the command line (command -q) or\n    in an input file.\n\n    The\
+  \ first word of each row of input file is considered as a query. Any\n    additional\
+  \ information on the same row is ignored.\n\n\e[1mOUTPUT FORMAT\e[0m\n    A tab-separated\
+  \ file with two (or more) columns. Each row of the output\n    file describes one\
+  \ similarity between a query gene and another gene\n    (orhtolog or paralog, depending\
+  \ on the parameters).\n\n    The first column indicates the \"hit\" gene (the one\
+  \ identified by BLAST\n    as similar to the query), the second column gives the\
+  \ reference organism\n    (the organism in which the BLAST search was performed).\
+  \ The third column\n    inciates the ID of the query gene.\n\n    Additional columns\
+  \ (percentage of identity, hit rank, e_value, ...) can\n    be specified with the\
+  \ option -return.\n\n    1. ID of the ortholog gene.\n    2. Name of the reference\
+  \ organism.\n    3. ID of the query gene.\n    4. E-value\n    5. rank query ->\
+  \ reference rank\n        Rank of this reference (target) gene among all those matching\
+  \ the\n        same query gene for this pair of organisms.\n\n    6. s_rank reference\
+  \ <- query rank\n        Reciprocal rank. Rank of this query gene among all those\
+  \ matching\n        the same reference (target) gene for this pair of organisms.\n\
+  \n\e[1mOPTIONS\e[0m\n    \e[1m-v #\e[0m\n        Level of verbosity (detail in the\
+  \ warning messages during execution)\n\n    \e[1m-h\e[0m  Display full help message\n\
+  \n    \e[1m-help\e[0m\n        Same as -h\n\n    \e[1m-i inputfile\e[0m\n      \
+  \  If no input file is specified, the standard input is used. This\n        allows\
+  \ to use the command within a pipe.\n\n    \e[1m-all\e[0m\n        Get orthologs\
+  \ for all the genes of the query organism. This option\n        is particularly\
+  \ convenient to extract phylogenetic profiles.\n\n    \e[1m-o outputfile\e[0m\n\
+  \        If no output file is specified, the standard output is used. This\n   \
+  \     allows to use the command within a pipe.\n\n    \e[1m-org query_organism\e\
+  [0m\n        Organisms to whih the query gene(s) belong.\n\n    \e[1m-q query_gene\e\
+  [0m\n        Query gene. The query can be either the gene identifier, or any\n \
+  \       supported name (synonyms, cross-references).\n\n        This option can\
+  \ be used iteratively on the same command to specify\n        multiple query genes.\n\
+  \n    \e[1m-taxon ref_taxon\e[0m\n        Reference taxon. Orthologs are returned\
+  \ for each supported organism\n        belonging to the reference taxon.\n\n   \
+  \ \e[1m-depth #\e[0m\n        Depth for exploring the taxonomic tree. When the value\
+  \ differs from\n        0, the program only returns one \"representative\" organism\
+  \ per taxon\n        of the specified depth.\n\n        This option is convenient\
+  \ to select a non-redundant set of species.\n        Note that the biological relevance\
+  \ of the result strongly depends on\n        the annotation of the taxonomy in the\
+  \ original database from whichb\n        RSAT genomes were downloaded.\n\n     \
+  \   Positive value indicate that the tree should be traversed from root\n      \
+  \  to leaves.\n\n        Negative values indicate that the tree should be traversed\
+  \ from\n        leaves to root. Beware: level 0 is the species. Level -1 this\n\
+  \        corresponds to the lowest level of the taxonomy.\n\n        Also note that\
+  \ the depth of the taxonomic annotations vary along\n        branches, so that positive\
+  \ values will give different results from\n        negative values.\n\n    \e[1m-unique_species\e\
+  [0m\n        Retain at most one organism per species. This enables to filter out\n\
+  \        the numerous strains sequences for some species of particular\n       \
+  \ interest. (e.g. Escherichia coli, Bacillus subtilis, ...).\n\n    \e[1m-unique_genus\e\
+  [0m\n        Retain at most one organism per genus. Same filter as for\n       \
+  \ -unique_species, but at the level of the genus. At this level we\n        don't\
+  \ expect to have much redundancy, but this option can be useful\n        to select\
+  \ a reasonable number of organisms, e.g. to draw\n        phylogenetic profile heatmaps.\n\
+  \n    \e[1m-type homology_type\e[0m\n        Supported homology types: BBH,BH,all.\n\
+  \n        Default: BBH\n\n        \e[33mall\e[0m Return all genes reported as similar\
+  \ in the pre-computed BLAST\n            tables of RSAT (for details on BLAST procedure\
+  \ used to build\n            these tables, type \e[33mgenome-blast -help\e[0m).\n\
+  \n            The result thus contains not only orthologs but also paralogs.\n\n\
+  \        \e[33mauto\e[0m\n            Automatically set thresholds to return the\
+  \ BBH with reasonable\n            thresholds on additional fields (percent identity,\
+  \ alignment\n            length).\n\n            This option automatically adds\
+  \ the following parameters:\n\n            Return percent of identity -return ident\n\
+  \n            Return alignment length, and set threshold to at least 50 bp\n   \
+  \         -return ali_len -lth ali_len 50\n\n            Return e-value, and set\
+  \ thresholds to 1e-05 -return e_value -uth\n            e_value 1e-05\n\n      \
+  \      Require the best-matching hit (BH criterion) -return rank -uth\n        \
+  \    rank 1\n\n            Require the best reciprocal hit (combined with previous\n\
+  \            criterion, it returns the BBH, also called RBH) -return s_rank\n  \
+  \          -uth s_rank 1\n\n    \e[1m-lth field lower_threshold\e[0m\n        Lower\
+  \ threshold value on the specified field.\n\n    \e[1m-uth field upper_threshold\e\
+  [0m\n        Upper threshold value on the specified field.\n\n        Supported\
+  \ threshold values:\n        ali_len,mismat,gap_open,q_start,q_end,s_start,s_end,e_value,bit_sc,r\n\
+  \        ank,s_rank\n\n    \e[1m-return output_fields\e[0m\n        Output field(s).\n\
+  \n        By default, the output is a two-column file indicating the ID of the\n\
+  \        gene identified as similar to the query gene, and the name of the\n   \
+  \     reference organism.\n\n        The option -return can be used to specify additional\
+  \ output fields.\n\n        Supported fields:\n\n            ref_id\n          \
+  \      ID of the reference (target) gene\n\n            ref_organism\n         \
+  \       Name of the reference (target) organism\n\n            query_id\n      \
+  \          ID of the query gene\n\n            query_name\n                Common\
+  \ name of the query gene\n\n            ref_name\n                Common name of\
+  \ the gene found in the reference genome.\n\n                \e[1mBeware:\e[0m this\
+  \ output field requires to load synonym tables\n                for all the organisms\
+  \ of the reference taxon, which\n                increases the running time (a few\
+  \ seconds per taxon).\n\n            query_organism\n                Name of the\
+  \ query organism\n\n            ident\n                Percent of identity (a number\
+  \ between 0 and 100)\n\n            ali_len\n                Alignment lengths (in\
+  \ residues)\n\n            mismat\n                Number of mismatches\n\n    \
+  \        gap_open\n                Number of gap openings\n\n            e_value\n\
+  \                E-value (expected number of false positives)\n\n            bit_sc\n\
+  \                Bit score\n\n            rank\n                Rank\n\n       \
+  \     s_rank\n                Source rank (rank of the hit for the query organism).\n\
+  \n        The option -return can be used iteratively on the same command line\n\
+  \        to specify several output fields. Another way to specify multiple\n   \
+  \     output fields is to enter them separated by commas.\n\n        Examples:\n\
+  \n            -return query_id -return e_value -return rank\n\n            -return\
+  \ query_id,e_value,rank\n\n    \e[1m-nogrep\e[0m\n        Disable the pre-filtering\
+  \ with grep. This pre-filtering accelerates\n        the selection of hits, but\
+  \ some grep versions do not support the -E\n        option. If this is the case\
+  \ on your operating system, you can still\n        obtain the correct results by\
+  \ inactivating the grep filter.\n\n    \e[1m-org_list\e[0m\n        This option\
+  \ gives the posibility to specify a set of reference\n        organisms rather than\
+  \ a taxon. Orthologs will only be searched in\n        the organisms belonging to\
+  \ the given list.\n\n        File format: each row should contain the identifier\
+  \ of one organism.\n        Lines starting with a semicolumn are ignored.\n\n  \
+  \  \e[1m-diamond\e[0m\n        Use ranks_dmnd from diamond blast computed in genome-blast.\n\
+  \n    \e[1m-rand\e[0m\n        When the option \e[33m-rand\e[0m is activated, the\
+  \ program replaces each\n        ortholog by a gene selected at random in the genome\
+  \ where this\n        ortholg was found.\n\n        This option is used (for example\
+  \ by \e[33mfootprint-scan\e[0m and\n        \e[33mfootprint-discovery\e[0m to perform\
+  \ negative controls, i.e. check the\n        rate of false positives in randomly\
+  \ selected promoters of the\n        reference taxon.\n\n    \e[1m-nowarn\e[0m\n\
+  \        Do not issue warning about organisms for which there is no BLAST\n    \
+  \    file in the data repository.\n\n        (previous option: -only_blast)\n\n\e\
+  [1mEXAMPLES\e[0m\n        get-orthologs -q lexA -org Escherichia_coli_GCF_000005845.2_ASM584v2\
+  \ -taxon Gammaproteobacteria\n\n\e[1mSEE ALSO\e[0m\n  \e[1mgenome-blast\e[0m\n \
+  \   The program \e[33mgenome-blast\e[0m is used to run BLAST for all proteins of\
+  \ a\n    query organism against all proteins of a reference organism. This\n   \
+  \ program can be used by RSAT administrators to generate the similiraty\n    tables\
+  \ that are used by \e[33mget-orthologs\e[0m.\n\n  \e[1mfootprint-discovery\e[0m\n\
+  \    The program \e[33mfootprint-discovery\e[0m is a flow chart that combines\n\
+  \    \e[33mget-orthologs\e[0m with other programs in order to discover conserved\n\
+  \    elements in promoters of orthologous genes.\n\n\e[1mWISH LIST\e[0m\n  \e[1moption\
+  \ -return hit_profiles\e[0m\n    This option returns statistics about the number\
+  \ of hits per gene rather\n    than the compete listing of matching genes in the\
+  \ reference taxon.\n\n   Output format\n    When the option \e[33mhit_stats\e[0m\
+  \ is activated, the program returns a table with\n    one row per query gene, one\
+  \ column per genome of the refence taxon, and\n    each cell indicates the number\
+  \ of hits.\n\n  \e[1moption -return hit_profile_sum\e[0m\n    Add a column to hit\
+  \ profiles, with the sum of hits.\n\n  \e[1moption -return eval_profiles\e[0m\n\
+  \    Same as -return hit_profiles, but the cells of the output matrix\n    indicate\
+  \ the E-value of the best hit from the query organism to the\n    reference genome.\n\
+  \n"
+generated_using:
+- -h

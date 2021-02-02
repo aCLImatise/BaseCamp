@@ -1,0 +1,69 @@
+!Command
+command:
+- pbsDecode
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input.bin
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: codefile
+  optional: false
+named:
+- !Flag
+  description: "Decode only the subsequence starting at position <sidx>.\nIndexing\
+    \ starts with 1."
+  synonyms:
+  - --start
+  - -s
+  args: !SimpleFlagArg
+    name: sidx
+  optional: true
+- !Flag
+  description: "Decode only the subsequence ending at position <eidx>.\nIndexing starts\
+    \ with 1."
+  synonyms:
+  - --end
+  - -e
+  args: !SimpleFlagArg
+    name: eidx
+  optional: true
+- !Flag
+  description: Do not report gaps in the PBS.
+  synonyms:
+  - --discard-gaps
+  - -G
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "Produce this help message.\n"
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nPROGRAM: pbsDecode\n\nUSAGE: pbsDecode [OPTIONS] input.bin codefile\
+  \ > output.probs\n\nDESCRIPTION: \n\n    Decode a binary encoding of a probabilistic\
+  \ biological sequence\n    (PBS).  Outputs a table with a row for each position\
+  \ in the\n    sequence and a column for each base, such that the (i,j)th value\n\
+  \    is the probability of base j at position i.  The same codefile\n    that was\
+  \ used to encode the sequence should be given.\n\n    This program performs the\
+  \ inverse function of pbsEncode.\n\nEXAMPLE:\n\n    Decode an encoded ancestral\
+  \ sequence:\n        pbsDecode anc.human-mouse.bin mammal.code > anc.human-mouse.probs\n\
+  \n    where \"anc.human-mouse.bin\" is a binary encoding of an ancestral\n    sequence\
+  \ produced by pbsEncode or prequel, and \"mammal.code\" is a\n    codefile produced\
+  \ by pbsTrain.\n\nOPTIONS:\n\n    --start, -s <sidx>\n\tDecode only the subsequence\
+  \ starting at position <sidx>.\n\tIndexing starts with 1.\n\n    --end, -e <eidx>\n\
+  \tDecode only the subsequence ending at position <eidx>.\n\tIndexing starts with\
+  \ 1.\n\n    --discard-gaps, -G\n\tDo not report gaps in the PBS.  \n\n    --help,\
+  \ -h\n\tProduce this help message.\n"
+generated_using:
+- --help

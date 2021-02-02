@@ -1,0 +1,167 @@
+!Command
+command:
+- imputation.py
+positional: []
+named:
+- !Flag
+  description: '[-noz] [-noneg]'
+  synonyms:
+  - -s
+  args: !ChoiceFlagArg
+    choices: !!set
+      median:
+      knn:
+      mean:
+      bayesian:
+  optional: true
+- !Flag
+  description: Input dataset in wide format.
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: Design file.
+  synonyms:
+  - -d
+  - --design
+  args: !SimpleFlagArg
+    name: DESIGN
+  optional: true
+- !Flag
+  description: Name of the column with unique identifiers.
+  synonyms:
+  - -id
+  - --ID
+  args: !SimpleFlagArg
+    name: UNIQID
+  optional: true
+- !Flag
+  description: Name of the column with groups.
+  synonyms:
+  - -g
+  - --group
+  args: !SimpleFlagArg
+    name: GROUP
+  optional: true
+- !Flag
+  description: Path of output file.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "Imputation strategy: KNN, mean, median, or most\nfrequent"
+  synonyms:
+  - -s
+  - --strategy
+  args: !ChoiceFlagArg
+    choices: !!set
+      median:
+      knn:
+      mean:
+      bayesian:
+  optional: true
+- !Flag
+  description: Treat 0 as missing?
+  synonyms:
+  - -noz
+  - --no_zero
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Treat negative as missing?
+  synonyms:
+  - -noneg
+  - --no_negative
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Additional values to treat as missingdata, seperated\nby commas"
+  synonyms:
+  - -ex
+  - --exclude
+  args: !SimpleFlagArg
+    name: EXCLUDE
+  optional: true
+- !Flag
+  description: "Percent cutoff for imputation of rows.If this is\nexceeded, imputation\
+    \ willbe done by mean instead of\nknn. Default: .5"
+  synonyms:
+  - -rc
+  - --row_cutoff
+  args: !SimpleFlagArg
+    name: ROWCUTOFF
+  optional: true
+- !Flag
+  description: "use mean or median to generate mu value for bayesian\nimputation"
+  synonyms:
+  - -dist
+  - --distribution
+  args: !ChoiceFlagArg
+    choices: !!set
+      Normal:
+      Poisson:
+  optional: true
+- !Flag
+  description: 'Number of nearest neighbors to search Default: 5.'
+  synonyms:
+  - -k
+  - --knn
+  args: !SimpleFlagArg
+    name: KNN
+  optional: true
+- !Flag
+  description: "Percent cutoff forimputation of columns. If this is\nexceeded, imputationwill\
+    \ be done by mean instead of\nknn. Default: .8\n"
+  synonyms:
+  - -cc
+  - --col_cutoff
+  args: !SimpleFlagArg
+    name: COLCUTOFF
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: imputation.py [-h] -i INPUT -d DESIGN -id UNIQID [-g GROUP] [-o\
+  \ OUTPUT]\n                     -s {knn,mean,median,bayesian} [-noz] [-noneg]\n\
+  \                     [-ex EXCLUDE] [-rc ROWCUTOFF] [-dist {Poisson,Normal}]\n \
+  \                    [-k KNN] [-cc COLCUTOFF]\n\n    The tool performs imputations\
+  \ using selected algorith\n    \n\noptional arguments:\n  -h, --help           \
+  \ show this help message and exit\n\nStandard input:\n  Standard input for SECIM\
+  \ tools.\n\n  -i INPUT, --input INPUT\n                        Input dataset in\
+  \ wide format.\n  -d DESIGN, --design DESIGN\n                        Design file.\n\
+  \  -id UNIQID, --ID UNIQID\n                        Name of the column with unique\
+  \ identifiers.\n  -g GROUP, --group GROUP\n                        Name of the column\
+  \ with groups.\n\nRequired output:\n  -o OUTPUT, --output OUTPUT\n             \
+  \           Path of output file.\n\nTool input:\n  Tool specific input.\n\n  -s\
+  \ {knn,mean,median,bayesian}, --strategy {knn,mean,median,bayesian}\n          \
+  \              Imputation strategy: KNN, mean, median, or most\n               \
+  \         frequent\n  -noz, --no_zero       Treat 0 as missing?\n  -noneg, --no_negative\n\
+  \                        Treat negative as missing?\n  -ex EXCLUDE, --exclude EXCLUDE\n\
+  \                        Additional values to treat as missingdata, seperated\n\
+  \                        by commas\n  -rc ROWCUTOFF, --row_cutoff ROWCUTOFF\n  \
+  \                      Percent cutoff for imputation of rows.If this is\n      \
+  \                  exceeded, imputation willbe done by mean instead of\n       \
+  \                 knn. Default: .5\n  -dist {Poisson,Normal}, --distribution {Poisson,Normal}\n\
+  \                        use mean or median to generate mu value for bayesian\n\
+  \                        imputation\n\nKNN input:\n  -k KNN, --knn KNN     Number\
+  \ of nearest neighbors to search Default: 5.\n  -cc COLCUTOFF, --col_cutoff COLCUTOFF\n\
+  \                        Percent cutoff forimputation of columns. If this is\n \
+  \                       exceeded, imputationwill be done by mean instead of\n  \
+  \                      knn. Default: .8\n"
+generated_using:
+- --help

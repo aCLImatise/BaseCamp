@@ -1,0 +1,181 @@
+!Command
+command:
+- fastqSimulate
+positional: []
+named:
+- !Flag
+  description: Use sequences in ref.fasta as the genome.
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: ref.fasta
+  optional: true
+- !Flag
+  description: Create outputs name.1.fastq and name.2.fastq (and maybe others).
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: Create reads of length 'len' bases.
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: len
+  optional: true
+- !Flag
+  description: Create 'n' reads (for -se) or 'n' pairs of reads (for -pe and -mp).
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Set 'np' to create reads that sample the genome to 'read-cov' read
+    coverage.
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: read-cov
+  optional: true
+- !Flag
+  description: Set 'np' to create reads that sample the genome to 'clone-cov' clone
+    coverage.
+  synonyms:
+  - -X
+  args: !SimpleFlagArg
+    name: clone-cov
+  optional: true
+- !Flag
+  description: Reads will contain fraction mismatch  error 'e' (0.01 == 1% error).
+  synonyms:
+  - -em
+  args: !SimpleFlagArg
+    name: err
+  optional: true
+- !Flag
+  description: Reads will contain fraction insertion error 'e' (0.01 == 1% error).
+  synonyms:
+  - -ei
+  args: !SimpleFlagArg
+    name: err
+  optional: true
+- !Flag
+  description: Reads will contain fraction deletion  error 'e' (0.01 == 1% error).
+  synonyms:
+  - -ed
+  args: !SimpleFlagArg
+    name: err
+  optional: true
+- !Flag
+  description: "Allow pairs to span N regions in the reference.  By default, pairs\n\
+    are not allowed to span a gap.  Reads are never allowed to cover N's."
+  synonyms:
+  - -allowgaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow reads to contain N regions.  Implies -allowgaps
+  synonyms:
+  - -allowns
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "For -mp, do not create chimeric junction reads.  Create only fully\
+    \ PE or\nfully MP reads."
+  synonyms:
+  - -nojunction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output a normal-oriented (both forward or both reverse) pair with\n\
+    probability p.  Only for -pe and -mp."
+  synonyms:
+  - -normal
+  args: !SimpleFlagArg
+    name: p
+  optional: true
+- !Flag
+  description: Create single-end reads.
+  synonyms:
+  - -se
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "junkStdDev false\nCreate chimeric single-end reads.  The chimer is\
+    \ formed from two uniformly\ndistributed positions in the reference.  Some amount\
+    \ of random junk is inserted\nat the junction.  With probability 'false' the read\
+    \ is not chimeric, but still\nthe junk bases inserted in the middle."
+  synonyms:
+  - -cc
+  args: !SimpleFlagArg
+    name: junkSize
+  optional: true
+- !Flag
+  description: "shearStdDev\nCreate paired-end reads, from fragments of size 'shearSize\
+    \ +- shearStdDev'."
+  synonyms:
+  - -pe
+  args: !SimpleFlagArg
+    name: shearSize
+  optional: true
+- !Flag
+  description: "insertStdDev shearSize shearStdDev enrichment\nCreate mate-pair reads.\
+    \  The pairs will be 'insertSize +- insertStdDev'\napart.  The circularized insert\
+    \ is then sheared into fragments of size\n'shearSize +- shearStdDev'.  With probability\
+    \ 'enrichment' the fragment\ncontaining the junction is used to form the pair\
+    \ of reads.  The junction\nlocation is uniformly distributed through this fragment.\n\
+    Reads are labeled as:\ntMP - a MP pair\nfMP - a PE pair\naMP - a MP pair with\
+    \ junction in the first read\nbMP - a MP pair with junction in the second read\n\
+    cMP - a MP pair with junction in both reads (the reads overlap)"
+  synonyms:
+  - -mp
+  args: !SimpleFlagArg
+    name: insertSize
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Unknown arg '--help'\nusage: fastqSimulate -f reference.fasta -o output-prefix\
+  \ -l read-length ....\n  -f ref.fasta    Use sequences in ref.fasta as the genome.\n\
+  \  -o name         Create outputs name.1.fastq and name.2.fastq (and maybe others).\n\
+  \  -l len          Create reads of length 'len' bases.\n  -n n            Create\
+  \ 'n' reads (for -se) or 'n' pairs of reads (for -pe and -mp).\n  -x read-cov  \
+  \   Set 'np' to create reads that sample the genome to 'read-cov' read coverage.\n\
+  \  -X clone-cov    Set 'np' to create reads that sample the genome to 'clone-cov'\
+  \ clone coverage.\n\n  -em err         Reads will contain fraction mismatch  error\
+  \ 'e' (0.01 == 1% error).\n  -ei err         Reads will contain fraction insertion\
+  \ error 'e' (0.01 == 1% error).\n  -ed err         Reads will contain fraction deletion\
+  \  error 'e' (0.01 == 1% error).\n\n  -allowgaps      Allow pairs to span N regions\
+  \ in the reference.  By default, pairs\n                  are not allowed to span\
+  \ a gap.  Reads are never allowed to cover N's.\n\n  -allowns        Allow reads\
+  \ to contain N regions.  Implies -allowgaps\n\n  -nojunction     For -mp, do not\
+  \ create chimeric junction reads.  Create only fully PE or\n                  fully\
+  \ MP reads.\n\n  -normal p       Output a normal-oriented (both forward or both\
+  \ reverse) pair with\n                  probability p.  Only for -pe and -mp.\n\n\
+  \  -se\n                  Create single-end reads.\n\n  -cc junkSize junkStdDev\
+  \ false\n                  Create chimeric single-end reads.  The chimer is formed\
+  \ from two uniformly\n                  distributed positions in the reference.\
+  \  Some amount of random junk is inserted\n                  at the junction.  With\
+  \ probability 'false' the read is not chimeric, but still\n                  the\
+  \ junk bases inserted in the middle.\n\n  -pe shearSize shearStdDev\n          \
+  \        Create paired-end reads, from fragments of size 'shearSize +- shearStdDev'.\n\
+  \n  -mp insertSize insertStdDev shearSize shearStdDev enrichment\n             \
+  \     Create mate-pair reads.  The pairs will be 'insertSize +- insertStdDev'\n\
+  \                  apart.  The circularized insert is then sheared into fragments\
+  \ of size\n                  'shearSize +- shearStdDev'.  With probability 'enrichment'\
+  \ the fragment\n                  containing the junction is used to form the pair\
+  \ of reads.  The junction\n                  location is uniformly distributed through\
+  \ this fragment.\n                  Reads are labeled as:\n                    tMP\
+  \ - a MP pair\n                    fMP - a PE pair\n                    aMP - a\
+  \ MP pair with junction in the first read\n                    bMP - a MP pair with\
+  \ junction in the second read\n                    cMP - a MP pair with junction\
+  \ in both reads (the reads overlap)\n\nOutput QV's are the Sanger spec.\n\nERROR:\
+  \  No fasta file (-f) supplied.\nERROR:  No output prefix (-o) supplied.\nERROR:\
+  \  No type (-se or -pe or -mp) selected.\n"
+generated_using:
+- --help

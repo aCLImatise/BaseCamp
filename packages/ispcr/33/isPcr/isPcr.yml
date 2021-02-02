@@ -1,0 +1,142 @@
+!Command
+command:
+- isPcr
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: database
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: query
+  optional: false
+named:
+- !Flag
+  description: "Use overused tile file N.ooc.  N should correspond to\nthe tileSize"
+  synonyms:
+  - -ooc
+  args: !SimpleFlagArg
+    name: N.ooc
+  optional: true
+- !Flag
+  description: "the size of match that triggers an alignment.\nDefault is 11 ."
+  synonyms:
+  - -tileSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: spacing between tiles. Default is 5.
+  synonyms:
+  - -stepSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: '- Maximum size of PCR product (default 4000)'
+  synonyms:
+  - -maxSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: '- Minimum size of PCR product (default 0)'
+  synonyms:
+  - -minSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "- Minimum size of perfect match at 3' end of primer (default 15)"
+  synonyms:
+  - -minPerfect
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: '- Minimum size where there must be 2 matches for each mismatch (default
+    15)'
+  synonyms:
+  - -minGood
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Mask out repeats.  Alignments won't be started in masked region\n\
+    but may extend through it in nucleotide searches.  Masked areas\nare ignored entirely\
+    \ in protein or translated searches. Types are\nlower - mask out lower cased sequence\n\
+    upper - mask out upper cased sequence\nout   - mask according to database.out\
+    \ RepeatMasker .out file\nfile.out - mask database according to RepeatMasker file.out"
+  synonyms:
+  - -mask
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: Make overused tile file. Database needs to be complete genome.
+  synonyms:
+  - -makeOoc
+  args: !SimpleFlagArg
+    name: N.ooc
+  optional: true
+- !Flag
+  description: "sets the number of repetitions of a tile allowed before\nit is marked\
+    \ as overused.  Typically this is 256 for tileSize\n12, 1024 for tile size 11,\
+    \ 4096 for tile size 10.\nDefault is 1024.  Only comes into play with makeOoc"
+  synonyms:
+  - -repMatch
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: complement reverse (second) primer before using
+  synonyms:
+  - -flipReverse
+  args: !SimpleFlagArg
+    name: Reverse
+  optional: true
+- !Flag
+  description: "- Output format.  Either\nfa - fasta with position, primers in header\
+    \ (default)\nbed - tab delimited format. Fields: chrom/start/end/name/score/strand\n\
+    psl - blat format.\n"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: XXX
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "isPcr - Standalone v 33x2 In-Situ PCR Program\nusage:\n   isPcr database\
+  \ query output\nwhere database is a fasta, nib, or twoBit file or a text file containing\n\
+  a list of these files,  query is a text file file containing three columns: name,\n\
+  forward primer, and reverse primer,  and output is where the results go.\nThe names\
+  \ 'stdin' and 'stdout' can be used as file names to make using the\nprogram in pipes\
+  \ easier.\noptions:\n   -ooc=N.ooc  Use overused tile file N.ooc.  N should correspond\
+  \ to \n               the tileSize\n   -tileSize=N the size of match that triggers\
+  \ an alignment.  \n               Default is 11 .\n   -stepSize=N spacing between\
+  \ tiles. Default is 5.\n   -maxSize=N - Maximum size of PCR product (default 4000)\n\
+  \   -minSize=N - Minimum size of PCR product (default 0)\n   -minPerfect=N - Minimum\
+  \ size of perfect match at 3' end of primer (default 15)\n   -minGood=N - Minimum\
+  \ size where there must be 2 matches for each mismatch (default 15)\n   -mask=type\
+  \  Mask out repeats.  Alignments won't be started in masked region\n           \
+  \    but may extend through it in nucleotide searches.  Masked areas\n         \
+  \      are ignored entirely in protein or translated searches. Types are\n     \
+  \            lower - mask out lower cased sequence\n                 upper - mask\
+  \ out upper cased sequence\n                 out   - mask according to database.out\
+  \ RepeatMasker .out file\n                 file.out - mask database according to\
+  \ RepeatMasker file.out\n   -makeOoc=N.ooc Make overused tile file. Database needs\
+  \ to be complete genome.\n   -repMatch=N sets the number of repetitions of a tile\
+  \ allowed before\n               it is marked as overused.  Typically this is 256\
+  \ for tileSize\n               12, 1024 for tile size 11, 4096 for tile size 10.\n\
+  \               Default is 1024.  Only comes into play with makeOoc\n   -flipReverse\
+  \ Reverse complement reverse (second) primer before using\n   -out=XXX - Output\
+  \ format.  Either\n      fa - fasta with position, primers in header (default)\n\
+  \      bed - tab delimited format. Fields: chrom/start/end/name/score/strand\n \
+  \     psl - blat format.\n\n"
+generated_using: []

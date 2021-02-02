@@ -1,0 +1,195 @@
+&id001 !Command
+command:
+- deBGA
+positional: []
+named:
+- !Flag
+  description: the minimum length of a valid Uni-MEM seed [21-28]
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: the number of iterations of re-seeding [4]
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: the minimum interval of seeding [5]
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: the maximum allowed number of hits per seed [300]
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: the threshold on the edit distance for early stop [0.05]
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: the adjusted threshold on the edit distance for early stop [0.00]
+  synonyms:
+  - --cl
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: the local alignment option for confident alignment
+  synonyms:
+  - --local
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the score for a matched base in the local alignment [1]
+  synonyms:
+  - --local-match
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: the penalty for a mismatched base in the local alignment [4]
+  synonyms:
+  - --local-mismatch
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: the penalty for a gap open in the local alignment [6]
+  synonyms:
+  - --local-gap-open
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: the penalty for gap extension in the local alignment [1]
+  synonyms:
+  - --local-gap-extension
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: '(default: not set) output alignments by stdout'
+  synonyms:
+  - --stdout
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the upper limit of insert size (only for pair-end reads) [700]
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: the lower limit of insert size (only for pair-end reads) [300]
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: the maximum number of alignment output [20]
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: the maximum number of alignment output for anchoring alignment [150]
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: the maximum allowed read length [512]
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: the budget for single-end alignment [100]
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: the number of threads [1]
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+parent:
+subcommands:
+- !Command
+  command:
+  - deBGA
+  - index
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: reference.fasta
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: index_route
+    optional: false
+  named: []
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nProgram: de Brijn Graph-based mapping system index building\nVersion:\
+    \ 0.1\nContact: Hongzhe Guo <hzguo@hit.edu>\n\nUsage:   deBGA index [options]\
+    \ reference.fasta <index_route> \n\nOptions: -k INT      the k-mer length of the\
+    \ vertices of RdBG [20-28]\n\n"
+  generated_using: &id002
+  - --help
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nProgram:\tdeBGA (De bruijn graph nucleotide alignment)\nUsage:  \tdeBGA\
+  \ <command> [options]\n\nCommand:\tindex\t\tindex sequences in the FASTA format\n\
+  \t\taln      \tpair-end and single-end reads seed reduction and alignment based\
+  \ on De bruijn graph\n\nUsage:   deBGA index [options] reference.fasta <index_route>\
+  \ \n\nOptions: -k INT      the k-mer length of the vertices of RdBG [20-28]\n\n\
+  Usage:  \tdeBGA aln [options] <index_route> <read pair-end1.fq> [read pair-end2.fq]\
+  \ <result_file.sam>\n\nOptions:\n\t-k INT\tthe minimum length of a valid Uni-MEM\
+  \ seed [21-28]\n\t-s INT\tthe number of iterations of re-seeding [4]\n\t-i INT\t\
+  the minimum interval of seeding [5]\n\t-n INT\tthe maximum allowed number of hits\
+  \ per seed [300]\n\t-c NUM\tthe threshold on the edit distance for early stop [0.05]\n\
+  \t--cl NUM the adjusted threshold on the edit distance for early stop [0.00]\n\t\
+  --local  the local alignment option for confident alignment\n\t--local-match NUM\
+  \ the score for a matched base in the local alignment [1]\n\t--local-mismatch NUM\
+  \ the penalty for a mismatched base in the local alignment [4]\n\t--local-gap-open\
+  \ NUM the penalty for a gap open in the local alignment [6]\n\t--local-gap-extension\
+  \ NUM the penalty for gap extension in the local alignment [1]\n\t--stdout   (default:\
+  \ not set) output alignments by stdout\n\t-u INT\tthe upper limit of insert size\
+  \ (only for pair-end reads) [700] \n\t-f INT\tthe lower limit of insert size (only\
+  \ for pair-end reads) [300] \n\t-o INT\tthe maximum number of alignment output [20]\n\
+  \t-x INT\tthe maximum number of alignment output for anchoring alignment [150]\n\
+  \t-l INT\tthe maximum allowed read length [512]\n\t-e INT\tthe budget for single-end\
+  \ alignment [100]\n\t-p INT\tthe number of threads [1]\n\tPlease refer to the following\
+  \ link for more detailed information about the options: https://github.com/HIT-Bioinformatics/deBGA\n\
+  \n"
+generated_using: *id002

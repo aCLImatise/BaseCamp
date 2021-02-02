@@ -1,0 +1,206 @@
+!Command
+command:
+- csvtk
+- join
+positional: []
+named:
+- !Flag
+  description: Semicolon separated key fields of all files, if given one, we think
+    all the files have the same key columns. Fields of different files should be separated
+    by ";", e.g -f "1;2" or -f "A,B;C,D" or -f id (default "1")
+  synonyms:
+  - -f
+  - --fields
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: using fuzzy fields, e.g., -F -f "*name" or -F -f "id123*"
+  synonyms:
+  - -F
+  - --fuzzy-fields
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore case
+  synonyms:
+  - -i
+  - --ignore-case
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: keep unmatched data of the first file (left join)
+  synonyms:
+  - -k
+  - --keep-unmatched
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: left join, equals to -k/--keep-unmatched, exclusive with --outer-join
+  synonyms:
+  - -L
+  - --left-join
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: content for filling NA data
+  synonyms:
+  - --na
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: outer join, exclusive with --left-join
+  synonyms:
+  - -O
+  - --outer-join
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: chunk size of CSV reader (default 50)
+  synonyms:
+  - -c
+  - --chunk-size
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: lines starting with commment-character will be ignored. if your header
+    row starts with '#', please assign "-C" another rare symbol, e.g. '$' (default
+    "#")
+  synonyms:
+  - -C
+  - --comment-char
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: delimiting character of the input CSV file (default ",")
+  synonyms:
+  - -d
+  - --delimiter
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: ignore empty rows
+  synonyms:
+  - -E
+  - --ignore-empty-row
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore illegal rows
+  synonyms:
+  - -I
+  - --ignore-illegal-row
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  synonyms:
+  - --infile-list
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: if given, a quote may appear in an unquoted field and a non-doubled
+    quote may appear in a quoted field
+  synonyms:
+  - -l
+  - --lazy-quotes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specifies that the input CSV file does not have header row
+  synonyms:
+  - -H
+  - --no-header-row
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of CPUs to use (default value depends on your computer) (default
+    8)
+  synonyms:
+  - -j
+  - --num-cpus
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: delimiting character of the output CSV file, e.g., -D $'\t' for tab
+    (default ",")
+  synonyms:
+  - -D
+  - --out-delimiter
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  synonyms:
+  - -o
+  - --out-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: specifies that the output is delimited with tabs. Overrides "-D"
+  synonyms:
+  - -T
+  - --out-tabs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specifies that the input CSV file is delimited with tabs. Overrides
+    "-d" and "-D"
+  synonyms:
+  - -t
+  - --tabs
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for join
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "join files by selected fields (inner, left and outer join).\n\nAttention:\n\
+  \n  1. Multiple keys supported\n  2. Default operation is inner join, use --left-join\
+  \ for left join \n     and --outer-join for outer join.\n\nUsage:\n  csvtk join\
+  \ [flags]\n\nAliases:\n  join, merge\n\nFlags:\n  -f, --fields string    Semicolon\
+  \ separated key fields of all files, if given one, we think all the files have the\
+  \ same key columns. Fields of different files should be separated by \";\", e.g\
+  \ -f \"1;2\" or -f \"A,B;C,D\" or -f id (default \"1\")\n  -F, --fuzzy-fields  \
+  \   using fuzzy fields, e.g., -F -f \"*name\" or -F -f \"id123*\"\n  -h, --help\
+  \             help for join\n  -i, --ignore-case      ignore case\n  -k, --keep-unmatched\
+  \   keep unmatched data of the first file (left join)\n  -L, --left-join       \
+  \ left join, equals to -k/--keep-unmatched, exclusive with --outer-join\n      --na\
+  \ string        content for filling NA data\n  -O, --outer-join       outer join,\
+  \ exclusive with --left-join\n\nGlobal Flags:\n  -c, --chunk-size int         chunk\
+  \ size of CSV reader (default 50)\n  -C, --comment-char string    lines starting\
+  \ with commment-character will be ignored. if your header row starts with '#', please\
+  \ assign \"-C\" another rare symbol, e.g. '$' (default \"#\")\n  -d, --delimiter\
+  \ string       delimiting character of the input CSV file (default \",\")\n  -E,\
+  \ --ignore-empty-row       ignore empty rows\n  -I, --ignore-illegal-row     ignore\
+  \ illegal rows\n      --infile-list string     file of input files list (one file\
+  \ per line), if given, they are appended to files from cli arguments\n  -l, --lazy-quotes\
+  \            if given, a quote may appear in an unquoted field and a non-doubled\
+  \ quote may appear in a quoted field\n  -H, --no-header-row          specifies that\
+  \ the input CSV file does not have header row\n  -j, --num-cpus int           number\
+  \ of CPUs to use (default value depends on your computer) (default 8)\n  -D, --out-delimiter\
+  \ string   delimiting character of the output CSV file, e.g., -D $'\\t' for tab\
+  \ (default \",\")\n  -o, --out-file string        out file (\"-\" for stdout, suffix\
+  \ .gz for gzipped out) (default \"-\")\n  -T, --out-tabs               specifies\
+  \ that the output is delimited with tabs. Overrides \"-D\"\n  -t, --tabs       \
+  \            specifies that the input CSV file is delimited with tabs. Overrides\
+  \ \"-d\" and \"-D\"\n"
+generated_using:
+- --help

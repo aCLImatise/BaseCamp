@@ -1,0 +1,183 @@
+!Command
+command:
+- snap-aligner
+- index
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input.fa
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: output-dir
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: options
+  optional: true
+named:
+- !Flag
+  description: 'Seed size (default: 20)'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use pre-computed table bias for hg19, which results in better speed,
+    balance, and a smaller index, but only works for the complete human reference.
+  synonyms:
+  - -hg19
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: This parameter is deprecated and will be ignored.
+  synonyms:
+  - -Ofactor
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify the maximum number of threads to use. Default is the number
+    of cores.
+  synonyms:
+  - -tMaxThreads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<chars>         Specify characters to use as chromosome name terminators\
+    \ in the FASTA header line; these characters and anything after are\nnot part\
+    \ of the chromosome name.  You must specify all characters on a single -B switch.\
+    \  So, for example, with -B_|,\nthe FASTA header line '>chr1|Chromosome 1' would\
+    \ generate a chromosome named 'chr1'.  There's a separate flag for\nindicating\
+    \ that a space is a terminator."
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Indicates that the space character is a terminator for chromosome\
+    \ names (see -B above).  This may be used in addition\nto other terminators specified\
+    \ by -B.  -B and -bSpace are case sensitive."
+  synonyms:
+  - -bSpace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the number of Ns to put as padding between chromosomes.  This\
+    \ must be as large as the largest\nedit distance you'll ever use, and there's\
+    \ a performance advantage to have it be bigger than any\nread you'll process.\
+    \  Default is 500"
+  synonyms:
+  - -pPadding
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Build a histogram of seed popularity.  This is just for information,
+    it's not used by SNAP.
+  synonyms:
+  - -HHistogramFile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compute hash table sizes exactly.  This will slow down index build,
+    but usually will result in smaller indices.
+  synonyms:
+  - -exact
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The number of bytes to use for the hash table key.  Larger values\
+    \ increase SNAP's memory footprint, but allow larger seeds.  Default: 4"
+  synonyms:
+  - -keysize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Build a larger index that's a little faster, particualrly for runs\
+    \ with quick/inaccurate parameters.  Increases index size by\nabout 30%, depending\
+    \ on the other index parameters and the contents of the reference genome"
+  synonyms:
+  - -large
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The size of the genome locations stored in the index.  This can be\
+    \ from 4 to 8 bytes.  The locations need to be big enough\nnot only to index the\
+    \ genome, but also to allow some space for representing seeds that occur multiple\
+    \ times.  For the\nhuman genome, it will fit with four byte locations if the seed\
+    \ size is 19 or larger, but needs 5 (or more) for smaller\nseeds.  Making the\
+    \ location size bigger than necessary will just waste (lots of) space, so unless\
+    \ you're doing something\nquite unusual, the right answer is 4 or 5.  Default\
+    \ is 4"
+  synonyms:
+  - -locationSize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use a temp file to work better in smaller memory.  This only helps\
+    \ a little, but can be the difference if you're close.\nIn particular, this will\
+    \ generally use less memory than the index will use once it's built, so if this\
+    \ doesn't work you\nwon't be able to use the index anyway. However, if you've\
+    \ got sufficient memory to begin with, this option will just\nslow down the index\
+    \ build by doing extra, useless IO.\n"
+  synonyms:
+  - -sm
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: 'Hash table slack (default: 0.3)'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Welcome to SNAP version 1.0dev.97.\n\nUsage: snap-aligner index <input.fa>\
+  \ <output-dir> [<options>]\nOptions:\n  -s               Seed size (default: 20)\n\
+  \  -h               Hash table slack (default: 0.3)\n  -hg19            Use pre-computed\
+  \ table bias for hg19, which results in better speed, balance, and a smaller index,\
+  \ but only works for the complete human reference.\n  -Ofactor         This parameter\
+  \ is deprecated and will be ignored.\n -tMaxThreads      Specify the maximum number\
+  \ of threads to use. Default is the number of cores.\n -B<chars>         Specify\
+  \ characters to use as chromosome name terminators in the FASTA header line; these\
+  \ characters and anything after are\n                   not part of the chromosome\
+  \ name.  You must specify all characters on a single -B switch.  So, for example,\
+  \ with -B_|,\n                   the FASTA header line '>chr1|Chromosome 1' would\
+  \ generate a chromosome named 'chr1'.  There's a separate flag for\n           \
+  \        indicating that a space is a terminator.\n -bSpace           Indicates\
+  \ that the space character is a terminator for chromosome names (see -B above).\
+  \  This may be used in addition\n                   to other terminators specified\
+  \ by -B.  -B and -bSpace are case sensitive.\n -pPadding         Specify the number\
+  \ of Ns to put as padding between chromosomes.  This must be as large as the largest\n\
+  \                   edit distance you'll ever use, and there's a performance advantage\
+  \ to have it be bigger than any\n                   read you'll process.  Default\
+  \ is 500\n -HHistogramFile   Build a histogram of seed popularity.  This is just\
+  \ for information, it's not used by SNAP.\n -exact            Compute hash table\
+  \ sizes exactly.  This will slow down index build, but usually will result in smaller\
+  \ indices.\n -keysize          The number of bytes to use for the hash table key.\
+  \  Larger values increase SNAP's memory footprint, but allow larger seeds.  Default:\
+  \ 4\n -large            Build a larger index that's a little faster, particualrly\
+  \ for runs with quick/inaccurate parameters.  Increases index size by\n        \
+  \           about 30%, depending on the other index parameters and the contents\
+  \ of the reference genome\n -locationSize     The size of the genome locations stored\
+  \ in the index.  This can be from 4 to 8 bytes.  The locations need to be big enough\n\
+  \                   not only to index the genome, but also to allow some space for\
+  \ representing seeds that occur multiple times.  For the\n                   human\
+  \ genome, it will fit with four byte locations if the seed size is 19 or larger,\
+  \ but needs 5 (or more) for smaller\n                   seeds.  Making the location\
+  \ size bigger than necessary will just waste (lots of) space, so unless you're doing\
+  \ something\n                   quite unusual, the right answer is 4 or 5.  Default\
+  \ is 4\n -sm               Use a temp file to work better in smaller memory.  This\
+  \ only helps a little, but can be the difference if you're close.\n            \
+  \       In particular, this will generally use less memory than the index will use\
+  \ once it's built, so if this doesn't work you\n                   won't be able\
+  \ to use the index anyway. However, if you've got sufficient memory to begin with,\
+  \ this option will just\n                   slow down the index build by doing extra,\
+  \ useless IO.\n"
+generated_using:
+- --help

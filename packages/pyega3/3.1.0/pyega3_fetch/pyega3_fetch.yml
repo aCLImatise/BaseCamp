@@ -1,0 +1,119 @@
+!Command
+command:
+- pyega3
+- fetch
+positional: []
+named:
+- !Flag
+  description: "The reference sequence name, for example 'chr1', '1',\nor 'chrX'.\
+    \ If unspecified, all data is returned."
+  synonyms:
+  - --reference-name
+  - -r
+  args: !SimpleFlagArg
+    name: REFERENCE_NAME
+  optional: true
+- !Flag
+  description: "The MD5 checksum uniquely representing the requested\nreference sequence\
+    \ as a lower-case hexadecimal string,\ncalculated as the MD5 of the upper-case\
+    \ sequence\nexcluding all whitespace characters."
+  synonyms:
+  - --reference-md5
+  - -m
+  args: !SimpleFlagArg
+    name: REFERENCE_MD5
+  optional: true
+- !Flag
+  description: "The start position of the range on the reference,\n0-based, inclusive.\
+    \ If specified, reference-name or\nreference-md5 must also be specified."
+  synonyms:
+  - --start
+  - -s
+  args: !SimpleFlagArg
+    name: START
+  optional: true
+- !Flag
+  description: "The end position of the range on the reference,\n0-based exclusive.\
+    \ If specified, reference-name or\nreference-md5 must also be specified."
+  synonyms:
+  - --end
+  - -e
+  args: !SimpleFlagArg
+    name: END
+  optional: true
+- !Flag
+  description: The format of data to request.
+  synonyms:
+  - --format
+  - -f
+  args: !ChoiceFlagArg
+    choices: !!set
+      BAM:
+      CRAM:
+  optional: true
+- !Flag
+  description: "The maximum number of times to retry a failed\ntransfer. Any negative\
+    \ number means infinite number of\nretries."
+  synonyms:
+  - --max-retries
+  - -M
+  args: !SimpleFlagArg
+    name: MAX_RETRIES
+  optional: true
+- !Flag
+  description: "The number of seconds to wait before retrying a failed\ntransfer."
+  synonyms:
+  - --retry-wait
+  - -W
+  args: !SimpleFlagArg
+    name: RETRY_WAIT
+  optional: true
+- !Flag
+  description: '[SAVETO]     Output file(for files)/output dir(for datasets)'
+  synonyms:
+  - --saveto
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "pyEGA3 - EGA python client version 3.1.0 (https://github.com/EGA-archive/ega-download-client)\n\
+  Parts of this software are derived from pyEGA (https://github.com/blachlylab/pyega)\
+  \ by James Blachly\nusage: pyega3 fetch [-h] [--reference-name REFERENCE_NAME]\n\
+  \                    [--reference-md5 REFERENCE_MD5] [--start START]\n         \
+  \           [--end END] [--format {BAM,CRAM}]\n                    [--max-retries\
+  \ MAX_RETRIES] [--retry-wait RETRY_WAIT]\n                    [--saveto [SAVETO]]\n\
+  \                    identifier\n\npositional arguments:\n  identifier         \
+  \   Id for dataset (e.g. EGAD00000000001) or file (e.g.\n                      \
+  \  EGAF12345678901)\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --reference-name REFERENCE_NAME, -r REFERENCE_NAME\n     \
+  \                   The reference sequence name, for example 'chr1', '1',\n    \
+  \                    or 'chrX'. If unspecified, all data is returned.\n  --reference-md5\
+  \ REFERENCE_MD5, -m REFERENCE_MD5\n                        The MD5 checksum uniquely\
+  \ representing the requested\n                        reference sequence as a lower-case\
+  \ hexadecimal string,\n                        calculated as the MD5 of the upper-case\
+  \ sequence\n                        excluding all whitespace characters.\n  --start\
+  \ START, -s START\n                        The start position of the range on the\
+  \ reference,\n                        0-based, inclusive. If specified, reference-name\
+  \ or\n                        reference-md5 must also be specified.\n  --end END,\
+  \ -e END     The end position of the range on the reference,\n                 \
+  \       0-based exclusive. If specified, reference-name or\n                   \
+  \     reference-md5 must also be specified.\n  --format {BAM,CRAM}, -f {BAM,CRAM}\n\
+  \                        The format of data to request.\n  --max-retries MAX_RETRIES,\
+  \ -M MAX_RETRIES\n                        The maximum number of times to retry a\
+  \ failed\n                        transfer. Any negative number means infinite number\
+  \ of\n                        retries.\n  --retry-wait RETRY_WAIT, -W RETRY_WAIT\n\
+  \                        The number of seconds to wait before retrying a failed\n\
+  \                        transfer.\n  --saveto [SAVETO]     Output file(for files)/output\
+  \ dir(for datasets)\n"
+generated_using:
+- --help

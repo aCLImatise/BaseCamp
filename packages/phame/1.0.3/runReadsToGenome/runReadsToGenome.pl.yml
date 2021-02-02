@@ -1,0 +1,207 @@
+!Command
+command:
+- runReadsToGenome.pl
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: perl
+  optional: false
+named:
+- !Flag
+  description: "'leftSequenceFile rightSequenceFile'\nSpace-separated paired-end reads\
+    \ in quote"
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "sequenceFile\nProvides a file containing single-end reads."
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: long reads file in fasta format.
+  synonyms:
+  - -long
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <bool> using this flag combined with -long for Pacbio long reads (bwa
+    only)
+  synonyms:
+  - --pacbio
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reference sequences file in fasta format
+  synonyms:
+  - -ref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output files' prefix (default "ReadsMapping")
+  synonyms:
+  - -pre
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output directory
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<bool> output consensus fasta file (default: on, set 0 to turn off)'
+  synonyms:
+  - -consensus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'bwa or bowtie or snap or minimap2 (default: bwa)'
+  synonyms:
+  - -aligner
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "bwa options\ntype \"bwa mem\" to see options\ndefault: \"-t 4 \"\n\
+    -t        <int> number of threads [4]\n-I        the input is in the Illumina\
+    \ 1.3+ FASTQ-like format"
+  synonyms:
+  - -bwa_options
+  args: !SimpleFlagArg
+    name: String
+  optional: true
+- !Flag
+  description: "bowtie options\ntype \"bowtie2 -h\" to see options\ndefault: \"-p\
+    \ 4 -a \"\n-p           <int> number of alignment threads to launch [4]\n-a  \
+    \         report all alignments; very slow\n--phred64    qualities are Phred+64"
+  synonyms:
+  - -bowtie_options
+  args: !SimpleFlagArg
+    name: String
+  optional: true
+- !Flag
+  description: "snap options\ntype \"snap paired\" to see options"
+  synonyms:
+  - -snap_options
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "type \"minimap2\" to see options\ndefault: \"-t 4 \""
+  synonyms:
+  - -minimap2_options
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<bool> skip the alignment steps, assume bam files were generated\n\
+    and with proper prefix,outpurDir.  default: off"
+  synonyms:
+  - -skip_aln
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<bool> default: off'
+  synonyms:
+  - -no_plot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<bool> default: off'
+  synonyms:
+  - -no_snp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<bool> default: off'
+  synonyms:
+  - -debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of CPUs [4]. will overwrite aligner options.
+  synonyms:
+  - -cpu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number gapped reads for indel candidates [3]
+  synonyms:
+  - -min_indel_candidate_depth
+  args: !SimpleFlagArg
+    name: minimum
+  optional: true
+- !Flag
+  description: minimum number of alternate bases [3]
+  synonyms:
+  - -min_alt_bases
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: maximum read depth [1000000]
+  synonyms:
+  - -max_depth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum read depth [7]
+  synonyms:
+  - -min_depth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: SNP within INT bp around a gap to be filtered [3]
+  synonyms:
+  - -snp_gap_filter
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: perl /usr/local/bin/runReadsToGenome.pl \n               -p   \
+  \                     'leftSequenceFile rightSequenceFile' \n                  \
+  \                       Space-separated paired-end reads in quote\n            \
+  \   -u                        sequenceFile\n                                   \
+  \      Provides a file containing single-end reads.\n               -long      \
+  \               long reads file in fasta format.  \n                           \
+  \              --pacbio   <bool> using this flag combined with -long for Pacbio\
+  \ long reads (bwa only) \n               -ref                      reference sequences\
+  \ file in fasta format\n               -pre                      output files' prefix\
+  \ (default \"ReadsMapping\")\n               -d                        output directory\n\
+  \               -consensus                <bool> output consensus fasta file (default:\
+  \ on, set 0 to turn off)\n               -aligner                  bwa or bowtie\
+  \ or snap or minimap2 (default: bwa)\n               -bwa_options <String>     bwa\
+  \ options\n                                         type \"bwa mem\" to see options\n\
+  \                                         default: \"-t 4 \"\n                 \
+  \                        -t        <int> number of threads [4] \n              \
+  \                           -I        the input is in the Illumina 1.3+ FASTQ-like\
+  \ format\n               -bowtie_options <String>  bowtie options\n            \
+  \                             type \"bowtie2 -h\" to see options\n             \
+  \                            default: \"-p 4 -a \"  \n                         \
+  \                -p           <int> number of alignment threads to launch [4] \n\
+  \                                         -a           report all alignments; very\
+  \ slow\n                                         --phred64    qualities are Phred+64\n\
+  \               -snap_options             snap options\n                       \
+  \                  type \"snap paired\" to see options\n               -minimap2_options\
+  \         type \"minimap2\" to see options\n                                   \
+  \      default: \"-t 4 \"\n               -skip_aln                 <bool> skip\
+  \ the alignment steps, assume bam files were generated \n                      \
+  \                   and with proper prefix,outpurDir.  default: off\n          \
+  \     -no_plot                  <bool> default: off\n               -no_snp    \
+  \               <bool> default: off\n               -debug                    <bool>\
+  \ default: off\n               -cpu                      number of CPUs [4]. will\
+  \ overwrite aligner options. \n    \n               # Variant Filter parameters\n\
+  \               -min_indel_candidate_depth minimum number gapped reads for indel\
+  \ candidates [3]\n               -min_alt_bases            minimum number of alternate\
+  \ bases [3]\n               -max_depth                maximum read depth [1000000]\n\
+  \               -min_depth                minimum read depth [7]\n             \
+  \  -snp_gap_filter           SNP within INT bp around a gap to be filtered [3]\n\
+  \         \n\nSynopsis:\n      perl /usr/local/bin/runReadsToGenome.pl -p 'reads1.fastq\
+  \ reads2.fastq' -u sinlgeton.fastq -long pyroSeq.fasta -ref reference.fasta -pre\
+  \ ReadsMapping -d /outputPath/\n\n"
+generated_using:
+- --help

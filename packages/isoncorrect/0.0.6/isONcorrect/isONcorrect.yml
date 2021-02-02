@@ -1,0 +1,176 @@
+!Command
+command:
+- isONcorrect
+positional: []
+named:
+- !Flag
+  description: 'Path to input fastq file with reads (default: False)'
+  synonyms:
+  - --fastq
+  args: !SimpleFlagArg
+    name: FASTQ
+  optional: true
+- !Flag
+  description: 'Kmer size (default: 9)'
+  synonyms:
+  - --k
+  args: !SimpleFlagArg
+    name: K
+  optional: true
+- !Flag
+  description: 'Window size (default: 10)'
+  synonyms:
+  - --w
+  args: !SimpleFlagArg
+    name: W
+  optional: true
+- !Flag
+  description: 'Upper interval length (default: 14)'
+  synonyms:
+  - --xmin
+  args: !SimpleFlagArg
+    name: XMIN
+  optional: true
+- !Flag
+  description: 'Lower interval length (default: 80)'
+  synonyms:
+  - --xmax
+  args: !SimpleFlagArg
+    name: XMAX
+  optional: true
+- !Flag
+  description: 'Minimum fraction keeping substitution (default: 0.1)'
+  synonyms:
+  - --T
+  args: !SimpleFlagArg
+    name: T
+  optional: true
+- !Flag
+  description: "Get exact solution for WIS for evary read\n(recalculating weights\
+    \ for each read (much slower but\nslightly more accuracy, not to be used for clusters\n\
+    with over ~500 reads) (default: False)"
+  synonyms:
+  - --exact
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not require numpy to be installed, but this version\nis about 1.5x\
+    \ slower than with numpy. (default: False)"
+  synonyms:
+  - --disable_numpy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Maximum number of seqs to spoa (default: 200)'
+  synonyms:
+  - --max_seqs_to_spoa
+  args: !SimpleFlagArg
+    name: MAX_SEQS_TO_SPOA
+  optional: true
+- !Flag
+  description: "Maximum number of seqs to correct at a time (in case\nof large clusters).\
+    \ (default: 1000)"
+  synonyms:
+  - --max_seqs
+  args: !SimpleFlagArg
+    name: MAX_SEQS
+  optional: true
+- !Flag
+  description: "Use racon to polish consensus after spoa (more time\nconsuming but\
+    \ higher accuracy). (default: False)"
+  synonyms:
+  - --use_racon
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Activates slower exact mode for instance smaller than\nthis limit\
+    \ (default: 0)"
+  synonyms:
+  - --exact_instance_limit
+  args: !SimpleFlagArg
+    name: EXACT_INSTANCE_LIMIT
+  optional: true
+- !Flag
+  description: "Set w = k + max(2*k, floor(cluster_size/1000)).\n(default: False)"
+  synonyms:
+  - --set_w_dynamically
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Print various developer stats. (default: False)'
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use homopolymenr compressed reads. (Deprecated,\nbecause we will have\
+    \ fewer minmimizer combinations to\nspan regions in homopolymenr dense regions.\
+    \ Solution\ncould be to adjust upper interval legnth dynamically\nto guarantee\
+    \ a certain number of spanning intervals.\n(default: False)"
+  synonyms:
+  - --compression
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "A fasta file with transcripts that are shared between\nsamples and\
+    \ have perfect illumina support. (default:\nNone)\n"
+  synonyms:
+  - --outfolder
+  args: !SimpleFlagArg
+    name: OUTFOLDER
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: isONcorrect [-h] [--version] [--fastq FASTQ] [--k K] [--w W]\n\
+  \                   [--xmin XMIN] [--xmax XMAX] [--T T] [--exact]\n            \
+  \       [--disable_numpy] [--max_seqs_to_spoa MAX_SEQS_TO_SPOA]\n              \
+  \     [--max_seqs MAX_SEQS] [--use_racon]\n                   [--exact_instance_limit\
+  \ EXACT_INSTANCE_LIMIT]\n                   [--set_w_dynamically] [--verbose] [--compression]\n\
+  \                   [--outfolder OUTFOLDER]\n\nDe novo error correction of long-read\
+  \ transcriptome reads\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --version             show program's version number and\
+  \ exit\n  --fastq FASTQ         Path to input fastq file with reads (default: False)\n\
+  \  --k K                 Kmer size (default: 9)\n  --w W                 Window\
+  \ size (default: 10)\n  --xmin XMIN           Upper interval length (default: 14)\n\
+  \  --xmax XMAX           Lower interval length (default: 80)\n  --T T          \
+  \       Minimum fraction keeping substitution (default: 0.1)\n  --exact        \
+  \       Get exact solution for WIS for evary read\n                        (recalculating\
+  \ weights for each read (much slower but\n                        slightly more\
+  \ accuracy, not to be used for clusters\n                        with over ~500\
+  \ reads) (default: False)\n  --disable_numpy       Do not require numpy to be installed,\
+  \ but this version\n                        is about 1.5x slower than with numpy.\
+  \ (default: False)\n  --max_seqs_to_spoa MAX_SEQS_TO_SPOA\n                    \
+  \    Maximum number of seqs to spoa (default: 200)\n  --max_seqs MAX_SEQS   Maximum\
+  \ number of seqs to correct at a time (in case\n                        of large\
+  \ clusters). (default: 1000)\n  --use_racon           Use racon to polish consensus\
+  \ after spoa (more time\n                        consuming but higher accuracy).\
+  \ (default: False)\n  --exact_instance_limit EXACT_INSTANCE_LIMIT\n            \
+  \            Activates slower exact mode for instance smaller than\n           \
+  \             this limit (default: 0)\n  --set_w_dynamically   Set w = k + max(2*k,\
+  \ floor(cluster_size/1000)).\n                        (default: False)\n  --verbose\
+  \             Print various developer stats. (default: False)\n  --compression \
+  \        Use homopolymenr compressed reads. (Deprecated,\n                     \
+  \   because we will have fewer minmimizer combinations to\n                    \
+  \    span regions in homopolymenr dense regions. Solution\n                    \
+  \    could be to adjust upper interval legnth dynamically\n                    \
+  \    to guarantee a certain number of spanning intervals.\n                    \
+  \    (default: False)\n  --outfolder OUTFOLDER\n                        A fasta\
+  \ file with transcripts that are shared between\n                        samples\
+  \ and have perfect illumina support. (default:\n                        None)\n"
+generated_using:
+- --help

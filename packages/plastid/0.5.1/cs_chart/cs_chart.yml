@@ -1,0 +1,163 @@
+!Command
+command:
+- cs
+- chart
+positional:
+- !Positional
+  description: "Optional. File listing regions (genes or transcripts),\none per line,\
+    \ to include in comparisons. If not given,\nall genes are included."
+  position: 0
+  name: gene_list.txt
+  optional: false
+- !Positional
+  description: Basename for output files
+  position: 1
+  name: outbase
+  optional: false
+named:
+- !Flag
+  description: input files, made by 'count' subprogram
+  synonyms:
+  - -i
+  - --in
+  args: !RepeatFlagArg
+    name: INFILES
+  optional: true
+- !Flag
+  description: "Bins into which features are partitioned based on\ncounts"
+  synonyms:
+  - --bins
+  args: !RepeatFlagArg
+    name: BINS
+  optional: true
+- !Flag
+  description: 'Regions to compare (default: exon, utr5, cds, utr3)'
+  synonyms:
+  - --regions
+  args: !RepeatFlagArg
+    name: REGIONS
+  optional: true
+- !Flag
+  description: 'Metrics to compare (default: rpkm, reads)'
+  synonyms:
+  - --metrics
+  args: !RepeatFlagArg
+    name: METRICS
+  optional: true
+- !Flag
+  description: Suppress all warning messages. Cannot use with '-v'.
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn\
+    \ warnings into exceptions. Cannot use\nwith '-q'. (Default: show each type of\
+    \ warning once)"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'File format for figure(s); Default: png)'
+  synonyms:
+  - --figformat
+  args: !ChoiceFlagArg
+    choices: !!set
+      pgf:
+      ps:
+      raw:
+      png:
+      eps:
+      svg:
+      svgz:
+      rgba:
+      pdf:
+  optional: true
+- !Flag
+  description: "N         Figure width and height, in inches. (Default: use\nmatplotlibrc\
+    \ params)"
+  synonyms:
+  - --figsize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Base title for plot(s).
+  synonyms:
+  - --title
+  args: !SimpleFlagArg
+    name: TITLE
+  optional: true
+- !Flag
+  description: "Matplotlib color map from which palette will be made\n(e.g. 'Blues','autumn','Set1';\
+    \ default: use colors\nfrom ``--stylesheet`` if given, or color cycle in\nmatplotlibrc)"
+  synonyms:
+  - --cmap
+  args: !SimpleFlagArg
+    name: CMAP
+  optional: true
+- !Flag
+  description: 'Figure resolution (Default: 150)'
+  synonyms:
+  - --dpi
+  args: !SimpleFlagArg
+    name: DPI
+  optional: true
+- !Flag
+  description: "{Solarize_Light2,_classic_test_patch,bmh,classic,dark_background,fast,fivethirtyeight,ggplot,grayscale,seaborn,seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-palette,seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-paper,seaborn-pastel,seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid,tableau-colorblind10}\n\
+    Use this matplotlib stylesheet instead of matplotlibrc\nparams\n"
+  synonyms:
+  - --stylesheet
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: cs chart [-h] [-q] [-v]\n                [--figformat {eps,pdf,pgf,png,ps,raw,rgba,svg,svgz}]\n\
+  \                [--figsize N N] [--title TITLE] [--cmap CMAP] [--dpi DPI]\n   \
+  \             [--stylesheet {Solarize_Light2,_classic_test_patch,bmh,classic,dark_background,fast,fivethirtyeight,ggplot,grayscale,seaborn,seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-palette,seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-paper,seaborn-pastel,seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid,tableau-colorblind10}]\n\
+  \                [-i INFILES [INFILES ...]] [--bins BINS [BINS ...]]\n         \
+  \       [--regions REGIONS [REGIONS ...]]\n                [--metrics METRICS [METRICS\
+  \ ...]]\n                [gene_list.txt] outbase\n\n------------------------------------------------------------------------------\n\
+  \nProduce a set of charts comparing multiple samples pairwise.\n\n    Charts include\
+  \ histograms of log2 fold changes and scatter plots with\n    correlation coefficients,\
+  \ both generated for raw count and RPKM data.\n\n------------------------------------------------------------------------------\n\
+  \npositional arguments:\n  gene_list.txt         Optional. File listing regions\
+  \ (genes or transcripts),\n                        one per line, to include in comparisons.\
+  \ If not given,\n                        all genes are included.\n  outbase    \
+  \           Basename for output files\n\noptional arguments:\n  -h, --help     \
+  \       show this help message and exit\n  -i INFILES [INFILES ...], --in INFILES\
+  \ [INFILES ...]\n                        input files, made by 'count' subprogram\n\
+  \  --bins BINS [BINS ...]\n                        Bins into which features are\
+  \ partitioned based on\n                        counts\n  --regions REGIONS [REGIONS\
+  \ ...]\n                        Regions to compare (default: exon, utr5, cds, utr3)\n\
+  \  --metrics METRICS [METRICS ...]\n                        Metrics to compare (default:\
+  \ rpkm, reads)\n\nwarning/error options:\n  -q, --quiet           Suppress all warning\
+  \ messages. Cannot use with '-v'.\n  -v, --verbose         Increase verbosity. With\
+  \ '-v', show every warning.\n                        With '-vv', turn warnings into\
+  \ exceptions. Cannot use\n                        with '-q'. (Default: show each\
+  \ type of warning once)\n\nPlotting options:\n  --figformat {eps,pdf,pgf,png,ps,raw,rgba,svg,svgz}\n\
+  \                        File format for figure(s); Default: png)\n  --figsize N\
+  \ N         Figure width and height, in inches. (Default: use\n                \
+  \        matplotlibrc params)\n  --title TITLE         Base title for plot(s).\n\
+  \  --cmap CMAP           Matplotlib color map from which palette will be made\n\
+  \                        (e.g. 'Blues','autumn','Set1'; default: use colors\n  \
+  \                      from ``--stylesheet`` if given, or color cycle in\n     \
+  \                   matplotlibrc)\n  --dpi DPI             Figure resolution (Default:\
+  \ 150)\n  --stylesheet {Solarize_Light2,_classic_test_patch,bmh,classic,dark_background,fast,fivethirtyeight,ggplot,grayscale,seaborn,seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-palette,seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-paper,seaborn-pastel,seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid,tableau-colorblind10}\n\
+  \                        Use this matplotlib stylesheet instead of matplotlibrc\n\
+  \                        params\n"
+generated_using:
+- --help

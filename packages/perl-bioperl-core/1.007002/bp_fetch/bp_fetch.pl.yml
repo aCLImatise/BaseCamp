@@ -1,0 +1,120 @@
+!Command
+command:
+- bp_fetch.pl
+positional:
+- !Positional
+  description: '- networked http: based database'
+  position: 0
+  name: net
+  optional: false
+- !Positional
+  description: '- ACeDB database'
+  position: 1
+  name: ace
+  optional: false
+- !Positional
+  description: OPTIONS
+  position: 0
+  name: information
+  optional: false
+- !Positional
+  description: options only for expert use
+  position: 1
+  name: id.
+  optional: false
+- !Positional
+  description: USING IT YOURSELF
+  position: 0
+  name: SDBM_File
+  optional: false
+- !Positional
+  description: Code
+  position: 0
+  name: Author
+  optional: false
+- !Positional
+  description: '- General discussion'
+  position: 0
+  name: bioperl-l@bioperl.org
+  optional: false
+named:
+- !Flag
+  description: "<format> - Output format\nFasta (default), EMBL, Raw, swiss or GCG"
+  synonyms:
+  - -fmt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- string is an accession number, not an'
+  synonyms:
+  - -acc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<dir>    - directory to find the index files\n(overrides BIOPERL_INDEX\
+    \ environment variable)"
+  synonyms:
+  - -dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- type of DBM file to open\n(overrides BIOPERL_INDEX_TYPE environment\
+    \ variable)"
+  synonyms:
+  - -type
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n    bp_fetch.pl - fetches sequences from bioperl indexed databases\n\
+  \nSYNOPSIS\n      bp_fetch.pl swiss:ROA1_HUMAN\n\n      bp_fetch.pl net::genbank:JX295726\n\
+  \n      bp_fetch.pl net::genpept:ROA1_HUMAN\n\n      bp_fetch.pl ace::myserver.somewhere.edu,21000:X56676\n\
+  \n      bp_fetch.pl -fmt GCG swiss:ROA1_HUMAN\n\nDESCRIPTION\n    Fetches sequences\
+  \ using the DB access systems in Bioperl. The most\n    common use of this is to\
+  \ bp_fetch sequences from bioperl indices built\n    using bpindex.pl, or to fetch\
+  \ sequences from the NCBI website\n\n    The format for retrieving sequences is\
+  \ delibrately like the GCG/EMBOSS\n    format like the following:\n\n      db:name\n\
+  \n    with the potential of putting in a 'meta' database type, being\n\n      meta::db:name\n\
+  \n    The meta information can be one of three types\n\n      local - local indexed\
+  \ flat file database\n      net   - networked http: based database\n      ace  \
+  \ - ACeDB database\n\n    This information defaults to 'local' for database names\
+  \ with no meta db\n    information\n\nOPTIONS\n      -fmt  <format> - Output format\n\
+  \                       Fasta (default), EMBL, Raw, swiss or GCG\n      -acc   \
+  \        - string is an accession number, not an\n                       id.\n\n\
+  \    options only for expert use\n\n      -dir  <dir>    - directory to find the\
+  \ index files\n                      (overrides BIOPERL_INDEX environment variable)\n\
+  \      -type <type>   - type of DBM file to open\n                      (overrides\
+  \ BIOPERL_INDEX_TYPE environment variable)\n\nENVIRONMENT\n    bp_index and bp_fetch\
+  \ coordinate where the databases lie using the\n    environment variable BIOPERL_INDEX.\
+  \ This can be overridden using the\n    -dir option. The index type (SDBM or DB_File\
+  \ or another index file) is\n    controlled by the BIOPERL_INDEX_TYPE variable.\
+  \ This defaults to\n    SDBM_File\n\nUSING IT YOURSELF\n    bp_fetch is a wrapper\
+  \ around the bioperl modules which support the\n    Bio::DB::BioSeqI abstract interface.\
+  \ These include:\n\n      Author          Code\n\n      James Gilbert - Fasta indexer,\
+  \ Abstract indexer\n      Aaron Mackay  - GenBank and GenPept DB access\n      Ewan\
+  \ Birney   - EMBL .dat indexer\n      Many people   - SeqIO code\n\n    These modules\
+  \ can be used directly, which is far better than using this\n    script as a system\
+  \ call or a pipe to read from. Read the source code for\n    bp_fetch to see how\
+  \ it is used.\n\nEXTENDING IT\n    bp_fetch uses a number of different modules to\
+  \ provide access to\n    databases. Any module which subscribes to the Bio::DB::BioSeqI\
+  \ interface\n    can be used here. For flat file indexers, this is best done by\
+  \ extending\n    Bio::Index::Abstract, as is done in Bio::Index::EMBL and\n    Bio::Index::Fasta.\
+  \ For access to other databases you will need to roll\n    your own interface.\n\
+  \n    For new output formats, you need to add a new SeqIO module. The easiest\n\
+  \    thing is to look at Bio::SeqIO::Fasta and figure out how to hack it for\n \
+  \   your own format (call it something different obviously).\n\nFEEDBACK\n  Mailing\
+  \ Lists\n    User feedback is an integral part of the evolution of this and other\n\
+  \    Bioperl modules. Send your comments and suggestions preferably to the\n   \
+  \ Bioperl mailing list. Your participation is much appreciated.\n\n      bioperl-l@bioperl.org\
+  \                  - General discussion\n      http://bioperl.org/wiki/Mailing_lists\
+  \  - About the mailing lists\n\n  Reporting Bugs\n    Report bugs to the Bioperl\
+  \ bug tracking system to help us keep track of\n    the bugs and their resolution.\
+  \ Bug reports can be submitted via the web:\n\n      https://github.com/bioperl/bioperl-live/issues\n\
+  \nAUTHOR\n    Ewan Birney <birney@ebi.ac.uk>\n\n"
+generated_using:
+- --help

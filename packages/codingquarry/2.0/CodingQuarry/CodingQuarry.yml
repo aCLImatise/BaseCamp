@@ -1,0 +1,109 @@
+!Command
+command:
+- CodingQuarry
+positional: []
+named:
+- !Flag
+  description: by file name of genome sequence
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: followed
+  optional: true
+- !Flag
+  description: file of aligned transcripts (recommended)
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: gff3
+  optional: true
+- !Flag
+  description: name, providing pre-trained parameters exist
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: species
+  optional: true
+- !Flag
+  description: of high confidence genes that can be used for training
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: gff3
+  optional: true
+- !Flag
+  description: of threads (default is 1)
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: "this when using un-stranded RNA-seq. By default,\nCodingQuarry expects\
+    \ stranded RNA-seq"
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: specify
+  optional: true
+- !Flag
+  description: after stage 1 (see manual)
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: stop
+  optional: true
+- !Flag
+  description: file of aligned EST data
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: gff3
+  optional: true
+- !Flag
+  description: not predict genes in soft-masked regions (that is, hard-mask these
+    regions)
+  synonyms:
+  - -h
+  args: !SimpleFlagArg
+    name: do
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "CodingQuarry v. 2.0\nAuthor: Alison Testa\n\nESSENTIAL:\n-f followed by\
+  \ file name of genome sequence\n\nAnd ONE of:\n-t gff3 file of aligned transcripts\
+  \ (recommended)\n-s species name, providing pre-trained parameters exist\n-a gff3\
+  \ of high confidence genes that can be used for training\n\nOPTIONAL:\n-p number\
+  \ of threads (default is 1)\n-d specify this when using un-stranded RNA-seq. By\
+  \ default,\n CodingQuarry expects stranded RNA-seq\n-i stop after stage 1 (see manual)\n\
+  -e gff3 file of aligned EST data\n-h do not predict genes in soft-masked regions\
+  \ (that is, hard-mask these regions)\n\nRecommended run for annotating a genome\
+  \ using transcripts derived from\nstranded RNA-seq:\nCodingQuarry -f myGenome.fa\
+  \ -t myTranscript.gff3 -p 8\n\nRecommended run for annotating a genome using transcripts\
+  \ derived from\nun-stranded RNA-seq:\nCodingQuarry -f\tmyGenome.fa -t myTranscript.gff3\
+  \ -p 8 -d\n\nA pathogen run-mode of CodingQuarry (CodingQuarry-PM) has recently\
+  \ (v. 2.0) been introduced\nto assist in the prediction of effectors in fungal phytopathogen\
+  \ species. See the manual for\ndetails on how to use this run-mode.\n\nIMPORTANT:\
+  \ It is important that you set the\nenvironmental variable \"QUARRY_PATH\". This\
+  \ should specify the\nlocation of the folder QuarryFiles that came with this program.\
+  \ If you\ndo not want to set the environmental variable, place the folder\nQuarryFiles\
+  \ in your working directory before you run the program.\n\nIMPORTANT: The transcripts\
+  \ must be aligned to the genome and in gff3\nformat. Gtf format is not supported\
+  \ and is likely to cause\nrun-time errors - use a gtf to gff3 converter (a python\
+  \ script has\nbeen provided for converting Cufflinks gtfs). To be read properly,\n\
+  the aligned transcripts must be listed as \"exons\" in the gff3 file.\nThe parent\
+  \ ID must be the same for each exon of the aligned\ntranscript.\nAn example of a\
+  \ gff3 that can be read:\nscaffold_1  EXAMPLE  exon  1000  1024   .  -  .  ID=exon:G01:1;Parent=G01;\n\
+  scaffold_1  EXAMPLE  exon  1080 1300  .  -  .  ID=exon:G01:2;Parent=G01;\nscaffold_1\
+  \  EXAMPLE  exon  1350 1499 .  -  .  ID=exon:G01:3;Parent=G01;\nAnnotation files\
+  \ (files containing genes) are read similarly, except\nthe exons should be labelled\
+  \ as CDS. \nThe scaffold name is taken from the fasta file between the > and \n\
+  the first space that follows. This must exactly match the scaffold \nname in the\
+  \ gff3. The fasta and gff3 files are not checked to see \nif they conform, incorrect\
+  \ files may produce incorrect output or\nrun-time fail.\n\n"
+generated_using:
+- --help

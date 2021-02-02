@@ -1,0 +1,217 @@
+!Command
+command:
+- hapflk
+positional: []
+named:
+- !Flag
+  description: 'prefix for output files (default: hapflk)'
+  synonyms:
+  - -p
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: 'Use N processors when possible (default: 1)'
+  synonyms:
+  - --ncpu
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Perform eigen decomposition of tests (default: False)'
+  synonyms:
+  - --eigen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'PED file (default: None)'
+  synonyms:
+  - --ped
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'MAP file (default: None)'
+  synonyms:
+  - --map
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'PLINK file prefix (ped,map) (default: None)'
+  synonyms:
+  - --file
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: 'PLINK bfile prefix (bim,fam,bed) (default: None)'
+  synonyms:
+  - --bfile
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: 'Missing Genotype Code (default: 0)'
+  synonyms:
+  - --miss_geno
+  args: !SimpleFlagArg
+    name: C
+  optional: true
+- !Flag
+  description: 'Missing Phenotype Code (default: -9)'
+  synonyms:
+  - --miss_pheno
+  args: !SimpleFlagArg
+    name: C
+  optional: true
+- !Flag
+  description: 'Missing Parent Code (default: 0)'
+  synonyms:
+  - --miss_parent
+  args: !SimpleFlagArg
+    name: C
+  optional: true
+- !Flag
+  description: 'Missing Sex Code (default: 0)'
+  synonyms:
+  - --miss_sex
+  args: !SimpleFlagArg
+    name: C
+  optional: true
+- !Flag
+  description: 'Select chromosome C (default: None)'
+  synonyms:
+  - --chr
+  args: !SimpleFlagArg
+    name: C
+  optional: true
+- !Flag
+  description: "Select SNPs with position > x (in bp/cM) Warning :\ndoes not work\
+    \ with BED files (default: 0)"
+  synonyms:
+  - --from
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: "Select SNPs with position < x (in bp/cM) Warning :\ndoes not work\
+    \ with BED files (default: inf)"
+  synonyms:
+  - --to
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: 'Use alternative map (genetic/RH) (default: False)'
+  synonyms:
+  - --other_map
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Read population kinship from file (if None, kinship is\nestimated)\
+    \ (default: None)"
+  synonyms:
+  - --kinship
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Number of SNPs to use to estimate Reynolds distances\n(default: 10000)"
+  synonyms:
+  - --reynolds-snps
+  args: !SimpleFlagArg
+    name: L
+  optional: true
+- !Flag
+  description: "Use population POP as outgroup for tree rooting (if\nNone, use midpoint\
+    \ rooting) (default: None)"
+  synonyms:
+  - --outgroup
+  args: !SimpleFlagArg
+    name: POP
+  optional: true
+- !Flag
+  description: 'Keep outgroup in population set (default: False)'
+  synonyms:
+  - --keep-outgroup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set the number of clusters to K. hapFLK calculations\nswitched off\
+    \ if K<0 (default: -1)"
+  synonyms:
+  - -K
+  args: !SimpleFlagArg
+    name: K
+  optional: true
+- !Flag
+  description: 'Set the number of model fit to use (default: 20)'
+  synonyms:
+  - --nfit
+  args: !SimpleFlagArg
+    name: NFIT
+  optional: true
+- !Flag
+  description: 'Haplotype data provided (default: False)'
+  synonyms:
+  - --phased
+  - --inbred
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Do not write Cluster frequencies (default: False)'
+  synonyms:
+  - --no-kfrq
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: hapflk [-h] [--ped FILE] [--map FILE] [--file PREFIX] [--bfile\
+  \ PREFIX]\n              [--miss_geno C] [--miss_pheno C] [--miss_parent C]\n  \
+  \            [--miss_sex C] [--chr C] [--from x] [--to x] [--other_map]\n      \
+  \        [-p PREFIX] [--ncpu N] [--eigen] [--kinship FILE]\n              [--reynolds-snps\
+  \ L] [--outgroup POP] [--keep-outgroup] [-K K]\n              [--nfit NFIT] [--phased]\
+  \ [--no-kfrq]\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -p PREFIX, --prefix PREFIX\n                        prefix for output\
+  \ files (default: hapflk)\n  --ncpu N              Use N processors when possible\
+  \ (default: 1)\n  --eigen               Perform eigen decomposition of tests (default:\
+  \ False)\n\nInput Files:\n  Available formats\n\n  --ped FILE            PED file\
+  \ (default: None)\n  --map FILE            MAP file (default: None)\n  --file PREFIX\
+  \         PLINK file prefix (ped,map) (default: None)\n  --bfile PREFIX        PLINK\
+  \ bfile prefix (bim,fam,bed) (default: None)\n\nData format options:\n\n  --miss_geno\
+  \ C         Missing Genotype Code (default: 0)\n  --miss_pheno C        Missing\
+  \ Phenotype Code (default: -9)\n  --miss_parent C       Missing Parent Code (default:\
+  \ 0)\n  --miss_sex C          Missing Sex Code (default: 0)\n\nSNP selection:\n\
+  \  Filter SNP by genome position\n\n  --chr C               Select chromosome C\
+  \ (default: None)\n  --from x              Select SNPs with position > x (in bp/cM)\
+  \ Warning :\n                        does not work with BED files (default: 0)\n\
+  \  --to x                Select SNPs with position < x (in bp/cM) Warning :\n  \
+  \                      does not work with BED files (default: inf)\n  --other_map\
+  \           Use alternative map (genetic/RH) (default: False)\n\nPopulation kinship\
+  \ :\n  Set parameters for getting the population kinship matrix\n\n  --kinship FILE\
+  \        Read population kinship from file (if None, kinship is\n              \
+  \          estimated) (default: None)\n  --reynolds-snps L     Number of SNPs to\
+  \ use to estimate Reynolds distances\n                        (default: 10000)\n\
+  \  --outgroup POP        Use population POP as outgroup for tree rooting (if\n \
+  \                       None, use midpoint rooting) (default: None)\n  --keep-outgroup\
+  \       Keep outgroup in population set (default: False)\n\nhapFLK and LD model:\n\
+  \  Switch on hapFLK calculations and set parameters of the LD model\n\n  -K K  \
+  \                Set the number of clusters to K. hapFLK calculations\n        \
+  \                switched off if K<0 (default: -1)\n  --nfit NFIT           Set\
+  \ the number of model fit to use (default: 20)\n  --phased, --inbred    Haplotype\
+  \ data provided (default: False)\n  --no-kfrq             Do not write Cluster frequencies\
+  \ (default: False)\n"
+generated_using:
+- --help

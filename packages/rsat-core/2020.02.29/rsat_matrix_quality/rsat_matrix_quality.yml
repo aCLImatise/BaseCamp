@@ -1,0 +1,399 @@
+!Command
+command:
+- rsat
+- matrix-quality
+positional:
+- !Positional
+  description: "\e[1mDESCRIPTION\e[0m"
+  position: 0
+  name: matrix-quality
+  optional: false
+- !Positional
+  description: "\e[1mMatrix sites\e[0m"
+  position: 0
+  name: interest.
+  optional: false
+- !Positional
+  description: If the left-out sequence has one or more "twin" (identical site) in
+    the
+  position: 0
+  name: set.
+  optional: false
+- !Positional
+  description: This approach may however pose problem in the specific case of
+  position: 0
+  name: distribution.
+  optional: false
+- !Positional
+  description: "\e[1mComparing the scores of the matrix sites to the theoretical"
+  position: 0
+  name: computed.
+  optional: false
+- !Positional
+  description: 'Beware: the score distribution of matrix sites is fake. Indeed, those'
+  position: 0
+  name: distribution.
+  optional: false
+- !Positional
+  description: "The theoretical distribution of scores, computing according to the\n\
+    background model;"
+  position: 0
+  name: theory
+  optional: false
+- !Positional
+  description: "The score distribution of the matrix sites (which is biased by the\n\
+    fact that these sites were used to build the matrix)."
+  position: 1
+  name: matrix_sites
+  optional: false
+- !Positional
+  description: "This is the distribution of scores for the matrix sites, evaluated\n\
+    with the LOO procedure."
+  position: 2
+  name: matrix_sites_cv
+  optional: false
+- !Positional
+  description: pattern matching
+  position: 0
+  name: sequences
+  optional: false
+- !Positional
+  description: evaluation
+  position: 1
+  name: PSSM
+  optional: false
+- !Positional
+  description: "\e[1m-top top_matrices\e[0m"
+  position: 0
+  name: one.
+  optional: false
+- !Positional
+  description: "\e[1m-kfold k\e[0m"
+  position: 0
+  name: sequences.
+  optional: false
+- !Positional
+  description: "\e[1m-nograph\e[0m"
+  position: 0
+  name: steps.
+  optional: false
+- !Positional
+  description: "\e[1m-decimals #\e[0m"
+  position: 0
+  name: convert-background-model.
+  optional: false
+- !Positional
+  description: Calculate the OCC proba.
+  position: 0
+  name: sequence_type
+  optional: false
+- !Positional
+  description: If the option '-bgfile' is specified, the specified background model
+  position: 0
+  name: statistics.
+  optional: false
+named:
+- !Flag
+  description: "0 -bgfile my_background.txt \\\n-o my_matrix_quality"
+  synonyms:
+  - -perm
+  args: !SimpleFlagArg
+    name: matrix_sites
+  optional: true
+- !Flag
+  description: "Multiple image formats can be specified either by using iteratively\n\
+    the option, or by separating them by commas.\nExample: -img_format png,pdf"
+  synonyms:
+  - -h.
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -plot
+  args: !SimpleFlagArg
+    name: seq_type
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    matrix-quality\n\n\e[1mDESCRIPTION\e[0m\n    Evaluate\
+  \ the quality of a Position-Specific Scoring Matrix (PSSM), by\n    comparing score\
+  \ distributions obtained with this matrix in various\n    sequence sets.\n\n   \
+  \ The most classical use of the program is to compare score distributions\n    between\
+  \ \"positive\" sequences (e.g. true binding sites for the considered\n    transcription\
+  \ factor) and \"negative\" sequences (e.g. intergenic\n    sequences between convergently\
+  \ transcribed genes).\n\n  \e[1mPositive set : annotated binding sites\e[0m\n  \
+  \  The typical positive set is a collection of sites that have been shown\n    (with\
+  \ experimental methods) to bind the transcription factor of\n    interest.\n\n \
+  \ \e[1mMatrix sites\e[0m\n    A particular case of postive control is to estimate\
+  \ the distribution of\n    scores of the sites that served to build the matrix.\
+  \ This however\n    provkes some bias (over-estimation of the scores), since the\
+  \ matrix is\n    used to score the sites on which it was \"trained\". This bias\
+  \ can be\n    circumvented by applying a cross-validation.\n\n  \e[1mCross-validation\e\
+  [0m\n    An important bias of evaluation (and a frequent trap in published\n   \
+  \ articles) can result from an over-fitting of the matrix to the positive\n    set,\
+  \ in case one would use the same sites for building the PSSM and for\n    evaluating\
+  \ it. To avoid this bias, \e[33mmatrix-quality\e[0m supports two modes of\n    cross-validation\
+  \ (CV):\n\n     1. Leave-one-out (LOO)\n     2. k-fold cross-validation (kfold)\n\
+  \n    The cross-validation can only be performed when the matrix is specified\n\
+  \    in a format that includes both the matrix and the sites (sequences) that\n\
+  \    were used to build this matrix. This is the case for matrices in MEME,\n  \
+  \  consensus, transfac and MotifSampler formats.\n\n   k-fold cross-validation\n\
+  \    The set of input sequence (matrix site sequences) is partitionned into k\n\
+  \    randomly selected subets of approx. equal size (the number of sites is\n  \
+  \  not always an exact multiple of k).\n\n    The program then iterates over the\
+  \ testing set in the following way. All\n    the sites that are not part of the\
+  \ testing sets are used as trianing\n    sites to build a partial matrix. The testing\
+  \ sites are then scored with\n    this partial matrix.\n\n   Leave-One-Out (LOO)\
+  \ test\n    In LOO cross-validation mode, one sequence (the \"left-out sequence\"\
+  ) is\n    temporarily discarded from the positive set, and the remaining sequences\n\
+  \    are used to build a matrix, which is then used to score the left out\n    sequence.\
+  \ The process iterates over all the sequences of the positive\n    set.\n\n    If\
+  \ the left-out sequence has one or more \"twin\" (identical site) in the\n    positive\
+  \ set, they are also temporarily excluded from the positive set\n    and not included\
+  \ in the matrix used to score the left out sequence.\n\n   LOO or k-fold ?\n   \
+  \ The LOO is actually a particular case of k-fold cross-validation, where\n    k\
+  \ equals the total number of sites used to build the original matrix.\n    The LOO\
+  \ is particularly adapted for matrices built from a very small\n    number of sites\
+  \ (e.g. matrices built from a handful of well-documented\n    sites as usually found\
+  \ in transcription factor databases).\n\n    On the contrary, the k-fold cross-validation\
+  \ is useful to save computing\n    time for matrices built from large collection\
+  \ of sites (e.g. thousands\n    of sites resulting from ChIP-seq experiments).\n\
+  \n  \e[1mNegative set\e[0m\n    It is sometimes difficult to find a good negative\
+  \ set, i.e. a collection\n    of sequences which supposedly do not contain any binding\
+  \ site for the\n    transcription factor of interest.\n\n   Random selection of\
+  \ biological sequences\n    One possibility is to select a random set of genome\
+  \ fragments (e.g. use\n    \e[33mrandom-genes\e[0m to select promoters of 100 randomly\
+  \ selected genes).\n    However, some of these randomly selected sequences might\
+  \ contain\n    effective binding sites for the transcripton factor.\n\n   Artificial\
+  \ sequences\n    Another possiblity is to generate artificial sequences according\
+  \ to some\n    background model (uing \e[33mrandom-seq\e[0m), but there is always\
+  \ a risk that for\n    model to be an over-simplification of the real sequences.\n\
+  \n   Biological sequences scanned with column-permuted matrices\n    Yet another\
+  \ approach to perform the negative test os to scan biological\n    sequences (e.g.\
+  \ upstream regions of 100 randomly picked genes) with\n    column-permuted matrices.\
+  \ The advantage of this approach is that the\n    sequences are realistic, but the\
+  \ permuted matrices hopefully do not\n    correspond to any actual motif, and their\
+  \ empirical distribution\n    observed in the test sequences is thus supposed to\
+  \ fit the theoretcial\n    distribution.\n\n    This approach may however pose problem\
+  \ in the specific case of\n    weak-complexity motifs (e.g. CCGCCC, AATTTT), since\
+  \ many permutations\n    will give motifs that are similar, if not equal, to the\
+  \ original motif.\n\n\e[1mHOW TO USE THIS PROGRAM ?\e[0m\n    Let us be frank, this\
+  \ program can do many things, but requires a bit of\n    expertise. A good strategy\
+  \ to get familiar with its multiple results is\n    to start runing the simplest\
+  \ possible analysis, and progressively adding\n    the more advanced tasks.\n\n\
+  \    We propose hereafter a step-by-step schedule of utilization, where\n    subsequent\
+  \ tasks are progressively added.\n\n    We assume here that the user disposes of\
+  \ a PSSM in a format that\n    includes both the matrix and the aligned sites used\
+  \ to compute the\n    matrix (e.g. MEME format). Beware, the sites actually incorporated\
+  \ in\n    the matrix may differ frfom the collection of sites used as input for\n\
+  \    the matrix-building program. For instance, if you use MEME (with the\n    option\
+  \ -zoops) to build a matrix from a collection of annotated TFBS,\n    some sites\
+  \ may be incorporated in the matrix, and some other skipped. We\n    use hereafter\
+  \ the expression \e[1m\"matrix sites\"\e[0m to refer to the sites used\n    in the\
+  \ alignment from which the residues frequencies of the matrix were\n    computed.\n\
+  \n  \e[1mComparing the scores of the matrix sites to the theoretical\ndistribution\e\
+  [0m\n     matrix-quality -v 1 -ms my_matrix.meme -matrix_format meme \\\n      \
+  \ -no_cv -perm matrix_sites 0 -bgfile my_background.txt \\\n       -o my_matrix_quality\n\
+  \n    This will produce the simplest possible analysis: computing the score\n  \
+  \  distribution of the matrix sites, and comparing it to the theoretical\n    distribution.\n\
+  \n    Beware: the score distribution of matrix sites is fake. Indeed, those\n  \
+  \  are the very stes that were used to build the matrix. Each site partly\n    contributed\
+  \ to the matrix scores (weights) that will serve to score it.\n    There is thus\
+  \ a problem of over-fitting: we train a matrix with some\n    data, and we evaluate\
+  \ the matrix with the same data.\n\n  \e[1mAssessing matrix sites with a Leave-One-Out\
+  \ (LOO) procedure\e[0m\n    To circumvent the problem of over-fitting mentioned\
+  \ above, we have need\n    to perform the Leave-One-Out (LOO) procedure. Actually,\
+  \ \e[33mmatrix-scan\e[0m\n    automatically runs the leave-one-out test by default.\
+  \ The reason why it\n    was not done in the previous section is because we used\
+  \ the option\n    -no_cv, for the only purpose of illustrating the problem of overfitting.\n\
+  \    We will now run \e[33mmatrix-scan\e[0m in the normal way, without inactivating\
+  \ the\n    LOO procedure.\n\n     matrix-quality -v 1 -ms my_matrix.meme -matrix_format\
+  \ meme \\\n       -perm matrix_sites 0 -bgfile my_background.txt \\\n       -o my_matrix_quality\n\
+  \n    The result distributions now contain 3 curves:\n\n    theory\n        The\
+  \ theoretical distribution of scores, computing according to the\n        background\
+  \ model;\n\n    matrix_sites\n        The score distribution of the matrix sites\
+  \ (which is biased by the\n        fact that these sites were used to build the\
+  \ matrix).\n\n    matrix_sites_cv\n        This is the distribution of scores for\
+  \ the matrix sites, evaluated\n        with the LOO procedure.\n\n\e[1mAUTHORS\e\
+  [0m\n    Jacques van Helden <Jacques.van-Helden\\@univ-amu.fr>\n    Alejandra Medina-Rivera\
+  \ <amedina@lcg.unam.mx> (CCG, UNAM, Mexico)\n    Morgane Thomas-Chollier <morgane@bigre.ulb.ac.be>\n\
+  \n\e[1mCATEGORY\e[0m\n    sequences\n    pattern matching\n    PSSM\n    evaluation\n\
+  \n\e[1mUSAGE\e[0m\n    matrix-quality [-i inputfile] [-o outputfile] [-v]\n\n\e\
+  [1mOPTIONS\e[0m\n    \e[1m-v #\e[0m\n        Level of verbosity (detail in the warning\
+  \ messages during execution)\n\n    \e[1m-h\e[0m  Display full help message\n\n\
+  \    \e[1m-dry\e[0m\n        Dry run: print the commands but do not execute them.\n\
+  \n    \e[1m-help\e[0m\n        Same as -h\n\n    \e[1m-m matrix_file\e[0m\n    \
+  \    Matrix file. If the file includes several matrices, it will only\n        take\
+  \ the first one.\n\n    \e[1m-ms matrix_sites\e[0m\n        File containing both\
+  \ a matrix and its sites. The sites are then used\n        as positive sequence\
+  \ set, and labelled as \"matrix_sites\" in the\n        distribution tables and\
+  \ graphs.\n\n        The option -ms is only valid with the file formats which contain\n\
+  \        both the matrix and its sites (e.g. consensus, MotifSampler, meme,\n  \
+  \      infogibbs and transfac). The format of the matrix+site file can be\n    \
+  \    specified with the option '-matrix_format'.\n\n        If the matrix and its\
+  \ sites are only available in separate files, an\n        equivalent effect can\
+  \ be obtained by combining the options \"-m\n        my_matrix.tab\" and \"-seq\
+  \ matrix_sites site_sequences.fasta\".\n        Althougth when this option is used\
+  \ the LOO test is not performed.\n\n        If \e[33mmatrix-scan-quick\e[0m is available\
+  \ in the machine this programe will\n        be used instead of matrix-scan. For\
+  \ \e[33mmatrix-scan-quick\e[0m the matrix\n        most be in infogibbs or tab format.\n\
+  \n        If the file includes several matrices, it will only take the first\n \
+  \       one.\n\n    \e[1m-top top_matrices\e[0m\n        Maximal number of matrices\
+  \ to analyze.\n\n        Some input formats can contain several matrices in a single\
+  \ file\n        (e.g. transfac, consensus, meme, MotifSampler). By default, all\
+  \ the\n        matrices are parsed and exported. The option -top allows to restrict\n\
+  \        the number of matrices to be exported.\n\n    \e[1m-matrix_format matrix_format\e\
+  [0m\n        Format of the matrix file.\n\n    \e[1m-seq seq_type seq_file\e[0m\n\
+  \        File containing a sequence set of a given type. The first next\n      \
+  \  argument indicates the type of the sequence (which will appear in\n        the\
+  \ leend of the plots), and the second next argument the file name.\n\n    \e[1m-seq_format\
+  \ sequence_format\e[0m\n        Sequence format.\n\n    \e[1m-scanopt seq_type \"\
+  option1 option2 ...\"\e[0m\n        Sequence set-specific options for matrix-scan.\
+  \ These options are\n        added at the end of the matrix-scan command for scanning\
+  \ the\n        specified sequence set.\n\n    \e[1m-no_cv\e[0m\n        Do not apply\
+  \ the leave-one-out (LOO) test on the matrix site\n        sequences.\n\n    \e\
+  [1m-kfold k\e[0m\n        k-fold cross-validation.\n\n        Divide the matrix\
+  \ sites in k chunks for cross-validation. The chunks\n        are sampled in a random\
+  \ way.\n\n    \e[1m-noperm\e[0m\n        Skip the matrix permutation step. This\
+  \ option is mainly used for\n        debugging, or to run the last steps (comparison\
+  \ + graph generation)\n        without re-running the time-consuming scanning steps.\n\
+  \n    \e[1m-noscan\e[0m\n        Skip the matrix-scan step. This option is mainly\
+  \ used for debugging,\n        or to run the last steps (comparison + graph generation)\
+  \ without\n        re-running the time-consuming scanning steps.\n\n    \e[1m-nocompa\e\
+  [0m\n        Skip the step of comparisons between distributions. This option is\n\
+  \        mainly used for debugging, or to run the last steps (comparison +\n   \
+  \     graph generation) without re-running the time-consuming scanning\n       \
+  \ steps.\n\n    \e[1m-nograph\e[0m\n        Skip the step of drawing comparison\
+  \ graphs.\n\n    \e[1m-noicon\e[0m\n        Do not generate the small graphs (icons)\
+  \ used for the galleries in\n        the indexes.\n\n    \e[1m-export_hits\e[0m\n\
+  \        Return matrix-scan scores in addition to the distribution of scores.\n\
+  \        Beware ! This option can produce very large files and use lots of\n   \
+  \     disk space.\n\n    \e[1m-perm seq_type #\e[0m\n        Number of permutations\
+  \ for a specific set (default 0).\n\n    \e[1m-perm_sep\e[0m\n        Calculate\
+  \ the distributions for each permuted matrix separately.\n        This provides\
+  \ an estimate of the variability between permutations,\n        but the resulting\
+  \ graph is less readable, because of the\n        multiplicity of curves.\n\n  \
+  \      \e[1mNote:\e[0m the option to merge permutations (\e[33m-perm_merged\e[0m)\
+  \ has been\n        disactivated since we swapped from matrix-scan to matrix-scan-quick.\n\
+  \        The option \e[33m-perm_sep\e[0m is thus currently the only mode of\n  \
+  \      presentation. We still need to implement the merging of the\n        distributions,\
+  \ in order to re-activate the option -perm_merged (see\n        with list).\n\n\
+  \    \e[1m-pseudo pseudo_counts\e[0m\n        Pseudo-counts. The pseudo-count reflects\
+  \ the possibility that\n        residues that were not (yet) observed in the model\
+  \ might however be\n        valid for future observations. The pseudo-count is used\
+  \ to compute\n        the corrected residue frequencies.\n\n    \e[1m-bgfile background_file\e\
+  [0m\n        Background model to be used to calculate the matrix theoretical\n \
+  \       distribution. The matrix theoretical distribution is calculated with\n \
+  \       \e[33mmatrix-distrib\e[0m.\n\n    \e[1m-bg_format background_file\e[0m\n\
+  \        Format for the background model file.\n\n                Supported formats:\
+  \ all the input formats supported by\n                convert-background-model.\n\
+  \n    \e[1m-decimals #\e[0m\n        Number of decimals for computing weight scores\
+  \ (default 2). This\n        arguments is passed to \e[33mmatrix-scan\e[0m and \e\
+  [33mmatrix-distrib\e[0m.\n\n    \e[1m-o output_prefix\e[0m\n        Prefix of the\
+  \ output files. The program generates various files, and\n        automatically\
+  \ adds a specific suffix to each output file.\n\n        \e[33mpos_scores\e[0m\n\
+  \            Scores of the positive sequence set.\n\n    \e[1m-graph_option 'option1\
+  \ options2 ...'\e[0m\n        Specify options that will be passed to the program\
+  \ \e[33mXYgraph\e[0m for\n        generating the distributions and the ROC curves.\n\
+  \n        Beware: if an option requires to be followed by a value (ex -xsize\n \
+  \       1000), you have to embrace the option and its value in quotes.\n\n     \
+  \     Example\n           -graph_option '-size 800 -title \"LexA matrix\" -bg blue'\n\
+  \n        This option can be used iteratively on a command line.\n\n          Example\n\
+  \           -graph_option '-xsize 1000' -graph_option '-title \"LexA matrix\"'\n\
+  \n    \e[1m-roc_ref\e[0m\n        Reference distribution for the ROC curve.\n\n\
+  \    \e[1m-roc_option 'option1 options2 ...'\e[0m\n        Specify options that\
+  \ will be passed to the program \e[33mXYgraph\e[0m for\n        generating the ROC\
+  \ curves (ot the distribution curves).\n\n        Beware: if an option requires\
+  \ to be followed by a value (ex -xsize\n        1000), you have to embrace the option\
+  \ and its value in quotes.\n\n          Example\n           -roc_option '-ygstep1\
+  \ 0.1 -ygstep2 0.02'\n\n        This option can be used iteratively on a command\
+  \ line.\n\n          Example\n           -roc_option '-ygstep1 0.1' -roc_option\
+  \ '-ygstep2 0.02'\n\n    \e[1m-distrib_option 'option1 options2 ...'\e[0m\n    \
+  \    Specify options that will be passed to the program \e[33mXYgraph\e[0m for\n\
+  \        generating the distribution curves (not the ROC curves).\n\n        Beware:\
+  \ if an option requires to be followed by a value (ex -xsize\n        1000), you\
+  \ have to embrace the option and its value in quotes.\n\n          Example\n   \
+  \        -distrib_option '-xmin -35 -xmax 20'\n\n    \e[1m-img_format\e[0m\n   \
+  \     Image format for the plots (ROC curve, score profiles, ...). To\n        display\
+  \ the supported formats, type the following command: XYgraph\n        -h.\n\n  \
+  \      Multiple image formats can be specified either by using iteratively\n   \
+  \     the option, or by separating them by commas.\n\n        Example: -img_format\
+  \ png,pdf\n\n    \e[1m-r_plot\e[0m\n        Generate plots using R instead of the\
+  \ Perl GD module. The resulting\n        graphs are of higher quality, but this\
+  \ requires to have R installed\n        on the server.\n\n        The option is\
+  \ actually passed to the XYgraph commands.\n\n    \e[1m-logo_format\e[0m\n     \
+  \   Image format for the sequence logos.\n\n        Multiple image formats can be\
+  \ specified either by using iteratively\n        the option, or by separating them\
+  \ by commas.\n\n        Example: -logo_format png,pdf\n\n    \e[1m-plot seq_id nwd,occ_proba\e\
+  [0m\n        Additions plots will be drawn to compare: a) The enrichment of\n  \
+  \      scores in a set of sequences for different matrices b) The\n        enrichment\
+  \ of scores in different sequence sets for one matrix\n\n        \e[33mNWD curve\e\
+  [0m: At each frequency value (y-axis) we calculate the weigh\n        difference\
+  \ (WD), defined as the difference between the observed Ws\n        in all upstream\
+  \ non-codingsequence set and the expected Ws in the\n        theoretical distribution\
+  \ of the PSSM for a given P-value.\n\n        The WD can be visualized as the horizontal\
+  \ distance between the\n        distribution curves. As larger matrices allow higher\
+  \ scores, we\n        divided the difference by the matrix width to obtain the normalized\n\
+  \        weight difference.\n\n        NWD Heatmap comparison: When at least two\
+  \ matrices and two sequences\n        are used to calculate NWD curves the program\
+  \ will generate a heatmap\n        to facilitate the analysis.\n\n        Usage:\
+  \ -plot seq_type nwd\n\n        \e[33mOCC Proba Curve\e[0m: Probability of the number\
+  \ of matches in the input\n        sequence For each matrix and each score value,\
+  \ calculate the\n        statistical significance of the number of matches. This\
+  \ allows to\n        select the score associated with te maximal significance, on\
+  \ the\n        basis of the matrix-specific distribution, rather than by selecting\n\
+  \        some a priori threshold.\n\n        Usage: -plot seq_type occ_proba\n\n\
+  \    \e[1m-archive\e[0m\n        Compress the result directory into a zip archive\
+  \ of the same name\n        (with suffix .zip).\n\n         ## Title for html\n\n\
+  \    \e[1m-html_title\e[0m\n        Get a title for the html page.\n\n    \e[1m-task\
+  \ tasks\e[0m\n        Specify one or several tasks to be run. If this option is\
+  \ not\n        specified, all the tasks are run.\n\n        Note that some tasks\
+  \ depend on other ones. This option should thus\n        be used with caution, by\
+  \ experimented users only.\n\n        Supported tasks:\n\n        \e[1mscan\e[0m\n\
+  \            Scan sequences with matrix-scan\n\n        \e[1mtheor\e[0m\n      \
+  \      Calculate the theoretical distribution\n\n        \e[1mloo\e[0m Leave-one-out\
+  \ test on the matrix sites\n\n        \e[1mtheor_cv\e[0m\n            Calculate\
+  \ the theoretical distribution of loo partial matrices\n\n        \e[1mpermute\e\
+  [0m\n            Scan sequences with permuted matrices\n\n        \e[1mcompare\e\
+  [0m\n            Compare distributions between the various input files\n\n     \
+  \   \e[1mgraphs\e[0m\n            Draw the graphs with distrib comparisons\n\n \
+  \       \e[1msynthesis\e[0m\n            Generate a HTML file with a synthetic report,\
+  \ which displays the\n            main graphs (distribution curves and ROC curve)\
+  \ and provides\n            links to the result files.\n\n            In order to\
+  \ be correctly indexed, the graphs have to be\n            generated in png format.\n\
+  \n        \e[1mplot\e[0m\n            Calculate the Normalized Weight Distance between\
+  \ the theoretical\n            distribution and a score distribution in a specified\n\
+  \            sequence_type\n\n            Calculate the OCC proba.\n\n    \e[1mBackground\
+  \ model\e[0m\n        \e[33mmatrix-distrib\e[0m requires to specify a background\
+  \ model, which will be\n        passed to \e[33mmatrix-distrib\e[0m and \e[33mmatrix-scan\e\
+  [0m. This background model can\n        be specified with the same options as for\
+  \ \e[33mmatrix-scan\e[0m.\n\n    \e[1mOther options\e[0m\n        All the other\
+  \ options are automatically passed to \e[33mmatrix-scan\e[0m, in\n        order\
+  \ to specify the scanning parameters (strands, background model,\n        ...).\n\
+  \n        Note that the option '-return' of matrix-scan cannot be used here,\n \
+  \       because matrix-quality specifies the return fields required for its\n  \
+  \      statistics.\n\n        If the option '-bgfile' is specified, the specified\
+  \ background model\n        will be used to calculate the matrix theoretical distribution.\
+  \ If\n        another type of background model is specified for matrix-scan\n  \
+  \      ('-bginput' or '-window'), use '-th_prior' option to specify the\n      \
+  \  background model to be used for the calculation of the matrix\n        theoretical\
+  \ distribution.\n\n\e[1mSEE ALSO\e[0m\n    \e[1mmatrix-scan\e[0m\n        Called\
+  \ by \e[33mmatrix-quality\e[0m for scanning the different sets (positive,\n    \
+  \    negative) with the input matrix.\n\n    \e[1mmatrix-distrib\e[0m\n        Called\
+  \ by \e[33mmatrix-quality\e[0m for computing the theoretical distribution\n    \
+  \    of scores.\n\n    \e[1mconvert-matrix\e[0m\n        Called by \e[33mmatrix-quality\e\
+  [0m to generate column-permuted matrices.\n\n\e[1m\e[1mWISH LIST\e[0m\e[0m\n   \
+  \ \e[1m-perm_merged\e[0m\n        Merge the permutations in order to obtain a more\
+  \ robust distribution\n        of the permuted matrices. The figure is more readable\
+  \ than with the\n        option -perm_sep (default), but does not reflect the variability\n\
+  \        between the different permutations.\n\n    \e[1m-th_prior\e[0m\n      \
+  \  File in oligo-analysis format.\n\n        This option should better be removed,\
+  \ so the user has to specify the\n        bg file with the option -bgfile. To check.\n\
+  \n"
+generated_using:
+- -h

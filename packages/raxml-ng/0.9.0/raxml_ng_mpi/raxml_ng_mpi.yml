@@ -1,0 +1,444 @@
+!Command
+command:
+- raxml-ng-mpi
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: raxml-ng
+  optional: false
+named:
+- !Flag
+  description: evaluate the likelihood of a tree (with model+brlen optimization)
+  synonyms:
+  - --evaluate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'ML tree search (default: 10 parsimony + 10 random starting trees)'
+  synonyms:
+  - --search
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'bootstrapping (default: use bootstopping to auto-detect #replicates)'
+  synonyms:
+  - --bootstrap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: all-in-one (ML search + bootstrapping)
+  synonyms:
+  - --all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "compute bipartition support for a given reference tree (e.g., best\
+    \ ML tree)\nand a set of replicate trees (e.g., from a bootstrap analysis)"
+  synonyms:
+  - --support
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: test for bootstrapping convergence using autoMRE criterion
+  synonyms:
+  - --bsconverge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: generate bootstrap replicate MSAs
+  synonyms:
+  - --bsmsa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: check whether a tree lies on a phylogenetic terrace
+  synonyms:
+  - --terrace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: check alignment correctness and remove empty columns/rows
+  synonyms:
+  - --check
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: parse alignment, compress patterns and create binary MSA file
+  synonyms:
+  - --parse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: generate parsimony/random starting trees and exit
+  synonyms:
+  - --start
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compute pair-wise Robinson-Foulds (RF) distances between trees
+  synonyms:
+  - --rfdist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ STRICT | MR | MR<n> | MRE ]   build strict, majority-rule (MR) or\
+    \ extended MR (MRE) consensus tree (default: MR)\neg: --consense MR75 --tree bsrep.nw"
+  synonyms:
+  - --consense
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ancestral state reconstruction at all inner nodes
+  synonyms:
+  - --ancestral
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Alias for: --search --tree rand{1}'
+  synonyms:
+  - --search1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Alias for: --evaluate --opt-model off --opt-branches off --nofiles
+    --log result'
+  synonyms:
+  - --loglh
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Alias for: --rfdist --nofiles --log result'
+  synonyms:
+  - --rf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "rand{N} | pars{N} | FILE starting tree: rand(om), pars(imony) or user-specified\
+    \ (newick file)\nN = number of trees (default: rand{10},pars{10})"
+  synonyms:
+  - --tree
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FILE                     alignment file
+  synonyms:
+  - --msa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'VALUE                    alignment file format: FASTA, PHYLIP, CATG
+    or AUTO-detect (default)'
+  synonyms:
+  - --msa-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'VALUE                    data type: DNA, AA, BIN(ary) or AUTO-detect
+    (default)'
+  synonyms:
+  - --data-type
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: constraint tree
+  synonyms:
+  - --tree-constraint
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'STRING                   prefix for output files (default: MSA file
+    name)'
+  synonyms:
+  - --prefix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'VALUE                    log verbosity: ERROR,WARNING,RESULT,INFO,PROGRESS,DEBUG
+    (default: PROGRESS)'
+  synonyms:
+  - --log
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'overwrite existing result files and ignore checkpoints (default: OFF)'
+  synonyms:
+  - --redo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not create any output files, print results to the terminal only
+  synonyms:
+  - --nofiles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'VALUE                    number of decimal places to print (default:
+    6)'
+  synonyms:
+  - --precision
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: o1,o2,..,oN              comma-separated list of outgroup taxon names
+    (it's just a drawing option!)
+  synonyms:
+  - --outgroup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'VALUE                       seed for pseudo-random number generator
+    (default: current time)'
+  synonyms:
+  - --seed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'on | off                    alignment pattern compression (default:
+    ON)'
+  synonyms:
+  - --pat-comp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'on | off                    tip-inner case optimization (default:
+    OFF)'
+  synonyms:
+  - --tip-inner
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| off                    use site repeats optimization, 10%-60% faster
+    than tip-inner (default: ON)'
+  synonyms:
+  - --site-repeats
+  args: !SimpleFlagArg
+    name: on
+  optional: true
+- !Flag
+  description: 'VALUE                       number of parallel threads to use (default:
+    1)'
+  synonyms:
+  - --threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'none | sse3 | avx | avx2    vector instruction set to use (default:
+    auto-detect).'
+  synonyms:
+  - --simd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| off                    use individual CLV scalers for each rate
+    category (default: ON for >2000 taxa)'
+  synonyms:
+  - --rate-scalers
+  args: !SimpleFlagArg
+    name: on
+  optional: true
+- !Flag
+  description: '[ <CHECKS> ]                disable safety checks (please think twice!)'
+  synonyms:
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <name>+G[n]+<Freqs> | FILE  model specification OR partition file
+  synonyms:
+  - --model
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'linked | scaled | unlinked  branch length linkage between partitions
+    (default: scaled)'
+  synonyms:
+  - --brlen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'VALUE                       minimum branch length (default: 1e-6)'
+  synonyms:
+  - --blmin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'VALUE                       maximum branch length (default: 100)'
+  synonyms:
+  - --blmax
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "nr_fast    | nr_safe        branch length optimization method (default:\
+    \ nr_fast)\nnr_oldfast | nr_oldsafe"
+  synonyms:
+  - --blopt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'on | off                    ML optimization of all model parameters
+    (default: ON)'
+  synonyms:
+  - --opt-model
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| off                    ML optimization of all branch lengths (default:
+    ON)'
+  synonyms:
+  - --opt-branches
+  args: !SimpleFlagArg
+    name: on
+  optional: true
+- !Flag
+  description: on | off                    use probabilistic alignment (works with
+    CATG and VCF)
+  synonyms:
+  - --prob-msa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'VALUE                       log-likelihood epsilon for optimization/tree
+    search (default: 0.1)'
+  synonyms:
+  - --lh-epsilon
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'VALUE                       SPR re-insertion radius for fast iterations
+    (default: AUTO)'
+  synonyms:
+  - --spr-radius
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'VALUE | off                 relative LH cutoff for descending into
+    subtrees (default: 1.0)'
+  synonyms:
+  - --spr-cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'VALUE                       cutoff threshold for the MRE-based bootstopping
+    criteria (default: 0.03)'
+  synonyms:
+  - --bs-cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'fbp | tbe                   branch support metric: fbp = Felsenstein
+    bootstrap (default), tbe = transfer distance'
+  synonyms:
+  - --bs-metric
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display help information
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: display version information
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\nRAxML-NG v. 0.9.0 released on 20.05.2019 by The Exelixis Lab.\nDeveloped\
+  \ by: Alexey M. Kozlov and Alexandros Stamatakis.\nContributors: Diego Darriba,\
+  \ Tomas Flouri, Benoit Morel, Sarah Lutteropp, Ben Bettisworth.\nLatest version:\
+  \ https://github.com/amkozlov/raxml-ng\nQuestions/problems/suggestions? Please visit:\
+  \ https://groups.google.com/forum/#!forum/raxml\n\nUsage: raxml-ng [OPTIONS]\n\n\
+  Commands (mutually exclusive):\n  --help                                     display\
+  \ help information\n  --version                                  display version\
+  \ information\n  --evaluate                                 evaluate the likelihood\
+  \ of a tree (with model+brlen optimization)\n  --search                        \
+  \           ML tree search (default: 10 parsimony + 10 random starting trees)\n\
+  \  --bootstrap                                bootstrapping (default: use bootstopping\
+  \ to auto-detect #replicates)\n  --all                                      all-in-one\
+  \ (ML search + bootstrapping)\n  --support                                  compute\
+  \ bipartition support for a given reference tree (e.g., best ML tree)\n        \
+  \                                     and a set of replicate trees (e.g., from a\
+  \ bootstrap analysis)\n  --bsconverge                               test for bootstrapping\
+  \ convergence using autoMRE criterion\n  --bsmsa                               \
+  \     generate bootstrap replicate MSAs\n  --terrace                           \
+  \       check whether a tree lies on a phylogenetic terrace \n  --check        \
+  \                            check alignment correctness and remove empty columns/rows\n\
+  \  --parse                                    parse alignment, compress patterns\
+  \ and create binary MSA file\n  --start                                    generate\
+  \ parsimony/random starting trees and exit\n  --rfdist                         \
+  \          compute pair-wise Robinson-Foulds (RF) distances between trees\n  --consense\
+  \ [ STRICT | MR | MR<n> | MRE ]   build strict, majority-rule (MR) or extended MR\
+  \ (MRE) consensus tree (default: MR)\n                                         \
+  \    eg: --consense MR75 --tree bsrep.nw\n  --ancestral                        \
+  \        ancestral state reconstruction at all inner nodes\n\nCommand shortcuts\
+  \ (mutually exclusive):\n  --search1                                  Alias for:\
+  \ --search --tree rand{1}\n  --loglh                                    Alias for:\
+  \ --evaluate --opt-model off --opt-branches off --nofiles --log result\n  --rf \
+  \                                      Alias for: --rfdist --nofiles --log result\n\
+  \nInput and output options:\n  --tree            rand{N} | pars{N} | FILE starting\
+  \ tree: rand(om), pars(imony) or user-specified (newick file)\n                \
+  \                             N = number of trees (default: rand{10},pars{10})\n\
+  \  --msa             FILE                     alignment file\n  --msa-format   \
+  \   VALUE                    alignment file format: FASTA, PHYLIP, CATG or AUTO-detect\
+  \ (default)\n  --data-type       VALUE                    data type: DNA, AA, BIN(ary)\
+  \ or AUTO-detect (default)\n  --tree-constraint FILE                     constraint\
+  \ tree\n  --prefix          STRING                   prefix for output files (default:\
+  \ MSA file name)\n  --log             VALUE                    log verbosity: ERROR,WARNING,RESULT,INFO,PROGRESS,DEBUG\
+  \ (default: PROGRESS)\n  --redo                                     overwrite existing\
+  \ result files and ignore checkpoints (default: OFF)\n  --nofiles              \
+  \                    do not create any output files, print results to the terminal\
+  \ only\n  --precision       VALUE                    number of decimal places to\
+  \ print (default: 6)\n  --outgroup        o1,o2,..,oN              comma-separated\
+  \ list of outgroup taxon names (it's just a drawing option!)\n\nGeneral options:\n\
+  \  --seed         VALUE                       seed for pseudo-random number generator\
+  \ (default: current time)\n  --pat-comp     on | off                    alignment\
+  \ pattern compression (default: ON)\n  --tip-inner    on | off                 \
+  \   tip-inner case optimization (default: OFF)\n  --site-repeats on | off      \
+  \              use site repeats optimization, 10%-60% faster than tip-inner (default:\
+  \ ON)\n  --threads      VALUE                       number of parallel threads to\
+  \ use (default: 1)\n  --simd         none | sse3 | avx | avx2    vector instruction\
+  \ set to use (default: auto-detect).\n  --rate-scalers on | off                \
+  \    use individual CLV scalers for each rate category (default: ON for >2000 taxa)\n\
+  \  --force        [ <CHECKS> ]                disable safety checks (please think\
+  \ twice!)\n\nModel options:\n  --model        <name>+G[n]+<Freqs> | FILE  model\
+  \ specification OR partition file\n  --brlen        linked | scaled | unlinked \
+  \ branch length linkage between partitions (default: scaled)\n  --blmin        VALUE\
+  \                       minimum branch length (default: 1e-6)\n  --blmax       \
+  \ VALUE                       maximum branch length (default: 100)\n  --blopt  \
+  \      nr_fast    | nr_safe        branch length optimization method (default: nr_fast)\n\
+  \                 nr_oldfast | nr_oldsafe     \n  --opt-model    on | off      \
+  \              ML optimization of all model parameters (default: ON)\n  --opt-branches\
+  \ on | off                    ML optimization of all branch lengths (default: ON)\n\
+  \  --prob-msa     on | off                    use probabilistic alignment (works\
+  \ with CATG and VCF)\n  --lh-epsilon   VALUE                       log-likelihood\
+  \ epsilon for optimization/tree search (default: 0.1)\n\nTopology search options:\n\
+  \  --spr-radius   VALUE                       SPR re-insertion radius for fast iterations\
+  \ (default: AUTO)\n  --spr-cutoff   VALUE | off                 relative LH cutoff\
+  \ for descending into subtrees (default: 1.0)\n\nBootstrapping options:\n  --bs-trees\
+  \     VALUE                       number of bootstraps replicates\n  --bs-trees\
+  \     autoMRE{N}                  use MRE-based bootstrap convergence criterion,\
+  \ up to N replicates (default: 1000)\n  --bs-trees     FILE                    \
+  \    Newick file containing set of bootstrap replicate trees (with --support)\n\
+  \  --bs-cutoff    VALUE                       cutoff threshold for the MRE-based\
+  \ bootstopping criteria (default: 0.03)\n  --bs-metric    fbp | tbe            \
+  \       branch support metric: fbp = Felsenstein bootstrap (default), tbe = transfer\
+  \ distance\n\nEXAMPLES:\n  1. Perform tree inference on DNA alignment \n     (10\
+  \ random + 10 parsimony starting trees, general time-reversible model, ML estimate\
+  \ of substitution rates and\n      nucleotide frequencies, discrete GAMMA model\
+  \ of rate heterogeneity with 4 categories):\n\n     ./raxml-ng --msa testDNA.fa\
+  \ --model GTR+G\n\n\n  2. Perform an all-in-one analysis (ML tree search + non-parametric\
+  \ bootstrap) \n     (10 randomized parsimony starting trees, fixed empirical substitution\
+  \ matrix (LG),\n      empirical aminoacid frequencies from alignment, 8 discrete\
+  \ GAMMA categories,\n      200 bootstrap replicates):\n\n     ./raxml-ng --all --msa\
+  \ testAA.fa --model LG+G8+F --tree pars{10} --bs-trees 200\n\n\n  3. Optimize branch\
+  \ lengths and free model parameters on a fixed topology\n     (using multiple partitions\
+  \ with proportional branch lengths)\n\n     ./raxml-ng --evaluate --msa testAA.fa\
+  \ --model partitions.txt --tree test.tree --brlen scaled\n\n"
+generated_using:
+- --help

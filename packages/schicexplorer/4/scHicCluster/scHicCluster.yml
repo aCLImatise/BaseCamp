@@ -1,0 +1,138 @@
+!Command
+command:
+- scHicCluster
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: scHi-C
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: matrix
+  optional: false
+named:
+- !Flag
+  description: "File name to save the resulting clusters (default:\nclusters.txt)"
+  synonyms:
+  - --outFileName
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+  optional: true
+- !Flag
+  description: "scHi-C matrix, -m scool scHi-C matrix\nThe single cell Hi-C interaction\
+    \ matrices to cluster.\nNeeds to be in scool format (default: None)"
+  synonyms:
+  - --matrix
+  args: !SimpleFlagArg
+    name: scool
+  optional: true
+- !Flag
+  description: 'Number of to be computed clusters (default: 12)'
+  synonyms:
+  - --numberOfClusters
+  - -c
+  args: !SimpleFlagArg
+    name: NUMBEROFCLUSTERS
+  optional: true
+- !Flag
+  description: "Algorithm to cluster the Hi-C matrices (default:\nspectral)"
+  synonyms:
+  - --clusterMethod
+  - -cm
+  args: !ChoiceFlagArg
+    choices: !!set
+      kmeans:
+      spectral:
+  optional: true
+- !Flag
+  description: 'List of to be plotted chromosomes (default: None)'
+  synonyms:
+  - --chromosomes
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+  optional: true
+- !Flag
+  description: "Dimension reduction methods, knn with euclidean\ndistance, pca (default:\
+    \ none)"
+  synonyms:
+  - --dimensionReductionMethod
+  - -drm
+  args: !ChoiceFlagArg
+    choices: !!set
+      none:
+      knn:
+      pca:
+  optional: true
+- !Flag
+  description: "Number of to be used computed nearest neighbors for\nthe knn graph.\
+    \ Default is either the default value or\nthe number of the provided cells, whatever\
+    \ is smaller.\n(default: 100)"
+  synonyms:
+  - --numberOfNearestNeighbors
+  - -k
+  args: !SimpleFlagArg
+    name: NUMBEROFNEARESTNEIGHBORS
+  optional: true
+- !Flag
+  description: "Number of threads. Using the python multiprocessing\nmodule. (default:\
+    \ 4)"
+  synonyms:
+  - --threads
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: scHicCluster --matrix scool scHi-C matrix\n                   \
+  \ [--numberOfClusters NUMBEROFCLUSTERS]\n                    [--clusterMethod {spectral,kmeans}]\n\
+  \                    [--chromosomes CHROMOSOMES [CHROMOSOMES ...]]\n           \
+  \         [--dimensionReductionMethod {none,knn,pca}]\n                    [--numberOfNearestNeighbors\
+  \ NUMBEROFNEARESTNEIGHBORS]\n                    --outFileName OUTFILENAME [--threads\
+  \ THREADS] [--help]\n                    [--version]\n\nscHicCluster uses kmeans\
+  \ or spectral clustering to associate each cell to a\ncluster and therefore to its\
+  \ cell cycle. The clustering can be run on the raw\ndata, on a kNN computed via\
+  \ the exact euclidean distance or via PCA. Please\nconsider also the other clustering\
+  \ and dimension reduction approaches of the\nscHicExplorer suite. They can give\
+  \ you better results, can be faster or less\nmemory demanding.\n\nRequired arguments:\n\
+  \  --matrix scool scHi-C matrix, -m scool scHi-C matrix\n                      \
+  \  The single cell Hi-C interaction matrices to cluster.\n                     \
+  \   Needs to be in scool format (default: None)\n  --numberOfClusters NUMBEROFCLUSTERS,\
+  \ -c NUMBEROFCLUSTERS\n                        Number of to be computed clusters\
+  \ (default: 12)\n  --clusterMethod {spectral,kmeans}, -cm {spectral,kmeans}\n  \
+  \                      Algorithm to cluster the Hi-C matrices (default:\n      \
+  \                  spectral)\n\nOptional arguments:\n  --chromosomes CHROMOSOMES\
+  \ [CHROMOSOMES ...]\n                        List of to be plotted chromosomes (default:\
+  \ None)\n  --dimensionReductionMethod {none,knn,pca}, -drm {none,knn,pca}\n    \
+  \                    Dimension reduction methods, knn with euclidean\n         \
+  \               distance, pca (default: none)\n  --numberOfNearestNeighbors NUMBEROFNEARESTNEIGHBORS,\
+  \ -k NUMBEROFNEARESTNEIGHBORS\n                        Number of to be used computed\
+  \ nearest neighbors for\n                        the knn graph. Default is either\
+  \ the default value or\n                        the number of the provided cells,\
+  \ whatever is smaller.\n                        (default: 100)\n  --outFileName\
+  \ OUTFILENAME, -o OUTFILENAME\n                        File name to save the resulting\
+  \ clusters (default:\n                        clusters.txt)\n  --threads THREADS,\
+  \ -t THREADS\n                        Number of threads. Using the python multiprocessing\n\
+  \                        module. (default: 4)\n  --help, -h            show this\
+  \ help message and exit\n  --version             show program's version number and\
+  \ exit\n"
+generated_using:
+- --help

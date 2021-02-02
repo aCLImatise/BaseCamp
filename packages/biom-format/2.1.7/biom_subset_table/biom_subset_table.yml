@@ -1,0 +1,90 @@
+!Command
+command:
+- biom
+- subset-table
+positional: []
+named:
+- !Flag
+  description: "Choose a subset of the observations in table.biom (HDF5) and write\
+    \ them to\nsubset.biom:\n$ biom subset-table -i table.biom -a observations -s\
+    \ observation_ids.txt\n-o subset.biom"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: subset.biom
+  optional: true
+- !Flag
+  description: the input hdf5 BIOM table filepath to subset
+  synonyms:
+  - -i
+  - --input-hdf5-fp
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: the input json BIOM table filepath to subset
+  synonyms:
+  - -j
+  - --input-json-fp
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "[sample|observation]\nthe axis to subset over, either sample or\n\
+    observation  [required]"
+  synonyms:
+  - -a
+  - --axis
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "a file containing a single column of IDs to\nretain (either sample\
+    \ IDs or observation\nIDs, depending on the axis)  [required]"
+  synonyms:
+  - -s
+  - --ids
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: the output BIOM table filepath  [required]
+  synonyms:
+  - -o
+  - --output-fp
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: biom subset-table [OPTIONS]\n\n  Subset a BIOM table.\n\n  Subset\
+  \ a BIOM table, over either observations or samples, without fully\n  parsing it.\
+  \ This command is intended to assist in working with very large\n  tables when tight\
+  \ on memory, or as a lightweight way to subset a full\n  table. Currently, it is\
+  \ possible to produce tables with rows or columns\n  (observations or samples) that\
+  \ are fully zeroed.\n\n  Example usage:\n\n  Choose a subset of the observations\
+  \ in table.biom (JSON) and write them to\n  subset.biom:\n\n  $ biom subset-table\
+  \ -j table.biom -a observations -s observation_ids.txt\n  -o subset.biom\n\n  Choose\
+  \ a subset of the observations in table.biom (HDF5) and write them to\n  subset.biom:\n\
+  \n  $ biom subset-table -i table.biom -a observations -s observation_ids.txt\n \
+  \ -o subset.biom\n\nOptions:\n  -i, --input-hdf5-fp FILE        the input hdf5 BIOM\
+  \ table filepath to subset\n  -j, --input-json-fp FILE        the input json BIOM\
+  \ table filepath to subset\n  -a, --axis [sample|observation]\n                \
+  \                  the axis to subset over, either sample or\n                 \
+  \                 observation  [required]\n  -s, --ids FILE                  a file\
+  \ containing a single column of IDs to\n                                  retain\
+  \ (either sample IDs or observation\n                                  IDs, depending\
+  \ on the axis)  [required]\n  -o, --output-fp FILE            the output BIOM table\
+  \ filepath  [required]\n  -h, --help                      Show this message and\
+  \ exit.\n"
+generated_using:
+- --help

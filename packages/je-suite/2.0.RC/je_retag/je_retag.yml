@@ -1,0 +1,203 @@
+!Command
+command:
+- je
+- retag
+positional:
+- !Positional
+  description: 'Counting starts at 1 and negative numbers can be used to start counting
+    from the end '
+  position: 0
+  name: header.
+  optional: false
+- !Positional
+  description: "a hyphen ('-'). The order of concatenation follows the order of UMI_SLOT\
+    \ in the command "
+  position: 0
+  name: using
+  optional: false
+- !Positional
+  description: 'For example, consider the following read name that lists 3 different
+    sequence codes in '
+  position: 1
+  name: line.
+  optional: false
+- !Positional
+  description: 'ACTCTAC,TCTGTAC,ACTGTAG  '
+  position: 0
+  name: ACTGTAC
+  optional: false
+- !Positional
+  description: 'RGPG=String                   Read Group program group; only considered
+    when RG=true  Default value: null. '
+  position: 0
+  name: null.
+  optional: false
+named:
+- !Flag
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: Displays program version.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Picked up _JAVA_OPTIONS: -Xmx4G -Xms256m\nUSAGE: TagFromReadName [options]\n\
+  \nExtracts barcode and UMI sequence(s) embedded in read names and tag reads with\
+  \ proper BAM tag.\nVersion: 2.0.RC\n\n\nOptions:\n\n--help\n-h                 \
+  \           Displays options specific to this tool.\n\n--stdhelp\n-H           \
+  \                 Displays options specific to this tool AND options common to all\
+  \ Picard command line \n                              tools.\n\n--version      \
+  \               Displays program version.\n\nINPUT=File\nI=File                \
+  \        Input SAM/BAM file  Required. \n\nOUTPUT=File\nO=File                 \
+  \       Output SAM/BAM file  Required. \n\nBC_SLOT=Integer               Where to\
+  \ find the BARCODE(s) in the read name once read name has been tokenized using the\
+  \ \n                              SPLIT character (e.g. ':'). \n               \
+  \               This option can be specified multiple time when multiple BARCODES\
+  \ are present in read \n                              header.\n                \
+  \              Counting starts at 1 and negative numbers can be used to start counting\
+  \ from the end \n                              (last token is '-1').\n         \
+  \                     BARCODE(s) extracted from read name are used to assemble a\
+  \ 'BC:Z:GATCCTAG' tag (BC is \n                              default, see BC_TAG).\
+  \ \n                              Following SAM specifications, in the case of multiple\
+  \ barcodes, all the barcodes are \n                              concatenated using\
+  \ \n                              a hyphen ('-') between the barcodes. The order\
+  \ of concatenation follows the order of \n                              BC_SLOT\
+  \ in the command line.\n                              For example, consider the\
+  \ following read name that lists 3 different barcodes in the end \n            \
+  \                  : \n                              \t HISEQ:44:C6KC0ANXX:8:2112:20670:79594:CGATGTTT:GATCCTAG:AAGGTACG\
+  \ \n                              \t to indicate that the three slots contain barcodes,\
+  \ use \n                              \t\t BC_SLOT=-1 BC_SLOT=-2 BC_SLOT=-3 ; which\
+  \ will result as BC:Z:AAGGTACG-GATCCTAG-CGATGTTT\n                             \
+  \ \t if only the 2 last ones should be considered, use \n                      \
+  \        \t\t BC_SLOT=-1 BC_SLOT=-2 ; which will result as BC:Z:AAGGTACG-GATCCTAG\t\
+  \ Note that BC_SLOT \n                              order matters as : \n      \
+  \                        \t\t BC_SLOT=-2 BC_SLOT=-1 ; would result as BC:Z:GATCCTAG-AAGGTACG\
+  \  Default value: null. \n                              This option may be specified\
+  \ 0 or more times. \n\nUMI_SLOT=Integer              Where to find the UMI(s) in\
+  \ the read name once read name has been tokenized using the \n                 \
+  \             SPLIT character (e.g. ':'). \n                              This option\
+  \ can be specified multiple time when multiple UMIs are present in read header.\n\
+  \                              Counting starts at 1 and negative numbers can be\
+  \ used to start counting from the end \n                              (last token\
+  \ is '-1').\n                              UMI(s) extracted from read name are used\
+  \ to assemble both a RX and OX tag e.g. \n                              'RX:Z:GATCCTAG'\
+  \ tag. \n                              Following SAM specifications, in the case\
+  \ of multiple UMIs, all the UMIs are concatenated \n                           \
+  \   using \n                              a hyphen ('-'). The order of concatenation\
+  \ follows the order of UMI_SLOT in the command \n                              line.\n\
+  \                              For example, consider the following read name that\
+  \ lists 3 different sequence codes in \n                              the end :\
+  \ \n                              \t HISEQ:44:C6KC0ANXX:8:2112:20670:79594:CGATGTTT:GATCCTAG:AAGGTACG\
+  \ \n                              \t to indicate that the 2 last slots contain UMIs,\
+  \ use \n                              \t\t UMI_SLOT=-1 UMI_SLOT=-2 ; which will\
+  \ result as RX:Z:AAGGTACG-GATCCTAG\t Note that \n                              UMI_SLOT\
+  \ order matters as : \n                              \t\t UMI_SLOT=-2 UMI_SLOT=-1\
+  \ ; would result as RX:Z:GATCCTAG-AAGGTACG  Default value: null. \n            \
+  \                  This option may be specified 0 or more times. \n\nCLUSTERED_CODES_FILE=File\n\
+  CC=File                       Group of barcodes (clusters) for on-the-fly correction\
+  \ of the BARCODEs. This file \n                              contains mapping between\
+  \ the barcodes sequences\n                              as originally found in the\
+  \ FASTQ reads (and in the read name of the input BAM) and the \n               \
+  \               corrected sample barcode\n                              sequences\
+  \ (e.g. as identified by clustering with mismatches using tools like starcode or\
+  \ \n                              vsearch ) \n                              that\
+  \ should be written in the BC tag in place of the original sequence.\n         \
+  \                     If provided, the BARCODE sequence(s) extracted from read name\
+  \ are converted to the 'real' \n                              barcodes according\n\
+  \                              to the mapping described in this file. If the sequence\
+  \ is not found in the supplied \n                              mapping file, the\
+  \ read is either\n                              trashed or kept (according to option\
+  \ KEEP_UNASSIGNED_BARCODES), in which case the value \n                        \
+  \      defined by UNASSIGNED_BARCODE_VALUE\n                              is used.\n\
+  \                              Format: two column text file, one cluster per line\
+  \ with the real barcode in the first \n                              line and the\
+  \ comma separated\n                              list of codes in the second column\
+  \ i.e. :\n                              \t\t ACTGTAC \tACTCTAC,TCTGTAC,ACTGTAG \
+  \ \n                              All the codes MUST have the same length  Default\
+  \ value: null. \n\nKEEP_UNASSIGNED_BARCODES=Boolean\nKUP=Boolean               \
+  \    Should read be keep when no mapping was defined for the orginal barcode sequence\
+  \ in \n                              provided CLUSTERED_CODES_FILE.\n          \
+  \                    If false, the read is not written in output file.  Default\
+  \ value: true. This option can \n                              be set to 'null'\
+  \ to clear the default value. Possible values: {true, false} \n\nUNASSIGNED_BARCODE_VALUE=String\n\
+  UBV=String                    Value to use for the BARCODE tag when CLUSTERED_CODES_FILE\
+  \ was provided and no mapping \n                              was defined for the\
+  \ orginal barcode sequence.  Default value: NA. This option can be set \n      \
+  \                        to 'null' to clear the default value. \n\nTRIM_HEADERS=Boolean\n\
+  T=Boolean                     Should barcode/UMIs information be removed from read\
+  \ names in the output BAM ?   Default \n                              value: false.\
+  \ This option can be set to 'null' to clear the default value. Possible \n     \
+  \                         values: {true, false} \n\nTSLOTS=Integer\nTSLOTS=Integer\
+  \                Where to find *all* barcode(s) and UMIs in the read name once has\
+  \ been tokenized using \n                              the SPLIT character (e.g.\
+  \ ':'). \n                              This option is only considered when TRIM_HEADERS=true\
+  \ and should only be used when \n                              UMI_SLOT and BC_SLOT\
+  \ do not\n                              describe all the slots that should be trimmed.\
+  \ When TSLOTS is ommited while \n                              TRIM_HEADERS=true,\
+  \ the values\n                              of UMI_SLOT and BC_SLOT apply.\n   \
+  \                           IMPORTANT : counting starts at 1 and negative numbers\
+  \ can be used to start counting from \n                              the end.\n\
+  \                              See UMI_SLOT help for examples.  Default value: null.\
+  \ This option may be specified 0 or \n                              more times.\
+  \ \n\nSPLIT_CHAR=String\nSPLIT=String                  Character to use to split\
+  \ up the read header line, default is ':'.  Default value: :. \n               \
+  \               This option can be set to 'null' to clear the default value. \n\n\
+  BC_TAG=String                 SAM Tag to use to store barcode(s) sequences extracted\
+  \ from barcode slots (BC by \n                              default). Do not change\
+  \ unless you have good reasons to.  Default value: BC. This option \n          \
+  \                    can be set to 'null' to clear the default value. \n\nQT_TAG=String\
+  \                 SAM Tag to use to store barcode(s) quality score extracted from\
+  \ barcode slots (QT by \n                              default). Do not change unless\
+  \ you have good reasons to.  Default value: QT. This option \n                 \
+  \             can be set to 'null' to clear the default value. \n\nWITH_RX=Boolean\
+  \               Should the RX (and QX when relevant) SAM Tag(s) be used to store\
+  \ UMI(s) sequence (and \n                              quality) extracted from UMI\
+  \ slots. Set to FALSE if you don't want these tags to be set.   \n             \
+  \                 Default value: true. This option can be set to 'null' to clear\
+  \ the default value. \n                              Possible values: {true, false}\
+  \ \n\nWITH_OX=Boolean               Should the OX (and BZ when relevant) SAM Tag(s)\
+  \ be used to store UMI(s) sequence (and \n                              quality)\
+  \ extracted from UMI slots. Set to FALSE if you don't want these tags to be set.\
+  \   \n                              Default value: true. This option can be set\
+  \ to 'null' to clear the default value. \n                              Possible\
+  \ values: {true, false} \n\nUMI_SEQ_TAG=String            SAM Tag to use to store\
+  \ original UMI(s) sequence extracted from UMI slots (instead of RX \n          \
+  \                    / OX)  Default value: null. \n\nUMI_QUAL_TAG=String       \
+  \    SAM Tag to use to store original UMI(s) sequence extracted from UMI slots (instead\
+  \ of QX \n                              / BZ)  Default value: null. \n\nADD_RG=Boolean\n\
+  ARG=Boolean                   Should a read group be created for each barcode. This\
+  \ option is only considered when \n                              providing a CLUSTERED_CODES_FILE.\
+  \  Default value: false. This option can be set to 'null' \n                   \
+  \           to clear the default value. Possible values: {true, false} \n\nRGPL=String\
+  \                   Read Group platform (e.g. illumina, solid) ; only considered\
+  \ when RG=true  Default value: \n                              null. \n\nRGPG=String\
+  \                   Read Group program group; only considered when RG=true  Default\
+  \ value: null. \n\nPROGRAM_RECORD_ID=String\nPG=String                     The program\
+  \ record ID for the @PG record(s) created by this program. Set to null to \n   \
+  \                           disable PG record creation.  This string may have a\
+  \ suffix appended to avoid collision \n                              with other\
+  \ program record IDs.  Default value: TagFromReadName. This option can be set to\
+  \ \n                              'null' to clear the default value. \n\nPROGRAM_GROUP_VERSION=String\n\
+  PG_VERSION=String             Value of VN tag of PG record to be created. If not\
+  \ specified, the version will be \n                              detected automatically.\
+  \  Default value: null. \n\nPROGRAM_GROUP_COMMAND_LINE=String\nPG_COMMAND=String\
+  \             Value of CL tag of PG record to be created. If not supplied the command\
+  \ line will be \n                              detected automatically.  Default\
+  \ value: null. \n\nPROGRAM_GROUP_NAME=String\nPG_NAME=String                Value\
+  \ of PN tag of PG record to be created.  Default value: TagFromReadName. This option\
+  \ \n                              can be set to 'null' to clear the default value.\
+  \ \n\nCOMMENT=String\nCO=String                     Comment(s) to include in the\
+  \ output file's header.  Default value: null. This option may \n               \
+  \               be specified 0 or more times. \n\n"
+generated_using:
+- --help

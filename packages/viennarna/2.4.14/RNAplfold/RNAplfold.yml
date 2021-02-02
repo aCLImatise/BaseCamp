@@ -1,0 +1,273 @@
+!Command
+command:
+- RNAplfold
+positional:
+- !Positional
+  description: 'NOTE: activated per default for sequences'
+  position: 0
+  name: computation.
+  optional: false
+- !Positional
+  description: --shapeMethod=[D/Z/W] + [optional parameters]
+  position: 0
+  name: predictions
+  optional: false
+- !Positional
+  description: (default=`D')
+  position: 0
+  name: data.
+  optional: false
+named:
+- !Flag
+  description: "Print help, including all details and hidden\noptions, and exit"
+  synonyms:
+  - --detailed-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print help, including hidden options, and exit
+  synonyms:
+  - --full-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Be verbose.\n(default=off)"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Average the pair probabilities over windows of\ngiven size\n(default=`70')"
+  synonyms:
+  - -W
+  - --winsize
+  args: !SimpleFlagArg
+    name: size
+  optional: true
+- !Flag
+  description: "Set the maximum allowed separation of a base\npair to span. I.e. no\
+    \ pairs (i,j) with j-i >\nspan will be allowed. Defaults to winsize if\nparameter\
+    \ is omitted"
+  synonyms:
+  - -L
+  - --span
+  args: !SimpleFlagArg
+    name: size
+  optional: true
+- !Flag
+  description: "Report only base pairs with an average\nprobability > cutoff in the\
+    \ dot plot\n(default=`0.01')"
+  synonyms:
+  - -c
+  - --cutoff
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Save memory by printing out everything during
+  synonyms:
+  - -o
+  - --print_onthefly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Compute the mean probability that regions of\nlength 1 to a given\
+    \ length are unpaired.\nOutput is saved in a _lunp file.\n(default=`31')"
+  synonyms:
+  - -u
+  - --ulength
+  args: !SimpleFlagArg
+    name: length
+  optional: true
+- !Flag
+  description: "Switch output from probabilities to their\nlogarithms, which are NOT\
+    \ exactly the mean\nenergies needed to the respective stretch of\nbases!\nNOTE:\
+    \ This actives -u option.\n(default=off)"
+  synonyms:
+  - -O
+  - --opening_energies
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not automatically substitude nucleotide\n\"T\" with \"U\"\n(default=off)"
+  synonyms:
+  - --noconv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Automatically generate an ID for each sequence.\n(default=off)"
+  synonyms:
+  - --auto-id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Prefix for automatically generated IDs (as used\nin output file names)\n\
+    (default=`sequence')"
+  synonyms:
+  - --id-prefix
+  args: !SimpleFlagArg
+    name: prefix
+  optional: true
+- !Flag
+  description: Use SHAPE reactivity data to guide structure
+  synonyms:
+  - --shape
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "+ [optional parameters]\nSelect method to convert SHAPE reactivities\
+    \ to\npairing probabilities.\n(default=`O')"
+  synonyms:
+  - --shapeConversion
+  args: !SimpleFlagArg
+    name: M/C/S/L/O
+  optional: true
+- !Flag
+  description: "Rescale energy parameters to a temperature of\ntemp C. Default is\
+    \ 37C."
+  synonyms:
+  - -T
+  - --temp
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop\nhairpins. Mostly for testing.\n(default=off)"
+  synonyms:
+  - '-4'
+  - --noTetra
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "How to treat \"dangling end\" energies for\nbases adjacent to helices\
+    \ in free ends and\nmulti-loops\n(default=`2')"
+  synonyms:
+  - -d
+  - --dangles
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Produce structures without lonely pairs\n(helices of length 1).\n\
+    (default=off)"
+  synonyms:
+  - --noLP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not allow GU pairs\n(default=off)"
+  synonyms:
+  - --noGU
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not allow GU pairs at the end of helices\n(default=off)"
+  synonyms:
+  - --noClosingGU
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Read energy parameters from paramfile, instead\nof using the default\
+    \ parameter set."
+  synonyms:
+  - -P
+  - --paramFile
+  args: !SimpleFlagArg
+    name: paramfile
+  optional: true
+- !Flag
+  description: "Output accessibility profiles in binary format\n.  (default=off)"
+  synonyms:
+  - -b
+  - --binaries
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "RNAplfold 2.4.14\n\ncalculate locally stable secondary structure - pair\
+  \ probabilities\n\nUsage: RNAplfold [OPTIONS]...\n\nComputes local pair probabilities\
+  \ for base pairs with a maximal span of L. The\nprobabilities are averaged over\
+  \ all windows of size L that contain the base\npair. For a sequence of length n\
+  \ and a window size of L the algorithm uses only\nO(n+L*L) memory and O(n*L*L) CPU\
+  \ time. Thus it is practical to \"scan\" very\nlarge genomes for short stable RNA\
+  \ structures.\n\n\n  -h, --help                    Print help and exit\n      --detailed-help\
+  \           Print help, including all details and hidden\n                     \
+  \             options, and exit\n      --full-help               Print help, including\
+  \ hidden options, and exit\n  -V, --version                 Print version and exit\n\
+  \nGeneral Options:\n  Command line options which alter the general behavior of this\
+  \ program\n\n\n  -v, --verbose                 Be verbose.\n\n                 \
+  \                   (default=off)\n  -W, --winsize=size            Average the pair\
+  \ probabilities over windows of\n                                  given size\n\n\
+  \                                    (default=`70')\n  -L, --span=size         \
+  \      Set the maximum allowed separation of a base\n                          \
+  \        pair to span. I.e. no pairs (i,j) with j-i >\n                        \
+  \          span will be allowed. Defaults to winsize if\n                      \
+  \            parameter is omitted\n\n\n  -c, --cutoff=FLOAT            Report only\
+  \ base pairs with an average\n                                  probability > cutoff\
+  \ in the dot plot\n\n                                    (default=`0.01')\n  -o,\
+  \ --print_onthefly          Save memory by printing out everything during\n    \
+  \                              computation.\n                                  NOTE:\
+  \ activated per default for sequences\n                                  over 1M\
+  \ bp.\n\n                                    (default=off)\n  -u, --ulength=length\
+  \          Compute the mean probability that regions of\n                      \
+  \            length 1 to a given length are unpaired.\n                        \
+  \          Output is saved in a _lunp file.\n\n                                \
+  \    (default=`31')\n  -O, --opening_energies        Switch output from probabilities\
+  \ to their\n                                  logarithms, which are NOT exactly\
+  \ the mean\n                                  energies needed to the respective\
+  \ stretch of\n                                  bases!\n                       \
+  \           NOTE: This actives -u option.\n\n                                  \
+  \  (default=off)\n      --noconv                  Do not automatically substitude\
+  \ nucleotide\n                                  \"T\" with \"U\"\n\n           \
+  \                         (default=off)\n      --auto-id                 Automatically\
+  \ generate an ID for each sequence.\n                                    (default=off)\n\
+  \      --id-prefix=prefix        Prefix for automatically generated IDs (as used\n\
+  \                                  in output file names)\n\n                   \
+  \                 (default=`sequence')\n      --shape=<filename>        Use SHAPE\
+  \ reactivity data to guide structure\n                                  predictions\n\
+  \n\n      --shapeMethod=[D/Z/W] + [optional parameters]\n                      \
+  \          Select method to incorporate SHAPE reactivity\n                     \
+  \             data.\n                                    (default=`D')\n      --shapeConversion=M/C/S/L/O\
+  \  + [optional parameters]\n                                Select method to convert\
+  \ SHAPE reactivities to\n                                  pairing probabilities.\n\
+  \                                    (default=`O')\n\nModel Details:\n  -T, --temp=DOUBLE\
+  \             Rescale energy parameters to a temperature of\n                  \
+  \                temp C. Default is 37C.\n\n\n  -4, --noTetra                 Do\
+  \ not include special tabulated stabilizing\n                                  energies\
+  \ for tri-, tetra- and hexaloop\n                                  hairpins. Mostly\
+  \ for testing.\n\n                                    (default=off)\n  -d, --dangles=INT\
+  \             How to treat \"dangling end\" energies for\n                     \
+  \             bases adjacent to helices in free ends and\n                     \
+  \             multi-loops\n                                    (default=`2')\n \
+  \     --noLP                    Produce structures without lonely pairs\n      \
+  \                            (helices of length 1).\n                          \
+  \          (default=off)\n      --noGU                    Do not allow GU pairs\n\
+  \n                                    (default=off)\n      --noClosingGU       \
+  \      Do not allow GU pairs at the end of helices\n\n                         \
+  \           (default=off)\n  -P, --paramFile=paramfile     Read energy parameters\
+  \ from paramfile, instead\n                                  of using the default\
+  \ parameter set.\n\n  -b, --binaries                Output accessibility profiles\
+  \ in binary format\n                                  .  (default=off)\n\nIf in\
+  \ doubt our program is right, nature is at fault.\nComments should be sent to rna@tbi.univie.ac.at.\n\
+  \n\n"
+generated_using:
+- --help

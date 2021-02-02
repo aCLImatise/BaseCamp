@@ -1,0 +1,192 @@
+!Command
+command:
+- miso
+positional: []
+named:
+- !Flag
+  description: "Compute Psi values for a given GFF annotation of\neither whole mRNA\
+    \ isoforms or isoforms produced by\nsingle alternative splicing events. Expects\
+    \ two\narguments: an indexed GFF directory with genes to\nprocess, and a sorted,\
+    \ indexed BAM file (with headers)\nto run on."
+  synonyms:
+  - --run
+  args: !SimpleFlagArg
+    name: COMPUTE_GENES_PSI
+  optional: true
+- !Flag
+  description: '[OPTIONAL] Type of event (e.g. SE, RI, A3SS, ...)'
+  synonyms:
+  - --event-type
+  args: !SimpleFlagArg
+    name: EVENT_TYPE
+  optional: true
+- !Flag
+  description: Run events on cluster.
+  synonyms:
+  - --use-cluster
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Size (in number of events) of each job to chunk events\nfile into.\
+    \ Only applies when running on cluster."
+  synonyms:
+  - --chunk-jobs
+  args: !SimpleFlagArg
+    name: CHUNK_JOBS
+  optional: true
+- !Flag
+  description: "Do not filter events for computing Psi. By default,\nMISO computes\
+    \ Psi only for events that have a\nsufficient number of junction reads. The default\n\
+    filter varies by event type."
+  synonyms:
+  - --no-filter-events
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Filename specifying MISO settings.
+  synonyms:
+  - --settings-filename
+  args: !SimpleFlagArg
+    name: SETTINGS_FILENAME
+  optional: true
+- !Flag
+  description: Length of sequenced reads.
+  synonyms:
+  - --read-len
+  args: !SimpleFlagArg
+    name: READ_LEN
+  optional: true
+- !Flag
+  description: "Run in paired-end mode. Takes mean and standard\ndeviation of insert\
+    \ length distribution."
+  synonyms:
+  - --paired-end
+  args: !SimpleFlagArg
+    name: PAIRED_END
+  optional: true
+- !Flag
+  description: Length of overhang constraints imposed on junctions.
+  synonyms:
+  - --overhang-len
+  args: !SimpleFlagArg
+    name: OVERHANG_LEN
+  optional: true
+- !Flag
+  description: Directory for MISO output.
+  synonyms:
+  - --output-dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: "Name for jobs submitted to queue for SGE jobs. Default\nis misojob"
+  synonyms:
+  - --job-name
+  args: !SimpleFlagArg
+    name: JOB_NAME
+  optional: true
+- !Flag
+  description: "Use MISO on cluster with Sun Grid Engine. To be used\nin conjunction\
+    \ with --use-cluster option."
+  synonyms:
+  - --SGEarray
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Prefilter events based on coverage. If given as\nargument, run will\
+    \ begin by mapping BAM reads to event\nregions (using bedtools), and omit events\
+    \ that do not\nmeet coverage criteria from the run. By default,\nturned off. Note\
+    \ that events that do not meet the\ncoverage criteria will not be processed regardless,\n\
+    but --prefilter simply does this filtering step at the\nstart of the run, potentially\
+    \ saving computation time\nso that low coverage events will not be processed or\n\
+    distributed to jobs if MISO is run on a cluster. This\noptions requires bedtools\
+    \ to be installed and\navailable on path."
+  synonyms:
+  - --prefilter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of processors to use. Only applies when running\nMISO on a\
+    \ single machine with multiple cores; does not\napply to runs submitted to cluster\
+    \ with --use-cluster."
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: NUM_PROC
+  optional: true
+- !Flag
+  description: "If passed in, do not wait on cluster jobs after they\nare submitted.\
+    \ By default, wait."
+  synonyms:
+  - --no-wait
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "View the contents of a gene/event that has been\nindexed. Takes as\
+    \ input an indexed (.pickle) filename.\n"
+  synonyms:
+  - --view-gene
+  args: !SimpleFlagArg
+    name: VIEW_GENE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print MISO version.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: miso [options]\n\nOptions:\n  -h, --help            show this help\
+  \ message and exit\n  --run=COMPUTE_GENES_PSI\n                        Compute Psi\
+  \ values for a given GFF annotation of\n                        either whole mRNA\
+  \ isoforms or isoforms produced by\n                        single alternative splicing\
+  \ events. Expects two\n                        arguments: an indexed GFF directory\
+  \ with genes to\n                        process, and a sorted, indexed BAM file\
+  \ (with headers)\n                        to run on.\n  --event-type=EVENT_TYPE\n\
+  \                        [OPTIONAL] Type of event (e.g. SE, RI, A3SS, ...)\n  --use-cluster\
+  \         Run events on cluster.\n  --chunk-jobs=CHUNK_JOBS\n                  \
+  \      Size (in number of events) of each job to chunk events\n                \
+  \        file into. Only applies when running on cluster.\n  --no-filter-events\
+  \    Do not filter events for computing Psi. By default,\n                     \
+  \   MISO computes Psi only for events that have a\n                        sufficient\
+  \ number of junction reads. The default\n                        filter varies by\
+  \ event type.\n  --settings-filename=SETTINGS_FILENAME\n                       \
+  \ Filename specifying MISO settings.\n  --read-len=READ_LEN   Length of sequenced\
+  \ reads.\n  --paired-end=PAIRED_END\n                        Run in paired-end mode.\
+  \ Takes mean and standard\n                        deviation of insert length distribution.\n\
+  \  --overhang-len=OVERHANG_LEN\n                        Length of overhang constraints\
+  \ imposed on junctions.\n  --output-dir=OUTPUT_DIR\n                        Directory\
+  \ for MISO output.\n  --job-name=JOB_NAME   Name for jobs submitted to queue for\
+  \ SGE jobs. Default\n                        is misojob\n  --SGEarray          \
+  \  Use MISO on cluster with Sun Grid Engine. To be used\n                      \
+  \  in conjunction with --use-cluster option.\n  --prefilter           Prefilter\
+  \ events based on coverage. If given as\n                        argument, run will\
+  \ begin by mapping BAM reads to event\n                        regions (using bedtools),\
+  \ and omit events that do not\n                        meet coverage criteria from\
+  \ the run. By default,\n                        turned off. Note that events that\
+  \ do not meet the\n                        coverage criteria will not be processed\
+  \ regardless,\n                        but --prefilter simply does this filtering\
+  \ step at the\n                        start of the run, potentially saving computation\
+  \ time\n                        so that low coverage events will not be processed\
+  \ or\n                        distributed to jobs if MISO is run on a cluster. This\n\
+  \                        options requires bedtools to be installed and\n       \
+  \                 available on path.\n  -p NUM_PROC           Number of processors\
+  \ to use. Only applies when running\n                        MISO on a single machine\
+  \ with multiple cores; does not\n                        apply to runs submitted\
+  \ to cluster with --use-cluster.\n  --version             Print MISO version.\n\
+  \  --no-wait             If passed in, do not wait on cluster jobs after they\n\
+  \                        are submitted. By default, wait.\n  --view-gene=VIEW_GENE\n\
+  \                        View the contents of a gene/event that has been\n     \
+  \                   indexed. Takes as input an indexed (.pickle) filename.\n"
+generated_using:
+- --help

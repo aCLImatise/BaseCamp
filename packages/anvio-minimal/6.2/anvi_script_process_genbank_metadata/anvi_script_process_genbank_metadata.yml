@@ -1,0 +1,85 @@
+!Command
+command:
+- anvi-script-process-genbank-metadata
+positional: []
+named:
+- !Flag
+  description: "This is the file you get from the program `ncbi-\ngenome-download`\
+    \ when you use the parameter\n`--metadata-table`."
+  synonyms:
+  - -m
+  - --metadata
+  args: !SimpleFlagArg
+    name: GENBANK_METADATA
+  optional: true
+- !Flag
+  description: Directory path for output files
+  synonyms:
+  - -o
+  - --output-dir
+  args: !SimpleFlagArg
+    name: DIR_PATH
+  optional: true
+- !Flag
+  description: "This is not a FASTA file, but a TAB-delimited file\nwith all the file\
+    \ names and paths processed by this\nprogram. This output can directly go into\
+    \ the anvi'o\nsnakemake workflows because magic."
+  synonyms:
+  - --output-fasta-txt
+  args: !SimpleFlagArg
+    name: OUTPUT_FASTA_TXT
+  optional: true
+- !Flag
+  description: "This flag will exclude the external gene calls and\nfunctions from\
+    \ the fasta.txt file. Files for external\ngene calls and functions according to\
+    \ the information\nstored in GenBank file, but they will simply not be\nincluded\
+    \ in your fasta.txt file. By doing so you will\n*gurantee* that when you use this\
+    \ file from within a\nworkflow, anvi'o wil use its default gene caller to\nidentify\
+    \ genes.\n"
+  synonyms:
+  - -E
+  - --exclude-gene-calls-from-fasta-txt
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: anvi-script-process-genbank-metadata [-h] -m GENBANK_METADATA\n\
+  \                                            [-o DIR_PATH]\n                   \
+  \                         [--output-fasta-txt OUTPUT_FASTA_TXT]\n              \
+  \                              [-E]\n\nThis script takes the 'metadata' output of\
+  \ the program `ncbi-genome-download`\n(see https://github.com/kblin/ncbi-genome-download\
+  \ for details), and processes\neach GenBank file found in the metadata file to generate\
+  \ a FASTA file, as well\nas genes and functions files for each entry. Plus, it autmatically\
+  \ generates a\nFASTA TXT file descriptor for anvi'o snakemake workfloes. So it is\
+  \ a multi-\ntalented program like that.\n\noptional arguments:\n  -h, --help   \
+  \         show this help message and exit\n\nINPUT:\n  Give us the preciousss...\n\
+  \n  -m GENBANK_METADATA, --metadata GENBANK_METADATA\n                        This\
+  \ is the file you get from the program `ncbi-\n                        genome-download`\
+  \ when you use the parameter\n                        `--metadata-table`.\n\nOUTPUT:\n\
+  \  Where to find your precioussesss...\n\n  -o DIR_PATH, --output-dir DIR_PATH\n\
+  \                        Directory path for output files\n  --output-fasta-txt OUTPUT_FASTA_TXT\n\
+  \                        This is not a FASTA file, but a TAB-delimited file\n  \
+  \                      with all the file names and paths processed by this\n   \
+  \                     program. This output can directly go into the anvi'o\n   \
+  \                     snakemake workflows because magic.\n\nADDITIONAL PARAMETERS:\n\
+  \  Additional things you can set.\n\n  -E, --exclude-gene-calls-from-fasta-txt\n\
+  \                        This flag will exclude the external gene calls and\n  \
+  \                      functions from the fasta.txt file. Files for external\n \
+  \                       gene calls and functions according to the information\n\
+  \                        stored in GenBank file, but they will simply not be\n \
+  \                       included in your fasta.txt file. By doing so you will\n\
+  \                        *gurantee* that when you use this file from within a\n\
+  \                        workflow, anvi'o wil use its default gene caller to\n \
+  \                       identify genes.\n"
+generated_using:
+- --help

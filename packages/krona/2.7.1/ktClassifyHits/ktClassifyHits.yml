@@ -1,0 +1,70 @@
+!Command
+command:
+- ktClassifyHits
+positional:
+- !Positional
+  description: "Tabular file whose fields are [query, subject, score]. Subject must\n\
+    be an accession or contain one in the fourth field of pipe notation\n(e.g. \"\
+    gi|12345|xx|ABC123.1|\". The subject and score can be omitted to\ninclude a query\
+    \ that has no hits, which will be assigned a taxonomy ID\nof -1.\n_________"
+  position: 0
+  name: hits
+  optional: false
+- !Positional
+  description: The query ID as it appears in the input.
+  position: 0
+  name: queryID
+  optional: false
+- !Positional
+  description: "The NCBI taxonomy ID the query was assigned to (or -1 if it has no\n\
+    hits)."
+  position: 1
+  name: taxID
+  optional: false
+- !Positional
+  description: "The score of the assignment(s); by default, the average E-value of\n\
+    \"best\" hits (see -p, -b)."
+  position: 2
+  name: score
+  optional: false
+- !Positional
+  description: The number of assignments.
+  position: 3
+  name: count
+  optional: false
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "                                         ___________________________________\n\
+  ________________________________________/ KronaTools 2.7.1 - ktClassifyHits \\___\n\
+  \nPerforms LCA (lowest common ancestor) based classification on groups of hits\n\
+  for queries.\n                                                                 \
+  \    _______\n____________________________________________________________________/\
+  \ Usage \\___\n\nktClassifyHits \\\n   [options] \\\n   hits_1 \\\n   [hits_2] \\\
+  \n   ...\n\n   hits  Tabular file whose fields are [query, subject, score]. Subject\
+  \ must\n         be an accession or contain one in the fourth field of pipe notation\n\
+  \         (e.g. \"gi|12345|xx|ABC123.1|\". The subject and score can be omitted\
+  \ to\n         include a query that has no hits, which will be assigned a taxonomy\
+  \ ID\n         of -1.\n                                                        \
+  \           _________\n__________________________________________________________________/\
+  \ Options \\___\n\n   [-o <string>]  Output file name. [Default: 'taxonomy.tab']\n\
+  \n   [-t <number>]  Threshold for score differences when determining \"best\"\n\
+  \                  hits. Hits with scores that are within this distance of the\n\
+  \                  highest score will be included when computing the lowest\n  \
+  \                common ancestor (or picking randomly if -r is specified). If\n\
+  \                  0, only exact ties for the best hit are used. [Default: '0']\n\
+  \n   [-r]           Pick from the best hits randomly instead of finding the\n  \
+  \                lowest common ancestor.\n\n   [-s]           Summarize counts and\
+  \ average scores by taxonomy ID.\n\n                                           \
+  \                         ________\n___________________________________________________________________/\
+  \ Output \\___\n\nDefault:          <queryID> <taxID> <score>\n\nSummarized (-s):\
+  \  <count> <taxID> <score>\n\n   queryID  The query ID as it appears in the input.\n\
+  \n   taxID    The NCBI taxonomy ID the query was assigned to (or -1 if it has no\n\
+  \            hits).\n\n   score    The score of the assignment(s); by default, the\
+  \ average E-value of\n            \"best\" hits (see -p, -b).\n\n   count    The\
+  \ number of assignments.\n\n"
+generated_using: []

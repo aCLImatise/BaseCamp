@@ -1,0 +1,67 @@
+!Command
+command:
+- mergesketch.sh
+positional:
+- !Positional
+  description: in= is optional so wildcards may be used.
+  position: 0
+  name: list.
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an out-of-memory\nexception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified December 19, 2019\n\nDescription:\
+  \  Merges multiple sketches into a single sketch.\n\nPlease read bbmap/docs/guides/BBSketchGuide.txt\
+  \ for more information.\n\nUsage:           mergesketch.sh in=a.sketch,b.sketch\
+  \ out=c.sketch\nWith wildcards:  mergesketch.sh *.sketch out=c.sketch\n\nStandard\
+  \ parameters:\nin=<file>       Input sketches or fasta files; may be a comma-delimited\n\
+  \                list.  in= is optional so wildcards may be used.\nout=<file>  \
+  \    Output sketch.\namino=f         Use amino acid mode.\n\nSketch-making parameters:\n\
+  mode=single     Possible modes, for fasta input:\n                   single: Generate\
+  \ one sketch per file.\n                   sequence: Generate one sketch per sequence.\n\
+  autosize=t      Produce an output sketch of whatever size the union \n         \
+  \       happens to be.\nsize=           Restrict output sketch to this upper bound\
+  \ of size.\nk=32,24         Kmer length, 1-32.\nkeyfraction=0.2 Only consider this\
+  \ upper fraction of keyspace.\nminkeycount=1   Ignore kmers that occur fewer times\
+  \ than this.  Values\n                over 1 can be used with raw reads to avoid\
+  \ error kmers.\ndepth=f         Retain kmer counts if available.\n\nMetadata parameters:\
+  \ (if blank the values of the first sketch will be used)\ntaxid=-1        Set the\
+  \ NCBI taxid.\nimgid=-1        Set the IMG id.\nspid=-1         Set the JGI sequencing\
+  \ project id.\nname=           Set the name (taxname).\nname0=          Set name0\
+  \ (normally the first sequence header).\nfname=          Set fname (normally the\
+  \ file name).\nmeta_=          Set an arbitrary metadata field.\n              \
+  \  For example, meta_Month=March.\n\nJava Parameters:\n-Xmx            This will\
+  \ set Java's memory usage, overriding autodetection.\n                -Xmx20g will\
+  \ specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\n                \
+  \    The max is typically 85% of physical memory.\n-eoom           This flag will\
+  \ cause the process to exit if an out-of-memory\n                exception occurs.\
+  \  Requires Java 8u92+.\n-da             Disable assertions.\n\nFor more detailed\
+  \ information, please read /bbmap/docs/guides/BBSketchGuide.txt.\nPlease contact\
+  \ Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\n"
+generated_using:
+- --help

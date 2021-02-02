@@ -1,0 +1,108 @@
+!Command
+command:
+- phyluce_align_filter_alignments
+positional:
+- !Positional
+  description: '[--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]'
+  position: 0
+  name: OUTPUT
+  optional: false
+named:
+- !Flag
+  description: The directory containing the alignment files
+  synonyms:
+  - --alignments
+  args: !SimpleFlagArg
+    name: ALIGNMENTS
+  optional: true
+- !Flag
+  description: The directory to write alignments meeting criteria.
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: The input alignment format
+  synonyms:
+  - --input-format
+  args: !ChoiceFlagArg
+    choices: !!set
+      clustal:
+      stockholm:
+      phylip:
+      fasta:
+      emboss:
+      nexus:
+  optional: true
+- !Flag
+  description: Output only alignments --containing-data-for a taxon
+  synonyms:
+  - --containing-data-for
+  args: !RepeatFlagArg
+    name: CONTAINING
+  optional: true
+- !Flag
+  description: Filter out alignments shorter than --min-length
+  synonyms:
+  - --min-length
+  args: !SimpleFlagArg
+    name: MIN_LENGTH
+  optional: true
+- !Flag
+  description: Filter out alignments with fewer than --min-taxa
+  synonyms:
+  - --min-taxa
+  args: !SimpleFlagArg
+    name: MIN_TAXA
+  optional: true
+- !Flag
+  description: The logging level to use.
+  synonyms:
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices: !!set
+      WARN:
+      CRITICAL:
+      INFO:
+  optional: true
+- !Flag
+  description: The path to a directory to hold logs.
+  synonyms:
+  - --log-path
+  args: !SimpleFlagArg
+    name: LOG_PATH
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: phyluce_align_filter_alignments [-h] --alignments ALIGNMENTS --output\n\
+  \                                       OUTPUT\n                               \
+  \        [--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\n      \
+  \                                 [--containing-data-for CONTAINING [CONTAINING\
+  \ ...]]\n                                       [--min-length MIN_LENGTH]\n    \
+  \                                   [--min-taxa MIN_TAXA]\n                    \
+  \                   [--verbosity {INFO,WARN,CRITICAL}]\n                       \
+  \                [--log-path LOG_PATH]\n\nFilter alignments containing certain taxa\
+  \ or having certain lengths\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --alignments ALIGNMENTS\n                      \
+  \  The directory containing the alignment files\n  --output OUTPUT       The directory\
+  \ to write alignments meeting criteria.\n  --input-format {fasta,nexus,phylip,clustal,emboss,stockholm}\n\
+  \                        The input alignment format\n  --containing-data-for CONTAINING\
+  \ [CONTAINING ...]\n                        Output only alignments --containing-data-for\
+  \ a taxon\n  --min-length MIN_LENGTH\n                        Filter out alignments\
+  \ shorter than --min-length\n  --min-taxa MIN_TAXA   Filter out alignments with\
+  \ fewer than --min-taxa\n  --verbosity {INFO,WARN,CRITICAL}\n                  \
+  \      The logging level to use.\n  --log-path LOG_PATH   The path to a directory\
+  \ to hold logs.\n"
+generated_using:
+- --help

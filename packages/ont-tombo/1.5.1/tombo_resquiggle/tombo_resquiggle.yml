@@ -1,0 +1,187 @@
+!Command
+command:
+- tombo
+- resquiggle
+positional:
+- !Positional
+  description: "Directory containing fast5 files. All files ending in\n\"fast5\" found\
+    \ recursively within this base directory\nwill be processed."
+  position: 0
+  name: fast5s_basedir
+  optional: false
+- !Positional
+  description: "Reference genome/transcriptome FASTA file or minimap2\nindex (with\
+    \ \"map-ont\" preset) for mapping."
+  position: 1
+  name: reference
+  optional: false
+named:
+- !Flag
+  description: "Explicitly select canonical DNA model. Default:\nAutomatically determine\
+    \ from FAST5s"
+  synonyms:
+  - --dna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Explicitly select canonical RNA model. Default:\nAutomatically determine\
+    \ from FAST5s"
+  synonyms:
+  - --rna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Filter reads based on observations per base percentile\nthresholds.\
+    \ Format thresholds as \"percentile:thresh\n[pctl2:thresh2 ...]\". For example\
+    \ to filter reads with\n99th pctl > 200 obs/base or max > 5k obs/base use\n\"\
+    99:200 100:5000\"."
+  synonyms:
+  - --obs-per-base-filter
+  args: !RepeatFlagArg
+    name: OBS_PER_BASE_FILTER
+  optional: true
+- !Flag
+  description: "Q-score threshold for filtering low quality reads.\nDefault: 0.000000"
+  synonyms:
+  - --q-score
+  args: !SimpleFlagArg
+    name: Q_SCORE
+  optional: true
+- !Flag
+  description: "Observed to expected signal matching score (higher\nscore indicates\
+    \ poor matching). Sample type defaults:\nRNA : 2 || DNA : 1.1"
+  synonyms:
+  - --signal-matching-score
+  args: !SimpleFlagArg
+    name: SIGNAL_MATCHING_SCORE
+  optional: true
+- !Flag
+  description: 'Number of processes. Default: 1'
+  synonyms:
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  synonyms:
+  - --corrected-group
+  args: !SimpleFlagArg
+    name: CORRECTED_GROUP
+  optional: true
+- !Flag
+  description: "FAST5 group obtain original basecalls (under Analyses\ngroup). Default:\
+    \ Basecall_1D_000"
+  synonyms:
+  - --basecall-group
+  args: !SimpleFlagArg
+    name: BASECALL_GROUP
+  optional: true
+- !Flag
+  description: "FAST5 subgroup(s) (under /Analyses/[--basecall-\ngroup]/) containing\
+    \ basecalls and created within\n[--corrected-group] containing re-squiggle results.\n\
+    Default: ['BaseCalled_template']"
+  synonyms:
+  - --basecall-subgroups
+  args: !RepeatFlagArg
+    name: BASECALL_SUBGROUPS
+  optional: true
+- !Flag
+  description: "Overwrite previous corrected group in FAST5 files.\nNote: only effects\
+    \ --corrected-group or --new-\ncorrected-group."
+  synonyms:
+  - --overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output failed read filenames with assoicated error.\nDefault: Do not\
+    \ store failed reads."
+  synonyms:
+  - --failed-reads-filename
+  args: !SimpleFlagArg
+    name: FAILED_READS_FILENAME
+  optional: true
+- !Flag
+  description: "Dynamically show this many most common errors so far\nthrough run.\
+    \ Default: 0; Just show progress"
+  synonyms:
+  - --num-most-common-errors
+  args: !SimpleFlagArg
+    name: NUM_MOST_COMMON_ERRORS
+  optional: true
+- !Flag
+  description: Print advanced re-squiggle arguments and exit.
+  synonyms:
+  - --print-advanced-arguments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't print status information.
+  synonyms:
+  - --quiet
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: tombo resquiggle [--dna] [--rna]\n                        [--obs-per-base-filter\
+  \ OBS_PER_BASE_FILTER [OBS_PER_BASE_FILTER ...]]\n                        [--q-score\
+  \ Q_SCORE]\n                        [--signal-matching-score SIGNAL_MATCHING_SCORE]\n\
+  \                        [--processes PROCESSES]\n                        [--corrected-group\
+  \ CORRECTED_GROUP]\n                        [--basecall-group BASECALL_GROUP]\n\
+  \                        [--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS\
+  \ ...]]\n                        [--overwrite]\n                        [--failed-reads-filename\
+  \ FAILED_READS_FILENAME]\n                        [--num-most-common-errors NUM_MOST_COMMON_ERRORS]\n\
+  \                        [--print-advanced-arguments] [--quiet] [--help]\n     \
+  \                   fast5s_basedir reference\n\nRequired Arguments:\n  fast5s_basedir\
+  \        Directory containing fast5 files. All files ending in\n               \
+  \         \"fast5\" found recursively within this base directory\n             \
+  \           will be processed.\n  reference             Reference genome/transcriptome\
+  \ FASTA file or minimap2\n                        index (with \"map-ont\" preset)\
+  \ for mapping.\n\nModel Parameters:\n  --dna                 Explicitly select canonical\
+  \ DNA model. Default:\n                        Automatically determine from FAST5s\n\
+  \  --rna                 Explicitly select canonical RNA model. Default:\n     \
+  \                   Automatically determine from FAST5s\n\nRead Filtering Argument:\n\
+  \  --obs-per-base-filter OBS_PER_BASE_FILTER [OBS_PER_BASE_FILTER ...]\n       \
+  \                 Filter reads based on observations per base percentile\n     \
+  \                   thresholds. Format thresholds as \"percentile:thresh\n     \
+  \                   [pctl2:thresh2 ...]\". For example to filter reads with\n  \
+  \                      99th pctl > 200 obs/base or max > 5k obs/base use\n     \
+  \                   \"99:200 100:5000\".\n  --q-score Q_SCORE     Q-score threshold\
+  \ for filtering low quality reads.\n                        Default: 0.000000\n\
+  \  --signal-matching-score SIGNAL_MATCHING_SCORE\n                        Observed\
+  \ to expected signal matching score (higher\n                        score indicates\
+  \ poor matching). Sample type defaults:\n                        RNA : 2 || DNA\
+  \ : 1.1\n\nMultiprocessing Arguments:\n  --processes PROCESSES\n               \
+  \         Number of processes. Default: 1\n\nFAST5 Data Arguments:\n  --corrected-group\
+  \ CORRECTED_GROUP\n                        FAST5 group created by resquiggle command.\
+  \ Default:\n                        RawGenomeCorrected_000\n  --basecall-group BASECALL_GROUP\n\
+  \                        FAST5 group obtain original basecalls (under Analyses\n\
+  \                        group). Default: Basecall_1D_000\n  --basecall-subgroups\
+  \ BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]\n                        FAST5 subgroup(s)\
+  \ (under /Analyses/[--basecall-\n                        group]/) containing basecalls\
+  \ and created within\n                        [--corrected-group] containing re-squiggle\
+  \ results.\n                        Default: ['BaseCalled_template']\n  --overwrite\
+  \           Overwrite previous corrected group in FAST5 files.\n               \
+  \         Note: only effects --corrected-group or --new-\n                     \
+  \   corrected-group.\n\nInput/Output Arguments:\n  --failed-reads-filename FAILED_READS_FILENAME\n\
+  \                        Output failed read filenames with assoicated error.\n \
+  \                       Default: Do not store failed reads.\n  --num-most-common-errors\
+  \ NUM_MOST_COMMON_ERRORS\n                        Dynamically show this many most\
+  \ common errors so far\n                        through run. Default: 0; Just show\
+  \ progress\n\nAdvanced Arguments:\n  --print-advanced-arguments\n              \
+  \          Print advanced re-squiggle arguments and exit.\n\nMiscellaneous Arguments:\n\
+  \  --quiet, -q           Don't print status information.\n  --help, -h         \
+  \   Print this help message and exit\n"
+generated_using:
+- --help

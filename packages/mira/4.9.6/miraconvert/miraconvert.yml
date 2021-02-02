@@ -1,0 +1,511 @@
+!Command
+command:
+- miraconvert
+positional:
+- !Positional
+  description: a complete assembly or single sequences from CAF
+  position: 0
+  name: caf
+  optional: false
+- !Positional
+  description: a complete assembly or single sequences from CAF
+  position: 1
+  name: maf
+  optional: false
+- !Positional
+  description: sequences from a FASTA file
+  position: 2
+  name: fasta
+  optional: false
+- !Positional
+  description: sequences from a FASTQ file
+  position: 3
+  name: fastq
+  optional: false
+- !Positional
+  description: sequences from a PHD file
+  position: 0
+  name: phd
+  optional: false
+- !Positional
+  description: sequences in EXP files from file of filenames
+  position: 1
+  name: fofnexp
+  optional: false
+- !Positional
+  description: sequences or complete assembly to ACE
+  position: 2
+  name: ace
+  optional: false
+- !Positional
+  description: sequences or complete assembly to CAF
+  position: 3
+  name: caf
+  optional: false
+- !Positional
+  description: sequences or complete assembly to MAF
+  position: 4
+  name: maf
+  optional: false
+- !Positional
+  description: complete assembly to SAM
+  position: 5
+  name: sam
+  optional: false
+- !Positional
+  description: "like above, but leaving out reference (backbones) in\nmapping assemblies"
+  position: 6
+  name: samnbb
+  optional: false
+- !Positional
+  description: consensus to GFF3
+  position: 0
+  name: gff3
+  optional: false
+- !Positional
+  description: assembly coverage info to wiggle file
+  position: 1
+  name: wig
+  optional: false
+- !Positional
+  description: assembly gc content info to wiggle file
+  position: 2
+  name: gcwig
+  optional: false
+- !Positional
+  description: "sequences or consensus to FASTA file (qualities to\n.qual)"
+  position: 3
+  name: fasta
+  optional: false
+- !Positional
+  description: sequences or consensus to FASTQ file
+  position: 4
+  name: fastq
+  optional: false
+- !Positional
+  description: "sequences or complete assembly to EXP files in\ndirectories. Complete\
+    \ assemblies are suited for gap4\nimport as directed assembly.\nNote: using caf2gap\
+    \ to import into gap4 is recommended\nthough"
+  position: 5
+  name: exp
+  optional: false
+- !Positional
+  description: "complete assembly to text alignment (only when -f is\ncaf, maf or\
+    \ gbf)"
+  position: 6
+  name: text
+  optional: false
+- !Positional
+  description: "complete assembly to HTML (only when -f is caf, maf or\ngbf)"
+  position: 7
+  name: html
+  optional: false
+- !Positional
+  description: complete assembly to tcs
+  position: 8
+  name: tcs
+  optional: false
+- !Positional
+  description: "surrounding of SNP tags (SROc, SAOc, SIOc) to HTML\n(only when -f\
+    \ is caf, maf or gbf)"
+  position: 9
+  name: hsnp
+  optional: false
+- !Positional
+  description: "analysis of SNP tags\n(only when -f is caf, maf or gbf)"
+  position: 10
+  name: asnp
+  optional: false
+- !Positional
+  description: "contig statistics file like from MIRA\n(only when source contains\
+    \ contigs)"
+  position: 11
+  name: cstats
+  optional: false
+- !Positional
+  description: "contig read list file like from MIRA\n(only when source contains contigs)"
+  position: 12
+  name: crlist
+  optional: false
+- !Positional
+  description: "reads where sequencing vector is masked out\n(with X) to FASTA file\
+    \ (qualities to .qual)"
+  position: 13
+  name: maskedfasta
+  optional: false
+- !Positional
+  description: sequences or complete assembly to single sequences CAF
+  position: 14
+  name: scaf
+  optional: false
+named:
+- !Flag
+  description: 'load this type of project files, where fromtype is:'
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: fromtype
+  optional: true
+- !Flag
+  description: "write the sequences/assembly to this type (multiple\nmentions of -t\
+    \ are allowed):"
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: totype
+  optional: true
+- !Flag
+  description: Append to target files instead of rewriting
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not Adjust sequence case\nWhen reading formats which define clipping\
+    \ points,\nand saving to formats which do not have clipping\ninformation, miraconvert\
+    \ normally adjusts the case of\nread sequences: lower case for clipped parts,\
+    \ upper\ncase for unclipped parts of reads.\nUse -A if you do not want this. See\
+    \ also -C.\nApplies only to files/formats which do not contain\ncontigs."
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Blind data\nReplaces all bases in reads/contigs with a 'c'"
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Perform hard clip to reads\nWhen reading formats which define clipping\
+    \ points, will\nsave only the unclipped part into the result file.\nApplies only\
+    \ to files/formats which do not contain\ncontigs."
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Delete gap only columns\nWhen output is contigs: delete columns that\
+    \ are\nentirely gaps (like after having deleted reads during\nediting in gap4\
+    \ or similar)\nWhen output is reads: delete gaps in reads"
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Filter read groups to different files\nWorks only for input files\
+    \ with readgroups (CAF/MAF)\n3 (or 4) files generated: one or two for paired,\
+    \ one\nfor unpaired and one for debris reads.\nReads in paired file are interlaced\
+    \ by default, use -F\ntwice to create separate files."
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Make contigs (only for -t = caf or maf)\nEncase single reads as contig\
+    \ singlets into the CAF/MAF\nfile."
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "when given, selects only reads or contigs given by\nname in that file."
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "like -n, but sorts output according to order given\nin file."
+  synonyms:
+  - -N
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: when -n is used, inverts the selection
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "t   FASTQ quality Offset (only for -f = 'fastq')\nOffset of quality\
+    \ values in FASTQ file. Default of 33\nloads Sanger/Phred style files, using 0\
+    \ tries to\nautomatically recognise."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: quality
+  optional: true
+- !Flag
+  description: "String with MIRA parameters to be parsed\nUseful when setting parameters\
+    \ affecting consensus\ncalling like -CO:mrpg etc.\nE.g.: -P \"454_SETTINGS -CO:mrpg=3\""
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Set default quality for bases in file types without\nquality values.\
+    \ Furthermore, do not stop if expected\nquality files are missing (e.g. '.fasta')"
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: quality
+  optional: true
+- !Flag
+  description: "Rename contigs/singlets/reads with given name string\nto which a counter\
+    \ is appended.\nKnown bug: will create duplicate names if input\ncontains contigs/singlets\
+    \ as well as free reads, i.e.\nreads not in contigs nor singlets."
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: "(name)Scheme for renaming reads, important for\npaired-ends. Only\
+    \ 'solexa' is currently supported."
+  synonyms:
+  - -S
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: "When converting single reads, trim/clip away stretches\nof N and X\
+    \ and ends of reads. Note: remember to use -C to\nalso perform a hard clip (e.g.\
+    \ with FASTA as output)."
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print version number and exit
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Yield. Max (clipped/padded) bases to convert.\nWhen used on reads:\
+    \ output will contain first reads of\nfile where length of clipped bases totals\
+    \ at least -Y.\nWhen used on contigs: output will contain first contigs\nof file\
+    \ where length of padded contigs totals at least\n-Y."
+  synonyms:
+  - -Y
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: "Do not extract contigs (or their consensus), but the\nsequence of\
+    \ the reads they are composed of."
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[cCqf]       Recalculate consensus and / or consensus quality values\n\
+    and / or SNP feature tags.\n'c' recalc cons & cons qualities (with IUPAC)\n'C'\
+    \ recalc cons & cons qualities (forcing non-IUPAC)\n'q' recalc consensus qualities\
+    \ only\n'f' recalc SNP features\nNote: only the last of cCq is relevant, f works\
+    \ as a\nswitch and can be combined with cQq (e.g. \"-r C -r f\")\nNote: if the\
+    \ CAF/MAF contains multiple strains,\nrecalculation of cons & cons qualities is\
+    \ forced, you\ncan just influence whether IUPACs are used or not."
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "split output into multiple files instead of creating a\nsingle file"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'fillUp strain genomes'\nFill holes in the genome of one strain (N\
+    \ or @)\nwith sequence from a consensus of other strains\nTakes effect only with\
+    \ -r and -t gbf or fasta/q\nin FASTA/Q: bases filled up are in lower case\nin\
+    \ GBF: bases filled up are in upper case"
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Defines minimum quality a consensus base of a strain\nmust have, consensus\
+    \ bases below this will be 'N'\nDefault: 0\nOnly used with -r, and -f is caf/maf\
+    \ and -t is (fasta\nor gbf)"
+  synonyms:
+  - -Q
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: "Defines minimum coverage a consensus base of a strain\nmust have,\
+    \ bases with coverage below this will be 'N'\nDefault: 0\nOnly used with -r, and\
+    \ -t is (fasta\nor gbf)"
+  synonyms:
+  - -V
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: "Minimum contig or unclipped read length\nWhen loading, discard all\
+    \ contigs / reads with a\nlength less than this value. Default: 0 (=switched off)\n\
+    Note: not applied to reads in contigs!"
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: "Similar to -x but applies only to reads and\nthen to the clipped length."
+  synonyms:
+  - -X
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: "Minimum average contig coverage\nWhen loading, discard all contigs\
+    \ with an\naverage coverage less than this value.\nDefault: 1"
+  synonyms:
+  - -y
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: "Minimum number of reads in contig\nWhen loading, discard all contigs\
+    \ with a\nnumber of reads less than this value.\nDefault: 0 (=switched off)"
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: "when output as text or HTML: number of bases shown in\none alignment\
+    \ line. Default: 60."
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: integer
+  optional: true
+- !Flag
+  description: "when output as text or HTML: character used to pad\nendgaps. Default:\
+    \ ' ' (blank)"
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: character
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "miraconvert\t(MIRALIB version 4.9.6)\nAuthor:  Bastien Chevreux\t(bach@chevreux.org)\n\
+  Purpose: convert assembly and sequencing file types.\n\nUsage:\nmiraconvert [-f\
+  \ <fromtype>] [-t <totype> [-t <totype> ...]]\n\t[-aAChimMsuZ]\n\t[-cflnNoPqrtvxXyYz\
+  \ {...}]\n\t{infile} {outfile} [<totype> <totype> ...]\n\nOptions:\n\t-f <fromtype>\t\
+  load this type of project files, where fromtype is:\n\t   caf\t\t a complete assembly\
+  \ or single sequences from CAF\n\t   maf\t\t a complete assembly or single sequences\
+  \ from CAF\n\t   fasta\t sequences from a FASTA file\n\t   fastq\t sequences from\
+  \ a FASTQ file\n\t   gb[f|k|ff]\t sequences from a GenBank file\n\t   phd\t\t sequences\
+  \ from a PHD file\n\t   fofnexp\t sequences in EXP files from file of filenames\n\
+  \t-t <totype>\twrite the sequences/assembly to this type (multiple\n\t\t\tmentions\
+  \ of -t are allowed):\n\t   ace\t\t sequences or complete assembly to ACE\n\t  \
+  \ caf\t\t sequences or complete assembly to CAF\n\t   maf\t\t sequences or complete\
+  \ assembly to MAF\n\t   sam\t\t complete assembly to SAM\n\t   samnbb\t like above,\
+  \ but leaving out reference (backbones) in\n\t\t\t  mapping assemblies\n\t   gb[f|k|ff]\t\
+  \ sequences or consensus to GenBank\n\t   gff3\t\t consensus to GFF3\n\t   wig\t\
+  \t assembly coverage info to wiggle file\n\t   gcwig\t assembly gc content info\
+  \ to wiggle file\n\t   fasta\t sequences or consensus to FASTA file (qualities to\n\
+  \t\t\t  .qual)\n\t   fastq\t sequences or consensus to FASTQ file\n\t   exp\t\t\
+  \ sequences or complete assembly to EXP files in\n\t\t\t  directories. Complete\
+  \ assemblies are suited for gap4\n\t\t\t  import as directed assembly.\n\t\t\t \
+  \ Note: using caf2gap to import into gap4 is recommended\n\t\t\t  though\n\t   text\t\
+  \t complete assembly to text alignment (only when -f is\n\t\t\t  caf, maf or gbf)\n\
+  \t   html\t\t complete assembly to HTML (only when -f is caf, maf or\n\t\t\t  gbf)\n\
+  \t   tcs\t\t complete assembly to tcs\n\t   hsnp\t\t surrounding of SNP tags (SROc,\
+  \ SAOc, SIOc) to HTML\n\t\t\t (only when -f is caf, maf or gbf)\n\t   asnp\t\t analysis\
+  \ of SNP tags\n\t\t\t (only when -f is caf, maf or gbf)\n\t   cstats\t contig statistics\
+  \ file like from MIRA\n\t\t\t (only when source contains contigs)\n\t   crlist\t\
+  \ contig read list file like from MIRA\n\t\t\t (only when source contains contigs)\n\
+  \t   maskedfasta\t reads where sequencing vector is masked out\n\t\t\t (with X)\
+  \ to FASTA file (qualities to .qual)\n\t   scaf\t\t sequences or complete assembly\
+  \ to single sequences CAF\n\t-a\t\tAppend to target files instead of rewriting\n\
+  \t-A\t\tDo not Adjust sequence case\n\t\t\t When reading formats which define clipping\
+  \ points,\n\t\t\t  and saving to formats which do not have clipping\n\t\t\t  information,\
+  \ miraconvert normally adjusts the case of\n\t\t\t  read sequences: lower case for\
+  \ clipped parts, upper\n\t\t\t  case for unclipped parts of reads.\n\t\t\t  Use\
+  \ -A if you do not want this. See also -C.\n\t\t\t Applies only to files/formats\
+  \ which do not contain\n\t\t\t  contigs.\n\t-b\t\tBlind data\n\t\t\t Replaces all\
+  \ bases in reads/contigs with a 'c'\n\t-C\t\tPerform hard clip to reads\n\t\t\t\
+  \ When reading formats which define clipping points, will\n\t\t\t  save only the\
+  \ unclipped part into the result file.\n\t\t\t Applies only to files/formats which\
+  \ do not contain\n\t\t\t  contigs.\n\t-d\t\tDelete gap only columns\n\t\t\t When\
+  \ output is contigs: delete columns that are\n\t\t\t  entirely gaps (like after\
+  \ having deleted reads during\n\t\t\t  editing in gap4 or similar)\n\t\t\t When\
+  \ output is reads: delete gaps in reads\n\t-F\t\tFilter read groups to different\
+  \ files\n\t\t\t Works only for input files with readgroups (CAF/MAF)\n\t\t\t 3 (or\
+  \ 4) files generated: one or two for paired, one\n\t\t\t  for unpaired and one for\
+  \ debris reads.\n\t\t\t Reads in paired file are interlaced by default, use -F\n\
+  \t\t\t  twice to create separate files.\n\t-m\t\tMake contigs (only for -t = caf\
+  \ or maf)\n\t\t\t Encase single reads as contig singlets into the CAF/MAF\n\t\t\t\
+  \ file.\n\t-n <filename>\twhen given, selects only reads or contigs given by\n\t\
+  \t\t name in that file.\n\t-N <filename>\tlike -n, but sorts output according to\
+  \ order given\n\t\t\t in file.\n\t-i\t\twhen -n is used, inverts the selection\n\
+  \t-o <quality>t\tFASTQ quality Offset (only for -f = 'fastq')\n\t\t\t Offset of\
+  \ quality values in FASTQ file. Default of 33\n\t\t\t loads Sanger/Phred style files,\
+  \ using 0 tries to\n\t\t\t automatically recognise.\n\t-P <string>\tString with\
+  \ MIRA parameters to be parsed\n\t\t\t Useful when setting parameters affecting\
+  \ consensus\n\t\t\t calling like -CO:mrpg etc.\n\t\t\t E.g.: -P \"454_SETTINGS -CO:mrpg=3\"\
+  \n\t-q <quality>\tSet default quality for bases in file types without\n\t\t\t quality\
+  \ values. Furthermore, do not stop if expected\n\t\t\t quality files are missing\
+  \ (e.g. '.fasta')\n\t-R <name>\tRename contigs/singlets/reads with given name string\n\
+  \t\t\t to which a counter is appended.\n\t\t\t Known bug: will create duplicate\
+  \ names if input\n\t\t\t  contains contigs/singlets as well as free reads, i.e.\n\
+  \t\t\t  reads not in contigs nor singlets.\n\t-S <name>\t(name)Scheme for renaming\
+  \ reads, important for\n\t\t\t  paired-ends. Only 'solexa' is currently supported.\n\
+  \t-T\t\tWhen converting single reads, trim/clip away stretches\n\t\t\t of N and\
+  \ X and ends of reads. Note: remember to use -C to\n\t\t\t also perform a hard clip\
+  \ (e.g. with FASTA as output).\n\t-v\t\tPrint version number and exit\n\t-Y <integer>\t\
+  Yield. Max (clipped/padded) bases to convert.\n\t\t\t When used on reads: output\
+  \ will contain first reads of\n\t\t\t  file where length of clipped bases totals\
+  \ at least -Y.\n\t\t\t When used on contigs: output will contain first contigs\n\
+  \t\t\t  of file where length of padded contigs totals at least\n\t\t\t  -Y.\n\n\t\
+  --------------------------------------------------------\n\tThe following switches\
+  \ work only when input (CAF or MAF)\n\tcontains contigs. Beware: CAF and MAf can\
+  \ also contain\n\tjust reads.\n\t--------------------------------------------------------\n\
+  \n\t-M\t\tDo not extract contigs (or their consensus), but the\n\t\t\t  sequence\
+  \ of the reads they are composed of.\n\t-r [cCqf]\tRecalculate consensus and / or\
+  \ consensus quality values\n\t\t\t and / or SNP feature tags.\n\t\t\t 'c' recalc\
+  \ cons & cons qualities (with IUPAC)\n\t\t\t 'C' recalc cons & cons qualities (forcing\
+  \ non-IUPAC)\n\t\t\t 'q' recalc consensus qualities only\n\t\t\t 'f' recalc SNP\
+  \ features\n\t\t\t Note: only the last of cCq is relevant, f works as a\n\t\t\t\
+  \  switch and can be combined with cQq (e.g. \"-r C -r f\")\n\t\t\t Note: if the\
+  \ CAF/MAF contains multiple strains,\n\t\t\t recalculation of cons & cons qualities\
+  \ is forced, you\n\t\t\t  can just influence whether IUPACs are used or not.\n\t\
+  -s\t\tsplit output into multiple files instead of creating a\n\t\t\t single file\n\
+  \t-u\t\t'fillUp strain genomes'\n\t\t\t Fill holes in the genome of one strain (N\
+  \ or @)\n\t\t\t with sequence from a consensus of other strains\n\t\t\t Takes effect\
+  \ only with -r and -t gbf or fasta/q\n\t\t\t in FASTA/Q: bases filled up are in\
+  \ lower case\n\t\t\t in GBF: bases filled up are in upper case\n\t-Q <integer>\t\
+  Defines minimum quality a consensus base of a strain\n\t\t\t must have, consensus\
+  \ bases below this will be 'N'\n\t\t\t Default: 0\n\t\t\t Only used with -r, and\
+  \ -f is caf/maf and -t is (fasta\n\t\t\t  or gbf)\n\t-V <integer>\tDefines minimum\
+  \ coverage a consensus base of a strain\n\t\t\t must have, bases with coverage below\
+  \ this will be 'N'\n\t\t\t Default: 0\n\t\t\t Only used with -r, and -t is (fasta\n\
+  \t\t\t  or gbf)\n\t-x <integer>\tMinimum contig or unclipped read length\n\t\t\t\
+  \ When loading, discard all contigs / reads with a\n\t\t\t length less than this\
+  \ value. Default: 0 (=switched off)\n\t\t\t Note: not applied to reads in contigs!\n\
+  \t-X <integer>\tSimilar to -x but applies only to reads and\n\t\t\t then to the\
+  \ clipped length.\n\t-y <integer>\tMinimum average contig coverage\n\t\t\t When\
+  \ loading, discard all contigs with an\n\t\t\t average coverage less than this value.\n\
+  \t\t\t Default: 1\n\t-z <integer>\tMinimum number of reads in contig\n\t\t\t When\
+  \ loading, discard all contigs with a\n\t\t\t number of reads less than this value.\n\
+  \t\t\t Default: 0 (=switched off)\n\t-l <integer>\twhen output as text or HTML:\
+  \ number of bases shown in\n\t\t\t one alignment line. Default: 60.\n\t-c <character>\t\
+  when output as text or HTML: character used to pad\n\t\t\t endgaps. Default: ' '\
+  \ (blank)\n\nExamples:\n\tmiraconvert source.maf dest.sam\n\tmiraconvert source.caf\
+  \ dest.fasta wig ace\n\tmiraconvert -x 2000 -y 10 source.caf dest.caf\n\tmiraconvert\
+  \ -x 40 -C -F -F source.maf .fastq\n"
+generated_using:
+- -h

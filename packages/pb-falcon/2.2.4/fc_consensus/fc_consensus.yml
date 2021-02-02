@@ -1,0 +1,166 @@
+!Command
+command:
+- fc_consensus
+positional: []
+named:
+- !Flag
+  description: 'number of processes used for generating consensus; 0 for main process
+    only (default: 24)'
+  synonyms:
+  - --n-core
+  args: !SimpleFlagArg
+    name: N_CORE
+  optional: true
+- !Flag
+  description: 'minimum coverage to break the consensus (default: 6)'
+  synonyms:
+  - --min-cov
+  args: !SimpleFlagArg
+    name: MIN_COV
+  optional: true
+- !Flag
+  description: 'minimum coverage of alignment data; a seed read with less than MIN_COV_ALN
+    average depth of coverage will be completely ignored (default: 10)'
+  synonyms:
+  - --min-cov-aln
+  args: !SimpleFlagArg
+    name: MIN_COV_ALN
+  optional: true
+- !Flag
+  description: 'maximum coverage of alignment data; a seed read with more than MAX_COV_ALN
+    average depth of coverage of the longest alignments will be capped, excess shorter
+    alignments will be ignored (default: 0)'
+  synonyms:
+  - --max-cov-aln
+  args: !SimpleFlagArg
+    name: MAX_COV_ALN
+  optional: true
+- !Flag
+  description: 'minimum length of a sequence in an alignment to be used in consensus;
+    any shorter sequence will be completely ignored (default: 0)'
+  synonyms:
+  - --min-len-aln
+  args: !SimpleFlagArg
+    name: MIN_LEN_ALN
+  optional: true
+- !Flag
+  description: '1 + minimum number of reads used in generating the consensus; a seed
+    read with fewer alignments will be completely ignored (default: 10)'
+  synonyms:
+  - --min-n-read
+  args: !SimpleFlagArg
+    name: MIN_N_READ
+  optional: true
+- !Flag
+  description: '1 + maximum number of reads used in generating the consensus (default:
+    500)'
+  synonyms:
+  - --max-n-read
+  args: !SimpleFlagArg
+    name: MAX_N_READ
+  optional: true
+- !Flag
+  description: 'trim the input sequence with k-mer spare dynamic programming to find
+    the mapped range (default: False)'
+  synonyms:
+  - --trim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'output uncorrected regions too (default: False)'
+  synonyms:
+  - --output-full
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'output multi correct regions (default: False)'
+  synonyms:
+  - --output-multi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'minimum identity of the alignments used for correction (default: 0.7)'
+  synonyms:
+  - --min-idt
+  args: !SimpleFlagArg
+    name: MIN_IDT
+  optional: true
+- !Flag
+  description: 'for trimming, the there is unaligned edge leng > edge_tolerance, ignore
+    the read (default: 1000)'
+  synonyms:
+  - --edge-tolerance
+  args: !SimpleFlagArg
+    name: EDGE_TOLERANCE
+  optional: true
+- !Flag
+  description: 'the size for triming both ends from initial sparse aligned region
+    (default: 50)'
+  synonyms:
+  - --trim-size
+  args: !SimpleFlagArg
+    name: TRIM_SIZE
+  optional: true
+- !Flag
+  description: 'if provided, externally determined mapping coordinates will be used
+    for error correction (default: False)'
+  synonyms:
+  - --allow-external-mapping
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "logging level (WARNING=3, INFO=2, DEBUG=1) (default: 2.0)\n"
+  synonyms:
+  - -v
+  - --verbose-level
+  args: !SimpleFlagArg
+    name: VERBOSE_LEVEL
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: fc_consensus [-h] [--n-core N_CORE] [--min-cov MIN_COV]\n     \
+  \               [--min-cov-aln MIN_COV_ALN] [--max-cov-aln MAX_COV_ALN]\n      \
+  \              [--min-len-aln MIN_LEN_ALN] [--min-n-read MIN_N_READ]\n         \
+  \           [--max-n-read MAX_N_READ] [--trim] [--output-full]\n               \
+  \     [--output-multi] [--min-idt MIN_IDT]\n                    [--edge-tolerance\
+  \ EDGE_TOLERANCE] [--trim-size TRIM_SIZE]\n                    [--allow-external-mapping]\
+  \ [-v VERBOSE_LEVEL]\n\na simple multi-processor consensus sequence generator\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ --n-core N_CORE       number of processes used for generating consensus; 0 for\
+  \ main process only (default: 24)\n  --min-cov MIN_COV     minimum coverage to break\
+  \ the consensus (default: 6)\n  --min-cov-aln MIN_COV_ALN\n                    \
+  \    minimum coverage of alignment data; a seed read with less than MIN_COV_ALN\
+  \ average depth of coverage will be completely ignored (default: 10)\n  --max-cov-aln\
+  \ MAX_COV_ALN\n                        maximum coverage of alignment data; a seed\
+  \ read with more than MAX_COV_ALN average depth of coverage of the longest alignments\
+  \ will be capped, excess shorter alignments will be ignored (default: 0)\n  --min-len-aln\
+  \ MIN_LEN_ALN\n                        minimum length of a sequence in an alignment\
+  \ to be used in consensus; any shorter sequence will be completely ignored (default:\
+  \ 0)\n  --min-n-read MIN_N_READ\n                        1 + minimum number of reads\
+  \ used in generating the consensus; a seed read with fewer alignments will be completely\
+  \ ignored (default: 10)\n  --max-n-read MAX_N_READ\n                        1 +\
+  \ maximum number of reads used in generating the consensus (default: 500)\n  --trim\
+  \                trim the input sequence with k-mer spare dynamic programming to\
+  \ find the mapped range (default: False)\n  --output-full         output uncorrected\
+  \ regions too (default: False)\n  --output-multi        output multi correct regions\
+  \ (default: False)\n  --min-idt MIN_IDT     minimum identity of the alignments used\
+  \ for correction (default: 0.7)\n  --edge-tolerance EDGE_TOLERANCE\n           \
+  \             for trimming, the there is unaligned edge leng > edge_tolerance, ignore\
+  \ the read (default: 1000)\n  --trim-size TRIM_SIZE\n                        the\
+  \ size for triming both ends from initial sparse aligned region (default: 50)\n\
+  \  --allow-external-mapping\n                        if provided, externally determined\
+  \ mapping coordinates will be used for error correction (default: False)\n  -v VERBOSE_LEVEL,\
+  \ --verbose-level VERBOSE_LEVEL\n                        logging level (WARNING=3,\
+  \ INFO=2, DEBUG=1) (default: 2.0)\n"
+generated_using:
+- --help

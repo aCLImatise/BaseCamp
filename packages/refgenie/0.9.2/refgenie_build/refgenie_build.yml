@@ -1,0 +1,178 @@
+!Command
+command:
+- refgenie
+- build
+positional:
+- !Positional
+  description: "One or more registry path strings that identify assets\n(e.g. hg38/fasta\
+    \ or hg38/fasta:tag)."
+  position: 0
+  name: asset-registry-paths
+  optional: false
+named:
+- !Flag
+  description: "Path to local genome configuration file. Optional if\nREFGENIE environment\
+    \ variable is set."
+  synonyms:
+  - -c
+  - --genome-config
+  args: !SimpleFlagArg
+    name: GENOME_CONFIG
+  optional: true
+- !Flag
+  description: Overwrite locks to recover from previous failed run
+  synonyms:
+  - -R
+  - --recover
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Pipeline configuration file (YAML). Relative paths are\nwith respect\
+    \ to the pipeline script."
+  synonyms:
+  - -C
+  - --config
+  args: !SimpleFlagArg
+    name: CONFIG_FILE
+  optional: true
+- !Flag
+  description: Overwrite all results to start a fresh run
+  synonyms:
+  - -N
+  - --new-start
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Add tag level description (e.g. built with version\n0.3.2)."
+  synonyms:
+  - --tag-description
+  args: !SimpleFlagArg
+    name: TAG_DESCRIPTION
+  optional: true
+- !Flag
+  description: "Add genome level description (e.g. The mouse\nmitochondrial genome,\
+    \ released in Dec 2013)."
+  synonyms:
+  - --genome-description
+  args: !SimpleFlagArg
+    name: GENOME_DESCRIPTION
+  optional: true
+- !Flag
+  description: Run all commands in the refgenie docker container.
+  synonyms:
+  - -d
+  - --docker
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Override the default genome, asset and tag of the\nparents (e.g. fasta=hg38/fasta:default\n\
+    gtf=mm10/gencode_gtf:default)."
+  synonyms:
+  - --assets
+  args: !RepeatFlagArg
+    name: ASSETS
+  optional: true
+- !Flag
+  description: "Provide paths to the required files (e.g.\nfasta=/path/to/file.fa.gz)."
+  synonyms:
+  - --files
+  args: !RepeatFlagArg
+    name: FILES
+  optional: true
+- !Flag
+  description: "Provide required parameter values (e.g.\nparam1=value1)."
+  synonyms:
+  - --params
+  args: !RepeatFlagArg
+    name: PARAMS
+  optional: true
+- !Flag
+  description: If using docker, also mount these folders as volumes.
+  synonyms:
+  - -v
+  - --volumes
+  args: !RepeatFlagArg
+    name: VOLUMES
+  optional: true
+- !Flag
+  description: "Override the default path to genomes folder, which is\nthe genome_folder\
+    \ attribute in the genome\nconfiguration file."
+  synonyms:
+  - -o
+  - --outfolder
+  args: !SimpleFlagArg
+    name: OUTFOLDER
+  optional: true
+- !Flag
+  description: "Show the build requirements for the specified asset\nand exit."
+  synonyms:
+  - -q
+  - --requirements
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Provide a recipe to use.
+  synonyms:
+  - -r
+  - --recipe
+  args: !SimpleFlagArg
+    name: RECIPE
+  optional: true
+- !Flag
+  description: "Reference assembly ID, e.g. mm10.\n"
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: refgenie build [-h] [-c GENOME_CONFIG] [-R] [-C CONFIG_FILE] [-N]\n\
+  \                      [--tag-description TAG_DESCRIPTION]\n                   \
+  \   [--genome-description GENOME_DESCRIPTION] [-d]\n                      [--assets\
+  \ ASSETS [ASSETS ...]]\n                      [--files FILES [FILES ...]]\n    \
+  \                  [--params PARAMS [PARAMS ...]]\n                      [-v VOLUMES\
+  \ [VOLUMES ...]] [-o OUTFOLDER] [-q]\n                      [-r RECIPE] [-g GENOME]\n\
+  \                      asset-registry-paths [asset-registry-paths ...]\n\nBuild\
+  \ genome assets.\n\npositional arguments:\n  asset-registry-paths  One or more registry\
+  \ path strings that identify assets\n                        (e.g. hg38/fasta or\
+  \ hg38/fasta:tag).\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -c GENOME_CONFIG, --genome-config GENOME_CONFIG\n        \
+  \                Path to local genome configuration file. Optional if\n        \
+  \                REFGENIE environment variable is set.\n  -R, --recover        \
+  \ Overwrite locks to recover from previous failed run\n  -C CONFIG_FILE, --config\
+  \ CONFIG_FILE\n                        Pipeline configuration file (YAML). Relative\
+  \ paths are\n                        with respect to the pipeline script.\n  -N,\
+  \ --new-start       Overwrite all results to start a fresh run\n  --tag-description\
+  \ TAG_DESCRIPTION\n                        Add tag level description (e.g. built\
+  \ with version\n                        0.3.2).\n  --genome-description GENOME_DESCRIPTION\n\
+  \                        Add genome level description (e.g. The mouse\n        \
+  \                mitochondrial genome, released in Dec 2013).\n  -d, --docker  \
+  \        Run all commands in the refgenie docker container.\n  --assets ASSETS [ASSETS\
+  \ ...]\n                        Override the default genome, asset and tag of the\n\
+  \                        parents (e.g. fasta=hg38/fasta:default\n              \
+  \          gtf=mm10/gencode_gtf:default).\n  --files FILES [FILES ...]\n       \
+  \                 Provide paths to the required files (e.g.\n                  \
+  \      fasta=/path/to/file.fa.gz).\n  --params PARAMS [PARAMS ...]\n           \
+  \             Provide required parameter values (e.g.\n                        param1=value1).\n\
+  \  -v VOLUMES [VOLUMES ...], --volumes VOLUMES [VOLUMES ...]\n                 \
+  \       If using docker, also mount these folders as volumes.\n  -o OUTFOLDER, --outfolder\
+  \ OUTFOLDER\n                        Override the default path to genomes folder,\
+  \ which is\n                        the genome_folder attribute in the genome\n\
+  \                        configuration file.\n  -q, --requirements    Show the build\
+  \ requirements for the specified asset\n                        and exit.\n  -r\
+  \ RECIPE, --recipe RECIPE\n                        Provide a recipe to use.\n  -g\
+  \ GENOME, --genome GENOME\n                        Reference assembly ID, e.g. mm10.\n"
+generated_using:
+- --help

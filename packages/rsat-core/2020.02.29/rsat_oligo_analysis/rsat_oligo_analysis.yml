@@ -1,0 +1,620 @@
+!Command
+command:
+- rsat
+- oligo-analysis
+positional:
+- !Positional
+  description: VERSION
+  position: 0
+  name: oligo-analysis
+  optional: false
+- !Positional
+  description: AUTHOR
+  position: 1
+  name: '1.169'
+  optional: false
+- !Positional
+  description: motif discovery
+  position: 0
+  name: sequences
+  optional: false
+- !Positional
+  description: "p  = probability of the pattern\nSeveray models are supported for\
+    \ estimating the\nprior probability (see options -a, -expfreq and\n-bg).\nS  =\
+    \ number of sequences in the sequence set.\nLj = length of the jth regulatory\
+    \ region\nk  = length of oligomer\nT = the number of possible matching positions."
+  position: 0
+  name: where
+  optional: false
+- !Positional
+  description: a is the coefficient of autocorrelation
+  position: 0
+  name: Where
+  optional: false
+- !Positional
+  description: "x   is the observed number of occurrences,\np   is the expected frequency\
+    \ for the pattern,\nT   is the number of possible matching positions,\nas defined\
+    \ above."
+  position: 0
+  name: where
+  optional: false
+- !Positional
+  description: 'Interpretation: the P-value (Pval) represents the nominal risk'
+  position: 0
+  name: accuracy.
+  optional: false
+- !Positional
+  description: "By default, the program calculates the P-value on the right\ntail\
+    \ of the probability distribution, which represents the\nprobability to observe\
+    \ at least x occurrences by chance:\nT\nP(X>=x) = SUM P(X=i)\ni=x\nWith the option\
+    \ -under, the P-value is calculated on the left\ntail of the distribution, which\
+    \ represents the probability of\nhaving at most x occurrences:\nx-1\nP(X<=x) =\
+    \  SUM P(X=i)\ni=0\nThe option -under does not affect the other statistics\n(zscore,\
+    \ loglikelihood). For z-score, the negative values\nindicate under-representation.\n\
+    With the option -two_tails, the P-value is calculated on\neither the left or the\
+    \ right-tail of the distribution,\ndepending on the observed/expected comparison:\n\
+    if k >= exp_occ, right tail (over-representation)\nif k < exp_occ, left tail (under-representation)"
+  position: 0
+  name: OVER/UNDER-REPRESENTATION
+  optional: false
+- !Positional
+  description: W     is a given word
+  position: 0
+  name: where
+  optional: false
+- !Positional
+  description: is the reverse complement of W
+  position: 1
+  name: Wr
+  optional: false
+- !Positional
+  description: "The probability of occurrence by itself is not fully\ninformative,\
+    \ because the threshold must be adapted depending\non the number of patterns considered.\
+    \ Indeed, a simple\nhexanucleotide analysis amounts to consider 4096\nhypotheses.\n\
+    The E-value (Eval) represents the expected number of patterns\nwhich would be\
+    \ returned at random for a given threshold of\nnominal P-value.\nEval = NPO *\
+    \ P(X>=x)\nwhere NPO is the number of possible oligomers of the chosen\nlength\
+    \ (eg 4096 for hexanucleotides).\nNote that when searches are performed on both\
+    \ strands, NPO is\ncorrected for the fact that non-palindromic patterns are\n\
+    grouped by pairs (for example, there are 4096 possible\nhexanucleotides when the\
+    \ count is performed on a single\nstrand, but only 2080 when the count is performed\
+    \ on both\nstrands).\nInterpretation: the E-value (Eval) represents the expected\n\
+    number of false positives, for a given threshold of P-value\n(Pval)."
+  position: 0
+  name: E-VALUE
+  optional: false
+- !Positional
+  description: "The Z-score is calculated in the following way\nZsc = (obs_occ - exp_occ)/sd_occ\n\
+    = (obs_occ - exp_occ)/sqrt(var_occ)"
+  position: 0
+  name: Z-SCORE
+  optional: false
+- !Positional
+  description: "obs_occ is the observed number of occurrences\nexp_occ is the expected\
+    \ number of occurrences\nsd_occ and var_occ\nare the estimated standard deviation\
+    \ and variances\nfor the occurrences, respectively."
+  position: 1
+  name: where
+  optional: false
+- !Positional
+  description: "Detect over- and under-represented dyads (i.e. a pair of short\noligonucleotides\
+    \ separated by a spacing of fixed width but\nvariable content)."
+  position: 0
+  name: dyad-analysis
+  optional: false
+- !Positional
+  description: "Program written in C (developed by Matthieu Defrance) to\nensure an\
+    \ efficient counting of oligonucleotides. This program\nruns about 100 times faster\
+    \ than oligo-analysis but has\nrestricted functionality (only return word occurrences\
+    \ and\nfrequencies)."
+  position: 1
+  name: count-words
+  optional: false
+named:
+- !Flag
+  description: "if not specified, the standard input is used.\nThis allows to place\
+    \ the command within a pipe."
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: inputfile
+  optional: true
+- !Flag
+  description: "|lower\nMask lower or uppercases, respecively, i.e. replace\nselected\
+    \ case by N characters."
+  synonyms:
+  - -mask
+  args: !SimpleFlagArg
+    name: upper
+  optional: true
+- !Flag
+  description: "file format. Must be followed by one of the\nfollowing options:\n\
+    fasta (default)\nwconsensus\nIG\nfilelist\nraw\nSee below for the description\
+    \ of these formats."
+  synonyms:
+  - -format
+  args: !SimpleFlagArg
+    name: input
+  optional: true
+- !Flag
+  description: oligomer length.
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(mutually exclusive with -calibN, -calib1 and -a)\nfile containing\
+    \ the estimations for expected oligomer\nfrequencies. This can be for instance\
+    \ the olignonucleotide\nfrequency measured in the whole genome, or in all intergenic\n\
+    regions, or in all coding regions.\nThis information is used for the calculation\
+    \ of probabilities."
+  synonyms:
+  - -expfreq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(mutually exclusive with -expfreq and -a) File\ncontaining the estimations\
+    \ for the mean and variance\nof oligomer occurrences. This calibration can be\n\
+    performed with the script calibrate-oligos.\nCalibration file contains (among\
+    \ other informations)\nthe occurrence means and variances of the simulation,\n\
+    which is used for the calculation of probabilities, on\nthe basis of a negative\
+    \ binomial model."
+  synonyms:
+  - -calibN
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file based on single sequence analysis.\nThe mean and variance of\
+    \ occurrences are estimated my\nmultiplying single-sequence estimators by the\
+    \ number\nof sequences (we checked the linearity)."
+  synonyms:
+  - -calib1
+  args: !SimpleFlagArg
+    name: calibration
+  optional: true
+- !Flag
+  description: "(deprecated, use \"-bg intergenic\" instead)\nuse intergenic frequencies\
+    \ as background frequencies"
+  synonyms:
+  - -ncf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "background model\nType of sequences used as background model for\n\
+    estimating expected oligonucleotide frequencies.\nEither -org or -taxon is required\
+    \ with the option -bg.\nSupported models:\n-bg upstream\nall upstream sequences,\
+    \ allowing overlap with\nupstream ORFs. Calibrations with a single\nsize per genome.\n\
+    -bg upstreamL\nall upstream sequences, allowing overlap with\nupstream ORFs. Length-specific\
+    \ calibration\nsets.\n-bg upstream-noorf\nall upstream sequences, preventing overlap\n\
+    with upstream ORFs\n-bg intergenic\nintergenic frequencies\nWhole set of intergenic\
+    \ regions, including\nupstream and downstream sequences\n-bg input\nEstimate word\
+    \ frequency from residue\nfrequencies in the input sequences (Bernoulli\nmodel)."
+  synonyms:
+  - -bg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "organism\nOrganism used to estimate background frequencies.\nThe list\
+    \ of supported organisms can be obtained with the\ncommand I<supported-organisms>."
+  synonyms:
+  - -org
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "taxon\nOrganism or taxon that used as reference for the\nestimation\
+    \ of a background model based on a genome\nsubset (option -bg).  Either -org or\
+    \ -taxon is\nrequired with the option -bg.\nOptions -org and -taxon are mutually\
+    \ exclusive."
+  synonyms:
+  - -taxon
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#\nMarkov chain: the frequency expected for each word is\ncalculated\
+    \ on basis of subword frequencies observed in the\ninput set.\nThe number # indicates\
+    \ the order of the Markov chain.\nIf negative, # is substracted to word length\n\
+    e.g:\n-l 6 -markov -2\nis equivalent to\n-l 6 -markov 5\nOrder 0 is equivalent\
+    \ to using single nucleotide frequencies\n(-a input).\nEx: calculation of expected\
+    \ 6nt frequencies on basis\nof a Markov chain of order 4 :\nobs(GATAA) x obs(ATAAG)\n\
+    exp(GATAAG) = -----------------------\nobs(ATAA)"
+  synonyms:
+  - -markov
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Expected word frequencies are calculated on the basis\nof subword\
+    \ frequencies, in a similar (but not\nidentical) way to the \"dictionary\" approach\
+    \ developed\nby Harmen Bussemaker.  Each word is segmented in 2\nsubwords in all\
+    \ possible ways:\nGATAAG  G & ATAAG\nGA & TAAG\nGAT & TAG\nGATA & AG\nGATAA &\
+    \ G\nThe expected frequency of each segmented pair is the\nproduct of expected\
+    \ frequencies of its members. The\nexpected word frequency is the maximum expected\
+    \ pair\nfrequency."
+  synonyms:
+  - -lexicon
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#\nPseudo-frequency for the background model, where #\nmust be a real\
+    \ value between 0 and 1.\nThis allows to circumvent the problem that the\nexpected\
+    \ frequency file might be incomplete (due to\na too small reference sequence set),\
+    \ in which case\nsome oligonucleotides might have an observed\nfrequency > 0,\
+    \ whereas the expected frequency is 0\n(leading to an impossible event). The expected\n\
+    frequency is corrected by a pseudo-frequency, which\nis the pseudo-frequency divided\
+    \ by the number of\npossible patterns."
+  synonyms:
+  - -pseudo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "no overlapping.\nDisable the detection of overlapping matches for\n\
+    self-overlapping patterns (ex TATATA, GATAGA)."
+  synonyms:
+  - -noov
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(default)\noligonucleotide occurrences found on both stands are summed."
+  synonyms:
+  - -2str
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: inactivates the summation of occurrences on both strands.
+  synonyms:
+  - -1str
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "dna|prot|other\nInput sequence type\n. DNA (default)\nOnly A, C, G,\
+    \ and T residues are\naccepted. oligomers that contain partly defined\n(IUPAC\
+    \ code) or undefined nucleotides (N) are\ndiscarded from the countings.\n. protein\n\
+    Oligopeptide analysis instead of oligonucleotide.\nThis inactivates the grouping\
+    \ of oligomers with\ntheir reverse complements, and modifies the\nalphabet size.\n\
+    . other\nAny type of letters found in the input sequence is\nconsidered valid.\
+    \ This allows to analyze texts in\nhuman language."
+  synonyms:
+  - -seqtype
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "value\nLower threshold on some parameter. All patterns with a\nparameter\
+    \ value smaller than the threshold are\ndiscarded.\nSupported parameters: occ,occ_P,occ_E,occ_sig,observed_freq,exp_freq,zscore,mseq,ms_P,ms_E,ms_sig,ratio,rank\n\
+    Example: select patterns with a positive value for the\noccurrence significance.\n\
+    -lth occ_sig 0"
+  synonyms:
+  - -lth
+  args: !SimpleFlagArg
+    name: param
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n\toligo-analysis\n\nVERSION\n        1.169\n\nAUTHOR\n        1997-2007\
+  \ by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)\n\nDESCRIPTION\n\tcalculates\
+  \ oligomer frequencies in a set of sequences,\n        and detects overrepresented\
+  \ oligomers.\n\nCATEGORY\n\tsequences\n\tmotif discovery\n\nUSAGE\n\toligo-analysis\
+  \ -l length [-i inputfile]  [-format input_format]\n\t\t[-o outputfile]\n\t\t[-return\
+  \ occ,freq,ratio,mseq,proba,zscore,like,rank]\n\t\t[-bfile background_model_file\
+  \ | -expfreq exp_freq_file | -calibN calibration_file | -a alphabet | -markov #]\n\
+  \t\t[-1str | -2str] [-seqtype dna|prot|other][-grouprc | -nogrouprc]\n\t\t[-oneN\
+  \ | -onedeg][-v]\n\t\t[-lth parameter value][-uth parameter value]\n        oligo-analysis\
+  \ [-h | -help]\n\nARGUMENTS\n    INPUT OPTIONS\n\t-i inputfile\n\t\tif not specified,\
+  \ the standard input is used.\n\t\tThis allows to place the command within a pipe.\n\
+  \n\t-mask upper|lower\n\t\tMask lower or uppercases, respecively, i.e. replace\n\
+  \t\tselected case by N characters.\n\n\t-format\tinput file format. Must be followed\
+  \ by one of the\n\t\tfollowing options:\n\t\t   fasta (default)\n\t\t   wconsensus\n\
+  \t\t   IG\n\t\t   filelist\n\t\t   raw\n\t\tSee below for the description of these\
+  \ formats.\n\t-l\toligomer length.\n\n    PROBABILISTIC MODEL\n\t-a\talphabet\n\t\
+  \tmust be followed by nucleotide frequencies expressed precisely\n\t\tthis way:\n\
+  \t\t-a a:t # c:g #\n\t\tex:\n\t\t-a a:t 0.3 c:g 0.2\n\n\t\tSpecial alphabet options\n\
+  \        -a input\n                use the alphabet of the input sequence\n\t\t\
+  (deprecated, use \"-bg input\" instead)\n\t-expfreq\n\t\t(mutually exclusive with\
+  \ -calibN, -calib1 and -a)\n\t\tfile containing the estimations for expected oligomer\n\
+  \t\tfrequencies. This can be for instance the olignonucleotide\n\t\tfrequency measured\
+  \ in the whole genome, or in all intergenic\n\t\tregions, or in all coding regions.\n\
+  \t\tThis information is used for the calculation of probabilities.\n\t-calibN\n\t\
+  \t(mutually exclusive with -expfreq and -a) File\n\t\tcontaining the estimations\
+  \ for the mean and variance\n\t\tof oligomer occurrences. This calibration can be\n\
+  \t\tperformed with the script calibrate-oligos.\n\t\tCalibration file contains (among\
+  \ other informations)\n\t\tthe occurrence means and variances of the simulation,\n\
+  \t\twhich is used for the calculation of probabilities, on\n\t\tthe basis of a negative\
+  \ binomial model.\n\t-calib1\tcalibration file based on single sequence analysis.\n\
+  \t\tThe mean and variance of occurrences are estimated my\n\t\tmultiplying single-sequence\
+  \ estimators by the number\n\t\tof sequences (we checked the linearity).\n\t-ncf\t\
+  (deprecated, use \"-bg intergenic\" instead)\n\t\tuse intergenic frequencies as\
+  \ background frequencies\n\t-bg\tbackground model\n\t\tType of sequences used as\
+  \ background model for\n\t\testimating expected oligonucleotide frequencies.\n\n\
+  \t\tEither -org or -taxon is required with the option -bg.\n\n\t\tSupported models:\n\
+  \t\t-bg upstream\n\t\t\t all upstream sequences, allowing overlap with\n\t\t   \
+  \      upstream ORFs. Calibrations with a single\n\t\t         size per genome.\n\
+  \n\t\t-bg upstreamL\n\t\t\t all upstream sequences, allowing overlap with\n\t\t\
+  \         upstream ORFs. Length-specific calibration\n\t\t         sets.\n\n\t\t\
+  -bg upstream-noorf\n\t\t\t  all upstream sequences, preventing overlap\n\t\t\t \
+  \ with upstream ORFs\n\n\t\t-bg intergenic\n\t\t         intergenic frequencies\n\
+  \t\t\t Whole set of intergenic regions, including\n\t\t\t upstream and downstream\
+  \ sequences\n\t\t-bg input\n\t\t\t Estimate word frequency from residue\n\t\t\t\
+  \ frequencies in the input sequences (Bernoulli\n\t\t\t model).\n\n\t-org\torganism\n\
+  \t        Organism used to estimate background frequencies.\n\n\t        The list\
+  \ of supported organisms can be obtained with the\n\t        command I<supported-organisms>.\n\
+  \n\t-taxon\ttaxon\n\t\tOrganism or taxon that used as reference for the\n\t\testimation\
+  \ of a background model based on a genome\n\t\tsubset (option -bg).  Either -org\
+  \ or -taxon is\n\t\trequired with the option -bg.\n\n   \t\tOptions -org and -taxon\
+  \ are mutually exclusive.\n\n\t-markov #\n\t\tMarkov chain: the frequency expected\
+  \ for each word is\n\t\tcalculated on basis of subword frequencies observed in the\n\
+  \t\tinput set.\n\n\t\tThe number # indicates the order of the Markov chain.\n\t\t\
+  If negative, # is substracted to word length\n\t\te.g:\n\t\t\t-l 6 -markov -2\n\t\
+  \tis equivalent to\n\t\t\t-l 6 -markov 5\n\n\t\tOrder 0 is equivalent to using single\
+  \ nucleotide frequencies\n\t\t(-a input).\n\n\t\tEx: calculation of expected 6nt\
+  \ frequencies on basis\n\t\tof a Markov chain of order 4 :\n\t\t              obs(GATAA)\
+  \ x obs(ATAAG)\n\t\texp(GATAAG) = -----------------------\n\t\t                \
+  \   obs(ATAA)\n\n\t-lexicon\n\t\tExpected word frequencies are calculated on the\
+  \ basis\n\t\tof subword frequencies, in a similar (but not\n\t\tidentical) way to\
+  \ the \"dictionary\" approach developed\n\t\tby Harmen Bussemaker.  Each word is\
+  \ segmented in 2\n\t\tsubwords in all possible ways:\n\n\t\t\tGATAAG\tG & ATAAG\n\
+  \t\t\t\tGA & TAAG\n\t\t\t\tGAT & TAG\n\t\t\t\tGATA & AG\n\t\t\t\tGATAA & G\n\n\t\
+  \tThe expected frequency of each segmented pair is the\n\t\tproduct of expected\
+  \ frequencies of its members. The\n\t\texpected word frequency is the maximum expected\
+  \ pair\n\t\tfrequency.\n\n\t-pseudo #\n                 Pseudo-frequency for the\
+  \ background model, where #\n\t\t must be a real value between 0 and 1.\n\n\t\t\
+  \ This allows to circumvent the problem that the\n\t\t expected frequency file might\
+  \ be incomplete (due to\n\t\t a too small reference sequence set), in which case\n\
+  \t\t some oligonucleotides might have an observed\n\t\t frequency > 0, whereas the\
+  \ expected frequency is 0\n\t\t (leading to an impossible event). The expected\n\
+  \t\t frequency is corrected by a pseudo-frequency, which\n\t\t is the pseudo-frequency\
+  \ divided by the number of\n\t\t possible patterns.\n\n    COUNTING OPTIONS\n\t\
+  -noov\tno overlapping.\n\t\tDisable the detection of overlapping matches for\n\t\
+  \tself-overlapping patterns (ex TATATA, GATAGA).\n\t-2str\t(default)\n\t\toligonucleotide\
+  \ occurrences found on both stands are summed.\n\t-1str\n\t\tinactivates the summation\
+  \ of occurrences on both strands.\n\n    SEQUENCE TYPE\n\t-seqtype  dna|prot|other\n\
+  \t\tInput sequence type\n\t\t. DNA (default)\n\t\t    Only A, C, G, and T residues\
+  \ are\n\t\t    accepted. oligomers that contain partly defined\n\t\t    (IUPAC code)\
+  \ or undefined nucleotides (N) are\n\t\t    discarded from the countings.\n\t\t\
+  . protein\n\t\t    Oligopeptide analysis instead of oligonucleotide.\n\t\t    This\
+  \ inactivates the grouping of oligomers with\n\t\t    their reverse complements,\
+  \ and modifies the\n\t\t    alphabet size.\n\t\t. other\n\t\t    Any type of letters\
+  \ found in the input sequence is\n\t\t    considered valid. This allows to analyze\
+  \ texts in\n\t\t    human language.\n\n    OUTPUT OPTIONS\n\tNote:\tBy default,\
+  \ the occurrences of each oligonucleotide on both\n\t\tstrands are summed. This\
+  \ can be inactivated with the\n\t\t-1str option.\n\n\t-o file\tOutput file. If not\
+  \ specified, the result is printed on the\n\t   \tstandard output.\n\n\t-v #\tverbose\
+  \ level\n\t\t\t1 report parameters and statistics\n\t\t\t2 warn when the program\
+  \ enters a new subroutine\n\t\t\t3 warn when the program reads a new sequence\n\t\
+  \t\t4 very high verbosity (for debugging)\n\n\t-return\tlist of statistics to return\n\
+  \t\tthis option is followed by a list of words,\n\t\tseparated by commas, indicating\
+  \ which values\n\t\thave to be returned for each oligomer.\n\t\tSupported statistics:\n\
+  \t\t\tocc\tnumber of occurrences .\n\t\t\tmseq\tnumber of matching sequences.\n\t\
+  \t\tfreq\trelative frequencies\n\t\t\t\t(occurrences/sum of occurrences)\n\t\t\t\
+  proba\tbinomial probability for observing\n\t\t\t\t>= k occurrences\n\t\t\tratio\t\
+  observed/expected ratio\n\t\t\tzscore\tz-score\n\t\t\tlike\tlog likelihood\n\t\t\
+  \tpos\tmatching positions for each oligomer\n\t\t\trank\trank of the pattern according\
+  \ to the sorting\n\t\t\t\tcriterion\n\t\tex: -return freq,occ,zscore\n\n\t-pal\n\
+  \t\tonly return reverse palindroms\n\t-table\n\t\treturn a table where rows represents\
+  \ input sequences,\n\t\tand columns the counts of occurrences for each\n\t\tpossible\
+  \ oligo\n\t-distrib\n\t\treturn occurrence distributions (one row per pattern)\n\
+  \t-grouprc (default)\n\t\tgroup reverse complement with the direct sequence in the\n\
+  \                output file. This avoids redundancy (since the frequence of\n \
+  \               AAAAA is the same as TTTTT when one searches on both strands).\n\
+  \ \t\tCan be inactivated by the -nogrouprc option.\n\t\tIncompatible with -1str.\n\
+  \t-nogrouprc\n\t\tinactivates grouping of reverse complement pairs.\n\t-oneN\tgroup\
+  \ oligonucleotides by neighborhood, where one neighborhood\n \t\tis defined as a\
+  \ set of oligo differing by one mismatch at a\n\t\tcommon position.\n\t\tex: the\
+  \ oligonucleotide atg admits 3 distinct neighborhoods:\n\t\t\tatN\n\t\t\taNg\n\t\
+  \t\tNtg\n\t-onedeg\tsucessively insert one ambiguous nucleotide code at each\n\t\
+  \tposition of each pattern\n\n\t-accept accepted_oligo_file\n\t\tSpecify a file\
+  \ containing a list of accepted\n\t\toligos. The analysis is then restricted to\
+  \ these\n\t\toligos. Since the number of tested oligos is reduced\n\t\tby this selection,\
+  \ the multitesting correction is\n\t\tgenerally lower, which increases the significance\
+  \ of\n\t\tthe accepted oligos, compared to the default situation\n\t\twhere all\
+  \ oligos are analyzed.\n\n\t\tFile format: the first word of each row specifies\
+  \ a\n\t\toligo. Subsequent words are ignored.\n\n\t-sort   sort oligomers according\
+  \ to overrepresentation.\n\t\tThe sort criterion depends on the estimators returned,\n\
+  \t\tby preference:\n\t\t- Z-score\n\t\t- binomial significance\n\t\t- occurrence\
+  \ number\n\n\t-under\n\t        detect under-represented instead of over-represented\
+  \ words\n\t\t(left-tail significance test, see below for details).\n\n\t-two_tails\n\
+  \t\tdetect under-represented and over-represented words\n\t\t(two-tails significance\
+  \ test, see below for details).\n\n\t-zeroocc\n\t\tReport also patterns with zero\
+  \ occurrences (provided\n\t\tthey fit the other thresholds).\n\t\tBy default, the\
+  \ program reports only patterns present\n\t\tin the sequence.\n\t\tIf the left tail\
+  \ or two-tail test is applied, patterns\n\t\twith zero occurrences are automatically\
+  \ taken into\n\t\taccount.-\n\t\tIn some other cases, one would also like to detect\n\
+  \t\tpatterns absent from the sequence. This is the\n\t\tfunction of this option.\n\
+  \n\t-quick\n\t\tQuick count mode: delegate the counting of word\n\t\toccurrences\
+  \ to count-words, a program written in C by\n\t\tMatthieu Defrance.\n\n\t\tThis\
+  \ option is incompatible with the following output\n  \t        fields: \n\n\t\t\
+  It is also incompatible with the output types\n\t\t   -table\n\t\t   -distrib\n\n\
+  \t-quick_if_possible\n\t\tEvaluate if the quick mode is compatible with the\n\t\t\
+  selected output parameters, and, if so, run in this\n\t\tmode.\n\n    THRESHOLDS\n\
+  \t-lth param value\n\t\tLower threshold on some parameter. All patterns with a\n\
+  \t\tparameter value smaller than the threshold are\n\t\tdiscarded.\n\t\tSupported\
+  \ parameters: occ,occ_P,occ_E,occ_sig,observed_freq,exp_freq,zscore,mseq,ms_P,ms_E,ms_sig,ratio,rank\n\
+  \t      \tExample: select patterns with a positive value for the\n\t      \toccurrence\
+  \ significance.\n\n\t\t\t -lth occ_sig 0\n\n\n\t-uth param value\n\t\tUpper threshold\
+  \ on some parameter. All patterns with a\n\t\tparameter value higher than the threshold\
+  \ are\n\t\tdiscarded.\n\t\tSupported parameters: occ,occ_P,occ_E,occ_sig,observed_freq,exp_freq,zscore,mseq,ms_P,ms_E,ms_sig,ratio,rank\n\
+  \t\tExample: to select no more than 50 patterns\n\t\t        -uth rank 50\n\n\n\
+  \    DEPRECATED THRESHOLD OPTIONS\n\n        The following options are still supported\
+  \ for backward\n        compatibility, but they should be replaced by the -lth and\n\
+  \        -uth options.\n\n\t-tho #\twhere # is an integer. Occurrence threshold:\
+  \ only returns the\n\t\tpatterns occuring at least # times in the whole sequences.\n\
+  \t\tThis criterion differs from thg in that multiple occurrences\n             \
+  \   of a pattern in the same upstream regions are taken into\n                account.\n\
+  \t-thpo #\twhere # is a real value comprised between 0 and 1.\n\t\tThreshold on\
+  \ occurrence probability: only returns the patterns\n                for which the\
+  \ probability to encounter a number of occurrences\n                higher or equals\
+  \ to that observed is smaller than #.\n\t-thosig #\n                threshold on\
+  \ occurence significance index.\n\t\tOnly returns the patterns for which the occurence\
+  \ significance\n                index is higher than or equal to #.\n\t-thratio\
+  \ #\n\t\tthreshold on observed/expected occurrence ratio\n\t\tOnly returns patterns\
+  \ with higher ratios than the threshold.\n\n\t-thms # where # is an integer. Threshold\
+  \ on matching\n\t\tsequences: only returns the patterns encountered at\n\t\tleast\
+  \ once in at least # sequences.\n\n\t-thmsf threshold on frequency of matching sequences\
+  \ (propotion\n\t        of sequences with at least one occurrence of the\n\t   \
+  \     pattern)\n\n\t-thpms #\n                where # is a real value comprised\
+  \ between 0 and 1.\n\t\tThreshold on occurrence probability: only returns the patterns\n\
+  \                for which the probability of a number of matching sequences\n \
+  \               higher or equals to that observed is smaller than #.\n\t-thmssig\
+  \ #\n                threshold on matching sequence significance index.\n\t\tOnly\
+  \ returns the patterns for which the significance\n                index of matching\
+  \ sequences is higher than or equal to #.\n\nINPUT FORMATS\n      All the input\
+  \ formats supported by convert-seq are also\n      supported by oligo-analysis.\
+  \ For a description of those formats, type\n      \t\tconvert-seq -h\n\nPROBABILITIES\n\
+  \n    EXPECTED OCCURRENCES\n\t                          S\n\t   Exp_occ = p * T\
+  \ = p * SUM (Lj + 1 - k)\n\t                         j=1\n\n\twhere\tp  = probability\
+  \ of the pattern\n\t\t     Severay models are supported for estimating the\n\t\t\
+  \     prior probability (see options -a, -expfreq and\n\t\t     -bg).\n\t\tS  =\
+  \ number of sequences in the sequence set.\n\t\tLj = length of the jth regulatory\
+  \ region\n\t\tk  = length of oligomer\n                T = the number of possible\
+  \ matching positions.\n\n\n\n    PROBABILITY OF SEQUENCE MATCHING\n\tThe probability\
+  \ to find at least one occurrence of the pattern within\n\ta single sequence is\
+  \ :\n\n\t                 T\n\t    q = 1 - (1-p)\n\n\twith the same abbreviations\
+  \ as above\n\n\n    EXPECTED NUMBER OF MATCHING SEQUENCES\n\n\tIn this counting\
+  \ mode, only the first occurrence of each\n\tsequence is taken into connsideration.\
+  \ We have thus to\n\tcalculate a probability of first occurrence.\n\n\t   Exp_ms\
+  \ = n (1 - (1 - p)^T)\n\n\twith the same abbreviations as above\n\n\tCorrection\
+  \ for autocorrelation (from Mireille Regnier)\n\t\tExp_ms_corrected = n (1 - (1\
+  \ - p/a)^T)\n\t   Where\n\t\t a is the coefficient of autocorrelation\n\n\n    PROBABILITY\
+  \ OF THE OBSERVED NUMBER OF OCCURRENCES (BINOMIAL)\n\n        The probability to\
+  \ observe exactly k occurrences in the whole\n  \tfamily of sequences is calculated\
+  \ by the binomial\n\n\t                                          x      T-x\n\t\
+  \    P(X=x) = bin(p,T,x) =       T!      p  (1-p)\n                            \
+  \       -----------\n                                   x! * (T-x)!\n\n\twhere \
+  \  x   is the observed number of occurrences,\n                p   is the expected\
+  \ frequency for the pattern,\n                T   is the number of possible matching\
+  \ positions,\n                    as defined above.\n\n\tThe probability to observe\
+  \ x or more occurrences in the\n  \tsequence set is calculated by the sum of binomials:\n\
+  \n\t                       T                 k-1\n\t    Pval = P(X>=x) =  SUM P(X=i)\
+  \ =  1 -  SUM  P(i)\n\t                      i=x                i=0\n\n        Note\
+  \ that the the P-value (Pval) is not computed by directly\n        applying this\
+  \ formula, but by using an efficient algorithm\n        (based on recursion), which\
+  \ increases both computing speed and\n        accuracy.\n\n        Interpretation:\
+  \ the P-value (Pval) represents the nominal risk\n        of false positive, i.e.\
+  \ the risk to consider a given word as\n        over-represented whereas it is not.\n\
+  \n\n    OVER/UNDER-REPRESENTATION\n\n        By default, the program calculates\
+  \ the P-value on the right\n\ttail of the probability distribution, which represents\
+  \ the\n\tprobability to observe at least x occurrences by chance:\n\n\t\t\t    \
+  \           T\n\t\t\t    P(X>=x) = SUM P(X=i)\n\t\t\t              i=x\n\n\tWith\
+  \ the option -under, the P-value is calculated on the left\n\ttail of the distribution,\
+  \ which represents the probability of\n\thaving at most x occurrences:\n\n\t\t\t\
+  \               x-1\n\t\t\t    P(X<=x) =  SUM P(X=i)\n\t\t\t               i=0\n\
+  \n\tThe option -under does not affect the other statistics\n\t(zscore, loglikelihood).\
+  \ For z-score, the negative values\n\tindicate under-representation.\n\n\tWith the\
+  \ option -two_tails, the P-value is calculated on\n\teither the left or the right-tail\
+  \ of the distribution,\n\tdepending on the observed/expected comparison:\n\t if\
+  \ k >= exp_occ, right tail (over-representation)\n\t if k < exp_occ, left tail (under-representation)\n\
+  \n    SPECIFIC TREATMENT FOR DOUBLE STRAND COUNTS\n\n\tWhen occurrences are counted\
+  \ on both strands, each pattern is\n\tgrouped with its erverse complement.\n\n\t\
+  For reverse-palindromic patterns, probabilities are calculated\n\ton the basis of\
+  \ the single strand count, since the occurrence\n\ton the reverse complement strand\
+  \ is completely dependent on\n\tthat on the direct strand.\n\n        A more biological\
+  \ justification for this is that, although the\n        word is foudn on both strands\
+  \ in a string representation of\n        the sequences, at the structural level,\
+  \ there is a single\n        binding site for the factor.\n\n\n\tOn the contrary,\
+  \ for non-palindrommic patterns, occurrences on\n        the direct and reverse\
+  \ complement strand represent distinct\n        binding sites. Thus,\n\n\t\t occ(W|Wr)\
+  \ = occ(W) + occ(Wr)\n\t\t exp_freq(W|Wr) = exp_freq(W) + exp_freq(Wr)\n\n\t   where\n\
+  \t\t W     is a given word\n\t\t Wr    is the reverse complement of W\n\n\tProbabilities\
+  \ are then calculated as above, on the basis of\n\tthe event W|Wr instead of simply\
+  \ W.\n\n    E-VALUE\n\n\tThe probability of occurrence by itself is not fully\n\t\
+  informative, because the threshold must be adapted depending\n\ton the number of\
+  \ patterns considered. Indeed, a simple\n\thexanucleotide analysis amounts to consider\
+  \ 4096\n\thypotheses.\n\n\tThe E-value (Eval) represents the expected number of\
+  \ patterns\n\twhich would be returned at random for a given threshold of\n\tnominal\
+  \ P-value.\n\n\t      Eval = NPO * P(X>=x)\n\n\twhere NPO is the number of possible\
+  \ oligomers of the chosen\n\t          length (eg 4096 for hexanucleotides).\n\n\
+  \        Note that when searches are performed on both strands, NPO is\n       \
+  \ corrected for the fact that non-palindromic patterns are\n        grouped by pairs\
+  \ (for example, there are 4096 possible\n        hexanucleotides when the count\
+  \ is performed on a single\n        strand, but only 2080 when the count is performed\
+  \ on both\n        strands).\n\n\tInterpretation: the E-value (Eval) represents\
+  \ the expected\n\tnumber of false positives, for a given threshold of P-value\n\t\
+  (Pval). \n\n    SIGNIFICANCE INDEX\n\n        The significance index is simply a\
+  \ negative logarithm\n        conversion of the E-value (in base 10).\n\n\tThe significance\
+  \ index is calculated as follows:\n\n\t      sig = -log10(E-value);\n\n\tThis index\
+  \ is very convenient to interpret : higher values\n\tcorrespond to exceptional patterns.\
+  \ A significance of 0\n\tcorresponds to an E-value of 1. A significance of 2 to\
+  \ an\n\tE-value of 1e-2 (i.e. one expects no more than 0.01 false\n\tpositives in\
+  \ the whole collection of patterns).\n\n    OVERLAP COEFFICIENT\n        overlap\
+  \ coefficient is calculated as follows\n        (after Pevzner et al.(1989). J.\
+  \ Biomol. Struct & Dynamics\n        5:1013-1026):\n\n\t           l\n         \
+  \   Kov = SUM kj (1/4)^j\n                  j=1\n\n        where l  is the pattern\
+  \ length.\n              j  is the overlap position, comprised between 0 and l.\n\
+  \              kj takes the value 1 if there is an overlap at pos j,\n         \
+  \        0 otherwise.\n\n        When counts are performed on both strands, overlaps\
+  \ between\n        the pattern and its reverse complement are also taken into account\n\
+  \        into the same formula.\n\n    Z-SCORE\n\tThe Z-score is calculated in the\
+  \ following way\n\n\t\tZsc = (obs_occ - exp_occ)/sd_occ\n\t            = (obs_occ\
+  \ - exp_occ)/sqrt(var_occ)\n\n\twhere\n\t\tobs_occ\tis the observed number of occurrences\n\
+  \t\texp_occ\tis the expected number of occurrences\n\t\tsd_occ and var_occ\n   \
+  \                 are the estimated standard deviation and variances\n         \
+  \           for the occurrences, respectively.\n\n\tThe estimation of the variance\
+  \ is derived from Pevzner et al.(1989).\n\tJ Biomol Struct & Dynamics 5:1013-1026):\n\
+  \t\tvar_occ = exp_occ(2*Kov - 1 - (2*w+1)*exp_freq)\n\n\tIn random sequences of\
+  \ *infinite* size, occurrence counts tend\n\ttowards a normal distribution. This\
+  \ has justified the use of\n\tZ-score in some publications, but it also presents\
+  \ strong\n\tdisadvantages (see below). In short, you should generaly use\n\tthe\
+  \ binomial proba (-return proba) rather than the Z-score.\n\n\tComparison between\
+  \ the Z-score and the binomial probability\n\t-----------------------------------------------------------\n\
+  \tI implemented the Z-score in 2000, for a particular article\n\t(analysis of yeast\
+  \ downstream sequences) because at that time\n\tmy method for computing binomial\
+  \ was slow (time was increasing\n\tquadratically with occurrence number) and imprecise\
+  \ (precision\n\twas restricted to ~1e-15). In the mean time, I implemented an\n\t\
+  efficient (linear) and precise (1e-300) version of the\n\tbinomial, so that the\
+  \ Z-score does not present any advantage\n\tanymore. It presents several flaws that\
+  \ are described below\n\tfor the people who would like to know more about the choice\
+  \ of\n\ta scoring statistics.\n\n\t- The use of Z-score statistics measures the\
+  \ distance between\n          each observation and the mean of the population, in\n\
+  \          standardized units (i.e. counting the number of standard\n          deviations\
+  \ that separates each observation from the mean).\n          \n\t- The Z-score is\
+  \ commonly interpreted by converting Z values\n          to a P-values, by reference\
+  \ to a Gaussian distribution. This\n          is however generally NOT valid for\
+  \ word counts in\n          sequences. The Z-score has been used in some publications\
+  \ to\n          detect over-represented words, with the underlying\n          assumption\
+  \ that it provides a reasonable approximation for\n          the binomial. This\
+  \ assumption is however generally NOT\n          valid. The convergence of the binomial\
+  \ towards the Gaussian\n          requires very large sequences (so that the expected\
+  \ number\n          of occurrences for each word is >> 10). However, even in the\n\
+  \          cases where the sequences are very large (e.g. entire\n          genomes),\
+  \ the convergence between the binomial and Z-score\n          distributions concerns\
+  \ the center of the distribution, but\n          the tails remain well separated\
+  \ (you need to plot them on a\n          Y log graph to see this effect). And the\
+  \ problem is that,\n          when we detect over- or under-represented motifs,\
+  \ we are\n          precisely considering the tails of the distribution, not its\n\
+  \          center. Thus, the Z-score should generally be avoided.\n\n\t- An advantage\
+  \ of the Z-score is that one can introduce two\n\t  separate parameters for the\
+  \ mean and standard deviation,\n\t  which enables a correction for the bias due\
+  \ to word\n\t  self-overlap (eg AAAAAA, TATATA). Self-overlap of a word\n\t  provokes\
+  \ an aggregative dispersion, with a higher variance\n\t  than the binomial/Poisson\
+  \ distributions. If uncorrected, the\n\t  increased variance leads to an overestimation\
+  \ of the over-\n\t  and under-representation. \n\n\t  Note that for the binomial\
+  \ statistics, the bias is corrected\n\t  by using the option -noov (discard overlapping\
+  \ occurrences\n\t  of the same word).\n\n\t- Its calculation is very fast.  This\
+  \ is especially critical\n\t  when analyzing very big sequences (whole genomes),\
+  \ where the\n\t  expected oligont occurrences are very high (binomial\n\t  calculation\
+  \ is slower but not catastrophically so).\n\n\t- Z-score provides a way to detect\
+  \ both over- and\n\t  under-represented patterns. Note that the binomial\n\t  probability\
+  \ can also detect both over- and under-represented\n\t  motifs (options -under and\
+  \ -two_tails).\n\n\t- Multitesting correction: The Z-score can be misleading,\n\
+  \  \t  because it has to be interpreted in terms of\n  \t  multi-tests. So, the\
+  \ same value of Z-score (say 5) can have\n  \t  very different E-values if you are\
+  \ considering 3-mers,\n  \t  5-mers or 10-mers. With the binomial distribution,\
+  \ the\n  \t  program oligo-analysis returns not only a P-value, but also\n  \t \
+  \ an E-value (correction on the P-value to account for\n  \t  multi-testing) and\
+  \ a sig index.\n\n\nEXAMPLES OF UTILISATION\n\toligo-analysis \n\t\t -i /public_html/data/Saccharomyces_cerevisiae/genome/contigs.txt\
+  \ \n\t\t -format filelist -l 6 -occ \n                 -freq -o hexanucleotides.occ_and_freq\
+  \ -v\n\n\twill return a list of all hexanucleotides found in yeast genome, with\n\
+  \tthe number of occurrences and relative frequency for each one.\n\n\tThere are\
+  \ many ways to use oligo-analysis. The best way to\n\tfamiliarize yourself with\
+  \ its use is \n\t1) to follow the tutorial on the Web site;\n\t2) to read the user\
+  \ manual for the command line utilization of\n \t   the tools.\n\nSEE ALSO\n\n \
+  \ dyad-analysis \n  \tDetect over- and under-represented dyads (i.e. a pair of short\n\
+  \toligonucleotides separated by a spacing of fixed width but\n\tvariable content).\n\
+  \n  count-words\n\tProgram written in C (developed by Matthieu Defrance) to\n\t\
+  ensure an efficient counting of oligonucleotides. This program\n\truns about 100\
+  \ times faster than oligo-analysis but has\n\trestricted functionality (only return\
+  \ word occurrences and\n\tfrequencies).\n\nWEB VERSION\n\toligo-analysis can be\
+  \ used via internet at the RSAT Web site:\n \t    http://www.rsat.eu/\n"
+generated_using:
+- -h

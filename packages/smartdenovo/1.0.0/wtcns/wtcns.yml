@@ -1,0 +1,256 @@
+!Command
+command:
+- wtcns
+positional: []
+named:
+- !Flag
+  description: Number of threads, [16]
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Total parallel jobs, [1]
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Index of current job (0-based), [0]\nSuppose to run wtcns for the\
+    \ same layout file parallelly in 60 cpu. For cpu1, -P 60 -p 0; cpu2, -P 60 -p\
+    \ 1, ..."
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Input file, layout from wtlay, +
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Output file, consensus sequences, [STDOUT]
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Force overwrite
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Trun on homopolymer compression
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Zmer window, [800]
+  synonyms:
+  - -y
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum size of seeding region within zmer window, [200]
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum variant of uncompressed sizes between two matched zmer, [2]
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Alignment penalty: match, [2]'
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Alignment penalty: mismatch, [-5]'
+  synonyms:
+  - -X
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Alignment penalty: insertion or deletion, used in first round [-3]'
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Alignment penalty: insertion, used in rounds after first, [-2]'
+  synonyms:
+  - -I
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Alignment penalty: deletion, used in rounds after first, [-3]'
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Alignment penalty: gap extension, [-1]'
+  synonyms:
+  - -E
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Alignment penalty: read end clipping [-10]'
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Disable PhreadQV in refine-alignment
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum bandwidth, iteratively doubled to maximum [50]
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum bandwidth, [3200]
+  synonyms:
+  - -W
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum bandwidth at ending extension, [800]
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Basic bandwidth in refine-alignment, [8]
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum alignment identity, [0.5]
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Penalty of backbone edge in calling consensus, [0.5]
+  synonyms:
+  - -Y
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Penalty of alternative edge in calling consensus, [0.2]\nThe above\
+    \ two options control whether the consensus look like backbone or alternative\n\
+    Default 0.5 and 0.2, will let the consensus don't look like backbone"
+  synonyms:
+  - -N
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Number of iterations for consensus calling, the larger, the accurater,
+    the slower [6]
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Align reads against final consensus, and output to <-a>
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Disable fast zmer align in final aligning (see -a), use standard smith-waterman\n\
+    More than once -A, will disable fast zmer align in all process"
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Ouput call variants and print to <-a>, -V 2.05 mean: min_allele_count>=2,min_allele_freq>=0.05'
+  synonyms:
+  - -V
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Verbose, BE careful, HUGEEEEEEEE output on STDOUT
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "WTCNS: Consensus caller\nSMARTdenovo: Ultra-fast de novo assembler for\
+  \ high noisy long reads\nAuthor: Jue Ruan <ruanjue@gmail.com>\nVersion: 1.0\nUsage:\
+  \ wtcns [options]\nOptions:\n -t <int>    Number of threads, [16]\n -P <int>   \
+  \ Total parallel jobs, [1]\n -p <int>    Index of current job (0-based), [0]\n \
+  \            Suppose to run wtcns for the same layout file parallelly in 60 cpu.\
+  \ For cpu1, -P 60 -p 0; cpu2, -P 60 -p 1, ...\n -i <string> Input file, layout from\
+  \ wtlay, +\n -o <string> Output file, consensus sequences, [STDOUT]\n -f       \
+  \   Force overwrite\n -H          Trun on homopolymer compression\n -z <int>   \
+  \ Zmer size, 5 <= <-z> <= 16, [10]\n -y <int>    Zmer window, [800]\n -R <int> \
+  \   Minimum size of seeding region within zmer window, [200]\n -l <int>    Maximum\
+  \ variant of uncompressed sizes between two matched zmer, [2]\n -M <int>    Alignment\
+  \ penalty: match, [2]\n -X <int>    Alignment penalty: mismatch, [-5]\n -O <int>\
+  \    Alignment penalty: insertion or deletion, used in first round [-3]\n -I <int>\
+  \    Alignment penalty: insertion, used in rounds after first, [-2]\n -D <int> \
+  \   Alignment penalty: deletion, used in rounds after first, [-3]\n -E <int>   \
+  \ Alignment penalty: gap extension, [-1]\n -T <int>    Alignment penalty: read end\
+  \ clipping [-10]\n -F          Disable PhreadQV in refine-alignment\n -w <int> \
+  \   Minimum bandwidth, iteratively doubled to maximum [50]\n -W <int>    Maximum\
+  \ bandwidth, [3200]\n -e <int>    Maximum bandwidth at ending extension, [800]\n\
+  \ -r <int>    Basic bandwidth in refine-alignment, [8]\n -m <float>  Minimum alignment\
+  \ identity, [0.5]\n -Y <float>  Penalty of backbone edge in calling consensus, [0.5]\n\
+  \ -N <float>  Penalty of alternative edge in calling consensus, [0.2]\n        \
+  \     The above two options control whether the consensus look like backbone or\
+  \ alternative\n             Default 0.5 and 0.2, will let the consensus don't look\
+  \ like backbone\n -n <int>    Number of iterations for consensus calling, the larger,\
+  \ the accurater, the slower [6]\n -a <string> Align reads against final consensus,\
+  \ and output to <-a>\n -A          Disable fast zmer align in final aligning (see\
+  \ -a), use standard smith-waterman\n             More than once -A, will disable\
+  \ fast zmer align in all process\n -V <float> Ouput call variants and print to <-a>,\
+  \ -V 2.05 mean: min_allele_count>=2,min_allele_freq>=0.05\n -v          Verbose,\
+  \ BE careful, HUGEEEEEEEE output on STDOUT\n\nExample: \n$> wtcns wt.lay > wt.lay.cns.fa\
+  \ 2>log.cns\n\n"
+generated_using:
+- --help

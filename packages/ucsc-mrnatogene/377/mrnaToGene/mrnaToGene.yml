@@ -1,0 +1,147 @@
+!Command
+command:
+- mrnaToGene
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: psl
+  optional: false
+named:
+- !Flag
+  description: '- get PSLs and CDS from this database, psl specifies the table.'
+  synonyms:
+  - -db
+  args: !SimpleFlagArg
+    name: db
+  optional: true
+- !Flag
+  description: '- get CDS from this database, psl is a file.'
+  synonyms:
+  - -cdsDb
+  args: !SimpleFlagArg
+    name: db
+  optional: true
+- !Flag
+  description: "- get CDS from this file, psl is a file.\nFile is tab separate with\
+    \ name as the first column and\nNCBI CDS the second"
+  synonyms:
+  - -cdsFile
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "- Merge inserts (gaps) no larger than this many bases.\nA negative\
+    \ size disables merging of blocks.  This differs from specifying zero\nin that\
+    \ adjacent blocks will not be merged, allowing tracking of frame for\neach block.\
+    \ Defaults to 8 unless -cdsMergeSize or -utrMergeSize are specified,\nif either\
+    \ of these are specified, this option is ignored."
+  synonyms:
+  - -insertMergeSize
+  args: !SimpleFlagArg
+    name: '8'
+  optional: true
+- !Flag
+  description: '- alias for -insertMergetSize'
+  synonyms:
+  - -smallInsertSize
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: "=-1 - merge gaps in CDS no larger than this size.\nA negative values\
+    \ disables."
+  synonyms:
+  - -cdsMergeSize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- only merge CDS gaps if they mod 3'
+  synonyms:
+  - -cdsMergeMod3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=-1  - merge gaps in UTR no larger than this size.\nA negative values\
+    \ disables."
+  synonyms:
+  - -utrMergeSize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Drop sequences that don't have both 5' and 3' UTR annotated."
+  synonyms:
+  - -requireUtr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- create a extended genePred, including frame information.'
+  synonyms:
+  - -genePredExt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- consider PSL to be all CDS.'
+  synonyms:
+  - -allCds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- consider PSL to not contain any CDS.'
+  synonyms:
+  - -noCds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Keep sequences with invalid CDS.'
+  synonyms:
+  - -keepInvalid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Don't print print info about dropped sequences."
+  synonyms:
+  - -quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- ignore all characters after last `-' in qName\nwhen looking up CDS.\
+    \ Used when a suffix has been added to make qName\nunique.  It is not removed\
+    \ from the name in the genePred.\n"
+  synonyms:
+  - -ignoreUniqSuffix
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "mrnaToGene - convert PSL alignments of mRNAs to gene annotations\nusage:\n\
+  \   mrnaToGene [options] psl genePredFile\n\nConvert PSL alignments with CDS annotation\
+  \ from genbank to  gene\nannotations in genePred format.  Accessions without valids\
+  \ CDS are\noptionally dropped. A best attempt is made to convert incomplete CDS\n\
+  annotations.\n\nThe psl argument may either be a PSL file or a table in a databases,\n\
+  depending on options.  CDS maybe obtained from the database or file.\nAccession\
+  \ in PSL files are tried with and with out genbank versions.\n\nOptions:\n  -db=db\
+  \ - get PSLs and CDS from this database, psl specifies the table.\n  -cdsDb=db -\
+  \ get CDS from this database, psl is a file.\n  -cdsFile=file - get CDS from this\
+  \ file, psl is a file.\n   File is tab separate with name as the first column and\n\
+  \   NCBI CDS the second\n  -insertMergeSize=8 - Merge inserts (gaps) no larger than\
+  \ this many bases.\n   A negative size disables merging of blocks.  This differs\
+  \ from specifying zero\n   in that adjacent blocks will not be merged, allowing\
+  \ tracking of frame for\n   each block. Defaults to 8 unless -cdsMergeSize or -utrMergeSize\
+  \ are specified,\n   if either of these are specified, this option is ignored.\n\
+  \  -smallInsertSize=n - alias for -insertMergetSize\n  -cdsMergeSize=-1 - merge\
+  \ gaps in CDS no larger than this size.\n   A negative values disables.\n  -cdsMergeMod3\
+  \ - only merge CDS gaps if they mod 3\n  -utrMergeSize=-1  - merge gaps in UTR no\
+  \ larger than this size.\n   A negative values disables.\n  -requireUtr - Drop sequences\
+  \ that don't have both 5' and 3' UTR annotated.\n  -genePredExt - create a extended\
+  \ genePred, including frame information.\n  -allCds - consider PSL to be all CDS.\n\
+  \  -noCds - consider PSL to not contain any CDS.\n  -keepInvalid - Keep sequences\
+  \ with invalid CDS.\n  -quiet - Don't print print info about dropped sequences.\n\
+  \  -ignoreUniqSuffix - ignore all characters after last `-' in qName\n   when looking\
+  \ up CDS. Used when a suffix has been added to make qName\n   unique.  It is not\
+  \ removed from the name in the genePred.\n\n\n"
+generated_using: []

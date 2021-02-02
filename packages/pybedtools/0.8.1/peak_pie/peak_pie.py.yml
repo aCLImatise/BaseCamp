@@ -1,0 +1,87 @@
+!Command
+command:
+- peak_pie.py
+positional:
+- !Positional
+  description: --test                Run test, overwriting all other args. Result
+    will be
+  position: 0
+  name: suppressed
+  optional: false
+named:
+- !Flag
+  description: BED file of e.g. peaks
+  synonyms:
+  - --bed
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: GFF file of e.g. annotations
+  synonyms:
+  - --gff
+  args: !SimpleFlagArg
+    name: GFF
+  optional: true
+- !Flag
+  description: Output PNG file
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: OUT
+  optional: true
+- !Flag
+  description: Use strand-specific intersections
+  synonyms:
+  - --stranded
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[INCLUDE [INCLUDE ...]]\nFeaturetypes to include"
+  synonyms:
+  - --include
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[EXCLUDE [EXCLUDE ...]]\nFeaturetypes to exclude"
+  synonyms:
+  - --exclude
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Threshold percentage below which output will be
+  synonyms:
+  - --thresh
+  args: !SimpleFlagArg
+    name: THRESH
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: peak_pie.py [-h] [--bed BED] [--gff GFF] [--out OUT] [--stranded]\n\
+  \                   [--include [INCLUDE [INCLUDE ...]]]\n                   [--exclude\
+  \ [EXCLUDE [EXCLUDE ...]]] [--thresh THRESH]\n                   [--test]\n\nMake\
+  \ a pie chart where peaks fall in annotations; see :mod:`pybedtools.contrib.Classifier`\
+  \ for more flexibility.\n\nThe results here are similar to CEAS (http://liulab.dfci.harvard.edu/CEAS/).\n\
+  \nHowever, multi-featuretype classes are reported.  That is, if a peak falls in\n\
+  an exon in one isoform and an intron in another isoform, the class is \"exon,\n\
+  intron\".\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --bed BED             BED file of e.g. peaks\n  --gff GFF        \
+  \     GFF file of e.g. annotations\n  --out OUT             Output PNG file\n  --stranded\
+  \            Use strand-specific intersections\n  --include [INCLUDE [INCLUDE ...]]\n\
+  \                        Featuretypes to include\n  --exclude [EXCLUDE [EXCLUDE\
+  \ ...]]\n                        Featuretypes to exclude\n  --thresh THRESH    \
+  \   Threshold percentage below which output will be\n                        suppressed\n\
+  \  --test                Run test, overwriting all other args. Result will be\n\
+  \                        \"out.png\" in current directory.\n"
+generated_using:
+- --help

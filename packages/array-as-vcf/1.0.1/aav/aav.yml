@@ -1,0 +1,118 @@
+!Command
+command:
+- aav
+positional: []
+named:
+- !Flag
+  description: 'Path to array file (default: None)'
+  synonyms:
+  - --path
+  - -p
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: 'Genome build (default: GRCh37)'
+  synonyms:
+  - --build
+  - -b
+  args: !ChoiceFlagArg
+    choices: !!set
+      GRCh38:
+      GRCh37:
+  optional: true
+- !Flag
+  description: 'Name of sample in VCF file (default: None)'
+  synonyms:
+  - --sample-name
+  - -s
+  args: !SimpleFlagArg
+    name: SAMPLE_NAME
+  optional: true
+- !Flag
+  description: 'Prefix to chromosome names (default: None)'
+  synonyms:
+  - --chr-prefix
+  - -c
+  args: !SimpleFlagArg
+    name: CHR_PREFIX
+  optional: true
+- !Flag
+  description: "Path to existing lookup table for rsIDs (default:\nNone)"
+  synonyms:
+  - --lookup-table
+  - -l
+  args: !SimpleFlagArg
+    name: LOOKUP_TABLE
+  optional: true
+- !Flag
+  description: 'Path to write generated lookup table (default: None)'
+  synonyms:
+  - --dump
+  - -d
+  args: !SimpleFlagArg
+    name: DUMP
+  optional: true
+- !Flag
+  description: 'Encoding of the array file (default: UTF-8)'
+  synonyms:
+  - --encoding
+  args: !SimpleFlagArg
+    name: ENCODING
+  optional: true
+- !Flag
+  description: 'Assay IDs for OpenArray to ignore (default: None)'
+  synonyms:
+  - --exclude-assays
+  args: !RepeatFlagArg
+    name: EXCLUDE_ASSAYS
+  optional: true
+- !Flag
+  description: 'Lookup missing rsIDs on Ensembl (default: False)'
+  synonyms:
+  - --no-ensembl-lookup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set the verbosity of the logger (default: INFO)\n"
+  synonyms:
+  - --log-level
+  args: !ChoiceFlagArg
+    choices: !!set
+      WARNING:
+      ERROR:
+      INFO:
+      DEBUG:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: aav [-h] --path PATH [--build {GRCh37,GRCh38}] --sample-name\n\
+  \           SAMPLE_NAME [--chr-prefix CHR_PREFIX] [--lookup-table LOOKUP_TABLE]\n\
+  \           [--dump DUMP] [--encoding ENCODING]\n           [--exclude-assays EXCLUDE_ASSAYS\
+  \ [EXCLUDE_ASSAYS ...]]\n           [--no-ensembl-lookup] [--log-level {DEBUG,INFO,WARNING,ERROR}]\n\
+  \nConvert an array file to VCF format\n\noptional arguments:\n  -h, --help     \
+  \       show this help message and exit\n  --path PATH, -p PATH  Path to array file\
+  \ (default: None)\n  --build {GRCh37,GRCh38}, -b {GRCh37,GRCh38}\n             \
+  \           Genome build (default: GRCh37)\n  --sample-name SAMPLE_NAME, -s SAMPLE_NAME\n\
+  \                        Name of sample in VCF file (default: None)\n  --chr-prefix\
+  \ CHR_PREFIX, -c CHR_PREFIX\n                        Prefix to chromosome names\
+  \ (default: None)\n  --lookup-table LOOKUP_TABLE, -l LOOKUP_TABLE\n            \
+  \            Path to existing lookup table for rsIDs (default:\n               \
+  \         None)\n  --dump DUMP, -d DUMP  Path to write generated lookup table (default:\
+  \ None)\n  --encoding ENCODING   Encoding of the array file (default: UTF-8)\n \
+  \ --exclude-assays EXCLUDE_ASSAYS [EXCLUDE_ASSAYS ...]\n                       \
+  \ Assay IDs for OpenArray to ignore (default: None)\n  --no-ensembl-lookup   Lookup\
+  \ missing rsIDs on Ensembl (default: False)\n  --log-level {DEBUG,INFO,WARNING,ERROR}\n\
+  \                        Set the verbosity of the logger (default: INFO)\n"
+generated_using:
+- --help

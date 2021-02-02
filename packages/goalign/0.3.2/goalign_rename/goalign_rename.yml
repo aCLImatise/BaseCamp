@@ -1,0 +1,190 @@
+!Command
+command:
+- goalign
+- rename
+positional: []
+named:
+- !Flag
+  description: Replaces special characters (tabs, spaces, newick characters) with
+    '-' from input sequence names before writing output alignment
+  synonyms:
+  - --clean-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Name Mapping infile (default "none")
+  synonyms:
+  - -m
+  - --map-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: renamed alignment output file (default "stdout")
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: rename alignment using given regexp (default "none")
+  synonyms:
+  - -e
+  - --regexp
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: replaces regexp matching strings by this string (default "none")
+  synonyms:
+  - -b
+  - --replace
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Reverse orientation of mapfile
+  synonyms:
+  - -r
+  - --revert
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Considers sequences as unaligned and format fasta (phylip, nexus,...
+    options are ignored)
+  synonyms:
+  - --unaligned
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Alignment input file (default "stdin")
+  synonyms:
+  - -i
+  - --align
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Auto detects input format (overrides -p, -x and -u)
+  synonyms:
+  - --auto-detect
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Alignment is in clustal? default fasta
+  synonyms:
+  - -u
+  - --clustal
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore duplicated sequences that have the same name and same sequences
+  synonyms:
+  - --ignore-identical
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Strict phylip input format (only used with -p)
+  synonyms:
+  - --input-strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Alignment is in nexus? default fasta
+  synonyms:
+  - -x
+  - --nexus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write Phylip sequences without space separated blocks (only used with
+    -p)
+  synonyms:
+  - --no-block
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write Phylip sequences on 1 line (only used with -p)
+  synonyms:
+  - --one-line
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Strict phylip output format (only used with -p)
+  synonyms:
+  - --output-strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Alignment is in phylip? default fasta
+  synonyms:
+  - -p
+  - --phylip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Random Seed: -1 = nano seconds since 1970/01/01 00:00:00 (default
+    -1)'
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Number of threads (default 1)
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for rename
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Rename sequences of the input tree, given a map file.\n\nDifferent options:\n\
+  \n1) A map file is given with --map-file: \n    It must be tab separated with the\
+  \ following columns:\n      - Current name of the sequences\n      - Desired new\
+  \ name of the sequences\n    if --revert is given then it is the other way\n   \
+  \ If a sequence name does not appear in the map file, it will\n    not be renamed.\
+  \ \n    If a name that does not exist appears in the map file, it will\n     not\
+  \ do anything.\n\n2) --regexp and --replace are given:\n    Sequence names are changed\
+  \ according to given regexp\n    And mapping between old and new names is written\
+  \ in \n    the file potentially given with --map-file\n\n3) --clean-names is given:\n\
+  \   Special characters in sequence names are replaced with '-'.\n   Special characters\
+  \ are: \\s\\t[]();.,:|\n   And mapping between old and new names is written in \n\
+  \   the file potentially given with --map-file\n\nIn any case, option --unalign\
+  \ option will rename unaligned fasta files\nwhile ignoring formatting options (phylip,\
+  \ etc.).\n\nVersion: 0.3.2\n\nUsage:\n  goalign rename [flags]\n\nFlags:\n     \
+  \ --clean-names       Replaces special characters (tabs, spaces, newick characters)\
+  \ with '-' from input sequence names before writing output alignment\n  -h, --help\
+  \              help for rename\n  -m, --map-file string   Name Mapping infile (default\
+  \ \"none\")\n  -o, --output string     renamed alignment output file (default \"\
+  stdout\")\n  -e, --regexp string     rename alignment using given regexp (default\
+  \ \"none\")\n  -b, --replace string    replaces regexp matching strings by this\
+  \ string (default \"none\")\n  -r, --revert            Reverse orientation of mapfile\n\
+  \      --unaligned         Considers sequences as unaligned and format fasta (phylip,\
+  \ nexus,... options are ignored)\n\nGlobal Flags:\n  -i, --align string       Alignment\
+  \ input file (default \"stdin\")\n      --auto-detect        Auto detects input\
+  \ format (overrides -p, -x and -u)\n  -u, --clustal            Alignment is in clustal?\
+  \ default fasta\n      --ignore-identical   Ignore duplicated sequences that have\
+  \ the same name and same sequences\n      --input-strict       Strict phylip input\
+  \ format (only used with -p)\n  -x, --nexus              Alignment is in nexus?\
+  \ default fasta\n      --no-block           Write Phylip sequences without space\
+  \ separated blocks (only used with -p)\n      --one-line           Write Phylip\
+  \ sequences on 1 line (only used with -p)\n      --output-strict      Strict phylip\
+  \ output format (only used with -p)\n  -p, --phylip             Alignment is in\
+  \ phylip? default fasta\n      --seed int           Random Seed: -1 = nano seconds\
+  \ since 1970/01/01 00:00:00 (default -1)\n  -t, --threads int        Number of threads\
+  \ (default 1)\n\n"
+generated_using:
+- --help

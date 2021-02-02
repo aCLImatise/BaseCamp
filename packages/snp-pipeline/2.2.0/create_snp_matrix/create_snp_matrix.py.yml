@@ -1,0 +1,88 @@
+!Command
+command:
+- create_snp_matrix.py
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: cfsan_snp_pipeline
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: snp_matrix
+  optional: false
+named:
+- !Flag
+  description: "Force processing even when result file already exists\nand is newer\
+    \ than inputs (default: False)"
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "File name of the previously created consensus SNP call\nfile which\
+    \ must exist in each of the sample\ndirectories (default: consensus.fasta)"
+  synonyms:
+  - -c
+  - --consFileName
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Output file. Relative or absolute path to the SNP\nmatrix file (default:\
+    \ snpma.fasta)"
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Verbose message level (0=no info, 5=lots) (default: 1)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !SimpleFlagArg
+    name: 0..5
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: cfsan_snp_pipeline snp_matrix [-h] [-f] [-c NAME] [-o FILE] [-v\
+  \ 0..5]\n                                     [--version]\n                    \
+  \                 sampleDirsFile\n\nCreate the SNP matrix containing the consensus\
+  \ base for each of the samples at\nthe positions where high-confidence SNPs were\
+  \ found in any of the samples. The\nmatrix contains one row per sample and one column\
+  \ per SNP position. Non-SNP\npositions are not included in the matrix. The matrix\
+  \ is formatted as a fasta\nfile, with each sequence (all of identical length) corresponding\
+  \ to the SNPs\nin the correspondingly named sequence.\n\npositional arguments:\n\
+  \  sampleDirsFile        Relative or absolute path to file containing a list of\n\
+  \                        directories -- one per sample\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -f, --force        \
+  \   Force processing even when result file already exists\n                    \
+  \    and is newer than inputs (default: False)\n  -c NAME, --consFileName NAME\n\
+  \                        File name of the previously created consensus SNP call\n\
+  \                        file which must exist in each of the sample\n         \
+  \               directories (default: consensus.fasta)\n  -o FILE, --output FILE\n\
+  \                        Output file. Relative or absolute path to the SNP\n   \
+  \                     matrix file (default: snpma.fasta)\n  -v 0..5, --verbose 0..5\n\
+  \                        Verbose message level (0=no info, 5=lots) (default: 1)\n\
+  \  --version             show program's version number and exit\n"
+generated_using:
+- --help

@@ -1,0 +1,521 @@
+&id002 !Command
+command:
+- advntr
+- delmodel
+positional: []
+named: []
+parent: &id001 !Command
+  command:
+  - advntr
+  positional: []
+  named: []
+  parent:
+  subcommands:
+  - !Command
+    command:
+    - advntr
+    - addmodel
+    positional: []
+    named:
+    - !Flag
+      description: Reference genome
+      synonyms:
+      - -r/--reference
+      args: !SimpleFlagArg
+        name: text
+      optional: true
+    - !Flag
+      description: Chromosome (e.g. chr1)
+      synonyms:
+      - -c/--chromosome
+      args: !SimpleFlagArg
+        name: text
+      optional: true
+    - !Flag
+      description: First repeating pattern of VNTR in forward (5' to 3') direction
+      synonyms:
+      - -p/--pattern
+      args: !SimpleFlagArg
+        name: text
+      optional: true
+    - !Flag
+      description: Start coordinate of VNTR in forward (5' to 3') direction
+      synonyms:
+      - -s/--start
+      args: !SimpleFlagArg
+        name: int
+      optional: true
+    - !Flag
+      description: End coordinate of VNTR in forward (5' to 3') direction
+      synonyms:
+      - -e/--end
+      args: !SimpleFlagArg
+        name: int
+      optional: true
+    - !Flag
+      description: Gene name
+      synonyms:
+      - -g/--gene
+      args: !SimpleFlagArg
+        name: text
+      optional: true
+    - !Flag
+      description: Annotation of VNTR region
+      synonyms:
+      - -a/--annotation
+      args: !SimpleFlagArg
+        name: text
+      optional: true
+    - !Flag
+      description: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
+      synonyms:
+      - -m/--models
+      args: !SimpleFlagArg
+        name: file
+      optional: true
+    - !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h/--help
+      args: !EmptyFlagArg {}
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "usage: advntr addmodel [options]\n\nRequired arguments:\n  -r/--reference\
+      \ <text>   Reference genome\n  -c/--chromosome <text>  Chromosome (e.g. chr1)\n\
+      \  -p/--pattern <text>     First repeating pattern of VNTR in forward (5' to\
+      \ 3') direction\n  -s/--start <int>        Start coordinate of VNTR in forward\
+      \ (5' to 3') direction\n  -e/--end <int>          End coordinate of VNTR in\
+      \ forward (5' to 3') direction\n\nOther options:\n  -g/--gene <text>       \
+      \ Gene name\n  -a/--annotation <text>  Annotation of VNTR region\n  -m/--models\
+      \ <file>      VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]\n\
+      \  -h/--help               show this help message and exit\n"
+    generated_using: &id003
+    - --help
+  - *id002
+  - !Command
+    command:
+    - advntr
+    - viewmodel
+    positional: []
+    named:
+    - !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h/--help
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: comma-separated list of Gene Names
+      synonyms:
+      - -g/--gene
+      args: !SimpleFlagArg
+        name: text
+      optional: true
+    - !Flag
+      description: repeating pattern of VNTR in forward (5' to 3') direction
+      synonyms:
+      - -p/--pattern
+      args: !SimpleFlagArg
+        name: text
+      optional: true
+    - !Flag
+      description: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
+      synonyms:
+      - -m/--models
+      args: !SimpleFlagArg
+        name: file
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "usage: advntr viewmodel [options]\n\noptional arguments:\n  -h/--help\
+      \            show this help message and exit\n  -g/--gene <text>     comma-separated\
+      \ list of Gene Names\n  -p/--pattern <text>  repeating pattern of VNTR in forward\
+      \ (5' to 3') direction\n  -m/--models <file>   VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]\n"
+    generated_using: *id003
+  - !Command
+    command:
+    - advntr
+    - genotype
+    positional:
+    - !Positional
+      description: -o/--outfile <file>             file to write results. adVNTR writes
+        output to stdout if oufile is not
+      position: 0
+      name: Illumina
+      optional: false
+    - !Positional
+      description: -of/--outfmt <format>           output format. Allowed values are
+        {text, bed} [text]
+      position: 1
+      name: specified.
+      optional: false
+    named:
+    - !Flag
+      description: alignment file in SAM/BAM/CRAM format
+      synonyms:
+      - -a/--alignment_file
+      args: !SimpleFlagArg
+        name: file
+      optional: true
+    - !Flag
+      description: "path to a FASTA-formatted reference file for CRAM files. It overrides\n\
+        filename specified in header, which is normally used to find the reference"
+      synonyms:
+      - -r/--reference_filename
+      args: !SimpleFlagArg
+        name: file
+      optional: true
+    - !Flag
+      description: Fasta file containing raw reads
+      synonyms:
+      - -f/--fasta
+      args: !SimpleFlagArg
+        name: file
+      optional: true
+    - !Flag
+      description: set this flag if input file contains PacBio reads instead of Illumina
+        reads
+      synonyms:
+      - -p/--pacbio
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: set this flag if input file contains Nanopore MinION reads instead
+        of
+      synonyms:
+      - -n/--nanopore
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "set this flag to search for frameshifts in VNTR instead of copy\
+        \ number.\nSupported VNTR IDs: [25561, 519759]"
+      synonyms:
+      - -fs/--frameshift
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: set this flag to determine long expansion from PCR-free data
+      synonyms:
+      - -e/--expansion
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: average sequencing coverage in PCR-free sequencing
+      synonyms:
+      - -c/--coverage
+      args: !SimpleFlagArg
+        name: float
+      optional: true
+    - !Flag
+      description: set this flag if the organism is haploid
+      synonyms:
+      - --haploid
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: use naive approach for PacBio reads
+      synonyms:
+      - -naive/--naive
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h/--help
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: working directory for creating temporary files needed for computation
+      synonyms:
+      - --working_directory
+      args: !SimpleFlagArg
+        name: path
+      optional: true
+    - !Flag
+      description: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
+      synonyms:
+      - -m/--models
+      args: !SimpleFlagArg
+        name: file
+      optional: true
+    - !Flag
+      description: number of threads [1]
+      synonyms:
+      - -t/--threads
+      args: !SimpleFlagArg
+        name: int
+      optional: true
+    - !Flag
+      description: set this flag to iteratively update the model
+      synonyms:
+      - -u/--update
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: comma-separated list of VNTR IDs
+      synonyms:
+      - -vid/--vntr_id
+      args: !SimpleFlagArg
+        name: text
+      optional: true
+    parent: *id001
+    subcommands: []
+    usage: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "usage: advntr genotype [options]\n\nInput/output options:\n  -a/--alignment_file\
+      \ <file>      alignment file in SAM/BAM/CRAM format\n  -r/--reference_filename\
+      \ <file>  path to a FASTA-formatted reference file for CRAM files. It overrides\n\
+      \                                  filename specified in header, which is normally\
+      \ used to find the reference\n  -f/--fasta <file>               Fasta file containing\
+      \ raw reads\n  -p/--pacbio                     set this flag if input file contains\
+      \ PacBio reads instead of Illumina reads\n  -n/--nanopore                  \
+      \ set this flag if input file contains Nanopore MinION reads instead of\n  \
+      \                                Illumina\n  -o/--outfile <file>           \
+      \  file to write results. adVNTR writes output to stdout if oufile is not\n\
+      \                                  specified.\n  -of/--outfmt <format>     \
+      \      output format. Allowed values are {text, bed} [text]\n\nAlgorithm options:\n\
+      \  -fs/--frameshift                set this flag to search for frameshifts in\
+      \ VNTR instead of copy number.\n                                  Supported\
+      \ VNTR IDs: [25561, 519759]\n  -e/--expansion                  set this flag\
+      \ to determine long expansion from PCR-free data\n  -c/--coverage <float>  \
+      \         average sequencing coverage in PCR-free sequencing\n  --haploid  \
+      \                     set this flag if the organism is haploid\n  -naive/--naive\
+      \                  use naive approach for PacBio reads\n\nOther options:\n \
+      \ -h/--help                       show this help message and exit\n  --working_directory\
+      \ <path>      working directory for creating temporary files needed for computation\n\
+      \  -m/--models <file>              VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]\n\
+      \  -t/--threads <int>              number of threads [1]\n  -u/--update    \
+      \                 set this flag to iteratively update the model\n  -vid/--vntr_id\
+      \ <text>           comma-separated list of VNTR IDs\n"
+    generated_using: *id003
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: \r=======================================================\nadVNTR\
+    \ 1.3.3: Genopyting tool for VNTRs\n=======================================================\n\
+    Source code: https://github.com/mehrdadbakhtiari/adVNTR\nInstructions: http://advntr.readthedocs.io\n\
+    -------------------------------------------------------\n\nusage: advntr <command>\
+    \ [options]\n\n\rCommand: genotype\tfind RU counts and mutations in VNTRs\n  \
+    \       viewmodel\tview existing models in database\n         addmodel\tadd custom\
+    \ VNTR to the database\n         delmodel\tremove a model from database\n\r\n\
+    advntr: error: too few arguments\n"
+  generated_using: *id003
+subcommands:
+- !Command
+  command:
+  - advntr
+  - delmodel
+  - addmodel
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: advntr
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: delmodel
+    optional: false
+  named:
+  - !Flag
+    description: VNTR ID
+    synonyms:
+    - -vid/--vntr_id
+    args: !SimpleFlagArg
+      name: text
+    optional: true
+  - !Flag
+    description: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
+    synonyms:
+    - -m/--models
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h/--help
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id002
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: advntr delmodel [options]\n\nRequired arguments:\n  -vid/--vntr_id\
+    \ <text>  VNTR ID\n\nOther options:\n  -m/--models <file>     VNTR models file\
+    \ [vntr_data/hg19_selected_VNTRs_Illumina.db]\n  -h/--help              show this\
+    \ help message and exit\n"
+  generated_using: *id003
+- !Command
+  command:
+  - advntr
+  - delmodel
+  - delmodel
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: advntr
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: delmodel
+    optional: false
+  named:
+  - !Flag
+    description: VNTR ID
+    synonyms:
+    - -vid/--vntr_id
+    args: !SimpleFlagArg
+      name: text
+    optional: true
+  - !Flag
+    description: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
+    synonyms:
+    - -m/--models
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h/--help
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id002
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: advntr delmodel [options]\n\nRequired arguments:\n  -vid/--vntr_id\
+    \ <text>  VNTR ID\n\nOther options:\n  -m/--models <file>     VNTR models file\
+    \ [vntr_data/hg19_selected_VNTRs_Illumina.db]\n  -h/--help              show this\
+    \ help message and exit\n"
+  generated_using: *id003
+- !Command
+  command:
+  - advntr
+  - delmodel
+  - viewmodel
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: advntr
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: delmodel
+    optional: false
+  named:
+  - !Flag
+    description: VNTR ID
+    synonyms:
+    - -vid/--vntr_id
+    args: !SimpleFlagArg
+      name: text
+    optional: true
+  - !Flag
+    description: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
+    synonyms:
+    - -m/--models
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h/--help
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id002
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: advntr delmodel [options]\n\nRequired arguments:\n  -vid/--vntr_id\
+    \ <text>  VNTR ID\n\nOther options:\n  -m/--models <file>     VNTR models file\
+    \ [vntr_data/hg19_selected_VNTRs_Illumina.db]\n  -h/--help              show this\
+    \ help message and exit\n"
+  generated_using: *id003
+- !Command
+  command:
+  - advntr
+  - delmodel
+  - genotype
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: advntr
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: delmodel
+    optional: false
+  named:
+  - !Flag
+    description: VNTR ID
+    synonyms:
+    - -vid/--vntr_id
+    args: !SimpleFlagArg
+      name: text
+    optional: true
+  - !Flag
+    description: VNTR models file [vntr_data/hg19_selected_VNTRs_Illumina.db]
+    synonyms:
+    - -m/--models
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h/--help
+    args: !EmptyFlagArg {}
+    optional: true
+  parent: *id002
+  subcommands: []
+  usage: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "usage: advntr delmodel [options]\n\nRequired arguments:\n  -vid/--vntr_id\
+    \ <text>  VNTR ID\n\nOther options:\n  -m/--models <file>     VNTR models file\
+    \ [vntr_data/hg19_selected_VNTRs_Illumina.db]\n  -h/--help              show this\
+    \ help message and exit\n"
+  generated_using: *id003
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "usage: \r=======================================================\nadVNTR\
+  \ 1.3.3: Genopyting tool for VNTRs\n=======================================================\n\
+  Source code: https://github.com/mehrdadbakhtiari/adVNTR\nInstructions: http://advntr.readthedocs.io\n\
+  -------------------------------------------------------\n\nusage: advntr <command>\
+  \ [options]\n\n\rCommand: genotype\tfind RU counts and mutations in VNTRs\n    \
+  \     viewmodel\tview existing models in database\n         addmodel\tadd custom\
+  \ VNTR to the database\n         delmodel\tremove a model from database\n\r\nadvntr:\
+  \ error: unrecognized arguments: --usage\n"
+generated_using:
+- --usage

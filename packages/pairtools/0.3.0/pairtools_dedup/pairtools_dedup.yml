@@ -1,0 +1,273 @@
+!Command
+command:
+- pairtools
+- dedup
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: PAIRS_PATH
+  optional: true
+named:
+- !Flag
+  description: "output file for pairs after duplicate\nremoval. If the path ends with\
+    \ .gz or .lz4,\nthe output is pbgzip-/lz4c-compressed. By\ndefault, the output\
+    \ is printed into stdout."
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "output file for duplicated pairs.  If the\npath ends with .gz or .lz4,\
+    \ the output is\npbgzip-/lz4c-compressed. If the path is the\nsame as in --output\
+    \ or -, output duplicates\ntogether  with deduped pairs. By default,\nduplicates\
+    \ are dropped."
+  synonyms:
+  - --output-dups
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "output file for unmapped pairs. If the path\nends with .gz or .lz4,\
+    \ the output is\npbgzip-/lz4c-compressed. If the path is the\nsame as in --output\
+    \ or -, output unmapped\npairs together with deduped pairs. If the\npath is the\
+    \ same as --output-dups, output\nunmapped reads together with dups. By\ndefault,\
+    \ unmapped pairs are dropped."
+  synonyms:
+  - --output-unmapped
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "output file for duplicate statistics.  If\nfile exists, it will be\
+    \ open in the append\nmode. If the path ends with .gz or .lz4, the\noutput is\
+    \ pbgzip-/lz4c-compressed. By\ndefault, statistics are not printed."
+  synonyms:
+  - --output-stats
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Pairs with both sides mapped within this\ndistance (bp) from each\
+    \ other are considered\nduplicates.  [default: 3]"
+  synonyms:
+  - --max-mismatch
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "[max|sum]              define the mismatch as either the max or the\n\
+    sum of the mismatches ofthe genomic\nlocations of the both sides of the two\n\
+    compared molecules  [default: max]"
+  synonyms:
+  - --method
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Separator (\\t, \\v, etc. characters are\nsupported, pass them in\
+    \ quotes)"
+  synonyms:
+  - --sep
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: The first character of comment lines
+  synonyms:
+  - --comment-char
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "[dups|dedup|both|none]\nWhich of the outputs should receive header\n\
+    and comment lines"
+  synonyms:
+  - --send-header-to
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Chrom 1 column; default 1
+  synonyms:
+  - --c1
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Chrom 2 column; default 3
+  synonyms:
+  - --c2
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Position 1 column; default 2
+  synonyms:
+  - --p1
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Position 2 column; default 4
+  synonyms:
+  - --p2
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Strand 1 column; default 5
+  synonyms:
+  - --s1
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Strand 2 column; default 6
+  synonyms:
+  - --s2
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Placeholder for a chromosome on an unmapped\nside; default !"
+  synonyms:
+  - --unmapped-chrom
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "If specified, duplicate pairs are marked as\nDD in \"pair_type\" and\
+    \ as a duplicate in the\nsam entries."
+  synonyms:
+  - --mark-dups
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Extra columns that also must match for two\npairs to be marked as\
+    \ duplicates. Can be\neither provided as 0-based column indices or\nas column\
+    \ names (requires the \"#columns\"\nheader field). The option can be provided\n\
+    multiple times if multiple column pairs must\nmatch. Example: --extra-col-pair\
+    \ \"phase1\"\n\"phase2\""
+  synonyms:
+  - --extra-col-pair
+  args: !SimpleFlagArg
+    name: TEXT...
+  optional: true
+- !Flag
+  description: "Number of processes used by the auto-guessed\ninput decompressing\
+    \ command.  [default: 3]"
+  synonyms:
+  - --nproc-in
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Number of processes used by the auto-guessed\noutput compressing command.\
+    \  [default: 8]"
+  synonyms:
+  - --nproc-out
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "A command to decompress the input file. If\nprovided, fully overrides\
+    \ the auto-guessed\ncommand. Does not work with stdin. Must read\ninput from stdin\
+    \ and print output into\nstdout. EXAMPLE: pbgzip -dc -n 3"
+  synonyms:
+  - --cmd-in
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "A command to compress the output file. If\nprovided, fully overrides\
+    \ the auto-guessed\ncommand. Does not work with stdout. Must\nread input from\
+    \ stdin and print output into\nstdout. EXAMPLE: pbgzip -c -n 8"
+  synonyms:
+  - --cmd-out
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: pairtools dedup [OPTIONS] [PAIRS_PATH]\n\n  Find and remove PCR/optical\
+  \ duplicates.\n\n  Find PCR duplicates in an upper-triangular flipped sorted pairs/pairsam\n\
+  \  file. Allow for a +/-N bp mismatch at each side of duplicated molecules.\n\n\
+  \  PAIRS_PATH : input triu-flipped sorted .pairs or .pairsam file.  If the\n  path\
+  \ ends with .gz/.lz4, the input is decompressed by pbgzip/lz4c.  By\n  default,\
+  \ the input is read from stdin.\n\nOptions:\n  -o, --output TEXT               output\
+  \ file for pairs after duplicate\n                                  removal. If\
+  \ the path ends with .gz or .lz4,\n                                  the output\
+  \ is pbgzip-/lz4c-compressed. By\n                                  default, the\
+  \ output is printed into stdout.\n  --output-dups TEXT              output file\
+  \ for duplicated pairs.  If the\n                                  path ends with\
+  \ .gz or .lz4, the output is\n                                  pbgzip-/lz4c-compressed.\
+  \ If the path is the\n                                  same as in --output or -,\
+  \ output duplicates\n                                  together  with deduped pairs.\
+  \ By default,\n                                  duplicates are dropped.\n  --output-unmapped\
+  \ TEXT          output file for unmapped pairs. If the path\n                  \
+  \                ends with .gz or .lz4, the output is\n                        \
+  \          pbgzip-/lz4c-compressed. If the path is the\n                       \
+  \           same as in --output or -, output unmapped\n                        \
+  \          pairs together with deduped pairs. If the\n                         \
+  \         path is the same as --output-dups, output\n                          \
+  \        unmapped reads together with dups. By\n                               \
+  \   default, unmapped pairs are dropped.\n  --output-stats TEXT             output\
+  \ file for duplicate statistics.  If\n                                  file exists,\
+  \ it will be open in the append\n                                  mode. If the\
+  \ path ends with .gz or .lz4, the\n                                  output is pbgzip-/lz4c-compressed.\
+  \ By\n                                  default, statistics are not printed.\n \
+  \ --max-mismatch INTEGER          Pairs with both sides mapped within this\n   \
+  \                               distance (bp) from each other are considered\n \
+  \                                 duplicates.  [default: 3]\n  --method [max|sum]\
+  \              define the mismatch as either the max or the\n                  \
+  \                sum of the mismatches ofthe genomic\n                         \
+  \         locations of the both sides of the two\n                             \
+  \     compared molecules  [default: max]\n  --sep TEXT                      Separator\
+  \ (\\t, \\v, etc. characters are\n                                  supported, pass\
+  \ them in quotes)\n  --comment-char TEXT             The first character of comment\
+  \ lines\n  --send-header-to [dups|dedup|both|none]\n                           \
+  \       Which of the outputs should receive header\n                           \
+  \       and comment lines\n  --c1 INTEGER                    Chrom 1 column; default\
+  \ 1\n  --c2 INTEGER                    Chrom 2 column; default 3\n  --p1 INTEGER\
+  \                    Position 1 column; default 2\n  --p2 INTEGER              \
+  \      Position 2 column; default 4\n  --s1 INTEGER                    Strand 1\
+  \ column; default 5\n  --s2 INTEGER                    Strand 2 column; default\
+  \ 6\n  --unmapped-chrom TEXT           Placeholder for a chromosome on an unmapped\n\
+  \                                  side; default !\n  --mark-dups              \
+  \       If specified, duplicate pairs are marked as\n                          \
+  \        DD in \"pair_type\" and as a duplicate in the\n                       \
+  \           sam entries.\n  --extra-col-pair TEXT...        Extra columns that also\
+  \ must match for two\n                                  pairs to be marked as duplicates.\
+  \ Can be\n                                  either provided as 0-based column indices\
+  \ or\n                                  as column names (requires the \"#columns\"\
+  \n                                  header field). The option can be provided\n\
+  \                                  multiple times if multiple column pairs must\n\
+  \                                  match. Example: --extra-col-pair \"phase1\"\n\
+  \                                  \"phase2\"\n  --nproc-in INTEGER            \
+  \  Number of processes used by the auto-guessed\n                              \
+  \    input decompressing command.  [default: 3]\n  --nproc-out INTEGER         \
+  \    Number of processes used by the auto-guessed\n                            \
+  \      output compressing command.  [default: 8]\n  --cmd-in TEXT              \
+  \     A command to decompress the input file. If\n                             \
+  \     provided, fully overrides the auto-guessed\n                             \
+  \     command. Does not work with stdin. Must read\n                           \
+  \       input from stdin and print output into\n                               \
+  \   stdout. EXAMPLE: pbgzip -dc -n 3\n  --cmd-out TEXT                  A command\
+  \ to compress the output file. If\n                                  provided, fully\
+  \ overrides the auto-guessed\n                                  command. Does not\
+  \ work with stdout. Must\n                                  read input from stdin\
+  \ and print output into\n                                  stdout. EXAMPLE: pbgzip\
+  \ -c -n 8\n  -h, --help                      Show this message and exit.\n"
+generated_using:
+- --help

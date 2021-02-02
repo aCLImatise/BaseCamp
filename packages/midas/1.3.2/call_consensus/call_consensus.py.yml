@@ -1,0 +1,224 @@
+!Command
+command:
+- call_consensus.py
+positional:
+- !Positional
+  description: "path to output from `merge_midas.py snps` for one species\ndirectory\
+    \ should be named according to a species_id and contains files 'snps_*.txt')"
+  position: 0
+  name: PATH
+  optional: false
+named:
+- !Flag
+  description: path to output file
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: minimum average read depth per sample (0.0)
+  synonyms:
+  - --sample_depth
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: fraction of reference sites covered by at least 1 read (0.0)
+  synonyms:
+  - --sample_cov
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "maximum number of samples to process.\nuseful for quick tests (use\
+    \ all)"
+  synonyms:
+  - --max_samples
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "comma-separated list of samples to include\nsamples will still be\
+    \ subject to other filters"
+  synonyms:
+  - --keep_samples
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: "comma-separated list of samples to exclude.\nsamples will still be\
+    \ subject to other filters"
+  synonyms:
+  - --exclude_samples
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: path to list of sites to include; other filters still apply
+  synonyms:
+  - --site_list
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: minimum number of mapped reads per site (2)
+  synonyms:
+  - --site_depth
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "site has at least <site_depth> coverage in at least <site_prev> proportion\
+    \ of samples (0.0)\na value of 1.0 will select sites that have sufficent coverage\
+    \ in all samples.\na value of 0.0 will select all sites, including those with\
+    \ low coverage in many samples\nNAs recorded for included sites with less than\
+    \ <site_depth> in a sample"
+  synonyms:
+  - --site_prev
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "minimum average-minor-allele-frequency of site across samples (0.0)\n\
+    setting this above zero (e.g. 0.01, 0.02, 0.05) will only retain variable sites\n\
+    by default invariant sites are also retained."
+  synonyms:
+  - --site_maf
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "maximum ratio of site-depth to mean-genome-depth (None)\na value of\
+    \ 10 will filter genomic sites with 10x greater coverage than the genomic background"
+  synonyms:
+  - --site_ratio
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: minimum fraction of reads supporting consensus allele (0.5)
+  synonyms:
+  - --allele_support
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "use genomic sites that intersect: 'CDS': coding genes, 'RNA': rRNA\
+    \ and tRNA genes, 'IGS': intergenic regions"
+  synonyms:
+  - --locus_type
+  args: !ChoiceFlagArg
+    choices: !!set
+      CDS:
+      RNA:
+      IGR:
+  optional: true
+- !Flag
+  description: "if locus_type == 'CDS', use genomic sites with specified degeneracy:\
+    \ 4D indicates synonymous and 1D non-synonymous sites"
+  synonyms:
+  - --site_type
+  args: !ChoiceFlagArg
+    choices: !!set
+      4D:
+      1D:
+      2D:
+      3D:
+  optional: true
+- !Flag
+  description: "maximum number of sites to include in output (use all)\nuseful for\
+    \ quick tests"
+  synonyms:
+  - --max_sites
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: defined as >=5 reads in >=90% of samples
+  synonyms:
+  - -core-genome
+  args: !SimpleFlagArg
+    name: sites
+  optional: true
+- !Flag
+  description: variable positions (>=1% minor allele frequency across samples)
+  synonyms:
+  - -use
+  args: !SimpleFlagArg
+    name: only
+  optional: true
+- !Flag
+  description: samples with sufficient data (>=10x mean-depth, >=40% of sites with
+    >=1 mapped read)
+  synonyms:
+  - -only
+  args: !SimpleFlagArg
+    name: include
+  optional: true
+- !Flag
+  description: with abnormal depth (>5x mean-depth or <1/5 mean-depth)
+  synonyms:
+  - -exclude
+  args: !SimpleFlagArg
+    name: sites
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Description:\nBuild FASTA file of consensus sequences for a species per\
+  \ sample\nUseful for building phylogenetic trees\nBefore running this script, you'll\
+  \ need to have run `merge_midas.py snps`\n\nUsage: call_consensus.py indir [options]\n\
+  \npositional arguments:\n  PATH                  path to output from `merge_midas.py\
+  \ snps` for one species\n                        directory should be named according\
+  \ to a species_id and contains files 'snps_*.txt')\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --out PATH            path\
+  \ to output file\n\nSample filters (select subset of samples from INDIR):\n  --sample_depth\
+  \ FLOAT  minimum average read depth per sample (0.0)\n  --sample_cov FLOAT    fraction\
+  \ of reference sites covered by at least 1 read (0.0)\n  --max_samples INT     maximum\
+  \ number of samples to process.\n                        useful for quick tests\
+  \ (use all)\n  --keep_samples STR    comma-separated list of samples to include\n\
+  \                        samples will still be subject to other filters\n  --exclude_samples\
+  \ STR\n                        comma-separated list of samples to exclude.\n   \
+  \                     samples will still be subject to other filters\n\nSite filters\
+  \ (select subset of genomic sites from INDIR):\n  --site_list PATH      path to\
+  \ list of sites to include; other filters still apply\n  --site_depth INT      minimum\
+  \ number of mapped reads per site (2)\n  --site_prev FLOAT     site has at least\
+  \ <site_depth> coverage in at least <site_prev> proportion of samples (0.0)\n  \
+  \                      a value of 1.0 will select sites that have sufficent coverage\
+  \ in all samples.\n                        a value of 0.0 will select all sites,\
+  \ including those with low coverage in many samples \n                        NAs\
+  \ recorded for included sites with less than <site_depth> in a sample \n  --site_maf\
+  \ FLOAT      minimum average-minor-allele-frequency of site across samples (0.0)\n\
+  \                        setting this above zero (e.g. 0.01, 0.02, 0.05) will only\
+  \ retain variable sites\n                        by default invariant sites are\
+  \ also retained.\n  --site_ratio FLOAT    maximum ratio of site-depth to mean-genome-depth\
+  \ (None)\n                        a value of 10 will filter genomic sites with 10x\
+  \ greater coverage than the genomic background\n  --allele_support FLOAT\n     \
+  \                   minimum fraction of reads supporting consensus allele (0.5)\n\
+  \  --locus_type {CDS,RNA,IGR}\n                        use genomic sites that intersect:\
+  \ 'CDS': coding genes, 'RNA': rRNA and tRNA genes, 'IGS': intergenic regions\n \
+  \ --site_type {1D,2D,3D,4D}\n                        if locus_type == 'CDS', use\
+  \ genomic sites with specified degeneracy: 4D indicates synonymous and 1D non-synonymous\
+  \ sites\n  --max_sites INT       maximum number of sites to include in output (use\
+  \ all)\n                        useful for quick tests\n\nExamples:\n1) Build multi-FASTA\
+  \ of core-genome sequences (recommended)\n-core-genome sites defined as >=5 reads\
+  \ in >=90% of samples\n-use only variable positions (>=1% minor allele frequency\
+  \ across samples)\n-only include samples with sufficient data (>=10x mean-depth,\
+  \ >=40% of sites with >=1 mapped read)\n-exclude sites with abnormal depth (>5x\
+  \ mean-depth or <1/5 mean-depth)\n\ncall_consensus.py /path/to/snps --out /path/to/seqs\
+  \ --site_maf 0.01 --site_depth 5 --site_prev 0.90 --sample_depth 10 --sample_cov\
+  \ 0.40 --site_ratio 5.0\n\n2) Build multi-FASTA using defaults\ncall_consensus.py\
+  \ /path/to/snps --out /path/to/seqs\n\n3) Run a quick test\ncall_consensus.py /path/to/snps\
+  \ --out /path/to/output --max_sites 10000\n"
+generated_using:
+- --help

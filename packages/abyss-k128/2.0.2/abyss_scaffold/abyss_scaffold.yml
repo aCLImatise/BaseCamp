@@ -1,0 +1,181 @@
+!Command
+command:
+- abyss-scaffold
+positional:
+- !Positional
+  description: contigs in FASTA format
+  position: 0
+  name: FASTA
+  optional: false
+- !Positional
+  description: the contig overlap graph
+  position: 1
+  name: OVERLAP
+  optional: false
+- !Positional
+  description: estimates of the distance between contigs
+  position: 2
+  name: DIST
+  optional: false
+named:
+- !Flag
+  description: minimum number of pairs [0]
+  synonyms:
+  - -n
+  - --npairs
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "minimum contig length [200]\nor -s N0-N1   Find the value of s in\
+    \ [N0,N1]\nthat maximizes the scaffold N50."
+  synonyms:
+  - -s
+  - --seed-length
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: length of a k-mer
+  synonyms:
+  - -k
+  - --kmer
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "expected genome size. Used to calculate NG50\nand associated stats\
+    \ [disabled]"
+  synonyms:
+  - -G
+  - --genome-size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: minimum scaffold gap length to output [50]
+  synonyms:
+  - --min-gap
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: maximum scaffold gap length to output [inf]
+  synonyms:
+  - --max-gap
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: remove complex transitive edges
+  synonyms:
+  - --complex
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: don't remove complex transitive edges [default]
+  synonyms:
+  - --no-complex
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: expect contigs to be oriented correctly
+  synonyms:
+  - --SS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: no assumption about contig orientation [default]
+  synonyms:
+  - --no-SS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write the paths to FILE
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write the graph to FILE
+  synonyms:
+  - -g
+  - --graph
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: display verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specify path of database repository in FILE
+  synonyms:
+  - --db
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: specify library NAME for sqlite
+  synonyms:
+  - --library
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: specify strain NAME for sqlite
+  synonyms:
+  - --strain
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: specify species NAME for sqlite
+  synonyms:
+  - --species
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: output version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: abyss-scaffold -k<kmer> [OPTION]... FASTA|OVERLAP DIST...\nScaffold\
+  \ contigs using the distance estimate graph.\n\n Arguments:\n\n  FASTA    contigs\
+  \ in FASTA format\n  OVERLAP  the contig overlap graph\n  DIST     estimates of\
+  \ the distance between contigs\n\n Options:\n\n  -n, --npairs=N        minimum number\
+  \ of pairs [0]\n  -s, --seed-length=N   minimum contig length [200]\n          or\
+  \ -s N0-N1   Find the value of s in [N0,N1]\n                        that maximizes\
+  \ the scaffold N50.\n  -k, --kmer=N          length of a k-mer\n  -G, --genome-size=N\
+  \   expected genome size. Used to calculate NG50\n                        and associated\
+  \ stats [disabled]\n      --min-gap=N       minimum scaffold gap length to output\
+  \ [50]\n      --max-gap=N       maximum scaffold gap length to output [inf]\n  \
+  \    --complex         remove complex transitive edges\n      --no-complex     \
+  \ don't remove complex transitive edges [default]\n      --SS              expect\
+  \ contigs to be oriented correctly\n      --no-SS           no assumption about\
+  \ contig orientation [default]\n  -o, --out=FILE        write the paths to FILE\n\
+  \  -g, --graph=FILE      write the graph to FILE\n  -v, --verbose         display\
+  \ verbose output\n      --help            display this help and exit\n      --version\
+  \         output version information and exit\n      --db=FILE         specify path\
+  \ of database repository in FILE\n      --library=NAME    specify library NAME for\
+  \ sqlite\n      --strain=NAME     specify strain NAME for sqlite\n      --species=NAME\
+  \    specify species NAME for sqlite\n\nReport bugs to <abyss-users@bcgsc.ca>.\n"
+generated_using:
+- --help

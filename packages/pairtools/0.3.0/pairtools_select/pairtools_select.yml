@@ -1,0 +1,174 @@
+!Command
+command:
+- pairtools
+- select
+positional:
+- !Positional
+  description: CONDITION with single quotes, and use double quotes for string
+  position: 0
+  name: quote
+  optional: false
+named:
+- !Flag
+  description: "output file. If the path ends with .gz or\n.lz4, the output is pbgzip-/lz4c-compressed.\n\
+    By default, the output is printed into\nstdout."
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "output file for pairs of other types.  If\nthe path ends with .gz\
+    \ or .lz4, the output\nis pbgzip-/lz4c-compressed. By default, such\npairs are\
+    \ dropped."
+  synonyms:
+  - --output-rest
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "[selected|rest|both|none]\nWhich of the outputs should receive header\n\
+    and comment lines  [default: both]"
+  synonyms:
+  - --send-comments-to
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "A path to a chromosomes file (tab-separated,\n1st column contains\
+    \ chromosome names)\ncontaining a chromosome subset of interest.\nIf provided,\
+    \ additionally filter pairs with\nboth sides originating from the provided\nsubset\
+    \ of chromosomes. This operation\nmodifies the #chromosomes: and #chromsize:\n\
+    header fields accordingly."
+  synonyms:
+  - --chrom-subset
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "An auxiliary code to execute before\nfiltering. Use to define functions\
+    \ that can\nbe evaluated in the CONDITION statement"
+  synonyms:
+  - --startup-code
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "...  Cast a given column to a given type. By\ndefault, only pos and\
+    \ mapq are cast to int,\nother columns are kept as str. Provide as -t\n<column_name>\
+    \ <type>, e.g. -t read_len1 int.\nMultiple entries are allowed."
+  synonyms:
+  - -t
+  - --type-cast
+  args: !SimpleFlagArg
+    name: TEXT TEXT
+  optional: true
+- !Flag
+  description: "Number of processes used by the auto-guessed\ninput decompressing\
+    \ command.  [default: 3]"
+  synonyms:
+  - --nproc-in
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Number of processes used by the auto-guessed\noutput compressing command.\
+    \  [default: 8]"
+  synonyms:
+  - --nproc-out
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "A command to decompress the input file. If\nprovided, fully overrides\
+    \ the auto-guessed\ncommand. Does not work with stdin. Must read\ninput from stdin\
+    \ and print output into\nstdout. EXAMPLE: pbgzip -dc -n 3"
+  synonyms:
+  - --cmd-in
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "A command to compress the output file. If\nprovided, fully overrides\
+    \ the auto-guessed\ncommand. Does not work with stdout. Must\nread input from\
+    \ stdin and print output into\nstdout. EXAMPLE: pbgzip -c -n 8"
+  synonyms:
+  - --cmd-out
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: pairtools select [OPTIONS] CONDITION [PAIRS_PATH]\n\n  Select pairs\
+  \ according to some condition.\n\n  CONDITION : A Python expression; if it returns\
+  \ True, select the read pair.\n  Any column declared in the #columns line of the\
+  \ pairs header can be\n  accessed by its name. If the header lacks the #columns\
+  \ line, the columns\n  are assumed to follow the .pairs/.pairsam standard (readID,\
+  \ chrom1,\n  chrom2,  pos1, pos2, strand1, strand2, pair_type). Finally, CONDITION\
+  \ has\n  access to  COLS list which contains the string values of columns. In Bash,\n\
+  \  quote  CONDITION with single quotes, and use double quotes for string\n  variables\
+  \ inside CONDITION.\n\n  PAIRS_PATH : input .pairs/.pairsam file. If the path ends\
+  \ with .gz or\n  .lz4, the input is decompressed by pbgzip/lz4c. By default, the\
+  \ input is\n  read from stdin.\n\n  The following functions can be used in CONDITION\
+  \ besides the standard\n  Python functions:\n\n  - csv_match(x, csv) - True if variable\
+  \ x is contained in a list of comma-\n  separated values, e.g. csv_match(chrom1,\
+  \ 'chr1,chr2')\n\n  - wildcard_match(x, wildcard) - True if variable x matches a\
+  \ wildcard,\n  e.g. wildcard_match(pair_type, 'C*')\n\n  - regex_match(x, regex)\
+  \ - True if variable x matches a Python-flavor\n  regex, e.g. regex_match(chrom1,\
+  \ 'chr\\d')\n\n  Examples:\n  pairtools select '(pair_type==\"UU\") or (pair_type==\"\
+  UR\") or (pair_type==\"RU\")'\n  pairtools select 'chrom1==chrom2'\n  pairtools\
+  \ select 'COLS[1]==COLS[3]'\n  pairtools select '(chrom1==chrom2) and (abs(pos1\
+  \ - pos2) < 1e6)'\n  pairtools select '(chrom1==\"!\") and (chrom2!=\"!\")'\n  pairtools\
+  \ select 'regex_match(chrom1, \"chr\\d+\") and regex_match(chrom2, \"chr\\d+\")'\n\
+  \n  pairtools select 'True' --chr-subset mm9.reduced.chromsizes\n\nOptions:\n  -o,\
+  \ --output TEXT               output file. If the path ends with .gz or\n      \
+  \                            .lz4, the output is pbgzip-/lz4c-compressed.\n    \
+  \                              By default, the output is printed into\n        \
+  \                          stdout.\n  --output-rest TEXT              output file\
+  \ for pairs of other types.  If\n                                  the path ends\
+  \ with .gz or .lz4, the output\n                                  is pbgzip-/lz4c-compressed.\
+  \ By default, such\n                                  pairs are dropped.\n  --send-comments-to\
+  \ [selected|rest|both|none]\n                                  Which of the outputs\
+  \ should receive header\n                                  and comment lines  [default:\
+  \ both]\n  --chrom-subset TEXT             A path to a chromosomes file (tab-separated,\n\
+  \                                  1st column contains chromosome names)\n     \
+  \                             containing a chromosome subset of interest.\n    \
+  \                              If provided, additionally filter pairs with\n   \
+  \                               both sides originating from the provided\n     \
+  \                             subset of chromosomes. This operation\n          \
+  \                        modifies the #chromosomes: and #chromsize:\n          \
+  \                        header fields accordingly.\n  --startup-code TEXT     \
+  \        An auxiliary code to execute before\n                                 \
+  \ filtering. Use to define functions that can\n                                \
+  \  be evaluated in the CONDITION statement\n  -t, --type-cast <TEXT TEXT>...  Cast\
+  \ a given column to a given type. By\n                                  default,\
+  \ only pos and mapq are cast to int,\n                                  other columns\
+  \ are kept as str. Provide as -t\n                                  <column_name>\
+  \ <type>, e.g. -t read_len1 int.\n                                  Multiple entries\
+  \ are allowed.\n  --nproc-in INTEGER              Number of processes used by the\
+  \ auto-guessed\n                                  input decompressing command. \
+  \ [default: 3]\n  --nproc-out INTEGER             Number of processes used by the\
+  \ auto-guessed\n                                  output compressing command.  [default:\
+  \ 8]\n  --cmd-in TEXT                   A command to decompress the input file.\
+  \ If\n                                  provided, fully overrides the auto-guessed\n\
+  \                                  command. Does not work with stdin. Must read\n\
+  \                                  input from stdin and print output into\n    \
+  \                              stdout. EXAMPLE: pbgzip -dc -n 3\n  --cmd-out TEXT\
+  \                  A command to compress the output file. If\n                 \
+  \                 provided, fully overrides the auto-guessed\n                 \
+  \                 command. Does not work with stdout. Must\n                   \
+  \               read input from stdin and print output into\n                  \
+  \                stdout. EXAMPLE: pbgzip -c -n 8\n  -h, --help                 \
+  \     Show this message and exit.\n"
+generated_using:
+- --help

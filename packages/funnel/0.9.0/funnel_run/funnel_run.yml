@@ -1,0 +1,228 @@
+!Command
+command:
+- funnel
+- run
+positional: []
+named:
+- !Flag
+  description: 'Address of Funnel server. Default: http://localhost:8000'
+  synonyms:
+  - -S
+  - --server
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Containter the command runs in. Default: alpine'
+  synonyms:
+  - -c
+  - --container
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Command to be run. This command will be run with the shell: 'sh -c\
+    \ \"<sh>\"'.\nThis is the default execution mode for commands passed as args."
+  synonyms:
+  - --sh
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Command to be run. This command will not be evaulated by 'sh'.
+  synonyms:
+  - --exec
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print the task without running it.
+  synonyms:
+  - -p
+  - --print
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Scatter multiple tasks, one per row of the given file.
+  synonyms:
+  - --scatter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Wait for the task to finish before exiting.
+  synonyms:
+  - --wait
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Wait for the given task IDs before running the task.
+  synonyms:
+  - --wait-for
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file e.g. varname=/path/to/input.txt
+  synonyms:
+  - -i
+  - --in
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input directory e.g. varname=/path/to/dir
+  synonyms:
+  - -I
+  - --in-dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file e.g. varname=/path/to/output.txt
+  synonyms:
+  - -o
+  - --out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output directory e.g. varname=/path/to/dir
+  synonyms:
+  - -O
+  - --out-dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Include input file content from a file e.g. varname=/path/to/in.txt
+  synonyms:
+  - -C
+  - --content
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: File to write to stdin to the command.
+  synonyms:
+  - --stdin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: File to write to stdout of the command.
+  synonyms:
+  - --stdout
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: File to write to stderr of the command.
+  synonyms:
+  - --stderr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of CPUs to request.
+  synonyms:
+  - --cpu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Amount of RAM to request, in GB.
+  synonyms:
+  - --ram
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Amount of disk space to request, in GB.
+  synonyms:
+  - --disk
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Require task be scheduled in certain zones.
+  synonyms:
+  - --zone
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: task to be scheduled on preemptible workers.
+  synonyms:
+  - --preemptible
+  args: !SimpleFlagArg
+    name: Allow
+  optional: true
+- !Flag
+  description: Task name.
+  synonyms:
+  - -n
+  - --name
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Task description.
+  synonyms:
+  - --description
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Arbitrary key-value tags, e.g. tagname=tagvalue
+  synonyms:
+  - --tag
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Environment variables, e.g. envvar=foo
+  synonyms:
+  - -e
+  - --env
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Containter working directory.
+  synonyms:
+  - -w
+  - --workdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Define a volume on the container.
+  synonyms:
+  - --vol
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Run a task.\n\nUsage:\n  funnel run 'CMD' [flags]\n\nGeneral flags:\n\
+  \  -S, --server      Address of Funnel server. Default: http://localhost:8000\n\
+  \  -c, --container   Containter the command runs in. Default: alpine\n      --sh\
+  \          Command to be run. This command will be run with the shell: 'sh -c \"\
+  <sh>\"'.\n                    This is the default execution mode for commands passed\
+  \ as args. \n      --exec        Command to be run. This command will not be evaulated\
+  \ by 'sh'.\n  -p, --print       Print the task without running it.\n      --scatter\
+  \     Scatter multiple tasks, one per row of the given file.\n      --wait     \
+  \   Wait for the task to finish before exiting.\n      --wait-for    Wait for the\
+  \ given task IDs before running the task.\n\nInput/output file flags:\n  -i, --in\
+  \          Input file e.g. varname=/path/to/input.txt\n  -I, --in-dir      Input\
+  \ directory e.g. varname=/path/to/dir\n  -o, --out         Output file e.g. varname=/path/to/output.txt\n\
+  \  -O, --out-dir     Output directory e.g. varname=/path/to/dir\n  -C, --content\
+  \     Include input file content from a file e.g. varname=/path/to/in.txt\n    \
+  \  --stdin       File to write to stdin to the command.\n      --stdout      File\
+  \ to write to stdout of the command.\n      --stderr      File to write to stderr\
+  \ of the command.\n\nResource request flags:\n      --cpu         Number of CPUs\
+  \ to request.\n      --ram         Amount of RAM to request, in GB.\n      --disk\
+  \        Amount of disk space to request, in GB.\n      --zone        Require task\
+  \ be scheduled in certain zones.\n      --preemptible Allow task to be scheduled\
+  \ on preemptible workers.\n\nOther flags:\n  -n, --name         Task name.\n   \
+  \   --description  Task description.\n      --tag          Arbitrary key-value tags,\
+  \ e.g. tagname=tagvalue\n  -e, --env          Environment variables, e.g. envvar=foo\n\
+  \  -w, --workdir      Containter working directory.\n      --vol          Define\
+  \ a volume on the container.\n\nExamples:\n  # Simple md5sum of a file and save\
+  \ the stdout.\n  funnel run 'md5sum $in' -i in=input.txt --stdout output.txt\n\n\
+  \  # Use a different container.\n  funnel run 'echo hello world' -c ubuntu\n\n \
+  \ # Print the task JSON instead of running it.\n  funnel run 'echo $in\" -i in=input.txt\
+  \ --print\n\n  # md5sum all files in a directory.\n  funnel run 'md5sum $d' -I d=./inputs\
+  \ --stdout output.txt\n\n  # Sleep for 5 seconds, and wait for the sleep to finish.\n\
+  \  funnel run 'sleep 5' --wait\n\n  # Set environment variables\n  funnel run 'echo\
+  \ $MSG' -e MSG=Hello\n\n  # When writing lots of arguments, Bash heredoc can be\
+  \ helpful.\n  funnel run 'myprog -a $argA -b $argB -i $file1 -d $dir1' <<ARGS\n\
+  \    --container myorg/mycontainer\n    --name 'MyProg test'\n    --description\
+  \ 'Funnel run example of writing many arguments.'\n    --tag meta=val\n    --in\
+  \ file1=input.txt\n    --in-dir dir1=inputs\n    --stdout /path/to/stdout.txt\n\
+  \    --stderr /path/to/stderr.txt\n    --env argA=1\n    --env argB=2\n    --vol\
+  \ /tmp \n    --vol /opt\n    --cpu 8\n    --ram 32\n    --disk 100\n    --preemptible\n\
+  \    --zone us-west1-a\n  ARGS\n"
+generated_using:
+- --help

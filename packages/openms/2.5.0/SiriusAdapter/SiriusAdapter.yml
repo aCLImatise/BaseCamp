@@ -1,0 +1,172 @@
+!Command
+command:
+- SiriusAdapter
+positional: []
+named:
+- !Flag
+  description: The Sirius executable. Provide a full or relative path, or make sure
+    it can be found in your PATH environment.
+  synonyms:
+  - -executable
+  args: !SimpleFlagArg
+    name: executable
+  optional: true
+- !Flag
+  description: "*                                          MzML Input file (valid\
+    \ formats: 'mzML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "FeatureXML input with feature and adduct information (valid formats:\
+    \ 'featureXML')"
+  synonyms:
+  - -in_featureinfo
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "MzTab Output file for SiriusAdapter results (valid formats: 'mzTab')"
+  synonyms:
+  - -out_sirius
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "MzTab output file for CSI:FingerID, if this parameter is given, SIRIUS\
+    \ will search for a molecular structure using CSI:FingerID after determining the\
+    \ sum formula (valid formats: 'mzTab')"
+  synonyms:
+  - -out_fingerid
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Internal SIRIUS .ms format after OpenMS preprocessing (valid formats:\
+    \ 'ms')"
+  synonyms:
+  - -out_ms
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Output directory for SIRIUS workspace
+  synonyms:
+  - -out_workspace_directory
+  args: !SimpleFlagArg
+    name: directory
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nSiriusAdapter\
+  \ -- Tool for metabolite identification using single and tandem mass spectrometry\n\
+  Full documentation: http://www.openms.de/documentation/UTILS_SiriusAdapter.html\n\
+  Version: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND Jul 16 2020, 21:29:13, Revision:\
+  \ HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL, Sachsenberg T, Aiche S, Bielow\
+  \ C et al.. OpenMS: a flexible open-source software platform for mass spectrometry\
+  \ data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\nTo cite\
+  \ SiriusAdapter:\n  Kai Dührkop and Sebastian Böcker. Fragmentation trees reloaded.\
+  \ J Cheminform; 2016. doi:10.1186/s13321-016-0116-8.\n  Kai Dührkop, Huibin Shen,\
+  \ Marvin Meusel, Juho Rousu, and Sebastian Böcker. Searching molecular structure\
+  \ databases with tandem mass spectra using CSI:FingerID. Proceedings of the National\
+  \ Academy of Sciences; 2015. doi:10.1073/pnas.1509788112.\n\nUsage:\n  SiriusAdapter\
+  \ <options>\n\nOptions (mandatory options marked with '*'):\n  -executable <executable>\
+  \                             The Sirius executable. Provide a full or relative\
+  \ path, or make sure it can be found in your PATH environment.\n  -in <file>*  \
+  \                                        MzML Input file (valid formats: 'mzML')\n\
+  \  -in_featureinfo <file>                               FeatureXML input with feature\
+  \ and adduct information (valid formats: 'featureXML')\n  -out_sirius <file>   \
+  \                                MzTab Output file for SiriusAdapter results (valid\
+  \ formats: 'mzTab')\n  -out_fingerid <file>                                 MzTab\
+  \ output file for CSI:FingerID, if this parameter is given, SIRIUS will search for\
+  \ a molecular structure using CSI:FingerID after determining the sum formula (valid\
+  \ formats: 'mzTab')\n  -out_ms <file>                                       Internal\
+  \ SIRIUS .ms format after OpenMS preprocessing (valid formats: 'ms')\n  -out_workspace_directory\
+  \ <directory>                 Output directory for SIRIUS workspace\n          \
+  \                                             \n\nPreprocessing:\n  -preprocessing:filter_by_num_masstraces\
+  \ <number>     Features have to have at least x MassTraces. To use this parameter\
+  \ feature_only is neccessary (default: '1' min: '1')\n  -preprocessing:precursor_mz_tolerance\
+  \ <value>        Tolerance window for precursor selection (Feature selection in\
+  \ regard to the precursor) (default: '0.005')\n  -preprocessing:precursor_mz_tolerance_unit\
+  \ <choice>  Unit of the precursor_mz_tolerance (default: 'Da' valid: 'Da', 'ppm')\n\
+  \  -preprocessing:precursor_rt_tolerance <number>       Tolerance window (left and\
+  \ right) for precursor selection [seconds] (default: '5')\n  -preprocessing:feature_only\
+  \                          Uses the feature information from in_featureinfo to reduce\
+  \ the search space to MS2 associated with a feature.\n\nParameters for SIRIUS and\
+  \ CSI:FingerID:\n  -sirius:profile <choice>                             Specify\
+  \ the used analysis profile (default: 'qtof' valid: 'qtof', 'orbitrap', 'fticr')\n\
+  \  -sirius:candidates <number>                          The number of candidates\
+  \ in the SIRIUS output. (default: '5' min: '1')\n  -sirius:database <choice>   \
+  \                         Search formulas in given database (default: 'all' valid:\
+  \ 'all', 'chebi', 'custom', 'kegg', 'bio', 'natural products', 'pubmed', 'hmdb',\
+  \ 'biocyc', 'hsdb', 'knapsack', 'biological', 'zinc bio', 'gnps', 'pubchem', 'mesh',\
+  \ 'maconda')\n  -sirius:noise <number>                               Median intensity\
+  \ of noise peaks (default: '0' min: '0')\n  -sirius:ppm_max <number>           \
+  \                  Allowed ppm for decomposing masses (default: '10')\n  -sirius:isotope\
+  \ <choice>                             How to handle isotope pattern data. Use 'score'\
+  \ to use them for ranking or 'filter' if you just want to remove candidates with\
+  \ bad isotope pattern. With 'both' you can use isotopes for filtering and scoring.\
+  \ Use 'omit' to ignore isotope pattern. (default: 'both' valid: 'score', 'filter',\
+  \ 'both', 'omit')\n  -sirius:elements <text>                              The allowed\
+  \ elements. Write CHNOPSCl to allow the elements C, H, N, O, P, S and Cl. Add numbers\
+  \ in brackets to restrict the maximal allowed occurrence of these elements: CHNOP[5]S[8]Cl[1].\
+  \ (default: 'CHNOP[5]S[8]Cl[1]')\n  -sirius:compound_timeout <number>          \
+  \          Time out in seconds per compound. To disable the timeout set the value\
+  \ to 0 (default: '10' min: '0')\n  -sirius:tree_timeout <number>               \
+  \         Time out in seconds per fragmentation tree computation. (default: '0'\
+  \ min: '0')\n  -sirius:top_n_hits <number>                          The number of\
+  \ top hits for each compound written to the CSI:FingerID output (default: '10' min:\
+  \ '1')\n  -sirius:cores <number>                               The number of cores\
+  \ SIRIUS is allowed to use on the system (default: '1' min: '1')\n  -sirius:auto_charge\
+  \                                  Use this option if the charge of your compounds\
+  \ is unknown and you do not want to assume [M+H]+ as default. With the auto charge\
+  \ option SIRIUS will not care about charges and allow arbitrary adducts for the\
+  \ precursor peak.\n\n                                                       \nCommon\
+  \ UTIL options:\n  -ini <file>                                          Use the\
+  \ given TOPP INI file\n  -threads <n>                                         Sets\
+  \ the number of threads allowed to be used by the TOPP tool (default: '1')\n  -write_ini\
+  \ <file>                                    Writes the default configuration file\n\
+  \  --help                                               Shows options\n  --helphelp\
+  \                                           Shows all options (including advanced)\n\
+  \n"
+generated_using:
+- --help

@@ -1,0 +1,102 @@
+!Command
+command:
+- rMETL
+- detection
+positional:
+- !Positional
+  description: The reference genome in fasta format.
+  position: 0
+  name: REFERENCE
+  optional: false
+- !Positional
+  description: Temporary directory to use for distributed jobs.
+  position: 1
+  name: temp_dir
+  optional: false
+- !Positional
+  description: Directory to output potential ME loci.
+  position: 2
+  name: output_dir
+  optional: false
+named:
+- !Flag
+  description: Mininum number of reads that support a ME.[5]
+  synonyms:
+  - -s
+  - --min_support
+  args: !SimpleFlagArg
+    name: MIN_SUPPORT
+  optional: true
+- !Flag
+  description: Mininum length of ME to be reported.[50]
+  synonyms:
+  - -l
+  - --min_length
+  args: !SimpleFlagArg
+    name: MIN_LENGTH
+  optional: true
+- !Flag
+  description: "Mininum distance of two ME signatures to be\nintergrated.[20]"
+  synonyms:
+  - -d
+  - --min_distance
+  args: !SimpleFlagArg
+    name: MIN_DISTANCE
+  optional: true
+- !Flag
+  description: Number of threads to use.[8]
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: "The sequencing platform <pacbio,ont> of the\nreads.[pacbio]\n"
+  synonyms:
+  - -x
+  - --presets
+  args: !SimpleFlagArg
+    name: PRESETS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: rMETL detection [-h] [-s MIN_SUPPORT] [-l MIN_LENGTH] [-d MIN_DISTANCE]\n\
+  \                       [-t THREADS] [-x PRESETS]\n                       [SAM,BAM,FASTA,FASTQ]\
+  \ REFERENCE temp_dir output_dir\n\n           _  ___  _   _____   _______   _\n\
+  \     _ _  | ^_   _^ | |  ___| |__   __| | |\n    | ^_| | | | | | | | |__      |\
+  \ |    | |\n    | |   | | | | | | |  __|     | |    | |\n    | |   | | | | | | |\
+  \ |___     | |    | |___\n    |_|   |_| |_| |_| |_____|    |_|    |_____|\n\n  \
+  \  rMETL - realignment-based Mobile Element insertion detection Tool for Long read\n\
+  \n\tSupport reads aligned with Ngmlr and sorted with Samtools\n\n\tIf input is a\
+  \ fastq or fasta format file, rMETL generates\n\talignments with Ngmlr at first;\n\
+  \n\tIf input is a sam format file, rMETL converts and sorts it\n\tto be a bam format\
+  \ file;\n\n\tIf your input is a bam format file with index, rMETL extracts\n\tthe\
+  \ ME signatures and collects the sub-sequence of them.\n\n\tThe output is a fasta\
+  \ format file called 'potential.fa' \n\tcontains potentials non-reference ME clusters.\n\
+  \n\trMETL V1.0.4\n\tAuthor: Jiang Tao\n\tContact: tjiang@hit.edu.cn\n\npositional\
+  \ arguments:\n  [SAM,BAM,FASTA,FASTQ]\n                        Input reads with/without\
+  \ alignment.\n  REFERENCE             The reference genome in fasta format.\n  temp_dir\
+  \              Temporary directory to use for distributed jobs.\n  output_dir  \
+  \          Directory to output potential ME loci.\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -s MIN_SUPPORT, --min_support\
+  \ MIN_SUPPORT\n                        Mininum number of reads that support a ME.[5]\n\
+  \  -l MIN_LENGTH, --min_length MIN_LENGTH\n                        Mininum length\
+  \ of ME to be reported.[50]\n  -d MIN_DISTANCE, --min_distance MIN_DISTANCE\n  \
+  \                      Mininum distance of two ME signatures to be\n           \
+  \             intergrated.[20]\n  -t THREADS, --threads THREADS\n              \
+  \          Number of threads to use.[8]\n  -x PRESETS, --presets PRESETS\n     \
+  \                   The sequencing platform <pacbio,ont> of the\n              \
+  \          reads.[pacbio]\n"
+generated_using:
+- --help

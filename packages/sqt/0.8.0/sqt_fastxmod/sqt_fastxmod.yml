@@ -1,0 +1,199 @@
+!Command
+command:
+- sqt
+- fastxmod
+positional:
+- !Positional
+  description: '--limit N, -n N       Pick only the first N sequences (default: all)'
+  position: 0
+  name: necessary
+  optional: false
+named:
+- !Flag
+  description: "Keep only records whose name occurs in FILE (one per\nline)"
+  synonyms:
+  - --names
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Discard records whose name occurs in FILE (one per\nline)"
+  synonyms:
+  - --not-names
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Quality cutoff. Only when input format is FASTQ
+  synonyms:
+  - -q
+  - --cutoff
+  args: !SimpleFlagArg
+    name: CUTOFF
+  optional: true
+- !Flag
+  description: "Randomly substitute bases at probability PROB.\nDefault: 0"
+  synonyms:
+  - --substitute
+  args: !SimpleFlagArg
+    name: PROB
+  optional: true
+- !Flag
+  description: 'Shorten records to LENGTH (default: do not shorten)'
+  synonyms:
+  - --length
+  - -l
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: Discard reads shorter than LENGTH
+  synonyms:
+  - -m
+  - --minimum-length
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "Discard reads whose expected number of errors\n(computed from quality\
+    \ values) exceeds ERRORS."
+  synonyms:
+  - --max-errors
+  args: !SimpleFlagArg
+    name: ERRORS
+  optional: true
+- !Flag
+  description: "Discard reads that contain characters other than those\nin CHARS.\
+    \ CHARS is case-sensitive. Example: -c\nACGTacgt."
+  synonyms:
+  - --allowed-characters
+  args: !SimpleFlagArg
+    name: CHARS
+  optional: true
+- !Flag
+  description: Reverse-complement each sequence
+  synonyms:
+  - --reverse-complement
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Convert sequence characters to uppercase
+  synonyms:
+  - --upper
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Convert sequence characters to lowercase
+  synonyms:
+  - --lower
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set all quality values to QUALITY. Use this to convert\nfrom FASTA\
+    \ to FASTQ."
+  synonyms:
+  - --constant-quality
+  - -c
+  args: !SimpleFlagArg
+    name: QUALITY
+  optional: true
+- !Flag
+  description: Always output FASTA (drop qualities if input is FASTQ)
+  synonyms:
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Make record names unique by appending _1, _2 etc. when
+  synonyms:
+  - --unique-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Characters per line in output FASTA (default: 80). Set\nto 0 to disallow\
+    \ line breaks entirely. This is ignored\nfor FASTQ files."
+  synonyms:
+  - --width
+  - -w
+  args: !SimpleFlagArg
+    name: WIDTH
+  optional: true
+- !Flag
+  description: Set random seed for reproducible runs. Relevant when
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: 'used.(default: use different'
+  synonyms:
+  - --substitution-rate
+  args: !SimpleFlagArg
+    name: is
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: sqt fastxmod [-h] [--names FILE] [--not-names FILE] [-q CUTOFF]\n\
+  \                    [--substitute PROB] [--length LENGTH] [-m LENGTH]\n       \
+  \             [--max-errors ERRORS] [--allowed-characters CHARS]\n             \
+  \       [--reverse-complement] [--upper | --lower]\n                    [--constant-quality\
+  \ QUALITY] [--fasta] [--unique-names]\n                    [--limit N] [--width\
+  \ WIDTH] [--seed SEED]\n                    FASTA/FASTQ\n\nModify FASTA and FASTQ\
+  \ files by picking subsets and modifying individual entries.\n\nPossible modifications:\n\
+  - Pick a subset of records (given by name). With lots of names, this is faster\n\
+  \  than 'grep -A 3 --no-group-separator -f readnames.txt file.fastq' magic, which\n\
+  \  may be used with FASTQ files.\n  If the record name ends in '/1' or '/2', these\
+  \ two charecter are ignored when\n  comparing to the names in the file.\n- Trim\
+  \ low-quality ends\n- Trim reads to a given length\n- Discard reads shorter than\
+  \ a given length\n- Discard reads in which the expected number of errors exceeds\
+  \ a threshold\n- Discard reads that contain characters other than those in a given\
+  \ set.\n- Reverse-complement each read\n- Make sequence characters upper- or lowercase\n\
+  - Convert from FASTA to FASTQ by assigning a fixed quality value to all bases\n\
+  - Convert from FASTQ to FASTA by dropping all quality values\n- Make read names\
+  \ unique\n- Pick only the first N sequences.\n\nModifications are done in the order\
+  \ in which they are listed above.\nThe result is written to standard output.\n\n\
+  The algorithm for quality trimming is the same as the one used by BWA:\n- Subtract\
+  \ the cutoff value from all qualities.\n- Compute partial sums from all indices\
+  \ to the end of the sequence.\n- Trim sequence at the index at which the sum is\
+  \ minimal.\n\npositional arguments:\n  FASTA/FASTQ           input FASTA or FASTQ\
+  \ file\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  --names FILE          Keep only records whose name occurs in FILE (one\
+  \ per\n                        line)\n  --not-names FILE      Discard records whose\
+  \ name occurs in FILE (one per\n                        line)\n  -q CUTOFF, --cutoff\
+  \ CUTOFF\n                        Quality cutoff. Only when input format is FASTQ\n\
+  \  --substitute PROB     Randomly substitute bases at probability PROB.\n      \
+  \                  Default: 0\n  --length LENGTH, -l LENGTH\n                  \
+  \      Shorten records to LENGTH (default: do not shorten)\n  -m LENGTH, --minimum-length\
+  \ LENGTH\n                        Discard reads shorter than LENGTH\n  --max-errors\
+  \ ERRORS   Discard reads whose expected number of errors\n                     \
+  \   (computed from quality values) exceeds ERRORS.\n  --allowed-characters CHARS\n\
+  \                        Discard reads that contain characters other than those\n\
+  \                        in CHARS. CHARS is case-sensitive. Example: -c\n      \
+  \                  ACGTacgt.\n  --reverse-complement, -r\n                     \
+  \   Reverse-complement each sequence\n  --upper               Convert sequence characters\
+  \ to uppercase\n  --lower               Convert sequence characters to lowercase\n\
+  \  --constant-quality QUALITY, -c QUALITY\n                        Set all quality\
+  \ values to QUALITY. Use this to convert\n                        from FASTA to\
+  \ FASTQ.\n  --fasta               Always output FASTA (drop qualities if input is\
+  \ FASTQ)\n  --unique-names        Make record names unique by appending _1, _2 etc.\
+  \ when\n                        necessary\n  --limit N, -n N       Pick only the\
+  \ first N sequences (default: all)\n  --width WIDTH, -w WIDTH\n                \
+  \        Characters per line in output FASTA (default: 80). Set\n              \
+  \          to 0 to disallow line breaks entirely. This is ignored\n            \
+  \            for FASTQ files.\n  --seed SEED           Set random seed for reproducible\
+  \ runs. Relevant when\n                        --substitution-rate is used.(default:\
+  \ use different\n                        seed each run)\n"
+generated_using:
+- --help

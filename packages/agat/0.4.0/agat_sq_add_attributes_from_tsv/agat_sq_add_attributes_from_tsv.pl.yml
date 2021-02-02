@@ -1,0 +1,97 @@
+!Command
+command:
+- agat_sq_add_attributes_from_tsv.pl
+positional:
+- !Positional
+  description: 'Description:'
+  position: 0
+  name: agat_sq_add_attributes_from_tsv.pl
+  optional: false
+named:
+- !Flag
+  description: 'STRING: Input GTF/GFF file.'
+  synonyms:
+  - --gff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'STRING: Input tsv file'
+  synonyms:
+  - --tsv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "BOLEAN: Inform the script that the tsv input file is actually a\n\
+    csv (coma-separated)."
+  synonyms:
+  - --csv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'BOLEAN: Add verbosity'
+  synonyms:
+  - -v
+  - --verbose
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: "STRING: Output file. If no output file is specified, the output\n\
+    will be written to STDOUT. The result is in tabulate format."
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this helpful text.
+  synonyms:
+  - --help
+  - -h
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Another GFF Analysis Toolkit (AGAT) - Version: v0.4.0                      |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \n\nName:\n    agat_sq_add_attributes_from_tsv.pl\n\nDescription:\n    The script\
+  \ aims to add info from a tsv/csv file to the attributes of a\n    gff file. An\
+  \ attribute looks like that: tag=value1,value2 The first line\n    of the tsv/csv\
+  \ must contains the headers, the other lines contain the\n    values. The header\
+  \ becomes the tag of the new attribute. If the tag\n    already exists, the value\
+  \ will be added only if the value does not\n    already exists. The first column\
+  \ does not become an attribute, indeed it\n    must contain the feature ID that\
+  \ will be used to know to which feature\n    we will add the attributes.\n\n   \
+  \ --- example ---\n\n    * input.tsv: ID annot_type1 gene1 anot_x cds1 anot_y\n\n\
+  \    * gff: chr1 irgsp gene 1000 2000 . + . ID=gene1 chr1 irgsp CDS 2983 3268\n\
+  \    . + . ID=cds1\n\n    * output.gff: chr1 irgsp gene 1000 2000 . + .\n    ID=gene1;annot_type1=anot_x\
+  \ chr1 irgsp CDS 2983 3268 . + .\n    ID=cds1;annot_type1=anot_y\n\nUsage:\n   \
+  \     agat_sq_add_attributes_from_tsv.pl --gff input.gff --tsv input.tsv [ -o output.gff3\
+  \ ]\n        agat_sq_add_attributes_from_tsv.pl --help\n\nOptions:\n    --gff  \
+  \ STRING: Input GTF/GFF file.\n\n    --tsv   STRING: Input tsv file\n\n    --csv\
+  \   BOLEAN: Inform the script that the tsv input file is actually a\n          \
+  \  csv (coma-separated).\n\n    -v or --verbose\n            BOLEAN: Add verbosity\n\
+  \n    -o or --output\n            STRING: Output file. If no output file is specified,\
+  \ the output\n            will be written to STDOUT. The result is in tabulate format.\n\
+  \n    --help or -h\n            Display this helpful text.\n\nFeedback:\n  Did you\
+  \ find a bug?:\n    Do not hesitate to report bugs to help us keep track of the\
+  \ bugs and\n    their resolution. Please use the GitHub issue tracking system available\n\
+  \    at this address:\n\n                https://github.com/NBISweden/AGAT/issues\n\
+  \n     Ensure that the bug was not already reported by searching under Issues.\n\
+  \     If you're unable to find an (open) issue addressing the problem, open a new\
+  \ one.\n     Try as much as possible to include in the issue when relevant:\n  \
+  \   - a clear description,\n     - as much relevant information as possible,\n \
+  \    - the command used,\n     - a data sample,\n     - an explanation of the expected\
+  \ behaviour that is not occurring.\n\n  Do you want to contribute?:\n    You are\
+  \ very welcome, visit this address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/AGAT/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help

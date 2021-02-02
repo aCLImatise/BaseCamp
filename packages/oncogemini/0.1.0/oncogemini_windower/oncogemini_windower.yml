@@ -1,0 +1,69 @@
+!Command
+command:
+- oncogemini
+- windower
+positional:
+- !Positional
+  description: -s STEP_SIZE          The step size for the windows in bp.
+  position: 0
+  name: table.
+  optional: false
+named:
+- !Flag
+  description: The name of the column to be added to the variant
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: WINDOW_SIZE
+  optional: true
+- !Flag
+  description: The type of windowed analysis requested.
+  synonyms:
+  - -t
+  args: !ChoiceFlagArg
+    choices: !!set
+      nucl_div:
+      hwe:
+  optional: true
+- !Flag
+  description: "The operation that should be applied to the -t values.\n"
+  synonyms:
+  - -o
+  args: !ChoiceFlagArg
+    choices: !!set
+      min:
+      median:
+      max:
+      collapse:
+      mean:
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: STEP_SIZE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: oncogemini windower [-h] [-w WINDOW_SIZE] [-s STEP_SIZE]\n    \
+  \                       [-t {nucl_div,hwe}]\n                           [-o {mean,median,min,max,collapse}]\n\
+  \                           db\n\npositional arguments:\n  db                  \
+  \  The name of the database to be updated.\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -w WINDOW_SIZE        The name of\
+  \ the column to be added to the variant\n                        table.\n  -s STEP_SIZE\
+  \          The step size for the windows in bp.\n  -t {nucl_div,hwe}     The type\
+  \ of windowed analysis requested.\n  -o {mean,median,min,max,collapse}\n       \
+  \                 The operation that should be applied to the -t values.\n"
+generated_using:
+- --help

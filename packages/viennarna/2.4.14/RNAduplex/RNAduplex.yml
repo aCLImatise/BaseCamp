@@ -1,0 +1,151 @@
+!Command
+command:
+- RNAduplex
+positional:
+- !Positional
+  description: "-s, --sorted               sort the printed output by free energy\n\
+    (default=off)"
+  position: 0
+  name: program
+  optional: false
+named:
+- !Flag
+  description: "Print help, including all details and hidden\noptions, and exit"
+  synonyms:
+  - --detailed-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print help, including hidden options, and exit
+  synonyms:
+  - --full-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not automatically substitude nucleotide \"T\"\nwith \"U\"\n(default=off)"
+  synonyms:
+  - --noconv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Compute suboptimal structures with energy in a\ncertain range of the\
+    \ optimum (kcal/mol). Default\nis calculation of mfe structure only."
+  synonyms:
+  - -e
+  - --deltaEnergy
+  args: !SimpleFlagArg
+    name: range
+  optional: true
+- !Flag
+  description: "Rescale energy parameters to a temperature of temp\nC. Default is\
+    \ 37C."
+  synonyms:
+  - -T
+  - --temp
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop hairpins.\nMostly for testing.\n(default=off)"
+  synonyms:
+  - '-4'
+  - --noTetra
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "How to treat \"dangling end\" energies for bases\nadjacent to helices\
+    \ in free ends and multi-loops\n(default=`2')"
+  synonyms:
+  - -d
+  - --dangles
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Produce structures without lonely pairs (helices\nof length 1).\n\
+    (default=off)"
+  synonyms:
+  - --noLP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not allow GU pairs\n(default=off)"
+  synonyms:
+  - --noGU
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not allow GU pairs at the end of helices\n(default=off)"
+  synonyms:
+  - --noClosingGU
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Read energy parameters from paramfile, instead of\nusing the default\
+    \ parameter set."
+  synonyms:
+  - -P
+  - --paramFile
+  args: !SimpleFlagArg
+    name: paramfile
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "RNAduplex 2.4.14\n\nCompute the structure upon hybridization of two RNA\
+  \ strands\n\nUsage: RNAduplex [OPTIONS]...\n\nreads two RNA sequences from stdin\
+  \ or <filename> and computes optimal and\nsuboptimal secondary structures for their\
+  \ hybridization. The calculation is\nsimplified by allowing only inter-molecular\
+  \ base pairs, for the general case\nuse RNAcofold.\nThe computed optimal and suboptimal\
+  \ structure are written to stdout, one\nstructure per line. Each line consist of:\
+  \ The structure in dot bracket format\nwith a \"&\" separating the two strands.\
+  \ The range of the structure in the two\nsequences in the format  \"from,to : from,to\"\
+  ; the energy of duplex structure\nin kcal/mol.\nThe format is especially useful\
+  \ for computing the hybrid structure between a\nsmall probe sequence and a long\
+  \ target sequence.\n\n\n  -h, --help                 Print help and exit\n     \
+  \ --detailed-help        Print help, including all details and hidden\n        \
+  \                       options, and exit\n      --full-help            Print help,\
+  \ including hidden options, and exit\n  -V, --version              Print version\
+  \ and exit\n\nGeneral Options:\n  Below are command line options which alter the\
+  \ general behavior of this\n  program\n\n\n  -s, --sorted               sort the\
+  \ printed output by free energy\n\n                                 (default=off)\n\
+  \      --noconv               Do not automatically substitude nucleotide \"T\"\n\
+  \                               with \"U\"\n\n                                 (default=off)\n\
+  \nAlgorithms:\n  Select additional algorithms which should be included in the calculations.\n\
+  \n\n  -e, --deltaEnergy=range    Compute suboptimal structures with energy in a\n\
+  \                               certain range of the optimum (kcal/mol). Default\n\
+  \                               is calculation of mfe structure only.\n\n\n\nModel\
+  \ Details:\n  -T, --temp=DOUBLE          Rescale energy parameters to a temperature\
+  \ of temp\n                               C. Default is 37C.\n\n\n  -4, --noTetra\
+  \              Do not include special tabulated stabilizing\n                  \
+  \             energies for tri-, tetra- and hexaloop hairpins.\n               \
+  \                Mostly for testing.\n\n                                 (default=off)\n\
+  \  -d, --dangles=INT          How to treat \"dangling end\" energies for bases\n\
+  \                               adjacent to helices in free ends and multi-loops\n\
+  \                                 (default=`2')\n      --noLP                 Produce\
+  \ structures without lonely pairs (helices\n                               of length\
+  \ 1).\n                                 (default=off)\n      --noGU            \
+  \     Do not allow GU pairs\n\n                                 (default=off)\n\
+  \      --noClosingGU          Do not allow GU pairs at the end of helices\n\n  \
+  \                               (default=off)\n  -P, --paramFile=paramfile  Read\
+  \ energy parameters from paramfile, instead of\n                               using\
+  \ the default parameter set.\n\n\nIf in doubt our program is right, nature is at\
+  \ fault.\nComments should be sent to rna@tbi.univie.ac.at.\n\n\n"
+generated_using:
+- --help

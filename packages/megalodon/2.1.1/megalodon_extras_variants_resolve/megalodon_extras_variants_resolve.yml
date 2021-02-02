@@ -1,0 +1,119 @@
+!Command
+command:
+- megalodon_extras
+- variants
+- resolve
+positional:
+- !Positional
+  description: 'optional arguments:'
+  position: 2
+  name: field.
+  optional: false
+named:
+- !Flag
+  description: "Output filename. Default:\nmegalodon.consolidated_variants.vcf"
+  synonyms:
+  - --output-filename
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+  optional: true
+- !Flag
+  description: "Maximum likelihood ratio ([ref prob] / [max alt prob])\nto include\
+    \ variant in output. Allows output of\nuncertain reference calls. Default: 1;\
+    \ Include only\nsites called as alternative."
+  synonyms:
+  - --max-likelihood-ratio
+  args: !SimpleFlagArg
+    name: MAX_LIKELIHOOD_RATIO
+  optional: true
+- !Flag
+  description: "Minimum depth to include a variant. Default: No depth\nfilter"
+  synonyms:
+  - --min-depth
+  args: !SimpleFlagArg
+    name: MIN_DEPTH
+  optional: true
+- !Flag
+  description: "Trim extra padding sequence included by megalodon\n(e.g. around repeat-region\
+    \ indels). Default: Output as\nfound in input variants."
+  synonyms:
+  - --trim-variants
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Variants file produced only from reads mapping to the\nreverse strand.\
+    \ If provided, this assumes that the\nmain variants file contains variants only\
+    \ supported by\nreads from the forward strand. This is used to\nidentify systematic\
+    \ basecalling error variants. Errors\nmade on both strands indicate potential\
+    \ putative\nvariants and are thus excluded. Homopolymer variants\noccuring on\
+    \ both strands are included by default.\nExclude these variants as well by setting\
+    \ --exclude-\nboth-strand-homopolymers ."
+  synonyms:
+  - --reverse-strand-variants
+  args: !SimpleFlagArg
+    name: REVERSE_STRAND_VARIANTS
+  optional: true
+- !Flag
+  description: "Minimum length to consider a variant as a homopolymer.\nDefault: 4"
+  synonyms:
+  - --homopolymer-min-length
+  args: !SimpleFlagArg
+    name: HOMOPOLYMER_MIN_LENGTH
+  optional: true
+- !Flag
+  description: "By default homopolymer variants are included even if\nthey occur on\
+    \ both strands. Set this flag to treat\nhomopolymer variants as other variants.\n"
+  synonyms:
+  - --exclude-both-strand-homopolymers
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: megalodon_extras variants resolve [-h]\n                      \
+  \                   [--output-filename OUTPUT_FILENAME]\n                      \
+  \                   [--max-likelihood-ratio MAX_LIKELIHOOD_RATIO]\n            \
+  \                             [--min-depth MIN_DEPTH]\n                        \
+  \                 [--trim-variants]\n                                         [--reverse-strand-variants\
+  \ REVERSE_STRAND_VARIANTS]\n                                         [--homopolymer-min-length\
+  \ HOMOPOLYMER_MIN_LENGTH]\n                                         [--exclude-both-strand-homopolymers]\n\
+  \                                         variants\n\npositional arguments:\n  variants\
+  \              Megalodon called variant file. Must contain GL sample\n         \
+  \               field.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --output-filename OUTPUT_FILENAME\n                 \
+  \       Output filename. Default:\n                        megalodon.consolidated_variants.vcf\n\
+  \  --max-likelihood-ratio MAX_LIKELIHOOD_RATIO\n                        Maximum\
+  \ likelihood ratio ([ref prob] / [max alt prob])\n                        to include\
+  \ variant in output. Allows output of\n                        uncertain reference\
+  \ calls. Default: 1; Include only\n                        sites called as alternative.\n\
+  \  --min-depth MIN_DEPTH\n                        Minimum depth to include a variant.\
+  \ Default: No depth\n                        filter\n  --trim-variants       Trim\
+  \ extra padding sequence included by megalodon\n                        (e.g. around\
+  \ repeat-region indels). Default: Output as\n                        found in input\
+  \ variants.\n\nStrand-specific Variant Arguments:\n  --reverse-strand-variants REVERSE_STRAND_VARIANTS\n\
+  \                        Variants file produced only from reads mapping to the\n\
+  \                        reverse strand. If provided, this assumes that the\n  \
+  \                      main variants file contains variants only supported by\n\
+  \                        reads from the forward strand. This is used to\n      \
+  \                  identify systematic basecalling error variants. Errors\n    \
+  \                    made on both strands indicate potential putative\n        \
+  \                variants and are thus excluded. Homopolymer variants\n        \
+  \                occuring on both strands are included by default.\n           \
+  \             Exclude these variants as well by setting --exclude-\n           \
+  \             both-strand-homopolymers .\n  --homopolymer-min-length HOMOPOLYMER_MIN_LENGTH\n\
+  \                        Minimum length to consider a variant as a homopolymer.\n\
+  \                        Default: 4\n  --exclude-both-strand-homopolymers\n    \
+  \                    By default homopolymer variants are included even if\n    \
+  \                    they occur on both strands. Set this flag to treat\n      \
+  \                  homopolymer variants as other variants.\n"
+generated_using:
+- --help

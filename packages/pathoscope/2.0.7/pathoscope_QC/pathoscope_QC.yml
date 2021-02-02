@@ -1,0 +1,187 @@
+!Command
+command:
+- pathoscope
+- QC
+positional: []
+named:
+- !Flag
+  description: 1st pair of read in PER or SER
+  synonyms:
+  - '-1'
+  args: !SimpleFlagArg
+    name: QC_READ1
+  optional: true
+- !Flag
+  description: 2nd pair of read in PER
+  synonyms:
+  - '-2'
+  args: !SimpleFlagArg
+    name: QC_READ2
+  optional: true
+- !Flag
+  description: "let us know a mean read length (0:ignore. [1]:I want\nto know the\
+    \ range of read length after trimming,\ni:user_specified_mean_read_length)"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: QC_READL
+  optional: true
+- !Flag
+  description: "specify a phred offset used in encoding base\nquality(0:not sure?,\
+    \ [33]:phred+33, 64:phred+64)"
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: QC_PHRED_OFFSET
+  optional: true
+- !Flag
+  description: specify output directory in full path
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: QC_OUTDIR
+  optional: true
+- !Flag
+  description: "tell us which sequencer generates the reads\n([Illumina], PacBio,\
+    \ Roche454, IonTorrent)"
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: QC_SEQUENCER
+  optional: true
+- !Flag
+  description: specify the min read length cutoff[35]
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: QC_LEN_CUTOFF
+  optional: true
+- !Flag
+  description: "specify an adaptor (Y:have pathoQC detect it,\n[N]:ignore, ACGT:adaptor)"
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: QC_ADAPTOR
+  optional: true
+- !Flag
+  description: "specify a second adaptor if it is different from the\nfirst one (Y:have\
+    \ pathoQC detect it, [N]:ignore,\nACGT:adaptor)"
+  synonyms:
+  - -a2
+  args: !SimpleFlagArg
+    name: QC_ADAPTOR2
+  optional: true
+- !Flag
+  description: "specify a cutoff of base quality value to trim at the\nend of reads([0]:ignore,\
+    \ 1:let pathoQC take care of\nit, i:user_specified_cutoff_value)"
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: QC_QUAL_CUTOFF
+  optional: true
+- !Flag
+  description: "set to 1 if you want to mask all lower case bases that\nmay correspond\
+    \ to sequence tag or adaptor in Roche454\nor IonTorrent"
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: QC_LOWER454
+  optional: true
+- !Flag
+  description: "specify a cutoff of entropy of low sequence complexity\nto filter\
+    \ out[0..100],default:30, set 0 to disable"
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: QC_COFF_ENTROPY
+  optional: true
+- !Flag
+  description: "filtering duplicates: [1] (exact duplicate), 2 (5'\nduplicate), 3\
+    \ (3' duplicate), 4 (reverse complement\nexact duplicate), 5 (reverse complement\
+    \ 5'/3'\nduplicate)"
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: QC_DEREP
+  optional: true
+- !Flag
+  description: "Set to 1 if you want to add a valid single read into a\nreduced valid\
+    \ PER set. Note that this option works\nonly with PER"
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: QC_ADD_VALID_SINGLE
+  optional: true
+- !Flag
+  description: to force to skip prinseq module
+  synonyms:
+  - --no_prinseq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specify a total number of cpus to use[1]
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: QC_NUM_THREADS
+  optional: true
+- !Flag
+  description: working on debug mode
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Running without mySQLdb library\nusage: pathoscope QC [-h] -1 QC_READ1\
+  \ [-2 QC_READ2] [-r QC_READL]\n                     [-t QC_PHRED_OFFSET] [-o QC_OUTDIR]\
+  \ [-s QC_SEQUENCER]\n                     [-m QC_LEN_CUTOFF] [-a QC_ADAPTOR] [-a2\
+  \ QC_ADAPTOR2]\n                     [-q QC_QUAL_CUTOFF] [-R QC_LOWER454] [-e QC_COFF_ENTROPY]\n\
+  \                     [-d QC_DEREP] [-g QC_ADD_VALID_SINGLE] [--no_prinseq]\n  \
+  \                   [-p QC_NUM_THREADS] [--debug] [--version]\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -1 QC_READ1        \
+  \   1st pair of read in PER or SER\n  -2 QC_READ2           2nd pair of read in\
+  \ PER\n  -r QC_READL           let us know a mean read length (0:ignore. [1]:I want\n\
+  \                        to know the range of read length after trimming,\n    \
+  \                    i:user_specified_mean_read_length)\n  -t QC_PHRED_OFFSET  \
+  \  specify a phred offset used in encoding base\n                        quality(0:not\
+  \ sure?, [33]:phred+33, 64:phred+64)\n  -o QC_OUTDIR          specify output directory\
+  \ in full path\n  -s QC_SEQUENCER       tell us which sequencer generates the reads\n\
+  \                        ([Illumina], PacBio, Roche454, IonTorrent)\n  -m QC_LEN_CUTOFF\
+  \      specify the min read length cutoff[35]\n  -a QC_ADAPTOR         specify an\
+  \ adaptor (Y:have pathoQC detect it,\n                        [N]:ignore, ACGT:adaptor)\n\
+  \  -a2 QC_ADAPTOR2       specify a second adaptor if it is different from the\n\
+  \                        first one (Y:have pathoQC detect it, [N]:ignore,\n    \
+  \                    ACGT:adaptor)\n  -q QC_QUAL_CUTOFF     specify a cutoff of\
+  \ base quality value to trim at the\n                        end of reads([0]:ignore,\
+  \ 1:let pathoQC take care of\n                        it, i:user_specified_cutoff_value)\n\
+  \  -R QC_LOWER454        set to 1 if you want to mask all lower case bases that\n\
+  \                        may correspond to sequence tag or adaptor in Roche454\n\
+  \                        or IonTorrent\n  -e QC_COFF_ENTROPY    specify a cutoff\
+  \ of entropy of low sequence complexity\n                        to filter out[0..100],default:30,\
+  \ set 0 to disable\n  -d QC_DEREP           filtering duplicates: [1] (exact duplicate),\
+  \ 2 (5'\n                        duplicate), 3 (3' duplicate), 4 (reverse complement\n\
+  \                        exact duplicate), 5 (reverse complement 5'/3'\n       \
+  \                 duplicate)\n  -g QC_ADD_VALID_SINGLE\n                       \
+  \ Set to 1 if you want to add a valid single read into a\n                     \
+  \   reduced valid PER set. Note that this option works\n                       \
+  \ only with PER\n  --no_prinseq          to force to skip prinseq module\n  -p QC_NUM_THREADS\
+  \     specify a total number of cpus to use[1]\n  --debug               working\
+  \ on debug mode\n  --version             show program's version number and exit\n"
+generated_using:
+- --help

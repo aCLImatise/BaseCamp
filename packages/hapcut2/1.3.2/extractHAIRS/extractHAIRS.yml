@@ -1,0 +1,208 @@
+!Command
+command:
+- extractHAIRS
+positional: []
+named:
+- !Flag
+  description: ': quality value offset, 33/64 depending on how quality values were
+    encoded, default is 33'
+  synonyms:
+  - --qvoffset
+  args: !SimpleFlagArg
+    name: 33/64
+  optional: true
+- !Flag
+  description: ': minimum base quality to consider a base for haplotype fragment,
+    default 13'
+  synonyms:
+  - --mbq
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ': minimum read mapping quality to consider a read for phasing, default
+    20'
+  synonyms:
+  - --mmq
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ': Perform sensitive realignment and scoring of variants.'
+  synonyms:
+  - --realign_variants
+  args: !SimpleFlagArg
+    name: 0/1
+  optional: true
+- !Flag
+  description: ': sets default maxIS to 40MB, prints matrix in new HiC format'
+  synonyms:
+  - --hic
+  args: !SimpleFlagArg
+    name: 0/1
+  optional: true
+- !Flag
+  description: ': 10X reads. NOTE: Output fragments MUST be processed with LinkReads.py
+    script after extractHAIRS to work with HapCUT2.'
+  synonyms:
+  - --10X
+  args: !SimpleFlagArg
+    name: 0/1
+  optional: true
+- !Flag
+  description: ': Pacific Biosciences reads. Similar to --realign_variants, but with
+    alignment parameters tuned for PacBio reads.'
+  synonyms:
+  - --pacbio
+  args: !SimpleFlagArg
+    name: 0/1
+  optional: true
+- !Flag
+  description: ': Oxford nanopore technology reads. Similar to --realign_variants,
+    but with alignment parameters tuned for Oxford Nanopore Reads.'
+  synonyms:
+  - --ONT
+  - --ont
+  args: !SimpleFlagArg
+    name: 0/1
+  optional: true
+- !Flag
+  description: ': prints matrix in new format. Requires --new_format option when running
+    HapCUT2.'
+  synonyms:
+  - --new_format
+  - --nf
+  args: !SimpleFlagArg
+    name: 0/1
+  optional: true
+- !Flag
+  description: ': variant file with genotypes for a single individual in VCF format
+    (unzipped)'
+  synonyms:
+  - --VCF
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: ': maximum insert size for a paired-end read to be considered as a
+    single fragment for phasing, default 1000'
+  synonyms:
+  - --maxIS
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ': minimum insert size for a paired-end read to be considered as single
+    fragment for phasing, default 0'
+  synonyms:
+  - --minIS
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: ': do not use single end reads, default is 0 (use all reads)'
+  synonyms:
+  - --PEonly
+  args: !SimpleFlagArg
+    name: 0/1
+  optional: true
+- !Flag
+  description: ': extract reads spanning INDELS, default is 0, variants need to specified
+    in VCF format to use this option'
+  synonyms:
+  - --indels
+  args: !SimpleFlagArg
+    name: 0/1
+  optional: true
+- !Flag
+  description: ': if the bam file does not have quality string, this value will be
+    used as the uniform quality value, default 0'
+  synonyms:
+  - --noquality
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: ': include variants with genotype 1/2 for parsing, default 0'
+  synonyms:
+  - --triallelic
+  args: !SimpleFlagArg
+    name: 0/1
+  optional: true
+- !Flag
+  description: ': reference sequence file (in fasta format, gzipped is okay), optional
+    but required for indels, should be indexed'
+  synonyms:
+  - --ref
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: ': output filename for haplotype fragments, if not provided, fragments
+    will be output to stdout'
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: '<chr:start-end> : chromosome and region in BAM file, useful to process
+    individual chromosomes or genomic regions'
+  synonyms:
+  - --region
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': set to 1 to estimate HMM parameters from aligned reads (only with
+    long reads), default = 0'
+  synonyms:
+  - --ep
+  args: !SimpleFlagArg
+    name: 0/1
+  optional: true
+- !Flag
+  description: ': set to 1 to include homozygous variants for processing, default
+    = 0 (only heterozygous)'
+  synonyms:
+  - --hom
+  args: !SimpleFlagArg
+    name: 0/1
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nExtract haplotype informative reads (HAIRS) from coordinate sorted BAM\
+  \ files \n\n./extractHAIRS [options] --bam reads.sorted.bam --VCF variants.VCF --out\
+  \ fragment_file \n\nOptions:\n--qvoffset <33/64> : quality value offset, 33/64 depending\
+  \ on how quality values were encoded, default is 33 \n--mbq <INT> : minimum base\
+  \ quality to consider a base for haplotype fragment, default 13\n--mmq <INT> : minimum\
+  \ read mapping quality to consider a read for phasing, default 20\n--realign_variants\
+  \ <0/1> : Perform sensitive realignment and scoring of variants.\n--hic <0/1> :\
+  \ sets default maxIS to 40MB, prints matrix in new HiC format\n--10X <0/1> : 10X\
+  \ reads. NOTE: Output fragments MUST be processed with LinkReads.py script after\
+  \ extractHAIRS to work with HapCUT2.\n--pacbio <0/1> : Pacific Biosciences reads.\
+  \ Similar to --realign_variants, but with alignment parameters tuned for PacBio\
+  \ reads.\n--ONT, --ont <0/1> : Oxford nanopore technology reads. Similar to --realign_variants,\
+  \ but with alignment parameters tuned for Oxford Nanopore Reads.\n--new_format,\
+  \ --nf <0/1> : prints matrix in new format. Requires --new_format option when running\
+  \ HapCUT2.\n--VCF <FILENAME> : variant file with genotypes for a single individual\
+  \ in VCF format (unzipped) \n--maxIS <INT> : maximum insert size for a paired-end\
+  \ read to be considered as a single fragment for phasing, default 1000\n--minIS\
+  \ <INT> : minimum insert size for a paired-end read to be considered as single fragment\
+  \ for phasing, default 0\n--PEonly <0/1> : do not use single end reads, default\
+  \ is 0 (use all reads)\n--indels <0/1> : extract reads spanning INDELS, default\
+  \ is 0, variants need to specified in VCF format to use this option\n--noquality\
+  \ <INTEGER> : if the bam file does not have quality string, this value will be used\
+  \ as the uniform quality value, default 0 \n--triallelic <0/1> : include variants\
+  \ with genotype 1/2 for parsing, default 0 \n--ref <FILENAME> : reference sequence\
+  \ file (in fasta format, gzipped is okay), optional but required for indels, should\
+  \ be indexed\n--out <FILENAME> : output filename for haplotype fragments, if not\
+  \ provided, fragments will be output to stdout\n--region <chr:start-end> : chromosome\
+  \ and region in BAM file, useful to process individual chromosomes or genomic regions\
+  \ \n--ep <0/1> : set to 1 to estimate HMM parameters from aligned reads (only with\
+  \ long reads), default = 0\n--hom <0/1> : set to 1 to include homozygous variants\
+  \ for processing, default = 0 (only heterozygous) \n\n"
+generated_using: []

@@ -1,0 +1,505 @@
+!Command
+command:
+- trimal
+positional: []
+named:
+- !Flag
+  description: Input file in several formats (clustal, fasta, NBRF/PIR, nexus, phylip3.2,
+    phylip).
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: inputfile
+  optional: true
+- !Flag
+  description: Input list of paths for the files containing the alignments to compare.
+  synonyms:
+  - -compareset
+  args: !SimpleFlagArg
+    name: inputfile
+  optional: true
+- !Flag
+  description: Force selection of the given input file in the files comparison method.
+  synonyms:
+  - -forceselect
+  args: !SimpleFlagArg
+    name: inputfile
+  optional: true
+- !Flag
+  description: Use a Coding Sequences file to get a backtranslation for a given AA
+    alignment
+  synonyms:
+  - -backtrans
+  args: !SimpleFlagArg
+    name: inputfile
+  optional: true
+- !Flag
+  description: Ignore stop codons in the input coding sequences
+  synonyms:
+  - -ignorestopcodon
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Split input coding sequences up to first stop codon appearance
+  synonyms:
+  - -splitbystopcodon
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input file for user-defined similarity matrix (default is Blosum62).
+  synonyms:
+  - -matrix
+  args: !SimpleFlagArg
+    name: inpufile
+  optional: true
+- !Flag
+  description: Output alignment in the same input format (default stdout). (default
+    input format)
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: outputfile
+  optional: true
+- !Flag
+  description: Get a summary of trimal's work in an HTML file.
+  synonyms:
+  - -htmlout
+  args: !SimpleFlagArg
+    name: outputfile
+  optional: true
+- !Flag
+  description: "Keep original sequence header including non-alphanumeric characters.\n\
+    Only available for input FASTA format files. (future versions will extend this\
+    \ feature)"
+  synonyms:
+  - -keepheader
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file in NBRF/PIR format
+  synonyms:
+  - -nbrf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file in MEGA format
+  synonyms:
+  - -mega
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file in NEXUS format
+  synonyms:
+  - -nexus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file in CLUSTAL format
+  synonyms:
+  - -clustal
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file in FASTA format
+  synonyms:
+  - -fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file in FASTA format. Sequences name length up to 10 characters.
+  synonyms:
+  - -fasta_m10
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file in PHYLIP/PHYLIP4 format
+  synonyms:
+  - -phylip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file in PHYLIP/PHYLIP4 format. Sequences name length up to 10
+    characters.
+  synonyms:
+  - -phylip_m10
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file in PHYLIP format compatible with PAML
+  synonyms:
+  - -phylip_paml
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file in PHYLIP format compatible with PAML. Sequences name length
+    up to 10 characters.
+  synonyms:
+  - -phylip_paml_m10
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file in PHYLIP3.2 format
+  synonyms:
+  - -phylip3.2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file in PHYLIP3.2 format. Sequences name length up to 10 characters.
+  synonyms:
+  - -phylip3.2_m10
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Get the complementary alignment.
+  synonyms:
+  - -complementary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Get the relationship between the columns in the old and new alignment.
+  synonyms:
+  - -colnumbering
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Selection of columns to be removed from the alignment. Range: [0 -
+    (Number of Columns - 1)]. (see User Guide).'
+  synonyms:
+  - -selectcols
+  args: !ChoiceFlagArg
+    choices: !!set
+      n:
+      l:
+      m-k:
+  optional: true
+- !Flag
+  description: 'Selection of sequences to be removed from the alignment. Range: [0
+    - (Number of Sequences - 1)]. (see User Guide).'
+  synonyms:
+  - -selectseqs
+  args: !ChoiceFlagArg
+    choices: !!set
+      n:
+      l:
+      m-k:
+  optional: true
+- !Flag
+  description: '1 - (fraction of sequences with a gap allowed). Range: [0 - 1]'
+  synonyms:
+  - -gt
+  - -gapthreshold
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: 'Minimum average similarity allowed. Range: [0 - 1]'
+  synonyms:
+  - -st
+  - -simthreshold
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: 'Minimum consistency value allowed.Range: [0 - 1]'
+  synonyms:
+  - -ct
+  - -conthreshold
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: 'Minimum percentage of the positions in the original alignment to conserve.
+    Range: [0 - 100]'
+  synonyms:
+  - -cons
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Remove all positions with gaps in the alignment.
+  synonyms:
+  - -nogaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove columns composed only by gaps.
+  synonyms:
+  - -noallgaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep sequences even if they are composed only by gaps.
+  synonyms:
+  - -keepseqs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use automated selection on "gappyout" mode. This method only uses information
+    based on gaps' distribution. (see User Guide).
+  synonyms:
+  - -gappyout
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use automated selection on "strict" mode. (see User Guide).
+  synonyms:
+  - -strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use automated selection on \"strictplus\" mode. (see User Guide).\n\
+    (Optimized for Neighbour Joining phylogenetic tree reconstruction)."
+  synonyms:
+  - -strictplus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use a heuristic selection of the automatic method based on similarity
+    statistics. (see User Guide). (Optimized for Maximum Likelihood phylogenetic tree
+    reconstruction).
+  synonyms:
+  - -automated1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Only columns out of internal boundaries (first and last column without\
+    \ gaps) are\ncandidated to be trimmed depending on the applied method"
+  synonyms:
+  - -terminalonly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum column block size to be kept in the trimmed alignment. Available
+    with manual and automatic (gappyout) methods
+  synonyms:
+  - -block
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: 'Minimum overlap of a positions with other positions in the column
+    to be considered a "good position". Range: [0 - 1]. (see User Guide).'
+  synonyms:
+  - -resoverlap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minimum percentage of "good positions" that a sequence must have in
+    order to be conserved. Range: [0 - 100](see User Guide).'
+  synonyms:
+  - -seqoverlap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Get the most Nth representatives sequences from a given alignment.
+    Range: [1 - (Number of sequences)]'
+  synonyms:
+  - -clusters
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: 'Get the representatives sequences for a given identity threshold.
+    Range: [0 - 1].'
+  synonyms:
+  - -maxidentity
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: (half) Window size, score of position i is the average of the window
+    (i - n) to (i + n).
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: (half) Window size only applies to statistics/methods based on Gaps.
+  synonyms:
+  - -gw
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: (half) Window size only applies to statistics/methods based on Similarity.
+  synonyms:
+  - -sw
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: (half) Window size only applies to statistics/methods based on Consistency.
+  synonyms:
+  - -cw
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Print gap scores for each column in the input alignment.
+  synonyms:
+  - -sgc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print accumulated gap scores for the input alignment.
+  synonyms:
+  - -sgt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print similarity scores for each column in the input alignment.
+  synonyms:
+  - -ssc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print accumulated similarity scores for the input alignment.
+  synonyms:
+  - -sst
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print sum-of-pairs scores for each column from the selected alignment
+  synonyms:
+  - -sfc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print accumulated sum-of-pairs scores for the selected alignment
+  synonyms:
+  - -sft
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print identity scores for all sequences in the input alignment. (see
+    User Guide).
+  synonyms:
+  - -sident
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this information and show some examples.
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print the trimAl version.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\ntrimAl v1.4.rev15 build[2013-12-17]. 2009-2013. Salvador Capella-Gutierrez\
+  \ and Toni Gabaldón.\n\ntrimAl webpage: http://trimal.cgenomics.org\n\nThis program\
+  \ is free software: you can redistribute it and/or modify \nit under the terms of\
+  \ the GNU General Public License as published by \nthe Free Software Foundation,\
+  \ the last available version.\n\nPlease cite:\n\t\ttrimAl: a tool for automated\
+  \ alignment trimming in large-scale phylogenetic analyses.\n\t\tSalvador Capella-Gutierrez;\
+  \ Jose M. Silla-Martinez; Toni Gabaldon.\n\t\tBioinformatics 2009, 25:1972-1973.\n\
+  \nBasic usage\n\ttrimal -in <inputfile> -out <outputfile> -(other options).\n\n\
+  Common options (for a complete list please see the User Guide or visit http://trimal.cgenomics.org):\n\
+  \n    -h                       Print this information and show some examples.\n\
+  \    --version                Print the trimAl version.\n\n    -in <inputfile> \
+  \         Input file in several formats (clustal, fasta, NBRF/PIR, nexus, phylip3.2,\
+  \ phylip).\n\n    -compareset <inputfile>  Input list of paths for the files containing\
+  \ the alignments to compare.\n    -forceselect <inputfile> Force selection of the\
+  \ given input file in the files comparison method.\n\n    -backtrans <inputfile>\
+  \   Use a Coding Sequences file to get a backtranslation for a given AA alignment\n\
+  \    -ignorestopcodon         Ignore stop codons in the input coding sequences\n\
+  \    -splitbystopcodon        Split input coding sequences up to first stop codon\
+  \ appearance\n\n    -matrix <inpufile>       Input file for user-defined similarity\
+  \ matrix (default is Blosum62).\n\n    -out <outputfile>        Output alignment\
+  \ in the same input format (default stdout). (default input format)\n    -htmlout\
+  \ <outputfile>    Get a summary of trimal's work in an HTML file.\n\n    -keepheader\
+  \              Keep original sequence header including non-alphanumeric characters.\n\
+  \                             Only available for input FASTA format files. (future\
+  \ versions will extend this feature)\n\n    -nbrf                    Output file\
+  \ in NBRF/PIR format\n    -mega                    Output file in MEGA format\n\
+  \    -nexus                   Output file in NEXUS format\n    -clustal        \
+  \         Output file in CLUSTAL format\n\n    -fasta                   Output file\
+  \ in FASTA format\n    -fasta_m10               Output file in FASTA format. Sequences\
+  \ name length up to 10 characters.\n\n    -phylip                  Output file in\
+  \ PHYLIP/PHYLIP4 format\n    -phylip_m10              Output file in PHYLIP/PHYLIP4\
+  \ format. Sequences name length up to 10 characters.\n    -phylip_paml         \
+  \    Output file in PHYLIP format compatible with PAML\n    -phylip_paml_m10   \
+  \      Output file in PHYLIP format compatible with PAML. Sequences name length\
+  \ up to 10 characters.\n    -phylip3.2               Output file in PHYLIP3.2 format\n\
+  \    -phylip3.2_m10           Output file in PHYLIP3.2 format. Sequences name length\
+  \ up to 10 characters.\n\n    -complementary           Get the complementary alignment.\n\
+  \    -colnumbering            Get the relationship between the columns in the old\
+  \ and new alignment.\n\n    -selectcols { n,l,m-k }  Selection of columns to be\
+  \ removed from the alignment. Range: [0 - (Number of Columns - 1)]. (see User Guide).\n\
+  \    -selectseqs { n,l,m-k }  Selection of sequences to be removed from the alignment.\
+  \ Range: [0 - (Number of Sequences - 1)]. (see User Guide).\n\n    -gt -gapthreshold\
+  \ <n>    1 - (fraction of sequences with a gap allowed). Range: [0 - 1]\n    -st\
+  \ -simthreshold <n>    Minimum average similarity allowed. Range: [0 - 1]\n    -ct\
+  \ -conthreshold <n>    Minimum consistency value allowed.Range: [0 - 1]\n    -cons\
+  \ <n>                Minimum percentage of the positions in the original alignment\
+  \ to conserve. Range: [0 - 100]\n\n    -nogaps                  Remove all positions\
+  \ with gaps in the alignment.\n    -noallgaps               Remove columns composed\
+  \ only by gaps.\n    -keepseqs                Keep sequences even if they are composed\
+  \ only by gaps.\n\n    -gappyout                Use automated selection on \"gappyout\"\
+  \ mode. This method only uses information based on gaps' distribution. (see User\
+  \ Guide).\n    -strict                  Use automated selection on \"strict\" mode.\
+  \ (see User Guide).\n    -strictplus              Use automated selection on \"\
+  strictplus\" mode. (see User Guide).\n                             (Optimized for\
+  \ Neighbour Joining phylogenetic tree reconstruction).\n\n    -automated1      \
+  \        Use a heuristic selection of the automatic method based on similarity statistics.\
+  \ (see User Guide). (Optimized for Maximum Likelihood phylogenetic tree reconstruction).\n\
+  \n    -terminalonly            Only columns out of internal boundaries (first and\
+  \ last column without gaps) are \n                             candidated to be\
+  \ trimmed depending on the applied method\n    -block <n>               Minimum\
+  \ column block size to be kept in the trimmed alignment. Available with manual and\
+  \ automatic (gappyout) methods\n\n    -resoverlap              Minimum overlap of\
+  \ a positions with other positions in the column to be considered a \"good position\"\
+  . Range: [0 - 1]. (see User Guide).\n    -seqoverlap              Minimum percentage\
+  \ of \"good positions\" that a sequence must have in order to be conserved. Range:\
+  \ [0 - 100](see User Guide).\n\n    -clusters <n>            Get the most Nth representatives\
+  \ sequences from a given alignment. Range: [1 - (Number of sequences)]\n    -maxidentity\
+  \ <n>         Get the representatives sequences for a given identity threshold.\
+  \ Range: [0 - 1].\n\n    -w <n>                   (half) Window size, score of position\
+  \ i is the average of the window (i - n) to (i + n).\n    -gw <n>              \
+  \    (half) Window size only applies to statistics/methods based on Gaps.\n    -sw\
+  \ <n>                  (half) Window size only applies to statistics/methods based\
+  \ on Similarity.\n    -cw <n>                  (half) Window size only applies to\
+  \ statistics/methods based on Consistency.\n\n    -sgc                     Print\
+  \ gap scores for each column in the input alignment.\n    -sgt                 \
+  \    Print accumulated gap scores for the input alignment.\n    -ssc           \
+  \          Print similarity scores for each column in the input alignment.\n   \
+  \ -sst                     Print accumulated similarity scores for the input alignment.\n\
+  \    -sfc                     Print sum-of-pairs scores for each column from the\
+  \ selected alignment\n    -sft                     Print accumulated sum-of-pairs\
+  \ scores for the selected alignment\n    -sident                  Print identity\
+  \ scores for all sequences in the input alignment. (see User Guide).\n\nSome Examples:\n\
+  \n1) Removes all positions in the alignment with gaps in 10% or more of\n   the\
+  \ sequences, unless this leaves less than 60% of original alignment. \n   In such\
+  \ case, print the 60% best (with less gaps) positions.\n\n   trimal -in <inputfile>\
+  \ -out <outputfile> -gt 0.9 -cons 60\n\n2) As above but, the gap score is averaged\
+  \ over a window starting\n   3 positions before and ending 3 positions after each\
+  \ column.\n\n   trimal -in <inputfile> -out <outputfile> -gt 0.9 -cons 60 -w 3\n\
+  \n3) Use an automatic method to decide optimal thresholds, based in the gap scores\n\
+  \   from input alignment. (see User Guide for details).\n\n   trimal -in <inputfile>\
+  \ -out <outputfile> -gappyout\n\n4) Use automatic methods to decide optimal thresholds,\
+  \ based on the combination \n   of gap and similarity scores. (see User Guide for\
+  \ details).\n\n   trimal -in <inputfile> -out <outputfile> -strictplus\n\n5) Use\
+  \ an heuristic to decide the optimal method for trimming the alignment. \n   (see\
+  \ User Guide for details).\n\n   trimal -in <inputfile> -out <outputfile> -automated1\n\
+  \n6) Use residues and sequences overlap thresholds to delete some sequences from\
+  \ the \n   alignemnt. (see User Guide for details).\n\n   trimal -in <inputfile>\
+  \ -out <outputfile> -resoverlap 0.8 -seqoverlap 75\n\n7) Selection of columns to\
+  \ be deleted from the alignment. The selection can \n   be a column number or a\
+  \ column number interval. Start from 0\n\n   trimal -in <inputfile> -out <outputfile>\
+  \ -selectcols { 0,2,3,10,45-60,68,70-78 }\n\n8) Get the complementary alignment\
+  \ from the alignment previously trimmed.\n\n   trimal -in <inputfile> -out <outputfile>\
+  \ -selectcols { 0,2,3,10,45-60,68,70-78 } -complementary\n\n9) Selection of sequences\
+  \ to be deleted from the alignment. Start in 0\n\n   trimal -in <inputfile> -out\
+  \ <outputfile> -selectseqs { 2,4,8-12 } \n\n10) Select the 5 most representative\
+  \ sequences from the alignment\n\n   trimal -in <inputfile> -out <outputfile> -clusters\
+  \ 5 \n\n"
+generated_using:
+- -h

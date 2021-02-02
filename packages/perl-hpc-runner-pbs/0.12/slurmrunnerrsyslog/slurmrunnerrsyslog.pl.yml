@@ -1,0 +1,271 @@
+!Command
+command:
+- slurmrunnerrsyslog.pl
+positional: []
+named:
+- !Flag
+  description: "- Str. File of commands separated by newline.\nThe command 'wait'\
+    \ indicates all previous\ncommands should finish before starting the\nnext one."
+  synonyms:
+  - --infile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Path|Undef.'
+  synonyms:
+  - --configfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- ArrayRef. List of modules to load ex. R2,\nsamtools, etc"
+  synonyms:
+  - --module
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- ArrayRef.'
+  synonyms:
+  - --afterok
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Bool. Display man page'
+  synonyms:
+  - --man
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Str. Default=8. Commands to run on each node.\nThis is not the same\
+    \ as\nconcurrent_commands_per_node!"
+  synonyms:
+  - --commands_per_node
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Str. Default=1. Number of nodes requested.\nYou should only use\
+    \ this if submitting\nparallel jobs."
+  synonyms:
+  - --nodes_count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Str. Default=. Slurm partition to submit jobs\nto. Defaults to the\
+    \ partition with the most\navailable nodes"
+  synonyms:
+  - --partition
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- ArrayRef. List of nodes to submit jobs to.\nDefaults to the partition\
+    \ with the most\nnodes."
+  synonyms:
+  - --nodelist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Bool. Default=1. Bool value whether or not to\nsubmit to slurm.\
+    \ If you are looking to\ndebug your files, or this script you will\nwant to set\
+    \ this to zero."
+  synonyms:
+  - --submit_to_slurm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Str. Path to Slurm template file if you do\nnot wish to use the\
+    \ default"
+  synonyms:
+  - --template_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Str. Directory to write out files.'
+  synonyms:
+  - --outdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Bool. Default=0. Use this if you wish to run\neach job run one after\
+    \ another, with each\njob starting only after the previous has\ncompleted successfully"
+  synonyms:
+  - --serial
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Str. Directory where logfiles are written.\nDefaults to\ncurrent_working_directory/prunner_current_d\n\
+    ate_time/log1 .. log2 .. log3'"
+  synonyms:
+  - --logdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Int. Default=4. Total number of running jobs\nallowed at any time.\
+    \ The command 'wait' can\nbe used to have a variable number of\nchildren running."
+  synonyms:
+  - --procs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Str. This defaults to your current user ID.\nThis can only be changed\
+    \ if running as an\nadmin user"
+  synonyms:
+  - --user
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Bool. Default=0. Use threads to run jobs'
+  synonyms:
+  - --use_threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Str|Undef. This defaults to your current Job\nScheduler ID. Ignore\
+    \ this if running on a\nsingle node"
+  synonyms:
+  - --job_scheduler_id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Str. Specify a job name, each job will be\nappended with its batch\
+    \ order"
+  synonyms:
+  - --jobname
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Bool. Default=1. Use processes to run jobs'
+  synonyms:
+  - --use_processes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Bool. Default=0. Show the process ID per\nlogging message. This\
+    \ is useful when\naggregating logs."
+  synonyms:
+  - --show_processid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Bool. Default=0. Use gnu-parallel to run jobs\nand manage threads.\
+    \ This is the best option\nif you do not know how many threads your\napplication\
+    \ uses!"
+  synonyms:
+  - --use_gnuparallel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Str. Default=. Meta str passed from\nHPC::Runner::Scheduler"
+  synonyms:
+  - --metastr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Str.'
+  synonyms:
+  - --custom_command
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- DateTime.'
+  synonyms:
+  - --dt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Str. Default=hpcrunner_logs.'
+  synonyms:
+  - --logname
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Bool. Default=0.'
+  synonyms:
+  - --slurm_decides
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Str.'
+  synonyms:
+  - --process_table
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- HashRef.'
+  synonyms:
+  - --job_stats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- ArrayRef|Str. Add Plugins to your run'
+  synonyms:
+  - --plugins
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: -? --usage   - Bool. Display the usage message and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage:\n    slurmrunnerrsyslog.pl [OPTIONS]\n\nOptions:\n     Required:\n\
+  \         --infile            - Str. File of commands separated by newline.\n  \
+  \                               The command 'wait' indicates all previous\n    \
+  \                             commands should finish before starting the\n     \
+  \                            next one.\n     Optional:\n         --configfile  \
+  \      - Path|Undef. \n         --help -? --usage   - Bool. Display the usage message\
+  \ and exit\n         --module            - ArrayRef. List of modules to load ex.\
+  \ R2,\n                                 samtools, etc\n         --afterok      \
+  \     - ArrayRef. \n         --cpus_per_task     - Str. Default=4. \n         --man\
+  \               - Bool. Display man page\n         --commands_per_node - Str. Default=8.\
+  \ Commands to run on each node.\n                                 This is not the\
+  \ same as\n                                 concurrent_commands_per_node!\n    \
+  \     --nodes_count       - Str. Default=1. Number of nodes requested.\n       \
+  \                          You should only use this if submitting\n            \
+  \                     parallel jobs.\n         --partition         - Str. Default=.\
+  \ Slurm partition to submit jobs\n                                 to. Defaults\
+  \ to the partition with the most\n                                 available nodes\n\
+  \         --nodelist          - ArrayRef. List of nodes to submit jobs to.\n   \
+  \                              Defaults to the partition with the most\n       \
+  \                          nodes.\n         --submit_to_slurm   - Bool. Default=1.\
+  \ Bool value whether or not to\n                                 submit to slurm.\
+  \ If you are looking to\n                                 debug your files, or this\
+  \ script you will\n                                 want to set this to zero.\n\
+  \         --template_file     - Str. Path to Slurm template file if you do\n   \
+  \                              not wish to use the default\n         --outdir  \
+  \          - Str. Directory to write out files.\n         --serial            -\
+  \ Bool. Default=0. Use this if you wish to run\n                               \
+  \  each job run one after another, with each\n                                 job\
+  \ starting only after the previous has\n                                 completed\
+  \ successfully\n         --logdir            - Str. Directory where logfiles are\
+  \ written.\n                                 Defaults to\n                     \
+  \            current_working_directory/prunner_current_d\n                     \
+  \            ate_time/log1 .. log2 .. log3'\n         --procs             - Int.\
+  \ Default=4. Total number of running jobs\n                                 allowed\
+  \ at any time. The command 'wait' can\n                                 be used\
+  \ to have a variable number of\n                                 children running.\n\
+  \         --user              - Str. This defaults to your current user ID.\n  \
+  \                               This can only be changed if running as an\n    \
+  \                             admin user\n         --use_threads       - Bool. Default=0.\
+  \ Use threads to run jobs\n         --job_scheduler_id  - Str|Undef. This defaults\
+  \ to your current Job\n                                 Scheduler ID. Ignore this\
+  \ if running on a\n                                 single node\n         --jobname\
+  \           - Str. Specify a job name, each job will be\n                      \
+  \           appended with its batch order\n         --use_processes     - Bool.\
+  \ Default=1. Use processes to run jobs\n         --show_processid    - Bool. Default=0.\
+  \ Show the process ID per\n                                 logging message. This\
+  \ is useful when\n                                 aggregating logs.\n         --use_gnuparallel\
+  \   - Bool. Default=0. Use gnu-parallel to run jobs\n                          \
+  \       and manage threads. This is the best option\n                          \
+  \       if you do not know how many threads your\n                             \
+  \    application uses!\n         --metastr           - Str. Default=. Meta str passed\
+  \ from\n                                 HPC::Runner::Scheduler\n         --custom_command\
+  \    - Str. \n         --dt                - DateTime. \n         --logname    \
+  \       - Str. Default=hpcrunner_logs. \n         --slurm_decides     - Bool. Default=0.\
+  \ \n         --process_table     - Str. \n         --job_stats         - HashRef.\
+  \ \n         --plugins           - ArrayRef|Str. Add Plugins to your run\n\n"
+generated_using:
+- --help

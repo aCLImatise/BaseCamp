@@ -1,0 +1,141 @@
+!Command
+command:
+- PhyloCSF
+positional:
+- !Positional
+  description: -pINT               search frames/ORFs using up to p parallel subprocesses
+  position: 0
+  name: max
+  optional: false
+named:
+- !Flag
+  description: "|fixed|omega\nevaluation strategy (default mle)"
+  synonyms:
+  - --strategy
+  args: !SimpleFlagArg
+    name: mle
+  optional: true
+- !Flag
+  description: "input list(s) of alignment filenames instead of\nindividual alignment(s)"
+  synonyms:
+  - --files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "automatically remove any alignment columns that are\ngapped in the\
+    \ reference sequence (nucleotide columns\nare removed individually; be careful\
+    \ about reading\nframe). By default, it is an error for the reference\nsequence\
+    \ to contain gaps"
+  synonyms:
+  - --removeRefGaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ",Species2,...\nhint that only this subset of species will be used\
+    \ in\nany of the alignments; this does not change the\ncalculation mathematically,\
+    \ but can speed it up"
+  synonyms:
+  - --species
+  args: !SimpleFlagArg
+    name: Species1
+  optional: true
+- !Flag
+  description: "|3|6, --frames=1|3|6\nhow many reading frames to search (default 1)"
+  synonyms:
+  - -f1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|ATGStop|StopStop|StopStop3|ToFirstStop|FromLastStop|ToOrFromStop\n\
+    search for ORFs (default AsIs)"
+  synonyms:
+  - --orf
+  args: !SimpleFlagArg
+    name: AsIs
+  optional: true
+- !Flag
+  description: "minimum ORF length for searching over ORFs (default 25\ncodons)"
+  synonyms:
+  - --minCodons
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: report scores of all regions evaluated, not just the
+  synonyms:
+  - --allScores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "include alignment branch length score (BLS) for the\nreported region\
+    \ in output"
+  synonyms:
+  - --bls
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: include ancestral sequence composition score in output
+  synonyms:
+  - --ancComp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "include DNA sequence in output, the part of the\nreference (first)\
+    \ sequence whose score is reported"
+  synonyms:
+  - --dna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: include amino acid translation in output
+  synonyms:
+  - --aa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print extra information about parameters and errors
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: PhyloCSF.Linux.x86_64 parameter_set [file1 file2 ...]\ninput will\
+  \ be read from stdin if no filenames are given.\n\noptions:\n\n  -h, --help    \
+  \        show this help message and exit\n  --strategy=mle|fixed|omega\n       \
+  \                 evaluation strategy (default mle)\n\n  input interpretation:\n\
+  \n    --files             input list(s) of alignment filenames instead of\n    \
+  \                    individual alignment(s)\n    --removeRefGaps     automatically\
+  \ remove any alignment columns that are\n                        gapped in the reference\
+  \ sequence (nucleotide columns\n                        are removed individually;\
+  \ be careful about reading\n                        frame). By default, it is an\
+  \ error for the reference\n                        sequence to contain gaps\n  \
+  \  --species=Species1,Species2,...\n                        hint that only this\
+  \ subset of species will be used in\n                        any of the alignments;\
+  \ this does not change the\n                        calculation mathematically,\
+  \ but can speed it up\n\n  searching mulitple reading frames and ORFs:\n\n    -f1|3|6,\
+  \ --frames=1|3|6\n                        how many reading frames to search (default\
+  \ 1)\n    --orf=AsIs|ATGStop|StopStop|StopStop3|ToFirstStop|FromLastStop|ToOrFromStop\n\
+  \                        search for ORFs (default AsIs)\n    --minCodons=INT   \
+  \  minimum ORF length for searching over ORFs (default 25\n                    \
+  \    codons)\n    --allScores         report scores of all regions evaluated, not\
+  \ just the\n                        max\n    -pINT               search frames/ORFs\
+  \ using up to p parallel subprocesses\n\n  output control:\n\n    --bls        \
+  \       include alignment branch length score (BLS) for the\n                  \
+  \      reported region in output\n    --ancComp           include ancestral sequence\
+  \ composition score in output\n    --dna               include DNA sequence in output,\
+  \ the part of the\n                        reference (first) sequence whose score\
+  \ is reported\n    --aa                include amino acid translation in output\n\
+  \    --debug             print extra information about parameters and errors\n\n"
+generated_using:
+- --help

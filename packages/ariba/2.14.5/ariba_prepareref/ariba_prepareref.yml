@@ -1,0 +1,184 @@
+!Command
+command:
+- ariba
+- prepareref
+positional:
+- !Positional
+  description: Output directory (must not already exist)
+  position: 0
+  name: outdir
+  optional: false
+named:
+- !Flag
+  description: "REQUIRED. Name of fasta file. Can be used more than\nonce if your\
+    \ sequences are spread over more than on\nfile"
+  synonyms:
+  - -f
+  - --fasta
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: "Name of tsv file of metadata about the input\nsequences. Can be used\
+    \ more than once if your metadata\nis spread over more than one file. Incompatible\
+    \ with\n--all_coding"
+  synonyms:
+  - -m
+  - --metadata
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: "Use this if you only have a fasta of presence absence\nsequences as\
+    \ input, and no metadata. Use \"yes\" if all\nsequences are coding, or \"no\"\
+    \ if they are all non-\ncoding. Incompatible with -m/--metadata"
+  synonyms:
+  - --all_coding
+  args: !ChoiceFlagArg
+    choices: !!set
+      yes:
+      no:
+  optional: true
+- !Flag
+  description: "Do not run cd-hit. Each input sequence is put into its\nown \"cluster\"\
+    . Incompatible with --cdhit_clusters."
+  synonyms:
+  - --no_cdhit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "File specifying how the sequences should be clustered.\nWill be used\
+    \ instead of running cdhit. Format is one\ncluster per line. Sequence names separated\
+    \ by\nwhitespace. Incompatible with --no_cdhit"
+  synonyms:
+  - --cdhit_clusters
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: Sequence identity threshold (cd-hit option -c) [0.9]
+  synonyms:
+  - --cdhit_min_id
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Length difference cutoff (cd-hit option -s) [0.0]
+  synonyms:
+  - --cdhit_min_length
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Memory limit in MB (cd-hit option -M) [None]. Use 0\nfor unlimited."
+  synonyms:
+  - --cdhit_max_memory
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Minimum allowed length in nucleotides of reference\ngenes [6]"
+  synonyms:
+  - --min_gene_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Maximum allowed length in nucleotides of reference\ngenes [10000]"
+  synonyms:
+  - --max_gene_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Minimum allowed length in nucleotides of non-coding\nsequences [6]"
+  synonyms:
+  - --min_noncoding_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Maximum allowed length in nucleotides of non-coding\nsequences [20000]"
+  synonyms:
+  - --max_noncoding_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Number of genetic code to use. Currently supported\n1,4,11 [11]"
+  synonyms:
+  - --genetic_code
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Overwrite output directory, if it already exists
+  synonyms:
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of threads (currently only applies to cdhit)\n[1]"
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Be verbose
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: ariba prepareref [options] <outdir>\n\nPrepare reference data for\
+  \ running the pipeline with \"ariba run\"\n\npositional arguments:\n  outdir   \
+  \             Output directory (must not already exist)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n\ninput files options:\n\
+  \  -f FILENAME, --fasta FILENAME\n                        REQUIRED. Name of fasta\
+  \ file. Can be used more than\n                        once if your sequences are\
+  \ spread over more than on\n                        file\n  -m FILENAME, --metadata\
+  \ FILENAME\n                        Name of tsv file of metadata about the input\n\
+  \                        sequences. Can be used more than once if your metadata\n\
+  \                        is spread over more than one file. Incompatible with\n\
+  \                        --all_coding\n  --all_coding {yes,no}\n               \
+  \         Use this if you only have a fasta of presence absence\n              \
+  \          sequences as input, and no metadata. Use \"yes\" if all\n           \
+  \             sequences are coding, or \"no\" if they are all non-\n           \
+  \             coding. Incompatible with -m/--metadata\n\ncd-hit options:\n  --no_cdhit\
+  \            Do not run cd-hit. Each input sequence is put into its\n          \
+  \              own \"cluster\". Incompatible with --cdhit_clusters.\n  --cdhit_clusters\
+  \ FILENAME\n                        File specifying how the sequences should be\
+  \ clustered.\n                        Will be used instead of running cdhit. Format\
+  \ is one\n                        cluster per line. Sequence names separated by\n\
+  \                        whitespace. Incompatible with --no_cdhit\n  --cdhit_min_id\
+  \ FLOAT  Sequence identity threshold (cd-hit option -c) [0.9]\n  --cdhit_min_length\
+  \ FLOAT\n                        Length difference cutoff (cd-hit option -s) [0.0]\n\
+  \  --cdhit_max_memory INT\n                        Memory limit in MB (cd-hit option\
+  \ -M) [None]. Use 0\n                        for unlimited.\n\nother options:\n\
+  \  --min_gene_length INT\n                        Minimum allowed length in nucleotides\
+  \ of reference\n                        genes [6]\n  --max_gene_length INT\n   \
+  \                     Maximum allowed length in nucleotides of reference\n     \
+  \                   genes [10000]\n  --min_noncoding_length INT\n              \
+  \          Minimum allowed length in nucleotides of non-coding\n               \
+  \         sequences [6]\n  --max_noncoding_length INT\n                        Maximum\
+  \ allowed length in nucleotides of non-coding\n                        sequences\
+  \ [20000]\n  --genetic_code INT    Number of genetic code to use. Currently supported\n\
+  \                        1,4,11 [11]\n  --force               Overwrite output directory,\
+  \ if it already exists\n  --threads INT         Number of threads (currently only\
+  \ applies to cdhit)\n                        [1]\n  --verbose             Be verbose\n\
+  \nREQUIRED: -f/--fasta, and also either -m/--metadata or --all_coding must be\n\
+  used\n"
+generated_using:
+- --help

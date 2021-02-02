@@ -1,0 +1,117 @@
+!Command
+command:
+- SparCC.py
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Compute
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: counts_file
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: the
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: correlation
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: between
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: components
+  optional: false
+named:
+- !Flag
+  description: File to which correlation matrix will be written.
+  synonyms:
+  - -c
+  - --cor_file
+  args: !SimpleFlagArg
+    name: COR_FILE
+  optional: true
+- !Flag
+  description: File to which covariance matrix will be written.
+  synonyms:
+  - -v
+  - --cov_file
+  args: !SimpleFlagArg
+    name: COV_FILE
+  optional: true
+- !Flag
+  description: "Name of algorithm used to compute correlations (SparCC\n(default)\
+    \ | pearson | spearman | kendall)"
+  synonyms:
+  - -a
+  - --algo
+  args: !SimpleFlagArg
+    name: ALGO
+  optional: true
+- !Flag
+  description: "Number of inference iterations to average over (20\ndefault)."
+  synonyms:
+  - -i
+  - --iter
+  args: !SimpleFlagArg
+    name: ITER
+  optional: true
+- !Flag
+  description: "Number of exclusion iterations to remove strongly\ncorrelated pairs\
+    \ (10 default)."
+  synonyms:
+  - -x
+  - --xiter
+  args: !SimpleFlagArg
+    name: XITER
+  optional: true
+- !Flag
+  description: "Correlation strength exclusion threshold (0.1\ndefault).\n"
+  synonyms:
+  - -t
+  - --thershold
+  args: !SimpleFlagArg
+    name: TH
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: Compute the correlation between components (e.g. OTUs).\nBy default\
+  \ uses the SparCC algorithm to account for compositional effects.\nCorrelation and\
+  \ covariance (when applies) matrices are written out as txt files. \nCounts file\
+  \ needs to be a tab delimited text file where columns are samples and rows are components\
+  \ (e.g. OTUS).\n See example/fake_data.txt for an example file.\n\nUsage:   python\
+  \ SparCC.py counts_file [options]\nExample: python SparCC.py example/fake_data.txt\
+  \ -i 20 --cor_file=example/basis_corr/cor_mat_sparcc.out\n\nOptions:\n  -h, --help\
+  \            show this help message and exit\n  -c COR_FILE, --cor_file=COR_FILE\n\
+  \                        File to which correlation matrix will be written.\n  -v\
+  \ COV_FILE, --cov_file=COV_FILE\n                        File to which covariance\
+  \ matrix will be written.\n  -a ALGO, --algo=ALGO  Name of algorithm used to compute\
+  \ correlations (SparCC\n                        (default) | pearson | spearman |\
+  \ kendall)\n  -i ITER, --iter=ITER  Number of inference iterations to average over\
+  \ (20\n                        default).\n  -x XITER, --xiter=XITER\n          \
+  \              Number of exclusion iterations to remove strongly\n             \
+  \           correlated pairs (10 default).\n  -t TH, --thershold=TH\n          \
+  \              Correlation strength exclusion threshold (0.1\n                 \
+  \       default).\n"
+generated_using:
+- --help

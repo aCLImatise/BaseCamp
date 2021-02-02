@@ -1,0 +1,183 @@
+!Command
+command:
+- kaptive.py
+positional: []
+named:
+- !Flag
+  description: 'FASTA file(s) for assemblies (default: None)'
+  synonyms:
+  - -a
+  - --assembly
+  args: !RepeatFlagArg
+    name: ASSEMBLY
+  optional: true
+- !Flag
+  description: 'GenBank file with reference loci (default: None)'
+  synonyms:
+  - -k
+  - --k_refs
+  args: !SimpleFlagArg
+    name: K_REFS
+  optional: true
+- !Flag
+  description: "SRST2-formatted FASTA file of allelic typing genes to\ninclude in\
+    \ results (default: None)"
+  synonyms:
+  - -g
+  - --allelic_typing
+  args: !SimpleFlagArg
+    name: ALLELIC_TYPING
+  optional: true
+- !Flag
+  description: 'Output directory/prefix (default: ./kaptive_results)'
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: OUT
+  optional: true
+- !Flag
+  description: "Display detailed information about each assembly in\nstdout (default:\
+    \ False)"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The number of threads to use for the BLAST searches\n(default: 4)"
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: "Suppress output files of sequences matching locus\n(default: False)"
+  synonyms:
+  - --no_seq_out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Suppress output of tab-delimited table (default:\nFalse)"
+  synonyms:
+  - --no_table
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Suppress output of JSON file (default: False)'
+  synonyms:
+  - --no_json
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Missing bases at the ends of locus allowed in a\nperfect match. (default:\
+    \ 10)"
+  synonyms:
+  - --start_end_margin
+  args: !SimpleFlagArg
+    name: START_END_MARGIN
+  optional: true
+- !Flag
+  description: 'minimum required % coverage for genes (default: 90.0)'
+  synonyms:
+  - --min_gene_cov
+  args: !SimpleFlagArg
+    name: MIN_GENE_COV
+  optional: true
+- !Flag
+  description: 'minimum required % identity for genes (default: 80.0)'
+  synonyms:
+  - --min_gene_id
+  args: !SimpleFlagArg
+    name: MIN_GENE_ID
+  optional: true
+- !Flag
+  description: "genes with a % identity below this value will be\nflagged as low identity\
+    \ (default: 95.0)"
+  synonyms:
+  - --low_gene_id
+  args: !SimpleFlagArg
+    name: LOW_GENE_ID
+  optional: true
+- !Flag
+  description: "minimum locus matching assembly piece to return\n(default: 100)"
+  synonyms:
+  - --min_assembly_piece
+  args: !SimpleFlagArg
+    name: MIN_ASSEMBLY_PIECE
+  optional: true
+- !Flag
+  description: "when separate parts of the assembly are found within\nthis distance,\
+    \ they will be merged (default: 100)"
+  synonyms:
+  - --gap_fill_size
+  args: !SimpleFlagArg
+    name: GAP_FILL_SIZE
+  optional: true
+- !Flag
+  description: "In the Genbank file, the source feature must have a\nnote identifying\
+    \ the locus name, starting with this\nlabel followed by a colon (e.g. /note=\"\
+    K locus: K1\")\n(default: automatically determined)\n"
+  synonyms:
+  - --locus_label
+  args: !SimpleFlagArg
+    name: LOCUS_LABEL
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show Kaptive's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: kaptive.py [-h] [--version] -a ASSEMBLY [ASSEMBLY ...] -k K_REFS\n\
+  \                  [-g ALLELIC_TYPING] [-o OUT] [-v] [-t THREADS]\n            \
+  \      [--no_seq_out] [--no_table] [--no_json]\n                  [--start_end_margin\
+  \ START_END_MARGIN]\n                  [--min_gene_cov MIN_GENE_COV] [--min_gene_id\
+  \ MIN_GENE_ID]\n                  [--low_gene_id LOW_GENE_ID]\n                \
+  \  [--min_assembly_piece MIN_ASSEMBLY_PIECE]\n                  [--gap_fill_size\
+  \ GAP_FILL_SIZE] [--locus_label LOCUS_LABEL]\n\nKaptive\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --version          \
+  \   Show Kaptive's version number and exit\n  -a ASSEMBLY [ASSEMBLY ...], --assembly\
+  \ ASSEMBLY [ASSEMBLY ...]\n                        FASTA file(s) for assemblies\
+  \ (default: None)\n  -k K_REFS, --k_refs K_REFS\n                        GenBank\
+  \ file with reference loci (default: None)\n  -g ALLELIC_TYPING, --allelic_typing\
+  \ ALLELIC_TYPING\n                        SRST2-formatted FASTA file of allelic\
+  \ typing genes to\n                        include in results (default: None)\n\
+  \  -o OUT, --out OUT     Output directory/prefix (default: ./kaptive_results)\n\
+  \  -v, --verbose         Display detailed information about each assembly in\n \
+  \                       stdout (default: False)\n  -t THREADS, --threads THREADS\n\
+  \                        The number of threads to use for the BLAST searches\n \
+  \                       (default: 4)\n  --no_seq_out          Suppress output files\
+  \ of sequences matching locus\n                        (default: False)\n  --no_table\
+  \            Suppress output of tab-delimited table (default:\n                \
+  \        False)\n  --no_json             Suppress output of JSON file (default:\
+  \ False)\n  --start_end_margin START_END_MARGIN\n                        Missing\
+  \ bases at the ends of locus allowed in a\n                        perfect match.\
+  \ (default: 10)\n  --min_gene_cov MIN_GENE_COV\n                        minimum\
+  \ required % coverage for genes (default: 90.0)\n  --min_gene_id MIN_GENE_ID\n \
+  \                       minimum required % identity for genes (default: 80.0)\n\
+  \  --low_gene_id LOW_GENE_ID\n                        genes with a % identity below\
+  \ this value will be\n                        flagged as low identity (default:\
+  \ 95.0)\n  --min_assembly_piece MIN_ASSEMBLY_PIECE\n                        minimum\
+  \ locus matching assembly piece to return\n                        (default: 100)\n\
+  \  --gap_fill_size GAP_FILL_SIZE\n                        when separate parts of\
+  \ the assembly are found within\n                        this distance, they will\
+  \ be merged (default: 100)\n  --locus_label LOCUS_LABEL\n                      \
+  \  In the Genbank file, the source feature must have a\n                       \
+  \ note identifying the locus name, starting with this\n                        label\
+  \ followed by a colon (e.g. /note=\"K locus: K1\")\n                        (default:\
+  \ automatically determined)\n"
+generated_using:
+- --help

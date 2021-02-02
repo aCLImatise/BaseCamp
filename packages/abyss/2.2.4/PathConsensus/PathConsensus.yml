@@ -1,0 +1,226 @@
+!Command
+command:
+- PathConsensus
+positional:
+- !Positional
+  description: contigs in FASTA format
+  position: 0
+  name: FASTA
+  optional: false
+- !Positional
+  description: contig adjacency graph
+  position: 1
+  name: ADJ
+  optional: false
+- !Positional
+  description: paths of these contigs
+  position: 2
+  name: PATH
+  optional: false
+named:
+- !Flag
+  description: k-mer size
+  synonyms:
+  - -k
+  - --kmer
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "acceptable error of a distance estimate\ndefault: 6 bp"
+  synonyms:
+  - -d
+  - --dist-error
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: output contig paths to FILE
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: output consensus sequences to FILE
+  synonyms:
+  - -s
+  - --consensus
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: output the contig adjacency graph to FILE
+  synonyms:
+  - -g
+  - --graph
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: output the graph in ADJ format [default]
+  synonyms:
+  - --adj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output the graph in ASQG format
+  synonyms:
+  - --asqg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output the graph in GraphViz format
+  synonyms:
+  - --dot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output the graph in GFA1 format
+  synonyms:
+  - --gfa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output the graph in GFA1 format
+  synonyms:
+  - --gfa1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output the graph in GFA2 format
+  synonyms:
+  - --gfa2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output the graph in GraphViz format
+  synonyms:
+  - --gv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output the graph in SAM format
+  synonyms:
+  - --sam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "maximum number of sequences to align\ndefault: 4"
+  synonyms:
+  - -a
+  - --branches
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'minimum identity, default: 0.9'
+  synonyms:
+  - -p
+  - --identity
+  args: !SimpleFlagArg
+    name: REAL
+  optional: true
+- !Flag
+  description: display verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specify path of database repository in FILE
+  synonyms:
+  - --db
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: specify library NAME for database
+  synonyms:
+  - --library
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: specify strain NAME for database
+  synonyms:
+  - --strain
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: specify species NAME for database
+  synonyms:
+  - --species
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: 'dialign debug level, default: 0'
+  synonyms:
+  - -D
+  - --dialign-d
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'score matrix, default: dna_matrix.scr'
+  synonyms:
+  - -M
+  - --dialign-m
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "diagonal length probability distribution\ndefault: dna_diag_prob_100_exp_550000"
+  synonyms:
+  - -P
+  - --dialign-p
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: output version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: PathConsensus -k<kmer> -s<consensus.fa> -o<out.path> [OPTION]...\
+  \ FASTA ADJ PATH\nAlign sequences of ambiguous paths and output a consensus\nsequence.\n\
+  \n Arguments:\n\n  FASTA  contigs in FASTA format\n  ADJ    contig adjacency graph\n\
+  \  PATH   paths of these contigs\n\n Options:\n\n  -k, --kmer=N          k-mer size\n\
+  \  -d, --dist-error=N    acceptable error of a distance estimate\n             \
+  \           default: 6 bp\n  -o, --out=FILE        output contig paths to FILE\n\
+  \  -s, --consensus=FILE  output consensus sequences to FILE\n  -g, --graph=FILE\
+  \      output the contig adjacency graph to FILE\n      --adj             output\
+  \ the graph in ADJ format [default]\n      --asqg            output the graph in\
+  \ ASQG format\n      --dot             output the graph in GraphViz format\n   \
+  \   --gfa             output the graph in GFA1 format\n      --gfa1            output\
+  \ the graph in GFA1 format\n      --gfa2            output the graph in GFA2 format\n\
+  \      --gv              output the graph in GraphViz format\n      --sam      \
+  \       output the graph in SAM format\n  -a, --branches=N      maximum number of\
+  \ sequences to align\n                        default: 4\n  -p, --identity=REAL\
+  \   minimum identity, default: 0.9\n  -v, --verbose         display verbose output\n\
+  \      --help            display this help and exit\n      --version         output\
+  \ version information and exit\n      --db=FILE         specify path of database\
+  \ repository in FILE\n      --library=NAME    specify library NAME for database\n\
+  \      --strain=NAME     specify strain NAME for database\n      --species=NAME\
+  \    specify species NAME for database\n\n DIALIGN-TX options:\n  -D, --dialign-d=N\
+  \     dialign debug level, default: 0\n  -M, --dialign-m=FILE  score matrix, default:\
+  \ dna_matrix.scr\n  -P, --dialign-p=FILE  diagonal length probability distribution\n\
+  \                        default: dna_diag_prob_100_exp_550000\n\nReport bugs to\
+  \ <abyss-users@bcgsc.ca>.\n"
+generated_using:
+- --help

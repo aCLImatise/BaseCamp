@@ -1,0 +1,186 @@
+!Command
+command:
+- seqkit
+- sort
+positional: []
+named:
+- !Flag
+  description: by sequence length
+  synonyms:
+  - -l
+  - --by-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: by full name instead of just id
+  synonyms:
+  - -n
+  - --by-name
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: by sequence
+  synonyms:
+  - -s
+  - --by-seq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore case
+  synonyms:
+  - -i
+  - --ignore-case
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: keep tempory FASTA and .fai file when using 2-pass mode
+  synonyms:
+  - -k
+  - --keep-temp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sort in natural order, when sorting by IDs/full name
+  synonyms:
+  - -N
+  - --natural-order
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reverse the result
+  synonyms:
+  - -r
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: length of sequence prefix on which seqkit sorts by sequences (0 for
+    whole sequence) (default 10000)
+  synonyms:
+  - -L
+  - --seq-prefix-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: two-pass mode read files twice to lower memory usage. (only for FASTA
+    format)
+  synonyms:
+  - '-2'
+  - --two-pass
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: length of sequence prefix of the first FASTA record based on which
+    seqkit guesses the sequence type (0 for whole seq) (default 10000)
+  synonyms:
+  - --alphabet-guess-seq-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+  synonyms:
+  - --id-ncbi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: regular expression for parsing ID (default "^(\\S+)\\s?")
+  synonyms:
+  - --id-regexp
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  synonyms:
+  - --infile-list
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: line width when outputing FASTA format (0 for no wrap) (default 60)
+  synonyms:
+  - -w
+  - --line-width
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  synonyms:
+  - -o
+  - --out-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: be quiet and do not show extra information
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+    detect by the first sequence) (default "auto")
+  synonyms:
+  - -t
+  - --seq-type
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others.
+    can also set with environment variable SEQKIT_THREADS) (default 2)'
+  synonyms:
+  - -j
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for sort
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "sort sequences by id/name/sequence/length.\n\nBy default, all records\
+  \ will be readed into memory.\nFor FASTA format, use flag -2 (--two-pass) to reduce\
+  \ memory usage. FASTQ not\nsupported.\n\nFirstly, seqkit reads the sequence head\
+  \ and length information.\nIf the file is not plain FASTA file,\nseqkit will write\
+  \ the sequences to tempory files, and create FASTA index.\n\nSecondly, seqkit sorts\
+  \ sequence by head and length information\nand extracts sequences by FASTA index.\n\
+  \nUsage:\n  seqkit sort [flags]\n\nFlags:\n  -l, --by-length               by sequence\
+  \ length\n  -n, --by-name                 by full name instead of just id\n  -s,\
+  \ --by-seq                  by sequence\n  -h, --help                    help for\
+  \ sort\n  -i, --ignore-case             ignore case\n  -k, --keep-temp         \
+  \      keep tempory FASTA and .fai file when using 2-pass mode\n  -N, --natural-order\
+  \           sort in natural order, when sorting by IDs/full name\n  -r, --reverse\
+  \                 reverse the result\n  -L, --seq-prefix-length int   length of\
+  \ sequence prefix on which seqkit sorts by sequences (0 for whole sequence) (default\
+  \ 10000)\n  -2, --two-pass                two-pass mode read files twice to lower\
+  \ memory usage. (only for FASTA format)\n\nGlobal Flags:\n      --alphabet-guess-seq-length\
+  \ int   length of sequence prefix of the first FASTA record based on which seqkit\
+  \ guesses the sequence type (0 for whole seq) (default 10000)\n      --id-ncbi \
+  \                        FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2|\
+  \ Pseud...\n      --id-regexp string                regular expression for parsing\
+  \ ID (default \"^(\\\\S+)\\\\s?\")\n      --infile-list string              file\
+  \ of input files list (one file per line), if given, they are appended to files\
+  \ from cli arguments\n  -w, --line-width int                  line width when outputing\
+  \ FASTA format (0 for no wrap) (default 60)\n  -o, --out-file string           \
+  \      out file (\"-\" for stdout, suffix .gz for gzipped out) (default \"-\")\n\
+  \      --quiet                           be quiet and do not show extra information\n\
+  \  -t, --seq-type string                 sequence type (dna|rna|protein|unlimit|auto)\
+  \ (for auto, it automatically detect by the first sequence) (default \"auto\")\n\
+  \  -j, --threads int                     number of CPUs. (default value: 1 for single-CPU\
+  \ PC, 2 for others. can also set with environment variable SEQKIT_THREADS) (default\
+  \ 2)\n"
+generated_using:
+- --help

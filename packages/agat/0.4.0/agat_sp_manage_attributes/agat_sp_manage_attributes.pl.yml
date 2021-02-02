@@ -1,0 +1,125 @@
+!Command
+command:
+- agat_sp_manage_attributes.pl
+positional:
+- !Positional
+  description: 'Description:'
+  position: 0
+  name: agat_sp_manage_attributes.pl
+  optional: false
+named:
+- !Flag
+  description: Input GTF/GFF file.
+  synonyms:
+  - --gff
+  - -f
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: "primary tag option, case insensitive, list. Allow to specied the\n\
+    feature types that will be handled. You can specified a specific\nfeature by given\
+    \ its primary tag name (column 3) as: cds, Gene,\nMrNa You can specify directly\
+    \ all the feature of a particular\nlevel: level2=mRNA,ncRNA,tRNA,etc level3=CDS,exon,UTR,etc\
+    \ By\ndefault all feature are taking in account. fill the option by\nthe value\
+    \ \"all\" will have the same behaviour."
+  synonyms:
+  - -p
+  - --type
+  - -l
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: "Attributes with the tag specified will be removed from the\nfeature\
+    \ type specified by the option p (primary tag). List of\ntag must be coma separated.\
+    \ /!\\\\ You must use \"\" if name\ncontains spaces. Instead to remove an attribute,\
+    \ you can replace\nits Tag by a new Tag using this formulation tagName/newTagName.\n\
+    To remove all attributes non mandatory (only ID and Parent are\nmandatory) you\
+    \ can use the option with <all_attributes>\nparameter."
+  synonyms:
+  - --tag
+  - --att
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Attribute specified will be added if doesn't exist. The value\nwill\
+    \ be 'empty'."
+  synonyms:
+  - --add
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "When attributes specied are with this form: tagName/newTagName.\n\
+    By using this <cp> parameter, the tag will not be modified but\nduplicated with\
+    \ the new tagName."
+  synonyms:
+  - --cp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ", --output , --out or --outfile\nOutput GFF file. If no output file\
+    \ is specified, the output will\nbe written to STDOUT."
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this helpful text.
+  synonyms:
+  - -h
+  - --help
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Another GFF Analysis Toolkit (AGAT) - Version: v0.4.0                      |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \n\nName:\n    agat_sp_manage_attributes.pl\n\nDescription:\n    The script removes\
+  \ choosen attributes of selected features. It can also\n    create new attribute\
+  \ with 'empty' value, or copy paste an existing\n    attribute using a new specified\
+  \ tag. Attribute in a gff file have this\n    shape (2 attributes here): tag=value;tag=value\
+  \ and are stored within the\n    9th column.\n\nUsage:\n        agat_sp_manage_attributes.pl\
+  \ -gff file.gff  -att locus_tag,product,name/NewName -p level2,cds,exon [ -o outfile\
+  \ ]\n        agat_sp_manage_attributes.pl --help\n\nOptions:\n    --gff or -f\n\
+  \            Input GTF/GFF file.\n\n    -p, --type or -l\n            primary tag\
+  \ option, case insensitive, list. Allow to specied the\n            feature types\
+  \ that will be handled. You can specified a specific\n            feature by given\
+  \ its primary tag name (column 3) as: cds, Gene,\n            MrNa You can specify\
+  \ directly all the feature of a particular\n            level: level2=mRNA,ncRNA,tRNA,etc\
+  \ level3=CDS,exon,UTR,etc By\n            default all feature are taking in account.\
+  \ fill the option by\n            the value \"all\" will have the same behaviour.\n\
+  \n    --tag, --att\n            Attributes with the tag specified will be removed\
+  \ from the\n            feature type specified by the option p (primary tag). List\
+  \ of\n            tag must be coma separated. /!\\\\ You must use \"\" if name\n\
+  \            contains spaces. Instead to remove an attribute, you can replace\n\
+  \            its Tag by a new Tag using this formulation tagName/newTagName.\n \
+  \           To remove all attributes non mandatory (only ID and Parent are\n   \
+  \         mandatory) you can use the option with <all_attributes>\n            parameter.\n\
+  \n    --add   Attribute specified will be added if doesn't exist. The value\n  \
+  \          will be 'empty'.\n\n    --cp    When attributes specied are with this\
+  \ form: tagName/newTagName.\n            By using this <cp> parameter, the tag will\
+  \ not be modified but\n            duplicated with the new tagName.\n\n    -o ,\
+  \ --output , --out or --outfile\n            Output GFF file. If no output file\
+  \ is specified, the output will\n            be written to STDOUT.\n\n    -h or\
+  \ --help\n            Display this helpful text.\n\nFeedback:\n  Did you find a\
+  \ bug?:\n    Do not hesitate to report bugs to help us keep track of the bugs and\n\
+  \    their resolution. Please use the GitHub issue tracking system available\n \
+  \   at this address:\n\n                https://github.com/NBISweden/AGAT/issues\n\
+  \n     Ensure that the bug was not already reported by searching under Issues.\n\
+  \     If you're unable to find an (open) issue addressing the problem, open a new\
+  \ one.\n     Try as much as possible to include in the issue when relevant:\n  \
+  \   - a clear description,\n     - as much relevant information as possible,\n \
+  \    - the command used,\n     - a data sample,\n     - an explanation of the expected\
+  \ behaviour that is not occurring.\n\n  Do you want to contribute?:\n    You are\
+  \ very welcome, visit this address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/AGAT/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help

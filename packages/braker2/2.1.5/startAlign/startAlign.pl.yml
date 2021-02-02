@@ -1,0 +1,144 @@
+!Command
+command:
+- startAlign.pl
+positional: []
+named:
+- !Flag
+  description: fasta file with DNA sequences
+  synonyms:
+  - --genome
+  args: !SimpleFlagArg
+    name: genome.fa
+  optional: true
+- !Flag
+  description: fasta file with protein sequences
+  synonyms:
+  - --prot
+  args: !SimpleFlagArg
+    name: db.fa
+  optional: true
+- !Flag
+  description: Specifies the maximum number of CPUs that can be used during
+  synonyms:
+  - --CPU
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Set path to working directory. In the working directory results
+  synonyms:
+  - --dir
+  args: !SimpleFlagArg
+    name: path/to/dir
+  optional: true
+- !Flag
+  description: 'Contains contig and protein ID. Format: contigID proteinID'
+  synonyms:
+  - --list
+  args: !SimpleFlagArg
+    name: BLAST.hit.list
+  optional: true
+- !Flag
+  description: Log file
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: startAlign.log
+  optional: true
+- !Flag
+  description: 'Exonerate option: Alignments with longer gaps are discarded (default
+    30000).'
+  synonyms:
+  - --maxintronlen
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Use region parts and not whole sequences.
+  synonyms:
+  - --reg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: This many bp are added before and after cutout coordinates.
+  synonyms:
+  - --offset
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Alignment program to call. Valid options are 'gth', 'spaln' or 'exonerate'.
+  synonyms:
+  - --prg
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: Contains information on contigs and genome sequence. Format
+  synonyms:
+  - --pos
+  args: !SimpleFlagArg
+    name: dna.pos
+  optional: true
+- !Flag
+  description: =/path/to/binary
+  synonyms:
+  - --ALIGNMENT_TOOL_PATH
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "additional command line parameters for alignment tool to be executed,\n\
+    example: --args=\"-prinmatchlen 24 -prseedlength 10 -prhdist 4\""
+  synonyms:
+  - --args
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: Execute all system calls within braker.pl and its submodules with bash
+    "nice"
+  synonyms:
+  - --nice
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help message
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nstartAlign.pl split genome file in single sequences or sequence parts\
+  \ and protein file according\nto contigIDs then run alignment program exonerate,\
+  \ spaln or genomeThreader (gth)\nfor each contigID or each sequence. When no list\
+  \ and/or pos file(s) are/is assigned\nthe program will use the whole protein file.\n\
+  \nSYNOPSIS\n\nstartAlign.pl [OPTIONS] --genome=genome.fa --prot=db.fa  --prg=gth|exonerate|spaln\n\
+  \n--genome=genome.fa          fasta file with DNA sequences\n--prot=db.fa      \
+  \          fasta file with protein sequences\n\n\nOPTIONS\n\n--help            \
+  \           Print this help message\n--CPU=n                      Specifies the\
+  \ maximum number of CPUs that can be used during\nWARNING: using more than one CPU\
+  \ will produce harddrive read/write\nprocesses that may be speed limiting in case\
+  \ of GenomeThreader\n--dir=path/to/dir            Set path to working directory.\
+  \ In the working directory results\nand temporary files are stored.\n--list=BLAST.hit.list\
+  \        Contains contig and protein ID. Format: contigID proteinID\n--log=startAlign.log\
+  \         Log file\n--maxintronlen=n             Exonerate option: Alignments with\
+  \ longer gaps are discarded (default 30000).\n--reg                        Use region\
+  \ parts and not whole sequences.\n--offset=n                   This many bp are\
+  \ added before and after cutout coordinates.\n--prg=s                      Alignment\
+  \ program to call. Valid options are 'gth', 'spaln' or 'exonerate'.\n--pos=dna.pos\
+  \                Contains information on contigs and genome sequence. Format\ncontigID\
+  \ nr_of_prots_mapped start end strand chrID\n--ALIGNMENT_TOOL_PATH=/path/to/binary\n\
+  Path to alignment tool binary, either exonerate or Splan or Genome Threader.\nBy\
+  \ default, if no path is given, script assumes they are in the current\n$PATH bash\
+  \ variable.\n--args=s                     additional command line parameters for\
+  \ alignment tool to be executed,\n                             example: --args=\"\
+  -prinmatchlen 24 -prseedlength 10 -prhdist 4\"\n--nice                       Execute\
+  \ all system calls within braker.pl and its submodules with bash \"nice\"\n(default\
+  \ nice value)\n\n\n\nDESCRIPTION\n\nExample:\n\nstartAlign.pl [OPTIONS] --genome=genome.fa\
+  \ --prot=db.fa --list=BLAST.hit.list --pos=dna.pos --prg=gth\n\n"
+generated_using:
+- --help

@@ -1,0 +1,174 @@
+!Command
+command:
+- dfgTrain
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: inputVarData.tab
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: inputFacData.tab
+  optional: true
+named:
+- !Flag
+  description: '[ --precision ] arg (=5)           Output precision of real numbers.'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --minDeltaLogLik ] arg (=0.0001) Defines stopping criteria for the\
+    \ EM\ntraining. The training will stop when\nthe difference in log likelihood\
+    \ is\nbelow minDeltaLogLik (default is 1e-4)."
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --maxIter ] arg (=100)           Max numbr if iterations of the\
+    \ EM\ntraining (default is 100)."
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --logFile ] arg (=logFile.txt)   Log file for EM training.'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --emTrain ]                      Perform EM training.'
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output dfg in dot format to given\nfileName. (To convert to ps format,\n\
+    e.g. run: \"cat fileName.dot | dot -Tps\n-Kneato -Gsize=\"7.5,10\" -o dfg.ps\"\
+    .)"
+  synonyms:
+  - --dotFile
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "[ --dfgSpecPrefix ] arg (=./dfgSpec/)\nPrefix of DFG specification\
+    \ files."
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --outSpecPrefix ] arg (=out_)    Prefix of DFG specification files.\
+    \ Any\nincluded prefix directory must already\nexist."
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --tmpSpecPrefix ] arg            Prefix of DFG specification files\n\
+    written during each iteration of\ntraining. Allows state of EM to be\nsaved -\
+    \ especially useful for large\ndatasets. Any included prefix directory\nmust already\
+    \ exist. Not defined and not\nperformed by default."
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(=factorGraph.txt)\nSpecification of the factor graph\nstructure."
+  synonyms:
+  - --factorGraphFile
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "(=variables.txt)  Specification of the state map used by\neach variable."
+  synonyms:
+  - --variablesFile
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=stateMaps.txt)   Specification of state maps.
+  synonyms:
+  - --stateMapFile
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "(=factorPotentials.txt)\nSpecification of factor potentials."
+  synonyms:
+  - --facPotFile
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Input subscribed variables file in\nnamed data format. Must use same\n\
+    identifiers in same order as varFile"
+  synonyms:
+  - --subVarFile
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Print factor graph info. Useful for\ndebugging factor graph specification.\n"
+  synonyms:
+  - --writeInfo
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: '[ --help ]                         produce help message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "dfgTrain allows implementation of discrete factor graphs and evaluates\
+  \ the probability of data sets under these models.\n\n  Usage: dfgTrain [options]\
+  \ <inputVarData.tab> [inputFacData.tab]\n\nThe arguments inputVarData.tab and inputFacData.tab\
+  \ are both in named data format.\n\nAllowed options:\n  -h [ --help ]          \
+  \               produce help message\n  -p [ --precision ] arg (=5)           Output\
+  \ precision of real numbers.\n  -d [ --minDeltaLogLik ] arg (=0.0001) Defines stopping\
+  \ criteria for the EM \n                                        training. The training\
+  \ will stop when \n                                        the difference in log\
+  \ likelihood is \n                                        below minDeltaLogLik (default\
+  \ is 1e-4).\n  -i [ --maxIter ] arg (=100)           Max numbr if iterations of\
+  \ the EM \n                                        training (default is 100).\n\
+  \  -l [ --logFile ] arg (=logFile.txt)   Log file for EM training.\n  -e [ --emTrain\
+  \ ]                      Perform EM training.\n  --dotFile arg                 \
+  \        Output dfg in dot format to given \n                                  \
+  \      fileName. (To convert to ps format, \n                                  \
+  \      e.g. run: \"cat fileName.dot | dot -Tps \n                              \
+  \          -Kneato -Gsize=\"7.5,10\" -o dfg.ps\".)\n  -s [ --dfgSpecPrefix ] arg\
+  \ (=./dfgSpec/)\n                                        Prefix of DFG specification\
+  \ files.\n  -o [ --outSpecPrefix ] arg (=out_)    Prefix of DFG specification files.\
+  \ Any \n                                        included prefix directory must already\
+  \ \n                                        exist.\n  -t [ --tmpSpecPrefix ] arg\
+  \            Prefix of DFG specification files \n                              \
+  \          written during each iteration of \n                                 \
+  \       training. Allows state of EM to be \n                                  \
+  \      saved - especially useful for large \n                                  \
+  \      datasets. Any included prefix directory\n                               \
+  \         must already exist. Not defined and not\n                            \
+  \            performed by default. \n  --factorGraphFile arg (=factorGraph.txt)\n\
+  \                                        Specification of the factor graph \n  \
+  \                                      structure.\n  --variablesFile arg (=variables.txt)\
+  \  Specification of the state map used by \n                                   \
+  \     each variable.\n  --stateMapFile arg (=stateMaps.txt)   Specification of state\
+  \ maps.\n  --facPotFile arg (=factorPotentials.txt)\n                          \
+  \              Specification of factor potentials.\n  --subVarFile arg         \
+  \             Input subscribed variables file in \n                            \
+  \            named data format. Must use same \n                               \
+  \         identifiers in same order as varFile\n  --writeInfo                  \
+  \         Print factor graph info. Useful for \n                               \
+  \         debugging factor graph specification.\n\n"
+generated_using:
+- --help

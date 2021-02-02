@@ -1,0 +1,286 @@
+!Command
+command:
+- pearRM
+positional:
+- !Positional
+  description: 'assembled  sequences  may be arbitrary short. (default:'
+  position: 1
+  name: and
+  optional: false
+- !Positional
+  description: part  of  a  read.  If  the  quality  scores of two
+  position: 0
+  name: quality
+  optional: false
+- !Positional
+  description: bases  are  strictly  less  than  the specified
+  position: 1
+  name: consecutive
+  optional: false
+- !Positional
+  description: by  one  of  the  letters  K,  M,  or  G  denoting
+  position: 0
+  name: followed
+  optional: false
+- !Positional
+  description: out  of which none is degenerate, set the merged base
+  position: 0
+  name: bases
+  optional: false
+named:
+- !Flag
+  description: <str>     Forward paired-end FASTQ file.
+  synonyms:
+  - -f
+  - --forward-fastq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <str>     Reverse paired-end FASTQ file.
+  synonyms:
+  - -r
+  - --reverse-fastq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <str>     Output filename.
+  synonyms:
+  - -o
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<float>   Specify  a p-value for the statistical test. If the computed\n\
+    p-value of a possible assembly exceeds the specified p-value\nthen  paired-end\
+    \  read  will not be assembled. Valid options\nare: 0.0001, 0.001, 0.01, 0.05\
+    \ and 1.0. Setting 1.0 disables\nthe test. (default: 0.01)"
+  synonyms:
+  - -p
+  - --p-value
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<int>     Specify the minimum overlap size. The minimum overlap may\
+    \ be\nset to 1 when the statistical test is used. However, further\nrestricting\
+    \  the  minimum overlap size to a proper value may\nreduce false-positive assembles.\
+    \ (default: 10)"
+  synonyms:
+  - -v
+  - --min-overlap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <int>     Specify   the  maximum  possible  length  of  the  assembled
+  synonyms:
+  - -m
+  - --max-assembly-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <int>     Specify   the  minimum  possible  length  of  the  assembled
+  synonyms:
+  - -n
+  - --min-assembly-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<int>     Specify  the  minimum length of reads after trimming the\
+    \ low\nquality part (see option -q). (default: 1)"
+  synonyms:
+  - -t
+  - --min-trim-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <int>     Specify  the  quality  score  threshold for trimming the
+    low
+  synonyms:
+  - -q
+  - --quality-threshold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<float>   Specify  the maximal proportion of uncalled bases in a read.\n\
+    Setting this value to 0 will cause PEAR to discard all reads\ncontaining  uncalled\
+    \  bases.  The other extreme setting is 1\nwhich  causes  PEAR  to process all\
+    \ reads independent on the\nnumber of uncalled bases. (default: 1)"
+  synonyms:
+  - -u
+  - --max-uncalled-base
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<int>     Specify  the  type  of  statistical  test.  Two  options\
+    \ are\navailable. (default: 1)\n1: Given the minimum allowed overlap, test using\
+    \ the highest\nOES. Note that due to its discrete nature, this test usually\n\
+    yields  a lower p-value for the assembled read than the cut-\noff  (specified\
+    \  by -p). For example, setting the cut-off to\n0.05  using  this  test,  the\
+    \  assembled reads might have an\nactual p-value of 0.02.\n2. Use the acceptance\
+    \ probability (m.a.p). This test methods\ncomputes  the same probability as test\
+    \ method 1. However, it\nassumes  that  the  minimal  overlap is the observed\
+    \ overlap\nwith  the  highest  OES, instead of the one specified by -v.\nTherefore,\
+    \  this  is  not  a  valid statistical test and the\n'p-value'  is  in fact the\
+    \ maximal probability for accepting\nthe assembly. Nevertheless, we observed in\
+    \ practice that for\nthe case the actual overlap sizes are relatively small, test\n\
+    2  can  correctly  assemble  more  reads  with only slightly\nhigher false-positive\
+    \ rate."
+  synonyms:
+  - -g
+  - --test-method
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Disable  empirical base frequencies. (default: use empirical\nbase\
+    \ frequencies)"
+  synonyms:
+  - -e
+  - --empirical-freqs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<int>     Specify the scoring method. (default: 2)\n1. OES with +1\
+    \ for match and -1 for mismatch.\n2: Assembly score (AS). Use +1 for match and\
+    \ -1 for mismatch\nmultiplied by base quality scores.\n3: Ignore quality scores\
+    \ and use +1 for a match and -1 for a\nmismatch."
+  synonyms:
+  - -s
+  - --score-method
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<int>     Base PHRED quality score. (default: 33)'
+  synonyms:
+  - -b
+  - --phred-base
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <str>     Specify  the  amount of memory to be used. The number may
+    be
+  synonyms:
+  - -y
+  - --memory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<int>     Specify  the upper bound for the resulting quality score.\
+    \ If\nset to zero, capping is disabled. (default: 40)"
+  synonyms:
+  - -c
+  - --cap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <int>     Number of threads to use
+  synonyms:
+  - -j
+  - --threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When  merging  a  base-pair  that  consists of two non-equal
+  synonyms:
+  - -z
+  - --nbase
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: This help screen.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: " ____  _____    _    ____ \n|  _ \\| ____|  / \\  |  _ \\\n| |_) |  _|\
+  \   / _ \\ | |_) |\n|  __/| |___ / ___ \\|  _ <\n|_|   |_____/_/   \\_\\_| \\_\\\
+  \nPEAR v0.9.6 [January 15, 2015]  - [+bzlib +zlib]\n\nCitation - PEAR: a fast and\
+  \ accurate Illumina Paired-End reAd mergeR\nZhang et al (2014) Bioinformatics 30(5):\
+  \ 614-620 | doi:10.1093/bioinformatics/btt593\n\nLicense: Creative Commons Licence\n\
+  Bug-reports and requests to: Tomas.Flouri@h-its.org and Jiajie.Zhang@h-its.org\n\
+  \n\nUsage: pear <options>\nStandard (mandatory):\n  -f, --forward-fastq        \
+  \ <str>     Forward paired-end FASTQ file.\n  -r, --reverse-fastq         <str>\
+  \     Reverse paired-end FASTQ file.\n  -o, --output                <str>     Output\
+  \ filename.\nOptional:\n  -p, --p-value               <float>   Specify  a p-value\
+  \ for the statistical test. If the computed\n                                  \
+  \      p-value of a possible assembly exceeds the specified p-value\n          \
+  \                              then  paired-end  read  will not be assembled. Valid\
+  \ options\n                                        are: 0.0001, 0.001, 0.01, 0.05\
+  \ and 1.0. Setting 1.0 disables\n                                        the test.\
+  \ (default: 0.01)\n  -v, --min-overlap           <int>     Specify the minimum overlap\
+  \ size. The minimum overlap may be\n                                        set\
+  \ to 1 when the statistical test is used. However, further\n                   \
+  \                     restricting  the  minimum overlap size to a proper value may\n\
+  \                                        reduce false-positive assembles. (default:\
+  \ 10)\n  -m, --max-assembly-length   <int>     Specify   the  maximum  possible\
+  \  length  of  the  assembled\n                                        sequences.\
+  \  Setting this value to 0 disables the restriction\n                          \
+  \              and assembled sequences may be arbitrary long. (default: 0)\n  -n,\
+  \ --min-assembly-length   <int>     Specify   the  minimum  possible  length  of\
+  \  the  assembled\n                                        sequences.  Setting this\
+  \ value to 0 disables the restriction\n                                        and\
+  \  assembled  sequences  may be arbitrary short. (default:\n                   \
+  \                     50)\n  -t, --min-trim-length       <int>     Specify  the\
+  \  minimum length of reads after trimming the low\n                            \
+  \            quality part (see option -q). (default: 1)\n  -q, --quality-threshold\
+  \     <int>     Specify  the  quality  score  threshold for trimming the low\n \
+  \                                       quality  part  of  a  read.  If  the  quality\
+  \  scores of two\n                                        consecutive  bases  are\
+  \  strictly  less  than  the specified\n                                       \
+  \ threshold,  the  rest of the read will be trimmed. (default:\n               \
+  \                         0)\n  -u, --max-uncalled-base     <float>   Specify  the\
+  \ maximal proportion of uncalled bases in a read.\n                            \
+  \            Setting this value to 0 will cause PEAR to discard all reads\n    \
+  \                                    containing  uncalled  bases.  The other extreme\
+  \ setting is 1\n                                        which  causes  PEAR  to\
+  \ process all reads independent on the\n                                       \
+  \ number of uncalled bases. (default: 1)\n  -g, --test-method           <int>  \
+  \   Specify  the  type  of  statistical  test.  Two  options are\n             \
+  \                           available. (default: 1)\n                          \
+  \              1: Given the minimum allowed overlap, test using the highest\n  \
+  \                                      OES. Note that due to its discrete nature,\
+  \ this test usually\n                                        yields  a lower p-value\
+  \ for the assembled read than the cut-\n                                       \
+  \ off  (specified  by -p). For example, setting the cut-off to\n               \
+  \                         0.05  using  this  test,  the  assembled reads might have\
+  \ an\n                                        actual p-value of 0.02.\n\n      \
+  \                                  2. Use the acceptance probability (m.a.p). This\
+  \ test methods\n                                        computes  the same probability\
+  \ as test method 1. However, it\n                                        assumes\
+  \  that  the  minimal  overlap is the observed overlap\n                       \
+  \                 with  the  highest  OES, instead of the one specified by -v.\n\
+  \                                        Therefore,  this  is  not  a  valid statistical\
+  \ test and the\n                                        'p-value'  is  in fact the\
+  \ maximal probability for accepting\n                                        the\
+  \ assembly. Nevertheless, we observed in practice that for\n                   \
+  \                     the case the actual overlap sizes are relatively small, test\n\
+  \                                        2  can  correctly  assemble  more  reads\
+  \  with only slightly\n                                        higher false-positive\
+  \ rate.\n  -e, --empirical-freqs                 Disable  empirical base frequencies.\
+  \ (default: use empirical\n                                        base frequencies)\n\
+  \  -s, --score-method          <int>     Specify the scoring method. (default: 2)\n\
+  \                                        1. OES with +1 for match and -1 for mismatch.\n\
+  \                                        2: Assembly score (AS). Use +1 for match\
+  \ and -1 for mismatch\n                                        multiplied by base\
+  \ quality scores.\n                                        3: Ignore quality scores\
+  \ and use +1 for a match and -1 for a\n                                        mismatch.\n\
+  \  -b, --phred-base            <int>     Base PHRED quality score. (default: 33)\n\
+  \  -y, --memory                <str>     Specify  the  amount of memory to be used.\
+  \ The number may be\n                                        followed  by  one \
+  \ of  the  letters  K,  M,  or  G  denoting\n                                  \
+  \      Kilobytes,  Megabytes and Gigabytes, respectively. Bytes are\n          \
+  \                              assumed in case no letter is specified.\n  -c, --cap\
+  \                   <int>     Specify  the upper bound for the resulting quality\
+  \ score. If\n                                        set to zero, capping is disabled.\
+  \ (default: 40)\n  -j, --threads               <int>     Number of threads to use\n\
+  \  -z, --nbase                           When  merging  a  base-pair  that  consists\
+  \ of two non-equal\n                                        bases  out  of which\
+  \ none is degenerate, set the merged base\n                                    \
+  \    to N and use the highest quality score of the two bases\n  -h, --help     \
+  \                       This help screen.\n\n"
+generated_using:
+- --help

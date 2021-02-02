@@ -1,0 +1,109 @@
+!Command
+command:
+- ribotricer
+- learn-cutoff
+positional: []
+named:
+- !Flag
+  description: Path(s) to Ribo-seq BAM file separated by
+  synonyms:
+  - --ribo_bams
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Path(s) to RNA-seq *_translating_ORFs.tsv\nfile separated by comma"
+  synonyms:
+  - --rna_tsvs
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Path to the index file of ribotricer This\nfile should be generated\
+    \ using ribotricer\nprepare-orfs (required for BAM input)"
+  synonyms:
+  - --ribotricer_index
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Prefix to output file
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "transcript_type to filter regions by\n[default: protein_coding]"
+  synonyms:
+  - --filter_by_tx_annotation
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Phase score cutoff for determining active\ntranslation (required for\
+    \ BAM input)\n[default: 0.428571428571]"
+  synonyms:
+  - --phase_score_cutoff
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "Minimum number of codons with non-zero reads\nfor determining active\
+    \ translation (required\nfor BAM input)  [default: 5]"
+  synonyms:
+  - --min_valid_codons
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Number of protein coding regions to sample\nper bootstrap  [default:\
+    \ 0.33]"
+  synonyms:
+  - --sampling_ratio
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Number of bootstraps  [default: 20000]'
+  synonyms:
+  - --n_bootstraps
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: ribotricer learn-cutoff [OPTIONS]\n\n  Learn phase score cutoff\
+  \ from BAM/TSV file\n\nOptions:\n  --ribo_bams TEXT                Path(s) to Ribo-seq\
+  \ BAM file separated by\n                                  comma\n\n  --rna_bams\
+  \ TEXT                 Path(s) to RNA-seq BAM file separated by\n              \
+  \                    comma\n\n  --ribo_tsvs TEXT                Path(s) to Ribo-seq\
+  \ *_translating_ORFs.tsv\n                                  file separated by comma\n\
+  \n  --rna_tsvs TEXT                 Path(s) to RNA-seq *_translating_ORFs.tsv\n\
+  \                                  file separated by comma\n\n  --ribotricer_index\
+  \ TEXT         Path to the index file of ribotricer This\n                     \
+  \             file should be generated using ribotricer\n                      \
+  \            prepare-orfs (required for BAM input)\n\n  --prefix TEXT          \
+  \         Prefix to output file\n  --filter_by_tx_annotation TEXT  transcript_type\
+  \ to filter regions by\n                                  [default: protein_coding]\n\
+  \n  --phase_score_cutoff FLOAT      Phase score cutoff for determining active\n\
+  \                                  translation (required for BAM input)\n      \
+  \                            [default: 0.428571428571]\n\n  --min_valid_codons INTEGER\
+  \      Minimum number of codons with non-zero reads\n                          \
+  \        for determining active translation (required\n                        \
+  \          for BAM input)  [default: 5]\n\n  --sampling_ratio FLOAT          Number\
+  \ of protein coding regions to sample\n                                  per bootstrap\
+  \  [default: 0.33]\n\n  --n_bootstraps INTEGER          Number of bootstraps  [default:\
+  \ 20000]\n  -h, --help                      Show this message and exit.\n"
+generated_using:
+- --help

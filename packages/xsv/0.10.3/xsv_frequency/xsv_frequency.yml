@@ -1,0 +1,118 @@
+!Command
+command:
+- xsv
+- frequency
+positional: []
+named:
+- !Flag
+  description: "Select a subset of columns to compute frequencies\nfor. See 'xsv select\
+    \ --help' for the format\ndetails. This is provided here because piping 'xsv\n\
+    select' into 'xsv frequency' will disable the use\nof indexing."
+  synonyms:
+  - -s
+  - --select
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Limit the frequency table to the N most common\nitems. Set to '0'\
+    \ to disable a limit.\n[default: 10]"
+  synonyms:
+  - -l
+  - --limit
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Sort the frequency tables in ascending order by\ncount. The default\
+    \ is descending order."
+  synonyms:
+  - -a
+  - --asc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't include NULLs in the frequency table.
+  synonyms:
+  - --no-nulls
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The number of jobs to run in parallel.\nThis works better when the\
+    \ given CSV data has\nan index already created. Note that a file handle\nis opened\
+    \ for each job.\nWhen set to '0', the number of jobs is set to the\nnumber of\
+    \ CPUs detected.\n[default: 0]"
+  synonyms:
+  - -j
+  - --jobs
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Write output to <file> instead of stdout.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "When set, the first row will NOT be included\nin the frequency table.\
+    \ Additionally, the 'field'\ncolumn will be 1-based indices instead of header\n\
+    names."
+  synonyms:
+  - -n
+  - --no-headers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The field delimiter for reading CSV data.\nMust be a single character.\
+    \ (default: ,)\n"
+  synonyms:
+  - -d
+  - --delimiter
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Compute a frequency table on CSV data.\n\nThe frequency table is formatted\
+  \ as CSV data:\n\n    field,value,count\n\nBy default, there is a row for the N\
+  \ most frequent values for each field in the\ndata. The order and number of values\
+  \ can be tweaked with --asc and --limit,\nrespectively.\n\nSince this computes an\
+  \ exact frequency table, memory proportional to the\ncardinality of each column\
+  \ is required.\n\nUsage:\n    xsv frequency [options] [<input>]\n\nfrequency options:\n\
+  \    -s, --select <arg>     Select a subset of columns to compute frequencies\n\
+  \                           for. See 'xsv select --help' for the format\n      \
+  \                     details. This is provided here because piping 'xsv\n     \
+  \                      select' into 'xsv frequency' will disable the use\n     \
+  \                      of indexing.\n    -l, --limit <arg>      Limit the frequency\
+  \ table to the N most common\n                           items. Set to '0' to disable\
+  \ a limit.\n                           [default: 10]\n    -a, --asc            \
+  \  Sort the frequency tables in ascending order by\n                           count.\
+  \ The default is descending order.\n    --no-nulls             Don't include NULLs\
+  \ in the frequency table.\n    -j, --jobs <arg>       The number of jobs to run\
+  \ in parallel.\n                           This works better when the given CSV\
+  \ data has\n                           an index already created. Note that a file\
+  \ handle\n                           is opened for each job.\n                 \
+  \          When set to '0', the number of jobs is set to the\n                 \
+  \          number of CPUs detected.\n                           [default: 0]\n\n\
+  Common options:\n    -h, --help             Display this message\n    -o, --output\
+  \ <file>    Write output to <file> instead of stdout.\n    -n, --no-headers    \
+  \   When set, the first row will NOT be included\n                           in\
+  \ the frequency table. Additionally, the 'field'\n                           column\
+  \ will be 1-based indices instead of header\n                           names.\n\
+  \    -d, --delimiter <arg>  The field delimiter for reading CSV data.\n        \
+  \                   Must be a single character. (default: ,)\n"
+generated_using:
+- --help

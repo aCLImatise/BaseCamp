@@ -1,0 +1,157 @@
+!Command
+command:
+- bp_load_gff.pl
+positional:
+- !Positional
+  description: "If the filename is given as \"-\" then the input is taken from standard\n\
+    input. Compressed files (.gz, .Z, .bz2) are automatically uncompressed.\nFASTA\
+    \ format files are distinguished from GFF files by their filename\nextensions.\
+    \ Files ending in .fa, .fasta, .fast, .seq, .dna and their\nuppercase variants\
+    \ are treated as FASTA files. Everything else is\ntreated as a GFF file. If you\
+    \ wish to load -fasta files from STDIN, then\nuse the -f command-line swith with\
+    \ an argument of '-', as in\ngunzip my_data.fa.gz | bp_fast_load_gff.pl -d test\
+    \ -f -\nOn the first load of a database, you will see a number of \"unknown\n\
+    table\" errors. This is normal.\nAbout maxfeature: the default value is 100,000,000\
+    \ bases. If you have\nfeatures that are close to or greater that 100Mb in length,\
+    \ then the\nvalue of maxfeature should be increased to 1,000,000,000, or another\n\
+    power of 10."
+  position: 0
+  name: NOTES
+  optional: false
+named:
+- !Flag
+  description: "'dbi:mysql:database=dmel_r5_1;host=myhost;port=myport'\ndna1.fa dna2.fa\
+    \ features1.gff features2.gff ..."
+  synonyms:
+  - --dsn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: of --database.
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: instead
+  optional: true
+- !Flag
+  description: Schema adaptor (default dbi::mysqlopt)
+  synonyms:
+  - --adaptor
+  args: !SimpleFlagArg
+    name: adaptor
+  optional: true
+- !Flag
+  description: <user>      Username for mysql authentication
+  synonyms:
+  - --user
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <password>  Password for mysql authentication
+  synonyms:
+  - --pass
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <path>      Fasta file or directory containing fasta files for the
+    DNA
+  synonyms:
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Force creation and initialization of database
+  synonyms:
+  - --create
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set the value of the maximum feature size (default 100 Mb; must be
+    a power of 10)
+  synonyms:
+  - --maxfeature
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "A list of one or more tag names (comma or space separated)\nto be\
+    \ used for grouping in the 9th column."
+  synonyms:
+  - --group
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Upgrade existing database to current schema
+  synonyms:
+  - --upgrade
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Activate GFF3 name munging (see Bio::DB::GFF)
+  synonyms:
+  - --gff3_munge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: No progress reports
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Generate summary statistics for drawing coverage histograms.\nThis\
+    \ can be run on a previously loaded database or during\nthe load."
+  synonyms:
+  - --summary
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n    bp_load_gff.pl - Load a Bio::DB::GFF database from GFF files.\n\
+  \nSYNOPSIS\n      % bp_load_gff.pl -d testdb -u user -p pw\n         --dsn 'dbi:mysql:database=dmel_r5_1;host=myhost;port=myport'\n\
+  \            dna1.fa dna2.fa features1.gff features2.gff ...\n\nDESCRIPTION\n  \
+  \  This script loads a Bio::DB::GFF database with the features contained in\n  \
+  \  a list of GFF files and/or FASTA sequence files. You must use the exact\n   \
+  \ variant of GFF described in Bio::DB::GFF. Various command-line options\n    allow\
+  \ you to control which database to load and whether to allow an\n    existing database\
+  \ to be overwritten.\n\n    This script uses the Bio::DB::GFF interface, and so\
+  \ works with all\n    database adaptors currently supported by that module (MySQL,\
+  \ Oracle,\n    PostgreSQL soon). However, it is slow. For faster loading, see the\n\
+  \    MySQL-specific bp_bulk_load_gff.pl and bp_fast_load_gff.pl scripts.\n\n  NOTES\n\
+  \    If the filename is given as \"-\" then the input is taken from standard\n \
+  \   input. Compressed files (.gz, .Z, .bz2) are automatically uncompressed.\n\n\
+  \    FASTA format files are distinguished from GFF files by their filename\n   \
+  \ extensions. Files ending in .fa, .fasta, .fast, .seq, .dna and their\n    uppercase\
+  \ variants are treated as FASTA files. Everything else is\n    treated as a GFF\
+  \ file. If you wish to load -fasta files from STDIN, then\n    use the -f command-line\
+  \ swith with an argument of '-', as in\n\n        gunzip my_data.fa.gz | bp_fast_load_gff.pl\
+  \ -d test -f -\n\n    On the first load of a database, you will see a number of\
+  \ \"unknown\n    table\" errors. This is normal.\n\n    About maxfeature: the default\
+  \ value is 100,000,000 bases. If you have\n    features that are close to or greater\
+  \ that 100Mb in length, then the\n    value of maxfeature should be increased to\
+  \ 1,000,000,000, or another\n    power of 10.\n\nCOMMAND-LINE OPTIONS\n    Command-line\
+  \ options can be abbreviated to single-letter options. e.g.\n    -d instead of --database.\n\
+  \n       --dsn     <dsn>       Data source (default dbi:mysql:test)\n       --adaptor\
+  \ <adaptor>   Schema adaptor (default dbi::mysqlopt)\n       --user    <user>  \
+  \    Username for mysql authentication\n       --pass    <password>  Password for\
+  \ mysql authentication\n       --fasta   <path>      Fasta file or directory containing\
+  \ fasta files for the DNA\n       --create              Force creation and initialization\
+  \ of database\n       --maxfeature          Set the value of the maximum feature\
+  \ size (default 100 Mb; must be a power of 10)\n       --group               A list\
+  \ of one or more tag names (comma or space separated)\n                        \
+  \      to be used for grouping in the 9th column.\n       --upgrade            \
+  \ Upgrade existing database to current schema\n       --gff3_munge          Activate\
+  \ GFF3 name munging (see Bio::DB::GFF)\n       --quiet               No progress\
+  \ reports\n       --summary             Generate summary statistics for drawing\
+  \ coverage histograms.\n                               This can be run on a previously\
+  \ loaded database or during\n                               the load.\n\nSEE ALSO\n\
+  \    Bio::DB::GFF, bulk_load_gff.pl, bp_load_gff.pl\n\nAUTHOR\n    Lincoln Stein,\
+  \ lstein@cshl.org\n\n    Copyright (c) 2002 Cold Spring Harbor Laboratory\n\n  \
+  \  This library is free software; you can redistribute it and/or modify it\n   \
+  \ under the same terms as Perl itself. See DISCLAIMER.txt for disclaimers\n    of\
+  \ warranty.\n\n"
+generated_using:
+- --help

@@ -1,0 +1,142 @@
+!Command
+command:
+- AssignGenes.py
+- igblast-aa
+positional: []
+named:
+- !Flag
+  description: "[--organism {human,mouse,rabbit,rat,rhesus_monkey}]\n[--loci {ig,tr}]\
+    \ [--vdb VDB]\n[--exec IGBLAST_EXEC]"
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: IGDATA
+  optional: true
+- !Flag
+  description: "Explicit output file name. Note, this argument cannot\nbe used with\
+    \ the --failed, --outdir, or --outname\narguments. If unspecified, then the output\
+    \ filename\nwill be based on the input filename(s). (default:\nNone)"
+  synonyms:
+  - -o
+  args: !RepeatFlagArg
+    name: OUT_FILES
+  optional: true
+- !Flag
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  synonyms:
+  - --outname
+  args: !SimpleFlagArg
+    name: OUT_NAME
+  optional: true
+- !Flag
+  description: "The number of simultaneous computational processes to\nexecute (CPU\
+    \ cores to utilized). (default: 8)"
+  synonyms:
+  - --nproc
+  args: !SimpleFlagArg
+    name: NPROC
+  optional: true
+- !Flag
+  description: "A list of FASTA files containing sequences to process.\n(default:\
+    \ None)"
+  synonyms:
+  - -s
+  args: !RepeatFlagArg
+    name: SEQ_FILES
+  optional: true
+- !Flag
+  description: 'Organism name. (default: human)'
+  synonyms:
+  - --organism
+  args: !ChoiceFlagArg
+    choices: !!set
+      mouse:
+      rat:
+      human:
+      rhesus_monkey:
+      rabbit:
+  optional: true
+- !Flag
+  description: 'The receptor type. (default: ig)'
+  synonyms:
+  - --loci
+  args: !ChoiceFlagArg
+    choices: !!set
+      ig:
+      tr:
+  optional: true
+- !Flag
+  description: "Name of the custom V reference in the IgBLAST database\nfolder. If\
+    \ not specified, then a default database name\nwith the form imgt_aa_<organism>_<loci>_v\
+    \ will be\nused. (default: None)"
+  synonyms:
+  - --vdb
+  args: !SimpleFlagArg
+    name: VDB
+  optional: true
+- !Flag
+  description: 'Path to the igblastp executable. (default: igblastp)'
+  synonyms:
+  - --exec
+  args: !SimpleFlagArg
+    name: IGBLAST_EXEC
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: AssignGenes.py igblast-aa [--version] [-h]\n                  \
+  \               [-o OUT_FILES [OUT_FILES ...]]\n                               \
+  \  [--outdir OUT_DIR] [--outname OUT_NAME]\n                                 [--nproc\
+  \ NPROC] -s SEQ_FILES [SEQ_FILES ...]\n                                 -b IGDATA\n\
+  \                                 [--organism {human,mouse,rabbit,rat,rhesus_monkey}]\n\
+  \                                 [--loci {ig,tr}] [--vdb VDB]\n               \
+  \                  [--exec IGBLAST_EXEC]\n\nExecutes igblastp.\n\nhelp:\n  --version\
+  \             show program's version number and exit\n  -h, --help            show\
+  \ this help message and exit\n\nstandard arguments:\n  -o OUT_FILES [OUT_FILES ...]\n\
+  \                        Explicit output file name. Note, this argument cannot\n\
+  \                        be used with the --failed, --outdir, or --outname\n   \
+  \                     arguments. If unspecified, then the output filename\n    \
+  \                    will be based on the input filename(s). (default:\n       \
+  \                 None)\n  --outdir OUT_DIR      Specify to changes the output directory\
+  \ to the\n                        location specified. The input file directory is\
+  \ used\n                        if this is not specified. (default: None)\n  --outname\
+  \ OUT_NAME    Changes the prefix of the successfully processed\n               \
+  \         output file to the string specified. May not be\n                    \
+  \    specified with multiple input files. (default: None)\n  --nproc NPROC     \
+  \    The number of simultaneous computational processes to\n                   \
+  \     execute (CPU cores to utilized). (default: 8)\n\nalignment arguments:\n  -s\
+  \ SEQ_FILES [SEQ_FILES ...]\n                        A list of FASTA files containing\
+  \ sequences to process.\n                        (default: None)\n  -b IGDATA  \
+  \           IgBLAST database directory (IGDATA). (default: None)\n  --organism {human,mouse,rabbit,rat,rhesus_monkey}\n\
+  \                        Organism name. (default: human)\n  --loci {ig,tr}     \
+  \   The receptor type. (default: ig)\n  --vdb VDB             Name of the custom\
+  \ V reference in the IgBLAST database\n                        folder. If not specified,\
+  \ then a default database name\n                        with the form imgt_aa_<organism>_<loci>_v\
+  \ will be\n                        used. (default: None)\n  --exec IGBLAST_EXEC\
+  \   Path to the igblastp executable. (default: igblastp)\n"
+generated_using:
+- --help

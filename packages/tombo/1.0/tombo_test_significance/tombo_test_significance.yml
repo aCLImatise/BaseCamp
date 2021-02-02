@@ -1,0 +1,189 @@
+!Command
+command:
+- tombo
+- test_significance
+positional:
+- !Positional
+  description: '[--control-fast5-basedirs CONTROL_FAST5_BASEDIRS [CONTROL_FAST5_BASEDIRS
+    ...]]'
+  position: 0
+  name: STATISTICS_FILE_BASENAME
+  optional: false
+named:
+- !Flag
+  description: Directories containing fast5 files.
+  synonyms:
+  - --fast5-basedirs
+  args: !RepeatFlagArg
+    name: FAST5_BASEDIRS
+  optional: true
+- !Flag
+  description: "File base name to save base by base statistics from\ntesting. Filenames\
+    \ will be [--statistics-file-basename\n].[--alternate-bases]?.tombo.stats"
+  synonyms:
+  - --statistics-file-basename
+  args: !SimpleFlagArg
+    name: STATISTICS_FILE_BASENAME
+  optional: true
+- !Flag
+  description: "Control set of directories containing fast5 files.\nThese reads should\
+    \ contain only standard nucleotides."
+  synonyms:
+  - --control-fast5-basedirs
+  args: !RepeatFlagArg
+    name: CONTROL_FAST5_BASEDIRS
+  optional: true
+- !Flag
+  description: "Tombo model for event-less resquiggle and significance\ntesting. If\
+    \ no model is provided the default DNA or\nRNA tombo model will be used."
+  synonyms:
+  - --tombo-model-filename
+  args: !SimpleFlagArg
+    name: TOMBO_MODEL_FILENAME
+  optional: true
+- !Flag
+  description: "Tombo models for alternative likelihood ratio\nsignificance testing."
+  synonyms:
+  - --alternate-model-filenames
+  args: !RepeatFlagArg
+    name: ALTERNATE_MODEL_FILENAMES
+  optional: true
+- !Flag
+  description: "[{5mC} ...]\nDefault non-standard base model for testing."
+  synonyms:
+  - --alternate-bases
+  args: !ChoiceFlagArg
+    choices: !!set
+      5mC:
+  optional: true
+- !Flag
+  description: "Number of context bases up and downstream over which\nto compute Fisher's\
+    \ method combined p-values. Note:\nNot applicable for alternative model likelihood\
+    \ ratio\ntests. Default: 1."
+  synonyms:
+  - --fishers-method-context
+  args: !SimpleFlagArg
+    name: FISHERS_METHOD_CONTEXT
+  optional: true
+- !Flag
+  description: "Number of reads required at a position to perform\nsignificance testing\
+    \ or contribute to model\nestimation. Default: 5"
+  synonyms:
+  - --minimum-test-reads
+  args: !SimpleFlagArg
+    name: MINIMUM_TEST_READS
+  optional: true
+- !Flag
+  description: "P-value or log likelihood ratio threshold when\ncomputing fraction\
+    \ of significant reads at each\ngenomic position. Default: pvalue:0.01; likelihood\n\
+    ratio:2"
+  synonyms:
+  - --single-read-threshold
+  args: !SimpleFlagArg
+    name: SINGLE_READ_THRESHOLD
+  optional: true
+- !Flag
+  description: "Size of regions over which to multiprocesses statistic\ncomputation.\
+    \ For very deep samples a smaller value is\nrecommmended in order to control memory\
+    \ consumption.\nDefault: 10000"
+  synonyms:
+  - --multiprocess-region-size
+  args: !SimpleFlagArg
+    name: MULTIPROCESS_REGION_SIZE
+  optional: true
+- !Flag
+  description: 'Number of processes. Default: 1'
+  synonyms:
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  synonyms:
+  - --corrected-group
+  args: !SimpleFlagArg
+    name: CORRECTED_GROUP
+  optional: true
+- !Flag
+  description: "FAST5 subgroup(s) (under Analyses/[corrected-group])\ncontaining basecalls.\
+    \ Default: ['BaseCalled_template']"
+  synonyms:
+  - --basecall-subgroups
+  args: !RepeatFlagArg
+    name: BASECALL_SUBGROUPS
+  optional: true
+- !Flag
+  description: Don't print status information.
+  synonyms:
+  - --quiet
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: tombo test_significance --fast5-basedirs FAST5_BASEDIRS\n     \
+  \                          [FAST5_BASEDIRS ...] --statistics-file-basename\n   \
+  \                            STATISTICS_FILE_BASENAME\n                        \
+  \       [--control-fast5-basedirs CONTROL_FAST5_BASEDIRS [CONTROL_FAST5_BASEDIRS\
+  \ ...]]\n                               [--tombo-model-filename TOMBO_MODEL_FILENAME]\n\
+  \                               [--alternate-model-filenames ALTERNATE_MODEL_FILENAMES\
+  \ [ALTERNATE_MODEL_FILENAMES ...]]\n                               [--alternate-bases\
+  \ {5mC} [{5mC} ...]]\n                               [--fishers-method-context FISHERS_METHOD_CONTEXT]\n\
+  \                               [--minimum-test-reads MINIMUM_TEST_READS]\n    \
+  \                           [--single-read-threshold SINGLE_READ_THRESHOLD]\n  \
+  \                             [--multiprocess-region-size MULTIPROCESS_REGION_SIZE]\n\
+  \                               [--processes PROCESSES]\n                      \
+  \         [--corrected-group CORRECTED_GROUP]\n                               [--basecall-subgroups\
+  \ BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\n                               [--quiet]\
+  \ [--help]\n\nRequired Argument:\n  --fast5-basedirs FAST5_BASEDIRS [FAST5_BASEDIRS\
+  \ ...]\n                        Directories containing fast5 files.\n  --statistics-file-basename\
+  \ STATISTICS_FILE_BASENAME\n                        File base name to save base\
+  \ by base statistics from\n                        testing. Filenames will be [--statistics-file-basename\n\
+  \                        ].[--alternate-bases]?.tombo.stats\n\nComparison Arguments\
+  \ (Default: De novo testing against default standard model):\n  --control-fast5-basedirs\
+  \ CONTROL_FAST5_BASEDIRS [CONTROL_FAST5_BASEDIRS ...]\n                        Control\
+  \ set of directories containing fast5 files.\n                        These reads\
+  \ should contain only standard nucleotides.\n  --tombo-model-filename TOMBO_MODEL_FILENAME\n\
+  \                        Tombo model for event-less resquiggle and significance\n\
+  \                        testing. If no model is provided the default DNA or\n \
+  \                       RNA tombo model will be used.\n  --alternate-model-filenames\
+  \ ALTERNATE_MODEL_FILENAMES [ALTERNATE_MODEL_FILENAMES ...]\n                  \
+  \      Tombo models for alternative likelihood ratio\n                        significance\
+  \ testing.\n  --alternate-bases {5mC} [{5mC} ...]\n                        Default\
+  \ non-standard base model for testing.\n\nSignificance Test Arguments:\n  --fishers-method-context\
+  \ FISHERS_METHOD_CONTEXT\n                        Number of context bases up and\
+  \ downstream over which\n                        to compute Fisher's method combined\
+  \ p-values. Note:\n                        Not applicable for alternative model\
+  \ likelihood ratio\n                        tests. Default: 1.\n  --minimum-test-reads\
+  \ MINIMUM_TEST_READS\n                        Number of reads required at a position\
+  \ to perform\n                        significance testing or contribute to model\n\
+  \                        estimation. Default: 5\n  --single-read-threshold SINGLE_READ_THRESHOLD\n\
+  \                        P-value or log likelihood ratio threshold when\n      \
+  \                  computing fraction of significant reads at each\n           \
+  \             genomic position. Default: pvalue:0.01; likelihood\n             \
+  \           ratio:2\n\nMultiprocessing Arguments:\n  --multiprocess-region-size\
+  \ MULTIPROCESS_REGION_SIZE\n                        Size of regions over which to\
+  \ multiprocesses statistic\n                        computation. For very deep samples\
+  \ a smaller value is\n                        recommmended in order to control memory\
+  \ consumption.\n                        Default: 10000\n  --processes PROCESSES\n\
+  \                        Number of processes. Default: 1\n\nFAST5 Data Arguments:\n\
+  \  --corrected-group CORRECTED_GROUP\n                        FAST5 group created\
+  \ by resquiggle command. Default:\n                        RawGenomeCorrected_000\n\
+  \  --basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]\n          \
+  \              FAST5 subgroup(s) (under Analyses/[corrected-group])\n          \
+  \              containing basecalls. Default: ['BaseCalled_template']\n\nMiscellaneous\
+  \ Arguments:\n  --quiet, -q           Don't print status information.\n  --help,\
+  \ -h            Print this help message and exit\n"
+generated_using:
+- --help

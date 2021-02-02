@@ -1,0 +1,322 @@
+!Command
+command:
+- gth
+positional: []
+named:
+- !Flag
+  description: "specify input files containing genomic sequences\nmandatory option"
+  synonyms:
+  - -genomic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specify input files containing cDNA/EST sequences
+  synonyms:
+  - -cdna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specify input files containing protein sequences
+  synonyms:
+  - -protein
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "specify species to select splice site model which is most\nappropriate;\
+    \ possible species:\n\"human\"\n\"mouse\"\n\"rat\"\n\"chicken\"\n\"drosophila\"\
+    \n\"nematode\"\n\"fission_yeast\"\n\"aspergillus\"\n\"arabidopsis\"\n\"maize\"\
+    \n\"rice\"\n\"medicago\"\ndefault: undefined"
+  synonyms:
+  - -species
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "read bssm parameter from file in the path given by the\nenvironment\
+    \ variable BSSMDIR\ndefault: undefined"
+  synonyms:
+  - -bssm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "read amino acid substitution scoring matrix from file in the\npath\
+    \ given by the environment variable GTHDATADIR\ndefault: BLOSUM62"
+  synonyms:
+  - -scorematrix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "the codon translation table used for codon translation in\nmatching,\
+    \ DP, and output\ndefault: 1"
+  synonyms:
+  - -translationtable
+  args: !SimpleFlagArg
+    name: set
+  optional: true
+- !Flag
+  description: "analyze only forward strand of genomic sequences\ndefault: no"
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "analyze only reverse strand of genomic sequences\ndefault: no"
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "align only forward strand of cDNAs\ndefault: no"
+  synonyms:
+  - -cdnaforward
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "analyze genomic sequence from this position\nrequires -topos or -width;\
+    \ counting from 1 on\ndefault: 0"
+  synonyms:
+  - -frompos
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "analyze genomic sequence to this position\nrequires -frompos; counting\
+    \ from 1 on\ndefault: 0"
+  synonyms:
+  - -topos
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "analyze only this width of genomic sequence\nrequires -frompos\ndefault:\
+    \ 0"
+  synonyms:
+  - -width
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "be verbose\ndefault: no"
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "show output in XML format\ndefault: no"
+  synonyms:
+  - -xmlout
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "show output in GFF3 format\ndefault: no"
+  synonyms:
+  - -gff3out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "show MD5 fingerprints as sequence IDs\ndefault: no"
+  synonyms:
+  - -md5ids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "redirect output to specified file\ndefault: undefined"
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "write gzip compressed output file\ndefault: no"
+  synonyms:
+  - -gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "write bzip2 compressed output file\ndefault: no"
+  synonyms:
+  - -bzip2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "force writing to output file\ndefault: no"
+  synonyms:
+  - -force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "output in old GeneSeqer2 format\ndefault: no"
+  synonyms:
+  - -gs2out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "specify minimum match length (cDNA matching)\ndefault: 20"
+  synonyms:
+  - -minmatchlen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "specify the seed length (cDNA matching)\ndefault: 18"
+  synonyms:
+  - -seedlength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "specify the Xdrop value for edit distance extension (cDNA\nmatching)\n\
+    default: 2"
+  synonyms:
+  - -exdrop
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "specify minimum match length (protein matches)\ndefault: 24"
+  synonyms:
+  - -prminmatchlen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "specify seed length (protein matching)\ndefault: 10"
+  synonyms:
+  - -prseedlength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "specify Hamming distance (protein matching)\ndefault: 4"
+  synonyms:
+  - -prhdist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "set the maximum gap width for global chains\ndefines approximately\
+    \ the maximum intron length\nset to 0 to allow for unlimited length\nin order\
+    \ to avoid false-positive exons (lonely exons) at the\nsequence ends, it is very\
+    \ important to set this parameter\nappropriately!\ndefault: 1000000"
+  synonyms:
+  - -gcmaxgapwidth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "set the minimum coverage of global chains regarding to the\nreference\
+    \ sequence\ndefault: 50"
+  synonyms:
+  - -gcmincoverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "compute paralogous genes (different chaining procedure)\ndefault:\
+    \ no"
+  synonyms:
+  - -paralogs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "enable the intron cutout technique\ndefault: no"
+  synonyms:
+  - -introncutout
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "use jump table to increase speed of DP calculation\ndefault: no"
+  synonyms:
+  - -fastdp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "the automatic intron cutout matrix size in megabytes and\nenable the\
+    \ automatic intron cutout technique\ndefault: 0"
+  synonyms:
+  - -autointroncutout
+  args: !SimpleFlagArg
+    name: set
+  optional: true
+- !Flag
+  description: "stop after calculation of spliced alignments and output\nresults in\
+    \ reusable XML format. Do not process this output\nyourself, use the ``normal''\
+    \ XML output instead!\ndefault: no"
+  synonyms:
+  - -intermediate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "set the maximum number of spliced alignments per genomic DNA\ninput.\
+    \ Set to 0 for unlimited number.\ndefault: 0"
+  synonyms:
+  - -first
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: display version information and exit
+  synonyms:
+  - -version
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: gth [option ...] -genomic file [...] -cdna file [...] -protein\
+  \ file [...]\nCompute similarity-based gene structure predictions (spliced alignments)\n\
+  using cDNA/EST and/or protein sequences and assemble the resulting spliced\nalignments\
+  \ to consensus spliced alignments.\n\n-genomic          specify input files containing\
+  \ genomic sequences\n                  mandatory option\n-cdna             specify\
+  \ input files containing cDNA/EST sequences\n-protein          specify input files\
+  \ containing protein sequences\n-species          specify species to select splice\
+  \ site model which is most\n                  appropriate; possible species:\n \
+  \                 \"human\"\n                  \"mouse\"\n                  \"rat\"\
+  \n                  \"chicken\"\n                  \"drosophila\"\n            \
+  \      \"nematode\"\n                  \"fission_yeast\"\n                  \"aspergillus\"\
+  \n                  \"arabidopsis\"\n                  \"maize\"\n             \
+  \     \"rice\"\n                  \"medicago\"\n                  default: undefined\n\
+  -bssm             read bssm parameter from file in the path given by the\n     \
+  \             environment variable BSSMDIR\n                  default: undefined\n\
+  -scorematrix      read amino acid substitution scoring matrix from file in the\n\
+  \                  path given by the environment variable GTHDATADIR\n         \
+  \         default: BLOSUM62\n-translationtable set the codon translation table used\
+  \ for codon translation in\n                  matching, DP, and output\n       \
+  \           default: 1\n-f                analyze only forward strand of genomic\
+  \ sequences\n                  default: no\n-r                analyze only reverse\
+  \ strand of genomic sequences\n                  default: no\n-cdnaforward     \
+  \ align only forward strand of cDNAs\n                  default: no\n-frompos  \
+  \        analyze genomic sequence from this position\n                  requires\
+  \ -topos or -width; counting from 1 on\n                  default: 0\n-topos   \
+  \         analyze genomic sequence to this position\n                  requires\
+  \ -frompos; counting from 1 on\n                  default: 0\n-width           \
+  \ analyze only this width of genomic sequence\n                  requires -frompos\n\
+  \                  default: 0\n-v                be verbose\n                  default:\
+  \ no\n-xmlout           show output in XML format\n                  default: no\n\
+  -gff3out          show output in GFF3 format\n                  default: no\n-md5ids\
+  \           show MD5 fingerprints as sequence IDs\n                  default: no\n\
+  -o                redirect output to specified file\n                  default:\
+  \ undefined\n-gzip             write gzip compressed output file\n             \
+  \     default: no\n-bzip2            write bzip2 compressed output file\n      \
+  \            default: no\n-force            force writing to output file\n     \
+  \             default: no\n-gs2out           output in old GeneSeqer2 format\n \
+  \                 default: no\n-minmatchlen      specify minimum match length (cDNA\
+  \ matching)\n                  default: 20\n-seedlength       specify the seed length\
+  \ (cDNA matching)\n                  default: 18\n-exdrop           specify the\
+  \ Xdrop value for edit distance extension (cDNA\n                  matching)\n \
+  \                 default: 2\n-prminmatchlen    specify minimum match length (protein\
+  \ matches)\n                  default: 24\n-prseedlength     specify seed length\
+  \ (protein matching)\n                  default: 10\n-prhdist          specify Hamming\
+  \ distance (protein matching)\n                  default: 4\n-gcmaxgapwidth    set\
+  \ the maximum gap width for global chains\n                  defines approximately\
+  \ the maximum intron length\n                  set to 0 to allow for unlimited length\n\
+  \                  in order to avoid false-positive exons (lonely exons) at the\n\
+  \                  sequence ends, it is very important to set this parameter\n \
+  \                 appropriately!\n                  default: 1000000\n-gcmincoverage\
+  \    set the minimum coverage of global chains regarding to the\n              \
+  \    reference sequence\n                  default: 50\n-paralogs         compute\
+  \ paralogous genes (different chaining procedure)\n                  default: no\n\
+  -introncutout     enable the intron cutout technique\n                  default:\
+  \ no\n-fastdp           use jump table to increase speed of DP calculation\n   \
+  \               default: no\n-autointroncutout set the automatic intron cutout matrix\
+  \ size in megabytes and\n                  enable the automatic intron cutout technique\n\
+  \                  default: 0\n-intermediate     stop after calculation of spliced\
+  \ alignments and output\n                  results in reusable XML format. Do not\
+  \ process this output\n                  yourself, use the ``normal'' XML output\
+  \ instead!\n                  default: no\n-first            set the maximum number\
+  \ of spliced alignments per genomic DNA\n                  input. Set to 0 for unlimited\
+  \ number.\n                  default: 0\n-help             display help for basic\
+  \ options and exit\n-help+            display help for all options and exit\n-version\
+  \          display version information and exit\n\nFor detailed information, please\
+  \ refer to the manual of GenomeThreader.\nReport bugs to <gordon@gremme.org>.\n"
+generated_using:
+- --help

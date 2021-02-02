@@ -1,0 +1,178 @@
+!Command
+command:
+- snaptools
+- align-paired-end
+positional: []
+named:
+- !Flag
+  description: "INPUT_FASTQ2 --output-bam OUTPUT_BAM\n[--aligner ALIGNER]\n[--path-to-aligner\
+    \ PATH_TO_ALIGNER]\n[--aligner-options ALIGNER_OPTIONS [ALIGNER_OPTIONS ...]]\n\
+    [--read-fastq-command READ_FASTQ_COMMAND]\n[--min-cov MIN_COV]\n[--num-threads\
+    \ NUM_THREADS]\n[--if-sort IF_SORT]\n[--tmp-folder TMP_FOLDER]\n[--overwrite OVERWRITE]\
+    \ [--verbose VERBOSE]"
+  synonyms:
+  - --input-fastq1
+  - --input-fastq2
+  args: !SimpleFlagArg
+    name: INPUT_FASTQ1
+  optional: true
+- !Flag
+  description: "reference genome file contains the reference genome\nthat reads are\
+    \ mapped against, the genome index must\nbe under the same folder (default: None)"
+  synonyms:
+  - --input-reference
+  args: !SimpleFlagArg
+    name: INPUT_REFERENCE
+  optional: true
+- !Flag
+  description: "output bam file contains unfiltered alignments\n(default: None)"
+  synonyms:
+  - --output-bam
+  args: !SimpleFlagArg
+    name: OUTPUT_BAM
+  optional: true
+- !Flag
+  description: "aligner to use. Currently, snaptools supports bwa,\nbowtie, bowtie2\
+    \ and minimap2. (default: bwa)"
+  synonyms:
+  - --aligner
+  args: !SimpleFlagArg
+    name: ALIGNER
+  optional: true
+- !Flag
+  description: 'path to fold that contains bwa (default: None)'
+  synonyms:
+  - --path-to-aligner
+  args: !SimpleFlagArg
+    name: PATH_TO_ALIGNER
+  optional: true
+- !Flag
+  description: "list of strings indicating options you would like\npassed to alignerstrongly\
+    \ do not recommand to change\nunless you know what you are doing. the default\
+    \ is to\nalign reads without filteration. (default: None)"
+  synonyms:
+  - --aligner-options
+  args: !RepeatFlagArg
+    name: ALIGNER_OPTIONS
+  optional: true
+- !Flag
+  description: "command line to execute for each of the input file.\nThis command\
+    \ should generate FASTQ text and send it to\nstdout. For example, --read-fastq-command\
+    \ should be\nzcat, bzcat and cat for .gz, .bz2 and plain fastq file\nrespectively\
+    \ (default: None)"
+  synonyms:
+  - --read-fastq-command
+  args: !SimpleFlagArg
+    name: READ_FASTQ_COMMAND
+  optional: true
+- !Flag
+  description: "min number of fragments per barcode. barcodes of total\nfragments\
+    \ less than --min-cov will be filreted before\nalingment. Note: though this feature\
+    \ is included, we\nfound it barely benefit anything, recommand to set it\n0. (default:\
+    \ 0)"
+  synonyms:
+  - --min-cov
+  args: !SimpleFlagArg
+    name: MIN_COV
+  optional: true
+- !Flag
+  description: "number of alignment threads, also number of threads\nfor sorting a\
+    \ bam file. (default: 1)"
+  synonyms:
+  - --num-threads
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+  optional: true
+- !Flag
+  description: "weather to sort the bam file based on the read name\n(default: True)"
+  synonyms:
+  - --if-sort
+  args: !SimpleFlagArg
+    name: IF_SORT
+  optional: true
+- !Flag
+  description: "directory to store temporary files. If not given,\nsnaptools will\
+    \ automaticallygenerate a temporary\nlocation to store temporary files (default:\
+    \ None)"
+  synonyms:
+  - --tmp-folder
+  args: !SimpleFlagArg
+    name: TMP_FOLDER
+  optional: true
+- !Flag
+  description: "whether to overwrite the output file if it already\nexists (default:\
+    \ False)"
+  synonyms:
+  - --overwrite
+  args: !SimpleFlagArg
+    name: OVERWRITE
+  optional: true
+- !Flag
+  description: "a boolen tag indicates output the progress. (default:\nTrue)\n"
+  synonyms:
+  - --verbose
+  args: !SimpleFlagArg
+    name: VERBOSE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: snaptools align-paired-end [-h] --input-reference INPUT_REFERENCE\n\
+  \                                  --input-fastq1 INPUT_FASTQ1 --input-fastq2\n\
+  \                                  INPUT_FASTQ2 --output-bam OUTPUT_BAM\n      \
+  \                            [--aligner ALIGNER]\n                             \
+  \     [--path-to-aligner PATH_TO_ALIGNER]\n                                  [--aligner-options\
+  \ ALIGNER_OPTIONS [ALIGNER_OPTIONS ...]]\n                                  [--read-fastq-command\
+  \ READ_FASTQ_COMMAND]\n                                  [--min-cov MIN_COV]\n \
+  \                                 [--num-threads NUM_THREADS]\n                \
+  \                  [--if-sort IF_SORT]\n                                  [--tmp-folder\
+  \ TMP_FOLDER]\n                                  [--overwrite OVERWRITE] [--verbose\
+  \ VERBOSE]\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n\nrequired inputs:\n  --input-reference INPUT_REFERENCE\n          \
+  \              reference genome file contains the reference genome\n           \
+  \             that reads are mapped against, the genome index must\n           \
+  \             be under the same folder (default: None)\n  --input-fastq1 INPUT_FASTQ1\n\
+  \                        fastq file contains R1 reads, currently supports\n    \
+  \                    fastq, gz, bz2 file (default: None)\n  --input-fastq2 INPUT_FASTQ2\n\
+  \                        fastq file contains R2 reads, currently supports\n    \
+  \                    fastq, gz, bz2 file (default: None)\n  --output-bam OUTPUT_BAM\n\
+  \                        output bam file contains unfiltered alignments\n      \
+  \                  (default: None)\n\noptional inputs:\n  --aligner ALIGNER    \
+  \ aligner to use. Currently, snaptools supports bwa,\n                        bowtie,\
+  \ bowtie2 and minimap2. (default: bwa)\n  --path-to-aligner PATH_TO_ALIGNER\n  \
+  \                      path to fold that contains bwa (default: None)\n  --aligner-options\
+  \ ALIGNER_OPTIONS [ALIGNER_OPTIONS ...]\n                        list of strings\
+  \ indicating options you would like\n                        passed to alignerstrongly\
+  \ do not recommand to change\n                        unless you know what you are\
+  \ doing. the default is to\n                        align reads without filteration.\
+  \ (default: None)\n  --read-fastq-command READ_FASTQ_COMMAND\n                 \
+  \       command line to execute for each of the input file.\n                  \
+  \      This command should generate FASTQ text and send it to\n                \
+  \        stdout. For example, --read-fastq-command should be\n                 \
+  \       zcat, bzcat and cat for .gz, .bz2 and plain fastq file\n               \
+  \         respectively (default: None)\n  --min-cov MIN_COV     min number of fragments\
+  \ per barcode. barcodes of total\n                        fragments less than --min-cov\
+  \ will be filreted before\n                        alingment. Note: though this\
+  \ feature is included, we\n                        found it barely benefit anything,\
+  \ recommand to set it\n                        0. (default: 0)\n  --num-threads\
+  \ NUM_THREADS\n                        number of alignment threads, also number\
+  \ of threads\n                        for sorting a bam file. (default: 1)\n  --if-sort\
+  \ IF_SORT     weather to sort the bam file based on the read name\n            \
+  \            (default: True)\n  --tmp-folder TMP_FOLDER\n                      \
+  \  directory to store temporary files. If not given,\n                        snaptools\
+  \ will automaticallygenerate a temporary\n                        location to store\
+  \ temporary files (default: None)\n  --overwrite OVERWRITE\n                   \
+  \     whether to overwrite the output file if it already\n                     \
+  \   exists (default: False)\n  --verbose VERBOSE     a boolen tag indicates output\
+  \ the progress. (default:\n                        True)\n"
+generated_using:
+- --help

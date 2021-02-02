@@ -1,0 +1,175 @@
+!Command
+command:
+- inStrain
+- compare
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: INPUT
+  optional: true
+named:
+- !Flag
+  description: "[INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\nA list of inStrain\
+    \ objects, all mapped to the same\n.fasta file (default: None)"
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output prefix (default: instrainComparer)'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: 'Number of processes to use (default: 6)'
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: 'Make extra debugging output (default: False)'
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minimum coverage to call an variant (default: 5)'
+  synonyms:
+  - -c
+  - --min_cov
+  args: !SimpleFlagArg
+    name: MIN_COV
+  optional: true
+- !Flag
+  description: "Minimum SNP frequency to confirm a SNV (both this AND\nthe FDR snp\
+    \ count cutoff must be true to call a SNP).\n(default: 0.05)"
+  synonyms:
+  - -f
+  - --min_freq
+  args: !SimpleFlagArg
+    name: MIN_FREQ
+  optional: true
+- !Flag
+  description: "SNP false discovery rate- based on simulation data\nwith a 0.1 percent\
+    \ error rate (Q30) (default: 1e-06)"
+  synonyms:
+  - -fdr
+  - --fdr
+  args: !SimpleFlagArg
+    name: FDR
+  optional: true
+- !Flag
+  description: "Location to a list of scaffolds to compare. You can\nalso make this\
+    \ a .fasta file and it will load the\nscaffold names (default: None)"
+  synonyms:
+  - -s
+  - --scaffolds
+  args: !SimpleFlagArg
+    name: SCAFFOLDS
+  optional: true
+- !Flag
+  description: "Also store coverage overlap on an mm level (default:\nFalse)"
+  synonyms:
+  - --store_coverage_overlap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Store the locations of SNPs (default: False)'
+  synonyms:
+  - --store_mismatch_locations
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Also compare IS profiles against themself (default:\nFalse)"
+  synonyms:
+  - --include_self_comparisons
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Dont do pair-wise comparisons, do greedy clustering to\nonly find\
+    \ the number of clsuters. If this is set, use\nthe parameters below as well (default:\
+    \ False)"
+  synonyms:
+  - --greedy_clustering
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "ANI threshold for greedy clustering- put the fraction\nnot the percentage\
+    \ (e.g. 0.99, not 99) (default: 0.99)"
+  synonyms:
+  - --g_ani
+  args: !SimpleFlagArg
+    name: G_ANI
+  optional: true
+- !Flag
+  description: "Alignment coverage for greedy clustering- put the\nfraction not the\
+    \ percentage (e.g. 0.5, not 10)\n(default: 0.99)"
+  synonyms:
+  - --g_cov
+  args: !SimpleFlagArg
+    name: G_COV
+  optional: true
+- !Flag
+  description: 'Maximum read mismatch level (default: 100)'
+  synonyms:
+  - --g_mm
+  args: !SimpleFlagArg
+    name: G_MM
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: inStrain compare -i [INPUT [INPUT ...]] [-o OUTPUT] [-p PROCESSES]\
+  \ [-d]\n                        [-h] [-c MIN_COV] [-f MIN_FREQ] [-fdr FDR]\n   \
+  \                     [-s SCAFFOLDS] [--store_coverage_overlap]\n              \
+  \          [--store_mismatch_locations]\n                        [--include_self_comparisons]\
+  \ [--greedy_clustering]\n                        [--g_ani G_ANI] [--g_cov G_COV]\
+  \ [--g_mm G_MM]\n\nREQUIRED:\n  -i [INPUT [INPUT ...]], --input [INPUT [INPUT ...]]\n\
+  \                        A list of inStrain objects, all mapped to the same\n  \
+  \                      .fasta file (default: None)\n  -o OUTPUT, --output OUTPUT\n\
+  \                        Output prefix (default: instrainComparer)\n\nSYSTEM PARAMETERS:\n\
+  \  -p PROCESSES, --processes PROCESSES\n                        Number of processes\
+  \ to use (default: 6)\n  -d, --debug           Make extra debugging output (default:\
+  \ False)\n  -h, --help            show this help message and exit\n\nVARIANT CALLING\
+  \ OPTIONS:\n  -c MIN_COV, --min_cov MIN_COV\n                        Minimum coverage\
+  \ to call an variant (default: 5)\n  -f MIN_FREQ, --min_freq MIN_FREQ\n        \
+  \                Minimum SNP frequency to confirm a SNV (both this AND\n       \
+  \                 the FDR snp count cutoff must be true to call a SNP).\n      \
+  \                  (default: 0.05)\n  -fdr FDR, --fdr FDR   SNP false discovery\
+  \ rate- based on simulation data\n                        with a 0.1 percent error\
+  \ rate (Q30) (default: 1e-06)\n\nOTHER OPTIONS:\n  -s SCAFFOLDS, --scaffolds SCAFFOLDS\n\
+  \                        Location to a list of scaffolds to compare. You can\n \
+  \                       also make this a .fasta file and it will load the\n    \
+  \                    scaffold names (default: None)\n  --store_coverage_overlap\n\
+  \                        Also store coverage overlap on an mm level (default:\n\
+  \                        False)\n  --store_mismatch_locations\n                \
+  \        Store the locations of SNPs (default: False)\n  --include_self_comparisons\n\
+  \                        Also compare IS profiles against themself (default:\n \
+  \                       False)\n\nGREEDY CLUSTERING OPTIONS [THIS SECTION IS EXPERIMENTAL!]:\n\
+  \  --greedy_clustering   Dont do pair-wise comparisons, do greedy clustering to\n\
+  \                        only find the number of clsuters. If this is set, use\n\
+  \                        the parameters below as well (default: False)\n  --g_ani\
+  \ G_ANI         ANI threshold for greedy clustering- put the fraction\n        \
+  \                not the percentage (e.g. 0.99, not 99) (default: 0.99)\n  --g_cov\
+  \ G_COV         Alignment coverage for greedy clustering- put the\n            \
+  \            fraction not the percentage (e.g. 0.5, not 10)\n                  \
+  \      (default: 0.99)\n  --g_mm G_MM           Maximum read mismatch level (default:\
+  \ 100)\n"
+generated_using:
+- --help

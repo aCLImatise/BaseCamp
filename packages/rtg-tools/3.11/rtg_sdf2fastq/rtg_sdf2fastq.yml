@@ -1,0 +1,124 @@
+!Command
+command:
+- rtg
+- sdf2fastq
+positional:
+- !Positional
+  description: Utility
+  position: 0
+  name: times
+  optional: false
+named:
+- !Flag
+  description: SDF containing sequences
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: SDF
+  optional: true
+- !Flag
+  description: "output filename (extension added if not present).\nUse '-' to write\
+    \ to standard output"
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: exclusive upper bound on sequence id
+  synonyms:
+  - --end-id
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: file containing sequence ids, or sequence names if
+  synonyms:
+  - -I
+  - --id-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: inclusive lower bound on sequence id
+  synonyms:
+  - --start-id
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: is set. May be specified 0 or more
+  synonyms:
+  - --names
+  args: !SimpleFlagArg
+    name: flag
+  optional: true
+- !Flag
+  description: "default quality value to use if the SDF does not\ncontain quality\
+    \ data (0-63)"
+  synonyms:
+  - -q
+  - --default-quality
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "interleave paired data into a single output file.\nDefault is to split\
+    \ to separate output files"
+  synonyms:
+  - --interleave
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "maximum number of nucleotides to print on a line of\noutput. A value\
+    \ of 0 indicates no limit (Default is\n0)"
+  synonyms:
+  - -l
+  - --line-length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: do not gzip the output
+  synonyms:
+  - -Z
+  - --no-gzip
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print help on command-line flag usage
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: rtg sdf2fastq [OPTION]... -i SDF -o FILE STRING+\n            \
+  \         [OPTION]... -i SDF -o FILE -I FILE\n                     [OPTION]... -i\
+  \ SDF -o FILE --end-id INT --start-id INT\n\nConverts SDF data into FASTQ file(s).\n\
+  \nFile Input/Output\n  -i, --input=SDF           SDF containing sequences\n  -o,\
+  \ --output=FILE         output filename (extension added if not present).\n    \
+  \                        Use '-' to write to standard output\n\nFiltering\n    \
+  \  --end-id=INT          exclusive upper bound on sequence id\n  -I, --id-file=FILE\
+  \        file containing sequence ids, or sequence names if\n                  \
+  \          --names flag is set, one per line\n  -n, --names               interpret\
+  \ supplied sequence as names instead of\n                            numeric ids\n\
+  \      --start-id=INT        inclusive lower bound on sequence id\n      STRING+\
+  \               id of sequence to extract, or sequence name if\n               \
+  \             --names flag is set. May be specified 0 or more\n                \
+  \            times\n\nUtility\n  -q, --default-quality=INT default quality value\
+  \ to use if the SDF does not\n                            contain quality data (0-63)\n\
+  \  -h, --help                print help on command-line flag usage\n      --interleave\
+  \          interleave paired data into a single output file.\n                 \
+  \           Default is to split to separate output files\n  -l, --line-length=INT\
+  \     maximum number of nucleotides to print on a line of\n                    \
+  \        output. A value of 0 indicates no limit (Default is\n                 \
+  \           0)\n  -Z, --no-gzip             do not gzip the output\n\n"
+generated_using:
+- --help

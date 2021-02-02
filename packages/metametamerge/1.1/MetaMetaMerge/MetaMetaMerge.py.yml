@@ -1,0 +1,202 @@
+!Command
+command:
+- MetaMetaMerge.py
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input_files
+  optional: true
+named:
+- !Flag
+  description: "[<input_files> [<input_files> ...]], --input-files [<input_files>\
+    \ [<input_files> ...]]\nInput (binning or profiling) files. Bioboxes or tsv\n\
+    format (see README)"
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[<database_profiles> [<database_profiles> ...]], --database-profiles\
+    \ [<database_profiles> [<database_profiles> ...]]\nDatabase profiles on the same\
+    \ order of the input files\n(see README)"
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Comma-separated identifiers on the same order of the\ninput files"
+  synonyms:
+  - -t
+  - --tool-identifier
+  args: !SimpleFlagArg
+    name: tool_identifier
+  optional: true
+- !Flag
+  description: "Comma-separated methods on the same order of the input\nfiles (p ->\
+    \ profiling / b -> binning)"
+  synonyms:
+  - -c
+  - --tool-method
+  args: !SimpleFlagArg
+    name: tool_method
+  optional: true
+- !Flag
+  description: names.dmp from the NCBI Taxonomy database
+  synonyms:
+  - -n
+  - --names-file
+  args: !SimpleFlagArg
+    name: names_file
+  optional: true
+- !Flag
+  description: nodes.dmp from the NCBI Taxonomy database
+  synonyms:
+  - -e
+  - --nodes-file
+  args: !SimpleFlagArg
+    name: nodes_file
+  optional: true
+- !Flag
+  description: merged.dmp from the NCBI Taxonomy database
+  synonyms:
+  - -m
+  - --merged-file
+  args: !SimpleFlagArg
+    name: merged_file
+  optional: true
+- !Flag
+  description: 'Number of bins. Default: 4'
+  synonyms:
+  - -b
+  - --bins
+  args: !SimpleFlagArg
+    name: bins
+  optional: true
+- !Flag
+  description: "Minimum abundance/Maximum results for each taxonomic\nlevel (0: off\
+    \ / 0-1: minimum relative abundance / >=1:\nmaximum number of identifications).\
+    \ Default: 0.0001"
+  synonyms:
+  - -r
+  - --cutoff
+  args: !SimpleFlagArg
+    name: cutoff
+  optional: true
+- !Flag
+  description: "Result mode (precise, very-precise, linear, sensitive,\nvery-sensitive,\
+    \ no-cutoff). Default: linear"
+  synonyms:
+  - -f
+  - --mode
+  args: !SimpleFlagArg
+    name: mode
+  optional: true
+- !Flag
+  description: "Comma-separated list of ranks to be independently\nmerged (superkingdom,phylum,class,order,family,genus,s\n\
+    pecies,all). Default: species"
+  synonyms:
+  - -s
+  - --ranks
+  args: !SimpleFlagArg
+    name: ranks
+  optional: true
+- !Flag
+  description: Output file
+  synonyms:
+  - -o
+  - --output-file
+  args: !SimpleFlagArg
+    name: output_file
+  optional: true
+- !Flag
+  description: 'Output type (tsv, bioboxes). Default: bioboxes'
+  synonyms:
+  - -p
+  - --output-type
+  args: !SimpleFlagArg
+    name: output_type
+  optional: true
+- !Flag
+  description: "Output parsed and converted profiles for all input\nfiles (without\
+    \ cutoff)"
+  synonyms:
+  - --output-parsed-profiles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Generate an additional detailed output with individual\nnormalized\
+    \ abundances for each tool, where: 0 -> not\nidentified but present in the database,\
+    \ -1 not present\nin the database."
+  synonyms:
+  - --detailed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Verbose output log
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: MetaMetaMerge.py [-h] -i [<input_files> [<input_files> ...]] -d\n\
+  \                        [<database_profiles> [<database_profiles> ...]] -t\n  \
+  \                      <tool_identifier> -c <tool_method> -n <names_file> -e\n \
+  \                       <nodes_file> -m <merged_file> [-b <bins>]\n            \
+  \            [-r <cutoff>] [-f <mode>] [-s <ranks>] -o\n                       \
+  \ <output_file> [-p <output_type>]\n                        [--output-parsed-profiles]\
+  \ [--detailed] [--verbose]\n                        [-v]\n\nMetaMetaMerge by Vitor\
+  \ C. Piro (vitorpiro@gmail.com, http://github.com/pirovc)\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -i [<input_files> [<input_files>\
+  \ ...]], --input-files [<input_files> [<input_files> ...]]\n                   \
+  \     Input (binning or profiling) files. Bioboxes or tsv\n                    \
+  \    format (see README)\n  -d [<database_profiles> [<database_profiles> ...]],\
+  \ --database-profiles [<database_profiles> [<database_profiles> ...]]\n        \
+  \                Database profiles on the same order of the input files\n      \
+  \                  (see README)\n  -t <tool_identifier>, --tool-identifier <tool_identifier>\n\
+  \                        Comma-separated identifiers on the same order of the\n\
+  \                        input files\n  -c <tool_method>, --tool-method <tool_method>\n\
+  \                        Comma-separated methods on the same order of the input\n\
+  \                        files (p -> profiling / b -> binning)\n  -n <names_file>,\
+  \ --names-file <names_file>\n                        names.dmp from the NCBI Taxonomy\
+  \ database\n  -e <nodes_file>, --nodes-file <nodes_file>\n                     \
+  \   nodes.dmp from the NCBI Taxonomy database\n  -m <merged_file>, --merged-file\
+  \ <merged_file>\n                        merged.dmp from the NCBI Taxonomy database\n\
+  \  -b <bins>, --bins <bins>\n                        Number of bins. Default: 4\n\
+  \  -r <cutoff>, --cutoff <cutoff>\n                        Minimum abundance/Maximum\
+  \ results for each taxonomic\n                        level (0: off / 0-1: minimum\
+  \ relative abundance / >=1:\n                        maximum number of identifications).\
+  \ Default: 0.0001\n  -f <mode>, --mode <mode>\n                        Result mode\
+  \ (precise, very-precise, linear, sensitive,\n                        very-sensitive,\
+  \ no-cutoff). Default: linear\n  -s <ranks>, --ranks <ranks>\n                 \
+  \       Comma-separated list of ranks to be independently\n                    \
+  \    merged (superkingdom,phylum,class,order,family,genus,s\n                  \
+  \      pecies,all). Default: species\n  -o <output_file>, --output-file <output_file>\n\
+  \                        Output file\n  -p <output_type>, --output-type <output_type>\n\
+  \                        Output type (tsv, bioboxes). Default: bioboxes\n  --output-parsed-profiles\n\
+  \                        Output parsed and converted profiles for all input\n  \
+  \                      files (without cutoff)\n  --detailed            Generate\
+  \ an additional detailed output with individual\n                        normalized\
+  \ abundances for each tool, where: 0 -> not\n                        identified\
+  \ but present in the database, -1 not present\n                        in the database.\n\
+  \  --verbose             Verbose output log\n  -v, --version         show program's\
+  \ version number and exit\n"
+generated_using:
+- --help

@@ -1,0 +1,127 @@
+!Command
+command:
+- rsat
+- oligo-diff
+positional:
+- !Positional
+  description: "\e[1mVERSION\e[0m"
+  position: 0
+  name: oligo-diff
+  optional: false
+- !Positional
+  description: "\e[1mCATEGORY\e[0m"
+  position: 0
+  name: Jacques.van.Helden@ulb.ac.be
+  optional: false
+- !Positional
+  description: "\e[1mUSAGE\e[0m"
+  position: 1
+  name: util
+  optional: false
+- !Positional
+  description: "\e[1m-ctrl control_seq_file\e[0m"
+  position: 0
+  name: format.
+  optional: false
+- !Positional
+  description: "\e[1m-l oligo_length\e[0m"
+  position: 0
+  name: occurrences.
+  optional: false
+- !Positional
+  description: "\e[1m-return maps\e[0m"
+  position: 0
+  name: respectively.
+  optional: false
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    oligo-diff\n\n\e[1mVERSION\e[0m\n    $program_version\n\
+  \n\e[1mDESCRIPTION\e[0m\n    Compare oligonucleotide occurrences between two input\
+  \ sequence files\n    (\"test\" and \"control\"), and return oligos that are significantly\n\
+  \    enriched in one of the files respective to the other one.\n\n    The statistical\
+  \ significance of the enrichment is computed using the\n    hypergeometric distribution.\n\
+  \n    Note that the files are named \"test\" and \"control\" by convention, but\n\
+  \    the hypergeometric test is symmetrical. Swapping the two input sequence\n \
+  \   file should thus return exactly the same results.\n\n\e[1mAUTHORS\e[0m\n   \
+  \ Jacques.van.Helden@ulb.ac.be\n\n\e[1mCATEGORY\e[0m\n    util\n\n\e[1mUSAGE\e[0m\n\
+  \    oligo-diff [-i inputfile] [-o outputfile] [-v #] [...]\n\n\e[1mINPUT FORMAT\e\
+  [0m\n    The program takes as input a pair of sequence files in fasta format.\n\n\
+  \e[1mOUTPUT FORMAT\e[0m\n    The output is a tab-delimted file with one row per\
+  \ oligonucleotide, and\n    one column per statistics. The column content is detailed\
+  \ in the header\n    of the output (for this, the verbosity needs to be at least\
+  \ 1).\n\n\e[1mSTATISTICAL MODEL\e[0m\n\e[1mSEE ALSO\e[0m\n  \e[1moligo-analysis\e\
+  [0m\n    The programs \e[33moligo-diff\e[0m and \e[33moligo-analysis\e[0m serve\
+  \ for related purposes:\n    discovering exceptional oligonucleotides. The difference\
+  \ is that\n    \e[33moligo-analysis\e[0m considers a single sequence file, and compares\
+  \ pobserved\n    oligo-frequencies with those expected from a background model (Bernoulli\n\
+  \    or Markov). This background model is generally estimated from a set of\n  \
+  \  background sequences.\n\n    In the situation where one wants to compare a small\
+  \ sequence file (e.g.\n    50 promoters of co-expressed genes) to a large one (e.g.\
+  \ the 6000 other\n    promoters of the considered organism), \e[33moligo-diff\e\
+  [0m should return more or\n    less the same results as \e[33moligo-analysis\e[0m\
+  \ with a background model based on\n    the large file. Slight differences come\
+  \ from the use of the\n    hypergeometric (\e[33moligo-diff\e[0m) versus binomial\
+  \ (\e[33moligo-analysis\e[0m) statistics.\n\n  \e[1mcount-words\e[0m\n    \e[33moligo-diff\e\
+  [0m calls the program \e[33mcount-words\e[0m to count oligonucleotide\n    occurrences\
+  \ in the two input sequence files. The program \e[33mcount-words\e[0m is\n    part\
+  \ of the RSAT suite (it is written in C, and has to be compiled as\n    explained\
+  \ in the RSAT installation guide).\n\n\e[1mOPTIONS\e[0m\n    \e[1m-v #\e[0m\n  \
+  \      Level of verbosity (detail in the warning messages during execution)\n\n\
+  \    \e[1m-h\e[0m  Display full help message\n\n    \e[1m-help\e[0m\n        Same\
+  \ as -h\n\n    \e[1m-test test_seq_file\e[0m\n        Test sequence file.\n\n  \
+  \      Both the test and control sequences must be provided in fasta\n        format.\n\
+  \n    \e[1m-ctrl control_seq_file\e[0m\n        Control sequence file.\n\n    \e\
+  [1m-side test | ctrl | both\e[0m\n        Side of the significance test. In practice,\
+  \ the side is converted\n        into a threshold on the ratio test/control occurrences.\n\
+  \n        \e[33m-side test\e[0m\n            Only tests over-representation in the\
+  \ test sequences. This is\n            converted into a lower threshold of 1 for\
+  \ the test/control\n            ratio. More stringent thresholds can also be specified\
+  \ with the\n            option -lth. For example, -lth ratio 2 will only report\
+  \ patterns\n            at least 2 times more frequent in test than in control\n\
+  \            sequences.\n\n        \e[33m-side both\e[0m\n            Test over-representation\
+  \ in either the test or the control set.\n\n        \e[33m-side ctrl\e[0m\n    \
+  \        Only tests over-representation in the control sequences. This is\n    \
+  \        converted into an upper threshold of 1 for the test/control\n         \
+  \   ratio. More stringent thresholds can also be specified with the\n          \
+  \  option -uth. For example, -uth ratio 0.5 will only report\n            patterns\
+  \ at least 2 times more frequent in control than in test\n            sequences.\n\
+  \n    \e[1m-purge\e[0m\n        Purge input sequences before counting oligonucleotide\
+  \ occurrences.\n\n        This is highly recommended because redundant sequence\
+  \ fragment bias\n        the over-representation statistics and create false positives.\n\
+  \n        The option -purge is active by default, and can be canceled with the\n\
+  \        option -nopurge.\n\n    \e[1m-nopurge\e[0m\n        Do not purge input\
+  \ sequences before counting oligonucleotide\n        occurrences.\n\n    \e[1m-l\
+  \ oligo_length\e[0m\n        Oligonucleotide length.\n\n    \e[1m-1str\e[0m\n  \
+  \      Count oligonucleotides on a single strand only.\n\n        Alternative option:\
+  \ -2str\n\n    \e[1m-2str\e[0m\n        Sum oligonucleotides on both strands.\n\n\
+  \        More precisely, each pair of reverse complements is counted as a\n    \
+  \    single motif (the count is performed on a single strand, but pairs\n      \
+  \  of reverse complements are merged).\n\n        Alternative option: -1str\n\n\
+  \    \e[1m-noov\e[0m\n        Do not accept overlap between successive occurrences\
+  \ of the same\n        word. Only renewing occurrences are counted.\n\n        E.g.:\
+  \ TATATATATATA is counted as 2 occurrences of TATATA\n\n        Alternative option:\
+  \ -ovlp\n\n    \e[1m-ovlp\e[0m\n        Count all occurrences of self-overlapping\
+  \ words.\n\n        E.g.: TATATATATATA is counted as 4 occurrences of TATATA\n\n\
+  \        Alternative option: -noov\n\n    \e[1m-o outputfile\e[0m\n        If no\
+  \ output file is specified, the standard output is used. This\n        allows to\
+  \ use the command within a pipe.\n\n    \e[1m-lth key value\e[0m\n        Lower\
+  \ threshold on some output field.\n\n        Supported fields for threshold: occ,occ_sig,occ_P,occ_E\n\
+  \n    \e[1m-uth key value\e[0m\n        Upper threshold on some output field.\n\n\
+  \e[1mWISH LIST\e[0m\n    \e[1m-return assembly\e[0m\n        Assemble the significant\
+  \ patterns with \e[33mpattern-assembly\e[0m. The\n        oligonucleotides significantly\
+  \ enriched in test are assembled\n        separately from those significant in ctrl.\n\
+  \n        The option -return assembly requires to specify an output file. The\n\
+  \        assembly files have the suffix _test.asmb and _ctrl.asmb,\n        respectively.\n\
+  \n    \e[1m-return maps\e[0m\n        Generate feature maps of the over-represented\
+  \ patterns, using the\n        program \e[33mfeature-map\e[0m.\n\n    \e[1m-return\
+  \ pssm\e[0m\n        Convert the assembled oligonucleotides in position-speicific\
+  \ scoring\n        matrices (PSSM), using the program \e[33mmatrix-from-patterns\e\
+  [0m.\n\n    \e[1m-return index\e[0m\n        Return a HTML file indexing the result\
+  \ files (oligos, assembly,\n        PSSM, maps).\n\n"
+generated_using:
+- -h

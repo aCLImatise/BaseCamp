@@ -1,0 +1,264 @@
+!Command
+command:
+- img2dcm
+positional:
+- !Positional
+  description: image input filename
+  position: 0
+  name: imgfile-in
+  optional: false
+- !Positional
+  description: DICOM output filename
+  position: 1
+  name: dcmfile-out
+  optional: false
+named:
+- !Flag
+  description: print expanded command line arguments
+  synonyms:
+  - --arguments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --quiet                quiet mode, print no warnings and errors
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --verbose              verbose mode, print processing details
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --debug                debug mode, print debug information
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--log-level            [l]evel: string constant\n(fatal, error, warn,\
+    \ info, debug, trace)\nuse level l for the logger"
+  synonyms:
+  - -ll
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--log-config           [f]ilename: string\nuse config file f for the\
+    \ logger"
+  synonyms:
+  - -lc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--input-format         [i]nput file format: string\nsupported formats:\
+    \ JPEG (default), BMP"
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--dataset-from         [f]ilename: string\nuse dataset from DICOM\
+    \ file f"
+  synonyms:
+  - -df
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[f]ilename: string\nread patient/study from DICOM file f"
+  synonyms:
+  - -stf
+  - --study-from
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[f]ilename: string\nread patient/study/series from DICOM file f"
+  synonyms:
+  - -sef
+  - --series-from
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --instance-inc         increase instance number read from DICOM file
+  synonyms:
+  - -ii
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --disable-progr        disable support for progressive JPEG
+  synonyms:
+  - -dp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --disable-ext          disable support for extended sequential JPEG
+  synonyms:
+  - -de
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --insist-on-jfif       insist on JFIF header
+  synonyms:
+  - -jf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --keep-appn            keep APPn sections (except JFIF)
+  synonyms:
+  - -ka
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: enable attribute validity checking (default)
+  synonyms:
+  - --do-checks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disable attribute validity checking
+  synonyms:
+  - --no-checks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--no-type2-insert      do not insert missing type 2 attributes\n(only\
+    \ with --do-checks)"
+  synonyms:
+  - -i2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--no-type1-invent      do not invent missing type 1 attributes\n(only\
+    \ with --do-checks)"
+  synonyms:
+  - -i1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no-latin1            keep 7-bit ASCII as standard character set
+  synonyms:
+  - -l1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--key                  [k]ey: gggg,eeee=\"str\", path or dict. name=\"\
+    str\"\nadd further attribute"
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --sec-capture          write Secondary Capture SOP class (default)
+  synonyms:
+  - -sc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write new Secondary Capture SOP classes
+  synonyms:
+  - -nsc
+  - --new-sc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write Visible Light Photographic SOP class
+  synonyms:
+  - -vlp
+  - --vl-photo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --write-dataset        write data set without file meta information
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --group-length-remove  always write without group length elements
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --length-undefined     write with undefined lengths
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --padding-off          no padding (implicit if --write-dataset)
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: --help                 print this help text and exit
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "$dcmtk: img2dcm v3.6.1 2016-11-02 $\n\nimg2dcm: Convert standard image\
+  \ formats into DICOM format\nusage: img2dcm [options] imgfile-in dcmfile-out\n\n\
+  parameters:\n  imgfile-in                     image input filename\n  dcmfile-out\
+  \                    DICOM output filename\n\ngeneral options:\n  -h      --help\
+  \                 print this help text and exit\n          --version           \
+  \   print version information and exit\n          --arguments            print expanded\
+  \ command line arguments\n  -q      --quiet                quiet mode, print no\
+  \ warnings and errors\n  -v      --verbose              verbose mode, print processing\
+  \ details\n  -d      --debug                debug mode, print debug information\n\
+  \  -ll     --log-level            [l]evel: string constant\n                   \
+  \              (fatal, error, warn, info, debug, trace)\n                      \
+  \           use level l for the logger\n  -lc     --log-config           [f]ilename:\
+  \ string\n                                 use config file f for the logger\ninput\
+  \ options:\n  general:\n    -i    --input-format         [i]nput file format: string\n\
+  \                                 supported formats: JPEG (default), BMP\n    -df\
+  \   --dataset-from         [f]ilename: string\n                                \
+  \ use dataset from DICOM file f\n    -stf  --study-from           [f]ilename: string\n\
+  \                                 read patient/study from DICOM file f\n    -sef\
+  \  --series-from          [f]ilename: string\n                                 read\
+  \ patient/study/series from DICOM file f\n    -ii   --instance-inc         increase\
+  \ instance number read from DICOM file\n  JPEG format:\n    -dp   --disable-progr\
+  \        disable support for progressive JPEG\n    -de   --disable-ext         \
+  \ disable support for extended sequential JPEG\n    -jf   --insist-on-jfif     \
+  \  insist on JFIF header\n    -ka   --keep-appn            keep APPn sections (except\
+  \ JFIF)\nprocessing options:\n  attribute checking:\n          --do-checks     \
+  \       enable attribute validity checking (default)\n          --no-checks    \
+  \        disable attribute validity checking\n    +i2   --insert-type2         insert\
+  \ missing type 2 attributes (default)\n                                 (only with\
+  \ --do-checks)\n    -i2   --no-type2-insert      do not insert missing type 2 attributes\
+  \ \n                                 (only with --do-checks)\n    +i1   --invent-type1\
+  \         invent missing type 1 attributes (default)\n                         \
+  \        (only with --do-checks)\n    -i1   --no-type1-invent      do not invent\
+  \ missing type 1 attributes\n                                 (only with --do-checks)\n\
+  \  character set:\n    +l1   --latin1               set latin-1 as standard character\
+  \ set (default)\n    -l1   --no-latin1            keep 7-bit ASCII as standard character\
+  \ set\n  other processing options:\n    -k    --key                  [k]ey: gggg,eeee=\"\
+  str\", path or dict. name=\"str\"\n                                 add further\
+  \ attribute\noutput options:\n  target SOP class:\n    -sc   --sec-capture     \
+  \     write Secondary Capture SOP class (default)\n    -nsc  --new-sc          \
+  \     write new Secondary Capture SOP classes\n    -vlp  --vl-photo            \
+  \ write Visible Light Photographic SOP class\n  output file format:\n    +F    --write-file\
+  \           write file format (default)\n    -F    --write-dataset        write\
+  \ data set without file meta information\n  group length encoding:\n    +g=   --group-length-recalc\
+  \  recalculate group lengths if present (default)\n    +g    --group-length-create\
+  \  always write with group length elements\n    -g    --group-length-remove  always\
+  \ write without group length elements\n  length encoding in sequences and items:\n\
+  \    +e    --length-explicit      write with explicit lengths (default)\n    -e\
+  \    --length-undefined     write with undefined lengths\n  data set trailing padding\
+  \ (not with --write-dataset):\n    -p    --padding-off          no padding (implicit\
+  \ if --write-dataset)\n    +p    --padding-create       [f]ile-pad [i]tem-pad: integer\n\
+  \                                 align file on multiple of f bytes\n          \
+  \                       and items on multiple of i bytes\n\n"
+generated_using:
+- --help

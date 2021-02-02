@@ -1,0 +1,156 @@
+!Command
+command:
+- mimodd
+- reheader
+positional:
+- !Positional
+  description: template SAM file providing header information
+  position: 0
+  name: template
+  optional: false
+- !Positional
+  description: input BAM file to reheader
+  position: 1
+  name: input_file
+  optional: false
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "show this help message and exit\n--rg ignore|update|replace [RG_TEMPLATE]\
+    \ [RG_MAPPING ...]\nhow to compile the read group section of the new\nheader;\
+    \ ignore: do not use template information ->\nkeep original read groups, update:\
+    \ use template\ninformation to update original header content,\nreplace: use only\
+    \ template read group information ->\ndiscard original (default: replace if a\
+    \ general\ntemplate is specified, ignore if not); the optional\nRG_TEMPLATE is\
+    \ used instead of the general template to\nprovide the template read group information;\
+    \ by\ndefault, update mode uses template information about\nread-groups to add\
+    \ to / overwrite the original\ninformation of read-groups with the same ID, keeps\
+    \ all\nread-groups found only in the original header and adds\nread-groups found\
+    \ only in the template; replace\noverwrites all original information about a read-group\n\
+    if a read-group with the same ID is found in the\ntemplate, discards all read-groups\
+    \ found only in the\noriginal header and adds read-groups found only in the\n\
+    template; to update or replace the information of a\nread group with that of a\
+    \ template read-group with a\ndifferent ID, a RG_MAPPING between old and new ID\n\
+    values can be provided in the format old_id : new_id\n[old_id : new_id, ..]\n\
+    --sq ignore|update|replace [SQ_TEMPLATE] [SQ_MAPPING ...]\nhow to compile the\
+    \ sequence dictionary of the new\nheader; ignore: do not use template information\
+    \ ->\nkeep original sequence dictionary, update: use\ntemplate information to\
+    \ update original header\ncontent, replace: use only template sequence\ninformation\
+    \ -> discard original (default: replace if a\ngeneral template is specified, ignore\
+    \ if not); the\noptional SQ_TEMPLATE is used instead of the general\ntemplate\
+    \ to provide the template sequence dictionary;\nby default, update mode uses template\
+    \ sequence\ninformation to add to / overwrite the original\ninformation of sequences\
+    \ with the same name (SN tag\nvalue), keeps all sequences found only in the original\n\
+    header and adds sequences found only in the template;\nreplace overwrites all\
+    \ original information about a\nsequence if a sequence with the same name is found\
+    \ in\nthe template, discards all sequences found only in the\noriginal header\
+    \ and adds sequences found only in the\ntemplate; to update or replace the information\
+    \ about a\nsequence with that of a template sequence with a\ndifferent name, a\
+    \ SQ_MAPPING between old and new\nsequence names (SN values) can be provided in\
+    \ the\nformat old_sn : new_sn [old_sn : new_sn, ..]; to\nprotect against file\
+    \ format corruption, the tool will\nNEVER modify the recorded LENGTH (LN tag)\
+    \ nor the MD5\nchecksum (M5 tag) of any sequence\n--co ignore|update|replace [CO_TEMPLATE\
+    \ ...]\nhow to compile the comments (CO lines) of the new\nheader; ignore: do\
+    \ not use template comments -> keep\noriginal comments, update: append template\
+    \ comment\nlines to original comments, replace: use only template\ncomments ->\
+    \ discard original (default: replace if a\ngeneral template is specified, ignore\
+    \ if not); the\noptional CO_TEMPLATE is used instead of the general\ntemplate\
+    \ to provide the template comments\n--rgm RG_MAPPING [RG_MAPPING ...]\noptional\
+    \ mapping between read group ID values in the\nformat old_id : new_id [old_id\
+    \ : new_id, ..]; used to\nrename read groups and applied AFTER any other\nmodifications\
+    \ to the read group section (i.e., every\nold_id must exist in the modified header)\n\
+    --sqm SQ_MAPPING [SQ_MAPPING ...]\noptional mapping between sequence names (SN\
+    \ field\nvalues) in the format old_sn : new_sn [old_sn :\nnew_sn, ..]; used to\
+    \ rename sequences in the sequence\ndictionary and applied AFTER any other modifications\n\
+    to the sequence dictionary (i.e., every old_sn must\nexist in the modified header)\n\
+    -o OFILE, --ofile OFILE\nredirect the output to the specified file (default:\n\
+    stdout)\n-H                    output only the resulting header\n-v, --verbose\n"
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage:  reheader [-h] [--rg ignore|update|replace [RG_TEMPLATE]\n    \
+  \             [RG_MAPPING ...]] [--sq ignore|update|replace [SQ_TEMPLATE]\n    \
+  \             [SQ_MAPPING ...]]\n                 [--co ignore|update|replace [CO_TEMPLATE\
+  \ ...]]\n                 [--rgm RG_MAPPING [RG_MAPPING ...]]\n                \
+  \ [--sqm SQ_MAPPING [SQ_MAPPING ...]] [-o OFILE] [-H] [-v]\n                 [template]\
+  \ input_file\n\npositional arguments:\n  template              template SAM file\
+  \ providing header information\n  input_file            input BAM file to reheader\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --rg ignore|update|replace [RG_TEMPLATE] [RG_MAPPING ...]\n                 \
+  \       how to compile the read group section of the new\n                     \
+  \   header; ignore: do not use template information ->\n                       \
+  \ keep original read groups, update: use template\n                        information\
+  \ to update original header content,\n                        replace: use only\
+  \ template read group information ->\n                        discard original (default:\
+  \ replace if a general\n                        template is specified, ignore if\
+  \ not); the optional\n                        RG_TEMPLATE is used instead of the\
+  \ general template to\n                        provide the template read group information;\
+  \ by\n                        default, update mode uses template information about\n\
+  \                        read-groups to add to / overwrite the original\n      \
+  \                  information of read-groups with the same ID, keeps all\n    \
+  \                    read-groups found only in the original header and adds\n  \
+  \                      read-groups found only in the template; replace\n       \
+  \                 overwrites all original information about a read-group\n     \
+  \                   if a read-group with the same ID is found in the\n         \
+  \               template, discards all read-groups found only in the\n         \
+  \               original header and adds read-groups found only in the\n       \
+  \                 template; to update or replace the information of a\n        \
+  \                read group with that of a template read-group with a\n        \
+  \                different ID, a RG_MAPPING between old and new ID\n           \
+  \             values can be provided in the format old_id : new_id\n           \
+  \             [old_id : new_id, ..]\n  --sq ignore|update|replace [SQ_TEMPLATE]\
+  \ [SQ_MAPPING ...]\n                        how to compile the sequence dictionary\
+  \ of the new\n                        header; ignore: do not use template information\
+  \ ->\n                        keep original sequence dictionary, update: use\n \
+  \                       template information to update original header\n       \
+  \                 content, replace: use only template sequence\n               \
+  \         information -> discard original (default: replace if a\n             \
+  \           general template is specified, ignore if not); the\n               \
+  \         optional SQ_TEMPLATE is used instead of the general\n                \
+  \        template to provide the template sequence dictionary;\n               \
+  \         by default, update mode uses template sequence\n                     \
+  \   information to add to / overwrite the original\n                        information\
+  \ of sequences with the same name (SN tag\n                        value), keeps\
+  \ all sequences found only in the original\n                        header and adds\
+  \ sequences found only in the template;\n                        replace overwrites\
+  \ all original information about a\n                        sequence if a sequence\
+  \ with the same name is found in\n                        the template, discards\
+  \ all sequences found only in the\n                        original header and adds\
+  \ sequences found only in the\n                        template; to update or replace\
+  \ the information about a\n                        sequence with that of a template\
+  \ sequence with a\n                        different name, a SQ_MAPPING between\
+  \ old and new\n                        sequence names (SN values) can be provided\
+  \ in the\n                        format old_sn : new_sn [old_sn : new_sn, ..];\
+  \ to\n                        protect against file format corruption, the tool will\n\
+  \                        NEVER modify the recorded LENGTH (LN tag) nor the MD5\n\
+  \                        checksum (M5 tag) of any sequence\n  --co ignore|update|replace\
+  \ [CO_TEMPLATE ...]\n                        how to compile the comments (CO lines)\
+  \ of the new\n                        header; ignore: do not use template comments\
+  \ -> keep\n                        original comments, update: append template comment\n\
+  \                        lines to original comments, replace: use only template\n\
+  \                        comments -> discard original (default: replace if a\n \
+  \                       general template is specified, ignore if not); the\n   \
+  \                     optional CO_TEMPLATE is used instead of the general\n    \
+  \                    template to provide the template comments\n  --rgm RG_MAPPING\
+  \ [RG_MAPPING ...]\n                        optional mapping between read group\
+  \ ID values in the\n                        format old_id : new_id [old_id : new_id,\
+  \ ..]; used to\n                        rename read groups and applied AFTER any\
+  \ other\n                        modifications to the read group section (i.e.,\
+  \ every\n                        old_id must exist in the modified header)\n  --sqm\
+  \ SQ_MAPPING [SQ_MAPPING ...]\n                        optional mapping between\
+  \ sequence names (SN field\n                        values) in the format old_sn\
+  \ : new_sn [old_sn :\n                        new_sn, ..]; used to rename sequences\
+  \ in the sequence\n                        dictionary and applied AFTER any other\
+  \ modifications\n                        to the sequence dictionary (i.e., every\
+  \ old_sn must\n                        exist in the modified header)\n  -o OFILE,\
+  \ --ofile OFILE\n                        redirect the output to the specified file\
+  \ (default:\n                        stdout)\n  -H                    output only\
+  \ the resulting header\n  -v, --verbose\n"
+generated_using:
+- --help

@@ -1,0 +1,293 @@
+!Command
+command:
+- rsat
+- matrix-clustering
+positional:
+- !Positional
+  description: "\e[1mDESCRIPTION\e[0m"
+  position: 0
+  name: matrix-clustering
+  optional: false
+- !Positional
+  description: "\e[1mUSAGE\e[0m"
+  position: 0
+  name: util
+  optional: false
+- !Positional
+  description: "\e[1mSEE ALSO\e[0m"
+  position: 0
+  name: computer.
+  optional: false
+- !Positional
+  description: This label is useful when two motifs for the same TF come from
+  position: 0
+  name: results.
+  optional: false
+- !Positional
+  description: "\e[1m-task tasks\e[0m"
+  position: 0
+  name: displayed.
+  optional: false
+- !Positional
+  description: Assumes the users already have the description table and
+  position: 0
+  name: step.
+  optional: false
+- !Positional
+  description: We suggest use this option for a big set of input motifs > 300
+  position: 0
+  name: version.
+  optional: false
+- !Positional
+  description: "\e[1mNOTE:\e[0m By the moment the only a few thresholds can be used\
+    \ with this"
+  position: 1
+  name: motifs.
+  optional: false
+- !Positional
+  description: 'NOTE: take into account the input file size'
+  position: 0
+  name: file.
+  optional: false
+- !Positional
+  description: This parameter can be useful to prevent submission of excessive
+  position: 0
+  name: warning.
+  optional: false
+- !Positional
+  description: "\e[33maverage\e[0m (default)"
+  position: 0
+  name: nodes.
+  optional: false
+- !Positional
+  description: 'Supported metrics : cor, Ncor, dEucl, NdEucl, logocor, logoDP,'
+  position: 0
+  name: clustering.
+  optional: false
+- !Positional
+  description: The hierarchical tree in JSON format is always exported, since
+  position: 0
+  name: HTML.
+  optional: false
+- !Positional
+  description: This option is useful when the user wants to explore the data
+  position: 0
+  name: cluster.
+  optional: false
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    matrix-clustering\n\n\e[1mDESCRIPTION\e[0m\n    Taking\
+  \ as input one or several sets of position-specific scoring\n    matrices (PSSM),\
+  \ this program applies hierarchical clustering to\n    identify clusters of similar\
+  \ motifs. It produces a set of trees (one per\n    cluster) and builds branch motifs\
+  \ at each node of each tree by merging\n    the matrices of all descendent nodes.\n\
+  \n\e[1mAUTHORS\e[0m\n  \e[1mImplementation\e[0m\n    Jaime Castro-Mondragon <j.a.c.mondragon@ncmm.uio.no>\n\
+  \    Jacques.van-Helden@univ-amu.fr\n\n  \e[1mConception\e[0m\n    Jacques van Helden\n\
+  \    Jaime Castro-Mondragon\n        The following collaborators contributed to\
+  \ the definition of\n        requirements for this program.\n\n    Carl Herrmann\n\
+  \    Denis Thieffry\n    Morgane Thomas-Chollier\n\n\e[1mCATEGORY\e[0m\n    util\n\
+  \n\e[1mUSAGE\e[0m\n    matrix-clustering [-matrix inputfile] [-o outputfile] [-v\
+  \ ] [...]\n\n\e[1mOUTPUT FORMAT\e[0m\n    This program produces a large number of\
+  \ files (similarity matrix, motifs\n    for the internal nodes and roots of the\
+  \ motif clusters, dynamic trees to\n    visualised the motif clusters, ...\n\n \
+  \   These files are accessible via an html page\n    [output_prefix]_SUMMARY.html.\
+  \ The program also produces a zip archive\n    with all the files to facilitate\
+  \ the transfer from a server to the local\n    computer.\n\n\e[1mSEE ALSO\e[0m\n\
+  \    \e[33mcompare-matrices\e[0m\n        The program \e[33mcompare-matrices\e[0m\
+  \ is used by \e[33mcluster-matrices\e[0m to measure\n        pairwise similarities\
+  \ and define the best alignment (offset, strand)\n        between each pair of matrices.\n\
+  \n\e[1mDEPENDENCIES\e[0m\n    Some R packages are required in \e[33mmatrix-clustering\e\
+  [0m in order to convert\n    the hierarchical tree into different output formats,\
+  \ to manipulate the\n    dendrogram which is exported, and to produce heatmaps.\n\
+  \n        RJSONIO : http://cran.r-project.org/web/packages/RJSONIO/index.html\n\
+  \        ctc : http://www.bioconductor.org/packages/release/bioc/html/ctc.html\n\
+  \        dendextend : http://cran.r-project.org/web/packages/dendextend/index.html\n\
+  \        gplots : http://cran.r-project.org/web/packages/gplots/index.html\n\n \
+  \   The JavaScript library \e[33mD3\e[0m (Data Driven Documents) is required to\n\
+  \    visualize the logo forest.\n\n    The option \e[33m-d3_base\e[0m enables to\
+  \ connect directly with the server to load\n    the functions of this library.\n\
+  \n        D3 : http://d3js.org/\n\n    As many files are produced with \e[33mmatrix-clustering\e\
+  [0m we create a dynamic\n    web page giving access to the complete list of results.\
+  \ We use the\n    Javascript library \e[33mJQuery\e[0m to create this dynamic website.\n\
+  \n        JQuery: https://jquery.com/\n\n\e[1mWISH LIST\e[0m\n\e[1mOPTIONS\e[0m\n\
+  \    \e[1m-v #\e[0m\n        Level of verbosity (detail in the warning messages\
+  \ during execution)\n\n    \e[1m-h\e[0m  Display full help message\n\n    \e[1m-help\e\
+  [0m\n        Same as -h\n\n    \e[1m-matrix matrix_title input_matrix_file\e[0m\n\
+  \        The input file contains a set of position-specific scoring matrices.\n\n\
+  \        Example: -matrix OCt_motifs Oct_motifs_peakmotifs.tf tf\n\n        The\
+  \ matrix_title will be concatenated to each motif ID in order to\n        create\
+  \ unique motif IDs. The collection label is displayed in the\n        results.\n\
+  \n        This label is useful when two motifs for the same TF come from\n     \
+  \   different files and the user wants to know to which collection does\n      \
+  \  the motif come from.\n\n        \e[1mSupported matrix formats\e[0m\n\n      \
+  \  Since the program takes several matrices as input, it only accepts\n        matrices\
+  \ in formats supporting several matrices per file (transfac,\n        tf, tab, cluster-buster,\
+  \ cb, infogibbs, meme, stamp, uniprobe).\n\n        For a description of these formats,\
+  \ see the help of \e[33mconvert-matrix\e[0m.\n\n    \e[1m-matrix_file_table matrix_file_table\e\
+  [0m\n        This option is recommended when the input number of files is large\n\
+  \        (> 20), which would have a large command line and some programs are\n \
+  \       not capable of read such large arguments.\n\n        The input file contains\
+  \ a tab-delimited table with two columns:\n\n        1) The motif file - The path\
+  \ to the file with the motif 2) The\n        collection label\n\n        Example:\n\
+  \n        Sox_pssms.tf Sox Oct_pssms.tf Oct Nanog_pssms.tf Nanog\n\n    \e[1m-matrix_format\
+  \ matrix_format\e[0m\n        Specify the input matrix format.\n\n        \e[1mSupported\
+  \ matrix formats\e[0m\n\n        Since the program takes several matrices as input,\
+  \ it only accepts\n        matrices in formats supporting several matrices per file\
+  \ (transfac,\n        tf, tab, clusterbuster, cb, infogibbs, meme, stamp, uniprobe).\n\
+  \n        For a description of these formats, see the help of \e[33mconvert-matrix\e\
+  [0m.\n\n    \e[1m-ref_collection Matrix_collection_file Matrix_format\e[0m\n   \
+  \     This option allows to annotate the root motifs according to a\n        reference\
+  \ motif database.\n\n        Use this option when you cluster motifs obtained from\
+  \ a motif\n        discovery algorithm.\n\n        Example: -ref_collection Jaspar_vertebrates_2020.tf\
+  \ tf\n\n    \e[1m-seq Sequence_file Seq_format\e[0m\n        This option allows\
+  \ to generate the branch (including the root)\n        motifs from an input set\
+  \ of sequences. Instead of sum or average the\n        counts, the new marged matrix\
+  \ will be built from the sites found in\n        the provided sequences, this will\
+  \ produce a more realistic matrix\n        suppoted by real sequences.\n\n     \
+  \   Example: -seq Oct4_peaks.fa fasta\n\n    \e[1m-rescan_iter #\e[0m\n        Default:\
+  \ 3\n\n        Number of times each matrix is re-scanned in a provided set of\n\
+  \        sequences before producing the branch motifs.\n\n        Use this option\
+  \ in combination with -seq parameter.\n\n    \e[1m-ID_link_color_table matrix_ID_link_color_table\e\
+  [0m\n        This option allows to add a link to a any website specified by the\n\
+  \        user and can be used to visualize complete databases (e.g. Jaspar),\n \
+  \       thus each motif in the logo tree will point to its respective link\n   \
+  \     in the Jaspar website.\n\n        Format: a tab-separated file Column 1: Motif\
+  \ ID (the same as the\n        input motif file) Column 2: Link to any website Column\
+  \ 3: Color in\n        Hexadecimal code\n\n        This option may be combined with\
+  \ the -radial_tree_only. By default\n        the motifs names will be displayed\
+  \ in black, unless the third color\n        is specified.\n\n    \e[1m-title title\e\
+  [0m\n        Title displayed on top of the report page.\n\n    \e[1m-radial_tree_only\e\
+  [0m\n        Generates a radial motif tree (option recommended for visualization\n\
+  \        purposes). When this option is indicated, all the input motifs are\n  \
+  \      forced to be aligned in a single alignment displayed in a radial\n      \
+  \  tree (this tree is not interactive). This option skips the\n        generation\
+  \ of branch-motifs and the generation of the dynamic output\n        (e.g., heatmaps).\n\
+  \n    \e[1m-o output_prefix\e[0m\n        Prefix for the output files.\n\n     \
+  \   Mandatory option: since the program \e[33mcluster-matrices\e[0m returns a list\n\
+  \        of output files (pairwise matrix comparisons, matrix clusters).\n\n   \
+  \ \e[1m-heatmap_position_tree [row,col,both,none]\e[0m\n        The position in\
+  \ the heatmap where the hierarchical tree will be\n        displayed.\n\n    \e\
+  [1m-task tasks\e[0m\n        Specify one or several tasks to be run. If this option\
+  \ is not\n        specified, all the tasks are run.\n\n        Note that some tasks\
+  \ depend on others. This option should thus be\n        used with caution, by advanced\
+  \ users only.\n\n        Supported tasks: (all, comparison, clustering, report)\n\
+  \n        \e[1mall\e[0m Execute all the parts of the program (default)\n\n     \
+  \   \e[1mcomparison\e[0m\n            Run the motif comparison step. The input set\
+  \ of motifs are\n            compared against themselves. The output is the pairwise\n\
+  \            comparison between the input motifs and a description table\n     \
+  \       showing the main features of each motif (name, id, consensus,\n        \
+  \    width).\n\n        \e[1mclustering\e[0m\n            Skip the matrix comparison\
+  \ step and only executes the clustering\n            step.\n\n            Assumes\
+  \ the users already have the description table and\n            comparison table\
+  \ exported from the program \e[33mcompare-matrices\e[0m.\n\n            This option\
+  \ is ideal to saving time once all comparison beteen\n            the input motifs\
+  \ had been done.\n\n    \e[1m-label_in_tree\e[0m\n        Option to select the labels\
+  \ displayed in the logo tree.\n\n        \e[1mSupported labels\e[0m\n\n        \
+  \ (name, consensus, id)\n\n    \e[1m-label_motif\e[0m\n        Option to select\
+  \ the labels displayed in the cluster summary.\n\n        \e[1mSupported labels\e\
+  [0m\n\n         (name, consensus, collection)\n\n        Default: name::collection\n\
+  \n    \e[1m-quick\e[0m\n        With this option the motif comparison is done with\
+  \ the program\n        \e[33mcompare-matrices-quick\e[0m (implemented in C) rather\
+  \ than the program\n        compare-matrices (implemented in Perl). The quick version\
+  \ runs x100\n        times faster, but has not all implemented options as in the\
+  \ Perl\n        version.\n\n        We suggest use this option for a big set of\
+  \ input motifs > 300\n        motifs.\n\n        \e[1mNOTE:\e[0m By the moment the\
+  \ only a few thresholds can be used with this\n        option. (cor, Ncor, w)\n\n\
+  \    \e[1m-no_clone_input\e[0m\n        Desactive tha option to copy the input file.\
+  \ If more than one\n        collections of motifs are provided, they are exported\
+  \ in a single\n        file.\n\n        NOTE: take into account the input file size\n\
+  \n    \e[1m-rand\e[0m\n        When this option is selected, the columns of the\
+  \ input motifs are\n        randomly permuted (conserving thus the Information Content),\
+  \ the new\n        motifs are used as input for the pairwise-comparison and clustering.\n\
+  \n    \e[1m-heatmap_color_palette Color_Palette\e[0m\n        Select the color palette\
+  \ used in the heatmaps (sequential scales)\n        The color palettes (and their\
+  \ names) are taken from ColorBrewer2\n        website (http://colorbrewer2.org/)\n\
+  \n        Supported:\n        YlOrRd,YlOrBr,YlGnBu,YlGn,PuRd,PuBuGn,PuBu,OrRd,GnBu,BuPu,BuGn,Reds,\n\
+  \        Purples,Oranges,Greys,Greens,Blues\n\n        Default: YlOrRd\n\n    \e\
+  [1m-heatmap_color_classes X\e[0m\n        This option specifies in how many color\
+  \ classes the color palette\n        will be divided.\n\n        For sequential\
+  \ color palettes: max 9 For diverging color palettes:\n        max 11\n\n      \
+  \  If the user specified a color greater than the maximum allowed, the\n       \
+  \ program takes this maximum value.\n\n        For more information see ColorBrewer2\
+  \ website\n        (http://colorbrewer2.org/)\n\n    \e[1m-max_matrices X\e[0m\n\
+  \        This option specifies how many matrices can be clustered in the same\n\
+  \        analysis. If there are more matrices than the specified number, the\n \
+  \       program restrics the analyses to the first X matrices, and issues a\n  \
+  \      warning.\n\n        This parameter can be useful to prevent submission of\
+  \ excessive\n        datasets to the Web server, or for running quick tests before\n\
+  \        starting the analysis of a large matrix collection.\n\n    \e[1m-hclust_method\e\
+  [0m\n        Option to select the agglomeration rule for hierarchical clustering.\n\
+  \n        Supported agglomeration rules:\n\n        \e[33mcomplete\e[0m\n      \
+  \      Compute inter-cluster distances based on the two most distant\n         \
+  \   nodes.\n\n        \e[33maverage\e[0m (default)\n            Compute inter-cluster\
+  \ distances as the average distance between\n            nodes belonging to the\
+  \ relative clusters. (UPGMA)\n\n        \e[33msingle\e[0m\n            Compute inter-cluster\
+  \ distances based on the closest nodes.\n\n    \e[1m-top_matrices X\e[0m\n     \
+  \   Only analyze the first X motifs of the input file. This options is\n       \
+  \ convenient for quick testing before starting the full analysis.\n\n        If\
+  \ several motif files are specified, the selection of top motifs is\n        performed\
+  \ independently for each motif collection (the max number of\n        motifs will\
+  \ this be X * the number of input files).\n\n    \e[1m-skip_matrices X\e[0m\n  \
+  \      Skip the first X motifs of the input file. This options is\n        convenient\
+  \ for testing the program on a subset of the motifs before\n        starting the\
+  \ full analysis.\n\n        If several motif files are specified, the option is\
+  \ applied to each\n        file independently.\n\n    \e[1m-metric_build_tree metric\e\
+  [0m\n        Select the metric which will be used to cluster the motifs.based in\n\
+  \        one metric of to measure motif similarity. This metric can be a\n     \
+  \   similarity or distance, in both cases the values are converted to a\n      \
+  \  distance table which is used as input for the hierarchical\n        clustering.\n\
+  \n        Supported metrics : cor, Ncor, dEucl, NdEucl, logocor, logoDP,\n     \
+  \   Nlogocor, Icor, NIcor, SSD, rank_mean, mean_zscore\n\n        Default: Ncor\n\
+  \n    \e[1m-lth param lower_threshold\e[0m\n    \e[1m-uth param upper_threshold\e\
+  [0m\n        Threshold on some parameters (-lth: lower, -uth: upper threshold).\n\
+  \n        Once the hierarchical tree is built, this tree is traversed in a\n   \
+  \     bottom-up way. On each branch the descendant motifs are evaluated in\n   \
+  \     the same way the clustering method selected by the user (average,\n      \
+  \  complete, single).\n\n        In this algorithm, the threshold can be set combining\
+  \ values of\n        different metrics.\n\n        If the descendant motifs for\
+  \ a particular branch do not satisfy the\n        threshold a new cluster is created.\n\
+  \n        For a complete description of the thresholds and the motif\n        comparison\
+  \ metrics see the help of \e[33mcompare-matrices\e[0m\n\n        Suggested thresholds:\n\
+  \n            cor >= 0.7\n\n            Ncor >= 0.4\n\n            w >= 5\n\n  \
+  \  \e[1m-calc merging_stat\e[0m\n        Specify the operator used to merge matrices\
+  \ (argument passed to\n        \e[33mmerge-matrices)\e[0m.\n\n        Supported:\n\
+  \n        \e[33mmean\e[0m (default)\n            Each cell of the output matrix\
+  \ contains the mean of the values\n            found in the corresponding cell of\
+  \ the input matrices.\n\n        \e[33msum\e[0m Each cell of the output matrix contains\
+  \ the sum of the values\n            found in the corresponding cell of the input\
+  \ matrices.\n\n            Note: the option \e[33mdiff\e[0m, supported by \e[33mmerge-matrices\e\
+  [0m, is not\n            accepted for \e[33mmatrix-clustering\e[0m.\n\n    \e[1m-trim_threshold\
+  \ #\e[0m\n        Trimming threshold.\n\n        Left- and right-most columns whose\
+  \ information content are smaller\n        than this threshold will be trimmed,\
+  \ to avoid exporting large\n        matrices with non-informative flanks.\n\n  \
+  \      \e[1mBeware:\e[0m in some cases the trimming can deteriorate the motifs,\
+  \ by\n        cutting moderately informative positions.\n\n    \e[1m-return return_fields\e\
+  [0m\n        List of fields to return.\n\n        Supported fields:\n\n        \
+  \ heatmap,json,newick,root_matrices\n\n        \e[1mclone_input:\e[0m Copy input\
+  \ file.\n            When this field is selected, the input motif database is copied\n\
+  \            and exported in the results folder.\n\n            NOTE: take into\
+  \ account the input file size.\n\n        \e[1mheatmap:\e[0m Heatmap with similarities.\n\
+  \            When this field is selected, exports a heatmap showing the\n      \
+  \      similarities, the clusters and the hierarchical tree of the\n           \
+  \ input motifs.\n\n            The heatmap is exported in JPEG and PDF format.\n\
+  \n            We recommend to use this option when the number of motifs is\n   \
+  \         lower than 300.\n\n        \e[1mjson:\e[0m Hierarchical tree in JSON format.\n\
+  \            File format used for D3 library to visualize the logo forest in\n \
+  \           HTML.\n\n            The hierarchical tree in JSON format is always\
+  \ exported, since\n            it is required to display the logo tree with the\
+  \ d3 library.\n\n        \e[1mnewick:\e[0m Hierarchical tree in newick format.\n\
+  \            When this field is specified, the hierarchical tree is converted\n\
+  \            and exported in Newick format, a widely used text format to\n     \
+  \       represent phylogenetic trees.\n\n        \e[1mroot_matrices:\e[0m Return\
+  \ only the root motif of each cluster.\n            When this field is specified,\
+  \ matrix-clustering runs the minimal\n            analysis and return a text file\
+  \ with the root motifs of each\n            cluster.\n\n            This option\
+  \ is useful when the user wants to explore the data\n            and to avoid the\
+  \ cimputation of the visual elements.\n\n"
+generated_using:
+- -h

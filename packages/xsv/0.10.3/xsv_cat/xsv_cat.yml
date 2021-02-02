@@ -1,0 +1,82 @@
+!Command
+command:
+- xsv
+- cat
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: columns
+  optional: false
+- !Positional
+  description: ''
+  position: 0
+  name: rows
+  optional: false
+named:
+- !Flag
+  description: "When concatenating columns, this flag will cause\nall records to appear.\
+    \ It will pad each row if\nother CSV data isn't long enough."
+  synonyms:
+  - -p
+  - --pad
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write output to <file> instead of stdout.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "When set, the first row will NOT be interpreted\nas column names.\
+    \ Note that this has no effect when\nconcatenating columns."
+  synonyms:
+  - -n
+  - --no-headers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The field delimiter for reading CSV data.\nMust be a single character.\
+    \ (default: ,)\n"
+  synonyms:
+  - -d
+  - --delimiter
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Concatenates CSV data by column or by row.\n\nWhen concatenating by column,\
+  \ the columns will be written in the same order as\nthe inputs given. The number\
+  \ of rows in the result is always equivalent to to\nthe minimum number of rows across\
+  \ all given CSV data. (This behavior can be\nreversed with the '--pad' flag.)\n\n\
+  When concatenating by row, all CSV data must have the same number of columns.\n\
+  If you need to rearrange the columns or fix the lengths of records, use the\n'select'\
+  \ or 'fixlengths' commands. Also, only the headers of the *first* CSV\ndata given\
+  \ are used. Headers in subsequent inputs are ignored. (This behavior\ncan be disabled\
+  \ with --no-headers.)\n\nUsage:\n    xsv cat rows    [options] [<input>...]\n  \
+  \  xsv cat columns [options] [<input>...]\n    xsv cat --help\n\ncat options:\n\
+  \    -p, --pad              When concatenating columns, this flag will cause\n \
+  \                          all records to appear. It will pad each row if\n    \
+  \                       other CSV data isn't long enough.\n\nCommon options:\n \
+  \   -h, --help             Display this message\n    -o, --output <file>    Write\
+  \ output to <file> instead of stdout.\n    -n, --no-headers       When set, the\
+  \ first row will NOT be interpreted\n                           as column names.\
+  \ Note that this has no effect when\n                           concatenating columns.\n\
+  \    -d, --delimiter <arg>  The field delimiter for reading CSV data.\n        \
+  \                   Must be a single character. (default: ,)\n"
+generated_using:
+- --help

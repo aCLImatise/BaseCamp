@@ -1,0 +1,170 @@
+!Command
+command:
+- IDMapper
+positional: []
+named:
+- !Flag
+  description: "*                        Protein/peptide identifications file (valid\
+    \ formats: 'mzid', 'idXML')"
+  synonyms:
+  - -id
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                        Feature map/consensus map file (valid formats:\
+    \ 'featureXML', 'consensusXML', 'mzq')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                       Output file (the format depends on the input\
+    \ file format). (valid formats: 'featureXML', 'consensusXML', 'mzq')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "RT tolerance (in seconds) for the matching of peptide identifications\
+    \ and (consensus) features.\nTolerance is understood as 'plus or minus x', so\
+    \ the matching range increases by twice the given value. (default: '5.0' min:\
+    \ '0.0')"
+  synonyms:
+  - -rt_tolerance
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "M/z tolerance (in ppm or Da) for the matching of peptide identifications\
+    \ and (consensus) features.\nTolerance is understood as 'plus or minus x', so\
+    \ the matching range increases by twice the given value. (default: '20.0' min:\
+    \ '0.0')"
+  synonyms:
+  - -mz_tolerance
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "Unit of 'mz_tolerance'. (default: 'ppm' valid: 'ppm', 'Da')"
+  synonyms:
+  - -mz_measure
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: "Source of m/z values for peptide identifications. If 'precursor',\
+    \ the precursor-m/z from the idXML is used. If 'peptide',\nmasses are computed\
+    \ from the sequences of peptide hits; in this case, an identification matches\
+    \ if any of its hits matches.\n('peptide' should be used together with 'feature:use_centroid_mz'\
+    \ to avoid false-positive matches.) (default: 'peptide' valid: 'precursor', 'peptide')"
+  synonyms:
+  - -mz_reference
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: :use_subelements         Match using RT and m/z of sub-features instead
+    of consensus RT and m/z. A consensus feature matches if any of its sub-features
+    matches.
+  synonyms:
+  - -consensus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":in <file>                 MS run used to annotated unidentified spectra\
+    \ to features or consensus features. (valid formats: 'mzML')"
+  synonyms:
+  - -spectra
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nIDMapper -- Assigns\
+  \ protein/peptide identifications to features or consensus features.\nFull documentation:\
+  \ http://www.openms.de/documentation/TOPP_IDMapper.html\nVersion: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND\
+  \ Jul 16 2020, 21:29:13, Revision: HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL,\
+  \ Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible open-source software\
+  \ platform for mass spectrometry data analysis. Nat Meth. 2016; 13, 9: 741-748.\
+  \ doi:10.1038/nmeth.3959.\n\nUsage:\n  IDMapper <options>\n\nOptions (mandatory\
+  \ options marked with '*'):\n  -id <file>*                        Protein/peptide\
+  \ identifications file (valid formats: 'mzid', 'idXML')\n  -in <file>*         \
+  \               Feature map/consensus map file (valid formats: 'featureXML', 'consensusXML',\
+  \ 'mzq')\n  -out <file>*                       Output file (the format depends on\
+  \ the input file format). (valid formats: 'featureXML', 'consensusXML', 'mzq')\n\
+  \                                     \n  -rt_tolerance <value>              RT\
+  \ tolerance (in seconds) for the matching of peptide identifications and (consensus)\
+  \ features.\n                                     Tolerance is understood as 'plus\
+  \ or minus x', so the matching range increases by twice the given value. (default:\
+  \ '5.0' min: '0.0')\n  -mz_tolerance <value>              M/z tolerance (in ppm\
+  \ or Da) for the matching of peptide identifications and (consensus) features.\n\
+  \                                     Tolerance is understood as 'plus or minus\
+  \ x', so the matching range increases by twice the given value. (default: '20.0'\
+  \ min: '0.0')\n  -mz_measure <choice>               Unit of 'mz_tolerance'. (default:\
+  \ 'ppm' valid: 'ppm', 'Da')\n  -mz_reference <choice>             Source of m/z\
+  \ values for peptide identifications. If 'precursor', the precursor-m/z from the\
+  \ idXML is used. If 'peptide',\n                                     masses are\
+  \ computed from the sequences of peptide hits; in this case, an identification matches\
+  \ if any of its hits matches.\n                                     ('peptide' should\
+  \ be used together with 'feature:use_centroid_mz' to avoid false-positive matches.)\
+  \ (default: 'peptide' valid: 'precursor', 'peptide')\n                         \
+  \            \n\nAdditional options for featureXML input:\n  -feature:use_centroid_rt\
+  \ <choice>  Use the RT coordinates of the feature centroids for matching, instead\
+  \ of the RT ranges of the features/mass traces. (default: 'false' valid: 'true',\
+  \ 'false')\n  -feature:use_centroid_mz <choice>  Use the m/z coordinates of the\
+  \ feature centroids for matching, instead of the m/z ranges of the features/mass\
+  \ traces.\n                                     (If you choose 'peptide' as 'mz_reference',\
+  \ you should usually set this flag to avoid false-positive matches.) (default: 'true'\
+  \ valid: 'true', 'false')\n\n                                     \n\nAdditional\
+  \ options for consensusXML input:\n  -consensus:use_subelements         Match using\
+  \ RT and m/z of sub-features instead of consensus RT and m/z. A consensus feature\
+  \ matches if any of its sub-features matches.\n\nAdditional options for mzML input:\n\
+  \  -spectra:in <file>                 MS run used to annotated unidentified spectra\
+  \ to features or consensus features. (valid formats: 'mzML')\n\n               \
+  \                      \nCommon TOPP options:\n  -ini <file>                   \
+  \     Use the given TOPP INI file\n  -threads <n>                       Sets the\
+  \ number of threads allowed to be used by the TOPP tool (default: '1')\n  -write_ini\
+  \ <file>                  Writes the default configuration file\n  --help      \
+  \                       Shows options\n  --helphelp                         Shows\
+  \ all options (including advanced)\n\n"
+generated_using:
+- --help

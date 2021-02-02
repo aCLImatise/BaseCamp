@@ -1,0 +1,385 @@
+!Command
+command:
+- svviz
+positional:
+- !Positional
+  description: "reference fasta file (a .faidx index file will be created if it doesn't\
+    \ exist so you need \nwrite permissions for this directory)"
+  position: 0
+  name: ref
+  optional: false
+- !Positional
+  description: information about the breakpoint to be analyzed; see below for information
+  position: 1
+  name: breakpoints
+  optional: false
+named:
+- !Flag
+  description: "sorted, indexed bam file containing reads of interest to plot; can\
+    \ be specified multiple\ntimes to load multiple samples"
+  synonyms:
+  - -b
+  - --bam
+  args: !SimpleFlagArg
+    name: BAM
+  optional: true
+- !Flag
+  description: "event type: either del[etion], ins[ertion], inv[ersion], mei (mobile\
+    \ element insertion),\ntra[nslocation], largedeletion (ldel), breakend (bkend)\
+    \ or batch (for reading variants\nfrom a VCF file in batch mode)"
+  synonyms:
+  - -t
+  - --type
+  args: !SimpleFlagArg
+    name: TYPE
+  optional: true
+- !Flag
+  description: "bed or gtf file containing annotations to plot; will be compressed\
+    \ and indexed using\nsamtools tabix in place if needed (can specify multiple annotations\
+    \ files)"
+  synonyms:
+  - -A
+  - --annotations
+  args: !SimpleFlagArg
+    name: ANNOTATIONS
+  optional: true
+- !Flag
+  description: "An additional indexable fasta file specifying insertion sequences\
+    \ (eg mobile element\nsequences)"
+  synonyms:
+  - --fasta
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: 'minimum mapping quality for reads (default: 0)'
+  synonyms:
+  - -q
+  - --min-mapq
+  args: !SimpleFlagArg
+    name: MAPQ
+  optional: true
+- !Flag
+  description: "include only read pairs where at least one read end both exceeds PAIR_MAPQ\
+    \ and\nfalls near the variant being analyzed (default: 0)"
+  synonyms:
+  - --pair-min-mapq
+  args: !SimpleFlagArg
+    name: PAIR_MAPQ
+  optional: true
+- !Flag
+  description: "maximum ratio between best and second-best alignment scores within\
+    \ visualization\nregion in order to retain read (default: 0.95)"
+  synonyms:
+  - --max-multimapping-similarity
+  args: !SimpleFlagArg
+    name: MAX_SIMILARITY
+  optional: true
+- !Flag
+  description: "minimum score of the Smith-Waterman alignment against the ref or alt\
+    \ allele in order to be\nconsidered (multiplied by 2)"
+  synonyms:
+  - -a
+  - --aln-quality
+  args: !SimpleFlagArg
+    name: QUALITY
+  optional: true
+- !Flag
+  description: "minimum difference in scores between ref alignment score and alt alignment\
+    \ score\nto be assigned to one allele (use an integer to specify a hard score\
+    \ difference\nthreshold, or a float to specify a score difference relative to\
+    \ the read size;\ndefault: 2)"
+  synonyms:
+  - --aln-score-delta
+  args: !SimpleFlagArg
+    name: DELTA
+  optional: true
+- !Flag
+  description: "include supplementary alignments (ie, those with the 0x800 bit set\
+    \ in the bam flags);\ndefault: false"
+  synonyms:
+  - --include-supplementary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "implements some optimizations designed to find exact sequence matches\
+    \ quickly;\nwill substantially increase speed on Illumina data but may result\
+    \ in some inexact\nresults; default: false"
+  synonyms:
+  - --fast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "use at most this many reads (pairs), sampling randomly if need be,\
+    \ useful\nwhen running in batch mode (default: use all reads)"
+  synonyms:
+  - --sample-reads
+  args: !SimpleFlagArg
+    name: SAMPLE_READS
+  optional: true
+- !Flag
+  description: "maximum number of reads allowed, totaled across all samples, useful\
+    \ when running in batch\nmode (default: unlimited)"
+  synonyms:
+  - --max-reads
+  args: !SimpleFlagArg
+    name: MAX_READS
+  optional: true
+- !Flag
+  description: "maximum event size allowed, totaled across all chromosome parts in\
+    \ bp; if either the ref\nallele or alt allele exceeds this size, it will be skipped\
+    \ (default: unlimited)"
+  synonyms:
+  - --max-size
+  args: !SimpleFlagArg
+    name: MAX_SIZE
+  optional: true
+- !Flag
+  description: "deletion size above which the deletion is analyzed in breakend mode\
+    \ (default: don't\nconvert to breakend mode)"
+  synonyms:
+  - --max-deletion-size
+  args: !SimpleFlagArg
+    name: MAX_DELETION_SIZE
+  optional: true
+- !Flag
+  description: 'define a port to use for the web browser (default: random port)'
+  synonyms:
+  - -p
+  - --port
+  args: !SimpleFlagArg
+    name: PORT
+  optional: true
+- !Flag
+  description: 'how many processes to use for read realignment (default: use all available
+    cores)'
+  synonyms:
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: don't show the web interface
+  synonyms:
+  - --no-web
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: save relevant reads to this file (bam)
+  synonyms:
+  - --save-reads
+  args: !SimpleFlagArg
+    name: OUT_BAM_PATH
+  optional: true
+- !Flag
+  description: how verbose the progress and logging should be
+  synonyms:
+  - --verbose
+  args: !SimpleFlagArg
+    name: VERBOSE
+  optional: true
+- !Flag
+  description: "export view to file; in single variant-mode, the exported file format\
+    \ is determined from\nthe filename extension unless --format is specified; in\
+    \ batch mode, this should be the name\nof a directory into which to save the files\
+    \ (use --format to set format); setting --export\nautomatically sets --no-web"
+  synonyms:
+  - -e
+  - --export
+  args: !SimpleFlagArg
+    name: EXPORT
+  optional: true
+- !Flag
+  description: "file export format, either svg, png or\npdf; by default, this is pdf\
+    \ (batch mode) or automatically identified from the file\nextension of --export"
+  synonyms:
+  - --format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: automatically open the exported file
+  synonyms:
+  - -O
+  - --open-exported
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "which program should be used to convert the output into PDF or PNG;\
+    \ choose from [webkitToPDF,\nlibrsvg, inkscape] (default: auto)"
+  synonyms:
+  - --converter
+  args: !SimpleFlagArg
+    name: CONVERTER
+  optional: true
+- !Flag
+  description: "Reads are shown with thicker lines, potentially overlapping one another,\
+    \ but increasing\ncontrast when zoomed out"
+  synonyms:
+  - --thicker-lines
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of additional nucleotides of genomic context to either side\
+    \ of the visualization\n(useful for showing nearby annotations)"
+  synonyms:
+  - --context
+  args: !SimpleFlagArg
+    name: CONTEXT
+  optional: true
+- !Flag
+  description: "Show reads in regions flanking the structural variant; these reads\
+    \ do not\ncontribute to the ref or alt allele read counts (default: false)"
+  synonyms:
+  - -f
+  - --flanks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't color mismatches, insertions and deletions
+  synonyms:
+  - --skip-cigar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "generate dotplots to show sequence homology within the aligned region;\
+    \ requires some\nadditional optional python libraries (scipy and PIL) and may\
+    \ take several minutes for\nlonger variants"
+  synonyms:
+  - --dotplots
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: plot the insert size distributions for each sample, for each event
+  synonyms:
+  - --export-insert-sizes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: save summary statistics to this (tab-delimited) file
+  synonyms:
+  - --summary
+  args: !SimpleFlagArg
+    name: SUMMARY_FILE
+  optional: true
+- !Flag
+  description: "lowers the minimum alignment quality, showing reads even when breakpoints\
+    \ are only\napproximately correct, or reads of lower quality (eg PacBio); and\
+    \ requires a larger\ndifference in alignment scores in order to assign a read\
+    \ to an allele"
+  synonyms:
+  - --lenient
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show svviz version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: svviz [options] [demo] [ref breakpoint...] [ref vcf]\n\nsvviz version\
+  \ 1.6.2\n\npositional arguments:\n  ref                   reference fasta file (a\
+  \ .faidx index file will be created if it doesn't exist so you need \n         \
+  \               write permissions for this directory)\n  breakpoints           information\
+  \ about the breakpoint to be analyzed; see below for information\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n\nrequired parameters:\n\
+  \  -b BAM, --bam BAM     sorted, indexed bam file containing reads of interest to\
+  \ plot; can be specified multiple \n                        times to load multiple\
+  \ samples\n\ninput parameters:\n  -t TYPE, --type TYPE  event type: either del[etion],\
+  \ ins[ertion], inv[ersion], mei (mobile element insertion), \n                 \
+  \       tra[nslocation], largedeletion (ldel), breakend (bkend) or batch (for reading\
+  \ variants  \n                        from a VCF file in batch mode)\n  -A ANNOTATIONS,\
+  \ --annotations ANNOTATIONS\n                        bed or gtf file containing\
+  \ annotations to plot; will be compressed and indexed using \n                 \
+  \       samtools tabix in place if needed (can specify multiple annotations files)\n\
+  \  --fasta FASTA         An additional indexable fasta file specifying insertion\
+  \ sequences (eg mobile element \n                        sequences)\n  -q MAPQ,\
+  \ --min-mapq MAPQ\n                        minimum mapping quality for reads (default:\
+  \ 0)\n  --pair-min-mapq PAIR_MAPQ\n                        include only read pairs\
+  \ where at least one read end both exceeds PAIR_MAPQ and \n                    \
+  \    falls near the variant being analyzed (default: 0)\n  --max-multimapping-similarity\
+  \ MAX_SIMILARITY\n                        maximum ratio between best and second-best\
+  \ alignment scores within visualization \n                        region in order\
+  \ to retain read (default: 0.95)\n  -a QUALITY, --aln-quality QUALITY\n        \
+  \                minimum score of the Smith-Waterman alignment against the ref or\
+  \ alt allele in order to be \n                        considered (multiplied by\
+  \ 2)\n  --aln-score-delta DELTA\n                        minimum difference in scores\
+  \ between ref alignment score and alt alignment score \n                       \
+  \ to be assigned to one allele (use an integer to specify a hard score difference\
+  \ \n                        threshold, or a float to specify a score difference\
+  \ relative to the read size; \n                        default: 2)\n  --include-supplementary\n\
+  \                        include supplementary alignments (ie, those with the 0x800\
+  \ bit set in the bam flags); \n                        default: false\n  --fast\
+  \                implements some optimizations designed to find exact sequence matches\
+  \ quickly;\n                        will substantially increase speed on Illumina\
+  \ data but may result in some inexact\n                        results; default:\
+  \ false\n  --sample-reads SAMPLE_READS\n                        use at most this\
+  \ many reads (pairs), sampling randomly if need be, useful \n                  \
+  \      when running in batch mode (default: use all reads)\n  --max-reads MAX_READS\n\
+  \                        maximum number of reads allowed, totaled across all samples,\
+  \ useful when running in batch \n                        mode (default: unlimited)\n\
+  \  --max-size MAX_SIZE   maximum event size allowed, totaled across all chromosome\
+  \ parts in bp; if either the ref \n                        allele or alt allele\
+  \ exceeds this size, it will be skipped (default: unlimited)\n  --max-deletion-size\
+  \ MAX_DELETION_SIZE\n                        deletion size above which the deletion\
+  \ is analyzed in breakend mode (default: don't \n                        convert\
+  \ to breakend mode)\n\ninterface parameters:\n  -v, --version         show svviz\
+  \ version number and exit\n  -p PORT, --port PORT  define a port to use for the\
+  \ web browser (default: random port)\n  --processes PROCESSES\n                \
+  \        how many processes to use for read realignment (default: use all available\
+  \ cores)\n  --no-web              don't show the web interface\n  --save-reads OUT_BAM_PATH\n\
+  \                        save relevant reads to this file (bam)\n  --verbose VERBOSE\
+  \     how verbose the progress and logging should be\n  -e EXPORT, --export EXPORT\n\
+  \                        export view to file; in single variant-mode, the exported\
+  \ file format is determined from \n                        the filename extension\
+  \ unless --format is specified; in batch mode, this should be the name \n      \
+  \                  of a directory into which to save the files (use --format to\
+  \ set format); setting --export \n                        automatically sets --no-web\n\
+  \  --format FORMAT       file export format, either svg, png or \n             \
+  \           pdf; by default, this is pdf (batch mode) or automatically identified\
+  \ from the file \n                        extension of --export\n  -O, --open-exported\
+  \   automatically open the exported file\n  --converter CONVERTER\n            \
+  \            which program should be used to convert the output into PDF or PNG;\
+  \ choose from [webkitToPDF, \n                        librsvg, inkscape] (default:\
+  \ auto)\n  --thicker-lines       Reads are shown with thicker lines, potentially\
+  \ overlapping one another, but increasing \n                        contrast when\
+  \ zoomed out\n  --context CONTEXT     Number of additional nucleotides of genomic\
+  \ context to either side of the visualization \n                        (useful\
+  \ for showing nearby annotations)\n  -f, --flanks          Show reads in regions\
+  \ flanking the structural variant; these reads do not \n                       \
+  \ contribute to the ref or alt allele read counts (default: false)\n  --skip-cigar\
+  \          Don't color mismatches, insertions and deletions\n  --dotplots      \
+  \      generate dotplots to show sequence homology within the aligned region; requires\
+  \ some \n                        additional optional python libraries (scipy and\
+  \ PIL) and may take several minutes for \n                        longer variants\n\
+  \  --export-insert-sizes\n                        plot the insert size distributions\
+  \ for each sample, for each event\n  --summary SUMMARY_FILE\n                  \
+  \      save summary statistics to this (tab-delimited) file\n\npresets:\n  --lenient\
+  \             lowers the minimum alignment quality, showing reads even when breakpoints\
+  \ are only \n                        approximately correct, or reads of lower quality\
+  \ (eg PacBio); and requires a larger \n                        difference in alignment\
+  \ scores in order to assign a read to an allele\n\nBreakpoint formats:\nFormat for\
+  \ deletion (-t del) breakpoints is '<chrom> <start> <end>'\nFormat for largedeletion\
+  \ (-t ldel) breakpoints is '<chrom> <start> <end>'\nFormat for insertion (-t ins)\
+  \ breakpoints is '<chrom> <pos> [end] <seq>'; \n  specify 'end' to create a compound\
+  \ deletion-insertion, otherwise insertion \n  position is before 'pos'\nFormat for\
+  \ inversion (-t inv) breakpoints is '<chrom> <start> <end>'\nFormat for mobile element\
+  \ insertion (-t mei) is '<mobile_elements.fasta> \n  <chrom> <pos> <ME name> [ME\
+  \ strand [start [end]]]'\nFormat for a translocation (-t tra) is 'chrom1 start1\
+  \ chrom2 start2 orientation'\nFormat for a breakend (-t bkend) is 'chrom1 start1\
+  \ strand1 chrom2 start2 strand2'\n\nFor an example, run 'svviz demo'.\n\nSubmit\
+  \ bug reports and feature requests at\nhttps://github.com/svviz/svviz/issues\n"
+generated_using:
+- --help

@@ -1,0 +1,183 @@
+!Command
+command:
+- amptk
+- illumina3
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: amptk
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: illumina3/emp
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: arguments
+  optional: false
+named:
+- !Flag
+  description: FASTQ R1 (forward) file (Required)
+  synonyms:
+  - -f
+  - --forward
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FASTQ R2 (reverse) file (Required)
+  synonyms:
+  - -r
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FASTQ I3 (index) file (Required)
+  synonyms:
+  - -i
+  - --index
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: QIIME-like mapping file.
+  synonyms:
+  - -m
+  - --mapping_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Length to trim/pad reads. Default: 300'
+  synonyms:
+  - -l
+  - --trim_len
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Pad reads with Ns if shorter than --trim_len. Default: off [on,off]'
+  synonyms:
+  - -p
+  - --pad
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output folder name. Default: amptk-data'
+  synonyms:
+  - -o
+  - --out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Forward primer sequence
+  synonyms:
+  - --fwd_primer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Reverse primer sequence
+  synonyms:
+  - --rev_primer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minimum length read to keep. Default: 100'
+  synonyms:
+  - --min_len
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Illumina Read length (250 if 2 x 250 bp run). Default: auto detect'
+  synonyms:
+  - --read_length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Rescue Forward Reads if PE do not merge, e.g. long amplicons. Default:
+    on [on,off]'
+  synonyms:
+  - --rescue_forward
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Multi-fasta file of barocdes.
+  synonyms:
+  - --barcode_fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of mismatches in primers to allow. Default: 2'
+  synonyms:
+  - --primer_mismatch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of mismatches in index (barcodes) to allow. Default: 2'
+  synonyms:
+  - --barcode_mismatch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Reverse complement barcode sequences in mapping file.
+  synonyms:
+  - --barcode_rev_comp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Software to use for PE merging. Default: usearch [usearch,vsearch]'
+  synonyms:
+  - --merge_method
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of CPUs to use. Default: all'
+  synonyms:
+  - --cpus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove intermediate files.
+  synonyms:
+  - --cleanup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'USEARCH executable. Default: usearch9'
+  synonyms:
+  - -u
+  - --usearch
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage:       amptk illumina3/emp <arguments>\nversion:     1.4.2\n\n\
+  Description: Script takes PE Illumina reads, Index reads, mapping file and processes\
+  \ \n             data for clustering/denoising in AMPtk.  The default behavior is\
+  \ to: \n             1) find and trim primers, 2) merge the PE reads, 3) filter\
+  \ for Phix,\n             4) rename reads according to sample name, 4) trim/pad\
+  \ reads.\n    \nArguments:   -f, --forward       FASTQ R1 (forward) file (Required)\n\
+  \             -r, --reverse       FASTQ R2 (reverse) file (Required)\n         \
+  \    -i, --index         FASTQ I3 (index) file (Required)\n             -m, --mapping_file\
+  \  QIIME-like mapping file.\n             -l, --trim_len      Length to trim/pad\
+  \ reads. Default: 300\n             -p, --pad           Pad reads with Ns if shorter\
+  \ than --trim_len. Default: off [on,off]\n             -o, --out           Output\
+  \ folder name. Default: amptk-data  \n             --fwd_primer        Forward primer\
+  \ sequence\n             --rev_primer        Reverse primer sequence\n         \
+  \    --min_len           Minimum length read to keep. Default: 100\n           \
+  \  --read_length       Illumina Read length (250 if 2 x 250 bp run). Default: auto\
+  \ detect\n             --rescue_forward    Rescue Forward Reads if PE do not merge,\
+  \ e.g. long amplicons. Default: on [on,off]\n             --barcode_fasta     Multi-fasta\
+  \ file of barocdes.\n             --primer_mismatch   Number of mismatches in primers\
+  \ to allow. Default: 2\n             --barcode_mismatch  Number of mismatches in\
+  \ index (barcodes) to allow. Default: 2\n             --barcode_rev_comp  Reverse\
+  \ complement barcode sequences in mapping file.\n             --merge_method   \
+  \   Software to use for PE merging. Default: usearch [usearch,vsearch]\n       \
+  \      --cpus              Number of CPUs to use. Default: all\n             --cleanup\
+  \           Remove intermediate files.\n             -u, --usearch       USEARCH\
+  \ executable. Default: usearch9\n        \n"
+generated_using:
+- --help

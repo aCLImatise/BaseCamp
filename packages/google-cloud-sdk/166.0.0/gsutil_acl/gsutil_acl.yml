@@ -1,0 +1,167 @@
+!Command
+command:
+- gsutil
+- acl
+positional: []
+named:
+- !Flag
+  description: :<perm>
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: id|email
+  optional: true
+- !Flag
+  description: :<perm>
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: id|email|domain|All|AllAuth
+  optional: true
+- !Flag
+  description: -<project number>
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: viewers|editors|owners
+  optional: true
+- !Flag
+  description: <id|email|domain|All|AllAuth|<viewers|editors|owners>-<project number>>
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Performs \"acl set\" request recursively, to all objects under\nthe\
+    \ specified URL."
+  synonyms:
+  - -R
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Performs "acl set" request on all object versions.
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Normally gsutil stops at the first error. The -f option causes\nit\
+    \ to continue when it encounters errors. If some of the ACLs\ncouldn't be set,\
+    \ gsutil's exit status will be non-zero even if\nthis flag is set. This option\
+    \ is implicitly set when running\n\"gsutil -m acl...\"."
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n  acl - Get, set, or change bucket and/or object ACLs\n\n\nSYNOPSIS\n\
+  \  gsutil acl set [-f] [-r] [-a] file-or-canned_acl_name url...\n  gsutil acl get\
+  \ url\n  gsutil acl ch [-f] [-r] -u|-g|-d|-p <grant>... url...\n\n  where each <grant>\
+  \ is one of the following forms:\n\n    -u <id|email>:<perm>\n    -g <id|email|domain|All|AllAuth>:<perm>\n\
+  \    -p <viewers|editors|owners>-<project number>\n    -d <id|email|domain|All|AllAuth|<viewers|editors|owners>-<project\
+  \ number>>\n\n\n\nDESCRIPTION\n  The acl command has three sub-commands:\n\nGET\n\
+  \  The \"acl get\" command gets the ACL text for a bucket or object, which you can\n\
+  \  save and edit for the acl set command.\n\n\nSET\n  The \"acl set\" command allows\
+  \ you to set an Access Control List on one or\n  more buckets and objects. The simplest\
+  \ way to use it is to specify one of\n  the canned ACLs, e.g.,:\n\n    gsutil acl\
+  \ set private gs://bucket\n\n  If you want to make an object or bucket publicly\
+  \ readable or writable, it is\n  recommended to use \"acl ch\", to avoid accidentally\
+  \ removing OWNER permissions.\n  See \"gsutil help acl ch\" for details.\n\n  See\
+  \ \"gsutil help acls\" for a list of all canned ACLs.\n\n  If you want to define\
+  \ more fine-grained control over your data, you can\n  retrieve an ACL using the\
+  \ \"acl get\" command, save the output to a file, edit\n  the file, and then use\
+  \ the \"acl set\" command to set that ACL on the buckets\n  and/or objects. For\
+  \ example:\n\n    gsutil acl get gs://bucket/file.txt > acl.txt\n\n  Make changes\
+  \ to acl.txt such as adding an additional grant, then:\n\n    gsutil acl set acl.txt\
+  \ gs://cats/file.txt\n\n  Note that you can set an ACL on multiple buckets or objects\
+  \ at once,\n  for example:\n\n    gsutil acl set acl.txt gs://bucket/*.jpg\n\n \
+  \ If you have a large number of ACLs to update you might want to use the\n  gsutil\
+  \ -m option, to perform a parallel (multi-threaded/multi-processing)\n  update:\n\
+  \n    gsutil -m acl set acl.txt gs://bucket/*.jpg\n\n  Note that multi-threading/multi-processing\
+  \ is only done when the named URLs\n  refer to objects, which happens either if\
+  \ you name specific objects or \n  if you enumerate objects by using an object wildcard\
+  \ or specifying\n  the acl -r flag.\n\n\nSET OPTIONS\n  The \"set\" sub-command\
+  \ has the following options\n\n    -R, -r      Performs \"acl set\" request recursively,\
+  \ to all objects under\n                the specified URL.\n\n    -a          Performs\
+  \ \"acl set\" request on all object versions.\n\n    -f          Normally gsutil\
+  \ stops at the first error. The -f option causes\n                it to continue\
+  \ when it encounters errors. If some of the ACLs\n                couldn't be set,\
+  \ gsutil's exit status will be non-zero even if\n                this flag is set.\
+  \ This option is implicitly set when running\n                \"gsutil -m acl...\"\
+  .\n\n\nCH\n  The \"acl ch\" (or \"acl change\") command updates access control lists,\
+  \ similar\n  in spirit to the Linux chmod command. You can specify multiple access\
+  \ grant\n  additions and deletions in a single command run; all changes will be\
+  \ made\n  atomically to each object in turn. For example, if the command requests\n\
+  \  deleting one grant and adding a different grant, the ACLs being updated will\n\
+  \  never be left in an intermediate state where one grant has been deleted but\n\
+  \  the second grant not yet added. Each change specifies a user or group grant\n\
+  \  to add or delete, and for grant additions, one of R, W, O (for the\n  permission\
+  \ to be granted). A more formal description is provided in a later\n  section; below\
+  \ we provide examples.\n\nCH EXAMPLES\n  Examples for \"ch\" sub-command:\n  \n\
+  \  Grant anyone on the internet READ access to the object example-object:\n  \n\
+  \    gsutil acl ch -u AllUsers:R gs://example-bucket/example-object\n\n  NOTE: By\
+  \ default, publicly readable objects are served with a Cache-Control\n  header allowing\
+  \ such objects to be cached for 3600 seconds. If you need to\n  ensure that updates\
+  \ become visible immediately, you should set a\n  Cache-Control header of \"Cache-Control:private,\
+  \ max-age=0, no-transform\" on\n  such objects. For help doing this, see \"gsutil\
+  \ help setmeta\".\n\n  Grant anyone on the internet WRITE access to the bucket example-bucket\n\
+  \  (WARNING: this is not recommended as you will be responsible for the content):\n\
+  \n    gsutil acl ch -u AllUsers:W gs://example-bucket\n    \n  Grant the user john.doe@example.com\
+  \ WRITE access to the bucket\n  example-bucket:\n\n    gsutil acl ch -u john.doe@example.com:WRITE\
+  \ gs://example-bucket\n\n  Grant the group admins@example.com OWNER access to all\
+  \ jpg files in\n  the top level of example-bucket:\n\n    gsutil acl ch -g admins@example.com:O\
+  \ gs://example-bucket/*.jpg\n\n  Grant the owners of project example-project WRITE\
+  \ access to the bucket\n  example-bucket:\n\n    gsutil acl ch -p owners-example-project:W\
+  \ gs://example-bucket\n\n  NOTE: You can replace 'owners' with 'viewers' or 'editors'\
+  \ to grant access\n  to a project's viewers/editors respectively.\n\n  Remove access\
+  \ to the bucket example-bucket for the owners of project number\n  12345:\n\n  \
+  \  gsutil acl ch -d owners-12345 gs://example-bucket\n\n  Note that removing a project\
+  \ requires you to reference the project by\n  its number (which you can see with\
+  \ the acl get command) as opposed to its\n  project ID string.\n\n  Grant the user\
+  \ with the specified canonical ID READ access to all objects\n  in example-bucket\
+  \ that begin with folder/:\n\n    gsutil acl ch -r \\\n      -u 84fac329bceSAMPLE777d5d22b8SAMPLE785ac2SAMPLE2dfcf7c4adf34da46:R\
+  \ \\\n      gs://example-bucket/folder/\n\n  Grant the service account foo@developer.gserviceaccount.com\
+  \ WRITE access to\n  the bucket example-bucket:\n\n    gsutil acl ch -u foo@developer.gserviceaccount.com:W\
+  \ gs://example-bucket\n\n  Grant all users from the `Google Apps\n  <https://www.google.com/work/apps/business/>`_\
+  \ domain my-domain.org READ\n  access to the bucket gcs.my-domain.org:\n\n    gsutil\
+  \ acl ch -g my-domain.org:R gs://gcs.my-domain.org\n\n  Remove any current access\
+  \ by john.doe@example.com from the bucket\n  example-bucket:\n\n    gsutil acl ch\
+  \ -d john.doe@example.com gs://example-bucket\n\n  If you have a large number of\
+  \ objects to update, enabling multi-threading\n  with the gsutil -m flag can significantly\
+  \ improve performance. The\n  following command adds OWNER for admin@example.org\
+  \ using\n  multi-threading:\n\n    gsutil -m acl ch -r -u admin@example.org:O gs://example-bucket\n\
+  \n  Grant READ access to everyone from my-domain.org and to all authenticated\n\
+  \  users, and grant OWNER to admin@mydomain.org, for the buckets\n  my-bucket and\
+  \ my-other-bucket, with multi-threading enabled:\n\n    gsutil -m acl ch -r -g my-domain.org:R\
+  \ -g AllAuth:R \\\n      -u admin@mydomain.org:O gs://my-bucket/ gs://my-other-bucket\n\
+  \nCH ROLES\n  You may specify the following roles with either their shorthand or\n\
+  \  their full name:\n\n    R: READ\n    W: WRITE\n    O: OWNER\n\nCH ENTITIES\n\
+  \  There are four different entity types: Users, Groups, All Authenticated Users,\n\
+  \  and All Users.\n\n  Users are added with -u and a plain ID or email address,\
+  \ as in\n  \"-u john-doe@gmail.com:r\". Note: Service Accounts are considered to\
+  \ be users.\n\n  Groups are like users, but specified with the -g flag, as in\n\
+  \  \"-g power-users@example.com:fc\". Groups may also be specified as a full\n \
+  \ domain, as in \"-g my-company.com:r\".\n\n  AllAuthenticatedUsers and AllUsers\
+  \ are specified directly, as\n  in \"-g AllUsers:R\" or \"-g AllAuthenticatedUsers:O\"\
+  . These are case\n  insensitive, and may be shortened to \"all\" and \"allauth\"\
+  , respectively.\n\n  Removing roles is specified with the -d flag and an ID, email\n\
+  \  address, domain, or one of AllUsers or AllAuthenticatedUsers.\n\n  Many entities'\
+  \ roles can be specified on the same command line, allowing\n  bundled changes to\
+  \ be executed in a single run. This will reduce the number of\n  requests made to\
+  \ the server.\n\nCH OPTIONS\n  The \"ch\" sub-command has the following options\n\
+  \n    -d          Remove all roles associated with the matching entity.\n\n    -f\
+  \          Normally gsutil stops at the first error. The -f option causes\n    \
+  \            it to continue when it encounters errors. With this option the\n  \
+  \              gsutil exit status will be 0 even if some ACLs couldn't be\n    \
+  \            changed.\n\n    -g          Add or modify a group entity's role.\n\n\
+  \    -p          Add or modify a project viewers/editors/owners role.\n\n    -R,\
+  \ -r      Performs acl ch request recursively, to all objects under the\n      \
+  \          specified URL.\n\n    -u          Add or modify a user entity's role.\n"
+generated_using:
+- --help

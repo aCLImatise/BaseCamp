@@ -1,0 +1,1025 @@
+!Command
+command:
+- mason_simulator
+positional:
+- !Positional
+  description: OPTIONS
+  position: 0
+  name: simulated.
+  optional: false
+- !Positional
+  description: After the generation of the haplotypes, fragments are sampled from
+    the
+  position: 0
+  name: file.
+  optional: false
+- !Positional
+  description: Edit distance when aligned to the reference (i).
+  position: 0
+  name: NM
+  optional: false
+- !Positional
+  description: String for mismatching positions (Z).
+  position: 1
+  name: MD
+  optional: false
+- !Positional
+  description: Name of original reference, (Z).
+  position: 2
+  name: oR
+  optional: false
+- !Positional
+  description: Number of the original hhaplotype (1-based), (i).
+  position: 3
+  name: oH
+  optional: false
+- !Positional
+  description: original position on the original reference (i).
+  position: 4
+  name: oP
+  optional: false
+- !Positional
+  description: original strand, F/R for forward and reverse strand (A).
+  position: 5
+  name: oS
+  optional: false
+- !Positional
+  description: "Reason for being unaligned, I/B for being in insertion or spanning\n\
+    over breakpoint."
+  position: 6
+  name: uR
+  optional: false
+- !Positional
+  description: Number of sequencing errors in the read (i).
+  position: 7
+  name: XE
+  optional: false
+- !Positional
+  description: Number of SNPs in the read alignment (i).
+  position: 8
+  name: XS
+  optional: false
+- !Positional
+  description: Number of small indels in the read alignment (i).
+  position: 9
+  name: XI
+  optional: false
+- !Positional
+  description: READ ORIENTATION
+  position: 0
+  name: files.
+  optional: false
+- !Positional
+  description: "Reads are inward-facing, the same as Illumina paired-end reads: R1\n\
+    --> <-- R2."
+  position: 0
+  name: FR
+  optional: false
+- !Positional
+  description: "Reads are outward-facing, the same as Illumina mate-pair reads: R1\n\
+    <-- --> R2."
+  position: 1
+  name: RF
+  optional: false
+- !Positional
+  description: 'Reads are on the same strand: R1 --> --> R2.'
+  position: 2
+  name: FF
+  optional: false
+- !Positional
+  description: "Reads are on the same strand but the \"right\" reads are sequenced\
+    \ to\nthe left of the \"left\" reads, same as 454 paired: R2 --> --> R1."
+  position: 3
+  name: FF2
+  optional: false
+named:
+- !Flag
+  description: "Turn this option off to disable version update notifications of the\n\
+    application. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\nDefault: 1."
+  synonyms:
+  - --version-check
+  args: !SimpleFlagArg
+    name: BOOL
+  optional: true
+- !Flag
+  description: Low verbosity.
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Higher verbosity.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Highest verbosity.
+  synonyms:
+  - -vv
+  - --very-verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Seed to use for random number generator. Default: 0.'
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Seed to use for methylation level random number generator. Default:\n\
+    0."
+  synonyms:
+  - --meth-seed
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Offset for seeds to use when multi-threading. Default: 2048.'
+  synonyms:
+  - --seed-spacing
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Number of threads to use. In range [1..inf]. Default: 1.'
+  synonyms:
+  - --num-threads
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Force single-end simulation although --out-right file is given.
+  synonyms:
+  - --force-single-end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of fragments to simulate in one batch. In range [65536..inf].\n\
+    Default: 65536."
+  synonyms:
+  - --chunk-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Number of reads/pairs to simulate. In range [1..inf].
+  synonyms:
+  - -n
+  - --num-fragments
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "FASTA file with methylation levels of the input file. Valid\nfiletypes\
+    \ are: .sam[.*], .raw[.*], .gbk[.*], .frn[.*], .fq[.*],\n.fna[.*], .ffn[.*], .fastq[.*],\
+    \ .fasta[.*], .faa[.*], .fa[.*],\n.embl[.*], and .bam, where * is any of the following\
+    \ extensions: gz\nand bgzf for transparent (de)compression."
+  synonyms:
+  - --meth-fasta-in
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "Output of single-end/left end reads. Valid filetypes are: .sam[.*],\n\
+    .raw[.*], .frn[.*], .fq[.*], .fna[.*], .ffn[.*], .fastq[.*],\n.fasta[.*], .faa[.*],\
+    \ .fa[.*], and .bam, where * is any of the\nfollowing extensions: gz and bgzf\
+    \ for transparent (de)compression."
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: "Output of right reads. Giving this options enables paired-end\nsimulation.\
+    \ Valid filetypes are: .sam[.*], .raw[.*], .frn[.*],\n.fq[.*], .fna[.*], .ffn[.*],\
+    \ .fastq[.*], .fasta[.*], .faa[.*],\n.fa[.*], and .bam, where * is any of the\
+    \ following extensions: gz\nand bgzf for transparent (de)compression."
+  synonyms:
+  - -or
+  - --out-right
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: "SAM/BAM file with alignments. Valid filetypes are: .sam[.*] and\n\
+    .bam, where * is any of the following extensions: gz and bgzf for\ntransparent\
+    \ (de)compression."
+  synonyms:
+  - -oa
+  - --out-alignment
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: "Path to FASTA file to read the reference from. Valid filetypes are:\n\
+    .sam[.*], .raw[.*], .gbk[.*], .frn[.*], .fq[.*], .fna[.*], .ffn[.*],\n.fastq[.*],\
+    \ .fasta[.*], .faa[.*], .fa[.*], .embl[.*], and .bam,\nwhere * is any of the following\
+    \ extensions: gz and bgzf for\ntransparent (de)compression."
+  synonyms:
+  - -ir
+  - --input-reference
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "Path to the VCF file with variants to apply. Valid filetype is:\n\
+    .vcf[.*], where * is any of the following extensions: gz and bgzf\nfor transparent\
+    \ (de)compression."
+  synonyms:
+  - -iv
+  - --input-vcf
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: Enable methylation level simulation.
+  synonyms:
+  - --methylation-levels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Median of beta distribution for methylation level of CpG loci. In\n\
+    range [0..1]. Default: 0.6."
+  synonyms:
+  - --meth-cg-mu
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Standard deviation of beta distribution for methylation level of CpG\n\
+    loci. In range [0..1]. Default: 0.03."
+  synonyms:
+  - --meth-cg-sigma
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Median of beta distribution for methylation level of CHG loci. In\n\
+    range [0..1]. Default: 0.08."
+  synonyms:
+  - --meth-chg-mu
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Standard deviation of beta distribution for methylation level of CHG\n\
+    loci. In range [0..1]. Default: 0.008."
+  synonyms:
+  - --meth-chg-sigma
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Median of beta distribution for methylation level of CHH loci. In\n\
+    range [0..1]. Default: 0.05."
+  synonyms:
+  - --meth-chh-mu
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Standard deviation of beta distribution for methylation level of CHH\n\
+    loci. In range [0..1]. Default: 0.005."
+  synonyms:
+  - --meth-chh-sigma
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "The model to use for the fragment size simulation. One of normal and\n\
+    uniform. Default: normal."
+  synonyms:
+  - --fragment-size-model
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Smallest fragment size to use when using uniform fragment size\nsimulation.\
+    \ In range [1..inf]. Default: 100."
+  synonyms:
+  - --fragment-min-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Largest fragment size to use when using uniform fragment size\nsimulation.\
+    \ In range [1..inf]. Default: 400."
+  synonyms:
+  - --fragment-max-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Mean fragment size for normally distributed fragment size\nsimulation.\
+    \ In range [1..inf]. Default: 300."
+  synonyms:
+  - --fragment-mean-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Fragment size standard deviation when using normally distributed\n\
+    fragment size simulation. In range [1..inf]. Default: 30."
+  synonyms:
+  - --fragment-size-std-dev
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Set sequencing technology to simulate. One of illumina, 454, and\n\
+    sanger. Default: illumina."
+  synonyms:
+  - --seq-technology
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Orientation for paired reads. See section Read Orientation below.\n\
+    One of FR, RF, FF, and FF2. Default: FR."
+  synonyms:
+  - --seq-mate-orientation
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Strands to simulate from, only applicable to paired sequencing\nsimulation.\
+    \ One of forward, reverse, and both. Default: both."
+  synonyms:
+  - --seq-strands
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Whether or not to embed read information.
+  synonyms:
+  - --embed-read-info
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Read names will have this prefix. Default: simulated..'
+  synonyms:
+  - --read-name-prefix
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Enable BS-seq simulation.
+  synonyms:
+  - --enable-bs-seq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Protocol to use for BS-Seq simulation. One of directional and\nundirectional.\
+    \ Default: directional."
+  synonyms:
+  - --bs-seq-protocol
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Conversion rate for unmethylated Cs to become Ts. In range [0..1].\n\
+    Default: 0.99."
+  synonyms:
+  - --bs-seq-conversion-rate
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Read length for Illumina simulation. In range [1..inf]. Default:\n\
+    100."
+  synonyms:
+  - --illumina-read-length
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Path to file with Illumina error profile. The file must be a text\n\
+    file with floating point numbers separated by space, each giving a\npositional\
+    \ error rate. Valid filetype is: .txt."
+  synonyms:
+  - --illumina-error-profile-file
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "Insert per-base probability for insertion in Illumina sequencing.\
+    \ In\nrange [0..1]. Default: 0.00005."
+  synonyms:
+  - --illumina-prob-insert
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Insert per-base probability for deletion in Illumina sequencing. In\n\
+    range [0..1]. Default: 0.00005."
+  synonyms:
+  - --illumina-prob-deletion
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Scaling factor for Illumina mismatch probability. In range [0..inf].\n\
+    Default: 1.0."
+  synonyms:
+  - --illumina-prob-mismatch-scale
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Average per-base mismatch probability in Illumina sequencing. In\n\
+    range [0.0..1.0]. Default: 0.004."
+  synonyms:
+  - --illumina-prob-mismatch
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Per-base mismatch probability of first base in Illumina sequencing.\n\
+    In range [0.0..1.0]. Default: 0.002."
+  synonyms:
+  - --illumina-prob-mismatch-begin
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Per-base mismatch probability of last base in Illumina sequencing.\n\
+    In range [0.0..1.0]. Default: 0.012."
+  synonyms:
+  - --illumina-prob-mismatch-end
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Point where the error curve raises in relation to read length. In\n\
+    range [0.0..1.0]. Default: 0.66."
+  synonyms:
+  - --illumina-position-raise
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Mean PHRED quality for non-mismatch bases of first base in Illumina\n\
+    sequencing. Default: 40.0."
+  synonyms:
+  - --illumina-quality-mean-begin
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Mean PHRED quality for non-mismatch bases of last base in Illumina\n\
+    sequencing. Default: 39.5."
+  synonyms:
+  - --illumina-quality-mean-end
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Standard deviation of PHRED quality for non-mismatch bases of first\n\
+    base in Illumina sequencing. Default: 0.05."
+  synonyms:
+  - --illumina-quality-stddev-begin
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Standard deviation of PHRED quality for non-mismatch bases of last\n\
+    base in Illumina sequencing. Default: 10.0."
+  synonyms:
+  - --illumina-quality-stddev-end
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Mean PHRED quality for mismatch bases of first base in Illumina\n\
+    sequencing. Default: 40.0."
+  synonyms:
+  - --illumina-mismatch-quality-mean-begin
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Mean PHRED quality for mismatch bases of last base in Illumina\nsequencing.\
+    \ Default: 30.0."
+  synonyms:
+  - --illumina-mismatch-quality-mean-end
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Standard deviation of PHRED quality for mismatch bases of first base\n\
+    in Illumina sequencing. Default: 3.0."
+  synonyms:
+  - --illumina-mismatch-quality-stddev-begin
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Standard deviation of PHRED quality for mismatch bases of last base\n\
+    in Illumina sequencing. Default: 15.0."
+  synonyms:
+  - --illumina-mismatch-quality-stddev-end
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "FASTQ file to use for a template for left-end reads. Valid filetypes\n\
+    are: .sam[.*], .raw[.*], .gbk[.*], .frn[.*], .fq[.*], .fna[.*],\n.ffn[.*], .fastq[.*],\
+    \ .fasta[.*], .faa[.*], .fa[.*], .embl[.*], and\n.bam, where * is any of the following\
+    \ extensions: gz and bgzf for\ntransparent (de)compression."
+  synonyms:
+  - --illumina-left-template-fastq
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "FASTQ file to use for a template for right-end reads. Valid\nfiletypes\
+    \ are: .sam[.*], .raw[.*], .gbk[.*], .frn[.*], .fq[.*],\n.fna[.*], .ffn[.*], .fastq[.*],\
+    \ .fasta[.*], .faa[.*], .fa[.*],\n.embl[.*], and .bam, where * is any of the following\
+    \ extensions: gz\nand bgzf for transparent (de)compression."
+  synonyms:
+  - --illumina-right-template-fastq
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "The model to use for sampling the Sanger read length. One of normal\n\
+    and uniform. Default: normal."
+  synonyms:
+  - --sanger-read-length-model
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "The minimal read length when the read length is sampled uniformly.\n\
+    In range [0..inf]. Default: 400."
+  synonyms:
+  - --sanger-read-length-min
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "The maximal read length when the read length is sampled uniformly.\n\
+    In range [0..inf]. Default: 600."
+  synonyms:
+  - --sanger-read-length-max
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "The mean read length when the read length is sampled with normal\n\
+    distribution. In range [0..inf]. Default: 400."
+  synonyms:
+  - --sanger-read-length-mean
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "The read length standard deviation when the read length is sampled\n\
+    uniformly. In range [0..inf]. Default: 40."
+  synonyms:
+  - --sanger-read-length-error
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Scaling factor for Sanger mismatch probability. In range [0..inf].\n\
+    Default: 1.0."
+  synonyms:
+  - --sanger-prob-mismatch-scale
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Per-base mismatch probability of first base in Sanger sequencing.\
+    \ In\nrange [0.0..1.0]. Default: 0.005."
+  synonyms:
+  - --sanger-prob-mismatch-begin
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Per-base mismatch probability of last base in Sanger sequencing. In\n\
+    range [0.0..1.0]. Default: 0.001."
+  synonyms:
+  - --sanger-prob-mismatch-end
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Per-base insertion probability of first base in Sanger sequencing.\n\
+    In range [0.0..1.0]. Default: 0.0025."
+  synonyms:
+  - --sanger-prob-insertion-begin
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Per-base insertion probability of last base in Sanger sequencing.\
+    \ In\nrange [0.0..1.0]. Default: 0.005."
+  synonyms:
+  - --sanger-prob-insertion-end
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Per-base deletion probability of first base in Sanger sequencing.\
+    \ In\nrange [0.0..1.0]. Default: 0.0025."
+  synonyms:
+  - --sanger-prob-deletion-begin
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Per-base deletion probability of last base in Sanger sequencing. In\n\
+    range [0.0..1.0]. Default: 0.005."
+  synonyms:
+  - --sanger-prob-deletion-end
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Mean PHRED quality for non-mismatch bases of first base in Sanger\n\
+    sequencing. Default: 40.0."
+  synonyms:
+  - --sanger-quality-match-start-mean
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Mean PHRED quality for non-mismatch bases of last base in Sanger\n\
+    sequencing. Default: 39.5."
+  synonyms:
+  - --sanger-quality-match-end-mean
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Mean PHRED quality for non-mismatch bases of first base in Sanger\n\
+    sequencing. Default: 0.1."
+  synonyms:
+  - --sanger-quality-match-start-stddev
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Mean PHRED quality for non-mismatch bases of last base in Sanger\n\
+    sequencing. Default: 2."
+  synonyms:
+  - --sanger-quality-match-end-stddev
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Mean PHRED quality for erroneous bases of first base in Sanger\nsequencing.\
+    \ Default: 30."
+  synonyms:
+  - --sanger-quality-error-start-mean
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Mean PHRED quality for erroneous bases of last base in Sanger\nsequencing.\
+    \ Default: 20."
+  synonyms:
+  - --sanger-quality-error-end-mean
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Mean PHRED quality for erroneous bases of first base in Sanger\nsequencing.\
+    \ Default: 2."
+  synonyms:
+  - --sanger-quality-error-start-stddev
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Mean PHRED quality for erroneous bases of last base in Sanger\nsequencing.\
+    \ Default: 5."
+  synonyms:
+  - --sanger-quality-error-end-stddev
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "The model to use for sampling the 454 read length. One of normal and\n\
+    uniform. Default: normal."
+  synonyms:
+  - --454-read-length-model
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "The minimal read length when the read length is sampled uniformly.\n\
+    In range [0..inf]. Default: 10."
+  synonyms:
+  - --454-read-length-min
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "The maximal read length when the read length is sampled uniformly.\n\
+    In range [0..inf]. Default: 600."
+  synonyms:
+  - --454-read-length-max
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "The mean read length when the read length is sampled with normal\n\
+    distribution. In range [0..inf]. Default: 400."
+  synonyms:
+  - --454-read-length-mean
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "The read length standard deviation when the read length is sampled\n\
+    with normal distribution. In range [0..inf]. Default: 40."
+  synonyms:
+  - --454-read-length-stddev
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "For error model, if set then (sigma = k * r)) is used, otherwise\n\
+    (sigma = k * sqrt(r))."
+  synonyms:
+  - --454-no-sqrt-in-std-dev
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Proportionality factor for calculating the standard deviation\nproportional\
+    \ to the read length. In range [0..inf]. Default: 0.15."
+  synonyms:
+  - --454-proportionality-factor
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Mean of lognormal distribution to use for the noise. In range\n[0..inf].\
+    \ Default: 0.23."
+  synonyms:
+  - --454-background-noise-mean
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Standard deviation of lognormal distribution to use for the noise.\n\
+    In range [0..inf]. Default: 0.15."
+  synonyms:
+  - --454-background-noise-stddev
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display the help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version information.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "mason_simulator - Read Simulation\n=================================\n\
+  \nSYNOPSIS\n    mason_simulator [OPTIONS] -ir IN.fa -n NUM [-iv IN.vcf] -o LEFT.fq\
+  \ [-or\n    RIGHT.fq]\n\nDESCRIPTION\n    Simulate NUM reads/pairs from the reference\
+  \ sequence IN.fa, potentially\n    with variants from IN.vcf. In case that both\
+  \ -o and -or are given, write\n    out paired-end data, if only -io is given, only\
+  \ single-end reads are\n    simulated.\n\nOPTIONS\n    -h, --help\n          Display\
+  \ the help message.\n    --version-check BOOL\n          Turn this option off to\
+  \ disable version update notifications of the\n          application. One of 1,\
+  \ ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\n          Default: 1.\n    --version\n\
+  \          Display version information.\n    -q, --quiet\n          Low verbosity.\n\
+  \    -v, --verbose\n          Higher verbosity.\n    -vv, --very-verbose\n     \
+  \     Highest verbosity.\n    --seed INTEGER\n          Seed to use for random number\
+  \ generator. Default: 0.\n    --meth-seed INTEGER\n          Seed to use for methylation\
+  \ level random number generator. Default:\n          0.\n    --seed-spacing INTEGER\n\
+  \          Offset for seeds to use when multi-threading. Default: 2048.\n    --num-threads\
+  \ INTEGER\n          Number of threads to use. In range [1..inf]. Default: 1.\n\
+  \    --force-single-end\n          Force single-end simulation although --out-right\
+  \ file is given.\n    --chunk-size INTEGER\n          Number of fragments to simulate\
+  \ in one batch. In range [65536..inf].\n          Default: 65536.\n    -n, --num-fragments\
+  \ INTEGER\n          Number of reads/pairs to simulate. In range [1..inf].\n   \
+  \ --meth-fasta-in INPUT_FILE\n          FASTA file with methylation levels of the\
+  \ input file. Valid\n          filetypes are: .sam[.*], .raw[.*], .gbk[.*], .frn[.*],\
+  \ .fq[.*],\n          .fna[.*], .ffn[.*], .fastq[.*], .fasta[.*], .faa[.*], .fa[.*],\n\
+  \          .embl[.*], and .bam, where * is any of the following extensions: gz\n\
+  \          and bgzf for transparent (de)compression.\n    -o, --out OUTPUT_FILE\n\
+  \          Output of single-end/left end reads. Valid filetypes are: .sam[.*],\n\
+  \          .raw[.*], .frn[.*], .fq[.*], .fna[.*], .ffn[.*], .fastq[.*],\n      \
+  \    .fasta[.*], .faa[.*], .fa[.*], and .bam, where * is any of the\n          following\
+  \ extensions: gz and bgzf for transparent (de)compression.\n    -or, --out-right\
+  \ OUTPUT_FILE\n          Output of right reads. Giving this options enables paired-end\n\
+  \          simulation. Valid filetypes are: .sam[.*], .raw[.*], .frn[.*],\n    \
+  \      .fq[.*], .fna[.*], .ffn[.*], .fastq[.*], .fasta[.*], .faa[.*],\n        \
+  \  .fa[.*], and .bam, where * is any of the following extensions: gz\n         \
+  \ and bgzf for transparent (de)compression.\n    -oa, --out-alignment OUTPUT_FILE\n\
+  \          SAM/BAM file with alignments. Valid filetypes are: .sam[.*] and\n   \
+  \       .bam, where * is any of the following extensions: gz and bgzf for\n    \
+  \      transparent (de)compression.\n\n  Apply VCF Variants to Reference:\n    -ir,\
+  \ --input-reference INPUT_FILE\n          Path to FASTA file to read the reference\
+  \ from. Valid filetypes are:\n          .sam[.*], .raw[.*], .gbk[.*], .frn[.*],\
+  \ .fq[.*], .fna[.*], .ffn[.*],\n          .fastq[.*], .fasta[.*], .faa[.*], .fa[.*],\
+  \ .embl[.*], and .bam,\n          where * is any of the following extensions: gz\
+  \ and bgzf for\n          transparent (de)compression.\n    -iv, --input-vcf INPUT_FILE\n\
+  \          Path to the VCF file with variants to apply. Valid filetype is:\n   \
+  \       .vcf[.*], where * is any of the following extensions: gz and bgzf\n    \
+  \      for transparent (de)compression.\n\n  Methylation Level Simulation:\n   \
+  \ --methylation-levels\n          Enable methylation level simulation.\n    --meth-cg-mu\
+  \ DOUBLE\n          Median of beta distribution for methylation level of CpG loci.\
+  \ In\n          range [0..1]. Default: 0.6.\n    --meth-cg-sigma DOUBLE\n      \
+  \    Standard deviation of beta distribution for methylation level of CpG\n    \
+  \      loci. In range [0..1]. Default: 0.03.\n    --meth-chg-mu DOUBLE\n       \
+  \   Median of beta distribution for methylation level of CHG loci. In\n        \
+  \  range [0..1]. Default: 0.08.\n    --meth-chg-sigma DOUBLE\n          Standard\
+  \ deviation of beta distribution for methylation level of CHG\n          loci. In\
+  \ range [0..1]. Default: 0.008.\n    --meth-chh-mu DOUBLE\n          Median of beta\
+  \ distribution for methylation level of CHH loci. In\n          range [0..1]. Default:\
+  \ 0.05.\n    --meth-chh-sigma DOUBLE\n          Standard deviation of beta distribution\
+  \ for methylation level of CHH\n          loci. In range [0..1]. Default: 0.005.\n\
+  \n  Fragment Size (Insert Size) Options:\n    --fragment-size-model STRING\n   \
+  \       The model to use for the fragment size simulation. One of normal and\n \
+  \         uniform. Default: normal.\n    --fragment-min-size INTEGER\n         \
+  \ Smallest fragment size to use when using uniform fragment size\n          simulation.\
+  \ In range [1..inf]. Default: 100.\n    --fragment-max-size INTEGER\n          Largest\
+  \ fragment size to use when using uniform fragment size\n          simulation. In\
+  \ range [1..inf]. Default: 400.\n    --fragment-mean-size INTEGER\n          Mean\
+  \ fragment size for normally distributed fragment size\n          simulation. In\
+  \ range [1..inf]. Default: 300.\n    --fragment-size-std-dev INTEGER\n         \
+  \ Fragment size standard deviation when using normally distributed\n          fragment\
+  \ size simulation. In range [1..inf]. Default: 30.\n\n  Global Read Simulation Options:\n\
+  \    --seq-technology STRING\n          Set sequencing technology to simulate. One\
+  \ of illumina, 454, and\n          sanger. Default: illumina.\n    --seq-mate-orientation\
+  \ STRING\n          Orientation for paired reads. See section Read Orientation below.\n\
+  \          One of FR, RF, FF, and FF2. Default: FR.\n    --seq-strands STRING\n\
+  \          Strands to simulate from, only applicable to paired sequencing\n    \
+  \      simulation. One of forward, reverse, and both. Default: both.\n    --embed-read-info\n\
+  \          Whether or not to embed read information.\n    --read-name-prefix STRING\n\
+  \          Read names will have this prefix. Default: simulated..\n\n  BS-Seq Options:\n\
+  \    --enable-bs-seq\n          Enable BS-seq simulation.\n    --bs-seq-protocol\
+  \ STRING\n          Protocol to use for BS-Seq simulation. One of directional and\n\
+  \          undirectional. Default: directional.\n    --bs-seq-conversion-rate DOUBLE\n\
+  \          Conversion rate for unmethylated Cs to become Ts. In range [0..1].\n\
+  \          Default: 0.99.\n\n  Illumina Options:\n    --illumina-read-length INTEGER\n\
+  \          Read length for Illumina simulation. In range [1..inf]. Default:\n  \
+  \        100.\n    --illumina-error-profile-file INPUT_FILE\n          Path to file\
+  \ with Illumina error profile. The file must be a text\n          file with floating\
+  \ point numbers separated by space, each giving a\n          positional error rate.\
+  \ Valid filetype is: .txt.\n    --illumina-prob-insert DOUBLE\n          Insert\
+  \ per-base probability for insertion in Illumina sequencing. In\n          range\
+  \ [0..1]. Default: 0.00005.\n    --illumina-prob-deletion DOUBLE\n          Insert\
+  \ per-base probability for deletion in Illumina sequencing. In\n          range\
+  \ [0..1]. Default: 0.00005.\n    --illumina-prob-mismatch-scale DOUBLE\n       \
+  \   Scaling factor for Illumina mismatch probability. In range [0..inf].\n     \
+  \     Default: 1.0.\n    --illumina-prob-mismatch DOUBLE\n          Average per-base\
+  \ mismatch probability in Illumina sequencing. In\n          range [0.0..1.0]. Default:\
+  \ 0.004.\n    --illumina-prob-mismatch-begin DOUBLE\n          Per-base mismatch\
+  \ probability of first base in Illumina sequencing.\n          In range [0.0..1.0].\
+  \ Default: 0.002.\n    --illumina-prob-mismatch-end DOUBLE\n          Per-base mismatch\
+  \ probability of last base in Illumina sequencing.\n          In range [0.0..1.0].\
+  \ Default: 0.012.\n    --illumina-position-raise DOUBLE\n          Point where the\
+  \ error curve raises in relation to read length. In\n          range [0.0..1.0].\
+  \ Default: 0.66.\n    --illumina-quality-mean-begin DOUBLE\n          Mean PHRED\
+  \ quality for non-mismatch bases of first base in Illumina\n          sequencing.\
+  \ Default: 40.0.\n    --illumina-quality-mean-end DOUBLE\n          Mean PHRED quality\
+  \ for non-mismatch bases of last base in Illumina\n          sequencing. Default:\
+  \ 39.5.\n    --illumina-quality-stddev-begin DOUBLE\n          Standard deviation\
+  \ of PHRED quality for non-mismatch bases of first\n          base in Illumina sequencing.\
+  \ Default: 0.05.\n    --illumina-quality-stddev-end DOUBLE\n          Standard deviation\
+  \ of PHRED quality for non-mismatch bases of last\n          base in Illumina sequencing.\
+  \ Default: 10.0.\n    --illumina-mismatch-quality-mean-begin DOUBLE\n          Mean\
+  \ PHRED quality for mismatch bases of first base in Illumina\n          sequencing.\
+  \ Default: 40.0.\n    --illumina-mismatch-quality-mean-end DOUBLE\n          Mean\
+  \ PHRED quality for mismatch bases of last base in Illumina\n          sequencing.\
+  \ Default: 30.0.\n    --illumina-mismatch-quality-stddev-begin DOUBLE\n        \
+  \  Standard deviation of PHRED quality for mismatch bases of first base\n      \
+  \    in Illumina sequencing. Default: 3.0.\n    --illumina-mismatch-quality-stddev-end\
+  \ DOUBLE\n          Standard deviation of PHRED quality for mismatch bases of last\
+  \ base\n          in Illumina sequencing. Default: 15.0.\n    --illumina-left-template-fastq\
+  \ INPUT_FILE\n          FASTQ file to use for a template for left-end reads. Valid\
+  \ filetypes\n          are: .sam[.*], .raw[.*], .gbk[.*], .frn[.*], .fq[.*], .fna[.*],\n\
+  \          .ffn[.*], .fastq[.*], .fasta[.*], .faa[.*], .fa[.*], .embl[.*], and\n\
+  \          .bam, where * is any of the following extensions: gz and bgzf for\n \
+  \         transparent (de)compression.\n    --illumina-right-template-fastq INPUT_FILE\n\
+  \          FASTQ file to use for a template for right-end reads. Valid\n       \
+  \   filetypes are: .sam[.*], .raw[.*], .gbk[.*], .frn[.*], .fq[.*],\n          .fna[.*],\
+  \ .ffn[.*], .fastq[.*], .fasta[.*], .faa[.*], .fa[.*],\n          .embl[.*], and\
+  \ .bam, where * is any of the following extensions: gz\n          and bgzf for transparent\
+  \ (de)compression.\n\n  Sanger Sequencing Options:\n    --sanger-read-length-model\
+  \ STRING\n          The model to use for sampling the Sanger read length. One of\
+  \ normal\n          and uniform. Default: normal.\n    --sanger-read-length-min\
+  \ INTEGER\n          The minimal read length when the read length is sampled uniformly.\n\
+  \          In range [0..inf]. Default: 400.\n    --sanger-read-length-max INTEGER\n\
+  \          The maximal read length when the read length is sampled uniformly.\n\
+  \          In range [0..inf]. Default: 600.\n    --sanger-read-length-mean DOUBLE\n\
+  \          The mean read length when the read length is sampled with normal\n  \
+  \        distribution. In range [0..inf]. Default: 400.\n    --sanger-read-length-error\
+  \ DOUBLE\n          The read length standard deviation when the read length is sampled\n\
+  \          uniformly. In range [0..inf]. Default: 40.\n    --sanger-prob-mismatch-scale\
+  \ DOUBLE\n          Scaling factor for Sanger mismatch probability. In range [0..inf].\n\
+  \          Default: 1.0.\n    --sanger-prob-mismatch-begin DOUBLE\n          Per-base\
+  \ mismatch probability of first base in Sanger sequencing. In\n          range [0.0..1.0].\
+  \ Default: 0.005.\n    --sanger-prob-mismatch-end DOUBLE\n          Per-base mismatch\
+  \ probability of last base in Sanger sequencing. In\n          range [0.0..1.0].\
+  \ Default: 0.001.\n    --sanger-prob-insertion-begin DOUBLE\n          Per-base\
+  \ insertion probability of first base in Sanger sequencing.\n          In range\
+  \ [0.0..1.0]. Default: 0.0025.\n    --sanger-prob-insertion-end DOUBLE\n       \
+  \   Per-base insertion probability of last base in Sanger sequencing. In\n     \
+  \     range [0.0..1.0]. Default: 0.005.\n    --sanger-prob-deletion-begin DOUBLE\n\
+  \          Per-base deletion probability of first base in Sanger sequencing. In\n\
+  \          range [0.0..1.0]. Default: 0.0025.\n    --sanger-prob-deletion-end DOUBLE\n\
+  \          Per-base deletion probability of last base in Sanger sequencing. In\n\
+  \          range [0.0..1.0]. Default: 0.005.\n    --sanger-quality-match-start-mean\
+  \ DOUBLE\n          Mean PHRED quality for non-mismatch bases of first base in Sanger\n\
+  \          sequencing. Default: 40.0.\n    --sanger-quality-match-end-mean DOUBLE\n\
+  \          Mean PHRED quality for non-mismatch bases of last base in Sanger\n  \
+  \        sequencing. Default: 39.5.\n    --sanger-quality-match-start-stddev DOUBLE\n\
+  \          Mean PHRED quality for non-mismatch bases of first base in Sanger\n \
+  \         sequencing. Default: 0.1.\n    --sanger-quality-match-end-stddev DOUBLE\n\
+  \          Mean PHRED quality for non-mismatch bases of last base in Sanger\n  \
+  \        sequencing. Default: 2.\n    --sanger-quality-error-start-mean DOUBLE\n\
+  \          Mean PHRED quality for erroneous bases of first base in Sanger\n    \
+  \      sequencing. Default: 30.\n    --sanger-quality-error-end-mean DOUBLE\n  \
+  \        Mean PHRED quality for erroneous bases of last base in Sanger\n       \
+  \   sequencing. Default: 20.\n    --sanger-quality-error-start-stddev DOUBLE\n \
+  \         Mean PHRED quality for erroneous bases of first base in Sanger\n     \
+  \     sequencing. Default: 2.\n    --sanger-quality-error-end-stddev DOUBLE\n  \
+  \        Mean PHRED quality for erroneous bases of last base in Sanger\n       \
+  \   sequencing. Default: 5.\n\n  454 Sequencing Options:\n    --454-read-length-model\
+  \ STRING\n          The model to use for sampling the 454 read length. One of normal\
+  \ and\n          uniform. Default: normal.\n    --454-read-length-min INTEGER\n\
+  \          The minimal read length when the read length is sampled uniformly.\n\
+  \          In range [0..inf]. Default: 10.\n    --454-read-length-max INTEGER\n\
+  \          The maximal read length when the read length is sampled uniformly.\n\
+  \          In range [0..inf]. Default: 600.\n    --454-read-length-mean DOUBLE\n\
+  \          The mean read length when the read length is sampled with normal\n  \
+  \        distribution. In range [0..inf]. Default: 400.\n    --454-read-length-stddev\
+  \ DOUBLE\n          The read length standard deviation when the read length is sampled\n\
+  \          with normal distribution. In range [0..inf]. Default: 40.\n    --454-no-sqrt-in-std-dev\n\
+  \          For error model, if set then (sigma = k * r)) is used, otherwise\n  \
+  \        (sigma = k * sqrt(r)).\n    --454-proportionality-factor DOUBLE\n     \
+  \     Proportionality factor for calculating the standard deviation\n          proportional\
+  \ to the read length. In range [0..inf]. Default: 0.15.\n    --454-background-noise-mean\
+  \ DOUBLE\n          Mean of lognormal distribution to use for the noise. In range\n\
+  \          [0..inf]. Default: 0.23.\n    --454-background-noise-stddev DOUBLE\n\
+  \          Standard deviation of lognormal distribution to use for the noise.\n\
+  \          In range [0..inf]. Default: 0.15.\n\nSIMULATION OVERVIEW\n    The first\
+  \ step is the application of VCF variants to the input reference\n    file.\n\n\
+  \    After the generation of the haplotypes, fragments are sampled from the\n  \
+  \  sequence. These fragments correspond to the fragments in the real\n    preparation\
+  \ step for the sequencing. They are later sequenced from one or\n    both sides\
+  \ depending on whether a single-end or a paired protocol is used.\n\nIMPORTANT PARAMETERS\n\
+  \    For most users, the following options are most important.\n\n    Paired-End\
+  \ Simulation\n          Use --fragment-length-model to switch between normally and\
+  \ uniformly\n          distributed insert sizes. Use the --fragment-* options for\n\
+  \          configuring the insert size simulation.\n\nMULTI-THREADING\n    When\
+  \ using multi-threading, each thread gets its own random number\n    generator (RNG).\
+  \ The RNG of thread i is initialized with the value of\n    --seed plus i.\n\nBAM/SAM\
+  \ TAGS\n    Mason can write out a BAM or SAM file with alignments of the reads against\n\
+  \    the reference. The records have tags that give information about the\n    simulated\
+  \ reads. Below is a list of the tags and their meaning.\n\n    NM    Edit distance\
+  \ when aligned to the reference (i).\n    MD    String for mismatching positions\
+  \ (Z).\n    oR    Name of original reference, (Z).\n    oH    Number of the original\
+  \ hhaplotype (1-based), (i).\n    oP    original position on the original reference\
+  \ (i).\n    oS    original strand, F/R for forward and reverse strand (A).\n   \
+  \ uR    Reason for being unaligned, I/B for being in insertion or spanning\n   \
+  \       over breakpoint.\n    XE    Number of sequencing errors in the read (i).\n\
+  \    XS    Number of SNPs in the read alignment (i).\n    XI    Number of small\
+  \ indels in the read alignment (i).\n\nVCF VARIANT NOTES\n    If the option --input-vcf/-iv\
+  \ is given then the given VCF file is read and\n    the variants are applied to\
+  \ the input reference file. If it is not given\n    then the input reference file\
+  \ is taken verbatimly for simulating reads.\n\n    There are some restrictions on\
+  \ the VCF file and the application of the\n    variants to the reference will fail\
+  \ if the VCF file is non-conforming. VCF\n    files from the mason_variator program\
+  \ are guaranteed to be read.\n\n    Only the haplotypes of the first individual\
+  \ will be generated.\n\nFRAGMENT SIZE (INSERT SIZE) SIMULATION\n    You can choose\
+  \ between a normal and a uniform distribution of fragment\n    lengths. When sequencing\
+  \ these fragments from both sides in a paired\n    protocol, the fragment size will\
+  \ become the insert size.\n\nSEQUENCING SIMULATION\n    Simulation of base qualities\
+  \ is disabled when writing out FASTA files.\n    Simulation of paired-end sequencing\
+  \ is enabled when specifying two output\n    files.\n\nREAD ORIENTATION\n    You\
+  \ can use the --mate-orientation to set the relative orientation when\n    doing\
+  \ paired-end sequencing. The valid values are given in the following.\n\n    FR\
+  \    Reads are inward-facing, the same as Illumina paired-end reads: R1\n      \
+  \    --> <-- R2.\n    RF    Reads are outward-facing, the same as Illumina mate-pair\
+  \ reads: R1\n          <-- --> R2.\n    FF    Reads are on the same strand: R1 -->\
+  \ --> R2.\n    FF2   Reads are on the same strand but the \"right\" reads are sequenced\
+  \ to\n          the left of the \"left\" reads, same as 454 paired: R2 --> --> R1.\n\
+  \nVERSION\n    Last update: 2018-02-02_13:03:05_+0100\n    mason_simulator version:\
+  \ 2.0.9 [e165baf]\n    SeqAn version: 2.4.0\n"
+generated_using:
+- --help

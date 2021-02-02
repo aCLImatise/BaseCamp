@@ -1,0 +1,69 @@
+!Command
+command:
+- consEntropy
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: target-coverage
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: expected-length
+  optional: false
+named:
+- !Flag
+  description: "Instead of computing the relative entropy from two .mod files,\njust\
+    \ use the specified value.  The .mod files aren't required\nin this case."
+  synonyms:
+  - --H
+  - -H
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "[or --NH/-N, for backward compatibility]\nReport the expected length\
+    \ that would produce the specified value\nof L_min * H (i.e., the specified PIT),\
+    \ assuming H remains constant\n(it generally won't).  Can be used iteratively\
+    \ to converge on a\ndesired PIT."
+  synonyms:
+  - --LminH
+  - -L
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help message.
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nPROGRAM: consEntropy\n\nDESCRIPTION:\n    For use with phastCons.  Given\
+  \ phylogenetic models for conserved and\n    non-conserved states, the target coverage,\
+  \ and the (prior) expected\n    length of a conserved element, compute the relative\
+  \ entropy (H) of the\n    phylogenetic models, the expected minimum number of conserved\
+  \ sites\n    required to predict conserved element (L_min), the \"phylogenetic\n\
+  \    information threshold\" (PIT = L_min * H), and the expected maximum\n    number\
+  \ of nonconserved sites tolerated within a conserved element\n    (L_max).  Also\
+  \ will make a recommendation for a new prior expected\n    length based on a given\
+  \ target value of L_min*H (see --LminH).\n\nUSAGE: consEntropy [OPTIONS] <target-coverage>\
+  \ <expected-length> \\\n            [ <cons.mod> <noncons.mod> ]\n\nOPTIONS:\n \
+  \   --H, -H <value>\n        Instead of computing the relative entropy from two\
+  \ .mod files,\n        just use the specified value.  The .mod files aren't required\n\
+  \        in this case.\n\n    --LminH, -L <value> [or --NH/-N, for backward compatibility]\n\
+  \        Report the expected length that would produce the specified value\n   \
+  \     of L_min * H (i.e., the specified PIT), assuming H remains constant\n    \
+  \    (it generally won't).  Can be used iteratively to converge on a\n        desired\
+  \ PIT.\n\n    --help, -h\n        Print this help message.\n\nNOTE:\n    The relative\
+  \ entropy is currently computed by brute force, i.e.,\n    by enumerating all possible\
+  \ labelings of the leaves of the tree.\n    This approach won't be feasible with\
+  \ large trees.\n"
+generated_using:
+- --help

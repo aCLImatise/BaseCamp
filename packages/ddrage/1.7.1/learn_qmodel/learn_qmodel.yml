@@ -1,0 +1,98 @@
+!Command
+command:
+- learn_qmodel
+positional: []
+named:
+- !Flag
+  description: Path to a forward (p5) read file.
+  synonyms:
+  - '-1'
+  - -f
+  - --p5
+  args: !RepeatFlagArg
+    name: FASTQ_PATH
+  optional: true
+- !Flag
+  description: Path to a reverse (p7) read file.
+  synonyms:
+  - '-2'
+  - -r
+  - --p7
+  args: !RepeatFlagArg
+    name: FASTQ_PATH
+  optional: true
+- !Flag
+  description: 'Output file name/path. Default: custom.qmodel'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "Visualize the accumulating profile. And create a pdf\nversion of the\
+    \ plot. Only works for read file with\nmore than 10000 reads."
+  synonyms:
+  - -v
+  - --visualize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Plot the quality distributions as pdf. (Like\nvisualize, but without\
+    \ the progress updates. Only\nplots the final distributions.)"
+  synonyms:
+  - -p
+  - --plot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read and plot a .qmodel.npz file.
+  synonyms:
+  - -s
+  - --show
+  args: !SimpleFlagArg
+    name: SHOW
+  optional: true
+- !Flag
+  description: "Maximum read length. All values after this position\nwill be truncated\
+    \ and not become part of the model.\nDefault: 100\n"
+  synonyms:
+  - -l
+  - --length
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: learn_qmodel [-h] [-1 FASTQ_PATH [FASTQ_PATH ...]]\n          \
+  \          [-2 FASTQ_PATH [FASTQ_PATH ...]] [-o OUTPUT] [-v] [-p]\n            \
+  \        [-s SHOW] [-l LENGTH]\n\nThis tool compiles a position-wise distribution\
+  \ of quality values from one or\nmore FASTQ files. It creates a .qmodel file which\
+  \ can be passed to ddRAGE\nusing the -q parameter.\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -1 FASTQ_PATH [FASTQ_PATH\
+  \ ...], -f FASTQ_PATH [FASTQ_PATH ...], --p5 FASTQ_PATH [FASTQ_PATH ...]\n     \
+  \                   Path to a forward (p5) read file.\n  -2 FASTQ_PATH [FASTQ_PATH\
+  \ ...], -r FASTQ_PATH [FASTQ_PATH ...], --p7 FASTQ_PATH [FASTQ_PATH ...]\n     \
+  \                   Path to a reverse (p7) read file.\n  -o OUTPUT, --output OUTPUT\n\
+  \                        Output file name/path. Default: custom.qmodel\n  -v, --visualize\
+  \       Visualize the accumulating profile. And create a pdf\n                 \
+  \       version of the plot. Only works for read file with\n                   \
+  \     more than 10000 reads.\n  -p, --plot            Plot the quality distributions\
+  \ as pdf. (Like\n                        visualize, but without the progress updates.\
+  \ Only\n                        plots the final distributions.)\n  -s SHOW, --show\
+  \ SHOW  Read and plot a .qmodel.npz file.\n  -l LENGTH, --length LENGTH\n      \
+  \                  Maximum read length. All values after this position\n       \
+  \                 will be truncated and not become part of the model.\n        \
+  \                Default: 100\n"
+generated_using:
+- --help

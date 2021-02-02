@@ -1,0 +1,119 @@
+!Command
+command:
+- bam_alignment_qc.py
+positional: []
+named:
+- !Flag
+  description: Reference fasta.
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: reference
+  optional: true
+- !Flag
+  description: BAM region (None).
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: region
+  optional: true
+- !Flag
+  description: Left and right context sizes (1,1).
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: context_sizes
+  optional: true
+- !Flag
+  description: Do not plot per-reference information.
+  synonyms:
+  - -x
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Dataset tag (BAM basename).
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: bam_tag
+  optional: true
+- !Flag
+  description: Minimum alignment quality (0).
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: aqual
+  optional: true
+- !Flag
+  description: Number of quality intervals (6).
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: qual_ints
+  optional: true
+- !Flag
+  description: Report PDF (bam_alignment_qc.pdf).
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: report_pdf
+  optional: true
+- !Flag
+  description: Save pickled results in this file (bam_alignment_qc.pk).
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: results_pickle
+  optional: true
+- !Flag
+  description: Be quiet and do not show progress bars.
+  synonyms:
+  - -Q
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: bam_alignment_qc.py [-h] -f reference [-c region] [-n context_sizes]\n\
+  \                           [-x] [-t bam_tag] [-q aqual] [-i qual_ints]\n      \
+  \                     [-r report_pdf] [-p results_pickle] [-Q]\n               \
+  \            bam\n\nProduce alignment based QC plots of the input BAM file. The\
+  \ input BAM file\nmust be sorted by coordinates and indexed. It produces the following\
+  \ global\nplots: * Read statistics: number of mapped, unmapped and low mapping quality\n\
+  reads. * Distribution of mean quality values in the mapped and unmapped\nfractions.\
+  \ * Distribution of read lengths in the unmapped fraction. *\nDistribution of read\
+  \ lengths in the mapped fraction. * Distribution of read\nlengths in the mapping\
+  \ with quality less than -q * Distribution of alignment\nlengths. * Distribution\
+  \ of mapping qualities. * Plot of alignment lengths vs.\nmean base qualities. *\
+  \ Basewise statistics: total alignment length, number of\ninsertions, deleltions,\
+  \ matches and mismatches. * Precision statistics:\naccuracy and identity. * Frequency\
+  \ of errors in the context specifed by the\nleft and right context sizes (-n). Definition\
+  \ of context: for substitutions\nthe event is happening from the \"central base\"\
+  , in the case of indels the\nevents are located between the central base and the\
+  \ base before. The columns\nof the heatmap are normalised to sum to one and then\
+  \ the diagonal element are\nset to zero. * Distribution of deletion lengths. * Distribution\
+  \ of insertion\nlengths. * Base composition of insertions. The following plots are\
+  \ produced\nfor every reference unless disabled via -x: * Distribution of quality\
+  \ values\nacross the reference as a heatmap. * Mean quality values across the reference.\n\
+  * Base coverage across the reference. The tool saves the gathered statistics\nin\
+  \ a pickle file, which can be fed to `bam_multi_qc.py` to compare different\nsamples.\n\
+  \npositional arguments:\n  bam                Input BAM file.\n\noptional arguments:\n\
+  \  -h, --help         show this help message and exit\n  -f reference       Reference\
+  \ fasta.\n  -c region          BAM region (None).\n  -n context_sizes   Left and\
+  \ right context sizes (1,1).\n  -x                 Do not plot per-reference information.\n\
+  \  -t bam_tag         Dataset tag (BAM basename).\n  -q aqual           Minimum\
+  \ alignment quality (0).\n  -i qual_ints       Number of quality intervals (6).\n\
+  \  -r report_pdf      Report PDF (bam_alignment_qc.pdf).\n  -p results_pickle  Save\
+  \ pickled results in this file (bam_alignment_qc.pk).\n  -Q                 Be quiet\
+  \ and do not show progress bars.\n"
+generated_using:
+- --help

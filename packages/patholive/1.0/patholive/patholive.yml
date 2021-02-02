@@ -1,0 +1,196 @@
+!Command
+command:
+- patholive
+positional: []
+named:
+- !Flag
+  description: "Illumina BaseCalls directory which contains the\nsequence information\
+    \ of the reads."
+  synonyms:
+  - -b
+  - --bcl_dir
+  args: !SimpleFlagArg
+    name: BCL_DIR
+  optional: true
+- !Flag
+  description: Reference index directory for HiLive2.
+  synonyms:
+  - -i
+  - --index
+  args: !SimpleFlagArg
+    name: INDEX
+  optional: true
+- !Flag
+  description: "Length and types of the read segments. Each segment is\neither a read\
+    \ (R) or a barcode (B). Please give the\nsegments in the correct order as they\
+    \ are produced by\nthe sequencing machine. [Example: 101R,8B,8B,101R]"
+  synonyms:
+  - -r
+  - --reads
+  args: !SimpleFlagArg
+    name: READS
+  optional: true
+- !Flag
+  description: Cycles to create output for.
+  synonyms:
+  - -O
+  - --out_cycles
+  args: !SimpleFlagArg
+    name: OUT_CYCLES
+  optional: true
+- !Flag
+  description: Output directory.
+  synonyms:
+  - -o
+  - --out_dir
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: "Maximal relative length of the front softclip (only\nrelevant during\
+    \ output) [Default: 0.2]"
+  synonyms:
+  - -R
+  - --max_softclip_ratio
+  args: !SimpleFlagArg
+    name: MAX_SOFTCLIP_RATIO
+  optional: true
+- !Flag
+  description: Path to hilive executable
+  synonyms:
+  - -H
+  - --hilive
+  args: !SimpleFlagArg
+    name: HILIVE
+  optional: true
+- !Flag
+  description: Number of threads
+  synonyms:
+  - -n
+  - --num_threads
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+  optional: true
+- !Flag
+  description: "Alignment mode to balance speed and accuracy [very-\nfast|fast|balanced|accurate|very-accurate]."
+  synonyms:
+  - -m
+  - --align_mode
+  args: !SimpleFlagArg
+    name: ALIGN_MODE
+  optional: true
+- !Flag
+  description: "The output mode. [Default: ANYBEST]. [ALL|A]: Report\nall found alignments.\
+    \ [BESTN#|N#]: Report the # best\nfound alignments. [ALLBEST|H]: Report all found\n\
+    alignments with the best score. [ANYBEST|B]: Report\none best alignment. [UNIQUE|U]:\
+    \ Report only unique\nalignments."
+  synonyms:
+  - -M
+  - --out_mode
+  args: !SimpleFlagArg
+    name: OUT_MODE
+  optional: true
+- !Flag
+  description: "Set the output format [Default: BAM]. [SAM]: SAM\noutput. [BAM]: BAM\
+    \ output."
+  synonyms:
+  - -f
+  - --out_format
+  args: !SimpleFlagArg
+    name: OUT_FORMAT
+  optional: true
+- !Flag
+  description: 'Print output of HiLive. Default: False'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Lanes to be used for mapping, [Default = automatic\ndetection]"
+  synonyms:
+  - -l
+  - --lanes
+  args: !SimpleFlagArg
+    name: LANES
+  optional: true
+- !Flag
+  description: 'Number of tiles [Default: automatic detection]'
+  synonyms:
+  - -t
+  - --tiles
+  args: !SimpleFlagArg
+    name: TILES
+  optional: true
+- !Flag
+  description: "Specify the highest tile number. The tile numbers will\nbe computed\
+    \ by this number, considering the correct\nsurface count, swath count and tile\
+    \ count for Illumina\nsequencing."
+  synonyms:
+  - -T
+  - --max_tile
+  args: !SimpleFlagArg
+    name: MAX_TILE
+  optional: true
+- !Flag
+  description: "Path to a config file for HiLive2. This enables to use\nadvanced alignment\
+    \ settings that can not be set with\nthe available PathoLive parameters.\n"
+  synonyms:
+  - -c
+  - --config
+  args: !SimpleFlagArg
+    name: CONFIG
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "parsing command line\nusage: patholive [-h] -b BCL_DIR -i INDEX -r READS\
+  \ -O OUT_CYCLES -o OUT_DIR\n                 [-R MAX_SOFTCLIP_RATIO] [-H HILIVE]\
+  \ [-n NUM_THREADS]\n                 [-m ALIGN_MODE] [-M OUT_MODE] [-f OUT_FORMAT]\
+  \ [-v] [-l LANES]\n                 [-t TILES] [-T MAX_TILE] [-c CONFIG]\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -b BCL_DIR,\
+  \ --bcl_dir BCL_DIR\n                        Illumina BaseCalls directory which\
+  \ contains the\n                        sequence information of the reads.\n  -i\
+  \ INDEX, --index INDEX\n                        Reference index directory for HiLive2.\n\
+  \  -r READS, --reads READS\n                        Length and types of the read\
+  \ segments. Each segment is\n                        either a read (R) or a barcode\
+  \ (B). Please give the\n                        segments in the correct order as\
+  \ they are produced by\n                        the sequencing machine. [Example:\
+  \ 101R,8B,8B,101R]\n  -O OUT_CYCLES, --out_cycles OUT_CYCLES\n                 \
+  \       Cycles to create output for.\n  -o OUT_DIR, --out_dir OUT_DIR\n        \
+  \                Output directory.\n  -R MAX_SOFTCLIP_RATIO, --max_softclip_ratio\
+  \ MAX_SOFTCLIP_RATIO\n                        Maximal relative length of the front\
+  \ softclip (only\n                        relevant during output) [Default: 0.2]\n\
+  \  -H HILIVE, --hilive HILIVE\n                        Path to hilive executable\n\
+  \  -n NUM_THREADS, --num_threads NUM_THREADS\n                        Number of\
+  \ threads\n  -m ALIGN_MODE, --align_mode ALIGN_MODE\n                        Alignment\
+  \ mode to balance speed and accuracy [very-\n                        fast|fast|balanced|accurate|very-accurate].\n\
+  \  -M OUT_MODE, --out_mode OUT_MODE\n                        The output mode. [Default:\
+  \ ANYBEST]. [ALL|A]: Report\n                        all found alignments. [BESTN#|N#]:\
+  \ Report the # best\n                        found alignments. [ALLBEST|H]: Report\
+  \ all found\n                        alignments with the best score. [ANYBEST|B]:\
+  \ Report\n                        one best alignment. [UNIQUE|U]: Report only unique\n\
+  \                        alignments.\n  -f OUT_FORMAT, --out_format OUT_FORMAT\n\
+  \                        Set the output format [Default: BAM]. [SAM]: SAM\n    \
+  \                    output. [BAM]: BAM output.\n  -v, --verbose         Print output\
+  \ of HiLive. Default: False\n  -l LANES, --lanes LANES\n                       \
+  \ Lanes to be used for mapping, [Default = automatic\n                        detection]\n\
+  \  -t TILES, --tiles TILES\n                        Number of tiles [Default: automatic\
+  \ detection]\n  -T MAX_TILE, --max_tile MAX_TILE\n                        Specify\
+  \ the highest tile number. The tile numbers will\n                        be computed\
+  \ by this number, considering the correct\n                        surface count,\
+  \ swath count and tile count for Illumina\n                        sequencing.\n\
+  \  -c CONFIG, --config CONFIG\n                        Path to a config file for\
+  \ HiLive2. This enables to use\n                        advanced alignment settings\
+  \ that can not be set with\n                        the available PathoLive parameters.\n"
+generated_using:
+- --help

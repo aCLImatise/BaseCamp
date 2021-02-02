@@ -1,0 +1,268 @@
+!Command
+command:
+- findTADsAndLoops.pl
+positional: []
+named:
+- !Flag
+  description: <#> (max CPUs to use)
+  synonyms:
+  - -cpu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (overlapping window size, i.e. superRes, default: 15000)'
+  synonyms:
+  - -window
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '| -nobalance (balance contact maps, default: -nobalance)'
+  synonyms:
+  - -balance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (minimum interaction distance to consider, default: 25000)'
+  synonyms:
+  - -minDist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (maximum interaction distance to consider, default: 2000000)'
+  synonyms:
+  - -maxDist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (by default will place output files within the Tag Directory)
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: output prefix
+  optional: true
+- !Flag
+  description: '<#> (minimum inclusion score to call TAD, default: 1.5)'
+  synonyms:
+  - -minTADscore
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (by default, program removes overlapping TAD calls)
+  synonyms:
+  - -keepOverlappingTADs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (fold threshold for local loop enrichment, default: 1.5)'
+  synonyms:
+  - -foldLoopLocalBg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (fold threshold over avg. interactions of similar distance, default:
+    2)'
+  synonyms:
+  - -foldLoopGlobalBg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (poisson p-value threshold for differential interactions per loop,
+    default: 0.01)'
+  synonyms:
+  - -poissonLoopLocalBg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (poisson p-value threshold for minimum interactions per loop,
+    default: 1e-05)'
+  synonyms:
+  - -poissonLoopGlobalBg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (minimum length of contact points to find, default: 3x window
+    size)'
+  synonyms:
+  - -minLoopDist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (size of region used to calculate loop score, default: window
+    size)'
+  synonyms:
+  - -anchorSize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (size of region used to calculate local bg, default: 5x window
+    size)'
+  synonyms:
+  - -anchorLocalBgSize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (minimum number of adjusted reads for contact point, default:
+    use -poissonLoopGlobalBg)'
+  synonyms:
+  - -minLoopReads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (skip post-feature finding filtering step)
+  synonyms:
+  - -skipFiltering
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (keep unfiltered version of TADs/Loops)
+  synonyms:
+  - -keepUnfiltered
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (File of genome duplications/bad/blacklisted regions to exclude from
+    Loop/TAD endpoints)
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: peak/BED file
+  optional: true
+- !Flag
+  description: (i.e. hg19, hg38)
+  synonyms:
+  - -genome
+  args: !SimpleFlagArg
+    name: genome version
+  optional: true
+- !Flag
+  description: '[chr] ... (chromosomes to skip/exclude)'
+  synonyms:
+  - -badChr
+  args: !SimpleFlagArg
+    name: chr
+  optional: true
+- !Flag
+  description: '<#> (minimum ratio of read coverage in TAD relative to genome average,
+    def: 0.25)'
+  synonyms:
+  - -minCoverageTAD
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (minimum ratio of read coverage at anchors relative to average,
+    def: 0.25)'
+  synonyms:
+  - -minCoverageAnchor
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (distance across which to calculate insulation ratio, default:
+    150000)'
+  synonyms:
+  - -insDist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (distance across which to calculate directionality index , default:
+    1000000)'
+  synonyms:
+  - -diDist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (if res/maxDist are set to produce huge matrices and you have the RAM,
+    you may need to include this)
+  synonyms:
+  - -override
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[HiC TagDir2] ...'
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: HiC TagDir1
+  optional: true
+- !Flag
+  description: (will score loop interaction rates from this file)
+  synonyms:
+  - -loop
+  args: !SimpleFlagArg
+    name: loop 2D BED file
+  optional: true
+- !Flag
+  description: (will score TAD inclusion ratios from this file)
+  synonyms:
+  - -tad
+  args: !SimpleFlagArg
+    name: tad 2D BED file
+  optional: true
+- !Flag
+  description: (report raw interaction counts, will impact TAD inclusion ratio scoring
+    too)
+  synonyms:
+  - -raw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <#> (normalize based on this depth of sequencing for Hi-C experiments)
+  synonyms:
+  - -normTotal
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\tfindTADsAndLoops.pl <cmd> [options]\n\n\tUsage Modes:\n\n\t\tfindTADsAndLoops.pl\
+  \ find <tagDir> [options]\n\t\t\tFinds TADs and Loops in the given Hi-C tag directory.\
+  \ Output files\n\t\t\twill have the same prefix, and include 2D bed files specifying\
+  \ the locations of the features.\n\n\t\tfindTADsAndLoops.pl score -tad <tad.2D.bed>\
+  \ -loop <loop.2D.bed> -d <tagDir1> [tagDir2] ... [options]\n\t\t\tScores TADs and\
+  \ Loops cross several Hi-C tag directories so that they can be compared across\n\
+  \t\t\tdifferent replicates and experimental conditions.\n\t\tNote: When comparing\
+  \ experiments, it is recommended to find TADs/Loops on individual experiments first,\n\
+  \t\t\tthen merge the features with merge2Dbed.pl, then 'score' the commbined features\
+  \ across multiple tagDirs\n\n\tCommon Options:\n\t\t-cpu <#> (max CPUs to use)\n\
+  \t\t-res <#> (resolution, default: 3000)\n\t\t-window <#> (overlapping window size,\
+  \ i.e. superRes, default: 15000)\n\t\t-balance | -nobalance (balance contact maps,\
+  \ default: -nobalance)\n\t\t-minDist <#> (minimum interaction distance to consider,\
+  \ default: 25000)\n\t\t-maxDist <#> (maximum interaction distance to consider, default:\
+  \ 2000000)\n\n\tOptions specific to 'find' mode:\n\t\t-o <output prefix> (by default\
+  \ will place output files within the Tag Directory)\n\t\tTAD options:\n\t\t  -minTADsize\
+  \ <#> (default: 45000)\n\t\t  -minTADscore <#> (minimum inclusion score to call\
+  \ TAD, default: 1.5)\n\t\t  -keepOverlappingTADs (by default, program removes overlapping\
+  \ TAD calls)\n\t\tLoop options:\n\t\t  -foldLoopLocalBg <#> (fold threshold for\
+  \ local loop enrichment, default: 1.5)\n\t\t  -foldLoopGlobalBg <#> (fold threshold\
+  \ over avg. interactions of similar distance, default: 2)\n\t\t  -poissonLoopLocalBg\
+  \ <#> (poisson p-value threshold for differential interactions per loop, default:\
+  \ 0.01)\n\t\t  -poissonLoopGlobalBg <#> (poisson p-value threshold for minimum interactions\
+  \ per loop, default: 1e-05)\n\t\t  Advanced options (probably best to avoid changing):\n\
+  \t\t    -minLoopDist <#> (minimum length of contact points to find, default: 3x\
+  \ window size)\n\t\t    -anchorSize <#> (size of region used to calculate loop score,\
+  \ default: window size)\n\t\t    -anchorLocalBgSize <#> (size of region used to\
+  \ calculate local bg, default: 5x window size)\n\t\t    -minLoopReads <#> (minimum\
+  \ number of adjusted reads for contact point, default: use -poissonLoopGlobalBg)\n\
+  \t\tArtifact filtering options: (runs filterTADsAndLoops.pl)\n\t\t  -skipFiltering\
+  \ (skip post-feature finding filtering step)\n\t\t  -keepUnfiltered (keep unfiltered\
+  \ version of TADs/Loops)\n\t\t  -p <peak/BED file> (File of genome duplications/bad/blacklisted\
+  \ regions to exclude from Loop/TAD endpoints)\n\t\t  -genome <genome version> (i.e.\
+  \ hg19, hg38)\n\t\t  -badChr <chr> [chr] ... (chromosomes to skip/exclude)\n\t\t\
+  \  -minCoverageTAD <#> (minimum ratio of read coverage in TAD relative to genome\
+  \ average, def: 0.25)\n\t\t  -minCoverageAnchor <#> (minimum ratio of read coverage\
+  \ at anchors relative to average, def: 0.25)\n\t\tOther options:\n\t\t  -insDist\
+  \ <#> (distance across which to calculate insulation ratio, default: 150000)\n\t\
+  \t  -diDist <#> (distance across which to calculate directionality index , default:\
+  \ 1000000)\n\t\t  -override (if res/maxDist are set to produce huge matrices and\
+  \ you have the RAM, you may need to include this)\n\n\tOptions specific to 'score'\
+  \ mode:\n\t\t-o <output prefix> (default: \"score\")\n\t\t-d <HiC TagDir1> [HiC\
+  \ TagDir2] ...\n\t\t-loop <loop 2D BED file> (will score loop interaction rates\
+  \ from this file)\n\t\t-tad <tad 2D BED file> (will score TAD inclusion ratios from\
+  \ this file)\n\t\tLoop score reporting: (default: Hi-C depth normalized counts [use\
+  \ for use with getDiffExpression.pl...])\n\t\t  -raw (report raw interaction counts,\
+  \ will impact TAD inclusion ratio scoring too)\n\t\t  -normTotal <#> (normalize\
+  \ based on this depth of sequencing for Hi-C experiments)\n\n"
+generated_using:
+- --help

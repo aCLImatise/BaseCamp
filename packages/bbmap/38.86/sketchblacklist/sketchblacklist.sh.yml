@@ -1,0 +1,74 @@
+!Command
+command:
+- sketchblacklist.sh
+positional:
+- !Positional
+  description: This includes sequences with no taxid,
+  position: 0
+  name: sequences.
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an\nout-of-memory exception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified November 7, 2019\n\nDescription:\
+  \  Creates a blacklist sketch from common kmers, \nwhich occur in at least X different\
+  \ sequences or taxa.\nPlease read bbmap/docs/guides/BBSketchGuide.txt for more information.\n\
+  \nUsage:  sketchblacklist.sh in=<fasta file> out=<sketch file>\n\nStandard parameters:\n\
+  in=<file>           A fasta file containing one or more sequences.\nout=<file> \
+  \         Output filename.\nmintaxcount=100     Sketch kmers occuring in at least\
+  \ this many taxa.\nk=31                Kmer length, 1-32.  To maximize sensitivity\
+  \ and \n                    specificity, dual kmer lengths may be used:  k=31,24\n\
+  mode=sequence       Possible modes:\n                       sequence: Count kmers\
+  \ once per sequence.\n                       taxa: Count kmers once per taxonomic\
+  \ unit.\nname=               Set the blacklist sketch name.\ndelta=t           \
+  \  Delta-compress sketches.\na48=t               Encode sketches as ASCII-48 rather\
+  \ than hex.\namino=f             Amino-acid mode.\nentropy=0.66        Ignore sequence\
+  \ with entropy below this value.\nkeyfraction=0.16    Smaller values reduce blacklist\
+  \ size by ignoring a\n                    a fraction of the key space.  Range: 0.0001-0.5.\n\
+  \nTaxonomy-specific flags:\ntree=               Specify a taxtree file.  On Genepool,\
+  \ use 'auto'.\ngi=                 Specify a gitable file.  On Genepool, use 'auto'.\n\
+  accession=          Specify one or more comma-delimited NCBI accession to\n    \
+  \                taxid files.  On Genepool, use 'auto'.\ntaxlevel=subspecies Taxa\
+  \ hits below this rank will be promoted and merged\n                    with others.\n\
+  prefilter=t         Use a bloom filter to ignore low-count kmers.\nprepasses=2 \
+  \        Number of prefilter passes.\nprehashes=2         Number of prefilter hashes.\n\
+  prebits=-1          Manually override number of prefilter cell bits.\ntossjunk=t\
+  \          For taxa mode, discard taxonomically uninformative\n                \
+  \    sequences.  This includes sequences with no taxid,\n                    with\
+  \ a tax level NO_RANK, of parent taxid of LIFE.\nsilva=f             Parse headers\
+  \ using Silva or semicolon-delimited syntax.\n\nJava Parameters:\n-Xmx         \
+  \       This will set Java's memory usage, overriding autodetection.\n         \
+  \           -Xmx20g will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\n\
+  \                    The max is typically 85% of physical memory.\n-eoom       \
+  \        This flag will cause the process to exit if an\n                    out-of-memory\
+  \ exception occurs.  Requires Java 8u92+.\n-da                 Disable assertions.\n\
+  \nFor more detailed information, please read /bbmap/docs/guides/BBSketchGuide.txt.\n\
+  Please contact Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\
+  \n"
+generated_using:
+- --help

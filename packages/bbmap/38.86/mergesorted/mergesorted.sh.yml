@@ -1,0 +1,65 @@
+!Command
+command:
+- mergesorted.sh
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: sort_temp
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs.\nThe max is\
+    \ typically 85% of physical memory."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an\nout-of-memory exception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell\nLast modified September 12, 2018\n\nDescription:\
+  \  Sorts reads by name or other keys such as length,\nquality, mapping position,\
+  \ flowcell coordinates, or taxonomy.\nIntended to merge temp files produced by SortByName\
+  \ if the program\nran out of time during merging.\n\nUsage:   mergesorted.sh sort_temp*\
+  \ out=<file>\n\nInput may be fasta, fastq, or sam, compressed or uncompressed.\n\
+  \nParameters:\n\nin=<file,file,...>  Input files.  Files may be specified without\
+  \ in=.\nout=<file>          Output file.\ndelete=t            Delete input files\
+  \ after merging.\nname=t              Sort reads by name.\nlength=f            Sort\
+  \ reads by length.\nquality=f           Sort reads by quality.\nposition=f     \
+  \     Sort reads by position (for mapped reads).\ntaxa=f              Sort reads\
+  \ by taxonomy (for NCBI naming convention).\nsequence=f          Sort reads by sequence,\
+  \ alphabetically.\nflowcell=f          Sort reads by flowcell coordinates.\nshuffle=f\
+  \           Shuffle reads randomly (untested).\nlist=<file>         Sort reads according\
+  \ to this list of names.\nascending=t         Sort ascending.\nmemmult=.35     \
+  \    Write a temp file when used memory drops below this\n                    fraction\
+  \ of total memory.\n\nTaxonomy-sorting parameters:\ntree=               Specify\
+  \ a taxtree file.  On Genepool, use 'auto'.\ngi=                 Specify a gitable\
+  \ file.  On Genepool, use 'auto'.\naccession=          Specify one or more comma-delimited\
+  \ NCBI accession to\n                    taxid files.  On Genepool, use 'auto'.\n\
+  \nJava Parameters:\n-Xmx                This will set Java's memory usage, overriding\
+  \ autodetection.\n                    -Xmx20g will specify 20 gigs of RAM, and -Xmx200m\
+  \ will specify 200 megs.\n                    The max is typically 85% of physical\
+  \ memory.\n-eoom               This flag will cause the process to exit if an \n\
+  \                    out-of-memory exception occurs.  Requires Java 8u92+.\n-da\
+  \                 Disable assertions.\n\nPlease contact Brian Bushnell at bbushnell@lbl.gov\
+  \ if you encounter any problems.\n\n"
+generated_using:
+- --help

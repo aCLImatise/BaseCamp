@@ -1,0 +1,76 @@
+!Command
+command:
+- stdbuf
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: OPTION...
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: COMMAND
+  optional: false
+named:
+- !Flag
+  description: adjust standard input stream buffering
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: MODE
+  optional: true
+- !Flag
+  description: adjust standard output stream buffering
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: MODE
+  optional: true
+- !Flag
+  description: adjust standard error stream buffering
+  synonyms:
+  - -e
+  - --error
+  args: !SimpleFlagArg
+    name: MODE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: output version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: stdbuf OPTION... COMMAND\nRun COMMAND, with modified buffering\
+  \ operations for its standard streams.\n\nMandatory arguments to long options are\
+  \ mandatory for short options too.\n  -i, --input=MODE   adjust standard input stream\
+  \ buffering\n  -o, --output=MODE  adjust standard output stream buffering\n  -e,\
+  \ --error=MODE   adjust standard error stream buffering\n      --help     display\
+  \ this help and exit\n      --version  output version information and exit\n\nIf\
+  \ MODE is 'L' the corresponding stream will be line buffered.\nThis option is invalid\
+  \ with standard input.\n\nIf MODE is '0' the corresponding stream will be unbuffered.\n\
+  \nOtherwise MODE is a number which may be followed by one of the following:\nKB\
+  \ 1000, K 1024, MB 1000*1000, M 1024*1024, and so on for G, T, P, E, Z, Y.\nBinary\
+  \ prefixes can be used, too: KiB=K, MiB=M, and so on.\nIn this case the corresponding\
+  \ stream will be fully buffered with the buffer\nsize set to MODE bytes.\n\nNOTE:\
+  \ If COMMAND adjusts the buffering of its standard streams ('tee' does\nfor example)\
+  \ then that will override corresponding changes by 'stdbuf'.\nAlso some filters\
+  \ (like 'dd' and 'cat' etc.) don't use streams for I/O,\nand are thus unaffected\
+  \ by 'stdbuf' settings.\n\nGNU coreutils online help: <https://www.gnu.org/software/coreutils/>\n\
+  Report any translation bugs to <https://translationproject.org/team/>\nFull documentation\
+  \ <https://www.gnu.org/software/coreutils/stdbuf>\nor available locally via: info\
+  \ '(coreutils) stdbuf invocation'\n"
+generated_using:
+- --help

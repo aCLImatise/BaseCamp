@@ -1,0 +1,71 @@
+!Command
+command:
+- annotate-partitions.py
+positional:
+- !Positional
+  description: basename for input and output files
+  position: 0
+  name: graphbase
+  optional: false
+- !Positional
+  description: input FAST[AQ] sequences to annotate.
+  position: 1
+  name: input_sequence_filename
+  optional: false
+named:
+- !Flag
+  description: print citation information
+  synonyms:
+  - --info
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'k-mer size (default: 32) (default: 32)'
+  synonyms:
+  - -k
+  - --ksize
+  args: !SimpleFlagArg
+    name: KSIZE
+  optional: true
+- !Flag
+  description: 'Overwrite output file if it exists (default: False)'
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: annotate-partitions.py [--version] [--info] [-h] [-k KSIZE] [-f]\n\
+  \                              graphbase input_sequence_filename\n             \
+  \                 [input_sequence_filename ...]\n\nAnnotate sequences with partition\
+  \ IDs.\n\npositional arguments:\n  graphbase             basename for input and\
+  \ output files\n  input_sequence_filename\n                        input FAST[AQ]\
+  \ sequences to annotate.\n\noptional arguments:\n  --version             show program's\
+  \ version number and exit\n  --info                print citation information\n\
+  \  -h, --help            show this help message and exit\n  -k KSIZE, --ksize KSIZE\n\
+  \                        k-mer size (default: 32) (default: 32)\n  -f, --force \
+  \          Overwrite output file if it exists (default: False)\n\nLoad in a partitionmap\
+  \ (generally produced by `partition-graph.py` or `merge-\npartitions.py`) and annotate\
+  \ the sequences in the given files with their\npartition IDs. Use `extract-partitions.py`\
+  \ to extract sequences into separate\ngroup files.\n\nExample (results will be in\
+  \ \"random-20-a.fa.part\"):\n\n    load-graph.py -k 20 example tests/test-data/random-20-a.fa\n\
+  \    partition-graph.py example\n    merge-partitions.py -k 20 example\n    annotate-partitions.py\
+  \ -k 20 example tests/test-data/random-20-a.fa\n"
+generated_using:
+- --help

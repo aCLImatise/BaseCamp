@@ -1,0 +1,319 @@
+!Command
+command:
+- nanoraw
+- genome_resquiggle
+positional:
+- !Positional
+  description: Directory containing fast5 files.
+  position: 0
+  name: fast5_basedir
+  optional: false
+- !Positional
+  description: Path to fasta file for mapping.
+  position: 1
+  name: genome_fasta
+  optional: false
+named:
+- !Flag
+  description: "FAST5 subgroup (under Analyses/[corrected-group])\nwhere individual\
+    \ template and/or complement reads are\nstored. Default: ['BaseCalled_template']"
+  synonyms:
+  - --basecall-subgroups
+  args: !RepeatFlagArg
+    name: BASECALL_SUBGROUPS
+  optional: true
+- !Flag
+  description: "Input contains 2D reads. Equivalent to `--basecall-\nsubgroups BaseCalled_template\
+    \ BaseCalled_complement`"
+  synonyms:
+  - --2d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Relative or absolute path to built graphmap executable\nor command\
+    \ name if globally installed."
+  synonyms:
+  - --graphmap-executable
+  args: !SimpleFlagArg
+    name: GRAPHMAP_EXECUTABLE
+  optional: true
+- !Flag
+  description: "Relative or absolute path to built bwa-mem executable\nor command\
+    \ name if globally installed."
+  synonyms:
+  - --bwa-mem-executable
+  args: !SimpleFlagArg
+    name: BWA_MEM_EXECUTABLE
+  optional: true
+- !Flag
+  description: "Timeout in seconds for the processing of a single\nread. Default:\
+    \ No timeout."
+  synonyms:
+  - --timeout
+  args: !SimpleFlagArg
+    name: TIMEOUT
+  optional: true
+- !Flag
+  description: "Maximum number of changepoints to find within a single\nindel group.\
+    \ (Not setting this option can cause a\nprocess to stall and cannot be controlled\
+    \ by the\ntimeout option). Default: No limit."
+  synonyms:
+  - --cpts-limit
+  args: !SimpleFlagArg
+    name: CPTS_LIMIT
+  optional: true
+- !Flag
+  description: "Type of normalization to apply to raw signal when\ncalculating statistics\
+    \ based on new segmentation.\nShould be one of {\"median\", \"pA\", \"pA_raw\"\
+    , \"none\"}.\n\"none\" will provde the raw 16-bit DAQ values as the\nraw signal\
+    \ is stored. \"pA_raw\" will calculate the pA\nestimates as in the ONT events\
+    \ (using offset, range\nand digitization parameters stored in the FAST5 file).\n\
+    \"pA\" will first apply the \"pA_raw\" normalization\nfollowed by kmer-based correction\
+    \ for pA drift as\ndescribed in the nanopolish methylation manuscript\n(this option\
+    \ requires the [--pore-model-filename]\noption). \"median\" will shift by the\
+    \ median of each\nreads' raw signal and scale by the MAD. Default:\nmedian"
+  synonyms:
+  - --normalization-type
+  args: !ChoiceFlagArg
+    choices: !!set
+      median:
+      none:
+      pA_raw:
+      pA:
+  optional: true
+- !Flag
+  description: "File containing kmer model parameters (level_mean and\nlevel_stdv)\
+    \ used in order to compute kmer-based\ncorrected pA values. E.g. https://github.com/jts/nanop\n\
+    olish/blob/master/etc/r9-models/template_median68pA.5m\ners.model"
+  synonyms:
+  - --pore-model-filename
+  args: !SimpleFlagArg
+    name: PORE_MODEL_FILENAME
+  optional: true
+- !Flag
+  description: "Number of median absolute deviation (MAD) values at\nwhich to clip\
+    \ the raw signal. This can help avoid\nstrong re-segmentation artifacts from spikes\
+    \ in\nsignal. Set to negative value to disable outlier\nclipping. Default: 5"
+  synonyms:
+  - --outlier-threshold
+  args: !SimpleFlagArg
+    name: OUTLIER_THRESHOLD
+  optional: true
+- !Flag
+  description: "A pattern to search for a subset of files within\nfast5-basedir. Note\
+    \ that on the unix command line\npatterns may be expanded so it is best practice\
+    \ to\nquote patterns."
+  synonyms:
+  - --fast5-pattern
+  args: !SimpleFlagArg
+    name: FAST5_PATTERN
+  optional: true
+- !Flag
+  description: "Search for FAST5 files within immediate sub-\ndirectories.Note that\
+    \ this only searches a single\nlevel of subdirectories and only for files ending\
+    \ in\n.fast5. This is equivalent to specifying\n--fast5-pattern \"*/*.fast5\"."
+  synonyms:
+  - --recursive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Overwrite previous corrected group in FAST5/HDF5 file.\n(Note this\
+    \ only effects the group defined by\n--corrected-group)."
+  synonyms:
+  - --overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output failed read filenames into a this file with\nassoicated error\
+    \ for each read. Default: Do not store\nfailed reads."
+  synonyms:
+  - --failed-reads-filename
+  args: !SimpleFlagArg
+    name: FAILED_READS_FILENAME
+  optional: true
+- !Flag
+  description: "FAST5 group to access/plot created by\ngenome_resquiggle script. Default:\n\
+    RawGenomeCorrected_000"
+  synonyms:
+  - --corrected-group
+  args: !SimpleFlagArg
+    name: CORRECTED_GROUP
+  optional: true
+- !Flag
+  description: "FAST5 group to use for obtaining original basecalls\n(under Analyses\
+    \ group). Default: Basecall_1D_000"
+  synonyms:
+  - --basecall-group
+  args: !SimpleFlagArg
+    name: BASECALL_GROUP
+  optional: true
+- !Flag
+  description: 'Number of processes. Default: 2'
+  synonyms:
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: "Number of processes to use for aligning and parsing\noriginal basecalls.\
+    \ Each process will independently\nload the genome into memory, so use caution\
+    \ with\nlarger genomes (e.g. human). Default: 1"
+  synonyms:
+  - --align-processes
+  args: !SimpleFlagArg
+    name: ALIGN_PROCESSES
+  optional: true
+- !Flag
+  description: "Number of threads to use per alignment process. This\nvalue is passed\
+    \ to the underlying mapper system calls.\nDefault: [--processes] / (2 * [--align-processes)]"
+  synonyms:
+  - --align-threads-per-process
+  args: !SimpleFlagArg
+    name: ALIGN_THREADS_PER_PROCESS
+  optional: true
+- !Flag
+  description: "Number of processes to use for re-squiggling raw data.\nDefault: [--processes]\
+    \ / 2"
+  synonyms:
+  - --resquiggle-processes
+  args: !SimpleFlagArg
+    name: RESQUIGGLE_PROCESSES
+  optional: true
+- !Flag
+  description: "Batch size (number of reads) for each alignment call.\nNote that a\
+    \ new system call to the mapper is made for\neach batch (including loading of\
+    \ the genome), so it is\nadvised to use larger values for larger genomes.\nDefault:\
+    \ 500"
+  synonyms:
+  - --alignment-batch-size
+  args: !SimpleFlagArg
+    name: ALIGNMENT_BATCH_SIZE
+  optional: true
+- !Flag
+  description: "Skip computation of corrected event standard\ndeviations to save (potentially\
+    \ significant) time on\ncomputations."
+  synonyms:
+  - --skip-event-stdev
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't print status information.
+  synonyms:
+  - --quiet
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: nanoraw genome_resquiggle [--graphmap-executable GRAPHMAP_EXECUTABLE]\n\
+  \                                 [--bwa-mem-executable BWA_MEM_EXECUTABLE]\n  \
+  \                               [--timeout TIMEOUT] [--cpts-limit CPTS_LIMIT]\n\
+  \                                 [--normalization-type {median,pA,pA_raw,none}]\n\
+  \                                 [--pore-model-filename PORE_MODEL_FILENAME]\n\
+  \                                 [--outlier-threshold OUTLIER_THRESHOLD]\n    \
+  \                             [--fast5-pattern FAST5_PATTERN] [--recursive]\n  \
+  \                               [--overwrite]\n                                \
+  \ [--failed-reads-filename FAILED_READS_FILENAME]\n                            \
+  \     [--corrected-group CORRECTED_GROUP]\n                                 [--basecall-group\
+  \ BASECALL_GROUP]\n                                 [--basecall-subgroups BASECALL_SUBGROUPS\
+  \ [BASECALL_SUBGROUPS ...]\n                                 | --2d] [--processes\
+  \ PROCESSES]\n                                 [--align-processes ALIGN_PROCESSES]\n\
+  \                                 [--align-threads-per-process ALIGN_THREADS_PER_PROCESS]\n\
+  \                                 [--resquiggle-processes RESQUIGGLE_PROCESSES]\n\
+  \                                 [--alignment-batch-size ALIGNMENT_BATCH_SIZE]\n\
+  \                                 [--skip-event-stdev] [--quiet] [--help]\n    \
+  \                             fast5_basedir genome_fasta\n\noptional arguments:\n\
+  \  --basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]\n          \
+  \              FAST5 subgroup (under Analyses/[corrected-group])\n             \
+  \           where individual template and/or complement reads are\n            \
+  \            stored. Default: ['BaseCalled_template']\n  --2d                  Input\
+  \ contains 2D reads. Equivalent to `--basecall-\n                        subgroups\
+  \ BaseCalled_template BaseCalled_complement`\n\nRequired Arguments:\n  fast5_basedir\
+  \         Directory containing fast5 files.\n  genome_fasta          Path to fasta\
+  \ file for mapping.\n\nMapper Arguments (One mapper is required):\n  --graphmap-executable\
+  \ GRAPHMAP_EXECUTABLE\n                        Relative or absolute path to built\
+  \ graphmap executable\n                        or command name if globally installed.\n\
+  \  --bwa-mem-executable BWA_MEM_EXECUTABLE\n                        Relative or\
+  \ absolute path to built bwa-mem executable\n                        or command\
+  \ name if globally installed.\n\nRead Filtering Arguments:\n  --timeout TIMEOUT\
+  \     Timeout in seconds for the processing of a single\n                      \
+  \  read. Default: No timeout.\n  --cpts-limit CPTS_LIMIT\n                     \
+  \   Maximum number of changepoints to find within a single\n                   \
+  \     indel group. (Not setting this option can cause a\n                      \
+  \  process to stall and cannot be controlled by the\n                        timeout\
+  \ option). Default: No limit.\n\nRead Normalization Arguments:\n  --normalization-type\
+  \ {median,pA,pA_raw,none}\n                        Type of normalization to apply\
+  \ to raw signal when\n                        calculating statistics based on new\
+  \ segmentation.\n                        Should be one of {\"median\", \"pA\", \"\
+  pA_raw\", \"none\"}.\n                        \"none\" will provde the raw 16-bit\
+  \ DAQ values as the\n                        raw signal is stored. \"pA_raw\" will\
+  \ calculate the pA\n                        estimates as in the ONT events (using\
+  \ offset, range\n                        and digitization parameters stored in the\
+  \ FAST5 file).\n                        \"pA\" will first apply the \"pA_raw\" normalization\n\
+  \                        followed by kmer-based correction for pA drift as\n   \
+  \                     described in the nanopolish methylation manuscript\n     \
+  \                   (this option requires the [--pore-model-filename]\n        \
+  \                option). \"median\" will shift by the median of each\n        \
+  \                reads' raw signal and scale by the MAD. Default:\n            \
+  \            median\n  --pore-model-filename PORE_MODEL_FILENAME\n             \
+  \           File containing kmer model parameters (level_mean and\n            \
+  \            level_stdv) used in order to compute kmer-based\n                 \
+  \       corrected pA values. E.g. https://github.com/jts/nanop\n               \
+  \         olish/blob/master/etc/r9-models/template_median68pA.5m\n             \
+  \           ers.model\n  --outlier-threshold OUTLIER_THRESHOLD\n               \
+  \         Number of median absolute deviation (MAD) values at\n                \
+  \        which to clip the raw signal. This can help avoid\n                   \
+  \     strong re-segmentation artifacts from spikes in\n                        signal.\
+  \ Set to negative value to disable outlier\n                        clipping. Default:\
+  \ 5\n\nInput/Output Arguments:\n  --fast5-pattern FAST5_PATTERN\n              \
+  \          A pattern to search for a subset of files within\n                  \
+  \      fast5-basedir. Note that on the unix command line\n                     \
+  \   patterns may be expanded so it is best practice to\n                       \
+  \ quote patterns.\n  --recursive           Search for FAST5 files within immediate\
+  \ sub-\n                        directories.Note that this only searches a single\n\
+  \                        level of subdirectories and only for files ending in\n\
+  \                        .fast5. This is equivalent to specifying\n            \
+  \            --fast5-pattern \"*/*.fast5\".\n  --overwrite           Overwrite previous\
+  \ corrected group in FAST5/HDF5 file.\n                        (Note this only effects\
+  \ the group defined by\n                        --corrected-group).\n  --failed-reads-filename\
+  \ FAILED_READS_FILENAME\n                        Output failed read filenames into\
+  \ a this file with\n                        assoicated error for each read. Default:\
+  \ Do not store\n                        failed reads.\n\nFAST5 Data Arguments:\n\
+  \  --corrected-group CORRECTED_GROUP\n                        FAST5 group to access/plot\
+  \ created by\n                        genome_resquiggle script. Default:\n     \
+  \                   RawGenomeCorrected_000\n  --basecall-group BASECALL_GROUP\n\
+  \                        FAST5 group to use for obtaining original basecalls\n \
+  \                       (under Analyses group). Default: Basecall_1D_000\n\nMultiprocessing\
+  \ Arguments:\n  --processes PROCESSES\n                        Number of processes.\
+  \ Default: 2\n  --align-processes ALIGN_PROCESSES\n                        Number\
+  \ of processes to use for aligning and parsing\n                        original\
+  \ basecalls. Each process will independently\n                        load the genome\
+  \ into memory, so use caution with\n                        larger genomes (e.g.\
+  \ human). Default: 1\n  --align-threads-per-process ALIGN_THREADS_PER_PROCESS\n\
+  \                        Number of threads to use per alignment process. This\n\
+  \                        value is passed to the underlying mapper system calls.\n\
+  \                        Default: [--processes] / (2 * [--align-processes)]\n  --resquiggle-processes\
+  \ RESQUIGGLE_PROCESSES\n                        Number of processes to use for re-squiggling\
+  \ raw data.\n                        Default: [--processes] / 2\n\nMiscellaneous\
+  \ Arguments:\n  --alignment-batch-size ALIGNMENT_BATCH_SIZE\n                  \
+  \      Batch size (number of reads) for each alignment call.\n                 \
+  \       Note that a new system call to the mapper is made for\n                \
+  \        each batch (including loading of the genome), so it is\n              \
+  \          advised to use larger values for larger genomes.\n                  \
+  \      Default: 500\n  --skip-event-stdev    Skip computation of corrected event\
+  \ standard\n                        deviations to save (potentially significant)\
+  \ time on\n                        computations.\n  --quiet, -q           Don't\
+  \ print status information.\n  --help, -h            Print this help message and\
+  \ exit\n"
+generated_using:
+- --help

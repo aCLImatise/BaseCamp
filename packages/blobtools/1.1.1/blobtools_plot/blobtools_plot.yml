@@ -1,0 +1,262 @@
+!Command
+command:
+- blobtools
+- plot
+positional: []
+named:
+- !Flag
+  description: BlobDB file (created with "blobtools create")
+  synonyms:
+  - -i
+  - --infile
+  args: !SimpleFlagArg
+    name: BLOBDB
+  optional: true
+- !Flag
+  description: Plot only certain covlib(s). Separated by ","
+  synonyms:
+  - --lib
+  args: !SimpleFlagArg
+    name: COVLIB
+  optional: true
+- !Flag
+  description: Do not add filename as title to plot
+  synonyms:
+  - --notitle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Label axis based on filenames
+  synonyms:
+  - --filelabel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of (taxonomic) groups to plot, remaining\ngroups are placed\
+    \ in 'other' [default: 8]"
+  synonyms:
+  - -p
+  - --plotgroups
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Minimum sequence length considered for plotting [default: 100]'
+  synonyms:
+  - -l
+  - --length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Colour blobs by 'c index' [default: False]"
+  synonyms:
+  - --cindex
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Hide sequences without taxonomic annotation [default: False]'
+  synonyms:
+  - -n
+  - --nohit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Do not scale sequences by length [default: False]'
+  synonyms:
+  - -s
+  - --noscale
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Plot legend of blobplot in separate figure
+  synonyms:
+  - --legend
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Multi-plot. Print blobplot for each (taxonomic) group separately
+  synonyms:
+  - -m
+  - --multiplot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print plot after addition of each (taxonomic) group
+  synonyms:
+  - --cumulative
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Sort order for plotting [default: span]'
+  synonyms:
+  - --sort
+  args: !SimpleFlagArg
+    name: ORDER
+  optional: true
+- !Flag
+  description: "<L1,L2,...>    Labels that should always be plotted first, regardless\
+    \ of sort order\n(\"no-hit,other,undef\" is often a useful setting)"
+  synonyms:
+  - --sort_first
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Data for histograms [default: span]'
+  synonyms:
+  - --hist
+  args: !SimpleFlagArg
+    name: HIST
+  optional: true
+- !Flag
+  description: "Taxonomic rank used for colouring of blobs [default: phylum]\n(Supported:\
+    \ species, genus, family, order,\nphylum, superkingdom)"
+  synonyms:
+  - -r
+  - --rank
+  args: !SimpleFlagArg
+    name: RANK
+  optional: true
+- !Flag
+  description: "Taxrule which has been used for computing taxonomy\n(Supported: bestsum,\
+    \ bestsumorder) [default: bestsum]"
+  synonyms:
+  - -x
+  - --taxrule
+  args: !SimpleFlagArg
+    name: TAXRULE
+  optional: true
+- !Flag
+  description: "Figure format for plot (png, pdf, eps, jpeg,\nps, svg, svgz, tiff)\
+    \ [default: png]"
+  synonyms:
+  - --format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: 'Omit blobplot [default: False]'
+  synonyms:
+  - --noblobs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Omit plot of reads mapping [default: False]'
+  synonyms:
+  - --noreads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output prefix
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: "Relabel (taxonomic) groups, can be used several times.\ne.g. \"A=Actinobacteria,Proteobacteria\""
+  synonyms:
+  - --label
+  args: !SimpleFlagArg
+    name: GROUPS...
+  optional: true
+- !Flag
+  description: File containing colours for (taxonomic) groups. This allows having
+    more than 9 colours.
+  synonyms:
+  - --colours
+  args: !SimpleFlagArg
+    name: COLOURFILE
+  optional: true
+- !Flag
+  description: "Exclude these (taxonomic) groups (also works for 'other')\ne.g. \"\
+    Actinobacteria,Proteobacteria,other\""
+  synonyms:
+  - --exclude
+  args: !SimpleFlagArg
+    name: GROUPS
+  optional: true
+- !Flag
+  description: "File containing number of \"total\" and \"mapped\" reads\nper coverage\
+    \ file. (e.g.: bam0,900,100). If provided, info\nwill be used in read coverage\
+    \ plot(s)."
+  synonyms:
+  - --refcov
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Colour plot based on categories from FILE\n(format : \"seq     category\"\
+    ).\n"
+  synonyms:
+  - --catcolour
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: blobtools plot -i <BLOBDB>\n                                [-p\
+  \ INT] [-l INT] [--cindex] [-n] [-s]\n                                [-r RANK]\
+  \ [-x TAXRULE] [--label GROUPS...]\n                                [--lib COVLIB]\
+  \ [-o PREFIX] [-m]\n                                [--sort ORDER] [--sort_first\
+  \ LABELS] [--hist HIST] [--notitle] [--filelabel]\n                            \
+  \    [--colours FILE] [--exclude FILE]\n                                [--refcov\
+  \ FILE] [--catcolour FILE]\n                                [--format FORMAT] [--noblobs]\
+  \ [--noreads] [--legend]\n                                [--cumulative] [--multiplot]\n\
+  \                                [-h|--help]\n\n    Options:\n        -h --help\
+  \                   show this\n        -i, --infile BLOBDB         BlobDB file (created\
+  \ with \"blobtools create\")\n        --lib COVLIB                Plot only certain\
+  \ covlib(s). Separated by \",\"\n        --notitle                   Do not add\
+  \ filename as title to plot\n        --filelabel                 Label axis based\
+  \ on filenames\n        -p, --plotgroups INT        Number of (taxonomic) groups\
+  \ to plot, remaining\n                                     groups are placed in\
+  \ 'other' [default: 8]\n        -l, --length INT            Minimum sequence length\
+  \ considered for plotting [default: 100]\n        --cindex                    Colour\
+  \ blobs by 'c index' [default: False]\n        -n, --nohit                 Hide\
+  \ sequences without taxonomic annotation [default: False]\n        -s, --noscale\
+  \               Do not scale sequences by length [default: False]\n        --legend\
+  \                    Plot legend of blobplot in separate figure\n        -m, --multiplot\
+  \             Multi-plot. Print blobplot for each (taxonomic) group separately\n\
+  \        --cumulative                Print plot after addition of each (taxonomic)\
+  \ group\n        --sort <ORDER>              Sort order for plotting [default: span]\n\
+  \                                     span  : plot with decreasing span\n      \
+  \                               count : plot with decreasing count\n        --sort_first\
+  \ <L1,L2,...>    Labels that should always be plotted first, regardless of sort\
+  \ order\n                                     (\"no-hit,other,undef\" is often a\
+  \ useful setting)\n        --hist <HIST>               Data for histograms [default:\
+  \ span]\n                                     span  : span-weighted histograms\n\
+  \                                     count : count histograms\n        -r, --rank\
+  \ <RANK>           Taxonomic rank used for colouring of blobs [default: phylum]\n\
+  \                                     (Supported: species, genus, family, order,\n\
+  \                                        phylum, superkingdom)\n        -x, --taxrule\
+  \ <TAXRULE>     Taxrule which has been used for computing taxonomy\n           \
+  \                          (Supported: bestsum, bestsumorder) [default: bestsum]\n\
+  \        --format FORMAT             Figure format for plot (png, pdf, eps, jpeg,\n\
+  \                                        ps, svg, svgz, tiff) [default: png]\n \
+  \       --noblobs                   Omit blobplot [default: False]\n        --noreads\
+  \                   Omit plot of reads mapping [default: False]\n\n        -o, --out\
+  \ PREFIX            Output prefix\n\n        --label GROUPS...           Relabel\
+  \ (taxonomic) groups, can be used several times.\n                             \
+  \        e.g. \"A=Actinobacteria,Proteobacteria\"\n        --colours COLOURFILE\
+  \        File containing colours for (taxonomic) groups. This allows having more\
+  \ than 9 colours.\n        --exclude GROUPS            Exclude these (taxonomic)\
+  \ groups (also works for 'other')\n                                     e.g. \"\
+  Actinobacteria,Proteobacteria,other\"\n        --refcov <FILE>               File\
+  \ containing number of \"total\" and \"mapped\" reads\n                        \
+  \             per coverage file. (e.g.: bam0,900,100). If provided, info\n     \
+  \                                will be used in read coverage plot(s).\n      \
+  \  --catcolour <FILE>            Colour plot based on categories from FILE\n   \
+  \                                  (format : \"seq\tcategory\").\n"
+generated_using:
+- --help

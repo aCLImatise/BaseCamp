@@ -1,0 +1,142 @@
+!Command
+command:
+- mprof-report
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: FILENAME
+  optional: false
+named:
+- !Flag
+  description: write to FILE instead of stdout
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: collect and show backtraces
+  synonyms:
+  - --traces
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: limit backtraces to NUM entries
+  synonyms:
+  - --maxframes
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "print the specified reports. Defaults are:\nheader,jit,gc,sample,alloc,call,metadata,exception,monitor,thread,heapshot,counters,coverage"
+  synonyms:
+  - --reports
+  args: !OptionalFlagArg
+    names:
+    - R1
+    - R2...
+    separator: ','
+  optional: true
+- !Flag
+  description: 'sort methods according to MODE: total, self, calls'
+  synonyms:
+  - --method-sort
+  args: !SimpleFlagArg
+    name: MODE
+  optional: true
+- !Flag
+  description: 'sort allocations according to MODE: bytes, count'
+  synonyms:
+  - --alloc-sort
+  args: !SimpleFlagArg
+    name: MODE
+  optional: true
+- !Flag
+  description: "sort counters according to MODE: time, category\nonly accessible in\
+    \ verbose mode"
+  synonyms:
+  - --counters-sort
+  args: !SimpleFlagArg
+    name: MODE
+  optional: true
+- !Flag
+  description: track what happens to objects OBJ1, O2 etc.
+  synonyms:
+  - --track
+  args: !OptionalFlagArg
+    names:
+    - OB1
+    - OB2...
+    separator: ','
+  optional: true
+- !Flag
+  description: "find and track objects matching FINFSPEC, where FINDSPEC is:\nS:minimum_size\
+    \ or T:partial_name"
+  synonyms:
+  - --find
+  args: !SimpleFlagArg
+    name: FINDSPEC
+  optional: true
+- !Flag
+  description: consider just the data for thread THREADID
+  synonyms:
+  - --thread
+  args: !SimpleFlagArg
+    name: THREADID
+  optional: true
+- !Flag
+  description: consider data FROM seconds from startup up to TO seconds
+  synonyms:
+  - --time
+  args: !SimpleFlagArg
+    name: FROM-TO
+  optional: true
+- !Flag
+  description: increase verbosity level
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: display decoding debug info for mprof-report devs
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write the coverage info to FILE as XML
+  synonyms:
+  - --coverage-out
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display this help
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Mono log profiler report version 1.0\nUsage: mprof-report [OPTIONS] FILENAME\n\
+  FILENAME can be '-' to read from standard input.\nOptions:\n\t--help           \
+  \    display this help\n\t--out=FILE           write to FILE instead of stdout\n\
+  \t--traces             collect and show backtraces\n\t--maxframes=NUM      limit\
+  \ backtraces to NUM entries\n\t--reports=R1[,R2...] print the specified reports.\
+  \ Defaults are:\n\t                     header,jit,gc,sample,alloc,call,metadata,exception,monitor,thread,heapshot,counters,coverage\n\
+  \t--method-sort=MODE   sort methods according to MODE: total, self, calls\n\t--alloc-sort=MODE\
+  \    sort allocations according to MODE: bytes, count\n\t--counters-sort=MODE sort\
+  \ counters according to MODE: time, category\n\t                     only accessible\
+  \ in verbose mode\n\t--track=OB1[,OB2...] track what happens to objects OBJ1, O2\
+  \ etc.\n\t--find=FINDSPEC      find and track objects matching FINFSPEC, where FINDSPEC\
+  \ is:\n\t                     S:minimum_size or T:partial_name\n\t--thread=THREADID\
+  \    consider just the data for thread THREADID\n\t--time=FROM-TO       consider\
+  \ data FROM seconds from startup up to TO seconds\n\t--verbose            increase\
+  \ verbosity level\n\t--debug              display decoding debug info for mprof-report\
+  \ devs\n\t--coverage-out=FILE  write the coverage info to FILE as XML\n"
+generated_using:
+- --help

@@ -1,0 +1,111 @@
+!Command
+command:
+- gcloud
+- debug
+- logpoints
+positional:
+- !Positional
+  description: SYNOPSIS
+  position: 0
+  name: logpoints
+  optional: false
+- !Positional
+  description: Create debug logpoints.
+  position: 0
+  name: create
+  optional: false
+- !Positional
+  description: Delete debug logpoints.
+  position: 1
+  name: delete
+  optional: false
+- !Positional
+  description: List debug logpoints.
+  position: 2
+  name: list
+  optional: false
+- !Positional
+  description: LOCATION    ...
+  position: 0
+  name: ID
+  optional: false
+- !Positional
+  description: product.py:123  ...
+  position: 1
+  name: 567890abcdef1-1234-56789
+  optional: false
+named:
+- !Flag
+  description: "=(ID|DESCRIPTION_REGEXP)\nThe debug target. It may be a target ID\
+    \ or name obtained from 'debug\ntargets list', or it may be a regular expression\
+    \ uniquely specifying a\ndebuggee based on its description or name. For App Engine\
+    \ projects, if\nnot specified, the default target is the most recent deployment\
+    \ of the\ndefault module and version."
+  synonyms:
+  - --target
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: $ gcloud help for details.
+  synonyms:
+  - --flatten
+  - --format
+  - --help
+  - --log-http
+  - --project
+  - --quiet
+  - --trace-token
+  - --user-output-enabled
+  - --verbosity.
+  args: !SimpleFlagArg
+    name: Run
+  optional: true
+usage_flag:
+version_flag:
+help_text: "NAME\n    gcloud debug logpoints - commands for interacting with Cloud\
+  \ Debugger\n        logpoints\n\nSYNOPSIS\n    gcloud debug logpoints COMMAND [--target=(ID|DESCRIPTION_REGEXP)]\n\
+  \        [GCLOUD_WIDE_FLAG ...]\n\nDESCRIPTION\n    Logpoints allow you to inject\
+  \ logging into running services without\n    restarting or interfering with the\
+  \ normal function of the service. Log\n    output will be sent to the appropriate\
+  \ log for the target's environment. On\n    App Engine, for example, output will\
+  \ go to the request log.\n\nFLAGS\n     --target=(ID|DESCRIPTION_REGEXP)\n     \
+  \   The debug target. It may be a target ID or name obtained from 'debug\n     \
+  \   targets list', or it may be a regular expression uniquely specifying a\n   \
+  \     debuggee based on its description or name. For App Engine projects, if\n \
+  \       not specified, the default target is the most recent deployment of the\n\
+  \        default module and version.\n\nGCLOUD WIDE FLAGS\n    These flags are available\
+  \ to all commands: --account, --configuration,\n    --flatten, --format, --help,\
+  \ --log-http, --project, --quiet, --trace-token,\n    --user-output-enabled, --verbosity.\
+  \ Run $ gcloud help for details.\n\nCOMMANDS\n    COMMAND is one of the following:\n\
+  \n     create\n        Create debug logpoints.\n\n     delete\n        Delete debug\
+  \ logpoints.\n\n     list\n        List debug logpoints.\n\nEXAMPLES\n    The following\
+  \ command would log the value of the \"name\" attribute of the\n    \"product\"\
+  \ variable whenever any request executes line 123 of the file\n    product.py:\n\
+  \n        $ gcloud debug logpoints create product.py:123               \\\n    \
+  \      \"No description for {product.name}\"\n\n    The log output will appear wherever\
+  \ explicit logging output from your\n    program is normally written. For example,\
+  \ for an App Engine Standard\n    application, the output would appear in the request\
+  \ log.\n\n    If you want to log output only when certain runtime conditions are\
+  \ met, you\n    can add a \"--condition\" option:\n\n        $ gcloud debug logpoints\
+  \ create product.py:123               \\\n          \"Suspicious price: {product.name}\
+  \ costs {price}\"               \\\n          --condition \"price < .50\"\n\n  \
+  \  Logpoints remain active for 24 hours after creation. If you want to disable\n\
+  \    a logpoint, use the logpoints delete command:\n\n        $ gcloud debug logpoints\
+  \ delete product.*\n\n    The above command would delete all logpoints in any file\
+  \ whose name begins\n    with \"product\". If you want to delete only a single logpoint,\
+  \ you should\n    first determine the logpoint ID using the logpoints list command,\
+  \ then\n    delete that specific ID:\n\n        $ gcloud debug logpoints list\n\
+  \        ID                        LOCATION    ...\n        567890abcdef1-1234-56789\
+  \  product.py:123  ...\n        $ gcloud debug logpoints delete 567890abcdef1-1234-56789\n\
+  \n    For App Engine services, logpoint resources include the \"logQuery\"\n   \
+  \ property, which is suitable for use with the \"gcloud beta logging read\"\n  \
+  \  command. You can save this property's value and use it to read logs from\n  \
+  \  the command line:\n\n        $ log_query=$(gcloud debug logpoints create product.py:123\
+  \         \\\n                \"No description for {product.name}\" \\\n       \
+  \   --format=\"value(logQuery)\")\n        $ gcloud beta logging read \"$log_query\"\
+  \n"
+generated_using:
+- --help

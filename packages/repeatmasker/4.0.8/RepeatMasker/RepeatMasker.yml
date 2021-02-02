@@ -1,0 +1,334 @@
+!Command
+command:
+- RepeatMasker
+positional:
+- !Positional
+  description: "-e(ngine) [crossmatch|wublast|abblast|ncbi|hmmer|decypher]\nUse an\
+    \ alternate search engine to the default."
+  position: 0
+  name: sequence.
+  optional: false
+- !Positional
+  description: -xm Creates an additional output file in cross_match format (for
+  position: 0
+  name: ProcessRepeats
+  optional: false
+named:
+- !Flag
+  description: "(rallel) [number]\nThe number of processors to use in parallel (only\
+    \ works for batch\nfiles or sequences over 50 kb)"
+  synonyms:
+  - -pa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Slow search; 0-5% more sensitive, 2-3 times slower than default
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Quick search; 5-10% less sensitive, 2-5 times faster than default
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "job; about 10% less sensitive, 4->10 times faster than default\n(quick\
+    \ searches are fine under most circumstances) repeat options"
+  synonyms:
+  - -qq
+  args: !SimpleFlagArg
+    name: Rush
+  optional: true
+- !Flag
+  description: Does not mask low_complexity DNA or simple repeats
+  synonyms:
+  - -nolow
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only masks low complex/simple repeats (no interspersed repeats)
+  synonyms:
+  - -noint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Does not mask small RNA (pseudo) genes
+  synonyms:
+  - -norna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only masks Alus (and 7SLRNA, SVA and LTR5)(only for primate DNA)
+  synonyms:
+  - -alu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[number]\nMasks only those repeats < x percent diverged from consensus\
+    \ seq"
+  synonyms:
+  - -div
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[filename]\nAllows use of a custom library (e.g. from another species)"
+  synonyms:
+  - -lib
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[number]\nSets cutoff score for masking repeats when using -lib (default\
+    \ 225)"
+  synonyms:
+  - -cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specify the species or clade of the input sequence. The species name\n\
+    must be a valid NCBI Taxonomy Database species name and be contained\nin the RepeatMasker\
+    \ repeat database. Some examples are:\n-species human\n-species mouse\n-species\
+    \ rattus\n-species \"ciona savignyi\"\n-species arabidopsis\nOther commonly used\
+    \ species:\nmammal, carnivore, rodentia, rat, cow, pig, cat, dog, chicken, fugu,\n\
+    danio, \"ciona intestinalis\" drosophila, anopheles, elegans,\ndiatoaea, artiodactyl,\
+    \ arabidopsis, rice, wheat, and maize"
+  synonyms:
+  - -species
+  args: !SimpleFlagArg
+    name: query species
+  optional: true
+- !Flag
+  description: Only clips E coli insertion elements out of fasta and .qual files
+  synonyms:
+  - -is_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Clips IS elements before analysis (default: IS only reported)'
+  synonyms:
+  - -is_clip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skips bacterial insertion element check
+  synonyms:
+  - -no_is
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[number]\nUse matrices calculated for 'number' percentage background\
+    \ GC level"
+  synonyms:
+  - -gc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "RepeatMasker calculates the GC content even for batch files/small\n\
+    seqs"
+  synonyms:
+  - -gccalc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[number]\nMaximum sequence length masked without fragmenting (default\
+    \ 60000,\n300000 for DeCypher)"
+  synonyms:
+  - -frag
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skips the steps in which repeats are excised
+  synonyms:
+  - -nocut
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Prints search engine progress report to screen (defaults to .stderr\n\
+    file)"
+  synonyms:
+  - -noisy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not postprocess the results of the run ( i.e. call ProcessRepeats\n\
+    ). NOTE: This options should only be used when ProcessRepeats will\nbe run manually\
+    \ on the results."
+  synonyms:
+  - -nopost
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[directory name]\nWrites output to this directory (default is query\
+    \ file directory,\n\"-dir .\" will write to current directory)."
+  synonyms:
+  - -dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(lignments)\nWrites alignments in .align output file"
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Alignments are presented in the orientation of the repeat (with\n\
+    option -a)"
+  synonyms:
+  - -inv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Outputs ambiguous DNA transposon fragments using a lower case name.\n\
+    All other repeats are listed in upper case. Ambiguous fragments\nmatch multiple\
+    \ repeat elements and can only be called based on\nflanking repeat information."
+  synonyms:
+  - -lcambig
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Returns complete .masked sequence in lower case
+  synonyms:
+  - -small
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Returns repetitive regions in lowercase (rest capitals) rather than\n\
+    masked"
+  synonyms:
+  - -xsmall
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Returns repetitive regions masked with Xs rather than Ns
+  synonyms:
+  - -x
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Reports simple repeats that may be polymorphic (in file.poly)
+  synonyms:
+  - -poly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Includes for each annotation the HSP \"evidence\". Currently this\n\
+    option is only available with the \"-html\" output format listed\nbelow."
+  synonyms:
+  - -source
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Creates an additional output file in xhtml format.
+  synonyms:
+  - -html
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Creates an additional output file in ACeDB format
+  synonyms:
+  - -ace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Creates an additional Gene Feature Finding format output
+  synonyms:
+  - -gff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Creates an additional annotation file not processed by
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Leaves out final column with unique ID for each element (was\ndefault)"
+  synonyms:
+  - -no_id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(xcln)\nCalculates repeat densities (in .tbl) excluding runs of >=20\
+    \ N/Xs in\nthe query"
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "(elp)\nDetailed help"
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "RepeatMasker version open-4.0.8\nNAME\n    RepeatMasker - Mask repetitive\
+  \ DNA\n\nSYNOPSIS\n      RepeatMasker [-options] <seqfiles(s) in fasta format>\n\
+  \nDESCRIPTION\n    The options are:\n\n    -h(elp)\n        Detailed help\n\n  \
+  \  Default settings are for masking all type of repeats in a primate\n    sequence.\n\
+  \n    -e(ngine) [crossmatch|wublast|abblast|ncbi|hmmer|decypher]\n        Use an\
+  \ alternate search engine to the default.\n\n    -pa(rallel) [number]\n        The\
+  \ number of processors to use in parallel (only works for batch\n        files or\
+  \ sequences over 50 kb)\n\n    -s  Slow search; 0-5% more sensitive, 2-3 times slower\
+  \ than default\n\n    -q  Quick search; 5-10% less sensitive, 2-5 times faster than\
+  \ default\n\n    -qq Rush job; about 10% less sensitive, 4->10 times faster than\
+  \ default\n        (quick searches are fine under most circumstances) repeat options\n\
+  \n    -nolow\n        Does not mask low_complexity DNA or simple repeats\n\n   \
+  \ -noint\n        Only masks low complex/simple repeats (no interspersed repeats)\n\
+  \n    -norna\n        Does not mask small RNA (pseudo) genes\n\n    -alu\n     \
+  \   Only masks Alus (and 7SLRNA, SVA and LTR5)(only for primate DNA)\n\n    -div\
+  \ [number]\n        Masks only those repeats < x percent diverged from consensus\
+  \ seq\n\n    -lib [filename]\n        Allows use of a custom library (e.g. from\
+  \ another species)\n\n    -cutoff [number]\n        Sets cutoff score for masking\
+  \ repeats when using -lib (default 225)\n\n    -species <query species>\n      \
+  \  Specify the species or clade of the input sequence. The species name\n      \
+  \  must be a valid NCBI Taxonomy Database species name and be contained\n      \
+  \  in the RepeatMasker repeat database. Some examples are:\n\n          -species\
+  \ human\n          -species mouse\n          -species rattus\n          -species\
+  \ \"ciona savignyi\"\n          -species arabidopsis\n\n        Other commonly used\
+  \ species:\n\n        mammal, carnivore, rodentia, rat, cow, pig, cat, dog, chicken,\
+  \ fugu,\n        danio, \"ciona intestinalis\" drosophila, anopheles, elegans,\n\
+  \        diatoaea, artiodactyl, arabidopsis, rice, wheat, and maize\n\n    Contamination\
+  \ options\n\n    -is_only\n        Only clips E coli insertion elements out of fasta\
+  \ and .qual files\n\n    -is_clip\n        Clips IS elements before analysis (default:\
+  \ IS only reported)\n\n    -no_is\n        Skips bacterial insertion element check\n\
+  \n    Running options\n\n    -gc [number]\n        Use matrices calculated for 'number'\
+  \ percentage background GC level\n\n    -gccalc\n        RepeatMasker calculates\
+  \ the GC content even for batch files/small\n        seqs\n\n    -frag [number]\n\
+  \        Maximum sequence length masked without fragmenting (default 60000,\n  \
+  \      300000 for DeCypher)\n\n    -nocut\n        Skips the steps in which repeats\
+  \ are excised\n\n    -noisy\n        Prints search engine progress report to screen\
+  \ (defaults to .stderr\n        file)\n\n    -nopost\n        Do not postprocess\
+  \ the results of the run ( i.e. call ProcessRepeats\n        ). NOTE: This options\
+  \ should only be used when ProcessRepeats will\n        be run manually on the results.\n\
+  \n    output options\n\n    -dir [directory name]\n        Writes output to this\
+  \ directory (default is query file directory,\n        \"-dir .\" will write to\
+  \ current directory).\n\n    -a(lignments)\n        Writes alignments in .align\
+  \ output file\n\n    -inv\n        Alignments are presented in the orientation of\
+  \ the repeat (with\n        option -a)\n\n    -lcambig\n        Outputs ambiguous\
+  \ DNA transposon fragments using a lower case name.\n        All other repeats are\
+  \ listed in upper case. Ambiguous fragments\n        match multiple repeat elements\
+  \ and can only be called based on\n        flanking repeat information.\n\n    -small\n\
+  \        Returns complete .masked sequence in lower case\n\n    -xsmall\n      \
+  \  Returns repetitive regions in lowercase (rest capitals) rather than\n       \
+  \ masked\n\n    -x  Returns repetitive regions masked with Xs rather than Ns\n\n\
+  \    -poly\n        Reports simple repeats that may be polymorphic (in file.poly)\n\
+  \n    -source\n        Includes for each annotation the HSP \"evidence\". Currently\
+  \ this\n        option is only available with the \"-html\" output format listed\n\
+  \        below.\n\n    -html\n        Creates an additional output file in xhtml\
+  \ format.\n\n    -ace\n        Creates an additional output file in ACeDB format\n\
+  \n    -gff\n        Creates an additional Gene Feature Finding format output\n\n\
+  \    -u  Creates an additional annotation file not processed by\n        ProcessRepeats\n\
+  \n    -xm Creates an additional output file in cross_match format (for\n       \
+  \ parsing)\n\n    -no_id\n        Leaves out final column with unique ID for each\
+  \ element (was\n        default)\n\n    -e(xcln)\n        Calculates repeat densities\
+  \ (in .tbl) excluding runs of >=20 N/Xs in\n        the query\n\nSEE ALSO\n    \
+  \    Crossmatch, ProcessRepeats\n\nCOPYRIGHT\n    Copyright 2007-2014 Arian Smit,\
+  \ Institute for Systems Biology\n\nAUTHORS\n    Arian Smit <asmit@systemsbiology.org>\n\
+  \n    Robert Hubley <rhubley@systemsbiology.org>\n\n"
+generated_using:
+- -h

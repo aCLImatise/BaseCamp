@@ -1,0 +1,164 @@
+!Command
+command:
+- bgt
+- view
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: bgt-prefix
+  optional: false
+named:
+- !Flag
+  description: samples list (,sample1,sample2 or a file or expr; see Notes below)
+    [all]
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: EXPR
+  optional: true
+- !Flag
+  description: region [all]
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: extract variants overlapping BED FILE []
+  synonyms:
+  - -B
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: exclude variants overlapping BED FILE (effective with -B)
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: process from the INT-th record (1-based) []
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: process at most INT records []
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: variant annotations in FMF (to work with -a) []
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: load variant annotations in RAM (only with -d)
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: alleles list chr:1basedPos:refLen:seq (,allele1,allele2 or a file or
+    expr) []
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: EXPR
+  optional: true
+- !Flag
+  description: frequency filters []
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: BCF output (effective without -S/-H)
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: compression level for BCF [default]
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: equivalent to -bl0 (overriding -b and -l)
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: don't output sample genotypes
+  synonyms:
+  - -G
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write AC/AN to the INFO field (auto applied with -f or multipl -s)
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: show samples with a set of alleles (with -a)
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: count of haplotypes with a set of alleles (with -a)
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "comma-delimited list of fields to output. Accepted variables:\nAC,\
+    \ AN, AC#, AN#, CHROM, POS, END, REF, ALT (# for a group number)"
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "view: invalid option -- '-'\nview: invalid option -- 'h'\nUsage: bgt view\
+  \ [options] <bgt-prefix> [...]\nOptions:\n  Sample selection:\n    -s EXPR     \
+  \ samples list (,sample1,sample2 or a file or expr; see Notes below) [all]\n  Site\
+  \ selection:\n    -r STR       region [all]\n    -B FILE      extract variants overlapping\
+  \ BED FILE []\n    -e           exclude variants overlapping BED FILE (effective\
+  \ with -B)\n    -i INT       process from the INT-th record (1-based) []\n    -n\
+  \ INT       process at most INT records []\n    -d FILE      variant annotations\
+  \ in FMF (to work with -a) []\n    -M           load variant annotations in RAM\
+  \ (only with -d)\n    -a EXPR      alleles list chr:1basedPos:refLen:seq (,allele1,allele2\
+  \ or a file or expr) []\n    -f STR       frequency filters []\n  VCF output:\n\
+  \    -b           BCF output (effective without -S/-H)\n    -l INT       compression\
+  \ level for BCF [default]\n    -u           equivalent to -bl0 (overriding -b and\
+  \ -l)\n    -G           don't output sample genotypes\n    -C           write AC/AN\
+  \ to the INFO field (auto applied with -f or multipl -s)\n  Non-VCF output:\n  \
+  \  -S           show samples with a set of alleles (with -a)\n    -H           count\
+  \ of haplotypes with a set of alleles (with -a)\n    -t STR       comma-delimited\
+  \ list of fields to output. Accepted variables:\n                 AC, AN, AC#, AN#,\
+  \ CHROM, POS, END, REF, ALT (# for a group number)\nNotes:\n  For option -s/-a,\
+  \ EXPR can be one of:\n    1) comma-delimited list following a colon/comma. e.g.\
+  \ -s,NA12878,NA12044\n    2) space-delimited file with the first column giving a\
+  \ sample/allele name. e.g. -s list.txt\n    3) expression if .spl/-d file contains\
+  \ metadata. e.g.: -s\"gender=='M'&&population!='CEU'\"\n  If multiple -s is specified,\
+  \ the AC/AN of the first group will be written to VCF INFO AC1/AN1,\n  the second\
+  \ to AC2/AN2, etc.\n"
+generated_using:
+- --help

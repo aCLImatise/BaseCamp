@@ -1,0 +1,268 @@
+!Command
+command:
+- eqtlbma_bf_parallel.bash
+positional: []
+named:
+- !Flag
+  description: level (0/default=1/2/3)
+  synonyms:
+  - -v
+  - --verbose
+  args: !SimpleFlagArg
+    name: verbosity
+  optional: true
+- !Flag
+  description: path to the binary 'eqtlbma_bf'
+  synonyms:
+  - --p2b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "directory with lists of features to analyze (BED files)\nfile names\
+    \ have to be like '<anything>_<batchId>.<anything>'"
+  synonyms:
+  - --geneD
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "directory with lists of SNPs to analyze (optional)\nfile names have\
+    \ to be like '<anything>_<batchId>.<anything>'\neach SNP file should correspond\
+    \ to a feature file, in the same order"
+  synonyms:
+  - --snpD
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "directory with lists of files with absolute paths to files with summary\
+    \ statistics\nfile names have to be like '<anything>_<batchId>.<abything>'\nif\
+    \ --inssD is given, neither --geneD nor --snpD are used (nor --geno, --scoord,\
+    \ --exp, etc)"
+  synonyms:
+  - --inssD
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file with seeds (as many as files in --geneD)\noptional, default=list_seeds.txt.gz\
+    \ (should be gzipped)"
+  synonyms:
+  - --seedF
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: task identifier (not for SGE, for SLURM only)
+  synonyms:
+  - --task
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file with absolute paths to genotype files\ndefault=list_genotypes.txt"
+  synonyms:
+  - --geno
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: file with the SNP coordinates
+  synonyms:
+  - --scoord
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file with absolute paths to expression level files\ndefault=list_expressions.txt"
+  synonyms:
+  - --exp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "feature boundary(ies) for the cis region\ndefault=TSS"
+  synonyms:
+  - --anchor
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "length of half of the cis region (in bp)\ndefault=100000"
+  synonyms:
+  - --cis
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "prefix for the output files\ndefault=out_eqtlbma"
+  synonyms:
+  - --out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "likelihood to use (normal/poisson/quasipoisson)\ndefault=normal"
+  synonyms:
+  - --lik
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "analysis to perform (sep/join)\ndefault=sep"
+  synonyms:
+  - --analys
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write the output file with all summary statistics
+  synonyms:
+  - --outss
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write the output file with the ABFs averaged over the grid
+  synonyms:
+  - --outw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: quantile-normalize the expression levels to a N(0,1)
+  synonyms:
+  - --qnorm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: file with absolute paths to covariate files
+  synonyms:
+  - --covar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file with a 'large' grid for prior variances\ndefault=grid_phi2_oma2_general.txt.gz"
+  synonyms:
+  - --gridL
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file with a 'small' grid for prior variances\ndefault=grid_phi2_oma2_with-configs.txt.gz"
+  synonyms:
+  - --gridS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "which Bayes Factors to compute for the joint analysis\ndefault=gen"
+  synonyms:
+  - --bfs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "model for the errors (uvlr/mvlr/hybrid)\ndefault=uvlr"
+  synonyms:
+  - --error
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "param used when estimating the variance of the errors\ndefault=0.5"
+  synonyms:
+  - --fiterr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "number of permutations\ndefault=0"
+  synonyms:
+  - --nperm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "apply trick to speed-up permutations\ndefault=2"
+  synonyms:
+  - --trick
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "cutoff for the trick\ndefault=10"
+  synonyms:
+  - --tricut
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "permutation procedure for the separate analysis\ndefault=0"
+  synonyms:
+  - --permsep
+  args: !SimpleFlagArg
+    name: which
+  optional: true
+- !Flag
+  description: "which BF to use as the test statistic for the joint-analysis permutations\n\
+    default=none"
+  synonyms:
+  - --pbf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use the maximum ABF over SNPs as test statistic for permutations
+  synonyms:
+  - --maxbf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "number of threads for the permutations\ndefault=1"
+  synonyms:
+  - --thread
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: identifier of the subgroup to analyze
+  synonyms:
+  - --sbgrp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display the help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: version information and exit
+  synonyms:
+  - -V
+  - --version
+  args: !SimpleFlagArg
+    name: output
+  optional: true
+help_text: "`eqtlbma_bf_parallel.bash' is used to launch eqtlbma_bf in parallel.\n\
+  \nUsage: eqtlbma_bf_parallel.bash [OPTIONS] ...\n\nOptions:\n  -h, --help\tdisplay\
+  \ the help and exit\n  -V, --version\toutput version information and exit\n  -v,\
+  \ --verbose\tverbosity level (0/default=1/2/3)\n      --p2b\tpath to the binary\
+  \ 'eqtlbma_bf'\n      --geneD\tdirectory with lists of features to analyze (BED\
+  \ files)\n\t\tfile names have to be like '<anything>_<batchId>.<anything>'\n   \
+  \   --snpD\tdirectory with lists of SNPs to analyze (optional)\n\t\tfile names have\
+  \ to be like '<anything>_<batchId>.<anything>'\n\t\teach SNP file should correspond\
+  \ to a feature file, in the same order\n      --inssD\tdirectory with lists of files\
+  \ with absolute paths to files with summary statistics\n\t\tfile names have to be\
+  \ like '<anything>_<batchId>.<abything>'\n\t\tif --inssD is given, neither --geneD\
+  \ nor --snpD are used (nor --geno, --scoord, --exp, etc)\n      --seedF\tfile with\
+  \ seeds (as many as files in --geneD)\n\t\toptional, default=list_seeds.txt.gz (should\
+  \ be gzipped)\n      --task\ttask identifier (not for SGE, for SLURM only)\n\nOptions\
+  \ from 'eqtlbma_bf' (run 'eqtlbma_bf -h | less' for more details):\n      --geno\t\
+  file with absolute paths to genotype files\n\t\tdefault=list_genotypes.txt\n   \
+  \   --scoord\tfile with the SNP coordinates\n      --exp\tfile with absolute paths\
+  \ to expression level files\n\t\tdefault=list_expressions.txt\n      --anchor\t\
+  feature boundary(ies) for the cis region\n\t\tdefault=TSS\n      --cis\tlength of\
+  \ half of the cis region (in bp)\n\t\tdefault=100000\n      --out\tprefix for the\
+  \ output files\n\t\tdefault=out_eqtlbma\n      --lik\tlikelihood to use (normal/poisson/quasipoisson)\n\
+  \t\tdefault=normal\n      --analys\tanalysis to perform (sep/join)\n\t\tdefault=sep\n\
+  \      --outss\twrite the output file with all summary statistics\n      --outw\t\
+  write the output file with the ABFs averaged over the grid\n      --qnorm\tquantile-normalize\
+  \ the expression levels to a N(0,1)\n      --covar\tfile with absolute paths to\
+  \ covariate files\n      --gridL\tfile with a 'large' grid for prior variances\n\
+  \t\tdefault=grid_phi2_oma2_general.txt.gz\n      --gridS\tfile with a 'small' grid\
+  \ for prior variances\n\t\tdefault=grid_phi2_oma2_with-configs.txt.gz\n      --bfs\t\
+  which Bayes Factors to compute for the joint analysis\n\t\tdefault=gen\n      --error\t\
+  model for the errors (uvlr/mvlr/hybrid)\n\t\tdefault=uvlr\n      --fiterr\tparam\
+  \ used when estimating the variance of the errors\n\t\tdefault=0.5\n      --nperm\t\
+  number of permutations\n\t\tdefault=0\n      --trick\tapply trick to speed-up permutations\n\
+  \t\tdefault=2\n      --tricut\tcutoff for the trick\n\t\tdefault=10\n      --permsep\t\
+  which permutation procedure for the separate analysis\n\t\tdefault=0\n      --pbf\t\
+  which BF to use as the test statistic for the joint-analysis permutations\n\t\t\
+  default=none\n      --maxbf\tuse the maximum ABF over SNPs as test statistic for\
+  \ permutations\n      --thread\tnumber of threads for the permutations\n\t\tdefault=1\n\
+  \      --sbgrp\tidentifier of the subgroup to analyze\n\nExamples:\n  eqtlbma_bf_parallel.bash\
+  \ --p2b ~/bin/eqtlbma_bf --geneD ./lists_genes/\n\n"
+generated_using:
+- --help

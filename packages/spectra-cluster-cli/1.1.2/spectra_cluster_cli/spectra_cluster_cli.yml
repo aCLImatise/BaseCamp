@@ -1,0 +1,376 @@
+!Command
+command:
+- spectra-cluster-cli
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Spectra
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: Cluster
+  optional: false
+named:
+- !Flag
+  description: "if set, the similarity\nscores of each spectrum\nto the cluster's\n\
+    consensus spectrum\nisadded to the output\nfile."
+  synonyms:
+  - -add_scores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "path to the directory to\n(temporarily) store the\nbinary files. By\
+    \ default\na temporary directory is\nbeing created"
+  synonyms:
+  - -binary_directory
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "if this option is set the\n'fast mode' is enabled.\nIn this mode,\
+    \ the radical\npeak filtering used for\nthe comparison function\nis already applied\
+    \ during\nspectrum conversion.\nThereby, the clustering\nand consensus spectrum\n\
+    quality is slightly\ndecreased but speed\nincreases 2-3 fold."
+  synonyms:
+  - -fast_mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "adds a filter to be\napplied to the input\nspectrum. Available\nvalues\
+    \ are\n['immonium_ions',\n'mz_150', 'mz_200']"
+  synonyms:
+  - -filter
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "fragment ion tolerance in\nm/z to use for fragment\npeak matching"
+  synonyms:
+  - -fragment_tolerance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "if this options is set,\nthe binary files are not\ndeleted after clustering."
+  synonyms:
+  - -keep_binary_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "number of threads to use\nfor major peak\nclustering."
+  synonyms:
+  - -major_peak_jobs
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "if set, only identified\nspectra are considered\nfor clustering."
+  synonyms:
+  - -only_identified
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "if set, only unidentified\nspectra are considered\nfor clustering."
+  synonyms:
+  - -only_unidentified
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "path to the outputfile.\nOutputfile must not\nexist."
+  synonyms:
+  - -output_path
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "precursor tolerance\n(clustering window size)\nin m/z (default) or\
+    \ ppm\nused during matching. The\nunit can be changed by\nsetting the\n-precursor_tolerance_unit\n\
+    parameter"
+  synonyms:
+  - -precursor_tolerance
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "sets the precursor\ntolerance unit. Allowed\nvalues are \"mz\" and\n\
+    \"ppm\". Default is \"mz\"."
+  synonyms:
+  - -precursor_tolerance_unit
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "remove reporter ion peaks\nin quantitation\nexperiments. Possible\n\
+    QUANTIATION TYPES are\n'ITRAQ', 'TMT' and 'ALL'\n('TMT' and 'ITRAQ' peaks\nare\
+    \ removed."
+  synonyms:
+  - -remove_reporters
+  args: !SimpleFlagArg
+    name: QUANTITATION TYPE
+  optional: true
+- !Flag
+  description: "if this option is set,\nthe binary files found in\nthe binary file\
+    \ directory\nwill be used for\nclustering."
+  synonyms:
+  - -reuse_binary_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "number of clustering\nrounds to use."
+  synonyms:
+  - -rounds
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (lowest) final clustering
+  synonyms:
+  - -threshold_end
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "(Advanced option) It this\noption is set, the input\nfile in CGF format\
+    \ will\nbe converted to the\n.clustering file. No\nother processing will be\n\
+    performed."
+  synonyms:
+  - -x_convert_cgf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(Advanced option) If set,\nMGF comment strings are\nNOT supported.\
+    \ This will\nincrease performance but\nonly works for MGF files\nthat do not contain\
+    \ any\ncomments"
+  synonyms:
+  - -x_disable_mgf_comments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(Advanced option) If this\noption is set, the top 10\npeaks per 100\
+    \ m/z are\nretained instead of the\ntop N peaks overall."
+  synonyms:
+  - -x_filter_peaks_mz
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(Experimental option)\nLearn the used cumulative\ndistribution function\n\
+    directly from the\nprocessed data. This is\nonly recommended for\nhigh-resolution\
+    \ data. The\nresult will be written to\nthe defined file."
+  synonyms:
+  - -x_learn_cdf
+  args: !SimpleFlagArg
+    name: output filename
+  optional: true
+- !Flag
+  description: "(Experimental option)\nLoads the cumulative\ndistribution function\
+    \ to\nuse from the specified\nfile. These files can be\ncreated using the\nx_learn_cdf\
+    \ parameter"
+  synonyms:
+  - -x_load_cdf
+  args: !SimpleFlagArg
+    name: CDF filename
+  optional: true
+- !Flag
+  description: "(Advanced option) If this\noption is set, the input\nfiles should\
+    \ be binary\nresult files from the\nclustering process. In\nthis mode, the\nspectra-cluster-cli\
+    \ only\nmerges the binary files\nand creates the final\noutput file."
+  synonyms:
+  - -x_merge_binary_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(Experimental option)\nUses an adaptive function\nfor the minimum\n\
+    comparisons together with\na minimum number always\nto return."
+  synonyms:
+  - -x_min_adapt_comparisons
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "(Experimental option)\nSets the minimum number\nof comparisons used\
+    \ to\ncalculate the probability\nthat incorrect spectra\nare clustered."
+  synonyms:
+  - -x_min_comparisons
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "(Advanced option) Sets\nthe minimum number of\npeaks to keep in a\n\
+    consensus spectrum. If\nthe consensus spectrum\ncontains fewer than these\npeaks,\
+    \ the noise\nfiltering which retains N\npeaks per M m/z is not\nused but all peaks\
+    \ are\nkept"
+  synonyms:
+  - -x_min_consensus_peaks_to_keep
+  args: !SimpleFlagArg
+    name: number peaks
+  optional: true
+- !Flag
+  description: "(Experimental option) Set\nthe number of highest\npeaks that are kept\
+    \ per\nspectrum during loading.\n"
+  synonyms:
+  - -x_n_prefiltered_peaks
+  args: !SimpleFlagArg
+    name: number peaks
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print this message.
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: Spectra Cluster - Clusterer [-add_scores] [-binary_directory <arg>]\n\
+  \       [-fast_mode] [-filter <arg>] [-fragment_tolerance] [-help]\n       [-keep_binary_files]\
+  \ [-major_peak_jobs <arg>] [-only_identified]\n       [-only_unidentified] [-output_path\
+  \ <arg>] [-precursor_tolerance\n       <arg>] [-precursor_tolerance_unit <arg>]\
+  \ [-remove_reporters\n       <QUANTITATION TYPE>] [-reuse_binary_files] [-rounds\
+  \ <arg>]\n       [-threshold_end <arg>] [-threshold_start <arg>] [-verbose]\n  \
+  \     [-x_convert_cgf] [-x_disable_mgf_comments] [-x_filter_peaks_mz]\n       [-x_learn_cdf\
+  \ <output filename>] [-x_load_cdf <CDF filename>]\n       [-x_merge_binary_files]\
+  \ [-x_min_adapt_comparisons <arg>]\n       [-x_min_comparisons <arg>] [-x_min_consensus_peaks_to_keep\
+  \ <number\n       peaks>] [-x_n_prefiltered_peaks <number peaks>]\nClusters the\
+  \ spectra found in a MGF files or .clustering files and writes\nthe results in a\
+  \ text-based file.\n -add_scores                                     if set, the\
+  \ similarity\n                                                 scores of each spectrum\n\
+  \                                                 to the cluster's\n           \
+  \                                      consensus spectrum\n                    \
+  \                             isadded to the output\n                          \
+  \                       file.\n -binary_directory <arg>                        \
+  \ path to the directory to\n                                                 (temporarily)\
+  \ store the\n                                                 binary files. By default\n\
+  \                                                 a temporary directory is\n   \
+  \                                              being created\n -fast_mode      \
+  \                                if this option is set the\n                   \
+  \                              'fast mode' is enabled.\n                       \
+  \                          In this mode, the radical\n                         \
+  \                        peak filtering used for\n                             \
+  \                    the comparison function\n                                 \
+  \                is already applied during\n                                   \
+  \              spectrum conversion.\n                                          \
+  \       Thereby, the clustering\n                                              \
+  \   and consensus spectrum\n                                                 quality\
+  \ is slightly\n                                                 decreased but speed\n\
+  \                                                 increases 2-3 fold.\n -filter\
+  \ <arg>                                   adds a filter to be\n                \
+  \                                 applied to the input\n                       \
+  \                          spectrum. Available\n                               \
+  \                  values are\n                                                \
+  \ ['immonium_ions',\n                                                 'mz_150',\
+  \ 'mz_200']\n -fragment_tolerance                             fragment ion tolerance\
+  \ in\n                                                 m/z to use for fragment\n\
+  \                                                 peak matching\n -help        \
+  \                                   print this message.\n -keep_binary_files   \
+  \                           if this options is set,\n                          \
+  \                       the binary files are not\n                             \
+  \                    deleted after clustering.\n -major_peak_jobs <arg>        \
+  \                  number of threads to use\n                                  \
+  \               for major peak\n                                               \
+  \  clustering.\n -only_identified                                if set, only identified\n\
+  \                                                 spectra are considered\n     \
+  \                                            for clustering.\n -only_unidentified\
+  \                              if set, only unidentified\n                     \
+  \                            spectra are considered\n                          \
+  \                       for clustering.\n -output_path <arg>                   \
+  \           path to the outputfile.\n                                          \
+  \       Outputfile must not\n                                                 exist.\n\
+  \ -precursor_tolerance <arg>                      precursor tolerance\n        \
+  \                                         (clustering window size)\n           \
+  \                                      in m/z (default) or ppm\n               \
+  \                                  used during matching. The\n                 \
+  \                                unit can be changed by\n                      \
+  \                           setting the\n                                      \
+  \           -precursor_tolerance_unit\n                                        \
+  \         parameter\n -precursor_tolerance_unit <arg>                 sets the precursor\n\
+  \                                                 tolerance unit. Allowed\n    \
+  \                                             values are \"mz\" and\n          \
+  \                                       \"ppm\". Default is \"mz\".\n -remove_reporters\
+  \ <QUANTITATION TYPE>           remove reporter ion peaks\n                    \
+  \                             in quantitation\n                                \
+  \                 experiments. Possible\n                                      \
+  \           QUANTIATION TYPES are\n                                            \
+  \     'ITRAQ', 'TMT' and 'ALL'\n                                               \
+  \  ('TMT' and 'ITRAQ' peaks\n                                                 are\
+  \ removed.\n -reuse_binary_files                             if this option is set,\n\
+  \                                                 the binary files found in\n  \
+  \                                               the binary file directory\n    \
+  \                                             will be used for\n               \
+  \                                  clustering.\n -rounds <arg>                 \
+  \                  number of clustering\n                                      \
+  \           rounds to use.\n -threshold_end <arg>                            (lowest)\
+  \ final clustering\n                                                 threshold\n\
+  \ -threshold_start <arg>                          (highest) starting\n         \
+  \                                        threshold\n -verbose                  \
+  \                      if set additional status\n                              \
+  \                   information is printed.\n -x_convert_cgf                   \
+  \               (Advanced option) It this\n                                    \
+  \             option is set, the input\n                                       \
+  \          file in CGF format will\n                                           \
+  \      be converted to the\n                                                 .clustering\
+  \ file. No\n                                                 other processing will\
+  \ be\n                                                 performed.\n -x_disable_mgf_comments\
+  \                         (Advanced option) If set,\n                          \
+  \                       MGF comment strings are\n                              \
+  \                   NOT supported. This will\n                                 \
+  \                increase performance but\n                                    \
+  \             only works for MGF files\n                                       \
+  \          that do not contain any\n                                           \
+  \      comments\n -x_filter_peaks_mz                              (Advanced option)\
+  \ If this\n                                                 option is set, the top\
+  \ 10\n                                                 peaks per 100 m/z are\n \
+  \                                                retained instead of the\n     \
+  \                                            top N peaks overall.\n -x_learn_cdf\
+  \ <output filename>                  (Experimental option)\n                   \
+  \                              Learn the used cumulative\n                     \
+  \                            distribution function\n                           \
+  \                      directly from the\n                                     \
+  \            processed data. This is\n                                         \
+  \        only recommended for\n                                                \
+  \ high-resolution data. The\n                                                 result\
+  \ will be written to\n                                                 the defined\
+  \ file.\n -x_load_cdf <CDF filename>                      (Experimental option)\n\
+  \                                                 Loads the cumulative\n       \
+  \                                          distribution function to\n          \
+  \                                       use from the specified\n               \
+  \                                  file. These files can be\n                  \
+  \                               created using the\n                            \
+  \                     x_learn_cdf parameter\n -x_merge_binary_files            \
+  \               (Advanced option) If this\n                                    \
+  \             option is set, the input\n                                       \
+  \          files should be binary\n                                            \
+  \     result files from the\n                                                 clustering\
+  \ process. In\n                                                 this mode, the\n\
+  \                                                 spectra-cluster-cli only\n   \
+  \                                              merges the binary files\n       \
+  \                                          and creates the final\n             \
+  \                                    output file.\n -x_min_adapt_comparisons <arg>\
+  \                  (Experimental option)\n                                     \
+  \            Uses an adaptive function\n                                       \
+  \          for the minimum\n                                                 comparisons\
+  \ together with\n                                                 a minimum number\
+  \ always\n                                                 to return.\n -x_min_comparisons\
+  \ <arg>                        (Experimental option)\n                         \
+  \                        Sets the minimum number\n                             \
+  \                    of comparisons used to\n                                  \
+  \               calculate the probability\n                                    \
+  \             that incorrect spectra\n                                         \
+  \        are clustered.\n -x_min_consensus_peaks_to_keep <number peaks>   (Advanced\
+  \ option) Sets\n                                                 the minimum number\
+  \ of\n                                                 peaks to keep in a\n    \
+  \                                             consensus spectrum. If\n         \
+  \                                        the consensus spectrum\n              \
+  \                                   contains fewer than these\n                \
+  \                                 peaks, the noise\n                           \
+  \                      filtering which retains N\n                             \
+  \                    peaks per M m/z is not\n                                  \
+  \               used but all peaks are\n                                       \
+  \          kept\n -x_n_prefiltered_peaks <number peaks>           (Experimental\
+  \ option) Set\n                                                 the number of highest\n\
+  \                                                 peaks that are kept per\n    \
+  \                                             spectrum during loading.\n"
+generated_using:
+- --help

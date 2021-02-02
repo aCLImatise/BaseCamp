@@ -1,0 +1,189 @@
+&id001 !Command
+command:
+- scaden
+positional: []
+named: []
+parent:
+subcommands:
+- !Command
+  command:
+  - scaden
+  - train
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: training data
+    optional: false
+  named:
+  - !Flag
+    description: Datasets used for training. Uses all by default.
+    synonyms:
+    - --train_datasets
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Path to store the model in
+    synonyms:
+    - --model_dir
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Batch size to use for training. Default: 128'
+    synonyms:
+    - --batch_size
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Learning rate used for training. Default: 0.0001'
+    synonyms:
+    - --learning_rate
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Number of training steps
+    synonyms:
+    - --steps
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "\n     ____                _            \n    / ___|  ___ __ _  __|\
+    \ | ___ _ __  \n    \\___ \\ / __/ _` |/ _` |/ _ \\ '_ \\ \n     ___) | (_| (_|\
+    \ | (_| |  __/ | | |\n    |____/ \\___\\__,_|\\__,_|\\___|_| |_|\n\n    \nUsage:\
+    \ scaden train [OPTIONS] <training data>\n\n  Train a cdn model\n\nOptions:\n\
+    \  --train_datasets TEXT  Datasets used for training. Uses all by default.\n \
+    \ --model_dir TEXT       Path to store the model in\n  --batch_size INTEGER  \
+    \ Batch size to use for training. Default: 128\n  --learning_rate FLOAT  Learning\
+    \ rate used for training. Default: 0.0001\n  --steps INTEGER        Number of\
+    \ training steps\n  --help                 Show this message and exit.\n"
+  generated_using: &id002
+  - --help
+- !Command
+  command:
+  - scaden
+  - process
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: training dataset to be processed
+    optional: false
+  named:
+  - !Flag
+    description: Path of processed file. Must end with .h5ad
+    synonyms:
+    - --processed_path
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: "Filter out genes with a variance less than the\nspecified cutoff.\
+      \ A low cutoff is recommended,this\nshould only remove genes that are obviously\n\
+      uninformative."
+    synonyms:
+    - --var_cutoff
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "\n     ____                _            \n    / ___|  ___ __ _  __|\
+    \ | ___ _ __  \n    \\___ \\ / __/ _` |/ _` |/ _ \\ '_ \\ \n     ___) | (_| (_|\
+    \ | (_| |  __/ | | |\n    |____/ \\___\\__,_|\\__,_|\\___|_| |_|\n\n    \nUsage:\
+    \ scaden process [OPTIONS] <training dataset to be processed> <data for\n    \
+    \                  prediction>\n\n  Process a dataset for training\n\nOptions:\n\
+    \  --processed_path TEXT  Path of processed file. Must end with .h5ad\n  --var_cutoff\
+    \ FLOAT     Filter out genes with a variance less than the\n                 \
+    \        specified cutoff. A low cutoff is recommended,this\n                \
+    \         should only remove genes that are obviously\n                      \
+    \   uninformative.\n  --help                 Show this message and exit.\n"
+  generated_using: *id002
+- !Command
+  command:
+  - scaden
+  - predict
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: prediction data
+    optional: false
+  named:
+  - !Flag
+    description: Path to trained model
+    synonyms:
+    - --model_dir
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Name of predictions file.
+    synonyms:
+    - --outname
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  parent: *id001
+  subcommands: []
+  usage: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "\n     ____                _            \n    / ___|  ___ __ _  __|\
+    \ | ___ _ __  \n    \\___ \\ / __/ _` |/ _` |/ _ \\ '_ \\ \n     ___) | (_| (_|\
+    \ | (_| |  __/ | | |\n    |____/ \\___\\__,_|\\__,_|\\___|_| |_|\n\n    \nUsage:\
+    \ scaden predict [OPTIONS] <prediction data>\n\n  cdn prediction using a trained\
+    \ model\n\nOptions:\n  --model_dir TEXT  Path to trained model\n  --outname TEXT\
+    \    Name of predictions file.\n  --help            Show this message and exit.\n"
+  generated_using: *id002
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show the version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "\n     ____                _            \n    / ___|  ___ __ _  __| |\
+  \ ___ _ __  \n    \\___ \\ / __/ _` |/ _` |/ _ \\ '_ \\ \n     ___) | (_| (_| |\
+  \ (_| |  __/ | | |\n    |____/ \\___\\__,_|\\__,_|\\___|_| |_|\n\n    \nUsage: scaden\
+  \ [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --version  Show the version and exit.\n\
+  \  --help     Show this message and exit.\n\nCommands:\n  predict  cdn prediction\
+  \ using a trained model\n  process  Process a dataset for training\n  train    Train\
+  \ a cdn model\n"
+generated_using: *id002

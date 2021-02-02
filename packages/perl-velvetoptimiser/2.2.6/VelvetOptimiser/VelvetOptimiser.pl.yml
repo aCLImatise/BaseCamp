@@ -1,0 +1,158 @@
+!Command
+command:
+- VelvetOptimiser.pl
+positional: []
+named:
+- !Flag
+  description: "|verbose+    Verbose logging, includes all velvet output in the logfile.\
+    \ (default '0')."
+  synonyms:
+  - --v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|hashs=i     The starting (lower) hash value (default '19')."
+  synonyms:
+  - --s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|hashe=i     The end (higher) hash value (default '191')."
+  synonyms:
+  - --e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|step=i      The step in hash search..  min 2, no odd numbers (default\
+    \ '2')."
+  synonyms:
+  - --x
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|velvethfiles=s The file section of the velveth command line. (default\
+    \ '0')."
+  synonyms:
+  - --f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|amosfile!   Turn on velvet's read tracking and amos file output.\
+    \ (default '0')."
+  synonyms:
+  - --a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|velvetgoptions=s Extra velvetg options to pass through.  eg. -long_mult_cutoff\
+    \ -max_coverage etc (default '')."
+  synonyms:
+  - --o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|threads=i   The maximum number of simulataneous velvet instances\
+    \ to run. (default '8')."
+  synonyms:
+  - --t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|genomesize=f The approximate size of the genome to be assembled in\
+    \ megabases.\nOnly used in memory use estimation. If not specified, memory use\
+    \ estimation\nwill not occur. If memory use is estimated, the results are shown\
+    \ and then program exits. (default '0')."
+  synonyms:
+  - --g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|optFuncKmer=s The optimisation function used for k-mer choice. (default\
+    \ 'n50')."
+  synonyms:
+  - --k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|optFuncCov=s The optimisation function used for cov_cutoff optimisation.\
+    \ (default 'Lbp')."
+  synonyms:
+  - --c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|minCovCutoff=f The minimum cov_cutoff to be used. (default '0')."
+  synonyms:
+  - --m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|prefix=s    The prefix for the output filenames, the default is the\
+    \ date and time in the format DD-MM-YYYY-HH-MM_. (default 'auto')."
+  synonyms:
+  - --p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|dir_final=s The name of the directory to put the final output into.\
+    \ (default '.')."
+  synonyms:
+  - --d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|upperCovCutoff=f The maximum coverage cutoff to consider as a multiplier\
+    \ of the expected coverage. (default '0.8')."
+  synonyms:
+  - --z
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: This help.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: "!      Print version to stdout and exit. (default '0')."
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: /usr/local/bin/VelvetOptimiser.pl [options] -f 'velveth input line'\n\
+  \  --help          This help.\n  --version!      Print version to stdout and exit.\
+  \ (default '0').\n  --v|verbose+    Verbose logging, includes all velvet output\
+  \ in the logfile. (default '0').\n  --s|hashs=i     The starting (lower) hash value\
+  \ (default '19').\n  --e|hashe=i     The end (higher) hash value (default '191').\n\
+  \  --x|step=i      The step in hash search..  min 2, no odd numbers (default '2').\n\
+  \  --f|velvethfiles=s The file section of the velveth command line. (default '0').\n\
+  \  --a|amosfile!   Turn on velvet's read tracking and amos file output. (default\
+  \ '0').\n  --o|velvetgoptions=s Extra velvetg options to pass through.  eg. -long_mult_cutoff\
+  \ -max_coverage etc (default '').\n  --t|threads=i   The maximum number of simulataneous\
+  \ velvet instances to run. (default '8').\n  --g|genomesize=f The approximate size\
+  \ of the genome to be assembled in megabases.\n\t\t\tOnly used in memory use estimation.\
+  \ If not specified, memory use estimation\n\t\t\twill not occur. If memory use is\
+  \ estimated, the results are shown and then program exits. (default '0').\n  --k|optFuncKmer=s\
+  \ The optimisation function used for k-mer choice. (default 'n50').\n  --c|optFuncCov=s\
+  \ The optimisation function used for cov_cutoff optimisation. (default 'Lbp').\n\
+  \  --m|minCovCutoff=f The minimum cov_cutoff to be used. (default '0').\n  --p|prefix=s\
+  \    The prefix for the output filenames, the default is the date and time in the\
+  \ format DD-MM-YYYY-HH-MM_. (default 'auto').\n  --d|dir_final=s The name of the\
+  \ directory to put the final output into. (default '.').\n  --z|upperCovCutoff=f\
+  \ The maximum coverage cutoff to consider as a multiplier of the expected coverage.\
+  \ (default '0.8').\n\nAdvanced!: Changing the optimisation function(s)\n\nVelvet\
+  \ optimiser assembly optimisation function can be built from the following variables.\n\
+  \tLNbp = The total number of Ns in large contigs\n\tLbp = The total number of base\
+  \ pairs in large contigs\n\tLcon = The number of large contigs\n\tmax = The length\
+  \ of the longest contig\n\tn50 = The n50\n\tncon = The total number of contigs\n\
+  \ttbp = The total number of basepairs in contigs\nExamples are:\n\t'Lbp' = Just\
+  \ the total basepairs in contigs longer than 1kb\n\t'n50*Lcon' = The n50 times the\
+  \ number of long contigs.\n\t'n50*Lcon/tbp+log(Lbp)' = The n50 times the number\
+  \ of long contigs divided\n\t\tby the total bases in all contigs plus the log of\
+  \ the number of bases\n\t\tin long contigs.\n"
+generated_using:
+- --help

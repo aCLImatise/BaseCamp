@@ -1,0 +1,164 @@
+!Command
+command:
+- byobu-ulevel
+positional:
+- !Positional
+  description: "- The final '_<number>' in a theme name denotes the number of glyphs"
+  position: 0
+  name: number.
+  optional: false
+named:
+- !Flag
+  description: ": Accessibility mode: only output ASCII.\n(Also enabled if variable\
+    \ 'BYOBU_A11Y' set)."
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Display current value as space if zero, rather than lowest\n'value'\
+    \ of theme."
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Current value of your indicator.'
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ': Enable debug output.'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Number of decimal places to use for accessibility mode\n(default=2)."
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ': Invert colour scheme (rating themes only).'
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": List available themes. If '-t' also specified,\nshow all values\
+    \ for specified theme."
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Minimum value (default=0).'
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ': Supress output of newline character.'
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Permissive mode - if current value out of bounds, set it\nto the\
+    \ nearest bound (min or max)."
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Suppress messages (requires '-t')."
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Reverse 'direction' of display (rating theme only)."
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Name of theme (default=vbars_8).'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: theme
+  optional: true
+- !Flag
+  description: ': Specify a user theme (2 or more values).'
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: chars
+  optional: true
+- !Flag
+  description: ': Width of rating theme (default=5).'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ': Maximum value (default=100).'
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ': Show this help.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Description: Display unicode characters representing the relative\n  \
+  \           level of some indicator value within a range.\n\nUsage: byobu-ulevel\
+  \ [options] -c <current_num>\n       byobu-ulevel [options] <current_num>\n    \
+  \   byobu-ulevel <current_num>\n\nOptions:\n\n -a         : Accessibility mode:\
+  \ only output ASCII.\n              (Also enabled if variable 'BYOBU_A11Y' set).\n\
+  \ -b         : Display current value as space if zero, rather than lowest\n    \
+  \          'value' of theme.\n -c <num>   : Current value of your indicator.\n -d\
+  \         : Enable debug output.\n -e <int>   : Number of decimal places to use\
+  \ for accessibility mode\n              (default=2).\n -h         : Show this help.\n\
+  \ -i         : Invert colour scheme (rating themes only).\n -l         : List available\
+  \ themes. If '-t' also specified,\n              show all values for specified theme.\n\
+  \ -m <num>   : Minimum value (default=0).\n -n         : Supress output of newline\
+  \ character.\n -p         : Permissive mode - if current value out of bounds, set\
+  \ it\n              to the nearest bound (min or max).\n -q         : Suppress messages\
+  \ (requires '-t').\n -r         : Reverse 'direction' of display (rating theme only).\n\
+  \ -t <theme> : Name of theme (default=vbars_8).\n -u <chars> : Specify a user theme\
+  \ (2 or more values).\n -w <int>   : Width of rating theme (default=5).\n -x <num>\
+  \   : Maximum value (default=100).\n\n\nExamples:\n\n  # Display character representing\
+  \ 27% using default theme.\n  byobu-ulevel 27\n\n  # As above.\n  byobu-ulevel -c\
+  \ 27\n\n  # Example showing floating-point and negative values.\n  byobu-ulevel\
+  \ -c 1.100001 -m -5.00234 -x 2.71828 -t dice_6\n\n  # Use accessibility mode to\
+  \ display a percentage value\n  # (rounded to nearest percentage)\n  byobu-ulevel\
+  \ -m -22.613 -x 5.00212 -c 0.10203 -a -e 0\n\n  # Display value using a \"rating\
+  \ theme\" (displayed left-to-right).\n  byobu-ulevel -c 83 -t stars_2\n\n  # Display\
+  \ right-to-left inverted \"rating theme\".\n  byobu-ulevel -c 60 -t diamonds_2 -ri\n\
+  \n  # Display all glyphs in 'solid_numbers_a_10' theme.\n  byobu-ulevel -l -t solid_numbers_a_10\n\
+  \n  # Display a user-specified rating theme 10 glyphs wide.\n  byobu-ulevel -c 666.321\
+  \ -m -273.15 -x 1370 -u \"· ☢\" -w 10\n\n  # A multi-element user theme (this prints\
+  \ 'e').\n  byobu-ulevel -c 50 -u \"a b c d e f g h i j\"\n\n\nNotes:\n\n  - Arguments\
+  \ of type \"<int>\" denote an integer value, whereas arguments\n    of type \"<num>\"\
+  \ denotes either an integer or a floating-point\n    number.\n  - The final '_<number>'\
+  \ in a theme name denotes the number of glyphs\n    in it.\n  - \"Rating themes\"\
+  \ are those with only 2 values.\n  - The <chars> argument to '-u' must contain space-delimited\n\
+  \    characters.\n\n"
+generated_using:
+- --help

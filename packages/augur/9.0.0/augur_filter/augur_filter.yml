@@ -1,0 +1,197 @@
+!Command
+command:
+- augur
+- filter
+positional: []
+named:
+- !Flag
+  description: 'sequences in fasta or VCF format (default: None)'
+  synonyms:
+  - --sequences
+  - -s
+  args: !SimpleFlagArg
+    name: SEQUENCES
+  optional: true
+- !Flag
+  description: 'metadata associated with sequences (default: None)'
+  synonyms:
+  - --metadata
+  args: !SimpleFlagArg
+    name: METADATA
+  optional: true
+- !Flag
+  description: "minimal cutoff for date; may be specified as an Augur-\nstyle numeric\
+    \ date (with the year as the integer part)\nor YYYY-MM-DD (default: None)"
+  synonyms:
+  - --min-date
+  args: !SimpleFlagArg
+    name: MIN_DATE
+  optional: true
+- !Flag
+  description: "maximal cutoff for date; may be specified as an Augur-\nstyle numeric\
+    \ date (with the year as the integer part)\nor YYYY-MM-DD (default: None)"
+  synonyms:
+  - --max-date
+  args: !SimpleFlagArg
+    name: MAX_DATE
+  optional: true
+- !Flag
+  description: 'minimal length of the sequences (default: None)'
+  synonyms:
+  - --min-length
+  args: !SimpleFlagArg
+    name: MIN_LENGTH
+  optional: true
+- !Flag
+  description: "exclude sequences that contain illegal characters\n(default: False)"
+  synonyms:
+  - --non-nucleotide
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "file with list of strains that are to be excluded\n(default: None)"
+  synonyms:
+  - --exclude
+  args: !SimpleFlagArg
+    name: EXCLUDE
+  optional: true
+- !Flag
+  description: "file with list of strains that are to be included\nregardless of priorities\
+    \ or subsampling (default:\nNone)"
+  synonyms:
+  - --include
+  args: !SimpleFlagArg
+    name: INCLUDE
+  optional: true
+- !Flag
+  description: "file with list of priority scores for sequences\n(strain priority)\
+    \ (default: None)"
+  synonyms:
+  - --priority
+  args: !SimpleFlagArg
+    name: PRIORITY
+  optional: true
+- !Flag
+  description: "subsample to no more than this number of sequences per\ncategory (default:\
+    \ None)"
+  synonyms:
+  - --sequences-per-group
+  args: !SimpleFlagArg
+    name: SEQUENCES_PER_GROUP
+  optional: true
+- !Flag
+  description: "categories with respect to subsample; two virtual\nfields, \"month\"\
+    \ and \"year\", are supported if they\ndon't already exist as real fields but\
+    \ a \"date\" field\ndoes exist (default: None)"
+  synonyms:
+  - --group-by
+  args: !RepeatFlagArg
+    name: GROUP_BY
+  optional: true
+- !Flag
+  description: "random number generator seed to allow reproducible\nsub-sampling (with\
+    \ same input data). Can be number or\nstring. (default: None)"
+  synonyms:
+  - --subsample-seed
+  args: !SimpleFlagArg
+    name: SUBSAMPLE_SEED
+  optional: true
+- !Flag
+  description: "Exclude samples matching these conditions. Ex:\n\"host=rat\" or \"\
+    host!=rat\". Multiple values are\nprocessed as OR (matching any of those specified\
+    \ will\nbe excluded), not AND (default: None)"
+  synonyms:
+  - --exclude-where
+  args: !RepeatFlagArg
+    name: EXCLUDE_WHERE
+  optional: true
+- !Flag
+  description: "Include samples with these values. ex: host=rat.\nMultiple values\
+    \ are processed as OR (having any of\nthose specified will be included), not AND.\
+    \ This rule\nis applied last and ensures any sequences matching\nthese rules will\
+    \ be included. (default: None)"
+  synonyms:
+  - --include-where
+  args: !RepeatFlagArg
+    name: INCLUDE_WHERE
+  optional: true
+- !Flag
+  description: "Filter samples by attribute. Uses Pandas Dataframe\nquerying, see\
+    \ https://pandas.pydata.org/pandas-\ndocs/stable/user_guide/indexing.html#indexing-query\n\
+    for syntax. (default: None)"
+  synonyms:
+  - --query
+  args: !SimpleFlagArg
+    name: QUERY
+  optional: true
+- !Flag
+  description: "output file (default: None)\n"
+  synonyms:
+  - --output
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: augur filter [-h] --sequences SEQUENCES --metadata METADATA\n \
+  \                   [--min-date MIN_DATE] [--max-date MAX_DATE]\n              \
+  \      [--min-length MIN_LENGTH] [--non-nucleotide]\n                    [--exclude\
+  \ EXCLUDE] [--include INCLUDE]\n                    [--priority PRIORITY]\n    \
+  \                [--sequences-per-group SEQUENCES_PER_GROUP]\n                 \
+  \   [--group-by GROUP_BY [GROUP_BY ...]]\n                    [--subsample-seed\
+  \ SUBSAMPLE_SEED]\n                    [--exclude-where EXCLUDE_WHERE [EXCLUDE_WHERE\
+  \ ...]]\n                    [--include-where INCLUDE_WHERE [INCLUDE_WHERE ...]]\n\
+  \                    [--query QUERY] --output OUTPUT\n\nFilter and subsample a sequence\
+  \ set.\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  --sequences SEQUENCES, -s SEQUENCES\n                        sequences\
+  \ in fasta or VCF format (default: None)\n  --metadata METADATA   metadata associated\
+  \ with sequences (default: None)\n  --min-date MIN_DATE   minimal cutoff for date;\
+  \ may be specified as an Augur-\n                        style numeric date (with\
+  \ the year as the integer part)\n                        or YYYY-MM-DD (default:\
+  \ None)\n  --max-date MAX_DATE   maximal cutoff for date; may be specified as an\
+  \ Augur-\n                        style numeric date (with the year as the integer\
+  \ part)\n                        or YYYY-MM-DD (default: None)\n  --min-length MIN_LENGTH\n\
+  \                        minimal length of the sequences (default: None)\n  --non-nucleotide\
+  \      exclude sequences that contain illegal characters\n                     \
+  \   (default: False)\n  --exclude EXCLUDE     file with list of strains that are\
+  \ to be excluded\n                        (default: None)\n  --include INCLUDE \
+  \    file with list of strains that are to be included\n                       \
+  \ regardless of priorities or subsampling (default:\n                        None)\n\
+  \  --priority PRIORITY   file with list of priority scores for sequences\n     \
+  \                   (strain priority) (default: None)\n  --sequences-per-group SEQUENCES_PER_GROUP\n\
+  \                        subsample to no more than this number of sequences per\n\
+  \                        category (default: None)\n  --group-by GROUP_BY [GROUP_BY\
+  \ ...]\n                        categories with respect to subsample; two virtual\n\
+  \                        fields, \"month\" and \"year\", are supported if they\n\
+  \                        don't already exist as real fields but a \"date\" field\n\
+  \                        does exist (default: None)\n  --subsample-seed SUBSAMPLE_SEED\n\
+  \                        random number generator seed to allow reproducible\n  \
+  \                      sub-sampling (with same input data). Can be number or\n \
+  \                       string. (default: None)\n  --exclude-where EXCLUDE_WHERE\
+  \ [EXCLUDE_WHERE ...]\n                        Exclude samples matching these conditions.\
+  \ Ex:\n                        \"host=rat\" or \"host!=rat\". Multiple values are\n\
+  \                        processed as OR (matching any of those specified will\n\
+  \                        be excluded), not AND (default: None)\n  --include-where\
+  \ INCLUDE_WHERE [INCLUDE_WHERE ...]\n                        Include samples with\
+  \ these values. ex: host=rat.\n                        Multiple values are processed\
+  \ as OR (having any of\n                        those specified will be included),\
+  \ not AND. This rule\n                        is applied last and ensures any sequences\
+  \ matching\n                        these rules will be included. (default: None)\n\
+  \  --query QUERY         Filter samples by attribute. Uses Pandas Dataframe\n  \
+  \                      querying, see https://pandas.pydata.org/pandas-\n       \
+  \                 docs/stable/user_guide/indexing.html#indexing-query\n        \
+  \                for syntax. (default: None)\n  --output OUTPUT, -o OUTPUT\n   \
+  \                     output file (default: None)\n"
+generated_using:
+- --help

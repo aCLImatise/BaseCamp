@@ -1,0 +1,93 @@
+!Command
+command:
+- smof
+- uniq
+positional:
+- !Positional
+  description: input fasta sequence (default = stdin)
+  position: 0
+  name: INPUT
+  optional: false
+- !Positional
+  description: -P, --unpack          reverse the pack operation
+  position: 0
+  name: headers
+  optional: false
+named:
+- !Flag
+  description: writes (count|header) in tab-delimited format
+  synonyms:
+  - -c
+  - --count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print only repeated entries
+  synonyms:
+  - -d
+  - --repeated
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print only unique entries
+  synonyms:
+  - -u
+  - --uniq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: combine redundant sequences by concatenating the
+  synonyms:
+  - -p
+  - --pack
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "set delimiting string for pack/unpack operations (SOH,\n0x01, by default)"
+  synonyms:
+  - -z
+  - --pack-sep
+  args: !SimpleFlagArg
+    name: PACK_SEP
+  optional: true
+- !Flag
+  description: "make headers unique by deleting all but the final\nentry with a given\
+    \ header (the sequence is ignored, so\norder matters, you may want to sort by\
+    \ sequence first\nfor reproducibility)\n"
+  synonyms:
+  - -f
+  - --final-header
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: <fastafile> | smof uniq <options>\n\nEmulates the GNU uniq command.\
+  \ Two entries are considered equivalent only if\ntheir sequences AND headers are\
+  \ exactly equal. Newlines are ignored but all\ncomparisons are case-sensitive. The\
+  \ pack/unpack option is designed to be\ncompatible with the conventions used in\
+  \ the NCBI-BLAST non-redundant\ndatabases: entries with identical sequences are\
+  \ merged and their headers are\njoined with SOH (0x01) as a delimiter (by default).\n\
+  \npositional arguments:\n  INPUT                 input fasta sequence (default =\
+  \ stdin)\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -c, --count           writes (count|header) in tab-delimited format\n\
+  \  -d, --repeated        print only repeated entries\n  -u, --uniq            print\
+  \ only unique entries\n  -p, --pack            combine redundant sequences by concatenating\
+  \ the\n                        headers\n  -P, --unpack          reverse the pack\
+  \ operation\n  -z PACK_SEP, --pack-sep PACK_SEP\n                        set delimiting\
+  \ string for pack/unpack operations (SOH,\n                        0x01, by default)\n\
+  \  -f, --final-header    make headers unique by deleting all but the final\n   \
+  \                     entry with a given header (the sequence is ignored, so\n \
+  \                       order matters, you may want to sort by sequence first\n\
+  \                        for reproducibility)\n"
+generated_using:
+- --help

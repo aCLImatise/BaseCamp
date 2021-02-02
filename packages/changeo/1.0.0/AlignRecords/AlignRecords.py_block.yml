@@ -1,0 +1,184 @@
+!Command
+command:
+- AlignRecords.py
+- block
+positional: []
+named:
+- !Flag
+  description: "A list of tab delimited database files. (default:\nNone)"
+  synonyms:
+  - -d
+  args: !RepeatFlagArg
+    name: DB_FILES
+  optional: true
+- !Flag
+  description: "Explicit output file name. Note, this argument cannot\nbe used with\
+    \ the --failed, --outdir, or --outname\narguments. If unspecified, then the output\
+    \ filename\nwill be based on the input filename(s). (default:\nNone)"
+  synonyms:
+  - -o
+  args: !RepeatFlagArg
+    name: OUT_FILES
+  optional: true
+- !Flag
+  description: "Specify to changes the output directory to the\nlocation specified.\
+    \ The input file directory is used\nif this is not specified. (default: None)"
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: "Changes the prefix of the successfully processed\noutput file to the\
+    \ string specified. May not be\nspecified with multiple input files. (default:\
+    \ None)"
+  synonyms:
+  - --outname
+  args: !SimpleFlagArg
+    name: OUT_NAME
+  optional: true
+- !Flag
+  description: "Specify to write verbose logging to a file. May not be\nspecified\
+    \ with multiple input files. (default: None)"
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: LOG_FILE
+  optional: true
+- !Flag
+  description: "If specified create files containing records that fail\nprocessing.\
+    \ (default: False)"
+  synonyms:
+  - --failed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify input and output format. (default: airr)'
+  synonyms:
+  - --format
+  args: !ChoiceFlagArg
+    choices: !!set
+      airr:
+      changeo:
+  optional: true
+- !Flag
+  description: "The number of simultaneous computational processes to\nexecute (CPU\
+    \ cores to utilized). (default: 8)"
+  synonyms:
+  - --nproc
+  args: !SimpleFlagArg
+    name: NPROC
+  optional: true
+- !Flag
+  description: "The sequence fields to multiple align within each\ngroup. (default:\
+    \ None)"
+  synonyms:
+  - --sf
+  args: !RepeatFlagArg
+    name: SEQ_FIELDS
+  optional: true
+- !Flag
+  description: "Additional (not allele call) fields to use for\ngrouping. (default:\
+    \ None)"
+  synonyms:
+  - --gf
+  args: !RepeatFlagArg
+    name: GROUP_FIELDS
+  optional: true
+- !Flag
+  description: "[{v,d,j} ...]\nSegment calls (allele assignments) to use for\ngrouping.\
+    \ (default: ['v', 'j'])"
+  synonyms:
+  - --calls
+  args: !ChoiceFlagArg
+    choices: !!set
+      d:
+      j:
+      v:
+  optional: true
+- !Flag
+  description: "Specifies whether to use the V(D)J allele or gene when\nan allele\
+    \ call field (--calls) is specified. (default:\ngene)"
+  synonyms:
+  - --mode
+  args: !ChoiceFlagArg
+    choices: !!set
+      allele:
+      gene:
+  optional: true
+- !Flag
+  description: "Specifies how to handle multiple values within default\nallele call\
+    \ fields. Currently, only \"first\" is\nsupported. (default: first)"
+  synonyms:
+  - --act
+  args: !ChoiceFlagArg
+    choices: !!set
+      first:
+  optional: true
+- !Flag
+  description: "The location of the MUSCLE executable (default:\nmuscle)\n"
+  synonyms:
+  - --exec
+  args: !SimpleFlagArg
+    name: MUSCLE_EXEC
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: AlignRecords.py block [--version] [-h] -d DB_FILES [DB_FILES ...]\n\
+  \                             [-o OUT_FILES [OUT_FILES ...]] [--outdir OUT_DIR]\n\
+  \                             [--outname OUT_NAME] [--log LOG_FILE] [--failed]\n\
+  \                             [--format {airr,changeo}] [--nproc NPROC] --sf\n \
+  \                            SEQ_FIELDS [SEQ_FIELDS ...]\n                     \
+  \        [--gf GROUP_FIELDS [GROUP_FIELDS ...]]\n                             [--calls\
+  \ {v,d,j} [{v,d,j} ...]]\n                             [--mode {allele,gene}] [--act\
+  \ {first}]\n                             [--exec MUSCLE_EXEC]\n\nhelp:\n  --version\
+  \             show program's version number and exit\n  -h, --help            show\
+  \ this help message and exit\n\nstandard arguments:\n  -d DB_FILES [DB_FILES ...]\n\
+  \                        A list of tab delimited database files. (default:\n   \
+  \                     None)\n  -o OUT_FILES [OUT_FILES ...]\n                  \
+  \      Explicit output file name. Note, this argument cannot\n                 \
+  \       be used with the --failed, --outdir, or --outname\n                    \
+  \    arguments. If unspecified, then the output filename\n                     \
+  \   will be based on the input filename(s). (default:\n                        None)\n\
+  \  --outdir OUT_DIR      Specify to changes the output directory to the\n      \
+  \                  location specified. The input file directory is used\n      \
+  \                  if this is not specified. (default: None)\n  --outname OUT_NAME\
+  \    Changes the prefix of the successfully processed\n                        output\
+  \ file to the string specified. May not be\n                        specified with\
+  \ multiple input files. (default: None)\n  --log LOG_FILE        Specify to write\
+  \ verbose logging to a file. May not be\n                        specified with\
+  \ multiple input files. (default: None)\n  --failed              If specified create\
+  \ files containing records that fail\n                        processing. (default:\
+  \ False)\n  --format {airr,changeo}\n                        Specify input and output\
+  \ format. (default: airr)\n  --nproc NPROC         The number of simultaneous computational\
+  \ processes to\n                        execute (CPU cores to utilized). (default:\
+  \ 8)\n\nalignment arguments:\n  --sf SEQ_FIELDS [SEQ_FIELDS ...]\n             \
+  \           The sequence fields to multiple align within each\n                \
+  \        group. (default: None)\n  --gf GROUP_FIELDS [GROUP_FIELDS ...]\n      \
+  \                  Additional (not allele call) fields to use for\n            \
+  \            grouping. (default: None)\n  --calls {v,d,j} [{v,d,j} ...]\n      \
+  \                  Segment calls (allele assignments) to use for\n             \
+  \           grouping. (default: ['v', 'j'])\n  --mode {allele,gene}  Specifies whether\
+  \ to use the V(D)J allele or gene when\n                        an allele call field\
+  \ (--calls) is specified. (default:\n                        gene)\n  --act {first}\
+  \         Specifies how to handle multiple values within default\n             \
+  \           allele call fields. Currently, only \"first\" is\n                 \
+  \       supported. (default: first)\n  --exec MUSCLE_EXEC    The location of the\
+  \ MUSCLE executable (default:\n                        muscle)\n"
+generated_using:
+- --help

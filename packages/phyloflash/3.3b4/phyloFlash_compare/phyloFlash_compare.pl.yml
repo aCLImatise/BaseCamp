@@ -1,0 +1,249 @@
+!Command
+command:
+- phyloFlash_compare.pl
+positional:
+- !Positional
+  description: '# phyloFlash tar.gz archives as input'
+  position: 0
+  name: heatmap
+  optional: false
+- !Positional
+  description: "--csv FILES\nComma-separated list of NTU abundance tables from phyloFlash\n\
+    runs. The files should be named\n[LIBNAME].phyloFlash.NTUabundance.csv or\n[LIBNAME].phyloFlash.NTUfull_abundance.csv"
+  position: 0
+  name: format.
+  optional: false
+named:
+- !Flag
+  description: "Comma-separated list of tar.gz archives from phyloFlash runs.\nThese\
+    \ will be parsed to search for the\n[LIBNAME].phyloFlash.NTUabundance.csv files\
+    \ within the archive,\nto extract the NTU classifications. This assumes that the\n\
+    archive filenames are named [LIBNAME].phyloFlash.tar.gz, and\nthat the LIBNAME\
+    \ matches the contents of the archive."
+  synonyms:
+  - --zip
+  args: !SimpleFlagArg
+    name: FILES
+  optional: true
+- !Flag
+  description: "Use all phyloFlash tar.gz archives in the current folder (by\nmatching\
+    \ filename *.phyloFlash.tar.gz) for a comparison run.\nOverrides anything passed\
+    \ to option --zip."
+  synonyms:
+  - --allzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Ignore NTU abundance tables in CSV format, and recalculate the\nNTU\
+    \ abundances from SAM files in the compressed tar.gz\nphyloFlash archives. Useful\
+    \ if e.g. phyloFlash was originally\ncalled to summarize the taxonomy at a higher\
+    \ level than you want\nto use for the comparison.\nOnly works if the tar.gz archives\
+    \ from phyloFlash runs are\nspecified with the --zip option above.\nDefault: No."
+  synonyms:
+  - --use_SAM
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Type of analysis to be run. Options: \"heatmap\", \"barplot\",\n\"\
+    matrix\", \"ntu_table\" or a recognizable substring thereof.\nSupply more than\
+    \ one option as comma- separated list.\nDefault: None"
+  synonyms:
+  - --task
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Prefix for output files.\nDefault: \"test.phyloFlash_compare\""
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Format for plots (tasks 'barplot' and 'heatmap' only). Options:\n\"\
+    pdf\", \"png\"\nDefault: \"pdf\""
+  synonyms:
+  - --outfmt
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Taxonomic level to perform the comparison. Must be an integer\nbetween\
+    \ 1 and 7.\nDefault: 4 ('Order')"
+  synonyms:
+  - --level
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Keep temporary files\nDefault: No"
+  synonyms:
+  - --keeptmp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Save log file to file [OUTPREFIX].log\nDefault: No"
+  synonyms:
+  - --log
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of top taxa to display in barplot. Integer between 3 and\n\
+    12 is preferable.\nDefault: 5"
+  synonyms:
+  - --displaytaxa
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Palette to color taxa in barplot. Should be one of the\nqualitative\
+    \ ColorBrewer2 palettes: Accent, Dark2, Paired,\nPastel1, Pastel2, Set1, Set2,\
+    \ or Set3.\nDefault: \"Set3\""
+  synonyms:
+  - --barplot_palette
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Display only the subset from this taxon, e.g. \"Bacteria\". Should\n\
+    be a taxon string excluding trailing semicolon, e.g.\n\"Bacteria;Proteobacteria\"\
+    .\nDefault: None (show all)"
+  synonyms:
+  - --barplot_subset
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Logical: Display counts rather than proportions in barplot, i.e.\n\
+    bars will not be rescaled to 100% for each sample.\nDefault: False"
+  synonyms:
+  - --barplot_rawval
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Numeric: Change plot width by this scaling factor (e.g. 2 makes\n\
+    it twice as wide). Allows adjustment when bars are hidden\nbecause the legend\
+    \ labels are too long.\nDefault: 1"
+  synonyms:
+  - --barplot_scaleplotwidth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Clustering method to use for clustering/sorting samples in\nheatmap.\
+    \ Options: \"alpha\", \"ward.D\", \"single\", \"complete\",\n\"average\", \"mcquitty\"\
+    , \"median\", \"centroid\", or \"custom\".\n\"custom\" will use the Unifrac-like\
+    \ abundance weighted taxonomic\ndistances (the distance matrix can be separately\
+    \ output with\n--task matrix). This is an experimental (unpublished) metric\n\
+    similar to Unifrac, but using a taxonomy tree instead of a real\nphylogeny.\n\
+    Default: \"ward.D\""
+  synonyms:
+  - --cluster-samples
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Clustering method to use for clustering/sorting taxa. Options:\n\"\
+    alpha\", \"ward\", \"single\", \"complete\", \"average\", \"mcquitty\",\n\"median\"\
+    , \"centroid\".\nDefault: \"ward.D\""
+  synonyms:
+  - --cluster-taxa
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Do not shorten taxa names to two last groups
+  synonyms:
+  - --long-taxnames
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Sum up NTUs with fewer counts into a pseudo-NTU \"Other\".\nDefault:\
+    \ 50\n"
+  synonyms:
+  - --min-ntu-count
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage:\n    # NTU abundance table CSV files as input\n\n    phyloFlash_compare.pl\
+  \ --csv\n    LIB1.phyloFlash.NTUabundance.csv,LIB2.phyloFlash.NTUabundance.csv -task\n\
+  \    barplot\n\n    phyloFlash_compare.pl --csv\n    LIB1.phyloFlash.NTUabundance.csv,LIB2.phyloFlash.NTUabundance.csv\
+  \ -task\n    heatmap\n\n    # phyloFlash tar.gz archives as input\n\n    phyloFlash_compare.pl\
+  \ --zip\n    LIB1.phyloFlash.tar.gz,LIB2.phyloFlash.tar.gz -task barplot\n\n   \
+  \ phyloFlash_compare.pl --zip\n    LIB1.phyloFlash.tar.gz,LIB2.phyloFlash.tar.gz\
+  \ -task heatmap\n\n    # Help/manual pages\n\n    phyloFlash_compare.pl --help\n\
+  \n    phyloFlash_compare.pl --man\n\nArguments:\n  Input Files:\n    Specify the\
+  \ output files from phyloFlash runs for the libraries that you\n    wish to compare.\n\
+  \n    The options -csv and -zip are mutually exclusive. If phyloFlash is run\n \
+  \   with the -zip option, the archives containing the results of each\n    separate\
+  \ run can be specified with the -zip option below. If the results\n    are not compressed,\
+  \ you can specify the NTU classification tables in CSV\n    format.\n\n    --csv\
+  \ FILES\n            Comma-separated list of NTU abundance tables from phyloFlash\n\
+  \            runs. The files should be named\n            [LIBNAME].phyloFlash.NTUabundance.csv\
+  \ or\n            [LIBNAME].phyloFlash.NTUfull_abundance.csv\n\n    --zip FILES\n\
+  \            Comma-separated list of tar.gz archives from phyloFlash runs.\n   \
+  \         These will be parsed to search for the\n            [LIBNAME].phyloFlash.NTUabundance.csv\
+  \ files within the archive,\n            to extract the NTU classifications. This\
+  \ assumes that the\n            archive filenames are named [LIBNAME].phyloFlash.tar.gz,\
+  \ and\n            that the LIBNAME matches the contents of the archive.\n\n   \
+  \ --allzip\n            Use all phyloFlash tar.gz archives in the current folder\
+  \ (by\n            matching filename *.phyloFlash.tar.gz) for a comparison run.\n\
+  \            Overrides anything passed to option --zip.\n\n    --use_SAM\n     \
+  \       Ignore NTU abundance tables in CSV format, and recalculate the\n       \
+  \     NTU abundances from SAM files in the compressed tar.gz\n            phyloFlash\
+  \ archives. Useful if e.g. phyloFlash was originally\n            called to summarize\
+  \ the taxonomy at a higher level than you want\n            to use for the comparison.\n\
+  \n            Only works if the tar.gz archives from phyloFlash runs are\n     \
+  \       specified with the --zip option above.\n\n            Default: No.\n\n \
+  \ Analysis Options:\n    --task STRING\n            Type of analysis to be run.\
+  \ Options: \"heatmap\", \"barplot\",\n            \"matrix\", \"ntu_table\" or a\
+  \ recognizable substring thereof.\n            Supply more than one option as comma-\
+  \ separated list.\n\n            Default: None\n\n    --out STRING\n           \
+  \ Prefix for output files.\n\n            Default: \"test.phyloFlash_compare\"\n\
+  \n    --outfmt STRING\n            Format for plots (tasks 'barplot' and 'heatmap'\
+  \ only). Options:\n            \"pdf\", \"png\"\n\n            Default: \"pdf\"\n\
+  \n    --level INTEGER\n            Taxonomic level to perform the comparison. Must\
+  \ be an integer\n            between 1 and 7.\n\n            Default: 4 ('Order')\n\
+  \n    --keeptmp\n            Keep temporary files\n\n            Default: No\n\n\
+  \    --log   Save log file to file [OUTPREFIX].log\n\n            Default: No\n\n\
+  \  Arguments for Barplot:\n    The R script phyloFlash_barplot.R can be run directly;\
+  \ run the script\n    without arguments to see the built-in help message. However,\
+  \ the input\n    file to the barplot script is produced by phyloFlash_compare.pl\
+  \ (i.e.\n    this script).\n\n    --displaytaxa INTEGER\n            Number of top\
+  \ taxa to display in barplot. Integer between 3 and\n            12 is preferable.\n\
+  \n            Default: 5\n\n    --barplot_palette STRING\n            Palette to\
+  \ color taxa in barplot. Should be one of the\n            qualitative ColorBrewer2\
+  \ palettes: Accent, Dark2, Paired,\n            Pastel1, Pastel2, Set1, Set2, or\
+  \ Set3.\n\n            Default: \"Set3\"\n\n    --barplot_subset STRING\n      \
+  \      Display only the subset from this taxon, e.g. \"Bacteria\". Should\n    \
+  \        be a taxon string excluding trailing semicolon, e.g.\n            \"Bacteria;Proteobacteria\"\
+  .\n\n            Default: None (show all)\n\n    --barplot_rawval\n            Logical:\
+  \ Display counts rather than proportions in barplot, i.e.\n            bars will\
+  \ not be rescaled to 100% for each sample.\n\n            Default: False\n\n   \
+  \ --barplot_scaleplotwidth\n            Numeric: Change plot width by this scaling\
+  \ factor (e.g. 2 makes\n            it twice as wide). Allows adjustment when bars\
+  \ are hidden\n            because the legend labels are too long.\n\n          \
+  \  Default: 1\n\n  Arguments for Heatmap:\n    More options are available by using\
+  \ the R script phyloFlash_heatmap.R\n    directly, or by sourcing it in the R environment.\
+  \ Run the R script\n    without arguments to see the built-in help message.\n\n\
+  \    --cluster-samples STRING\n            Clustering method to use for clustering/sorting\
+  \ samples in\n            heatmap. Options: \"alpha\", \"ward.D\", \"single\", \"\
+  complete\",\n            \"average\", \"mcquitty\", \"median\", \"centroid\", or\
+  \ \"custom\".\n\n            \"custom\" will use the Unifrac-like abundance weighted\
+  \ taxonomic\n            distances (the distance matrix can be separately output\
+  \ with\n            --task matrix). This is an experimental (unpublished) metric\n\
+  \            similar to Unifrac, but using a taxonomy tree instead of a real\n \
+  \           phylogeny.\n\n            Default: \"ward.D\"\n\n    --cluster-taxa\
+  \ STRING\n            Clustering method to use for clustering/sorting taxa. Options:\n\
+  \            \"alpha\", \"ward\", \"single\", \"complete\", \"average\", \"mcquitty\"\
+  ,\n            \"median\", \"centroid\".\n\n            Default: \"ward.D\"\n\n\
+  \    --long-taxnames\n            Do not shorten taxa names to two last groups\n\
+  \n    --min-ntu-count INTEGER\n            Sum up NTUs with fewer counts into a\
+  \ pseudo-NTU \"Other\".\n\n            Default: 50\n\n"
+generated_using:
+- --help

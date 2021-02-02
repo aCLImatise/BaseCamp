@@ -1,0 +1,74 @@
+!Command
+command:
+- seqmagick
+- backtrans-align
+positional:
+- !Positional
+  description: Protein Alignment
+  position: 0
+  name: protein_align
+  optional: false
+- !Positional
+  description: FASTA Alignment
+  position: 1
+  name: nucl_align
+  optional: false
+named:
+- !Flag
+  description: 'Output destination. Default: STDOUT'
+  synonyms:
+  - -o
+  - --out-file
+  args: !SimpleFlagArg
+    name: destination_file
+  optional: true
+- !Flag
+  description: "Translation table to use. [Default: standard-\nambiguous]"
+  synonyms:
+  - -t
+  - --translation-table
+  args: !ChoiceFlagArg
+    choices: !!set
+      standard:
+      vertebrate-mito:
+      standard-ambiguous:
+  optional: true
+- !Flag
+  description: "Action to take on an ambiguous codon [default: fail]\n"
+  synonyms:
+  - -a
+  - --fail-action
+  args: !ChoiceFlagArg
+    choices: !!set
+      warn:
+      none:
+      fail:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: seqmagick backtrans-align [-h] [-o destination_file]\n        \
+  \                         [-t {standard,standard-ambiguous,vertebrate-mito}]\n \
+  \                                [-a {fail,warn,none}]\n                       \
+  \          protein_align nucl_align\n\nGiven a protein alignment and unaligned nucleotides,\
+  \ align the nucleotides\nusing the protein alignment. Protein and nucleotide sequence\
+  \ files must\ncontain the same number of sequences, in the same order, with the\
+  \ same IDs.\n\npositional arguments:\n  protein_align         Protein Alignment\n\
+  \  nucl_align            FASTA Alignment\n\noptional arguments:\n  -h, --help  \
+  \          show this help message and exit\n  -o destination_file, --out-file destination_file\n\
+  \                        Output destination. Default: STDOUT\n  -t {standard,standard-ambiguous,vertebrate-mito},\
+  \ --translation-table {standard,standard-ambiguous,vertebrate-mito}\n          \
+  \              Translation table to use. [Default: standard-\n                 \
+  \       ambiguous]\n  -a {fail,warn,none}, --fail-action {fail,warn,none}\n    \
+  \                    Action to take on an ambiguous codon [default: fail]\n"
+generated_using:
+- --help

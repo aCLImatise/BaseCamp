@@ -1,0 +1,198 @@
+!Command
+command:
+- bbmerge.sh
+positional: []
+named:
+- !Flag
+  description: "This will set Java's memory usage,\noverriding autodetection.\nFor\
+    \ example, -Xmx400m will specify 400 MB RAM."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "This flag will cause the process to exit if an\nout-of-memory exception\
+    \ occurs.  Requires Java 8u92+."
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell and Jonathan Rood\nLast modified June 26,\
+  \ 2019\n\nDescription:  Merges paired reads into single reads by overlap detection.\n\
+  With sufficient coverage, can merge nonoverlapping reads by kmer extension.\nKmer\
+  \ modes (Tadpole or Bloom Filter) require much more memory, and should\nbe used\
+  \ with the bbmerge-auto.sh script rather than bbmerge.sh.\nPlease read bbmap/docs/guides/BBMergeGuide.txt\
+  \ for more information.\n\nUsage for interleaved files:\tbbmerge.sh in=<reads> out=<merged\
+  \ reads> outu=<unmerged reads>\nUsage for paired files:     \tbbmerge.sh in1=<read1>\
+  \ in2=<read2> out=<merged reads> outu1=<unmerged1> outu2=<unmerged2>\n\nInput may\
+  \ be stdin or a file, fasta or fastq, raw or gzipped.\n\nInput parameters:\nin=null\
+  \              Primary input. 'in2' will specify a second file.\ninterleaved=auto\
+  \     May be set to true or false to override autodetection of\n               \
+  \      whether the input file as interleaved.\nreads=-1             Quit after this\
+  \ many read pairs (-1 means all).\n\nOutput parameters:\nout=<file>           File\
+  \ for merged reads. 'out2' will specify a second file.\noutu=<file>          File\
+  \ for unmerged reads. 'outu2' will specify a second file.\noutinsert=<file>    \
+  \ (outi) File to write read names and insert sizes.\noutadapter=<file>    (outa)\
+  \ File to write consensus adapter sequences.\noutc=<file>          File to write\
+  \ input read kmer cardinality estimate.\nihist=<file>         (hist) Insert length\
+  \ histogram output file.\nnzo=t                Only print histogram bins with nonzero\
+  \ values.\nshowhiststats=t      Print extra header lines with statistical information.\n\
+  ziplevel=2           Set to 1 (lowest) through 9 (max) to change compression\n \
+  \                    level; lower compression is faster.\nordered=f            Output\
+  \ reads in same order as input.\nmix=f                Output both the merged (or\
+  \ mergable) and unmerged reads\n                     in the same file (out=).  Useful\
+  \ for ecco mode.\n\nTrimming/Filtering parameters:\nqtrim=f              Trim read\
+  \ ends to remove bases with quality below minq.\n                     Trims BEFORE\
+  \ merging.\n                     Values: t (trim both ends), \n                \
+  \             f (neither end), \n                             r (right end only),\
+  \ \n                             l (left end only).\nqtrim2=f             May be\
+  \ specified instead of qtrim to perform trimming \n                     only if\
+  \ merging is unsuccessful, then retry merging.\ntrimq=10             Trim quality\
+  \ threshold.  This may be a comma-delimited\n                     list (ascending)\
+  \ to try multiple values.\nminlength=1          (ml) Reads shorter than this after\
+  \ trimming, but before\n                     merging, will be discarded. Pairs will\
+  \ be discarded only\n                     if both are shorter.\nmaxlength=-1   \
+  \      Reads with longer insert sizes will be discarded.\ntbo=f                (trimbyoverlap)\
+  \ Trim overlapping reads to remove \n                     rightmost (3') non-overlapping\
+  \ portion, instead of joining.\nminavgquality=0      (maq) Reads with average quality\
+  \ below this, after \n                     trimming, will not be attempted to be\
+  \ merged.\nmaxexpectederrors=0  (mee) If positive, reads with more combined expected\
+  \ \n                     errors than this will not be attempted to be merged.\n\
+  forcetrimleft=0      (ftl) If nonzero, trim left bases of the read to \n       \
+  \              this position (exclusive, 0-based).\nforcetrimright=0     (ftr) If\
+  \ nonzero, trim right bases of the read \n                     after this position\
+  \ (exclusive, 0-based).\nforcetrimright2=0    (ftr2) If positive, trim this many\
+  \ bases on the right end.\nforcetrimmod=5       (ftm) If positive, trim length to\
+  \ be equal to \n                     zero modulo this number.\nooi=f           \
+  \     Output only incorrectly merged reads, for testing.\ntrimpolya=t          Trim\
+  \ trailing poly-A tail from adapter output.  Only \n                     affects\
+  \ outadapter.  This also trims poly-A followed\n                     by poly-G,\
+  \ which occurs on NextSeq.\n\nProcessing Parameters:\nusejni=f             (jni)\
+  \ Do overlapping in C code, which is faster.  Requires\n                     compiling\
+  \ the C code; details are in /jni/README.txt.\n                     However, the\
+  \ jni path is currently disabled.\nmerge=t              Create merged reads.  If\
+  \ set to false, you can still \n                     generate an insert histogram.\n\
+  ecco=f               Error-correct the overlapping part, but don't merge.\ntrimnonoverlapping=f\
+  \ (tno) Trim all non-overlapping portions, leaving only\n                     consensus\
+  \ sequence.  By default, only sequence to the \n                     right of the\
+  \ overlap (adapter sequence) is trimmed.\nuseoverlap=t         Attempt find the\
+  \ insert size using read overlap.\nmininsert=35         Minimum insert size to merge\
+  \ reads.\nmininsert0=35        Insert sizes less than this will not be considered.\n\
+  \                     Must be less than or equal to mininsert.\nminoverlap=12  \
+  \      Minimum number of overlapping bases to allow merging.\nminoverlap0=8    \
+  \    Overlaps shorter than this will not be considered.\n                     Must\
+  \ be less than or equal to minoverlap.\nminq=9               Ignore bases with quality\
+  \ below this.\nmaxq=41              Cap output quality scores at this.\nentropy=t\
+  \            Increase the minimum overlap requirement for low-\n               \
+  \      complexity reads.\nefilter=6            Ban overlaps with over this many\
+  \ times the expected \n                     number of errors.  Lower is more strict.\
+  \ -1 disables.\npfilter=0.00004      Ban improbable overlaps.  Higher is more strict.\
+  \ 0 will\n                     disable the filter; 1 will allow only perfect overlaps.\n\
+  kfilter=0            Ban overlaps that create kmers with count below\n         \
+  \            this value (0 disables).  If this is used minprob should\n        \
+  \             probably be set to 0.  Requires good coverage.\nouq=f            \
+  \    Calculate best overlap using quality values.\nowq=t                Calculate\
+  \ best overlap without using quality values.\nusequality=t         If disabled,\
+  \ quality values are completely ignored,\n                     both for overlap\
+  \ detection and filtering.  May be useful\n                     for data with inaccurate\
+  \ quality values.\niupacton=f           (itn) Change ambiguous IUPAC symbols to\
+  \ N.\nadapter=             Specify the adapter sequences used for these reads, if\n\
+  \                     known; this can be a fasta file or a literal sequence.\n \
+  \                    Read 1 and 2 can have adapters specified independently\n  \
+  \                   with the adapter1 and adapter2 flags.  adapter=default\n   \
+  \                  will use a list of common adapter sequences.\n\nRatio Mode: \n\
+  ratiomode=t          Score overlaps based on the ratio of matching to \n       \
+  \              mismatching bases.\nmaxratio=0.09        Max error rate; higher increases\
+  \ merge rate.\nratiomargin=5.5      Lower increases merge rate; min is 1.\nratiooffset=0.55\
+  \     Lower increases merge rate; min is 0.\nmaxmismatches=20     Maximum mismatches\
+  \ allowed in overlapping region.\nratiominoverlapreduction=3  This is the difference\
+  \ between minoverlap in \n                     flat mode and minoverlap in ratio\
+  \ mode; generally, \n                     minoverlap should be lower in ratio mode.\n\
+  minsecondratio=0.1   Cutoff for second-best overlap ratio.\nforcemerge=f       \
+  \  Disable all filters and just merge everything \n                     (not recommended).\n\
+  \nFlat Mode: \nflatmode=f           Score overlaps based on the total number of\
+  \ mismatching\n                     bases only.\nmargin=2             The best overlap\
+  \ must have at least 'margin' fewer \n                     mismatches than the second\
+  \ best.\nmismatches=3         Do not allow more than this many mismatches.\nrequireratiomatch=f\
+  \  (rrm) Require the answer from flat mode and ratio mode\n                    \
+  \ to agree, reducing false positives if both are enabled.\ntrimonfailure=t     \
+  \ (tof) If detecting insert size by overlap fails,\n                     the reads\
+  \ will be trimmed and this will be re-attempted.\n\n\n*** Ratio Mode and Flat Mode\
+  \ may be used alone or simultaneously. ***\n*** Ratio Mode is usually more accurate\
+  \ and is the default mode. ***\n\n\nStrictness (these are mutually exclusive macros\
+  \ that set other parameters):\nstrict=f             Decrease false positive rate\
+  \ and merging rate.\nverystrict=f         (vstrict) Greatly decrease FP and merging\
+  \ rate.\nultrastrict=f        (ustrict) Decrease FP and merging rate even more.\n\
+  maxstrict=f          (xstrict) Maximally decrease FP and merging rate.\nloose=f\
+  \              Increase false positive rate and merging rate.\nveryloose=f     \
+  \     (vloose) Greatly increase FP and merging rate.\nultraloose=f         (uloose)\
+  \ Increase FP and merging rate even more.\nmaxloose=f           (xloose) Maximally\
+  \ decrease FP and merging rate.\nfast=f               Fastest possible mode; less\
+  \ accurate.\n\nTadpole Parameters (for read extension and error-correction):\n*Note:\
+  \ These require more memory and should be run with bbmerge-auto.sh.*\nk=31     \
+  \            Kmer length.  31 (or less) is fastest and uses the least\n        \
+  \             memory, but higher values may be more accurate.  \n              \
+  \       60 tends to work well for 150bp reads.\nextend=0             Extend reads\
+  \ to the right this much before merging.\n                     Requires sufficient\
+  \ (>5x) kmer coverage.\nextend2=0            Extend reads this much only after a\
+  \ failed merge attempt,\n                     or in rem/rsem mode.\niterations=1\
+  \         (ei) Iteratively attempt to extend by extend2 distance\n             \
+  \        and merge up to this many times.\nrem=f                (requireextensionmatch)\
+  \ Do not merge if the predicted\n                     insert size differs before\
+  \ and after extension.\n                     However, if only the extended reads\
+  \ overlap, then that\n                     insert will be used.  Requires setting\
+  \ extend2.\nrsem=f               (requirestrictextensionmatch) Similar to rem but\
+  \ stricter.\n                     Reads will only merge if the predicted insert\
+  \ size before\n                     and after extension match.  Requires setting\
+  \ extend2.\n                     Enables the lowest possible false-positive rate.\n\
+  ecctadpole=f         (ecct) If reads fail to merge, error-correct with Tadpole\n\
+  \                     and try again.  This happens prior to extend2.\nreassemble=t\
+  \         If ecct is enabled, use Tadpole's reassemble mode for \n             \
+  \        error correction.  Alternatives are pincer and tail.\nremovedeadends  \
+  \     (shave) Remove kmers leading to dead ends.\nremovebubbles        (rinse) Remove\
+  \ kmers in error bubbles.\nmindepthseed=3       (mds) Minimum kmer depth to begin\
+  \ extension.\nmindepthextend=2     (mde) Minimum kmer depth continue extension.\n\
+  branchmult1=20       Min ratio of 1st to 2nd-greatest path depth at high depth.\n\
+  branchmult2=3        Min ratio of 1st to 2nd-greatest path depth at low depth.\n\
+  branchlower=3        Max value of 2nd-greatest path depth to be considered low.\n\
+  ibb=t                Ignore backward branches when extending.\nextra=<file>    \
+  \     A file or comma-delimited list of files of reads to use\n                \
+  \     for kmer counting, but not for merging or output.\nprealloc=f           Pre-allocate\
+  \ memory rather than dynamically growing; \n                     faster and more\
+  \ memory-efficient for large datasets.  \n                     A float fraction\
+  \ (0-1) may be specified, default 1.\nprefilter=0          If set to a positive\
+  \ integer, use a countmin sketch to \n                     ignore kmers with depth\
+  \ of that value or lower, to\n                     reduce memory usage.\nfiltermem=0\
+  \          Allows manually specifying prefilter memory in bytes, for\n         \
+  \            deterministic runs.  0 will set it automatically.\nminprob=0.5    \
+  \      Ignore kmers with overall probability of correctness \n                 \
+  \    below this, to reduce memory usage.\nminapproxoverlap=26  For rem mode, do\
+  \ not merge reads if the extended reads\n                     indicate that the\
+  \ raw reads should have overlapped by\n                     at least this much,\
+  \ but no overlap was found.\n\n\nBloom Filter Parameters (for kmer operations with\
+  \ less memory than Tadpole)\n*Note: These require more memory and should be run\
+  \ with bbmerge-auto.sh.*\neccbloom=f           (eccb) If reads fail to merge, error-correct\
+  \ with bbcms\n                     and try again.\ntestmerge=f          Test kmer\
+  \ counts around the read merge junctions.  If\n                     it appears that\
+  \ the merge created new errors, undo it.\n                     This reduces the\
+  \ false-positive rate, but not as much as\n                     rem or rsem.\n\n\
+  Java Parameters:\n-Xmx                 This will set Java's memory usage, \n   \
+  \                  overriding autodetection.\n                     For example,\
+  \ -Xmx400m will specify 400 MB RAM.\n-eoom                This flag will cause the\
+  \ process to exit if an \n                     out-of-memory exception occurs. \
+  \ Requires Java 8u92+.\n-da                  Disable assertions.\n\nPlease contact\
+  \ Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\n"
+generated_using:
+- --help

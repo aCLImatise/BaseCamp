@@ -1,0 +1,104 @@
+!Command
+command:
+- evalCGP.pl
+positional:
+- !Positional
+  description: Annotation file in GTF format.
+  position: 0
+  name: annotation.gtf
+  optional: false
+- !Positional
+  description: Prediction file in GTF format.
+  position: 1
+  name: prediction.gtf
+  optional: false
+named:
+- !Flag
+  description: "Directory that contains the executable evaluate_gtf.pl from the eval\
+    \ package.\nIf not specified it must be in \\$PATH environment variable."
+  synonyms:
+  - --eval_exec_dir
+  args: !SimpleFlagArg
+    name: d
+  optional: true
+- !Flag
+  description: 'Use this option to merge genes in the prediction set and filter out
+    duplicates (default: 0)'
+  synonyms:
+  - --joingenes
+  args: !SimpleFlagArg
+    name: '1'
+  optional: true
+- !Flag
+  description: "If this flag is set evaluation is on the whole genome. Per default,\
+    \ evaluation\nis restricted to the gene ranges"
+  synonyms:
+  - --wholeGenome
+  args: !SimpleFlagArg
+    name: '1'
+  optional: true
+- !Flag
+  description: "Parameter of joingenes. If this flag is set, joingenes keeps alternative\
+    \ splice forms of a gene, otherwise\nit only keeps the best splicing form. Per\
+    \ definition, alternative splice forms are either transcripts\nwith the same gene\
+    \ ID or the same coding start AND end coordinates (default: 0)."
+  synonyms:
+  - --alternatives
+  args: !SimpleFlagArg
+    name: '1'
+  optional: true
+- !Flag
+  description: "Parameter of joingenes. If this flag is set, joingenes does NOT select\
+    \ a single best transcripts\namong multiple conflicting transcripts. Two transcripts\
+    \ are confliciting if they overlap\neach other and are no alternative splice forms.\n\
+    considered as conflicting."
+  synonyms:
+  - --noselection
+  args: !SimpleFlagArg
+    name: '1'
+  optional: true
+- !Flag
+  description: "Parameter of joingenes. If this flag is set, joingenes does NOT create\
+    \ new\ntranscripts by merging input transcripts, f.i. it does NOT combine two\n\
+    incomplete transcripts to a single complete transcript, where possible.\n"
+  synonyms:
+  - --nojoin
+  args: !SimpleFlagArg
+    name: '1'
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "prediction file missing\n\nevalCGP.pl      evaluates a prediction in GTF\
+  \ format against an annotation\n                using the external evaluation package\
+  \ Eval by Evan Keibler and Michael R. Brent\n                and returns accuracy\
+  \ values (SN and SP on gene, exon and nucleotide level)\n                evalCGP\
+  \ only compares gene features on given genomic intervals that\n                are\
+  \ parsed from the prediction files.\n\nUSAGE\n\nevalCGP.pl --anno=annotation.gtf\
+  \ --pred=prediction.gtf\n\n      annotation.gtf           Annotation file in GTF\
+  \ format.\n      prediction.gtf           Prediction file in GTF format.\n\nOPTIONS\n\
+  \n    --eval_exec_dir=d          Directory that contains the executable evaluate_gtf.pl\
+  \ from the eval package.\n                               If not specified it must\
+  \ be in \\$PATH environment variable.\n    --joingenes=1              Use this option\
+  \ to merge genes in the prediction set and filter out duplicates (default: 0)\n\
+  \    --wholeGenome=1            If this flag is set evaluation is on the whole genome.\
+  \ Per default, evaluation\n                               is restricted to the gene\
+  \ ranges\n    --alternatives=1           Parameter of joingenes. If this flag is\
+  \ set, joingenes keeps alternative splice forms of a gene, otherwise\n         \
+  \                      it only keeps the best splicing form. Per definition, alternative\
+  \ splice forms are either transcripts\n                               with the same\
+  \ gene ID or the same coding start AND end coordinates (default: 0).\n    --noselection=1\
+  \            Parameter of joingenes. If this flag is set, joingenes does NOT select\
+  \ a single best transcripts\n                               among multiple conflicting\
+  \ transcripts. Two transcripts are confliciting if they overlap\n              \
+  \                 each other and are no alternative splice forms.\n            \
+  \                   considered as conflicting.\n    --nojoin=1                 Parameter\
+  \ of joingenes. If this flag is set, joingenes does NOT create new\n           \
+  \                    transcripts by merging input transcripts, f.i. it does NOT\
+  \ combine two\n                               incomplete transcripts to a single\
+  \ complete transcript, where possible.\n                               \n\n\n"
+generated_using:
+- --help

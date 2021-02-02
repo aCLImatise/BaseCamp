@@ -1,0 +1,62 @@
+!Command
+command:
+- NOMe_filtering
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input
+  optional: true
+named:
+- !Flag
+  description: "Enter the genome folder you wish to use to extract sequences from\
+    \ (full path only!). Accepted\nformats are FastA files ending with '.fa' or '.fasta'.\
+    \ Specifying a genome folder path is mandatory."
+  synonyms:
+  - --genome_folder
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Displays this help message and exits
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n  SYNOPSIS:\n\n  This script reads in methylation call files from the\
+  \ Bismark methylation extract that contain additional information about the reads\
+  \ that \n  methylation calls belonged to. It processes entire (single-end) reads\
+  \ and then filters calls for NOMe-Seq positions (nucleosome occupancy\n  and methylome\
+  \ sequencing) where accessible DNA gets methylated in a GpC context:\n \n     (i)\
+  \ filters CpGs to only output cytosines in A-CG and T-CG context\n    (ii) filters\
+  \ GC context to only report cytosines in GC-A, GC-C and GC-T context\n\n  Both of\
+  \ these measures aim to reduce unwanted biases, i.e. the influence of G-CG (intended)\
+  \ and C-CG (off-target) on endogenous CpG\n  methylation, and the influence of CpG\
+  \ methylation on (the NOMe-Seq specific) GC context methylation.\n\n  The input\
+  \ file needs to have been generated with bismark_methylation_extractor with the\
+  \ option '--yacht' specified and be in the following format:\n  \n  <seq-ID>  <methylation\
+  \ state*>  <chromosome>  <start position (= end position)>  <methylation call> \
+  \ <read start>  <read end>  <read orientation>\n\n  *   Methylated cytosines receive\
+  \ a '+' orientation,\n  * Unmethylated cytosines receive a '-' orientation.\n\n\n\
+  \  USAGE: NOMe_filtering --genome_folder <path> [input]\n\n\n  The name of the output\
+  \ file is rerived from the input file, end will end in '.manOwar.txt.gz'\n\n  --genome_folder\
+  \ <path>   Enter the genome folder you wish to use to extract sequences from (full\
+  \ path only!). Accepted\n                           formats are FastA files ending\
+  \ with '.fa' or '.fasta'. Specifying a genome folder path is mandatory.\n\n\n  --help\
+  \                   Displays this help message and exits\n\n\n\nOUTPUT FORMAT:\n\
+  \nThe NOMe-Seq filtering output reports cytosines in CpG context only if they are\
+  \ in A-CG or T-CG context,\nand cytosines in GC context only when the C is not in\
+  \ CpG context. The output file is tab-delimited and in\nthe following format (1-based\
+  \ coords):\n===========================================================================================================\n\
+  \n<readID>  <chromosome>  <read start>  <read end>  <count methylated CpG>  <count\
+  \ non-methylated CpG>  <count methylated GC>  <count non-methylated GC>\nHWI-D00436:298:C9KY4ANXX:1:1101:2035:2000_1:N:0:_ACAGTGGT\
+  \ 10 8517979 8518098 0 1 0 1 \nHWI-D00436:298:C9KY4ANXX:1:1101:5072:1993_1:N:0:_ACAGTGGT\
+  \ 8 9476630 9476748 0 0 0 2 \n\n\n                              Script last modified:\
+  \ 06 April 2017\n\n"
+generated_using:
+- --help

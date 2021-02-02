@@ -1,0 +1,106 @@
+!Command
+command:
+- trainGlimmerHMM
+positional:
+- !Positional
+  description: CTAGCTAGCTAGCATAGCATACGAGCATATCGGTCATGAGACTGATTGGGC
+  position: 0
+  name: AGTCGTCGCTAGCTAGCTAGCATCGAGTCTTTTCGATCGAGGACTAGACTT
+  optional: false
+- !Positional
+  description: TGCGTTA
+  position: 0
+  name: TTTAGCTAGCTAGCATAGCATACGAGCATATCGGTAGACTGATTGGGTTTA
+  optional: false
+named:
+- !Flag
+  description: ",i2,...,in\nisochores to be considered (e.g. if two isochores are\
+    \ desired between\n0-40% GC content and 40-100% then the option should be: -i\
+    \ 0,40,100;\ndefault is -i 0,100 )"
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: i1
+  optional: true
+- !Flag
+  description: name = name of training directory
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: val = average value of upstream UTR region if known
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: val = average value of downstream UTR region if known
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: val = average value of intergenic region if known
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: val = value of flanking region around genes (default=200)
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: val = build 1st or 2nd order markov model (default=1)
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: val = 1 when constructing decision trees from false.* files (default=0)
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "  Train GlimmerHMM module.\n  Usage:\n    trainGlimmerHMM <mfasta_file>\
+  \ <exon_file> [optional_parameters]\n\n    <mfasta_file> is a multifasta file containing\
+  \ the sequences for training\n                  with the usual format:\n\n     \
+  \             >seq1\n                  AGTCGTCGCTAGCTAGCTAGCATCGAGTCTTTTCGATCGAGGACTAGACTT\n\
+  \                  CTAGCTAGCTAGCATAGCATACGAGCATATCGGTCATGAGACTGATTGGGC\n       \
+  \           >seq2\n                  TTTAGCTAGCTAGCATAGCATACGAGCATATCGGTAGACTGATTGGGTTTA\n\
+  \                  TGCGTTA\n\n    <exon_file>  is a file with the exon coordinates\
+  \ relative to the sequences\n                 contained in the <mfasta_file>; different\
+  \ genes are separated\n                 by a blank line; I am assuming a format\
+  \ like below:\n\n                 seq1 5 15\n                 seq1 20 34\n\n   \
+  \              seq1 50 48\n                 seq1 45 36\n\n                 seq2\
+  \ 17 20\n\n                 In this example seq1 has two genes: one on the direct\
+  \ strand \n                 and another one on the complementary strand\n\n    \
+  \             The partial genes can be specified as in the following example:\n\
+  \    \n                 seq2 <100 >234\n\n                 seq3 <1  100\n      \
+  \           seq3 102 >105\n\n\n    [optional_parameters]\n\n    -i i1,i2,...,in\
+  \ \n                isochores to be considered (e.g. if two isochores are desired\
+  \ between \n\t\t0-40% GC content and 40-100% then the option should be: -i 0,40,100;\
+  \ \n\t\tdefault\tis -i 0,100 )\n    -d name     name = name of training directory\n\
+  \    -f val      val = average value of upstream UTR region if known\n    -l val\
+  \      val = average value of downstream UTR region if known                \n \
+  \   -n val      val = average value of intergenic region if known\n    -v val  \
+  \    val = value of flanking region around genes (default=200)\n    -b val     \
+  \ val = build 1st or 2nd order markov model (default=1)\n    -t val      val = 1\
+  \ when constructing decision trees from false.* files (default=0)\n\n"
+generated_using:
+- --help

@@ -1,0 +1,123 @@
+!Command
+command:
+- hash-overlap
+positional:
+- !Positional
+  description: <input-name>
+  position: 0
+  name: hash-overlap
+  optional: false
+named:
+- !Flag
+  description: Output AMOS-format messages instead of default
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output to AMOS bank instead of default
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use <n> as lowest read index (0 based inclusive)
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Use <n> as highest read index (0 based exclusive)
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Input is from multi-fasta file <input-name>
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set minimum overlap length to <n>
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Set verbose level to <n>. Higher produces more output.
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Set maximum error rate to <d>.  E.g., 0.06 is 6% error
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: d
+  optional: true
+- !Flag
+  description: "Be strand-specific: find matches only in the forward\norientation\
+    \ of the reads instead of in their forward and\nreverse orientations. Useful for\
+    \ transcripts and other\ndirectional sequence datasets."
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Build overlaps only for reads whose IIDs are in <file>
+  synonyms:
+  - -I
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Build overlaps only for reads whose EIDs are in <file>
+  synonyms:
+  - -E
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this usage message
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Starting on Wed Sep  9 18:43:38 2020\n\nhash-overlap: invalid option --\
+  \ '-'\nUnrecognized option --\n.USAGE.\n  hash-overlap  <input-name>\n\n.DESCRIPTION.\n\
+  \  Compute pairwise overlaps among a set of sequences by\n  brute-force all-pairs\
+  \ alignment. Sequences are obtained\n  from <input-name>, which by default is an\
+  \ AMOS read bank.\n  Each line of the output file describes the overlap\n  between\
+  \ two sequences. The lines are space-delimited and\n  contain 10 fields:\n    *\
+  \ ID of first read (IIDs in the case of a read bank \n       input and sequence\
+  \ index for a fasta file input)\n    * ID of second read\n    * overlap type: [N]ormal\
+  \ (EB), [A]ntinormal (BE),\n       [I]nnie (EE) or [O]utie (BB), where B is the\
+  \ \n       beginning of the read and E its end\n    * length of non-overlapping\
+  \ portion for first read\n    * length of non-overlapping portion for second read\n\
+  \    * overlap length for first read\n    * overlap length for second read\n   \
+  \ * overlap score\n    * number of errors in the overlap\n    * overlap error percentage\n\
+  \n.OPTIONS.\n  -A        Output AMOS-format messages instead of default\n  -B  \
+  \      Output to AMOS bank instead of default\n  -b <n>    Use <n> as lowest read\
+  \ index (0 based inclusive)\n  -e <n>    Use <n> as highest read index (0 based\
+  \ exclusive)\n  -F        Input is from multi-fasta file <input-name>\n  -h    \
+  \    Print this usage message\n  -o <n>    Set minimum overlap length to <n>\n \
+  \ -v <n>    Set verbose level to <n>. Higher produces more output.\n  -x <d>   \
+  \ Set maximum error rate to <d>.  E.g., 0.06 is 6% error\n  -s        Be strand-specific:\
+  \ find matches only in the forward \n            orientation of the reads instead\
+  \ of in their forward and\n            reverse orientations. Useful for transcripts\
+  \ and other\n            directional sequence datasets.\n  -I <file> Build overlaps\
+  \ only for reads whose IIDs are in <file>\n  -E <file> Build overlaps only for reads\
+  \ whose EIDs are in <file>\n\n.KEYWORDS.\n  overlaps, reads\n"
+generated_using:
+- --help

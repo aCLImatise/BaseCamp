@@ -1,0 +1,59 @@
+!Command
+command:
+- hmmgs
+- search
+positional:
+- !Positional
+  description: dtime limit for individual searches (conservative suggestion = 100)
+  position: 0
+  name: limit_in_seconds
+  optional: false
+- !Positional
+  description: bloom filter built using hmmgs build
+  position: 1
+  name: bloom_filter
+  optional: false
+- !Positional
+  description: starting kmers (can use KmerFilter's fast_kmer_filter to identify starting
+    kmers)
+  position: 0
+  name: kmers
+  optional: false
+named:
+- !Flag
+  description: don't normalize the hmm input
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: prune the search if the score does not improve after n_nodes (default
+    20, set to 0 to disable pruning)
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: n_nodes
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print this help information
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "USAGE: TimeLimitedSearch [-h] [-u] [-p <n_nodes>] <k> <limit_in_seconds>\
+  \ <bloom_filter> <for_hmm> <rev_hmm> <kmers>\n\nOptions:\n\t-h\n\t\tprint this help\
+  \ information\n\t-u\n\t\tdon't normalize the hmm input\n\t-p n_nodes\n\t\tprune\
+  \ the search if the score does not improve after n_nodes (default 20, set to 0 to\
+  \ disable pruning)\n\tk\n\t\tnumber of best local assemblies to return for each\
+  \ kmer\n\tlimit_in_seconds\n\t\tdtime limit for individual searches (conservative\
+  \ suggestion = 100)\n\tbloom_filter\n\t\tbloom filter built using hmmgs build\n\t\
+  for_hmm, rev_hmm\n\t\tforward and reverse hidden markov models, HMMER3 format\n\t\
+  kmers\n\t\tstarting kmers (can use KmerFilter's fast_kmer_filter to identify starting\
+  \ kmers)\n"
+generated_using:
+- -h

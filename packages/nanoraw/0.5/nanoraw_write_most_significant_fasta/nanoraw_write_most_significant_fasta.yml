@@ -1,0 +1,214 @@
+!Command
+command:
+- nanoraw
+- write_most_significant_fasta
+positional: []
+named:
+- !Flag
+  description: "[--corrected-group CORRECTED_GROUP]\n[--basecall-subgroups BASECALL_SUBGROUPS\
+    \ [BASECALL_SUBGROUPS ...]\n| --2d]\n[--obs-per-base-filter OBS_PER_BASE_FILTER\
+    \ [OBS_PER_BASE_FILTER ...]]\n[--test-type {mw_utest,ttest}]\n[--fishers-method-offset\
+    \ FISHERS_METHOD_OFFSET]\n[--minimum-test-reads MINIMUM_TEST_READS]\n[--genome-fasta\
+    \ GENOME_FASTA]\n[--sequences-filename SEQUENCES_FILENAME]\n[--statistics-filename\
+    \ STATISTICS_FILENAME]\n[--num-regions NUM_REGIONS]\n[--q-value-threshold Q_VALUE_THRESHOLD]\n\
+    [--num-bases NUM_BASES] [--quiet]\n[--help]"
+  synonyms:
+  - --fast5-basedirs2
+  args: !RepeatFlagArg
+    name: FAST5_BASEDIRS2
+  optional: true
+- !Flag
+  description: "FAST5 subgroup (under Analyses/[corrected-group])\nwhere individual\
+    \ template and/or complement reads are\nstored. Default: ['BaseCalled_template']"
+  synonyms:
+  - --basecall-subgroups
+  args: !RepeatFlagArg
+    name: BASECALL_SUBGROUPS
+  optional: true
+- !Flag
+  description: "Input contains 2D reads. Equivalent to `--basecall-\nsubgroups BaseCalled_template\
+    \ BaseCalled_complement`"
+  synonyms:
+  - --2d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Directories containing fast5 files.
+  synonyms:
+  - --fast5-basedirs
+  args: !RepeatFlagArg
+    name: FAST5_BASEDIRS
+  optional: true
+- !Flag
+  description: "FAST5 group to access/plot created by\ngenome_resquiggle script. Default:\n\
+    RawGenomeCorrected_000"
+  synonyms:
+  - --corrected-group
+  args: !SimpleFlagArg
+    name: CORRECTED_GROUP
+  optional: true
+- !Flag
+  description: "Filter reads for plotting baseed on threshold of\npercentiles of the\
+    \ number of observations assigned to\na base (default no filter). Format thresholds\
+    \ as\n\"percentile:thresh [pctl2:thresh2 ...]\" E.g. reads\nwith 99th pctl <200\
+    \ obs and max <5k obs would be\n\"99:200 100:5000\"."
+  synonyms:
+  - --obs-per-base-filter
+  args: !RepeatFlagArg
+    name: OBS_PER_BASE_FILTER
+  optional: true
+- !Flag
+  description: "Type of significance test to apply. Choices are:\nmw_utest (default;\
+    \ mann-whitney u-test), ttest."
+  synonyms:
+  - --test-type
+  args: !ChoiceFlagArg
+    choices: !!set
+      ttest:
+      mw_utest:
+  optional: true
+- !Flag
+  description: "Offset up and downstream over which to compute\ncombined p-values\
+    \ using Fisher's method. Default: 2."
+  synonyms:
+  - --fishers-method-offset
+  args: !SimpleFlagArg
+    name: FISHERS_METHOD_OFFSET
+  optional: true
+- !Flag
+  description: "Number of reads required from both samples to test for\nsignificant\
+    \ difference in signal level. Default: 5"
+  synonyms:
+  - --minimum-test-reads
+  args: !SimpleFlagArg
+    name: MINIMUM_TEST_READS
+  optional: true
+- !Flag
+  description: "FASTA file used to map reads with \"genome_resquiggle\"\ncommand."
+  synonyms:
+  - --genome-fasta
+  args: !SimpleFlagArg
+    name: GENOME_FASTA
+  optional: true
+- !Flag
+  description: "Filename to store sequences for selected regions (e.g.\nfor PWM search).\
+    \ Sequences will be stored in FASTA\nformat. Default:\nNanopore_most_significant_regions.fasta."
+  synonyms:
+  - --sequences-filename
+  args: !SimpleFlagArg
+    name: SEQUENCES_FILENAME
+  optional: true
+- !Flag
+  description: "Filename to save/load base by base signal difference\nstatistics.\
+    \ If file exists it will try to be loaded,\nif it does not exist it will be created\
+    \ to save\nstatistics. Default: Don't save/load."
+  synonyms:
+  - --statistics-filename
+  args: !SimpleFlagArg
+    name: STATISTICS_FILENAME
+  optional: true
+- !Flag
+  description: 'Number of regions to plot. Default: 10'
+  synonyms:
+  - --num-regions
+  args: !SimpleFlagArg
+    name: NUM_REGIONS
+  optional: true
+- !Flag
+  description: "Choose the number of regions to select by the FDR\ncorrected p-values.\
+    \ Note that --num-regions will be\nignored if this option is set."
+  synonyms:
+  - --q-value-threshold
+  args: !SimpleFlagArg
+    name: Q_VALUE_THRESHOLD
+  optional: true
+- !Flag
+  description: 'Number of bases to plot from region. Default: 51'
+  synonyms:
+  - --num-bases
+  args: !SimpleFlagArg
+    name: NUM_BASES
+  optional: true
+- !Flag
+  description: Don't print status information.
+  synonyms:
+  - --quiet
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: nanoraw write_most_significant_fasta --fast5-basedirs FAST5_BASEDIRS\n\
+  \                                            [FAST5_BASEDIRS ...]\n            \
+  \                                --fast5-basedirs2 FAST5_BASEDIRS2\n           \
+  \                                 [FAST5_BASEDIRS2 ...]\n                      \
+  \                      [--corrected-group CORRECTED_GROUP]\n                   \
+  \                         [--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS\
+  \ ...]\n                                            | --2d]\n                  \
+  \                          [--obs-per-base-filter OBS_PER_BASE_FILTER [OBS_PER_BASE_FILTER\
+  \ ...]]\n                                            [--test-type {mw_utest,ttest}]\n\
+  \                                            [--fishers-method-offset FISHERS_METHOD_OFFSET]\n\
+  \                                            [--minimum-test-reads MINIMUM_TEST_READS]\n\
+  \                                            [--genome-fasta GENOME_FASTA]\n   \
+  \                                         [--sequences-filename SEQUENCES_FILENAME]\n\
+  \                                            [--statistics-filename STATISTICS_FILENAME]\n\
+  \                                            [--num-regions NUM_REGIONS]\n     \
+  \                                       [--q-value-threshold Q_VALUE_THRESHOLD]\n\
+  \                                            [--num-bases NUM_BASES] [--quiet]\n\
+  \                                            [--help]\n\noptional arguments:\n \
+  \ --basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]\n           \
+  \             FAST5 subgroup (under Analyses/[corrected-group])\n              \
+  \          where individual template and/or complement reads are\n             \
+  \           stored. Default: ['BaseCalled_template']\n  --2d                  Input\
+  \ contains 2D reads. Equivalent to `--basecall-\n                        subgroups\
+  \ BaseCalled_template BaseCalled_complement`\n\nRequired Argument:\n  --fast5-basedirs\
+  \ FAST5_BASEDIRS [FAST5_BASEDIRS ...]\n                        Directories containing\
+  \ fast5 files.\n  --fast5-basedirs2 FAST5_BASEDIRS2 [FAST5_BASEDIRS2 ...]\n    \
+  \                    Second set of directories containing fast5 files to\n     \
+  \                   compare.\n\nFAST5 Data Arguments:\n  --corrected-group CORRECTED_GROUP\n\
+  \                        FAST5 group to access/plot created by\n               \
+  \         genome_resquiggle script. Default:\n                        RawGenomeCorrected_000\n\
+  \nRead Filtering Arguments:\n  --obs-per-base-filter OBS_PER_BASE_FILTER [OBS_PER_BASE_FILTER\
+  \ ...]\n                        Filter reads for plotting baseed on threshold of\n\
+  \                        percentiles of the number of observations assigned to\n\
+  \                        a base (default no filter). Format thresholds as\n    \
+  \                    \"percentile:thresh [pctl2:thresh2 ...]\" E.g. reads\n    \
+  \                    with 99th pctl <200 obs and max <5k obs would be\n        \
+  \                \"99:200 100:5000\".\n\nSignificance Test Arguments:\n  --test-type\
+  \ {mw_utest,ttest}\n                        Type of significance test to apply.\
+  \ Choices are:\n                        mw_utest (default; mann-whitney u-test),\
+  \ ttest.\n  --fishers-method-offset FISHERS_METHOD_OFFSET\n                    \
+  \    Offset up and downstream over which to compute\n                        combined\
+  \ p-values using Fisher's method. Default: 2.\n  --minimum-test-reads MINIMUM_TEST_READS\n\
+  \                        Number of reads required from both samples to test for\n\
+  \                        significant difference in signal level. Default: 5\n\n\
+  FASTA Sequence Argument:\n  --genome-fasta GENOME_FASTA\n                      \
+  \  FASTA file used to map reads with \"genome_resquiggle\"\n                   \
+  \     command.\n\nMiscellaneous Arguments:\n  --sequences-filename SEQUENCES_FILENAME\n\
+  \                        Filename to store sequences for selected regions (e.g.\n\
+  \                        for PWM search). Sequences will be stored in FASTA\n  \
+  \                      format. Default:\n                        Nanopore_most_significant_regions.fasta.\n\
+  \  --statistics-filename STATISTICS_FILENAME\n                        Filename to\
+  \ save/load base by base signal difference\n                        statistics.\
+  \ If file exists it will try to be loaded,\n                        if it does not\
+  \ exist it will be created to save\n                        statistics. Default:\
+  \ Don't save/load.\n  --num-regions NUM_REGIONS\n                        Number\
+  \ of regions to plot. Default: 10\n  --q-value-threshold Q_VALUE_THRESHOLD\n   \
+  \                     Choose the number of regions to select by the FDR\n      \
+  \                  corrected p-values. Note that --num-regions will be\n       \
+  \                 ignored if this option is set.\n  --num-bases NUM_BASES\n    \
+  \                    Number of bases to plot from region. Default: 51\n  --quiet,\
+  \ -q           Don't print status information.\n  --help, -h            Print this\
+  \ help message and exit\n"
+generated_using:
+- --help

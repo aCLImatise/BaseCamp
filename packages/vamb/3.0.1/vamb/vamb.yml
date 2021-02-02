@@ -1,0 +1,236 @@
+!Command
+command:
+- vamb
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: outdir
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: tnf_input
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: rpkm_input
+  optional: false
+named:
+- !Flag
+  description: output directory to create
+  synonyms:
+  - --outdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to fasta file
+  synonyms:
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to .npz of TNF
+  synonyms:
+  - --tnfs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to .npz of names of sequences
+  synonyms:
+  - --names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to .npz of seq lengths
+  synonyms:
+  - --lengths
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ ...]  paths to (multiple) BAM files'
+  synonyms:
+  - --bamfiles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to .npz of RPKM
+  synonyms:
+  - --rpkm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to output of jgi_summarize_bam_contig_depths
+  synonyms:
+  - --jgi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore contigs shorter than this [100]
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore reads with alignment score below this [None]
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore reads with nucleotide identity below this [None]
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of subprocesses to spawn [min(8, nbamfiles)]
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skip reference name hashing check [False]
+  synonyms:
+  - --norefcheck
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum bin size to output as fasta [None = no files]
+  synonyms:
+  - --minfasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ ...]          hidden neurons [Auto]'
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: latent neurons [32]
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: alpha, weight of TNF versus depth loss [Auto]
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: beta, capacity to learn [200.0]
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: dropout [Auto]
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use GPU to train & cluster [False]
+  synonyms:
+  - --cuda
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: epochs [500]
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: starting batch size [64]
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ [ ...]]        double batch size at epochs [25 75 150 300]'
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: learning rate [0.001]
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: size of window to count successes [200]
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum success in window [20]
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum cluster size [1]
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: stop after c clusters [None = infinite]
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: binsplit separator [None = no split]
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: print help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: vamb outdir tnf_input rpkm_input [options]\n\nVamb: Variational\
+  \ autoencoders for metagenomic binning.\n\n    Default use, good for most datasets:\n\
+  \    vamb --outdir out --fasta my_contigs.fna --bamfiles *.bam\n\n    For advanced\
+  \ use and extensions of Vamb, check documentation of the package\n    at https://github.com/jakobnissen/vamb.\n\
+  \nHelp:\n  -h, --help          print help and exit\n\nOutput (required):\n  --outdir\
+  \            output directory to create\n\nTNF input (either fasta or all .npz files\
+  \ required):\n  --fasta             path to fasta file\n  --tnfs              path\
+  \ to .npz of TNF\n  --names             path to .npz of names of sequences\n  --lengths\
+  \           path to .npz of seq lengths\n\nRPKM input (either BAMs, JGI or .npz\
+  \ required):\n  --bamfiles  [ ...]  paths to (multiple) BAM files\n  --rpkm    \
+  \          path to .npz of RPKM\n  --jgi               path to output of jgi_summarize_bam_contig_depths\n\
+  \nIO options:\n  -m                  ignore contigs shorter than this [100]\n  -s\
+  \                  ignore reads with alignment score below this [None]\n  -z   \
+  \               ignore reads with nucleotide identity below this [None]\n  -p  \
+  \                number of subprocesses to spawn [min(8, nbamfiles)]\n  --norefcheck\
+  \        skip reference name hashing check [False]\n  --minfasta          minimum\
+  \ bin size to output as fasta [None = no files]\n\nVAE options:\n  -n  [ ...]  \
+  \        hidden neurons [Auto]\n  -l                  latent neurons [32]\n  -a\
+  \                  alpha, weight of TNF versus depth loss [Auto]\n  -b         \
+  \         beta, capacity to learn [200.0]\n  -d                  dropout [Auto]\n\
+  \  --cuda              use GPU to train & cluster [False]\n\nTraining options:\n\
+  \  -e                  epochs [500]\n  -t                  starting batch size [64]\n\
+  \  -q [ [ ...]]        double batch size at epochs [25 75 150 300]\n  -r       \
+  \           learning rate [0.001]\n\nClustering options:\n  -w                 \
+  \ size of window to count successes [200]\n  -u                  minimum success\
+  \ in window [20]\n  -i                  minimum cluster size [1]\n  -c         \
+  \         stop after c clusters [None = infinite]\n  -o                  binsplit\
+  \ separator [None = no split]\n"
+generated_using:
+- --help

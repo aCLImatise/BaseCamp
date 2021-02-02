@@ -1,0 +1,417 @@
+!Command
+command:
+- rsem-prepare-reference
+positional: []
+named:
+- !Flag
+  description: "If this option is on, RSEM assumes that 'reference_fasta_file(s)'\n\
+    contains the sequence of a genome, and will extract transcript\nreference sequences\
+    \ using the gene annotations specified in <file>,\nwhich should be in GTF format.\n\
+    If this and '--gff3' options are off, RSEM will assume\n'reference_fasta_file(s)'\
+    \ contains the reference transcripts. In\nthis case, RSEM assumes that name of\
+    \ each sequence in the\nMulti-FASTA files is its transcript_id.\n(Default: off)"
+  synonyms:
+  - --gtf
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "The annotation file is in GFF3 format instead of GTF format. RSEM\n\
+    will first convert it to GTF format with the file name\n'reference_name.gtf'.\
+    \ Please make sure that 'reference_name.gtf'\ndoes not exist. (Default: off)"
+  synonyms:
+  - --gff3
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "<pattern> is a comma-separated list of transcript categories, e.g.\n\
+    \"mRNA,rRNA\". Only transcripts that match the <pattern> will be\nextracted. (Default:\
+    \ \"mRNA\")"
+  synonyms:
+  - --gff3-RNA-patterns
+  args: !SimpleFlagArg
+    name: pattern
+  optional: true
+- !Flag
+  description: "This option is designed for untypical organisms, such as viruses,\n\
+    whose GFF3 files only contain genes. RSEM will assume each gene as a\nunique transcript\
+    \ when it converts the GFF3 file into GTF format."
+  synonyms:
+  - --gff3-genes-as-transcripts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<sources> is a comma-separated list of trusted sources, e.g.\n\"ENSEMBL,HAVANA\"\
+    . Only transcripts coming from these sources will be\nextracted. If this option\
+    \ is off, all sources are accepted.\n(Default: off)"
+  synonyms:
+  - --trusted-sources
+  args: !SimpleFlagArg
+    name: sources
+  optional: true
+- !Flag
+  description: "Use information from <file> to map from transcript (isoform) ids to\n\
+    gene ids. Each line of <file> should be of the form:\ngene_id transcript_id\n\
+    with the two fields separated by a tab character.\nIf you are using a GTF file\
+    \ for the \"UCSC Genes\" gene set from the\nUCSC Genome Browser, then the \"knownIsoforms.txt\"\
+    \ file (obtained\nfrom the \"Downloads\" section of the UCSC Genome Browser site)\
+    \ is of\nthis format.\nIf this option is off, then the mapping of isoforms to\
+    \ genes depends\non whether the '--gtf' option is specified. If '--gtf' is specified,\n\
+    then RSEM uses the \"gene_id\" and \"transcript_id\" attributes in the\nGTF file.\
+    \ Otherwise, RSEM assumes that each sequence in the\nreference sequence files\
+    \ is a separate gene.\n(Default: off)"
+  synonyms:
+  - --transcript-to-gene-map
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Use information from <file> to provide gene_id and transcript_id\n\
+    information for each allele-specific transcript. Each line of <file>\nshould be\
+    \ of the form:\ngene_id transcript_id allele_id\nwith the fields separated by\
+    \ a tab character.\nThis option is designed for quantifying allele-specific expression.\n\
+    It is only valid if '--gtf' option is not specified. allele_id\nshould be the\
+    \ sequence names presented in the Multi-FASTA-formatted\nfiles.\n(Default: off)"
+  synonyms:
+  - --allele-to-gene-map
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Add poly(A) tails to the end of all reference isoforms. The length\n\
+    of poly(A) tail added is specified by '--polyA-length' option. STAR\naligner users\
+    \ may not want to use this option. (Default: do not add\npoly(A) tail to any of\
+    \ the isoforms)"
+  synonyms:
+  - --polyA
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The length of the poly(A) tails to be added. (Default: 125)'
+  synonyms:
+  - --polyA-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Only meaningful if '--polyA' is specified. Do not add poly(A) tails\n\
+    to those transcripts listed in <file>. <file> is a file containing a\nlist of\
+    \ transcript_ids. (Default: off)"
+  synonyms:
+  - --no-polyA-subset
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: 'Build Bowtie indices. (Default: off)'
+  synonyms:
+  - --bowtie
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The path to the Bowtie executables. (Default: the path to Bowtie\n\
+    executables is assumed to be in the user's PATH environment\nvariable)"
+  synonyms:
+  - --bowtie-path
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: 'Build Bowtie 2 indices. (Default: off)'
+  synonyms:
+  - --bowtie2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The path to the Bowtie 2 executables. (Default: the path to Bowtie\
+    \ 2\nexecutables is assumed to be in the user's PATH environment\nvariable)"
+  synonyms:
+  - --bowtie2-path
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: 'Build STAR indices. (Default: off)'
+  synonyms:
+  - --star
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The path to STAR's executable. (Default: the path to STAR executable\n\
+    is assumed to be in user's PATH environment variable)"
+  synonyms:
+  - --star-path
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: "Length of the genomic sequence around annotated junction. It is only\n\
+    used for STAR to build splice junctions database and not needed for\nBowtie or\
+    \ Bowtie2. It will be passed as the --sjdbOverhang option to\nSTAR. According\
+    \ to STAR's manual, its ideal value is\nmax(ReadLength)-1, e.g. for 2x101 paired-end\
+    \ reads, the ideal value\nis 101-1=100. In most cases, the default value of 100\
+    \ will work as\nwell as the ideal value. (Default: 100)"
+  synonyms:
+  - --star-sjdboverhang
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Build HISAT2 indices on the transcriptome according to Human Cell\n\
+    Atlas (HCA) SMART-Seq2 pipeline. (Default: off)"
+  synonyms:
+  - --hisat2-hca
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The path to the HISAT2 executables. (Default: the path to HISAT2\n\
+    executables is assumed to be in the user's PATH environment\nvariable)"
+  synonyms:
+  - --hisat2-path
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: "Number of threads to use for building STAR's genome indices.\n(Default:\
+    \ 1)"
+  synonyms:
+  - -p/--num-threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Suppress the output of logging information. (Default: off)'
+  synonyms:
+  - -q/--quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show help information.
+  synonyms:
+  - -h/--help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "A Boolean indicating whether to prepare reference files for pRSEM,\n\
+    including building Bowtie indices for a genome and selecting\ntraining set isoforms.\
+    \ The index files will be used for aligning\nChIP-seq reads in prior-enhanced\
+    \ RSEM and the training set isoforms\nwill be used for learning prior. A path\
+    \ to Bowtie executables and a\nmappability file in bigWig format are required\
+    \ when this option is\non. Currently, Bowtie2 is not supported for prior-enhanced\
+    \ RSEM.\n(Default: off)"
+  synonyms:
+  - --prep-pRSEM
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Full path to a whole-genome mappability file in bigWig format. This\n\
+    file is required for running prior-enhanced RSEM. It is used for\nselecting a\
+    \ training set of isoforms for prior-learning. This file\ncan be either downloaded\
+    \ from UCSC Genome Browser or generated by\nGEM (Derrien et al., 2012, PLoS One).\
+    \ (Default: \"\")"
+  synonyms:
+  - --mappability-bigwig-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n    rsem-prepare-reference - Prepare transcript references for RSEM\
+  \ and\n    optionally build BOWTIE/BOWTIE2/STAR/HISAT2(transcriptome) indices.\n\
+  \nSYNOPSIS\n     rsem-prepare-reference [options] reference_fasta_file(s) reference_name\n\
+  \nARGUMENTS\n    reference_fasta_file(s)\n        Either a comma-separated list\
+  \ of Multi-FASTA formatted files OR a\n        directory name. If a directory name\
+  \ is specified, RSEM will read all\n        files with suffix \".fa\" or \".fasta\"\
+  \ in this directory. The files\n        should contain either the sequences of transcripts\
+  \ or an entire\n        genome, depending on whether the '--gtf' option is used.\n\
+  \n    reference name\n        The name of the reference used. RSEM will generate\
+  \ several\n        reference-related files that are prefixed by this name. This\
+  \ name\n        can contain path information (e.g. '/ref/mm9').\n\nOPTIONS\n   \
+  \ --gtf <file>\n        If this option is on, RSEM assumes that 'reference_fasta_file(s)'\n\
+  \        contains the sequence of a genome, and will extract transcript\n      \
+  \  reference sequences using the gene annotations specified in <file>,\n       \
+  \ which should be in GTF format.\n\n        If this and '--gff3' options are off,\
+  \ RSEM will assume\n        'reference_fasta_file(s)' contains the reference transcripts.\
+  \ In\n        this case, RSEM assumes that name of each sequence in the\n      \
+  \  Multi-FASTA files is its transcript_id.\n\n        (Default: off)\n\n    --gff3\
+  \ <file>\n        The annotation file is in GFF3 format instead of GTF format. RSEM\n\
+  \        will first convert it to GTF format with the file name\n        'reference_name.gtf'.\
+  \ Please make sure that 'reference_name.gtf'\n        does not exist. (Default:\
+  \ off)\n\n    --gff3-RNA-patterns <pattern>\n        <pattern> is a comma-separated\
+  \ list of transcript categories, e.g.\n        \"mRNA,rRNA\". Only transcripts that\
+  \ match the <pattern> will be\n        extracted. (Default: \"mRNA\")\n\n    --gff3-genes-as-transcripts\n\
+  \        This option is designed for untypical organisms, such as viruses,\n   \
+  \     whose GFF3 files only contain genes. RSEM will assume each gene as a\n   \
+  \     unique transcript when it converts the GFF3 file into GTF format.\n\n    --trusted-sources\
+  \ <sources>\n        <sources> is a comma-separated list of trusted sources, e.g.\n\
+  \        \"ENSEMBL,HAVANA\". Only transcripts coming from these sources will be\n\
+  \        extracted. If this option is off, all sources are accepted.\n        (Default:\
+  \ off)\n\n    --transcript-to-gene-map <file>\n        Use information from <file>\
+  \ to map from transcript (isoform) ids to\n        gene ids. Each line of <file>\
+  \ should be of the form:\n\n        gene_id transcript_id\n\n        with the two\
+  \ fields separated by a tab character.\n\n        If you are using a GTF file for\
+  \ the \"UCSC Genes\" gene set from the\n        UCSC Genome Browser, then the \"\
+  knownIsoforms.txt\" file (obtained\n        from the \"Downloads\" section of the\
+  \ UCSC Genome Browser site) is of\n        this format.\n\n        If this option\
+  \ is off, then the mapping of isoforms to genes depends\n        on whether the\
+  \ '--gtf' option is specified. If '--gtf' is specified,\n        then RSEM uses\
+  \ the \"gene_id\" and \"transcript_id\" attributes in the\n        GTF file. Otherwise,\
+  \ RSEM assumes that each sequence in the\n        reference sequence files is a\
+  \ separate gene.\n\n        (Default: off)\n\n    --allele-to-gene-map <file>\n\
+  \        Use information from <file> to provide gene_id and transcript_id\n    \
+  \    information for each allele-specific transcript. Each line of <file>\n    \
+  \    should be of the form:\n\n        gene_id transcript_id allele_id\n\n     \
+  \   with the fields separated by a tab character.\n\n        This option is designed\
+  \ for quantifying allele-specific expression.\n        It is only valid if '--gtf'\
+  \ option is not specified. allele_id\n        should be the sequence names presented\
+  \ in the Multi-FASTA-formatted\n        files.\n\n        (Default: off)\n\n   \
+  \ --polyA\n        Add poly(A) tails to the end of all reference isoforms. The length\n\
+  \        of poly(A) tail added is specified by '--polyA-length' option. STAR\n \
+  \       aligner users may not want to use this option. (Default: do not add\n  \
+  \      poly(A) tail to any of the isoforms)\n\n    --polyA-length <int>\n      \
+  \  The length of the poly(A) tails to be added. (Default: 125)\n\n    --no-polyA-subset\
+  \ <file>\n        Only meaningful if '--polyA' is specified. Do not add poly(A)\
+  \ tails\n        to those transcripts listed in <file>. <file> is a file containing\
+  \ a\n        list of transcript_ids. (Default: off)\n\n    --bowtie\n        Build\
+  \ Bowtie indices. (Default: off)\n\n    --bowtie-path <path>\n        The path to\
+  \ the Bowtie executables. (Default: the path to Bowtie\n        executables is assumed\
+  \ to be in the user's PATH environment\n        variable)\n\n    --bowtie2\n   \
+  \     Build Bowtie 2 indices. (Default: off)\n\n    --bowtie2-path <path>\n    \
+  \    The path to the Bowtie 2 executables. (Default: the path to Bowtie 2\n    \
+  \    executables is assumed to be in the user's PATH environment\n        variable)\n\
+  \n    --star\n        Build STAR indices. (Default: off)\n\n    --star-path <path>\n\
+  \        The path to STAR's executable. (Default: the path to STAR executable\n\
+  \        is assumed to be in user's PATH environment variable)\n\n    --star-sjdboverhang\
+  \ <int>\n        Length of the genomic sequence around annotated junction. It is\
+  \ only\n        used for STAR to build splice junctions database and not needed\
+  \ for\n        Bowtie or Bowtie2. It will be passed as the --sjdbOverhang option\
+  \ to\n        STAR. According to STAR's manual, its ideal value is\n        max(ReadLength)-1,\
+  \ e.g. for 2x101 paired-end reads, the ideal value\n        is 101-1=100. In most\
+  \ cases, the default value of 100 will work as\n        well as the ideal value.\
+  \ (Default: 100)\n\n    --hisat2-hca\n        Build HISAT2 indices on the transcriptome\
+  \ according to Human Cell\n        Atlas (HCA) SMART-Seq2 pipeline. (Default: off)\n\
+  \n    --hisat2-path <path>\n        The path to the HISAT2 executables. (Default:\
+  \ the path to HISAT2\n        executables is assumed to be in the user's PATH environment\n\
+  \        variable)\n\n    -p/--num-threads <int>\n        Number of threads to use\
+  \ for building STAR's genome indices.\n        (Default: 1)\n\n    -q/--quiet\n\
+  \        Suppress the output of logging information. (Default: off)\n\n    -h/--help\n\
+  \        Show help information.\n\nPRIOR-ENHANCED RSEM OPTIONS\n    --prep-pRSEM\n\
+  \        A Boolean indicating whether to prepare reference files for pRSEM,\n  \
+  \      including building Bowtie indices for a genome and selecting\n        training\
+  \ set isoforms. The index files will be used for aligning\n        ChIP-seq reads\
+  \ in prior-enhanced RSEM and the training set isoforms\n        will be used for\
+  \ learning prior. A path to Bowtie executables and a\n        mappability file in\
+  \ bigWig format are required when this option is\n        on. Currently, Bowtie2\
+  \ is not supported for prior-enhanced RSEM.\n        (Default: off)\n\n    --mappability-bigwig-file\
+  \ <string>\n        Full path to a whole-genome mappability file in bigWig format.\
+  \ This\n        file is required for running prior-enhanced RSEM. It is used for\n\
+  \        selecting a training set of isoforms for prior-learning. This file\n  \
+  \      can be either downloaded from UCSC Genome Browser or generated by\n     \
+  \   GEM (Derrien et al., 2012, PLoS One). (Default: \"\")\n\nDESCRIPTION\n    This\
+  \ program extracts/preprocesses the reference sequences for RSEM and\n    prior-enhanced\
+  \ RSEM. It can optionally build Bowtie indices (with\n    '--bowtie' option) and/or\
+  \ Bowtie 2 indices (with '--bowtie2' option)\n    using their default parameters.\
+  \ It can also optionally build STAR\n    indices (with '--star' option) using parameters\
+  \ from ENCODE3's STAR-RSEM\n    pipeline. For prior-enhanced RSEM, it can build\
+  \ Bowtie genomic indices\n    and select training set isoforms (with options '--prep-pRSEM'\
+  \ and\n    '--mappability-bigwig-file <string>'). If an alternative aligner is to\n\
+  \    be used, indices for that particular aligner can be built from either\n   \
+  \ 'reference_name.idx.fa' or 'reference_name.n2g.idx.fa' (see OUTPUT for\n    details).\
+  \ This program is used in conjunction with the\n    'rsem-calculate-expression'\
+  \ program.\n\nOUTPUT\n    This program will generate 'reference_name.grp', 'reference_name.ti',\n\
+  \    'reference_name.transcripts.fa', 'reference_name.seq',\n    'reference_name.chrlist'\
+  \ (if '--gtf' is on), 'reference_name.idx.fa',\n    'reference_name.n2g.idx.fa',\
+  \ optional Bowtie/Bowtie 2 index files, and\n    optional STAR index files.\n\n\
+  \    'reference_name.grp', 'reference_name.ti', 'reference_name.seq', and\n    'reference_name.chrlist'\
+  \ are used by RSEM internally.\n\n    'reference_name.transcripts.fa' contains the\
+  \ extracted reference\n    transcripts in Multi-FASTA format. Poly(A) tails are\
+  \ not added and it\n    may contain lower case bases in its sequences if the corresponding\n\
+  \    genomic regions are soft-masked.\n\n    'reference_name.idx.fa' and 'reference_name.n2g.idx.fa'\
+  \ are used by\n    aligners to build their own indices. In these two files, all\
+  \ sequence\n    bases are converted into upper case. In addition, poly(A) tails\
+  \ are\n    added if '--polyA' option is set. The only difference between\n    'reference_name.idx.fa'\
+  \ and 'reference_name.n2g.idx.fa' is that\n    'reference_name.n2g.idx.fa' in addition\
+  \ converts all 'N' characters to\n    'G' characters. This conversion is in particular\
+  \ desired for aligners\n    (e.g. Bowtie) that do not allow reads to overlap with\
+  \ 'N' characters in\n    the reference sequences. Otherwise, 'reference_name.idx.fa'\
+  \ should be\n    used to build the aligner's index files. RSEM uses\n    'reference_name.idx.fa'\
+  \ to build Bowtie 2 indices and\n    'reference_name.n2g.idx.fa' to build Bowtie\
+  \ indices. For visualizing the\n    transcript-coordinate-based BAM files generated\
+  \ by RSEM in IGV,\n    'reference_name.idx.fa' should be imported as a \"genome\"\
+  \ (see\n    Visualization section in README.md for details).\n\n    If the whole\
+  \ genome is indexed for prior-enhanced RSEM, all the index\n    files will be generated\
+  \ with prefix as 'reference_name_prsem'. Selected\n    isoforms for training set\
+  \ are listed in the file\n    'reference_name_prsem.training_tr_crd'\n\nEXAMPLES\n\
+  \    1) Suppose we have mouse RNA-Seq data and want to use the UCSC mm9\n    version\
+  \ of the mouse genome. We have downloaded the UCSC Genes\n    transcript annotations\
+  \ in GTF format (as mm9.gtf) using the Table\n    Browser and the knownIsoforms.txt\
+  \ file for mm9 from the UCSC Downloads.\n    We also have all chromosome files for\
+  \ mm9 in the directory '/data/mm9'.\n    We want to put the generated reference\
+  \ files under '/ref' with name\n    'mouse_0'. We do not add any poly(A) tails.\
+  \ Please note that GTF files\n    generated from UCSC's Table Browser do not contain\
+  \ isoform-gene\n    relationship information. For the UCSC Genes annotation, this\n\
+  \    information can be obtained from the knownIsoforms.txt file. Suppose we\n \
+  \   want to build Bowtie indices and Bowtie executables are found in\n    '/sw/bowtie'.\n\
+  \n    There are two ways to write the command:\n\n     rsem-prepare-reference --gtf\
+  \ mm9.gtf \\\n                            --transcript-to-gene-map knownIsoforms.txt\
+  \ \\\n                            --bowtie \\\n                            --bowtie-path\
+  \ /sw/bowtie \\                  \n                            /data/mm9/chr1.fa,/data/mm9/chr2.fa,...,/data/mm9/chrM.fa\
+  \ \\\n                            /ref/mouse_0\n\n    OR\n\n     rsem-prepare-reference\
+  \ --gtf mm9.gtf \\\n                            --transcript-to-gene-map knownIsoforms.txt\
+  \ \\\n                            --bowtie \\\n                            --bowtie-path\
+  \ /sw/bowtie \\\n                            /data/mm9 \\\n                    \
+  \        /ref/mouse_0\n\n    2) Suppose we also want to build Bowtie 2 indices in\
+  \ the above example\n    and Bowtie 2 executables are found in '/sw/bowtie2', the\
+  \ command will\n    be:\n\n     rsem-prepare-reference --gtf mm9.gtf \\\n      \
+  \                      --transcript-to-gene-map knownIsoforms.txt \\\n         \
+  \                   --bowtie \\\n                            --bowtie-path /sw/bowtie\
+  \ \\\n                            --bowtie2 \\\n                            --bowtie2-path\
+  \ /sw/bowtie2 \\\n                            /data/mm9 \\\n                   \
+  \         /ref/mouse_0\n\n    3) Suppose we want to build STAR indices in the above\
+  \ example and save\n    index files under '/ref' with name 'mouse_0'. Assuming STAR\
+  \ executable\n    is '/sw/STAR', the command will be:\n\n     rsem-prepare-reference\
+  \ --gtf mm9.gtf \\\n                            --transcript-to-gene-map knownIsoforms.txt\
+  \ \\\n                            --star \\\n                            --star-path\
+  \ /sw/STAR \\\n                            -p 8 \\\n                           \
+  \ /data/mm9/chr1.fa,/data/mm9/chr2.fa,...,/data/mm9/chrM.fa \\\n               \
+  \             /ref/mouse_0\n\n    OR\n\n     rsem-prepare-reference --gtf mm9.gtf\
+  \ \\\n                            --transcript-to-gene-map knownIsoforms.txt \\\n\
+  \                            --star \\\n                            --star-path\
+  \ /sw/STAR \\\n                            -p 8 \\\n                           \
+  \ /data/mm9\n                            /ref/mouse_0\n\n    STAR genome index files\
+  \ will be saved under '/ref/'.\n\n    4) Suppose we want to prepare references for\
+  \ prior-enhanced RSEM in the\n    above example. In this scenario, both STAR and\
+  \ Bowtie are required to\n    build genomic indices - STAR for RNA-seq reads and\
+  \ Bowtie for ChIP-seq\n    reads. Assuming their executables are under '/sw/STAR'\
+  \ and '/sw/Bowtie',\n    respectively. Also, assuming the mappability file for mouse\
+  \ genome is\n    '/data/mm9.bigWig'. The command will be:\n\n     rsem-prepare-reference\
+  \ --gtf mm9.gtf \\\n                            --transcript-to-gene-map knownIsoforms.txt\
+  \ \\\n                            --star \\\n                            --star-path\
+  \ /sw/STAR \\\n                            -p 8 \\\n                           \
+  \ --prep-pRSEM \\\n                            --bowtie-path /sw/Bowtie \\\n   \
+  \                         --mappability-bigwig-file /data/mm9.bigWig \\\n      \
+  \                      /data/mm9/chr1.fa,/data/mm9/chr2.fa,...,/data/mm9/chrM.fa\
+  \ \\\n                            /ref/mouse_0\n\n    OR\n\n     rsem-prepare-reference\
+  \ --gtf mm9.gtf \\\n                            --transcript-to-gene-map knownIsoforms.txt\
+  \ \\\n                            --star \\\n                            --star-path\
+  \ /sw/STAR \\\n                            -p 8 \\\n                           \
+  \ --prep-pRSEM \\\n                            --bowtie-path /sw/Bowtie \\\n   \
+  \                         --mappability-bigwig-file /data/mm9.bigWig \\\n      \
+  \                      /data/mm9\n                            /ref/mouse_0\n\n \
+  \   Both STAR and Bowtie's index files will be saved under '/ref/'. Bowtie\n   \
+  \ files will have name prefix 'mouse_0_prsem'\n\n    5) Suppose we only have transcripts\
+  \ from EST tags stored in 'mm9.fasta'\n    and isoform-gene information stored in\
+  \ 'mapping.txt'. We want to add\n    125bp long poly(A) tails to all transcripts.\
+  \ The reference_name is set\n    as 'mouse_125'. In addition, we do not want to\
+  \ build Bowtie/Bowtie 2\n    indices, and will use an alternative aligner to align\
+  \ reads against\n    either 'mouse_125.idx.fa' or 'mouse_125.idx.n2g.fa':\n\n  \
+  \   rsem-prepare-reference --transcript-to-gene-map mapping.txt \\\n           \
+  \                 --polyA\n                            mm9.fasta \\\n          \
+  \                  mouse_125\n\n"
+generated_using:
+- --help

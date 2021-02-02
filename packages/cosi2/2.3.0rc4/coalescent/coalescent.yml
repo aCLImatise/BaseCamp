@@ -1,0 +1,372 @@
+!Command
+command:
+- coalescent
+positional:
+- !Positional
+  description: -n [ --nsims ] arg (=1)               number of simulations to output
+  position: 0
+  name: trajectory
+  optional: false
+- !Positional
+  description: '-E [ --sweep-frac-sample ]            sweep end freq specifies exact
+    sample '
+  position: 1
+  name: delta
+  optional: false
+- !Positional
+  description: '--apx-with-traj-ok                    enable coalapx even when pop
+    size traj '
+  position: 2
+  name: fraction
+  optional: false
+- !Positional
+  description: '--pois-max-steps arg (=100000)        max # of steps when evaluating
+    waiting '
+  position: 0
+  name: sim
+  optional: false
+- !Positional
+  description: --pois-prec arg (=1.0000000000000001e-05)
+  position: 1
+  name: times
+  optional: false
+- !Positional
+  description: -m [ --outms ]                        write output to stdout in ms
+    format
+  position: 0
+  name: format
+  optional: false
+- !Positional
+  description: -T [ --write-tree-stats ]             output tree stats
+  position: 0
+  name: trajectory
+  optional: false
+- !Positional
+  description: --drop-singletons fraction            drop this fraction of singleton
+    SNPs
+  position: 1
+  name: locations
+  optional: false
+- !Positional
+  description: -v [ --verbose ]                      verbose output
+  position: 0
+  name: options
+  optional: false
+named:
+- !Flag
+  description: '[ --paramfile ] arg                parameter file'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --recombfile ] arg               genetic map file (if specified,\n\
+    overrides the one in paramfile)"
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "for each simulation use a randomly\nchosen subregion of the genetic\
+    \ map"
+  synonyms:
+  - --genmapRandomRegions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --trajfile ] arg                 file from which to read sweep'
+  synonyms:
+  - -J
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --seed ] arg (=0)                random seed (0 to use current time)'
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --max-coal-dist ] arg            max dist betw segs for coalescence'
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --max-coal-dist-cvx-hull ]       use convex hull for max coal dist'
+  synonyms:
+  - -U
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --genmapshift ] arg              shift all genmap locations by this'
+  synonyms:
+  - -G
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "enable coalapx only when pop size\nexceeds active sample size by this\n\
+    factor (experimental)"
+  synonyms:
+  - --apx-min-factor
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=1)               use rejection sampling (experimental)
+  synonyms:
+  - --apx-rej-samp
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: handle one-sided recombs (experimental)
+  synonyms:
+  - --sweep3-no-one-sided-recombs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: show progress of coalescence in each
+  synonyms:
+  - --show-one-sim-progress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "just simulate trajectories and output\npresent-day freqs"
+  synonyms:
+  - --traj-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --outfilebase ] arg              base name for output files in cosi'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "write output to stdout in tped format,\nto files pfx-rep-pop.tped"
+  synonyms:
+  - --tped
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: output pop info in ms format output
+  synonyms:
+  - --output-pop-info
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output genetic map in ms format output
+  synonyms:
+  - --output-gen-map
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --output-precision ] arg         number of decimal places used for\n\
+    floats in the outputs"
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --trajoutfile ] arg              file to which to output sweep'
+  synonyms:
+  - -j
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --write-mut-ages ]               output mutation ages'
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --write-recomb-locs ]            output recombination locations'
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --output-ARG ]                   output ARG edges.  Edges are written\
+    \ in\nms output format (see -m option), one\nper line, after the '//' line but\n\
+    before the 'segsites: ' line of each\nsimulation. Format is:\nE <edgeKind> <node_1_id>\
+    \ <node_2_id>\n<node_1_generation> <node_2_generation>\n<seg_1_beg> <seg_1_end>\
+    \ ... <seg_k_beg>\n<seg_k_end>.\nEdge kinds are: R, recombination; G,\ngene conversion;\
+    \ C, coalescence.\nseg_i_beg, seg_i_end give chromosomal\nsegments inherited along\
+    \ the edge;\nlocations are values in [0.0,1.0]\nrepresenting locations within\
+    \ the\nsimulated region."
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --write-mut-contexts ] position  output mutation contexts for these'
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --version ]                      print version info and compile-time'
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --show-progress ] [=arg(=10)]    show progress'
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --logfile ] arg                  log file'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --segfile ] arg                  seg file'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --deltaTfactor ] arg (=1)        delta factor for sweep'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --tree-size-only ]               compute tree size only'
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --show-num-recombs ]             print number of recombs'
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --sim-and-quit ]                 do simulation and quit'
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: for each sim output the time it took
+  synonyms:
+  - --output-sim-times
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "for each sim output the generation at\nwhich it ended"
+  synonyms:
+  - --output-end-gens
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=0)         stop simulation after this many minutes
+  synonyms:
+  - --stop-after-minutes
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: compute custom stats
+  synonyms:
+  - --custom-stats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(=-1)  when computing custom stats, exclude\nthis pop\n"
+  synonyms:
+  - --custom-stats-exclude-pop
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: '[ --help ]                         produce help message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "orig seed=239239\ngot seed239239\n\nSpecifying the model:\n  -p [ --paramfile\
+  \ ] arg                parameter file\n  -R [ --recombfile ] arg               genetic\
+  \ map file (if specified, \n                                        overrides the\
+  \ one in paramfile)\n  --genmapRandomRegions                 for each simulation\
+  \ use a randomly \n                                        chosen subregion of the\
+  \ genetic map\n  -J [ --trajfile ] arg                 file from which to read sweep\
+  \ \n                                        trajectory\n  -n [ --nsims ] arg (=1)\
+  \               number of simulations to output\n  -r [ --seed ] arg (=0)      \
+  \          random seed (0 to use current time)\n  -u [ --max-coal-dist ] arg   \
+  \         max dist betw segs for coalescence\n  -U [ --max-coal-dist-cvx-hull ]\
+  \       use convex hull for max coal dist\n  -G [ --genmapshift ] arg          \
+  \    shift all genmap locations by this \n                                     \
+  \   delta\n  -E [ --sweep-frac-sample ]            sweep end freq specifies exact\
+  \ sample \n                                        fraction\n  --apx-with-traj-ok\
+  \                    enable coalapx even when pop size traj \n                 \
+  \                       specified (experimental)\n  --apx-min-factor arg       \
+  \           enable coalapx only when pop size \n                               \
+  \         exceeds active sample size by this \n                                \
+  \        factor (experimental)\n  --apx-rej-samp arg (=1)               use rejection\
+  \ sampling (experimental)\n  --sweep3-no-one-sided-recombs         handle one-sided\
+  \ recombs (experimental)\n  --show-one-sim-progress               show progress\
+  \ of coalescence in each \n                                        sim\n  --pois-max-steps\
+  \ arg (=100000)        max # of steps when evaluating waiting \n               \
+  \                         times\n  --pois-prec arg (=1.0000000000000001e-05)\n \
+  \                                       precision when evaluating waiting times\n\
+  \  --traj-only                           just simulate trajectories and output \n\
+  \                                        present-day freqs\n\nSpecifying the output\
+  \ format:\n  -o [ --outfilebase ] arg              base name for output files in\
+  \ cosi \n                                        format\n  -m [ --outms ]      \
+  \                  write output to stdout in ms format\n  --tped arg           \
+  \                 write output to stdout in tped format, \n                    \
+  \                    to files pfx-rep-pop.tped\n  --output-pop-info            \
+  \         output pop info in ms format output\n  --output-gen-map              \
+  \        output genetic map in ms format output\n\nSpecifying output details:\n\
+  \  -P [ --output-precision ] arg         number of decimal places used for \n  \
+  \                                      floats in the outputs\n  -j [ --trajoutfile\
+  \ ] arg              file to which to output sweep \n                          \
+  \              trajectory\n  -T [ --write-tree-stats ]             output tree stats\n\
+  \  -M [ --write-mut-ages ]               output mutation ages\n  -L [ --write-recomb-locs\
+  \ ]            output recombination locations\n  -e [ --output-ARG ]           \
+  \        output ARG edges.  Edges are written in\n                             \
+  \           ms output format (see -m option), one \n                           \
+  \             per line, after the '//' line but \n                             \
+  \           before the 'segsites: ' line of each \n                            \
+  \            simulation. Format is:\n                                        E <edgeKind>\
+  \ <node_1_id> <node_2_id> \n                                        <node_1_generation>\
+  \ <node_2_generation>\n                                        <seg_1_beg> <seg_1_end>\
+  \ ... <seg_k_beg>\n                                        <seg_k_end>.\n      \
+  \                                  Edge kinds are: R, recombination; G, \n     \
+  \                                   gene conversion; C, coalescence. \n        \
+  \                                seg_i_beg, seg_i_end give chromosomal \n      \
+  \                                  segments inherited along the edge; \n       \
+  \                                 locations are values in [0.0,1.0] \n         \
+  \                               representing locations within the \n           \
+  \                             simulated region.\n  -C [ --write-mut-contexts ] position\
+  \  output mutation contexts for these \n                                       \
+  \ locations\n  --drop-singletons fraction            drop this fraction of singleton\
+  \ SNPs\n\nMisc options:\n  -h [ --help ]                         produce help message\n\
+  \  -V [ --version ]                      print version info and compile-time \n\
+  \                                        options\n  -v [ --verbose ]           \
+  \           verbose output\n  -g [ --show-progress ] [=arg(=10)]    show progress\n\
+  \nDeveloper options:\n  -l [ --logfile ] arg                  log file\n  -s [ --segfile\
+  \ ] arg                  seg file\n  -d [ --deltaTfactor ] arg (=1)        delta\
+  \ factor for sweep\n  -t [ --tree-size-only ]               compute tree size only\n\
+  \  -k [ --show-num-recombs ]             print number of recombs\n  -S [ --sim-and-quit\
+  \ ]                 do simulation and quit\n  --output-sim-times               \
+  \     for each sim output the time it took\n  --output-end-gens                \
+  \     for each sim output the generation at \n                                 \
+  \       which it ended\n  --stop-after-minutes arg (=0)         stop simulation\
+  \ after this many minutes\n  --custom-stats                        compute custom\
+  \ stats\n  --custom-stats-exclude-pop arg (=-1)  when computing custom stats, exclude\
+  \ \n                                        this pop\n\n"
+generated_using:
+- --help

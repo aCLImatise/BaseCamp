@@ -1,0 +1,102 @@
+!Command
+command:
+- tombo
+- plot_correction
+positional: []
+named:
+- !Flag
+  description: Directories containing fast5 files.
+  synonyms:
+  - --fast5-basedirs
+  args: !RepeatFlagArg
+    name: FAST5_BASEDIRS
+  optional: true
+- !Flag
+  description: 'Region to plot within each read. Default: random'
+  synonyms:
+  - --region-type
+  args: !ChoiceFlagArg
+    choices: !!set
+      end:
+      start:
+      random:
+  optional: true
+- !Flag
+  description: 'Number of reads to plot. Default: 10'
+  synonyms:
+  - --num-reads
+  args: !SimpleFlagArg
+    name: NUM_READS
+  optional: true
+- !Flag
+  description: 'Number of observations to plot. Default: 500'
+  synonyms:
+  - --num-obs
+  args: !SimpleFlagArg
+    name: NUM_OBS
+  optional: true
+- !Flag
+  description: "PDF filename to store plot(s). Default:\ntombo_results.corrected.pdf"
+  synonyms:
+  - --pdf-filename
+  args: !SimpleFlagArg
+    name: PDF_FILENAME
+  optional: true
+- !Flag
+  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  synonyms:
+  - --corrected-group
+  args: !SimpleFlagArg
+    name: CORRECTED_GROUP
+  optional: true
+- !Flag
+  description: "FAST5 subgroup(s) (under Analyses/[corrected-group])\ncontaining basecalls.\
+    \ Default: ['BaseCalled_template']"
+  synonyms:
+  - --basecall-subgroups
+  args: !RepeatFlagArg
+    name: BASECALL_SUBGROUPS
+  optional: true
+- !Flag
+  description: Don't print status information.
+  synonyms:
+  - --quiet
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: tombo plot_correction --fast5-basedirs FAST5_BASEDIRS\n       \
+  \                      [FAST5_BASEDIRS ...]\n                             [--region-type\
+  \ {random,start,end}]\n                             [--num-reads NUM_READS] [--num-obs\
+  \ NUM_OBS]\n                             [--pdf-filename PDF_FILENAME]\n       \
+  \                      [--corrected-group CORRECTED_GROUP]\n                   \
+  \          [--basecall-subgroups BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]]\n\
+  \                             [--quiet] [--help]\n\nRequired Argument:\n  --fast5-basedirs\
+  \ FAST5_BASEDIRS [FAST5_BASEDIRS ...]\n                        Directories containing\
+  \ fast5 files.\n\nRegion Type Argument:\n  --region-type {random,start,end}\n  \
+  \                      Region to plot within each read. Default: random\n\nPlotting\
+  \ Region Arguments:\n  --num-reads NUM_READS\n                        Number of\
+  \ reads to plot. Default: 10\n  --num-obs NUM_OBS     Number of observations to\
+  \ plot. Default: 500\n\nOutput Argument:\n  --pdf-filename PDF_FILENAME\n      \
+  \                  PDF filename to store plot(s). Default:\n                   \
+  \     tombo_results.corrected.pdf\n\nFAST5 Data Arguments:\n  --corrected-group\
+  \ CORRECTED_GROUP\n                        FAST5 group created by resquiggle command.\
+  \ Default:\n                        RawGenomeCorrected_000\n  --basecall-subgroups\
+  \ BASECALL_SUBGROUPS [BASECALL_SUBGROUPS ...]\n                        FAST5 subgroup(s)\
+  \ (under Analyses/[corrected-group])\n                        containing basecalls.\
+  \ Default: ['BaseCalled_template']\n\nMiscellaneous Arguments:\n  --quiet, -q  \
+  \         Don't print status information.\n  --help, -h            Print this help\
+  \ message and exit\n"
+generated_using:
+- --help

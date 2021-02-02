@@ -1,0 +1,95 @@
+!Command
+command:
+- mateclever
+positional: []
+named:
+- !Flag
+  description: Threads.
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: 'Maximum deletion length to look for (default: 10000).'
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: MAX_DEL_LENGTH
+  optional: true
+- !Flag
+  description: "Delete old result and working directory first (if\npresent)."
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Working directory (default: <result-directory>/work).'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: WORK_DIR
+  optional: true
+- !Flag
+  description: "Keep working directory (default: delete directory when\nfinished)."
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum expected support for a SNP in order to ignore\nmismatches\
+    \ at that position (default: 3.0)."
+  synonyms:
+  - -W
+  args: !SimpleFlagArg
+    name: SNP_WEIGHT_CUTOFF
+  optional: true
+- !Flag
+  description: "Maximum center distance between split-read and read-\npair deletion\
+    \ to be considered identical (default:\n100)."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: MAX_OFFSET
+  optional: true
+- !Flag
+  description: "Maximum length difference between split-read and read-\npair deletion\
+    \ to be considered identical (default:\n20).\n"
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: MAX_LENGTH_DIFF
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: mateclever [options] <reference.fasta(.gz)> <dataset-list> <result-dir>\n\
+  \nAssumes that CLEVER has already been run on all datasets under study. Based on\
+  \ BAM files\nand VCFs produced by CLEVER, split read alignments are performed on\
+  \ regions of interest\nand all events are genotyped.\n\nFile format for <dataset-list>,\
+  \ one row for each dataset:\n<name> <bam-file> <clever-vcf> <role>\nwhere <role>\
+  \ is one of {none, mother, father, child, monozygotic_twin, dizygotic_twin}.\n\n\
+  \nOptions:\n  -h, --help            show this help message and exit\n  -T THREADS\
+  \            Threads.\n  -M MAX_DEL_LENGTH     Maximum deletion length to look for\
+  \ (default: 10000).\n  -f                    Delete old result and working directory\
+  \ first (if\n                        present).\n  -w WORK_DIR           Working\
+  \ directory (default: <result-directory>/work).\n  -k                    Keep working\
+  \ directory (default: delete directory when\n                        finished).\n\
+  \  -W SNP_WEIGHT_CUTOFF  Minimum expected support for a SNP in order to ignore\n\
+  \                        mismatches at that position (default: 3.0).\n  -o MAX_OFFSET\
+  \         Maximum center distance between split-read and read-\n               \
+  \         pair deletion to be considered identical (default:\n                 \
+  \       100).\n  -z MAX_LENGTH_DIFF    Maximum length difference between split-read\
+  \ and read-\n                        pair deletion to be considered identical (default:\n\
+  \                        20).\n"
+generated_using:
+- --help

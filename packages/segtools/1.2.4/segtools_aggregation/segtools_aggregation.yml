@@ -1,0 +1,183 @@
+!Command
+command:
+- segtools-aggregation
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: SEGMENTATION
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: ANNOTATION
+  optional: false
+named:
+- !Flag
+  description: "If specified, labels will be shown using mnemonics\nfound in FILE"
+  synonyms:
+  - -m
+  - --mnemonic-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "File output directory (will be created if it does not\nexist) [default:\
+    \ feature_aggregation]"
+  synonyms:
+  - -o
+  - --outdir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: Overwrite any existing output files.
+  synonyms:
+  - --clobber
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not print diagnostic messages.
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compute values only for one chromosome.
+  synonyms:
+  - --quick
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Load data from output tab files and regenerate plots\ninstead of recomputing\
+    \ data."
+  synonyms:
+  - --replot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not generate any plots.
+  synonyms:
+  - --noplot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Separate data into different groups based upon\nANNOTATION's 'name'/'feature'\
+    \ field if --mode=region\nor --mode=point. Does nothing if --mode=gene."
+  synonyms:
+  - --groups
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Plot the relative frequency of SEGMENTATION labels,\nnormalized by\
+    \ the number of segments in that group\ninstead of the raw counts (normalize over\
+    \ SEGMENTATION\nlabels)"
+  synonyms:
+  - --normalize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'one of: point, region, gene. [default: point]'
+  synonyms:
+  - --mode
+  args: !SimpleFlagArg
+    name: MODE
+  optional: true
+- !Flag
+  description: "Aggregate this many base pairs off each end of feature\nor gene [default:\
+    \ 500]"
+  synonyms:
+  - -f
+  - --flank-bases
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "If --mode=region, aggregate over each internal feature\nby taking\
+    \ this many evenly-spaced samples. Warning:\nfeatures with a length < N will be\
+    \ excluded from the\nresults [default: 50]"
+  synonyms:
+  - -r
+  - --region-samples
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Aggregate over each intron by taking this many evenly-\nspaced samples\
+    \ [default: 50]"
+  synonyms:
+  - -i
+  - --intron-samples
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Aggregate over each exon by taking this many evenly-\nspaced samples\
+    \ [default: 25]"
+  synonyms:
+  - -e
+  - --exon-samples
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "=VAL        Pass VAL for PARAM when calling R functions. May be\n\
+    specified multiple times.\n"
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: PARAM
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: segtools-aggregation [OPTIONS] SEGMENTATION ANNOTATION\n\nPlot\
+  \ the enrichment of the SEGMENTATION labels relative to the position of\nfeatures\
+  \ in ANNOTATION. Features can be grouped by the 'name'/'feature' column\nby supplying\
+  \ --groups.\n\nOptions:\n  --version             show program's version number and\
+  \ exit\n  -h, --help            show this help message and exit\n\n  Output options:\n\
+  \    -m FILE, --mnemonic-file=FILE\n                        If specified, labels\
+  \ will be shown using mnemonics\n                        found in FILE\n    -o DIR,\
+  \ --outdir=DIR\n                        File output directory (will be created if\
+  \ it does not\n                        exist) [default: feature_aggregation]\n\n\
+  \  Flags:\n    --clobber           Overwrite any existing output files.\n    -q,\
+  \ --quiet         Do not print diagnostic messages.\n    --quick             Compute\
+  \ values only for one chromosome.\n    --replot            Load data from output\
+  \ tab files and regenerate plots\n                        instead of recomputing\
+  \ data.\n    --noplot            Do not generate any plots.\n    --groups      \
+  \      Separate data into different groups based upon\n                        ANNOTATION's\
+  \ 'name'/'feature' field if --mode=region\n                        or --mode=point.\
+  \ Does nothing if --mode=gene.\n    --normalize         Plot the relative frequency\
+  \ of SEGMENTATION labels,\n                        normalized by the number of segments\
+  \ in that group\n                        instead of the raw counts (normalize over\
+  \ SEGMENTATION\n                        labels)\n\n  Main aggregation options:\n\
+  \    --mode=MODE         one of: point, region, gene. [default: point]\n    -f N,\
+  \ --flank-bases=N\n                        Aggregate this many base pairs off each\
+  \ end of feature\n                        or gene [default: 500]\n    -r N, --region-samples=N\n\
+  \                        If --mode=region, aggregate over each internal feature\n\
+  \                        by taking this many evenly-spaced samples. Warning:\n \
+  \                       features with a length < N will be excluded from the\n \
+  \                       results [default: 50]\n\n  Gene aggregation options:\n \
+  \   -i N, --intron-samples=N\n                        Aggregate over each intron\
+  \ by taking this many evenly-\n                        spaced samples [default:\
+  \ 50]\n    -e N, --exon-samples=N\n                        Aggregate over each exon\
+  \ by taking this many evenly-\n                        spaced samples [default:\
+  \ 25]\n\n  R options:\n    -R PARAM=VAL        Pass VAL for PARAM when calling R\
+  \ functions. May be\n                        specified multiple times.\n"
+generated_using:
+- --help

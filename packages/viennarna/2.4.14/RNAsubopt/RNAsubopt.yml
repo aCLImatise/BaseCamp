@@ -1,0 +1,383 @@
+!Command
+command:
+- RNAsubopt
+positional:
+- !Positional
+  description: (default=off)
+  position: 0
+  name: molecule.
+  optional: false
+- !Positional
+  description: (default=off)
+  position: 1
+  name: structures
+  optional: false
+named:
+- !Flag
+  description: "Print help, including all details and hidden\noptions, and exit"
+  synonyms:
+  - --detailed-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print help, including hidden options, and exit
+  synonyms:
+  - --full-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Be verbose\n(default=off)"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not automatically substitude nucleotide\n\"T\" with \"U\"\n(default=off)"
+  synonyms:
+  - --noconv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read a file instead of reading from stdin
+  synonyms:
+  - -i
+  - --infile
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: '[=<filename>]    Print output to file instead of stdout'
+  synonyms:
+  - -o
+  - --outfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Automatically generate an ID for each sequence.\n(default=off)"
+  synonyms:
+  - --auto-id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Prefix for automatically generated IDs (as used\nin output file names)\n\
+    (default=`sequence')"
+  synonyms:
+  - --id-prefix
+  args: !SimpleFlagArg
+    name: prefix
+  optional: true
+- !Flag
+  description: "Set the maximum base pair span\n(default=`-1')"
+  synonyms:
+  - --maxBPspan
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "[=<filename>] Calculate structures subject to constraints.\n(default=`')"
+  synonyms:
+  - -C
+  - --constraint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use constraints for multiple sequences.\n(default=off)"
+  synonyms:
+  - --batch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Remove non-canonical base pairs from the\nstructure constraint\n(default=off)"
+  synonyms:
+  - --canonicalBPonly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Enforce base pairs given by round brackets ( )\nin structure constraint\n\
+    (default=off)"
+  synonyms:
+  - --enforceConstraint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use SHAPE reactivity data in the folding\nrecursions (does not work\
+    \ for Zuker\nsuboptimals and stochastic backtracking yet)"
+  synonyms:
+  - --shape
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "=[D/Z/W] + [optional parameters]\nSpecify the method how to convert\
+    \ SHAPE\nreactivity data to pseudo energy\ncontributions\n(default=`D')"
+  synonyms:
+  - --shapeMethod
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "+ [optional parameters]\nSpecify the method used to convert SHAPE\n\
+    reactivities to pairing probabilities when\nusing the SHAPE approach of Zarringhalam\
+    \ et\nal.\n(default=`O')"
+  synonyms:
+  - --shapeConversion
+  args: !SimpleFlagArg
+    name: M/C/S/L/O
+  optional: true
+- !Flag
+  description: "Compute suboptimal structures with energy in a\ncertain range of the\
+    \ optimum (kcal/mol).\nDefault is calculation of mfe structure only."
+  synonyms:
+  - -e
+  - --deltaEnergy
+  args: !SimpleFlagArg
+    name: range
+  optional: true
+- !Flag
+  description: "Only print structures with energy within range\nof the mfe after post\
+    \ reevaluation of\nenergies."
+  synonyms:
+  - --deltaEnergyPost
+  args: !SimpleFlagArg
+    name: range
+  optional: true
+- !Flag
+  description: "Sort the suboptimal structures by energy.\n(default=off)"
+  synonyms:
+  - -s
+  - --sorted
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Instead of producing all suboptimals in an\nenergy range, produce\
+    \ a random sample of\nsuboptimal structures, drawn with\nprobabilities equal to\
+    \ their Boltzmann\nweights via stochastic backtracking in the\npartition function.\
+    \ The -e and -p options are\nmutually exclusive."
+  synonyms:
+  - -p
+  - --stochBT
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: "Same as \"--stochBT\" but also print out the\nenergies and probabilities\
+    \ of the backtraced\nstructures."
+  synonyms:
+  - --stochBT_en
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: "Enable non-redundant sampling strategy.\n(default=off)"
+  synonyms:
+  - -N
+  - --nonRedundant
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assume a circular (instead of linear) RNA
+  synonyms:
+  - -c
+  - --circ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compute density of states instead of secondary
+  synonyms:
+  - -D
+  - --dos
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Compute Zuker suboptimals instead of all\nsuboptimal structures within\
+    \ an engery band\naround the MFE.\n(default=off)"
+  synonyms:
+  - -z
+  - --zuker
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Incoorporate G-Quadruplex formation into the\nstructure prediction\
+    \ algorithm\n(no support of G-quadruplex prediction for\nstochastic backtracking\
+    \ and Zuker-style\nsuboptimals yet)\n(default=off)"
+  synonyms:
+  - -g
+  - --gquad
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Rescale energy parameters to a temperature of\ntemp C. Default is\
+    \ 37C."
+  synonyms:
+  - -T
+  - --temp
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Do not include special tabulated stabilizing\nenergies for tri-, tetra-\
+    \ and hexaloop\nhairpins.\n(default=off)"
+  synonyms:
+  - '-4'
+  - --noTetra
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "How to treat \"dangling end\" energies for\nbases adjacent to helices\
+    \ in free ends and\nmulti-loops\n(default=`2')"
+  synonyms:
+  - -d
+  - --dangles
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Produce structures without lonely pairs\n(helices of length 1).\n\
+    (default=off)"
+  synonyms:
+  - --noLP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not allow GU pairs\n(default=off)"
+  synonyms:
+  - --noGU
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not allow GU pairs at the end of helices\n(default=off)"
+  synonyms:
+  - --noClosingGU
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Recalculate energies of structures using a\nlogarithmic energy function\
+    \ for multi-loops\nbefore output.  (default=off)"
+  synonyms:
+  - --logML
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Read energy parameters from paramfile, instead\nof using the default\
+    \ parameter set."
+  synonyms:
+  - -P
+  - --paramFile
+  args: !SimpleFlagArg
+    name: paramfile
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "RNAsubopt 2.4.14\n\ncalculate suboptimal secondary structures of RNAs\n\
+  \nUsage: RNAsubopt [OPTIONS]...\n\nreads RNA sequences from stdin and (in the default\
+  \ -e mode) calculates all\nsuboptimal secondary structures within a user defined\
+  \ energy range above the\nminimum free energy (mfe). It prints the suboptimal structures\
+  \ in dot-bracket\nnotation followed by the energy in kcal/mol to stdout. Be careful,\
+  \ the number\nof structures returned grows exponentially with both sequence length\
+  \ and energy\nrange.\n\nAlternatively, when used with the -p option, RNAsubopt produces\
+  \ Boltzmann\nweighted samples of secondary structures.\n\n\n  -h, --help       \
+  \             Print help and exit\n      --detailed-help           Print help, including\
+  \ all details and hidden\n                                  options, and exit\n\
+  \      --full-help               Print help, including hidden options, and exit\n\
+  \  -V, --version                 Print version and exit\n\nGeneral Options:\n  Command\
+  \ line options which alter the general behavior of this program\n\n\n  -v, --verbose\
+  \                 Be verbose\n\n                                    (default=off)\n\
+  \      --noconv                  Do not automatically substitude nucleotide\n  \
+  \                                \"T\" with \"U\"\n\n                          \
+  \          (default=off)\n  -i, --infile=<filename>       Read a file instead of\
+  \ reading from stdin\n\n  -o, --outfile[=<filename>]    Print output to file instead\
+  \ of stdout\n\n      --auto-id                 Automatically generate an ID for\
+  \ each sequence.\n                                    (default=off)\n      --id-prefix=prefix\
+  \        Prefix for automatically generated IDs (as used\n                     \
+  \             in output file names)\n\n                                    (default=`sequence')\n\
+  \nStructure Constraints:\n  Command line options to interact with the structure\
+  \ constraints feature of\n  this program\n\n\n      --maxBPspan=INT           Set\
+  \ the maximum base pair span\n\n                                    (default=`-1')\n\
+  \  -C, --constraint[=<filename>] Calculate structures subject to constraints.\n\
+  \                                    (default=`')\n      --batch               \
+  \    Use constraints for multiple sequences.\n                                 \
+  \   (default=off)\n      --canonicalBPonly         Remove non-canonical base pairs\
+  \ from the\n                                  structure constraint\n\n         \
+  \                           (default=off)\n      --enforceConstraint       Enforce\
+  \ base pairs given by round brackets ( )\n                                  in structure\
+  \ constraint\n\n                                    (default=off)\n      --shape=<filename>\
+  \        Use SHAPE reactivity data in the folding\n                            \
+  \      recursions (does not work for Zuker\n                                  suboptimals\
+  \ and stochastic backtracking yet)\n\n\n      --shapeMethod=[D/Z/W] + [optional\
+  \ parameters]\n                                Specify the method how to convert\
+  \ SHAPE\n                                  reactivity data to pseudo energy\n  \
+  \                                contributions\n                               \
+  \     (default=`D')\n      --shapeConversion=M/C/S/L/O  + [optional parameters]\n\
+  \                                Specify the method used to convert SHAPE\n    \
+  \                              reactivities to pairing probabilities when\n    \
+  \                              using the SHAPE approach of Zarringhalam et\n   \
+  \                               al.\n                                    (default=`O')\n\
+  \nAlgorithms:\n  Select the algorithms which should be applied to the given RNA\
+  \ sequence.\n\n\n  -e, --deltaEnergy=range       Compute suboptimal structures with\
+  \ energy in a\n                                  certain range of the optimum (kcal/mol).\n\
+  \                                  Default is calculation of mfe structure only.\n\
+  \n\n      --deltaEnergyPost=range   Only print structures with energy within range\n\
+  \                                  of the mfe after post reevaluation of\n     \
+  \                             energies.\n\n  -s, --sorted                  Sort\
+  \ the suboptimal structures by energy.\n                                    (default=off)\n\
+  \  -p, --stochBT=number          Instead of producing all suboptimals in an\n  \
+  \                                energy range, produce a random sample of\n    \
+  \                              suboptimal structures, drawn with\n             \
+  \                     probabilities equal to their Boltzmann\n                 \
+  \                 weights via stochastic backtracking in the\n                 \
+  \                 partition function. The -e and -p options are\n              \
+  \                    mutually exclusive.\n\n\n      --stochBT_en=number       Same\
+  \ as \"--stochBT\" but also print out the\n                                  energies\
+  \ and probabilities of the backtraced\n                                  structures.\n\
+  \n\n  -N, --nonRedundant            Enable non-redundant sampling strategy.\n\n\
+  \                                    (default=off)\n  -c, --circ               \
+  \     Assume a circular (instead of linear) RNA\n                              \
+  \    molecule.\n\n                                    (default=off)\n  -D, --dos\
+  \                     Compute density of states instead of secondary\n         \
+  \                         structures\n                                    (default=off)\n\
+  \  -z, --zuker                   Compute Zuker suboptimals instead of all\n    \
+  \                              suboptimal structures within an engery band\n   \
+  \                               around the MFE.\n\n                            \
+  \        (default=off)\n  -g, --gquad                   Incoorporate G-Quadruplex\
+  \ formation into the\n                                  structure prediction algorithm\n\
+  \                                  (no support of G-quadruplex prediction for\n\
+  \                                  stochastic backtracking and Zuker-style\n   \
+  \                               suboptimals yet)\n\n                           \
+  \         (default=off)\n\nModel Details:\n  -T, --temp=DOUBLE             Rescale\
+  \ energy parameters to a temperature of\n                                  temp\
+  \ C. Default is 37C.\n\n\n  -4, --noTetra                 Do not include special\
+  \ tabulated stabilizing\n                                  energies for tri-, tetra-\
+  \ and hexaloop\n                                  hairpins.\n                  \
+  \                  (default=off)\n  -d, --dangles=INT             How to treat \"\
+  dangling end\" energies for\n                                  bases adjacent to\
+  \ helices in free ends and\n                                  multi-loops\n    \
+  \                                (default=`2')\n      --noLP                   \
+  \ Produce structures without lonely pairs\n                                  (helices\
+  \ of length 1).\n                                    (default=off)\n      --noGU\
+  \                    Do not allow GU pairs\n\n                                 \
+  \   (default=off)\n      --noClosingGU             Do not allow GU pairs at the\
+  \ end of helices\n\n                                    (default=off)\n      --logML\
+  \                   Recalculate energies of structures using a\n               \
+  \                   logarithmic energy function for multi-loops\n              \
+  \                    before output.  (default=off)\n  -P, --paramFile=paramfile\
+  \     Read energy parameters from paramfile, instead\n                         \
+  \         of using the default parameter set.\n\n\nIf in doubt our program is right,\
+  \ nature is at fault.\nComments should be sent to rna@tbi.univie.ac.at.\n\n\n"
+generated_using:
+- --help

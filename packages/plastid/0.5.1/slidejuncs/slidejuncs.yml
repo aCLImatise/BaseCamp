@@ -1,0 +1,349 @@
+!Command
+command:
+- slidejuncs
+positional:
+- !Positional
+  description: G   C   T   C   T   A   C   T   A   G   N   N   N   C   T   A   C   T   A   G   A   T   G   G
+  position: 0
+  name: Sequence
+  optional: false
+- !Positional
+  description: "If a mask file from crossmap\nis provided, junctions in which one\
+    \ or more of the 5' and 3' splice\nsites appear in a repetitive region of the\
+    \ genome are flagged as\nnon-informative and written to a separate file."
+  position: 0
+  name: '1.'
+  optional: false
+- !Positional
+  description: "For remaining splice junctions, the extent of locally repeated nucleotide\n\
+    sequence, if any, surrounding the query junction's splice donor and\nacceptor\
+    \ sites, are determined in both the 5' and 3' directions.\nThis is the maximum\
+    \ window (*equal-support region*) across which the\nactual splice junction could\
+    \ be moved without reducing sequence support."
+  position: 1
+  name: '2.'
+  optional: false
+- !Positional
+  description: "If there is one or more known splice junctions in this region, the\n\
+    query junction is assumed to match these, and the known junctions are\nreported\
+    \ rather than the query."
+  position: 2
+  name: '3.'
+  optional: false
+- !Positional
+  description: "If (3) is not satisfied, and the query junction is a canonical splice\n\
+    junction, it is reported as is."
+  position: 3
+  name: '4.'
+  optional: false
+- !Positional
+  description: "If (3) is not satisfied, and the query junction represents a non-canonical\n\
+    splice junction, the program determines if one or more canonical splice\njunctions\
+    \ is present in the equal-support region. If so, these canonical\nsplice junction\
+    \ are reported rather than the query junction."
+  position: 4
+  name: '5.'
+  optional: false
+- !Positional
+  description: If (5) is not satisfied, the non-canonical query junction is reported
+    as-is.
+  position: 5
+  name: '6.'
+  optional: false
+- !Positional
+  description: "Splice junctions in which one or more of the splice sites lands\n\
+    in a repetitive/degenerate region of the genome, which gives rise to\nmapping\
+    \ ambiguities (step 1 above)"
+  position: 0
+  name: OUTBASE_repetitive.bed
+  optional: false
+- !Positional
+  description: "The result of shifting query splice junctions to known splice junctions\n\
+    with equal sequence support (step 3 above)"
+  position: 1
+  name: OUTBASE_shifted_known.bed
+  optional: false
+- !Positional
+  description: "The result of shifting non-canonical query splice junctions to canonical\n\
+    splice junctions with equal sequence support (step 5 above)"
+  position: 2
+  name: OUTBASE_shifted_canonical.bed
+  optional: false
+- !Positional
+  description: Query junctions reported without changes (steps 4 and 6 above)
+  position: 3
+  name: OUTBASE_untouched.bed
+  optional: false
+- !Positional
+  description: BED file describing discovered junctions
+  position: 0
+  name: input.bed
+  optional: false
+- !Positional
+  description: Basename for output files
+  position: 1
+  name: outbase
+  optional: false
+named:
+- !Flag
+  description: "Maximum number of nt to search 5' and 3' of intron\nboundaries (Default:\
+    \ 10)"
+  synonyms:
+  - --maxslide
+  args: !SimpleFlagArg
+    name: MAXSLIDE
+  optional: true
+- !Flag
+  description: Reference file describing known splice junctions
+  synonyms:
+  - --ref
+  args: !SimpleFlagArg
+    name: ref.bed
+  optional: true
+- !Flag
+  description: "Slide junctions to canonical junctions if present\nwithin equal support\
+    \ region"
+  synonyms:
+  - --slide_canonical
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Suppress all warning messages. Cannot use with '-v'.
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn\
+    \ warnings into exceptions. Cannot use\nwith '-q'. (Default: show each type of\
+    \ warning once)"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[fasta | fastq | twobit | genbank | embl]\nA file of DNA sequence"
+  synonyms:
+  - --sequence_file
+  args: !SimpleFlagArg
+    name: infile.
+  optional: true
+- !Flag
+  description: 'Format of sequence_file (Default: fasta).'
+  synonyms:
+  - --sequence_format
+  args: !ChoiceFlagArg
+    choices: !!set
+      fastq:
+      embl:
+      genbank:
+      fasta:
+      twobit:
+  optional: true
+- !Flag
+  description: "[BED | BigBed | GTF2 | GFF3 | PSL] [infile.[BED | BigBed | GTF2 |\
+    \ GFF3 | PSL] ...]\nZero or more annotation files (max 1 file if BigBed)"
+  synonyms:
+  - --mask_annotation_files
+  args: !SimpleFlagArg
+    name: infile.
+  optional: true
+- !Flag
+  description: "Format of mask_annotation_files (Default: GTF2). Note:\nGFF3 assembly\
+    \ assumes SO v.2.5.2 feature ontologies,\nwhich may or may not match your specific\
+    \ file."
+  synonyms:
+  - --mask_annotation_format
+  args: !ChoiceFlagArg
+    choices: !!set
+      GTF2:
+      BED:
+      PSL:
+      GFF3:
+      BigBed:
+  optional: true
+- !Flag
+  description: "If supplied, coding regions will be extended by 3\nnucleotides at\
+    \ their 3' ends (except for GTF2 files\nthat explicitly include `stop_codon` features).\
+    \ Use if\nyour annotation file excludes stop codons from CDS."
+  synonyms:
+  - --mask_add_three
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "mask_annotation_files are tabix-compressed and indexed\n(Default:\
+    \ False). Ignored for BigBed files."
+  synonyms:
+  - --mask_tabix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "mask_annotation_files are sorted by chromosomal\nposition (Default:\
+    \ False)"
+  synonyms:
+  - --mask_sorted
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Number of extra columns in BED file (e.g. in custom\nENCODE formats)\
+    \ or list of names for those columns.\n(Default: 0)."
+  synonyms:
+  - --mask_bed_extra_columns
+  args: !RepeatFlagArg
+    name: MASK_BED_EXTRA_COLUMNS
+  optional: true
+- !Flag
+  description: "Maximum desired memory footprint in MB to devote to\nBigBed/BigWig\
+    \ files. May be exceeded by large queries.\n(Default: 0, No maximum)"
+  synonyms:
+  - --mask_maxmem
+  args: !SimpleFlagArg
+    name: MASK_MAXMEM
+  optional: true
+- !Flag
+  description: "GFF3 feature types to include as transcripts, even if\nno exons are\
+    \ present (for GFF3 only; default: use SO\nv2.5.3 specification)"
+  synonyms:
+  - --mask_gff_transcript_types
+  args: !RepeatFlagArg
+    name: MASK_GFF_TRANSCRIPT_TYPES
+  optional: true
+- !Flag
+  description: "GFF3 feature types to include as exons (for GFF3 only;\ndefault: use\
+    \ SO v2.5.3 specification)"
+  synonyms:
+  - --mask_gff_exon_types
+  args: !RepeatFlagArg
+    name: MASK_GFF_EXON_TYPES
+  optional: true
+- !Flag
+  description: "GFF3 feature types to include as CDS (for GFF3 only;\ndefault: use\
+    \ SO v2.5.3 specification)\n"
+  synonyms:
+  - --mask_gff_cds_types
+  args: !RepeatFlagArg
+    name: MASK_GFF_CDS_TYPES
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: slidejuncs [-h] [-q] [-v]\n                  [--sequence_file infile.[fasta\
+  \ | fastq | twobit | genbank | embl]]\n                  [--sequence_format {fasta,fastq,twobit,genbank,embl}]\n\
+  \                  [--mask_annotation_files infile.[BED | BigBed | GTF2 | GFF3 |\
+  \ PSL]\n                  [infile.[BED | BigBed | GTF2 | GFF3 | PSL] ...]]\n   \
+  \               [--mask_annotation_format {BED,BigBed,GTF2,GFF3,PSL}]\n        \
+  \          [--mask_add_three] [--mask_tabix] [--mask_sorted]\n                 \
+  \ [--mask_bed_extra_columns MASK_BED_EXTRA_COLUMNS [MASK_BED_EXTRA_COLUMNS ...]]\n\
+  \                  [--mask_maxmem MASK_MAXMEM]\n                  [--mask_gff_transcript_types\
+  \ MASK_GFF_TRANSCRIPT_TYPES [MASK_GFF_TRANSCRIPT_TYPES ...]]\n                 \
+  \ [--mask_gff_exon_types MASK_GFF_EXON_TYPES [MASK_GFF_EXON_TYPES ...]]\n      \
+  \            [--mask_gff_cds_types MASK_GFF_CDS_TYPES [MASK_GFF_CDS_TYPES ...]]\n\
+  \                  [--maxslide MAXSLIDE] [--ref ref.bed] [--slide_canonical]\n \
+  \                 input.bed outbase\n\n------------------------------------------------------------------------------\n\
+  \nCompare splice junctions discovered in a dataset to those in an annotation\nof\
+  \ known splice junctions, amending misplaced junctions, and identifying \njunctions\
+  \ that fall within repetitive areas of the genome.\n\nKnown splice junctions can\
+  \ be misidentified as novel or non-canonical junctions\nwhen intronic sequence immediately\
+  \ downstream of the fiveprime splice site\nexactly matches the exonic sequence immediately\
+  \ downstream of the threeprime\nsplice site. In fact, the junction point could appear\
+  \ anywhere in this\nlocally-repeated region with equal support from sequencing data.\
+  \ For example,\nsuppose we have a splice junction as follows::\n\n        \n   \
+  \             Exon 1 [0,6)            Intron                                  Exon\
+  \ 2 [16,24)\n                ---------------------   --------------------------------------\
+  \  ------------------------------\n    Sequence    G   C   T   C   T   A   C   T\
+  \   A   G   N   N   N   C   T   A   C   T   A   G   A   T   G   G\n    Position\
+  \    0   1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18\
+  \  19  20  21  22  23\n    Repeated                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\
+  \            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    \nIn this case, the splice junction\
+  \ could be moved 3 bases to the left, or\nfour bases to the right, without losing\
+  \ consistency with the sequence of\nany cDNA or read alignment covering the junction.\n\
+  \   \nTo identify this and other causes of false positive splice junction calls,\n\
+  the following operations are performed on each query junction:\n\n    1.  If a mask\
+  \ file from crossmap\n        is provided, junctions in which one or more of the\
+  \ 5' and 3' splice\n        sites appear in a repetitive region of the genome are\
+  \ flagged as\n        non-informative and written to a separate file. \n\n    2.\
+  \  For remaining splice junctions, the extent of locally repeated nucleotide\n \
+  \       sequence, if any, surrounding the query junction's splice donor and\n  \
+  \      acceptor sites, are determined in both the 5' and 3' directions.\n      \
+  \  \n        This is the maximum window (*equal-support region*) across which the\n\
+  \        actual splice junction could be moved without reducing sequence support.\n\
+  \    \n    3.  If there is one or more known splice junctions in this region, the\n\
+  \        query junction is assumed to match these, and the known junctions are\n\
+  \        reported rather than the query. \n    \n    4.  If (3) is not satisfied,\
+  \ and the query junction is a canonical splice\n        junction, it is reported\
+  \ as is.\n\n    5.  If (3) is not satisfied, and the query junction represents a\
+  \ non-canonical\n        splice junction, the program determines if one or more\
+  \ canonical splice\n        junctions is present in the equal-support region. If\
+  \ so, these canonical\n        splice junction are reported rather than the query\
+  \ junction.\n        \n    6.  If (5) is not satisfied, the non-canonical query\
+  \ junction is reported as-is.\n\nOutput files\n------------\nThe following files\
+  \ are written, where `OUTBASE` is a string supplied by the\nuser. Scores of splice\
+  \ junctions, if present in the input, are ignored.\nEach record in each BED file\
+  \ represents a single exon-exon junction, rather\nthan a transcript:\n\n    OUTBASE_repetitive.bed\n\
+  \        Splice junctions in which one or more of the splice sites lands\n     \
+  \   in a repetitive/degenerate region of the genome, which gives rise to\n     \
+  \   mapping ambiguities (step 1 above)\n    \n    OUTBASE_shifted_known.bed\n  \
+  \      The result of shifting query splice junctions to known splice junctions\n\
+  \        with equal sequence support (step 3 above)\n    \n    OUTBASE_shifted_canonical.bed\n\
+  \        The result of shifting non-canonical query splice junctions to canonical\n\
+  \        splice junctions with equal sequence support (step 5 above)\n    \n   \
+  \ OUTBASE_untouched.bed\n        Query junctions reported without changes (steps\
+  \ 4 and 6 above)\n\nwhere `OUTBASE` is given by the user.\n\n------------------------------------------------------------------------------\n\
+  \npositional arguments:\n  input.bed             BED file describing discovered\
+  \ junctions\n  outbase               Basename for output files\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --maxslide MAXSLIDE\
+  \   Maximum number of nt to search 5' and 3' of intron\n                       \
+  \ boundaries (Default: 10)\n  --ref ref.bed         Reference file describing known\
+  \ splice junctions\n  --slide_canonical     Slide junctions to canonical junctions\
+  \ if present\n                        within equal support region\n\nwarning/error\
+  \ options:\n  -q, --quiet           Suppress all warning messages. Cannot use with\
+  \ '-v'.\n  -v, --verbose         Increase verbosity. With '-v', show every warning.\n\
+  \                        With '-vv', turn warnings into exceptions. Cannot use\n\
+  \                        with '-q'. (Default: show each type of warning once)\n\n\
+  sequence options:\n\n  --sequence_file infile.[fasta | fastq | twobit | genbank\
+  \ | embl]\n                        A file of DNA sequence\n  --sequence_format {fasta,fastq,twobit,genbank,embl}\n\
+  \                        Format of sequence_file (Default: fasta).\n\nmask file\
+  \ options (optional):\n  Add mask file(s) that annotate regions that should be excluded\
+  \ from analyses\n  (e.g. repetitive genomic regions).\n\n  --mask_annotation_files\
+  \ infile.[BED | BigBed | GTF2 | GFF3 | PSL] [infile.[BED | BigBed | GTF2 | GFF3\
+  \ | PSL] ...]\n                        Zero or more annotation files (max 1 file\
+  \ if BigBed)\n  --mask_annotation_format {BED,BigBed,GTF2,GFF3,PSL}\n          \
+  \              Format of mask_annotation_files (Default: GTF2). Note:\n        \
+  \                GFF3 assembly assumes SO v.2.5.2 feature ontologies,\n        \
+  \                which may or may not match your specific file.\n  --mask_add_three\
+  \      If supplied, coding regions will be extended by 3\n                     \
+  \   nucleotides at their 3' ends (except for GTF2 files\n                      \
+  \  that explicitly include `stop_codon` features). Use if\n                    \
+  \    your annotation file excludes stop codons from CDS.\n  --mask_tabix       \
+  \   mask_annotation_files are tabix-compressed and indexed\n                   \
+  \     (Default: False). Ignored for BigBed files.\n  --mask_sorted         mask_annotation_files\
+  \ are sorted by chromosomal\n                        position (Default: False)\n\
+  \nBED-specific options:\n  --mask_bed_extra_columns MASK_BED_EXTRA_COLUMNS [MASK_BED_EXTRA_COLUMNS\
+  \ ...]\n                        Number of extra columns in BED file (e.g. in custom\n\
+  \                        ENCODE formats) or list of names for those columns.\n \
+  \                       (Default: 0).\n\nBigBed-specific options:\n  --mask_maxmem\
+  \ MASK_MAXMEM\n                        Maximum desired memory footprint in MB to\
+  \ devote to\n                        BigBed/BigWig files. May be exceeded by large\
+  \ queries.\n                        (Default: 0, No maximum)\n\nGFF3-specific options:\n\
+  \  --mask_gff_transcript_types MASK_GFF_TRANSCRIPT_TYPES [MASK_GFF_TRANSCRIPT_TYPES\
+  \ ...]\n                        GFF3 feature types to include as transcripts, even\
+  \ if\n                        no exons are present (for GFF3 only; default: use\
+  \ SO\n                        v2.5.3 specification)\n  --mask_gff_exon_types MASK_GFF_EXON_TYPES\
+  \ [MASK_GFF_EXON_TYPES ...]\n                        GFF3 feature types to include\
+  \ as exons (for GFF3 only;\n                        default: use SO v2.5.3 specification)\n\
+  \  --mask_gff_cds_types MASK_GFF_CDS_TYPES [MASK_GFF_CDS_TYPES ...]\n          \
+  \              GFF3 feature types to include as CDS (for GFF3 only;\n          \
+  \              default: use SO v2.5.3 specification)\n"
+generated_using:
+- --help

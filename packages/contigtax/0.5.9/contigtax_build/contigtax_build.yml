@@ -1,0 +1,61 @@
+!Command
+command:
+- contigtax
+- build
+positional:
+- !Positional
+  description: Specify (reformatted) fasta file
+  position: 0
+  name: fastafile
+  optional: false
+- !Positional
+  description: Protein accession to taxid mapfile (must be gzipped)
+  position: 1
+  name: taxonmap
+  optional: false
+- !Positional
+  description: nodes.dmp file from NCBI taxonomy database
+  position: 2
+  name: taxonnodes
+  optional: false
+named:
+- !Flag
+  description: "Name of diamond database file. Defaults to\ndiamond.dmnd in same directory\
+    \ as the protein fasta\nfile"
+  synonyms:
+  - -d
+  - --dbfile
+  args: !SimpleFlagArg
+    name: DBFILE
+  optional: true
+- !Flag
+  description: Number of cpus to use when building (defaults to 1)
+  synonyms:
+  - -p
+  - --cpus
+  args: !SimpleFlagArg
+    name: CPUS
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: contigtax build [-h] [-d DBFILE] [-p CPUS]\n                  \
+  \     fastafile taxonmap taxonnodes\n\npositional arguments:\n  fastafile      \
+  \       Specify (reformatted) fasta file\n  taxonmap              Protein accession\
+  \ to taxid mapfile (must be gzipped)\n  taxonnodes            nodes.dmp file from\
+  \ NCBI taxonomy database\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -d DBFILE, --dbfile DBFILE\n                        Name\
+  \ of diamond database file. Defaults to\n                        diamond.dmnd in\
+  \ same directory as the protein fasta\n                        file\n  -p CPUS,\
+  \ --cpus CPUS  Number of cpus to use when building (defaults to 1)\n"
+generated_using:
+- --help

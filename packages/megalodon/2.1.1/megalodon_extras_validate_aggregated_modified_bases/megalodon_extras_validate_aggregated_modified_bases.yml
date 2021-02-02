@@ -1,0 +1,123 @@
+!Command
+command:
+- megalodon_extras
+- validate
+- aggregated_modified_bases
+positional:
+- !Positional
+  description: --out-filename OUT_FILENAME
+  position: 0
+  name: megalodon_agg_validation.pdf
+  optional: false
+named:
+- !Flag
+  description: "MODIFIED_BED_METHYL_FILES\n[MODIFIED_BED_METHYL_FILES ...]\n[--ground-truth-csvs\
+    \ GROUND_TRUTH_CSVS [GROUND_TRUTH_CSVS ...]]\n[--control-bed-methyl-files CONTROL_BED_METHYL_FILES\
+    \ [CONTROL_BED_METHYL_FILES ...]]\n[--valid-positions VALID_POSITIONS]\n[--coverage-threshold\
+    \ COVERAGE_THRESHOLD]\n[--strand-offset STRAND_OFFSET]\n[--allow-unbalance-classes]\n\
+    [--out-pdf OUT_PDF]\n[--out-filename OUT_FILENAME]"
+  synonyms:
+  - --modified-bed-methyl-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Ground truth csvs with (chrm, strand, pos, is_mod)\nvalues. To collapse\
+    \ to forward strand coordinates,\nstrand should be \".\"."
+  synonyms:
+  - --ground-truth-csvs
+  args: !RepeatFlagArg
+    name: GROUND_TRUTH_CSVS
+  optional: true
+- !Flag
+  description: Bed methyl files from control sample(s).
+  synonyms:
+  - --control-bed-methyl-files
+  args: !RepeatFlagArg
+    name: CONTROL_BED_METHYL_FILES
+  optional: true
+- !Flag
+  description: "BED file containing positions to be considered.\nMultiple files may\
+    \ be provided"
+  synonyms:
+  - --valid-positions
+  args: !SimpleFlagArg
+    name: VALID_POSITIONS
+  optional: true
+- !Flag
+  description: "Only include sites with sufficient coverage. Default:\n1 (= All sites)"
+  synonyms:
+  - --coverage-threshold
+  args: !SimpleFlagArg
+    name: COVERAGE_THRESHOLD
+  optional: true
+- !Flag
+  description: "Offset to combine stranded results. Positive value\nindicates reverse\
+    \ strand sites have higher position\nvalues. Default treat strands independently."
+  synonyms:
+  - --strand-offset
+  args: !SimpleFlagArg
+    name: STRAND_OFFSET
+  optional: true
+- !Flag
+  description: "Allow unbalanced classes in modified base metric\ncomputation. Default:\
+    \ Balance size of modified and\ncanonical classes for each comparison made."
+  synonyms:
+  - --allow-unbalance-classes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output pdf filename. Default:'
+  synonyms:
+  - --out-pdf
+  args: !SimpleFlagArg
+    name: OUT_PDF
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: megalodon_extras validate aggregated_modified_bases [-h]\n    \
+  \                                                       --modified-bed-methyl-files\n\
+  \                                                           MODIFIED_BED_METHYL_FILES\n\
+  \                                                           [MODIFIED_BED_METHYL_FILES\
+  \ ...]\n                                                           [--ground-truth-csvs\
+  \ GROUND_TRUTH_CSVS [GROUND_TRUTH_CSVS ...]]\n                                 \
+  \                          [--control-bed-methyl-files CONTROL_BED_METHYL_FILES\
+  \ [CONTROL_BED_METHYL_FILES ...]]\n                                            \
+  \               [--valid-positions VALID_POSITIONS]\n                          \
+  \                                 [--coverage-threshold COVERAGE_THRESHOLD]\n  \
+  \                                                         [--strand-offset STRAND_OFFSET]\n\
+  \                                                           [--allow-unbalance-classes]\n\
+  \                                                           [--out-pdf OUT_PDF]\n\
+  \                                                           [--out-filename OUT_FILENAME]\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --modified-bed-methyl-files MODIFIED_BED_METHYL_FILES [MODIFIED_BED_METHYL_FILES\
+  \ ...]\n                        Bed methyl files from modified sample(s).\n  --ground-truth-csvs\
+  \ GROUND_TRUTH_CSVS [GROUND_TRUTH_CSVS ...]\n                        Ground truth\
+  \ csvs with (chrm, strand, pos, is_mod)\n                        values. To collapse\
+  \ to forward strand coordinates,\n                        strand should be \".\"\
+  .\n  --control-bed-methyl-files CONTROL_BED_METHYL_FILES [CONTROL_BED_METHYL_FILES\
+  \ ...]\n                        Bed methyl files from control sample(s).\n  --valid-positions\
+  \ VALID_POSITIONS\n                        BED file containing positions to be considered.\n\
+  \                        Multiple files may be provided\n  --coverage-threshold\
+  \ COVERAGE_THRESHOLD\n                        Only include sites with sufficient\
+  \ coverage. Default:\n                        1 (= All sites)\n  --strand-offset\
+  \ STRAND_OFFSET\n                        Offset to combine stranded results. Positive\
+  \ value\n                        indicates reverse strand sites have higher position\n\
+  \                        values. Default treat strands independently.\n  --allow-unbalance-classes\n\
+  \                        Allow unbalanced classes in modified base metric\n    \
+  \                    computation. Default: Balance size of modified and\n      \
+  \                  canonical classes for each comparison made.\n  --out-pdf OUT_PDF\
+  \     Output pdf filename. Default:\n                        megalodon_agg_validation.pdf\n\
+  \  --out-filename OUT_FILENAME\n                        Output filename for text\
+  \ summary. Default: stdout\n"
+generated_using:
+- --help

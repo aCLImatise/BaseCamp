@@ -1,0 +1,147 @@
+!Command
+command:
+- MACARON
+positional:
+- !Positional
+  description: --GATK GATK_PATH      You can use this option to directly indicate
+    the full
+  position: 0
+  name: file
+  optional: false
+named:
+- !Flag
+  description: identify SnpClusters (SNPs within the same genetic codon)
+  synonyms:
+  - -Script
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: Full path of the input VCF file.
+  synonyms:
+  - -i
+  - --infile
+  args: !SimpleFlagArg
+    name: INPUTFILE
+  optional: true
+- !Flag
+  description: "Path of the output txt file (Default Output file:\nMACARON_output.txt)"
+  synonyms:
+  - -o
+  - --outfile
+  args: !SimpleFlagArg
+    name: OUTPUTFILE
+  optional: true
+- !Flag
+  description: "Single field name or comma-seperated ',' multiple\nfield names can\
+    \ be given. Field name should be given\naccording to the (INFO) field header of\
+    \ the input vcf\nfile. Example: -f Func.refGene,ExonicFunc.refGene,Gene\n.refGene,1000g2015aug_all,ExAC_ALL,ExAC_EAS,clinvar_20\n\
+    161128,gnomAD_exome_ALL,gnomAD_genome_ALL,EFF,CSQ"
+  synonyms:
+  - -f
+  - --fields
+  args: !SimpleFlagArg
+    name: FIELDS
+  optional: true
+- !Flag
+  description: Indicate the full path to the reference genome fasta
+  synonyms:
+  - --HG_REF
+  args: !SimpleFlagArg
+    name: HG_REF_PATH
+  optional: true
+- !Flag
+  description: "You can use this option to specify java arguments\nrequired by GATK\
+    \ (default: --JAVA-OPTIONS \"-Xmx4G\")"
+  synonyms:
+  - --JAVA_OPTIONS
+  args: !SimpleFlagArg
+    name: JAVA_OPTIONS
+  optional: true
+- !Flag
+  description: "You can use this option to directly indicate the full\npath to the\
+    \ snpEff jar or wrapper"
+  synonyms:
+  - --SNPEFF
+  args: !SimpleFlagArg
+    name: SNPEFF_PATH
+  optional: true
+- !Flag
+  description: "Indicate SnpEff human genome annotation database\nversion"
+  synonyms:
+  - --SNPEFF_HG
+  args: !SimpleFlagArg
+    name: SNPEFF_HG_VERSION
+  optional: true
+- !Flag
+  description: Use to print verbosity (Mostly GATK/SNPEFF output)
+  synonyms:
+  - -v
+  - --verbosity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Add animation while running (looks good but costs a\nthread)"
+  synonyms:
+  - -c
+  - --add_anim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Keep temporary files in the directory tmp_macaron, at\nthe same location\
+    \ than the output file."
+  synonyms:
+  - --keep_tmp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use this option if you are using a version of gatk 4\nolder than gatk\
+    \ 4.1.4.1\n"
+  synonyms:
+  - --gatk4_previous
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: MACARON [-h] -i INPUTFILE [-o OUTPUTFILE] [-f FIELDS]\n       \
+  \        [--HG_REF HG_REF_PATH] [--GATK GATK_PATH]\n               [--JAVA_OPTIONS\
+  \ JAVA_OPTIONS] [--SNPEFF SNPEFF_PATH]\n               [--SNPEFF_HG SNPEFF_HG_VERSION]\
+  \ [-v] [-c] [--keep_tmp]\n               [--gatk4_previous]\n\n-Script to identify\
+  \ SnpClusters (SNPs within the same genetic codon)\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -i INPUTFILE, --infile INPUTFILE\n\
+  \                        Full path of the input VCF file.\n  -o OUTPUTFILE, --outfile\
+  \ OUTPUTFILE\n                        Path of the output txt file (Default Output\
+  \ file:\n                        MACARON_output.txt)\n  -f FIELDS, --fields FIELDS\n\
+  \                        Single field name or comma-seperated ',' multiple\n   \
+  \                     field names can be given. Field name should be given\n   \
+  \                     according to the (INFO) field header of the input vcf\n  \
+  \                      file. Example: -f Func.refGene,ExonicFunc.refGene,Gene\n\
+  \                        .refGene,1000g2015aug_all,ExAC_ALL,ExAC_EAS,clinvar_20\n\
+  \                        161128,gnomAD_exome_ALL,gnomAD_genome_ALL,EFF,CSQ\n  --HG_REF\
+  \ HG_REF_PATH  Indicate the full path to the reference genome fasta\n          \
+  \              file\n  --GATK GATK_PATH      You can use this option to directly\
+  \ indicate the full\n                        path to the GATK program (gatk wrapper\
+  \ or .jar)\n  --JAVA_OPTIONS JAVA_OPTIONS\n                        You can use this\
+  \ option to specify java arguments\n                        required by GATK (default:\
+  \ --JAVA-OPTIONS \"-Xmx4G\")\n  --SNPEFF SNPEFF_PATH  You can use this option to\
+  \ directly indicate the full\n                        path to the snpEff jar or\
+  \ wrapper\n  --SNPEFF_HG SNPEFF_HG_VERSION\n                        Indicate SnpEff\
+  \ human genome annotation database\n                        version\n  -v, --verbosity\
+  \       Use to print verbosity (Mostly GATK/SNPEFF output)\n  -c, --add_anim   \
+  \     Add animation while running (looks good but costs a\n                    \
+  \    thread)\n  --keep_tmp            Keep temporary files in the directory tmp_macaron,\
+  \ at\n                        the same location than the output file.\n  --gatk4_previous\
+  \      Use this option if you are using a version of gatk 4\n                  \
+  \      older than gatk 4.1.4.1\n"
+generated_using:
+- --help

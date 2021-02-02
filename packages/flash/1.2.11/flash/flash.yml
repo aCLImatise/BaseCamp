@@ -1,0 +1,322 @@
+!Command
+command:
+- flash
+positional:
+- !Positional
+  description: "----------------------------------------------------------------------------\n\
+    MANDATORY INPUT"
+  position: 0
+  name: data.
+  optional: false
+named:
+- !Flag
+  description: ) or tab-delimited (see the --tab-delimited-input
+  synonyms:
+  - --interleaved-input
+  args: !SimpleFlagArg
+    name: option
+  optional: true
+- !Flag
+  description: "The smallest ASCII value of the characters used to\nrepresent quality\
+    \ values of bases in FASTQ files.\nIt should be set to either 33, which corresponds\n\
+    to the later Illumina platforms and Sanger\nplatforms, or 64, which corresponds\
+    \ to the\nearlier Illumina platforms.  Default: 33."
+  synonyms:
+  - -p
+  - --phred-offset
+  args: !SimpleFlagArg
+    name: OFFSET
+  optional: true
+- !Flag
+  description: "The minimum required overlap length between two\nreads to provide\
+    \ a confident overlap.  Default:\n10bp."
+  synonyms:
+  - -m
+  - --min-overlap
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Maximum overlap length expected in approximately\n90% of read pairs.\
+    \  It is by default set to 65bp,\nwhich works well for 100bp reads generated from\
+    \ a\n180bp library, assuming a normal distribution of\nfragment lengths.  Overlaps\
+    \ longer than the maximum\noverlap parameter are still considered as good\noverlaps,\
+    \ but the mismatch density (explained below)\nis calculated over the first max_overlap\
+    \ bases in\nthe overlapped region rather than the entire\noverlap.  Default: 65bp,\
+    \ or calculated from the\nspecified read length, fragment length, and fragment\n\
+    length standard deviation."
+  synonyms:
+  - -M
+  - --max-overlap
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Maximum allowed ratio between the number of\nmismatched base pairs\
+    \ and the overlap length.\nTwo reads will not be combined with a given overlap\n\
+    if that overlap results in a mismatched base density\nhigher than this value.\
+    \  Note: Any occurence of an\n'N' in either read is ignored and not counted\n\
+    towards the mismatches or overlap length.  Our\nexperimental results suggest that\
+    \ higher values of\nthe maximum mismatch density yield larger\nnumbers of correctly\
+    \ merged read pairs but at\nthe expense of higher numbers of incorrectly\nmerged\
+    \ read pairs.  Default: 0.25."
+  synonyms:
+  - -x
+  - --max-mismatch-density
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Also try combining read pairs in the \"outie\"\norientation, e.g.\n\
+    Read 1: <-----------\nRead 2:       ------------>\nas opposed to only the \"innie\"\
+    \ orientation, e.g.\nRead 1:       <------------\nRead 2: ----------->\nFLASH\
+    \ uses the same parameters when trying each\norientation.  If a read pair can\
+    \ be combined in\nboth \"innie\" and \"outie\" orientations, the\nbetter-fitting\
+    \ one will be chosen using the same\nscoring algorithm that FLASH normally uses.\n\
+    This option also causes extra .innie and .outie\nhistogram files to be produced."
+  synonyms:
+  - -O
+  - --allow-outies
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "-f, --fragment-len=LEN\n-s, --fragment-len-stddev=LEN\nAverage read\
+    \ length, fragment length, and fragment\nstandard deviation.  These are convenience\
+    \ parameters\nonly, as they are only used for calculating the\nmaximum overlap\
+    \ (--max-overlap) parameter.\nThe maximum overlap is calculated as the overlap\
+    \ of\naverage-length reads from an average-size fragment\nplus 2.5 times the fragment\
+    \ length standard\ndeviation.  The default values are -r 100, -f 180,\nand -s\
+    \ 18, so this works out to a maximum overlap of\n65 bp.  If --max-overlap is specified,\
+    \ then the\nspecified value overrides the calculated value.\nIf you do not know\
+    \ the standard deviation of the\nfragment library, you can probably assume that\
+    \ the\nstandard deviation is 10% of the average fragment\nlength.\n--cap-mismatch-quals\
+    \    Cap quality scores assigned at mismatch locations\nto 2.  This was the default\
+    \ behavior in FLASH v1.2.7\nand earlier.  Later versions will instead calculate\n\
+    such scores as max(|q1 - q2|, 2); that is, the\nabsolute value of the difference\
+    \ in quality scores,\nbut at least 2.  Essentially, the new behavior\nprevents\
+    \ a low quality base call that is likely a\nsequencing error from significantly\
+    \ bringing down\nthe quality of a high quality, likely correct base\ncall.\n--interleaved-input\
+    \     Instead of requiring files MATES_1.FASTQ and\nMATES_2.FASTQ, allow a single\
+    \ file MATES.FASTQ that\nhas the paired-end reads interleaved.  Specify \"-\"\n\
+    to read from standard input.\n--interleaved-output    Write the uncombined pairs\
+    \ in interleaved FASTQ\nformat.\n-I, --interleaved       Equivalent to specifying\
+    \ both --interleaved-input\nand --interleaved-output.\n-Ti, --tab-delimited-input\n\
+    Assume the input is in tab-delimited format\nrather than FASTQ, in the format\
+    \ described below in\n'--tab-delimited-output'.  In this mode you should\nprovide\
+    \ a single input file, each line of which must\ncontain either a read pair (5\
+    \ fields) or a single\nread (3 fields).  FLASH will try to combine the read\n\
+    pairs.  Single reads will be written to the output\nfile as-is if also using --tab-delimited-output;\n\
+    otherwise they will be ignored.  Note that you may\nspecify \"-\" as the input\
+    \ file to read the\ntab-delimited data from standard input.\n-To, --tab-delimited-output\n\
+    Write output in tab-delimited format (not FASTQ).\nEach line will contain either\
+    \ a combined pair in the\nformat 'tag <tab> seq <tab> qual' or an uncombined\n\
+    pair in the format 'tag <tab> seq_1 <tab> qual_1\n<tab> seq_2 <tab> qual_2'.\n\
+    -o, --output-prefix=PREFIX\nPrefix of output files.  Default: \"out\".\n-d, --output-directory=DIR\n\
+    Path to directory for output files.  Default:\ncurrent working directory.\n-c,\
+    \ --to-stdout         Write the combined reads to standard output.  In\nthis mode,\
+    \ with FASTQ output (the default) the\nuncombined reads are discarded.  With tab-delimited\n\
+    output, uncombined reads are included in the\ntab-delimited data written to standard\
+    \ output.\nIn both cases, histogram files are not written,\nand informational\
+    \ messages are sent to standard\nerror rather than to standard output.\n-z, --compress\
+    \          Compress the output files directly with zlib,\nusing the gzip container\
+    \ format.  Similar to\nspecifying --compress-prog=gzip and --suffix=gz,\nbut may\
+    \ be slightly faster.\n--compress-prog=PROG    Pipe the output through the compression\
+    \ program\nPROG, which will be called as `PROG -c -',\nplus any arguments specified\
+    \ by --compress-prog-args.\nPROG must read uncompressed data from standard input\n\
+    and write compressed data to standard output when\ninvoked as noted above.\nExamples:\
+    \ gzip, bzip2, xz, pigz.\n--compress-prog-args=ARGS\nA string of additional arguments\
+    \ that will be passed\nto the compression program if one is specified with\n--compress-prog=PROG.\
+    \  (The arguments '-c -' are\nstill passed in addition to explicitly specified\n\
+    arguments.)\n--suffix=SUFFIX, --output-suffix=SUFFIX\nUse SUFFIX as the suffix\
+    \ of the output files\nafter \".fastq\".  A dot before the suffix is assumed,\n\
+    unless an empty suffix is provided.  Default:\nnothing; or 'gz' if -z is specified;\
+    \ or PROG if\n--compress-prog=PROG is specified.\n-t, --threads=NTHREADS  Set\
+    \ the number of worker threads.  This is in\naddition to the I/O threads.  Default:\
+    \ number of\nprocessors.  Note: if you need FLASH's output to\nappear deterministically\
+    \ or in the same order as\nthe original reads, you must specify -t 1\n(--threads=1).\n\
+    -q, --quiet             Do not print informational messages.\n-h, --help     \
+    \         Display this help and exit.\n-v, --version           Display version.\n"
+  synonyms:
+  - -r
+  - --read-len
+  args: !SimpleFlagArg
+    name: LEN
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: flash [OPTIONS] MATES_1.FASTQ MATES_2.FASTQ\n       flash [OPTIONS]\
+  \ --interleaved-input (MATES.FASTQ | -)\n       flash [OPTIONS] --tab-delimited-input\
+  \ (MATES.TAB | -)\n\n----------------------------------------------------------------------------\n\
+  \                                 DESCRIPTION                                \n\
+  ----------------------------------------------------------------------------\n\n\
+  FLASH (Fast Length Adjustment of SHort reads) is an accurate and fast tool\nto merge\
+  \ paired-end reads that were generated from DNA fragments whose\nlengths are shorter\
+  \ than twice the length of reads.  Merged read pairs result\nin unpaired longer\
+  \ reads, which are generally more desired in genome\nassembly and genome analysis\
+  \ processes.\n\nBriefly, the FLASH algorithm considers all possible overlaps at\
+  \ or above a\nminimum length between the reads in a pair and chooses the overlap\
+  \ that\nresults in the lowest mismatch density (proportion of mismatched bases in\n\
+  the overlapped region).  Ties between multiple overlaps are broken by\nconsidering\
+  \ quality scores at mismatch sites.  When building the merged\nsequence, FLASH computes\
+  \ a consensus sequence in the overlapped region.\nMore details can be found in the\
+  \ original publication\n(http://bioinformatics.oxfordjournals.org/content/27/21/2957.full).\n\
+  \nLimitations of FLASH include:\n   - FLASH cannot merge paired-end reads that do\
+  \ not overlap.\n   - FLASH is not designed for data that has a significant amount\
+  \ of indel\n     errors (such as Sanger sequencing data).  It is best suited for\
+  \ Illumina\n     data.\n\n----------------------------------------------------------------------------\n\
+  \                               MANDATORY INPUT\n----------------------------------------------------------------------------\n\
+  \nThe most common input to FLASH is two FASTQ files containing read 1 and read 2\n\
+  of each mate pair, respectively, in the same order.\n\nAlternatively, you may provide\
+  \ one FASTQ file, which may be standard input,\ncontaining paired-end reads in either\
+  \ interleaved FASTQ (see the\n--interleaved-input option) or tab-delimited (see\
+  \ the --tab-delimited-input\noption) format.  In all cases, gzip compressed input\
+  \ is autodetected.  Also,\nin all cases, the PHRED offset is, by default, assumed\
+  \ to be 33; use the\n--phred-offset option to change it.\n\n----------------------------------------------------------------------------\n\
+  \                                   OUTPUT\n----------------------------------------------------------------------------\n\
+  \nThe default output of FLASH consists of the following files:\n\n   - out.extendedFrags.fastq\
+  \      The merged reads.\n   - out.notCombined_1.fastq      Read 1 of mate pairs\
+  \ that were not merged.\n   - out.notCombined_2.fastq      Read 2 of mate pairs\
+  \ that were not merged.\n   - out.hist                     Numeric histogram of\
+  \ merged read lengths.\n   - out.histogram                Visual histogram of merged\
+  \ read lengths.\n\nFLASH also logs informational messages to standard output.  These\
+  \ can also be\nredirected to a file, as in the following example:\n\n  $ flash reads_1.fq\
+  \ reads_2.fq 2>&1 | tee flash.log\n\nIn addition, FLASH supports several features\
+  \ affecting the output:\n\n   - Writing the merged reads directly to standard output\
+  \ (--to-stdout)\n   - Writing gzip compressed output files (-z) or using an external\n\
+  \     compression program (--compress-prog)\n   - Writing the uncombined read pairs\
+  \ in interleaved FASTQ format\n     (--interleaved-output)\n   - Writing all output\
+  \ reads to a single file in tab-delimited format\n     (--tab-delimited-output)\n\
+  \n----------------------------------------------------------------------------\n\
+  \                                   OPTIONS\n----------------------------------------------------------------------------\n\
+  \n  -m, --min-overlap=NUM   The minimum required overlap length between two\n  \
+  \                        reads to provide a confident overlap.  Default:\n     \
+  \                     10bp.\n\n  -M, --max-overlap=NUM   Maximum overlap length\
+  \ expected in approximately\n                          90% of read pairs.  It is\
+  \ by default set to 65bp,\n                          which works well for 100bp\
+  \ reads generated from a\n                          180bp library, assuming a normal\
+  \ distribution of\n                          fragment lengths.  Overlaps longer\
+  \ than the maximum\n                          overlap parameter are still considered\
+  \ as good\n                          overlaps, but the mismatch density (explained\
+  \ below)\n                          is calculated over the first max_overlap bases\
+  \ in\n                          the overlapped region rather than the entire\n \
+  \                         overlap.  Default: 65bp, or calculated from the\n    \
+  \                      specified read length, fragment length, and fragment\n  \
+  \                        length standard deviation.\n\n  -x, --max-mismatch-density=NUM\n\
+  \                          Maximum allowed ratio between the number of\n       \
+  \                   mismatched base pairs and the overlap length.\n            \
+  \              Two reads will not be combined with a given overlap\n           \
+  \               if that overlap results in a mismatched base density\n         \
+  \                 higher than this value.  Note: Any occurence of an\n         \
+  \                 'N' in either read is ignored and not counted\n              \
+  \            towards the mismatches or overlap length.  Our\n                  \
+  \        experimental results suggest that higher values of\n                  \
+  \        the maximum mismatch density yield larger\n                          numbers\
+  \ of correctly merged read pairs but at\n                          the expense of\
+  \ higher numbers of incorrectly\n                          merged read pairs.  Default:\
+  \ 0.25.\n\n  -O, --allow-outies      Also try combining read pairs in the \"outie\"\
+  \n                          orientation, e.g.\n\n                              \
+  \ Read 1: <-----------\n                               Read 2:       ------------>\n\
+  \n                          as opposed to only the \"innie\" orientation, e.g.\n\
+  \n                               Read 1:       <------------\n                 \
+  \              Read 2: ----------->\n\n                          FLASH uses the\
+  \ same parameters when trying each\n                          orientation.  If a\
+  \ read pair can be combined in\n                          both \"innie\" and \"\
+  outie\" orientations, the\n                          better-fitting one will be\
+  \ chosen using the same\n                          scoring algorithm that FLASH\
+  \ normally uses.\n\n                          This option also causes extra .innie\
+  \ and .outie\n                          histogram files to be produced.\n\n  -p,\
+  \ --phred-offset=OFFSET\n                          The smallest ASCII value of the\
+  \ characters used to\n                          represent quality values of bases\
+  \ in FASTQ files.\n                          It should be set to either 33, which\
+  \ corresponds\n                          to the later Illumina platforms and Sanger\n\
+  \                          platforms, or 64, which corresponds to the\n        \
+  \                  earlier Illumina platforms.  Default: 33.\n\n  -r, --read-len=LEN\n\
+  \  -f, --fragment-len=LEN\n  -s, --fragment-len-stddev=LEN\n                   \
+  \       Average read length, fragment length, and fragment\n                   \
+  \       standard deviation.  These are convenience parameters\n                \
+  \          only, as they are only used for calculating the\n                   \
+  \       maximum overlap (--max-overlap) parameter.\n                          The\
+  \ maximum overlap is calculated as the overlap of\n                          average-length\
+  \ reads from an average-size fragment\n                          plus 2.5 times\
+  \ the fragment length standard\n                          deviation.  The default\
+  \ values are -r 100, -f 180,\n                          and -s 18, so this works\
+  \ out to a maximum overlap of\n                          65 bp.  If --max-overlap\
+  \ is specified, then the\n                          specified value overrides the\
+  \ calculated value.\n\n                          If you do not know the standard\
+  \ deviation of the\n                          fragment library, you can probably\
+  \ assume that the\n                          standard deviation is 10% of the average\
+  \ fragment\n                          length.\n\n  --cap-mismatch-quals    Cap quality\
+  \ scores assigned at mismatch locations\n                          to 2.  This was\
+  \ the default behavior in FLASH v1.2.7\n                          and earlier. \
+  \ Later versions will instead calculate\n                          such scores as\
+  \ max(|q1 - q2|, 2); that is, the\n                          absolute value of the\
+  \ difference in quality scores,\n                          but at least 2.  Essentially,\
+  \ the new behavior\n                          prevents a low quality base call that\
+  \ is likely a\n                          sequencing error from significantly bringing\
+  \ down\n                          the quality of a high quality, likely correct\
+  \ base\n                          call.\n\n  --interleaved-input     Instead of\
+  \ requiring files MATES_1.FASTQ and\n                          MATES_2.FASTQ, allow\
+  \ a single file MATES.FASTQ that\n                          has the paired-end reads\
+  \ interleaved.  Specify \"-\"\n                          to read from standard input.\n\
+  \n  --interleaved-output    Write the uncombined pairs in interleaved FASTQ\n  \
+  \                        format.\n\n  -I, --interleaved       Equivalent to specifying\
+  \ both --interleaved-input\n                          and --interleaved-output.\n\
+  \n  -Ti, --tab-delimited-input\n                          Assume the input is in\
+  \ tab-delimited format\n                          rather than FASTQ, in the format\
+  \ described below in\n                          '--tab-delimited-output'.  In this\
+  \ mode you should\n                          provide a single input file, each line\
+  \ of which must\n                          contain either a read pair (5 fields)\
+  \ or a single\n                          read (3 fields).  FLASH will try to combine\
+  \ the read\n                          pairs.  Single reads will be written to the\
+  \ output\n                          file as-is if also using --tab-delimited-output;\n\
+  \                          otherwise they will be ignored.  Note that you may\n\
+  \                          specify \"-\" as the input file to read the\n       \
+  \                   tab-delimited data from standard input.\n\n  -To, --tab-delimited-output\n\
+  \                          Write output in tab-delimited format (not FASTQ).\n \
+  \                         Each line will contain either a combined pair in the\n\
+  \                          format 'tag <tab> seq <tab> qual' or an uncombined\n\
+  \                          pair in the format 'tag <tab> seq_1 <tab> qual_1\n  \
+  \                        <tab> seq_2 <tab> qual_2'.\n\n  -o, --output-prefix=PREFIX\n\
+  \                          Prefix of output files.  Default: \"out\".\n\n  -d, --output-directory=DIR\n\
+  \                          Path to directory for output files.  Default:\n     \
+  \                     current working directory.\n\n  -c, --to-stdout         Write\
+  \ the combined reads to standard output.  In\n                          this mode,\
+  \ with FASTQ output (the default) the\n                          uncombined reads\
+  \ are discarded.  With tab-delimited\n                          output, uncombined\
+  \ reads are included in the\n                          tab-delimited data written\
+  \ to standard output.\n                          In both cases, histogram files\
+  \ are not written,\n                          and informational messages are sent\
+  \ to standard\n                          error rather than to standard output.\n\
+  \n  -z, --compress          Compress the output files directly with zlib,\n    \
+  \                      using the gzip container format.  Similar to\n          \
+  \                specifying --compress-prog=gzip and --suffix=gz,\n            \
+  \              but may be slightly faster.\n\n  --compress-prog=PROG    Pipe the\
+  \ output through the compression program\n                          PROG, which\
+  \ will be called as `PROG -c -',\n                          plus any arguments specified\
+  \ by --compress-prog-args.\n                          PROG must read uncompressed\
+  \ data from standard input\n                          and write compressed data\
+  \ to standard output when\n                          invoked as noted above.\n \
+  \                         Examples: gzip, bzip2, xz, pigz.\n\n  --compress-prog-args=ARGS\n\
+  \                          A string of additional arguments that will be passed\n\
+  \                          to the compression program if one is specified with\n\
+  \                          --compress-prog=PROG.  (The arguments '-c -' are\n  \
+  \                        still passed in addition to explicitly specified\n    \
+  \                      arguments.)\n\n  --suffix=SUFFIX, --output-suffix=SUFFIX\n\
+  \                          Use SUFFIX as the suffix of the output files\n      \
+  \                    after \".fastq\".  A dot before the suffix is assumed,\n  \
+  \                        unless an empty suffix is provided.  Default:\n       \
+  \                   nothing; or 'gz' if -z is specified; or PROG if\n          \
+  \                --compress-prog=PROG is specified.\n\n  -t, --threads=NTHREADS\
+  \  Set the number of worker threads.  This is in\n                          addition\
+  \ to the I/O threads.  Default: number of\n                          processors.\
+  \  Note: if you need FLASH's output to\n                          appear deterministically\
+  \ or in the same order as\n                          the original reads, you must\
+  \ specify -t 1\n                          (--threads=1).\n\n  -q, --quiet      \
+  \       Do not print informational messages.\n\n  -h, --help              Display\
+  \ this help and exit.\n\n  -v, --version           Display version.\n"
+generated_using:
+- --help

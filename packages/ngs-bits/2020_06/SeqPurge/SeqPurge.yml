@@ -1,0 +1,244 @@
+!Command
+command:
+- SeqPurge
+positional: []
+named:
+- !Flag
+  description: Forward input gzipped FASTQ file(s).
+  synonyms:
+  - -in1
+  args: !SimpleFlagArg
+    name: filelist
+  optional: true
+- !Flag
+  description: Reverse input gzipped FASTQ file(s).
+  synonyms:
+  - -in2
+  args: !SimpleFlagArg
+    name: filelist
+  optional: true
+- !Flag
+  description: Forward output gzipped FASTQ file.
+  synonyms:
+  - -out1
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Reverse output gzipped FASTQ file.
+  synonyms:
+  - -out2
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Forward adapter sequence (at least 15 bases).\nDefault value: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCA'"
+  synonyms:
+  - -a1
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Reverse adapter sequence (at least 15 bases).\nDefault value: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'"
+  synonyms:
+  - -a2
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Minimum percentage of matching bases for sequence/adapter matches.\n\
+    Default value: '80'"
+  synonyms:
+  - -match_perc
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Maximum error probability of insert and adapter matches.\nDefault\
+    \ value: '1e-06'"
+  synonyms:
+  - -mep
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "Quality trimming cutoff for trimming from the end of reads using a\
+    \ sliding window approach. Set to 0 to disable.\nDefault value: '15'"
+  synonyms:
+  - -qcut
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Quality trimming window size.\nDefault value: '5'"
+  synonyms:
+  - -qwin
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Quality trimming FASTQ score offset.\nDefault value: '33'"
+  synonyms:
+  - -qoff
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Number of subsequent Ns to trimmed using a sliding window approach\
+    \ from the front of reads. Set to 0 to disable.\nDefault value: '7'"
+  synonyms:
+  - -ncut
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Minimum read length after adapter trimming. Shorter reads are discarded.\n\
+    Default value: '30'"
+  synonyms:
+  - -min_len
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "The number of threads used for trimming (two additional threads are\
+    \ used for reading and writing).\nDefault value: '1'"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Name prefix of singleton read output files (if only one read of a\
+    \ pair is discarded).\nDefault value: ''"
+  synonyms:
+  - -out3
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Write summary/progress to this file instead of STDOUT.\nDefault value:\
+    \ ''"
+  synonyms:
+  - -summary
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "If set, a read QC file in qcML format is created (just like ReadQC).\n\
+    Default value: ''"
+  synonyms:
+  - -qc
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Maximum number of reads that may be pre-fetched into memory to speed\
+    \ up trimming.\nDefault value: '1000'"
+  synonyms:
+  - -prefetch
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Enable error-correction of adapter-trimmed reads (only those with\
+    \ insert match).\nDefault value: 'false'"
+  synonyms:
+  - -ec
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Enables debug output (use only with one thread).\nDefault value: 'false'"
+  synonyms:
+  - -debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Enables progress output at the given interval in milliseconds (disabled\
+    \ by default).\nDefault value: '-1'"
+  synonyms:
+  - -progress
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Output gzip compression level from 1 (fastest) to 9 (best compression).\n\
+    Default value: '1'"
+  synonyms:
+  - -compression_level
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Prints changeloge and exits.
+  synonyms:
+  - --changelog
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Writes a Tool Definition Xml file. The file name is the application
+    name with the suffix '.tdx'.
+  synonyms:
+  - --tdx
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows this help and exits.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints version and exits.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "SeqPurge (2020_06)\n\nRemoves adapter sequences from paired-end sequencing\
+  \ data.\n\nMandatory parameters:\n  -in1 <filelist>          Forward input gzipped\
+  \ FASTQ file(s).\n  -in2 <filelist>          Reverse input gzipped FASTQ file(s).\n\
+  \  -out1 <file>             Forward output gzipped FASTQ file.\n  -out2 <file> \
+  \            Reverse output gzipped FASTQ file.\n\nOptional parameters:\n  -a1 <string>\
+  \             Forward adapter sequence (at least 15 bases).\n                  \
+  \         Default value: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCA'\n  -a2 <string>   \
+  \          Reverse adapter sequence (at least 15 bases).\n                     \
+  \      Default value: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'\n  -match_perc <float>\
+  \      Minimum percentage of matching bases for sequence/adapter matches.\n    \
+  \                       Default value: '80'\n  -mep <float>             Maximum\
+  \ error probability of insert and adapter matches.\n                           Default\
+  \ value: '1e-06'\n  -qcut <int>              Quality trimming cutoff for trimming\
+  \ from the end of reads using a sliding window approach. Set to 0 to disable.\n\
+  \                           Default value: '15'\n  -qwin <int>              Quality\
+  \ trimming window size.\n                           Default value: '5'\n  -qoff\
+  \ <int>              Quality trimming FASTQ score offset.\n                    \
+  \       Default value: '33'\n  -ncut <int>              Number of subsequent Ns\
+  \ to trimmed using a sliding window approach from the front of reads. Set to 0 to\
+  \ disable.\n                           Default value: '7'\n  -min_len <int>    \
+  \       Minimum read length after adapter trimming. Shorter reads are discarded.\n\
+  \                           Default value: '30'\n  -threads <int>           The\
+  \ number of threads used for trimming (two additional threads are used for reading\
+  \ and writing).\n                           Default value: '1'\n  -out3 <file> \
+  \            Name prefix of singleton read output files (if only one read of a pair\
+  \ is discarded).\n                           Default value: ''\n  -summary <file>\
+  \          Write summary/progress to this file instead of STDOUT.\n            \
+  \               Default value: ''\n  -qc <file>               If set, a read QC\
+  \ file in qcML format is created (just like ReadQC).\n                         \
+  \  Default value: ''\n  -prefetch <int>          Maximum number of reads that may\
+  \ be pre-fetched into memory to speed up trimming.\n                           Default\
+  \ value: '1000'\n  -ec                      Enable error-correction of adapter-trimmed\
+  \ reads (only those with insert match).\n                           Default value:\
+  \ 'false'\n  -debug                   Enables debug output (use only with one thread).\n\
+  \                           Default value: 'false'\n  -progress <int>          Enables\
+  \ progress output at the given interval in milliseconds (disabled by default).\n\
+  \                           Default value: '-1'\n  -compression_level <int> Output\
+  \ gzip compression level from 1 (fastest) to 9 (best compression).\n           \
+  \                Default value: '1'\n\nSpecial parameters:\n  --help           \
+  \        Shows this help and exits.\n  --version                Prints version and\
+  \ exits.\n  --changelog              Prints changeloge and exits.\n  --tdx     \
+  \               Writes a Tool Definition Xml file. The file name is the application\
+  \ name with the suffix '.tdx'.\n\n"
+generated_using:
+- --help

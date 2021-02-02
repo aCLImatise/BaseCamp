@@ -1,0 +1,258 @@
+!Command
+command:
+- samtools
+- mpileup
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in1.bam
+  optional: false
+named:
+- !Flag
+  description: assume the quality is in the Illumina-1.3+ encoding
+  synonyms:
+  - '-6'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: count anomalous read pairs
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disable BAQ computation
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: list of input BAM filenames, one per line [null]
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: parameter for adjusting mapQ; 0 to disable [0]
+  synonyms:
+  - -C
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: max per-BAM depth to avoid excessive memory usage [250]
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: recalculate extended BAQ on the fly thus ignoring existing BQs
+  synonyms:
+  - -E
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: faidx indexed reference sequence file [null]
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: exclude read groups listed in FILE [null]
+  synonyms:
+  - -G
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: list of positions (chr pos) or regions (BED) [null]
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: cap mapping quality at INT [60]
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: region in which pileup is generated [null]
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: ignore RG tags
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skip alignments with mapQ smaller than INT [0]
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: skip bases with baseQ/BAQ smaller than INT [13]
+  synonyms:
+  - -Q
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'required flags: skip reads with mask bits unset []'
+  synonyms:
+  - --rf
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'filter flags: skip reads with mask bits set []'
+  synonyms:
+  - --ff
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: output per-sample DP in BCF (require -g/-u)
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: generate BCF output (genotype likelihoods)
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output base positions on reads (disabled by -g/-u)
+  synonyms:
+  - -O
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output mapping quality (disabled by -g/-u)
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output per-sample strand bias P-value in BCF (require -g/-u)
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: generate uncompress BCF output
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Phred-scaled gap extension seq error probability [20]
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimum fraction of gapped reads for candidates [0.002]
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: coefficient for homopolymer errors [100]
+  synonyms:
+  - -h
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: do not perform indel calling
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: max per-sample depth for INDEL calling [250]
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimum gapped reads for indel candidates [1]
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Phred-scaled gap open sequencing error probability [40]
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: apply -m and -F per-sample to increase sensitivity
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: comma separated list of platforms for indels [all]
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nUsage: samtools mpileup [options] in1.bam [in2.bam [...]]\n\nInput options:\n\
+  \n       -6           assume the quality is in the Illumina-1.3+ encoding\n    \
+  \   -A           count anomalous read pairs\n       -B           disable BAQ computation\n\
+  \       -b FILE      list of input BAM filenames, one per line [null]\n       -C\
+  \ INT       parameter for adjusting mapQ; 0 to disable [0]\n       -d INT      \
+  \ max per-BAM depth to avoid excessive memory usage [250]\n       -E           recalculate\
+  \ extended BAQ on the fly thus ignoring existing BQs\n       -f FILE      faidx\
+  \ indexed reference sequence file [null]\n       -G FILE      exclude read groups\
+  \ listed in FILE [null]\n       -l FILE      list of positions (chr pos) or regions\
+  \ (BED) [null]\n       -M INT       cap mapping quality at INT [60]\n       -r STR\
+  \       region in which pileup is generated [null]\n       -R           ignore RG\
+  \ tags\n       -q INT       skip alignments with mapQ smaller than INT [0]\n   \
+  \    -Q INT       skip bases with baseQ/BAQ smaller than INT [13]\n       --rf INT\
+  \     required flags: skip reads with mask bits unset []\n       --ff INT     filter\
+  \ flags: skip reads with mask bits set []\n\nOutput options:\n\n       -D      \
+  \     output per-sample DP in BCF (require -g/-u)\n       -g           generate\
+  \ BCF output (genotype likelihoods)\n       -O           output base positions on\
+  \ reads (disabled by -g/-u)\n       -s           output mapping quality (disabled\
+  \ by -g/-u)\n       -S           output per-sample strand bias P-value in BCF (require\
+  \ -g/-u)\n       -u           generate uncompress BCF output\n\nSNP/INDEL genotype\
+  \ likelihoods options (effective with `-g' or `-u'):\n\n       -e INT       Phred-scaled\
+  \ gap extension seq error probability [20]\n       -F FLOAT     minimum fraction\
+  \ of gapped reads for candidates [0.002]\n       -h INT       coefficient for homopolymer\
+  \ errors [100]\n       -I           do not perform indel calling\n       -L INT\
+  \       max per-sample depth for INDEL calling [250]\n       -m INT       minimum\
+  \ gapped reads for indel candidates [1]\n       -o INT       Phred-scaled gap open\
+  \ sequencing error probability [40]\n       -p           apply -m and -F per-sample\
+  \ to increase sensitivity\n       -P STR       comma separated list of platforms\
+  \ for indels [all]\n\nNotes: Assuming diploid individuals.\n\n"
+generated_using: []

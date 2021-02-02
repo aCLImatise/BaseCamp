@@ -1,0 +1,167 @@
+!Command
+command:
+- lr2gene.pl
+positional: []
+named:
+- !Flag
+  description: that control sample is used for normalization
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: Indidate
+  optional: true
+- !Flag
+  description: mode
+  synonyms:
+  - -y
+  args: !SimpleFlagArg
+    name: Debugging
+  optional: true
+- !Flag
+  description: "The minimum consecutive amplicons to look for deletions and amplifications.\
+    \  Default: 1.  Use with caution\nwhen it is less than 3.  There might be more\
+    \ false positives.  Though it has been successfully applied with\noption \"-s\
+    \ 1\" and identified one-exon deletion of PTEN and TP53 that were confirmed by\
+    \ RNA-seq."
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Minimum log2 ratio for a whole gene to be considered amplified.  Default:
+    1.50'
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'Minimum log2 ratio for a whole gene to be considered deleted.  Default:
+    -2.00'
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'Minimum mean log2 ratio difference for <3 exon deletion/amplification
+    to be called.  Default: 1.25'
+  synonyms:
+  - -E
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "When considering partial deletions less than 3 exons/amplicons, the\
+    \ minimum MAD value, in addition to -E,\nbefore considering it to be amplified\
+    \ or deleted.  Default: 10"
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "When considering >=3 exons deletion/amplification within a gene, the\
+    \ minimum differences between the log2 of two segments.\nDefault: 0.5"
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "(0-1)\nThe p-value for t-test when consecutive exons/amplicons are\
+    \ >= 3.  Default: 0.00001"
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'When considering breakpoint in the middle of a gene, the minimum number
+    of exons.  Default: 5'
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "When considering breakpoint in the middle of a gene, the minimum differences\
+    \ between the log2 of two segments.\nDefault: 0.4"
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "(0-1)\nThe p-value for t-test when the breakpoint is in the middle\
+    \ with min exons/amplicons >= [-e].  Default: 0.000001"
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "(0-1)\nIf a breakpoint has been detected more than \"float\" fraction\
+    \ of samples, it is considered false positive and removed.\nDefault: 0.03, or\
+    \ 3%.  Use in combination with -N"
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "If a breakpoint has been detected more than \"int\" samples, it is\
+    \ considered false positives and removed.\nDefault: 5.  Use in combination with\
+    \ -R."
+  synonyms:
+  - -N
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "    Usage: /usr/local/bin/lr2gene.pl [-aPH] [-cy] [-F float] [-s min_amplicon_#]\
+  \ [-A float] [-D float] cov2lr.txt\n\n    The /usr/local/bin/lr2gene.pl program\
+  \ will convert a coverage file to copy number profile.  The default parameters are\
+  \ designed for\n    detecting such aberrations for high tumor purity samples, such\
+  \ as cancer cell lines.  For clinical samples,\n    many parameters need to be adjusted.\n\
+  \n    Arguments are:\n    cov2lr.txt:  The coverage output file from cov2lr.pl script.\
+  \  Can also take from standard in or more than\n                   one file.\n\n\
+  \    Options are:\n\n    -c Indidate that control sample is used for normalization\n\
+  \    -y Debugging mode\n\n    -s int\n       The minimum consecutive amplicons to\
+  \ look for deletions and amplifications.  Default: 1.  Use with caution\n      \
+  \ when it is less than 3.  There might be more false positives.  Though it has been\
+  \ successfully applied with\n       option \"-s 1\" and identified one-exon deletion\
+  \ of PTEN and TP53 that were confirmed by RNA-seq.\n\n\n    For whole gene:\n  \
+  \  -A float\n       Minimum log2 ratio for a whole gene to be considered amplified.\
+  \  Default: 1.50\n\n    -D float\n       Minimum log2 ratio for a whole gene to\
+  \ be considered deleted.  Default: -2.00\n\n\n    For < 3 exons:\n    -E float\n\
+  \       Minimum mean log2 ratio difference for <3 exon deletion/amplification to\
+  \ be called.  Default: 1.25\n\n    -M float\n       When considering partial deletions\
+  \ less than 3 exons/amplicons, the minimum MAD value, in addition to -E,\n     \
+  \  before considering it to be amplified or deleted.  Default: 10\n\n    -d float\n\
+  \       When considering >=3 exons deletion/amplification within a gene, the minimum\
+  \ differences between the log2 of two segments.\n       Default: 0.5\n\n    -p float\
+  \ (0-1)\n       The p-value for t-test when consecutive exons/amplicons are >= 3.\
+  \  Default: 0.00001\n\n\n    For break point in the middle of the gene:\n    -e\
+  \ float\n       When considering breakpoint in the middle of a gene, the minimum\
+  \ number of exons.  Default: 5\n\n    -t float\n       When considering breakpoint\
+  \ in the middle of a gene, the minimum differences between the log2 of two segments.\n\
+  \       Default: 0.4\n\n    -P float (0-1)\n       The p-value for t-test when the\
+  \ breakpoint is in the middle with min exons/amplicons >= [-e].  Default: 0.000001\n\
+  \n    For cohort level aberrations:\n    -R float (0-1)\n       If a breakpoint\
+  \ has been detected more than \"float\" fraction of samples, it is considered false\
+  \ positive and removed.\n       Default: 0.03, or 3%.  Use in combination with -N\n\
+  \n    -N int\n       If a breakpoint has been detected more than \"int\" samples,\
+  \ it is considered false positives and removed.\n       Default: 5.  Use in combination\
+  \ with -R.\n\nAUTHOR\n       Written by Zhongwu Lai, AstraZeneca, Boston, USA\n\n\
+  REPORTING BUGS\n       Report bugs to zhongwu@yahoo.com\n\nCOPYRIGHT\n       This\
+  \ is free software: you are free to change and redistribute it.  There is NO WARRANTY,\
+  \ to the extent permitted by law.\n\n"
+generated_using:
+- -h

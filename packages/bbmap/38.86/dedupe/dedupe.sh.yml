@@ -1,0 +1,142 @@
+!Command
+command:
+- dedupe.sh
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in
+  optional: false
+named:
+- !Flag
+  description: "This will set Java's memory usage, overriding autodetection.\n-Xmx20g\
+    \ will specify 20 gigs of RAM, and -Xmx200m will specify 200 megs."
+  synonyms:
+  - -Xmx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: This flag will cause the process to exit if an out-of-memory exception
+    occurs.  Requires Java 8u92+.
+  synonyms:
+  - -eoom
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assertions.
+  synonyms:
+  - -da
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nWritten by Brian Bushnell and Jonathan Rood\nLast modified February\
+  \ 19, 2020\n\nDescription:  Accepts one or more files containing sets of sequences\
+  \ (reads or scaffolds).\nRemoves duplicate sequences, which may be specified to\
+  \ be exact matches, subsequences, or sequences within some percent identity.\nCan\
+  \ also find overlapping sequences and group them into clusters.\nPlease read bbmap/docs/guides/DedupeGuide.txt\
+  \ for more information.\n\nUsage:     dedupe.sh in=<file or stdin> out=<file or\
+  \ stdout>\n\nAn example of running Dedupe for clustering short reads:\ndedupe.sh\
+  \ in=x.fq am=f ac=f fo c pc rnc=f mcs=4 mo=100 s=1 pto cc qin=33 csf=stats.txt pattern=cluster_%.fq\
+  \ dot=graph.dot\n\nInput may be fasta or fastq, compressed or uncompressed.\nOutput\
+  \ may be stdout or a file.  With no output parameter, data will be written to stdout.\n\
+  If 'out=null', there will be no output, but statistics will still be printed.\n\
+  You can also use 'dedupe <infile> <outfile>' without the 'in=' and 'out='.\n\nI/O\
+  \ parameters:\nin=<file,file>        A single file or a comma-delimited list of\
+  \ files.\nout=<file>            Destination for all output contigs.\npattern=<file>\
+  \        Clusters will be written to individual files, where the '%' symbol in the\
+  \ pattern is replaced by cluster number.\noutd=<file>           Optional; removed\
+  \ duplicates will go here.\ncsf=<file>            (clusterstatsfile) Write a list\
+  \ of cluster names and sizes.\ndot=<file>            (graph) Write a graph in dot\
+  \ format.  Requires 'fo' and 'pc' flags.\nthreads=auto          (t) Set number of\
+  \ threads to use; default is number of logical processors.\noverwrite=t        \
+  \   (ow) Set to false to force the program to abort rather than overwrite an existing\
+  \ file.\nshowspeed=t           (ss) Set to 'f' to suppress display of processing\
+  \ speed.\nminscaf=0             (ms) Ignore contigs/scaffolds shorter than this.\n\
+  interleaved=auto      If true, forces fastq input to be paired and interleaved.\n\
+  ziplevel=2            Set to 1 (lowest) through 9 (max) to change compression level;\
+  \ lower compression is faster.\n\nOutput format parameters:\nstorename=t       \
+  \    (sn) Store scaffold names (set false to save memory).\n#addpairnum=f      \
+  \   Add .1 and .2 to numeric id of read1 and read2.\nstorequality=t        (sq)\
+  \ Store quality values for fastq assemblies (set false to save memory).\nuniquenames=t\
+  \         (un) Ensure all output scaffolds have unique names.  Uses more memory.\n\
+  mergenames=f          When a sequence absorbs another, concatenate their headers.\n\
+  mergedelimiter=>      Delimiter between merged headers.  Can be a symbol name like\
+  \ greaterthan.\nnumbergraphnodes=t    (ngn) Label dot graph nodes with read numbers\
+  \ rather than read names.\nsort=f                Sort output (otherwise it will\
+  \ be random).  Options:\n                         length:  Sort by length\n    \
+  \                     quality: Sort by quality\n                         name: \
+  \   Sort by name\n                         id:      Sort by input order\nascending=f\
+  \           Sort in ascending order.\nordered=f             Output sequences in\
+  \ input order.  Equivalent to sort=id ascending.\nrenameclusters=f      (rnc) Rename\
+  \ contigs to indicate which cluster they are in.\nprintlengthinedges=f  (ple) Print\
+  \ the length of contigs in edges.\n\nProcessing parameters:\nabsorbrc=t        \
+  \    (arc) Absorb reverse-complements as well as normal orientation.\nabsorbmatch=t\
+  \         (am) Absorb exact matches of contigs.\nabsorbcontainment=t   (ac) Absorb\
+  \ full containments of contigs.\n#absorboverlap=f      (ao) Absorb (merge) non-contained\
+  \ overlaps of contigs (TODO).\nfindoverlap=f         (fo) Find overlaps between\
+  \ contigs (containments and non-containments).  Necessary for clustering.\nuniqueonly=f\
+  \          (uo) If true, all copies of duplicate reads will be discarded, rather\
+  \ than keeping 1.\nrmn=f                 (requirematchingnames) If true, both names\
+  \ and sequence must match.\nusejni=f              (jni) Do alignments in C code,\
+  \ which is faster, if an edit distance is allowed.\n                      This will\
+  \ require compiling the C code; details are in /jni/README.txt.\n\nSubset parameters:\n\
+  subsetcount=1         (sstc) Number of subsets used to process the data; higher\
+  \ uses less memory.\nsubset=0              (sst) Only process reads whose ((ID%subsetcount)==subset).\n\
+  \nClustering parameters:\ncluster=f             (c) Group overlapping contigs into\
+  \ clusters.\npto=f                 (preventtransitiveoverlaps) Do not look for new\
+  \ edges between nodes in the same cluster.\nminclustersize=1      (mcs) Do not output\
+  \ clusters smaller than this.\npbr=f                 (pickbestrepresentative) Only\
+  \ output the single highest-quality read per cluster.\n\nCluster postprocessing\
+  \ parameters:\nprocessclusters=f     (pc) Run the cluster processing phase, which\
+  \ performs the selected operations in this category.\n                      For\
+  \ example, pc AND cc must be enabled to perform cc.\nfixmultijoins=t       (fmj)\
+  \ Remove redundant overlaps between the same two contigs.\nremovecycles=t      \
+  \  (rc) Remove all cycles so clusters form trees.\ncc=t                  (canonicizeclusters)\
+  \ Flip contigs so clusters have a single orientation.\nfcc=f                 (fixcanoncontradictions)\
+  \ Truncate graph at nodes with canonization disputes.\nfoc=f                 (fixoffsetcontradictions)\
+  \ Truncate graph at nodes with offset disputes.\nmst=f                 (maxspanningtree)\
+  \ Remove cyclic edges, leaving only the longest edges that form a tree.\n\nOverlap\
+  \ Detection Parameters\nexact=t               (ex) Only allow exact symbol matches.\
+  \  When false, an 'N' will match any symbol.\ntouppercase=t         (tuc) Convert\
+  \ input bases to upper-case; otherwise, lower-case will not match.\nmaxsubs=0  \
+  \           (s) Allow up to this many mismatches (substitutions only, no indels).\
+  \  May be set higher than maxedits.\nmaxedits=0            (e) Allow up to this\
+  \ many edits (subs or indels).  Higher is slower.\nminidentity=100       (mid) Absorb\
+  \ contained sequences with percent identity of at least this (includes indels).\n\
+  minlengthpercent=0    (mlp) Smaller contig must be at least this percent of larger\
+  \ contig's length to be absorbed.\nminoverlappercent=0   (mop) Overlap must be at\
+  \ least this percent of smaller contig's length to cluster and merge.\nminoverlap=200\
+  \        (mo) Overlap must be at least this long to cluster and merge.\ndepthratio=0\
+  \          (dr) When non-zero, overlaps will only be formed between reads with a\
+  \ depth ratio of at most this.\n                      Should be above 1.  Depth\
+  \ is determined by parsing the read names; this information can be added\n     \
+  \                 by running KmerNormalize (khist.sh, bbnorm.sh, or ecc.sh) with\
+  \ the flag 'rename'\nk=31                  Seed length used for finding containments\
+  \ and overlaps.  Anything shorter than k will not be found.\nnumaffixmaps=1    \
+  \    (nam) Number of prefixes/suffixes to index per contig. Higher is more sensitive,\
+  \ if edits are allowed.\nhashns=f              Set to true to search for matches\
+  \ using kmers containing Ns.  Can lead to extreme slowdown in some cases.\n#ignoreaffix1=f\
+  \       (ia1) Ignore first affix (for testing).\n#storesuffix=f        (ss) Store\
+  \ suffix as well as prefix.  Automatically set to true when doing inexact matches.\n\
+  \nOther Parameters\nqtrim=f               Set to qtrim=rl to trim leading and trailing\
+  \ Ns.\ntrimq=6               Quality trim level.\nforcetrimleft=-1      (ftl) If\
+  \ positive, trim bases to the left of this position (exclusive, 0-based).\nforcetrimright=-1\
+  \     (ftr) If positive, trim bases to the right of this position (exclusive, 0-based).\n\
+  \nNote on Proteins / Amino Acids\nDedupe supports amino acid space via the 'amino'\
+  \ flag.  This also changes the default kmer length to 10.\nIn amino acid mode, all\
+  \ flags related to canonicity and reverse-complementation are disabled,\nand nam\
+  \ (numaffixmaps) is currently limited to 2 per tip.\n\nJava Parameters:\n-Xmx  \
+  \                This will set Java's memory usage, overriding autodetection.\n\
+  \                      -Xmx20g will specify 20 gigs of RAM, and -Xmx200m will specify\
+  \ 200 megs.\n                    The max is typically 85% of physical memory.\n\
+  -eoom                 This flag will cause the process to exit if an out-of-memory\
+  \ exception occurs.  Requires Java 8u92+.\n-da                   Disable assertions.\n\
+  \nPlease contact Brian Bushnell at bbushnell@lbl.gov if you encounter any problems.\n\
+  \n"
+generated_using:
+- --help

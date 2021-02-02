@@ -1,0 +1,163 @@
+!Command
+command:
+- tandem2pin
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: target_file
+  optional: false
+named:
+- !Flag
+  description: Calculate feature based on N-linked glycosylation
+  synonyms:
+  - --PNGaseF
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: File containing spectra and retention time. The file
+  synonyms:
+  - --ms2-file
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: Mass difference calculated to closest isotope mass
+  synonyms:
+  - --isotope
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: An anotation scheme used to convert the psms from
+  synonyms:
+  - --psm-annotation
+  args: !SimpleFlagArg
+    name: Scheme
+  optional: true
+- !Flag
+  description: Pattern used to identify the decoy PSMs. Default =
+  synonyms:
+  - --pattern
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Link to the fasta database/s used in the search
+  synonyms:
+  - --databases
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of allowed miss cleavages used in the search
+  synonyms:
+  - --cleavages
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum peptide length allowed used in the search
+  synonyms:
+  - --min-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximum peptide length allowed used in the search
+  synonyms:
+  - --max-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum peptide mass allowed used in the search
+  synonyms:
+  - --min-mass
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximum peptide mass allowed used in the search
+  synonyms:
+  - --max-mass
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: output.tsv
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: "--help                     Display this message\n-o <filename>\n--outputTab\
+    \ <filename>     save output in a tab delimited file\n-k <filename>\n--outputXML\
+    \ <filename>     save output in the (deprecated) pin-xml format file\n-K\n--outputXMLstdout\
+    \          output to stdout in the (deprecated) pin-xml format\nfile\n-m <number>\n\
+    --matches <number>         Maximal number of matches to take in consideration\n\
+    per spectrum\n-v <level>\n--verbose <level>          Set verbosity of output:\
+    \ 0=no processing info,\n5=all, default is 2\n-a\n--aa-freq                  Calculate\
+    \ amino acid frequency features\n-b\n--PTM                      Calculate feature\
+    \ for number of post-translational\nmodifications\n-e\n--enzyme              \
+    \     Type of enzyme\n\"no_enzyme\",\"elastase\",\"pepsin\",\"proteinasek\",\"\
+    therm\nolysin\",\"chymotrypsin\",\"lys-n\",\"lys-c\",\"arg-c\",\"asp-\nn\",\"\
+    glu-c\",\"trypsin\" default=\"trypsin\""
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nPin-converter version 3.05.0, Build Date Jul  9 2020 20:45:05\nCopyright\
+  \ (c) 2013 Lukas Käll. All rights reserved.\nWritten by Lukas Käll (lukas.kall@scilifelab.se)\
+  \ in the\nSchool of Biotechnology at KTH - Royal Institute of Technology, Stockholm.\n\
+  \nUsage:\n   tandem2pin [options] -o output.tsv target_file decoy_file \n\nWhere\
+  \ output.tsv is where the output will be written (ensure to have read and \nwrite\
+  \ access on the file).target_file is the target X!tandem-file, and decoy_file is\n\
+  the decoy X!tandem-file. Small data sets may be merged by replace the X!tandem-files\
+  \ with\nmeta files. Meta files are text files containing the paths of X!tandem-files,\
+  \ one\npath per line. For successful result, the different runs should be generated\n\
+  under similar condition.\n\nOptions:\n -h\n --help                     Display this\
+  \ message\n -o <filename>\n --outputTab <filename>     save output in a tab delimited\
+  \ file\n -k <filename>\n --outputXML <filename>     save output in the (deprecated)\
+  \ pin-xml format file\n -K\n --outputXMLstdout          output to stdout in the\
+  \ (deprecated) pin-xml format \n                            file\n -m <number>\n\
+  \ --matches <number>         Maximal number of matches to take in consideration\
+  \ \n                            per spectrum\n -v <level>\n --verbose <level>  \
+  \        Set verbosity of output: 0=no processing info, \n                     \
+  \       5=all, default is 2\n -a\n --aa-freq                  Calculate amino acid\
+  \ frequency features\n -b\n --PTM                      Calculate feature for number\
+  \ of post-translational \n                            modifications\n -e\n --enzyme\
+  \                   Type of enzyme \n                            \"no_enzyme\",\"\
+  elastase\",\"pepsin\",\"proteinasek\",\"therm\n                            olysin\"\
+  ,\"chymotrypsin\",\"lys-n\",\"lys-c\",\"arg-c\",\"asp-\n                       \
+  \     n\",\"glu-c\",\"trypsin\" default=\"trypsin\"\n[EXPERIMENTAL FEATURE]\n --id-with-exp-mass\
+  \         Include experimental mass in PSMid for easier \n                     \
+  \       correlation with search engine results.\n -N\n --PNGaseF               \
+  \   Calculate feature based on N-linked glycosylation \n                       \
+  \     pattern resulting from a PNGaseF treatment. \n                           \
+  \ (N[*].[ST])\n -2 <filename>\n --ms2-file <filename>      File containing spectra\
+  \ and retention time. The file \n                            could be in mzXML,\
+  \ MS2 or compressed MS2 file.\n -M\n --isotope                  Mass difference\
+  \ calculated to closest isotope mass \n                            rather than to\
+  \ the average mass.\n -p <Scheme>\n --psm-annotation <Scheme>  An anotation scheme\
+  \ used to convert the psms from \n                            the search. An example\
+  \ if Q# was used to describe \n                            pyro-glu formation (UNIMOD:28),\
+  \ and S* and T* was \n                            used to describe phosphorylation\
+  \ (UNIMOD:21), we \n                            would use the option -p *:21:#:28\n\
+  \ -P\n --pattern                  Pattern used to identify the decoy PSMs. Default\
+  \ = \n                            \"random\".\n -F\n --databases               \
+  \ Link to the fasta database/s used in the search \n                           \
+  \ against the spectra file/s \n                            <target.fasta,[decoy.fasta]>\
+  \ (Including this option \n                            will add the proteins to\
+  \ the generated pin file).\n -c\n --cleavages                Number of allowed miss\
+  \ cleavages used in the search \n                            engine (default 0)(Only\
+  \ valid when using option -F).\n -l\n --min-length               Minimum peptide\
+  \ length allowed used in the search \n                            engine (default\
+  \ 6)(Only valid when using option -F).\n -t\n --max-length               Maximum\
+  \ peptide length allowed used in the search \n                            engine\
+  \ (default 40)(Only valid when using option \n                            -F).\n\
+  \ -w\n --min-mass                 Minimum peptide mass allowed used in the search\
+  \ \n                            engine (default 400)(Only valid when using option\
+  \ \n                            -F).\n -x\n --max-mass                 Maximum peptide\
+  \ mass allowed used in the search \n                            engine (default\
+  \ 6000)(Only valid when using option \n                            -F).\n\n\n"
+generated_using:
+- --help

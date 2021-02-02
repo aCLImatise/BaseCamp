@@ -1,0 +1,105 @@
+!Command
+command:
+- snpgenie.pl
+positional: []
+named:
+- !Flag
+  description: ": FASTA file containing exactly one (1) reference sequence.\nAll positions\
+    \ in the SNP report must correspond to one position in this\nsequence. DEFAULT:\
+    \ .fa/.fasta file in the working directory."
+  synonyms:
+  - --fastafile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": tab-delimited Gene Transfer Format file containing non-redundant\n\
+    records for all \"CDS\" elements (i.e., open reading frames, or ORFs)\npresent\
+    \ in the SNP report(s). DEFAULT: .gtf file in the working directory."
+  synonyms:
+  - --gtffile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": CLC, Geneious, or VCF file containing SNP data with respect to\n\
+    positions in the provided reference sequence (FASTA). If VCF, the exact\nformat\
+    \ must be specified (see documentation). DEFAULT: .txt or .vcf file(s)\nin the\
+    \ working directory."
+  synonyms:
+  - --snpreport
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(REQUIRED IF VCF): format ID of the VCF file (see documentation).\n\
+    Format 4 is the only option which provides support for concurrent analysis\nof\
+    \ multiple samples."
+  synonyms:
+  - --vcfformat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": minimum SNP frequency to consider when calculating diversity measures;\n\
+    useful if SNPs below a certain frequency are likely to be errors.\nDEFAULT: 0"
+  synonyms:
+  - --minfreq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(OPTIONAL): user-specified working directory name. DEFAULT: current\n\
+    working directory."
+  synonyms:
+  - --workdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(OPTIONAL): user-specified output directory name. Unless a full path,\n\
+    is given, the directory will be created in the working directory.\nDEFAULT: SNPGenie_Results\
+    \ (in working directory)."
+  synonyms:
+  - --outdir
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n################################################################################\n\
+  ##                                                                            ##\n\
+  ##           SNPGenie: Estimating Evolutionary Parameters from SNPs!          ##\n\
+  ##                                                                            ##\n\
+  ################################################################################\n\
+  \n################################################################################\n\
+  ### OPTIONS:\n################################################################################\n\
+  \n\t--fastafile: FASTA file containing exactly one (1) reference sequence.\n\t\t\
+  All positions in the SNP report must correspond to one position in this\n\t\tsequence.\
+  \ DEFAULT: .fa/.fasta file in the working directory.\n\t--gtffile: tab-delimited\
+  \ Gene Transfer Format file containing non-redundant\n\t\trecords for all \"CDS\"\
+  \ elements (i.e., open reading frames, or ORFs)\n\t\tpresent in the SNP report(s).\
+  \ DEFAULT: .gtf file in the working directory.\n\t--snpreport: CLC, Geneious, or\
+  \ VCF file containing SNP data with respect to\n\t\tpositions in the provided reference\
+  \ sequence (FASTA). If VCF, the exact\n\t\tformat must be specified (see documentation).\
+  \ DEFAULT: .txt or .vcf file(s)\n\t\tin the working directory.\n\t--vcfformat (REQUIRED\
+  \ IF VCF): format ID of the VCF file (see documentation).\n\t\tFormat 4 is the only\
+  \ option which provides support for concurrent analysis\n\t\t of multiple samples.\n\
+  \t--minfreq: minimum SNP frequency to consider when calculating diversity measures;\n\
+  \t\tuseful if SNPs below a certain frequency are likely to be errors.\n\t\tDEFAULT:\
+  \ 0\n\t--workdir (OPTIONAL): user-specified working directory name. DEFAULT: current\n\
+  \t\tworking directory.\n\t--outdir (OPTIONAL): user-specified output directory name.\
+  \ Unless a full path,\n\t\tis given, the directory will be created in the working\
+  \ directory.\n\t\tDEFAULT: SNPGenie_Results (in working directory).\n\n################################################################################\n\
+  ### EXAMPLES:\n################################################################################\n\
+  \n### FORMAT\n\n\tsnpgenie.pl --fastafile=<ref_seq>.(fa|fasta) --gtffile=<CDS_annotations>.(gff|gtf)\
+  \ --snpreport=<variants>.(txt|vcf)\n\n### EXAMPLE 1: BASIC USAGE\n\n\tsnpgenie.pl\
+  \ --fastafile=chr1.fa --gtffile=chr1_genes.gtf --snpreport=chr1_SNPs_CLC.txt\n\n\
+  ### EXAMPLE 2: VCF INPUT\n\n\tsnpgenie.pl --fastafile=seg1.fa --gtffile=seg1_genes.gtf\
+  \ --snpreport=seg1_VARSCAN.vcf \\\n\t--vcfformat=4\n\n### EXAMPLE 3: USER-SPECIFIED\
+  \ DIRECTORIES & RE-DIRECTED OUTPUT\n\n\tsnpgenie.pl --fastafile=HPV_genome.fa --gtffile=HPV_genes.gtf\
+  \ --snpreport=HPV_SNPs_Geneious.txt \\\n\t--workdir=/home/kimura/HPV/SNPs/ --outdir=/home/kimura/HPV/SNPs/diversity/\
+  \ > SNPGenie_HPV.out\n\n### EXAMPLE 4: ALL OPTIONS USED\n\n\tsnpgenie.pl --fastafile=chr21.fa\
+  \ --gtffile=chr21_genes.gtf --snpreport=chr21_GATK.vcf \\\n\t--vcfformat=4 --minfreq=0.001\
+  \ --workdir=/home/ohta/human/data/ --outdir=SNPGenie_Results\n\n################################################################################\n\
+  ################################################################################\n\
+  \n"
+generated_using:
+- --help

@@ -1,0 +1,134 @@
+!Command
+command:
+- ancestral_state_reconstruction.py
+positional: []
+named:
+- !Flag
+  description: "Print information during execution -- useful for\ndebugging [default:\
+    \ False]"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Method for ancestral state reconstruction. Valid\nchoices are: ace_ml,\
+    \ ace_reml, ace_pic, wagner\n[default: ace_pic]"
+  synonyms:
+  - -m
+  - --asr_method
+  args: !SimpleFlagArg
+    name: ASR_METHOD
+  optional: true
+- !Flag
+  description: output trait table [default:asr_counts.tab]
+  synonyms:
+  - -o
+  - --output_fp
+  args: !SimpleFlagArg
+    name: OUTPUT_FP
+  optional: true
+- !Flag
+  description: "output table containing 95% confidence intervals,\nloglik, and brownian\
+    \ motion parameters for each asr\nprediction [default:asr_ci.tab]"
+  synonyms:
+  - -c
+  - --output_ci_fp
+  args: !SimpleFlagArg
+    name: OUTPUT_CI_FP
+  optional: true
+- !Flag
+  description: allow parallelization of asr
+  synonyms:
+  - -p
+  - --parallel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Method for parallelization. Valid choices are: sge,\ntorque, multithreaded\
+    \ [default: sge]"
+  synonyms:
+  - -j
+  - --parallel_method
+  args: !SimpleFlagArg
+    name: PARALLEL_METHOD
+  optional: true
+- !Flag
+  description: "Number of jobs to be submitted (if --parallel).\n[default: 100]"
+  synonyms:
+  - -n
+  - --num_jobs
+  args: !SimpleFlagArg
+    name: NUM_JOBS
+  optional: true
+- !Flag
+  description: "To aid with debugging; get the command that the app\ncontroller is\
+    \ going to run"
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the tree to use for ASR [REQUIRED]
+  synonyms:
+  - -t
+  - --input_tree_fp
+  args: !SimpleFlagArg
+    name: INPUT_TREE_FP
+  optional: true
+- !Flag
+  description: "the trait table to use for ASR [REQUIRED]\n"
+  synonyms:
+  - -i
+  - --input_trait_table_fp
+  args: !SimpleFlagArg
+    name: INPUT_TRAIT_TABLE_FP
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: ancestral_state_reconstruction.py [options] {-t/--input_tree_fp\
+  \ INPUT_TREE_FP -i/--input_trait_table_fp INPUT_TRAIT_TABLE_FP}\n\n[] indicates\
+  \ optional input (order unimportant)\n{} indicates required input (order unimportant)\n\
+  \nProvides a common interface for running various ancenstral state reconstruction\
+  \ methods (e.g. ACE, BayesTraits, etc.).\n\nExample usage: \nPrint help message\
+  \ and exit\n ancestral_state_reconstruction.py -h\n\nExample 1: Provide a tree file\
+  \ and trait table file\n ancestral_state_reconstruction.py -i trait_table.tab -t\
+  \ pruned_tree.newick -o asr_counts.tab -c asr_ci.tab\n\nOptions:\n  --version  \
+  \           show program's version number and exit\n  -h, --help            show\
+  \ this help message and exit\n  -v, --verbose         Print information during execution\
+  \ -- useful for\n                        debugging [default: False]\n  -m ASR_METHOD,\
+  \ --asr_method=ASR_METHOD\n                        Method for ancestral state reconstruction.\
+  \ Valid\n                        choices are: ace_ml, ace_reml, ace_pic, wagner\n\
+  \                        [default: ace_pic]\n  -o OUTPUT_FP, --output_fp=OUTPUT_FP\n\
+  \                        output trait table [default:asr_counts.tab]\n  -c OUTPUT_CI_FP,\
+  \ --output_ci_fp=OUTPUT_CI_FP\n                        output table containing 95%\
+  \ confidence intervals,\n                        loglik, and brownian motion parameters\
+  \ for each asr\n                        prediction [default:asr_ci.tab]\n  -p, --parallel\
+  \        allow parallelization of asr\n  -j PARALLEL_METHOD, --parallel_method=PARALLEL_METHOD\n\
+  \                        Method for parallelization. Valid choices are: sge,\n \
+  \                       torque, multithreaded [default: sge]\n  -n NUM_JOBS, --num_jobs=NUM_JOBS\n\
+  \                        Number of jobs to be submitted (if --parallel).\n     \
+  \                   [default: 100]\n  -d, --debug           To aid with debugging;\
+  \ get the command that the app\n                        controller is going to run\n\
+  \n  REQUIRED options:\n    The following options must be provided under all circumstances.\n\
+  \n    -t INPUT_TREE_FP, --input_tree_fp=INPUT_TREE_FP\n                        the\
+  \ tree to use for ASR [REQUIRED]\n    -i INPUT_TRAIT_TABLE_FP, --input_trait_table_fp=INPUT_TRAIT_TABLE_FP\n\
+  \                        the trait table to use for ASR [REQUIRED]\n"
+generated_using:
+- --help

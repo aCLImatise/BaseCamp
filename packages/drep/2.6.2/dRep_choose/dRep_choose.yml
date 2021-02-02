@@ -1,0 +1,139 @@
+!Command
+command:
+- dRep
+- choose
+positional: []
+named:
+- !Flag
+  description: 'threads (default: 6)'
+  synonyms:
+  - -p
+  - --processors
+  args: !SimpleFlagArg
+    name: PROCESSORS
+  optional: true
+- !Flag
+  description: 'make extra debugging output (default: False)'
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'completeness weight (default: 1)'
+  synonyms:
+  - -comW
+  - --completeness_weight
+  args: !SimpleFlagArg
+    name: COMPLETENESS_WEIGHT
+  optional: true
+- !Flag
+  description: 'contamination weight (default: 5)'
+  synonyms:
+  - -conW
+  - --contamination_weight
+  args: !SimpleFlagArg
+    name: CONTAMINATION_WEIGHT
+  optional: true
+- !Flag
+  description: 'strain heterogeneity weight (default: 1)'
+  synonyms:
+  - -strW
+  - --strain_heterogeneity_weight
+  args: !SimpleFlagArg
+    name: STRAIN_HETEROGENEITY_WEIGHT
+  optional: true
+- !Flag
+  description: 'weight of log(genome N50) (default: 0.5)'
+  synonyms:
+  - -N50W
+  - --N50_weight
+  args: !SimpleFlagArg
+    name: N50_WEIGHT
+  optional: true
+- !Flag
+  description: 'weight of log(genome size) (default: 0)'
+  synonyms:
+  - -sizeW
+  - --size_weight
+  args: !SimpleFlagArg
+    name: SIZE_WEIGHT
+  optional: true
+- !Flag
+  description: "Either lineage_wf (more accurate) or taxonomy_wf\n(faster) (default:\
+    \ lineage_wf)"
+  synonyms:
+  - --checkM_method
+  args: !ChoiceFlagArg
+    choices: !!set
+      taxonomy_wf:
+      lineage_wf:
+  optional: true
+- !Flag
+  description: "location of .csv file containing quality information\non the genomes.\
+    \ Must contain: [\"genome\"(basename of\n.fasta file of that genome), \"completeness\"\
+    (0-100\nvalue for completeness of the genome),\n\"contamination\"(0-100 value\
+    \ of the contamination of\nthe genome)] (default: None)"
+  synonyms:
+  - --genomeInfo
+  args: !SimpleFlagArg
+    name: GENOMEINFO
+  optional: true
+- !Flag
+  description: "Don't run checkM or do any quality filtering. NOT\nRECOMMENDED! This\
+    \ is useful for use with\nbacteriophages or eukaryotes or things where checkM\n\
+    scoring does not work. Will only choose genomes based\non length and N50 (default:\
+    \ False)\n"
+  synonyms:
+  - --ignoreGenomeQuality
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: dRep choose [-p PROCESSORS] [-d] [-h] [-comW COMPLETENESS_WEIGHT]\n\
+  \                   [-conW CONTAMINATION_WEIGHT]\n                   [-strW STRAIN_HETEROGENEITY_WEIGHT]\
+  \ [-N50W N50_WEIGHT]\n                   [-sizeW SIZE_WEIGHT]\n                \
+  \   [--checkM_method {taxonomy_wf,lineage_wf}]\n                   [--genomeInfo\
+  \ GENOMEINFO] [--ignoreGenomeQuality]\n                   work_directory\n\npositional\
+  \ arguments:\n  work_directory        Directory where data and output    \n    \
+  \                    *** USE THE SAME WORK DIRECTORY FOR ALL DREP OPERATIONS ***\n\
+  \nSYSTEM PARAMETERS:\n  -p PROCESSORS, --processors PROCESSORS\n               \
+  \         threads (default: 6)\n  -d, --debug           make extra debugging output\
+  \ (default: False)\n  -h, --help            show this help message and exit\n\n\
+  SCORING CRITERIA\nBased off of the formula: \nA*Completeness - B*Contamination +\
+  \ C*(Contamination * (strain_heterogeneity/100)) + D*log(N50) + E*log(size)\n\n\
+  A = completeness_weight; B = contamination_weight; C = strain_heterogeneity_weight;\
+  \ D = N50_weight; E = size_weight:\n  -comW COMPLETENESS_WEIGHT, --completeness_weight\
+  \ COMPLETENESS_WEIGHT\n                        completeness weight (default: 1)\n\
+  \  -conW CONTAMINATION_WEIGHT, --contamination_weight CONTAMINATION_WEIGHT\n   \
+  \                     contamination weight (default: 5)\n  -strW STRAIN_HETEROGENEITY_WEIGHT,\
+  \ --strain_heterogeneity_weight STRAIN_HETEROGENEITY_WEIGHT\n                  \
+  \      strain heterogeneity weight (default: 1)\n  -N50W N50_WEIGHT, --N50_weight\
+  \ N50_WEIGHT\n                        weight of log(genome N50) (default: 0.5)\n\
+  \  -sizeW SIZE_WEIGHT, --size_weight SIZE_WEIGHT\n                        weight\
+  \ of log(genome size) (default: 0)\n\nOTHER:\n  --checkM_method {taxonomy_wf,lineage_wf}\n\
+  \                        Either lineage_wf (more accurate) or taxonomy_wf\n    \
+  \                    (faster) (default: lineage_wf)\n  --genomeInfo GENOMEINFO\n\
+  \                        location of .csv file containing quality information\n\
+  \                        on the genomes. Must contain: [\"genome\"(basename of\n\
+  \                        .fasta file of that genome), \"completeness\"(0-100\n \
+  \                       value for completeness of the genome),\n               \
+  \         \"contamination\"(0-100 value of the contamination of\n              \
+  \          the genome)] (default: None)\n  --ignoreGenomeQuality\n             \
+  \           Don't run checkM or do any quality filtering. NOT\n                \
+  \        RECOMMENDED! This is useful for use with\n                        bacteriophages\
+  \ or eukaryotes or things where checkM\n                        scoring does not\
+  \ work. Will only choose genomes based\n                        on length and N50\
+  \ (default: False)\n"
+generated_using:
+- --help

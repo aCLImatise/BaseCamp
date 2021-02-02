@@ -1,0 +1,153 @@
+!Command
+command:
+- hulk
+- sketch
+positional: []
+named:
+- !Flag
+  description: FASTQ file(s) to sketch (can also pipe in STDIN)
+  synonyms:
+  - -f
+  - --fastq
+  args: !SimpleFlagArg
+    name: strings
+  optional: true
+- !Flag
+  description: tells HULK that the input file is actually FASTA format (.fna/.fasta/.fa),
+    not FASTQ (experimental feature)
+  synonyms:
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimizer window size (default 9)
+  synonyms:
+  - -w
+  - --windowSize
+  args: !SimpleFlagArg
+    name: uint
+  optional: true
+- !Flag
+  description: size of k-mer sampling interval (default 0 (= no interval))
+  synonyms:
+  - -i
+  - --interval
+  args: !SimpleFlagArg
+    name: uint
+  optional: true
+- !Flag
+  description: size of sketch (default 50)
+  synonyms:
+  - -s
+  - --sketchSize
+  args: !SimpleFlagArg
+    name: uint
+  optional: true
+- !Flag
+  description: decay ratio used for concept drift (1.0 = concept drift disabled) (default
+    1)
+  synonyms:
+  - -x
+  - --decayRatio
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: prints the sketches to STDOUT after every interval is reached, whilst
+    still writting them to disk (log file is redirected to disk))
+  synonyms:
+  - --stream
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: adds a label to the sketch object, for use with BANNER (default "blank")
+  synonyms:
+  - -b
+  - --bannerLabel
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: also generate a MinHash K-Hash Functions sketch
+  synonyms:
+  - --khf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: also generate a MinHash K-Minimum Values (bottom-k) sketch
+  synonyms:
+  - --kmv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimizer k-mer length (default 21)
+  synonyms:
+  - -k
+  - --kmerSize
+  args: !SimpleFlagArg
+    name: uint
+  optional: true
+- !Flag
+  description: filename for log file, if omitted then STDOUT used by default
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: directory and basename for saving the outfile(s) (default "./hulk-20200909212826")
+  synonyms:
+  - -o
+  - --outFile
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: number of processors to use (default 1)
+  synonyms:
+  - -p
+  - --processors
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: create the files needed to profile HULK using the go tool pprof
+  synonyms:
+  - --profiling
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for sketch
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n\t\tCreate a sketch from a set of reads.\n\t\t\n\t\tThe sketch subcommand\
+  \ can be used to create a histosketch, minhash or count min sketch.\n\nUsage:\n\
+  \  hulk sketch [flags]\n\nFlags:\n  -f, --fastq strings        FASTQ file(s) to\
+  \ sketch (can also pipe in STDIN)\n      --fasta                tells HULK that\
+  \ the input file is actually FASTA format (.fna/.fasta/.fa), not FASTQ (experimental\
+  \ feature)\n  -w, --windowSize uint      minimizer window size (default 9)\n  -i,\
+  \ --interval uint        size of k-mer sampling interval (default 0 (= no interval))\n\
+  \  -s, --sketchSize uint      size of sketch (default 50)\n  -x, --decayRatio float\
+  \     decay ratio used for concept drift (1.0 = concept drift disabled) (default\
+  \ 1)\n      --stream               prints the sketches to STDOUT after every interval\
+  \ is reached, whilst still writting them to disk (log file is redirected to disk))\n\
+  \  -b, --bannerLabel string   adds a label to the sketch object, for use with BANNER\
+  \ (default \"blank\")\n      --khf                  also generate a MinHash K-Hash\
+  \ Functions sketch\n      --kmv                  also generate a MinHash K-Minimum\
+  \ Values (bottom-k) sketch\n  -h, --help                 help for sketch\n\nGlobal\
+  \ Flags:\n  -k, --kmerSize uint    minimizer k-mer length (default 21)\n      --log\
+  \ string       filename for log file, if omitted then STDOUT used by default\n \
+  \ -o, --outFile string   directory and basename for saving the outfile(s) (default\
+  \ \"./hulk-20200909212826\")\n  -p, --processors int   number of processors to use\
+  \ (default 1)\n      --profiling        create the files needed to profile HULK\
+  \ using the go tool pprof\n"
+generated_using:
+- --help

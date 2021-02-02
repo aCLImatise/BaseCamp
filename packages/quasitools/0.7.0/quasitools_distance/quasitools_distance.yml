@@ -1,0 +1,127 @@
+!Command
+command:
+- quasitools
+- distance
+positional:
+- !Positional
+  description: Normalization is done dividing base read counts (A, C, T, G) inside
+    every
+  position: 0
+  name: pileup.
+  optional: false
+- !Positional
+  description: --help                          Show this message and exit.
+  position: 0
+  name: coverage.
+  optional: false
+named:
+- !Flag
+  description: "/ -dn, --dont_normalize\nNormalize read count data so that the read\n\
+    counts per 4-tuple (A, C, T, G) sum to one."
+  synonyms:
+  - -n
+  - --normalize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -os, --output_similarity\nOutput an angular distance matrix (by\n\
+    default), or output a cosine similarity\nmatrix (cosine similarity is not a metric)"
+  synonyms:
+  - -od
+  - --output_distance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set the start base position of the reference\nto use in the distance\
+    \ or similarity\ncalculation. Start position is one-indexed.\nI.e. it must be\
+    \ between one and the total\nlength of the reference sequence(s),\ninclusive."
+  synonyms:
+  - -s
+  - --startpos
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Set the end base position of the reference\nto use in the distance\
+    \ or similarity\ncalculation. End position is one-indexed.\nI.e. it must be between\
+    \ one and the total\nlength of the reference sequence(s),\ninclusive."
+  synonyms:
+  - -e
+  - --endpos
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Output the quasispecies distance or\nsimilarity matrix in CSV format\
+    \ in a file."
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: "Ignore contiguous start and end pileup\nregions with no coverage."
+  synonyms:
+  - -t
+  - --truncate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore all pileup regions with no coverage.
+  synonyms:
+  - -r
+  - --remove_no_coverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not ignore pileup regions with no
+  synonyms:
+  - -k
+  - --keep_no_coverage
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: quasitools distance [OPTIONS] REFERENCE [BAM]...\n\n  Quasitools\
+  \ distance produces a measure of evolutionary distance [0 - 1]\n  between quasispecies,\
+  \ computed using the angular cosine distance function\n  defined below.\n\n  Cosine\
+  \ similarity = (u * v) / ( ||u|| * ||v|| )\n\n  Angular Cosine Distance = 2 * ACOS(Cosine\
+  \ similarity) / PI\n\n  The tool outputs by default an angular cosine distance matrix.\
+  \ Use the\n  flag defined below to instead output a similarity matrix.\n\n  By default\
+  \ the data is normalized and all regions of the pileup with no\n  coverage are removed.\n\
+  \n  It is possible to truncate only the contiguous start and end regions of\n  the\
+  \ pileup that have no coverage, or keep all no coverage regions in the\n  pileup.\n\
+  \n  Normalization is done dividing base read counts (A, C, T, G) inside every\n\
+  \  4-tuple by the sum of the read counts inside the same tuple. The\n  normalized\
+  \ read counts inside each 4-tuple sum to one.\n\nOptions:\n  -n, --normalize / -dn,\
+  \ --dont_normalize\n                                  Normalize read count data\
+  \ so that the read\n                                  counts per 4-tuple (A, C,\
+  \ T, G) sum to one.\n  -od, --output_distance / -os, --output_similarity\n     \
+  \                             Output an angular distance matrix (by\n          \
+  \                        default), or output a cosine similarity\n             \
+  \                     matrix (cosine similarity is not a metric)\n  -s, --startpos\
+  \ INTEGER          Set the start base position of the reference\n              \
+  \                    to use in the distance or similarity\n                    \
+  \              calculation. Start position is one-indexed.\n                   \
+  \               I.e. it must be between one and the total\n                    \
+  \              length of the reference sequence(s),\n                          \
+  \        inclusive.\n  -e, --endpos INTEGER            Set the end base position\
+  \ of the reference\n                                  to use in the distance or\
+  \ similarity\n                                  calculation. End position is one-indexed.\n\
+  \                                  I.e. it must be between one and the total\n \
+  \                                 length of the reference sequence(s),\n       \
+  \                           inclusive.\n  -o, --output FILENAME           Output\
+  \ the quasispecies distance or\n                                  similarity matrix\
+  \ in CSV format in a file.\n  -t, --truncate                  Ignore contiguous\
+  \ start and end pileup\n                                  regions with no coverage.\n\
+  \  -r, --remove_no_coverage        Ignore all pileup regions with no coverage.\n\
+  \  -k, --keep_no_coverage          Do not ignore pileup regions with no\n      \
+  \                            coverage.\n  --help                          Show this\
+  \ message and exit.\n"
+generated_using:
+- --help

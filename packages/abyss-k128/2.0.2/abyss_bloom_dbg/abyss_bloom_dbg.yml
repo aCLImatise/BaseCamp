@@ -1,0 +1,251 @@
+!Command
+command:
+- abyss-bloom-dbg
+positional: []
+named:
+- !Flag
+  description: '[options] <FASTQ> [FASTQ]... > assembly.fasta'
+  synonyms:
+  - -G
+  args: !SimpleFlagArg
+    name: genome_size
+  optional: true
+- !Flag
+  description: "overall memory budget for the assembly in bytes.\nUnit suffixes 'k'\
+    \ (kilobytes), 'M' (megabytes),\nor 'G' (gigabytes) may be used. [required]"
+  synonyms:
+  - -b
+  - --bloom-size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: discard unchaste reads [default]
+  synonyms:
+  - --chastity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not discard unchaste reads
+  synonyms:
+  - --no-chastity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write de Bruijn graph to FILE (GraphViz)
+  synonyms:
+  - -g
+  - --graph
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: number of Bloom filter hash functions [1]
+  synonyms:
+  - -H
+  - --num-hashes
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: use N parallel threads [1]
+  synonyms:
+  - -j
+  - --threads
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: trim masked bases from the ends of reads
+  synonyms:
+  - --trim-masked
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "do not trim masked bases from the ends\nof reads [default]"
+  synonyms:
+  - --no-trim-masked
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the size of a k-mer [required]
+  synonyms:
+  - -k
+  - --kmer
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "use a cascading Bloom filter with N levels,\ninstead of a counting\
+    \ Bloom filter [2]"
+  synonyms:
+  - --kc
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: write the contigs to FILE [STDOUT]
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "trim bases from the ends of reads whose\nquality is less than the\
+    \ threshold"
+  synonyms:
+  - -q
+  - --trim-quality
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: mask all low quality bases as `N'
+  synonyms:
+  - -Q
+  - --mask-quality
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "zero quality is `!' (33), typically\nfor FASTQ and SAM files [default]"
+  synonyms:
+  - --standard-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "zero quality is `@' (64), typically\nfor qseq and export files"
+  synonyms:
+  - --illumina-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: max branch length to trim, in k-mers [k]
+  synonyms:
+  - -t
+  - --trim-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: display verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "use a spaced seed that consists of two k-mers\nseparated by a gap.\
+    \ K must be chosen such that\nK <= k/2"
+  synonyms:
+  - -K
+  - --single-kmer
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "use a spaced seed than consists of two mirrored\nQR seeds separated\
+    \ by a gap.  The following must\nhold: (a) N must be prime, (b) N >= 11,\n(c)\
+    \ N <= k/2"
+  synonyms:
+  - --qr-seed
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "bitmask indicating k-mer positions to be\nignored during hashing.\
+    \ The pattern must be\nsymmetric"
+  synonyms:
+  - -s
+  - --spaced-seed
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: "WIG track with 0/1 indicating k-mers with\ncoverage above the -c threshold.\
+    \ A reference\nmust also be specified with -R."
+  synonyms:
+  - -C
+  - --cov-track
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "write debugging info about extension of\neach read to FILE"
+  synonyms:
+  - -T
+  - --trace-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "specify a reference genome. FILE may be\nFASTA, FASTQ, SAM, or BAM\
+    \ and may be gzipped."
+  synonyms:
+  - -R
+  - --ref
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: output version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: abyss-bloom-dbg -b <bloom_size> -H <bloom_hashes> -k <kmer_size>\
+  \ \\\n    -G <genome_size> [options] <FASTQ> [FASTQ]... > assembly.fasta\n\nPerform\
+  \ a de Bruijn graph assembly of the given FASTQ files.\n\nBasic Options:\n\n  -b\
+  \  --bloom-size=N         overall memory budget for the assembly in bytes.\n   \
+  \                          Unit suffixes 'k' (kilobytes), 'M' (megabytes),\n   \
+  \                          or 'G' (gigabytes) may be used. [required]\n      --chastity\
+  \             discard unchaste reads [default]\n      --no-chastity          do\
+  \ not discard unchaste reads\n  -g  --graph=FILE           write de Bruijn graph\
+  \ to FILE (GraphViz)\n      --help                 display this help and exit\n\
+  \  -H  --num-hashes=N         number of Bloom filter hash functions [1]\n  -j, --threads=N\
+  \            use N parallel threads [1]\n      --trim-masked          trim masked\
+  \ bases from the ends of reads\n      --no-trim-masked       do not trim masked\
+  \ bases from the ends\n                             of reads [default]\n  -k, --kmer=N\
+  \               the size of a k-mer [required]\n      --kc=N                 use\
+  \ a cascading Bloom filter with N levels,\n                             instead\
+  \ of a counting Bloom filter [2]\n  -o, --out=FILE             write the contigs\
+  \ to FILE [STDOUT]\n  -q, --trim-quality=N       trim bases from the ends of reads\
+  \ whose\n                             quality is less than the threshold\n  -Q,\
+  \ --mask-quality=N       mask all low quality bases as `N'\n      --standard-quality\
+  \     zero quality is `!' (33), typically\n                             for FASTQ\
+  \ and SAM files [default]\n      --illumina-quality     zero quality is `@' (64),\
+  \ typically\n                             for qseq and export files\n  -t, --trim-length\
+  \          max branch length to trim, in k-mers [k]\n  -v, --verbose           \
+  \   display verbose output\n      --version              output version information\
+  \ and exit\n\nSpaced Seed Options:\n\n  -K, --single-kmer=N        use a spaced\
+  \ seed that consists of two k-mers\n                             separated by a\
+  \ gap. K must be chosen such that\n                             K <= k/2\n     \
+  \ --qr-seed=N            use a spaced seed than consists of two mirrored\n     \
+  \                        QR seeds separated by a gap.  The following must\n    \
+  \                         hold: (a) N must be prime, (b) N >= 11,\n            \
+  \                 (c) N <= k/2\n  -s, --spaced-seed=STR      bitmask indicating\
+  \ k-mer positions to be\n                             ignored during hashing. The\
+  \ pattern must be\n                             symmetric\n\nDebugging Options:\n\
+  \n  -C, --cov-track=FILE       WIG track with 0/1 indicating k-mers with\n     \
+  \                        coverage above the -c threshold. A reference\n        \
+  \                     must also be specified with -R.\n  -T, --trace-file=FILE \
+  \     write debugging info about extension of\n                             each\
+  \ read to FILE\n  -R, --ref=FILE             specify a reference genome. FILE may\
+  \ be\n                             FASTA, FASTQ, SAM, or BAM and may be gzipped.\n\
+  Example:\n\n  Assemble a genome using a k-mer size of 50bp. Allocate a 1GB\n  Bloom\
+  \ filter with 2 hash functions and require that a k-mer\n  occurs 3 times or more\
+  \ to be included in the assembly. (The k-mer\n  count threshold filters out k-mers\
+  \ containing sequencing errors.)\n\n  $ abyss-bloom-dbg -k50 -b1G -H2 --kc=3 reads1.fq.gz\
+  \ reads2.fq.gz > assembly.fa\n\nReport bugs to <abyss-users@bcgsc.ca>.\n"
+generated_using:
+- --help

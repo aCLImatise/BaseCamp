@@ -1,0 +1,250 @@
+!Command
+command:
+- faidx
+positional:
+- !Positional
+  description: FASTA file
+  position: 0
+  name: fasta
+  optional: false
+- !Positional
+  description: "space separated regions of sequence to fetch e.g.\nchr1:1-1000"
+  position: 1
+  name: regions
+  optional: false
+named:
+- !Flag
+  description: "do not rebuild the .fai index even if it is out of\ndate. default:\
+    \ False"
+  synonyms:
+  - --no-rebuild
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: bed file of regions
+  synonyms:
+  - -b
+  - --bed
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: 'output file name (default: stdout)'
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: OUT
+  optional: true
+- !Flag
+  description: "transform the requested regions into another format.\ndefault: None"
+  synonyms:
+  - -i
+  - --transform
+  args: !ChoiceFlagArg
+    choices: !!set
+      chromsizes:
+      bed:
+      nucleotide:
+      transposed:
+  optional: true
+- !Flag
+  description: 'complement the sequence. default: False'
+  synonyms:
+  - -c
+  - --complement
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'reverse the sequence. default: False'
+  synonyms:
+  - -r
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "reverse complement the sequence when start > end\ncoordinate. default:\
+    \ False"
+  synonyms:
+  - -y
+  - --auto-strand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "selected sequences are in the size range [low, high].\nexample: 1,1000\
+    \ default: None"
+  synonyms:
+  - -a
+  - --size-range
+  args: !SimpleFlagArg
+    name: SIZE_RANGE
+  optional: true
+- !Flag
+  description: "write each region to a separate file (names are\nderived from regions)"
+  synonyms:
+  - -x
+  - --split-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'fill in --default-seq for missing ranges. default:'
+  synonyms:
+  - -l
+  - --lazy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'mask the FASTA file using --default-seq default: False'
+  synonyms:
+  - -m
+  - --mask-with-default-seq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'mask the FASTA file by changing to lowercase. default:'
+  synonyms:
+  - -M
+  - --mask-by-case
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'omit sequence names from output. default: False'
+  synonyms:
+  - -n
+  - --no-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "output full (long) names from the input fasta headers.\ndefault: headers\
+    \ are truncated after the first\nwhitespace"
+  synonyms:
+  - -f
+  - --long-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "omit coordinates (e.g. chr:start-end) from output\nheaders. default:\
+    \ False"
+  synonyms:
+  - -t
+  - --no-coords
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "delimiter for splitting names to multiple values\n(duplicate names\
+    \ will be discarded). default: None"
+  synonyms:
+  - -d
+  - --delimiter
+  args: !SimpleFlagArg
+    name: DELIMITER
+  optional: true
+- !Flag
+  description: "python function to modify header lines e.g: \"lambda x:\nx.split(\"\
+    |\")[0]\". default: lambda x: x.split()[0]"
+  synonyms:
+  - -e
+  - --header-function
+  args: !SimpleFlagArg
+    name: HEADER_FUNCTION
+  optional: true
+- !Flag
+  description: "entry to take when duplicate sequence names are\nencountered. default:\
+    \ stop"
+  synonyms:
+  - -u
+  - --duplicates-action
+  args: !ChoiceFlagArg
+    choices: !!set
+      first:
+      longest:
+      stop:
+      shortest:
+      last:
+  optional: true
+- !Flag
+  description: "selected sequences are those matching regular\nexpression. default:\
+    \ .*"
+  synonyms:
+  - -g
+  - --regex
+  args: !SimpleFlagArg
+    name: REGEX
+  optional: true
+- !Flag
+  description: "selected sequences are those not matching 'regions'\nargument. default:\
+    \ False"
+  synonyms:
+  - -v
+  - --invert-match
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print pyfaidx version number
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: faidx [-h] [-b BED] [-o OUT]\n             [-i {bed,chromsizes,nucleotide,transposed}]\
+  \ [-c] [-r] [-y]\n             [-a SIZE_RANGE] [-n | -f] [-t] [-x] [-l] [-s DEFAULT_SEQ]\n\
+  \             [-d DELIMITER] [-e HEADER_FUNCTION]\n             [-u {stop,first,last,longest,shortest}]\
+  \ [-g REGEX] [-v] [-m | -M]\n             [--no-output] [--no-rebuild] [--version]\n\
+  \             fasta [regions [regions ...]]\n\nFetch sequences from FASTA. If no\
+  \ regions are specified, all entries in the\ninput file are returned. Input FASTA\
+  \ file must be consistently line-wrapped,\nand line wrapping of output is based\
+  \ on input line lengths.\n\npositional arguments:\n  fasta                 FASTA\
+  \ file\n  regions               space separated regions of sequence to fetch e.g.\n\
+  \                        chr1:1-1000\n\noptional arguments:\n  -h, --help      \
+  \      show this help message and exit\n  --no-rebuild          do not rebuild the\
+  \ .fai index even if it is out of\n                        date. default: False\n\
+  \  --version             print pyfaidx version number\n\ninput options:\n  -b BED,\
+  \ --bed BED     bed file of regions\n\noutput options:\n  -o OUT, --out OUT    \
+  \ output file name (default: stdout)\n  -i {bed,chromsizes,nucleotide,transposed},\
+  \ --transform {bed,chromsizes,nucleotide,transposed}\n                        transform\
+  \ the requested regions into another format.\n                        default: None\n\
+  \  -c, --complement      complement the sequence. default: False\n  -r, --reverse\
+  \         reverse the sequence. default: False\n  -y, --auto-strand     reverse\
+  \ complement the sequence when start > end\n                        coordinate.\
+  \ default: False\n  -a SIZE_RANGE, --size-range SIZE_RANGE\n                   \
+  \     selected sequences are in the size range [low, high].\n                  \
+  \      example: 1,1000 default: None\n  -x, --split-files     write each region\
+  \ to a separate file (names are\n                        derived from regions)\n\
+  \  -l, --lazy            fill in --default-seq for missing ranges. default:\n  \
+  \                      False\n  -s DEFAULT_SEQ, --default-seq DEFAULT_SEQ\n    \
+  \                    default base for missing positions and masking.\n         \
+  \               default: None\n  -m, --mask-with-default-seq\n                 \
+  \       mask the FASTA file using --default-seq default: False\n  -M, --mask-by-case\
+  \    mask the FASTA file by changing to lowercase. default:\n                  \
+  \      False\n  --no-output           do not output any sequence. default: False\n\
+  \nheader options:\n  -n, --no-names        omit sequence names from output. default:\
+  \ False\n  -f, --long-names      output full (long) names from the input fasta headers.\n\
+  \                        default: headers are truncated after the first\n      \
+  \                  whitespace\n  -t, --no-coords       omit coordinates (e.g. chr:start-end)\
+  \ from output\n                        headers. default: False\n  -d DELIMITER,\
+  \ --delimiter DELIMITER\n                        delimiter for splitting names to\
+  \ multiple values\n                        (duplicate names will be discarded).\
+  \ default: None\n  -e HEADER_FUNCTION, --header-function HEADER_FUNCTION\n     \
+  \                   python function to modify header lines e.g: \"lambda x:\n  \
+  \                      x.split(\"|\")[0]\". default: lambda x: x.split()[0]\n  -u\
+  \ {stop,first,last,longest,shortest}, --duplicates-action {stop,first,last,longest,shortest}\n\
+  \                        entry to take when duplicate sequence names are\n     \
+  \                   encountered. default: stop\n\nmatching arguments:\n  -g REGEX,\
+  \ --regex REGEX\n                        selected sequences are those matching regular\n\
+  \                        expression. default: .*\n  -v, --invert-match    selected\
+  \ sequences are those not matching 'regions'\n                        argument.\
+  \ default: False\n\nPlease cite: Shirley MD, Ma Z, Pedersen BS, Wheelan SJ. (2015)\
+  \ Efficient\n\"pythonic\" access to FASTA files using pyfaidx. PeerJ PrePrints 3:e1196\n\
+  https://dx.doi.org/10.7287/peerj.preprints.970v1\n"
+generated_using:
+- --help

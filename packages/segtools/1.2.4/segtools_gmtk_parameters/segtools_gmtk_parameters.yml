@@ -1,0 +1,166 @@
+!Command
+command:
+- segtools-gmtk-parameters
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: PARAMSFILE
+  optional: false
+named:
+- !Flag
+  description: Overwrite any existing output files.
+  synonyms:
+  - --clobber
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not print diagnostic messages.
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not generate any plots.
+  synonyms:
+  - --noplot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not generate transition graph.
+  synonyms:
+  - --nograph
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If mnemonics are not specified, they will be created\nand used for\
+    \ plotting"
+  synonyms:
+  - --create-mnemonics
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If a file is specified with --trackname-translation,\nthe mappings\
+    \ in this file will be interpreted as\nregular expressions instead of exact mappings.\
+    \ Thus,\nall underscores could be converted to periods with the\nsingle line:\
+    \ `_<TAB>.`. Mappings will be applied\nsequentially, so a second line of: `\\\
+    .<TAB>#` would\n(together with the first line) convert all periods and\nunderscores\
+    \ to pounds."
+  synonyms:
+  - --allow-regex
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If specified, labels will be shown using mnemonics\nfound in FILE"
+  synonyms:
+  - -m
+  - --mnemonic-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "File output directory (will be created if it does not\nexist) [default:\
+    \ gmtk_parameters]"
+  synonyms:
+  - -o
+  - --outdir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: "Should be a file with rows <old-trackname><TAB><new-\ntrackname>.\
+    \ Tracknames will be translated using this\nmapping before plotting the stats\
+    \ plot. By default,\n<old-trackname> must exactly match the name of a\ntrack,\
+    \ but --allow-regex provides more flexibility."
+  synonyms:
+  - -t
+  - --trackname-translation
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "ignore all transitions with probabilities below this\nabsolute threshold\
+    \ [default: 0.15]"
+  synonyms:
+  - -P
+  - --prob-threshold
+  args: !SimpleFlagArg
+    name: VAL
+  optional: true
+- !Flag
+  description: "ignore transitions with probabilities below this\nprobability quantile\
+    \ [default: 0.0]"
+  synonyms:
+  - -Q
+  - --quantile-threshold
+  args: !SimpleFlagArg
+    name: VAL
+  optional: true
+- !Flag
+  description: "Make each node of the graph a reference to a .ps image\nan \"image\"\
+    \ subdirectory. Currently, these .ps files\nneed to be made separately."
+  synonyms:
+  - --gene-graph
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=VAL        Pass VAL for PARAM when calling R functions. May be\n\
+    specified multiple times.\n"
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: PARAM
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: segtools-gmtk-parameters [OPTIONS] PARAMSFILE\n\nOptions:\n  --version\
+  \             show program's version number and exit\n  -h, --help            show\
+  \ this help message and exit\n\n  Flags:\n    --clobber           Overwrite any\
+  \ existing output files.\n    -q, --quiet         Do not print diagnostic messages.\n\
+  \    --noplot            Do not generate any plots.\n    --nograph           Do\
+  \ not generate transition graph.\n    --create-mnemonics  If mnemonics are not specified,\
+  \ they will be created\n                        and used for plotting\n    --allow-regex\
+  \       If a file is specified with --trackname-translation,\n                 \
+  \       the mappings in this file will be interpreted as\n                     \
+  \   regular expressions instead of exact mappings. Thus,\n                     \
+  \   all underscores could be converted to periods with the\n                   \
+  \     single line: `_<TAB>.`. Mappings will be applied\n                       \
+  \ sequentially, so a second line of: `\\.<TAB>#` would\n                       \
+  \ (together with the first line) convert all periods and\n                     \
+  \   underscores to pounds.\n\n  Output:\n    -m FILE, --mnemonic-file=FILE\n   \
+  \                     If specified, labels will be shown using mnemonics\n     \
+  \                   found in FILE\n    -o DIR, --outdir=DIR\n                  \
+  \      File output directory (will be created if it does not\n                 \
+  \       exist) [default: gmtk_parameters]\n    -t FILE, --trackname-translation=FILE\n\
+  \                        Should be a file with rows <old-trackname><TAB><new-\n\
+  \                        trackname>. Tracknames will be translated using this\n\
+  \                        mapping before plotting the stats plot. By default,\n \
+  \                       <old-trackname> must exactly match the name of a\n     \
+  \                   track, but --allow-regex provides more flexibility.\n\n  Transition\
+  \ graph options:\n    -P VAL, --prob-threshold=VAL\n                        ignore\
+  \ all transitions with probabilities below this\n                        absolute\
+  \ threshold [default: 0.15]\n    -Q VAL, --quantile-threshold=VAL\n            \
+  \            ignore transitions with probabilities below this\n                \
+  \        probability quantile [default: 0.0]\n    --gene-graph        Make each\
+  \ node of the graph a reference to a .ps image\n                        an \"image\"\
+  \ subdirectory. Currently, these .ps files\n                        need to be made\
+  \ separately.\n\n  R options:\n    -R PARAM=VAL        Pass VAL for PARAM when calling\
+  \ R functions. May be\n                        specified multiple times.\n"
+generated_using:
+- --help

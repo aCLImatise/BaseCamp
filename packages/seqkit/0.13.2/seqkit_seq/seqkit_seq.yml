@@ -1,0 +1,274 @@
+!Command
+command:
+- seqkit
+- seq
+positional: []
+named:
+- !Flag
+  description: colorize sequences - to be piped into "less -R"
+  synonyms:
+  - -k
+  - --color
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: complement sequence, flag '-v' is recommended to switch on
+  synonyms:
+  - -p
+  - --complement
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: DNA to RNA
+  synonyms:
+  - --dna2rna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: gap letters (default "- \t.")
+  synonyms:
+  - -G
+  - --gap-letters
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: print sequences in lower case
+  synonyms:
+  - -l
+  - --lower-case
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only print sequences shorter than the maximum length (-1 for no limit)
+    (default -1)
+  synonyms:
+  - -M
+  - --max-len
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: only print sequences with average quality less than this limit (-1
+    for no limit) (default -1)
+  synonyms:
+  - -R
+  - --max-qual
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: only print sequences longer than the minimum length (-1 for no limit)
+    (default -1)
+  synonyms:
+  - -m
+  - --min-len
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: only print sequences with average quality qreater or equal than this
+    limit (-1 for no limit) (default -1)
+  synonyms:
+  - -Q
+  - --min-qual
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: only print names
+  synonyms:
+  - -n
+  - --name
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print ID instead of full head
+  synonyms:
+  - -i
+  - --only-id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only print qualities
+  synonyms:
+  - -q
+  - --qual
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ASCII BASE, 33 for Phred+33 (default 33)
+  synonyms:
+  - -b
+  - --qual-ascii-base
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: remove gaps
+  synonyms:
+  - -g
+  - --remove-gaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reverse sequence
+  synonyms:
+  - -r
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: RNA to DNA
+  synonyms:
+  - --rna2dna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only print sequences
+  synonyms:
+  - -s
+  - --seq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print sequences in upper case
+  synonyms:
+  - -u
+  - --upper-case
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: validate bases according to the alphabet
+  synonyms:
+  - -v
+  - --validate-seq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: length of sequence to validate (0 for whole seq) (default 10000)
+  synonyms:
+  - -V
+  - --validate-seq-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: length of sequence prefix of the first FASTA record based on which
+    seqkit guesses the sequence type (0 for whole seq) (default 10000)
+  synonyms:
+  - --alphabet-guess-seq-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+  synonyms:
+  - --id-ncbi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: regular expression for parsing ID (default "^(\\S+)\\s?")
+  synonyms:
+  - --id-regexp
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  synonyms:
+  - --infile-list
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: line width when outputing FASTA format (0 for no wrap) (default 60)
+  synonyms:
+  - -w
+  - --line-width
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  synonyms:
+  - -o
+  - --out-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: be quiet and do not show extra information
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+    detect by the first sequence) (default "auto")
+  synonyms:
+  - -t
+  - --seq-type
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others.
+    can also set with environment variable SEQKIT_THREADS) (default 2)'
+  synonyms:
+  - -j
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: help for seq
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "transform sequences (revserse, complement, extract ID...)\n\nUsage:\n\
+  \  seqkit seq [flags]\n\nFlags:\n  -k, --color                     colorize sequences\
+  \ - to be piped into \"less -R\"\n  -p, --complement                complement sequence,\
+  \ flag '-v' is recommended to switch on\n      --dna2rna                   DNA to\
+  \ RNA\n  -G, --gap-letters string        gap letters (default \"- \\t.\")\n  -h,\
+  \ --help                      help for seq\n  -l, --lower-case                print\
+  \ sequences in lower case\n  -M, --max-len int               only print sequences\
+  \ shorter than the maximum length (-1 for no limit) (default -1)\n  -R, --max-qual\
+  \ float            only print sequences with average quality less than this limit\
+  \ (-1 for no limit) (default -1)\n  -m, --min-len int               only print sequences\
+  \ longer than the minimum length (-1 for no limit) (default -1)\n  -Q, --min-qual\
+  \ float            only print sequences with average quality qreater or equal than\
+  \ this limit (-1 for no limit) (default -1)\n  -n, --name                      only\
+  \ print names\n  -i, --only-id                   print ID instead of full head\n\
+  \  -q, --qual                      only print qualities\n  -b, --qual-ascii-base\
+  \ int       ASCII BASE, 33 for Phred+33 (default 33)\n  -g, --remove-gaps      \
+  \         remove gaps\n  -r, --reverse                   reverse sequence\n    \
+  \  --rna2dna                   RNA to DNA\n  -s, --seq                       only\
+  \ print sequences\n  -u, --upper-case                print sequences in upper case\n\
+  \  -v, --validate-seq              validate bases according to the alphabet\n  -V,\
+  \ --validate-seq-length int   length of sequence to validate (0 for whole seq) (default\
+  \ 10000)\n\nGlobal Flags:\n      --alphabet-guess-seq-length int   length of sequence\
+  \ prefix of the first FASTA record based on which seqkit guesses the sequence type\
+  \ (0 for whole seq) (default 10000)\n      --id-ncbi                         FASTA\
+  \ head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...\n      --id-regexp\
+  \ string                regular expression for parsing ID (default \"^(\\\\S+)\\\
+  \\s?\")\n      --infile-list string              file of input files list (one file\
+  \ per line), if given, they are appended to files from cli arguments\n  -w, --line-width\
+  \ int                  line width when outputing FASTA format (0 for no wrap) (default\
+  \ 60)\n  -o, --out-file string                 out file (\"-\" for stdout, suffix\
+  \ .gz for gzipped out) (default \"-\")\n      --quiet                          \
+  \ be quiet and do not show extra information\n  -t, --seq-type string          \
+  \       sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically\
+  \ detect by the first sequence) (default \"auto\")\n  -j, --threads int        \
+  \             number of CPUs. (default value: 1 for single-CPU PC, 2 for others.\
+  \ can also set with environment variable SEQKIT_THREADS) (default 2)\n"
+generated_using:
+- --help

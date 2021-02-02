@@ -1,0 +1,206 @@
+!Command
+command:
+- getDiffExpression.pl
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: data file
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: group code...
+  optional: false
+named:
+- !Flag
+  description: (for analyzeRNA.pl formatted input, default)
+  synonyms:
+  - -rna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (for analyzeRepeats.pl formatted input file)
+  synonyms:
+  - -repeats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (for annotatePeaks.pl formatted input file)
+  synonyms:
+  - -peaks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (for output files from findTADsAndLoops.pl)
+  synonyms:
+  - -loop
+  - -tad
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: (for output files from annotatePeaks.pl looking at PC1 bedGraphs, try
+    -pc1options)
+  synonyms:
+  - -pc1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (for simple file with one column of gene identifiers and then the count
+    data)
+  synonyms:
+  - -basic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (edgeR common dispersion to use if no replicates, default: 0.05)'
+  synonyms:
+  - -dispersion
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(normalize using tag directory totals, default: normalize to gene
+    totals(i.e.table)'
+  synonyms:
+  - -norm2total
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(compare each group vs. each group, default: compare 1st group vs.
+    others)'
+  synonyms:
+  - -AvsA
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Show R status updates, command output)
+  synonyms:
+  - -showR
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (use DESeq2, now the default)
+  synonyms:
+  - -DESeq2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (use DESeq instead of DESeq2 - doesn't support batch mode)
+  synonyms:
+  - -DESeq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (use edgeR, - doesn't support -norm2total for normalization to total
+    mapped reads)
+  synonyms:
+  - -edgeR
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (use limma, set to work on linear, non-integer values i.e. TAD IRs,
+    PC1 values, etc.)
+  synonyms:
+  - -limma
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (output differential expression gene lists with filename prefix)
+  synonyms:
+  - -export
+  args: !SimpleFlagArg
+    name: prefix
+  optional: true
+- !Flag
+  description: '<#> (FDR threshold for diff. expression reporting, default: 0.05)'
+  synonyms:
+  - -fdr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (p-value threshold for diff. expression reporting, default: uses
+    -fdr)'
+  synonyms:
+  - -pvalue
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Log2 Fold threshold for diff. expression reporting, default:
+    1.0)'
+  synonyms:
+  - -log2fold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Use DESeq2's rlog transform to normalize output matrix, default)
+  synonyms:
+  - -rlog
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Use DESeq2's vst transform, quicker for large sample sets)
+  synonyms:
+  - -vst
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Normalize to experiment totals, i.e. basic normalization)
+  synonyms:
+  - -simpleNorm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (do not normalize read counts in output table, keep raw values)
+  synonyms:
+  - -raw
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\tThis program uses DESeq2/edgeR to find differential expression between\
+  \ sets of genes\n\t(R must be installed in the executable path, and the DESeq2/edgeR\
+  \ package must be installed)\n\t   Step 1:  Run analyzeRepeats.pl, but use -raw\
+  \ (or analyzeRNA.pl or annotatePeaks.pl)\n\t   Step 2:  Run this program using that\
+  \ file (use -repeats/-rna/-peaks to match program)\n\tThe output is sent to stdout\
+  \ - appends columns to original file containing data\n\tGroup/Batch names below\
+  \ correspond to order of experiments given as tag directories\n\n\tUsage: getDiffExpression.pl\
+  \ <data file> <group code...> [options]\n\n\t\ti.e. getDiffExpression.pl inputFile.txt\
+  \ groupName1 groupName1 groupName2 > output.txt\n\t\t\t(for 2 replicates in first\
+  \ group and 1 in second group)\n\n\tTo normalize batch effects, add \"-batch <batch\
+  \ code 1> [batch code2] ...\" to the command\n\t\tFor now batch normalization is\
+  \ only available with edgeR and DESeq2\n\t\ti.e. getDiffExpression.pl inputFile.txt\
+  \ gName1 gName1 gName2 gName2 -batch 1 2 1 2 > output.txt\n\t\t\t(for 2 replicates\
+  \ in each group, where the 1st in each and 2nd in are paired)\n\n\t\tUpdate: Expression\
+  \ values are now variance stabalized with DESeq2/rlog by default\n\n\tInput File\
+  \ format options (will try to autodetect):\n\t\t-rna (for analyzeRNA.pl formatted\
+  \ input, default)\n\t\t-repeats (for analyzeRepeats.pl formatted input file)\n\t\
+  \t-peaks (for annotatePeaks.pl formatted input file)\n\t\t-loop or -tad (for output\
+  \ files from findTADsAndLoops.pl)\n\t\t-pc1 (for output files from annotatePeaks.pl\
+  \ looking at PC1 bedGraphs, try -pc1options)\n\t\t-basic (for simple file with one\
+  \ column of gene identifiers and then the count data)\n\n\tAdditional Options:\n\
+  \t\t-dispersion <#> (edgeR common dispersion to use if no replicates, default: 0.05)\n\
+  \t\t-norm2total (normalize using tag directory totals, default: normalize to gene\
+  \ totals(i.e.table)\n\t\t-AvsA (compare each group vs. each group, default: compare\
+  \ 1st group vs. others)\n\t\t-showR (Show R status updates, command output)\n\n\t\
+  Differential Expression program selection:\n\t\t-DESeq2 (use DESeq2, now the default)\n\
+  \t\t-DESeq (use DESeq instead of DESeq2 - doesn't support batch mode)\n\t\t-edgeR\
+  \ (use edgeR, - doesn't support -norm2total for normalization to total mapped reads)\n\
+  \t\t-limma (use limma, set to work on linear, non-integer values i.e. TAD IRs, PC1\
+  \ values, etc.)\n\n\tDE List Reporting:\n\t\t-export <prefix> (output differential\
+  \ expression gene lists with filename prefix)\n\t\t-fdr <#> (FDR threshold for diff.\
+  \ expression reporting, default: 0.05)\n\t\t-pvalue <#> (p-value threshold for diff.\
+  \ expression reporting, default: uses -fdr)\n\t\t-log2fold <#> (Log2 Fold threshold\
+  \ for diff. expression reporting, default: 1.0)\n\n\tExpression value normalization/Variance\
+  \ Stabilization:\n\t\t-rlog (Use DESeq2's rlog transform to normalize output matrix,\
+  \ default)\n\t\t-vst (Use DESeq2's vst transform, quicker for large sample sets)\n\
+  \t\t-simpleNorm (Normalize to experiment totals, i.e. basic normalization)\n\t\t\
+  -raw (do not normalize read counts in output table, keep raw values)\n\n\tCurrent\
+  \ versions that work:\n\t\tR: v3.3.2\n\t\tDESeq v1.24.0\n\t\tDESeq2 v1.14.1\n\t\t\
+  edgeR v3.16.5\n\t\tlimma v3.30.13\n\n"
+generated_using:
+- --help

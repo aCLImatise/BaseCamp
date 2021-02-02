@@ -1,0 +1,170 @@
+!Command
+command:
+- bcftools
+- concat
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: A.vcf.gz
+  optional: false
+named:
+- !Flag
+  description: First coordinate of the next file can precede last record of the current
+    file.
+  synonyms:
+  - -a
+  - --allow-overlaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not output PS tag at each site, only at the start of a new phase
+    set block.
+  synonyms:
+  - -c
+  - --compact-PS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output duplicate records present in multiple files only once: <snps|indels|both|all|none>'
+  synonyms:
+  - -d
+  - --rm-dups
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Alias for -d none
+  synonyms:
+  - -D
+  - --remove-duplicates
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read the list of files from a file.
+  synonyms:
+  - -f
+  - --file-list
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Ligate phased VCFs by matching phase at overlapping haplotypes
+  synonyms:
+  - -l
+  - --ligate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not append version and command line to the header
+  synonyms:
+  - --no-version
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Concatenate files without recompression, a header check compatibility
+    is performed
+  synonyms:
+  - -n
+  - --naive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as --naive, but header compatibility is not checked. Dangerous,
+    use with caution.
+  synonyms:
+  - --naive-force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write output to a file [standard output]
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: 'b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed
+    VCF [v]'
+  synonyms:
+  - -O
+  - --output-type
+  args: !SimpleFlagArg
+    name: b|u|z|v
+  optional: true
+- !Flag
+  description: Break phase set if phasing quality is lower than <int> [30]
+  synonyms:
+  - -q
+  - --min-PQ
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Restrict to comma-separated list of regions
+  synonyms:
+  - -r
+  - --regions
+  args: !SimpleFlagArg
+    name: region
+  optional: true
+- !Flag
+  description: Restrict to regions listed in a file
+  synonyms:
+  - -R
+  - --regions-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Use multithreading with <int> worker threads [0]
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Set verbosity level [1]
+  synonyms:
+  - -v
+  - --verbose
+  args: !SimpleFlagArg
+    name: 0|1
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "concat: unrecognized option '--help'\n\nAbout:   Concatenate or combine\
+  \ VCF/BCF files. All source files must have the same sample\n         columns appearing\
+  \ in the same order. The program can be used, for example, to\n         concatenate\
+  \ chromosome VCFs into one VCF, or combine a SNP VCF and an indel\n         VCF\
+  \ into one. The input files must be sorted by chr and position. The files\n    \
+  \     must be given in the correct order to produce sorted VCF on output unless\n\
+  \         the -a, --allow-overlaps option is specified. With the --naive option,\
+  \ the files\n         are concatenated without being recompressed, which is very\
+  \ fast.\nUsage:   bcftools concat [options] <A.vcf.gz> [<B.vcf.gz> [...]]\n\nOptions:\n\
+  \   -a, --allow-overlaps           First coordinate of the next file can precede\
+  \ last record of the current file.\n   -c, --compact-PS               Do not output\
+  \ PS tag at each site, only at the start of a new phase set block.\n   -d, --rm-dups\
+  \ <string>         Output duplicate records present in multiple files only once:\
+  \ <snps|indels|both|all|none>\n   -D, --remove-duplicates        Alias for -d none\n\
+  \   -f, --file-list <file>         Read the list of files from a file.\n   -l, --ligate\
+  \                   Ligate phased VCFs by matching phase at overlapping haplotypes\n\
+  \       --no-version               Do not append version and command line to the\
+  \ header\n   -n, --naive                    Concatenate files without recompression,\
+  \ a header check compatibility is performed\n       --naive-force              Same\
+  \ as --naive, but header compatibility is not checked. Dangerous, use with caution.\n\
+  \   -o, --output <file>            Write output to a file [standard output]\n  \
+  \ -O, --output-type <b|u|z|v>    b: compressed BCF, u: uncompressed BCF, z: compressed\
+  \ VCF, v: uncompressed VCF [v]\n   -q, --min-PQ <int>             Break phase set\
+  \ if phasing quality is lower than <int> [30]\n   -r, --regions <region>       \
+  \  Restrict to comma-separated list of regions\n   -R, --regions-file <file>   \
+  \   Restrict to regions listed in a file\n       --threads <int>            Use\
+  \ multithreading with <int> worker threads [0]\n   -v, --verbose <0|1>         \
+  \   Set verbosity level [1]\n\n"
+generated_using:
+- --help

@@ -1,0 +1,321 @@
+!Command
+command:
+- reaper
+positional: []
+named:
+- !Flag
+  description: mode in {no-bc, 3p-bc, 5p-bc}
+  synonyms:
+  - -geom
+  args: !SimpleFlagArg
+    name: mode
+  optional: true
+- !Flag
+  description: "file with geometry-dependent format. Required columns:\nGeometry \
+    \   Columns:\nno-bc          3p-ad     -       -      -    tabu\n3p-bc       \
+    \   3p-ad  barcode  3p-si    -    tabu\n5p-bc          3p-ad  barcode    -   \
+    \ 5p-si  tabu"
+  synonyms:
+  - -meta
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: input stream (gzipped file allowed) (default STDIN)
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: minimum allowed clean length (default 0)
+  synonyms:
+  - -clean-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: protect first <int> bases in read from adapter and tabu matching
+  synonyms:
+  - -guard
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "only use the first <int> bases of adapter or tabu sequence (default\
+    \ 18)\nThis is to avoid false positive matches"
+  synonyms:
+  - -restrict
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "filter out reads with tri-nt score > threshold\na reasonable <threshold>\
+    \ is 35"
+  synonyms:
+  - -tri
+  args: !SimpleFlagArg
+    name: threshold
+  optional: true
+- !Flag
+  description: dust theshold for read suffix (default 0, suggested 20)
+  synonyms:
+  - -dust-suffix
+  args: !SimpleFlagArg
+    name: threshold
+  optional: true
+- !Flag
+  description: "/<outof> (default 0/0)\ndisregard read onwards from seeing <count>\
+    \ N's in <outof> bases"
+  synonyms:
+  - -nnn-check
+  args: !SimpleFlagArg
+    name: count
+  optional: true
+- !Flag
+  description: l/e[/g[/o]]  (default 14/2/1/0)
+  synonyms:
+  - -3p-global
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: l/e[/g[/o]]  (default 8/2/0/2)
+  synonyms:
+  - -3p-prefix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[/g[/o]]  (default 0/6/1/0)'
+  synonyms:
+  - -3p-barcode
+  args: !SimpleFlagArg
+    name: l/e
+  optional: true
+- !Flag
+  description: '[/g[/o]]  (default 0/0/0/2)'
+  synonyms:
+  - -5p-barcode
+  args: !SimpleFlagArg
+    name: l/e
+  optional: true
+- !Flag
+  description: l/e[/g[/o]]  (default 16/2/1/0)
+  synonyms:
+  - -mr-tabu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "minimal trailing perfect match length (default 0)\nsyntax used in\
+    \ the above:\nl  <int> minimum length required to count sub-alignment as match\n\
+    e  <int> maximum allowed edit distance\ng  <int> [optional, not active when set\
+    \ to 0] maximum allowed number of gaps\no  <int> [optional, not active when set\
+    \ to 0] offset:\no= 5  requires alignment to start in the first five bases of\
+    \ adaptor\no=-5  requires alignment to end in the last five bases of adaptor"
+  synonyms:
+  - -3p-head-to-tail
+  args: !SimpleFlagArg
+    name: l
+  optional: true
+- !Flag
+  description: match/substitution/gap gain/cost/cost (default 4/1/3)
+  synonyms:
+  - -swp
+  args: !SimpleFlagArg
+    name: M/S/G
+  optional: true
+- !Flag
+  description: read FASTA input
+  synonyms:
+  - --fasta-in
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(record description, default @%I%A%n%R%n+%#%Q%n)\n[ -record-format\
+    \ syntax is output when supplying --record-format ]"
+  synonyms:
+  - -record-format
+  args: !SimpleFlagArg
+    name: format string
+  optional: true
+- !Flag
+  description: "(simple line formats, one field per line):\nR  read\nI  read identifier\n\
+    Q  quality scores\nD  discard field"
+  synonyms:
+  - -record-format2
+  args: !SimpleFlagArg
+    name: format string
+  optional: true
+- !Flag
+  description: pfx.lint.gz, pfx.clean.gz pfx.report etc will be constructed
+  synonyms:
+  - -basename
+  args: !SimpleFlagArg
+    name: pfx
+  optional: true
+- !Flag
+  description: (output for clean reads)
+  synonyms:
+  - -format-clean
+  args: !SimpleFlagArg
+    name: format string
+  optional: true
+- !Flag
+  description: "(output for filtered reads)\n-format-clean/lint specification syntax:\n\
+    %R  read\n%C  clean read\n%Z  clean read padded with Ns if necessary\n%V  reverse\
+    \ complement of clean read\n%I  read identifier\n%Q  clean or input read quality\
+    \ (for clean / lint file respectively)\n%X  read count (only applicable if -record-format\
+    \ is used)\n%Y  input read quality\n%q<c>  clean input read quality padded with\
+    \ character <c>\n%A  annotation field\n%L  clean read length\n%M  message describing\
+    \ cause for filtering (lint file)\n%T  trinucleotide complexity score (clean/lint\
+    \ file)\n%U  dUst sUffix complexity information\n%3  best read/3p-adaptor alignment\n\
+    %=  alignment characteristics\nmt=matchtype\nsc=suffix-complexity\nht=head-tail-match\n\
+    nn=N-match-offset\nbb=B-match-offset\naa=Polya-offset\nqq=Quality-trim-offset\n\
+    %n  newline\n%J  record offset, unique for each read. Use to match paired-end\
+    \ reads\n%f  fastq line number based on standard fastq format\n%t  tab\n%%  percent\
+    \ sign\nAnything else is copied verbatim"
+  synonyms:
+  - -format-lint
+  args: !SimpleFlagArg
+    name: format string
+  optional: true
+- !Flag
+  description: '[acl]+     a=alignments c=clean l=lint'
+  synonyms:
+  - -debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: if debug, sample every c/l clean/lint read
+  synonyms:
+  - -sample
+  args: !SimpleFlagArg
+    name: c/l
+  optional: true
+- !Flag
+  description: do not output gzipped files
+  synonyms:
+  - --nozip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not output quality report files
+  synonyms:
+  - --noqc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: perform early 'B' quality filtering (when reading sequences)
+  synonyms:
+  - --bcq-early
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: perform late 'B' quality filtering (before outputting sequences)
+  synonyms:
+  - --bcq-late
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only allow reads not shortened in any filter step
+  synonyms:
+  - --full-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: delete rather than discard reads (e.g. tabu match, missing 5p-sinsert)
+  synonyms:
+  - --keep-all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: cut reads back to length <int>
+  synonyms:
+  - -trim-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: remove trailing A's if length exceeds <int>
+  synonyms:
+  - -polya
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: threshold for complexity of suffix following prefix match (default
+    0.25)
+  synonyms:
+  - -sc-max
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nRequired options\n-geom <mode>   mode in {no-bc, 3p-bc, 5p-bc}\n-meta\
+  \ <fname>  file with geometry-dependent format. Required columns:\n   Geometry \
+  \   Columns:\n      no-bc          3p-ad     -       -      -    tabu\n      3p-bc\
+  \          3p-ad  barcode  3p-si    -    tabu\n      5p-bc          3p-ad  barcode\
+  \    -    5p-si  tabu\nbc=barcode, ad=adaptor, si=sequence insert\nColumns 3p-si,\
+  \ 5p-si, 3p-ad and tabu may all be empty\nAlternatively, to express absence, a single\
+  \ hyphen may be used\n\nImportant options\n-i <fname>        input stream (gzipped\
+  \ file allowed) (default STDIN)\n-clean-length <int> minimum allowed clean length\
+  \ (default 0)\n-guard <int>      protect first <int> bases in read from adapter\
+  \ and tabu matching\n-restrict <int>   only use the first <int> bases of adapter\
+  \ or tabu sequence (default 18)\n                  This is to avoid false positive\
+  \ matches\n-tri <threshold>  filter out reads with tri-nt score > threshold\n  \
+  \                a reasonable <threshold> is 35\n-qqq-check  <val>/<winlen>  cut\
+  \ sequence when median quality drops below <val>\n-qqq-check  <val>/<winlen>/<winofs>\
+  \ as above, cut at <winofs> (default 0)\n-qqq-check  <val>/<winlen>/<winofs>/<readofs>\
+  \ as above, start at <readofs>\n-dust-suffix <threshold> dust theshold for read\
+  \ suffix (default 0, suggested 20)\n-nnn-check <count>/<outof> (default 0/0)\n \
+  \     disregard read onwards from seeing <count> N's in <outof> bases\n\nAlignment\
+  \ options\nOptions to specify when part of an alignment triggers a match:\n-3p-global\
+  \  l/e[/g[/o]]  (default 14/2/1/0)\n-3p-prefix  l/e[/g[/o]]  (default 8/2/0/2)\n\
+  -3p-barcode l/e[/g[/o]]  (default 0/6/1/0)\n-5p-barcode l/e[/g[/o]]  (default 0/0/0/2)\n\
+  -5p-sinsert l/e[/g[/o]]  (default 0/2/1/10)\n-mr-tabu    l/e[/g[/o]]  (default 16/2/1/0)\n\
+  -3p-head-to-tail l minimal trailing perfect match length (default 0)\n   syntax\
+  \ used in the above:\n      l  <int> minimum length required to count sub-alignment\
+  \ as match\n      e  <int> maximum allowed edit distance\n      g  <int> [optional,\
+  \ not active when set to 0] maximum allowed number of gaps\n      o  <int> [optional,\
+  \ not active when set to 0] offset:\n            o= 5  requires alignment to start\
+  \ in the first five bases of adaptor\n            o=-5  requires alignment to end\
+  \ in the last five bases of adaptor\n-swp M/S/G match/substitution/gap gain/cost/cost\
+  \ (default 4/1/3)\n\nInput/output options\n--fasta-in      read FASTA input\n-record-format\
+  \ <format string> (record description, default @%I%A%n%R%n+%#%Q%n)\n   [ -record-format\
+  \ syntax is output when supplying --record-format ]\n-record-format2 <format string>\
+  \ (simple line formats, one field per line):\n      R  read\n      I  read identifier\n\
+  \      Q  quality scores\n      D  discard field\n\n-basename <pfx>   pfx.lint.gz,\
+  \ pfx.clean.gz pfx.report etc will be constructed\n-format-clean <format string>\
+  \ (output for clean reads)\n-format-lint <format string> (output for filtered reads)\n\
+  \   -format-clean/lint specification syntax:\n      %R  read\n      %C  clean read\n\
+  \      %Z  clean read padded with Ns if necessary\n      %V  reverse complement\
+  \ of clean read\n      %I  read identifier\n      %Q  clean or input read quality\
+  \ (for clean / lint file respectively)\n      %X  read count (only applicable if\
+  \ -record-format is used)\n      %Y  input read quality\n      %q<c>  clean input\
+  \ read quality padded with character <c>\n      %A  annotation field\n      %L \
+  \ clean read length\n      %M  message describing cause for filtering (lint file)\n\
+  \      %T  trinucleotide complexity score (clean/lint file)\n      %U  dUst sUffix\
+  \ complexity information\n      %3  best read/3p-adaptor alignment\n      %=  alignment\
+  \ characteristics\n            mt=matchtype\n            sc=suffix-complexity\n\
+  \            ht=head-tail-match\n            nn=N-match-offset\n            bb=B-match-offset\n\
+  \            aa=Polya-offset\n            qq=Quality-trim-offset\n      %n  newline\n\
+  \      %J  record offset, unique for each read. Use to match paired-end reads\n\
+  \      %f  fastq line number based on standard fastq format\n      %t  tab\n   \
+  \   %%  percent sign\n   Anything else is copied verbatim\n-debug [acl]+     a=alignments\
+  \ c=clean l=lint\n-sample c/l       if debug, sample every c/l clean/lint read\n\
+  --nozip           do not output gzipped files\n--noqc            do not output quality\
+  \ report files\n\nMiscellaneous options\n--bcq-early       perform early 'B' quality\
+  \ filtering (when reading sequences)\n--bcq-late        perform late 'B' quality\
+  \ filtering (before outputting sequences)\n--full-length     only allow reads not\
+  \ shortened in any filter step\n--keep-all        delete rather than discard reads\
+  \ (e.g. tabu match, missing 5p-sinsert)\n-trim-length <int>     cut reads back to\
+  \ length <int>\n-polya <int>      remove trailing A's if length exceeds <int>\n\
+  -sc-max <f>       threshold for complexity of suffix following prefix match (default\
+  \ 0.25)\n\nOptions for use when running reaper with -geom no-bc\n-3pa <three prime\
+  \ adaptor>\n-5psi <five prime sequence insert>\n-tabu <tabu sequence>\n\n"
+generated_using:
+- -h

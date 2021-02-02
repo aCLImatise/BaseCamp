@@ -1,0 +1,124 @@
+!Command
+command:
+- vSNP_step1.py
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: PROG
+  optional: false
+named:
+- !Flag
+  description: 'Required: single read, R1 when Illumina read'
+  synonyms:
+  - -r1
+  - --read1
+  args: !SimpleFlagArg
+    name: READ1
+  optional: true
+- !Flag
+  description: 'Optional: R2 Illumina read'
+  synonyms:
+  - -r2
+  - --read2
+  args: !SimpleFlagArg
+    name: READ2
+  optional: true
+- !Flag
+  description: "Optional: Provide reference option or FASTA file. If\nneither are\
+    \ given, no -r option, then a\nTB/Brucella/paraTB best reference are searched"
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: 'Optional: gbk to annotate VCF file'
+  synonyms:
+  - -g
+  - --gbk
+  args: !SimpleFlagArg
+    name: GBK
+  optional: true
+- !Flag
+  description: See reference options
+  synonyms:
+  - -t
+  - --table
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Optional: group output via best_reference.py, ie\nspecify TB or Bruc\
+    \ which initials spoligo or MLST\ngeneration"
+  synonyms:
+  - -group
+  - --group
+  args: !SimpleFlagArg
+    name: GROUP
+  optional: true
+- !Flag
+  description: 'Optional: skip assembly of unmapped reads'
+  synonyms:
+  - -skip_assembly
+  - --skip_assembly
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: PROG [-h] [-r1 READ1] [-r2 READ2] [-r REFERENCE] [-g GBK] [-t]\n\
+  \            [-group GROUP] [-skip_assembly] [-v]\n\n---------------------------------------------------------\n\
+  Three Senario Options:\n    Senario 1: Provide a FASTA\n    vSNP_step1.py -r1 *_R1*fastq.gz\
+  \ -r2 *_R2*fastq.gz -r *fasta\n    vSNP_step1.py -r1 *fastq.gz -r *fasta\n\n   \
+  \ Senario 2: Provide a Reference Option\n    Run -t option to see table of reference\
+  \ options: vSNP_step1.py -t\n    vSNP_step1.py -r1 *_R1*fastq.gz -r2 *_R2*fastq.gz\
+  \ -r Mycobacterium_AF2122\n\n    Senario 3: Find Best Reference.  Only for TB complex,\
+  \ paraTB, and Brucella.\n    Run without -r option\n    vSNP_step1.py -r1 *_R1*fastq.gz\
+  \ -r2 *_R2*fastq.gz\n\nFASTA, gbk, and gff files for multi-chromosome genomes must\
+  \ be concatenated to single file\n\nDependencies:\n    - Reference options are grouped\
+  \ and accessed via named directories.  New directories are added using, $ path_adder.py.\
+  \  In vSNP's installed package dependency paths are stored in, \"dependency_paths.txt\"\
+  .  Directory/reference options are shown using -t option.\n        Seven files can\
+  \ be included:\n            Excel: (see template_define_filter.xlsx) with defining\
+  \ SNPs and filter positions.   <Required for grouping>\n            Excel: metadata.xlsx\
+  \  3 column file: VCF file name, updated file name, representative (optional boolean).\
+  \  File name must contain \"meta\" somewhere in its name.  <Optional>\n        \
+  \    Excel: remove_from_analysis.xlsx 1 column file: removes files based on name\
+  \ minus .vcf extension.  File name must contain \"remove\" somewhere in its name.\
+  \  <Optional>\n            FASTA (.fasta): used by vSNP_step1.py as reference. \
+  \ <Required, unless explicitely given with -r option.  See senario 1>\n        \
+  \    GBK (.gbk): used to annotate VCF files and tables.  <Optional>\n          \
+  \  GFF (.gff): used by IGV to show annotation.  <Optional>\n            IGV file:\
+  \ .genome IGV file mapping FASTA and GFF.  <Optional>\n    - vSNP comes installed\
+  \ with Mycobacterium_AF2122.  For additional reference options see: https://github.com/USDA-VS/vSNP_dependencies.git\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -r1 READ1, --read1 READ1\n                        Required: single read, R1 when\
+  \ Illumina read\n  -r2 READ2, --read2 READ2\n                        Optional: R2\
+  \ Illumina read\n  -r REFERENCE, --reference REFERENCE\n                       \
+  \ Optional: Provide reference option or FASTA file. If\n                       \
+  \ neither are given, no -r option, then a\n                        TB/Brucella/paraTB\
+  \ best reference are searched\n  -g GBK, --gbk GBK     Optional: gbk to annotate\
+  \ VCF file\n  -t, --table           See reference options\n  -group GROUP, --group\
+  \ GROUP\n                        Optional: group output via best_reference.py, ie\n\
+  \                        specify TB or Bruc which initials spoligo or MLST\n   \
+  \                     generation\n  -skip_assembly, --skip_assembly\n          \
+  \              Optional: skip assembly of unmapped reads\n  -v, --version      \
+  \   show program's version number and exit\n\n---------------------------------------------------------\n"
+generated_using:
+- --help

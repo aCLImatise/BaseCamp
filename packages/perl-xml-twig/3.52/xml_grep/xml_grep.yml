@@ -1,0 +1,221 @@
+!Command
+command:
+- xml_grep
+positional:
+- !Positional
+  description: "examples: 'para' 'para[@compact=\"compact\"]' '*[@urgent]'"
+  position: 0
+  name: handlers.
+  optional: false
+named:
+- !Flag
+  description: full documentation
+  synonyms:
+  - --man
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: display the tool version
+  synonyms:
+  - --Version
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "look for and return xml chunks matching <cond>\nif neither \"--root\"\
+    \ nor \"--file\" are used then the element(s) that\ntrigger the \"--cond\" option\
+    \ is (are) used. If \"--cond\" is not used\nthen all elements matching the <cond>\
+    \ are returned\nseveral \"--root\" can be provided"
+  synonyms:
+  - --root
+  args: !SimpleFlagArg
+    name: cond
+  optional: true
+- !Flag
+  description: "return the chunks (or file names) only if they contain elements\n\
+    matching <cond>\nseveral \"--cond\" can be provided (in which case they are OR'ed)"
+  synonyms:
+  - --cond
+  args: !SimpleFlagArg
+    name: cond
+  optional: true
+- !Flag
+  description: "return only file names (do not generate an XML output)\nusage of this\
+    \ option precludes using any of the options that define\nthe XML output: \"--roots\"\
+    , \"--encoding\", \"--wrap\", \"--group_by_file\"\nor \"--pretty_print\""
+  synonyms:
+  - --files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "return only the number of matches in each file\nusage of this option\
+    \ precludes using any of the options that define\nthe XML output: \"--roots\"\
+    , \"--encoding\", \"--wrap\", \"--group_by_file\"\nor \"--pretty_print\""
+  synonyms:
+  - --count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "without this option parsing errors are reported to STDOUT and the\n\
+    file skipped"
+  synonyms:
+  - --strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "when on (by default) the wrapping element get a \"date\" attribute\n\
+    that gives the date the tool was run.\nwith \"--nodate\" this attribute is not\
+    \ added, which can be useful if\nyou need to compare 2 runs."
+  synonyms:
+  - --date
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: encoding of the xml output (utf-8 by default)
+  synonyms:
+  - --encoding
+  args: !SimpleFlagArg
+    name: enc
+  optional: true
+- !Flag
+  description: output only <nb> results
+  synonyms:
+  - --nb_results
+  args: !SimpleFlagArg
+    name: nb
+  optional: true
+- !Flag
+  description: output only <nb> results by file
+  synonyms:
+  - --by_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "wrap the xml result in the provided tag (defaults to 'xml_grep')\n\
+    If wrap is set to an empty string (\"--wrap ''\") then the xml result\nis not\
+    \ wrapped at all."
+  synonyms:
+  - --wrap
+  args: !SimpleFlagArg
+    name: tag
+  optional: true
+- !Flag
+  description: "same as using \"--wrap ''\": the xml result is not wrapped."
+  synonyms:
+  - --nowrap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "attributes of the wrap tag (defaults to \"version=\"<VERSION>\"\n\
+    date=\"<date>\"\")"
+  synonyms:
+  - --descr
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "wrap results for each files into a separate element. By default that\n\
+    element is named \"file\". It has an attribute named \"filename\" that\ngives\
+    \ the name of the file.\nthe short version of this option is -g"
+  synonyms:
+  - --group_by_file
+  args: !SimpleFlagArg
+    name: optional_tag
+  optional: true
+- !Flag
+  description: "same as using \"-v\" in grep: the elements that match the condition\n\
+    are excluded from the result, the input file(s) is (are) otherwise\nunchanged\n\
+    the short form of this option is -v"
+  synonyms:
+  - --exclude
+  args: !SimpleFlagArg
+    name: condition
+  optional: true
+- !Flag
+  description: "pretty print the output using XML::Twig styles ('\"indented\"',\n\
+    '\"record\"' or '\"record_c\"' are probably what you are looking for)\nif the\
+    \ option is used but no style is given then '\"indented\"' is\nused\nshort form\
+    \ for this argument is -s"
+  synonyms:
+  - --pretty_print
+  args: !SimpleFlagArg
+    name: optional_style
+  optional: true
+- !Flag
+  description: Displays the text of the results, one by line.
+  synonyms:
+  - --text_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow HTML input, files are converted using HTML::TreeBuilder
+  synonyms:
+  - --html
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow HTML input, files are converted using HTML::Tidy
+  synonyms:
+  - --Tidy
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: brief help message
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Options:\n    --help\n        brief help message\n\n    --man\n      \
+  \  full documentation\n\n    --Version\n        display the tool version\n\n   \
+  \ --root <cond>\n        look for and return xml chunks matching <cond>\n\n    \
+  \    if neither \"--root\" nor \"--file\" are used then the element(s) that\n  \
+  \      trigger the \"--cond\" option is (are) used. If \"--cond\" is not used\n\
+  \        then all elements matching the <cond> are returned\n\n        several \"\
+  --root\" can be provided\n\n    --cond <cond>\n        return the chunks (or file\
+  \ names) only if they contain elements\n        matching <cond>\n\n        several\
+  \ \"--cond\" can be provided (in which case they are OR'ed)\n\n    --files\n   \
+  \     return only file names (do not generate an XML output)\n\n        usage of\
+  \ this option precludes using any of the options that define\n        the XML output:\
+  \ \"--roots\", \"--encoding\", \"--wrap\", \"--group_by_file\"\n        or \"--pretty_print\"\
+  \n\n    --count\n        return only the number of matches in each file\n\n    \
+  \    usage of this option precludes using any of the options that define\n     \
+  \   the XML output: \"--roots\", \"--encoding\", \"--wrap\", \"--group_by_file\"\
+  \n        or \"--pretty_print\"\n\n    --strict\n        without this option parsing\
+  \ errors are reported to STDOUT and the\n        file skipped\n\n    --date\n  \
+  \      when on (by default) the wrapping element get a \"date\" attribute\n    \
+  \    that gives the date the tool was run.\n\n        with \"--nodate\" this attribute\
+  \ is not added, which can be useful if\n        you need to compare 2 runs.\n\n\
+  \    --encoding <enc>\n        encoding of the xml output (utf-8 by default)\n\n\
+  \    --nb_results <nb>\n        output only <nb> results\n\n    --by_file\n    \
+  \    output only <nb> results by file\n\n    --wrap <tag>\n        wrap the xml\
+  \ result in the provided tag (defaults to 'xml_grep')\n\n        If wrap is set\
+  \ to an empty string (\"--wrap ''\") then the xml result\n        is not wrapped\
+  \ at all.\n\n    --nowrap\n        same as using \"--wrap ''\": the xml result is\
+  \ not wrapped.\n\n    --descr <string>\n        attributes of the wrap tag (defaults\
+  \ to \"version=\"<VERSION>\"\n        date=\"<date>\"\")\n\n    --group_by_file\
+  \ <optional_tag>\n        wrap results for each files into a separate element. By\
+  \ default that\n        element is named \"file\". It has an attribute named \"\
+  filename\" that\n        gives the name of the file.\n\n        the short version\
+  \ of this option is -g\n\n    --exclude <condition>\n        same as using \"-v\"\
+  \ in grep: the elements that match the condition\n        are excluded from the\
+  \ result, the input file(s) is (are) otherwise\n        unchanged\n\n        the\
+  \ short form of this option is -v\n\n    --pretty_print <optional_style>\n     \
+  \   pretty print the output using XML::Twig styles ('\"indented\"',\n        '\"\
+  record\"' or '\"record_c\"' are probably what you are looking for)\n\n        if\
+  \ the option is used but no style is given then '\"indented\"' is\n        used\n\
+  \n        short form for this argument is -s\n\n    --text_only\n        Displays\
+  \ the text of the results, one by line.\n\n    --html\n        Allow HTML input,\
+  \ files are converted using HTML::TreeBuilder\n\n    --Tidy\n        Allow HTML\
+  \ input, files are converted using HTML::Tidy\n\n  Condition Syntax:\n    <cond>\
+  \ is an XPath-like expression as allowed by XML::Twig to trigger\n    handlers.\n\
+  \n    examples: 'para' 'para[@compact=\"compact\"]' '*[@urgent]'\n    '*[@urgent=\"\
+  1\"]' 'para[string()=\"WARNING\"]'\n\n    see XML::Twig for a more complete description\
+  \ of the <cond> syntax\n\n    options are processed by Getopt::Long so they can\
+  \ start with '-' or '--'\n    and can be abbreviated (\"-r\" instead of \"--root\"\
+  \ for example)\n\n"
+generated_using:
+- --help

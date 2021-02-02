@@ -1,0 +1,84 @@
+!Command
+command:
+- dep
+- ensure
+positional: []
+named:
+- !Flag
+  description: 'add new dependencies, or populate Gopkg.toml with constraints for
+    existing dependencies (default: false)'
+  synonyms:
+  - -add
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'only report the changes that would be made (default: false)'
+  synonyms:
+  - -dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'print detailed usage examples (default: false)'
+  synonyms:
+  - -examples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'update Gopkg.lock (if needed), but do not update vendor/ (default:
+    false)'
+  synonyms:
+  - -no-vendor
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'update the named dependencies (or all, if none are named) in Gopkg.lock
+    to the latest allowed by Gopkg.toml (default: false)'
+  synonyms:
+  - -update
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'enable verbose logging (default: false)'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'populate vendor/ from Gopkg.lock without updating it first (default:
+    false)'
+  synonyms:
+  - -vendor-only
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: dep ensure [-update | -add] [-no-vendor | -vendor-only] [-dry-run]\
+  \ [-v] [<spec>...]\n\nProject spec:\n\n  <import path>[:alt source URL][@<constraint>]\n\
+  \n\nEnsure gets a project into a complete, reproducible, and likely compilable state:\n\
+  \n  * All imports are fulfilled\n  * All rules in Gopkg.toml are respected\n  *\
+  \ Gopkg.lock records immutable versions for all dependencies\n  * vendor/ is populated\
+  \ according to Gopkg.lock\n\nEnsure has fast techniques to determine that some of\
+  \ these steps may be\nunnecessary. If that determination is made, ensure may skip\
+  \ some steps. Flags\nmay be passed to bypass these checks; -vendor-only will allow\
+  \ an out-of-date\nGopkg.lock to populate vendor/, and -no-vendor will update Gopkg.lock\
+  \ (if\nneeded), but never touch vendor/.\n\nThe effect of passing project spec arguments\
+  \ varies slightly depending on the\ncombination of flags that are passed.\n\n\n\
+  Examples:\n\n  dep ensure                                 Populate vendor from existing\
+  \ Gopkg.toml and Gopkg.lock\n  dep ensure -add github.com/pkg/foo         Introduce\
+  \ a named dependency at its newest version\n  dep ensure -add github.com/pkg/foo@^1.0.1\
+  \  Introduce a named dependency with a particular constraint\n\nFor more detailed\
+  \ usage examples, see dep ensure -examples.\n\nFlags:\n\n  -add          add new\
+  \ dependencies, or populate Gopkg.toml with constraints for existing dependencies\
+  \ (default: false)\n  -dry-run      only report the changes that would be made (default:\
+  \ false)\n  -examples     print detailed usage examples (default: false)\n  -no-vendor\
+  \    update Gopkg.lock (if needed), but do not update vendor/ (default: false)\n\
+  \  -update       update the named dependencies (or all, if none are named) in Gopkg.lock\
+  \ to the latest allowed by Gopkg.toml (default: false)\n  -v            enable verbose\
+  \ logging (default: false)\n  -vendor-only  populate vendor/ from Gopkg.lock without\
+  \ updating it first (default: false)\n\n"
+generated_using:
+- --help

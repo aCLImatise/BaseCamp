@@ -1,0 +1,230 @@
+!Command
+command:
+- igdiscover
+- discover
+positional: []
+named:
+- !Flag
+  description: "Number of threads. Default: no. of available CPUs, but\nat most 4"
+  synonyms:
+  - --threads
+  - -j
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Seed value for random numbers for reproducible runs.
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: 'Threshold for consensus computation. Default: 60%'
+  synonyms:
+  - --consensus-threshold
+  - -t
+  args: !SimpleFlagArg
+    name: PERCENT
+  optional: true
+- !Flag
+  description: "Compute consensus for this gene. Can be given multiple\ntimes. Default:\
+    \ Compute for all genes."
+  synonyms:
+  - --gene
+  - -g
+  args: !SimpleFlagArg
+    name: GENE
+  optional: true
+- !Flag
+  description: "Skip remaining genes as soon as at least N candidates\nwere generated.\
+    \ Default: No limit"
+  synonyms:
+  - --limit
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "For consensus, include only sequences that have at\nleast this error\
+    \ rate (in percent). Default: 0"
+  synonyms:
+  - --left
+  - -l
+  args: !SimpleFlagArg
+    name: ERROR-RATE
+  optional: true
+- !Flag
+  description: "For consensus, include only sequences that have at\nmost this error\
+    \ rate (in percent). Default: 100"
+  synonyms:
+  - --right
+  - -r
+  args: !SimpleFlagArg
+    name: ERROR-RATE
+  optional: true
+- !Flag
+  description: "Compute consensus for all PERCENT-wide windows. Set to\n0 to disable.\
+    \ Default: 2"
+  synonyms:
+  - --window-width
+  - -w
+  args: !SimpleFlagArg
+    name: PERCENT
+  optional: true
+- !Flag
+  description: Do not run linkage cluster analysis.
+  synonyms:
+  - --no-cluster
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Treat N exact occurrences of a sequence as a cluster.\nDefault: Do\
+    \ not cluster exact occurrences"
+  synonyms:
+  - --cluster-exact
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Remove rows that have more than MAXN \"N\" nucleotides.\nIf >0, an\
+    \ N_bases column is added. Default: 0"
+  synonyms:
+  - --max-n-bases
+  args: !SimpleFlagArg
+    name: MAXN
+  optional: true
+- !Flag
+  description: "When clustering, use N randomly chosen sequences.\nDefault: 1000"
+  synonyms:
+  - --subsample
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Include also rows without J assignment or J%SHM>0.
+  synonyms:
+  - --ignore-J
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "When subsampling, first pick rows whose V gene\nsequenceshave at least\
+    \ N exact copies in the input.\nDefault: 1"
+  synonyms:
+  - --exact-copies
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "For Ds_exact, require D matches with an E-value of at\nmost EVALUE.\
+    \ Default: 0.0001"
+  synonyms:
+  - --d-evalue
+  args: !SimpleFlagArg
+    name: EVALUE
+  optional: true
+- !Flag
+  description: "For Ds_exact, require D matches with a minimum D\ncoverage of COVERAGE\
+    \ (in percent). Default: 70)"
+  synonyms:
+  - --d-coverage
+  - --D-coverage
+  args: !SimpleFlagArg
+    name: COVERAGE
+  optional: true
+- !Flag
+  description: "When clustering CDR3s to computer the no. of\nclonotypes, allow DIFFERENCES\
+    \ between\n(nucleotide-)sequences. Default: 6"
+  synonyms:
+  - --clonotype-diff
+  args: !SimpleFlagArg
+    name: DIFFERENCES
+  optional: true
+- !Flag
+  description: "Output tables for all analyzed genes to DIRECTORY.\nFiles will be\
+    \ named <GENE>.tab."
+  synonyms:
+  - --table-output
+  - -o
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: "FASTA file with V genes. If provided, differences\nbetween consensus\
+    \ and database will be computed."
+  synonyms:
+  - --database
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: "Write names of reads with exact matches used in\ndiscovering each\
+    \ candidate to FILE\n"
+  synonyms:
+  - --read-names
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: igdiscover discover [-h] [--threads THREADS] [--seed SEED]\n  \
+  \                         [--consensus-threshold PERCENT] [--gene GENE]\n      \
+  \                     [--limit N] [--left ERROR-RATE]\n                        \
+  \   [--right ERROR-RATE] [--window-width PERCENT]\n                           [--no-cluster]\
+  \ [--cluster-exact N]\n                           [--max-n-bases MAXN] [--subsample\
+  \ N] [--ignore-J]\n                           [--exact-copies N] [--d-evalue EVALUE]\n\
+  \                           [--d-coverage COVERAGE]\n                          \
+  \ [--clonotype-diff DIFFERENCES]\n                           [--table-output DIRECTORY]\
+  \ [--database FASTA]\n                           [--read-names FILE]\n         \
+  \                  table\n\nDiscover candidate new V genes within a single antibody\
+  \ library\n\nExisting V sequences are grouped by their V gene assignment, and within\
+  \ each\ngroup, consensus sequences are computed.\n\npositional arguments:\n  table\
+  \                 Table with parsed IgBLAST results\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --threads THREADS, -j THREADS\n\
+  \                        Number of threads. Default: no. of available CPUs, but\n\
+  \                        at most 4\n  --seed SEED           Seed value for random\
+  \ numbers for reproducible runs.\n  --consensus-threshold PERCENT, -t PERCENT\n\
+  \                        Threshold for consensus computation. Default: 60%\n  --gene\
+  \ GENE, -g GENE  Compute consensus for this gene. Can be given multiple\n      \
+  \                  times. Default: Compute for all genes.\n  --limit N         \
+  \    Skip remaining genes as soon as at least N candidates\n                   \
+  \     were generated. Default: No limit\n  --left ERROR-RATE, -l ERROR-RATE\n  \
+  \                      For consensus, include only sequences that have at\n    \
+  \                    least this error rate (in percent). Default: 0\n  --right ERROR-RATE,\
+  \ -r ERROR-RATE\n                        For consensus, include only sequences that\
+  \ have at\n                        most this error rate (in percent). Default: 100\n\
+  \  --window-width PERCENT, -w PERCENT\n                        Compute consensus\
+  \ for all PERCENT-wide windows. Set to\n                        0 to disable. Default:\
+  \ 2\n  --no-cluster          Do not run linkage cluster analysis.\n  --cluster-exact\
+  \ N     Treat N exact occurrences of a sequence as a cluster.\n                \
+  \        Default: Do not cluster exact occurrences\n  --max-n-bases MAXN    Remove\
+  \ rows that have more than MAXN \"N\" nucleotides.\n                        If >0,\
+  \ an N_bases column is added. Default: 0\n  --subsample N         When clustering,\
+  \ use N randomly chosen sequences.\n                        Default: 1000\n  --ignore-J\
+  \            Include also rows without J assignment or J%SHM>0.\n  --exact-copies\
+  \ N      When subsampling, first pick rows whose V gene\n                      \
+  \  sequenceshave at least N exact copies in the input.\n                       \
+  \ Default: 1\n  --d-evalue EVALUE     For Ds_exact, require D matches with an E-value\
+  \ of at\n                        most EVALUE. Default: 0.0001\n  --d-coverage COVERAGE,\
+  \ --D-coverage COVERAGE\n                        For Ds_exact, require D matches\
+  \ with a minimum D\n                        coverage of COVERAGE (in percent). Default:\
+  \ 70)\n  --clonotype-diff DIFFERENCES\n                        When clustering CDR3s\
+  \ to computer the no. of\n                        clonotypes, allow DIFFERENCES\
+  \ between\n                        (nucleotide-)sequences. Default: 6\n  --table-output\
+  \ DIRECTORY, -o DIRECTORY\n                        Output tables for all analyzed\
+  \ genes to DIRECTORY.\n                        Files will be named <GENE>.tab.\n\
+  \  --database FASTA      FASTA file with V genes. If provided, differences\n   \
+  \                     between consensus and database will be computed.\n  --read-names\
+  \ FILE     Write names of reads with exact matches used in\n                   \
+  \     discovering each candidate to FILE\n"
+generated_using:
+- --help

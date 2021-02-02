@@ -1,0 +1,350 @@
+!Command
+command:
+- je
+- demultiplex-illu
+positional:
+- !Positional
+  description: 'Required. '
+  position: 0
+  name: data.
+  optional: false
+- !Positional
+  description: INDEX_FILE2=File
+  position: 0
+  name: Required.
+  optional: false
+- !Positional
+  description: sample1          ATAT|GAGG:CCAA|TGTG     spl1_1.txt.gz   spl1_2.txt.gz
+  position: 0
+  name: Or
+  optional: false
+- !Positional
+  description: 'Indicates if both index barcodes encode redundant information i.e.
+    if both barcodes are '
+  position: 0
+  name: provided.
+  optional: false
+- !Positional
+  description: 'values can be given here using the syntax MM=X:Z where X and Z are
+    2 integers to use for '
+  position: 0
+  name: distinct
+  optional: false
+- !Positional
+  description: "'@D3FCO8P1:178:C1WLBACXX:7:1101:1836:1965:2:N:0:BARCODE'"
+  position: 0
+  name: becomes
+  optional: false
+- !Positional
+  description: "Default value: Standard. This option can be set to 'null' to clear\
+    \ the default value. "
+  position: 0
+  name: detected.
+  optional: false
+- !Positional
+  description: 'N.B: this file will have a size of about one of the fastq input files.  Default
+    value: '
+  position: 0
+  name: barcoded.
+  optional: false
+- !Positional
+  description: "FORCE=Boolean                 Allows to overwrite existing files (system\
+    \ rights still apply).\nDefault value: false. This option can be set to 'null'\
+    \ to clear the default value."
+  position: 1
+  name: null.
+  optional: false
+named:
+- !Flag
+  description: "Displays options specific to this tool AND options common to all Picard\
+    \ command line\ntools."
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: Displays program version.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Picked up _JAVA_OPTIONS: -Xmx4G -Xms256m\nUSAGE: JemultiplexerIllumina\
+  \ [options]\n\n\tFastq files demultiplexer for Illumina Fastq files using Illumina\
+  \ Index files.\n\tFastq files (reads and index) can be in gzip compressed (end in\
+  \ .gz). \n\tBy default output files are gzipped and have names following the pattern\
+  \ \n\t'_<barcode[-barcode2...-barcodeN]>_[1|2].txt[.gz]' unless you gave file\n\t\
+  \ names to use within the barcode description file.\nExample : \n\t je demultiplex-illu\
+  \ F1=fastq_1.txt.gz I1=index_1.txt.gz BF=barcodes.bs O=~/Desktop/test-jemultiplexer2/\
+  \ \nVersion: 2.0.RC\n\n\nOptions:\n\n--help\n-h                            Displays\
+  \ options specific to this tool.\n\n--stdhelp\n-H                            Displays\
+  \ options specific to this tool AND options common to all Picard command line \n\
+  \                              tools.\n\n--version                     Displays\
+  \ program version.\n\nFASTQ_FILE1=File\nF1=File                       Input fastq\
+  \ file (optionally gzipped) for single end data, or first read in paired end \n\
+  \                              data.\n                                Required.\
+  \ \n\nFASTQ_FILE2=File\nF2=File                       Input fastq file (optionally\
+  \ gzipped) for the second read of paired end data.\n                           \
+  \     Default value: null. \n\nINDEX_FILE1=File\nI1=File                       Fastq\
+  \ file for index 1 (barcode) reads, optionally gzipped.\n                      \
+  \          Required. \n\nINDEX_FILE2=File\nI2=File                       Fastq file\
+  \ for index 2 (barcode) reads, optionally gzipped.\n                           \
+  \   A INDEX_FILE1 MUST be provided when INDEX_FILE2 is given. This situation corresponds\
+  \ to \n                              Illumina dual indexing.\n                 \
+  \               Default value: null. \n\nBARCODE_FILE=File\nBF=File            \
+  \           Barcode file describing sequence list and sample names. Tab-delimited\
+  \ file with 2 \n                              columns, with the sample in col1 and\
+  \ the corresponding barcode in col2.\n                              Simple barcode\
+  \ file format : 2 tab-delimited colums\n                              \tIf multiple\
+  \ barcode map to the same sample, either line can be duplicated e.g.\n         \
+  \                     \t\tsample1\tATAT\n                              \t\tsample1\t\
+  GAGG\n                              \t\tsample2\tCCAA\n                        \
+  \      \t\tsample2\tTGTG\n                              \tOr barcodes can be combined\
+  \ using the OR operator '|' i.e. the file above can be \n                      \
+  \        re-written like\n                               \t\tsample1\tATAT|GAGG\n\
+  \                              \t\tsample2\tCCAA|TGTG\n                        \
+  \      \tFinally, for the special situation of paired-end data in which barcodes\
+  \ differ at both \n                              ends (ie BPOS=BOTH BRED=false BM=BOTH\
+  \ , see BRED option description), barcodes for read_1 \n                       \
+  \       and read_2 can be distinguished using a ':' separator i.e. \n          \
+  \                    \t\tsample1\tATAT:GAGG\n                              \t\t\
+  sample2\tCCAA:TGTG\n                              \tThis above syntax means that\
+  \ sample 1 is encoded with ATAT barcode at read_1 AND GAGG \n                  \
+  \            barcode at read_2. Note that you can still combine barcodes using |\
+  \ e.g. \n                              \t\tsample1\tATAT|GAGG:CCAA|TGTG\n      \
+  \                        \twould mean that sample 1 is mapped by the combination\
+  \ of barcode: ATAT OR GAGG at read_1 \n                              AND CCAA OR\
+  \ TGTG at read_2.\n                              Extended barcode file format :\
+  \ 3 (single-end) or 4 (paired-end) tab-delimited colums\n                      \
+  \        \tsame as the simple barcode file format but the extra columns contains\
+  \ the file name(s) \n                              to use to name output files.\
+  \ A unique extra column is expected for single-end while 2 \n                  \
+  \            extra columns are expected for paired-end. In case, lines are duplicated\
+  \ (multiple \n                              barcodesmapping the same sample), the\
+  \ same file name should be indicated in the third \n                           \
+  \   (and fourth) column(s). \n                              \t\tsample1\tATAT\t\
+  spl1_1.txt.gz\tspl1_2.txt.gz\n                              \t\tsample1\tGAGG\t\
+  spl1_1.txt.gz\tspl1_2.txt.gz\n                              \t\tsample2\tCCAA\t\
+  spl2_1.txt.gz\tspl2_2.txt.gz\n                              \tOr\n             \
+  \                 \t\tsample1 \t ATAT|GAGG:CCAA|TGTG \t spl1_1.txt.gz \t spl1_2.txt.gz\n\
+  \                              Ns in barcode sequence are allowed and are used to\
+  \ flag positions that should be ignored \n                              in sample\
+  \ matching \n                              \t i.e. they will be clipped off the\
+  \ read sequence (like in iCLIP protocol).  Required.  \n                       \
+  \       Cannot be used in conjuction with option(s) USE_EMBASE (EM)\n\nBARCODE_READ_POS=BarcodePosition\n\
+  BPOS=BarcodePosition          Indicates the location of additional barcodes present\
+  \ in the read(s). Setting this option \n                              implies setting\
+  \ the LEN option.\n                              \tImportantly, these additional\
+  \ barcodes must not encode sample identity information but \n                  \
+  \            used for \n                              \te.g. molecular barcoding\
+  \ (UMIs) or for any purpose other than sample identity encoding.  \n           \
+  \                   Default value: BOTH. This option can be set to 'null' to clear\
+  \ the default value. \n                              Possible values: {READ_1, READ_2,\
+  \ BOTH, NONE} \n\nBCLEN=String\nLEN=String                    Length of the additional\
+  \ barcodes present in the read(s) as indicated by the BPOS option. \n          \
+  \                    Two distinct length can be provided using the syntax LEN=X:Z\
+  \ where X and Z are 2 integers \n                              representing the\
+  \ barcode length for read_1 and read_2 respectively.\n                         \
+  \     Only relevant when BPOS != NONE.  Default value: null. \n\nREDUNDANT_BARCODES=Boolean\n\
+  BRED=Boolean                  This option only applies for paired-end data with\
+  \ *both* INDEX_FILE1 and INDEX_FILE2 \n                              provided.\n\
+  \                              Indicates if both index barcodes encode redundant\
+  \ information i.e. if both barcodes are \n                              supposed\
+  \ to be identical (or resolve to the same sample when a pool of barcodes is used\
+  \ \n                              per sample).\n                               \t\
+  When BRED=true, the STRICT option guides the sample lookup behavior\tWhen BRED=false,\
+  \ \n                              barcodes are combined prior to sample lookup.\n\
+  \                                Default value: true. This option can be set to\
+  \ 'null' to clear the default value. \n                              Possible values:\
+  \ {true, false} \n\nSTRICT=Boolean\nS=Boolean                     For paired-end\
+  \ data and when two distinct barcodes/indices are used to encode samples,\n    \
+  \                           this option tells if both barcodes should resolve to\
+  \ the same sample.\n                               When true and if only one of\
+  \ the two reads has a barcode match, the read pair is \n                       \
+  \       'unassigned'.\n                               When false and if only one\
+  \ of the two reads has a barcode match, the read pair is \n                    \
+  \          assigned to the\n                               corresponding sample\n\
+  \                              When reads resolve to different samples, the read\
+  \ pair is always 'unassigned'.\n                                Default value: false.\
+  \ This option can be set to 'null' to clear the default value. \n              \
+  \                Possible values: {true, false} \n\nMAX_MISMATCHES=String\nMM=String\
+  \                     Maximum mismatches for a barcode to be considered a match.\
+  \ In situations where both \n                              barcodes are used for\
+  \ sample matching i.e. BPOS=BOTH BM=BOTH (or 2 INDEX_FILE given), two \n       \
+  \                       distinct\n                               values can be given\
+  \ here using the syntax MM=X:Z where X and Z are 2 integers to use for \n      \
+  \                        read_1 and read_2 respectively.\n                     \
+  \         MM=null is like MM=0\n                                Default value: 1.\
+  \ This option can be set to 'null' to clear the default value. \n\nMIN_MISMATCH_DELTA=String\n\
+  MMD=String                    Minimum difference between the number of mismatches\
+  \ against the best and the second best \n                              barcode.\
+  \ When MMD is not respected, the read remains unassigned.\n                    \
+  \          When two distinct barcodes are used for sample matching (dual encoding),\
+  \ two distinct \n                              values can be given using the syntax\
+  \ MMD=X:Z where X and Z are 2 integers to use for \n                           \
+  \   first (e.g. from read_1 or index_1)\n                              MMD=null\
+  \ is like MMD=0\n                                Default value: 1. This option can\
+  \ be set to 'null' to clear the default value. \n\nMIN_BASE_QUALITY=String\nQ=String\
+  \                      Minimum base quality during barcode matching: bases which\
+  \ quality is less than this \n                              cutoff are always considered\
+  \ as a mismatch.When two distinct barcodes are used for sample \n              \
+  \                matching (dual encoding), two distinct values can be given using\
+  \ the syntax Q=X:Z where X \n                              and Z are 2 integers\
+  \ to use for first (e.g. from read_1 or index_1) and second barcode \n         \
+  \                     (e.g. from read_2 or index_2) respectively.\n            \
+  \                  Q=null is like Q=0.\n                                Default\
+  \ value: 10. This option can be set to 'null' to clear the default value. \n\nXTRIMLEN=String\n\
+  XT=String                     Optional extra number of base to be trimmed right\
+  \ after the barcode (only used if \n                              CLIP_BARCODE=true).\
+  \ \n                              When running paired-end, two distinct values can\
+  \ be given using the syntax XT=X:Z where X \n                              and Z\
+  \ are 2 integers to use for read_1 and read_2 respectively. Note that even when\
+  \ \n                              BPOS=READ_1 or BPOS=READ_2, a X:Y synthax can\
+  \ be given to trim the read w/o barcode as to \n                              end\
+  \ up with reads of the same length (note that this can also be operated using ZT).\
+  \ If a \n                              unique value is given, e.g. XT=1, while running\
+  \ paired-end the following rule applies :\n                               \t(1)\
+  \ BPOS=READ_1 or BPOS=READ_2, no trim is applied at the read w/o barcode \n    \
+  \                          \t(2) BPOS=BOTH, the value is used for both reads.\n\
+  \                              Note that XT=null is like XT=0.\n               \
+  \                 Default value: 0. This option can be set to 'null' to clear the\
+  \ default value. \n\nZTRIMLEN=String\nZT=String                     Optional extra\
+  \ number of bases to be trimmed from the read end i.e. 3' end.\n               \
+  \               When running paired-end, two distinct values can be given here using\
+  \ the syntax ZT=X:Z \n                              where X and Z are 2 integers\
+  \ to use for read_1 and read_2 respectively. Note that even \n                 \
+  \             when BPOS=READ_1 or BPOS=READ_2, a X:Y synthax can be given to trim\
+  \ the read w/o barcode \n                              as to end up with reads of\
+  \ the same length (note that this can also be operated using \n                \
+  \              XT). Note that if a single value is passed, the value always applies\
+  \ to both reads in \n                              paired-end mode without further\
+  \ consideration.\n                              ZT=null is like ZT=0.\n        \
+  \                        Default value: 0. This option can be set to 'null' to clear\
+  \ the default value. \n\nCLIP_BARCODE=Boolean\nC=Boolean                     Clip\
+  \ barcode sequence from read sequence, as well as XTRIMLEN (and ZTRIMLEN) bases\
+  \ if \n                              applicable, before writing to output file.\n\
+  \                               If false, reads are written without modification\
+  \ to output file. \n                              Apply to both barcodes when BPOS=BOTH.\n\
+  \                                Default value: true. This option can be set to\
+  \ 'null' to clear the default value. \n                              Possible values:\
+  \ {true, false} \n\nADD_BARCODE_TO_HEADER=Boolean\nADD=Boolean                 \
+  \  Add matched barcode at the end of the read header. Applies to both index when\
+  \ INDEX_FILE2 \n                              is also provided.\n              \
+  \                \tFirst the sample encoding barcodes from I1 (and I2 when relevant)\
+  \ are added to the read \n                              headers like \n        \
+  \                      \t\t'@D3FCO8P1:178:C1WLBACXX:7:1101:1836:1965 2:N:0:I1_BARCODE:I2_BARCODE'\n\
+  \                              \tThen, if BPOS!=NONE, the additional barcodes (UMIs)\
+  \ clipped from the read(s) are added \n                              to their own\
+  \ header, like \n                              \t\t'@D3FCO8P1:178:C1WLBACXX:7:1101:1836:1965\
+  \ \n                              2:N:0:I1_BARCODE:I2_BARCODE:CLIPPED_SEQ_FROMREAD'\n\
+  \                                Default value: true. This option can be set to\
+  \ 'null' to clear the default value. \n                              Possible values:\
+  \ {true, false} \n\nENSURE_IDENTICAL_HEADER_NAMES=Boolean\nSAME_HEADERS=Boolean\
+  \          Makes sure that headers of both reads of a pair are identical, using\
+  \ the following read \n                              header pattern (for both reads\
+  \ of a pair) :\n                              \t\t'@D3FCO8P1:178:C1WLBACXX:7:1101:1836:1965\
+  \ I1_BARCODE:I2_BARCODE(if \n                              applicable)':CLIPPED_SEQ_FROMREAD1:CLIPPED_SEQ_FROMREAD2\
+  \ \n                              This option only makes sense in paired end mode\
+  \ and ADD=true. Some (if not all) mappers \n                              will indeed\
+  \ complain when the read headers are not identical. When molecular barcodes are\
+  \ \n                              present in reads and the RCHAR is used, you will\
+  \ end with (problematic) read headers like \n                              this\
+  \ :\n                              \t\tHISEQ:44:C6KC0ANXX:5:1101:1491:1994:1:N:0:TAGAACAC:TGGAGTAG\n\
+  \                              \t\tHISEQ:44:C6KC0ANXX:5:1101:1491:1994:3:N:0:TAGAACAC:CGTTGTAT\n\
+  \                              SAME_HEADERS=true will instead genetates the following\
+  \ identical header for both reads :\n                              \t\tHISEQ:44:C6KC0ANXX:5:1101:1491:1994:TAGAACAC:TGGAGTAG:CGTTGTAT\n\
+  \                              Note that we also clipped the useless '1:N:0' and\
+  \ '3:N:0' has they will also result in \n                              generating\
+  \ different headers\n                              \t Important : this option will\
+  \ force RCHAR=: UNLESS you specify RCHAR=null ; in which \n                    \
+  \          case a space will be preserved ie : \n                              \t\
+  \tHISEQ:44:C6KC0ANXX:5:1101:1491:1994 TAGAACAC:TGGAGTAG:CGTTGTAT\n             \
+  \                   Default value: true. This option can be set to 'null' to clear\
+  \ the default value. \n                              Possible values: {true, false}\
+  \ \n\nREAD_NAME_REPLACE_CHAR=String\nRCHAR=String                  Replace spaces\
+  \ in read name/header using provided character. This is particularly handy \n  \
+  \                            when you need to retain\t ADDed barcode in read name/header\
+  \ during mapping (everything \n                              after space in read\
+  \ name is usually clipped in BAM files).\tFor example, with RCHAR=':' :\n      \
+  \                        \t\t'@D3FCO8P1:178:C1WLBACXX:7:1101:1836:1965 2:N:0:'\n\
+  \                              \tbecomes\n                              \t\t'@D3FCO8P1:178:C1WLBACXX:7:1101:1836:1965:2:N:0:BARCODE'\n\
+  \                                Default value: null. \n\nQUALITY_FORMAT=FastqQualityFormat\n\
+  V=FastqQualityFormat          A value describing how the quality values are encoded\
+  \ in the fastq.  Either 'Solexa' for \n                              pre-pipeline\
+  \ 1.3 style scores (solexa scaling + 66), 'Illumina' for pipeline 1.3 and \n   \
+  \                           above (phred scaling + 64) or 'Standard' for phred scaled\
+  \ scores with a character shift \n                              of 33.  If this\
+  \ value is not specified (or 'null' is given), the quality format will be \n   \
+  \                           detected.\n                                Default value:\
+  \ Standard. This option can be set to 'null' to clear the default value. \n    \
+  \                          Possible values: {Solexa, Illumina, Standard} \n\nOUTPUT_DIR=File\n\
+  O=File                        Output directory. By default, output files are written\
+  \ in running directory.\n                                Default value: null. \n\
+  \nKEEP_UNASSIGNED_READ=Boolean\nUN=Boolean                    Should un-assigned\
+  \ reads be saved in files or simply ignored. File names are \n                 \
+  \             automatically created or can be given using UF1 & UF2 options.\n \
+  \                               Default value: true. This option can be set to 'null'\
+  \ to clear the default value. \n                              Possible values: {true,\
+  \ false} \n\nUNASSIGNED_FILE_NAME_1=String\nUF1=String                    Name of\
+  \ the file in which to write unassigned reads from FILE1.Either a name (in which\
+  \ \n                              case the file will be created in the output dir)\
+  \ or full path.\n                                Default value: unassigned_1.txt.\
+  \ This option can be set to 'null' to clear the default \n                     \
+  \         value. \n\nUNASSIGNED_FILE_NAME_2=String\nUF2=String                 \
+  \   Name of the file in which to write unassigned reads from FILE2.Either a name\
+  \ (in which \n                              case the file will be created in the\
+  \ output dir) or full path.\n                                Default value: unassigned_2.txt.\
+  \ This option can be set to 'null' to clear the default \n                     \
+  \         value. \n\nMETRICS_FILE_NAME=String\nM=String                      File\
+  \ name where to write demultiplexing statistics. Either a name (in which case the\
+  \ file \n                              will be created in the output dir) or an\
+  \ absolute path.\n                                Default value: jemultiplexer_out_stats.txt.\
+  \ This option can be set to 'null' to clear \n                              the\
+  \ default value. \n\nBARCODE_DIAG_FILE=String\nDIAG=String                   Name\
+  \ for a barcode match reporting file (not generated by default).Either a name (in\
+  \ \n                              which case the file will be created in the output\
+  \ dir) or full path. This file will \n                              contain a line\
+  \ per read pair with the barcode best matching the read subsequence or \n      \
+  \                        'null' when no match is found according to matching parameters\
+  \ ; and the final selected \n                              sample. This file is\
+  \ useful for debugging or further processing in case both ends are \n          \
+  \                    barcoded.\n                              N.B: this file will\
+  \ have a size of about one of the fastq input files.  Default value: \n        \
+  \                      null. \n\nFORCE=Boolean                 Allows to overwrite\
+  \ existing files (system rights still apply).\n                                Default\
+  \ value: false. This option can be set to 'null' to clear the default value. \n\
+  \                              Possible values: {true, false} \n\nGZIP_OUTPUTS=Boolean\n\
+  GZ=Boolean                    Compress output files using gzip.\n              \
+  \                  Default value: true. This option can be set to 'null' to clear\
+  \ the default value. \n                              Possible values: {true, false}\
+  \ \n\nFASTQ_FILE_EXTENSION=String   Change the default extension of created fastq\
+  \ files, eg 'fastqsanger'. By default uses \n                              the file\
+  \ extension from input fastq file. If result file names are given in the barcode\
+  \ \n                              file, this option is only used to adapt the unassigned\
+  \ file names. When using \n                              compression, a .gz is always\
+  \ appended to file names and should not be specified in \n                     \
+  \         FASTQ_FILE_EXTENSION i.e. \n                              use FASTQ_FILE_EXTENSION=fastq\
+  \ and NOT FASTQ_FILE_EXTENSION=fastq.gz\n                                Default\
+  \ value: null. \n\nWRITER_FACTORY_USE_ASYNC_IO=Boolean\nASYNC=Boolean          \
+  \       Use one thread per Fastq Writer.\n                                Default\
+  \ value: true. This option can be set to 'null' to clear the default value. \n \
+  \                             Possible values: {true, false} \n\nSTATS_ONLY=Boolean\
+  \            Only produces metric and diagnostic reports i.e. no output fastq file\
+  \ produced.\n                                Default value: false. This option can\
+  \ be set to 'null' to clear the default value. \n                              Possible\
+  \ values: {true, false} \n\nUSE_EMBASE=Boolean\nEM=Boolean                    Enables\
+  \ emBASE mode i.e fetch information from emBASE and place demultiplexed files \n\
+  \                              directly in emBASE repository structure.\n      \
+  \                        This option is mutually exclusive with BARCODE_FILE.\n\
+  \                              Note : this option forces O=null GZ=true UN=true\
+  \ UF1=null UF2=null STATS_ONLY=false (all \n                              other\
+  \ user options supported).\n                                Default value: false.\
+  \ This option can be set to 'null' to clear the default value. \n              \
+  \                Possible values: {true, false}  Cannot be used in conjuction with\
+  \ option(s) BARCODE_FILE \n                              (BF)\n\n"
+generated_using:
+- --help

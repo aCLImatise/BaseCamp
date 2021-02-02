@@ -1,0 +1,186 @@
+!Command
+command:
+- analyzeRNA.pl
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: rna | repeats
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: genome version
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: additional
+  optional: true
+- !Positional
+  description: ''
+  position: 3
+  name: options...
+  optional: true
+named:
+- !Flag
+  description: ': analyzeRNA.pl <custom RNA/GTF file> <organism|none>  [additional
+    options...]'
+  synonyms:
+  - -or-
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[tag directory 2] ... (list of experiment directories to show\ntag\
+    \ counts for) NOTE: -dfile <file> where file is a list of directories in first\
+    \ column"
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: tag directory 1
+  optional: true
+- !Flag
+  description: (Report results as reads per kb per million mapped)
+  synonyms:
+  - -rpkm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Normalize to total mapped tags: default 1e7)'
+  synonyms:
+  - -norm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Normalize to total tags in gene expression matrix: not used)'
+  synonyms:
+  - -normMatrix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Don't normalize, -raw works too)
+  synonyms:
+  - -noadj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(Count tags in introns, exons, etc., default: genes)'
+  synonyms:
+  - -count
+  args: !SimpleFlagArg
+    name: exons|introns|genes|5utr|3utr|cds
+  optional: true
+- !Flag
+  description: '(do not condense counts from entries will same ID, default: do condense)'
+  synonyms:
+  - -noCondensing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (maximum tags to count per position, default: 0=no limit)'
+  synonyms:
+  - -pc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<+|-|both> (count tags on indicated strand, default: +)'
+  synonyms:
+  - -strand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "... (Adds additional data to result based on the closest gene.\nThis\
+    \ is useful for adding gene expression data.  The file must have a header,\nand\
+    \ the first column must be a GeneID, Accession number, etc.  If the peak\ncannot\
+    \ be mapped to data in the file then the entry will be left empty."
+  synonyms:
+  - -gene
+  args: !SimpleFlagArg
+    name: data file
+  optional: true
+- !Flag
+  description: (output tag counts as randomized log2 values - for scatter plots)
+  synonyms:
+  - -log
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (output tag counts as randomized sqrt values - for scatter plots)
+  synonyms:
+  - -sqrt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (estimate actual TSS in 1st exon and report as the centered position
+    in columns 3 & 4)
+  synonyms:
+  - -tss
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (start counting tags relative # offset of beginning of gene)'
+  synonyms:
+  - -start
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (finish counting tags relative # offset to end of the gene)'
+  synonyms:
+  - -end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<#> (Don't count tags past # bp from the TSS, useful for GroSeq)"
+  synonyms:
+  - -maxLength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "<#> (calculate ratio of pausing first [# bp of transcript] to gene\
+    \ body)\nProduces 3 columns - promoter rpk, body rpk, and ratio (add -log for\
+    \ log versions)\nAlso sets \"-count genes\".  Use \"-strand both\" when analyzing\
+    \ Pol II ChIP-Seq\nrpk is reads per kb - set -norm 1e6 or -normMatrix 1e6 to get\
+    \ rpkm\n"
+  synonyms:
+  - -pausing
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n\t*** For standard analysis of rna or repeats, analyzeRepeats.pl is\
+  \ faster and recommended\n\n\tUsage: analyzeRNA.pl <rna | repeats> <genome version>\
+  \  [additional options...]\n\t -or-: analyzeRNA.pl <custom RNA/GTF file> <organism|none>\
+  \  [additional options...]\n\n\tProgram for quantifying RNA tag counts.  The first\
+  \ argument can be \"rna\" (refseq genes),\n\t\"repeats\" (repeat classes), or a\
+  \ custom RNA definition file (GTF format).\n\n\tAvailable Genomes (required argument):\
+  \ (name,org,directory,default promoter set)\n\n\tPrimary Annotation Options:\n\t\
+  \t-d <tag directory 1> [tag directory 2] ... (list of experiment directories to\
+  \ show\n\t\t\ttag counts for) NOTE: -dfile <file> where file is a list of directories\
+  \ in first column\n\t\t-rpkm (Report results as reads per kb per million mapped)\n\
+  \t\t-norm <#> (Normalize to total mapped tags: default 1e7)\n\t\t-normMatrix <#>\
+  \ (Normalize to total tags in gene expression matrix: not used)\n\t\t-noadj (Don't\
+  \ normalize, -raw works too)\n\t\t-count <exons|introns|genes|5utr|3utr|cds> (Count\
+  \ tags in introns, exons, etc., default: genes)\n\t\t-noCondensing (do not condense\
+  \ counts from entries will same ID, default: do condense)\n\t\t-pc <#> (maximum\
+  \ tags to count per position, default: 0=no limit)\n\t\t-strand <+|-|both> (count\
+  \ tags on indicated strand, default: +)\n\t\t-gene <data file> ... (Adds additional\
+  \ data to result based on the closest gene.\n\t\t\tThis is useful for adding gene\
+  \ expression data.  The file must have a header,\n\t\t\tand the first column must\
+  \ be a GeneID, Accession number, etc.  If the peak\n\t\t\tcannot be mapped to data\
+  \ in the file then the entry will be left empty.\n\t\t-log (output tag counts as\
+  \ randomized log2 values - for scatter plots)\n\t\t-sqrt (output tag counts as randomized\
+  \ sqrt values - for scatter plots)\n\t\t-tss (estimate actual TSS in 1st exon and\
+  \ report as the centered position in columns 3 & 4)\n\t\t-start <#> (start counting\
+  \ tags relative # offset of beginning of gene)\n\t\t-end <#> (finish counting tags\
+  \ relative # offset to end of the gene)\n\t\t-maxLength <#> (Don't count tags past\
+  \ # bp from the TSS, useful for GroSeq)\n\t\t-pausing <#> (calculate ratio of pausing\
+  \ first [# bp of transcript] to gene body)\n\t\t\tProduces 3 columns - promoter\
+  \ rpk, body rpk, and ratio (add -log for log versions)\n\t\t\tAlso sets \"-count\
+  \ genes\".  Use \"-strand both\" when analyzing Pol II ChIP-Seq\n\t\t\trpk is reads\
+  \ per kb - set -norm 1e6 or -normMatrix 1e6 to get rpkm\n\n"
+generated_using:
+- --help

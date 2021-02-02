@@ -1,0 +1,282 @@
+!Command
+command:
+- fastq-mcf
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: adapters.fa
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: reads.fq
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: mates1.fq
+  optional: true
+named:
+- !Flag
+  description: Output file (stats to stdout)
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: FIL
+  optional: true
+- !Flag
+  description: Only output the first N records (all)
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Log scale for adapter minimum-length-match (2.2)
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: N.N
+  optional: true
+- !Flag
+  description: '% occurance threshold before adapter clipping (0.25)'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Minimum clip length, overrides scaled auto (1)
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Maximum adapter difference percentage (10)
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Minimum remaining sequence length (19)
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Maximum remaining sequence length (none)
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Remove duplicate reads : Read_1 has an identical N bases (0)'
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: sKew percentage-less-than causing cycle removal (2)
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "'N' (Bad read) percentage causing cycle removal (20)"
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: quality threshold causing base removal (10)
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: window-size for quality trimming (1)
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: remove >95% homopolymer reads (no)
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: remove low complexity reads (no)
+  synonyms:
+  - -X
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set all default parameters to zero/do nothing
+  synonyms:
+  - '-0'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '|u     Force disable/enable Illumina PF filtering (auto)'
+  synonyms:
+  - -U
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Phred-scale (auto)
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Don't remove N's from the fronts/ends of reads
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't clip, just output what would be done
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only keep clipped reads
+  synonyms:
+  - -K
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Save all discarded reads to '.skip' files
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of reads to use for subsampling (300k)
+  synonyms:
+  - -C
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Output lots of random debugging stuff
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: CYC,AMT   Adjust cycle CYC (negative = offset from end) by amount AMT
+  synonyms:
+  - --cycle-adjust
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: SCORE,AMT Adjust score SCORE by amount AMT
+  synonyms:
+  - --phred-adjust
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: SCORE     Adjust scores > SCORE to SCOTE
+  synonyms:
+  - --phred-adjust-max
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: PCT       Homopolymer filter percent (95)
+  synonyms:
+  - --homopolymer-pct
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: PCT       Complexity filter percent (95)
+  synonyms:
+  - --lowcomplex-pct
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only keep clipped (same as -K)
+  synonyms:
+  - --keep-clipped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: N        Only output first N records (same as -O)
+  synonyms:
+  - --max-output-reads
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: This help
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "fastq-mcf: unrecognized option '--help'\nOption -\0 requires an argument.\n\
+  Usage: fastq-mcf [options] <adapters.fa> <reads.fq> [mates1.fq ...] \nVersion: 1.04.807\n\
+  \nDetects levels of adapter presence, computes likelihoods and\nlocations (start,\
+  \ end) of the adapters.   Removes the adapter\nsequences from the fastq file(s).\n\
+  \nStats go to stderr, unless -o is specified.\n\nSpecify -0 to turn off all default\
+  \ settings\n\nIf you specify multiple 'paired-end' inputs, then a -o option is\n\
+  required for each.  IE: -o read1.clip.q -o read2.clip.fq\n\nOptions:\n    -h   \
+  \    This help\n    -o FIL   Output file (stats to stdout)\n    -O N     Only output\
+  \ the first N records (all)\n    -s N.N   Log scale for adapter minimum-length-match\
+  \ (2.2)\n    -t N     % occurance threshold before adapter clipping (0.25)\n   \
+  \ -m N     Minimum clip length, overrides scaled auto (1)\n    -p N     Maximum\
+  \ adapter difference percentage (10)\n    -l N     Minimum remaining sequence length\
+  \ (19)\n    -L N     Maximum remaining sequence length (none)\n    -D N     Remove\
+  \ duplicate reads : Read_1 has an identical N bases (0)\n    -k N     sKew percentage-less-than\
+  \ causing cycle removal (2)\n    -x N     'N' (Bad read) percentage causing cycle\
+  \ removal (20)\n    -q N     quality threshold causing base removal (10)\n    -w\
+  \ N     window-size for quality trimming (1)\n    -H       remove >95% homopolymer\
+  \ reads (no)\n    -X       remove low complexity reads (no)\n    -0       Set all\
+  \ default parameters to zero/do nothing\n    -U|u     Force disable/enable Illumina\
+  \ PF filtering (auto)\n    -P N     Phred-scale (auto)\n    -R       Don't remove\
+  \ N's from the fronts/ends of reads\n    -n       Don't clip, just output what would\
+  \ be done\n    -K       Only keep clipped reads\n    -S       Save all discarded\
+  \ reads to '.skip' files\n    -C N     Number of reads to use for subsampling (300k)\n\
+  \    -d       Output lots of random debugging stuff\n\nQuality adjustment options:\n\
+  \    --cycle-adjust      CYC,AMT   Adjust cycle CYC (negative = offset from end)\
+  \ by amount AMT\n    --phred-adjust      SCORE,AMT Adjust score SCORE by amount\
+  \ AMT\n    --phred-adjust-max  SCORE     Adjust scores > SCORE to SCOTE\n\nFiltering\
+  \ options*:\n    --[mate-]qual-mean  NUM       Minimum mean quality score\n    --[mate-]qual-gt\
+  \    NUM,THR   At least NUM quals > THR\n    --[mate-]max-ns     NUM       Maxmium\
+  \ N-calls in a read (can be a %)\n    --[mate-]min-len    NUM       Minimum remaining\
+  \ length (same as -l)\n    --homopolymer-pct   PCT       Homopolymer filter percent\
+  \ (95)\n    --lowcomplex-pct    PCT       Complexity filter percent (95)\n    --keep-clipped\
+  \                Only keep clipped (same as -K)\n    --max-output-reads   N    \
+  \    Only output first N records (same as -O)\n\nIf mate- prefix is used, then applies\
+  \ to second non-barcode read only\n\nAdapter files are 'fasta' formatted:\n\nSpecify\
+  \ n/a to turn off adapter clipping, and just use filters\n\nIncreasing the scale\
+  \ makes recognition-lengths longer, a scale\nof 100 will force full-length recognition\
+  \ of adapters.\n\nAdapter sequences with _5p in their label will match 'end's,\n\
+  and sequences with _3p in their label will match 'start's,\notherwise the 'end'\
+  \ is auto-determined.\n\nSkew is when one cycle is poor, 'skewed' toward a particular\
+  \ base.\nIf any nucleotide is less than the skew percentage, then the\nwhole cycle\
+  \ is removed.  Disable for methyl-seq, etc.\n\nSet the skew (-k) or N-pct (-x) to\
+  \ 0 to turn it off (should be done\nfor miRNA, amplicon and other low-complexity\
+  \ situations!)\n\nDuplicate read filtering is appropriate for assembly tasks, and\n\
+  never when read length < expected coverage.  -D 50 will use\n4.5GB RAM on 100m DNA\
+  \ reads - be careful. Great for RNA assembly.\n\n*Quality filters are evaluated\
+  \ after clipping/trimming\n\nHomopolymer filtering is a subset of low-complexity,\
+  \ but will not\nbe separately tracked unless both are turned on.\n"
+generated_using:
+- --help

@@ -1,0 +1,100 @@
+!Command
+command:
+- hicNormalize
+positional: []
+named:
+- !Flag
+  description: "The matrix (or multiple matrices) to get information\nabout. HiCExplorer\
+    \ supports the following file\nformats: h5 (native HiCExplorer format) and cool."
+  synonyms:
+  - --matrices
+  - -m
+  args: !RepeatFlagArg
+    name: MATRICES
+  optional: true
+- !Flag
+  description: "Normalize to a) 0 to 1 range, b) all matrices to the\nlowest read\
+    \ count of the given matrices."
+  synonyms:
+  - --normalize
+  - -n
+  args: !ChoiceFlagArg
+    choices: !!set
+      multiplicative:
+      norm_range:
+      smallest:
+  optional: true
+- !Flag
+  description: Output file name for the Hi-C matrix.
+  synonyms:
+  - --outFileName
+  - -o
+  args: !RepeatFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: show this help message and exit
+  synonyms:
+  - --multiplicativeValue
+  - -mv
+  args: !SimpleFlagArg
+    name: MULTIPLICATIVEVALUE
+  optional: true
+- !Flag
+  description: "A threshold to set all values after normalization to 0\nif smaller\
+    \ this threshold. Default value is 0 i.e.\nthere is no effect.It is recommended\
+    \ to set it for the\nnormalize mode \"smallest\" to 1.0. This parameter will\n\
+    influence the sparsity of the matrix by removing many\nvalues close to 0 in smallest\
+    \ normalization mode."
+  synonyms:
+  - --setToZeroThreshold
+  - -sz
+  args: !SimpleFlagArg
+    name: SETTOZEROTHRESHOLD
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: hicNormalize --matrices MATRICES [MATRICES ...] --normalize\n \
+  \                   {norm_range,smallest,multiplicative} --outFileName\n       \
+  \             FILENAME [FILENAME ...]\n                    [--multiplicativeValue\
+  \ MULTIPLICATIVEVALUE]\n                    [--setToZeroThreshold SETTOZEROTHRESHOLD]\
+  \ [--help]\n                    [--version]\n\nNormalizes given matrices either\
+  \ to the smallest given read number of all matrices or to 0 - 1 range. However,\
+  \ it does NOT compute the contact probability.\n\nWe recommend to compute first\
+  \ the normalization (with hicNormalize) and correct the data (with hicCorrectMatrix)\
+  \ in a second step.\n\nRequired arguments:\n  --matrices MATRICES [MATRICES ...],\
+  \ -m MATRICES [MATRICES ...]\n                        The matrix (or multiple matrices)\
+  \ to get information\n                        about. HiCExplorer supports the following\
+  \ file\n                        formats: h5 (native HiCExplorer format) and cool.\n\
+  \  --normalize {norm_range,smallest,multiplicative}, -n {norm_range,smallest,multiplicative}\n\
+  \                        Normalize to a) 0 to 1 range, b) all matrices to the\n\
+  \                        lowest read count of the given matrices.\n  --outFileName\
+  \ FILENAME [FILENAME ...], -o FILENAME [FILENAME ...]\n                        Output\
+  \ file name for the Hi-C matrix.\n\nOptional arguments:\n  --multiplicativeValue\
+  \ MULTIPLICATIVEVALUE, -mv MULTIPLICATIVEVALUE\n                        show this\
+  \ help message and exit\n  --setToZeroThreshold SETTOZEROTHRESHOLD, -sz SETTOZEROTHRESHOLD\n\
+  \                        A threshold to set all values after normalization to 0\n\
+  \                        if smaller this threshold. Default value is 0 i.e.\n  \
+  \                      there is no effect.It is recommended to set it for the\n\
+  \                        normalize mode \"smallest\" to 1.0. This parameter will\n\
+  \                        influence the sparsity of the matrix by removing many\n\
+  \                        values close to 0 in smallest normalization mode.\n  --help,\
+  \ -h            show this help message and exit\n  --version             show program's\
+  \ version number and exit\n"
+generated_using:
+- --help

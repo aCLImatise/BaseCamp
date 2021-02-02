@@ -1,0 +1,72 @@
+!Command
+command:
+- nw_condense
+positional: []
+named:
+- !Flag
+  description: ": uses a group map. This is a text file that lists one\nlabel and\
+    \ one group name per line. For example a file with the\nfollowing contents\nHomo\
+    \ Africa\nHylobates Asia\nGorilla Africa\nPan Africa\nPongo Asia\nmaps the generic\
+    \ names of some apes to their continent of origin.\nThat is, it defines the groups\
+    \ 'Asia' and 'Africa'. Labels and group\nnames are white-separated and should\
+    \ not contain spaces.\nClades consisting entirely of leaves belonging to a single\
+    \ group\nwill be replaced by a single leaf whose label has the following\nstructure:\
+    \ <group name>_<sample>_<size>, where <sample> is the label\nof one of the members\
+    \ of the clade, and <size> is the number of\nmembers of the clade.\nApplied to\
+    \ the Old world primates tree 'data/catarrhini', the above\nmap would condense\
+    \ all African apes into a single leaf (since they\nform a clade) with label 'Africa_Homo_3'.\
+    \ It would not be able to\ncondense further, however, because Pongo belong to\
+    \ group 'Asia'."
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: map file
+  optional: true
+- !Flag
+  description: ": unicifies leaf labels by visiting the tree in Newick order and\n\
+    removing any leaf node whose label was already seen."
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ': prints this message and exits'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Simplifies a tree by collapsing certain nodes.\n\nSynopsis\n--------\n\
+  \nnw_condense [-hm:u] <tree|->\n\nInput\n-----\n\nArgument is either the name of\
+  \ a file that contains one or more trees, or '-',\nin which case the trees are read\
+  \ on stdin.\n\nOutput\n------\n\nThe tree(s) with pure clades collapsed. A pure\
+  \ clade is a clade in which\nall leaves have the same label, and it is replaced\
+  \ by a leaf of the same\nlabel: (A,(B,(B,B))); has a pure clade of B, and will be\
+  \ replaced by\n(A,B);. The collapsed clade's support value (if any) is preserved,\
+  \ as is\nits parent edge's length (if specified).\n(see Options below for variants)\n\
+  \nOptions\n-------\n\n   -h: prints this message and exits\n   -m <map file>: uses\
+  \ a group map. This is a text file that lists one\n      label and one group name\
+  \ per line. For example a file with the\n      following contents\n            Homo\
+  \ Africa\n            Hylobates Asia\n            Gorilla Africa\n            Pan\
+  \ Africa\n            Pongo Asia\n      maps the generic names of some apes to their\
+  \ continent of origin.\n      That is, it defines the groups 'Asia' and 'Africa'.\
+  \ Labels and group\n      names are white-separated and should not contain spaces.\n\
+  \        Clades consisting entirely of leaves belonging to a single group\n    \
+  \  will be replaced by a single leaf whose label has the following\n      structure:\
+  \ <group name>_<sample>_<size>, where <sample> is the label\n      of one of the\
+  \ members of the clade, and <size> is the number of\n      members of the clade.\n\
+  \        Applied to the Old world primates tree 'data/catarrhini', the above\n \
+  \     map would condense all African apes into a single leaf (since they\n     \
+  \ form a clade) with label 'Africa_Homo_3'. It would not be able to\n      condense\
+  \ further, however, because Pongo belong to group 'Asia'.\n   -u: unicifies leaf\
+  \ labels by visiting the tree in Newick order and\n      removing any leaf node\
+  \ whose label was already seen.\n\nExample\n-------\n\n# produce a tree of families\
+  \ from a genus tree in which all genus names\n# have been replaced by family names\
+  \ (see nw_rename) - look at\n# data/falconiformes\n$ nw_condense data/falc_families\n\
+  \n# condense by geographic origin\n$ nw_condense -m data/catarrhini_geog.map data/catarrhini\n"
+generated_using:
+- --help

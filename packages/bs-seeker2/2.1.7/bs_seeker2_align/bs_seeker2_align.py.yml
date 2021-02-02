@@ -1,0 +1,331 @@
+!Command
+command:
+- bs_seeker2-align.py
+positional: []
+named:
+- !Flag
+  description: "Input read file (FORMAT: sequences, qseq, fasta,\nfastq). Ex: read.fa\
+    \ or read.fa.gz"
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INFILE
+  optional: true
+- !Flag
+  description: "Input read file, mate 1 (FORMAT: sequences, qseq,\nfasta, fastq)"
+  synonyms:
+  - '-1'
+  - --input_1
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Input read file, mate 2 (FORMAT: sequences, qseq,\nfasta, fastq)"
+  synonyms:
+  - '-2'
+  - --input_2
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "The minimum insert size for valid paired-end\nalignments [Default:\
+    \ 0]"
+  synonyms:
+  - -I
+  - --minins
+  args: !SimpleFlagArg
+    name: MIN_INSERT_SIZE
+  optional: true
+- !Flag
+  description: "The maximum insert size for valid paired-end\nalignments [Default:\
+    \ 500]"
+  synonyms:
+  - -X
+  - --maxins
+  args: !SimpleFlagArg
+    name: MAX_INSERT_SIZE
+  optional: true
+- !Flag
+  description: Map reads to the Reduced Representation genome
+  synonyms:
+  - -r
+  - --rrbs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Cutting sites of restriction enzyme. Ex: MspI(C-CGG),\nMael:(C-TAG),\
+    \ double-enzyme MspI&Mael:(C-CGG,C-TAG).\n[Default: C-CGG]"
+  synonyms:
+  - -c
+  - --cut-site
+  args: !SimpleFlagArg
+    name: pattern
+  optional: true
+- !Flag
+  description: "Lower bound of fragment length (excluding C-CGG ends)\n[Default: 20]"
+  synonyms:
+  - -L
+  - --low
+  args: !SimpleFlagArg
+    name: RRBS_LOW_BOUND
+  optional: true
+- !Flag
+  description: "Upper bound of fragment length (excluding C-CGG ends)\n[Default: 500]"
+  synonyms:
+  - -U
+  - --up
+  args: !SimpleFlagArg
+    name: RRBS_UP_BOUND
+  optional: true
+- !Flag
+  description: "[Y]es for undirectional lib, [N]o for directional\n[Default: N]"
+  synonyms:
+  - -t
+  - --tag
+  args: !SimpleFlagArg
+    name: TAG
+  optional: true
+- !Flag
+  description: 'The first cycle of the read to be mapped [Default: 1]'
+  synonyms:
+  - -s
+  - --start_base
+  args: !SimpleFlagArg
+    name: CUTNUMBER1
+  optional: true
+- !Flag
+  description: 'The last cycle of the read to be mapped [Default: 200]'
+  synonyms:
+  - -e
+  - --end_base
+  args: !SimpleFlagArg
+    name: CUTNUMBER2
+  optional: true
+- !Flag
+  description: "Input text file of your adaptor sequences (to be\ntrimmed from the\
+    \ 3'end of the reads, ). Input one seq\nfor dir. lib., twon seqs for undir. lib.\
+    \ One line per\nsequence. Only the first 10bp will be used"
+  synonyms:
+  - -a
+  - --adapter
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Number of mismatches allowed in adapter [Default: 0]'
+  synonyms:
+  - --am
+  args: !SimpleFlagArg
+    name: ADAPTER_MISMATCH
+  optional: true
+- !Flag
+  description: "Name of the reference genome (should be the same as\n\"-f\" in bs_seeker2-build.py\
+    \ ) [ex. chr21_hg18.fa]"
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: "Number(>=1)/Percentage([0, 1)) of mismatches in one\nread. Ex: 4 (allow\
+    \ 4 mismatches) or 0.04 (allow 4%\nmismatches) [Default: 4]"
+  synonyms:
+  - -m
+  - --mismatches
+  args: !SimpleFlagArg
+    name: NO_MISMATCHES
+  optional: true
+- !Flag
+  description: "Aligner program for short reads mapping: bowtie,\nbowtie2, soap, rmap\
+    \ [Default: bowtie]"
+  synonyms:
+  - --aligner
+  args: !SimpleFlagArg
+    name: ALIGNER
+  optional: true
+- !Flag
+  description: "Path to the aligner program. Detected:\nbowtie: None\nbowtie2: /usr/local/bin\n\
+    rmap: None\nsoap: None"
+  synonyms:
+  - -p
+  - --path
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "Path to the reference genome library (generated in\npreprocessing\
+    \ genome) [Default:\n/usr/local/bin/bs_utils/reference_genomes]"
+  synonyms:
+  - -d
+  - --db
+  args: !SimpleFlagArg
+    name: DBPATH
+  optional: true
+- !Flag
+  description: "Number of lines per split (the read file will be split\ninto small\
+    \ files for mapping. The result will be\nmerged. [Default: 4000000]"
+  synonyms:
+  - -l
+  - --split_line
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: The name of output file [INFILE.bs(se|pe|rrbs)]
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: 'Output format: bam, sam, bs_seeker1 [Default: bam]'
+  synonyms:
+  - -f
+  - --output-format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: 'Suppress SAM header lines [Default: False]'
+  synonyms:
+  - --no-header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The path to your temporary directory [Detected: /tmp]'
+  synonyms:
+  - --temp_dir
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "Filter definition for tag XS, format X,Y. X=0.8 and\ny=5 indicate\
+    \ that for one read, if #(mCH sites)/#(all\nCH sites)>0.8 and #(mCH sites)>5,\
+    \ then tag XS:i:1; or\nelse tag XS:i:0. [Default: 0.5,5]"
+  synonyms:
+  - --XS
+  args: !SimpleFlagArg
+    name: XS_FILTER
+  optional: true
+- !Flag
+  description: "Filter definition for tag XS, proposed by Prof. Steve\nJacobsen, reads\
+    \ with at least 3 successive mCHH will\nbe labeled as XS:i:1,useful for plant\
+    \ genome, which\nhave high mCHG level. Will override --XS option."
+  synonyms:
+  - --XSteve
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: File to store reads with multiple-hits
+  synonyms:
+  - -M
+  - --multiple-hit
+  args: !SimpleFlagArg
+    name: FileName
+  optional: true
+- !Flag
+  description: File to store unmapped reads
+  synonyms:
+  - -u
+  - --unmapped
+  args: !SimpleFlagArg
+    name: FileName
+  optional: true
+- !Flag
+  description: will increase the number of threads for bowtie to 4, --bt--
+  synonyms:
+  - --bt-p
+  args: !SimpleFlagArg
+    name: '4'
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show version of BS-Seeker2
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: bs_seeker2-align.py {-i <single> | -1 <mate1> -2 <mate2>} -g <genome.fa>\
+  \ [options]\n\nOptions:\n  -h, --help            show this help message and exit\n\
+  \n  For single end reads:\n    -i INFILE, --input=INFILE\n                     \
+  \   Input read file (FORMAT: sequences, qseq, fasta,\n                        fastq).\
+  \ Ex: read.fa or read.fa.gz\n\n  For pair end reads:\n    -1 FILE, --input_1=FILE\n\
+  \                        Input read file, mate 1 (FORMAT: sequences, qseq,\n   \
+  \                     fasta, fastq)\n    -2 FILE, --input_2=FILE\n             \
+  \           Input read file, mate 2 (FORMAT: sequences, qseq,\n                \
+  \        fasta, fastq)\n    -I MIN_INSERT_SIZE, --minins=MIN_INSERT_SIZE\n     \
+  \                   The minimum insert size for valid paired-end\n             \
+  \           alignments [Default: 0]\n    -X MAX_INSERT_SIZE, --maxins=MAX_INSERT_SIZE\n\
+  \                        The maximum insert size for valid paired-end\n        \
+  \                alignments [Default: 500]\n\n  Reduced Representation Bisulfite\
+  \ Sequencing Options:\n    -r, --rrbs          Map reads to the Reduced Representation\
+  \ genome\n    -c pattern, --cut-site=pattern\n                        Cutting sites\
+  \ of restriction enzyme. Ex: MspI(C-CGG),\n                        Mael:(C-TAG),\
+  \ double-enzyme MspI&Mael:(C-CGG,C-TAG).\n                        [Default: C-CGG]\n\
+  \    -L RRBS_LOW_BOUND, --low=RRBS_LOW_BOUND\n                        Lower bound\
+  \ of fragment length (excluding C-CGG ends)\n                        [Default: 20]\n\
+  \    -U RRBS_UP_BOUND, --up=RRBS_UP_BOUND\n                        Upper bound of\
+  \ fragment length (excluding C-CGG ends)\n                        [Default: 500]\n\
+  \n  General options:\n    -t TAG, --tag=TAG   [Y]es for undirectional lib, [N]o\
+  \ for directional\n                        [Default: N]\n    -s CUTNUMBER1, --start_base=CUTNUMBER1\n\
+  \                        The first cycle of the read to be mapped [Default: 1]\n\
+  \    -e CUTNUMBER2, --end_base=CUTNUMBER2\n                        The last cycle\
+  \ of the read to be mapped [Default: 200]\n    -a FILE, --adapter=FILE\n       \
+  \                 Input text file of your adaptor sequences (to be\n           \
+  \             trimmed from the 3'end of the reads, ). Input one seq\n          \
+  \              for dir. lib., twon seqs for undir. lib. One line per\n         \
+  \               sequence. Only the first 10bp will be used\n    --am=ADAPTER_MISMATCH\n\
+  \                        Number of mismatches allowed in adapter [Default: 0]\n\
+  \    -g GENOME, --genome=GENOME\n                        Name of the reference genome\
+  \ (should be the same as\n                        \"-f\" in bs_seeker2-build.py\
+  \ ) [ex. chr21_hg18.fa]\n    -m NO_MISMATCHES, --mismatches=NO_MISMATCHES\n    \
+  \                    Number(>=1)/Percentage([0, 1)) of mismatches in one\n     \
+  \                   read. Ex: 4 (allow 4 mismatches) or 0.04 (allow 4%\n       \
+  \                 mismatches) [Default: 4]\n    --aligner=ALIGNER   Aligner program\
+  \ for short reads mapping: bowtie,\n                        bowtie2, soap, rmap\
+  \ [Default: bowtie]\n    -p PATH, --path=PATH\n                        Path to the\
+  \ aligner program. Detected:\n                        bowtie: None\n           \
+  \             bowtie2: /usr/local/bin\n                        rmap: None\n    \
+  \                    soap: None\n    -d DBPATH, --db=DBPATH\n                  \
+  \      Path to the reference genome library (generated in\n                    \
+  \    preprocessing genome) [Default:\n                        /usr/local/bin/bs_utils/reference_genomes]\n\
+  \    -l INT, --split_line=INT\n                        Number of lines per split\
+  \ (the read file will be split\n                        into small files for mapping.\
+  \ The result will be\n                        merged. [Default: 4000000]\n    -o\
+  \ OUTFILE, --output=OUTFILE\n                        The name of output file [INFILE.bs(se|pe|rrbs)]\n\
+  \    -f FORMAT, --output-format=FORMAT\n                        Output format: bam,\
+  \ sam, bs_seeker1 [Default: bam]\n    --no-header         Suppress SAM header lines\
+  \ [Default: False]\n    --temp_dir=PATH     The path to your temporary directory\
+  \ [Detected: /tmp]\n    --XS=XS_FILTER      Filter definition for tag XS, format\
+  \ X,Y. X=0.8 and\n                        y=5 indicate that for one read, if #(mCH\
+  \ sites)/#(all\n                        CH sites)>0.8 and #(mCH sites)>5, then tag\
+  \ XS:i:1; or\n                        else tag XS:i:0. [Default: 0.5,5]\n    --XSteve\
+  \            Filter definition for tag XS, proposed by Prof. Steve\n           \
+  \             Jacobsen, reads with at least 3 successive mCHH will\n           \
+  \             be labeled as XS:i:1,useful for plant genome, which\n            \
+  \            have high mCHG level. Will override --XS option.\n    -M FileName,\
+  \ --multiple-hit=FileName\n                        File to store reads with multiple-hits\n\
+  \    -u FileName, --unmapped=FileName\n                        File to store unmapped\
+  \ reads\n    -v, --version       show version of BS-Seeker2\n\n  Aligner Options:\n\
+  \    You may specify any additional options for the aligner. You just have\n   \
+  \ to prefix them with --bt- for bowtie, --bt2- for bowtie2, --soap- for\n    soap,\
+  \ --rmap- for rmap, and BS-Seeker2 will pass them on. For example:\n    --bt-p 4\
+  \ will increase the number of threads for bowtie to 4, --bt--\n    tryhard will\
+  \ instruct bowtie to try as hard as possible to find valid\n    alignments when\
+  \ they exist, and so on.\n"
+generated_using:
+- --help

@@ -1,0 +1,323 @@
+!Command
+command:
+- run_abundance.py
+positional: []
+named:
+- !Flag
+  description: "max alignment subset size of N [default: 10% of the\ntotal number\
+    \ of taxa or the placement subset size if\ngiven]"
+  synonyms:
+  - -A
+  - --alignmentSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "max placement subset size of N [default: 10% of the\ntotal number\
+    \ of taxa or the alignment length\n(whichever bigger)]"
+  synonyms:
+  - -P
+  - --placementSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "maximum fragment chunk size of N. Helps controlling\nmemory. [default:\
+    \ 20000]"
+  synonyms:
+  - -F
+  - --fragmentChunkSize
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "minimum p-distance before stopping the\ndecomposition[default: 1]"
+  synonyms:
+  - --distance
+  args: !SimpleFlagArg
+    name: DISTANCE
+  optional: true
+- !Flag
+  description: "maximum tree diameter before stopping the\ndecomposition[default:\
+    \ None]"
+  synonyms:
+  - -M
+  - --diameter
+  args: !SimpleFlagArg
+    name: DIAMETER
+  optional: true
+- !Flag
+  description: "decomposition strategy [default: using tree branch\nlength]"
+  synonyms:
+  - -S
+  - --decomp_strategy
+  args: !SimpleFlagArg
+    name: DECOMP
+  optional: true
+- !Flag
+  description: "Tempfile files will be written to DIR. Full-path\nrequired. [default:\
+    \ /tmp/sepp]"
+  synonyms:
+  - -p
+  - --tempdir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: 'output files with prefix OUTPUT. [default: output]'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "output to OUTPUT_DIR directory. full-path required.\n[default: .]"
+  synonyms:
+  - -d
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: "A config file, including options used to run SEPP.\nOptions provided\
+    \ as command line arguments overwrite\nconfig file values for those options. [default:\
+    \ None]"
+  synonyms:
+  - -c
+  - --config
+  args: !SimpleFlagArg
+    name: CONFIG
+  optional: true
+- !Flag
+  description: 'Input tree file (newick format) [default: None]'
+  synonyms:
+  - -t
+  - --tree
+  args: !SimpleFlagArg
+    name: TREE
+  optional: true
+- !Flag
+  description: "RAxML_info file including model parameters, generated\nby RAxML.[default:\
+    \ None]"
+  synonyms:
+  - -r
+  - --raxml
+  args: !SimpleFlagArg
+    name: RAXML
+  optional: true
+- !Flag
+  description: 'Aligned fasta file [default: None]'
+  synonyms:
+  - -a
+  - --alignment
+  args: !SimpleFlagArg
+    name: ALIGN
+  optional: true
+- !Flag
+  description: 'fragment file [default: None]'
+  synonyms:
+  - -f
+  - --fragment
+  args: !SimpleFlagArg
+    name: FRAG
+  optional: true
+- !Flag
+  description: "Molecule type of sequences. Can be amino, dna, or rna\n[default: dna]"
+  synonyms:
+  - -m
+  - --molecule
+  args: !SimpleFlagArg
+    name: MOLECULE
+  optional: true
+- !Flag
+  description: "Use N cpus [default: number of cpus available on the\nmachine]"
+  synonyms:
+  - -x
+  - --cpu
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'checkpoint file [default: no checkpointing]'
+  synonyms:
+  - -cp
+  - --checkpoint
+  args: !SimpleFlagArg
+    name: CHCK_FILE
+  optional: true
+- !Flag
+  description: "Interval (in seconds) between checkpoint writes. Has\neffect only\
+    \ with -cp provided. [default: 3600]"
+  synonyms:
+  - -cpi
+  - --interval
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'random seed number. [default: 297834]'
+  synonyms:
+  - -seed
+  - --randomseed
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Enough alignment subsets are selected to reach a\ncommulative probability\
+    \ of N. This should be a number\nbetween 0 and 1 [default: 0.95]"
+  synonyms:
+  - -at
+  - --alignmentThreshold
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Enough placements are selected to reach a commulative\nprobability\
+    \ of N. This should be a number between 0\nand 1 [default: 0.95]"
+  synonyms:
+  - -pt
+  - --placementThreshold
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Classify on only the specified gene.
+  synonyms:
+  - -g
+  - --gene
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Blast file with fragments already binned.
+  synonyms:
+  - -b
+  - --blast_file
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Tool for binning
+  synonyms:
+  - -bin
+  - --bin_using
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Treat fragments as distribution
+  synonyms:
+  - -D
+  - --dist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Placement probability requirement to count toward the\ndistribution.\
+    \ This should be a number between 0 and 1\n[default: 0.0]"
+  synonyms:
+  - -C
+  - --cutoff
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Use markers or cogs genes [default: markers]\n"
+  synonyms:
+  - -G
+  - --genes
+  args: !SimpleFlagArg
+    name: GENES
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: run_abundance.py [-h] [-v] [-A N] [-P N] [-F N] [--distance DISTANCE]\n\
+  \                        [-M DIAMETER] [-S DECOMP] [-p DIR] [-o OUTPUT]\n      \
+  \                  [-d OUTPUT_DIR] [-c CONFIG] [-t TREE] [-r RAXML]\n          \
+  \              [-a ALIGN] [-f FRAG] [-m MOLECULE] [-x N]\n                     \
+  \   [-cp CHCK_FILE] [-cpi N] [-seed N] [-at N] [-pt N]\n                       \
+  \ [-g N] [-b N] [-bin N] [-D] [-C N] [-G GENES]\n\nThis script runs the SEPP algorithm\
+  \ on an input tree, alignment, fragment\nfile, and RAxML info file.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -v, --version\
+  \         show program's version number and exit\n\nDECOMPOSITION OPTIONS:\n  These\
+  \ options determine the alignment decomposition size and taxon\n  insertion size.\
+  \ If None is given, then the default is to align/place at\n  10% of total taxa.\
+  \ The alignment decomosition size must be less than the\n  taxon insertion size.\n\
+  \n  -A N, --alignmentSize N\n                        max alignment subset size of\
+  \ N [default: 10% of the\n                        total number of taxa or the placement\
+  \ subset size if\n                        given]\n  -P N, --placementSize N\n  \
+  \                      max placement subset size of N [default: 10% of the\n   \
+  \                     total number of taxa or the alignment length\n           \
+  \             (whichever bigger)]\n  -F N, --fragmentChunkSize N\n             \
+  \           maximum fragment chunk size of N. Helps controlling\n              \
+  \          memory. [default: 20000]\n  --distance DISTANCE   minimum p-distance\
+  \ before stopping the\n                        decomposition[default: 1]\n  -M DIAMETER,\
+  \ --diameter DIAMETER\n                        maximum tree diameter before stopping\
+  \ the\n                        decomposition[default: None]\n  -S DECOMP, --decomp_strategy\
+  \ DECOMP\n                        decomposition strategy [default: using tree branch\n\
+  \                        length]\n\nOUTPUT OPTIONS:\n  These options control output.\n\
+  \n  -p DIR, --tempdir DIR\n                        Tempfile files will be written\
+  \ to DIR. Full-path\n                        required. [default: /tmp/sepp]\n  -o\
+  \ OUTPUT, --output OUTPUT\n                        output files with prefix OUTPUT.\
+  \ [default: output]\n  -d OUTPUT_DIR, --outdir OUTPUT_DIR\n                    \
+  \    output to OUTPUT_DIR directory. full-path required.\n                     \
+  \   [default: .]\n\nINPUT OPTIONS:\n  These options control input. To run SEPP the\
+  \ following is required. A\n  backbone tree (in newick format), a RAxML_info file\
+  \ (this is the file\n  generated by RAxML during estimation of the backbone tree.\
+  \ Pplacer uses\n  this info file to set model parameters), a backbone alignment\
+  \ file (in\n  fasta format), and a fasta file including fragments. The input sequences\n\
+  \  are assumed to be DNA unless specified otherwise.\n\n  -c CONFIG, --config CONFIG\n\
+  \                        A config file, including options used to run SEPP.\n  \
+  \                      Options provided as command line arguments overwrite\n  \
+  \                      config file values for those options. [default: None]\n \
+  \ -t TREE, --tree TREE  Input tree file (newick format) [default: None]\n  -r RAXML,\
+  \ --raxml RAXML\n                        RAxML_info file including model parameters,\
+  \ generated\n                        by RAxML.[default: None]\n  -a ALIGN, --alignment\
+  \ ALIGN\n                        Aligned fasta file [default: None]\n  -f FRAG,\
+  \ --fragment FRAG\n                        fragment file [default: None]\n  -m MOLECULE,\
+  \ --molecule MOLECULE\n                        Molecule type of sequences. Can be\
+  \ amino, dna, or rna\n                        [default: dna]\n\nOTHER OPTIONS:\n\
+  \  These options control how SEPP is run\n\n  -x N, --cpu N         Use N cpus [default:\
+  \ number of cpus available on the\n                        machine]\n  -cp CHCK_FILE,\
+  \ --checkpoint CHCK_FILE\n                        checkpoint file [default: no checkpointing]\n\
+  \  -cpi N, --interval N  Interval (in seconds) between checkpoint writes. Has\n\
+  \                        effect only with -cp provided. [default: 3600]\n  -seed\
+  \ N, --randomseed N\n                        random seed number. [default: 297834]\n\
+  \nTIPP OPTIONS:\n  These arguments set settings specific to TIPP\n\n  -at N, --alignmentThreshold\
+  \ N\n                        Enough alignment subsets are selected to reach a\n\
+  \                        commulative probability of N. This should be a number\n\
+  \                        between 0 and 1 [default: 0.95]\n  -pt N, --placementThreshold\
+  \ N\n                        Enough placements are selected to reach a commulative\n\
+  \                        probability of N. This should be a number between 0\n \
+  \                       and 1 [default: 0.95]\n  -g N, --gene N        Classify\
+  \ on only the specified gene.\n  -b N, --blast_file N  Blast file with fragments\
+  \ already binned.\n  -bin N, --bin_using N\n                        Tool for binning\n\
+  \  -D, --dist            Treat fragments as distribution\n  -C N, --cutoff N   \
+  \   Placement probability requirement to count toward the\n                    \
+  \    distribution. This should be a number between 0 and 1\n                   \
+  \     [default: 0.0]\n  -G GENES, --genes GENES\n                        Use markers\
+  \ or cogs genes [default: markers]\n"
+generated_using:
+- --help

@@ -1,0 +1,201 @@
+!Command
+command:
+- crossmap
+positional:
+- !Positional
+  description: Final mask file annotation, in BED format
+  position: 0
+  name: OUTBASE_READLENGTH_MISMATCHES_crossmap.bed
+  optional: false
+- !Positional
+  description: "K-mers derived from chromosome `CHROMOSOME`. These\nfiles can be reused\
+    \ in subsequent runs allowing a different number of\nmismatches, using the ``--have_kmers``\
+    \ option"
+  position: 1
+  name: OUTBASE_READLENGTH_MISMATCHES_CHROMOSOME_kmers.fa
+  optional: false
+- !Positional
+  description: '- By default, crossmap creates BED files. Consider converting these
+    to'
+  position: 0
+  name: sequence
+  optional: false
+- !Positional
+  description: "Bowtie index of genome against which crossmap will be\nmade. In most\
+    \ cases, should be generated from the same\nsequences that are in `sequence_file`."
+  position: 0
+  name: ebwt
+  optional: false
+- !Positional
+  description: Basename for output files
+  position: 1
+  name: outbase
+  optional: false
+- !Positional
+  description: 'warning/error options:'
+  position: 0
+  name: chromosomes
+  optional: false
+named:
+- !Flag
+  description: "K-mer length to generate from input file. (Default:\n29)"
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: READ_LENGTH
+  optional: true
+- !Flag
+  description: "Offset from 5' end of plus-strand read at which to\nattribute score\
+    \ (Default: 14)"
+  synonyms:
+  - --offset
+  args: !SimpleFlagArg
+    name: OFFSET
+  optional: true
+- !Flag
+  description: "Number of mismatches tolerated in alignment. (Default:\n0)"
+  synonyms:
+  - --mismatches
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Location of bowtie binary (Default:\n``/usr/local/bin/bowtie``)"
+  synonyms:
+  - --bowtie
+  args: !SimpleFlagArg
+    name: BOWTIE
+  optional: true
+- !Flag
+  description: "If specified, use k-mer files from previous run. In\nthis case 'sequence_file'\
+    \ should be the value\n'outbase' from the k-mer files you want to use."
+  synonyms:
+  - --have_kmers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Save k-mer files for reuse in a subsequent run.
+  synonyms:
+  - --save_kmers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of processes to use (should be <= number of
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Suppress all warning messages. Cannot use with '-v'.
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Increase verbosity. With '-v', show every warning.\nWith '-vv', turn\
+    \ warnings into exceptions. Cannot use\nwith '-q'. (Default: show each type of\
+    \ warning once)"
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[fasta | fastq | twobit | genbank | embl]\nA file of DNA sequence"
+  synonyms:
+  - --sequence_file
+  args: !SimpleFlagArg
+    name: infile.
+  optional: true
+- !Flag
+  description: "Format of sequence_file (Default: fasta).\n"
+  synonyms:
+  - --sequence_format
+  args: !ChoiceFlagArg
+    choices: !!set
+      fastq:
+      embl:
+      genbank:
+      fasta:
+      twobit:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: crossmap [-h] [-q] [-v]\n                [--sequence_file infile.[fasta\
+  \ | fastq | twobit | genbank | embl]]\n                [--sequence_format {fasta,fastq,twobit,genbank,embl}]\n\
+  \                [-k READ_LENGTH] [--offset OFFSET] [--mismatches N]\n         \
+  \       [--bowtie BOWTIE] [--have_kmers] [--save_kmers] [-p N]\n               \
+  \ ebwt outbase\n\n------------------------------------------------------------------------------\n\
+  \nThis script empirically determines which positions in a genome yield \nmultimapping\
+  \ reads under a given set of alignment parameters. These positions\nare saved in\
+  \ a BED-formatted mask file, so that they may be excluded\nas from further analyses.\n\
+  \nTo identify multimapping regions, a genome sequence is diced into :term:`k-mers\n\
+  <k-mer>` and the k-mers aligned back to the genome. Positions in the\ngenome that\
+  \ give rise to k-mers that align equally well to more\nthan one genomic location\
+  \ are then marked as multimapping..\n\n`k` is specified by the user, as are the\
+  \ alignment parameters.\n\nOutput files\n------------\nThe following files are made:\n\
+  \n    OUTBASE_READLENGTH_MISMATCHES_crossmap.bed\n        Final mask file annotation,\
+  \ in BED format\n\n    OUTBASE_READLENGTH_MISMATCHES_CHROMOSOME_kmers.fa\n     \
+  \   K-mers derived from chromosome `CHROMOSOME`. These\n        files can be reused\
+  \ in subsequent runs allowing a different number of\n        mismatches, using the\
+  \ ``--have_kmers`` option\n\nwhere:\n\n  - `OUTBASE` is a name meaningful to the\
+  \ user\n  - `READLENGTH` is the k-mer length chosen by the user\n  - `MISMATCHES`\
+  \ is the number of mismatches permitted during alignment,\n    also set by the user.\n\
+  \nConsiderations for large genomes\n--------------------------------\n\nFor large\
+  \ genomes (e.g. vertebrate, plant, or some *very* big amoebas):\n\n  - crossmap\
+  \ can require a ton of memory if genome sequence is stored \n    in a fasta file.\
+  \ If crossmap maxes out your system's memory, it may\n    be terminated by your\
+  \ system before it completes.\n\n    Consider converting the file to a 2bit file\
+  \ to save memory and\n    avoid this potential problem\n\n  - Enabling mismatches\
+  \ with short read sizes will make crossmap take\n    a lot longer, especially on\
+  \ large genomes. Consider using ``--mismatches\n    0`` if you run into this problem\
+  \ \n\n  - Using multiple processes (e.g. via ``-p 2``) will speed crossmap's\n \
+  \   execution time, but will increase its memory footprint, as each process\n  \
+  \  will need its own memory space to create and align k-mers from chromosomal\n\
+  \    sequence\n\n  - By default, crossmap creates BED files. Consider converting\
+  \ these to\n    BigBed files will save substantial amounts of time and memory in\
+  \ the future.\n\n    This can be achieved using Jim Kent's ``bedToBigBed`` utility\
+  \ as follows\n    (from the terminal)::\n\n        $ bowtie-inspect --summary BOWTIE_INDEX\
+  \  grep Sequence \\\n                         cut -f2,3 | sed -e \"s/\\([^ ]\\+\\\
+  ).*\\t/\\1\\t/\"  >OUTFILE.sizes\n        $ sort -k1,1 -k2,2n OUTBASE.bed > OUTBASE_sorted.bed\n\
+  \        $ bedToBigBed OUTBASE_sorted.bed OUTBASE.sizes OUTBASE_sorted.bb\n\n  \
+  \  See https://github.com/ENCODE-DCC/kentUtils/tree/master/src/product/scripts\n\
+  \    for download & documentation of Kent utilities\n\n------------------------------------------------------------------------------\n\
+  \npositional arguments:\n  ebwt                  Bowtie index of genome against\
+  \ which crossmap will be\n                        made. In most cases, should be\
+  \ generated from the same\n                        sequences that are in `sequence_file`.\n\
+  \  outbase               Basename for output files\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -k READ_LENGTH        K-mer\
+  \ length to generate from input file. (Default:\n                        29)\n \
+  \ --offset OFFSET       Offset from 5' end of plus-strand read at which to\n   \
+  \                     attribute score (Default: 14)\n  --mismatches N        Number\
+  \ of mismatches tolerated in alignment. (Default:\n                        0)\n\
+  \  --bowtie BOWTIE       Location of bowtie binary (Default:\n                 \
+  \       ``/usr/local/bin/bowtie``)\n  --have_kmers          If specified, use k-mer\
+  \ files from previous run. In\n                        this case 'sequence_file'\
+  \ should be the value\n                        'outbase' from the k-mer files you\
+  \ want to use.\n  --save_kmers          Save k-mer files for reuse in a subsequent\
+  \ run.\n  -p N, --processes N   Number of processes to use (should be <= number\
+  \ of\n                        chromosomes\n\nwarning/error options:\n  -q, --quiet\
+  \           Suppress all warning messages. Cannot use with '-v'.\n  -v, --verbose\
+  \         Increase verbosity. With '-v', show every warning.\n                 \
+  \       With '-vv', turn warnings into exceptions. Cannot use\n                \
+  \        with '-q'. (Default: show each type of warning once)\n\nsequence options:\n\
+  \n  --sequence_file infile.[fasta | fastq | twobit | genbank | embl]\n         \
+  \               A file of DNA sequence\n  --sequence_format {fasta,fastq,twobit,genbank,embl}\n\
+  \                        Format of sequence_file (Default: fasta).\n"
+generated_using:
+- --help

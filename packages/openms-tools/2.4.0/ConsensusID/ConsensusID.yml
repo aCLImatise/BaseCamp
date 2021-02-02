@@ -1,0 +1,147 @@
+!Command
+command:
+- ConsensusID
+positional: []
+named:
+- !Flag
+  description: "*                       Input file (valid formats: 'idXML', 'featureXML',\
+    \ 'consensusXML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                      Output file (valid formats: 'idXML', 'featureXML',\
+    \ 'consensusXML')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "[idXML input only] Maximum allowed retention time deviation between\
+    \ identifications belonging to the same spectrum. (default: '0.1' min: '0')"
+  synonyms:
+  - -rt_delta
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "[idXML input only] Maximum allowed precursor m/z deviation between\
+    \ identifications belonging to the same spectrum. (default: '0.1' min: '0')"
+  synonyms:
+  - -mz_delta
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "Algorithm used for consensus scoring.\n* PEPMatrix: Scoring based\
+    \ on posterior error probabilities (PEPs) and peptide sequence similarities (scored\
+    \ by a substitution matrix). Requires PEPs as scores.\n* PEPIons: Scoring based\
+    \ on posterior error probabilities (PEPs) and fragment ion similarities ('shared\
+    \ peak count'). Requires PEPs as scores.\n* best: For each peptide ID, use the\
+    \ best score of any search engine as the consensus score. Requires the same score\
+    \ type in all ID runs.\n* worst: For each peptide ID, use the worst score of any\
+    \ search engine as the consensus score. Requires the same score type in all ID\
+    \ runs.\n* average:  For each peptide ID, use the average score of all search\
+    \ engines as the consensus. Requires the same score type in all ID runs.\n* ranks:\
+    \ Calculates a consensus score based on the ranks of peptide IDs in the results\
+    \ of different search engines. The final score is in the range (0, 1], with 1\
+    \ being the best score. No requirements about score types. (default: 'PEPMatrix'\
+    \ valid: 'PEPMatrix', 'PEPIons', 'best', 'worst', 'average', 'ranks')"
+  synonyms:
+  - -algorithm
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nConsensusID --\
+  \ Computes a consensus of peptide identifications of several identification engines.\n\
+  Version: 2.4.0 Jan  8 2020, 08:35:33, Revision: 2116a70\nTo cite OpenMS:\n  Rost\
+  \ HL, Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible open-source software\
+  \ platform for mass spectrometry data analysis. Nat Meth. 2016; 13, 9: 741-748.\
+  \ doi:10.1038/nmeth.3959.\n\nUsage:\n  ConsensusID <options>\n\nThis tool has algorithm\
+  \ parameters that are not shown here! Please check the ini file for a detailed description\
+  \ or use the --helphelp option.\n\nOptions (mandatory options marked with '*'):\n\
+  \  -in <file>*                       Input file (valid formats: 'idXML', 'featureXML',\
+  \ 'consensusXML')\n  -out <file>*                      Output file (valid formats:\
+  \ 'idXML', 'featureXML', 'consensusXML')\n                                    \n\
+  \  -rt_delta <value>                 [idXML input only] Maximum allowed retention\
+  \ time deviation between identifications belonging to the same spectrum. (default:\
+  \ '0.1' min: '0')\n  -mz_delta <value>                 [idXML input only] Maximum\
+  \ allowed precursor m/z deviation between identifications belonging to the same\
+  \ spectrum. (default: '0.1' min: '0')\n\nOptions for filtering peptide hits:\n \
+  \ -filter:considered_hits <number>  The number of top hits in each ID run that are\
+  \ considered for consensus scoring ('0' for all hits). (default: '0' min: '0')\n\
+  \  -filter:min_support <value>       For each peptide hit from an ID run, the fraction\
+  \ of other ID runs that must support that hit (otherwise it is removed). (default:\
+  \ '0' min: '0' max: '1')\n  -filter:count_empty               Count empty ID runs\
+  \ (i.e. those containing no peptide hit for the current spectrum) when calculating\
+  \ 'min_support'?\n\n  -algorithm <choice>               Algorithm used for consensus\
+  \ scoring.\n                                    * PEPMatrix: Scoring based on posterior\
+  \ error probabilities (PEPs) and peptide sequence similarities (scored by a substitution\
+  \ matrix). Requires PEPs as scores.\n                                    * PEPIons:\
+  \ Scoring based on posterior error probabilities (PEPs) and fragment ion similarities\
+  \ ('shared peak count'). Requires PEPs as scores.\n                            \
+  \        * best: For each peptide ID, use the best score of any search engine as\
+  \ the consensus score. Requires the same score type in all ID runs.\n          \
+  \                          * worst: For each peptide ID, use the worst score of\
+  \ any search engine as the consensus score. Requires the same score type in all\
+  \ ID runs.\n                                    * average:  For each peptide ID,\
+  \ use the average score of all search engines as the consensus. Requires the same\
+  \ score type in all ID runs.\n                                    * ranks: Calculates\
+  \ a consensus score based on the ranks of peptide IDs in the results of different\
+  \ search engines. The final score is in the range (0, 1], with 1 being the best\
+  \ score. No requirements about score types. (default: 'PEPMatrix' valid: 'PEPMatrix',\
+  \ 'PEPIons', 'best', 'worst', 'average', 'ranks')\n                            \
+  \        \nCommon TOPP options:\n  -ini <file>                       Use the given\
+  \ TOPP INI file\n  -threads <n>                      Sets the number of threads\
+  \ allowed to be used by the TOPP tool (default: '1')\n  -write_ini <file>      \
+  \           Writes the default configuration file\n  --help                    \
+  \        Shows options\n  --helphelp                        Shows all options (including\
+  \ advanced)\n\nThe following configuration subsections are valid:\n - PEPIons  \
+  \   PEPIons algorithm parameters\n - PEPMatrix   PEPMatrix algorithm parameters\n\
+  \nYou can write an example INI file using the '-write_ini' option.\nDocumentation\
+  \ of subsection parameters can be found in the doxygen documentation or the INIFileEditor.\n\
+  Have a look at the OpenMS documentation for more information.\n\n"
+generated_using:
+- --help

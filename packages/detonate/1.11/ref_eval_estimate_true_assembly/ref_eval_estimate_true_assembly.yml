@@ -1,0 +1,182 @@
+!Command
+command:
+- ref-eval-estimate-true-assembly
+positional:
+- !Positional
+  description: '[1] Bo Li*, Nathanael Fillmore*, Yongsheng Bai, Mike Collins, James'
+  position: 0
+  name: alignments.
+  optional: false
+named:
+- !Flag
+  description: "The prefix of the reference built by rsem-prepare-reference.\nRequired."
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The prefix of the expression built by\nrsem-calculate-expression.\
+    \ Required."
+  synonyms:
+  - --expression
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "If you have paired-end data, and you want to estimate the\n\"true\"\
+    \ scaffolded assembly, then include the --paired-end\nflag. In this case, rsem-calculate-expression\
+    \ needs to have\nbeen run with the --paired-end flag. (However, even if\nrsem-calculate-expression\
+    \ was run with the --paired-end flag,\nyou can omit it here in order to generate\
+    \ an unscaffolded\nassembly. In this case, each mate will be treated as an\nindependent\
+    \ read.)"
+  synonyms:
+  - --paired-end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "A prefix to write the \"true\" assembly or sequence of\nassemblies\
+    \ to. The suffix _x.fa will be appended to this\nprefix, where x is the minimum\
+    \ overlap size. Required."
+  synonyms:
+  - --assembly
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Either:\n* An integer that specifies how much overlap between two\n\
+    reads is required to merge two reads. For example, if\n--min-overlap=3, then only\
+    \ reads whose chosen alignments\noverlap by at least 3 bases will be joined into\
+    \ contigs.\nIf --min-overlap=0, then only reads whose chosen\nalignments are contiguous\
+    \ (or overlap by a positive\namount) will be joined into contigs.\nOr:\n* A pair\
+    \ of integers, separated by commas, specifying a\nrange of overlap sizes, as described\
+    \ above. For example,\nif --min-overlap=2,4 is given, then three assemblies\n\
+    will be produced, corresponding to --min-overlap=2,\n--min-overlap=3, and --min-overlap=4\
+    \ You might use this\noption to compute ideal assemblies at all overlap sizes,\n\
+    e.g., --min-overlap=0,76 for 76-length reads.\nDefault: 0."
+  synonyms:
+  - --min-overlap
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "A number between 0 and 1 (inclusive). Any alignment (of a\nread to\
+    \ a reference transcript) with posterior probability,\nas calculated by RSEM,\
+    \ strictly less than this value will be\ndiscarded. Noise reads, with posterior\
+    \ probability exactly 0,\nare always discarded. Default: 0."
+  synonyms:
+  - --min-alignment-prob
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The policy used to choose which alignment(s) of each read to\nuse\
+    \ in constructing the \"true\" assembly. Options:\n* sample: For each read, sample\
+    \ a single alignment (to\nsome reference transcript) according to the posterior\n\
+    probability that the read follows each alignment, as\ncalculated by RSEM.\n* best:\
+    \ For each read, choose the alignment that maximizes\nthe posterior probability\
+    \ mentioned above. Ties are\nbroken arbitrarily but deterministically (the first\n\
+    alignment in the BAM file is used).\n* all: For each read, use all its alignments.\
+    \ Some reads\nmight end up with more than one alignment. In that case,\ncontigs\
+    \ will be made assuming that the read aligns to\neach place. (In other words,\
+    \ the read is effectively\nduplicated, with one copy per alignment.)\nThis policy\
+    \ is applied after the thresholding implied by\n--min-alignment-prob. For example,\
+    \ if\n\"--min-alignment-prob=0.10 --alignment-policy=sample\" is\ngiven, then\
+    \ (first) all alignments with posterior probability\nless than 0.10 will be discarded,\
+    \ and (second), for each\nread, an alignment will be sampled from among the remaining\n\
+    alignments, with the posterior distribution renormalized as\nappropriate. As another\
+    \ example, if\n\"--min-alignment-prob=0.90 --alignment-policy=all\" is given,\n\
+    then all alignments with posterior probability at least 0.90\nwill be used.\n\
+    Default: sample.\n"
+  synonyms:
+  - --alignment-policy
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "REF-EVAL-ESTIMATE-TRUE-ASSEMBLY: A program to estimate the \"true\" assembly\n\
+  \        of a set of reads, relative to a set of reference sequences\n\nOverview\n\
+  \n   This program constructs an estimate of the \"true\" assembly of a set\n   of\
+  \ reads, relative to a set of reference sequences, based on\n   alignment information\
+  \ produced by RSEM.\n\n   As defined by DETONATE [1], the \"true\" assembly of a\
+  \ set of reads,\n   relative to the true transcript sequences that the reads were\n\
+  \   generated from, is the set of contiguous subsequences of the\n   transcript\
+  \ sequences that are covered by reads, with the reads\n   overlapping by at least\
+  \ --min-overlap bases, when each read is\n   aligned to its true location of origin.\n\
+  \n   In practice, we do not know the reads' true locations of origin; in\n   fact,\
+  \ we do not even know (precisely) the true transcript sequences\n   that the reads\
+  \ were generated from. Instead, we start with a set of\n   reference sequences (e.g.,\
+  \ an Ensembl reference), and we align each\n   read to these reference sequences\
+  \ using RSEM/Bowtie. The current\n   program chooses a subset of these alignments,\
+  \ according to a policy\n   specified by --alignment-policy and --min-alignment-prob,\
+  \ and then\n   builds our best guess as to the \"true\" assembly based on these\n\
+  \   alignments.\n\n   [1] Bo Li*, Nathanael Fillmore*, Yongsheng Bai, Mike Collins,\
+  \ James\n   A. Thompson, Ron Stewart, Colin N. Dewey. Evaluation of de novo\n  \
+  \ transcriptome assemblies from RNA-Seq data.\n\nExample usage\n\n   First, use\
+  \ a recent version of RSEM to quantify the expression of the\n   full-length transcripts\
+  \ relative to the reads. For example:\n\n $ rsem-prepare-reference --gtf mm9.ensembl63.filtered.gtf\
+  \ mm9.fa ref\n $ rsem-calculate-expression --num-threads 24 reads.fq ref expr\n\n\
+  \   Second, use this program to estimate the \"true\" assembly:\n\n $ ./ref-eval-estimate-true-assembly\
+  \ --reference ref --expression expr --assembly cc\n\n   This will output a file,\
+  \ cc_0.fa, that contains the \"true\" assembly.\n\nGeneral options\n\n   -? [ --help\
+  \ ]\n\n           Display this information.\n\nOptions that specify input and output\n\
+  \n   --reference arg\n\n           The prefix of the reference built by rsem-prepare-reference.\n\
+  \           Required.\n\n   --expression arg\n\n           The prefix of the expression\
+  \ built by\n           rsem-calculate-expression. Required.\n\n   --paired-end\n\
+  \n           If you have paired-end data, and you want to estimate the\n       \
+  \    \"true\" scaffolded assembly, then include the --paired-end\n           flag.\
+  \ In this case, rsem-calculate-expression needs to have\n           been run with\
+  \ the --paired-end flag. (However, even if\n           rsem-calculate-expression\
+  \ was run with the --paired-end flag,\n           you can omit it here in order\
+  \ to generate an unscaffolded\n           assembly. In this case, each mate will\
+  \ be treated as an\n           independent read.)\n\n   --assembly arg\n\n     \
+  \      A prefix to write the \"true\" assembly or sequence of\n           assemblies\
+  \ to. The suffix _x.fa will be appended to this\n           prefix, where x is the\
+  \ minimum overlap size. Required.\n\nOptions that change the output\n\n   --min-overlap\
+  \ arg\n\n           Either:\n\n              * An integer that specifies how much\
+  \ overlap between two\n                reads is required to merge two reads. For\
+  \ example, if\n                --min-overlap=3, then only reads whose chosen alignments\n\
+  \                overlap by at least 3 bases will be joined into contigs.\n    \
+  \            If --min-overlap=0, then only reads whose chosen\n                alignments\
+  \ are contiguous (or overlap by a positive\n                amount) will be joined\
+  \ into contigs.\n\n           Or:\n\n              * A pair of integers, separated\
+  \ by commas, specifying a\n                range of overlap sizes, as described\
+  \ above. For example,\n                if --min-overlap=2,4 is given, then three\
+  \ assemblies\n                will be produced, corresponding to --min-overlap=2,\n\
+  \                --min-overlap=3, and --min-overlap=4 You might use this\n     \
+  \           option to compute ideal assemblies at all overlap sizes,\n         \
+  \       e.g., --min-overlap=0,76 for 76-length reads.\n\n           Default: 0.\n\
+  \n   --min-alignment-prob arg\n\n           A number between 0 and 1 (inclusive).\
+  \ Any alignment (of a\n           read to a reference transcript) with posterior\
+  \ probability,\n           as calculated by RSEM, strictly less than this value\
+  \ will be\n           discarded. Noise reads, with posterior probability exactly\
+  \ 0,\n           are always discarded. Default: 0.\n\n   --alignment-policy arg\n\
+  \n           The policy used to choose which alignment(s) of each read to\n    \
+  \       use in constructing the \"true\" assembly. Options:\n\n              * sample:\
+  \ For each read, sample a single alignment (to\n                some reference transcript)\
+  \ according to the posterior\n                probability that the read follows\
+  \ each alignment, as\n                calculated by RSEM.\n              * best:\
+  \ For each read, choose the alignment that maximizes\n                the posterior\
+  \ probability mentioned above. Ties are\n                broken arbitrarily but\
+  \ deterministically (the first\n                alignment in the BAM file is used).\n\
+  \              * all: For each read, use all its alignments. Some reads\n      \
+  \          might end up with more than one alignment. In that case,\n          \
+  \      contigs will be made assuming that the read aligns to\n                each\
+  \ place. (In other words, the read is effectively\n                duplicated, with\
+  \ one copy per alignment.)\n\n           This policy is applied after the thresholding\
+  \ implied by\n           --min-alignment-prob. For example, if\n           \"--min-alignment-prob=0.10\
+  \ --alignment-policy=sample\" is\n           given, then (first) all alignments\
+  \ with posterior probability\n           less than 0.10 will be discarded, and (second),\
+  \ for each\n           read, an alignment will be sampled from among the remaining\n\
+  \           alignments, with the posterior distribution renormalized as\n      \
+  \     appropriate. As another example, if\n           \"--min-alignment-prob=0.90\
+  \ --alignment-policy=all\" is given,\n           then all alignments with posterior\
+  \ probability at least 0.90\n           will be used.\n\n           Default: sample.\n\
+  \n"
+generated_using:
+- --help

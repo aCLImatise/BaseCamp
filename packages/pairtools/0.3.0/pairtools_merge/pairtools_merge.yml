@@ -1,0 +1,140 @@
+!Command
+command:
+- pairtools
+- merge
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: PAIRS_PATH
+  optional: true
+named:
+- !Flag
+  description: "output file. If the path ends with .gz/.lz4, the\noutput is compressed\
+    \ by pbgzip/lz4c. By default,\nthe output is printed into stdout."
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "The maximal number of inputs merged at once. For\nmore, store merged\
+    \ intermediates in temporary\nfiles.  [default: 8]"
+  synonyms:
+  - --max-nmerge
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Custom temporary folder for merged intermediates.
+  synonyms:
+  - --tmpdir
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "The amount of memory used by default.  [default:\n2G]"
+  synonyms:
+  - --memory
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "A binary to compress temporary merged chunks. Must\ndecompress input\
+    \ when the flag -d is provided.\nSuggested alternatives: lz4c, gzip, lzop, snzip.\n\
+    NOTE: fails silently if the command syntax is\nwrong.   [default: ]"
+  synonyms:
+  - --compress-program
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: 'Number of threads for merging.  [default: 8]'
+  synonyms:
+  - --nproc
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Number of processes used by the auto-guessed input\ndecompressing\
+    \ command.  [default: 1]"
+  synonyms:
+  - --nproc-in
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Number of processes used by the auto-guessed output\ncompressing command.\
+    \  [default: 8]"
+  synonyms:
+  - --nproc-out
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "A command to decompress the input. If provided,\nfully overrides the\
+    \ auto-guessed command. Does not\nwork with stdin. Must read input from stdin\
+    \ and\nprint output into stdout. EXAMPLE: pbgzip -dc -n 3"
+  synonyms:
+  - --cmd-in
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "A command to compress the output. If provided,\nfully overrides the\
+    \ auto-guessed command. Does not\nwork with stdout. Must read input from stdin\
+    \ and\nprint output into stdout. EXAMPLE: pbgzip -c -n 8"
+  synonyms:
+  - --cmd-out
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: pairtools merge [OPTIONS] [PAIRS_PATH]...\n\n  Merge sorted .pairs/.pairsam\
+  \ files.\n\n  Merge triu-flipped sorted pairs/pairsam files. If present, the @SQ\
+  \ records\n  of the SAM header must be identical; the sorting order of  these lines\
+  \ is\n  taken from the first file in the list.  The ID fields of the @PG records\n\
+  \  of the SAM header are modified with a numeric suffix to produce unique\n  records.\
+  \ The other unique SAM and non-SAM header lines are copied into the\n  output header.\n\
+  \n  PAIRS_PATH : upper-triangular flipped sorted .pairs/.pairsam files to\n  merge\
+  \ or a group/groups of .pairs/.pairsam files specified by a wildcard.\n  For paths\
+  \ ending in .gz/.lz4, the files are decompressed by pbgzip/lz4c.\n\nOptions:\n \
+  \ -o, --output TEXT        output file. If the path ends with .gz/.lz4, the\n  \
+  \                         output is compressed by pbgzip/lz4c. By default,\n   \
+  \                        the output is printed into stdout.\n  --max-nmerge INTEGER\
+  \     The maximal number of inputs merged at once. For\n                       \
+  \    more, store merged intermediates in temporary\n                           files.\
+  \  [default: 8]\n  --tmpdir TEXT            Custom temporary folder for merged intermediates.\n\
+  \  --memory TEXT            The amount of memory used by default.  [default:\n \
+  \                          2G]\n  --compress-program TEXT  A binary to compress\
+  \ temporary merged chunks. Must\n                           decompress input when\
+  \ the flag -d is provided.\n                           Suggested alternatives: lz4c,\
+  \ gzip, lzop, snzip.\n                           NOTE: fails silently if the command\
+  \ syntax is\n                           wrong.   [default: ]\n  --nproc INTEGER\
+  \          Number of threads for merging.  [default: 8]\n  --nproc-in INTEGER  \
+  \     Number of processes used by the auto-guessed input\n                     \
+  \      decompressing command.  [default: 1]\n  --nproc-out INTEGER      Number of\
+  \ processes used by the auto-guessed output\n                           compressing\
+  \ command.  [default: 8]\n  --cmd-in TEXT            A command to decompress the\
+  \ input. If provided,\n                           fully overrides the auto-guessed\
+  \ command. Does not\n                           work with stdin. Must read input\
+  \ from stdin and\n                           print output into stdout. EXAMPLE:\
+  \ pbgzip -dc -n 3\n  --cmd-out TEXT           A command to compress the output.\
+  \ If provided,\n                           fully overrides the auto-guessed command.\
+  \ Does not\n                           work with stdout. Must read input from stdin\
+  \ and\n                           print output into stdout. EXAMPLE: pbgzip -c -n\
+  \ 8\n  -h, --help               Show this message and exit.\n"
+generated_using:
+- --help

@@ -1,0 +1,455 @@
+!Command
+command:
+- humann2
+positional: []
+named:
+- !Flag
+  description: additional output is printed
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: bypass commands if the output files exist
+  synonyms:
+  - -r
+  - --resume
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: bypass the prescreen step and run on the full ChocoPhlAn database
+  synonyms:
+  - --bypass-prescreen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: bypass the nucleotide index step and run on the indexed ChocoPhlAn
+    database
+  synonyms:
+  - --bypass-nucleotide-index
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: bypass the translated search step
+  synonyms:
+  - --bypass-translated-search
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: bypass the nucleotide search steps
+  synonyms:
+  - --bypass-nucleotide-search
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "input file of type {fastq,fastq.gz,fasta,fasta.gz,sam,bam,blastm8,genetable,biom}\n\
+    [REQUIRED]"
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: input.fastq
+  optional: true
+- !Flag
+  description: "directory to write output files\n[REQUIRED]"
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: output
+  optional: true
+- !Flag
+  description: "directory containing the nucleotide database\n[DEFAULT: /usr/local/lib/python2.7/site-packages/humann2/data/chocophlan_DEMO]"
+  synonyms:
+  - --nucleotide-database
+  args: !SimpleFlagArg
+    name: nucleotide_database
+  optional: true
+- !Flag
+  description: "the index of the gene in the sequence annotation\n[DEFAULT: 8]"
+  synonyms:
+  - --annotation-gene-index
+  args: !SimpleFlagArg
+    name: '8'
+  optional: true
+- !Flag
+  description: "directory containing the protein database\n[DEFAULT: /usr/local/lib/python2.7/site-packages/humann2/data/uniref_DEMO]"
+  synonyms:
+  - --protein-database
+  args: !SimpleFlagArg
+    name: protein_database
+  optional: true
+- !Flag
+  description: "the evalue threshold to use with the translated search\n[DEFAULT:\
+    \ 1.0]"
+  synonyms:
+  - --evalue
+  args: !SimpleFlagArg
+    name: '1.0'
+  optional: true
+- !Flag
+  description: "search for uniref50 or uniref90 gene families\n[DEFAULT: based on\
+    \ translated database selected]"
+  synonyms:
+  - --search-mode
+  args: !ChoiceFlagArg
+    choices: !!set
+      uniref90:
+      uniref50:
+  optional: true
+- !Flag
+  description: "directory containing the MetaPhlAn software\n[DEFAULT: $PATH]"
+  synonyms:
+  - --metaphlan
+  args: !SimpleFlagArg
+    name: metaphlan
+  optional: true
+- !Flag
+  description: "options to be provided to the MetaPhlAn software\n[DEFAULT: \"-t rel_ab\"\
+    ]"
+  synonyms:
+  - --metaphlan-options
+  args: !SimpleFlagArg
+    name: metaphlan_options
+  optional: true
+- !Flag
+  description: "log file\n[DEFAULT: temp/sample.log]"
+  synonyms:
+  - --o-log
+  args: !SimpleFlagArg
+    name: sample.log
+  optional: true
+- !Flag
+  description: "level of messages to display in log\n[DEFAULT: DEBUG]"
+  synonyms:
+  - --log-level
+  args: !ChoiceFlagArg
+    choices: !!set
+      CRITICAL:
+      ERROR:
+      INFO:
+      WARNING:
+      DEBUG:
+  optional: true
+- !Flag
+  description: "remove temp output files\n[DEFAULT: temp files are not removed]"
+  synonyms:
+  - --remove-temp-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "number of threads/processes\n[DEFAULT: 1]"
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: '1'
+  optional: true
+- !Flag
+  description: "minimum percentage of reads matching a species\n[DEFAULT: 0.01]"
+  synonyms:
+  - --prescreen-threshold
+  args: !SimpleFlagArg
+    name: '0.01'
+  optional: true
+- !Flag
+  description: "identity threshold for alignments\n[DEFAULT: 50.0]"
+  synonyms:
+  - --identity-threshold
+  args: !SimpleFlagArg
+    name: '50.0'
+  optional: true
+- !Flag
+  description: "subject coverage threshold for translated alignments\n[DEFAULT: 50.0]"
+  synonyms:
+  - --translated-subject-coverage-threshold
+  args: !SimpleFlagArg
+    name: '50.0'
+  optional: true
+- !Flag
+  description: "query coverage threshold for translated alignments\n[DEFAULT: 90.0]"
+  synonyms:
+  - --translated-query-coverage-threshold
+  args: !SimpleFlagArg
+    name: '90.0'
+  optional: true
+- !Flag
+  description: "directory containing the bowtie2 executable\n[DEFAULT: $PATH]"
+  synonyms:
+  - --bowtie2
+  args: !SimpleFlagArg
+    name: bowtie2
+  optional: true
+- !Flag
+  description: "directory containing the usearch executable\n[DEFAULT: $PATH]"
+  synonyms:
+  - --usearch
+  args: !SimpleFlagArg
+    name: usearch
+  optional: true
+- !Flag
+  description: "directory containing the rapsearch executable\n[DEFAULT: $PATH]"
+  synonyms:
+  - --rapsearch
+  args: !SimpleFlagArg
+    name: rapsearch
+  optional: true
+- !Flag
+  description: "directory containing the diamond executable\n[DEFAULT: $PATH]"
+  synonyms:
+  - --diamond
+  args: !SimpleFlagArg
+    name: diamond
+  optional: true
+- !Flag
+  description: "a taxonomic profile (the output file created by metaphlan)\n[DEFAULT:\
+    \ file will be created]"
+  synonyms:
+  - --taxonomic-profile
+  args: !SimpleFlagArg
+    name: taxonomic_profile.tsv
+  optional: true
+- !Flag
+  description: "id mapping file for alignments\n[DEFAULT: alignment reference used]"
+  synonyms:
+  - --id-mapping
+  args: !SimpleFlagArg
+    name: id_mapping.tsv
+  optional: true
+- !Flag
+  description: "software to use for translated alignment\n[DEFAULT: diamond]"
+  synonyms:
+  - --translated-alignment
+  args: !ChoiceFlagArg
+    choices: !!set
+      rapsearch:
+      diamond:
+      usearch:
+  optional: true
+- !Flag
+  description: "turn on/off the xipe computation\n[DEFAULT: off]"
+  synonyms:
+  - --xipe
+  args: !ChoiceFlagArg
+    choices: !!set
+      off:
+      on:
+  optional: true
+- !Flag
+  description: "turn on/off the minpath computation\n[DEFAULT: on]"
+  synonyms:
+  - --minpath
+  args: !ChoiceFlagArg
+    choices: !!set
+      off:
+      on:
+  optional: true
+- !Flag
+  description: "turn on/off the pick_frames computation\n[DEFAULT: off]"
+  synonyms:
+  - --pick-frames
+  args: !ChoiceFlagArg
+    choices: !!set
+      off:
+      on:
+  optional: true
+- !Flag
+  description: "turn on/off the gap fill computation\n[DEFAULT: on]"
+  synonyms:
+  - --gap-fill
+  args: !ChoiceFlagArg
+    choices: !!set
+      off:
+      on:
+  optional: true
+- !Flag
+  description: "the format of the output files\n[DEFAULT: tsv]"
+  synonyms:
+  - --output-format
+  args: !ChoiceFlagArg
+    choices: !!set
+      biom:
+      tsv:
+  optional: true
+- !Flag
+  description: "the number of decimals to output\n[DEFAULT: 10]"
+  synonyms:
+  - --output-max-decimals
+  args: !SimpleFlagArg
+    name: '10'
+  optional: true
+- !Flag
+  description: "the basename for the output files\n[DEFAULT: input file basename]"
+  synonyms:
+  - --output-basename
+  args: !SimpleFlagArg
+    name: sample_name
+  optional: true
+- !Flag
+  description: "remove stratification from output\n[DEFAULT: output is stratified]"
+  synonyms:
+  - --remove-stratified-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "remove the description in the output column\n[DEFAULT: output column\
+    \ includes description]"
+  synonyms:
+  - --remove-column-description-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "the format of the input file\n[DEFAULT: format identified by software]"
+  synonyms:
+  - --input-format
+  args: !ChoiceFlagArg
+    choices: !!set
+      fastq:
+      genetable:
+      biom:
+      bam:
+      blastm8:
+      fastq.gz:
+      fasta.gz:
+      fasta:
+      sam:
+  optional: true
+- !Flag
+  description: "mapping file (or files, at most two in a comma-delimited list) to\
+    \ use for pathway computations\n[DEFAULT: metacyc database ]"
+  synonyms:
+  - --pathways-database
+  args: !SimpleFlagArg
+    name: pathways_database.tsv
+  optional: true
+- !Flag
+  description: "the database to use for pathway computations\n[DEFAULT: metacyc]"
+  synonyms:
+  - --pathways
+  args: !ChoiceFlagArg
+    choices: !!set
+      metacyc:
+      unipathway:
+  optional: true
+- !Flag
+  description: "the amount of memory to use\n[DEFAULT: minimum]\n"
+  synonyms:
+  - --memory-use
+  args: !ChoiceFlagArg
+    choices: !!set
+      maximum:
+      minimum:
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: humann2 [-h] [--version] [-v] [-r] [--bypass-prescreen]\n     \
+  \          [--bypass-nucleotide-index] [--bypass-translated-search]\n          \
+  \     [--bypass-nucleotide-search] -i <input.fastq> -o <output>\n              \
+  \ [--nucleotide-database <nucleotide_database>]\n               [--annotation-gene-index\
+  \ <8>]\n               [--protein-database <protein_database>] [--evalue <1.0>]\n\
+  \               [--search-mode {uniref50,uniref90}] [--metaphlan <metaphlan>]\n\
+  \               [--metaphlan-options <metaphlan_options>]\n               [--o-log\
+  \ <sample.log>]\n               [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}]\n\
+  \               [--remove-temp-output] [--threads <1>]\n               [--prescreen-threshold\
+  \ <0.01>] [--identity-threshold <50.0>]\n               [--translated-subject-coverage-threshold\
+  \ <50.0>]\n               [--translated-query-coverage-threshold <90.0>]\n     \
+  \          [--bowtie2 <bowtie2>] [--usearch <usearch>]\n               [--rapsearch\
+  \ <rapsearch>] [--diamond <diamond>]\n               [--taxonomic-profile <taxonomic_profile.tsv>]\n\
+  \               [--id-mapping <id_mapping.tsv>]\n               [--translated-alignment\
+  \ {usearch,rapsearch,diamond}]\n               [--xipe {on,off}] [--minpath {on,off}]\
+  \ [--pick-frames {on,off}]\n               [--gap-fill {on,off}] [--output-format\
+  \ {tsv,biom}]\n               [--output-max-decimals <10>] [--output-basename <sample_name>]\n\
+  \               [--remove-stratified-output]\n               [--remove-column-description-output]\n\
+  \               [--input-format {fastq,fastq.gz,fasta,fasta.gz,sam,bam,blastm8,genetable,biom}]\n\
+  \               [--pathways-database <pathways_database.tsv>]\n               [--pathways\
+  \ {metacyc,unipathway}]\n               [--memory-use {minimum,maximum}]\n\nHUMAnN2\
+  \ : HMP Unified Metabolic Analysis Network 2\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --version             show program's\
+  \ version number and exit\n  -v, --verbose         additional output is printed\n\
+  \  -r, --resume          bypass commands if the output files exist\n  --bypass-prescreen\
+  \    bypass the prescreen step and run on the full ChocoPhlAn database\n  --bypass-nucleotide-index\n\
+  \                        bypass the nucleotide index step and run on the indexed\
+  \ ChocoPhlAn database\n  --bypass-translated-search\n                        bypass\
+  \ the translated search step\n  --bypass-nucleotide-search\n                   \
+  \     bypass the nucleotide search steps\n  -i <input.fastq>, --input <input.fastq>\n\
+  \                        input file of type {fastq,fastq.gz,fasta,fasta.gz,sam,bam,blastm8,genetable,biom}\
+  \ \n                        [REQUIRED]\n  -o <output>, --output <output>\n     \
+  \                   directory to write output files\n                        [REQUIRED]\n\
+  \  --nucleotide-database <nucleotide_database>\n                        directory\
+  \ containing the nucleotide database\n                        [DEFAULT: /usr/local/lib/python2.7/site-packages/humann2/data/chocophlan_DEMO]\n\
+  \  --annotation-gene-index <8>\n                        the index of the gene in\
+  \ the sequence annotation\n                        [DEFAULT: 8]\n  --protein-database\
+  \ <protein_database>\n                        directory containing the protein database\n\
+  \                        [DEFAULT: /usr/local/lib/python2.7/site-packages/humann2/data/uniref_DEMO]\n\
+  \  --evalue <1.0>        the evalue threshold to use with the translated search\n\
+  \                        [DEFAULT: 1.0]\n  --search-mode {uniref50,uniref90}\n \
+  \                       search for uniref50 or uniref90 gene families\n        \
+  \                [DEFAULT: based on translated database selected]\n  --metaphlan\
+  \ <metaphlan>\n                        directory containing the MetaPhlAn software\n\
+  \                        [DEFAULT: $PATH]\n  --metaphlan-options <metaphlan_options>\n\
+  \                        options to be provided to the MetaPhlAn software\n    \
+  \                    [DEFAULT: \"-t rel_ab\"]\n  --o-log <sample.log>  log file\n\
+  \                        [DEFAULT: temp/sample.log]\n  --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\n\
+  \                        level of messages to display in log\n                 \
+  \       [DEFAULT: DEBUG]\n  --remove-temp-output  remove temp output files\n   \
+  \                     [DEFAULT: temp files are not removed]\n  --threads <1>   \
+  \      number of threads/processes\n                        [DEFAULT: 1]\n  --prescreen-threshold\
+  \ <0.01>\n                        minimum percentage of reads matching a species\n\
+  \                        [DEFAULT: 0.01]\n  --identity-threshold <50.0>\n      \
+  \                  identity threshold for alignments\n                        [DEFAULT:\
+  \ 50.0]\n  --translated-subject-coverage-threshold <50.0>\n                    \
+  \    subject coverage threshold for translated alignments\n                    \
+  \    [DEFAULT: 50.0]\n  --translated-query-coverage-threshold <90.0>\n         \
+  \               query coverage threshold for translated alignments\n           \
+  \             [DEFAULT: 90.0]\n  --bowtie2 <bowtie2>   directory containing the\
+  \ bowtie2 executable\n                        [DEFAULT: $PATH]\n  --usearch <usearch>\
+  \   directory containing the usearch executable\n                        [DEFAULT:\
+  \ $PATH]\n  --rapsearch <rapsearch>\n                        directory containing\
+  \ the rapsearch executable\n                        [DEFAULT: $PATH]\n  --diamond\
+  \ <diamond>   directory containing the diamond executable\n                    \
+  \    [DEFAULT: $PATH]\n  --taxonomic-profile <taxonomic_profile.tsv>\n         \
+  \               a taxonomic profile (the output file created by metaphlan)\n   \
+  \                     [DEFAULT: file will be created]\n  --id-mapping <id_mapping.tsv>\n\
+  \                        id mapping file for alignments\n                      \
+  \  [DEFAULT: alignment reference used]\n  --translated-alignment {usearch,rapsearch,diamond}\n\
+  \                        software to use for translated alignment\n            \
+  \            [DEFAULT: diamond]\n  --xipe {on,off}       turn on/off the xipe computation\n\
+  \                        [DEFAULT: off]\n  --minpath {on,off}    turn on/off the\
+  \ minpath computation\n                        [DEFAULT: on]\n  --pick-frames {on,off}\n\
+  \                        turn on/off the pick_frames computation\n             \
+  \           [DEFAULT: off]\n  --gap-fill {on,off}   turn on/off the gap fill computation\n\
+  \                        [DEFAULT: on]\n  --output-format {tsv,biom}\n         \
+  \               the format of the output files\n                        [DEFAULT:\
+  \ tsv]\n  --output-max-decimals <10>\n                        the number of decimals\
+  \ to output\n                        [DEFAULT: 10]\n  --output-basename <sample_name>\n\
+  \                        the basename for the output files\n                   \
+  \     [DEFAULT: input file basename]\n  --remove-stratified-output\n           \
+  \             remove stratification from output\n                        [DEFAULT:\
+  \ output is stratified]\n  --remove-column-description-output\n                \
+  \        remove the description in the output column\n                        [DEFAULT:\
+  \ output column includes description]\n  --input-format {fastq,fastq.gz,fasta,fasta.gz,sam,bam,blastm8,genetable,biom}\n\
+  \                        the format of the input file\n                        [DEFAULT:\
+  \ format identified by software]\n  --pathways-database <pathways_database.tsv>\n\
+  \                        mapping file (or files, at most two in a comma-delimited\
+  \ list) to use for pathway computations\n                        [DEFAULT: metacyc\
+  \ database ]\n  --pathways {metacyc,unipathway}\n                        the database\
+  \ to use for pathway computations\n                        [DEFAULT: metacyc]\n\
+  \  --memory-use {minimum,maximum}\n                        the amount of memory\
+  \ to use\n                        [DEFAULT: minimum]\n"
+generated_using:
+- --help

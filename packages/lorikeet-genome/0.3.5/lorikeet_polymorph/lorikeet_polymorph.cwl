@@ -1,0 +1,21 @@
+class: CommandLineTool
+id: lorikeet_polymorph.cwl
+inputs:
+- id: in_bam_files
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --bam-files
+- id: in_bam_file_cache_directory
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --bam-file-cache-directory
+outputs:
+- id: out_stdout
+  doc: Standard output stream
+  type: stdout
+cwlVersion: v1.1
+baseCommand:
+- lorikeet
+- polymorph

@@ -1,0 +1,129 @@
+!Command
+command:
+- recalladapters
+positional: []
+named:
+- !Flag
+  description: Prefix of output filenames
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Input subreadset.xml
+  synonyms:
+  - -s
+  - --subreadset
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Number of threads for parallel ZMW processing
+  synonyms:
+  - -j
+  - --nProcs
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Number of threads for parallel BAM compression, can only\nbe set when\
+    \ not generating pbindex inline with --inlinePbi"
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Generate pbindex inline with BAM writing
+  synonyms:
+  - --inlinePbi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: No progress output.
+  synonyms:
+  - --silent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--adapters=adapterSequences.fasta\n--globalAlnFlanking\n--flankLength=INT\n\
+    --minSoftAccuracy=FLOAT\n--minHardAccuracy=FLOAT\n--minFlankingScore=FLOAT\n--disableAdapterCorrection\n\
+    --adpqc"
+  synonyms:
+  - --disableAdapterFinding
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimal score for an adapter
+  synonyms:
+  - --minAdapterScore
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Minimal subread length. Default: 50'
+  synonyms:
+  - --minSubLength
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Minimal SNR across channels. Default: 3.75'
+  synonyms:
+  - --minSnr
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Only process given ZMW NUMBERs
+  synonyms:
+  - --whitelistZmwNum
+  args: !SimpleFlagArg
+    name: RANGES
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: -s subreadset.xml -o outputPrefix [options]\n\nVersion:9.0.0.da2e8977c\n\
+  \nrecalladapters operates on BAM files in one convention (subreads+scraps or\nhqregions+scraps),\
+  \ allows reprocessing adapter calls then outputs the resulting\nBAM files as subreads\
+  \ plus scraps.\n\n\"Scraps\" BAM files are always required to reconstitute the ZMW\
+  \ reads internally.\nConversely, \"scraps\" BAM files will be output.\n\nZMW reads\
+  \ are not allowed as input, due to the missing HQ-region annotations!\n\nInput read\
+  \ convention is determined from the READTYPE annotation in the @RG::DS\ntags of\
+  \ the input BAM files.A subreadset *must* be used as input instead of the\nindividual\
+  \ BAM files.\n\nOptions:\n  -h, --help            show this help message and exit\n\
+  \  --version             show program's version number and exit\n\n  Mandatory parameters:\n\
+  \    -o STRING           Prefix of output filenames\n    -s STRING, --subreadset=STRING\n\
+  \                        Input subreadset.xml\n\n  Optional parameters:\n    -j\
+  \ INT, --nProcs=INT\n                        Number of threads for parallel ZMW\
+  \ processing\n    -b INT              Number of threads for parallel BAM compression,\
+  \ can only\n                        be set when not generating pbindex inline with\
+  \ --inlinePbi\n    --inlinePbi         Generate pbindex inline with BAM writing\n\
+  \    --silent            No progress output.\n\n  Adapter finding parameters:\n\
+  \    --disableAdapterFinding\n    --adapters=adapterSequences.fasta\n    --globalAlnFlanking\n\
+  \    --flankLength=INT   \n    --minSoftAccuracy=FLOAT\n    --minHardAccuracy=FLOAT\n\
+  \    --minFlankingScore=FLOAT\n    --disableAdapterCorrection\n    --adpqc     \
+  \        \n\n  Fine tuning:\n    --minAdapterScore=int\n                       \
+  \ Minimal score for an adapter\n    --minSubLength=INT  Minimal subread length.\
+  \ Default: 50\n    --minSnr=FLOAT      Minimal SNR across channels. Default: 3.75\n\
+  \n  White list:\n    --whitelistZmwNum=RANGES\n                        Only process\
+  \ given ZMW NUMBERs\n\nExample: recalladapters -s in.subreadset.xml -o out --adapters\
+  \ adapters.fasta\n\n"
+generated_using:
+- --help

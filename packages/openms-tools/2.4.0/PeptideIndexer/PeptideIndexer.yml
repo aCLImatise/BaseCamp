@@ -1,0 +1,205 @@
+!Command
+command:
+- PeptideIndexer
+positional: []
+named:
+- !Flag
+  description: "*                      Input idXML file containing the identifications.\
+    \ (valid formats: 'idXML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                   Input sequence database in FASTA format. Non-existing\
+    \ relative filenames are looked up via 'OpenMS.ini:id_db_dir' (valid formats:\
+    \ 'fasta')"
+  synonyms:
+  - -fasta
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                     Output idXML file. (valid formats: 'idXML')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: String that was appended (or prefixed - see 'decoy_string_position'
+    flag below) to the accessions in the protein database to indicate decoy proteins.
+    If empty (default), it's determined automatically (checking for common terms,
+    both as prefix and suffix).
+  synonyms:
+  - -decoy_string
+  args: !SimpleFlagArg
+    name: text
+  optional: true
+- !Flag
+  description: "Is the 'decoy_string' prepended (prefix) or appended (suffix) to the\
+    \ protein accession? (ignored if decoy_string is empty) (default: 'prefix' valid:\
+    \ 'prefix', 'suffix')"
+  synonyms:
+  - -decoy_string_position
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: "Action to take if NO peptide was assigned to a decoy protein (which\
+    \ indicates wrong database or decoy string): 'error' (exit with error, no output),\
+    \ 'warn' (exit with success, warning message), 'silent' (no action is taken, not\
+    \ even a warning) (default: 'error' valid: 'error', 'warn', 'silent')"
+  synonyms:
+  - -missing_decoy_action
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: If set, the protein sequences are stored as well.
+  synonyms:
+  - -write_protein_sequence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If set, the protein description is stored as well.
+  synonyms:
+  - -write_protein_description
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If set, protein hits which are not referenced by any peptide are kept.
+  synonyms:
+  - -keep_unreferenced_proteins
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If set, unmatched peptide sequences are allowed. By default (i.e. if
+    this flag is not set) the program terminates with an error on unmatched peptides.
+  synonyms:
+  - -allow_unmatched
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Maximal number of ambiguous amino acids (AAAs) allowed when matching\
+    \ to a protein database with AAAs. AAAs are B, J, Z and X! (default: '3' min:\
+    \ '0' max: '10')"
+  synonyms:
+  - -aaa_max
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: "Maximal number of mismatched (mm) amino acids allowed when matching\
+    \ to a protein database. The required runtime is exponential in the number of\
+    \ mm's; apply with care. MM's are allowed in addition to AAA's. (default: '0'\
+    \ min: '0' max: '10')"
+  synonyms:
+  - -mismatches_max
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: Treat the isobaric amino acids isoleucine ('I') and leucine ('L') as
+    equivalent (indistinguishable). Also occurences of 'J' will be treated as 'I'
+    thus avoiding ambiguous matching.
+  synonyms:
+  - -IL_equivalent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\nstty: standard input: Inappropriate ioctl for device\nPeptideIndexer\
+  \ -- Refreshes the protein references for all peptide hits.\nVersion: 2.4.0 Jan\
+  \  8 2020, 08:35:33, Revision: 2116a70\nTo cite OpenMS:\n  Rost HL, Sachsenberg\
+  \ T, Aiche S, Bielow C et al.. OpenMS: a flexible open-source software platform\
+  \ for mass spectrometry data analysis. Nat Meth. 2016; 13, 9: 741-748. doi:10.1038/nmeth.3959.\n\
+  \nUsage:\n  PeptideIndexer <options>\n\nOptions (mandatory options marked with '*'):\n\
+  \  -in <file>*                      Input idXML file containing the identifications.\
+  \ (valid formats: 'idXML')\n  -fasta <file>*                   Input sequence database\
+  \ in FASTA format. Non-existing relative filenames are looked up via 'OpenMS.ini:id_db_dir'\
+  \ (valid formats: 'fasta')\n  -out <file>*                     Output idXML file.\
+  \ (valid formats: 'idXML')\n  -decoy_string <text>             String that was appended\
+  \ (or prefixed - see 'decoy_string_position' flag below) to the accessions in the\
+  \ protein database to indicate decoy proteins. If empty (default), it's determined\
+  \ automatically (checking for common terms, both as prefix and suffix).\n  -decoy_string_position\
+  \ <choice>  Is the 'decoy_string' prepended (prefix) or appended (suffix) to the\
+  \ protein accession? (ignored if decoy_string is empty) (default: 'prefix' valid:\
+  \ 'prefix', 'suffix')\n  -missing_decoy_action <choice>   Action to take if NO peptide\
+  \ was assigned to a decoy protein (which indicates wrong database or decoy string):\
+  \ 'error' (exit with error, no output), 'warn' (exit with success, warning message),\
+  \ 'silent' (no action is taken, not even a warning) (default: 'error' valid: 'error',\
+  \ 'warn', 'silent')\n  -write_protein_sequence          If set, the protein sequences\
+  \ are stored as well.\n  -write_protein_description       If set, the protein description\
+  \ is stored as well.\n  -keep_unreferenced_proteins      If set, protein hits which\
+  \ are not referenced by any peptide are kept.\n  -allow_unmatched              \
+  \   If set, unmatched peptide sequences are allowed. By default (i.e. if this flag\
+  \ is not set) the program terminates with an error on unmatched peptides.\n  -aaa_max\
+  \ <number>                Maximal number of ambiguous amino acids (AAAs) allowed\
+  \ when matching to a protein database with AAAs. AAAs are B, J, Z and X! (default:\
+  \ '3' min: '0' max: '10')\n  -mismatches_max <number>         Maximal number of\
+  \ mismatched (mm) amino acids allowed when matching to a protein database. The required\
+  \ runtime is exponential in the number of mm's; apply with care. MM's are allowed\
+  \ in addition to AAA's. (default: '0' min: '0' max: '10')\n  -IL_equivalent    \
+  \               Treat the isobaric amino acids isoleucine ('I') and leucine ('L')\
+  \ as equivalent (indistinguishable). Also occurences of 'J' will be treated as 'I'\
+  \ thus avoiding ambiguous matching.\n\nenzyme:\n  -enzyme:name <choice>        \
+  \    Enzyme which determines valid cleavage sites - e.g. trypsin cleaves after lysine\
+  \ (K) or arginine (R), but not before proline (P). (default: 'Trypsin' valid: 'Asp-N/B',\
+  \ 'Asp-N_ambic', 'glutamyl endopeptidase', 'Alpha-lytic protease', '2-iodobenzoate',\
+  \ 'iodosobenzoate', 'staphylococcal protease/D', 'Lys-N', 'Lys-C/P', 'Asp-N', 'unspecific\
+  \ cleavage', 'PepsinA', 'elastase-trypsin-chymotrypsin', 'TrypChymo', 'Trypsin/P',\
+  \ 'Trypsin', 'Chymotrypsin', 'Arg-C/P', 'Arg-C', 'Formic_acid', 'Lys-C', 'proline-endopeptidase/HKR',\
+  \ 'Glu-C+P', 'PepsinA + P', 'cyanogen-bromide', 'Clostripain/P', 'no cleavage',\
+  \ 'V8-DE', 'V8-E', 'leukocyte elastase', 'proline endopeptidase', 'Chymotrypsin/P',\
+  \ 'CNBr')\n  -enzyme:specificity <choice>     Specificity of the enzyme.\n     \
+  \                              'full': both internal cleavage sites must match.\n\
+  \                                   'semi': one of two internal cleavage sites must\
+  \ match.\n                                   'none': allow all peptide hits no matter\
+  \ their context. Therefore, the enzyme chosen does not play a role here (default:\
+  \ 'full' valid: 'full', 'semi', 'none')\n\n                                   \n\
+  Common TOPP options:\n  -ini <file>                      Use the given TOPP INI\
+  \ file\n  -threads <n>                     Sets the number of threads allowed to\
+  \ be used by the TOPP tool (default: '1')\n  -write_ini <file>                Writes\
+  \ the default configuration file\n  --help                           Shows options\n\
+  \  --helphelp                       Shows all options (including advanced)\n\n"
+generated_using:
+- --help

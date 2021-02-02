@@ -1,0 +1,220 @@
+!Command
+command:
+- stellar
+positional: []
+named:
+- !Flag
+  description: "Turn this option off to disable version update notifications of the\n\
+    application. One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\nDefault: 1."
+  synonyms:
+  - --version-check
+  args: !SimpleFlagArg
+    name: BOOL
+  optional: true
+- !Flag
+  description: "Maximal error rate (max 0.25). In range [0.0000001..0.25]. Default:\n\
+    0.05."
+  synonyms:
+  - -e
+  - --epsilon
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: 'Minimal length of epsilon-matches. In range [0..inf]. Default: 100.'
+  synonyms:
+  - -l
+  - --minLength
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Search only in forward strand of database.
+  synonyms:
+  - -f
+  - --forward
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Search only in reverse complement of database.
+  synonyms:
+  - -r
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Alphabet type of input sequences (dna, rna, dna5, rna5, protein,\n\
+    char). One of dna, dna5, rna, rna5, protein, and char."
+  synonyms:
+  - -a
+  - --alphabet
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Set verbosity mode.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Length of the q-grams (max 32). In range [1..32].
+  synonyms:
+  - -k
+  - --kmer
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'Maximal period of low complexity repeats to be filtered. Default:
+    1.'
+  synonyms:
+  - -rp
+  - --repeatPeriod
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Minimal length of low complexity repeats to be filtered. Default:\n\
+    1000."
+  synonyms:
+  - -rl
+  - --repeatLength
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'k-mer overabundance cut ratio. In range [0..1]. Default: 1.'
+  synonyms:
+  - -c
+  - --abundanceCut
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: 'Maximal x-drop for extension. Default: 5.'
+  synonyms:
+  - -x
+  - --xDrop
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: "Verification strategy: exact or bestLocal or bandedGlobal One of\n\
+    exact, bestLocal, and bandedGlobal. Default: exact."
+  synonyms:
+  - -vs
+  - --verification
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Maximal number of verified matches before disabling verification for\n\
+    one query sequence (default infinity). In range [0..inf]."
+  synonyms:
+  - -dt
+  - --disableThresh
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Maximal number of kept matches per query and database. If STELLAR\n\
+    finds more matches, only the longest ones are kept. Default: 50."
+  synonyms:
+  - -n
+  - --numMatches
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Number of matches triggering removal of duplicates. Choose a smaller\n\
+    value for saving space. Default: 500."
+  synonyms:
+  - -s
+  - --sortThresh
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Name of output file. Valid filetypes are: .txt and .gff. Default:\n\
+    stellar.gff."
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: "Name of output file for disabled query sequences. Valid filetypes\n\
+    are: .fasta and .fa. Default: stellar.disabled.fasta."
+  synonyms:
+  - -od
+  - --outDisabled
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display the help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version information.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "stellar - the SwifT Exact LocaL AligneR\n=======================================\n\
+  \nSYNOPSIS\n    stellar [OPTIONS] <FASTA FILE 1> <FASTA FILE 2>\n\nDESCRIPTION\n\
+  \    STELLAR implements the SWIFT filter algorithm (Rasmussen et al., 2006) and\n\
+  \    a verification step for the SWIFT hits that applies local alignment,\n    gapped\
+  \ X-drop extension, and extraction of the longest epsilon-match.\n\n    Input to\
+  \ STELLAR are two files, each containing one or more sequences in\n    FASTA format.\
+  \ Each sequence from file 1 will be compared to each sequence\n    in file 2. The\
+  \ sequences from file 1 are used as database, the sequences\n    from file 2 as\
+  \ queries.\n\n    (c) 2010-2012 by Birte Kehr\n\nREQUIRED ARGUMENTS\n    FASTA_FILE_1\
+  \ INPUT_FILE\n          Valid filetypes are: .fasta and .fa.\n    FASTA_FILE_2 INPUT_FILE\n\
+  \          Valid filetypes are: .fasta and .fa.\n\nOPTIONS\n    -h, --help\n   \
+  \       Display the help message.\n    --version-check BOOL\n          Turn this\
+  \ option off to disable version update notifications of the\n          application.\
+  \ One of 1, ON, TRUE, T, YES, 0, OFF, FALSE, F, and NO.\n          Default: 1.\n\
+  \    --version\n          Display version information.\n\n  Main Options:\n    -e,\
+  \ --epsilon DOUBLE\n          Maximal error rate (max 0.25). In range [0.0000001..0.25].\
+  \ Default:\n          0.05.\n    -l, --minLength INTEGER\n          Minimal length\
+  \ of epsilon-matches. In range [0..inf]. Default: 100.\n    -f, --forward\n    \
+  \      Search only in forward strand of database.\n    -r, --reverse\n         \
+  \ Search only in reverse complement of database.\n    -a, --alphabet STRING\n  \
+  \        Alphabet type of input sequences (dna, rna, dna5, rna5, protein,\n    \
+  \      char). One of dna, dna5, rna, rna5, protein, and char.\n    -v, --verbose\n\
+  \          Set verbosity mode.\n\n  Filtering Options:\n    -k, --kmer INTEGER\n\
+  \          Length of the q-grams (max 32). In range [1..32].\n    -rp, --repeatPeriod\
+  \ INTEGER\n          Maximal period of low complexity repeats to be filtered. Default:\
+  \ 1.\n    -rl, --repeatLength INTEGER\n          Minimal length of low complexity\
+  \ repeats to be filtered. Default:\n          1000.\n    -c, --abundanceCut DOUBLE\n\
+  \          k-mer overabundance cut ratio. In range [0..1]. Default: 1.\n\n  Verification\
+  \ Options:\n    -x, --xDrop DOUBLE\n          Maximal x-drop for extension. Default:\
+  \ 5.\n    -vs, --verification STRING\n          Verification strategy: exact or\
+  \ bestLocal or bandedGlobal One of\n          exact, bestLocal, and bandedGlobal.\
+  \ Default: exact.\n    -dt, --disableThresh INTEGER\n          Maximal number of\
+  \ verified matches before disabling verification for\n          one query sequence\
+  \ (default infinity). In range [0..inf].\n    -n, --numMatches INTEGER\n       \
+  \   Maximal number of kept matches per query and database. If STELLAR\n        \
+  \  finds more matches, only the longest ones are kept. Default: 50.\n    -s, --sortThresh\
+  \ INTEGER\n          Number of matches triggering removal of duplicates. Choose\
+  \ a smaller\n          value for saving space. Default: 500.\n\n  Output Options:\n\
+  \    -o, --out OUTPUT_FILE\n          Name of output file. Valid filetypes are:\
+  \ .txt and .gff. Default:\n          stellar.gff.\n    -od, --outDisabled OUTPUT_FILE\n\
+  \          Name of output file for disabled query sequences. Valid filetypes\n \
+  \         are: .fasta and .fa. Default: stellar.disabled.fasta.\n\nREFERENCES\n\
+  \    Kehr, B., Weese, D., Reinert, K.: STELLAR: fast and exact local\n    alignments.\
+  \ BMC Bioinformatics, 12(Suppl 9):S15, 2011.\n\nVERSION\n    Last update: 2016-12-22_14:49:36_+0100\n\
+  \    stellar version: 1.4.9 [75beba3]\n    SeqAn version: 2.3.1\n"
+generated_using:
+- --help

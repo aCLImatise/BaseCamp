@@ -1,0 +1,184 @@
+!Command
+command:
+- createSuperReadsForDirectory.perl
+positional: []
+named:
+- !Flag
+  description: ': the length of the k-mer to use for the calculations (31)'
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: merLen
+  optional: true
+- !Flag
+  description: ': the size of the table when running jellyfish (2,000,000,000)'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: tableSize
+  optional: true
+- !Flag
+  description: ': the number of processors to run jellyfish and create_k_unitigs (16)'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: numProcessors
+  optional: true
+- !Flag
+  description: ': a user-given k-unitigs file; otherwise we calculate'
+  synonyms:
+  - -kunitigsfile
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: ": a file giving mate info about each\nlibrary. Each line is the 2-letter\
+    \ prefix for the reads\nin the library followed by its mean and stdev. This\n\
+    file is mandatory unless -jumplibraryreads is specified"
+  synonyms:
+  - -mean-and-stdev-by-prefix-file
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: ': max stdevs allowed for joinKUnitigs (5)'
+  synonyms:
+  - -num-stdevs-allowed
+  args: !SimpleFlagArg
+    name: maxStdevsAllowedForJoining
+  optional: true
+- !Flag
+  description: ': max base diffs between overlapping k-unitigs in super-reads (0)'
+  synonyms:
+  - -mkudisr
+  args: !SimpleFlagArg
+    name: numBaseDiffs
+  optional: true
+- !Flag
+  description: ": super-reads containing fewer than numReads\nreads will be eliminated\
+    \ (2)"
+  synonyms:
+  - -minreadsinsuperread
+  args: !SimpleFlagArg
+    name: minReads
+  optional: true
+- !Flag
+  description: ": the prefix for the filenames relating to\nmerged unitig data. We\
+    \ assume that the k-unitig sequence\nis in  'prefix'.fasta, and the map file from\
+    \ orig to\nmerged k-unitigs is in 'prefix'.map."
+  synonyms:
+  - -merged-unitig-data-prefix
+  args: !SimpleFlagArg
+    name: prefix
+  optional: true
+- !Flag
+  description: ": Now does nothing; kept so other programs\nwon't break"
+  synonyms:
+  - -output-join-result-for-each-join
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Stop the run after one of the following \"target\" names:\ncreateLengthStatisticsFiles\n\
+    createKUnitigHashTable\naddMissingMates\nfindReadKUnitigMatches\ncreateLengthStatisticsForMergedKUnitigsFiles\n\
+    createKUnitigMaxOverlaps\njoinKUnitigs\ngetSuperReadInsertCounts\ncreateFastaSuperReadSequences\n\
+    reduceSuperReads\ncreateFinalReadPlacementFile\ncreateFinalSuperReadFastaSequences"
+  synonyms:
+  - --stopAfter
+  args: !SimpleFlagArg
+    name: target
+  optional: true
+- !Flag
+  description: ": don't clean up the files afterwards"
+  synonyms:
+  - -noclean
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": don't kill off intermediate results"
+  synonyms:
+  - -mikedebug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": we are generating for jump-library reads; a k-unitigs\nfile must\
+    \ be specified"
+  synonyms:
+  - -jumplibraryreads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": Use the super-read names which have the\nk-unitig numbers in them;\
+    \ otherwise use numeric names\n(lower numbers correspond to shorter super-reads)"
+  synonyms:
+  - -keep-kunitigs-in-superread-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": extend the super-reads if the ending unitigs have\nunique continuations"
+  synonyms:
+  - -extend-super-reads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': this is from a closeGaps.perl run, so some filesizes may be 0'
+  synonyms:
+  - -closegaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': time the commands'
+  synonyms:
+  - -time
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: ': help'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "This exec takes a (set of) input read files (in fasta format) and a\n\
+  file of input k-unitigs (specified with the switch -kunitigsfile) and outputs\n\
+  the set of super-reads for these reads (in fasta format).\n\nThe args are the input\
+  \ fasta files as well as (optionally) the directory\nwhere you want the work to\
+  \ occur. If the directory is not specified, the\nwork is done in the current directory.\n\
+  If the work directory doesn't exist then it is created.\n\nThe flags are as follows:\n\
+  -l merLen : the length of the k-mer to use for the calculations (31)\n-s tableSize\
+  \ : the size of the table when running jellyfish (2,000,000,000)\n-t numProcessors\
+  \ : the number of processors to run jellyfish and create_k_unitigs (16)\n-kunitigsfile\
+  \ filename : a user-given k-unitigs file; otherwise we calculate\n-mean-and-stdev-by-prefix-file\
+  \ filename : a file giving mate info about each\n                     library. Each\
+  \ line is the 2-letter prefix for the reads\n                     in the library\
+  \ followed by its mean and stdev. This\n                     file is mandatory unless\
+  \ -jumplibraryreads is specified\n-num-stdevs-allowed maxStdevsAllowedForJoining\
+  \ : max stdevs allowed for joinKUnitigs (5)\n-mkudisr numBaseDiffs : max base diffs\
+  \ between overlapping k-unitigs in super-reads (0)\n-minreadsinsuperread minReads\
+  \ : super-reads containing fewer than numReads\n                               reads\
+  \ will be eliminated (2)\n-merged-unitig-data-prefix prefix : the prefix for the\
+  \ filenames relating to\n                     merged unitig data. We assume that\
+  \ the k-unitig sequence\n                     is in  'prefix'.fasta, and the map\
+  \ file from orig to\n                     merged k-unitigs is in 'prefix'.map.\n\
+  -output-join-result-for-each-join : Now does nothing; kept so other programs\n \
+  \                    won't break\n--stopAfter target : Stop the run after one of\
+  \ the following \"target\" names:\n              createLengthStatisticsFiles\n \
+  \             createKUnitigHashTable\n              addMissingMates\n          \
+  \    findReadKUnitigMatches\n              createLengthStatisticsForMergedKUnitigsFiles\n\
+  \              createKUnitigMaxOverlaps\n              joinKUnitigs\n          \
+  \    getSuperReadInsertCounts\n              createFastaSuperReadSequences\n   \
+  \           reduceSuperReads\n              createFinalReadPlacementFile\n     \
+  \         createFinalSuperReadFastaSequences\n-noclean : don't clean up the files\
+  \ afterwards\n-mikedebug : don't kill off intermediate results\n-jumplibraryreads\
+  \ : we are generating for jump-library reads; a k-unitigs\n                    \
+  \            file must be specified\n-keep-kunitigs-in-superread-names : Use the\
+  \ super-read names which have the\n                k-unitig numbers in them; otherwise\
+  \ use numeric names\n                (lower numbers correspond to shorter super-reads)\n\
+  -extend-super-reads : extend the super-reads if the ending unitigs have\n      \
+  \          unique continuations\n-closegaps : this is from a closeGaps.perl run,\
+  \ so some filesizes may be 0\n-time : time the commands\n-h : help \n"
+generated_using:
+- --help

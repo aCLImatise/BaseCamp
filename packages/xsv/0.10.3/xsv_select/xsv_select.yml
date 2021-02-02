@@ -1,0 +1,62 @@
+!Command
+command:
+- xsv
+- select
+positional: []
+named:
+- !Flag
+  description: Write output to <file> instead of stdout.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "When set, the first row will not be interpreted\nas headers. (i.e.,\
+    \ They are not searched, analyzed,\nsliced, etc.)"
+  synonyms:
+  - -n
+  - --no-headers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The field delimiter for reading CSV data.\nMust be a single character.\
+    \ (default: ,)\n"
+  synonyms:
+  - -d
+  - --delimiter
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Select columns from CSV data efficiently.\n\nThis command lets you manipulate\
+  \ the columns in CSV data. You can re-order\nthem, duplicate them or drop them.\
+  \ Columns can be referenced by index or by\nname if there is a header row (duplicate\
+  \ column names can be disambiguated with\nmore indexing). Finally, column ranges\
+  \ can be specified.\n\n  Select the first and fourth columns:\n  $ xsv select 1,4\n\
+  \n  Select the first 4 columns (by index and by name):\n  $ xsv select 1-4\n  $\
+  \ xsv select Header1-Header4\n\n  Ignore the first 2 columns (by range and by omission):\n\
+  \  $ xsv select 3-\n  $ xsv select '!1-2'\n\n  Select the third column named 'Foo':\n\
+  \  $ xsv select 'Foo[2]'\n\n  Re-order and duplicate columns arbitrarily:\n  $ xsv\
+  \ select 3-1,Header3-Header1,Header1,Foo[2],Header1\n\nUsage:\n    xsv select [options]\
+  \ [--] <selection> [<input>]\n    xsv select --help\n\nCommon options:\n    -h,\
+  \ --help             Display this message\n    -o, --output <file>    Write output\
+  \ to <file> instead of stdout.\n    -n, --no-headers       When set, the first row\
+  \ will not be interpreted\n                           as headers. (i.e., They are\
+  \ not searched, analyzed,\n                           sliced, etc.)\n    -d, --delimiter\
+  \ <arg>  The field delimiter for reading CSV data.\n                           Must\
+  \ be a single character. (default: ,)\n"
+generated_using:
+- --help

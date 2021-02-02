@@ -1,0 +1,136 @@
+!Command
+command:
+- do-partition.py
+positional:
+- !Positional
+  description: base name for output files
+  position: 0
+  name: graphbase
+  optional: false
+- !Positional
+  description: input FAST[AQ] sequence filenames
+  position: 1
+  name: input_sequence_filename
+  optional: false
+named:
+- !Flag
+  description: print citation information
+  synonyms:
+  - --info
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'k-mer size to use (default: 32)'
+  synonyms:
+  - -k
+  - --ksize
+  args: !SimpleFlagArg
+    name: KSIZE
+  optional: true
+- !Flag
+  description: "approximate number of unique kmers in the input set\n(default: 0)"
+  synonyms:
+  - -U
+  - --unique-kmers
+  args: !SimpleFlagArg
+    name: UNIQUE_KMERS
+  optional: true
+- !Flag
+  description: "Override the automatic FP rate setting for the current\nscript (default:\
+    \ None)"
+  synonyms:
+  - --fp-rate
+  args: !SimpleFlagArg
+    name: FP_RATE
+  optional: true
+- !Flag
+  description: "maximum amount of memory to use for data structure\n(default: None)"
+  synonyms:
+  - -M
+  - --max-memory-usage
+  args: !SimpleFlagArg
+    name: MAX_MEMORY_USAGE
+  optional: true
+- !Flag
+  description: 'Number of simultaneous threads to execute (default: 1)'
+  synonyms:
+  - -T
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: "Set subset size (usually 1e5-1e6 is good) (default:\n100000)"
+  synonyms:
+  - -s
+  - --subset-size
+  args: !SimpleFlagArg
+    name: SUBSET_SIZE
+  optional: true
+- !Flag
+  description: "Truncate graph joins at big traversals (default:\nFalse)"
+  synonyms:
+  - --no-big-traverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Keep individual subsets (default: False)'
+  synonyms:
+  - --keep-subsets
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Overwrite output file if it exists (default: False)'
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: do-partition.py [--version] [--info] [-h] [-k KSIZE] [-U UNIQUE_KMERS]\n\
+  \                       [--fp-rate FP_RATE] [-M MAX_MEMORY_USAGE] [-T THREADS]\n\
+  \                       [-s SUBSET_SIZE] [--no-big-traverse] [--keep-subsets]\n\
+  \                       [-f]\n                       graphbase input_sequence_filename\n\
+  \                       [input_sequence_filename ...]\n\nLoad, partition, and annotate\
+  \ FAST[AQ] sequences\n\npositional arguments:\n  graphbase             base name\
+  \ for output files\n  input_sequence_filename\n                        input FAST[AQ]\
+  \ sequence filenames\n\noptional arguments:\n  --version             show program's\
+  \ version number and exit\n  --info                print citation information\n\
+  \  -h, --help            show this help message and exit\n  -k KSIZE, --ksize KSIZE\n\
+  \                        k-mer size to use (default: 32)\n  -U UNIQUE_KMERS, --unique-kmers\
+  \ UNIQUE_KMERS\n                        approximate number of unique kmers in the\
+  \ input set\n                        (default: 0)\n  --fp-rate FP_RATE     Override\
+  \ the automatic FP rate setting for the current\n                        script\
+  \ (default: None)\n  -M MAX_MEMORY_USAGE, --max-memory-usage MAX_MEMORY_USAGE\n\
+  \                        maximum amount of memory to use for data structure\n  \
+  \                      (default: None)\n  -T THREADS, --threads THREADS\n      \
+  \                  Number of simultaneous threads to execute (default: 1)\n  -s\
+  \ SUBSET_SIZE, --subset-size SUBSET_SIZE\n                        Set subset size\
+  \ (usually 1e5-1e6 is good) (default:\n                        100000)\n  --no-big-traverse\
+  \     Truncate graph joins at big traversals (default:\n                       \
+  \ False)\n  --keep-subsets        Keep individual subsets (default: False)\n  -f,\
+  \ --force           Overwrite output file if it exists (default: False)\n\nLoad\
+  \ in a set of sequences, partition them, merge the partitions, and annotate\nthe\
+  \ original sequences files with the partition information.\n\nThis script combines\
+  \ the functionality of `load-graph.py`, `partition-\ngraph.py`, `merge-partitions.py`,\
+  \ and `annotate-partitions.py` into one script.\nThis is convenient but should probably\
+  \ not be used for large data sets, because\n`do-partition.py` doesn't provide save/resume\
+  \ functionality.\n\nExample:\n\n    do-partition.py -k 20 example tests/test-data/random-20-a.fa\n"
+generated_using:
+- --help

@@ -1,0 +1,218 @@
+!Command
+command:
+- treeator
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: arguments
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: data_file.txt
+  optional: false
+named:
+- !Flag
+  description: "/ -a [file/type] give file with character alphabet, or dna,\nprotein,\
+    \ or binary for dna, amino acid,\nrespectively binary (0 1) alphabets (default:\n\
+    dna)."
+  synonyms:
+  - --alphabet_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: / -d [file]          give the data file.
+  synonyms:
+  - --data_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -e [number/s]          give parameter to fix. First parameter is\n\
+    indexed 0. Several parameters can be given in a\ncomma separated string, e.g.\
+    \ -e 0,2,3."
+  synonyms:
+  - --fixed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -f [file]               give data file name, or if data file name\n\
+    already given, then tree file name. If nexus\nformat and no tree file name is\
+    \ given, tree is\nassumed to be in same file as data."
+  synonyms:
+  - --file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[format]                give the format of the input files. For\n\
+    character file fasta, phylip and nexus are the\noptions. For the tree file the\
+    \ options are\nnewick and nexus. Give the character file\nformat first, and the\
+    \ tree file format after a\ncomma, e.g. --format phylip,newick. Fasta is\nthe\
+    \ default character file format, and newick\nis the default tree file format (unless\n\
+    character file is set to nexus, then nexus is\nalso default for tree file, e.g.\
+    \ --format\nnexus)."
+  synonyms:
+  - --format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "will give the states at internal nodes as\ncomments (readable in FigTree)."
+  synonyms:
+  - --get_state_at_nodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: / -l                calculate likelihood for data given tree.
+  synonyms:
+  - --likelihood
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -m [number/s]          give the model by numbering the rate parameters\n\
+    for different transition, e.g. -m 0,1,0,2,1,2.\nThe order is by row, i.e. from\
+    \ parameter 0 to\nparameter 1 first then, 0 to 2, and so on to\nall other parameters,\
+    \ then 1 to 0, and so\nforth."
+  synonyms:
+  - --model
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -n         compute neighbour joining tree for given data.\nThe data\
+    \ should be  a left triangular\nsimilarity matrix."
+  synonyms:
+  - --neighbour_joining
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -0          do not print branch lengths and do not\ncalculate branch\
+    \ lengths for parsimony trees."
+  synonyms:
+  - --no_branch_length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -L                  will tell treeator that there are no taxon\n\
+    labels in the similarity matrix."
+  synonyms:
+  - --no_label
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -N                  calculate likelihood for given parameters. No\n\
+    optimization."
+  synonyms:
+  - --no_optim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[newick/nexus]          give tree format for output, nexus (nex or\
+    \ x\nfor short) or newick (new or w for short), e.g\n--output x. (default w)."
+  synonyms:
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -P [values]       give corresponding parameter values for\nparameters.\
+    \ If optimizing these will be\nstarting values, e.g. -P 0.1,0.01,0.05."
+  synonyms:
+  - --parameters
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ -p                 calculate parsimony score for given tree and\n\
+    data."
+  synonyms:
+  - --parsimony
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: / -r                    do stepwise addition in random order.
+  synonyms:
+  - --random
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: / -t [file]          give tree file name.
+  synonyms:
+  - --tree_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: / -s                 do parsimony stepwise addition.
+  synonyms:
+  - --step_wise
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: / -v                   get additional output.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: / -h                      print this help.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Treeator 1.0 is a command line program to construct trees. The program\
+  \ take\neither a left triangular similarity matrix (neighbour joining) or a data\
+  \ matrix\nof fasta, nexus, or relaxed phylip format (not interleaved; parsimony/maximum\n\
+  likelihood) as input through standard in/ last argument/ as given below. For\ncharacter\
+  \ data an alphabet is also needed, default is binary (0 1 -).\n(c) Martin Ryberg\
+  \ 2016.\n\nUsage:\ntreeator [arguments] data_file.txt\n\nArguments:\n--alphabet_file\
+  \ / -a [file/type] give file with character alphabet, or dna,\n                \
+  \                 protein, or binary for dna, amino acid,\n                    \
+  \             respectively binary (0 1) alphabets (default:\n                  \
+  \               dna).\n--data_file / -d [file]          give the data file.\n--fixed\
+  \ / -e [number/s]          give parameter to fix. First parameter is\n         \
+  \                        indexed 0. Several parameters can be given in a\n     \
+  \                            comma separated string, e.g. -e 0,2,3.\n--file / -f\
+  \ [file]               give data file name, or if data file name\n             \
+  \                    already given, then tree file name. If nexus\n            \
+  \                     format and no tree file name is given, tree is\n         \
+  \                        assumed to be in same file as data.\n--format [format]\
+  \                give the format of the input files. For\n                     \
+  \            character file fasta, phylip and nexus are the\n                  \
+  \               options. For the tree file the options are\n                   \
+  \              newick and nexus. Give the character file\n                     \
+  \            format first, and the tree file format after a\n                  \
+  \               comma, e.g. --format phylip,newick. Fasta is\n                 \
+  \                the default character file format, and newick\n               \
+  \                  is the default tree file format (unless\n                   \
+  \              character file is set to nexus, then nexus is\n                 \
+  \                also default for tree file, e.g. --format\n                   \
+  \              nexus).\n--get_state_at_nodes             will give the states at\
+  \ internal nodes as\n                                 comments (readable in FigTree).\n\
+  --help / -h                      print this help.\n--likelihood / -l           \
+  \     calculate likelihood for data given tree.\n--model / -m [number/s]       \
+  \   give the model by numbering the rate parameters\n                          \
+  \       for different transition, e.g. -m 0,1,0,2,1,2.\n                       \
+  \          The order is by row, i.e. from parameter 0 to\n                     \
+  \            parameter 1 first then, 0 to 2, and so on to\n                    \
+  \             all other parameters, then 1 to 0, and so\n                      \
+  \           forth.\n--neighbour_joining / -n         compute neighbour joining tree\
+  \ for given data.\n                                 The data should be  a left triangular\n\
+  \                                 similarity matrix.\n--no_branch_length / -0  \
+  \        do not print branch lengths and do not\n                              \
+  \   calculate branch lengths for parsimony trees.\n--no_label / -L             \
+  \     will tell treeator that there are no taxon\n                             \
+  \    labels in the similarity matrix.\n--no_optim / -N                  calculate\
+  \ likelihood for given parameters. No\n                                 optimization.\n\
+  --output [newick/nexus]          give tree format for output, nexus (nex or x\n\
+  \                                 for short) or newick (new or w for short), e.g\n\
+  \                                 --output x. (default w).\n--parameters / -P [values]\
+  \       give corresponding parameter values for\n                              \
+  \   parameters. If optimizing these will be\n                                 starting\
+  \ values, e.g. -P 0.1,0.01,0.05.\n--parsimony / -p                 calculate parsimony\
+  \ score for given tree and\n                                 data.\n--random / -r\
+  \                    do stepwise addition in random order.\n--tree_file / -t [file]\
+  \          give tree file name.\n--step_wise / -s                 do parsimony stepwise\
+  \ addition.\n--verbose / -v                   get additional output.\n\n"
+generated_using:
+- --help

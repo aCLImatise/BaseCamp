@@ -1,0 +1,163 @@
+!Command
+command:
+- ectyper
+positional: []
+named:
+- !Flag
+  description: "Location of E. coli genome file(s). Can be a single\nfile, a comma-separated\
+    \ list of files, or a directory"
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: The number of cores to run ectyper with
+  synonyms:
+  - -c
+  - --cores
+  args: !SimpleFlagArg
+    name: CORES
+  optional: true
+- !Flag
+  description: "Percent identity required for an O antigen allele\nmatch [default\
+    \ 90]"
+  synonyms:
+  - -opid
+  - --percentIdentityOtype
+  args: !SimpleFlagArg
+    name: PERCENTIDENTITYOTYPE
+  optional: true
+- !Flag
+  description: "Percent identity required for an H antigen allele\nmatch [default\
+    \ 95]"
+  synonyms:
+  - -hpid
+  - --percentIdentityHtype
+  args: !SimpleFlagArg
+    name: PERCENTIDENTITYHTYPE
+  optional: true
+- !Flag
+  description: "Minumum percent coverage required for an O antigen\nallele match [default\
+    \ 95]"
+  synonyms:
+  - -opcov
+  - --percentCoverageOtype
+  args: !SimpleFlagArg
+    name: PERCENTCOVERAGEOTYPE
+  optional: true
+- !Flag
+  description: "Minumum percent coverage required for an H antigen\nallele match [default\
+    \ 50]"
+  synonyms:
+  - -hpcov
+  - --percentCoverageHtype
+  args: !SimpleFlagArg
+    name: PERCENTCOVERAGEHTYPE
+  optional: true
+- !Flag
+  description: Enable E. coli species verification
+  synonyms:
+  - --verify
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Directory location of output files
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "Location of pre-computed MASH RefSeq sketch. If\nprovided, genomes\
+    \ identified as non-E. coli will have\ntheir species identified using MASH. For\
+    \ best results\nthe pre-sketched RefSeq archive https://gembox.cbcb.um\nd.edu/mash/refseq.genomes.k21s1000.msh\
+    \ is recommended"
+  synonyms:
+  - -r
+  - --refseq
+  args: !SimpleFlagArg
+    name: REFSEQ
+  optional: true
+- !Flag
+  description: "Prints the allele sequences if enabled as the final\ncolumns of the\
+    \ output"
+  synonyms:
+  - -s
+  - --sequence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print more detailed log including debug messages
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Path to a custom database of O and H antigen alleles\nin JSON format.\
+    \ Check Data/ectyper_database.json for\nmore information\n"
+  synonyms:
+  - --dbpath
+  args: !SimpleFlagArg
+    name: DBPATH
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: ectyper [-h] [-V] -i INPUT [-c CORES] [-opid PERCENTIDENTITYOTYPE]\n\
+  \               [-hpid PERCENTIDENTITYHTYPE] [-opcov PERCENTCOVERAGEOTYPE]\n   \
+  \            [-hpcov PERCENTCOVERAGEHTYPE] [--verify] [-o OUTPUT]\n            \
+  \   [-r REFSEQ] [-s] [--debug] [--dbpath DBPATH]\n\nectyper v1.0.0 database v1.0\
+  \ Prediction of Escherichia coli serotype from raw\nreads or assembled genome sequences.\
+  \ The default settings are recommended.\n\noptional arguments:\n  -h, --help   \
+  \         show this help message and exit\n  -V, --version         show program's\
+  \ version number and exit\n  -i INPUT, --input INPUT\n                        Location\
+  \ of E. coli genome file(s). Can be a single\n                        file, a comma-separated\
+  \ list of files, or a directory\n  -c CORES, --cores CORES\n                   \
+  \     The number of cores to run ectyper with\n  -opid PERCENTIDENTITYOTYPE, --percentIdentityOtype\
+  \ PERCENTIDENTITYOTYPE\n                        Percent identity required for an\
+  \ O antigen allele\n                        match [default 90]\n  -hpid PERCENTIDENTITYHTYPE,\
+  \ --percentIdentityHtype PERCENTIDENTITYHTYPE\n                        Percent identity\
+  \ required for an H antigen allele\n                        match [default 95]\n\
+  \  -opcov PERCENTCOVERAGEOTYPE, --percentCoverageOtype PERCENTCOVERAGEOTYPE\n  \
+  \                      Minumum percent coverage required for an O antigen\n    \
+  \                    allele match [default 95]\n  -hpcov PERCENTCOVERAGEHTYPE, --percentCoverageHtype\
+  \ PERCENTCOVERAGEHTYPE\n                        Minumum percent coverage required\
+  \ for an H antigen\n                        allele match [default 50]\n  --verify\
+  \              Enable E. coli species verification\n  -o OUTPUT, --output OUTPUT\n\
+  \                        Directory location of output files\n  -r REFSEQ, --refseq\
+  \ REFSEQ\n                        Location of pre-computed MASH RefSeq sketch. If\n\
+  \                        provided, genomes identified as non-E. coli will have\n\
+  \                        their species identified using MASH. For best results\n\
+  \                        the pre-sketched RefSeq archive https://gembox.cbcb.um\n\
+  \                        d.edu/mash/refseq.genomes.k21s1000.msh is recommended\n\
+  \  -s, --sequence        Prints the allele sequences if enabled as the final\n \
+  \                       columns of the output\n  --debug               Print more\
+  \ detailed log including debug messages\n  --dbpath DBPATH       Path to a custom\
+  \ database of O and H antigen alleles\n                        in JSON format. Check\
+  \ Data/ectyper_database.json for\n                        more information\n"
+generated_using:
+- --help

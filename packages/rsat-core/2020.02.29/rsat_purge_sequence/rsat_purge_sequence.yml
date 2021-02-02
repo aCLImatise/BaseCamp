@@ -1,0 +1,162 @@
+!Command
+command:
+- rsat
+- purge-sequence
+positional:
+- !Positional
+  description: 1999 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)
+  position: 0
+  name: purge-sequence
+  optional: false
+- !Positional
+  description: OPTIONS
+  position: 0
+  name: sequences
+  optional: false
+named:
+- !Flag
+  description: (must be first argument) display options
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: verbose
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The file containing the sequence to purge.\nIf input_file is not specified,\
+    \ the standard input is\nused.  This allows to place the command within a pipe."
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: input_file
+  optional: true
+- !Flag
+  description: format
+  synonyms:
+  - -format
+  args: !SimpleFlagArg
+    name: sequence
+  optional: true
+- !Flag
+  description: "if not specified, the standard output is used.\nThis allows to place\
+    \ the command within a pipe."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: output_file
+  optional: true
+- !Flag
+  description: "dry run\nprint commands without executing them"
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '#   match length (default: 40)'
+  synonyms:
+  - -ml
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '#  mismatches (default: 3)'
+  synonyms:
+  - -mis
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: discard duplications on the direct strand only
+  synonyms:
+  - -1str
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: discard duplications on the reverse complement as well
+  synonyms:
+  - -2str
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "delete repeats instead of masking them\nBy default, repeats are masked,\
+    \ i.e. each nucleotide\nwithin a repeat is replaced by the letter n.  When the\n\
+    option -del is selected, repeats are deleted. This\nmeans that one sequence of\
+    \ input can be converted to\nseveral fragments in the output."
+  synonyms:
+  - -del
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Mask (replace by N characters) sequences strictly\nshorter than the\
+    \ specified length. This can be useful\nto discard short intergenic segments from\
+    \ the motif\ndiscovery step, especially when working with bacterial\ngenomes,\
+    \ where short intergenic sequences generally\ncorrespond to intra-operon segments."
+  synonyms:
+  - -mask_short
+  args: !SimpleFlagArg
+    name: min_seq_len
+  optional: true
+- !Flag
+  description: "Skip sequences strictly shorter than the specified\nlength. Same functionality\
+    \ as -mask_short, except that\nshort sequences are not returned at all in the\
+    \ output.\nSkipping short sequences can be useful to prevent\nindexing problems,\
+    \ when the input files contain\nsequences shorter than the indexing prefix."
+  synonyms:
+  - -skip_short
+  args: !SimpleFlagArg
+    name: min_seq_len
+  optional: true
+- !Flag
+  description: "The perl script purge-sequence does not die in case\nthe encapsulated\
+    \ programs (mkvtree, vmatch) return an\nerror message.\n"
+  synonyms:
+  - -nodie
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: (must be first argument) display full help message
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "NAME\n\tpurge-sequence\n\n        1999 by Jacques van Helden (Jacques.van-Helden@univ-amu.fr)\n\
+  \nUSAGE\n        purge-sequence [-i input_file] [-o output_file] [-v] [-2str | -1str]\n\
+  \nDESCRIPTION\n\n\tMask redundant fragments in a sequence. This perl script is no\n\
+  \tmore than a wrapper to facilitate this specific usage for two\n\tprograms developed\
+  \ by Stefan Kurtz : mkvtree and vmatch.\n\n\tWhen a fragment is duplicated, the\
+  \ first ocurrence is\n\tconserved and the second masked (or optionally deleted).\
+  \ \n\n\tBy default, the program also searches similarities between the\n\tdirect\
+  \ and reverse complement strand.\n\nCATEGORY\n\tsequences\n\nOPTIONS\n\t-h\t(must\
+  \ be first argument) display full help message\n\t-help\t(must be first argument)\
+  \ display options\n\t-v\tverbose\n\t-i input_file\n\t        The file containing\
+  \ the sequence to purge.\n\t\tIf input_file is not specified, the standard input\
+  \ is\n\t\tused.  This allows to place the command within a pipe.\n\t-format sequence\
+  \ format\n\t-o output_file\n\t\tif not specified, the standard output is used.\n\
+  \t\tThis allows to place the command within a pipe.\n\t-n\tdry run\n\t\tprint commands\
+  \ without executing them\n\t-ml #\tmatch length (default: 40)\n\t-mis #\tmismatches\
+  \ (default: 3)\n\t-1str\tdiscard duplications on the direct strand only\n\t-2str\t\
+  discard duplications on the reverse complement as well\n\t-del\tdelete repeats instead\
+  \ of masking them\n\t\tBy default, repeats are masked, i.e. each nucleotide\n\t\t\
+  within a repeat is replaced by the letter n.  When the\n\t\toption -del is selected,\
+  \ repeats are deleted. This\n\t\tmeans that one sequence of input can be converted\
+  \ to\n\t\tseveral fragments in the output.\n\n\t-mask_short min_seq_len\n\t\tMask\
+  \ (replace by N characters) sequences strictly\n\t\tshorter than the specified length.\
+  \ This can be useful\n\t\tto discard short intergenic segments from the motif\n\t\
+  \tdiscovery step, especially when working with bacterial\n\t\tgenomes, where short\
+  \ intergenic sequences generally\n\t\tcorrespond to intra-operon segments.\n\n\t\
+  -skip_short min_seq_len \n\t\tSkip sequences strictly shorter than the specified\n\
+  \t\tlength. Same functionality as -mask_short, except that\n\t\tshort sequences\
+  \ are not returned at all in the output.\n\n\t\tSkipping short sequences can be\
+  \ useful to prevent\n\t\tindexing problems, when the input files contain\n\t\tsequences\
+  \ shorter than the indexing prefix.\n\n\t-nodie\n\t\tThe perl script purge-sequence\
+  \ does not die in case\n         \tthe encapsulated programs (mkvtree, vmatch) return\
+  \ an\n         \terror message.\n\n"
+generated_using:
+- -h

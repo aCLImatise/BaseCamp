@@ -1,0 +1,176 @@
+!Command
+command:
+- check_structure
+positional:
+- !Positional
+  description: 'Command to execute (help: check_structure commands)'
+  position: 0
+  name: command
+  optional: false
+- !Positional
+  description: Specific command options
+  position: 1
+  name: options
+  optional: false
+named:
+- !Flag
+  description: Input structure. Formats PDB|mmCIF. Remote pdb:{pdbid}
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_STRUCTURE_PATH
+  optional: true
+- !Flag
+  description: "Format for retrieving structures\n(default=mmCif|pdb|xml)"
+  synonyms:
+  - --file_format
+  args: !SimpleFlagArg
+    name: FILE_FORMAT
+  optional: true
+- !Flag
+  description: "Canonical sequence in FASTA format, pdb_chain[,chain]\nin header"
+  synonyms:
+  - --sequence
+  args: !SimpleFlagArg
+    name: FASTA_SEQ_PATH
+  optional: true
+- !Flag
+  description: Server for retrieving structures (default|MMB)
+  synonyms:
+  - --pdb_server
+  args: !SimpleFlagArg
+    name: PDB_SERVER
+  optional: true
+- !Flag
+  description: "Path for structure's cache directory (default:\n./tmpPDB)"
+  synonyms:
+  - --cache_dir
+  args: !SimpleFlagArg
+    name: CACHE_DIR_PATH
+  optional: true
+- !Flag
+  description: "User key for modeller, required for backbone fix,\nregister at\nhttps://salilab.org/modeller/registration.html"
+  synonyms:
+  - --modeller_key
+  args: !SimpleFlagArg
+    name: MODELLER_KEY
+  optional: true
+- !Flag
+  description: "Override settings default residue library (AMBER prep\nformat)"
+  synonyms:
+  - --res_lib
+  args: !SimpleFlagArg
+    name: RES_LIBRARY_PATH
+  optional: true
+- !Flag
+  description: Override settings default data library
+  synonyms:
+  - --data_lib
+  args: !SimpleFlagArg
+    name: DATA_LIBRARY_PATH
+  optional: true
+- !Flag
+  description: Output structure. Format PDB
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_STRUCTURE_PATH
+  optional: true
+- !Flag
+  description: Summary checking results on a json file
+  synonyms:
+  - --json
+  args: !SimpleFlagArg
+    name: JSON_OUTPUT_PATH
+  optional: true
+- !Flag
+  description: Reduces output, removing labels and progress info
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Limit on number of atoms,0:nolimit
+  synonyms:
+  - --limit
+  args: !SimpleFlagArg
+    name: ATOM_LIMIT
+  optional: true
+- !Flag
+  description: Add debug information
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Force saving an output file even if no modification
+  synonyms:
+  - --force_save
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Perform checks only, structure is not modified
+  synonyms:
+  - --check_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not prompt for missing parameters
+  synonyms:
+  - --non_interactive
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: check_structure [-h] [-i INPUT_STRUCTURE_PATH]\n              \
+  \         [--file_format FILE_FORMAT] [--sequence FASTA_SEQ_PATH]\n            \
+  \           [--pdb_server PDB_SERVER] [--cache_dir CACHE_DIR_PATH]\n           \
+  \            [--modeller_key MODELLER_KEY]\n                       [--res_lib RES_LIBRARY_PATH]\n\
+  \                       [--data_lib DATA_LIBRARY_PATH]\n                       [-o\
+  \ OUTPUT_STRUCTURE_PATH] [--json JSON_OUTPUT_PATH]\n                       [--quiet]\
+  \ [--limit ATOM_LIMIT] [--debug] [--force_save]\n                       [--check_only]\
+  \ [--non_interactive] [--version]\n                       command ...\n\nBasic Structure\
+  \ checking based on MDWeb\n\npositional arguments:\n  command               Command\
+  \ to execute (help: check_structure commands)\n  options               Specific\
+  \ command options\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -i INPUT_STRUCTURE_PATH, --input INPUT_STRUCTURE_PATH\n  \
+  \                      Input structure. Formats PDB|mmCIF. Remote pdb:{pdbid}\n\
+  \  --file_format FILE_FORMAT\n                        Format for retrieving structures\n\
+  \                        (default=mmCif|pdb|xml)\n  --sequence FASTA_SEQ_PATH\n\
+  \                        Canonical sequence in FASTA format, pdb_chain[,chain]\n\
+  \                        in header\n  --pdb_server PDB_SERVER\n                \
+  \        Server for retrieving structures (default|MMB)\n  --cache_dir CACHE_DIR_PATH\n\
+  \                        Path for structure's cache directory (default:\n      \
+  \                  ./tmpPDB)\n  --modeller_key MODELLER_KEY\n                  \
+  \      User key for modeller, required for backbone fix,\n                     \
+  \   register at\n                        https://salilab.org/modeller/registration.html\n\
+  \  --res_lib RES_LIBRARY_PATH\n                        Override settings default\
+  \ residue library (AMBER prep\n                        format)\n  --data_lib DATA_LIBRARY_PATH\n\
+  \                        Override settings default data library\n  -o OUTPUT_STRUCTURE_PATH,\
+  \ --output OUTPUT_STRUCTURE_PATH\n                        Output structure. Format\
+  \ PDB\n  --json JSON_OUTPUT_PATH\n                        Summary checking results\
+  \ on a json file\n  --quiet               Reduces output, removing labels and progress\
+  \ info\n  --limit ATOM_LIMIT    Limit on number of atoms,0:nolimit\n  --debug  \
+  \             Add debug information\n  --force_save          Force saving an output\
+  \ file even if no modification\n  --check_only          Perform checks only, structure\
+  \ is not modified\n  --non_interactive     Do not prompt for missing parameters\n\
+  \  --version             show program's version number and exit\n"
+generated_using:
+- --help

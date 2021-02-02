@@ -1,0 +1,632 @@
+!Command
+command:
+- gcloud
+- topic
+- projections
+positional:
+- !Positional
+  description: "A projection is a list of keys that selects resource data values.\n\
+    Projections are used in --format flag expressions. For example, the table\nformat\
+    \ requires a projection that describes the table columns:\ntable(name, network.ip.internal,\
+    \ network.ip.external, uri())"
+  position: 0
+  name: Projections
+  optional: false
+- !Positional
+  description: "A transform formats resource data values. Each projection key may\
+    \ have zero\nor more transform calls:\n_key_._transform_([arg...])...\nThis example\
+    \ applies the foo() and then the bar() transform to the\nstatus.time resource\
+    \ value:\n(name, status.time.foo().bar())\nThe builtin transform functions are:\n\
+    always()\nMarks a transform sequence to always be applied.\nIn some cases transforms\
+    \ are disabled. Prepending always() to a\ntransform sequence causes the sequence\
+    \ to always be evaluated.\nFor example:\nsome_field.always().foo().bar()\nAlways\
+    \ applies foo() and then bar().\nbasename(undefined=\"\")\nReturns the last path\
+    \ component.\nThe arguments are:\nundefined\nReturns this value if the resource\
+    \ or basename is empty.\ncollection(undefined=\"\")\nReturns the current resource\
+    \ collection.\nThe arguments are:\nundefined\nThis value is returned if r or the\
+    \ collection is empty.\ncolor(red, yellow, green, blue)\nColorizes the resource\
+    \ string value.\nThe red, yellow, green and blue args are RE patterns, matched\
+    \ against\nthe resource in order. The first pattern that matches colorizes the\n\
+    matched substring with that color, and the other patterns are skipped.\nThe arguments\
+    \ are:\nred\nThe substring pattern for the color red.\nyellow\nThe substring pattern\
+    \ for the color yellow.\ngreen\nThe substring pattern for the color green.\nblue\n\
+    The substring pattern for the color blue.\nFor example:\ncolor(red=STOP,yellow=CAUTION,green=GO)\n\
+    For the resource string \"CAUTION means GO FASTER\" displays the\nsubstring \"\
+    CAUTION\" in yellow.\ncount()\nCounts the number of each item in the list.\nA\
+    \ string resource is treated as a list of characters.\nFor example:\n\"b/a/b/c\"\
+    .split(\"/\").count()\nReturns {a: 1, b: 2, c: 1}.\ndate(format=\"%Y-%m-%dT%H:%M:%S\"\
+    , unit=1, undefined=\"\", tz, tz_default)\nFormats the resource as a strftime()\
+    \ format.\nThe arguments are:\nformat\nThe strftime(3) format.\nunit\nIf the resource\
+    \ is a Timestamp then divide by unit to yield\nseconds.\nundefined\nReturns this\
+    \ value if the resource is not a valid time.\ntz\nReturn the time relative to\
+    \ the tz timezone if specified, the\nexplicit timezone in the resource if it has\
+    \ one, otherwise the\nlocal timezone. For example, ...date(tz=EST5EDT, tz_default=UTC).\n\
+    tz_default\nThe default timezone if the resource does not have a timezone\nsuffix.\n\
+    decode(encoding, undefined=\"\")\nReturns the decoded value of the resource that\
+    \ was encoded by encoding.\nThe arguments are:\nencoding\nThe encoding name. base64\
+    \ and utf-8 are supported.\nundefined\nReturns this value if the decoding fails.\n\
+    duration(start=\"\", end=\"\", parts=3, precision=3, calendar=true, unit=1, undefined=\"\
+    \")\nFormats the resource as an ISO 8601 duration string.\nThe ISO 8601 Duration\n\
+    (https://en.wikipedia.org/wiki/ISO_8601#Durations) format is:\n\"[-]P[nY][nM][nD][T[nH][nM][n[.m]S]]\"\
+    . The 0 duration is \"P0\".\nOtherwise at least one part will always be displayed.\
+    \ Negative\ndurations are prefixed by \"-\". \"T\" disambiguates months \"P2M\"\
+    \ to the\nleft of \"T\" and minutes \"PT5M\" to the right.\nIf the resource is\
+    \ a datetime then the duration of resource -\ncurrent_time is returned.\nThe arguments\
+    \ are:\nstart\nThe name of a start time attribute in the resource. The duration\
+    \ of\nthe end - start time attributes in resource is returned. If end is\nnot\
+    \ specified then the current time is used.\nend\nThe name of an end time attribute\
+    \ in the resource. Defaults to the\ncurrent time if omitted. Ignored if start\
+    \ is not specified.\nparts\nFormat at most this many duration parts starting with\
+    \ largest\nnon-zero part.\nprecision\nFormat the last duration part with precision\
+    \ digits after the\ndecimal point. Trailing \"0\" and \".\" are always stripped.\n\
+    calendar\nAllow time units larger than hours in formated durations if true.\n\
+    Durations specifying hours or smaller units are exact across\ndaylight savings\
+    \ time boundaries. On by default. Use calendar=false\nto disable. For example,\
+    \ if calendar=true then at the daylight\nsavings boundary 2016-03-13T01:00:00\
+    \ + P1D => 2016-03-14T01:00:00\nbut 2016-03-13T01:00:00 + PT24H => 2016-03-14T03:00:00.\
+    \ Similarly,\na +P1Y duration will be inexact but \"calendar correct\", yielding\n\
+    the same month and day number next year, even in leap years.\nunit\nDivide the\
+    \ resource numeric value by unit to yield seconds.\nundefined\nReturns this value\
+    \ if the resource is not a valid timestamp.\nFor example:\nduration(start=createTime,end=updateTime)\n\
+    The duration from resource creation to the most recent update.\nupdateTime.duration()\n\
+    The duration since the most recent resource update.\nencode(encoding, undefined=\"\
+    \")\nReturns the encoded value of the resource using encoding.\nThe arguments\
+    \ are:\nencoding\nThe encoding name. base64 and utf-8 are supported.\nundefined\n\
+    Returns this value if the encoding fails.\nenum(enums, inverse=false, undefined=\"\
+    \")\nReturns the enums dictionary description for the resource.\nThe arguments\
+    \ are:\nenums\nThe name of a message enum dictionary.\ninverse\nDo inverse lookup\
+    \ if true.\nundefined\nReturns this value if there is no matching enum description.\n\
+    error(message)\nRaises an Error exception that does not generate a stack trace.\n\
+    The arguments are:\nmessage\nAn error message. If not specified then the resource\
+    \ is formatted\nas the error message.\nextract(keys)\nExtract an ordered list\
+    \ of values from the resource for the specified\nkeys.\nThe arguments are:\nkeys\n\
+    The list of keys in the resource whose associated values will be\nincluded in\
+    \ the result.\nfatal(message)\nRaises an InternalError exception that generates\
+    \ a stack trace.\nThe arguments are:\nmessage\nAn error message. If not specified\
+    \ then the resource is formatted\nas the error message.\nfirstof(keys)\nReturns\
+    \ the first non-empty attribute value for key in keys.\nThe arguments are:\nkeys\n\
+    Keys to check for resource attribute values,\nFor example:\nx.firstof(bar_foo,\
+    \ barFoo, BarFoo, BAR_FOO)\nChecks x.bar_foo, x.barFoo, x.BarFoo, and x.BAR_FOO\
+    \ in order for\nthe first non-empty value.\nfloat(precision=6, spec, undefined=\"\
+    \")\nReturns the string representation of a floating point number.\nOne of these\
+    \ formats is used (1) \". precision spec\" if spec is\nspecified (2) \". precision\"\
+    \ unless 1e-04 <= abs(number) < 1e+09 (3)\n\".1f\" otherwise.\nThe arguments are:\n\
+    precision\nThe maximum number of digits before and after the decimal point.\n\
+    spec\nThe printf(3) floating point format \"e\", \"f\" or \"g\" spec character.\n\
+    undefined\nReturns this value if the resource is not a float.\nformat(fmt, args)\n\
+    Formats resource key values.\nThe arguments are:\nfmt\nThe format string with\
+    \ {0} ... {nargs-1} references to the resource\nattribute name arg values.\nargs\n\
+    The resource attribute key expression to format. The printer\nprojection symbols\
+    \ and aliases may be used in key expressions. If\nno args are specified then the\
+    \ resource is used as the arg list if\nit is a list, otherwise the resource is\
+    \ used as the only arg.\nFor example:\n--format='value(format(\"{0:f.1}/{1:f.1}\"\
+    , q.CPU.default, q.CPU.limit))'\nFormats q.CPU.default and q.CPU.limit as floating\
+    \ point numbers.\ngroup(keys)\nFormats a [...] grouped list.\nEach group is enclosed\
+    \ in [...]. The first item separator is ':',\nsubsequent separators are ','. [item1]\
+    \ [item1] ... [item1: item2] ...\n[item1: item2] [item1: item2, item3] ... [item1:\
+    \ item2, item3]\nThe arguments are:\nkeys\nOptional attribute keys to select from\
+    \ the list. Otherwise the\nstring value of each list item is selected.\nif(expr)\n\
+    Disables the projection key if the flag name filter expr is false.\nThe arguments\
+    \ are:\nexpr\nA command flag filter name expression. See gcloud topic filters\
+    \ for\ndetails on filter expressions. The expression variables are flag\nnames\
+    \ without the leading -- prefix and dashes replaced by\nunderscores.\nFor example:\n\
+    table(name, value.if(NOT short_format))\nLists a value column if the --short-format\
+    \ command line flag is not\nspecified.\niso(undefined=\"T\")\nFormats the resource\
+    \ to numeric ISO time format.\nThe arguments are:\nundefined\nReturns this value\
+    \ if the resource does not have an isoformat()\nattribute.\njoin(sep=\"/\", undefined=\"\
+    \")\nJoins the elements of the resource list by the value of sep.\nA string resource\
+    \ is treated as a list of characters.\nThe arguments are:\nsep\nThe separator\
+    \ value to use when joining.\nundefined\nReturns this value if the result after\
+    \ joining is empty.\nFor example:\n\"a/b/c/d\".split(\"/\").join(\"!\")\nReturns\
+    \ \"a!b!c!d\".\nlen()\nReturns the length of the resource if it is non-empty,\
+    \ 0 otherwise.\nlist(show=\"\", undefined=\"\", separator=\",\")\nFormats a dict\
+    \ or list into a compact comma separated list.\nThe arguments are:\nshow\nIf show=keys\
+    \ then list dict keys; if show=values then list dict\nvalues; otherwise list dict\
+    \ key=value pairs.\nundefined\nReturn this if the resource is empty.\nseparator\n\
+    The list item separator string.\nmap(depth=1)\nApplies the next transform in the\
+    \ sequence to each resource list item.\nThe arguments are:\ndepth\nThe list nesting\
+    \ depth.\nFor example:\nlist_field.map().foo().list()\nApplies foo() to each item\
+    \ in list_field and then list() to the\nresulting value to return a compact comma-separated\
+    \ list.\nlist_field.map().foo().map().bar()\nApplies foo() to each item in list_field\
+    \ and then bar() to each\nitem in the resulting list.\nabc.xyz.map(2).foo()\n\
+    Applies foo() to each item in xyz[] for all items in abc[].\nnotnull()\nRemove\
+    \ null values from the resource list.\nresolution(undefined=\"\", transpose=false)\n\
+    Formats a human readable XY resolution.\nThe arguments are:\nundefined\nReturns\
+    \ this value if a recognizable resolution was not found.\ntranspose\nReturns the\
+    \ y/x resolution if true.\nscope(args)\nGets the /args/ suffix from a URI.\nThe\
+    \ arguments are:\nargs\nOptional URI segment names. If not specified then 'regions',\n\
+    'zones' is assumed.\nFor example:\n\"https://abc/foo/projects/bar/xyz\".scope(\"\
+    projects\")\nReturns \"bar/xyz\".\n\"https://xyz/foo/regions/abc\".scope()\nReturns\
+    \ \"abc\".\nsegment(index=-1, undefined=\"\")\nReturns the index-th URI path segment.\n\
+    The arguments are:\nindex\nThe path segment index to return counting from 0.\n\
+    undefined\nReturns this value if the resource or segment index is empty.\nsize(zero=\"\
+    0\", precision=1, units_in, units_out, min=0)\nFormats a human readable size in\
+    \ bytes.\nThe arguments are:\nzero\nReturns this if size==0. Ignored if None.\n\
+    precision\nThe number of digits displayed after the decimal point.\nunits_in\n\
+    A unit suffix (only the first character is checked) or unit size.\nThe size is\
+    \ multiplied by this. The default is 1.0.\nunits_out\nA unit suffix (only the\
+    \ first character is checked) or unit size.\nThe size is divided by this. The\
+    \ default is 1.0.\nmin\nSizes < min will be listed as \"< min\".\nslice(op=\"\
+    :\", undefined=\"\")\nReturns a list slice specified by op.\nThe op parameter\
+    \ consists of up to three colon-delimeted integers:\nstart, end, and step. The\
+    \ parameter supports half-open ranges: start\nand end values can be omitted, representing\
+    \ the first and last\npositions of the resource respectively.\nThe step value\
+    \ represents the increment between items in the resource\nincluded in the slice.\
+    \ A step of 2 results in a slice that contains\nevery other item in the resource.\n\
+    Negative values for start and end indicate that the positons should\nstart from\
+    \ the last position of the resource. A negative value for step\nindicates that\
+    \ the slice should contain items in reverse order.\nIf op contains no colons,\
+    \ the slice consists of the single item at the\nspecified position in the resource.\n\
+    The arguments are:\nop\nThe slice operation.\nundefined\nReturns this value if\
+    \ the slice cannot be created, or the resulting\nslice is empty.\nFor example:\n\
+    [1,2,3].slice(1:)\nReturns [2,3].\n[1,2,3].slice(:2)\nReturns [1,2].\n[1,2,3].slice(-1:)\n\
+    Returns [3].\n[1,2,3].slice(: :-1)\nReturns [3,2,1].\n[1,2,3].slice(1)\nReturns\
+    \ [2].\nsort(attr=\"\")\nSorts the elements of the resource list by a given attribute\
+    \ (or\nitself).\nA string resource is treated as a list of characters.\nThe arguments\
+    \ are:\nattr\nThe optional field of an object or dict by which to sort.\nFor example:\n\
+    \"b/a/d/c\".split(\"/\").sort()\nReturns \"[a, b, c, d]\".\nsplit(sep=\"/\", undefined=\"\
+    \")\nSplits a string by the value of sep.\nThe arguments are:\nsep\nThe separator\
+    \ value to use when splitting.\nundefined\nReturns this value if the result after\
+    \ splitting is empty.\nFor example:\n\"a/b/c/d\".split()\nReturns [\"a\", \"b\"\
+    , \"c\", \"d\"].\nsub(pattern, replacement, count=0, ignorecase=true)\nReplaces\
+    \ a pattern matched in a string with the given replacement.\nReturn the string\
+    \ obtained by replacing the leftmost non-overlapping\noccurrences of pattern in\
+    \ the string by replacement. If the pattern\nisn't found, then the original string\
+    \ is returned unchanged.\nThe arguments are:\npattern\nThe regular expression\
+    \ pattern to match in r that we want to\nreplace with something.\nreplacement\n\
+    The value to substitute into whatever pattern is matched.\ncount\nThe max number\
+    \ of pattern occurrences to be replaced. Must be\nnon-negative. If omitted or\
+    \ zero, all occurrences will be replaces.\nignorecase\nWhether to perform case-insensitive\
+    \ matching.\nFor example:\ntable(field.sub(\" there\", \"\"))\nIf the field string\
+    \ is \"hey there\" it will be displayed as \"hey\".\nsynthesize(args)\nSynthesizes\
+    \ a new resource from the schema arguments.\nA list of tuple arguments controls\
+    \ the resource synthesis. Each tuple\nis a schema that defines the synthesis of\
+    \ one resource list item. Each\nschema item defines the synthesis of one synthesized_resource\
+    \ attribute\nfrom an original_resource attribute.\nThere are three kinds of schema\
+    \ items:\nname:literal\nThe value for the name attribute in the synthesized resource\
+    \ is the\nliteral value.\nname=key\nThe value for the name attribute in the synthesized_resource\
+    \ is the\nvalue of key in the original_resource.\nkey\nAll the attributes of the\
+    \ value of key in the original_resource are\nadded to the attributes in the synthesized_resource.\n\
+    The arguments are:\nargs\nThe list of schema tuples.\nFor example:\nThis returns\
+    \ a list of two resource items\nsynthesize((name:up, upInfo), (name:down, downInfo))\n\
+    If upInfo and downInfo serialize to\n{\"foo\": 1, \"bar\": \"yes\"}\nand\n{\"\
+    foo\": 0, \"bar\": \"no\"}\nthen the synthesized resource list is\n[{\"name\"\
+    : \"up\", \"foo\": 1, \"bar\": \"yes\"}, {\"name\": \"down\", \"foo\": 0,\n\"\
+    bar\": \"no\"}]\nThis could then be displayed by a nested table using\nsynthesize(...):format=\"\
+    table(name, foo, bar)\"\nuri(undefined=\".\")\nGets the resource URI.\nThe arguments\
+    \ are:\nundefined\nReturns this if a the URI for r cannot be determined.\nyesno(yes,\
+    \ no=\"No\")\nReturns no if the resource is empty, yes or the resource itself\n\
+    otherwise.\nThe arguments are:\nyes\nIf the resource is not empty then returns\
+    \ yes or the resource\nitself if yes is not defined.\nno\nReturns this value if\
+    \ the resource is empty.\nThe cloudbuild transform functions are:\nbuild_images(undefined=\"\
+    \")\nReturns the formatted build results images.\nThe arguments are:\nundefined\n\
+    Returns this value if the resource cannot be formatted.\nbuild_source(undefined=\"\
+    \")\nReturns the formatted build source.\nThe arguments are:\nundefined\nReturns\
+    \ this value if the resource cannot be formatted.\nThe compute transform functions\
+    \ are:\nfirewall_rule(undefined=\"\")\nReturns a compact string describing a firewall\
+    \ rule.\nThe compact string is a comma-separated list of PROTOCOL:PORT_RANGE\n\
+    items. If a particular protocol has no port ranges then only the\nprotocol is\
+    \ listed.\nThe arguments are:\nundefined\nReturns this value if the resource cannot\
+    \ be formatted.\nimage_alias(undefined=\"\")\nReturns a comma-separated list of\
+    \ alias names for an image.\nThe arguments are:\nundefined\nReturns this value\
+    \ if the resource cannot be formatted.\nlocation(undefined=\"\")\nReturn the region\
+    \ or zone name.\nThe arguments are:\nundefined\nReturns this value if the resource\
+    \ cannot be formatted.\nlocation_scope(undefined=\"\")\nReturn the location scope\
+    \ name, either region or zone.\nThe arguments are:\nundefined\nReturns this value\
+    \ if the resource cannot be formatted.\nmachine_type()\nReturn the formatted name\
+    \ for a machine type.\nnext_maintenance(undefined=\"\")\nReturns the timestamps\
+    \ of the next scheduled maintenance.\nAll timestamps are assumed to be ISO strings\
+    \ in the same timezone.\nThe arguments are:\nundefined\nReturns this value if\
+    \ the resource cannot be formatted.\noperation_http_status(undefined=\"\")\nReturns\
+    \ the HTTP response code of an operation.\nThe arguments are:\nundefined\nReturns\
+    \ this value if there is no response code.\nproject(undefined=\"\")\nReturns a\
+    \ project name from a selfLink.\nThe arguments are:\nundefined\nReturns this value\
+    \ if the resource cannot be formatted.\nquota(undefined=\"\")\nFormats a quota\
+    \ as usage/limit.\nThe arguments are:\nundefined\nReturns this value if the resource\
+    \ cannot be formatted.\nstatus(undefined=\"\")\nReturns the machine status with\
+    \ deprecation information if applicable.\nThe arguments are:\nundefined\nReturns\
+    \ this value if the resource cannot be formatted.\nzone(undefined=\"\")\nReturns\
+    \ a zone name from a selfLink.\nThe arguments are:\nundefined\nReturns this value\
+    \ if the resource cannot be formatted.\nThe container transform functions are:\n\
+    master_version(undefined=\"\")\nReturns the formatted master version.\nThe arguments\
+    \ are:\nundefined\nReturns this value if the resource cannot be formatted.\nThe\
+    \ debug transform functions are:\nfull_status(undefined=\"UNKNOWN_ERROR\")\nReturns\
+    \ a full description of the status of a logpoint or snapshot.\nStatus will be\
+    \ one of ACTIVE, COMPLETED, or a verbose error\ndescription. If the status is\
+    \ an error, there will be additional\ninformation available in the status field\
+    \ of the object.\nThe arguments are:\nundefined\nReturns this value if the resource\
+    \ is not a valid status.\nFor example:\n--format=\"table(id, location, full_status())\"\
+    \nDisplays the full status in the third table problem.\nshort_status(undefined=\"\
+    UNKNOWN_ERROR\")\nReturns a short description of the status of a logpoint or snapshot.\n\
+    Status will be one of ACTIVE, COMPLETED, or a short error description.\nIf the\
+    \ status is an error, there will be additional information\navailable in the status\
+    \ field of the object.\nThe arguments are:\nundefined\nReturns this value if the\
+    \ resource is not a valid status.\nFor example:\n--format=\"table(id, location,\
+    \ short_status())\"\nDisplays the short status in the third table problem.\nThe\
+    \ functions transform functions are:\ntrigger(undefined=\"\")\nReturns textual\
+    \ information about functions trigger.\nThe arguments are:\nundefined\nReturns\
+    \ this value if the resource cannot be formatted.\nThe runtime_config transform\
+    \ functions are:\nwaiter_status(undefined=\"\")\nReturns a short description of\
+    \ the status of a waiter or waiter\noperation.\nStatus will be one of WAITING,\
+    \ SUCCESS, FAILURE, or TIMEOUT.\nThe arguments are:\nundefined\nReturns this value\
+    \ if the resource status cannot be determined.\nFor example:\n--format=\"table(name,\
+    \ status())\"\nDisplays the status in table column two."
+  position: 1
+  name: Transforms
+  optional: false
+- !Positional
+  description: Left (default).
+  position: 0
+  name: left
+  optional: false
+- !Positional
+  description: Center.
+  position: 1
+  name: center
+  optional: false
+- !Positional
+  description: Right.
+  position: 2
+  name: right
+  optional: false
+- !Positional
+  description: '[no-]reverse'
+  position: 0
+  name: ANGRY_SNAKE_CASE.
+  optional: false
+- !Positional
+  description: "Enables the column text to be wrapped if the table would otherwise\
+    \ be\ntoo wide for the display."
+  position: 0
+  name: wrap
+  optional: false
+named: []
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "NAME\n    gcloud topic projections - resource projections supplementary\
+  \ help\n\nDESCRIPTION\n    Most gcloud commands return a list of resources on success.\
+  \ By default they\n    are pretty-printed on the standard output. The\n    --format=NAME[ATTRIBUTES](PROJECTION)\
+  \ and --filter=EXPRESSION flags along\n    with projections can be used to format\
+  \ and change the default output to a\n    more meaningful result.\n\n    To change\
+  \ the default output format of a command, use the --format flag.\n    For details\
+  \ run $ gcloud topic formats.\n\n    To select resources to be listed, use the --filter\
+  \ flag. For details run $\n    gcloud topic filters.\n\n    To reach resource items\
+  \ through a unique path of names from the root, use\n    resource-keys. For details\
+  \ run $ gcloud topic resource-keys.\n\n    To list a subset of resource keys in\
+  \ a resource, use projections. Resource\n    projections are described in detail\
+  \ below.\n\n  Projections\n    A projection is a list of keys that selects resource\
+  \ data values.\n    Projections are used in --format flag expressions. For example,\
+  \ the table\n    format requires a projection that describes the table columns:\n\
+  \n        table(name, network.ip.internal, network.ip.external, uri())\n\n  Transforms\n\
+  \    A transform formats resource data values. Each projection key may have zero\n\
+  \    or more transform calls:\n\n        _key_._transform_([arg...])...\n\n    This\
+  \ example applies the foo() and then the bar() transform to the\n    status.time\
+  \ resource value:\n\n        (name, status.time.foo().bar())\n\n    The builtin\
+  \ transform functions are:\n\n     always()\n        Marks a transform sequence\
+  \ to always be applied.\n\n        In some cases transforms are disabled. Prepending\
+  \ always() to a\n        transform sequence causes the sequence to always be evaluated.\n\
+  \n        For example:\n\n         some_field.always().foo().bar()\n           \
+  \ Always applies foo() and then bar().\n\n     basename(undefined=\"\")\n      \
+  \  Returns the last path component.\n\n        The arguments are:\n\n         undefined\n\
+  \            Returns this value if the resource or basename is empty.\n\n     collection(undefined=\"\
+  \")\n        Returns the current resource collection.\n\n        The arguments are:\n\
+  \n         undefined\n            This value is returned if r or the collection\
+  \ is empty.\n\n     color(red, yellow, green, blue)\n        Colorizes the resource\
+  \ string value.\n\n        The red, yellow, green and blue args are RE patterns,\
+  \ matched against\n        the resource in order. The first pattern that matches\
+  \ colorizes the\n        matched substring with that color, and the other patterns\
+  \ are skipped.\n\n        The arguments are:\n\n         red\n            The substring\
+  \ pattern for the color red.\n         yellow\n            The substring pattern\
+  \ for the color yellow.\n         green\n            The substring pattern for the\
+  \ color green.\n         blue\n            The substring pattern for the color blue.\n\
+  \n        For example:\n\n         color(red=STOP,yellow=CAUTION,green=GO)\n   \
+  \         For the resource string \"CAUTION means GO FASTER\" displays the\n   \
+  \         substring \"CAUTION\" in yellow.\n\n     count()\n        Counts the number\
+  \ of each item in the list.\n\n        A string resource is treated as a list of\
+  \ characters.\n\n        For example:\n\n         \"b/a/b/c\".split(\"/\").count()\n\
+  \            Returns {a: 1, b: 2, c: 1}.\n\n     date(format=\"%Y-%m-%dT%H:%M:%S\"\
+  , unit=1, undefined=\"\", tz, tz_default)\n        Formats the resource as a strftime()\
+  \ format.\n\n        The arguments are:\n\n         format\n            The strftime(3)\
+  \ format.\n         unit\n            If the resource is a Timestamp then divide\
+  \ by unit to yield\n            seconds.\n         undefined\n            Returns\
+  \ this value if the resource is not a valid time.\n         tz\n            Return\
+  \ the time relative to the tz timezone if specified, the\n            explicit timezone\
+  \ in the resource if it has one, otherwise the\n            local timezone. For\
+  \ example, ...date(tz=EST5EDT, tz_default=UTC).\n         tz_default\n         \
+  \   The default timezone if the resource does not have a timezone\n            suffix.\n\
+  \n     decode(encoding, undefined=\"\")\n        Returns the decoded value of the\
+  \ resource that was encoded by encoding.\n\n        The arguments are:\n\n     \
+  \    encoding\n            The encoding name. base64 and utf-8 are supported.\n\
+  \         undefined\n            Returns this value if the decoding fails.\n\n \
+  \    duration(start=\"\", end=\"\", parts=3, precision=3, calendar=true, unit=1,\
+  \ undefined=\"\")\n        Formats the resource as an ISO 8601 duration string.\n\
+  \n        The ISO 8601 Duration\n        (https://en.wikipedia.org/wiki/ISO_8601#Durations)\
+  \ format is:\n        \"[-]P[nY][nM][nD][T[nH][nM][n[.m]S]]\". The 0 duration is\
+  \ \"P0\".\n        Otherwise at least one part will always be displayed. Negative\n\
+  \        durations are prefixed by \"-\". \"T\" disambiguates months \"P2M\" to\
+  \ the\n        left of \"T\" and minutes \"PT5M\" to the right.\n\n        If the\
+  \ resource is a datetime then the duration of resource -\n        current_time is\
+  \ returned.\n\n        The arguments are:\n\n         start\n            The name\
+  \ of a start time attribute in the resource. The duration of\n            the end\
+  \ - start time attributes in resource is returned. If end is\n            not specified\
+  \ then the current time is used.\n         end\n            The name of an end time\
+  \ attribute in the resource. Defaults to the\n            current time if omitted.\
+  \ Ignored if start is not specified.\n         parts\n            Format at most\
+  \ this many duration parts starting with largest\n            non-zero part.\n \
+  \        precision\n            Format the last duration part with precision digits\
+  \ after the\n            decimal point. Trailing \"0\" and \".\" are always stripped.\n\
+  \         calendar\n            Allow time units larger than hours in formated durations\
+  \ if true.\n            Durations specifying hours or smaller units are exact across\n\
+  \            daylight savings time boundaries. On by default. Use calendar=false\n\
+  \            to disable. For example, if calendar=true then at the daylight\n  \
+  \          savings boundary 2016-03-13T01:00:00 + P1D => 2016-03-14T01:00:00\n \
+  \           but 2016-03-13T01:00:00 + PT24H => 2016-03-14T03:00:00. Similarly,\n\
+  \            a +P1Y duration will be inexact but \"calendar correct\", yielding\n\
+  \            the same month and day number next year, even in leap years.\n    \
+  \     unit\n            Divide the resource numeric value by unit to yield seconds.\n\
+  \         undefined\n            Returns this value if the resource is not a valid\
+  \ timestamp.\n\n        For example:\n\n         duration(start=createTime,end=updateTime)\n\
+  \            The duration from resource creation to the most recent update.\n  \
+  \       updateTime.duration()\n            The duration since the most recent resource\
+  \ update.\n\n     encode(encoding, undefined=\"\")\n        Returns the encoded\
+  \ value of the resource using encoding.\n\n        The arguments are:\n\n      \
+  \   encoding\n            The encoding name. base64 and utf-8 are supported.\n \
+  \        undefined\n            Returns this value if the encoding fails.\n\n  \
+  \   enum(enums, inverse=false, undefined=\"\")\n        Returns the enums dictionary\
+  \ description for the resource.\n\n        The arguments are:\n\n         enums\n\
+  \            The name of a message enum dictionary.\n         inverse\n        \
+  \    Do inverse lookup if true.\n         undefined\n            Returns this value\
+  \ if there is no matching enum description.\n\n     error(message)\n        Raises\
+  \ an Error exception that does not generate a stack trace.\n\n        The arguments\
+  \ are:\n\n         message\n            An error message. If not specified then\
+  \ the resource is formatted\n            as the error message.\n\n     extract(keys)\n\
+  \        Extract an ordered list of values from the resource for the specified\n\
+  \        keys.\n\n        The arguments are:\n\n         keys\n            The list\
+  \ of keys in the resource whose associated values will be\n            included\
+  \ in the result.\n\n     fatal(message)\n        Raises an InternalError exception\
+  \ that generates a stack trace.\n\n        The arguments are:\n\n         message\n\
+  \            An error message. If not specified then the resource is formatted\n\
+  \            as the error message.\n\n     firstof(keys)\n        Returns the first\
+  \ non-empty attribute value for key in keys.\n\n        The arguments are:\n\n \
+  \        keys\n            Keys to check for resource attribute values,\n\n    \
+  \    For example:\n\n         x.firstof(bar_foo, barFoo, BarFoo, BAR_FOO)\n    \
+  \        Checks x.bar_foo, x.barFoo, x.BarFoo, and x.BAR_FOO in order for\n    \
+  \        the first non-empty value.\n\n     float(precision=6, spec, undefined=\"\
+  \")\n        Returns the string representation of a floating point number.\n\n \
+  \       One of these formats is used (1) \". precision spec\" if spec is\n     \
+  \   specified (2) \". precision\" unless 1e-04 <= abs(number) < 1e+09 (3)\n    \
+  \    \".1f\" otherwise.\n\n        The arguments are:\n\n         precision\n  \
+  \          The maximum number of digits before and after the decimal point.\n  \
+  \       spec\n            The printf(3) floating point format \"e\", \"f\" or \"\
+  g\" spec character.\n         undefined\n            Returns this value if the resource\
+  \ is not a float.\n\n     format(fmt, args)\n        Formats resource key values.\n\
+  \n        The arguments are:\n\n         fmt\n            The format string with\
+  \ {0} ... {nargs-1} references to the resource\n            attribute name arg values.\n\
+  \         args\n            The resource attribute key expression to format. The\
+  \ printer\n            projection symbols and aliases may be used in key expressions.\
+  \ If\n            no args are specified then the resource is used as the arg list\
+  \ if\n            it is a list, otherwise the resource is used as the only arg.\n\
+  \n        For example:\n\n         --format='value(format(\"{0:f.1}/{1:f.1}\", q.CPU.default,\
+  \ q.CPU.limit))'\n            Formats q.CPU.default and q.CPU.limit as floating\
+  \ point numbers.\n\n     group(keys)\n        Formats a [...] grouped list.\n\n\
+  \        Each group is enclosed in [...]. The first item separator is ':',\n   \
+  \     subsequent separators are ','. [item1] [item1] ... [item1: item2] ...\n  \
+  \      [item1: item2] [item1: item2, item3] ... [item1: item2, item3]\n\n      \
+  \  The arguments are:\n\n         keys\n            Optional attribute keys to select\
+  \ from the list. Otherwise the\n            string value of each list item is selected.\n\
+  \n     if(expr)\n        Disables the projection key if the flag name filter expr\
+  \ is false.\n\n        The arguments are:\n\n         expr\n            A command\
+  \ flag filter name expression. See gcloud topic filters for\n            details\
+  \ on filter expressions. The expression variables are flag\n            names without\
+  \ the leading -- prefix and dashes replaced by\n            underscores.\n\n   \
+  \     For example:\n\n         table(name, value.if(NOT short_format))\n       \
+  \     Lists a value column if the --short-format command line flag is not\n    \
+  \        specified.\n\n     iso(undefined=\"T\")\n        Formats the resource to\
+  \ numeric ISO time format.\n\n        The arguments are:\n\n         undefined\n\
+  \            Returns this value if the resource does not have an isoformat()\n \
+  \           attribute.\n\n     join(sep=\"/\", undefined=\"\")\n        Joins the\
+  \ elements of the resource list by the value of sep.\n\n        A string resource\
+  \ is treated as a list of characters.\n\n        The arguments are:\n\n        \
+  \ sep\n            The separator value to use when joining.\n         undefined\n\
+  \            Returns this value if the result after joining is empty.\n\n      \
+  \  For example:\n\n         \"a/b/c/d\".split(\"/\").join(\"!\")\n            Returns\
+  \ \"a!b!c!d\".\n\n     len()\n        Returns the length of the resource if it is\
+  \ non-empty, 0 otherwise.\n\n     list(show=\"\", undefined=\"\", separator=\",\"\
+  )\n        Formats a dict or list into a compact comma separated list.\n\n     \
+  \   The arguments are:\n\n         show\n            If show=keys then list dict\
+  \ keys; if show=values then list dict\n            values; otherwise list dict key=value\
+  \ pairs.\n         undefined\n            Return this if the resource is empty.\n\
+  \         separator\n            The list item separator string.\n\n     map(depth=1)\n\
+  \        Applies the next transform in the sequence to each resource list item.\n\
+  \n        The arguments are:\n\n         depth\n            The list nesting depth.\n\
+  \n        For example:\n\n         list_field.map().foo().list()\n            Applies\
+  \ foo() to each item in list_field and then list() to the\n            resulting\
+  \ value to return a compact comma-separated list.\n         list_field.map().foo().map().bar()\n\
+  \            Applies foo() to each item in list_field and then bar() to each\n \
+  \           item in the resulting list.\n         abc.xyz.map(2).foo()\n       \
+  \     Applies foo() to each item in xyz[] for all items in abc[].\n\n     notnull()\n\
+  \        Remove null values from the resource list.\n\n     resolution(undefined=\"\
+  \", transpose=false)\n        Formats a human readable XY resolution.\n\n      \
+  \  The arguments are:\n\n         undefined\n            Returns this value if a\
+  \ recognizable resolution was not found.\n         transpose\n            Returns\
+  \ the y/x resolution if true.\n\n     scope(args)\n        Gets the /args/ suffix\
+  \ from a URI.\n\n        The arguments are:\n\n         args\n            Optional\
+  \ URI segment names. If not specified then 'regions',\n            'zones' is assumed.\n\
+  \n        For example:\n\n         \"https://abc/foo/projects/bar/xyz\".scope(\"\
+  projects\")\n            Returns \"bar/xyz\".\n         \"https://xyz/foo/regions/abc\"\
+  .scope()\n            Returns \"abc\".\n\n     segment(index=-1, undefined=\"\"\
+  )\n        Returns the index-th URI path segment.\n\n        The arguments are:\n\
+  \n         index\n            The path segment index to return counting from 0.\n\
+  \         undefined\n            Returns this value if the resource or segment index\
+  \ is empty.\n\n     size(zero=\"0\", precision=1, units_in, units_out, min=0)\n\
+  \        Formats a human readable size in bytes.\n\n        The arguments are:\n\
+  \n         zero\n            Returns this if size==0. Ignored if None.\n       \
+  \  precision\n            The number of digits displayed after the decimal point.\n\
+  \         units_in\n            A unit suffix (only the first character is checked)\
+  \ or unit size.\n            The size is multiplied by this. The default is 1.0.\n\
+  \         units_out\n            A unit suffix (only the first character is checked)\
+  \ or unit size.\n            The size is divided by this. The default is 1.0.\n\
+  \         min\n            Sizes < min will be listed as \"< min\".\n\n     slice(op=\"\
+  :\", undefined=\"\")\n        Returns a list slice specified by op.\n\n        The\
+  \ op parameter consists of up to three colon-delimeted integers:\n        start,\
+  \ end, and step. The parameter supports half-open ranges: start\n        and end\
+  \ values can be omitted, representing the first and last\n        positions of the\
+  \ resource respectively.\n\n        The step value represents the increment between\
+  \ items in the resource\n        included in the slice. A step of 2 results in a\
+  \ slice that contains\n        every other item in the resource.\n\n        Negative\
+  \ values for start and end indicate that the positons should\n        start from\
+  \ the last position of the resource. A negative value for step\n        indicates\
+  \ that the slice should contain items in reverse order.\n\n        If op contains\
+  \ no colons, the slice consists of the single item at the\n        specified position\
+  \ in the resource.\n\n        The arguments are:\n\n         op\n            The\
+  \ slice operation.\n         undefined\n            Returns this value if the slice\
+  \ cannot be created, or the resulting\n            slice is empty.\n\n        For\
+  \ example:\n\n         [1,2,3].slice(1:)\n            Returns [2,3].\n         [1,2,3].slice(:2)\n\
+  \            Returns [1,2].\n         [1,2,3].slice(-1:)\n            Returns [3].\n\
+  \         [1,2,3].slice(: :-1)\n            Returns [3,2,1].\n         [1,2,3].slice(1)\n\
+  \            Returns [2].\n\n     sort(attr=\"\")\n        Sorts the elements of\
+  \ the resource list by a given attribute (or\n        itself).\n\n        A string\
+  \ resource is treated as a list of characters.\n\n        The arguments are:\n\n\
+  \         attr\n            The optional field of an object or dict by which to\
+  \ sort.\n\n        For example:\n\n         \"b/a/d/c\".split(\"/\").sort()\n  \
+  \          Returns \"[a, b, c, d]\".\n\n     split(sep=\"/\", undefined=\"\")\n\
+  \        Splits a string by the value of sep.\n\n        The arguments are:\n\n\
+  \         sep\n            The separator value to use when splitting.\n        \
+  \ undefined\n            Returns this value if the result after splitting is empty.\n\
+  \n        For example:\n\n         \"a/b/c/d\".split()\n            Returns [\"\
+  a\", \"b\", \"c\", \"d\"].\n\n     sub(pattern, replacement, count=0, ignorecase=true)\n\
+  \        Replaces a pattern matched in a string with the given replacement.\n\n\
+  \        Return the string obtained by replacing the leftmost non-overlapping\n\
+  \        occurrences of pattern in the string by replacement. If the pattern\n \
+  \       isn't found, then the original string is returned unchanged.\n\n       \
+  \ The arguments are:\n\n         pattern\n            The regular expression pattern\
+  \ to match in r that we want to\n            replace with something.\n         replacement\n\
+  \            The value to substitute into whatever pattern is matched.\n       \
+  \  count\n            The max number of pattern occurrences to be replaced. Must\
+  \ be\n            non-negative. If omitted or zero, all occurrences will be replaces.\n\
+  \         ignorecase\n            Whether to perform case-insensitive matching.\n\
+  \n        For example:\n\n         table(field.sub(\" there\", \"\"))\n        \
+  \    If the field string is \"hey there\" it will be displayed as \"hey\".\n\n \
+  \    synthesize(args)\n        Synthesizes a new resource from the schema arguments.\n\
+  \n        A list of tuple arguments controls the resource synthesis. Each tuple\n\
+  \        is a schema that defines the synthesis of one resource list item. Each\n\
+  \        schema item defines the synthesis of one synthesized_resource attribute\n\
+  \        from an original_resource attribute.\n\n        There are three kinds of\
+  \ schema items:\n\n         name:literal\n            The value for the name attribute\
+  \ in the synthesized resource is the\n            literal value.\n         name=key\n\
+  \            The value for the name attribute in the synthesized_resource is the\n\
+  \            value of key in the original_resource.\n         key\n            All\
+  \ the attributes of the value of key in the original_resource are\n            added\
+  \ to the attributes in the synthesized_resource.\n\n        The arguments are:\n\
+  \n         args\n            The list of schema tuples.\n\n        For example:\n\
+  \n         This returns a list of two resource items\n            synthesize((name:up,\
+  \ upInfo), (name:down, downInfo))\n         If upInfo and downInfo serialize to\n\
+  \            {\"foo\": 1, \"bar\": \"yes\"}\n         and\n            {\"foo\"\
+  : 0, \"bar\": \"no\"}\n         then the synthesized resource list is\n        \
+  \    [{\"name\": \"up\", \"foo\": 1, \"bar\": \"yes\"}, {\"name\": \"down\", \"\
+  foo\": 0,\n            \"bar\": \"no\"}]\n         This could then be displayed\
+  \ by a nested table using\n            synthesize(...):format=\"table(name, foo,\
+  \ bar)\"\n\n     uri(undefined=\".\")\n        Gets the resource URI.\n\n      \
+  \  The arguments are:\n\n         undefined\n            Returns this if a the URI\
+  \ for r cannot be determined.\n\n     yesno(yes, no=\"No\")\n        Returns no\
+  \ if the resource is empty, yes or the resource itself\n        otherwise.\n\n \
+  \       The arguments are:\n\n         yes\n            If the resource is not empty\
+  \ then returns yes or the resource\n            itself if yes is not defined.\n\
+  \         no\n            Returns this value if the resource is empty.\n\n    The\
+  \ cloudbuild transform functions are:\n\n     build_images(undefined=\"\")\n   \
+  \     Returns the formatted build results images.\n\n        The arguments are:\n\
+  \n         undefined\n            Returns this value if the resource cannot be formatted.\n\
+  \n     build_source(undefined=\"\")\n        Returns the formatted build source.\n\
+  \n        The arguments are:\n\n         undefined\n            Returns this value\
+  \ if the resource cannot be formatted.\n\n    The compute transform functions are:\n\
+  \n     firewall_rule(undefined=\"\")\n        Returns a compact string describing\
+  \ a firewall rule.\n\n        The compact string is a comma-separated list of PROTOCOL:PORT_RANGE\n\
+  \        items. If a particular protocol has no port ranges then only the\n    \
+  \    protocol is listed.\n\n        The arguments are:\n\n         undefined\n \
+  \           Returns this value if the resource cannot be formatted.\n\n     image_alias(undefined=\"\
+  \")\n        Returns a comma-separated list of alias names for an image.\n\n   \
+  \     The arguments are:\n\n         undefined\n            Returns this value if\
+  \ the resource cannot be formatted.\n\n     location(undefined=\"\")\n        Return\
+  \ the region or zone name.\n\n        The arguments are:\n\n         undefined\n\
+  \            Returns this value if the resource cannot be formatted.\n\n     location_scope(undefined=\"\
+  \")\n        Return the location scope name, either region or zone.\n\n        The\
+  \ arguments are:\n\n         undefined\n            Returns this value if the resource\
+  \ cannot be formatted.\n\n     machine_type()\n        Return the formatted name\
+  \ for a machine type.\n\n     next_maintenance(undefined=\"\")\n        Returns\
+  \ the timestamps of the next scheduled maintenance.\n\n        All timestamps are\
+  \ assumed to be ISO strings in the same timezone.\n\n        The arguments are:\n\
+  \n         undefined\n            Returns this value if the resource cannot be formatted.\n\
+  \n     operation_http_status(undefined=\"\")\n        Returns the HTTP response\
+  \ code of an operation.\n\n        The arguments are:\n\n         undefined\n  \
+  \          Returns this value if there is no response code.\n\n     project(undefined=\"\
+  \")\n        Returns a project name from a selfLink.\n\n        The arguments are:\n\
+  \n         undefined\n            Returns this value if the resource cannot be formatted.\n\
+  \n     quota(undefined=\"\")\n        Formats a quota as usage/limit.\n\n      \
+  \  The arguments are:\n\n         undefined\n            Returns this value if the\
+  \ resource cannot be formatted.\n\n     status(undefined=\"\")\n        Returns\
+  \ the machine status with deprecation information if applicable.\n\n        The\
+  \ arguments are:\n\n         undefined\n            Returns this value if the resource\
+  \ cannot be formatted.\n\n     zone(undefined=\"\")\n        Returns a zone name\
+  \ from a selfLink.\n\n        The arguments are:\n\n         undefined\n       \
+  \     Returns this value if the resource cannot be formatted.\n\n    The container\
+  \ transform functions are:\n\n     master_version(undefined=\"\")\n        Returns\
+  \ the formatted master version.\n\n        The arguments are:\n\n         undefined\n\
+  \            Returns this value if the resource cannot be formatted.\n\n    The\
+  \ debug transform functions are:\n\n     full_status(undefined=\"UNKNOWN_ERROR\"\
+  )\n        Returns a full description of the status of a logpoint or snapshot.\n\
+  \n        Status will be one of ACTIVE, COMPLETED, or a verbose error\n        description.\
+  \ If the status is an error, there will be additional\n        information available\
+  \ in the status field of the object.\n\n        The arguments are:\n\n         undefined\n\
+  \            Returns this value if the resource is not a valid status.\n\n     \
+  \   For example:\n\n         --format=\"table(id, location, full_status())\"\n \
+  \           Displays the full status in the third table problem.\n\n     short_status(undefined=\"\
+  UNKNOWN_ERROR\")\n        Returns a short description of the status of a logpoint\
+  \ or snapshot.\n\n        Status will be one of ACTIVE, COMPLETED, or a short error\
+  \ description.\n        If the status is an error, there will be additional information\n\
+  \        available in the status field of the object.\n\n        The arguments are:\n\
+  \n         undefined\n            Returns this value if the resource is not a valid\
+  \ status.\n\n        For example:\n\n         --format=\"table(id, location, short_status())\"\
+  \n            Displays the short status in the third table problem.\n\n    The functions\
+  \ transform functions are:\n\n     trigger(undefined=\"\")\n        Returns textual\
+  \ information about functions trigger.\n\n        The arguments are:\n\n       \
+  \  undefined\n            Returns this value if the resource cannot be formatted.\n\
+  \n    The runtime_config transform functions are:\n\n     waiter_status(undefined=\"\
+  \")\n        Returns a short description of the status of a waiter or waiter\n \
+  \       operation.\n\n        Status will be one of WAITING, SUCCESS, FAILURE, or\
+  \ TIMEOUT.\n\n        The arguments are:\n\n         undefined\n            Returns\
+  \ this value if the resource status cannot be determined.\n\n        For example:\n\
+  \n         --format=\"table(name, status())\"\n            Displays the status in\
+  \ table column two.\n\n  Key Attributes\n    Key attributes control formatted output.\
+  \ Each projection key may have zero\n    or more attributes:\n\n        _key_:_attribute_=_value_...\n\
+  \n    where =value is omitted for Boolean attributes and no-attribute sets the\n\
+  \    attribute to false. Attribute values may appear in any order, but must be\n\
+  \    specified after any transform calls. The attributes are:\n\n     alias=ALIAS-NAME\n\
+  \        Sets ALIAS-NAME as an alias for the projection key.\n\n     align=ALIGNMENT\n\
+  \        Specifies the output column data alignment. Used by the table format.\n\
+  \        The alignment values are:\n\n         left\n            Left (default).\n\
+  \n         center\n            Center.\n\n         right\n            Right.\n\n\
+  \     label=LABEL\n        A string value used to label output. Use :label=\"\"\
+  \ or :label='' for no\n        label. The table format uses LABEL values as column\
+  \ headings. Also sets\n        LABEL as an alias for the projection key. The default\
+  \ label is the\n        disambiguated right hand parts of the column key name in\n\
+  \        ANGRY_SNAKE_CASE.\n\n     [no-]reverse\n        Sets the key sort order\
+  \ to descending. no-reverse resets to the default\n        ascending order.\n\n\
+  \     sort=SORT-ORDER\n        An integer counting from 1. Keys with lower sort-order\
+  \ are sorted\n        first. Keys with same sort order are sorted left to right.\n\
+  \n     wrap\n        Enables the column text to be wrapped if the table would otherwise\
+  \ be\n        too wide for the display.\n\nEXAMPLES\n    List a table of instance\
+  \ zone (sorted in descending order) and name (sorted\n    by name and centered with\
+  \ column heading INSTANCE) and creationTimestamp\n    (listed using the strftime(3)\
+  \ year-month-day format with column heading\n    START):\n\n        $ gcloud compute\
+  \ instances list \\\n            --format='table(name:sort=2:align=center:label=INSTANCE,\n\
+  \         zone:sort=1:reverse,\n         creationTimestamp.date(\"%Y-%m-%d\"):label=START)'\n\
+  \n    List only the name, status and zone instance resource keys in YAML format:\n\
+  \n        $ gcloud compute instances list --format='yaml(name, status, zone)'\n\n\
+  \    List only the config.account key value(s) in the info resource:\n\n       \
+  \ $ gcloud info --format='value(config.account)'\n"
+generated_using:
+- --help

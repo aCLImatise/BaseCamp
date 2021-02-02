@@ -1,0 +1,87 @@
+!Command
+command:
+- xsv
+- split
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: outdir
+  optional: false
+named:
+- !Flag
+  description: "The number of records to write into each chunk.\n[default: 500]"
+  synonyms:
+  - -s
+  - --size
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The number of spliting jobs to run in parallel.\nThis only works when\
+    \ the given CSV data has\nan index already created. Note that a file handle\n\
+    is opened for each job.\nWhen set to '0', the number of jobs is set to the\nnumber\
+    \ of CPUs detected.\n[default: 0]"
+  synonyms:
+  - -j
+  - --jobs
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Write output to <file> instead of stdout.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "When set, the first row will NOT be interpreted\nas column names.\
+    \ Otherwise, the first row will\nappear in all chunks as the header row."
+  synonyms:
+  - -n
+  - --no-headers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The field delimiter for reading CSV data.\nMust be a single character.\
+    \ (default: ,)\n"
+  synonyms:
+  - -d
+  - --delimiter
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display this message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Splits the given CSV data into chunks.\n\nThe files are written to the\
+  \ directory given with the name '{start}.csv',\nwhere {start} is the index of the\
+  \ first record of the chunk (starting at 0).\n\nUsage:\n    xsv split [options]\
+  \ <outdir> [<input>]\n    xsv split --help\n\nsplit options:\n    -s, --size <arg>\
+  \       The number of records to write into each chunk.\n                      \
+  \     [default: 500]\n    -j, --jobs <arg>       The number of spliting jobs to\
+  \ run in parallel.\n                           This only works when the given CSV\
+  \ data has\n                           an index already created. Note that a file\
+  \ handle\n                           is opened for each job.\n                 \
+  \          When set to '0', the number of jobs is set to the\n                 \
+  \          number of CPUs detected.\n                           [default: 0]\n\n\
+  Common options:\n    -h, --help             Display this message\n    -o, --output\
+  \ <file>    Write output to <file> instead of stdout.\n    -n, --no-headers    \
+  \   When set, the first row will NOT be interpreted\n                          \
+  \ as column names. Otherwise, the first row will\n                           appear\
+  \ in all chunks as the header row.\n    -d, --delimiter <arg>  The field delimiter\
+  \ for reading CSV data.\n                           Must be a single character.\
+  \ (default: ,)\n"
+generated_using:
+- --help

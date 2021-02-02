@@ -1,0 +1,217 @@
+!Command
+command:
+- rgt-motifanalysis
+- enrichment
+positional:
+- !Positional
+  description: BED file containing background regions.
+  position: 0
+  name: background.bed
+  optional: false
+- !Positional
+  description: BED files to be enriched against the background.
+  position: 1
+  name: input.bed
+  optional: false
+named:
+- !Flag
+  description: "Organism considered on the analysis. Must have been\nsetup in the\
+    \ RGTDATA folder. Common choices are hg19\nor hg38."
+  synonyms:
+  - --organism
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Directory where the matching output containing the\nMPBS files resides.\
+    \ Defaults to 'match' in the current\ndirectory."
+  synonyms:
+  - --matching-location
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "Only use the motifs contained within this file (one\nfor each line)."
+  synonyms:
+  - --use-only-motifs
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "If an experimental matrix is provided, the input\narguments will be\
+    \ ignored."
+  synonyms:
+  - --input-matrix
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Alpha value for multiple test.
+  synonyms:
+  - --multiple-test-alpha
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "New 'motif DB' folders to use instead of the ones\nwithin the RGTDATA\
+    \ folder. Each folder must contain\nPWM files."
+  synonyms:
+  - --motif-dbs
+  args: !RepeatFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "List of key-value patterns to select a subset of TFs\nusing the metadata\
+    \ (MTF files), e.g. for Mouse and\nHuman on Selex data use:\n\"species:sapiens,mus;data_source:selex\"\
+    . NB: the\nDATABASE values must be written in full - exact\nmatching is always\
+    \ performed.Valid key types are\n\"name\", \"gene_names\", \"family\", \"uniprot_ids\"\
+    ,\n\"data_source\", \"tax_group\", \"species\", \"database\",\n\"name_file\" and\
+    \ \"gene_names_file\""
+  synonyms:
+  - --filter
+  args: !SimpleFlagArg
+    name: KEY_VALUE_PATTERN
+  optional: true
+- !Flag
+  description: "Only useful together with the --filter argument.Exact\nwill only match\
+    \ perfect matching of the value for each\nkey. Inexact will match in case the\
+    \ value pattern is\ncontained within the motif. Regex allows for a more\ncomplex\
+    \ pattern use."
+  synonyms:
+  - --filter-type
+  args: !ChoiceFlagArg
+    choices: !!set
+      exact:
+      inexact:
+      regex:
+  optional: true
+- !Flag
+  description: "The logos are copied to a local directory. The HTML\nreport will contain\
+    \ relative paths to this directory."
+  synonyms:
+  - --logo-copy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The logos are embedded directly into the HTML report.
+  synonyms:
+  - --logo-embed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Length of the promoter region (in bp) to be extracted\nfrom each gene."
+  synonyms:
+  - --promoter-length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Maximum distance between a coordinate and a gene (in\nbp) in order\
+    \ for the former to be considered\nassociated with the latter."
+  synonyms:
+  - --maximum-association-length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "If set the specified target genes areexcluded from\nbackground file"
+  synonyms:
+  - --exclude-target-genes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Path where the output MPBS files will be written.\nDefaults to 'enrichment'\
+    \ in the current directory."
+  synonyms:
+  - --output-location
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "Only MPBSs whose factor's enrichment corrected p-value\nare less than\
+    \ equal this option are printed. Use 1.0\nto print all MPBSs."
+  synonyms:
+  - --print-thresh
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "If this option is used, all bed files will be written\nas bigbed.\n"
+  synonyms:
+  - --bigbed
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: rgt-motifanalysis enrichment [-h] [--organism STRING]\n       \
+  \                             [--matching-location PATH]\n                     \
+  \               [--use-only-motifs PATH]\n                                    [--input-matrix\
+  \ PATH]\n                                    [--multiple-test-alpha FLOAT]\n   \
+  \                                 [--motif-dbs PATH [PATH ...]]\n              \
+  \                      [--filter KEY_VALUE_PATTERN]\n                          \
+  \          [--filter-type {inexact,exact,regex}]\n                             \
+  \       [--promoter-length INT]\n                                    [--maximum-association-length\
+  \ INT]\n                                    [--exclude-target-genes]\n         \
+  \                           [--output-location PATH]\n                         \
+  \           [--print-thresh FLOAT] [--bigbed]\n                                \
+  \    [--logo-copy | --logo-embed]\n                                    background.bed\
+  \ [input.bed [input.bed ...]]\n\npositional arguments:\n  background.bed       \
+  \ BED file containing background regions.\n  input.bed             BED files to\
+  \ be enriched against the background.\n\noptional arguments:\n  -h, --help     \
+  \       show this help message and exit\n  --organism STRING     Organism considered\
+  \ on the analysis. Must have been\n                        setup in the RGTDATA\
+  \ folder. Common choices are hg19\n                        or hg38.\n  --matching-location\
+  \ PATH\n                        Directory where the matching output containing the\n\
+  \                        MPBS files resides. Defaults to 'match' in the current\n\
+  \                        directory.\n  --use-only-motifs PATH\n                \
+  \        Only use the motifs contained within this file (one\n                 \
+  \       for each line).\n  --input-matrix PATH   If an experimental matrix is provided,\
+  \ the input\n                        arguments will be ignored.\n  --multiple-test-alpha\
+  \ FLOAT\n                        Alpha value for multiple test.\n  --motif-dbs PATH\
+  \ [PATH ...]\n                        New 'motif DB' folders to use instead of the\
+  \ ones\n                        within the RGTDATA folder. Each folder must contain\n\
+  \                        PWM files.\n  --filter KEY_VALUE_PATTERN\n            \
+  \            List of key-value patterns to select a subset of TFs\n            \
+  \            using the metadata (MTF files), e.g. for Mouse and\n              \
+  \          Human on Selex data use:\n                        \"species:sapiens,mus;data_source:selex\"\
+  . NB: the\n                        DATABASE values must be written in full - exact\n\
+  \                        matching is always performed.Valid key types are\n    \
+  \                    \"name\", \"gene_names\", \"family\", \"uniprot_ids\",\n  \
+  \                      \"data_source\", \"tax_group\", \"species\", \"database\"\
+  ,\n                        \"name_file\" and \"gene_names_file\"\n  --filter-type\
+  \ {inexact,exact,regex}\n                        Only useful together with the --filter\
+  \ argument.Exact\n                        will only match perfect matching of the\
+  \ value for each\n                        key. Inexact will match in case the value\
+  \ pattern is\n                        contained within the motif. Regex allows for\
+  \ a more\n                        complex pattern use.\n  --logo-copy          \
+  \ The logos are copied to a local directory. The HTML\n                        report\
+  \ will contain relative paths to this directory.\n  --logo-embed          The logos\
+  \ are embedded directly into the HTML report.\n\nPromoter-regions enrichment:\n\
+  \  Used both for gene set via experimental matrix (see documentation), and\n  for\
+  \ reporting the gene names associated to each motif.\n\n  --promoter-length INT\n\
+  \                        Length of the promoter region (in bp) to be extracted\n\
+  \                        from each gene.\n  --maximum-association-length INT\n \
+  \                       Maximum distance between a coordinate and a gene (in\n \
+  \                       bp) in order for the former to be considered\n         \
+  \               associated with the latter.\n  --exclude-target-genes\n        \
+  \                If set the specified target genes areexcluded from\n          \
+  \              background file\n\nOutput:\n  Where to put the output files and how\
+  \ to post-process them.\n\n  --output-location PATH\n                        Path\
+  \ where the output MPBS files will be written.\n                        Defaults\
+  \ to 'enrichment' in the current directory.\n  --print-thresh FLOAT  Only MPBSs\
+  \ whose factor's enrichment corrected p-value\n                        are less\
+  \ than equal this option are printed. Use 1.0\n                        to print\
+  \ all MPBSs.\n  --bigbed              If this option is used, all bed files will\
+  \ be written\n                        as bigbed.\n"
+generated_using:
+- --help

@@ -1,0 +1,177 @@
+!Command
+command:
+- run_isoncorrect
+positional: []
+named:
+- !Flag
+  description: "Path to input fastq folder with reads in clusters\n(default: False)"
+  synonyms:
+  - --fastq_folder
+  args: !SimpleFlagArg
+    name: FASTQ_FOLDER
+  optional: true
+- !Flag
+  description: 'Number of cores allocated for clustering (default: 8)'
+  synonyms:
+  - --t
+  args: !SimpleFlagArg
+    name: NR_CORES
+  optional: true
+- !Flag
+  description: 'Kmer size (default: 9)'
+  synonyms:
+  - --k
+  args: !SimpleFlagArg
+    name: K
+  optional: true
+- !Flag
+  description: 'Window size (default: 10)'
+  synonyms:
+  - --w
+  args: !SimpleFlagArg
+    name: W
+  optional: true
+- !Flag
+  description: 'Lower interval length (default: 14)'
+  synonyms:
+  - --xmin
+  args: !SimpleFlagArg
+    name: XMIN
+  optional: true
+- !Flag
+  description: 'Upper interval length (default: 80)'
+  synonyms:
+  - --xmax
+  args: !SimpleFlagArg
+    name: XMAX
+  optional: true
+- !Flag
+  description: 'Minimum fraction keeping substitution (default: 0.1)'
+  synonyms:
+  - --T
+  args: !SimpleFlagArg
+    name: T
+  optional: true
+- !Flag
+  description: "Do exact correction for clusters under this threshold\n(default: 50)"
+  synonyms:
+  - --exact_instance_limit
+  args: !SimpleFlagArg
+    name: EXACT_INSTANCE_LIMIT
+  optional: true
+- !Flag
+  description: "Do not recompute previous results if\ncorrected_reads.fq is found\
+    \ and has the smae number of\nreads as input file (i.e., is complete). (default:\n\
+    False)"
+  synonyms:
+  - --keep_old
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set w = k + max(2*k, floor(cluster_size/1000)).\n(default: False)"
+  synonyms:
+  - --set_w_dynamically
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Maximum number of seqs to correct at a time (in case\nof large clusters).\
+    \ (default: 1000)"
+  synonyms:
+  - --max_seqs
+  args: !SimpleFlagArg
+    name: MAX_SEQS
+  optional: true
+- !Flag
+  description: "Use racon to polish consensus after spoa (more time\nconsuming but\
+    \ higher accuracy). (default: False)"
+  synonyms:
+  - --use_racon
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Splits cluster ids in n (default=1) partitions by\ncomputing residual\
+    \ of cluster_id divided by n. this\nparameter needs to be combined with --residual\
+    \ to take\neffect. (default: 1)"
+  synonyms:
+  - --split_mod
+  args: !SimpleFlagArg
+    name: SPLIT_MOD
+  optional: true
+- !Flag
+  description: "Run isONcorrect on cluster ids with residual (default\n0) of cluster_id\
+    \ divided by --split_mod. (default: 0)"
+  synonyms:
+  - --residual
+  args: !SimpleFlagArg
+    name: RESIDUAL
+  optional: true
+- !Flag
+  description: "Process reads per batch (of max_seqs sequences)\ninstead of per cluster.\
+    \ Significantly decrease runtime\nwhen few very large clusters are less than the\
+    \ number\nof cores used. (default: False)"
+  synonyms:
+  - --split_wrt_batches
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Outfolder with all corrected reads. (default: None)\n"
+  synonyms:
+  - --outfolder
+  args: !SimpleFlagArg
+    name: OUTFOLDER
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: run_isoncorrect [-h] [--version] [--fastq_folder FASTQ_FOLDER]\n\
+  \                       [--t NR_CORES] [--k K] [--w W] [--xmin XMIN]\n         \
+  \              [--xmax XMAX] [--T T]\n                       [--exact_instance_limit\
+  \ EXACT_INSTANCE_LIMIT]\n                       [--keep_old] [--set_w_dynamically]\n\
+  \                       [--max_seqs MAX_SEQS] [--use_racon]\n                  \
+  \     [--split_mod SPLIT_MOD] [--residual RESIDUAL]\n                       [--split_wrt_batches]\
+  \ [--outfolder OUTFOLDER]\n\nDe novo clustering of long-read transcriptome reads\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  --version             show program's version number and exit\n  --fastq_folder\
+  \ FASTQ_FOLDER\n                        Path to input fastq folder with reads in\
+  \ clusters\n                        (default: False)\n  --t NR_CORES          Number\
+  \ of cores allocated for clustering (default: 8)\n  --k K                 Kmer size\
+  \ (default: 9)\n  --w W                 Window size (default: 10)\n  --xmin XMIN\
+  \           Lower interval length (default: 14)\n  --xmax XMAX           Upper interval\
+  \ length (default: 80)\n  --T T                 Minimum fraction keeping substitution\
+  \ (default: 0.1)\n  --exact_instance_limit EXACT_INSTANCE_LIMIT\n              \
+  \          Do exact correction for clusters under this threshold\n             \
+  \           (default: 50)\n  --keep_old            Do not recompute previous results\
+  \ if\n                        corrected_reads.fq is found and has the smae number\
+  \ of\n                        reads as input file (i.e., is complete). (default:\n\
+  \                        False)\n  --set_w_dynamically   Set w = k + max(2*k, floor(cluster_size/1000)).\n\
+  \                        (default: False)\n  --max_seqs MAX_SEQS   Maximum number\
+  \ of seqs to correct at a time (in case\n                        of large clusters).\
+  \ (default: 1000)\n  --use_racon           Use racon to polish consensus after spoa\
+  \ (more time\n                        consuming but higher accuracy). (default:\
+  \ False)\n  --split_mod SPLIT_MOD\n                        Splits cluster ids in\
+  \ n (default=1) partitions by\n                        computing residual of cluster_id\
+  \ divided by n. this\n                        parameter needs to be combined with\
+  \ --residual to take\n                        effect. (default: 1)\n  --residual\
+  \ RESIDUAL   Run isONcorrect on cluster ids with residual (default\n           \
+  \             0) of cluster_id divided by --split_mod. (default: 0)\n  --split_wrt_batches\
+  \   Process reads per batch (of max_seqs sequences)\n                        instead\
+  \ of per cluster. Significantly decrease runtime\n                        when few\
+  \ very large clusters are less than the number\n                        of cores\
+  \ used. (default: False)\n  --outfolder OUTFOLDER\n                        Outfolder\
+  \ with all corrected reads. (default: None)\n"
+generated_using:
+- --help

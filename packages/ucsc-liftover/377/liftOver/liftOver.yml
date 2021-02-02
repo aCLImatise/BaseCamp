@@ -1,0 +1,174 @@
+!Command
+command:
+- liftOver
+positional:
+- !Positional
+  description: It would be good to have a separate check after this
+  position: 0
+  name: separately.
+  optional: false
+named:
+- !Flag
+  description: Minimum ratio of bases that must remap. Default 0.95
+  synonyms:
+  - -minMatch
+  args: !SimpleFlagArg
+    name: 0.N
+  optional: true
+- !Flag
+  description: File is in gff/gtf format.  Note that the gff lines are converted
+  synonyms:
+  - -gff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- File is in genePred format'
+  synonyms:
+  - -genePred
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- File is in sample format'
+  synonyms:
+  - -sample
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- File is bed N+ format (i.e. first N fields conform to bed format)'
+  synonyms:
+  - -bedPlus
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: '- File is in browser "position" format'
+  synonyms:
+  - -positions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- File has bin value (used only with -bedPlus)'
+  synonyms:
+  - -hasBin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- Separate by tabs rather than space (used only with -bedPlus)'
+  synonyms:
+  - -tab
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- File is in psl format, map target side only'
+  synonyms:
+  - -pslT
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "- Lift the first and last N bases of each record and combine the\n\
+    result. This is useful for lifting large regions like BAC end pairs."
+  synonyms:
+  - -ends
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "Minimum ratio of alignment blocks or exons that must map\n(default\
+    \ 1.00)"
+  synonyms:
+  - -minBlocks
+  args: !SimpleFlagArg
+    name: 0.N
+  optional: true
+- !Flag
+  description: "(bed 12 or 12+ only) If thickStart/thickEnd is not mapped,\nuse the\
+    \ closest mapped base.  Recommended if using\n-minBlocks."
+  synonyms:
+  - -fudgeThick
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow multiple output regions
+  synonyms:
+  - -multiple
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: In -multiple mode, do not put a serial number in the 5th BED column
+  synonyms:
+  - -noSerial
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum chain size in target/query, when mapping\nto multiple output\
+    \ regions (default 0, 0)"
+  synonyms:
+  - -minChainT
+  - -minChainQ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: deprecated synonym for -minChainT (ENCODE compat.)
+  synonyms:
+  - -minSizeT
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Min matching region size in query with -multiple.
+  synonyms:
+  - -minSizeQ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Used with -multiple, format is db.tablename,\nto extend chains from\
+    \ net (preserves dups)"
+  synonyms:
+  - -chainTable
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Explain error messages
+  synonyms:
+  - -errorHelp
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "liftOver - Move annotations from one assembly to another\nusage:\n   liftOver\
+  \ oldFile map.chain newFile unMapped\noldFile and newFile are in bed format by default,\
+  \ but can be in GFF and\nmaybe eventually others with the appropriate flags below.\n\
+  The map.chain file has the old genome as the target and the new genome\nas the query.\n\
+  \n***********************************************************************\nWARNING:\
+  \ liftOver was only designed to work between different\n         assemblies of the\
+  \ same organism. It may not do what you want\n         if you are lifting between\
+  \ different organisms. If there has\n         been a rearrangement in one of the\
+  \ species, the size of the\n         region being mapped may change dramatically\
+  \ after mapping.\n***********************************************************************\n\
+  \noptions:\n   -minMatch=0.N Minimum ratio of bases that must remap. Default 0.95\n\
+  \   -gff  File is in gff/gtf format.  Note that the gff lines are converted\n  \
+  \       separately.  It would be good to have a separate check after this\n    \
+  \     that the lines that make up a gene model still make a plausible gene\n   \
+  \      after liftOver\n   -genePred - File is in genePred format\n   -sample - File\
+  \ is in sample format\n   -bedPlus=N - File is bed N+ format (i.e. first N fields\
+  \ conform to bed format)\n   -positions - File is in browser \"position\" format\n\
+  \   -hasBin - File has bin value (used only with -bedPlus)\n   -tab - Separate by\
+  \ tabs rather than space (used only with -bedPlus)\n   -pslT - File is in psl format,\
+  \ map target side only\n   -ends=N - Lift the first and last N bases of each record\
+  \ and combine the\n             result. This is useful for lifting large regions\
+  \ like BAC end pairs.\n   -minBlocks=0.N Minimum ratio of alignment blocks or exons\
+  \ that must map\n                  (default 1.00)\n   -fudgeThick    (bed 12 or\
+  \ 12+ only) If thickStart/thickEnd is not mapped,\n                  use the closest\
+  \ mapped base.  Recommended if using \n                  -minBlocks.\n   -multiple\
+  \               Allow multiple output regions\n   -noSerial               In -multiple\
+  \ mode, do not put a serial number in the 5th BED column\n   -minChainT, -minChainQ\
+  \  Minimum chain size in target/query, when mapping\n                          \
+  \ to multiple output regions (default 0, 0)\n   -minSizeT               deprecated\
+  \ synonym for -minChainT (ENCODE compat.)\n   -minSizeQ               Min matching\
+  \ region size in query with -multiple.\n   -chainTable             Used with -multiple,\
+  \ format is db.tablename,\n                               to extend chains from\
+  \ net (preserves dups)\n   -errorHelp              Explain error messages\n\n"
+generated_using: []

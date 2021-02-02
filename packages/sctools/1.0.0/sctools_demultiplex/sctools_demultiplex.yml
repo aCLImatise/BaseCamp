@@ -1,0 +1,98 @@
+!Command
+command:
+- sctools_demultiplex
+positional: []
+named:
+- !Flag
+  description: "Path to the CSV file storing the barcodes to be de-multiplexed.\n\
+    Notice that the barcode value is expected to be found in first\nposition."
+  synonyms:
+  - --barcodes-csv
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: "Path of the directory where de-multiplexed files are stored.\nDefault:\
+    \ .."
+  synonyms:
+  - -o
+  - --output-directory
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Maximum size of the batch of alignment records loaded in main\nmemory.\
+    \ Default: 1048576."
+  synonyms:
+  - --alignment-records-batch
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Ouput bed files alongside bam ones.
+  synonyms:
+  - -b
+  - --bed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Coma-separated list of tags that are forbidden in any valid\nalignment\
+    \ records. If an alignment record contains any of the tags\nspecified here, it\
+    \ is not considered for the purpose of the\nde-multiplexing procedure."
+  synonyms:
+  - --forbidden-tags
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Minimum mapping quality any alignment record must have, to be\nconsidered\
+    \ for the purpose of the de-multiplexing procedure.\nDefault: 0."
+  synonyms:
+  - --min-mapq
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Display the help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version information.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "sctools_demultiplex - Alignment files barcode-based de-multiplexer.\n\
+  ===================================================================\n\nSYNOPSIS\n\
+  \nDESCRIPTION\n    sctools_demultiplex is a tool for de-multiplexing alignment BAM\
+  \ or SAM\n    files splitting its records indifferent output files, according to\
+  \ the\n    barcode of eachalignment record.\n\nREQUIRED ARGUMENTS\n    ALIGNMENTS\
+  \ INPUT_FILE\n          Path of the SAM or BAM file containing the alignments records\
+  \ to be\n          de-multiplexed. Valid filetypes are: .sam[.*] and .bam, where\
+  \ * is\n          any of the following extensions: gz and bgzf for transparent\n\
+  \          (de)compression.\n\nOPTIONS\n    -h, --help\n          Display the help\
+  \ message.\n    --version\n          Display version information.\n\n  Input/Output\
+  \ options:\n    --barcodes-csv INPUT_FILE\n          Path to the CSV file storing\
+  \ the barcodes to be de-multiplexed.\n          Notice that the barcode value is\
+  \ expected to be found in first\n          position.\n    -o, --output-directory\
+  \ STRING\n          Path of the directory where de-multiplexed files are stored.\n\
+  \          Default: ..\n    --alignment-records-batch INTEGER\n          Maximum\
+  \ size of the batch of alignment records loaded in main\n          memory. Default:\
+  \ 1048576.\n    -b, --bed\n          Ouput bed files alongside bam ones.\n\n  Filter\
+  \ options:\n    --forbidden-tags STRING\n          Coma-separated list of tags that\
+  \ are forbidden in any valid\n          alignment records. If an alignment record\
+  \ contains any of the tags\n          specified here, it is not considered for the\
+  \ purpose of the\n          de-multiplexing procedure.\n    --min-mapq INTEGER\n\
+  \          Minimum mapping quality any alignment record must have, to be\n     \
+  \     considered for the purpose of the de-multiplexing procedure.\n          Default:\
+  \ 0.\n\nVERSION\n    Last update: 2019\n    sctools_demultiplex version: 0.1.0.0\n\
+  \    SeqAn version: 2.4.0\n"
+generated_using:
+- --help

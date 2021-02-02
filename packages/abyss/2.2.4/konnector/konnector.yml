@@ -1,0 +1,381 @@
+!Command
+command:
+- konnector
+positional: []
+named:
+- !Flag
+  description: use N parallel threads [1]
+  synonyms:
+  - -j
+  - --threads
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: the size of a k-mer
+  synonyms:
+  - -k
+  - --kmer
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: size of bloom filter [500M]
+  synonyms:
+  - -b
+  - --bloom-size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "kmer coverage threshold for error correction [2].\nThis option specifies\
+    \ the number of levels in the\ncascading Bloom filter; it has no effect if the\
+    \ Bloom\nfilter is loaded from an external file."
+  synonyms:
+  - -c
+  - --min-coverage
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: max edges to traverse during each graph search [25000]
+  synonyms:
+  - -C
+  - --max-cost
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: write graph traversals to a DOT file
+  synonyms:
+  - -d
+  - --dot-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "use an additional Bloom filter to avoid\nassembling the same region\
+    \ of the genome\nmultiple times. This option is highly\nrecommended when the -E\
+    \ (--extend) option\nand has no effect otherwise. As a rule of\nthumb, the Bloom\
+    \ filter size should be\nabout twice the target genome size [disabled]"
+  synonyms:
+  - -D
+  - --dup-bloom-size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "find and fix single-base errors when reads\nhave no kmers in bloom\
+    \ filter [disabled]"
+  synonyms:
+  - -e
+  - --fix-errors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "in addition to finding a connecting path,\nextend the reads outwards\
+    \ to the next\ndead end or branching point in the de Brujin\ngraph. If the reads\
+    \ were not successfully\nconnected, extend them inwards as well."
+  synonyms:
+  - -E
+  - --extend
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "output merged reads in FASTQ format\n(default is FASTA)"
+  synonyms:
+  - --fastq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: min fragment size in base pairs [0]
+  synonyms:
+  - -f
+  - --min-frag
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: max fragment size in base pairs [1000]
+  synonyms:
+  - -F
+  - --max-frag
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: load bloom filter from FILE
+  synonyms:
+  - -i
+  - --input-bloom
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: input reads files are interleaved
+  synonyms:
+  - -I
+  - --interleaved
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: mask new and changed bases as lower case
+  synonyms:
+  - --mask
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not mask bases [default]
+  synonyms:
+  - --no-mask
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: discard unchaste reads [default]
+  synonyms:
+  - --chastity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not discard unchaste reads
+  synonyms:
+  - --no-chastity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: trim masked bases from the ends of reads
+  synonyms:
+  - --trim-masked
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "do not trim masked bases from the ends\nof reads [default]"
+  synonyms:
+  - --no-trim-masked
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "max mismatches between paths and reads; use\n'nolimit' for no limit\
+    \ [nolimit]"
+  synonyms:
+  - -m
+  - --read-mismatches
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "max mismatches between all alternate paths;\nuse 'nolimit' for no\
+    \ limit [2]"
+  synonyms:
+  - -M
+  - --max-mismatches
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "disable all limits; equivalent to\n'-B nolimit -m nolimit -M nolimit\
+    \ -P nolimit'"
+  synonyms:
+  - -n
+  - --no-limits
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: prefix of output FASTA files [required]
+  synonyms:
+  - -o
+  - --output-prefix
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: don't correct any bases within the reads [disabled]
+  synonyms:
+  - --preserve-reads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "output a separate pseudoread for each alternate\npath connecting a\
+    \ read pair (default is to create\na consensus sequence of all connecting paths)"
+  synonyms:
+  - -p
+  - --alt-paths-mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "merge at most N alternate paths; use 'nolimit'\nfor no limit [2]"
+  synonyms:
+  - -P
+  - --max-paths
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "trim bases from the ends of reads whose\nquality is less than the\
+    \ threshold"
+  synonyms:
+  - -q
+  - --trim-quality
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "zero quality is `!' (33), typically\nfor FASTQ and SAM files [default]"
+  synonyms:
+  - --standard-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "zero quality is `@' (64), typically\nfor qseq and export files"
+  synonyms:
+  - --illumina-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "quality score for bases corrected or inserted\nby konnector; only\
+    \ relevant when --fastq is\nin effect [40]"
+  synonyms:
+  - -Q
+  - --corrected-qual
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only process reads with names that contain STR
+  synonyms:
+  - -r
+  - --read-name
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: "mem limit for graph searches; multiply by the\nnumber of threads (-j)\
+    \ to get the total mem used\nfor graph traversal [500M]"
+  synonyms:
+  - -s
+  - --search-mem
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: write graph search stats to FILE
+  synonyms:
+  - -t
+  - --trace-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: display verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "min percent seq identity between consensus seq\nand reads [0]"
+  synonyms:
+  - -x
+  - --read-identity
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "min percent seq identity across alternate\nconnecting paths [0]"
+  synonyms:
+  - -X
+  - --path-identity
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "max branches in de Bruijn graph traversal;\nuse 'nolimit' for no limit\
+    \ [nolimit]"
+  synonyms:
+  - -B
+  - --max-branches
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: output version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: konnector -k <kmer_size> -o <output_prefix> [options]... <reads1>\
+  \ [reads2]...\nConnect the pairs READS1 and READS2 and close the gap using\na Bloom\
+  \ filter de Bruijn graph.\n\n Options:\n\n  -j, --threads=N            use N parallel\
+  \ threads [1]\n  -k, --kmer=N               the size of a k-mer\n  -b, --bloom-size=N\
+  \         size of bloom filter [500M]\n  -c, --min-coverage=N       kmer coverage\
+  \ threshold for error correction [2].\n                             This option\
+  \ specifies the number of levels in the\n                             cascading\
+  \ Bloom filter; it has no effect if the Bloom\n                             filter\
+  \ is loaded from an external file.\n  -C, --max-cost=N           max edges to traverse\
+  \ during each graph search [25000]\n  -d, --dot-file=FILE        write graph traversals\
+  \ to a DOT file\n  -D, --dup-bloom-size=N     use an additional Bloom filter to\
+  \ avoid\n                             assembling the same region of the genome\n\
+  \                             multiple times. This option is highly\n          \
+  \                   recommended when the -E (--extend) option\n                \
+  \             and has no effect otherwise. As a rule of\n                      \
+  \       thumb, the Bloom filter size should be\n                             about\
+  \ twice the target genome size [disabled]\n  -e, --fix-errors           find and\
+  \ fix single-base errors when reads\n                             have no kmers\
+  \ in bloom filter [disabled]\n  -E, --extend               in addition to finding\
+  \ a connecting path,\n                             extend the reads outwards to\
+  \ the next\n                             dead end or branching point in the de Brujin\n\
+  \                             graph. If the reads were not successfully\n      \
+  \                       connected, extend them inwards as well.\n  --fastq     \
+  \               output merged reads in FASTQ format\n                          \
+  \   (default is FASTA)\n  -f, --min-frag=N           min fragment size in base pairs\
+  \ [0]\n  -F, --max-frag=N           max fragment size in base pairs [1000]\n  -i,\
+  \ --input-bloom=FILE     load bloom filter from FILE\n  -I, --interleaved      \
+  \    input reads files are interleaved\n      --mask                 mask new and\
+  \ changed bases as lower case\n      --no-mask              do not mask bases [default]\n\
+  \      --chastity             discard unchaste reads [default]\n      --no-chastity\
+  \          do not discard unchaste reads\n      --trim-masked          trim masked\
+  \ bases from the ends of reads\n      --no-trim-masked       do not trim masked\
+  \ bases from the ends\n                             of reads [default]\n  -m, --read-mismatches=N\
+  \    max mismatches between paths and reads; use\n                             'nolimit'\
+  \ for no limit [nolimit]\n  -M, --max-mismatches=N     max mismatches between all\
+  \ alternate paths;\n                             use 'nolimit' for no limit [2]\n\
+  \  -n  --no-limits            disable all limits; equivalent to\n              \
+  \               '-B nolimit -m nolimit -M nolimit -P nolimit'\n  -o, --output-prefix=FILE\
+  \   prefix of output FASTA files [required]\n  --preserve-reads           don't\
+  \ correct any bases within the reads [disabled]\n  -p, --alt-paths-mode       output\
+  \ a separate pseudoread for each alternate\n                             path connecting\
+  \ a read pair (default is to create\n                             a consensus sequence\
+  \ of all connecting paths)\n  -P, --max-paths=N          merge at most N alternate\
+  \ paths; use 'nolimit'\n                             for no limit [2]\n  -q, --trim-quality=N\
+  \       trim bases from the ends of reads whose\n                             quality\
+  \ is less than the threshold\n      --standard-quality     zero quality is `!' (33),\
+  \ typically\n                             for FASTQ and SAM files [default]\n  \
+  \    --illumina-quality     zero quality is `@' (64), typically\n              \
+  \               for qseq and export files\n  -Q, --corrected-qual       quality\
+  \ score for bases corrected or inserted\n                             by konnector;\
+  \ only relevant when --fastq is\n                             in effect [40]\n \
+  \ -r, --read-name=STR        only process reads with names that contain STR\n  -s,\
+  \ --search-mem=N         mem limit for graph searches; multiply by the\n       \
+  \                      number of threads (-j) to get the total mem used\n      \
+  \                       for graph traversal [500M]\n  -t, --trace-file=FILE    \
+  \  write graph search stats to FILE\n  -v, --verbose              display verbose\
+  \ output\n  -x, --read-identity=N      min percent seq identity between consensus\
+  \ seq\n                             and reads [0]\n  -X, --path-identity=N     \
+  \ min percent seq identity across alternate\n                             connecting\
+  \ paths [0]\n      --help                 display this help and exit\n      --version\
+  \              output version information and exit\n\n Deprecated Options:\n\n \
+  \ -B, --max-branches=N         max branches in de Bruijn graph traversal;\n    \
+  \                           use 'nolimit' for no limit [nolimit]\n\n  Note: --max-branches\
+  \ was not effective for truncating expensive searches,\n  and has been superseded\
+  \ by the --max-cost option.\n\nReport bugs to <abyss-users@bcgsc.ca>.\n"
+generated_using:
+- --help

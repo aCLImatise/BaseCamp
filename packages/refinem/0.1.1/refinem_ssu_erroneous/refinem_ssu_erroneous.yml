@@ -1,0 +1,185 @@
+!Command
+command:
+- refinem
+- ssu_erroneous
+positional:
+- !Positional
+  description: directory containing nucleotide scaffolds for each
+  position: 0
+  name: genome_nt_dir
+  optional: false
+- !Positional
+  description: taxon_profile_dir     directory with results of taxon_profile command
+  position: 1
+  name: genome
+  optional: false
+- !Positional
+  description: BLAST database of 16S rRNA genes
+  position: 2
+  name: ssu_db
+  optional: false
+- !Positional
+  description: taxonomy file for genes in the 16S rRNA database
+  position: 3
+  name: ssu_taxonomy_file
+  optional: false
+- !Positional
+  description: output directory
+  position: 4
+  name: output_dir
+  optional: false
+named:
+- !Flag
+  description: "extension of genomes (other files in directory are\nignored) (default:\
+    \ fna)"
+  synonyms:
+  - -x
+  - --genome_ext
+  args: !SimpleFlagArg
+    name: GENOME_EXT
+  optional: true
+- !Flag
+  description: "e-value threshold for identifying and classifying 16S\nrRNA genes\
+    \ (default: 1e-05)"
+  synonyms:
+  - --evalue
+  args: !SimpleFlagArg
+    name: EVALUE
+  optional: true
+- !Flag
+  description: "concatenate hits within the specified number of base\npairs (default:\
+    \ 200)"
+  synonyms:
+  - --concatenate
+  args: !SimpleFlagArg
+    name: CONCATENATE
+  optional: true
+- !Flag
+  description: "threshold for defining a taxon as common (default:\n10.0)"
+  synonyms:
+  - --common_taxon
+  args: !SimpleFlagArg
+    name: COMMON_TAXON
+  optional: true
+- !Flag
+  description: "minimum length of SSU 16S gene fragment to consider\nfor classification\
+    \ (default: 600)"
+  synonyms:
+  - --ssu_min_len
+  args: !SimpleFlagArg
+    name: SSU_MIN_LEN
+  optional: true
+- !Flag
+  description: "percent identity threshold for accepting domain\nclassification of\
+    \ SSU (default: 83.68)"
+  synonyms:
+  - --ssu_domain
+  args: !SimpleFlagArg
+    name: SSU_DOMAIN
+  optional: true
+- !Flag
+  description: "percent identity threshold for accepting phylum\nclassification of\
+    \ SSU (default: 86.35)"
+  synonyms:
+  - --ssu_phylum
+  args: !SimpleFlagArg
+    name: SSU_PHYLUM
+  optional: true
+- !Flag
+  description: "percent identity threshold for accepting class\nclassification of\
+    \ SSU (default: 89.2)"
+  synonyms:
+  - --ssu_class
+  args: !SimpleFlagArg
+    name: SSU_CLASS
+  optional: true
+- !Flag
+  description: "percent identity threshold for accepting order\nclassification of\
+    \ SSU (default: 92.25)"
+  synonyms:
+  - --ssu_order
+  args: !SimpleFlagArg
+    name: SSU_ORDER
+  optional: true
+- !Flag
+  description: "percent identity threshold for accepting family\nclassification of\
+    \ SSU (default: 96.4)"
+  synonyms:
+  - --ssu_family
+  args: !SimpleFlagArg
+    name: SSU_FAMILY
+  optional: true
+- !Flag
+  description: "percent identity threshold for accepting genus\nclassification of\
+    \ SSU (default: 98.7)"
+  synonyms:
+  - --ssu_genus
+  args: !SimpleFlagArg
+    name: SSU_GENUS
+  optional: true
+- !Flag
+  description: 'number of CPUs to use (default: 1)'
+  synonyms:
+  - -c
+  - --cpus
+  args: !SimpleFlagArg
+    name: CPUS
+  optional: true
+- !Flag
+  description: suppress output of logger
+  synonyms:
+  - --silent
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: refinem ssu_erroneous [-h] [-x GENOME_EXT] [--evalue EVALUE]\n\
+  \                             [--concatenate CONCATENATE]\n                    \
+  \         [--common_taxon COMMON_TAXON]\n                             [--ssu_min_len\
+  \ SSU_MIN_LEN]\n                             [--ssu_domain SSU_DOMAIN]\n       \
+  \                      [--ssu_phylum SSU_PHYLUM] [--ssu_class SSU_CLASS]\n     \
+  \                        [--ssu_order SSU_ORDER] [--ssu_family SSU_FAMILY]\n   \
+  \                          [--ssu_genus SSU_GENUS] [-c CPUS] [--silent]\n      \
+  \                       genome_nt_dir taxon_profile_dir ssu_db\n               \
+  \              ssu_taxonomy_file output_dir\n\nIdentify scaffolds with erroneous\
+  \ 16S rRNA genes.\n\npositional arguments:\n  genome_nt_dir         directory containing\
+  \ nucleotide scaffolds for each\n                        genome\n  taxon_profile_dir\
+  \     directory with results of taxon_profile command\n  ssu_db                BLAST\
+  \ database of 16S rRNA genes\n  ssu_taxonomy_file     taxonomy file for genes in\
+  \ the 16S rRNA database\n  output_dir            output directory\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -x, --genome_ext GENOME_EXT\n\
+  \                        extension of genomes (other files in directory are\n  \
+  \                      ignored) (default: fna)\n  --evalue EVALUE       e-value\
+  \ threshold for identifying and classifying 16S\n                        rRNA genes\
+  \ (default: 1e-05)\n  --concatenate CONCATENATE\n                        concatenate\
+  \ hits within the specified number of base\n                        pairs (default:\
+  \ 200)\n  --common_taxon COMMON_TAXON\n                        threshold for defining\
+  \ a taxon as common (default:\n                        10.0)\n  --ssu_min_len SSU_MIN_LEN\n\
+  \                        minimum length of SSU 16S gene fragment to consider\n \
+  \                       for classification (default: 600)\n  --ssu_domain SSU_DOMAIN\n\
+  \                        percent identity threshold for accepting domain\n     \
+  \                   classification of SSU (default: 83.68)\n  --ssu_phylum SSU_PHYLUM\n\
+  \                        percent identity threshold for accepting phylum\n     \
+  \                   classification of SSU (default: 86.35)\n  --ssu_class SSU_CLASS\n\
+  \                        percent identity threshold for accepting class\n      \
+  \                  classification of SSU (default: 89.2)\n  --ssu_order SSU_ORDER\n\
+  \                        percent identity threshold for accepting order\n      \
+  \                  classification of SSU (default: 92.25)\n  --ssu_family SSU_FAMILY\n\
+  \                        percent identity threshold for accepting family\n     \
+  \                   classification of SSU (default: 96.4)\n  --ssu_genus SSU_GENUS\n\
+  \                        percent identity threshold for accepting genus\n      \
+  \                  classification of SSU (default: 98.7)\n  -c, --cpus CPUS    \
+  \   number of CPUs to use (default: 1)\n  --silent              suppress output\
+  \ of logger\n"
+generated_using:
+- --help

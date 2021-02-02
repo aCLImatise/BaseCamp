@@ -1,0 +1,166 @@
+!Command
+command:
+- gcloud
+- compute
+- scp
+positional: []
+named:
+- !Flag
+  description: "In the above example, ~/REMOTE-DIR from example-instance is copied\
+    \ into the\n~/LOCAL-DIR directory.\nConversely, files from your local computer\
+    \ can be copied to a virtual\nmachine:\n$ gcloud compute scp ~/LOCAL-FILE-1 ~/LOCAL-FILE-2\
+    \ \\\nexample-instance:~/REMOTE-DIR --zone us-central1-a\nIf a file contains a\
+    \ colon (``:''), you must specify it by either using an\nabsolute path or a path\
+    \ that begins with ``./''.\nUnder the covers, scp(1) or pscp (on Windows) is used\
+    \ to facilitate the\ntransfer.\nWhen the destination is local, all sources must\
+    \ be the same virtual machine\ninstance. When the destination is remote, all sources\
+    \ must be local."
+  synonyms:
+  - --zone
+  args: !SimpleFlagArg
+    name: us-central1-a
+  optional: true
+- !Flag
+  description: Enable compression.
+  synonyms:
+  - --compress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If provided, prints the command that would be run to standard out\n\
+    instead of executing it."
+  synonyms:
+  - --dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If enabled gcloud will regenerate and overwrite the files associated\n\
+    with a broken SSH key without asking for confirmation in both\ninteractive and\
+    \ non-interactive environment.\nIf disabled gcloud will not attempt to regenerate\
+    \ the files associated\nwith a broken SSH key and fail in both interactive and\
+    \ non-interactive\nenvironment."
+  synonyms:
+  - --force-key-file-overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Suppresses the automatic addition of ssh(1)/scp(1) flags. This flag\
+    \ is\nuseful if you want to take care of authentication yourself or use\nspecific\
+    \ ssh/scp features."
+  synonyms:
+  - --plain
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The port to connect to.
+  synonyms:
+  - --port
+  args: !SimpleFlagArg
+    name: PORT
+  optional: true
+- !Flag
+  description: Upload directories recursively.
+  synonyms:
+  - --recurse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Extra flag to be sent to scp. This flag may be repeated.
+  synonyms:
+  - --scp-flag
+  args: !SimpleFlagArg
+    name: SCP_FLAG
+  optional: true
+- !Flag
+  description: "The path to the SSH key file. By default, this is\n~/.ssh/google_compute_engine."
+  synonyms:
+  - --ssh-key-file
+  args: !SimpleFlagArg
+    name: SSH_KEY_FILE
+  optional: true
+- !Flag
+  description: "Override the default behavior of StrictHostKeyChecking. By default,\n\
+    StrictHostKeyChecking is set to 'no' the first time you connect to an\ninstance\
+    \ and will be set to 'yes' for all subsequent connections. Use\nthis flag to specify\
+    \ a value for the connection.\nSTRICT_HOST_KEY_CHECKING must be one of: yes, no,\
+    \ ask."
+  synonyms:
+  - --strict-host-key-checking
+  args: !SimpleFlagArg
+    name: STRICT_HOST_KEY_CHECKING
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: $ gcloud help for details.
+  synonyms:
+  - --flatten
+  - --format
+  - --help
+  - --log-http
+  - --project
+  - --quiet
+  - --trace-token
+  - --user-output-enabled
+  - --verbosity.
+  args: !SimpleFlagArg
+    name: Run
+  optional: true
+usage_flag:
+version_flag:
+help_text: "NAME\n    gcloud compute scp - copy files to and from Google Compute Engine\
+  \ virtual\n        machines via scp\n\nSYNOPSIS\n    gcloud compute scp [[USER@]INSTANCE:]SRC\
+  \ [[[USER@]INSTANCE:]SRC ...]\n        [[USER@]INSTANCE:]DEST [--compress] [--dry-run]\n\
+  \        [--force-key-file-overwrite] [--plain] [--port=PORT] [--recurse]\n    \
+  \    [--scp-flag=SCP_FLAG] [--ssh-key-file=SSH_KEY_FILE]\n        [--strict-host-key-checking=STRICT_HOST_KEY_CHECKING]\
+  \ [--zone=ZONE]\n        [GCLOUD_WIDE_FLAG ...]\n\nDESCRIPTION\n    gcloud compute\
+  \ scp copies files between a virtual machine instance and your\n    local machine\
+  \ using the scp command.\n\n    To denote a remote file, prefix the file name with\
+  \ the virtual machine\n    instance name (e.g., example-instance:~/FILE). To denote\
+  \ a local file, do\n    not add a prefix to the file name (e.g., ~/FILE). For example,\
+  \ to copy a\n    remote directory to your local host, run:\n\n        $ gcloud compute\
+  \ scp example-instance:~/REMOTE-DIR ~/LOCAL-DIR \\\n            --zone us-central1-a\n\
+  \n    In the above example, ~/REMOTE-DIR from example-instance is copied into the\n\
+  \    ~/LOCAL-DIR directory.\n\n    Conversely, files from your local computer can\
+  \ be copied to a virtual\n    machine:\n\n        $ gcloud compute scp ~/LOCAL-FILE-1\
+  \ ~/LOCAL-FILE-2 \\\n            example-instance:~/REMOTE-DIR --zone us-central1-a\n\
+  \n    If a file contains a colon (``:''), you must specify it by either using an\n\
+  \    absolute path or a path that begins with ``./''.\n\n    Under the covers, scp(1)\
+  \ or pscp (on Windows) is used to facilitate the\n    transfer.\n\n    When the\
+  \ destination is local, all sources must be the same virtual machine\n    instance.\
+  \ When the destination is remote, all sources must be local.\n\nPOSITIONAL ARGUMENTS\n\
+  \     [[USER@]INSTANCE:]SRC [[[USER@]INSTANCE:]SRC ...]\n        Specifies the files\
+  \ to copy.\n\n     [[USER@]INSTANCE:]DEST\n        Specifies a destination for the\
+  \ source files.\n\nFLAGS\n     --compress\n        Enable compression.\n\n     --dry-run\n\
+  \        If provided, prints the command that would be run to standard out\n   \
+  \     instead of executing it.\n\n     --force-key-file-overwrite\n        If enabled\
+  \ gcloud will regenerate and overwrite the files associated\n        with a broken\
+  \ SSH key without asking for confirmation in both\n        interactive and non-interactive\
+  \ environment.\n\n        If disabled gcloud will not attempt to regenerate the\
+  \ files associated\n        with a broken SSH key and fail in both interactive and\
+  \ non-interactive\n        environment.\n\n     --plain\n        Suppresses the\
+  \ automatic addition of ssh(1)/scp(1) flags. This flag is\n        useful if you\
+  \ want to take care of authentication yourself or use\n        specific ssh/scp\
+  \ features.\n\n     --port=PORT\n        The port to connect to.\n\n     --recurse\n\
+  \        Upload directories recursively.\n\n     --scp-flag=SCP_FLAG\n        Extra\
+  \ flag to be sent to scp. This flag may be repeated.\n\n     --ssh-key-file=SSH_KEY_FILE\n\
+  \        The path to the SSH key file. By default, this is\n        ~/.ssh/google_compute_engine.\n\
+  \n     --strict-host-key-checking=STRICT_HOST_KEY_CHECKING\n        Override the\
+  \ default behavior of StrictHostKeyChecking. By default,\n        StrictHostKeyChecking\
+  \ is set to 'no' the first time you connect to an\n        instance and will be\
+  \ set to 'yes' for all subsequent connections. Use\n        this flag to specify\
+  \ a value for the connection.\n        STRICT_HOST_KEY_CHECKING must be one of:\
+  \ yes, no, ask.\n\n     --zone=ZONE\n        The zone of the instance to copy files\
+  \ to/from.\n\n        If not specified, you may be prompted to select a zone.\n\n\
+  \        To avoid prompting when this flag is omitted, you can set the\n       \
+  \ compute/zone property:\n\n            $ gcloud config set compute/zone ZONE\n\n\
+  \        A list of zones can be fetched by running:\n\n            $ gcloud compute\
+  \ zones list\n\n        To unset the property, run:\n\n            $ gcloud config\
+  \ unset compute/zone\n\n        Alternatively, the zone can be stored in the environment\
+  \ variable\n        CLOUDSDK_COMPUTE_ZONE.\n\nGCLOUD WIDE FLAGS\n    These flags\
+  \ are available to all commands: --account, --configuration,\n    --flatten, --format,\
+  \ --help, --log-http, --project, --quiet, --trace-token,\n    --user-output-enabled,\
+  \ --verbosity. Run $ gcloud help for details.\n"
+generated_using:
+- --help

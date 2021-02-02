@@ -1,0 +1,101 @@
+!Command
+command:
+- medpy_dicom_to_4D.py
+positional:
+- !Positional
+  description: A typical use-case are DICOM images, which often come with the temporal
+    and third spatial
+  position: 0
+  name: split.
+  optional: false
+- !Positional
+  description: Copyright (C) 2013 Oskar Maier
+  position: 0
+  name: dimension.
+  optional: false
+- !Positional
+  description: Source directory.
+  position: 0
+  name: input
+  optional: false
+- !Positional
+  description: Target volume.
+  position: 1
+  name: output
+  optional: false
+- !Positional
+  description: The dimension in which to perform the cut (starting from 0).
+  position: 2
+  name: dimension
+  optional: false
+- !Positional
+  description: How many consecutive slices belong together before a shift occurs.
+    / The offset between the volumes.
+  position: 3
+  name: offset
+  optional: false
+named:
+- !Flag
+  description: Display more information.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display debug information.
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Silently override existing output images.
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: medpy_dicom_to_4D.py [-h] [-v] [-d] [-f] input output dimension\
+  \ offset\n\n                  Takes a dicom folder, loads the contained slices and\
+  \ saves them as a proper 4D volume.\n                  The supplied target dimension\
+  \ parameter determines the dimension along which to split the\n                \
+  \  original image and the consecutive slices parameter determines the offset after\
+  \ which to\n                  split.\n                \n                  A typical\
+  \ use-case are DICOM images, which often come with the temporal and third spatial\n\
+  \                  dimension stacked on top of each other.\n                  Let\
+  \ us assume a (5000, 200, 190) 3D image. In reality this file contains a number\
+  \ of 50\n                  volume of 100x200x190, which each represent a point in\
+  \ time. More concretely, always 50\n                  slices of the first dimension\
+  \ show the transformation of a 2D image in time. Then occurs\n                 \
+  \ a visible jump, when the view changes in space from the 50th to the 51th slice.\
+  \ The\n                  following 50 slices are the temporal transformation of\
+  \ this new spatial slice and then\n                  occur another jump, and so\
+  \ on. \n                \n                  Calling this script with a target dimension\
+  \ of 0 (meaning the first dimension of the\n                  image containing the\
+  \ 5000 slices) and a consecutive slices parameter of 50 (which is used\n       \
+  \           to tell how many consecutive slices belong together), will result in\
+  \ a 4D image of the\n                  shape (100, 50, 200, 190) containing the\
+  \ spatial volumes separated by an additional time\n                  dimension.\n\
+  \                  \n                  Copyright (C) 2013 Oskar Maier\n        \
+  \          This program comes with ABSOLUTELY NO WARRANTY; This is free software,\n\
+  \                  and you are welcome to redistribute it under certain conditions;\
+  \ see\n                  the LICENSE file or <http://www.gnu.org/licenses/> for\
+  \ details.   \n                  \n\npositional arguments:\n  input       Source\
+  \ directory.\n  output      Target volume.\n  dimension   The dimension in which\
+  \ to perform the cut (starting from 0).\n  offset      How many consecutive slices\
+  \ belong together before a shift occurs. / The offset between the volumes.\n\noptional\
+  \ arguments:\n  -h, --help  show this help message and exit\n  -v          Display\
+  \ more information.\n  -d          Display debug information.\n  -f          Silently\
+  \ override existing output images.\n"
+generated_using:
+- --help

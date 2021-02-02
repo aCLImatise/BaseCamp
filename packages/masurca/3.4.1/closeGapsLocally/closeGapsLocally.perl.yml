@@ -1,0 +1,159 @@
+!Command
+command:
+- closeGapsLocally.perl
+positional: []
+named:
+- !Flag
+  description: ": specify the Celera terminator directory\nwhere the assembly whose\
+    \ gaps must be closed exists"
+  synonyms:
+  - --Celera-terminator-directory
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: ": specify a read file to use (multiple files allowed,\nso long as\
+    \ the flag is repeated)"
+  synonyms:
+  - --reads-file
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: ': specify the output directory'
+  synonyms:
+  - --output-directory
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: '# : the jellyfish hash size'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '# : specify the min kmer len used (default: 17)'
+  synonyms:
+  - --min-kmer-len
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '# : specify the max kmer len used (default: 65)'
+  synonyms:
+  - --max-kmer-len
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '# : specify the number of threads (default: 1)'
+  synonyms:
+  - --num-threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '# : same as --num-threads #'
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "# : The length of sequence at the ends of the contigs\nwhich create\
+    \ the faux mate pairs which are joined (default: 100)"
+  synonyms:
+  - --contig-length-for-joining
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "# : The length of sequence at the ends of the contigs\nto be used\
+    \ to find reads which might fit in the gaps (default: 100)"
+  synonyms:
+  - --contig-length-for-fishing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "# : The maximum number of nodes allowed when trying to join the\n\
+    faux reads (default: 200000)"
+  synonyms:
+  - --maxnodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "# : The k-mer size for fishing reads into buckets.\n(default: 21)"
+  synonyms:
+  - --reduce-read-set-kmer-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Keep the local directories (default: false)'
+  synonyms:
+  - --keep-directories
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": The maximum number of reads whose sequence can be kept\nin memory\
+    \ at one time (default: 100000000)"
+  synonyms:
+  - --max-reads-in-memory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": The mean of the insert size used for the faux reads around\na gap\
+    \ (default: 500)"
+  synonyms:
+  - --faux-insert-mean
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": The stdev of the insert size used for the faux reads around\na gap\
+    \ (default: 200)"
+  synonyms:
+  - --faux-insert-stdev
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "# : The maximum number of standard deviations that the\nlength of\
+    \ the join can deviate from the estimate output\nby the Celera assembler. The\
+    \ standard deviation generated\nby the Celera assembler is used. (default: 3)"
+  synonyms:
+  - --num-stdevs-allowed
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "You must enter a jellyfish hash size. Bye!\n\nThis program is used to\
+  \ close gaps in our assembly.\n\nExample invocation:\ncloseGapsLocally.perl --min-kmer-len\
+  \ 17 --max-ker-len 31 --Celera-terminator-directory .../CA/9-terminator --num-threads\
+  \ 16 --output-directory outputDir --reads-file pe.cor.fa --reads-file sj.cor.fa\n\
+  \nThere are no args, only flags (mostly) with arguments. They are as follows:\n\n\
+  Required flags:\n--Celera-terminator-directory dir : specify the Celera terminator\
+  \ directory\n                          where the assembly whose gaps must be closed\
+  \ exists\n--reads-file filename : specify a read file to use (multiple files allowed,\n\
+  \                           so long as the flag is repeated)\n--output-directory\
+  \ dir : specify the output directory\n-s # : the jellyfish hash size\n\nFlags for\
+  \ required values which have defaults (i.e. flag not necessary)\n--min-kmer-len\
+  \ # : specify the min kmer len used (default: 17)\n--max-kmer-len # : specify the\
+  \ max kmer len used (default: 65)\n--num-threads # : specify the number of threads\
+  \ (default: 1)\n-t # : same as --num-threads #\n--contig-length-for-joining # :\
+  \ The length of sequence at the ends of the contigs\n                    which create\
+  \ the faux mate pairs which are joined (default: 100)\n--contig-length-for-fishing\
+  \ # : The length of sequence at the ends of the contigs\n                    to\
+  \ be used to find reads which might fit in the gaps (default: 100)\n--maxnodes #\
+  \ : The maximum number of nodes allowed when trying to join the\n              \
+  \      faux reads (default: 200000)\n--reduce-read-set-kmer-size # : The k-mer size\
+  \ for fishing reads into buckets.\n                    (default: 21)\n--keep-directories\
+  \ : Keep the local directories (default: false)\n--max-reads-in-memory : The maximum\
+  \ number of reads whose sequence can be kept\n                        in memory\
+  \ at one time (default: 100000000)\n--faux-insert-mean : The mean of the insert\
+  \ size used for the faux reads around\n                     a gap (default: 500)\n\
+  --faux-insert-stdev : The stdev of the insert size used for the faux reads around\n\
+  \                     a gap (default: 200)\n--num-stdevs-allowed # : The maximum\
+  \ number of standard deviations that the\n                     length of the join\
+  \ can deviate from the estimate output\n                     by the Celera assembler.\
+  \ The standard deviation generated\n                     by the Celera assembler\
+  \ is used. (default: 3)\n\nThe flags may be in any order.\n"
+generated_using:
+- --help

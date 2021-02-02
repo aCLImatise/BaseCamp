@@ -1,0 +1,329 @@
+!Command
+command:
+- art_illumina
+positional: []
+named:
+- !Flag
+  description: --qprof1   the first-read quality profile
+  synonyms:
+  - '-1'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --qprof2   the second-read quality profile
+  synonyms:
+  - '-2'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sequencing simulation
+  synonyms:
+  - -amp
+  - --amplicon
+  args: !SimpleFlagArg
+    name: amplicon
+  optional: true
+- !Flag
+  description: --rcount   number of reads/read pairs to be generated per sequence/amplicon
+    (not be used together with -f/--fcov)
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --id       the prefix identification tag for read ID
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "indicate to generate the zero sequencing errors SAM file as well the\
+    \ regular one\nNOTE: the reads in the zero-error SAM file have the same alignment\
+    \ positions\nas those in the regular SAM file, but have no sequencing errors"
+  synonyms:
+  - -ef
+  - --errfree
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --fcov     the fold of read coverage to be simulated or number of reads/read
+    pairs generated for each amplicon
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --in       the filename of input DNA/RNA reference
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'the first-read insertion rate (default: 0.00009)'
+  synonyms:
+  - -ir
+  - --insRate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'second-read insertion rate (default: 0.00015)'
+  synonyms:
+  - -ir2
+  - --insRate2
+  args: !SimpleFlagArg
+    name: the
+  optional: true
+- !Flag
+  description: 'the first-read deletion rate (default:  0.00011)'
+  synonyms:
+  - -dr
+  - --delRate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'second-read deletion rate (default: 0.00023)'
+  synonyms:
+  - -dr2
+  - --delRate2
+  args: !SimpleFlagArg
+    name: the
+  optional: true
+- !Flag
+  description: '--maxIndel the maximum total number of insertion and deletion per
+    read (default: up to read length)'
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --len      the length of reads to be simulated
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --mflen    the mean size of DNA/RNA fragments for paired-end simulations
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: a mate-pair read simulation
+  synonyms:
+  - -mp
+  - --matepair
+  args: !SimpleFlagArg
+    name: indicate
+  optional: true
+- !Flag
+  description: indicate to use CIGAR 'M' instead of '=/X' for alignment match/mismatch
+  synonyms:
+  - -M
+  - --cigarM
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "the cutoff frequency of 'N' in a window size of the read length for\
+    \ masking genomic regions\nNOTE: default: '-nf 1' to mask all regions with 'N'.\
+    \ Use '-nf 0' to turn off masking"
+  synonyms:
+  - -nf
+  - --maskN
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not output ALN alignment file
+  synonyms:
+  - -na
+  - --noALN
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --out      the prefix of output filename
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "--paired   indicate a paired-end read simulation or to generate reads\
+    \ from both ends of amplicons\nNOTE: art will automatically switch to a mate-pair\
+    \ simulation if the given mean fragment size >= 2000"
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --quiet    turn off end of run summary
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the minimum base quality score
+  synonyms:
+  - -qL
+  - --minQ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the maxiumum base quality score
+  synonyms:
+  - -qU
+  - --maxQ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the amount to shift every first-read quality score by
+  synonyms:
+  - -qs
+  - --qShift
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "the amount to shift every second-read quality score by\nNOTE: For\
+    \ -qs/-qs2 option, a positive number will shift up quality scores (the max is\
+    \ 93)\nthat reduce substitution sequencing errors and a negative number will shift\
+    \ down\nquality scores that increase sequencing errors. If shifting scores by\
+    \ x, the error\nrate will be 1/(10^(x/10)) of the default profile."
+  synonyms:
+  - -qs2
+  - --qShift2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "the seed for random number generator (default: system time in second)\n\
+    NOTE: using a fixed seed to generate two identical datasets from different runs"
+  synonyms:
+  - -rs
+  - --rndSeed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --sdev     the standard deviation of DNA/RNA fragment size for paired-end
+    simulations.
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: indicate to generate SAM alignment file
+  synonyms:
+  - -sam
+  - --samout
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: indicate to use separate quality profiles for different bases (ATGC)
+  synonyms:
+  - -sp
+  - --sepProf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The name of Illumina sequencing system of the built-in profile used\
+    \ for simulation\nNOTE: sequencing system ID names are:\nGA1 - GenomeAnalyzer\
+    \ I (36bp,44bp), GA2 - GenomeAnalyzer II (50bp, 75bp)\nHS10 - HiSeq 1000 (100bp),\
+    \          HS20 - HiSeq 2000 (100bp),      HS25 - HiSeq 2500 (125bp, 150bp)\n\
+    HSXn - HiSeqX PCR free (150bp),     HSXt - HiSeqX TruSeq (150bp),   MinS - MiniSeq\
+    \ TruSeq (50bp)\nMSv1 - MiSeq v1 (250bp),            MSv3 - MiSeq v3 (250bp),\
+    \        NS50 - NextSeq500 v2 (75bp)"
+  synonyms:
+  - -ss
+  - --seqSys
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: --help     print out usage information
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n    ====================ART====================\n             ART_Illumina\
+  \ (2008-2016)          \n          Q Version 2.5.8 (June 6, 2016)       \n     Contact:\
+  \ Weichun Huang <whduke@gmail.com> \n    -------------------------------------------\n\
+  \n===== USAGE =====\n\nart_illumina [options] -ss <sequencing_system> -sam -i <seq_ref_file>\
+  \ -l <read_length> -f <fold_coverage> -o <outfile_prefix>\nart_illumina [options]\
+  \ -ss <sequencing_system> -sam -i <seq_ref_file> -l <read_length> -c <num_reads_per_sequence>\
+  \ -o <outfile_prefix>\nart_illumina [options] -ss <sequencing_system> -sam -i <seq_ref_file>\
+  \ -l <read_length> -f <fold_coverage> -m <mean_fragsize> -s <std_fragsize> -o <outfile_prefix>\n\
+  art_illumina [options] -ss <sequencing_system> -sam -i <seq_ref_file> -l <read_length>\
+  \ -c <num_reads_per_sequence> -m <mean_fragsize> -s <std_fragsize> -o <outfile_prefix>\n\
+  \n===== PARAMETERS =====\n\n  -1   --qprof1   the first-read quality profile\n \
+  \ -2   --qprof2   the second-read quality profile\n  -amp --amplicon amplicon sequencing\
+  \ simulation\n  -c   --rcount   number of reads/read pairs to be generated per sequence/amplicon\
+  \ (not be used together with -f/--fcov)\n  -d   --id       the prefix identification\
+  \ tag for read ID\n  -ef  --errfree  indicate to generate the zero sequencing errors\
+  \ SAM file as well the regular one\n                  NOTE: the reads in the zero-error\
+  \ SAM file have the same alignment positions\n                  as those in the\
+  \ regular SAM file, but have no sequencing errors\n  -f   --fcov     the fold of\
+  \ read coverage to be simulated or number of reads/read pairs generated for each\
+  \ amplicon\n  -h   --help     print out usage information\n  -i   --in       the\
+  \ filename of input DNA/RNA reference\n  -ir  --insRate  the first-read insertion\
+  \ rate (default: 0.00009)\n  -ir2 --insRate2 the second-read insertion rate (default:\
+  \ 0.00015)\n  -dr  --delRate  the first-read deletion rate (default:  0.00011)\n\
+  \  -dr2 --delRate2 the second-read deletion rate (default: 0.00023)\n  -k   --maxIndel\
+  \ the maximum total number of insertion and deletion per read (default: up to read\
+  \ length)\n  -l   --len      the length of reads to be simulated\n  -m   --mflen\
+  \    the mean size of DNA/RNA fragments for paired-end simulations\n  -mp  --matepair\
+  \ indicate a mate-pair read simulation\n  -M  --cigarM    indicate to use CIGAR\
+  \ 'M' instead of '=/X' for alignment match/mismatch\n  -nf  --maskN    the cutoff\
+  \ frequency of 'N' in a window size of the read length for masking genomic regions\n\
+  \                  NOTE: default: '-nf 1' to mask all regions with 'N'. Use '-nf\
+  \ 0' to turn off masking\n  -na  --noALN    do not output ALN alignment file\n \
+  \ -o   --out      the prefix of output filename\n  -p   --paired   indicate a paired-end\
+  \ read simulation or to generate reads from both ends of amplicons\n           \
+  \       NOTE: art will automatically switch to a mate-pair simulation if the given\
+  \ mean fragment size >= 2000\n  -q   --quiet    turn off end of run summary\n  -qL\
+  \  --minQ     the minimum base quality score\n  -qU  --maxQ     the maxiumum base\
+  \ quality score\n  -qs  --qShift   the amount to shift every first-read quality\
+  \ score by \n  -qs2 --qShift2  the amount to shift every second-read quality score\
+  \ by\n                  NOTE: For -qs/-qs2 option, a positive number will shift\
+  \ up quality scores (the max is 93) \n                  that reduce substitution\
+  \ sequencing errors and a negative number will shift down \n                  quality\
+  \ scores that increase sequencing errors. If shifting scores by x, the error\n \
+  \                 rate will be 1/(10^(x/10)) of the default profile.\n  -rs  --rndSeed\
+  \  the seed for random number generator (default: system time in second)\n     \
+  \             NOTE: using a fixed seed to generate two identical datasets from different\
+  \ runs\n  -s   --sdev     the standard deviation of DNA/RNA fragment size for paired-end\
+  \ simulations.\n  -sam --samout   indicate to generate SAM alignment file\n  -sp\
+  \  --sepProf  indicate to use separate quality profiles for different bases (ATGC)\n\
+  \  -ss  --seqSys   The name of Illumina sequencing system of the built-in profile\
+  \ used for simulation\n       NOTE: sequencing system ID names are:\n          \
+  \  GA1 - GenomeAnalyzer I (36bp,44bp), GA2 - GenomeAnalyzer II (50bp, 75bp)\n  \
+  \         HS10 - HiSeq 1000 (100bp),          HS20 - HiSeq 2000 (100bp),      HS25\
+  \ - HiSeq 2500 (125bp, 150bp)\n           HSXn - HiSeqX PCR free (150bp),     HSXt\
+  \ - HiSeqX TruSeq (150bp),   MinS - MiniSeq TruSeq (50bp)\n           MSv1 - MiSeq\
+  \ v1 (250bp),            MSv3 - MiSeq v3 (250bp),        NS50 - NextSeq500 v2 (75bp)\n\
+  ===== NOTES =====\n\n* ART by default selects a built-in quality score profile according\
+  \ to the read length specified for the run.\n\n* For single-end simulation, ART\
+  \ requires input sequence file, output file prefix, read length, and read count/fold\
+  \ coverage.\n\n* For paired-end simulation (except for amplicon sequencing), ART\
+  \ also requires the parameter values of\n  the mean and standard deviation of DNA/RNA\
+  \ fragment lengths\n\n===== EXAMPLES =====\n\n 1) single-end read simulation\n \t\
+  art_illumina -ss HS25 -sam -i reference.fa -l 150 -f 10 -o single_dat\n\n 2) paired-end\
+  \ read simulation\n       art_illumina -ss HS25 -sam -i reference.fa -p -l 150 -f\
+  \ 20 -m 200 -s 10 -o paired_dat\n\n 3) mate-pair read simulation\n       art_illumina\
+  \ -ss HS10 -sam -i reference.fa -mp -l 100 -f 20 -m 2500 -s 50 -o matepair_dat\n\
+  \n 4) amplicon sequencing simulation with 5' end single-end reads \n \tart_illumina\
+  \ -ss GA2 -amp -sam -na -i amp_reference.fa -l 50 -f 10 -o amplicon_5end_dat\n\n\
+  \ 5) amplicon sequencing simulation with paired-end reads\n       art_illumina -ss\
+  \ GA2 -amp -p -sam -na -i amp_reference.fa -l 50 -f 10 -o amplicon_pair_dat\n\n\
+  \ 6) amplicon sequencing simulation with matepair reads\n       art_illumina -ss\
+  \ MSv1 -amp -mp -sam -na -i amp_reference.fa -l 150 -f 10 -o amplicon_mate_dat\n\
+  \n 7) generate an extra SAM file with zero-sequencing errors for a paired-end read\
+  \ simulation\n       art_illumina -ss HSXn -ef -i reference.fa -p -l 150 -f 20 -m\
+  \ 200 -s 10 -o paired_twosam_dat\n\n 8) reduce the substitution error rate to one\
+  \ 10th of the default profile\n       art_illumina -i reference.fa -qs 10 -qs2 10\
+  \ -l 50 -f 10 -p -m 500 -s 10 -sam -o reduce_error\n\n 9) turn off the masking of\
+  \ genomic regions with unknown nucleotides 'N'\n       art_illumina -ss HS20 -nf\
+  \ 0  -sam -i reference.fa -p -l 100 -f 20 -m 200 -s 10 -o paired_nomask\n\n 10)\
+  \ masking genomic regions with >=5 'N's within the read length 50\n       art_illumina\
+  \ -ss HSXt -nf 5 -sam -i reference.fa -p -l 150 -f 20 -m 200 -s 10 -o paired_maskN5\n\
+  \n"
+generated_using:
+- --help

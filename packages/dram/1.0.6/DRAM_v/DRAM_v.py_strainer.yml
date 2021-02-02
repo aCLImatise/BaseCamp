@@ -1,0 +1,177 @@
+!Command
+command:
+- DRAM-v.py
+- strainer
+positional: []
+named:
+- !Flag
+  description: 'annotations file to pull genes from (default: None)'
+  synonyms:
+  - -i
+  - --input_annotations
+  args: !SimpleFlagArg
+    name: INPUT_ANNOTATIONS
+  optional: true
+- !Flag
+  description: 'fasta file to filter (default: None)'
+  synonyms:
+  - -f
+  - --input_fasta
+  args: !SimpleFlagArg
+    name: INPUT_FASTA
+  optional: true
+- !Flag
+  description: "location to write filtered fasta (default:\npull_genes.fasta)"
+  synonyms:
+  - -o
+  - --output_fasta
+  args: !SimpleFlagArg
+    name: OUTPUT_FASTA
+  optional: true
+- !Flag
+  description: "[FASTAS [FASTAS ...]]\nspace separated list of fastas to keep (default:\
+    \ None)"
+  synonyms:
+  - --fastas
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[SCAFFOLDS [SCAFFOLDS ...]]\nspace separated list of scaffolds to\
+    \ keep (default:\nNone)"
+  synonyms:
+  - --scaffolds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[GENES [GENES ...]]\nspace separated list of genes to keep (default:\
+    \ None)"
+  synonyms:
+  - --genes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[IDENTIFIERS [IDENTIFIERS ...]]\ndatabase identifiers to keep (default:\
+    \ None)"
+  synonyms:
+  - --identifiers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[CATEGORIES [CATEGORIES ...]]\ndistillate categories to keep genes\
+    \ from (default:\nNone)"
+  synonyms:
+  - --categories
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "AMG flags to keep, if any one is present then it will\nbe kept (default:\
+    \ None)"
+  synonyms:
+  - --amg_flags
+  args: !SimpleFlagArg
+    name: AMG_FLAGS
+  optional: true
+- !Flag
+  description: "[AUX_SCORES [AUX_SCORES ...]]\nspace separate list of auxiliary scores\
+    \ to keep\n(default: None)"
+  synonyms:
+  - --aux_scores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[VIRSORTER_CATEGORY [VIRSORTER_CATEGORY ...]]\nspace separate list\
+    \ of virsorter categories to keep\n(default: None)"
+  synonyms:
+  - --virsorter_category
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Only keep genes considered putative AMGs (default:\nFalse)"
+  synonyms:
+  - -a
+  - --putative_amgs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Maximum auxiliary score to consider gene as potential\nAMG (default:\
+    \ 3)"
+  synonyms:
+  - --max_auxiliary_score
+  args: !SimpleFlagArg
+    name: MAX_AUXILIARY_SCORE
+  optional: true
+- !Flag
+  description: "Do not consider genes on scaffolds with transposons as\npotential\
+    \ AMGs (default: False)"
+  synonyms:
+  - --remove_transposons
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not consider genes near ends of scaffolds as\npotential AMGs (default:\
+    \ False)"
+  synonyms:
+  - --remove_fs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Do not consider genes on possible non-viral contigs as\npotential\
+    \ AMGs (default: False)\n"
+  synonyms:
+  - --remove_js
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: DRAM-v.py strainer [-h] -i INPUT_ANNOTATIONS -f INPUT_FASTA\n \
+  \                         [-o OUTPUT_FASTA] [--fastas [FASTAS [FASTAS ...]]]\n \
+  \                         [--scaffolds [SCAFFOLDS [SCAFFOLDS ...]]]\n          \
+  \                [--genes [GENES [GENES ...]]]\n                          [--identifiers\
+  \ [IDENTIFIERS [IDENTIFIERS ...]]]\n                          [--categories [CATEGORIES\
+  \ [CATEGORIES ...]]]\n                          [--amg_flags AMG_FLAGS]\n      \
+  \                    [--aux_scores [AUX_SCORES [AUX_SCORES ...]]]\n            \
+  \              [--virsorter_category [VIRSORTER_CATEGORY [VIRSORTER_CATEGORY ...]]]\n\
+  \                          [-a] [--max_auxiliary_score MAX_AUXILIARY_SCORE]\n  \
+  \                        [--remove_transposons] [--remove_fs] [--remove_js]\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n\n\
+  Input and output files:\n  -i INPUT_ANNOTATIONS, --input_annotations INPUT_ANNOTATIONS\n\
+  \                        annotations file to pull genes from (default: None)\n \
+  \ -f INPUT_FASTA, --input_fasta INPUT_FASTA\n                        fasta file\
+  \ to filter (default: None)\n  -o OUTPUT_FASTA, --output_fasta OUTPUT_FASTA\n  \
+  \                      location to write filtered fasta (default:\n            \
+  \            pull_genes.fasta)\n\nSpecific names to keep:\n  --fastas [FASTAS [FASTAS\
+  \ ...]]\n                        space separated list of fastas to keep (default:\
+  \ None)\n  --scaffolds [SCAFFOLDS [SCAFFOLDS ...]]\n                        space\
+  \ separated list of scaffolds to keep (default:\n                        None)\n\
+  \  --genes [GENES [GENES ...]]\n                        space separated list of\
+  \ genes to keep (default: None)\n\nAnnotation filters:\n  --identifiers [IDENTIFIERS\
+  \ [IDENTIFIERS ...]]\n                        database identifiers to keep (default:\
+  \ None)\n  --categories [CATEGORIES [CATEGORIES ...]]\n                        distillate\
+  \ categories to keep genes from (default:\n                        None)\n\nDRAM-v\
+  \ based filters:\n  --amg_flags AMG_FLAGS\n                        AMG flags to\
+  \ keep, if any one is present then it will\n                        be kept (default:\
+  \ None)\n  --aux_scores [AUX_SCORES [AUX_SCORES ...]]\n                        space\
+  \ separate list of auxiliary scores to keep\n                        (default: None)\n\
+  \  --virsorter_category [VIRSORTER_CATEGORY [VIRSORTER_CATEGORY ...]]\n        \
+  \                space separate list of virsorter categories to keep\n         \
+  \               (default: None)\n\nAMG filtering:\n  -a, --putative_amgs   Only\
+  \ keep genes considered putative AMGs (default:\n                        False)\n\
+  \  --max_auxiliary_score MAX_AUXILIARY_SCORE\n                        Maximum auxiliary\
+  \ score to consider gene as potential\n                        AMG (default: 3)\n\
+  \  --remove_transposons  Do not consider genes on scaffolds with transposons as\n\
+  \                        potential AMGs (default: False)\n  --remove_fs        \
+  \   Do not consider genes near ends of scaffolds as\n                        potential\
+  \ AMGs (default: False)\n  --remove_js           Do not consider genes on possible\
+  \ non-viral contigs as\n                        potential AMGs (default: False)\n"
+generated_using:
+- --help

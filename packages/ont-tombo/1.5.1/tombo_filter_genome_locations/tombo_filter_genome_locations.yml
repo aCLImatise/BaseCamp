@@ -1,0 +1,78 @@
+!Command
+command:
+- tombo
+- filter
+- genome_locations
+positional: []
+named:
+- !Flag
+  description: Directories containing fast5 files.
+  synonyms:
+  - --fast5-basedirs
+  args: !RepeatFlagArg
+    name: FAST5_BASEDIRS
+  optional: true
+- !Flag
+  description: "Filter out reads not falling completely within include\nregions. Omit\
+    \ start and end coordinates to include an\nentire chromosome/sequence record.\
+    \ Format regions as\n\"chrm[:start-end] [chrm2[:start2-end2] ...]\"."
+  synonyms:
+  - --include-regions
+  args: !RepeatFlagArg
+    name: INCLUDE_REGIONS
+  optional: true
+- !Flag
+  description: "Include reads that partially overlap the specified\nregion. Default:\
+    \ Only include reads completely\ncontained in a specified region"
+  synonyms:
+  - --include-partial-overlap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "FAST5 group created by resquiggle command. Default:\nRawGenomeCorrected_000"
+  synonyms:
+  - --corrected-group
+  args: !SimpleFlagArg
+    name: CORRECTED_GROUP
+  optional: true
+- !Flag
+  description: Don't print status information.
+  synonyms:
+  - --quiet
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Print this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: tombo filter genome_locations --fast5-basedirs FAST5_BASEDIRS\n\
+  \                                     [FAST5_BASEDIRS ...]\n                   \
+  \                  [--include-regions INCLUDE_REGIONS [INCLUDE_REGIONS ...]]\n \
+  \                                    [--include-partial-overlap]\n             \
+  \                        [--corrected-group CORRECTED_GROUP]\n                 \
+  \                    [--quiet] [--help]\n\nRequired Arguments:\n  --fast5-basedirs\
+  \ FAST5_BASEDIRS [FAST5_BASEDIRS ...]\n                        Directories containing\
+  \ fast5 files.\n  --include-regions INCLUDE_REGIONS [INCLUDE_REGIONS ...]\n    \
+  \                    Filter out reads not falling completely within include\n  \
+  \                      regions. Omit start and end coordinates to include an\n \
+  \                       entire chromosome/sequence record. Format regions as\n \
+  \                       \"chrm[:start-end] [chrm2[:start2-end2] ...]\".\n\nFilter\
+  \ Argument:\n  --include-partial-overlap\n                        Include reads\
+  \ that partially overlap the specified\n                        region. Default:\
+  \ Only include reads completely\n                        contained in a specified\
+  \ region\n\nFAST5 Data Argument:\n  --corrected-group CORRECTED_GROUP\n        \
+  \                FAST5 group created by resquiggle command. Default:\n         \
+  \               RawGenomeCorrected_000\n\nMiscellaneous Arguments:\n  --quiet, -q\
+  \           Don't print status information.\n  --help, -h            Print this\
+  \ help message and exit\n"
+generated_using:
+- --help

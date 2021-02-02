@@ -1,0 +1,223 @@
+!Command
+command:
+- qcat
+positional: []
+named:
+- !Flag
+  description: Print debug information
+  synonyms:
+  - -l
+  - --log
+  args: !SimpleFlagArg
+    name: LOG
+  optional: true
+- !Flag
+  description: Don't print summary
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Barcoded read file
+  synonyms:
+  - -f
+  - --fastq
+  args: !SimpleFlagArg
+    name: FASTQ
+  optional: true
+- !Flag
+  description: "If specified, qcat will demultiplex reads to this\nfolder"
+  synonyms:
+  - -b
+  - --barcode_dir
+  args: !SimpleFlagArg
+    name: BARCODE_DIR
+  optional: true
+- !Flag
+  description: "Output file trimmed reads will be written to (default:\nstdout)."
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: "Minimum barcode score. Barcode calls with a lower\nscore will be discarded.\
+    \ Must be between 0 and 100.\n(default: 60)"
+  synonyms:
+  - --min-score
+  args: !SimpleFlagArg
+    name: MIN_QUAL
+  optional: true
+- !Flag
+  description: Search for adapters in the whole read
+  synonyms:
+  - --detect-middle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of threads. Only works with in guppy mode
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: "Reads short than <min-read-length> after trimming will\nbe discarded."
+  synonyms:
+  - --min-read-length
+  args: !SimpleFlagArg
+    name: MIN_LENGTH
+  optional: true
+- !Flag
+  description: "Prints a tsv file containing barcode information each\nread to stdout."
+  synonyms:
+  - --tsv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove adapter and barcode sequences from reads.
+  synonyms:
+  - --trim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Sequencing kit. Specifying the correct kit will\nimprove sensitivity\
+    \ and specificity and runtime\n(default: auto)"
+  synonyms:
+  - -k
+  - --kit
+  args: !ChoiceFlagArg
+    choices: !!set
+      Auto:
+      PBC001:
+      RAB204/RAB214:
+      RAB214:
+      DUAL:
+      NBD104/NBD114:
+      NBD103/NBD104:
+      VMK001:
+      NBD114:
+      RBK001:
+      PBK004/LWB001:
+      RAB204:
+      RBK004:
+      PBC096:
+      RPB004/RLB001:
+  optional: true
+- !Flag
+  description: List all supported kits
+  synonyms:
+  - --list-kits
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use Guppy's demultiplexing algorithm (default: false)"
+  synonyms:
+  - --guppy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use EPI2ME's demultiplexing algorithm (default: true)"
+  synonyms:
+  - --epi2me
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use dual barcoding algorithm
+  synonyms:
+  - --dual
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use simple demultiplexing algorithm. Only looks for\nbarcodes, not\
+    \ for adapter sequences. Use only for\ntesting purposes!"
+  synonyms:
+  - --simple
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't use information from multiple reads for kit\ndetection (default:\
+    \ false)"
+  synonyms:
+  - --no-batch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Filter rare barcode calls when run in batch mode
+  synonyms:
+  - --filter-barcodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Use 12 (standard) or 96 (extended) barcodes for\ndemultiplexing\n"
+  synonyms:
+  - --simple-barcodes
+  args: !SimpleFlagArg
+    name: SIMPLE_BARCODES
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: qcat [-h] [-V] [-l LOG] [--quiet] [-f FASTQ] [-b BARCODE_DIR]\n\
+  \            [-o OUTPUT] [--min-score MIN_QUAL] [--detect-middle] [-t THREADS]\n\
+  \            [--min-read-length MIN_LENGTH] [--tsv] [--trim]\n            [-k {Auto,RAB204/RAB214,PBC001,PBC096,DUAL,RPB004/RLB001,RAB204,NBD104/NBD114,NBD114,VMK001,RBK001,RAB214,PBK004/LWB001,NBD103/NBD104,RBK004}]\n\
+  \            [--list-kits] [--guppy | --epi2me | --dual | --simple]\n          \
+  \  [--no-batch] [--filter-barcodes]\n            [--simple-barcodes SIMPLE_BARCODES]\n\
+  \nPython command-line tool for demultiplexing Oxford Nanopore reads from FASTQ files\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -V, --version         show program's version number and exit\n  -l LOG, --log\
+  \ LOG     Print debug information\n  --quiet               Don't print summary\n\
+  \nGeneral settings:\n  -f FASTQ, --fastq FASTQ\n                        Barcoded\
+  \ read file\n  -b BARCODE_DIR, --barcode_dir BARCODE_DIR\n                     \
+  \   If specified, qcat will demultiplex reads to this\n                        folder\n\
+  \  -o OUTPUT, --output OUTPUT\n                        Output file trimmed reads\
+  \ will be written to (default:\n                        stdout).\n  --min-score\
+  \ MIN_QUAL  Minimum barcode score. Barcode calls with a lower\n                \
+  \        score will be discarded. Must be between 0 and 100.\n                 \
+  \       (default: 60)\n  --detect-middle       Search for adapters in the whole\
+  \ read\n  -t THREADS, --threads THREADS\n                        Number of threads.\
+  \ Only works with in guppy mode\n  --min-read-length MIN_LENGTH\n              \
+  \          Reads short than <min-read-length> after trimming will\n            \
+  \            be discarded.\n  --tsv                 Prints a tsv file containing\
+  \ barcode information each\n                        read to stdout.\n  --trim  \
+  \              Remove adapter and barcode sequences from reads.\n  -k {Auto,RAB204/RAB214,PBC001,PBC096,DUAL,RPB004/RLB001,RAB204,NBD104/NBD114,NBD114,VMK001,RBK001,RAB214,PBK004/LWB001,NBD103/NBD104,RBK004},\
+  \ --kit {Auto,RAB204/RAB214,PBC001,PBC096,DUAL,RPB004/RLB001,RAB204,NBD104/NBD114,NBD114,VMK001,RBK001,RAB214,PBK004/LWB001,NBD103/NBD104,RBK004}\n\
+  \                        Sequencing kit. Specifying the correct kit will\n     \
+  \                   improve sensitivity and specificity and runtime\n          \
+  \              (default: auto)\n  --list-kits           List all supported kits\n\
+  \nDemultiplexing modes:\n  --guppy               Use Guppy's demultiplexing algorithm\
+  \ (default: false)\n  --epi2me              Use EPI2ME's demultiplexing algorithm\
+  \ (default: true)\n  --dual                Use dual barcoding algorithm\n  --simple\
+  \              Use simple demultiplexing algorithm. Only looks for\n           \
+  \             barcodes, not for adapter sequences. Use only for\n              \
+  \          testing purposes!\n\nEPI2ME options (only valid with --epi2me):\n  --no-batch\
+  \            Don't use information from multiple reads for kit\n               \
+  \         detection (default: false)\n  --filter-barcodes     Filter rare barcode\
+  \ calls when run in batch mode\n\nSimple options (only valid with --simple):\n \
+  \ --simple-barcodes SIMPLE_BARCODES\n                        Use 12 (standard) or\
+  \ 96 (extended) barcodes for\n                        demultiplexing\n"
+generated_using:
+- --help

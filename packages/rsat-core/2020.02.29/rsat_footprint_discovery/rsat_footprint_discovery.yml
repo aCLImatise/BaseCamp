@@ -1,0 +1,419 @@
+!Command
+command:
+- rsat
+- footprint-discovery
+positional:
+- !Positional
+  description: "\e[1mVERSION\e[0m"
+  position: 0
+  name: footprint-discovery
+  optional: false
+- !Positional
+  description: Motif discovery
+  position: 0
+  name: Sequences
+  optional: false
+- !Positional
+  description: "\e[1mOUTPUT FORMAT\e[0m"
+  position: 0
+  name: genes.
+  optional: false
+- !Positional
+  description: "NOTE : 'ortho' is replaced by 'leaders' in the filename prefix with"
+  position: 0
+  name: Feature-map
+  optional: false
+- !Positional
+  description: dyad-analysis
+  position: 0
+  name: get-orthologs
+  optional: false
+- !Positional
+  description: "\e[1mWISH LIST\e[0m"
+  position: 1
+  name: footprint-scan
+  optional: false
+- !Positional
+  description: "\e[1m-taxa\e[0m\nSpecify a file containing a list of taxa, each of\
+    \ which will be\nanalyzed separately. The results are stored in a separate folder\
+    \ for\neach taxon. The folder name is defined automatically."
+  position: 0
+  name: soon.
+  optional: false
+- !Positional
+  description: Multiple-fields can be entered either by calling this argument
+  position: 0
+  name: genes.
+  optional: false
+- !Positional
+  description: "\e[1m-bg_model taxfreq|org_list|monads|file\e[0m"
+  position: 0
+  name: fields.
+  optional: false
+named:
+- !Flag
+  description: ', see below)'
+  synonyms:
+  - -bgfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "\e[1m-org_list organisms_list_file\e[0m\nThis option gives the posibility\
+    \ to analyse a user-specified set of\nreference organisms rather than a full taxon.\n\
+    File format: the first word of each line is used as organism ID. Any\nsubsequent\
+    \ text is ignored. The comment char is \";\".\nThis option is incompatible with\
+    \ the option \"-taxon\".\n\e[1m-unique_species\e[0m\nRetain at most one organism\
+    \ per species. This enables to filter out\nthe numerous strains sequences for\
+    \ some species of particular\ninterest. (e.g. Escherichia coli, Bacillus subtilis,\
+    \ ...).\n\e[1m-unique_genus\e[0m\nRetain at most one organism per genus. Same\
+    \ filter as for\n-unique_species, but at the level of the genus. At this level\
+    \ we\ndon't expect to have much redundancy, but this option can be useful\nto\
+    \ select a reasonable number of organisms, e.g. to draw\nphylogenetic profile\
+    \ heatmaps.\n\e[1m-no_purge\e[0m\nThis option can only be used combined with the\
+    \ -org_list option,\nthis gives the posibility to analyse a given set of sequences\n\
+    managing sequence redundancy using a list of \"no redundant\"\norganisms.\nThe\
+    \ file format is one organisms per line, the comment char is \";\"\n\e[1m-orthologs_list\
+    \ file\e[0m\nThis option gives the posibility to analyse a user-specified set\
+    \ of\northologs for specific reference organisms instead of using the BBH\nset\
+    \ of orthologs provided by RSAT.\nThe query genes included here will be the ones\
+    \ analyzed by the\nprogram.\nFile format: Tab delimited file with three columns.\n\
+    ID of the query gene (in the query organism)\nID of the reference gene\nID of\
+    \ the reference organism\nFurther columns will be ignored. The comment char is\
+    \ \";\".\nThis option is incompatible with the option \"-taxon\", and \"-bg_model\n\
+    taxfreq\" option.\n\e[1m-use_tree_org\e[0m\nOnly uses organisms in the phylogenetic\
+    \ tree for orthologs search.\nEspecified by option -tree. Incompatible with \"\
+    -taxon\",\n\"-orthologs_list\" and \"-org_list\".\n\e[1m-q query\e[0m\nQuery gene.\n\
+    This option can be used iteratively on the command line to specify\nmultiple genes.\n\
+    \e[1m-genes\e[0m\nSpecify a file containing a list of genes. Multiple genes can\
+    \ also\nbe specified by using iteratively the option -q.\n\e[1m-all_genes\e[0m\n\
+    Automatically analyze all the genes of a query genome, and store\neach result\
+    \ in a separate folder (the folder name is defined\nautomatically).\n\e[1m-max_genes\e\
+    [0m\nMaximal number of genes to analyze.\n\e[1m-skip #\e[0m\nSkip the first #\
+    \ genes (useful for quick testing and for resuming\ninterrupted tasks).\n\e[1m-last\
+    \ #\e[0m\nStop after having treated the first # genes (useful for quick\ntesting).\n\
+    \e[1m-o output_root_dir\e[0m\nMain output directory. The results will be dispatched\
+    \ in\nsub-directories, defined according to the taxon, query organism and\nquery\
+    \ gene name(s).\nIf the main output dir is not specified, the program automatically\n\
+    sets it to \"footprints\".\n\e[1m-batch\e[0m\nGenerate one command per query gene,\
+    \ and post it on the queue of a\nPC cluster.\n\e[1m-dry\e[0m\nDry run: print the\
+    \ commands but do not execute them.\n\e[1m-nodie\e[0m\nDo not die in case a sub-program\
+    \ returns an error.\nThe option -nodie allows you to circumvent problems with\
+    \ specific\nsub-tasks, but this is not recommended because the results may be\n\
+    incomplete.\n\e[1m-sep_genes\e[0m\nSearch footprints for each query gene separately.\
+    \ The results are\nstored in a separate folder for each gene. The folder name\
+    \ is\ndefined automatically.\nBy default, when several query genes are specified,\
+    \ the program\ncollects orthologs and analyzes their promoters altogether. The\n\
+    option \e[33m-sep\e[0m allows to automatize the detection of footprint in a set\n\
+    of genes that will be treated separately.\n\e[1m-infer_operons\e[0m\nInfer operons\
+    \ in order to retrieve the promoters of the predicted\noperon leader genes rather\
+    \ than those located immediately upstream\nof the orthologs. This method uses\
+    \ a threshold on the intergenic\ndistance.\n\e[1m-dist_thr value\e[0m\nSpecify\
+    \ here the intergenic distance threshold in base pairs. Pair\nof adjacent genes\
+    \ with intergenic distance equal or less than this\nvalue are predicted to be\
+    \ within operon. (default : 55)\n\e[1m-task\e[0m\nSpecify a subset of tasks to\
+    \ be executed.\nBy default, the program runs all necessary tasks. However, in\
+    \ some\ncases, it can be useful to select one or several tasks to be\nexecuted\
+    \ separately. For instance, after having collected all the\npromoter sequences\
+    \ of ortholog genes, one might desire to run the\npattern detection with various\
+    \ parameter values without having to\nretrieve the same sequences each time.\n\
+    Beware: task selection requires expertise, because most tasks\ndepends on the\
+    \ prior execution of some other tasks in the workflow.\nSelecting tasks before\
+    \ their prerequisite tasks have been completed\nwill provoke fatal errors.\n\e\
+    [1mSupported tasks:\e[0m\nFor all footprint programs (\e[33mfootprint-discovery\e\
+    [0m,\n\e[33mfootprint-scan\e[0m).\n\e[33mall\e[0m Run all supported tasks. If\
+    \ no task is specified, all tasks\nare performed.\n\e[33moperons\e[0m\nInfer operons\
+    \ (using \e[33minfer-operons\e[0m. This option should be\nused only for Bacteria.\n\
+    \e[33mquery_seq\e[0m\nRetrieve upstream sequence of the query genes (using\n\e\
+    [33mretrieve-seq\e[0m).\n\e[33morthologs\e[0m\nIdentify theorthologs of the query\
+    \ genes in the selected\ntaxon (using \e[33mget-orthologs\e[0m).\n\e[33mortho_seq\e\
+    [0m\nRetrieve upstream sequences of the orthologs (using\n\e[33mretrieve-seq-multigenome\e\
+    [0m).\n\e[33mpurge\e[0m\nPurge upstream sequences of the orthologs (using \e[33mpurge-seq\e\
+    [0m).\n\e[33mgene_index\e[0m\nGenerate an HTML index with links to the result\
+    \ files.\nWith the option -sep_genes, one index is generated for each\ngene separately.\
+    \ An index summarizing the results for all\ngenes can be generated using the option\
+    \ -index.\n\e[33mindex\e[0m\nGenerate a HTML table with links to the individual\
+    \ result\nfiles. The table contains one row per query gene, one column\nby output\
+    \ type (sequences, dyads, maps, ...) for\nfootpritn-discovery and for footprint-scan\
+    \ on line per\nTF-gene interacction.\nTasks specific to \e[33mfootprint-discovery\e\
+    [0m\n\e[33mfilter_dyads\e[0m\nDetect all dyads present with at elast one occurrence\
+    \ in the\nupstream sequence of the query gene (using \e[33mdyad-analysis\e[0m).\n\
+    Those dyads will be used as filter if the option \e[33m-filter\e[0m has\nbeen\
+    \ specifed.\n\e[33mdyads\e[0m\nDetect significantly over-represented in upstream\
+    \ sequences\nof orhtologs (using \e[33mdyad-analysis\e[0m).\n\e[33mmap\e[0m Draw\
+    \ feature maps showing the location of over-represented\ndyads in upstream sequences\
+    \ of promoters (using\n\e[33mfeature-map\e[0m).\n\e[33mnetwork\e[0m\nInfer a co-regulation\
+    \ network from the footprints, as\ndescribed in Brohee et al. (2011).\n\e[33mindex\e\
+    [0m\nGenerate an index file for each gene separately. The index\nfile is in the\
+    \ gene-specific directory, it is complementary\nto the general index file generated\
+    \ with the task\n\"synthesis\".\nTasks specific to \e[33mfootprint-scan\e[0m\n\
+    \e[33morthologs_tf\e[0m\nOrtholgous genes will be obtained for the genes realted\
+    \ to\nthe specified trasncription factors. This task shoulb be\nexecuted befor\
+    \ the option -orthologs when a tf is specified.\nSee -tf option description for\
+    \ more information.\n\e[33mocc_sig\e[0m\nCompute the significance of number of\
+    \ matrix hit occurrences\nas a function of the weight score (\e[33musing matrix-scan\e\
+    [0m and\n\e[33mmatrix-scan-quick\e[0m).\n\e[33mocc_sig_graph\e[0m\nGenerate graphs\
+    \ showing the distributions of occurrences and\ntheir significances, as a function\
+    \ of the weight score\n(using >XYgraph>).\n\e[33mscan\e[0m\nScan upstream sequences\
+    \ to detect hits above a given\nthreshold (using \e[33mmatrix-scan\e[0m).\n\e\
+    [33mmap\e[0m Draw the feature map of the hits (using \e[33mfeature-mp\e[0m).\n\
+    \e[1m-rand\e[0m\nWhen the option -rand is activated, the program replaces each\n\
+    ortholog by a gene selected at random in the genome where this\northolg was found.\n\
+    This option is used (for example by footprint-scan and\nfootprint-discovery to\
+    \ perform negative controls, i.e. check the\nrate of false positives in randomly\
+    \ selected promoters of the\nreference taxon.\n\e[1m-map_format\e[0m\nFormat for\
+    \ the feature map.\nSupported: any format supported by the program feature-map.\n\
+    \e[1m-index\e[0m\nDeprecated, replaced by the task \"index\".\n\e[1m-diamond\e\
+    [0m\nUse ranks_dmnd.tab from diamond blast computed in genome-blast.\n\e[1m-synthesis\e\
+    [0m\nThis option generated synthetic tables (in tab-delimited text and\nhtml)\
+    \ for all the results. It should be combined with the option\n\e[33m-sep_genes\e\
+    [0m. The synthetic tables contain one row per gene, and one\ncolumn per parameter.\
+    \ They summarize the results (maximal\nsignificance, top-ranking motifs) and give\
+    \ pointers to the detailed\nresult files.\n"
+  synonyms:
+  - -org_list.
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\e[1mNAME\e[0m\n    footprint-discovery\n\n\e[1mVERSION\e[0m\n    $program_version\n\
+  \n\e[1mDESCRIPTION\e[0m\n    Detect phylogenetic footprints by applying dyad-analysis\
+  \ in promoters of\n    a set of orthologous genes.\n\n    Adapted from the procedure\
+  \ described in Janky & van Helden (2008).\n\n\e[1mAUTHORS\e[0m\n    Rekin's Janky\
+  \ <Rekins.Janky\\@vib.be>\n    Jacques van Helden <jacques.van.helden@ulb.ac.be>\n\
+  \n\e[1mCATEGORY\e[0m\n    Sequences\n\n    Motif discovery\n\n\e[1mUSAGE\e[0m\n\
+  \    footprint-discovery [-i inputfile] -o [output_prefix] \\ -org\n    query_organism\
+  \ -taxon ref_taxon \\ -q query_gene [-q query_gene2 ...] \\\n    [-v #] [...]\n\n\
+  \e[1mEXAMPLES\e[0m\n  \e[1mSingle-gene footprint discovery\e[0m\n    Discover conserved\
+  \ motifs in the promoters of the orthologs of lexA in\n    Enterobacteriaceae.\n\
+  \n     footprint-discovery  -v 1 -org Escherichia_coli_GCF_000005845.2_ASM584v2\
+  \ -taxon Enterobacteriaceae \\\n                    -lth occ 1 -lth occ_sig 0 -uth\
+  \ rank 50 \\\n                    -return occ,proba,rank -filter  \\\n         \
+  \           -bg_model taxfreq -q lexA\n\n  \e[1mAnalysis of a few genes\e[0m\n \
+  \   Discover conserved motifs in the promoters of the orthologs of lexA in\n   \
+  \ Enterobacteriaceae.\n\n     footprint-discovery  -v 1 -org Escherichia_coli_GCF_000005845.2_ASM584v2\
+  \ -taxon Enterobacteriaceae \\\n                    -lth occ 1 -lth occ_sig 0 -uth\
+  \ rank 50 \\\n                    -return occ,proba,rank -filter  \\\n         \
+  \           -bg_model taxfreq \\\n                    -sep_genes -q lexA -q recA\
+  \ -q uvrA\n\n    Note the option -sep_genes indicating that the genes have to be\
+  \ analyzed\n    separately rather than grouped.\n\n    The genes can also be specified\
+  \ in a file with the option -genes.\n\n  \e[1mFootprint discovery applied iteratively\
+  \ to each gene of a genome\e[0m\n    Iterate footprint discovery for each gene separately.\n\
+  \n     footprint-discovery  -v 1 -org Escherichia_coli_GCF_000005845.2_ASM584v2\
+  \ -taxon Enterobacteriaceae \\\n                    -lth occ 1 -lth occ_sig 0 -uth\
+  \ rank 50 \\\n                    -return occ,proba,rank -filter \\\n          \
+  \          -bg_model taxfreq -all_genes -sep_genes\n\n\e[1mINPUT FORMAT\e[0m\n \
+  \   The program takes as input a taxon of interest + one or several query\n    genes.\n\
+  \n\e[1mOUTPUT FORMAT\e[0m\n    The output consists in a set of files, containing\
+  \ the results of the\n    different steps of the analysis.\n\n    [prefix]_log.txt\n\
+  \        Log file listing the analysis parameters + output file names;\n\n    [prefix]_query_genes.tab\n\
+  \        List of query genes (one or several genes can be entered)\n\n    [prefix]_ortho_bbh.tab\n\
+  \        List of orthologous genes\n\n    [prefix]_ortho_seq.fasta\n        Promoter\
+  \ sequences of the orthologous genes\n\n    [prefix]_ortho_seq_purged.fasta\n  \
+  \      Purged promoter sequences (for motif discovery) =item\n        [prefix]_ortho_filter_dyads.tab\n\
+  \n        Dyads found in the query genes (for dyad filtering)\n\n    [prefix]_ortho_dyads.tab\n\
+  \        Significant dyads found in the promoters of orthologous genes (the\n  \
+  \      footprints)\n\n    [prefix]_ortho_dyads.asmb\n        Assembled dyads\n\n\
+  \    [prefix]_ortho_dyads.png\n        Feature-map\n\n    NOTE : 'ortho' is replaced\
+  \ by 'leaders' in the filename prefix with\n    option -infer_operons\n\n\e[1mREFERENCES\e\
+  [0m\n  \e[1mDescription of the footprint-discovery method\e[0m\n    Janky, R. and\
+  \ van Helden, J. Evaluation of phylogenetic footprint\n    discovery for the prediction\
+  \ of bacterial cis-regulatory elements\n    (2008). BMC Bioinformatics 2008, 9:37\
+  \ [Pubmed 18215291].\n\n  \e[1mInference of co-regulation network from the footprints\e\
+  [0m\n    Brohee, S., Janky, R., Abdel-Sater, F., Vanderstocken, G., Andre, B. and\n\
+  \    van Helden, J. (2011). Unraveling networks of co-regulated genes on the\n \
+  \   sole basis of genome sequences. Nucleic Acids Res. [Pubmed 21572103]\n    [Open\
+  \ access]\n\n\e[1mSEE ALSO\e[0m\n    get-orthologs\n    dyad-analysis\n    footprint-scan\n\
+  \n\e[1mWISH LIST\e[0m\n    The following options are not yet implemented, but this\
+  \ should be done\n    soon.\n\n    \e[1m-taxa\e[0m\n        Specify a file containing\
+  \ a list of taxa, each of which will be\n        analyzed separately. The results\
+  \ are stored in a separate folder for\n        each taxon. The folder name is defined\
+  \ automatically.\n\n    \e[1m-all_taxa\e[0m\n        Automatically analyze all the\
+  \ taxa, and store each result in a\n        separate folder (the folder name is\
+  \ defined automatically).\n\n\e[1mOPTIONS\e[0m\n    \e[1m-lth field value\e[0m\n\
+  \        Lower threshold for dyad-analysis.\n\n        See the manual of dyad-analysis\
+  \ for a description of the fields on\n        which a threshold can be imposed.\n\
+  \n    \e[1m-uth field value\e[0m\n        Upper threshold for dyad-analysis.\n\n\
+  \        See the manual of dyad-analysis for a description of the fields on\n  \
+  \      which a threshold can be imposed.\n\n    \e[1m-return dyad_return_fields\e\
+  [0m\n        Return fields for dyad-analysis. This argument is passed to\n     \
+  \   dyad-analysis for the discovery of dyads in promoters of orthologous\n     \
+  \   genes.\n\n        Multiple-fields can be entered either by calling this argument\n\
+  \        iterativelyk or by entering multiple fields separated by commas.\n\n  \
+  \      Type \e[33mdyad-analysis -help\e[0m to obtain the list of supported return\n\
+  \        fields.\n\n    \e[1m-bg_model taxfreq|org_list|monads|file\e[0m\n     \
+  \   Allow the user to choose among alternative background model (see\n        Janky\
+  \ & van Helden, 2008).\n\n        Supported background model types:\n\n        \e\
+  [33mmonads\e[0m\n            Expected dyad frequencies are estimated by taking the\
+  \ product of\n            the monad frequencies observed in the input sequence set.\n\
+  \            Example:\n\n               F_exp(CAGn{10}GTA) = F_obs(CAG) * F_obs(GTA)\n\
+  \n        \e[33mtaxfreq\e[0m\n            Only valid in combination with the option\
+  \ -taxon.\n\n            Expected dyad frequencies are computed by summing the\n\
+  \            frequencies of all dyads in the non-coding upstream sequences of\n\
+  \            all genes for all the organisms of the reference taxon.\n\n       \
+  \ \e[33morg_list\e[0m\n            Only valid in combination with the option -org_list.\n\
+  \n            Expected dyad frequencies are computed by summing the\n          \
+  \  frequencies of all dyads in the non-coding upstream sequences of\n          \
+  \  all genes for each organism of user-specified list.\n\n        \e[33mfile\e[0m\n\
+  \            Only valid in combination with the option -bgfile.\n\n            Precises\
+  \ that the background model that will be used for\n            dyad-analysis will\
+  \ be a file given as argument (with the option\n            -bgfile, see below)\n\
+  \n    \e[1m-bgfile\e[0m\n        File containing the word frequencies to be used\
+  \ as the background\n        model for dyad-analysis. This option must be used in\
+  \ combination\n        with the option -bg_model file\n\n    \e[1m-filter\e[0m\n\
+  \        Only accept dyads found in the promoter of the query gene, in the\n   \
+  \     query organism. (option selected by default)\n\n    \e[1m-no_filter\e[0m\n\
+  \        Accept all dyads, even if they are not found in the promoter of the\n \
+  \       query gene, in the query organism. (will cancel -filter option if\n    \
+  \    selected)\n\n    \e[1m-max_dyad_degree #\e[0m\n        Maximal dyad degree\
+  \ for network inference. Default: 20.\n\n        Some dyads are found significant\
+  \ in a very large number of genes,\n        for various reasons (binding motifs\
+  \ of global factors,\n        low-complexity motifs). These \"ubiquitous\" dyads\
+  \ create many links\n        in the network, which makes problem to extract clusters\
+  \ of\n        putatively co-regulated genes. To circumvent this problem, we\n  \
+  \      discard \"hub\" dyads, i.e. dyads found in the footprints of too many\n \
+  \       query genes.\n\n    \e[1m-v #\e[0m\n        Level of verbosity (detail in\
+  \ the warning messages during execution)\n\n    \e[1m-h\e[0m  Display full help\
+  \ message.\n\n    \e[1m-help\e[0m\n        Same as -h\n\n    \e[1m-org query_organism\e\
+  [0m\n        Query organism, to which the query genes belong.\n\n    \e[1m-taxon\
+  \ reference_taxon\e[0m\n        Reference taxon, in which orthologous genes have\
+  \ to be collected.\n\n        Alternatively, reference organisms can be specified\
+  \ with the option\n        -org_list.\n\n    \e[1m-org_list organisms_list_file\e\
+  [0m\n        This option gives the posibility to analyse a user-specified set of\n\
+  \        reference organisms rather than a full taxon.\n\n        File format: the\
+  \ first word of each line is used as organism ID. Any\n        subsequent text is\
+  \ ignored. The comment char is \";\".\n\n        This option is incompatible with\
+  \ the option \"-taxon\".\n\n    \e[1m-unique_species\e[0m\n        Retain at most\
+  \ one organism per species. This enables to filter out\n        the numerous strains\
+  \ sequences for some species of particular\n        interest. (e.g. Escherichia\
+  \ coli, Bacillus subtilis, ...).\n\n    \e[1m-unique_genus\e[0m\n        Retain\
+  \ at most one organism per genus. Same filter as for\n        -unique_species, but\
+  \ at the level of the genus. At this level we\n        don't expect to have much\
+  \ redundancy, but this option can be useful\n        to select a reasonable number\
+  \ of organisms, e.g. to draw\n        phylogenetic profile heatmaps.\n\n    \e[1m-no_purge\e\
+  [0m\n        This option can only be used combined with the -org_list option,\n\
+  \        this gives the posibility to analyse a given set of sequences\n       \
+  \ managing sequence redundancy using a list of \"no redundant\"\n        organisms.\n\
+  \n        The file format is one organisms per line, the comment char is \";\"\n\
+  \n    \e[1m-orthologs_list file\e[0m\n        This option gives the posibility to\
+  \ analyse a user-specified set of\n        orthologs for specific reference organisms\
+  \ instead of using the BBH\n        set of orthologs provided by RSAT.\n\n     \
+  \   The query genes included here will be the ones analyzed by the\n        program.\n\
+  \n        File format: Tab delimited file with three columns.\n\n          ID of\
+  \ the query gene (in the query organism)\n          ID of the reference gene\n \
+  \         ID of the reference organism\n\n        Further columns will be ignored.\
+  \ The comment char is \";\".\n\n        This option is incompatible with the option\
+  \ \"-taxon\", and \"-bg_model\n        taxfreq\" option.\n\n    \e[1m-use_tree_org\e\
+  [0m\n        Only uses organisms in the phylogenetic tree for orthologs search.\n\
+  \        Especified by option -tree. Incompatible with \"-taxon\",\n        \"-orthologs_list\"\
+  \ and \"-org_list\".\n\n    \e[1m-q query\e[0m\n        Query gene.\n\n        This\
+  \ option can be used iteratively on the command line to specify\n        multiple\
+  \ genes.\n\n    \e[1m-genes\e[0m\n        Specify a file containing a list of genes.\
+  \ Multiple genes can also\n        be specified by using iteratively the option\
+  \ -q.\n\n    \e[1m-all_genes\e[0m\n        Automatically analyze all the genes of\
+  \ a query genome, and store\n        each result in a separate folder (the folder\
+  \ name is defined\n        automatically).\n\n    \e[1m-max_genes\e[0m\n       \
+  \ Maximal number of genes to analyze.\n\n    \e[1m-skip #\e[0m\n        Skip the\
+  \ first # genes (useful for quick testing and for resuming\n        interrupted\
+  \ tasks).\n\n    \e[1m-last #\e[0m\n        Stop after having treated the first\
+  \ # genes (useful for quick\n        testing).\n\n    \e[1m-o output_root_dir\e\
+  [0m\n        Main output directory. The results will be dispatched in\n        sub-directories,\
+  \ defined according to the taxon, query organism and\n        query gene name(s).\n\
+  \n        If the main output dir is not specified, the program automatically\n \
+  \       sets it to \"footprints\".\n\n    \e[1m-batch\e[0m\n        Generate one\
+  \ command per query gene, and post it on the queue of a\n        PC cluster.\n\n\
+  \    \e[1m-dry\e[0m\n        Dry run: print the commands but do not execute them.\n\
+  \n    \e[1m-nodie\e[0m\n        Do not die in case a sub-program returns an error.\n\
+  \n        The option -nodie allows you to circumvent problems with specific\n  \
+  \      sub-tasks, but this is not recommended because the results may be\n     \
+  \   incomplete.\n\n    \e[1m-sep_genes\e[0m\n        Search footprints for each\
+  \ query gene separately. The results are\n        stored in a separate folder for\
+  \ each gene. The folder name is\n        defined automatically.\n\n        By default,\
+  \ when several query genes are specified, the program\n        collects orthologs\
+  \ and analyzes their promoters altogether. The\n        option \e[33m-sep\e[0m allows\
+  \ to automatize the detection of footprint in a set\n        of genes that will\
+  \ be treated separately.\n\n    \e[1m-infer_operons\e[0m\n        Infer operons\
+  \ in order to retrieve the promoters of the predicted\n        operon leader genes\
+  \ rather than those located immediately upstream\n        of the orthologs. This\
+  \ method uses a threshold on the intergenic\n        distance.\n\n    \e[1m-dist_thr\
+  \ value\e[0m\n        Specify here the intergenic distance threshold in base pairs.\
+  \ Pair\n        of adjacent genes with intergenic distance equal or less than this\n\
+  \        value are predicted to be within operon. (default : 55)\n\n    \e[1m-task\e\
+  [0m\n        Specify a subset of tasks to be executed.\n\n        By default, the\
+  \ program runs all necessary tasks. However, in some\n        cases, it can be useful\
+  \ to select one or several tasks to be\n        executed separately. For instance,\
+  \ after having collected all the\n        promoter sequences of ortholog genes,\
+  \ one might desire to run the\n        pattern detection with various parameter\
+  \ values without having to\n        retrieve the same sequences each time.\n\n \
+  \       Beware: task selection requires expertise, because most tasks\n        depends\
+  \ on the prior execution of some other tasks in the workflow.\n        Selecting\
+  \ tasks before their prerequisite tasks have been completed\n        will provoke\
+  \ fatal errors.\n\n        \e[1mSupported tasks:\e[0m\n\n        For all footprint\
+  \ programs (\e[33mfootprint-discovery\e[0m,\n        \e[33mfootprint-scan\e[0m).\n\
+  \n            \e[33mall\e[0m Run all supported tasks. If no task is specified, all\
+  \ tasks\n                are performed.\n\n            \e[33moperons\e[0m\n    \
+  \            Infer operons (using \e[33minfer-operons\e[0m. This option should be\n\
+  \                used only for Bacteria.\n\n            \e[33mquery_seq\e[0m\n \
+  \               Retrieve upstream sequence of the query genes (using\n         \
+  \       \e[33mretrieve-seq\e[0m).\n\n            \e[33morthologs\e[0m\n        \
+  \        Identify theorthologs of the query genes in the selected\n            \
+  \    taxon (using \e[33mget-orthologs\e[0m).\n\n            \e[33mortho_seq\e[0m\n\
+  \                Retrieve upstream sequences of the orthologs (using\n         \
+  \       \e[33mretrieve-seq-multigenome\e[0m).\n\n            \e[33mpurge\e[0m\n\
+  \                Purge upstream sequences of the orthologs (using \e[33mpurge-seq\e\
+  [0m).\n\n            \e[33mgene_index\e[0m\n                Generate an HTML index\
+  \ with links to the result files.\n\n                With the option -sep_genes,\
+  \ one index is generated for each\n                gene separately. An index summarizing\
+  \ the results for all\n                genes can be generated using the option -index.\n\
+  \n            \e[33mindex\e[0m\n                Generate a HTML table with links\
+  \ to the individual result\n                files. The table contains one row per\
+  \ query gene, one column\n                by output type (sequences, dyads, maps,\
+  \ ...) for\n                footpritn-discovery and for footprint-scan on line per\n\
+  \                TF-gene interacction.\n\n        Tasks specific to \e[33mfootprint-discovery\e\
+  [0m\n\n            \e[33mfilter_dyads\e[0m\n                Detect all dyads present\
+  \ with at elast one occurrence in the\n                upstream sequence of the\
+  \ query gene (using \e[33mdyad-analysis\e[0m).\n                Those dyads will\
+  \ be used as filter if the option \e[33m-filter\e[0m has\n                been specifed.\n\
+  \n            \e[33mdyads\e[0m\n                Detect significantly over-represented\
+  \ in upstream sequences\n                of orhtologs (using \e[33mdyad-analysis\e\
+  [0m).\n\n            \e[33mmap\e[0m Draw feature maps showing the location of over-represented\n\
+  \                dyads in upstream sequences of promoters (using\n             \
+  \   \e[33mfeature-map\e[0m).\n\n            \e[33mnetwork\e[0m\n               \
+  \ Infer a co-regulation network from the footprints, as\n                described\
+  \ in Brohee et al. (2011).\n\n            \e[33mindex\e[0m\n                Generate\
+  \ an index file for each gene separately. The index\n                file is in\
+  \ the gene-specific directory, it is complementary\n                to the general\
+  \ index file generated with the task\n                \"synthesis\".\n\n       \
+  \ Tasks specific to \e[33mfootprint-scan\e[0m\n\n            \e[33morthologs_tf\e\
+  [0m\n                Ortholgous genes will be obtained for the genes realted to\n\
+  \                the specified trasncription factors. This task shoulb be\n    \
+  \            executed befor the option -orthologs when a tf is specified.\n    \
+  \            See -tf option description for more information.\n\n            \e\
+  [33mocc_sig\e[0m\n                Compute the significance of number of matrix hit\
+  \ occurrences\n                as a function of the weight score (\e[33musing matrix-scan\e\
+  [0m and\n                \e[33mmatrix-scan-quick\e[0m).\n\n            \e[33mocc_sig_graph\e\
+  [0m\n                Generate graphs showing the distributions of occurrences and\n\
+  \                their significances, as a function of the weight score\n      \
+  \          (using >XYgraph>).\n\n            \e[33mscan\e[0m\n                Scan\
+  \ upstream sequences to detect hits above a given\n                threshold (using\
+  \ \e[33mmatrix-scan\e[0m).\n\n            \e[33mmap\e[0m Draw the feature map of\
+  \ the hits (using \e[33mfeature-mp\e[0m).\n\n    \e[1m-rand\e[0m\n        When the\
+  \ option -rand is activated, the program replaces each\n        ortholog by a gene\
+  \ selected at random in the genome where this\n        ortholg was found.\n\n  \
+  \      This option is used (for example by footprint-scan and\n        footprint-discovery\
+  \ to perform negative controls, i.e. check the\n        rate of false positives\
+  \ in randomly selected promoters of the\n        reference taxon.\n\n    \e[1m-map_format\e\
+  [0m\n        Format for the feature map.\n\n        Supported: any format supported\
+  \ by the program feature-map.\n\n    \e[1m-index\e[0m\n        Deprecated, replaced\
+  \ by the task \"index\".\n\n    \e[1m-diamond\e[0m\n        Use ranks_dmnd.tab from\
+  \ diamond blast computed in genome-blast.\n\n    \e[1m-synthesis\e[0m\n        This\
+  \ option generated synthetic tables (in tab-delimited text and\n        html) for\
+  \ all the results. It should be combined with the option\n        \e[33m-sep_genes\e\
+  [0m. The synthetic tables contain one row per gene, and one\n        column per\
+  \ parameter. They summarize the results (maximal\n        significance, top-ranking\
+  \ motifs) and give pointers to the detailed\n        result files.\n\n"
+generated_using:
+- -h

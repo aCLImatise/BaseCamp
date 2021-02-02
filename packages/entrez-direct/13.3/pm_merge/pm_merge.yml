@@ -1,0 +1,248 @@
+!Command
+command:
+- pm-merge
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: find
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: PATH
+  optional: true
+named:
+- !Flag
+  description: Follow symlinks
+  synonyms:
+  - -L
+  - -follow
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '...on command line only'
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't descend directories on other filesystems
+  synonyms:
+  - -xdev
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Descend at most N levels. -maxdepth 0 applies\nactions to command\
+    \ line arguments only"
+  synonyms:
+  - -maxdepth
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Don't act on first N levels
+  synonyms:
+  - -mindepth
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Act on directory *after* traversing it
+  synonyms:
+  - -depth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: higher priority than -o
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: has
+  optional: true
+- !Flag
+  description: Match file name (w/o directory name) to PATTERN
+  synonyms:
+  - -name
+  args: !SimpleFlagArg
+    name: PATTERN
+  optional: true
+- !Flag
+  description: Case insensitive -name
+  synonyms:
+  - -iname
+  args: !SimpleFlagArg
+    name: PATTERN
+  optional: true
+- !Flag
+  description: Match path to PATTERN
+  synonyms:
+  - -path
+  args: !SimpleFlagArg
+    name: PATTERN
+  optional: true
+- !Flag
+  description: Case insensitive -path
+  synonyms:
+  - -ipath
+  args: !SimpleFlagArg
+    name: PATTERN
+  optional: true
+- !Flag
+  description: Match path to regex PATTERN
+  synonyms:
+  - -regex
+  args: !SimpleFlagArg
+    name: PATTERN
+  optional: true
+- !Flag
+  description: 'File type is X (one of: f,d,l,b,c,...)'
+  synonyms:
+  - -type
+  args: !SimpleFlagArg
+    name: X
+  optional: true
+- !Flag
+  description: "At least one mask bit (+MASK), all bits (-MASK),\nor exactly MASK\
+    \ bits are set in file's mode"
+  synonyms:
+  - -perm
+  args: !SimpleFlagArg
+    name: MASK
+  optional: true
+- !Flag
+  description: "mtime is greater than (+N), less than (-N),\nor exactly N days in\
+    \ the past"
+  synonyms:
+  - -mtime
+  args: !SimpleFlagArg
+    name: DAYS
+  optional: true
+- !Flag
+  description: "mtime is greater than (+N), less than (-N),\nor exactly N minutes\
+    \ in the past"
+  synonyms:
+  - -mmin
+  args: !SimpleFlagArg
+    name: MINS
+  optional: true
+- !Flag
+  description: mtime is more recent than FILE's
+  synonyms:
+  - -newer
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: File is owned by given user
+  synonyms:
+  - -user
+  args: !SimpleFlagArg
+    name: NAME/ID
+  optional: true
+- !Flag
+  description: File is owned by given group
+  synonyms:
+  - -group
+  args: !SimpleFlagArg
+    name: NAME/ID
+  optional: true
+- !Flag
+  description: "[bck]    File size is N (c:bytes,k:kbytes,b:512 bytes(def.))\n+/-N:\
+    \ file size is bigger/smaller than N"
+  synonyms:
+  - -size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: If current file is directory, don't descend into it
+  synonyms:
+  - -prune
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print file name
+  synonyms:
+  - -print
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print file name, NUL terminated
+  synonyms:
+  - -print0
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "ARG ; Run CMD with all instances of {} replaced by\nfile name. Fails\
+    \ if CMD exits with nonzero"
+  synonyms:
+  - -exec
+  args: !SimpleFlagArg
+    name: CMD
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -HL
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "find: unrecognized: --help\nBusyBox v1.22.1 (2014-05-23 01:24:27 UTC)\
+  \ multi-call binary.\n\nUsage: find [-HL] [PATH]... [OPTIONS] [ACTIONS]\n\nSearch\
+  \ for files and perform actions on them.\nFirst failed action stops processing of\
+  \ current file.\nDefaults: PATH is current directory, action is '-print'\n\n\t-L,-follow\t\
+  Follow symlinks\n\t-H\t\t...on command line only\n\t-xdev\t\tDon't descend directories\
+  \ on other filesystems\n\t-maxdepth N\tDescend at most N levels. -maxdepth 0 applies\n\
+  \t\t\tactions to command line arguments only\n\t-mindepth N\tDon't act on first\
+  \ N levels\n\t-depth\t\tAct on directory *after* traversing it\n\nActions:\n\t(\
+  \ ACTIONS )\tGroup actions for -o / -a\n\t! ACT\t\tInvert ACT's success/failure\n\
+  \tACT1 [-a] ACT2\tIf ACT1 fails, stop, else do ACT2\n\tACT1 -o ACT2\tIf ACT1 succeeds,\
+  \ stop, else do ACT2\n\t\t\tNote: -a has higher priority than -o\n\t-name PATTERN\t\
+  Match file name (w/o directory name) to PATTERN\n\t-iname PATTERN\tCase insensitive\
+  \ -name\n\t-path PATTERN\tMatch path to PATTERN\n\t-ipath PATTERN\tCase insensitive\
+  \ -path\n\t-regex PATTERN\tMatch path to regex PATTERN\n\t-type X\t\tFile type is\
+  \ X (one of: f,d,l,b,c,...)\n\t-perm MASK\tAt least one mask bit (+MASK), all bits\
+  \ (-MASK),\n\t\t\tor exactly MASK bits are set in file's mode\n\t-mtime DAYS\tmtime\
+  \ is greater than (+N), less than (-N),\n\t\t\tor exactly N days in the past\n\t\
+  -mmin MINS\tmtime is greater than (+N), less than (-N),\n\t\t\tor exactly N minutes\
+  \ in the past\n\t-newer FILE\tmtime is more recent than FILE's\n\t-user NAME/ID\t\
+  File is owned by given user\n\t-group NAME/ID\tFile is owned by given group\n\t\
+  -size N[bck]\tFile size is N (c:bytes,k:kbytes,b:512 bytes(def.))\n\t\t\t+/-N: file\
+  \ size is bigger/smaller than N\n\t-prune\t\tIf current file is directory, don't\
+  \ descend into it\nIf none of the following actions is specified, -print is assumed\n\
+  \t-print\t\tPrint file name\n\t-print0\t\tPrint file name, NUL terminated\n\t-exec\
+  \ CMD ARG ;\tRun CMD with all instances of {} replaced by\n\t\t\tfile name. Fails\
+  \ if CMD exits with nonzero\n\nfind: unrecognized: --help\nBusyBox v1.22.1 (2014-05-23\
+  \ 01:24:27 UTC) multi-call binary.\n\nUsage: find [-HL] [PATH]... [OPTIONS] [ACTIONS]\n\
+  \nSearch for files and perform actions on them.\nFirst failed action stops processing\
+  \ of current file.\nDefaults: PATH is current directory, action is '-print'\n\n\t\
+  -L,-follow\tFollow symlinks\n\t-H\t\t...on command line only\n\t-xdev\t\tDon't descend\
+  \ directories on other filesystems\n\t-maxdepth N\tDescend at most N levels. -maxdepth\
+  \ 0 applies\n\t\t\tactions to command line arguments only\n\t-mindepth N\tDon't\
+  \ act on first N levels\n\t-depth\t\tAct on directory *after* traversing it\n\n\
+  Actions:\n\t( ACTIONS )\tGroup actions for -o / -a\n\t! ACT\t\tInvert ACT's success/failure\n\
+  \tACT1 [-a] ACT2\tIf ACT1 fails, stop, else do ACT2\n\tACT1 -o ACT2\tIf ACT1 succeeds,\
+  \ stop, else do ACT2\n\t\t\tNote: -a has higher priority than -o\n\t-name PATTERN\t\
+  Match file name (w/o directory name) to PATTERN\n\t-iname PATTERN\tCase insensitive\
+  \ -name\n\t-path PATTERN\tMatch path to PATTERN\n\t-ipath PATTERN\tCase insensitive\
+  \ -path\n\t-regex PATTERN\tMatch path to regex PATTERN\n\t-type X\t\tFile type is\
+  \ X (one of: f,d,l,b,c,...)\n\t-perm MASK\tAt least one mask bit (+MASK), all bits\
+  \ (-MASK),\n\t\t\tor exactly MASK bits are set in file's mode\n\t-mtime DAYS\tmtime\
+  \ is greater than (+N), less than (-N),\n\t\t\tor exactly N days in the past\n\t\
+  -mmin MINS\tmtime is greater than (+N), less than (-N),\n\t\t\tor exactly N minutes\
+  \ in the past\n\t-newer FILE\tmtime is more recent than FILE's\n\t-user NAME/ID\t\
+  File is owned by given user\n\t-group NAME/ID\tFile is owned by given group\n\t\
+  -size N[bck]\tFile size is N (c:bytes,k:kbytes,b:512 bytes(def.))\n\t\t\t+/-N: file\
+  \ size is bigger/smaller than N\n\t-prune\t\tIf current file is directory, don't\
+  \ descend into it\nIf none of the following actions is specified, -print is assumed\n\
+  \t-print\t\tPrint file name\n\t-print0\t\tPrint file name, NUL terminated\n\t-exec\
+  \ CMD ARG ;\tRun CMD with all instances of {} replaced by\n\t\t\tfile name. Fails\
+  \ if CMD exits with nonzero\n\n\nERROR: Unable to open input file '*.inv.gz'\n"
+generated_using:
+- --help

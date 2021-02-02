@@ -1,0 +1,70 @@
+!Command
+command:
+- h5jam
+positional: []
+named:
+- !Flag
+  description: Specifies the input HDF5 file.
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: in_file.h5
+  optional: true
+- !Flag
+  description: "Specifies the file to be inserted into the user block.\nCan be any\
+    \ file format except an HDF5 format."
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: in_user_file
+  optional: true
+- !Flag
+  description: "Specifies the output HDF5 file.\nIf not specified, the user block\
+    \ will be concatenated in\nplace to the input HDF5 file."
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: out_file.h5
+  optional: true
+- !Flag
+  description: "Wipes out any existing user block before concatenating\nthe given\
+    \ user block.\nThe size of the new user block will be the larger of;\n- the size\
+    \ of existing user block in the input HDF5 file\n- the size of user block required\
+    \ by new input user file\n(size = 512 x 2N,  N is positive integer.)"
+  synonyms:
+  - --clobber
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints the HDF5 library version and exits.
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Prints a usage message and exits.
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: h5jam -i <in_file.h5> -u <in_user_file> [-o <out_file.h5>] [--clobber]\n\
+  \nAdds user block to front of an HDF5 file and creates a new concatenated file.\n\
+  \nOPTIONS\n  -i in_file.h5    Specifies the input HDF5 file.\n  -u in_user_file\
+  \  Specifies the file to be inserted into the user block.\n                   Can\
+  \ be any file format except an HDF5 format.\n  -o out_file.h5   Specifies the output\
+  \ HDF5 file.\n                   If not specified, the user block will be concatenated\
+  \ in\n                   place to the input HDF5 file.\n  --clobber        Wipes\
+  \ out any existing user block before concatenating\n                   the given\
+  \ user block.\n                   The size of the new user block will be the larger\
+  \ of;\n                    - the size of existing user block in the input HDF5 file\n\
+  \                    - the size of user block required by new input user file\n\
+  \                   (size = 512 x 2N,  N is positive integer.)\n\n  -h         \
+  \      Prints a usage message and exits.\n  -V               Prints the HDF5 library\
+  \ version and exits.\n\nExit Status:\n   0   Succeeded.\n   >0  An error occurred.\n"
+generated_using:
+- --help

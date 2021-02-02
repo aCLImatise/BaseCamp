@@ -1,0 +1,474 @@
+!Command
+command:
+- planemo
+- workflow_edit
+positional:
+- !Positional
+  description: --galaxy_email TEXT             E-mail address to use when launching
+    single-
+  position: 0
+  name: Galaxy.
+  optional: false
+- !Positional
+  description: --conda_prefix DIRECTORY        Conda prefix to use for conda dependency
+  position: 0
+  name: resolvers.
+  optional: false
+- !Positional
+  description: --conda_exec FILE               Location of conda executable.
+  position: 1
+  name: commands.
+  optional: false
+named:
+- !Flag
+  description: "Root of development galaxy directory to\nexecute command with."
+  synonyms:
+  - --galaxy_root
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: "[2|2.7|3|3.5|3.6|3.7|3.8]\nPython version to start Galaxy under"
+  synonyms:
+  - --galaxy_python_version
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Extra tool sources to include in Galaxy's\ntool panel (file or directory).\
+    \ These will\nnot be linted/tested/etc... but they will be\navailable to workflows\
+    \ and for interactive\nuse."
+  synonyms:
+  - --extra_tools
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "Download and configure a disposable copy of\nGalaxy from github."
+  synonyms:
+  - --install_galaxy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Branch of Galaxy to target (defaults to\nmaster) if a Galaxy root\
+    \ isn't specified."
+  synonyms:
+  - --galaxy_branch
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Git source of Galaxy to target (defaults to\nthe official galaxyproject\
+    \ github source if\na Galaxy root isn't specified."
+  synonyms:
+  - --galaxy_source
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Do not create or source a virtualenv\nenvironment for Galaxy, this\
+    \ should be used\nor instance to preserve an externally\nconfigured virtual environment\
+    \ or conda\nenvironment."
+  synonyms:
+  - --skip_venv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Skip caching of Galaxy source and\ndependencies obtained with --install_galaxy.\n\
+    Not caching this results in faster downloads\n(no git) - so is better on throw\
+    \ away\ninstances such with TravisCI."
+  synonyms:
+  - --no_cache_galaxy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not cleanup temp files created for and by
+  synonyms:
+  - --no_cleanup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: / --no_docker          Run Galaxy tools in Docker if enabled.
+  synonyms:
+  - --docker
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Command used to launch docker (defaults to\ndocker)."
+  synonyms:
+  - --docker_cmd
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "/ --no_docker_sudo\nFlag to use sudo when running docker."
+  synonyms:
+  - --docker_sudo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Docker host to target when executing docker\ncommands (defaults to\
+    \ localhost)."
+  synonyms:
+  - --docker_host
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "sudo command to use when --docker_sudo is\nenabled (defaults to sudo)."
+  synonyms:
+  - --docker_sudo_cmd
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Test tools against mulled containers (forces\n--docker)."
+  synonyms:
+  - --mulled_containers
+  - --biocontainers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Job configuration file for Galaxy to target.
+  synonyms:
+  - --job_config_file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Tool dependency dir for Galaxy to target.
+  synonyms:
+  - --tool_dependency_dir
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: Port to serve Galaxy on (default is 9090).
+  synonyms:
+  - --port
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Host to bind Galaxy to. Default is 127.0.0.1\nthat is restricted to\
+    \ localhost connections\nfor security reasons set to 0.0.0.0 to bind\nGalaxy to\
+    \ all ports including potentially\npublicly accessible ones."
+  synonyms:
+  - --host
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "[galaxy|docker_galaxy|external_galaxy]\nSelect an engine to serve\
+    \ artifacts such as\ntools and workflows. Defaults to a local\nGalaxy, but running\
+    \ Galaxy within a Docker\ncontainer."
+  synonyms:
+  - --engine
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable strict validation of CWL.
+  synonyms:
+  - --non_strict_cwl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Docker image identifier for docker-galaxy-\nflavor used if engine\
+    \ type is specified as\n``docker-galaxy``. Defaults to\nquay.io/bgruening/galaxy."
+  synonyms:
+  - --docker_galaxy_image
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Extra path to mount if --engine docker.
+  synonyms:
+  - --docker_extra_volume
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "test-data directory to for specified\ntool(s)."
+  synonyms:
+  - --test_data
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: "tool_data_table_conf.xml file to for\nspecified tool(s)."
+  synonyms:
+  - --tool_data_table
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: "Dependency resolver configuration for Galaxy\nto target."
+  synonyms:
+  - --dependency_resolvers_config_file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Configure Galaxy to use plain brew\ndependency resolution."
+  synonyms:
+  - --brew_dependency_resolution
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Configure Galaxy to use brewed Tool Shed\ndependency resolution."
+  synonyms:
+  - --shed_dependency_resolution
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Configure Galaxy with no dependency
+  synonyms:
+  - --no_dependency_resolution
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable more verbose conda logging.
+  synonyms:
+  - --conda_debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Ensure conda is configured with specified\ncomma separated list of\
+    \ channels."
+  synonyms:
+  - --conda_channels
+  - --conda_ensure_channels
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Use locally built packages while building\nConda environments."
+  synonyms:
+  - --conda_use_local
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Configure Galaxy to use only conda for\ndependency resolution."
+  synonyms:
+  - --conda_dependency_resolution
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Conda dependency resolution for Galaxy will\ncopy dependencies instead\
+    \ of attempting to\nlink them."
+  synonyms:
+  - --conda_copy_dependencies
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ --no_conda_auto_install\nConda dependency resolution for Galaxy\
+    \ will\nattempt to install requested but missing\npackages."
+  synonyms:
+  - --conda_auto_install
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ --no_conda_auto_init\nConda dependency resolution for Galaxy will\n\
+    auto install conda itself using miniconda if\nnot availabe on conda_prefix."
+  synonyms:
+  - --conda_auto_init
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Name of profile (created with the\nprofile_create command) to use\
+    \ with this\ncommand."
+  synonyms:
+  - --profile
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Use postgres database type.
+  synonyms:
+  - --postgres
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[postgres|postgres_docker|sqlite|auto]\nType of database to use for\
+    \ profile -\n'auto', 'sqlite', 'postgres', and\n'postgres_docker' are available\
+    \ options. Use\npostgres to use an existing postgres server\nyou user can access\
+    \ without a password via\nthe psql command. Use postgres_docker to\nhave Planemo\
+    \ manage a docker container\nrunning postgres. Data with postgres_docker\nis not\
+    \ yet persisted past when you restart\nthe docker container launched by Planemo\
+    \ so\nbe careful with this option."
+  synonyms:
+  - --database_type
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Name or or path to postgres client binary\n(psql)."
+  synonyms:
+  - --postgres_psql_path
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Postgres username for managed development
+  synonyms:
+  - --postgres_database_user
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Database connection string to use for\nGalaxy."
+  synonyms:
+  - --database_connection
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: "Location of shed tools conf file for Galaxy.\n--shed_tool_path TEXT\
+    \           Location of shed tools directory for Galaxy.\n--galaxy_single_user\
+    \ / --no_galaxy_single_user\nBy default Planemo will configure Galaxy to\nrun\
+    \ in single-user mode where there is just\none user and this user is automatically\n\
+    logged it. Use --no_galaxy_single_user to\nprevent Galaxy from running this way.\n\
+    --daemon                        Serve Galaxy process as a daemon.\n--pid_file\
+    \ FILE                 Location of pid file is executed with\n--daemon.\n--ignore_dependency_problems\
+    \    When installing shed repositories for\nworkflows, ignore dependency issues.\
+    \ These\nlikely indicate a problem but in some cases\nmay not prevent a workflow\
+    \ from successfully\nexecuting.\n--shed_install / --no_shed_install\nBy default\
+    \ Planemo will attempt to install\nrepositories needed for workflow testing.\n\
+    This may not be appropriate for production\nservers and so this can disabled by\
+    \ calling\nplanemo with --no_shed_install.\n--help                          Show\
+    \ this message and exit.\n"
+  synonyms:
+  - --shed_tool_conf
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: planemo workflow_edit [OPTIONS] WORKFLOW_PATH\n\n  Open a synchronized\
+  \ Galaxy workflow editor.\n\nOptions:\n  --galaxy_root DIRECTORY         Root of\
+  \ development galaxy directory to\n                                  execute command\
+  \ with.\n  --galaxy_python_version [2|2.7|3|3.5|3.6|3.7|3.8]\n                 \
+  \                 Python version to start Galaxy under\n  --extra_tools PATH   \
+  \           Extra tool sources to include in Galaxy's\n                        \
+  \          tool panel (file or directory). These will\n                        \
+  \          not be linted/tested/etc... but they will be\n                      \
+  \            available to workflows and for interactive\n                      \
+  \            use.\n  --install_galaxy                Download and configure a disposable\
+  \ copy of\n                                  Galaxy from github.\n  --galaxy_branch\
+  \ TEXT            Branch of Galaxy to target (defaults to\n                    \
+  \              master) if a Galaxy root isn't specified.\n  --galaxy_source TEXT\
+  \            Git source of Galaxy to target (defaults to\n                     \
+  \             the official galaxyproject github source if\n                    \
+  \              a Galaxy root isn't specified.\n  --skip_venv                   \
+  \  Do not create or source a virtualenv\n                                  environment\
+  \ for Galaxy, this should be used\n                                  or instance\
+  \ to preserve an externally\n                                  configured virtual\
+  \ environment or conda\n                                  environment.\n  --no_cache_galaxy\
+  \               Skip caching of Galaxy source and\n                            \
+  \      dependencies obtained with --install_galaxy.\n                          \
+  \        Not caching this results in faster downloads\n                        \
+  \          (no git) - so is better on throw away\n                             \
+  \     instances such with TravisCI.\n  --no_cleanup                    Do not cleanup\
+  \ temp files created for and by\n                                  Galaxy.\n  --galaxy_email\
+  \ TEXT             E-mail address to use when launching single-\n              \
+  \                    user Galaxy server.\n  --docker / --no_docker          Run\
+  \ Galaxy tools in Docker if enabled.\n  --docker_cmd TEXT               Command\
+  \ used to launch docker (defaults to\n                                  docker).\n\
+  \  --docker_sudo / --no_docker_sudo\n                                  Flag to use\
+  \ sudo when running docker.\n  --docker_host TEXT              Docker host to target\
+  \ when executing docker\n                                  commands (defaults to\
+  \ localhost).\n  --docker_sudo_cmd TEXT          sudo command to use when --docker_sudo\
+  \ is\n                                  enabled (defaults to sudo).\n  --mulled_containers,\
+  \ --biocontainers\n                                  Test tools against mulled containers\
+  \ (forces\n                                  --docker).\n  --job_config_file FILE\
+  \          Job configuration file for Galaxy to target.\n  --tool_dependency_dir\
+  \ DIRECTORY\n                                  Tool dependency dir for Galaxy to\
+  \ target.\n  --port INTEGER                  Port to serve Galaxy on (default is\
+  \ 9090).\n  --host TEXT                     Host to bind Galaxy to. Default is 127.0.0.1\n\
+  \                                  that is restricted to localhost connections\n\
+  \                                  for security reasons set to 0.0.0.0 to bind\n\
+  \                                  Galaxy to all ports including potentially\n \
+  \                                 publicly accessible ones.\n  --engine [galaxy|docker_galaxy|external_galaxy]\n\
+  \                                  Select an engine to serve artifacts such as\n\
+  \                                  tools and workflows. Defaults to a local\n  \
+  \                                Galaxy, but running Galaxy within a Docker\n  \
+  \                                container.\n  --non_strict_cwl                Disable\
+  \ strict validation of CWL.\n  --docker_galaxy_image TEXT      Docker image identifier\
+  \ for docker-galaxy-\n                                  flavor used if engine type\
+  \ is specified as\n                                  ``docker-galaxy``. Defaults\
+  \ to\n                                  quay.io/bgruening/galaxy.\n  --docker_extra_volume\
+  \ PATH      Extra path to mount if --engine docker.\n  --test_data DIRECTORY   \
+  \        test-data directory to for specified\n                                \
+  \  tool(s).\n  --tool_data_table PATH          tool_data_table_conf.xml file to\
+  \ for\n                                  specified tool(s).\n  --dependency_resolvers_config_file\
+  \ FILE\n                                  Dependency resolver configuration for\
+  \ Galaxy\n                                  to target.\n  --brew_dependency_resolution\
+  \    Configure Galaxy to use plain brew\n                                  dependency\
+  \ resolution.\n  --shed_dependency_resolution    Configure Galaxy to use brewed\
+  \ Tool Shed\n                                  dependency resolution.\n  --no_dependency_resolution\
+  \      Configure Galaxy with no dependency\n                                  resolvers.\n\
+  \  --conda_prefix DIRECTORY        Conda prefix to use for conda dependency\n  \
+  \                                commands.\n  --conda_exec FILE               Location\
+  \ of conda executable.\n  --conda_debug                   Enable more verbose conda\
+  \ logging.\n  --conda_channels, --conda_ensure_channels TEXT\n                 \
+  \                 Ensure conda is configured with specified\n                  \
+  \                comma separated list of channels.\n  --conda_use_local        \
+  \       Use locally built packages while building\n                            \
+  \      Conda environments.\n  --conda_dependency_resolution   Configure Galaxy to\
+  \ use only conda for\n                                  dependency resolution.\n\
+  \  --conda_copy_dependencies       Conda dependency resolution for Galaxy will\n\
+  \                                  copy dependencies instead of attempting to\n\
+  \                                  link them.\n  --conda_auto_install / --no_conda_auto_install\n\
+  \                                  Conda dependency resolution for Galaxy will\n\
+  \                                  attempt to install requested but missing\n  \
+  \                                packages.\n  --conda_auto_init / --no_conda_auto_init\n\
+  \                                  Conda dependency resolution for Galaxy will\n\
+  \                                  auto install conda itself using miniconda if\n\
+  \                                  not availabe on conda_prefix.\n  --profile TEXT\
+  \                  Name of profile (created with the\n                         \
+  \         profile_create command) to use with this\n                           \
+  \       command.\n  --postgres                      Use postgres database type.\n\
+  \  --database_type [postgres|postgres_docker|sqlite|auto]\n                    \
+  \              Type of database to use for profile -\n                         \
+  \         'auto', 'sqlite', 'postgres', and\n                                  'postgres_docker'\
+  \ are available options. Use\n                                  postgres to use\
+  \ an existing postgres server\n                                  you user can access\
+  \ without a password via\n                                  the psql command. Use\
+  \ postgres_docker to\n                                  have Planemo manage a docker\
+  \ container\n                                  running postgres. Data with postgres_docker\n\
+  \                                  is not yet persisted past when you restart\n\
+  \                                  the docker container launched by Planemo so\n\
+  \                                  be careful with this option.\n  --postgres_psql_path\
+  \ TEXT       Name or or path to postgres client binary\n                       \
+  \           (psql).\n  --postgres_database_user TEXT   Postgres username for managed\
+  \ development\n                                  databases.\n  --postgres_database_host\
+  \ TEXT   Postgres host name for managed development\n                          \
+  \        databases.\n  --postgres_database_port TEXT   Postgres port for managed\
+  \ development\n                                  databases.\n  --file_path DIRECTORY\
+  \           Location for files created by Galaxy (e.g.\n                       \
+  \           database/files).\n  --database_connection TEXT      Database connection\
+  \ string to use for\n                                  Galaxy.\n  --shed_tool_conf\
+  \ TEXT           Location of shed tools conf file for Galaxy.\n  --shed_tool_path\
+  \ TEXT           Location of shed tools directory for Galaxy.\n  --galaxy_single_user\
+  \ / --no_galaxy_single_user\n                                  By default Planemo\
+  \ will configure Galaxy to\n                                  run in single-user\
+  \ mode where there is just\n                                  one user and this\
+  \ user is automatically\n                                  logged it. Use --no_galaxy_single_user\
+  \ to\n                                  prevent Galaxy from running this way.\n\
+  \  --daemon                        Serve Galaxy process as a daemon.\n  --pid_file\
+  \ FILE                 Location of pid file is executed with\n                 \
+  \                 --daemon.\n  --ignore_dependency_problems    When installing shed\
+  \ repositories for\n                                  workflows, ignore dependency\
+  \ issues. These\n                                  likely indicate a problem but\
+  \ in some cases\n                                  may not prevent a workflow from\
+  \ successfully\n                                  executing.\n  --shed_install /\
+  \ --no_shed_install\n                                  By default Planemo will attempt\
+  \ to install\n                                  repositories needed for workflow\
+  \ testing.\n                                  This may not be appropriate for production\n\
+  \                                  servers and so this can disabled by calling\n\
+  \                                  planemo with --no_shed_install.\n  --help   \
+  \                       Show this message and exit.\n"
+generated_using:
+- --help

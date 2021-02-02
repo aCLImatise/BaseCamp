@@ -1,0 +1,114 @@
+!Command
+command:
+- svtk
+- bincov
+positional:
+- !Positional
+  description: Input bam
+  position: 0
+  name: bam
+  optional: false
+- !Positional
+  description: Contig to evaluate
+  position: 1
+  name: chr
+  optional: false
+- !Positional
+  description: Output bed file of raw coverage
+  position: 2
+  name: cov_out
+  optional: false
+named:
+- !Flag
+  description: Output bed file of normalized coverage
+  synonyms:
+  - -n
+  - --norm_out
+  args: !SimpleFlagArg
+    name: NORM_OUT
+  optional: true
+- !Flag
+  description: Bin size (bp) [1000]
+  synonyms:
+  - -b
+  - --binsize
+  args: !SimpleFlagArg
+    name: BINSIZE
+  optional: true
+- !Flag
+  description: Type of coverage to calculate [nucleotide]
+  synonyms:
+  - -m
+  - --mode
+  args: !ChoiceFlagArg
+    choices: !!set
+      nucleotide:
+      physical:
+  optional: true
+- !Flag
+  description: BED file of regions to exclude
+  synonyms:
+  - -x
+  - --blacklist
+  args: !SimpleFlagArg
+    name: BLACKLIST
+  optional: true
+- !Flag
+  description: Compress output bed files
+  synonyms:
+  - -z
+  - --gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input bam is already subsetted to desired chr
+  synonyms:
+  - -p
+  - --presubsetted
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Maximum fraction of each bin permitted to overlap with\nblacklist\
+    \ regions. [0.05]"
+  synonyms:
+  - -v
+  - --overlap
+  args: !SimpleFlagArg
+    name: OVERLAP
+  optional: true
+- !Flag
+  description: Using a bedtools version pre-2.24.0
+  synonyms:
+  - --oldBT
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: svtk bincov [-h] [-n NORM_OUT] [-b BINSIZE] [-m {nucleotide,physical}]\n\
+  \                   [-x BLACKLIST] [-z] [-p] [-v OVERLAP] [--oldBT]\n          \
+  \         bam chr cov_out\n\nCalculates non-duplicate primary-aligned binned coverage\
+  \ of a chromosome from\nan input BAM file\n\npositional arguments:\n  bam      \
+  \             Input bam\n  chr                   Contig to evaluate\n  cov_out \
+  \              Output bed file of raw coverage\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -n NORM_OUT, --norm_out NORM_OUT\n\
+  \                        Output bed file of normalized coverage\n  -b BINSIZE, --binsize\
+  \ BINSIZE\n                        Bin size (bp) [1000]\n  -m {nucleotide,physical},\
+  \ --mode {nucleotide,physical}\n                        Type of coverage to calculate\
+  \ [nucleotide]\n  -x BLACKLIST, --blacklist BLACKLIST\n                        BED\
+  \ file of regions to exclude\n  -z, --gzip            Compress output bed files\n\
+  \  -p, --presubsetted    Input bam is already subsetted to desired chr\n  -v OVERLAP,\
+  \ --overlap OVERLAP\n                        Maximum fraction of each bin permitted\
+  \ to overlap with\n                        blacklist regions. [0.05]\n  --oldBT\
+  \               Using a bedtools version pre-2.24.0\n"
+generated_using:
+- --help

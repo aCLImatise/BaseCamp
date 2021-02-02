@@ -1,0 +1,181 @@
+!Command
+command:
+- snpmutator
+positional: []
+named:
+- !Flag
+  description: "Number of mutated sequences to generate. (default:\n100)"
+  synonyms:
+  - -n
+  - --num-simulations
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Number of substitutions. (default: 500)'
+  synonyms:
+  - -s
+  - --num-substitutions
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Number of insertions. (default: 20)'
+  synonyms:
+  - -i
+  - --num-insertions
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Number of deletions. (default: 20)'
+  synonyms:
+  - -d
+  - --num-deletions
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Random number seed; if not set, the results are not\nreproducible.\
+    \ (default: None)"
+  synonyms:
+  - -r
+  - --random-seed
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Choose variants from a pool of eligible positions of\nthe specified\
+    \ size (default: 0)"
+  synonyms:
+  - -p
+  - --pool
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Group size. When greater than zero, this parameter\nchooses a new\
+    \ pool of positions for each group of\nreplicates. (default: None)"
+  synonyms:
+  - -g
+  - --group
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Create monomorphic alleles (default: False)'
+  synonyms:
+  - -m
+  - --mono
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output fasta description line sequence ID. Each\nmutated output file\
+    \ has only one sequence. If not\nspecified, the defline id will be the id of the\
+    \ first\nsequence in the input fasta file. The defline is\nalways suffixed with\
+    \ an annotation in this format:\n(mutated s=900 i=50 d=50). The seq id is also\
+    \ written\nto the CHROM column of the output VCF file. (default:\nNone)"
+  synonyms:
+  - -I
+  - --seqid
+  args: !SimpleFlagArg
+    name: SEQID
+  optional: true
+- !Flag
+  description: "Output concatenanted reference file with no mutations,\nbut all sequences\
+    \ concatenanted together. All the\nreplicates will be mutations of this file.\
+    \ (default:\nNone)"
+  synonyms:
+  - -R
+  - --ref
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: "Output directory for generated fasta files. (default:\n.)"
+  synonyms:
+  - -F
+  - --fasta-dir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: 'Output positional summary file. (default: None)'
+  synonyms:
+  - -o
+  - --summary
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Output VCF file. (default: None)'
+  synonyms:
+  - -v
+  - --vcf
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Output metrics file. (default: None)'
+  synonyms:
+  - -M
+  - --metrics
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: snpmutator [-h] [-n INT] [-s INT] [-i INT] [-d INT] [-r INT] [-p\
+  \ INT]\n                  [-g INT] [-m] [-I SEQID] [-R FILE] [-F DIR] [-o FILE]\n\
+  \                  [-v FILE] [-M FILE] [--version]\n                  input_fasta_file\n\
+  \nGenerate mutated sequence files from a reference genome. Takes a fasta file\n\
+  and creates a specified number of randomly generated base substitutions,\ninsertions,\
+  \ and deletions. Outputs the mutated genomes, and optionally, a\nsummary file listing\
+  \ the mutations by position.\n\npositional arguments:\n  input_fasta_file      Input\
+  \ fasta file.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -n INT, --num-simulations INT\n                        Number of mutated\
+  \ sequences to generate. (default:\n                        100)\n  -s INT, --num-substitutions\
+  \ INT\n                        Number of substitutions. (default: 500)\n  -i INT,\
+  \ --num-insertions INT\n                        Number of insertions. (default:\
+  \ 20)\n  -d INT, --num-deletions INT\n                        Number of deletions.\
+  \ (default: 20)\n  -r INT, --random-seed INT\n                        Random number\
+  \ seed; if not set, the results are not\n                        reproducible. (default:\
+  \ None)\n  -p INT, --pool INT    Choose variants from a pool of eligible positions\
+  \ of\n                        the specified size (default: 0)\n  -g INT, --group\
+  \ INT   Group size. When greater than zero, this parameter\n                   \
+  \     chooses a new pool of positions for each group of\n                      \
+  \  replicates. (default: None)\n  -m, --mono            Create monomorphic alleles\
+  \ (default: False)\n  -I SEQID, --seqid SEQID\n                        Output fasta\
+  \ description line sequence ID. Each\n                        mutated output file\
+  \ has only one sequence. If not\n                        specified, the defline\
+  \ id will be the id of the first\n                        sequence in the input\
+  \ fasta file. The defline is\n                        always suffixed with an annotation\
+  \ in this format:\n                        (mutated s=900 i=50 d=50). The seq id\
+  \ is also written\n                        to the CHROM column of the output VCF\
+  \ file. (default:\n                        None)\n  -R FILE, --ref FILE   Output\
+  \ concatenanted reference file with no mutations,\n                        but all\
+  \ sequences concatenanted together. All the\n                        replicates\
+  \ will be mutations of this file. (default:\n                        None)\n  -F\
+  \ DIR, --fasta-dir DIR\n                        Output directory for generated fasta\
+  \ files. (default:\n                        .)\n  -o FILE, --summary FILE\n    \
+  \                    Output positional summary file. (default: None)\n  -v FILE,\
+  \ --vcf FILE   Output VCF file. (default: None)\n  -M FILE, --metrics FILE\n   \
+  \                     Output metrics file. (default: None)\n  --version        \
+  \     show program's version number and exit\n"
+generated_using:
+- --help

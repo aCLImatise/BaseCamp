@@ -1,0 +1,137 @@
+!Command
+command:
+- medpy_grid.py
+positional:
+- !Positional
+  description: Generated grid volume.
+  position: 0
+  name: output
+  optional: false
+- !Positional
+  description: "The grid spacing. Can be a single digit for regular\nspacing in all\
+    \ dimensions or a colon-separated list of\nN integers, where N is the number of\
+    \ dimension in the\ngenerated volume. To skip the grid in one dimension,\nsimply\
+    \ supply a 0 for it."
+  position: 1
+  name: spacing
+  optional: false
+named:
+- !Flag
+  description: "Option 1/2: Supply an image to create the grid volume\nby example\
+    \ (i.e. with same shape, voxel spacing and\noffset)."
+  synonyms:
+  - -e
+  - --example
+  args: !SimpleFlagArg
+    name: EXAMPLE
+  optional: true
+- !Flag
+  description: "Option 2/2: Supply a colon-separated list of integers\nthat constitute\
+    \ the target volumes shape."
+  synonyms:
+  - -s
+  - --shape
+  args: !SimpleFlagArg
+    name: SHAPE
+  optional: true
+- !Flag
+  description: "Set the pixel spacing of the target volume by\nsupplying a colon-separated\
+    \ list of N numbers, where N\nis the number of dimension in the generated volume."
+  synonyms:
+  - -p
+  - --pixel-spacing
+  args: !SimpleFlagArg
+    name: PIXELSPACING
+  optional: true
+- !Flag
+  description: "Set offset of the target volume by supplying a colon-\nseparated list\
+    \ of N numbers, where N is the number of\ndimension in the generated volume."
+  synonyms:
+  - -o
+  - --offset
+  args: !SimpleFlagArg
+    name: OFFSET
+  optional: true
+- !Flag
+  description: "Spacing is given in real world coordinates, rather\nthan voxels. For\
+    \ this to make a difference, either the\n-e switch or the -p switch must be set."
+  synonyms:
+  - -r
+  - --real
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display more information.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display debug information.
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Silently override existing output images.
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: medpy_grid.py [-h] (-e EXAMPLE | -s SHAPE) [-p PIXELSPACING]\n\
+  \                     [-o OFFSET] [-r] [-v] [-d] [-f]\n                     output\
+  \ spacing\n\n                  Create an image volume containing a regular grid\
+  \ that can e.g. be used to\n                  visualize deformation fields. The\
+  \ grid volume can be generated either by\n                  supplying an example\
+  \ volume (-e) or by directly defining its shape (-s).\n                  \n    \
+  \              Copyright (C) 2013 Oskar Maier\n                  This program comes\
+  \ with ABSOLUTELY NO WARRANTY; This is free software,\n                  and you\
+  \ are welcome to redistribute it under certain conditions; see\n               \
+  \   the LICENSE file or <http://www.gnu.org/licenses/> for details.   \n       \
+  \           \n\npositional arguments:\n  output                Generated grid volume.\n\
+  \  spacing               The grid spacing. Can be a single digit for regular\n \
+  \                       spacing in all dimensions or a colon-separated list of\n\
+  \                        N integers, where N is the number of dimension in the\n\
+  \                        generated volume. To skip the grid in one dimension,\n\
+  \                        simply supply a 0 for it.\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -e EXAMPLE, --example EXAMPLE\n\
+  \                        Option 1/2: Supply an image to create the grid volume\n\
+  \                        by example (i.e. with same shape, voxel spacing and\n \
+  \                       offset).\n  -s SHAPE, --shape SHAPE\n                  \
+  \      Option 2/2: Supply a colon-separated list of integers\n                 \
+  \       that constitute the target volumes shape.\n  -p PIXELSPACING, --pixel-spacing\
+  \ PIXELSPACING\n                        Set the pixel spacing of the target volume\
+  \ by\n                        supplying a colon-separated list of N numbers, where\
+  \ N\n                        is the number of dimension in the generated volume.\n\
+  \  -o OFFSET, --offset OFFSET\n                        Set offset of the target\
+  \ volume by supplying a colon-\n                        separated list of N numbers,\
+  \ where N is the number of\n                        dimension in the generated volume.\n\
+  \  -r, --real            Spacing is given in real world coordinates, rather\n  \
+  \                      than voxels. For this to make a difference, either the\n\
+  \                        -e switch or the -p switch must be set.\n  -v         \
+  \           Display more information.\n  -d                    Display debug information.\n\
+  \  -f, --force           Silently override existing output images.\n\nexamples:\n\
+  \  medpy_grid.py -e example.nii grid.nii 10\n      Generates an empty image with\
+  \ the same attributes as example.nii, overlays it\n      with a regular grid of\
+  \ width 10 voxels and saves it as grid.nii.\n  medpy_grid.py -e example.nii grid.nii\
+  \ 10,11,12 -r\n      Same as above, but with an irregular grid and using real world\
+  \ coordinates\n      (i.e. taking the voxel spacing of the image into account).\n\
+  \  medpy_grid.py -s 100,200 grid.nii 10,2 -p 0.5,3 \n      Generates a 10x2 spaced\
+  \ grid in a 100x200 image with a voxel spacing of 0.5x3.\n  medpy_grid.py -s 100,100,50\
+  \ grid.nii 5,5,0 \n      Generates a 100x100x50 3D volume but fills it only with\
+  \ a regular 5x5 2D grid\n      over the first two dimensions.  \n"
+generated_using:
+- --help

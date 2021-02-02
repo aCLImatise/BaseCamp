@@ -1,0 +1,151 @@
+!Command
+command:
+- ChIPAssoc
+positional: []
+named:
+- !Flag
+  description: "BED file of genomic coordinates (e.g. ChIP-Seq peaks).\nThe center\
+    \ of each peak will be used to compute the\ndistance from a gene."
+  synonyms:
+  - -b
+  - --bed
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: "Gene annotation table. This can be a sqlite3 local db\nfile, BED file\
+    \ or genome version of UCSC. The BED file\nmust have an extension of '.bed'"
+  synonyms:
+  - -d
+  - --db
+  args: !SimpleFlagArg
+    name: GDB
+  optional: true
+- !Flag
+  description: "Gene set to see the association with the genomic\ncoordinates given\
+    \ through -b. Multiple gene sets can\nbe given by repeatedly using this option\
+    \ (e.g. -g\ngeneset1.txt -g geneset2.txt -g geneset3.txt). Genes\nmust be given\
+    \ in a TXT file each line of which has a\nrefseq accession ID or an official gene\
+    \ symbol (i.e. a\nsingle-column TXT file)."
+  synonyms:
+  - -g
+  - --gset
+  args: !SimpleFlagArg
+    name: GSET
+  optional: true
+- !Flag
+  description: "The lower limit of the distance to consider in\nassociation analysis\
+    \ (in kb). Note that the lower and\nupper limits must be reasonably apart to obtain\
+    \ a\nmeaningful result. By default 0kb."
+  synonyms:
+  - -n
+  - --min
+  args: !SimpleFlagArg
+    name: MIN
+  optional: true
+- !Flag
+  description: "The upper limit of the distance to consider in\nassociation analysis\
+    \ (in kb). Note that the lower and\nupper limits must be reasonably apart to obtain\
+    \ a\nmeaningful result. By default 200kb."
+  synonyms:
+  - -x
+  - --max
+  args: !SimpleFlagArg
+    name: MAX
+  optional: true
+- !Flag
+  description: "Experiment name. This will be used to name the output\nfile. If an\
+    \ experiment name is not given, input BED\nfile name will be used instead."
+  synonyms:
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Label for each gene set. Likewise, multiple gene set\nlabels can be\
+    \ given by repeatedly using this option\n(e.g. -l label1 -l label2 -l label3).\
+    \ If labels are\nnot given, 'gene set' will be used by default."
+  synonyms:
+  - -l
+  - --lab
+  args: !SimpleFlagArg
+    name: LABEL
+  optional: true
+- !Flag
+  description: "Background gene set. If a set of genes is given using\nthis option,\
+    \ the gene set will be used as background\nor null set when running KS test. Otherwise,\
+    \ all\nrefseq genes will be used as background. Background\ngenes must be given\
+    \ in a TXT file each line of which\nhas a refseq accession ID or an offical gene\
+    \ symbol\n(i.e. a single-column TXT file)."
+  synonyms:
+  - -r
+  - --rbg
+  args: !SimpleFlagArg
+    name: RBG
+  optional: true
+- !Flag
+  description: "If this switch is on, gene or transcript IDs in files\ngiven through\
+    \ -g will be considered as official gene\nsymbols.\n"
+  synonyms:
+  - --gname2
+  args: !EmptyFlagArg {}
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: Show this help message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: ChIPAssoc <-g gdb -b bed -g geneset> [options]\n\nChIPAssoc --\
+  \ Gene Set Association Analysis. Note that if the number of genomic\ncoordinates\
+  \ is below 1000 or the number of a gene set is below 500, the p\nvalue of ChIPAssoc\
+  \ may not represent biological implications well enough.\n\nOptions:\n  --version\
+  \             show program's version number and exit\n  -h, --help            Show\
+  \ this help message and exit.\n  -b BED, --bed=BED     BED file of genomic coordinates\
+  \ (e.g. ChIP-Seq peaks).\n                        The center of each peak will be\
+  \ used to compute the\n                        distance from a gene.\n  -d GDB,\
+  \ --db=GDB      Gene annotation table. This can be a sqlite3 local db\n        \
+  \                file, BED file or genome version of UCSC. The BED file\n      \
+  \                  must have an extension of '.bed'\n  -g GSET, --gset=GSET  Gene\
+  \ set to see the association with the genomic\n                        coordinates\
+  \ given through -b. Multiple gene sets can\n                        be given by\
+  \ repeatedly using this option (e.g. -g\n                        geneset1.txt -g\
+  \ geneset2.txt -g geneset3.txt). Genes\n                        must be given in\
+  \ a TXT file each line of which has a\n                        refseq accession\
+  \ ID or an official gene symbol (i.e. a\n                        single-column TXT\
+  \ file).\n  -n MIN, --min=MIN     The lower limit of the distance to consider in\n\
+  \                        association analysis (in kb). Note that the lower and\n\
+  \                        upper limits must be reasonably apart to obtain a\n   \
+  \                     meaningful result. By default 0kb.\n  -x MAX, --max=MAX  \
+  \   The upper limit of the distance to consider in\n                        association\
+  \ analysis (in kb). Note that the lower and\n                        upper limits\
+  \ must be reasonably apart to obtain a\n                        meaningful result.\
+  \ By default 200kb.\n  --name=NAME           Experiment name. This will be used\
+  \ to name the output\n                        file. If an experiment name is not\
+  \ given, input BED\n                        file name will be used instead.\n  -l\
+  \ LABEL, --lab=LABEL\n                        Label for each gene set. Likewise,\
+  \ multiple gene set\n                        labels can be given by repeatedly using\
+  \ this option\n                        (e.g. -l label1 -l label2 -l label3). If\
+  \ labels are\n                        not given, 'gene set' will be used by default.\n\
+  \  -r RBG, --rbg=RBG     Background gene set. If a set of genes is given using\n\
+  \                        this option, the gene set will be used as background\n\
+  \                        or null set when running KS test. Otherwise, all\n    \
+  \                    refseq genes will be used as background. Background\n     \
+  \                   genes must be given in a TXT file each line of which\n     \
+  \                   has a refseq accession ID or an offical gene symbol\n      \
+  \                  (i.e. a single-column TXT file).\n  --gname2              If\
+  \ this switch is on, gene or transcript IDs in files\n                        given\
+  \ through -g will be considered as official gene\n                        symbols.\n"
+generated_using:
+- --help

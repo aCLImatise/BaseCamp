@@ -1,0 +1,152 @@
+!Command
+command:
+- generate_BED_file_of_endpoints.py
+positional:
+- !Positional
+  description: genome fasta file.
+  position: 0
+  name: genome
+  optional: false
+- !Positional
+  description: File with list of reads and their fused positions.
+  position: 1
+  name: list_reads
+  optional: false
+- !Positional
+  description: Name of track
+  position: 2
+  name: track_name
+  optional: false
+- !Positional
+  description: Description of the track
+  position: 3
+  name: track_desc
+  optional: false
+- !Positional
+  description: The original bam file (or several files) with the full
+  position: 4
+  name: bamfiles
+  optional: false
+- !Positional
+  description: 'optional arguments:'
+  position: 5
+  name: reads.
+  optional: false
+named:
+- !Flag
+  description: "The original bam file is the reverse complement of the\nRNA. (default:\
+    \ False)"
+  synonyms:
+  - -r
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Print only reads that are found to be significant in\nthis summary\
+    \ file. (default: None)"
+  synonyms:
+  - -s
+  - --summary
+  args: !SimpleFlagArg
+    name: SUMMARY
+  optional: true
+- !Flag
+  description: "Print reads involve only this gene (EcoCyc ID),\napplies only with\
+    \ -s (default: None)"
+  synonyms:
+  - -e
+  - --gene_name
+  args: !SimpleFlagArg
+    name: GENE_NAME
+  optional: true
+- !Flag
+  description: "Set a random score (0-1000) for each read, this will\nallow to present\
+    \ some of the reads in UCSC genome\nbrowser. (default: False)"
+  synonyms:
+  - --rand_score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Color of first part, positive strand. (default:\n255,0,0)"
+  synonyms:
+  - --pos_first
+  args: !SimpleFlagArg
+    name: POS_FIRST
+  optional: true
+- !Flag
+  description: "Color of second part, positive strand. (default:\n51,102,255)"
+  synonyms:
+  - --pos_second
+  args: !SimpleFlagArg
+    name: POS_SECOND
+  optional: true
+- !Flag
+  description: "Color of first part, reverse strand. (default:\n255,0,0)"
+  synonyms:
+  - --rev_first
+  args: !SimpleFlagArg
+    name: REV_FIRST
+  optional: true
+- !Flag
+  description: "Color of second part, reverse strand. (default:\n51,102,255)"
+  synonyms:
+  - --rev_second
+  args: !SimpleFlagArg
+    name: REV_SECOND
+  optional: true
+- !Flag
+  description: "A comma separated dictionary of chromosome names from\nthe BioCyc\
+    \ names to the bam file names. The names in\nthe bam file should be the same as\
+    \ the UCSC genome\nbrowser (they will be printed). (default:\nCOLI-K12,chr)\n"
+  synonyms:
+  - --BC_chrlist
+  args: !SimpleFlagArg
+    name: BC_CHRLIST
+  optional: true
+parent:
+subcommands: []
+usage: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: generate_BED_file_of_endpoints.py [-h] [-r] [-s SUMMARY] [-e GENE_NAME]\n\
+  \                                         [--rand_score]\n                     \
+  \                    [--pos_first POS_FIRST]\n                                 \
+  \        [--pos_second POS_SECOND]\n                                         [--rev_first\
+  \ REV_FIRST]\n                                         [--rev_second REV_SECOND]\n\
+  \                                         [--BC_chrlist BC_CHRLIST]\n          \
+  \                               genome list_reads track_name\n                 \
+  \                        track_desc bamfiles [bamfiles ...]\n\nGenerate BED graph\
+  \ of the reads.\n\npositional arguments:\n  genome                genome fasta file.\n\
+  \  list_reads            File with list of reads and their fused positions.\n  track_name\
+  \            Name of track\n  track_desc            Description of the track\n \
+  \ bamfiles              The original bam file (or several files) with the full\n\
+  \                        reads.\n\noptional arguments:\n  -h, --help           \
+  \ show this help message and exit\n  -r, --reverse         The original bam file\
+  \ is the reverse complement of the\n                        RNA. (default: False)\n\
+  \  -s SUMMARY, --summary SUMMARY\n                        Print only reads that\
+  \ are found to be significant in\n                        this summary file. (default:\
+  \ None)\n  -e GENE_NAME, --gene_name GENE_NAME\n                        Print reads\
+  \ involve only this gene (EcoCyc ID),\n                        applies only with\
+  \ -s (default: None)\n  --rand_score          Set a random score (0-1000) for each\
+  \ read, this will\n                        allow to present some of the reads in\
+  \ UCSC genome\n                        browser. (default: False)\n  --pos_first\
+  \ POS_FIRST\n                        Color of first part, positive strand. (default:\n\
+  \                        255,0,0)\n  --pos_second POS_SECOND\n                 \
+  \       Color of second part, positive strand. (default:\n                     \
+  \   51,102,255)\n  --rev_first REV_FIRST\n                        Color of first\
+  \ part, reverse strand. (default:\n                        255,0,0)\n  --rev_second\
+  \ REV_SECOND\n                        Color of second part, reverse strand. (default:\n\
+  \                        51,102,255)\n  --BC_chrlist BC_CHRLIST\n              \
+  \          A comma separated dictionary of chromosome names from\n             \
+  \           the BioCyc names to the bam file names. The names in\n             \
+  \           the bam file should be the same as the UCSC genome\n               \
+  \         browser (they will be printed). (default:\n                        COLI-K12,chr)\n"
+generated_using:
+- --help
