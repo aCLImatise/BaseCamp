@@ -1,9 +1,70 @@
 const path = require("path")
 const yaml = require("js-yaml")
 const schema = require("./aclimatiseTypes")
+const fs = require(`fs-extra`)
 
-exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
+exports.createSchemaCustomization = ({
+  actions: { createTypes },
+  schema,
+  getNodeAndSavePathDependency,
+  pathPrefix = ``,
+}) => {
   createTypes([
+    // A single wrapper with a single filetype, such as bwa_aln.wl
+    schema.buildObjectType({
+      name: "CondaWrapper",
+      interfaces: ["Node"],
+      fields: {
+        stableUrl: {
+          type: "String",
+          resolve(source, fieldArgs, context) {
+            // Load node data of this node and the file attached to it
+            const fileDetails = getNodeAndSavePathDependency(
+              source.file,
+              context.path
+            )
+            const wrapperDetails = getNodeAndSavePathDependency(
+              source.id,
+              context.path
+            )
+
+            // Calculate the file path (not URL) the file needs to be located at
+            const publicPath = path.join(
+              process.cwd(),
+              `public`,
+              wrapperDetails.stableUrl
+            )
+
+            // Copy the file from its current location to the filepath above
+            if (!fs.existsSync(publicPath)) {
+              fs.copySync(fileDetails.absolutePath, publicPath, {
+                dereference: true,
+              })
+            }
+
+            return `${pathPrefix}/${wrapperDetails.stableUrl}`
+          },
+        },
+        executable: {
+          type: "CondaExecutable",
+          resolve(source, args, context, info) {
+            return context.nodeModel.getNodeById({
+              id: source.executable,
+              type: "CondaExecutable",
+            })
+          },
+        },
+        file: {
+          type: "File",
+          resolve(source, args, context, info) {
+            return context.nodeModel.getNodeById({
+              id: source.file,
+              type: "File",
+            })
+          },
+        },
+      },
+    }),
     schema.buildObjectType({
       name: "CondaPackage",
       fields: {
@@ -66,11 +127,11 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
       name: "CondaExecutable",
       fields: {
         wrappers: {
-          type: "[File]",
+          type: "[CondaWrapper]",
           resolve(source, args, context, info) {
             return context.nodeModel.getNodesByIds({
               ids: source.wrappers,
-              type: "File",
+              type: "CondaWrapper",
             })
           },
         },
@@ -246,13 +307,30 @@ async function createVersions(helpers) {
   )
 }
 
+function filenameAttributes(relativePath) {
+  const [packageName, versionName, filename] = relativePath.split(path.sep)
+  const [stem, extension] = filename.split(".")
+  const exeUrl = `/packages/${packageName}/${versionName}/${stem}`
+  const wrapperUrl = `${exeUrl}/${filename}`
+  return {
+    packageName,
+    versionName,
+    filename,
+    stem,
+    extension,
+    exeUrl,
+    wrapperUrl,
+  }
+}
+
 async function createExecutables(helpers) {
   const {
     graphql,
-    actions: { createNode, createPage },
+    actions: { createNode, createNodeField, createPage },
     createContentDigest,
     loadNodeContent,
     createNodeId,
+    getNode,
   } = helpers
 
   // Only select files 3 levels deep, from the git repos
@@ -285,17 +363,44 @@ async function createExecutables(helpers) {
 
   await Promise.all(
     result.data.allFile.group.map(async ({ nodes, fieldValue }) => {
-      const yamlNode = nodes.filter(node => node.extension === "yml")[0]
-      if (!yamlNode) {
+      const wrappers = []
+      let ymlNode
+
+      // Create a CondaWrapper node for each file node
+      for (let node of nodes) {
+        const { wrapperUrl } = filenameAttributes(node.relativePath)
+
+        // Create a redirect page for each node, and store the URL on the file nodes
+        const wrapperFields = {
+          id: createNodeId(wrapperUrl),
+          stableUrl: wrapperUrl,
+          file: node.id,
+        }
+        const wrapper = {
+          ...wrapperFields,
+          internal: {
+            type: "CondaWrapper",
+            contentDigest: createContentDigest(wrapperFields),
+          },
+        }
+        wrappers.push(wrapper.id)
+        await createNode(wrapper)
+
+        // The remaining node creation requires the YML node
+        if (node.extension === "yml") {
+          ymlNode = node
+        }
+      }
+
+      // If we haven't seen a YAML node, skip making the tool page
+      if (!ymlNode) {
         return
       }
-      const [packageName, versionName, filename] = yamlNode.relativePath.split(
-        path.sep
+      const { versionName, packageName, stem, exeUrl } = filenameAttributes(
+        ymlNode.relativePath
       )
-      const [stem, extension] = filename.split(".")
-
       // We can parse the base YAML file to obtain more useful metadata
-      const contents = await loadNodeContent(yamlNode)
+      const contents = await loadNodeContent(ymlNode)
       const parsed = yaml.safeLoad(contents, { schema: schema })
       const success =
         parsed.positional.length +
@@ -304,17 +409,15 @@ async function createExecutables(helpers) {
         0
 
       // Now create the node for the single file within that package
-      const publicUrl = `/packages/${packageName}/${versionName}/${stem}`
-      const id = createNodeId(yamlNode.relativePath)
+      const id = createNodeId(ymlNode.relativePath)
       const fields = {
         id,
         name: stem,
         versionName: packageName + path.sep + versionName,
         succeeded: success,
         packageName,
-        // path: yamlNode.relativePath.split(".")[0],
-        wrappers: nodes.map(node => node.id),
-        publicURL: publicUrl,
+        wrappers: wrappers,
+        publicURL: exeUrl,
         children: [],
       }
       const exe = {
@@ -327,7 +430,7 @@ async function createExecutables(helpers) {
       await createNode(exe)
       await createPage({
         component: path.resolve(`./src/templates/executable.js`),
-        path: publicUrl,
+        path: exeUrl,
         context: {
           exe: id,
         },
