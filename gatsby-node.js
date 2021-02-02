@@ -1,8 +1,14 @@
 const path = require("path")
 const yaml = require("js-yaml")
 const schema = require("./aclimatiseTypes")
+const fs = require(`fs-extra`)
 
-exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
+exports.createSchemaCustomization = ({
+  actions: { createTypes },
+  schema,
+  getNodeAndSavePathDependency,
+  pathPrefix = ``,
+}) => {
   createTypes([
     // A single wrapper with a single filetype, such as bwa_aln.wl
     schema.buildObjectType({
@@ -11,12 +17,39 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
       fields: {
         stableUrl: {
           type: "String",
+          resolve(source, fieldArgs, context) {
+            // Load node data of this node and the file attached to it
+            const fileDetails = getNodeAndSavePathDependency(
+              source.file,
+              context.path
+            )
+            const wrapperDetails = getNodeAndSavePathDependency(
+              source.id,
+              context.path
+            )
+
+            // Calculate the file path (not URL) the file needs to be located at
+            const publicPath = path.join(
+              process.cwd(),
+              `public`,
+              wrapperDetails.stableUrl
+            )
+
+            // Copy the file from its current location to the filepath above
+            if (!fs.existsSync(publicPath)) {
+              fs.copySync(fileDetails.absolutePath, publicPath, {
+                dereference: true,
+              })
+            }
+
+            return `${pathPrefix}/${wrapperDetails.stableUrl}`
+          },
         },
         executable: {
           type: "CondaExecutable",
           resolve(source, args, context, info) {
             return context.nodeModel.getNodeById({
-              id: source.fields.executable,
+              id: source.executable,
               type: "CondaExecutable",
             })
           },
@@ -352,13 +385,6 @@ async function createExecutables(helpers) {
         }
         wrappers.push(wrapper.id)
         await createNode(wrapper)
-        await createPage({
-          component: path.resolve(`./src/templates/redirect.js`),
-          path: wrapperUrl,
-          context: {
-            to: node.publicURL,
-          },
-        })
 
         // The remaining node creation requires the YML node
         if (node.extension === "yml") {
